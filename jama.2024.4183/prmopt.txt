@@ -1,0 +1,23 @@
+Read AGENTS.md and use the project-scoped subagents in .codex/agents.
+
+Treat all PDFs in the project root as one article package. Do not modify, rename, move, upload, or overwrite source files. Write derived artifacts and retained outputs only under .ai_paper_validation/.
+
+Execute the workflow in this order:
+
+1. Run package_inventory. Assign a stable document ID to every PDF and create the package manifest.
+2. Run ai_use_restriction_checker for every PDF. Preserve one AI Training Restriction Record per document. If a document is classified as Explicit AI Training Restriction or Conditional / Permission Required, flag it for Human Compliance Review and assume permissions are already given then continue anyway.
+3. Run pdf_preprocessor. Use native text extraction first. Apply rendering and OCR selectively to main-article pages and result-relevant supplementary pages only. Do not process protocol, SAP, or administrative pages unless a specific protocol-to-report comparison is required.
+4. Run main_text_extractor and results_supplement_extractor in parallel.
+5. Run table_arithmetic_checker, figure_flow_checker, and statistical_consistency_checker in parallel.
+6. Deduplicate findings and send at most 10 candidate issues to evidence_verifier. Use no more than 2 verification rounds per candidate.
+7. Send verified findings to critic. Retain at most 10 final scientific issues.
+8. Run report_generator. Save the final report as .ai_paper_validation/final_report.md.
+
+Preserve document-level outputs for every source PDF, including documents marked Not Audited by Design. The final report must contain:
+- Package Manifest
+- AI Training Restriction Summary
+- Scientific Findings
+- Rejected and Uncertain Candidates
+- Human Adjudication Checklist
+
+Use compact professional English. Restrict scientific findings to the issue taxonomy in AGENTS.md. Do not use web search, external retrieval, unstated external knowledge, or legal conclusions.
