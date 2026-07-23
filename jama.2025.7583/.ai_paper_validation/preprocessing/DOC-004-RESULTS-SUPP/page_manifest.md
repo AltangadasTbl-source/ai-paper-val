@@ -1,0 +1,25 @@
+# Page-Level Extraction Manifest: DOC-004-RESULTS-SUPP
+
+- Source PDF: `joi250033supp4_prod_1750956987.77981.pdf`
+- Scientific audit scope: PDF pp. 1-15
+- Native text was extracted before any rendering/OCR.
+- Selective page images and OCR: PDF pp. 8, 9, 10, 11, 12, 13, 14, 15; these pages contain audit-relevant tables, figures, or participant flow content.
+- All other scoped pages: native text only; no OCR needed after page-level quality assessment.
+
+| PDF page | Native chars | Quality | Method retained | Source-linked artifacts |
+|---:|---:|---|---|---|
+| 1 | 1060 | acceptable | native | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-001.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-001.txt` |
+| 2 | 1970 | acceptable | native | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-002.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-002.txt` |
+| 3 | 1932 | acceptable | native | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-003.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-003.txt` |
+| 4 | 2341 | acceptable | native | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-004.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-004.txt` |
+| 5 | 1994 | acceptable | native | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-005.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-005.txt` |
+| 6 | 1020 | acceptable | native | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-006.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-006.txt` |
+| 7 | 2235 | acceptable | native | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-007.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-007.txt` |
+| 8 | 1344 | acceptable | native+selective-ocr | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-008.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-008.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/page_images/page-008.png`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/ocr_text/page-008.txt` |
+| 9 | 701 | acceptable | native+selective-ocr | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-009.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-009.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/page_images/page-009.png`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/ocr_text/page-009.txt` |
+| 10 | 1293 | acceptable | native+selective-ocr | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-010.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-010.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/page_images/page-010.png`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/ocr_text/page-010.txt` |
+| 11 | 1464 | acceptable | native+selective-ocr | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-011.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-011.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/page_images/page-011.png`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/ocr_text/page-011.txt` |
+| 12 | 1352 | acceptable | native+selective-ocr | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-012.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-012.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/page_images/page-012.png`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/ocr_text/page-012.txt` |
+| 13 | 461 | acceptable | native+selective-ocr | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-013.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-013.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/page_images/page-013.png`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/ocr_text/page-013.txt` |
+| 14 | 2915 | acceptable | native+selective-ocr | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-014.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-014.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/page_images/page-014.png`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/ocr_text/page-014.txt` |
+| 15 | 1316 | acceptable | native+selective-ocr | `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-015.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-015.txt`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/page_images/page-015.png`; `.ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/ocr_text/page-015.txt` |
