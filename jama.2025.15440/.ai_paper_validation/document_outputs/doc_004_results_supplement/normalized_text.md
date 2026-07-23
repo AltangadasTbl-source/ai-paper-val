@@ -1,0 +1,301 @@
+# Normalized text: doc_004_results_supplement
+
+Source PDF: `joi250068supp3_prod_1760999665.30362.pdf`. Only selected audit pages are included.
+
+===== SOURCE PDF PAGE 1 | native extraction =====
+
+Supplemental Online Content
+
+Wijesurendra R, Pessoa-Amorim G, Buck G, et al. Remote screening for
+asymptomatic atrial fibrillation: the AMALFI randomized clinical trial. JAMA.
+Published online August 29, 2025. doi:10.1001/jama.2025.15440
+
+eMethods
+eTable 1. Patch usage metrics
+eTable 2. Baseline characteristics by patch ECG data availability
+eTable 3. Patch-detected conditions
+eFigure 1. Proportions, absolute differences and ratios of proportions of
+participants with a primary care or secondary care record of atrial fibrillation (AF)
+between randomization and 2.5 years by randomized  allocation overall and in age
+and sex subgroups
+eFigure 2. Patch-detected atrial fibrillation metrics
+eFigure 3. Kaplan-Meier plot of time from urgent patch report to first primary
+care record of atrial fibrillation (AF), restricted to those with  patch-detected AF
+eFigure 4. Patch-detected atrial fibrillation and/or flutter (AF/AFL) metrics
+
+This supplemental material has been provided by the authors to give readers
+additional information about their work.
+
+===== SOURCE PDF PAGE 4 | native extraction =====
+
+eTable 1. Patch usage metrics
+
+                                                                                      Randomized to patch
+                                                                                            (N = 2520)
+Wore and returned patch - n (%)                                                            2126 (84.4%)
+    Days from randomization to patch activation - Median (IQR)                               10 (6 - 18)
+    Days wore patch - Median (IQR)                                                       13.9 (13.2 - 14.0)
+    Days patch data analyzable - Median (IQR)                                            13.5 (12.6 - 13.9)
+    Percentage of patch data suitable for analysis - Median (IQR)                        98.8 (95.8 - 99.6)
+Patch worn ≥10.5 days (75% recommended time) - n (%)                                       1960 (77.8%)
+Patch worn but <10.5 days - n (%)                                                           166 (6.6%)
+    Reasons patch removed - n (%)*
+        Patch attachment problems                                                           43 (25.9%)
+        Skin reaction                                                                       18 (10.8%)
+        Other                                                                                 8 (4.8%)
+        Unknown                                                                             97 (58.4%)
+Patch returned unworn - n (%)                                                               188 (7.5%)
+Patch not returned - n (%)                                                                  206 (8.2%)
+
+IQR=Interquartile range, SD=Standard deviation. * Percent of the 166 who wore the patch <10·5 days
+
+===== SOURCE PDF PAGE 5 | native extraction =====
+
+eTable 2. Baseline characteristics by patch ECG data availability
+
+                                                                            Patch ECG        No patch ECG
+                                                           Overall in           data               data
+                                                         Patch group         N = 2126            N = 394
+                                                           N = 2520           (84.4%)            (15.6%)                          P-value
+Age at randomization (years) - n (%)
+    <75                                                        683          577 (84.5%)       106 (15.5%)             0.75/0.62 (trend)
+    ≥75, <80                                                  1032          876 (84.9%)       156 (15.1%)
+    ≥80                                                        805          673 (83.6%)       132 (16.4%)
+    Mean (SD)                                              77.7 (5.9)        77.6 (5.9)        77.8 (6.1)                             0.50
+Sex - n (%)
+    Males                                                     1340         1137 (84.9%)       203 (15.1%)                             0.47
+    Females                                                   1180          989 (83.8%)       191 (16.2%)
+Race and ethnicitya - n (%)
+    Asian                                                      27           20 (74.1%)          7 (25.9%)                             0.17
+    Black                                                       2           2 (100.0%)          0 (0.0%)
+    White                                                     2045         1738 (85.0%)       307 (15.0%)
+    Otherb                                                     21           17 (81.0%)          4 (19.0%)
+    Missing                                                    425          349 (82.1%)        76 (17.9%)
+Body mass index (kg/m2) - n (%)
+    <25                                                        488          422 (86.5%)        66 (13.5%)             0.07/0.03 (trend)
+    25 to <30                                                  751          639 (85.1%)       112 (14.9%)
+    ≥30                                                        571          466 (81.6%)       105 (18.4%)
+    Missing                                                    710          599 (84.4%)       111 (15.6%)
+    Mean (SD)                                              28.2 (5.2)        28.0 (5.0)        29.3 (6.1)                          <0.001
+CHA2DS2VAsc score - n (%)
+    <3                                                         33           31 (93.9%)          2 (6.1%)        <0.001/<0.001 (trend)
+    3                                                          685          596 (87.0%)        89 (13.0%)
+    4                                                          983          846 (86.1%)       137 (13.9%)
+    ≥5                                                         819          653 (79.7%)       166 (20.3%)
+    Median (IQR)                                            4 (3 - 5)         4 (3 - 5)          4 (4 - 5)                         <0.001
+Prior diagnoses at randomization - n (%)
+    Hypertension                                              2255         1908 (84.6%)       347 (15.4%)                             0.32
+    Diabetes                                                   713          582 (81.6%)       131 (18.4%)                             0.02
+    Stroke or TIA                                              485          395 (81.4%)        90 (18.6%)                             0.05
+    Chronic kidney disease (stage ≥3)                          438          366 (83.6%)        72 (16.4%)                             0.61
+    Thromboembolism                                            271          216 (79.7%)        55 (20.3%)                             0.03
+    Myocardial infarction                                      269          226 (84.0%)        43 (16.0%)                             0.87
+    Heart failure                                              244          191 (78.3%)        53 (21.7%)                            0.006
+    Peripheral arterial disease                                214          170 (79.4%)        44 (20.6%)                             0.04
+Medication prior to randomization - n (%)
+    Statin                                                    1739         1462 (84.1%)       277 (15.9%)                             0.54
+    RAAS inhibition                                           1599         1341 (83.9%)       258 (16.1%)                             0.36
+    Proton-pump inhibitors or H2-antagonists                  1265         1065 (84.2%)       200 (15.8%)                             0.81
+
+===== SOURCE PDF PAGE 6 | native extraction =====
+
+Patch ECG       No patch ECG
+                                                           Overall in           data               data
+                                                          Patch group         N = 2126           N = 394
+                                                            N = 2520          (84.4%)            (15.6%)                           P-value
+    Calcium-channel blockers                                  1200          996 (83.0%)       204 (17.0%)                              0.07
+    Diuretics                                                  713          593 (83.2%)       120 (16.8%)                              0.30
+    Aspirin or dipyridamole                                    705          585 (83.0%)       120 (17.0%)                              0.23
+    Beta-blockers                                              619          529 (85.5%)        90 (14.5%)                              0.39
+    P2Y12 inhibition                                           363          300 (82.6%)        63 (17.4%)                              0.33
+    Oral anticoagulation                                       174          137 (78.7%)        37 (21.3%)                              0.03
+      Direct oral anticoagulant                                128          101 (78.9%)        27 (21.1%)                              0.08
+      Vitamin K antagonist                                      59           47 (79.7%)        12 (20.3%)                              0.31
+    Insulin                                                    117           94 (80.3%)        23 (19.7%)                              0.22
+
+IQR = Interquartile range, SD = standard deviation, RAAS =Renin Angiotensin Aldosterone System. Row
+percentages are presented to provide the compliance rate within each category of baseline characteristic. Chi-
+square p-values are presented for categorical factors with the Mantel- Haenszel test for trend also presented
+for ordinal categorical factors. Two-sample T-test and Mann-Whitney U-test p-values are presented for
+continuous data with normal and non-normal distributions respectively. Missing data is excluded in the
+calculation of p-values. aP-value compares white versus any other non-missing race and ethnicity group. bOther
+category includes multiracial ethnicities (n=10) and 'any other ethnicity' (code S) recorded in secondary care
+(n=11).
+
+===== SOURCE PDF PAGE 7 | native extraction =====
+
+eTable 3. Patch-detected conditions
+
+                                                                                Number of            % of those        % of those who
+                                                                               participants        randomized to           wore and
+                                                                             with condition             patch           returned patch
+                                                                                 detected            (N = 2520)            (N = 2126)
+Atrial fibrillation                                                                  89                 3·53%                4·19%
+    Atrial fibrillation without flutter                                              74                 2·94%                3·48%
+    Atrial fibrillation with flutter                                                 15                 0·60%                0·71%
+Other findings resulting in urgent reporting to GP
+    Atrial flutter without fibrillation                                              13                 0·52%                0·61%
+    Complete AV block                                                                 5                 0·20%                0·24%
+    High grade AV block                                                              10                 0·40%                0·47%
+    AV block second degree Mobitz II                                                  8                 0·32%                0·38%
+    AV block second degree 2:1                                                        1                 0·04%                0·05%
+    Pauses lasting longer than 6 seconds                                              6                 0·24%                0·28%
+    Sustained ventricular tachycardia (>30 seconds)                                   2                 0·08%                0·09%
+Non-urgent findings
+    Non-sustained ventricular tachycardia (≤30 seconds)                             676                26·83%                31·80%
+    Sustained supraventricular tachycardia (>30 seconds)                            134                 5·32%                6·30%
+    Non-sustained supraventricular tachycardia (≤30 seconds)                        1772               70·32%                83·35%
+
+AV = Atrioventricular, GP = General practitioner
+
+===== SOURCE PDF PAGE 8 | native extraction =====
+
+AF/Participants (%)                                                             Absolute difference                                                                                                                                                                  Ratio of proportions
+                                          Patch group                                                                       Usual care group(95% Confidence Interval)                                                                                                                                                      (95% Confidence Interval)
+
+                                                                                                                                                                                                                            More AF in                                    More AF in
+Age at randomization                                                                                                                                                                                                 usual care group                                   patch group
+
+< 80 years                           142/1715 (8.28%)                             110/1744 (6.31%)                                        1.97% (0.24%, 3.71%)                                                                                                                                                                            1.31 ( 1.03 to  1.67)
+
+≥ 80 years                           109/805 (13.54%)                               97/776 (12.50%)                                      1.04% (-2.28%, 4.36%)                                                                                                                                                                            1.08 ( 0.84 to  1.40)
+
+                                                                                                                                                                                                                                                                                                                                          Heterogeneity p = 0.28
+Sex
+
+Females                              105/1180 (8.90%)                               70/1180 (5.93%)                                       2.97% (0.86%, 5.08%)                                                                                                                                                                            1.50 ( 1.12 to  2.01)
+
+Males                              146/1340 (10.90%)                             137/1340 (10.22%)                                       0.67% (-1.66%, 3.00%)                                                                                                                                                                            1.07 ( 0.85 to  1.33)
+
+                                                                                                                                                                                                                                                                                                                                          Heterogeneity p = 0.07
+
+Overall                              251/2520 (9.96%)                             207/2520 (8.21%)                                        1.75% (0.16%, 3.33%)                                                                                                                                                                            1.21 ( 1.02 to  1.45), p = 0.03
+
+                                                                                                                                                                                          0.5                                                                                                                                                                                                                         0.75                                                                                                                                                       1                                                                                                            1.25                                                                 1.5                                                                                                                                                                 2
+                                                                                                                                                                                                                                           Ratio of proportions
+                                                                                                                                                                                                                                     (95% Confidence Interval)
+
+===== SOURCE PDF PAGE 9 | native extraction =====
+
+(A)                                                                                                                                                                                                                                                                                                    (B)
+
+                              60                                                                                                                                                                                                                                                                                                     40
+                              55                                                                                                                                                                                                                                                                                                     35
+                              50
+                              45                                                                                                                                                                                                                                                                                                     30
+                              40                                                                                                                                                                                                                                                                                                     25
+                              35
+                              30                                                                                                                                                                                                                                                                                                     20
+                              25                                                                                                                                                                                                                                                                                                     15
+                              20
+                              15                                                                                                                                                                                                                                                                                                     10
+                              10                                                                                                                                                                                                                                                                                                          5
+                                   5
+                                   0               1                                      2                                      3                                      4                                      5                                      6                                      7                                      8                                      9                             10                    11                    12                    13                    140<1                                         10                                          20                                          30                                          40                                          50                                          60                                          70                                          80                                          90                                 100
+
+                                                                Day of first episode of AF in monitoring period                                                                                                                                                                                                                                                                                                         Percentage time in AF
+
+        (C)                                                                                                                                                                                                                                                                                                    (D)
+
+                              50                                                                                                                                                                                                                                                                                                     50
+                              45                                                                                                                                                                                                                                                                                                     45
+                              40                                                                                                                                                                                                                                                                                                     40                                                                                                                                                                                                             42%
+                              35                                                                                                                                                                                                                                                                                                     35
+                              30                                                                                                                                                                                                                                                                                                     30                                                                                        29%
+                              25                                                                                                                                                                                                                                                                                                     25
+                              20                                                                                                                                                                                                                                                                                                     20                                                                                                                                                   20%
+                              15                                                                                                                                                                                                                                                                                                     15
+                              10                                                                                                                                                                                                                                                                                                     10                                9%
+                                   5                                                                                                                                                                                                                                                                                                      5
+                                   0                                                                                                                                                                                                                                                                                                      0         [30sec,6min)                                    [6min,6hr)                                                            [6hr,24hr)                                                                                                     ≥       24hr
+                                          0                                                                                   48                                                                          96                                                                 144                                                        192                                                        240                                                        288                                                        336
+                                                                            Duration of longest AF episode, in hours                                                                                                                                                                                                                                                              Duration of longest AF episode, grouped
+
+        (E)                                                                                                                                                                                                                                                                                                    (F)
+
+                   15                                                                                                                                                                                                                                                                                                      15
+
+                   10                                                                                                                                                                                                                                                                                                      10
+
+                         5                                                                                                                                                                                                                                                                                                      5
+
+                         0           75                                                                                     100                                                                            125                                                                            150                                                                            175                                                                            200                                                                            22500                                                                                                            25                                                                                                   50                                                                                                   75                                                                                          100                                                                                 125                                                                                 150
+
+                                                                           Maximum hear t rate, beats per minute                                                                                                                                                                                                                                                                   Minimum hear t rate, beats per minute
+eFigure 2. Patch-detected atrial fibrillation metrics.                              (A) Day of first episode (B) Burden (C) Duration of longest episode, in hours
+(D)        Duration of longest episode, grouped (E) Maximum hear t rate during episode (F) Minimum hear t rate during episode
+
+===== SOURCE PDF PAGE 10 | native extraction =====
+
+100%
+
+                                         80%
+
+                                         60%
+
+                                         40%
+
+                                         20%
+
+                                                 0%0                                                                                                                                                                                                                                                                                                                                             1                                                                                                                                                                                                                                                                                                                                             2                                                                                                                                                                                                                                                                                                                                             3                                                                                                                                                                                                                                                                                                                                             4                                                                                                                                                                                                                                                                                                                                             5                                                                                                                                                                                                                                                                                                                                             6
+
+                                                                                                                                                                                                                                                                                                                                                                               Months from urgent patch repor t
+
+  Number at risk
+                                                                    89                                                                                                                               34                                                                                                                                                                                                                                                                                                                       18                                                                                                                                                                                                                                                                                                                       10                                                                                                                                                                                                                                                                                                                                  8                                                                                                                                                                                                                                                                                                                                             7                                                                                                                                                                                                                                                                                                                                             6
+
+ eFigure 3. Kaplan−Meier plot of time from urgent patch report to first primary care record of atrial fibrillation (AF), restricted to
+those with patch−detected AF. The number of participants at risk at the start of each month is shown beneath the figure. The seven
+participants with a post−randomization record of AF in the primary care record that pre−dates the urgent patch report are included in the
+number at risk at day 0 and counted as an event immediately after this.
+
+===== SOURCE PDF PAGE 11 | native extraction =====
+
+(A)                                                                                                                                                                                                                                                                                          (B)
+
+                            60                                                                                                                                                                                                                                                                                           40
+                            55                                                                                                                                                                                                                                                                                           35
+                            50
+                            45                                                                                                                                                                                                                                                                                           30
+                            40                                                                                                                                                                                                                                                                                           25
+                            35
+                            30                                                                                                                                                                                                                                                                                           20
+                            25                                                                                                                                                                                                                                                                                           15
+                            20
+                            15                                                                                                                                                                                                                                                                                           10
+                            10                                                                                                                                                                                                                                                                                                5
+                                 5
+                                 0              1                                      2                                      3                                      4                                      5                                      6                                      7                                      8                                      9                             10                    11                    12                    13                    140<1                                         10                                          20                                          30                                          40                                          50                                          60                                          70                                          80                                          90                                 100
+
+                                                    Day of first episode of AF/AFL in monitoring period                                                                                                                                                                                                                                                                                         Percentage time in AF/AFL
+
+       (C)                                                                                                                                                                                                                                                                                          (D)
+
+                            50                                                                                                                                                                                                                                                                                           50                                                                                                                                                                                                       46%
+                            45                                                                                                                                                                                                                                                                                           45
+                            40                                                                                                                                                                                                                                                                                           40
+                            35                                                                                                                                                                                                                                                                                           35
+                            30                                                                                                                                                                                                                                                                                           30                                                                                      26%
+                            25                                                                                                                                                                                                                                                                                           25
+                            20                                                                                                                                                                                                                                                                                           20                                                                                                                                              18%
+                            15                                                                                                                                                                                                                                                                                           15
+                            10                                                                                                                                                                                                                                                                                           10                             10%
+
+                                 5                                                                                                                                                                                                                                                                                            5
+                                 0                                                                                                                                                                                                                                                                                            0         [30sec,6min)                                    [6min,6hr)                                                            [6hr,24hr)                                                                                                     ≥       24hr
+                                         0                                                                                   48                                                                          96                                                                 144                                                        192                                                        240                                                        288                                                        336
+                                                               Duration of longest AF/AFL episode, in hours                                                                                                                                                                                                                                                 Duration of longest AF/AFL episode, grouped
+
+       (E)                                                                                                                                                                                                                                                                                          (F)
+
+                  15                                                                                                                                                                                                                                                                                           15
+
+                  10                                                                                                                                                                                                                                                                                           10
+
+                       5                                                                                                                                                                                                                                                                                             5
+
+                       0            75                                                                                     100                                                                            125                                                                            150                                                                            175                                                                            200                                                                            22500                                                                                                            25                                                                                                   50                                                                                                   75                                                                                          100                                                                                 125                                                                                 150
+
+                                                                        Maximum hear t rate, beats per minute                                                                                                                                                                                                                                                         Minimum hear t rate, beats per minute
+eFigure 4. Patch         -detected atrial fibrillation and/or flutter (AF/AFL) metrics.  (A) Day of first episode (B) Burden (C) Duration of longest
+episode, in hours (D) Duration of longest episode, grouped (E) Maximum heart rate during episode (F) Minimum heart rate during episode.
