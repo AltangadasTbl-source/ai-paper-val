@@ -54,10 +54,17 @@ Compliance Review` before model-mediated processing not already approved by the 
 
 ## Evidence Standard
 
-Each final issue requires an exact file, page, table or figure label when applicable, source values
-or statements, a calculation or logical basis, and a concise verification instruction. The workflow
-must classify unsupported findings as `Rejected` or `Uncertain`. Derived artifacts must retain a
-page-level link to their source PDF.
+Each final issue must be a self-contained evidence card for a human reviewer. It requires a
+one-sentence issue statement; category and severity; exact location for every cited item (document
+ID and filename, PDF page, and table, figure, panel, row, column, footnote, or section/paragraph
+label when available); labelled verbatim source excerpts or values with units; a direct
+reported-versus-comparator comparison; and a reproducible calculation or logical chain with inputs,
+formula or rule, result, units, and any rounding tolerance considered. It must also state the bounded
+impact on the reported total, statement, or interpretation, and give numbered verification steps that
+say what a human should check and which result would confirm or resolve the issue. The workflow must
+classify a finding with unavailable necessary evidence as `Rejected` or `Uncertain`, naming the
+missing evidence rather than implying a conclusion. Derived artifacts must retain a page-level link
+to their source PDF.
 
 The coordinator must preserve a document-level output for every supplied PDF under
 `.ai_paper_validation/document_outputs/<document_id>/`, including its inventory classification,
