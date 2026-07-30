@@ -122,6 +122,14 @@ def main() -> None:
     parser.add_argument("--start-year", type=int, required=True)
     parser.add_argument("--end-year", type=int, required=True)
     parser.add_argument("--port", type=int, default=9223)
+    parser.add_argument(
+        "--existing-placeholders-only",
+        action="store_true",
+        help=(
+            "Restore supplements only for packages that already contain "
+            "MAIN_PAPER_TO_DOWNLOAD.txt; do not create additional packages."
+        ),
+    )
     args = parser.parse_args()
     if args.start_year > args.end_year:
         parser.error("--start-year must not exceed --end-year")
@@ -132,7 +140,13 @@ def main() -> None:
         raise RuntimeError(f"Unexpected JAMA catalog response: {json.dumps(data)[:1000]}")
     outcome = []
     failures = []
+    skipped_without_placeholder = 0
     for article in data["eligible"]:
+        if args.existing_placeholders_only:
+            folder = ROOT / f"jama.{doi_suffix(str(article['doi']))}"
+            if not (folder / "MAIN_PAPER_TO_DOWNLOAD.txt").is_file():
+                skipped_without_placeholder += 1
+                continue
         try:
             outcome.append(create_package(article))
         except Exception as error:
@@ -143,6 +157,7 @@ def main() -> None:
             {
                 "changed": changed,
                 "skipped_existing": len(outcome) - len(changed),
+                "skipped_without_placeholder": skipped_without_placeholder,
                 "catalog_errors": data.get("errors", []),
                 "failures": failures,
             },
