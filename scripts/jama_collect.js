@@ -4,7 +4,7 @@
     f_SiteID: "3",
     f_ArticleTypeDisplayName: "Research",
     f_FreeAccessFilter: "true",
-    rg_ArticleDate: "2024-01-01 TO 2025-12-31",
+    rg_ArticleDate: "__DATE_RANGE__",
   });
   const origin = location.origin;
   const found = new Map();
@@ -46,7 +46,12 @@
       label: anchor.parentElement?.innerText.replace(/\s+/g, " ").trim() || "",
       href: anchor.href,
     }));
-    const protocol = supplements.filter(({ label }) => /protocol/i.test(label));
+    // A protocol must be its own downloadable supplement.  Searching the
+    // complete label for "protocol" is too broad: ordinary e-material can
+    // contain phrases such as "per-protocol analysis".
+    const protocol = supplements.filter(({ label }) =>
+      /^(?:pdf\s+)?supplement(?:\s+\d+)?\.\s*(?:(?:trial|study|meta-analysis)\s+)?protocol\b/i.test(label),
+    );
     const electronic = supplements.filter(({ label }) =>
       !/(protocol|statistical analysis plan|data sharing statement|nonauthor collaborator|author list)/i.test(label),
     );
@@ -63,12 +68,13 @@
   const inspected = [];
   const errors = [];
   const articles = [...found.values()];
-  for (let start = 0; start < articles.length; start += 2) {
-    const batch = await Promise.allSettled(articles.slice(start, start + 2).map(inspect));
-    for (const result of batch) {
-      if (result.status === "fulfilled") inspected.push(result.value);
-      else errors.push(String(result.reason));
+  for (const article of articles) {
+    try {
+      inspected.push(await inspect(article));
+    } catch (error) {
+      errors.push({ title: article.title, url: article.url, error: String(error) });
     }
+    await new Promise((resolve) => setTimeout(resolve, 400));
   }
   const eligible = inspected.filter((article) => article.has_protocol && article.has_electronic_supplement);
   return JSON.stringify({

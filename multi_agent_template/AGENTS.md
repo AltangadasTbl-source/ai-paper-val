@@ -28,6 +28,19 @@ for a specific parent-requested comparison.
 This exemption does not apply to the `AI Training Restriction` screen: every supplied PDF requires a
 document-level rights record, even when its scientific content is not audited.
 
+## OCR Backend Selection
+
+Before selective OCR, run `scripts/detect_ocr_backend.py` using `~/venvs/stt/bin/python` when that
+interpreter exists; otherwise use the active Python interpreter. Save its JSON output under
+`.ai_paper_validation/preprocessing/ocr_backend.json`. The selector recognizes an RTX 5070 Laptop
+GPU and other NVIDIA GPUs, validates RapidOCR's actual CUDA execution providers, and otherwise
+falls back to RapidOCR CPU or Tesseract CPU.
+
+Use `scripts/ocr_page.py` for every rendered page that needs OCR. A manifest may report GPU OCR
+only when its selected backend is `rapidocr-cuda` and its detector, classifier, and recognizer all
+report `CUDAExecutionProvider`. CPU fallback is valid; record it explicitly. If no backend is
+available, preprocessing must fail when OCR is required.
+
 ## AI Training Restriction Screen
 
 This is a separate compliance screen, not a reporting-error category and not part of the `10 / 10 / 2`

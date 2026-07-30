@@ -4,7 +4,8 @@ param(
     [string]$Command,
     [Parameter(Mandatory = $true)]
     [string]$Value,
-    [int]$Port = 9222
+    [int]$Port = 9222,
+    [string]$DateRange
 )
 
 $ErrorActionPreference = 'Stop'
@@ -26,7 +27,10 @@ $null = $socket.ConnectAsync([Uri]$webSocketUrl, $token).GetAwaiter().GetResult(
 if ($Command -eq 'navigate') {
     $request = @{ id = 1; method = 'Page.navigate'; params = @{ url = $Value } }
 } else {
-    if ($Command -eq 'eval-file') { $Value = Get-Content -Raw -Path $Value }
+    if ($Command -eq 'eval-file') {
+        $Value = Get-Content -Raw -Path $Value
+        if ($DateRange) { $Value = $Value.Replace('__DATE_RANGE__', $DateRange) }
+    }
     $request = @{
         id = 1
         method = 'Runtime.evaluate'

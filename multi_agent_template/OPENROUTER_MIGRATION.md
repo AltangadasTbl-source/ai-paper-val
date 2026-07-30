@@ -764,23 +764,20 @@ The `pdf_preprocessor` agent is instructed to:
 
 This is the correct high-level policy.
 
-### 10.2 What the template does not provide
+### 10.2 What the template now provides and what remains
 
-The template currently does not include:
+The template now includes a reusable GPU-first OCR selector
+(`scripts/detect_ocr_backend.py`), a page OCR runner (`scripts/ocr_page.py`),
+and shared backend logic (`scripts/ocr_backend.py`). They use
+`~/venvs/stt/bin/python` when available, recognize the RTX 5070 Laptop GPU,
+validate all RapidOCR stages are truly using CUDA, and fall back to RapidOCR
+CPU or Tesseract CPU when a GPU is missing or unusable.
 
-- A reusable preprocessing script
-- A dependency file
-- An OCR-engine installer
-- A PDF-tool health check
-- Page-quality thresholds
-- A stable page-manifest schema
-- A deterministic failure policy
-- OCR confidence thresholds
-- Automated tests with scanned PDFs
-- A check that OCR actually completed before marking preprocessing complete
-
-The agent is therefore responsible for improvising the implementation during
-each article run.
+The template still does not include a complete package-preprocessing
+orchestrator, pinned dependency lock file, OCR-engine installer, validated
+page-quality thresholds, automated scanned-PDF fixtures, or universal OCR
+confidence thresholds. The preprocessing agent must retain the selector and
+page metadata and apply the documented completion policy.
 
 ### 10.3 Evidence from an existing completed run
 
@@ -1127,6 +1124,7 @@ Native extraction and PDF information:
 
 OCR:
 
+- RapidOCR with ONNX Runtime CUDA for a validated NVIDIA GPU path
 - Tesseract for local open-source OCR
 - OCRmyPDF when a derived searchable PDF is useful
 
@@ -1156,6 +1154,7 @@ pdftotext -v
 pdftoppm -v
 tesseract --version
 ocrmypdf --version
+~/venvs/stt/bin/python scripts/detect_ocr_backend.py --mode auto
 python -c "import fitz, pypdf; print('Python PDF dependencies OK')"
 ```
 
@@ -1164,6 +1163,7 @@ The script should distinguish required and optional tools. For example:
 - Poppler or a Python PDF library: required
 - At least one page renderer: required
 - OCR engine: required if any page needs OCR
+- CUDA: optional; `rapidocr-cuda` is allowed only after the backend report validates active CUDA providers
 - OCRmyPDF: optional if Tesseract page OCR is used directly
 
 ### 12.4 Installation examples
@@ -2063,4 +2063,3 @@ Retained preprocessing and audit evidence may still be required.
 - Zero Data Retention: <https://openrouter.ai/docs/guides/features/zdr>
 - Provider logging and retention: <https://openrouter.ai/docs/guides/privacy/provider-logging/>
 - Guardrails: <https://openrouter.ai/docs/guides/features/guardrails/overview>
-

@@ -14,6 +14,7 @@ import json
 import shutil
 import subprocess
 import sys
+from argparse import ArgumentParser
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 from urllib.request import Request, urlopen
@@ -24,7 +25,8 @@ TEMPLATE_PACKAGE = ROOT / "jama.2025.20765"
 TEMPLATE_FILES = ("AGENTS.md", "README.md", "prmopt.txt")
 
 
-def catalog() -> dict[str, object]:
+def catalog(start_year: int, end_year: int, port: int) -> dict[str, object]:
+    date_range = f"{start_year}-01-01 TO {end_year}-12-31"
     command = [
         "powershell.exe",
         "-NoProfile",
@@ -35,11 +37,14 @@ def catalog() -> dict[str, object]:
         "eval-file",
         "scripts/jama_collect.js",
         "-Port",
-        "9223",
+        str(port),
+        "-DateRange",
+        date_range,
     ]
     result = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True)
     response = json.loads(result.stdout)
-    return json.loads(response["result"]["result"]["value"])
+    payload = response["result"]["result"]["value"]
+    return json.loads(payload) if isinstance(payload, str) else payload
 
 
 def doi_suffix(doi: str) -> str:
@@ -113,11 +118,18 @@ def create_package(article: dict[str, object]) -> dict[str, object]:
 
 
 def main() -> None:
+    parser = ArgumentParser()
+    parser.add_argument("--start-year", type=int, required=True)
+    parser.add_argument("--end-year", type=int, required=True)
+    parser.add_argument("--port", type=int, default=9223)
+    args = parser.parse_args()
+    if args.start_year > args.end_year:
+        parser.error("--start-year must not exceed --end-year")
     if not TEMPLATE_PACKAGE.is_dir():
         raise RuntimeError(f"Template package not found: {TEMPLATE_PACKAGE}")
-    data = catalog()
-    if data.get("errors"):
-        raise RuntimeError(f"JAMA catalog contained retrieval errors: {data['errors']}")
+    data = catalog(args.start_year, args.end_year, args.port)
+    if "eligible" not in data:
+        raise RuntimeError(f"Unexpected JAMA catalog response: {json.dumps(data)[:1000]}")
     outcome = []
     failures = []
     for article in data["eligible"]:
@@ -126,7 +138,17 @@ def main() -> None:
         except Exception as error:
             failures.append({"doi": article["doi"], "title": article["title"], "error": str(error)})
     changed = [item for item in outcome if item["status"] in {"created", "resumed"}]
-    print(json.dumps({"changed": changed, "skipped_existing": len(outcome) - len(changed), "failures": failures}, indent=2))
+    print(
+        json.dumps(
+            {
+                "changed": changed,
+                "skipped_existing": len(outcome) - len(changed),
+                "catalog_errors": data.get("errors", []),
+                "failures": failures,
+            },
+            indent=2,
+        )
+    )
     if failures:
         raise RuntimeError(f"Could not retrieve supplements for {len(failures)} package(s)")
 

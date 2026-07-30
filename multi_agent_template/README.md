@@ -26,6 +26,9 @@ codex_agent_workflow_template/agents/
 
 codex_agent_workflow_template/AGENTS.md
     -> <article-project>/AGENTS.md
+
+codex_agent_workflow_template/scripts/
+    -> <article-project>/scripts/
 ```
 
 The workflow writes derived text, page images, and agent artifacts only under
@@ -37,3 +40,12 @@ Restriction` screen. The screen checks only supplied materials and is a complian
 opinion or a scientific reporting finding.
 
 The root thread acts as `Coordinator`. Do not copy these files to `C:\Users\juliz\.codex`.
+
+## OCR acceleration and fallback
+
+The template includes `scripts/detect_ocr_backend.py` and `scripts/ocr_page.py`. Run them with
+`~/venvs/stt/bin/python` when it exists. The backend selector detects the RTX 5070 Laptop GPU and
+other usable NVIDIA GPUs, then uses RapidOCR with ONNX Runtime CUDA only after validating the
+detector, classifier, and recognizer sessions. On a computer without a usable GPU, it automatically
+uses RapidOCR CPU or, if RapidOCR is unavailable, Tesseract CPU. The resulting JSON metadata must
+be retained in `.ai_paper_validation/`; never describe a CPU fallback as GPU OCR.

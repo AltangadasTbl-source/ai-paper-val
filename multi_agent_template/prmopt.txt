@@ -6,7 +6,7 @@ Execute the workflow in this order:
 
 1. Run package_inventory. Assign a stable document ID to every PDF and create the package manifest.
 2. Run ai_use_restriction_checker for every PDF. Preserve one AI Training Restriction Record per document. If a document is classified as Explicit AI Training Restriction or Conditional / Permission Required, flag it for Human Compliance Review and assume permissions are already given then continue anyway.
-3. Run pdf_preprocessor. Use native text extraction first. Apply rendering and OCR selectively to main-article pages and result-relevant supplementary pages only. Do not process protocol, SAP, or administrative pages unless a specific protocol-to-report comparison is required.
+3. Run pdf_preprocessor. Before OCR, use `~/venvs/stt/bin/python` when available to run `scripts/detect_ocr_backend.py --mode auto` and retain its report. Use `scripts/ocr_page.py` for selective OCR: it uses validated RapidOCR CUDA on an RTX 5070 Laptop or another usable NVIDIA GPU, and otherwise falls back to RapidOCR CPU or Tesseract CPU. Use native text extraction first. Apply rendering and OCR selectively to main-article pages and result-relevant supplementary pages only. Do not process protocol, SAP, or administrative pages unless a specific protocol-to-report comparison is required.
 4. Run main_text_extractor and results_supplement_extractor in parallel.
 5. Run table_arithmetic_checker, figure_flow_checker, and statistical_consistency_checker in parallel.
 6. Deduplicate findings and send at most 10 candidate issues to evidence_verifier. Use no more than 2 verification rounds per candidate.
