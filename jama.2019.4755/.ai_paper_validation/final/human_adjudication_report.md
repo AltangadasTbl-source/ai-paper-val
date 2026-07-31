@@ -1,20 +1,21 @@
 # Human Adjudication Report
 
-**Status:** Ready for Human Adjudication  
-**Scientific issues retained:** 2 (both Minor Presentation inconsistencies)  
-**Action:** Verify the two specified table presentations against the supplied PDFs and confirm whether correction is needed.
+**Status:** Ready for Human Adjudication (submit to human review)
+**Scientific issues retained:** 2 of 2 accepted findings; both `Presentation inconsistency`, `Minor`.
 
-## Package scope and processing status
+## Package audit scope and processing status
 
-- **Audited scientifically:**
-  - `doc-799606a72443` — `jama_brenner_2019_oi_190039.pdf`, PDF pp. 1–7 (main article).
-  - `doc-b45e07a04d82` — `joi190039supp3_prod.pdf`, PDF pp. 4–8 (results supplement).
-- **Not Audited by Design scientifically:**
-  - `doc-5143f7e4da1a` — `joi190039supp1_prod.pdf` (protocol).
-  - `doc-5704a644014e` — `joi190039supp2_prod.pdf` (statistical analysis plan).
-  - `doc-ded78f53da7b` — `joi190039supp4_prod.pdf` (administrative material).
-- Native-text extraction and layout/bounding-box quality checks were sufficient; no OCR was needed. The OCR selector record was retained, but its unavailable backend did not block native-only processing because every scoped page passed content and coordinate checks.
-- No source PDF was modified. Primary estimates, participant flow, and other checked arithmetic/statistical reporting were consistent within stated rounding.
+| Document ID | Filename | Scientific audit scope / status |
+|---|---|---|
+| `doc-799606a72443` | `jama_brenner_2019_oi_190039.pdf` | Main article; PDF pp. 1–7 audited. |
+| `doc-b45e07a04d82` | `joi190039supp3_prod.pdf` | Results supplement; PDF pp. 4–8 audited. |
+| `doc-5143f7e4da1a` | `joi190039supp1_prod.pdf` | Protocol; **Not Audited by Design**. |
+| `doc-5704a644014e` | `joi190039supp2_prod.pdf` | Statistical analysis plan; **Not Audited by Design**. |
+| `doc-ded78f53da7b` | `joi190039supp4_prod.pdf` | Administrative material; **Not Audited by Design**. |
+
+**Preprocessing record:** All 12 scientifically scoped pages had adequate native text. OCR backend selection was `rapidocr-cpu`; no GPU was selected, and no OCR was required or additionally performed.
+
+**Audit conclusion:** Two minor presentation items require confirmation. No participant-flow issue was retained; all feasible arithmetic and other statistical-consistency checks reconciled. A broad “overall” wording item was uncertain and excluded.
 
 ## Scientific issues
 
@@ -126,7 +127,7 @@ Rounding tolerance: ±0.05 percentage points for one-decimal values; all display
 
 ## AI Training Restriction Summary
 
-This is a document-level compliance screen, not a scientific-issue category and not legal advice. All records concern supplied PDFs and embedded metadata only. Silence is not permission; institutional processing permission was supplied by the user.
+This is a document-level compliance screen, not a scientific-issue category and not a legal opinion. All records concern supplied PDFs and embedded metadata only. Silence is not permission.
 
 | Document ID and filename | Status | Exact evidence location and excerpt/result | Human Compliance Review |
 |---|---|---|---|
@@ -135,4 +136,3 @@ This is a document-level compliance screen, not a scientific-issue category and 
 | `doc-5704a644014e` — `joi190039supp2_prod.pdf` | No AI Training Restriction Located in Provided Materials | PDF p. 1, pp. 2–9, p. 10, and embedded PDF/XMP metadata: no qualifying rights, permissions, license, terms, text-and-data-mining, or AI-training language was located. | No |
 | `doc-b45e07a04d82` — `joi190039supp3_prod.pdf` | No AI Training Restriction Located in Provided Materials | PDF p. 1, pp. 2–8, and embedded XMP metadata: no statement addressing AI training, fine-tuning, or model improvement was located; no verbatim qualifying restriction is available. | No |
 | `doc-ded78f53da7b` — `joi190039supp4_prod.pdf` | No AI Training Restriction Located in Provided Materials | PDF p. 1: “Trial protocol: Published as open access publication:”. This rights-adjacent statement concerns a separately published protocol and is not a license, AI-use permission, or AI-training restriction for this supplement. Embedded metadata screened. | No |
-
