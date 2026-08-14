@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>AI Paper Validation Final Report</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 90em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">AI Paper Validation Final Report</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#ai-paper-validation-final-report"
+id="toc-ai-paper-validation-final-report">AI Paper Validation Final
+Report</a>
+<ul>
+<li><a href="#package-manifest" id="toc-package-manifest">Package
+Manifest</a></li>
+<li><a href="#ai-training-restriction-summary"
+id="toc-ai-training-restriction-summary">AI Training Restriction
+Summary</a></li>
+<li><a href="#audit-method-and-revision-status"
+id="toc-audit-method-and-revision-status">Audit Method and Revision
+Status</a>
+<ul>
+<li><a href="#purpose-and-locked-decision-framework"
+id="toc-purpose-and-locked-decision-framework">Purpose and locked
+decision framework</a></li>
+<li><a href="#source-verification-procedure"
+id="toc-source-verification-procedure">Source-verification
+procedure</a></li>
+<li><a href="#report-artifact-reconciliation"
+id="toc-report-artifact-reconciliation">Report-artifact
+reconciliation</a></li>
+<li><a
+href="#source-verification-exceptions-requiring-human-adjudication"
+id="toc-source-verification-exceptions-requiring-human-adjudication">Source-verification
+exceptions requiring Human Adjudication</a></li>
+</ul></li>
+<li><a href="#candidate-disposition-summary"
+id="toc-candidate-disposition-summary">Candidate Disposition
+Summary</a></li>
+<li><a href="#verified-scientific-findings"
+id="toc-verified-scientific-findings">Verified Scientific Findings</a>
+<ul>
+<li><a
+href="#c-01--inconsistent-confidence-interval-for-the-repeated-any-stroke-result"
+id="toc-c-01--inconsistent-confidence-interval-for-the-repeated-any-stroke-result">C-01
+— Inconsistent confidence interval for the repeated “Any stroke”
+result</a></li>
+</ul></li>
+<li><a href="#uncertain-candidates"
+id="toc-uncertain-candidates">Uncertain Candidates</a></li>
+<li><a href="#rejected-and-excluded-interpretations"
+id="toc-rejected-and-excluded-interpretations">Rejected and Excluded
+Interpretations</a>
+<ul>
+<li><a
+href="#c-02--recruitment-stage-omissions-do-not-establish-a-participant-flow-inconsistency"
+id="toc-c-02--recruitment-stage-omissions-do-not-establish-a-participant-flow-inconsistency">C-02
+— Recruitment-stage omissions do not establish a participant-flow
+inconsistency</a></li>
+<li><a
+href="#non-formal-checker-interpretation--efigure-1-primary-outcome-caption-ambiguity"
+id="toc-non-formal-checker-interpretation--efigure-1-primary-outcome-caption-ambiguity">Non-formal
+checker interpretation — eFigure 1 “primary outcome” caption
+ambiguity</a></li>
+<li><a href="#other-recorded-checker-level-exclusions"
+id="toc-other-recorded-checker-level-exclusions">Other recorded
+checker-level exclusions</a></li>
+</ul></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="ai-paper-validation-final-report">AI Paper Validation Final
+Report</h1>
+<h2 id="package-manifest">Package Manifest</h2>
+<p>This package contains four source PDFs. The filenames, page counts,
+classifications, audit scopes, and SHA-256 digests below were confirmed
+against the files present in the project root. All relative links point
+to the unchanged original files.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th style="text-align: right;">Pages</th>
+<th>Classification</th>
+<th>Scientific audit scope and status</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a
+href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=1">jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf</a></td>
+<td style="text-align: right;">9</td>
+<td>Main article</td>
+<td>PDF pp. 1-8 audited as result-relevant; p. 9 references not audited
+by design</td>
+<td><code>4bb1cfc9284d00a83984f493da34bab05357d4cca69abf0c06a281a5597fd927</code></td>
+</tr>
+<tr class="even">
+<td><a
+href="../joi250068supp1_prod_1760999665.28862.pdf#page=1">joi250068supp1_prod_1760999665.28862.pdf</a></td>
+<td style="text-align: right;">26</td>
+<td>Protocol</td>
+<td>Scientific content not audited by design; document-level inventory
+and rights screen retained</td>
+<td><code>3f599193f39b562d392dc919161fd3afa8c728d8652738f9c971ca327c01047a</code></td>
+</tr>
+<tr class="odd">
+<td><a
+href="../joi250068supp2_prod_1760999665.29862.pdf#page=1">joi250068supp2_prod_1760999665.29862.pdf</a></td>
+<td style="text-align: right;">24</td>
+<td>Statistical analysis plan</td>
+<td>Scientific content not audited by design; document-level inventory
+and rights screen retained</td>
+<td><code>f8b6cb7ad9f52502035f24b476c23d76c09d3459375b8f34f234a4f060c1d892</code></td>
+</tr>
+<tr class="even">
+<td><a
+href="../joi250068supp3_prod_1760999665.30362.pdf#page=4">joi250068supp3_prod_1760999665.30362.pdf</a></td>
+<td style="text-align: right;">11</td>
+<td>Results supplement</td>
+<td>PDF p. 1 and pp. 4-11 audited as result-relevant; pp. 2-3
+eMethods/references not audited by design</td>
+<td><code>b23b7b0f4699d6a025bf18e7f95e6098372a122b8bdb0f7580ac82c29638d01a</code></td>
+</tr>
+</tbody>
+</table>
+<p>No workbook was supplied. The protocol and statistical analysis plan
+were not opened for a new scientific comparison during this
+report-detailing task; their previously completed document-level rights
+records and targeted rights-screen locations were checked only to
+support the package and compliance summaries.</p>
+<h2 id="ai-training-restriction-summary">AI Training Restriction
+Summary</h2>
+<p>This is a supplied-materials compliance screen, separate from the
+scientific issue list. It is not legal advice, and absence of
+restriction language is not treated as permission. The package records
+state that user/institutional authorization for model-mediated
+processing was already provided; that operational authorization does not
+alter the classifications below.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Status</th>
+<th>Exact supplied-materials evidence</th>
+<th>Stated scope</th>
+<th>Human Compliance Review</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a
+href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=1">jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf</a></td>
+<td><strong>Explicit AI Training Restriction</strong></td>
+<td>Footer, PDF pp. 1-9: “© 2025 American Medical Association. All
+rights reserved, including those for text and data mining, AI training,
+and similar technologies.” The same footer is visually present on cited
+result pages; metadata identifies the author as American Medical
+Association and has no separate rights or license field.</td>
+<td>The language expressly reserves rights for AI training and
+separately names text and data mining and similar technologies. It is
+not used here to infer restrictions on OCR, inference, redistribution,
+or unmentioned activities.</td>
+<td><strong>Yes — flag retained</strong></td>
+</tr>
+<tr class="even">
+<td><a
+href="../joi250068supp1_prod_1760999665.28862.pdf#page=1">joi250068supp1_prod_1760999665.28862.pdf</a></td>
+<td><strong>No AI Training Restriction Located in Provided
+Materials</strong></td>
+<td>Metadata; targeted visual review of PDF pp. 1-2 and 25-26. No rights
+page or language addressing training, fine-tuning, or model improvement
+was located. The native text layer is garbled and was not relied on as a
+complete scientific extraction.</td>
+<td>Silence is not permission. The status reports only that no relevant
+statement was located in the supplied material reviewed.</td>
+<td>No flag from the supplied-materials screen</td>
+</tr>
+<tr class="odd">
+<td><a
+href="../joi250068supp2_prod_1760999665.29862.pdf#page=1">joi250068supp2_prod_1760999665.29862.pdf</a></td>
+<td><strong>No AI Training Restriction Located in Provided
+Materials</strong></td>
+<td>Metadata; native-text keyword screen of PDF pp. 1-24; targeted
+review of title/end matter at pp. 1-2 and 23-24. No rights page or
+language addressing training, fine-tuning, or model improvement was
+located.</td>
+<td>The participant-information-sharing language recorded elsewhere in
+this document is unrelated and is not treated as an AI-use term. Silence
+is not permission.</td>
+<td>No flag from the supplied-materials screen</td>
+</tr>
+<tr class="even">
+<td><a
+href="../joi250068supp3_prod_1760999665.30362.pdf#page=4">joi250068supp3_prod_1760999665.30362.pdf</a></td>
+<td><strong>Explicit AI Training Restriction</strong></td>
+<td>Footer, PDF pp. 4 and 8: “© 2025 American Medical Association. All
+rights reserved, including those for text and data mining, AI training,
+and similar technologies.”</td>
+<td>The training restriction is recorded independently of the separate
+text-and-data-mining wording. The study’s description of a deep-learning
+algorithm is scientific content, not rights language.</td>
+<td><strong>Yes — flag retained</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="audit-method-and-revision-status">Audit Method and Revision
+Status</h2>
+<h3 id="purpose-and-locked-decision-framework">Purpose and locked
+decision framework</h3>
+<p>This revision expands the completed workflow into a source-verifiable
+report. It does not perform a second adjudication. The evidence-verifier
+record controls formal candidate dispositions, and the critic record
+controls final inclusion, retained category, and severity.
+Accordingly:</p>
+<ul>
+<li>C-01 remains <strong>Verified</strong>, in the category
+<strong>Statistical reporting inconsistency</strong>, and remains the
+sole retained scientific finding with <strong>Minor</strong>
+severity.</li>
+<li>C-02 remains <strong>Rejected</strong>, in the considered category
+<strong>Participant flow inconsistency</strong>, with no severity
+assigned because it was rejected.</li>
+<li>The evidence verifier returned <strong>zero Uncertain formal
+candidates</strong>.</li>
+<li>No candidate, disposition, category, severity, scope, or critic
+decision was added, removed, promoted, demoted, or otherwise
+changed.</li>
+</ul>
+<p>For clarity, <strong>Verified</strong> means that the completed
+verifier found the candidate directly supported by the supplied package;
+<strong>Rejected</strong> means that it did not meet the package’s
+document-grounded inconsistency standard. These definitions explain the
+existing records and were not reapplied to reach new decisions in this
+revision.</p>
+<h3 id="source-verification-procedure">Source-verification
+procedure</h3>
+<p>The revision used only the supplied package and retained local
+workflow records. No web search, external retrieval, or unstated
+external knowledge was used. The coordinator:</p>
+<ol type="1">
+<li>matched each internal package record to its actual filename and
+confirmed all four SHA-256 digests;</li>
+<li>re-read and visually inspected the original main-article pages cited
+for C-01 and C-02: PDF p. 1 (journal p. 1349), p. 4 (journal p. 1352),
+p. 5 (journal p. 1353), and p. 7 (journal p. 1355);</li>
+<li>re-read the main-article outcome definition on PDF p. 3 (journal p.
+1351) and the primary-outcome display on p. 6 (journal p. 1354) needed
+to explain the retained checker-level caption ambiguity;</li>
+<li>re-read and visually inspected results-supplement PDF p. 8, eFigure
+1; and</li>
+<li>compared those source observations with the candidate-selection,
+checker, verifier, critic, document-record, and rights-screen
+outputs.</li>
+</ol>
+<p>All arithmetic below is diagnostic and is shown only to explain
+locked decisions. It is not an authoritative replacement for the
+article’s model-based estimates.</p>
+<h3 id="report-artifact-reconciliation">Report-artifact
+reconciliation</h3>
+<p>The prior final-report artifact grouped <code>FFC-U01</code> with
+“Rejected and Uncertain Candidates.” The authoritative verifier
+explicitly reviewed only C-01 and C-02 and returned <strong>0 Uncertain
+candidates</strong>; the critic confirms the same. This detailed report
+therefore preserves <code>FFC-U01</code> in “Rejected and Excluded
+Interpretations” as a <strong>non-formal checker-level ambiguity that
+was not forwarded to verification</strong>, not as a verifier-classified
+candidate. This is a reconciliation of report structure with the locked
+records, not a new scientific judgment.</p>
+<h3
+id="source-verification-exceptions-requiring-human-adjudication">Source-verification
+exceptions requiring Human Adjudication</h3>
+<p><strong>None.</strong> Every source location, quotation, reported
+value, and displayed arithmetic operation used for the two formal
+candidates was located or reproduced from the supplied files. Human
+adjudication is still required to determine which C-01 confidence
+interval is intended; the package establishes the inconsistency but not
+the correct replacement value.</p>
+<h2 id="candidate-disposition-summary">Candidate Disposition
+Summary</h2>
+<p>Only the two formal candidates present in the authoritative
+evidence-verifier record are listed. Order and dispositions are
+preserved.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Candidate</th>
+<th>Disposition</th>
+<th>Category</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>C-01</td>
+<td><strong>Verified</strong></td>
+<td>Statistical reporting inconsistency</td>
+<td><strong>Minor</strong></td>
+</tr>
+<tr class="even">
+<td>C-02</td>
+<td><strong>Rejected</strong></td>
+<td>Participant flow inconsistency</td>
+<td>Not assigned (rejected)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Formal candidate totals:</strong> 1 Verified; 0 Uncertain; 1
+Rejected. The checker-level <code>FFC-U01</code> interpretation is not
+included in these totals because it was not forwarded as a formal
+candidate.</p>
+<h2 id="verified-scientific-findings">Verified Scientific Findings</h2>
+<h3
+id="c-01--inconsistent-confidence-interval-for-the-repeated-any-stroke-result">C-01
+— Inconsistent confidence interval for the repeated “Any stroke”
+result</h3>
+<ul>
+<li><strong>Evidence status:</strong> Verified.</li>
+<li><strong>Category:</strong> Statistical reporting inconsistency.</li>
+<li><strong>Severity:</strong> Minor.</li>
+<li><strong>Exact source locations:</strong>
+<ul>
+<li><a
+href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=1">jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf</a>,
+PDF p. 1, journal p. 1349, structured abstract, Results, final
+sentence.</li>
+<li><a href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=5">Same file, PDF p. 5</a>, journal p. 1353, Results, final paragraph.</li>
+<li><a href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=7">Same file, PDF p. 7, Figure 4B</a>, journal p. 1355, “Death and stroke,”
+row “Any stroke,” with the panel-B caption.</li>
+</ul></li>
+<li><strong>Reported values/statements:</strong>
+<ul>
+<li>Structured abstract: patch/intervention group <strong>69
+participants (2.7%)</strong>; usual-care/control group <strong>64
+(2.5%)</strong>; rate ratio <strong>1.08 (95% CI,
+0.76-1.53)</strong>.</li>
+<li>Results text: the same <strong>69 (2.7%)</strong> versus <strong>64
+(2.5%)</strong>; event rate ratio <strong>1.08 (95% CI,
+0.77-1.51)</strong>.</li>
+<li>Figure 4B: patch group <strong>69 (2.7%)</strong> of 2520;
+usual-care group <strong>64 (2.5%)</strong> of 2520; rate ratio
+<strong>1.08 (95% CI, 0.77-1.51)</strong>. The caption defines panel B
+as time-to-event rate ratios for events between randomization and 2.5
+years.</li>
+</ul></li>
+</ul>
+<p><strong>Reasoning procedure</strong></p>
+<ol type="1">
+<li><p><strong>Identify the compared result.</strong> The direct source
+observations agree on the outcome label (“Any stroke”/stroke),
+randomized groups, event counts, displayed percentages, denominators,
+point estimate, and 2.5-year horizon. The Methods on <a href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=3">PDF p. 3</a> identify
+stroke as an exploratory long-term randomized assessment and state that
+stroke time-to-event analyses used log-rank methods. No cited location
+labels the abstract value as a different population, outcome definition,
+horizon, or analysis.</p></li>
+<li><p><strong>Reproduce the displayed percentages.</strong> Using the
+printed randomized denominator of 2520 per group:</p>
+<ul>
+<li>Patch group: <code>69 / 2520 × 100 = 2.7381%</code>, which displays
+as <strong>2.7%</strong> to 1 decimal place.</li>
+<li>Usual-care group: <code>64 / 2520 × 100 = 2.5397%</code>, which
+displays as <strong>2.5%</strong> to 1 decimal place.</li>
+</ul>
+<p>These calculations confirm that all three locations refer to the same
+printed counts and group denominators. They do not reconstruct the
+time-to-event rate ratio or its CI.</p></li>
+<li><p><strong>Compare the point estimate and CI endpoints.</strong> All
+three locations print the point estimate <strong>1.08</strong>. The
+abstract and the two body displays differ at both CI limits:</p>
+<ul>
+<li>Lower endpoint difference: <code>0.77 - 0.76 = 0.01</code>.</li>
+<li>Upper endpoint difference: <code>1.53 - 1.51 = 0.02</code>.</li>
+<li>Abstract interval width: <code>1.53 - 0.76 = 0.77</code>.</li>
+<li>Results/Figure 4B interval width:
+<code>1.51 - 0.77 = 0.74</code>.</li>
+</ul>
+<p>The interval-width calculations are descriptive diagnostics; they do
+not identify which interval is correct.</p></li>
+<li><p><strong>Check internal interpretation.</strong> Both printed CIs
+contain the point estimate <strong>1.08</strong> and the null rate ratio
+<strong>1.00</strong>. Thus, the disagreement does not change the
+displayed effect direction, point estimate, or null-value
+interpretation. It remains a repeated-value inconsistency because the
+same result is printed with two different endpoint pairs.</p></li>
+<li><p><strong>Distinguish observation from derivation.</strong> The
+event counts, denominators, percentages, point estimate, CI endpoints,
+outcome label, and 2.5-year horizon are direct source observations.
+Percentage calculations and endpoint/width differences are derived from
+those printed values. No event-time dataset, log-rank
+observed-minus-expected statistic, variance, or model output is supplied
+for an independent CI reconstruction.</p></li>
+<li><p><strong>Consider the recorded alternatives without changing the
+decision.</strong> The completed workflow considered whether different
+analyses or rounding could explain the values, but no cited source
+labels an alternative analysis for the abstract. The package also does
+not establish a transcription, rounding, typesetting, or
+analysis-production mechanism. Consequently, the existing Verified
+decision concerns only the coexistence of inconsistent repeated CI
+values; it does not determine how the discrepancy arose or which
+endpoint pair should replace the other.</p></li>
+</ol>
+<ul>
+<li><strong>Existing supported conclusion:</strong> The structured
+abstract reports <strong>0.76-1.53</strong>, whereas the Results text
+and Figure 4B report <strong>0.77-1.51</strong> for the same printed
+any-stroke comparison. This is the critic-retained Minor statistical
+reporting inconsistency.</li>
+<li><strong>Limit on interpretation:</strong> The package does not
+establish the intended CI. The finding does not validate either
+interval, reconstruct the log-rank analysis, imply a different
+statistical conclusion, or assess clinical importance.</li>
+<li><strong>Verification instruction:</strong> Open the linked main
+article and compare the final structured-abstract Results sentence on
+<a href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=1">PDF p. 1</a> with the final Results paragraph on <a href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=5">PDF p. 5</a> and the “Any stroke”
+row of <a href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=7">Figure 4B on PDF p. 7</a>. Confirm <strong>69 versus 64</strong>,
+denominators <strong>2520 versus 2520</strong>, percentages <strong>2.7%
+versus 2.5%</strong>, and rate ratio <strong>1.08</strong> at all
+locations. Then consult the authoritative analysis output or production
+record to determine whether <strong>0.76-1.53</strong> or
+<strong>0.77-1.51</strong> is intended and correct the discordant
+repetition.</li>
+</ul>
+<h2 id="uncertain-candidates">Uncertain Candidates</h2>
+<p>There are <strong>no verifier-classified Uncertain formal
+candidates</strong>. The evidence verifier reviewed C-01 and C-02 only,
+and the critic explicitly recorded an uncertain-candidate count of zero.
+The non-formal eFigure 1 caption ambiguity is preserved below as an
+excluded checker interpretation so that it is not silently lost or
+incorrectly counted.</p>
+<h2 id="rejected-and-excluded-interpretations">Rejected and Excluded
+Interpretations</h2>
+<h3
+id="c-02--recruitment-stage-omissions-do-not-establish-a-participant-flow-inconsistency">C-02
+— Recruitment-stage omissions do not establish a participant-flow
+inconsistency</h3>
+<ul>
+<li><strong>Evidence status:</strong> Rejected.</li>
+<li><strong>Category considered:</strong> Participant flow
+inconsistency.</li>
+<li><strong>Severity:</strong> Not assigned because the candidate was
+rejected.</li>
+<li><strong>Exact source location:</strong> <a
+href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=4">jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf</a>,
+PDF p. 4, journal p. 1352, Figure 1, “Flow of Participants in a Trial of
+Remote Patch-Based Electrocardiogram (ECG) Monitoring for Atrial
+Fibrillation Diagnosis.”</li>
+<li><strong>Reported values/statements:</strong> Figure 1 shows
+<strong>368,000</strong> assessed for eligibility (explicitly footnoted
+as estimated), <strong>22,044</strong> invited, <strong>1,186</strong>
+excluded because the GP practice participated in another trial,
+<strong>20,858</strong> included, <strong>5,116</strong> replies
+received, <strong>76</strong> excluded after reply, and
+<strong>5,040</strong> randomized. The 76 comprise <strong>72</strong>
+negative replies and <strong>4</strong> positive replies with incomplete
+consent and no response to further contact.</li>
+</ul>
+<p><strong>Reasoning procedure</strong></p>
+<ol type="1">
+<li><p><strong>Trace the recruitment sequence.</strong> Directly
+displayed values reconcile at the two places where the figure supplies
+an exclusion node:</p>
+<ul>
+<li>Invitation/practice exclusion: <code>22,044 - 1,186 = 20,858</code>
+included.</li>
+<li>Reply/post-reply exclusion: <code>5,116 - 76 = 5,040</code>
+randomized.</li>
+<li>Post-reply subcategories: <code>72 + 4 = 76</code> excluded.</li>
+</ul></li>
+<li><p><strong>Reproduce the differences that motivated the
+candidate.</strong> The figure does not print separate boxes for these
+derived stage differences:</p>
+<ul>
+<li>Assessed but not invited:
+<code>368,000 - 22,044 = 345,956</code>.</li>
+<li>Included but without a reply received:
+<code>20,858 - 5,116 = 15,742</code>.</li>
+</ul>
+<p>These values are arithmetically inferable, but they are not direct
+source labels or author-designated exclusion categories. The first also
+depends on a denominator expressly marked as estimated.</p></li>
+<li><p><strong>Check randomization and arm allocation.</strong> The
+displayed overall and arm-specific totals reconcile:</p>
+<ul>
+<li><code>2,520 patch + 2,520 usual care = 5,040 randomized</code>.</li>
+<li>Each arm includes all <code>2,520</code> randomized participants in
+the intention-to-treat analysis.</li>
+</ul></li>
+<li><p><strong>Check the patch-data partition.</strong> Within the patch
+arm:</p>
+<ul>
+<li>No patch ECG data:
+<code>206 not returned + 188 returned unworn = 394</code>.</li>
+<li>Patch-data partition:
+<code>2,126 with patch ECG data + 394 without = 2,520</code> randomized
+to patch.</li>
+</ul></li>
+<li><p><strong>Check the 2.5-year primary-care follow-up
+partitions.</strong> The displayed mutually exclusive arm-specific
+categories reconcile:</p>
+<ul>
+<li>Patch incomplete follow-up:
+<code>106 moved + 6 withdrew = 112</code>.</li>
+<li>Patch complete plus incomplete:
+<code>2,408 + 112 = 2,520</code>.</li>
+<li>Patch complete follow-up status:
+<code>2,310 alive + 98 died = 2,408</code>.</li>
+<li>Usual-care incomplete follow-up:
+<code>103 moved + 7 withdrew = 110</code>.</li>
+<li>Usual-care complete plus incomplete:
+<code>2,410 + 110 = 2,520</code>.</li>
+<li>Usual-care complete follow-up status:
+<code>2,292 alive + 118 died = 2,410</code>.</li>
+</ul></li>
+<li><p><strong>Apply the verifier’s locked logical basis.</strong> The
+labels “assessed,” “invited,” “included,” and “replies received”
+identify different recruitment stages. Figure 1 does not claim that
+every person who fails to advance between those stages is an exclusion
+requiring a separate node. The explicitly displayed exclusion
+transitions, randomization split, patch-data partition, and follow-up
+partitions are internally consistent. Therefore, the unshown stage
+differences may limit process detail but do not establish an internal
+arithmetic or logical contradiction in the supplied figure.</p></li>
+<li><p><strong>Address the recorded alternative.</strong> Treating the
+345,956 and 15,742 derived differences as mandatory displayed exclusion
+categories would require an external participant-flow reporting rule.
+External standards were outside the evidence-verification scope and were
+not used. This supports the existing Rejected disposition; it is not a
+new assessment of reporting completeness under an external
+guideline.</p></li>
+</ol>
+<ul>
+<li><strong>Existing supported conclusion:</strong> The source supports
+the locked rejection. The two inferred stage losses are not, on the
+supplied page alone, evidence of a participant-flow inconsistency, while
+all formally displayed exclusions and downstream partitions
+reconcile.</li>
+<li><strong>Limit on interpretation:</strong> Rejection does not assert
+that Figure 1 provides the maximum possible recruitment detail or that
+it satisfies every external reporting standard. It means only that this
+package did not establish the proposed internal inconsistency.</li>
+<li><strong>Verification instruction:</strong> Open <a href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=4">Figure 1 on PDF p. 4</a>.
+Trace every arrow; recalculate <code>22,044 - 1,186 = 20,858</code>,
+<code>5,116 - 76 = 5,040</code>, and <code>72 + 4 = 76</code>; then
+confirm the arm, patch-data, and follow-up sums above. Verify that
+<strong>368,000</strong> is marked estimated and that the figure does
+not state that all noninvited individuals or nonresponders are
+separately enumerated exclusion categories.</li>
+</ul>
+<h3
+id="non-formal-checker-interpretation--efigure-1-primary-outcome-caption-ambiguity">Non-formal
+checker interpretation — eFigure 1 “primary outcome” caption
+ambiguity</h3>
+<p>This item is <strong>not a formal candidate</strong>, has no verifier
+disposition or critic-assigned severity, and is excluded from the
+Candidate Disposition Summary and formal totals. It is retained here
+because the completed figure/flow checker recorded it as
+<code>FFC-U01</code> and the prior report mentioned it.</p>
+<ul>
+<li><strong>Source locations:</strong>
+<ul>
+<li><a
+href="../joi250068supp3_prod_1760999665.30362.pdf#page=8">joi250068supp3_prod_1760999665.30362.pdf</a>,
+PDF p. 8, eFigure 1 and caption.</li>
+<li><a
+href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=3">jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf, PDF p. 3</a>, journal p. 1351, Methods, “Outcomes”; and <a href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=6">PDF p. 6, Figure 2</a>, journal p.
+1354, and caption.</li>
+</ul></li>
+<li><strong>Direct source observations:</strong> The main article
+defines the trial primary outcome as AF in <strong>primary-care
+records</strong> within 2.5 years. Main Figure 2 reports its overall
+ratio of proportions as <strong>1.26 (95% CI, 1.02-1.57)</strong>.
+Supplementary eFigure 1 explicitly uses AF in <strong>primary or
+secondary care records</strong>, reports <strong>1.21 (95% CI,
+1.02-1.45)</strong>, and states: “The primary outcome of ratio of
+proportions overall is represented by a diamond.”</li>
+<li><strong>Recorded reason for exclusion from formal
+verification:</strong> “Primary outcome” could refer to the trial’s
+formally defined primary outcome, but in context it could instead refer
+to the overall estimate/diamond within the sensitivity-analysis figure.
+The wording is semantically ambiguous rather than an unambiguous
+numerical contradiction. The coordinator did not forward it as one of
+the two formal candidates.</li>
+<li><strong>Limit on interpretation:</strong> This report does not
+convert the item into a formal Uncertain candidate and does not decide
+the caption’s intended meaning.</li>
+<li><strong>Optional human check outside the locked candidate
+set:</strong> Ask whether “primary outcome” was intended to name the
+trial’s primary-care-only outcome. If not, an editorial clarification
+such as “overall estimate” or “sensitivity-analysis outcome” could
+remove the ambiguity. Any such action is separate from the locked formal
+candidate counts and decisions.</li>
+</ul>
+<h3 id="other-recorded-checker-level-exclusions">Other recorded
+checker-level exclusions</h3>
+<p>The following were evaluated in the completed workflow but were not
+formal candidates and are not scientific findings:</p>
+<ul>
+<li><a href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=4">Main Figure 1</a>’s <strong>98</strong> and <strong>118</strong> deaths
+occur within the complete-primary-care-follow-up subsets of
+<strong>2,408</strong> and <strong>2,410</strong>, whereas <a href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=7">Figure 4B</a>
+reports <strong>103</strong> and <strong>126</strong> deaths for all
+randomized participants using death records. The populations differ, so
+the counts were not treated as contradictory.</li>
+<li><a href="../jama_wijesurendra_2025_oi_250068_1760999665.28362.pdf#page=6">Main Figure 2</a> (<strong>primary-care AF only</strong>, ratio
+<strong>1.26</strong>) and supplementary <a href="../joi250068supp3_prod_1760999665.30362.pdf#page=8">eFigure 1</a> (<strong>primary- or
+secondary-care AF</strong>, ratio <strong>1.21</strong>) use explicitly
+different outcome definitions and were not treated as repeated-result
+inconsistencies.</li>
+<li>A spacing defect in a derived image of supplementary <a href="../joi250068supp3_prod_1760999665.30362.pdf#page=7">eTable 3</a> was
+absent from an independent rendering of the original PDF, so it was
+rejected as a source-document presentation issue.</li>
+<li>Risk sets, patch-rhythm category percentages, table denominators,
+and printed table arithmetic checked by the workflow did not yield a
+retained candidate. In particular, separately listed clinical conditions
+were not assumed to be mutually exclusive.</li>
+<li>Reconstruction or symmetry assumptions for the time-to-event
+confidence intervals were not used because event-time data and the
+required log-rank intermediate output were not supplied.</li>
+</ul>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" /><strong>C-01 intended CI:</strong>
+Compare the three cited repetitions and consult the authoritative
+statistical or production output to determine whether
+<strong>0.76-1.53</strong> or <strong>0.77-1.51</strong> is intended.
+Correct only the discordant repetition; the report itself does not
+select a replacement.</label></li>
+<li><label><input type="checkbox" /><strong>C-01 scope:</strong> Confirm
+that the finding remains <strong>Verified</strong>, <strong>Statistical
+reporting inconsistency</strong>, <strong>Minor</strong>, and that no
+unsupported mechanism is attributed to the discrepancy.</label></li>
+<li><label><input type="checkbox" /><strong>C-02 disposition:</strong>
+Confirm the displayed recruitment and arm-specific calculations and
+preserve <strong>Rejected</strong> unless a separate, explicitly
+authorized workflow applies an external reporting standard.</label></li>
+<li><label><input type="checkbox" /><strong>Formal totals:</strong>
+Confirm <strong>1 Verified, 0 Uncertain, and 1 Rejected</strong> formal
+candidate, in the order C-01 then C-02.</label></li>
+<li><label><input type="checkbox" /><strong>Caption ambiguity
+record:</strong> Confirm that the eFigure 1 wording remains documented
+only as a non-formal checker-level excluded interpretation and is not
+counted as a verifier-classified Uncertain candidate.</label></li>
+<li><label><input type="checkbox" /><strong>Compliance flags:</strong>
+Record Human Compliance Review for the explicit AI-training-restriction
+flags in the main article and results supplement. Do not infer
+permission for the protocol or statistical analysis plan from
+silence.</label></li>
+<li><label><input type="checkbox" /><strong>Scope exclusions:</strong>
+Retain the protocol and statistical analysis plan as <strong>Not Audited
+by Design</strong> for scientific checking unless a specific comparison
+is separately requested. Retain main-article references and
+results-supplement eMethods/references outside the default scientific
+audit scope.</label></li>
+<li><label><input type="checkbox" /><strong>Source-verification
+status:</strong> Record that no source-verification exception was
+identified in this report-detailing task.</label></li>
+<li><label><input type="checkbox" /><strong>Source
+preservation:</strong> Confirm that the four original PDF hashes remain
+identical to those in the Package Manifest and that no source PDF or
+workbook was modified.</label></li>
+</ul>
+<p><strong>Submission status:</strong> Ready for Human Adjudication. The
+compliance summary remains separate from the scientific findings, and
+all scientific dispositions and critic decisions remain locked as
+recorded by the completed workflow.</p>
+</body>
+</html>
