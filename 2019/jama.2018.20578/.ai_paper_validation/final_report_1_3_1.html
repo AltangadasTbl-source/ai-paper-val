@@ -1,0 +1,2266 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.3.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.3.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.3.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#quantitative-quality-control-consistency-review-131"
+id="toc-quantitative-quality-control-consistency-review-131">Quantitative
+Quality-Control Consistency Review 1.3.1</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--hba1c-is-assigned-an-mgdl-unit-in-narrative-results-but-a-percent-scale-in-table-4"
+id="toc-c001--hba1c-is-assigned-an-mgdl-unit-in-narrative-results-but-a-percent-scale-in-table-4">C001
+— HbA1c is assigned an mg/dL unit in narrative results but a percent
+scale in Table 4</a></li>
+<li><a
+href="#c002--the-uku-adverse-effect-rule-permits-a-score-above-the-printed-item-maximum"
+id="toc-c002--the-uku-adverse-effect-rule-permits-a-score-above-the-printed-item-maximum">C002
+— The UKU adverse-effect rule permits a score above the printed item
+maximum</a></li>
+<li><a
+href="#c003--placebo-living-arrangement-categories-leave-two-randomized-participants-unaccounted-for"
+id="toc-c003--placebo-living-arrangement-categories-leave-two-randomized-participants-unaccounted-for">C003
+— Placebo living-arrangement categories leave two randomized
+participants unaccounted for</a></li>
+<li><a
+href="#c004--hyperlipidemia-percentages-reproduce-the-opposite-arm-denominators"
+id="toc-c004--hyperlipidemia-percentages-reproduce-the-opposite-arm-denominators">C004
+— Hyperlipidemia percentages reproduce the opposite arm
+denominators</a></li>
+<li><a
+href="#c005--barnes-participant-counts-are-formatted-as-decimal-valued-counts"
+id="toc-c005--barnes-participant-counts-are-formatted-as-decimal-valued-counts">C005
+— Barnes participant counts are formatted as decimal-valued
+counts</a></li>
+<li><a
+href="#c006--aims-participant-counts-are-formatted-as-decimal-valued-counts"
+id="toc-c006--aims-participant-counts-are-formatted-as-decimal-valued-counts">C006
+— AIMS participant counts are formatted as decimal-valued
+counts</a></li>
+<li><a
+href="#c007--the-placebo-relapse-hospitalization-percentage-does-not-round-to-the-printed-value"
+id="toc-c007--the-placebo-relapse-hospitalization-percentage-does-not-round-to-the-printed-value">C007
+— The placebo relapse-hospitalization percentage does not round to the
+printed value</a></li>
+<li><a
+href="#c008--total-cholesterol-absolute-unadjusted-difference-is-44-not-the-printed-43-at-one-decimal"
+id="toc-c008--total-cholesterol-absolute-unadjusted-difference-is-44-not-the-printed-43-at-one-decimal">C008
+— Total-cholesterol absolute unadjusted difference is 4.4, not the
+printed 4.3, at one decimal</a></li>
+<li><a
+href="#c009--ldl-absolute-unadjusted-difference-is-44-not-the-printed-43-at-one-decimal"
+id="toc-c009--ldl-absolute-unadjusted-difference-is-44-not-the-printed-43-at-one-decimal">C009
+— LDL absolute unadjusted difference is 4.4, not the printed 4.3, at one
+decimal</a></li>
+<li><a
+href="#c010--total-cholesterol-and-ldl-incident-high-result-vectors-are-exact-duplicates"
+id="toc-c010--total-cholesterol-and-ldl-incident-high-result-vectors-are-exact-duplicates">C010
+— Total-cholesterol and LDL incident-high result vectors are exact
+duplicates</a></li>
+<li><a
+href="#c011--the-protocols-written-ard-operation-has-the-opposite-sign-from-its-interpretation-rule"
+id="toc-c011--the-protocols-written-ard-operation-has-the-opposite-sign-from-its-interpretation-rule">C011
+— The protocol's written ARD operation has the opposite sign from its
+interpretation rule</a></li>
+<li><a
+href="#c012--incident-cancer-model-selection-uses-random-effects-at-printed-i225-although-the-rule-requires-greater-than-25"
+id="toc-c012--incident-cancer-model-selection-uses-random-effects-at-printed-i225-although-the-rule-requires-greater-than-25">C012
+— Incident-cancer model selection uses random effects at printed I2=25%
+although the rule requires greater than 25%</a></li>
+<li><a
+href="#c013--etable-3-omits-the-scale-needed-to-interpret-ard-and-reproduce-nntnnh"
+id="toc-c013--etable-3-omits-the-scale-needed-to-interpret-ard-and-reproduce-nntnnh">C013
+— eTable 3 omits the scale needed to interpret ARD and reproduce
+NNT/NNH</a></li>
+<li><a
+href="#c014--all-patient-major-bleeding-ard-and-nnh-do-not-share-a-compatible-displayed-precision"
+id="toc-c014--all-patient-major-bleeding-ard-and-nnh-do-not-share-a-compatible-displayed-precision">C014
+— All-patient major-bleeding ARD and NNH do not share a compatible
+displayed precision</a></li>
+<li><a
+href="#c015--high-risk-major-bleeding-ard-and-nnh-do-not-reconcile"
+id="toc-c015--high-risk-major-bleeding-ard-and-nnh-do-not-reconcile">C015
+— High-risk major-bleeding ARD and NNH do not reconcile</a></li>
+<li><a
+href="#c016--diabetes-major-bleeding-ard-and-nnh-do-not-reconcile"
+id="toc-c016--diabetes-major-bleeding-ard-and-nnh-do-not-reconcile">C016
+— Diabetes major-bleeding ARD and NNH do not reconcile</a></li>
+<li><a
+href="#c017--low--and-high-risk-total-stroke-event-counts-do-not-sum-to-the-all-participant-counts"
+id="toc-c017--low--and-high-risk-total-stroke-event-counts-do-not-sum-to-the-all-participant-counts">C017
+— Low- and high-risk total-stroke event counts do not sum to the
+all-participant counts</a></li>
+<li><a
+href="#c018--detection-bias-graph-represents-9-low4-unclear-trials-while-etable-2-contains-8-low5-unclear"
+id="toc-c018--detection-bias-graph-represents-9-low4-unclear-trials-while-etable-2-contains-8-low5-unclear">C018
+— Detection-bias graph represents 9 low/4 unclear trials while eTable 2
+contains 8 low/5 unclear</a></li>
+<li><a
+href="#c019--the-printed-egger-coefficient-and-se-cannot-produce-the-printed-t-statistic-at-displayed-precision"
+id="toc-c019--the-printed-egger-coefficient-and-se-cannot-produce-the-printed-t-statistic-at-displayed-precision">C019
+— The printed Egger coefficient and SE cannot produce the printed t
+statistic at displayed precision</a></li>
+<li><a
+href="#c020--twelve-non-ascend-total-stroke-forest-rows-do-not-reproduce-etable-4s-event-totals"
+id="toc-c020--twelve-non-ascend-total-stroke-forest-rows-do-not-reproduce-etable-4s-event-totals">C020
+— Twelve non-ASCEND total-stroke forest rows do not reproduce eTable 4's
+event totals</a></li>
+<li><a
+href="#c021--a-low-risk-all-mi-nnt-is-printed-although-the-displayed-ard-confidence-interval-reaches-000"
+id="toc-c021--a-low-risk-all-mi-nnt-is-printed-although-the-displayed-ard-confidence-interval-reaches-000">C021
+— A low-risk all-MI NNT is printed although the displayed ARD confidence
+interval reaches 0.00</a></li>
+<li><a
+href="#c022--the-diabetes-total-stroke-hr-endpoint-is-labelled-as-both-a-credible-and-a-confidence-limit"
+id="toc-c022--the-diabetes-total-stroke-hr-endpoint-is-labelled-as-both-a-credible-and-a-confidence-limit">C022
+— The diabetes total-stroke HR endpoint is labelled as both a credible
+and a confidence limit</a></li>
+<li><a
+href="#c023--the-100-mg-all-mi-sensitivity-endpoint-is-labelled-as-both-a-credible-and-a-confidence-limit"
+id="toc-c023--the-100-mg-all-mi-sensitivity-endpoint-is-labelled-as-both-a-credible-and-a-confidence-limit">C023
+— The &lt;=100-mg all-MI sensitivity endpoint is labelled as both a
+credible and a confidence limit</a></li>
+<li><a
+href="#c024--ascend-ischemic-stroke-events-are-included-in-the-total-stroke-forest-plot-despite-explicit-exclusion-from-total-stroke"
+id="toc-c024--ascend-ischemic-stroke-events-are-included-in-the-total-stroke-forest-plot-despite-explicit-exclusion-from-total-stroke">C024
+— ASCEND ischemic-stroke events are included in the total-stroke forest
+plot despite explicit exclusion from total stroke</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a href="#reproducibility-and-source-integrity-metadata"
+id="toc-reproducibility-and-source-integrity-metadata">Reproducibility
+and Source-Integrity Metadata</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review-131">Quantitative
+Quality-Control Consistency Review 1.3.1</h1>
+<blockquote>
+<p><strong>Pending Human Adjudication</strong><br />
+This report records source-grounded quality-control candidates. It does
+not assign validity, importance, action, or a final correction. Every
+candidate below requires human adjudication.</p>
+</blockquote>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>The complete supplied package review registered <strong>24 distinct
+candidates</strong> (<code>C001</code>-<code>C024</code>). All 24 are
+reported below in stable-ID order and remain <strong>Pending Human
+Adjudication</strong>. The review covered every direct source page and
+every registered quantitative/statistical relationship represented by
+the reusable evidence assets. The candidates are proofreading and
+reporting-consistency observations; their presence does not establish
+that the paper's conclusions are wrong.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains three unchanged, readable, unencrypted PDFs
+totaling 46 pages:</p>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Identity and role</th>
+<th style="text-align: right;">Pages</th>
+<th>Pre-review SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../jama_flint_2019_oi_190079.pdf#page=1" target="_blank" rel="noopener">DOC-001 —
+<code>jama_flint_2019_oi_190079.pdf</code></a></td>
+<td>Flint et al. main article; DOI
+<code>10.1001/jama.2019.10517</code></td>
+<td style="text-align: right;">10</td>
+<td><code>bc0a0760a27cbb664dd094b4ee12659acb000baf7c1207930f2558cb39affa45</code></td>
+</tr>
+<tr>
+<td><a href="../joi180151supp1_prod.pdf#page=1" target="_blank" rel="noopener">DOC-002 —
+<code>joi180151supp1_prod.pdf</code></a></td>
+<td>Zheng and Roddick protocol supplement; DOI
+<code>10.1001/jama.2018.20578</code></td>
+<td style="text-align: right;">7</td>
+<td><code>d47557e5447470a6d517fe82e52441b897d764ab96736d65d0e94ca564ce7e58</code></td>
+</tr>
+<tr>
+<td><a href="../joi180151supp2_prod.pdf#page=1" target="_blank" rel="noopener">DOC-003 —
+<code>joi180151supp2_prod.pdf</code></a></td>
+<td>Zheng and Roddick methods/tables/figures supplement; DOI
+<code>10.1001/jama.2018.20578</code></td>
+<td style="text-align: right;">29</td>
+<td><code>971a6088660ab2c02bbe5e73540d0c3231c779ca551a77a561295738500fb8a0</code></td>
+</tr>
+</tbody>
+</table>
+<p>Forty-seven pre-existing evidence assets were inventoried and
+individually hashed before review: 29 were <code>USABLE</code>, 5
+<code>PARTIAL</code>, 2 <code>STALE</code>, 11 <code>DUPLICATE</code>,
+and 0 <code>UNREADABLE</code>. They comprised document maps, page
+manifests, native/normalized text, rendered pages, CPU OCR
+text/metadata, and full-document layout text. Reused assets served only
+as locators and transcription aids. Every candidate was reopened at its
+exact direct-PDF page. The stale DOC-001 manifest's statements about
+pages 7-9 OCR were not used; the present page-level files and metadata
+were used as the asset record.</p>
+<p>To close registered visual gaps, DOC-003 pages 7-26 were rendered at
+180 dpi and pages 22-26 received targeted Tesseract CPU OCR. DOC-001
+page 8 was directly rendered for rotated-table confirmation. These
+current-run derivatives were not added to the pre-review reused-asset
+hash inventory and were not treated as source authority.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>Complete source coverage comprised DOC-001 pages 1-10, DOC-002 pages
+1-7, and DOC-003 pages 1-29. Coverage included abstracts, narrative,
+methods, protocol definitions, Figures 1-2, Tables 1-5, eMethods,
+eTables 1-6, eFigures 1-4, captions, footnotes, and every
+result-relevant numeric or inferential relationship mapped from those
+units. DOC-003 reference-only pages 27-29 were inspected and contained
+no additional result-relevant relationship.</p>
+<p>The review was restricted to numeric/arithmetic,
+denominator/proportion/total, statistical reporting, cross-location
+numeric, measure/label/scale, and rate-versus-count consistency. It did
+not perform a broad methodology, study-design, clinical, novelty,
+misconduct, or raw-data audit. No web or external literature was
+used.</p>
+<p><strong>Important package limitation:</strong> DOC-001 belongs to DOI
+<code>10.1001/jama.2019.10517</code>, whereas DOC-002 and DOC-003 belong
+to DOI <code>10.1001/jama.2018.20578</code>. The package lacks the
+matching main article for DOC-002/DOC-003 and lacks the matching
+supplement for DOC-001. Internal matching within DOC-001 and between
+DOC-002 and DOC-003 was completed, but a matched main-to-supplement
+result comparison could not be performed for either identity. No
+scientific comparison was made across the two DOIs.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The numeric/reporting register contains 76 complete vectors:</p>
+<p><code>N001</code>, <code>N002</code>, <code>N003</code>,
+<code>N004</code>, <code>N005</code>, <code>N006</code>,
+<code>N007</code>, <code>N008</code>, <code>N009</code>,
+<code>N010</code>, <code>N011</code>, <code>N012</code>,
+<code>N013</code>, <code>N014</code>, <code>N015</code>,
+<code>N016</code>, <code>N017</code>, <code>N018</code>,
+<code>N019</code>, <code>N020</code>, <code>N021</code>,
+<code>N022</code>, <code>N023</code>, <code>N024</code>,
+<code>N025</code>, <code>N026</code>, <code>N027</code>,
+<code>N028</code>, <code>N029</code>, <code>N030</code>,
+<code>N031</code>, <code>N032</code>, <code>N033</code>,
+<code>N034</code>, <code>N035</code>, <code>N036</code>,
+<code>N037</code>, <code>N038</code>, <code>N039</code>,
+<code>N040</code>, <code>N041</code>, <code>N042</code>,
+<code>N043</code>, <code>N044</code>, <code>N045</code>,
+<code>N046</code>, <code>N047</code>, <code>N048</code>,
+<code>N049</code>, <code>N050</code>, <code>N051</code>,
+<code>N052</code>, <code>N053</code>, <code>N054</code>,
+<code>N055</code>, <code>N056</code>, <code>N057</code>,
+<code>N058</code>, <code>N059</code>, <code>N060</code>,
+<code>N061</code>, <code>N062</code>, <code>N063</code>,
+<code>N064</code>, <code>N065</code>, <code>N066</code>,
+<code>N067</code>, <code>N068</code>, <code>N069</code>,
+<code>N070</code>, <code>N071</code>, <code>N072</code>,
+<code>N073</code>, <code>N074</code>, <code>N075</code>,
+<code>N076</code>.</p>
+<p>These vectors cover all 60 DOC-001 mapped relationships plus all
+support definitions and result structures: 44 DIC/model rows, 13 trial
+outcome-definition rows, 13 risk-of-bias rows, 44 ARD cells, 18 NNT/NNH
+values, 4 total-stroke population rows, 88 participant-year rates, 44
+sensitivity cells, all study-flow counts, all 7 risk-of-bias graph
+domains, the complete Egger vector, and all 130 forest study rows plus
+pooled records. All 130 displayed study RRs reproduced from their event
+counts and totals at displayed precision; pooled participant totals
+reproduced; rounded weights summed within their expected accumulation
+tolerance.</p>
+<p>The inferential-statistical register contains 53 relationships:</p>
+<p><code>S001</code>, <code>S002</code>, <code>S003</code>,
+<code>S004</code>, <code>S005</code>, <code>S006</code>,
+<code>S007</code>, <code>S008</code>, <code>S009</code>,
+<code>S010</code>, <code>S011</code>, <code>S012</code>,
+<code>S013</code>, <code>S014</code>, <code>S015</code>,
+<code>S016</code>, <code>S017</code>, <code>S018</code>,
+<code>S019</code>, <code>S020</code>, <code>S021</code>,
+<code>S022</code>, <code>S023</code>, <code>S024</code>,
+<code>S025</code>, <code>S026</code>, <code>S027</code>,
+<code>S028</code>, <code>S029</code>, <code>S030</code>,
+<code>S031</code>, <code>S032</code>, <code>S033</code>,
+<code>S034</code>, <code>S035</code>, <code>S036</code>,
+<code>S037</code>, <code>S038</code>, <code>S039</code>,
+<code>S040</code>, <code>S041</code>, <code>S042</code>,
+<code>S043</code>, <code>S044</code>, <code>S045</code>,
+<code>S046</code>, <code>S047</code>, <code>S048</code>,
+<code>S049</code>, <code>S050</code>, <code>S051</code>,
+<code>S052</code>, <code>S053</code>.</p>
+<p>Every relationship has an explicit <code>PASS_1_COMPLETE</code> and
+<code>PASS_2_COMPLETE</code> record. Pass 1 examined each inferential
+vector independently. Pass 2 revisited all 53 after registration of all
+24 candidates and after mechanical source recheck, considering
+denominator, arithmetic, population, label/scale, duplicate-value, and
+cross-source implications. Pass 2 produced no new candidate. Thirty
+cross-source match groups were also completed: 11 DOC-001 internal
+groups, 18 DOC-002/DOC-003 groups, and the package identity
+boundary.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+<th>Category</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>HbA1c narrative and table units differ</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>UKU rule permits a score above the stated maximum</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Placebo living-arrangement block omits two participants</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Hyperlipidemia percentages reproduce opposite-arm denominators</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Barnes participant counts use decimal formatting</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>AIMS participant counts use decimal formatting</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Relapse-hospitalization percentage is a rounding-boundary
+mismatch</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Total-cholesterol absolute difference does not reproduce</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>LDL absolute difference does not reproduce</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>Total-cholesterol and LDL result vectors are exact duplicates</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>Protocol ARD subtraction wording conflicts with the sign rule</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Incident-cancer selected model conflicts with the printed rule</td>
+<td>Statistical reporting inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>eTable 3 omits the ARD display scale</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>All-patient major-bleeding ARD/NNH compatibility is conditional</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C015</td>
+<td>High-risk major-bleeding ARD and NNH do not reconcile</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C016</td>
+<td>Diabetes major-bleeding ARD and NNH do not reconcile</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C017</td>
+<td>Low/high-risk stroke events do not sum to all-participant
+events</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C018</td>
+<td>Detection-bias table and graph imply different trial counts</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C019</td>
+<td>Egger coefficient/SE do not reproduce the printed t statistic</td>
+<td>Statistical reporting inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C020</td>
+<td>Twelve-study stroke event totals differ between table and forest
+plot</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C021</td>
+<td>NNT is printed although the displayed ARD CI reaches zero</td>
+<td>Statistical reporting inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C022</td>
+<td>Diabetes stroke endpoint is called both CrI and CI</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C023</td>
+<td>Sensitivity endpoint is called both CrI and CI</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C024</td>
+<td>ASCEND ischemic-stroke row appears in a total-stroke forest
+plot</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--hba1c-is-assigned-an-mgdl-unit-in-narrative-results-but-a-percent-scale-in-table-4" class="candidate-card">C001
+— HbA1c is assigned an mg/dL unit in narrative results but a percent
+scale in Table 4</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> HbA1c is assigned an mg/dL unit
+in narrative results but a percent scale in Table 4. The printed
+relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=1">DOC-001 p. 1, abstract
+Results</a>; <a href="../jama_flint_2019_oi_190079.pdf#page=7" target="_blank" rel="noopener">DOC-001
+p. 7, Results</a>; <a
+href="../jama_flint_2019_oi_190079.pdf#page=8">DOC-001 p. 8, Table
+4</a>.</p>
+<p><strong>Source evidence:</strong> The abstract prints the HbA1c
+daily-rate contrast as <code>-0.0002 mg/dL</code> (95% CI,
+<code>-0.0021 to 0.0016</code>); the Results repeats the estimate,
+interval, and <code>mg/dL</code>; Table 4 labels the measure
+<code>HbA1c, %</code> and gives levels near 5.7-5.9. Adjacent narrative
+outcomes appropriately use <code>mg/dL</code> for lipids and
+glucose.</p>
+<p><strong>Reported-versus-comparator:</strong> A single named analyte
+should retain its stated measurement scale unless a conversion or
+alternate scale is supplied. <code>mg/dL</code> and <code>%</code> are
+not interchangeable, and the package supplies no HbA1c conversion. The
+estimate magnitude is compatible with a daily change on the displayed
+percentage scale but does not establish the intended unit by itself.</p>
+<p><strong>Reasoning procedure:</strong> The competing units are
+directly printed. A unit copied from adjacent glucose/lipid results is a
+diagnostic explanation only. This is a unit-label comparison, not a
+rounding issue.</p>
+<p><strong>Calculation:</strong> A single named analyte should retain
+its stated measurement scale unless a conversion or alternate scale is
+supplied. <code>mg/dL</code> and <code>%</code> are not interchangeable,
+and the package supplies no HbA1c conversion. The estimate magnitude is
+compatible with a daily change on the displayed percentage scale but
+does not establish the intended unit by itself.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Table 4
+may supply the intended percent scale; alternatively, the model
+coefficient may use an unstated HbA1c scale. A shared daily time
+denominator does not reconcile concentration with percent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Abstract and table
+extraction can assign materially different units to the same
+coefficient, potentially propagating a scale error into evidence tables;
+this observation does not establish that the numeric estimate or
+paper-level conclusion is wrong.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Inspect the analysis
+output/data dictionary for the treatment-by-time HbA1c coefficient;
+confirm its scale and time unit; compare the intended label with both
+narrative occurrences and Table 4. What unit should accompany the HbA1c
+treatment-by-time estimate and interval—percentage points per day,
+<code>mg/dL</code>, or another explicitly defined scale?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c002--the-uku-adverse-effect-rule-permits-a-score-above-the-printed-item-maximum" class="candidate-card">C002
+— The UKU adverse-effect rule permits a score above the printed item
+maximum</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> The UKU adverse-effect rule
+permits a score above the printed item maximum. The printed relationship
+requires human adjudication.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=4">DOC-001 p. 4,
+adverse-effect definition</a>.</p>
+<p><strong>Source evidence:</strong> UKU items are stated to range from
+<code>0-3</code>; an adverse effect is defined in part as a score of
+<code>3 or 4</code> plus an increase from baseline.</p>
+<p><strong>Reported-versus-comparator:</strong> On the printed item
+scale <code>{0,1,2,3}</code>, <code>4 &gt; 3</code> and is outside the
+stated range.</p>
+<p><strong>Reasoning procedure:</strong> The maximum and threshold are
+printed in the same paragraph. A carryover from another coding version
+or a transcription error is only a diagnostic inference. Exact
+scale-bound comparison; no rounding applies.</p>
+<p><strong>Calculation:</strong> On the printed item scale
+<code>{0,1,2,3}</code>, <code>4 &gt; 3</code> and is outside the stated
+range.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unreported recoding or special non-item code could permit 4, but no such
+definition is supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> The operational rule
+cannot be implemented literally for score 4 under the printed range and
+could be miscoded in secondary extraction; no claim is made about
+outcome validity or conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Check the administered UKU
+version, coding dictionary, and analysis rule; determine whether score 4
+exists and whether it is an item value or special code. Should the
+presence rule say score 3 only, or should the printed UKU range/coding
+be expanded or otherwise defined?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c003--placebo-living-arrangement-categories-leave-two-randomized-participants-unaccounted-for" class="candidate-card">C003
+— Placebo living-arrangement categories leave two randomized
+participants unaccounted for</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> Placebo living-arrangement
+categories leave two randomized participants unaccounted for. The
+printed relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=5">DOC-001 p. 5, Table
+1</a>.</p>
+<p><strong>Source evidence:</strong> The placebo header is
+<code>n=62</code>; living with others is <code>49 (79.0%)</code>, alone
+<code>10 (16.1%)</code>, and senior residence <code>1 (1.6%)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> The three displayed
+categories appear mutually exclusive. Counts give
+<code>49+10+1=60</code>, two below 62; percentages give
+<code>79.0+16.1+1.6=96.7%</code>, 3.3 points below 100%.</p>
+<p><strong>Reasoning procedure:</strong> Header and entries are printed
+directly. Missing values without a displayed row denominator are an
+inference. Three one-decimal percentages can accumulate at most about
+0.15 percentage point ordinary independent rounding drift, far below 3.3
+points; the count gap is exactly 2.</p>
+<p><strong>Calculation:</strong> The three displayed categories appear
+mutually exclusive. Counts give <code>49+10+1=60</code>, two below 62;
+percentages give <code>79.0+16.1+1.6=96.7%</code>, 3.3 points below
+100%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+categories may intentionally cover only 60 respondents, but no
+row-specific <code>n=60</code> is printed here although other rows show
+reduced denominators.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Treating the arm header
+as the row denominator yields an incomplete distribution and can
+propagate incorrect missingness or prevalence values; it does not imply
+a broader study-design defect.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Check participant-level
+Table 1 derivation and missingness; confirm whether the denominator is
+60 or 62 and whether an additional category exists. Were two placebo
+participants missing living-arrangement data, and if so should the row
+denominator or missingness be printed?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c004--hyperlipidemia-percentages-reproduce-the-opposite-arm-denominators" class="candidate-card">C004
+— Hyperlipidemia percentages reproduce the opposite arm
+denominators</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> Hyperlipidemia percentages
+reproduce the opposite arm denominators. The printed relationship
+requires human adjudication.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=5">DOC-001 p. 5, Table
+1</a>.</p>
+<p><strong>Source evidence:</strong> Arm headers are olanzapine
+<code>n=64</code> and placebo <code>n=62</code>; hyperlipidemia is
+<code>18 (29.0%)</code> and <code>19 (29.7%)</code>, respectively.</p>
+<p><strong>Reported-versus-comparator:</strong> With header
+denominators, <code>18/64=28.125%</code> (28.1%) and
+<code>19/62=30.645%</code> (30.6%). The opposite denominators reproduce
+the print exactly: <code>18/62=29.032%</code> (29.0%) and
+<code>19/64=29.688%</code> (29.7%).</p>
+<p><strong>Reasoning procedure:</strong> Counts, percentages, and
+headers are direct. Transposition of percentage denominators is a
+diagnostic inference. The header-denominator results lie outside the
+one-decimal rounding intervals for the printed values.</p>
+<p><strong>Calculation:</strong> With header denominators,
+<code>18/64=28.125%</code> (28.1%) and <code>19/62=30.645%</code>
+(30.6%). The opposite denominators reproduce the print exactly:
+<code>18/62=29.032%</code> (29.0%) and <code>19/64=29.688%</code>
+(29.7%).</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Unprinted row denominators could differ, but a placebo denominator of 64
+exceeds its randomized arm and no row-specific denominators appear.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Arm-specific baseline
+prevalence can be extracted with a mismatched denominator, affecting
+reuse of this descriptive result; no treatment-effect conclusion is
+adjudicated.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Recompute the row from the
+Table 1 source data and confirm arm assignment, missingness, and
+displayed denominator. Are the two percentages transposed, or should
+different row denominators be supplied?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c005--barnes-participant-counts-are-formatted-as-decimal-valued-counts" class="candidate-card">C005
+— Barnes participant counts are formatted as decimal-valued counts</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> Barnes participant counts are
+formatted as decimal-valued counts. The printed relationship requires
+human adjudication.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=6">DOC-001 p. 6, Table
+2</a>.</p>
+<p><strong>Source evidence:</strong> Under
+<code>No. (%) of Participants</code>, Barnes global score &gt;0 is
+<code>3.0 (4.7)</code> and <code>2.0 (3.2)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> The count header and
+percentages identify the fields as participant counts:
+<code>3/64=4.6875%</code> and <code>2/62=3.2258%</code>. Numerically,
+<code>3.0=3</code> and <code>2.0=2</code>; the check concerns decimal
+representation under a count label, not an arithmetic mismatch.</p>
+<p><strong>Reasoning procedure:</strong> Decimal-leading fields and
+header are direct. Inherited continuous-score formatting is inferred.
+Percentages reconcile at one decimal after integer interpretation; the
+concern is representation, not percentage rounding.</p>
+<p><strong>Calculation:</strong> The count header and percentages
+identify the fields as participant counts: <code>3/64=4.6875%</code> and
+<code>2/62=3.2258%</code>. Numerically, <code>3.0=3</code> and
+<code>2.0=2</code>; the check concerns decimal representation under a
+count label, not an arithmetic mismatch.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Numerically, <code>3.0=3</code> and <code>2.0=2</code>, so the values
+may be harmless formatting rather than incorrect counts.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Structured extraction can
+misclassify these cells as means or scale scores; any downstream risk is
+limited to representation/classification and does not imply a
+substantive result error.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Check the Table 2
+production format and source variable type; confirm that the cells are
+participant counts. Should these participant counts be printed as
+<code>3</code> and <code>2</code>?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c006--aims-participant-counts-are-formatted-as-decimal-valued-counts" class="candidate-card">C006
+— AIMS participant counts are formatted as decimal-valued counts</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> AIMS participant counts are
+formatted as decimal-valued counts. The printed relationship requires
+human adjudication.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=6">DOC-001 p. 6, Table
+2</a>.</p>
+<p><strong>Source evidence:</strong> Under
+<code>No. (%) of Participants</code>, AIMS overall severity &gt;0 is
+<code>2.0 (3.1)</code> and <code>2.0 (3.2)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> The count header and
+percentages identify the fields as participant counts:
+<code>2/64=3.125%</code> and <code>2/62=3.2258%</code>, reproducing 3.1%
+and 3.2%. Numerically, <code>2.0=2</code>; the check concerns decimal
+representation under a count label, not an arithmetic mismatch.</p>
+<p><strong>Reasoning procedure:</strong> Values and header are direct. A
+shared formatting mechanism with the Barnes row is inferred, but this
+remains a distinct outcome row. Percentages reconcile at one decimal
+after integer interpretation.</p>
+<p><strong>Calculation:</strong> The count header and percentages
+identify the fields as participant counts: <code>2/64=3.125%</code> and
+<code>2/62=3.2258%</code>, reproducing 3.1% and 3.2%. Numerically,
+<code>2.0=2</code>; the check concerns decimal representation under a
+count label, not an arithmetic mismatch.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>2.0</code> is mathematically equal to 2, so this may be harmless
+formatting despite the count label.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> The row may be miscoded
+as a continuous-scale result in automated extraction; no substantive
+analysis error is established.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Check the table source
+variable type and rendering format; confirm that both leading fields are
+counts. Should both AIMS participant counts be printed as
+<code>2</code>?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c007--the-placebo-relapse-hospitalization-percentage-does-not-round-to-the-printed-value" class="candidate-card">C007
+— The placebo relapse-hospitalization percentage does not round to the
+printed value</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> The placebo
+relapse-hospitalization percentage does not round to the printed value.
+The printed relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=8">DOC-001 p. 8,
+Results</a>.</p>
+<p><strong>Source evidence:</strong> The paper states that
+<code>11 (32.3%) of 34</code> placebo relapses required psychiatric
+hospitalization.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>100*11/34=32.352941...%</code>, ordinarily 32.4% at one decimal,
+not 32.3%.</p>
+<p><strong>Reasoning procedure:</strong> Numerator, denominator, and
+percentage are direct. Truncation or another unprinted denominator is
+inferred. The exact value is 0.00294 percentage point above the upper
+boundary of the ordinary <code>[32.25,32.35)</code> display interval for
+32.3%; this is a very small boundary discrepancy.</p>
+<p><strong>Calculation:</strong> <code>100*11/34=32.352941...%</code>,
+ordinarily 32.4% at one decimal, not 32.3%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+truncation convention produces 32.3%; the source does not state that
+convention here.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> The small mismatch can
+prevent exact reconciliation in evidence tables, but is unlikely by
+itself to affect the paper's conclusion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Recompute from the
+analysis dataset and determine the percentage-display convention and
+exact denominator. Was 32.3% intentionally truncated, or should the
+printed percentage be 32.4%?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c008--total-cholesterol-absolute-unadjusted-difference-is-44-not-the-printed-43-at-one-decimal" class="candidate-card">C008
+— Total-cholesterol absolute unadjusted difference is 4.4, not the
+printed 4.3, at one decimal</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> Total-cholesterol absolute
+unadjusted difference is 4.4, not the printed 4.3, at one decimal. The
+printed relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=9">DOC-001 p. 9, Table
+5</a>.</p>
+<p><strong>Source evidence:</strong> Total cholesterol is
+<code>9/64 (14.1%)</code> versus <code>6/62 (9.7%)</code>, with absolute
+unadjusted difference <code>4.3%</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>100*(9/64-6/62)=4.3850806</code> percentage points, ordinarily
+4.4; the displayed percentages also give <code>14.1-9.7=4.4</code>.</p>
+<p><strong>Reasoning procedure:</strong> Counts, denominators,
+percentages, and difference are direct. A one-tenth
+transcription/rounding defect is inferred. The exact difference lies
+outside the ordinary <code>[4.25,4.35)</code> one-decimal interval for
+4.3.</p>
+<p><strong>Calculation:</strong> <code>100*(9/64-6/62)=4.3850806</code>
+percentage points, ordinarily 4.4; the displayed percentages also give
+<code>14.1-9.7=4.4</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unprinted denominator or different computation could differ, but the
+column is explicitly <code>absolute unadjusted difference</code> and arm
+denominators are printed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> The risk difference
+cannot be reproduced from the printed counts and may be copied
+inconsistently into an evidence product; the small discrepancy does not
+establish an altered inference.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Recompute the unadjusted
+risk difference from the final Table 5 dataset and check the display
+rounding code. What computation or denominator produced 4.3 percentage
+points, or should it be 4.4?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c009--ldl-absolute-unadjusted-difference-is-44-not-the-printed-43-at-one-decimal" class="candidate-card">C009
+— LDL absolute unadjusted difference is 4.4, not the printed 4.3, at one
+decimal</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> LDL absolute unadjusted
+difference is 4.4, not the printed 4.3, at one decimal. The printed
+relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=9">DOC-001 p. 9, Table
+5</a>.</p>
+<p><strong>Source evidence:</strong> LDL is <code>9/64 (14.1%)</code>
+versus <code>6/62 (9.7%)</code>, with absolute unadjusted difference
+<code>4.3%</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>100*(9/64-6/62)=4.3850806</code> percentage points, ordinarily
+4.4; <code>14.1-9.7=4.4</code>.</p>
+<p><strong>Reasoning procedure:</strong> The separate LDL row is
+directly printed. A repeated rounding/transcription mechanism is
+inferred. The exact result is outside the ordinary one-decimal display
+interval for 4.3.</p>
+<p><strong>Calculation:</strong> <code>100*(9/64-6/62)=4.3850806</code>
+percentage points, ordinarily 4.4; <code>14.1-9.7=4.4</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> No
+different LDL denominator is printed; an unreported computation remains
+possible.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> This distinct outcome row
+cannot be reproduced from its printed counts and can propagate an
+inconsistent risk difference; no material conclusion change is
+claimed.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Recompute the LDL row from
+its final source data and inspect the displayed-difference calculation.
+What computation produced the LDL value 4.3, or should it be 4.4?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c010--total-cholesterol-and-ldl-incident-high-result-vectors-are-exact-duplicates" class="candidate-card">C010
+— Total-cholesterol and LDL incident-high result vectors are exact
+duplicates</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> Total-cholesterol and LDL
+incident-high result vectors are exact duplicates. The printed
+relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=9">DOC-001 p. 9, Table
+5</a>.</p>
+<p><strong>Source evidence:</strong> Despite different thresholds
+(<code>240 mg/dL</code> total cholesterol and <code>160 mg/dL</code>
+LDL), both rows print <code>9 (14.1%)</code> versus
+<code>6 (9.7%)</code>, difference <code>4.3</code>, and CI
+<code>-8 to 17.2</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Field-by-field
+comparison shows exact equality across the complete displayed result
+vector for two separately defined outcomes. No
+probability-of-coincidence claim is made.</p>
+<p><strong>Reasoning procedure:</strong> Duplicate vectors and distinct
+thresholds are direct. A copied row is inferred and not established.
+Exact equality at every displayed field.</p>
+<p><strong>Calculation:</strong> Field-by-field comparison shows exact
+equality across the complete displayed result vector for two separately
+defined outcomes. No probability-of-coincidence claim is made.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+same participants may genuinely meet both thresholds and produce
+identical intervals.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Exact duplicate rows are
+a transcription-control signal and may lead to duplicated outcome
+extraction if one row is wrong; genuine coincidence would make the risk
+nil, and no conclusion defect is asserted.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Compare outcome-level
+source counts, participant identities, interval calculations, and
+table-generation code for the two thresholds. Did the same 9 and 6
+participants satisfy both outcome definitions with the same interval, or
+was one row duplicated?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c011--the-protocols-written-ard-operation-has-the-opposite-sign-from-its-interpretation-rule" class="candidate-card">C011
+— The protocol's written ARD operation has the opposite sign from its
+interpretation rule</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> The protocol's written ARD
+operation has the opposite sign from its interpretation rule. The
+printed relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp1_prod.pdf#page=6">DOC-002 p. 6, statistical
+analysis</a>; <a href="../joi180151supp2_prod.pdf#page=4" target="_blank" rel="noopener">DOC-003 p. 4,
+ARD method</a>.</p>
+<p><strong>Source evidence:</strong> DOC-002 says the RR-multiplied
+placebo event rate is subtracted from placebo risk, then says negative
+values favor aspirin. DOC-003 says negative ARD indicates reduced risk
+with aspirin.</p>
+<p><strong>Reported-versus-comparator:</strong> Let no-aspirin risk be
+<code>R0</code>. For <code>RR&lt;1</code>, the prose operation
+<code>R0-(RR*R0)=R0(1-RR)&gt;0</code>, whereas the sign interpretation
+requires <code>(RR*R0)-R0=R0(RR-1)&lt;0</code>.</p>
+<p><strong>Reasoning procedure:</strong> Wording and sign rules are
+direct. Reversed subtraction order in prose is inferred. Algebraic sign;
+rounding does not apply.</p>
+<p><strong>Calculation:</strong> Let no-aspirin risk be <code>R0</code>.
+For <code>RR&lt;1</code>, the prose operation
+<code>R0-(RR*R0)=R0(1-RR)&gt;0</code>, whereas the sign interpretation
+requires <code>(RR*R0)-R0=R0(RR-1)&lt;0</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+grammatical referent of “which is then subtracted” may have intended
+placebo risk to be subtracted from estimated aspirin risk.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Literal protocol
+implementation reverses benefit/harm signs and can misdirect secondary
+implementation; the displayed final ARD signs may nevertheless have been
+computed correctly.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Inspect the
+statistical-analysis code/formula and confirm operand order and the
+intended wording. Which subtraction order was intended for ARD
+calculation?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c012--incident-cancer-model-selection-uses-random-effects-at-printed-i225-although-the-rule-requires-greater-than-25" class="candidate-card">C012
+— Incident-cancer model selection uses random effects at printed I2=25%
+although the rule requires greater than 25%</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> Incident-cancer model selection
+uses random effects at printed I2=25% although the rule requires greater
+than 25%. The printed relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp2_prod.pdf#page=4">DOC-003 p. 4, model-selection
+rule</a>; <a href="../joi180151supp2_prod.pdf#page=5" target="_blank" rel="noopener">DOC-003 p. 5,
+all-patient incident-cancer row</a>.</p>
+<p><strong>Source evidence:</strong> When DICs are within 3, random
+effects are favored if fixed-effect <code>I2 &gt;25%</code>; the row
+prints fixed DIC <code>27.06</code>, random DIC <code>27.93</code>, I2
+<code>25%</code>, and selected model <code>random</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>|27.06-27.93|=0.87&lt;3</code>, so the tie branch applies. Printed
+<code>25%</code> does not satisfy the strict <code>&gt;25%</code>
+condition, which selects fixed at displayed precision. The other 43
+model rows were checked and agree with the rule.</p>
+<p><strong>Reasoning procedure:</strong> Rule, values, and selected
+label are direct. Selection from unrounded I2, an intended inclusive
+threshold, or a wrong label are alternative inferences. Displayed
+integer I2 may conceal an unrounded value above 25%; that unprinted
+precision is the relevant tolerance/alternative.</p>
+<p><strong>Calculation:</strong> <code>|27.06-27.93|=0.87&lt;3</code>,
+so the tie branch applies. Printed <code>25%</code> does not satisfy the
+strict <code>&gt;25%</code> condition, which selects fixed at displayed
+precision. The other 43 model rows were checked and agree with the
+rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Unrounded I2 may exceed 25%, or the intended rule may be
+<code>&gt;=25%</code>.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> The printed algorithm
+does not reproduce the model label, which can impede model-choice
+extraction and replication; no claim is made that the selected estimate
+or conclusion is invalid.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Inspect unrounded
+fixed-effect I2 and the model-selection code; confirm the actual
+inequality and selected model. Was the decision based on an unrounded I2
+greater than 25%, was the intended threshold inclusive at 25%, or should
+the selected-model label be fixed?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c013--etable-3-omits-the-scale-needed-to-interpret-ard-and-reproduce-nntnnh" class="candidate-card">C013
+— eTable 3 omits the scale needed to interpret ARD and reproduce
+NNT/NNH</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> eTable 3 omits the scale needed
+to interpret ARD and reproduce NNT/NNH. The printed relationship
+requires human adjudication.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp1_prod.pdf#page=6">DOC-002 p. 6, protocol ARD
+rule</a>; <a href="../joi180151supp2_prod.pdf#page=4" target="_blank" rel="noopener">DOC-003 p. 4,
+ARD/NNT method</a>; <a href="../joi180151supp2_prod.pdf#page=15" target="_blank" rel="noopener">DOC-003
+p. 15, eTable 3</a>.</p>
+<p><strong>Source evidence:</strong> Methods define ARD direction but
+not its display unit. eTable 3 labels cells only <code>ARD</code>;
+composite all-patients is <code>-0.41</code> with NNT <code>242</code>,
+and major bleeding is <code>0.47</code> with NNH <code>210</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> If <code>0.41</code> is
+a risk proportion, <code>1/0.41=2.44</code>; if it is 0.41 percentage
+point, <code>100/0.41=243.9</code>, near 242 with unrounded-input
+allowance. Likewise 0.47 percentage point gives about 212.8, whereas a
+proportion gives 2.13. The NNT/NNH values imply percentage points, but
+the scale is not printed.</p>
+<p><strong>Reasoning procedure:</strong> The missing unit and printed
+values are direct. Percentage-point interpretation is inferred from
+reciprocals. Unrounded ARDs can explain small reciprocal differences but
+cannot supply the absent unit. The scale ambiguity is a factor of
+100.</p>
+<p><strong>Calculation:</strong> If <code>0.41</code> is a risk
+proportion, <code>1/0.41=2.44</code>; if it is 0.41 percentage point,
+<code>100/0.41=243.9</code>, near 242 with unrounded-input allowance.
+Likewise 0.47 percentage point gives about 212.8, whereas a proportion
+gives 2.13. The NNT/NNH values imply percentage points, but the scale is
+not printed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+journal convention or analysis may intend percentage points, or another
+scaling convention may have been used; none is stated.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> An extractor can
+interpret 0.41 as 41% instead of 0.41 percentage point, creating a
+100-fold scale error in downstream evidence reuse; this does not show
+that the underlying calculations or conclusions are wrong.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Inspect stored unrounded
+ARDs and analysis/output scaling; confirm that all 44 ARD cells use one
+stated unit and that all 18 NNT/NNH values use the same estimand. What
+is the explicit unit/scale of every ARD in eTable 3, and should the
+table label the values as percentage points or another stated scale?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c014--all-patient-major-bleeding-ard-and-nnh-do-not-share-a-compatible-displayed-precision" class="candidate-card">C014
+— All-patient major-bleeding ARD and NNH do not share a compatible
+displayed precision</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> All-patient major-bleeding ARD
+and NNH do not share a compatible displayed precision. The printed
+relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp2_prod.pdf#page=4">DOC-003 p. 4, NNT/NNH
+method</a>; <a href="../joi180151supp2_prod.pdf#page=15" target="_blank" rel="noopener">DOC-003 p. 15,
+eTable 3</a>.</p>
+<p><strong>Source evidence:</strong> All-patient major-bleeding ARD is
+<code>0.47</code> and NNH is <code>210</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> If the ARD and NNH
+summarize the same unrounded percentage-point estimand under an ordinary
+reciprocal convention, <code>100/0.47=212.77</code>; treating the
+integer 210 as an exact reciprocal gives <code>100/210=0.47619</code>,
+ordinarily displayed as 0.48 rather than 0.47.</p>
+<p><strong>Reasoning procedure:</strong> The pair is direct. Different
+unprinted effects, nonstandard rounding, or transcription are
+inferences. Values displayed as 0.47 under nearest two-decimal rounding
+lie in <code>[0.465,0.475)</code>, while 0.47619 lies outside. The
+source does not state its NNH integer-rounding convention or confirm
+that the two fields use an identical unrounded estimand, so this is a
+conditional displayed-precision diagnostic.</p>
+<p><strong>Calculation:</strong> If the ARD and NNH summarize the same
+unrounded percentage-point estimand under an ordinary reciprocal
+convention, <code>100/0.47=212.77</code>; treating the integer 210 as an
+exact reciprocal gives <code>100/210=0.47619</code>, ordinarily
+displayed as 0.48 rather than 0.47.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> NNH may
+use a separately calculated absolute contrast or unstated convention, or
+the ARD may use nonstandard display rounding.</p>
+<p><strong>Mechanical evidence recheck:</strong> All cited locations and
+printed values were found in the direct PDFs. The ordinary
+nearest-rounding, common-estimand reciprocal compatibility test was
+reproduced, but the source does not state the NNH integer-display
+convention or establish that ARD and NNH use the identical unrounded
+estimand. This conditional caveat prevents an unconditional
+conclusion.</p>
+<p><strong>Quality-control relevance:</strong> ARD and NNH fields cannot
+be mechanically reconciled and may propagate discordant harm estimates
+into benefit-harm summaries; no paper-level conclusion error is
+asserted.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Retrieve the unrounded ARD
+used for NNH, identify the reciprocal and integer-rounding method, and
+confirm both fields use the same estimand. Which unrounded ARD and NNH
+convention produced the pair 0.47 and 210?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c015--high-risk-major-bleeding-ard-and-nnh-do-not-reconcile" class="candidate-card">C015 —
+High-risk major-bleeding ARD and NNH do not reconcile</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> High-risk major-bleeding ARD
+and NNH do not reconcile. The printed relationship requires human
+adjudication.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp2_prod.pdf#page=4">DOC-003 p. 4, NNT/NNH
+method</a>; <a href="../joi180151supp2_prod.pdf#page=15" target="_blank" rel="noopener">DOC-003 p. 15,
+eTable 3</a>.</p>
+<p><strong>Source evidence:</strong> High-risk major-bleeding ARD is
+<code>0.64</code> and NNH is <code>152</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>100/0.64=156.25</code>; NNH 152 implies
+<code>100/152=0.65789</code>, ordinarily 0.66 rather than 0.64.</p>
+<p><strong>Reasoning procedure:</strong> The pair is direct. Different
+hidden inputs or transcription are inferred. The implied 0.65789 lies
+outside the ordinary <code>[0.635,0.645)</code> interval displaying as
+0.64; <code>SP1-007</code> places the reciprocal range around
+155.0-157.5, not 152.</p>
+<p><strong>Calculation:</strong> <code>100/0.64=156.25</code>; NNH 152
+implies <code>100/152=0.65789</code>, ordinarily 0.66 rather than
+0.64.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> NNH
+could be based on a separately modeled absolute effect not represented
+by the ARD cell, but the source does not state this.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> The population-specific
+harm summary is not reproducible and can propagate inconsistent ARD/NNH
+extraction; this does not establish a changed meta-analytic
+conclusion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Retrieve the high-risk
+unrounded ARD and NNH calculation; confirm estimand, scale, and
+integer-rounding rule. What unrounded value or alternative rule produced
+NNH 152?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2 id="c016--diabetes-major-bleeding-ard-and-nnh-do-not-reconcile" class="candidate-card">C016
+— Diabetes major-bleeding ARD and NNH do not reconcile</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> Diabetes major-bleeding ARD and
+NNH do not reconcile. The printed relationship requires human
+adjudication.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp2_prod.pdf#page=4">DOC-003 p. 4, NNT/NNH
+method</a>; <a href="../joi180151supp2_prod.pdf#page=15" target="_blank" rel="noopener">DOC-003 p. 15,
+eTable 3</a>.</p>
+<p><strong>Source evidence:</strong> Diabetes major-bleeding ARD is
+<code>0.80</code> and NNH is <code>121</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>100/0.80=125</code>; NNH 121 implies <code>100/121=0.82645</code>,
+ordinarily 0.83 rather than 0.80.</p>
+<p><strong>Reasoning procedure:</strong> The pair is direct. A different
+hidden estimate is inferred. The implied 0.82645 lies outside the
+ordinary <code>[0.795,0.805)</code> interval displaying as 0.80;
+<code>SP1-007</code> places the compatible reciprocal range around
+124.2-125.8, not 121.</p>
+<p><strong>Calculation:</strong> <code>100/0.80=125</code>; NNH 121
+implies <code>100/121=0.82645</code>, ordinarily 0.83 rather than
+0.80.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+separately modeled NNH could exist, but it is not identified in the
+table or methods.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> The diabetes harm pair
+can propagate inconsistent reciprocal summaries into evidence reuse; no
+conclusion-level impact is established.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Retrieve the diabetes
+unrounded ARD and reciprocal calculation; confirm scale, estimand, and
+NNH rounding. What exact ARD and reciprocal convention produced NNH
+121?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c017--low--and-high-risk-total-stroke-event-counts-do-not-sum-to-the-all-participant-counts" class="candidate-card">C017
+— Low- and high-risk total-stroke event counts do not sum to the
+all-participant counts</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> Low- and high-risk total-stroke
+event counts do not sum to the all-participant counts. The printed
+relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp2_prod.pdf#page=16">DOC-003 p. 16, eTable
+4</a>.</p>
+<p><strong>Source evidence:</strong> Aspirin rows are all
+<code>1116/73883</code>, low <code>752/56212</code>, high
+<code>381/17671</code>; no-aspirin rows are all <code>1136/72317</code>,
+low <code>788/56354</code>, high <code>380/15963</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Denominators partition
+exactly: <code>56212+17671=73883</code> and
+<code>56354+15963=72317</code>. Events do not: aspirin
+<code>752+381=1133</code>, 17 above 1116; no aspirin
+<code>788+380=1168</code>, 32 above 1136.</p>
+<p><strong>Reasoning procedure:</strong> The four rows are direct.
+Different definitions/availability or transcription are inferred.
+Integer identities; no rounding.</p>
+<p><strong>Calculation:</strong> Denominators partition exactly:
+<code>56212+17671=73883</code> and <code>56354+15963=72317</code>.
+Events do not: aspirin <code>752+381=1133</code>, 17 above 1116; no
+aspirin <code>788+380=1168</code>, 32 above 1136.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Low/high outcome definitions or study availability could differ even
+with exact denominator partitioning, but eTable 4 states no
+exception.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Population-stratified
+event extraction cannot be reconciled to the overall row, potentially
+affecting subgroup evidence tables; no claim is made about the fitted
+HRs or conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Reconstruct the
+all/low/high event counts from the final population flags and outcome
+dataset; document any nonpartitioning definition. Why do the exact
+low/high participant partitions not carry an additive total-stroke event
+partition?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c018--detection-bias-graph-represents-9-low4-unclear-trials-while-etable-2-contains-8-low5-unclear" class="candidate-card">C018
+— Detection-bias graph represents 9 low/4 unclear trials while eTable 2
+contains 8 low/5 unclear</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> Detection-bias graph represents
+9 low/4 unclear trials while eTable 2 contains 8 low/5 unclear. The
+printed relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> eTable 2 on <a
+href="../joi180151supp2_prod.pdf#page=10">DOC-003 p. 10</a>, <a
+href="../joi180151supp2_prod.pdf#page=11">p. 11</a>, <a
+href="../joi180151supp2_prod.pdf#page=12">p. 12</a>, <a
+href="../joi180151supp2_prod.pdf#page=13">p. 13</a>, and <a
+href="../joi180151supp2_prod.pdf#page=14">p. 14</a>; <a
+href="../joi180151supp2_prod.pdf#page=20">DOC-003 p. 20, eFigure
+2</a>.</p>
+<p><strong>Source evidence:</strong> Detection is unclear for BDS, PHS,
+HOT, WHS, and ASCEND (5) and low for the other 8 trials. The graph
+boundary is near the approximately 69% low/31% unclear position used for
+9/4 domains, not the approximately 62%/38% table split. The other six
+graphical domains reproduce the table.</p>
+<p><strong>Reported-versus-comparator:</strong> The table gives low
+<code>8/13=61.54%</code> and unclear <code>5/13=38.46%</code>; a 9/4
+graphic gives <code>69.23%/30.77%</code>, one trial or 7.69 percentage
+points different.</p>
+<p><strong>Reasoning procedure:</strong> All 13 table categories and the
+graphic boundary are direct observations. Duplication of another
+domain's proportions or use of an earlier classification set is
+inferred. The graphic has no numeric labels, so boundary reading is
+visual; the 20% grid and alignment with exact 9/4 domains make the
+one-trial difference distinguishable.</p>
+<p><strong>Calculation:</strong> The table gives low
+<code>8/13=61.54%</code> and unclear <code>5/13=38.46%</code>; a 9/4
+graphic gives <code>69.23%/30.77%</code>, one trial or 7.69 percentage
+points different.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> One
+table cell may have been intended as low, or the graph may reflect a
+different finalized set.</p>
+<p><strong>Mechanical evidence recheck:</strong> All 13 table
+classifications and the direct-source graph were found. The exact 8/5
+table split was reproduced; the graph's approximately 9/4 reading was
+reproduced from axis position and alignment with other bars, but the
+graph has no numeric segment labels or plotted coordinates.</p>
+<p><strong>Quality-control relevance:</strong> Graph-based and
+table-based risk-of-bias extraction yield different summaries and may
+propagate different domain counts; this is a reporting-consistency
+issue, not a misconduct or validity judgment.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Regenerate the graph from
+the 13 final categorical rows and compare the underlying graphic input
+with eTable 2. Which detection-bias classification set generated eFigure
+2, and which table or graphic reflects the intended final
+assessment?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c019--the-printed-egger-coefficient-and-se-cannot-produce-the-printed-t-statistic-at-displayed-precision" class="candidate-card">C019
+— The printed Egger coefficient and SE cannot produce the printed t
+statistic at displayed precision</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> The printed Egger coefficient
+and SE cannot produce the printed t statistic at displayed precision.
+The printed relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp2_prod.pdf#page=21">DOC-003 p. 21, eFigure
+3</a>.</p>
+<p><strong>Source evidence:</strong> Egger coefficient
+<code>-0.47</code>, SE <code>0.77</code>, <code>t=-0.59</code>, and
+<code>P=0.57</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> For a coefficient/SE t
+ratio, <code>-0.47/0.77=-0.6104</code>, about -0.61. With two-decimal
+rounding, coefficient magnitude <code>[0.465,0.475)</code> divided by SE
+<code>[0.765,0.775)</code> yields about <code>[0.600,0.621]</code>,
+excluding 0.59. The printed t and P remain mutually plausible for about
+8 df.</p>
+<p><strong>Reasoning procedure:</strong> The four fields are direct. A
+different precision/output field or alternative Egger implementation is
+inferred. Full ordinary rounded-input intervals are used; no unreported
+model convention is imposed.</p>
+<p><strong>Calculation:</strong> For a coefficient/SE t ratio,
+<code>-0.47/0.77=-0.6104</code>, about -0.61. With two-decimal rounding,
+coefficient magnitude <code>[0.465,0.475)</code> divided by SE
+<code>[0.765,0.775)</code> yields about <code>[0.600,0.621]</code>,
+excluding 0.59. The printed t and P remain mutually plausible for about
+8 df.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+named coefficient may not be the numerator of the displayed t under an
+unstated implementation, although the figure defines no alternative
+relationship.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> The inferential vector
+cannot be reproduced and may be copied into publication-bias
+assessments; no claim is made that the funnel-plot conclusion
+changes.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Inspect the Egger model
+output, exact coefficient/SE, degrees of freedom, and test definition;
+recompute t and P from the intended fields. What unrounded coefficient
+and SE, or what alternative test definition, produced
+<code>t=-0.59</code>?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c020--twelve-non-ascend-total-stroke-forest-rows-do-not-reproduce-etable-4s-event-totals" class="candidate-card">C020
+— Twelve non-ASCEND total-stroke forest rows do not reproduce eTable 4's
+event totals</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> Twelve non-ASCEND total-stroke
+forest rows do not reproduce eTable 4's event totals. The printed
+relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp2_prod.pdf#page=16">DOC-003 p. 16, eTable 4</a>;
+<a href="../joi180151supp2_prod.pdf#page=24" target="_blank" rel="noopener">DOC-003 p. 24, total-stroke
+forest plot</a>; <a href="../joi180151supp1_prod.pdf#page=7" target="_blank" rel="noopener">DOC-002 p.
+7, ASCEND protocol change</a>.</p>
+<p><strong>Source evidence:</strong> eTable 4 reports 12 studies,
+aspirin <code>1116/73883</code> and no aspirin <code>1136/72317</code>.
+All 13 forest rows total <code>1358/81623</code> and
+<code>1397/80057</code>; ASCEND contributes <code>240/7740</code> and
+<code>263/7740</code>. Equivalently, the 12 non-ASCEND forest rows total
+<code>1118/73883</code> and <code>1134/72317</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Removing ASCEND exactly
+reproduces denominators: <code>81623-7740=73883</code> and
+<code>80057-7740=72317</code>. Events do not: <code>1358-240=1118</code>
+versus 1116 and <code>1397-263=1134</code> versus 1136. Forest minus
+table is <code>+2</code> aspirin and <code>-2</code> no aspirin; total
+events are preserved but two events shift arms.</p>
+<p><strong>Reasoning procedure:</strong> Table totals and every forest
+row are direct. Arm transposition, separate curation, or data revision
+are inferred. Integer event identities; no rounding.</p>
+<p><strong>Calculation:</strong> Removing ASCEND exactly reproduces
+denominators: <code>81623-7740=73883</code> and
+<code>80057-7740=72317</code>. Events do not: <code>1358-240=1118</code>
+versus 1116 and <code>1397-263=1134</code> versus 1136. Forest minus
+table is <code>+2</code> aspirin and <code>-2</code> no aspirin; total
+events are preserved but two events shift arms.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Bayesian and frequentist displays may use different event adjudications
+despite identical studies and denominators, but no such distinction is
+supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Two supplied extractions
+of the same 12-study population yield different arm counts and could
+propagate inconsistent event data into a review; this does not by itself
+establish a different pooled conclusion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Sum the final 12-study
+dataset by arm, compare table and forest input files, and document any
+legitimate analysis-set or event-version distinction. Which 12-study arm
+event totals are intended, and what accounts for the two-event
+transfer?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c021--a-low-risk-all-mi-nnt-is-printed-although-the-displayed-ard-confidence-interval-reaches-000" class="candidate-card">C021
+— A low-risk all-MI NNT is printed although the displayed ARD confidence
+interval reaches 0.00</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> A low-risk all-MI NNT is
+printed although the displayed ARD confidence interval reaches 0.00. The
+printed relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp2_prod.pdf#page=4">DOC-003 p. 4, NNT/NNH rule</a>;
+<a href="../joi180151supp2_prod.pdf#page=15" target="_blank" rel="noopener">DOC-003 p. 15, eTable
+3</a>.</p>
+<p><strong>Source evidence:</strong> The methods/table state that
+NNT/NNH is reported for statistically significant risk changes. Low-risk
+all-MI ARD is <code>-0.27 (-0.49 to 0.00)</code> and NNT is
+<code>366</code>; no unrounded endpoint footnote is supplied.</p>
+<p><strong>Reported-versus-comparator:</strong> At displayed precision,
+a two-sided 95% CI reaching the null at 0.00 does not exclude zero,
+while an NNT is shown under an exclude-null reporting rule.</p>
+<p><strong>Reasoning procedure:</strong> CI, NNT, and reporting rule are
+direct. A negative unrounded endpoint or retained NNT is inferred. The
+unrounded upper endpoint may be slightly below zero and round to 0.00;
+unlike other rounded-to-null cells, this row provides no exact endpoint
+note.</p>
+<p><strong>Calculation:</strong> At displayed precision, a two-sided 95%
+CI reaching the null at 0.00 does not exclude zero, while an NNT is
+shown under an exclude-null reporting rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+unrounded interval may exclude zero and support the NNT, or the NNT may
+have been retained despite a null-reaching interval.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Significance
+classification and NNT extraction can diverge from the displayed
+interval, potentially affecting summary tables; no claim is made that
+the underlying result is nonsignificant without unrounded evidence.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Retrieve the unrounded ARD
+interval and the flag used to display NNT; confirm sidedness/confidence
+level and reporting logic. What is the unrounded upper ARD confidence
+limit for low-risk all MI, and does it exclude zero under the analysis
+used to decide whether NNT 366 should be displayed?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c022--the-diabetes-total-stroke-hr-endpoint-is-labelled-as-both-a-credible-and-a-confidence-limit" class="candidate-card">C022
+— The diabetes total-stroke HR endpoint is labelled as both a credible
+and a confidence limit</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> The diabetes total-stroke HR
+endpoint is labelled as both a credible and a confidence limit. The
+printed relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp2_prod.pdf#page=16">DOC-003 p. 16, eTable
+4</a>.</p>
+<p><strong>Source evidence:</strong> The HR column is
+<code>HR (95% CrI)</code>; diabetes is
+<code>0.78 (0.61 to 1.00)*</code>; the asterisk says
+<code>Upper confidence interval 1.004</code>. The adjacent ARR is
+separately labelled with a 95% CI.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>CrI</code> and
+<code>CI</code> denote distinct inferential interval types in this
+package, and the footnote is attached to the starred HR/CrI
+endpoint.</p>
+<p><strong>Reasoning procedure:</strong> Header and footnote are direct.
+Informal use of “confidence” or a wrong header is inferred.
+Terminology/label comparison; rounding is relevant only to 1.00 versus
+1.004, which the footnote explains.</p>
+<p><strong>Calculation:</strong> <code>CrI</code> and <code>CI</code>
+denote distinct inferential interval types in this package, and the
+footnote is attached to the starred HR/CrI endpoint.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+footnote may use “confidence interval” informally, or the HR interval
+could be frequentist despite the Bayesian methods/header; the latter is
+not otherwise supported.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Extractors can classify
+the same interval as Bayesian or frequentist, affecting evidence-model
+metadata; the numeric endpoint itself is not challenged.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Check the analysis output
+that generated the HR interval and identify whether 1.004 is a posterior
+credible or frequentist confidence limit. Should the footnote read
+<code>upper credible interval limit 1.004</code>, or is the HR interval
+type in the header incorrect?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c023--the-100-mg-all-mi-sensitivity-endpoint-is-labelled-as-both-a-credible-and-a-confidence-limit" class="candidate-card">C023
+— The &lt;=100-mg all-MI sensitivity endpoint is labelled as both a
+credible and a confidence limit</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> The &lt;=100-mg all-MI
+sensitivity endpoint is labelled as both a credible and a confidence
+limit. The printed relationship requires human adjudication.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp2_prod.pdf#page=18">DOC-003 p. 18, eTable
+6</a>.</p>
+<p><strong>Source evidence:</strong> The table says
+<code>Hazard Ratio (95% CrI)</code>, prints all-MI HR
+<code>0.87 (0.76 to 1.00)*</code> for aspirin dose &lt;=100 mg, and
+footnotes <code>Upper confidence interval 0.9989</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> The footnote is attached
+to a starred endpoint in a table explicitly defining 95% credible
+intervals; CI and CrI are distinct labels.</p>
+<p><strong>Reasoning procedure:</strong> Header, cell, and footnote are
+direct. Informal terminology or a wrong header is inferred.
+Terminology/label comparison. The footnote supplies the unrounded 0.9989
+value and resolves the numeric null-boundary question, not the
+interval-type label.</p>
+<p><strong>Calculation:</strong> The footnote is attached to a starred
+endpoint in a table explicitly defining 95% credible intervals; CI and
+CrI are distinct labels.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+“Confidence interval” may be informal wording; alternatively the
+sensitivity table may use frequentist intervals despite its CrI label,
+but no exception is stated.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Secondary extraction may
+misclassify the interval type and significance framework; the value and
+direction are not otherwise challenged.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Inspect the
+sensitivity-analysis output and confirm whether 0.9989 is a posterior
+credible limit or frequentist confidence limit. Is 0.9989 the upper
+credible limit, or should the table's interval-type label be CI rather
+than CrI?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2
+id="c024--ascend-ischemic-stroke-events-are-included-in-the-total-stroke-forest-plot-despite-explicit-exclusion-from-total-stroke" class="candidate-card">C024
+— ASCEND ischemic-stroke events are included in the total-stroke forest
+plot despite explicit exclusion from total stroke</h2>
+<p><em>Pending Human Adjudication</em></p>
+<p><strong>Candidate statement:</strong> ASCEND ischemic-stroke events
+are included in the total-stroke forest plot despite explicit exclusion
+from total stroke. The printed relationship requires human
+adjudication.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180151supp2_prod.pdf#page=9">DOC-003 p. 9, eTable 1</a>; <a
+href="../joi180151supp2_prod.pdf#page=16">DOC-003 p. 16, eTable 4</a>;
+<a href="../joi180151supp2_prod.pdf#page=24" target="_blank" rel="noopener">DOC-003 p. 24, total- and
+ischemic-stroke forest plots</a>; <a
+href="../joi180151supp1_prod.pdf#page=7">DOC-002 p. 7, protocol
+explanation</a>.</p>
+<p><strong>Source evidence:</strong> eTable 1 says ASCEND total stroke
+is <code>Not included in analysis - only reports ischemic stroke</code>.
+eTable 4 consequently has 12 total-stroke studies. The total-stroke
+forest plot nevertheless includes ASCEND <code>240/7740</code> versus
+<code>263/7740</code>; the exact row also appears in the separate
+ischemic-stroke plot.</p>
+<p><strong>Reported-versus-comparator:</strong> A measure explicitly
+classified as ischemic stroke should not be labelled and pooled as total
+stroke without an exception. Adding ASCEND denominators to the 12-study
+table totals exactly produces the 13-study forest totals:
+<code>73883+7740=81623</code> and <code>72317+7740=80057</code>,
+identifying the added row. The separate non-ASCEND arm-count
+inconsistency is C020, not merged here.</p>
+<p><strong>Reasoning procedure:</strong> Outcome-definition statement,
+row values, and appearances are direct. A broader frequentist
+convention, copied row, or analysis-set error is inferred. Exact row
+identity and integer denominators; rounding does not apply.</p>
+<p><strong>Calculation:</strong> A measure explicitly classified as
+ischemic stroke should not be labelled and pooled as total stroke
+without an exception. Adding ASCEND denominators to the 12-study table
+totals exactly produces the 13-study forest totals:
+<code>73883+7740=81623</code> and <code>72317+7740=80057</code>,
+identifying the added row. The separate non-ASCEND arm-count
+inconsistency is C020, not merged here.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+frequentist forest analysis may intentionally use a broader
+available-event convention than the Bayesian table, but no caption or
+method states that exception.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited direct-PDF
+location was reopened. The printed source fact, comparator, applicable
+rule, and stated arithmetic or logical comparison were matched and
+reproduced. The candidate remains unresolved only where the package
+lacks the definition, precision, source data, or production output named
+in the alternatives and human question.</p>
+<p><strong>Quality-control relevance:</strong> Total-stroke extraction
+may include an explicitly ischemic-only trial record and alter outcome
+classification in downstream synthesis; this candidate does not
+establish that the paper's conclusion is wrong.</p>
+<p><strong>Potential downstream evidence impact:</strong> If this
+candidate is confirmed, a data extractor, systematic review,
+meta-analysis, or guideline evidence table could copy the affected
+value, denominator, unit, interval type, or outcome label. This is a
+bounded possibility; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Inspect the frequentist
+analysis code and final outcome mapping for ASCEND; determine whether
+the row should be removed, relabelled, or accompanied by a stated
+definition exception. Should ASCEND be removed from the total-stroke
+forest plot, or should the outcome label/caption and definition table
+explicitly describe the broader convention used?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: —</li>
+<li>Importance: —</li>
+<li>Action: —</li>
+<li>Initials: —</li>
+<li>Notes: —</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If a human confirms any candidate, a data extractor could copy the
+affected number, denominator, unit, interval type, outcome definition,
+or summary label into a systematic review, meta-analysis, guideline
+evidence table, or later publication. This is a bounded possibility, not
+evidence that propagation occurred. Small preventable reporting defects
+can matter in aggregation even when they do not change the source
+paper's conclusion. This review makes no claim of conclusion change or
+harm.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The package does not supply raw participant data, table/figure
+production files, analysis code, trial-level person-time mapping,
+unrounded Cox/mixed-model outputs, Holm inputs, unrounded I2, MCMC
+diagnostics, unrounded ARDs, an explicit ARD scale, an NNT/NNH integer
+convention, or Egger model output. Those missing inputs bound the
+mechanical checks and are named in the relevant cards.</p>
+<p>DOC-001 page 8 required direct rendering because native text reading
+order is unusable. DOC-003 eFigure 2 has no numeric segment labels, so
+C018's graphical comparison is approximate. DOC-003 forest text required
+targeted CPU OCR as a locator, followed by direct visual checking. C014
+is explicitly conditional on ordinary nearest rounding and a common
+unrounded estimand.</p>
+<p>Most importantly, the package contains two article identities and no
+matched main/supplement pair: DOC-001 is DOI
+<code>10.1001/jama.2019.10517</code>; DOC-002/DOC-003 are DOI
+<code>10.1001/jama.2018.20578</code>. Therefore, package-level
+main-to-supplement matching is incomplete by source availability.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ul>
+<li>Confirm each cited page and transcription in the direct supplied
+PDF.</li>
+<li>Retrieve the named unrounded output, source dataset, coding
+dictionary, table input, or analysis code.</li>
+<li>Confirm that comparator records use the same population, time,
+contrast, outcome, model, measure, scale, and analysis version.</li>
+<li>Reproduce the stated arithmetic or inferential relationship with the
+source's actual precision and rounding convention.</li>
+<li>Decide whether a source-grounded alternative fully explains the
+observation.</li>
+<li>Record validity, importance, action, initials, and notes only in the
+blank fields on each card.</li>
+<li>If a change is warranted, determine the final correction from
+authoritative source materials; this report does not prescribe one.</li>
+</ul>
+<h2 id="reproducibility-and-source-integrity-metadata">Reproducibility
+and Source-Integrity Metadata</h2>
+<ul>
+<li>Profile: <code>1.3.1</code>; CPU-only; reusable evidence first;
+targeted Tesseract only where graphic text could not otherwise be
+transcribed.</li>
+<li>Direct sources inventoried before review: 3 PDFs, 46 pages, 3
+SHA-256 records.</li>
+<li>Reused assets inventoried before review: 47 files, 47 SHA-256
+records; no reused artifact was modified.</li>
+<li>Direct inspection tools: <code>sha256sum</code> (uutils coreutils
+0.8.0), <code>file</code> 5.46, Poppler 26.01.0 (<code>pdfinfo</code>,
+<code>pdftotext</code>, <code>pdftoppm</code>), Tesseract 5.5.0 with
+Leptonica 1.86.0, and Ghostscript 10.06.0 for readable orientation of
+temporary DOC-001 page 8 confirmation.</li>
+<li><a href="review_1_3_1/source_inventory.md">Source inventory</a>, <a
+href="review_1_3_1/evidence_asset_inventory.md">reused-evidence
+inventory</a>, <a href="review_1_3_1/coverage_manifest.md">coverage
+manifest</a>, and <a href="review_1_3_1/limitations.md">limitations
+record</a> are package-local review artifacts.</li>
+<li>Candidate ID conservation target: ledger = recheck = quality audit =
+report = <code>C001</code>-<code>C024</code>.</li>
+<li>Statistical completion target: <code>S001</code>-<code>S053</code>
+each have both pass records.</li>
+<li>Final source and reused-artifact hash comparison and workflow
+validation are recorded in
+<code>review_1_3_1/review_validation.json</code> after report
+generation.</li>
+</ul>
+<p>All candidates remain <strong>Pending Human
+Adjudication</strong>.</p>
+</body>
+</html>
