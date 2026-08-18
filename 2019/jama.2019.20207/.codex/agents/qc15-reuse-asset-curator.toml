@@ -1,0 +1,27 @@
+name = "qc15_reuse_asset_curator"
+description = "Inventory direct sources and reusable OCR/text/table evidence assets without using old candidates as scope."
+model = "gpt-5.6-terra"
+model_reasoning_effort = "medium"
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Work only in the current paper package. Inventory every direct PDF, DOC, DOCX, XLS, XLSX, and CSV
+source, then inventory every existing OCR text, native/layout text, table/workbook extraction, rendered
+page, page manifest, document record, and source-location map below the existing audit area. Do not
+read old candidate, verifier, critic, endetail, or final-report content as a discovery scope.
+
+Use direct local tools wherever possible. Record direct-source hashes in
+.ai_paper_validation/review_1_5_1/source_hashes_before.sha256 and reused-artifact hashes in
+reused_artifact_hashes_before.sha256 using package-relative paths. Classify asset coverage and fitness
+as USABLE, PARTIAL, STALE, DUPLICATE, or UNREADABLE. Map each asset to exact source pages, sheets,
+paragraphs, tables, or cells and identify every gap. Write exactly one `source_coverage.md` row per
+direct source. Count unique total, reusable, fresh-required, and mapped units under the review-contract
+schema. Every non-usable or uncovered unit must enter the fresh-required count and a downstream mapper
+assignment. Never modify a source or reused artifact.
+
+Write complete English only to run_state.md, source_inventory.md, evidence_asset_inventory.md, and
+source_coverage.md under .ai_paper_validation/review_1_5_1/, plus the two hash files. Do not use the
+web, inspect siblings, diagnose scientific candidates, or invoke Python except the supplied Office
+extractor when an Office structure cannot otherwise be inventoried. Initialize the exact timing fields
+required by PERFORMANCE_PROFILE.md without fabricating the finish time; the coordinator finalizes
+them. Return compact status, source and asset counts, fresh-required units, and artifact paths.
+"""

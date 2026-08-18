@@ -1,95 +1,158 @@
-# AI Paper Validation Workflow
+# Quantitative Quality-Control Review 1.5.1 — Reuse Existing Evidence Assets
 
-The project root contains one article package: one main article and zero or more supplementary files.
-The root thread acts as the `Coordinator`. It owns package inventory, task routing, candidate selection,
-and final consolidation. Child agents must not modify source PDFs.
+The current project root is exactly one paper package. The package may contain earlier
+`.ai_paper_validation/` records whose discovery stopped at, prioritized, or reported only 10
+candidates. Workflow 1.5.1 starts candidate discovery again without a count limit, while reusing all
+usable existing OCR, native text, layout text, table extraction, workbook extraction, rendered pages,
+and document maps. Reuse is an optimization, not a coverage boundary: every direct-source unit that
+lacks usable reusable extraction must be freshly inspected and mapped from the supplied source.
 
-## Workflow
+Use English only in prompts, generated artifacts, logs, and reports. Preserve every supplied source
+and every pre-existing audit artifact. Write new work only to:
 
-1. Run `package_inventory` to identify source PDFs and classify likely main article, results supplement,
-   protocol, SAP, and administrative files.
-2. Run `ai_use_restriction_checker` for every source PDF before full-text model-mediated processing.
-3. Run `pdf_preprocessor`. It may write derived artifacts only under `.ai_paper_validation/`.
-4. Run `main_text_extractor` and `results_supplement_extractor` in parallel.
-5. Run `table_arithmetic_checker`, `figure_flow_checker`, and `statistical_consistency_checker` in parallel.
-6. Deduplicate and prioritize the returned evidence. Send no more than 10 candidate issues to
-   `evidence_verifier`.
-7. Send verified findings to `critic`. The critic may retain no more than 10 final issues.
-8. Send accepted findings to `report_generator`.
-9. Submit the report for `Human Adjudication`.
+- `.ai_paper_validation/review_1_5_1/`
+- `.ai_paper_validation/final_report_1_5_1.md`
+- `.ai_paper_validation/final_report_1_5_1.html`
 
-## Long Supplement Handling
+## Agent-first execution
 
-Protocol, SAP, administrative, author-list, and data-sharing sections are not default audit targets.
-The coordinator must use the package manifest to restrict extraction, OCR, rendering, and checking to
-main-article pages and result-relevant supplementary pages. A protocol/SAP page may be opened only
-for a specific parent-requested comparison.
+Start immediately and operate autonomously. The coordinator plans coverage, delegates bounded and
+disjoint evidence scopes to specialist agents, merges their durable artifacts, and verifies coverage.
+Python is auxiliary only. Do not use Python to orchestrate the scientific review, select candidates,
+perform ordinary PDF extraction, run OCR, or replace agent reasoning. Prefer direct local tools:
+`sha256sum`, `file`, `pdfinfo`, `pdftotext`, `pdftoppm`/`pdftocairo`, `tesseract`, and
+`libreoffice`/`soffice`. The only permitted Python helpers are the optional Office structure
+extractor, deterministic token-cost calculator, report renderer, and final validator in
+`workflow_1_5_1/scripts/`. The calculator summarizes authoritative runtime usage; it does not estimate
+tokens from review text.
 
-This exemption does not apply to the `AI Training Restriction` screen: every supplied PDF requires a
-document-level rights record, even when its scientific content is not audited.
+Use artifact-first handoffs. Every specialist writes complete English output to one unique assigned
+path and returns only a compact status, exact scope, counts, limitations, and artifact path. Never let
+two agents write the same artifact concurrently. Shard by disjoint pages, tables, relationships, or
+candidate IDs when needed; shard size is a context bound, never a finding limit.
 
-## OCR Backend Selection
+Do not create, rewrite, or require a writable package-root `.codex/` directory during validation.
+The bundled `.codex` files are optional runtime presets. If they cannot be installed, spawn specialists
+with explicit model and reasoning-effort arguments and the role contract in this workflow.
 
-Before selective OCR, run `scripts/detect_ocr_backend.py` using `~/venvs/stt/bin/python` when that
-interpreter exists; otherwise use the active Python interpreter. Save its JSON output under
-`.ai_paper_validation/preprocessing/ocr_backend.json`. The selector recognizes an RTX 5070 Laptop
-GPU and other NVIDIA GPUs, validates RapidOCR's actual CUDA execution providers, and otherwise
-falls back to RapidOCR CPU or Tesseract CPU.
+## Read before reviewing
 
-Use `scripts/ocr_page.py` for every rendered page that needs OCR. A manifest may report GPU OCR
-only when its selected backend is `rapidocr-cuda` and its detector, classifier, and recognizer all
-report `CUDAExecutionProvider`. CPU fallback is valid; record it explicitly. If no backend is
-available, preprocessing must fail when OCR is required.
+Read completely:
 
-## AI Training Restriction Screen
+- `QUALITY_CONTROL_SCOPE.md`
+- `PERFORMANCE_PROFILE.md`
+- `workflow_1_5_1/review_contract.md`
+- `workflow_1_5_1/report_spec.md`
+- `workflow_1_5_1/settings.toml`
 
-This is a separate compliance screen, not a reporting-error category and not part of the `10 / 10 / 2`
-limits. For every supplied PDF, retain an `AI Training Restriction Record` with exact file and page
-locations, quoted language, and one of these statuses:
+Do not read an old candidate set, review queue, verifier disposition, critic decision, endetail
+section, or final report as a scientific input or candidate source. Preserve those records unchanged,
+but rebuild discovery from source-linked reusable assets plus mandatory direct-source inspection of
+every uncovered unit.
 
-- `Explicit AI Training Restriction`
-- `Conditional / Permission Required`
-- `No AI Training Restriction Located in Provided Materials`
-- `Not Stated / Undetermined`
+## Required workflow
 
-Search only supplied files, including embedded metadata and copyright, license, rights-and-permissions,
-and terms pages. Distinguish a restriction on training, fine-tuning, or model improvement from a
-restriction on OCR, inference, text-and-data mining, or redistribution. Do not infer permission from
-silence and do not provide legal advice. An explicit or conditional restriction requires `Human
-Compliance Review` before model-mediated processing not already approved by the institution.
+1. Record the UTC start time, then inventory every direct source, its complete stable unit count, and
+   SHA-256 in `.ai_paper_validation/review_1_5_1/source_hashes_before.sha256`. Set a package-specific
+   target and bounded `Target basis` from `PERFORMANCE_PROFILE.md`; do not infer either from SAP length
+   or page count alone. Initialize every required field in `run_state.md`. Initialize
+   `agent_execution_manifest.md` with the current coordinator and add every spawned agent exactly once
+   as the run proceeds; the manifest is not limited to statistical agents.
+2. Use `qc15_reuse_asset_curator` to inventory and hash every reused OCR/text/table/page/document-map
+   artifact in `reused_artifact_hashes_before.sha256`, assess its coverage and fitness, and write the
+   source and evidence-asset inventories. In `source_coverage.md`, record one row per direct source with
+   total, reusable, fresh-required, and mapped unit counts. Do not modify reused artifacts.
+3. Compare reusable coverage against every direct-source unit. Assign every uncovered page, sheet,
+   record group, paragraph group, and table group to fresh direct-source extraction and mapping. The
+   reusable and fresh-required unit counts must partition the total, and mapped units must equal the
+   total before completion. A reusable-derivative gap may remain a limitation; a scientific-coverage
+   gap may not.
+4. Create `coverage_manifest.md` before scientific mapping. Record every disjoint source/evidence unit
+   and stage assignment. Each table row contains exactly one plain relative artifact path; put every
+   shard part on its own row.
+5. Run `qc15_main_quantitative_mapper` and `qc15_support_quantitative_mapper` in parallel over the
+   disjoint union of reusable-backed and fresh-required units. Reconstruct every result-relevant
+   numeric and statistical relationship.
+6. Run numeric and cross-source review in new Terra/medium agents. Independently spawn a new
+   `gpt-5.6-terra`/`high` agent for statistical pass 1; do not reuse a mapper agent or use follow-up to
+   request a reasoning-effort change. Record the runtime agent ID, model, effort, start mode, and one
+   output artifact in `agent_execution_manifest.md`. After each completed model response, retain its
+   authoritative runtime usage record for later token accounting when the runtime exposes it.
+7. Merge only genuine duplicates before stable IDs. Assign `C001`, `C002`, ... to every distinct
+   candidate and write `candidate_ledger.md`. Preserve all checker provenance and source locations.
+8. Run `qc15_evidence_rechecker` over every stable ID against the exact source page or truthful Office
+   location. Existing OCR/text is a locator and transcription aid, not final authority.
+9. Spawn a different new `gpt-5.6-terra`/`high` agent for statistical pass 2 over every statistical
+   relationship, the complete cross-lane ledger, and all recheck facts. Record its distinct runtime ID
+   in `agent_execution_manifest.md`. Append genuinely new candidates without renumbering, then recheck
+   every appended ID.
+10. Run `qc15_quality_control_auditor` over every stable ID, every coverage row, the complete
+   `source_coverage.md`, and the statistical execution manifest. Repair supportable
+   omissions, but never delete or suppress an assigned candidate ID.
+11. Run `qc15_report_generator` to assemble the complete Markdown report. It must contain every
+    candidate in the ledger. If no candidate is found after complete coverage, produce a zero-candidate
+    report that states the completed scope and limitations. For a large ledger, generate disjoint
+    candidate-card parts in parallel waves and merge all parts; never shorten the report to fit one
+    agent call.
+12. Immediately after Markdown assembly, finalize `run_state.md`. Treat `Finished UTC` as the token-
+    accounting cutoff. Write `token_usage_ledger.csv` for the coordinator and every manifested agent,
+    using exact response-level runtime/API usage only. Use `TOTALS_ONLY` when exact input/output/total
+    counts exist without billing details; use `UNAVAILABLE` plus exact `__` token fields when no count
+    is exposed. Never approximate from text length. Run the bundled cost
+    calculator, then copy the exact performance fields, token-accounting status, per-model totals,
+    package total, and token-only price estimate into the report. Recompute source and reused-artifact
+    hashes, render HTML once, and validate:
 
-## Limits
+```bash
+python3 workflow_1_5_1/scripts/calculate_token_cost.py \
+  --ledger .ai_paper_validation/review_1_5_1/token_usage_ledger.csv \
+  --pricing workflow_1_5_1/token_pricing.toml \
+  --markdown .ai_paper_validation/review_1_5_1/token_usage_summary.md \
+  --json .ai_paper_validation/review_1_5_1/token_usage_summary.json
+python3 workflow_1_5_1/scripts/render_report.py \
+  .ai_paper_validation/final_report_1_5_1.md \
+  .ai_paper_validation/final_report_1_5_1.html \
+  --profile 1.5.1
+python3 workflow_1_5_1/scripts/validate_review.py --profile 1.5.1 --package .
+```
 
-- Maximum candidate issues per article package: 10.
-- Maximum final issues per article package: 10.
-- Maximum verification rounds per candidate: 2.
-- The workflow ends after one verification stage and one critic stage.
+Repair correctable defects until
+`.ai_paper_validation/review_1_5_1/review_validation.json` reports `PASS`.
+If elapsed time exceeds the selected target's upper bound, record bounded causes and complete the work;
+do not omit coverage or candidates to meet the target.
+If a repair requires another model call after `Finished UTC`, reopen the accounting window, update the
+finish time and manifest/ledger, and rerun the token calculation before rendering and validation.
 
-## Evidence Standard
+## Fixed scientific and communication boundaries
 
-Each final issue must be a self-contained evidence card for a human reviewer. It requires a
-one-sentence issue statement; category and severity; exact location for every cited item (document
-ID and filename, PDF page, and table, figure, panel, row, column, footnote, or section/paragraph
-label when available); labelled verbatim source excerpts or values with units; a direct
-reported-versus-comparator comparison; and a reproducible calculation or logical chain with inputs,
-formula or rule, result, units, and any rounding tolerance considered. It must also state the bounded
-impact on the reported total, statement, or interpretation, and give numbered verification steps that
-say what a human should check and which result would confirm or resolve the issue. The workflow must
-classify a finding with unavailable necessary evidence as `Rejected` or `Uncertain`, naming the
-missing evidence rather than implying a conclusion. Derived artifacts must retain a page-level link
-to their source PDF.
+- Prioritize numeric, denominator/proportion/total, inferential-statistical, cross-document numeric,
+  effect-measure/label/scale, and rate-versus-count consistency.
+- Analysis-unit, randomization-level, sample-unit, or population-definition issues are secondary and
+  qualify only when they create a concrete inconsistency in a reported number, statistic, denominator,
+  label, or interpretation.
+- Do not perform a broad methodology, study-design, clinical, novelty, misconduct, or raw-data audit.
+- Use only supplied package evidence. Do not browse the web or use external literature.
+- Never register a candidate solely because a very small P value is displayed as `P = 0`, `p = 0.000`,
+  or equivalent. Treat coherent display zero as finite-precision shorthand and record
+  `DISPLAY_ZERO_NOT_CANDIDATE`. Require an independent supplied-source contradiction before assigning
+  a `C` ID, and frame the candidate around that contradiction.
+- Treat findings as quality-control candidates: small preventable reporting defects may matter because
+  they can propagate into systematic reviews, meta-analyses, or other downstream evidence products.
+  Do not inflate that possibility into a claim that the paper's conclusion is wrong.
+- Never assign `Major`, `Minor`, `Verified`, `Rejected`, `Uncertain`, severity, validity, acceptance,
+  exclusion, or a final correction. Every candidate remains `Pending Human Adjudication`.
+- Preserve 1.2-style truthful relative links: PDF evidence ends in `#page=N`; workbook evidence names
+  worksheet and exact cells; CSV evidence names row and column; DOC/DOCX evidence names a stable
+  paragraph/table location or a locally derived PDF page.
+- The Linux target is CPU-only. Reuse existing OCR first. Use direct native/layout extraction for
+  uncovered units and targeted Tesseract only when text is unusable or visual confirmation requires
+  it; never probe or invoke a GPU.
 
-The coordinator must preserve a document-level output for every supplied PDF under
-`.ai_paper_validation/document_outputs/<document_id>/`, including its inventory classification,
-rights record, extraction/OCR scope, processing status, and each agent response or an explicit
-`Not Audited by Design` record. Preserve source PDFs unchanged. The final report must include a
-separate `AI Training Restriction Summary` table and must not merge it into the scientific issue list.
+## Completion
 
-## Scope
-
-Allowed issue categories are `Arithmetic inconsistency`, `Cross-document inconsistency`,
-`Statistical reporting inconsistency`, `Participant flow inconsistency`, and `Presentation inconsistency`.
-
-Do not assess research misconduct, raw-data validity, clinical appropriateness, general methodological
-limitations, novelty, or information not contained in the article package. Do not use web search,
-external retrieval, or unstated external knowledge.
+Do not finish until every direct-source row has mapped units equal to total units; all coverage rows
+are complete and contain one artifact path; both fresh Terra/high statistical agents are recorded and
+cover every registered relationship; every actual agent including the coordinator appears in both the
+execution manifest and token ledger; agent- and model-level token summaries are current; ledger/recheck/quality/report ID sets are identical; every local
+evidence link resolves; source and reused-artifact hashes are unchanged; standalone HTML exists with
+embedded CSS and a table of contents; and the validator reports `PASS`.
