@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.4.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.4.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.4.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review-moodfood-trial-package"
+id="toc-quantitative-quality-control-consistency-review-moodfood-trial-package">Quantitative
+Quality-Control Consistency Review: MooDFOOD Trial Package</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--table-2-footnote-duplicates-the-supplements-without-therapy-label"
+id="toc-c001--table-2-footnote-duplicates-the-supplements-without-therapy-label">C001
+— Table 2 footnote duplicates the supplements-without-therapy
+label</a></li>
+<li><a
+href="#c002--supplement-adherence-cutoff-changes-from-inclusive-to-strict-wording"
+id="toc-c002--supplement-adherence-cutoff-changes-from-inclusive-to-strict-wording">C002
+— Supplement-adherence cutoff changes from inclusive to strict
+wording</a></li>
+<li><a
+href="#c003--eappendix-8-footnote-markers-point-to-unrelated-adherence-rows"
+id="toc-c003--eappendix-8-footnote-markers-point-to-unrelated-adherence-rows">C003
+— eAppendix 8 footnote markers point to unrelated adherence
+rows</a></li>
+<li><a href="#c004--eappendix-10-prints-a-literal-p-value-of-zero"
+id="toc-c004--eappendix-10-prints-a-literal-p-value-of-zero">C004 —
+eAppendix 10 prints a literal P value of zero</a></li>
+<li><a
+href="#c005--main-article-sample-size-total-conflicts-with-four-stated-cell-counts"
+id="toc-c005--main-article-sample-size-total-conflicts-with-four-stated-cell-counts">C005
+— Main-article sample-size total conflicts with four stated cell
+counts</a></li>
+<li><a
+href="#c006--protocol-calls-a-30-versus-15-contrast-a-25-difference"
+id="toc-c006--protocol-calls-a-30-versus-15-contrast-a-25-difference">C006
+— Protocol calls a 30% versus 15% contrast a 25% difference</a></li>
+<li><a
+href="#c007--protocol-and-publication-state-different-sample-size-assumptions"
+id="toc-c007--protocol-and-publication-state-different-sample-size-assumptions">C007
+— Protocol and publication state different sample-size
+assumptions</a></li>
+<li><a
+href="#c008--protocol-uses-incompatible-dsm-editions-for-the-primary-endpoint"
+id="toc-c008--protocol-uses-incompatible-dsm-editions-for-the-primary-endpoint">C008
+— Protocol uses incompatible DSM editions for the primary
+endpoint</a></li>
+<li><a
+href="#c009--analysis-plan-significance-threshold-lacks-a-comparison-operator"
+id="toc-c009--analysis-plan-significance-threshold-lacks-a-comparison-operator">C009
+— Analysis-plan significance threshold lacks a comparison
+operator</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a href="#reproducibility-source-integrity-and-performance-metadata"
+id="toc-reproducibility-source-integrity-and-performance-metadata">Reproducibility,
+Source-Integrity, and Performance Metadata</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review-moodfood-trial-package">Quantitative
+Quality-Control Consistency Review: MooDFOOD Trial Package</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p><strong>All nine observations in this report are Pending Human
+Adjudication.</strong> They are source-grounded reporting-consistency
+questions, not findings of study invalidity, misconduct, or a changed
+clinical conclusion.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>This complete five-document review registered <strong>9</strong>
+distinct candidate consistency issues: two numeric/arithmetic, three
+measure/label/scale, two cross-document numeric, and two
+statistical-reporting issues. The review covered all
+<strong>102/102</strong> supplied PDF pages, mapped
+<code>N001-N095</code> and <code>S001-S054</code>, and completed both
+statistical passes. Candidate IDs are <code>C001-C009</code>; no
+candidate count cap was used.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains five direct PDFs: DOC-001 main article (11
+pages), DOC-002 protocol (60), DOC-003 statistical analysis plan (5),
+DOC-004 results supplement (25), and DOC-005 data-sharing statement (1).
+Direct PDFs were the authority for all candidate evidence. Their
+before-review SHA-256 values were recorded in
+<code>review_1_4_1/source_hashes_before.sha256</code>.</p>
+<ul>
+<li><code>jama_bot_2019_oi_190007.pdf</code>:
+<code>74b85a4b77870fda5ff0ce2f8287a2533a11ee81745d4031155f4af2986bd980</code></li>
+<li><code>joi190007supp1_prod.pdf</code>:
+<code>b8f3980eacaa908929e57fc6aadd4de0e7a5691a4978be0e2fe4b544455858db</code></li>
+<li><code>joi190007supp2_prod.pdf</code>:
+<code>b14aaebd8fbded6d36e1ca618cc9f51f2c76d50e486a8c18b4fa56fb183bced7</code></li>
+<li><code>joi190007supp3_prod.pdf</code>:
+<code>eeb826267cc5662b7736f625a226f37bdeb9ce8cfc6d7556d7ef6fdba5b53246</code></li>
+<li><code>joi190007supp4_prod.pdf</code>:
+<code>207c317e14618cc7fa6c86853e12ef03bebd2dff3676fa2383762ca248688641</code></li>
+</ul>
+<p>Seventy-two eligible reusable evidence assets were inventoried: 48
+usable, 16 partial, 6 stale, 2 duplicate, and none unreadable. Native
+text covered DOC-001 pp. 1-11 and DOC-004 pp. 1-2 and 16-23;
+OCR/rendered assets were locator aids only. Legacy candidate,
+disposition, and final-report material was excluded from scientific
+discovery.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The direct-source page union was complete: DOC-001 11 pages, DOC-002
+60, DOC-003 5, DOC-004 25, and DOC-005 1. The initial
+reusable-derivative gap of 81 pages was repaired by direct mapping in
+disjoint support shards; it remains an asset limitation, not a
+scientific-coverage gap. DOC-005 contained no applicable quantitative
+relationship. No web, external literature, Office file, workbook, CSV,
+or raw participant data was used.</p>
+<p>The review addressed reporting consistency in numbers, denominators,
+labels, scales, statistics, and matched cross-document statements. It
+did not conduct a broad design, clinical, novelty, misconduct, or
+raw-data audit.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The unified numeric inventory contains <code>N001-N095</code> (95
+relationships), including trial flow, baseline tables, event/rate
+quantities, adherence, outcomes, protocol planning, statistical-plan
+definitions, and supplement definitions. The statistical inventory
+contains <code>S001-S054</code> (54 relationships). Every S relationship
+has <code>PASS_1_COMPLETE</code> and <code>PASS_2_COMPLETE</code>
+status. Numeric checks, cross-source checks, direct mechanical rechecks,
+and the final evidence-quality audit conserved exactly
+<code>C001-C009</code>.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Category</th>
+<th>Short statement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Table 2 footnote repeats the supplements-without-therapy label.</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Adherence cutoff is inclusive in definitions but strict in Results
+prose.</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>eAppendix 8 footnote markers point to unrelated rows.</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Statistical reporting inconsistency</td>
+<td>eAppendix 10 prints <code>p=0</code>.</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Main sample-size total conflicts with four stated cell counts.</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Protocol calls 30% versus 15% a 25% difference.</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Protocol and publication give different sample-size inputs.</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Protocol names DSM-IV and DSM-5 for the same endpoint.</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>Statistical reporting inconsistency</td>
+<td>Analysis-plan threshold lacks a comparison operator.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--table-2-footnote-duplicates-the-supplements-without-therapy-label" class="candidate-card">C001
+— Table 2 footnote duplicates the supplements-without-therapy label</h2>
+<p><strong>Candidate statement:</strong> Table 2 footnote d assigns both
+event components to supplements without therapy, although the second
+component is elsewhere identified as supplements with therapy.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_bot_2019_oi_190007.pdf#page=6">DOC-001 Table 2 — PDF p.
+6</a>; <a href="../jama_bot_2019_oi_190007.pdf#page=3" target="_blank" rel="noopener">Figure 1 — PDF p.
+3</a>; <a href="../jama_bot_2019_oi_190007.pdf#page=7" target="_blank" rel="noopener">Results — PDF p.
+7</a>.</p>
+<p><strong>Source evidence:</strong> Footnote d prints 32/256 (12.5%)
+and 22/256 (8.6%) both as “supplements without therapy.” Footnote f and
+Results identify 22/256 (8.6%) as supplements with therapy.</p>
+<p><strong>Reported-versus-comparator:</strong> Repeated “without
+therapy” versus the Figure 1 allocation/Results and footnote-f “with
+therapy” label for 22/256.</p>
+<p><strong>Reasoning procedure:</strong> Match the two components to the
+mutually exclusive 2x2 supplement strata.</p>
+<p><strong>Calculation:</strong> 32+22=54 events and 256+256=512;
+22/256=8.59375%, rounded 8.6%. The other partition is 25+32=57 without
+therapy and 26+22=48 with therapy.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Counts,
+percentages, total, OR, CI, and P value reconcile; the problem may be
+confined to one footnote label.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF text
+extraction and page rendering found all locations and printed wording.
+Inputs reproduce the label mismatch; missing are the production proof
+and original four-cell source labels.</p>
+<p><strong>Quality-control relevance:</strong> A four-cell treatment
+label is needed to interpret the event components of a factorial
+result.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy the wrong therapy-stratum label while
+retaining the correct event count.</p>
+<p><strong>Human verification steps:</strong> Inspect the production
+table/proof and original analysis labels; confirm whether the second
+phrase should be “with therapy.”</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: __</li>
+<li>Importance: __</li>
+<li>Action: __</li>
+<li>Initials: __</li>
+<li>Notes: __</li>
+</ul>
+<h2
+id="c002--supplement-adherence-cutoff-changes-from-inclusive-to-strict-wording" class="candidate-card">C002
+— Supplement-adherence cutoff changes from inclusive to strict
+wording</h2>
+<p><strong>Candidate statement:</strong> The predefined and supplement
+cutoff is <code>&gt;=70%</code>, whereas Results describes adherence as
+“more than 70%.”</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_bot_2019_oi_190007.pdf#page=4">DOC-001 Methods — PDF p.
+4</a>; <a href="../jama_bot_2019_oi_190007.pdf#page=6" target="_blank" rel="noopener">Results — PDF p.
+6</a>; <a href="../joi190007supp3_prod.pdf#page=16" target="_blank" rel="noopener">DOC-004 eAppendix 8
+— PDF p. 16</a>; <a href="../joi190007supp3_prod.pdf#page=22" target="_blank" rel="noopener">eAppendix
+12 — PDF p. 22</a>.</p>
+<p><strong>Source evidence:</strong> Methods/eAppendices print
+<code>&gt;=70%</code>; Results says 77% had adherence “more than
+70%.”</p>
+<p><strong>Reported-versus-comparator:</strong> Strict
+<code>&gt;70%</code> prose versus inclusive <code>&gt;=70%</code>
+operational/table wording.</p>
+<p><strong>Reasoning procedure:</strong> Compare whether equality at the
+stated 70% boundary is included.</p>
+<p><strong>Calculation:</strong> eAppendix 8 pill-weight multinutrient
+counts are 135+134+126+120=515; 515/666=77.3%, compatible with the
+rounded 77%. <code>&gt;=70%</code> includes exactly 70%;
+<code>&gt;70%</code> does not.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Results
+may use informal prose for the inclusive criterion and no participant
+may lie exactly at 70%.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct pages confirm
+the wording and counts. Missing are boundary-level adherence values, the
+selected pill component, operational code/data dictionary, and an
+unrounded Results numerator/denominator.</p>
+<p><strong>Quality-control relevance:</strong> Cutoff wording can alter
+an adherence numerator at the boundary.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence user could apply a different adherence definition when
+extracting a per-protocol/CACE-related quantity.</p>
+<p><strong>Human verification steps:</strong> Identify the operational
+cutoff and component behind 77%; count observations equal to 70%.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: __</li>
+<li>Importance: __</li>
+<li>Action: __</li>
+<li>Initials: __</li>
+<li>Notes: __</li>
+</ul>
+<h2
+id="c003--eappendix-8-footnote-markers-point-to-unrelated-adherence-rows" class="candidate-card">C003
+— eAppendix 8 footnote markers point to unrelated adherence rows</h2>
+<p><strong>Candidate statement:</strong> Visible asterisks attach to
+four adherence rows but the corresponding note defines Morisky score;
+the Morisky row is unmarked and the kappa note has no visible
+double-marker target.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190007supp3_prod.pdf#page=16">DOC-004 eAppendix 8 — PDF p.
+16</a>.</p>
+<p><strong>Source evidence:</strong> Four <code>&gt;=70%</code> rows
+carry <code>*</code>; the <code>*</code> note defines average Morisky
+score. The Morisky row has no marker. The <code>**</code> note gives
+kappas 0.73/0.70 but no row visibly carries <code>**</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Marker placements versus
+the content and apparent targets of the two notes.</p>
+<p><strong>Reasoning procedure:</strong> Treat each marker as a required
+row-to-note cross-reference.</p>
+<p><strong>Calculation:</strong> Logical reproduction: four visible
+<code>*</code> targets map to the sole Morisky note; zero visible
+<code>**</code> targets map to the kappa note; no arithmetic
+applies.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Production may have shifted markers; the intended corrected arrangement
+cannot be determined from the PDF.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct page rendering
+confirms all markers and notes. Missing are the editable table, proof,
+and author correction record.</p>
+<p><strong>Quality-control relevance:</strong> Footnotes qualify the
+meaning and provenance of adherence statistics.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could associate Morisky or agreement information with the
+wrong adherence rows.</p>
+<p><strong>Human verification steps:</strong> Inspect the production
+source to identify intended <code>*</code> and <code>**</code> row
+assignments.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: __</li>
+<li>Importance: __</li>
+<li>Action: __</li>
+<li>Initials: __</li>
+<li>Notes: __</li>
+</ul>
+<h2 id="c004--eappendix-10-prints-a-literal-p-value-of-zero" class="candidate-card">C004 —
+eAppendix 10 prints a literal P value of zero</h2>
+<p><strong>Candidate statement:</strong> The baseline GAD-7 row displays
+<code>p=0</code> without threshold notation or a rounding
+convention.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190007supp3_prod.pdf#page=19">DOC-004 eAppendix 10B — PDF p.
+19</a>.</p>
+<p><strong>Source evidence:</strong> The row prints B=0.464, 95% CI
+0.409 to 0.52, and <code>p=0</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Literal zero P field
+versus the row’s positive coefficient/wholly positive interval; no
+independent exact P occurrence is supplied.</p>
+<p><strong>Reasoning procedure:</strong> Check the reported P display
+and use the rounded interval only as a labelled diagnostic, not an exact
+recalculation.</p>
+<p><strong>Calculation:</strong> Diagnostic only: SE approximately
+(0.520-0.409)/(2x1.96)=0.0283; z approximately 0.464/0.0283=16.4,
+consistent with a very small positive two-sided tail probability, not an
+exact recovered P value.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>0</code> may be fixed-precision software/export rendering of a
+very small positive P value.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct rendering
+confirms the literal <code>0</code>. Missing are unrounded B/CI/P,
+SE/test statistic, degrees of freedom, interval/test method, covariance
+estimator, and display convention.</p>
+<p><strong>Quality-control relevance:</strong> P-value display should
+distinguish an exact value from a thresholded small value.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a systematic reviewer or meta-analyst could copy <code>P=0</code> as an
+exact statistic.</p>
+<p><strong>Human verification steps:</strong> Retrieve unrounded output
+and the journal/software P-value display rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: __</li>
+<li>Importance: __</li>
+<li>Action: __</li>
+<li>Initials: __</li>
+<li>Notes: __</li>
+</ul>
+<h2
+id="c005--main-article-sample-size-total-conflicts-with-four-stated-cell-counts" class="candidate-card">C005
+— Main-article sample-size total conflicts with four stated cell
+counts</h2>
+<p><strong>Candidate statement:</strong> The article says 392
+participants were needed while parenthetically stating 196 in each of
+four combinations.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_bot_2019_oi_190007.pdf#page=4">DOC-001 Sample Size — PDF
+p. 4</a>.</p>
+<p><strong>Source evidence:</strong> It prints “392 participants (196 in
+each of the 4 possible intervention combinations)” and then 22%
+attrition with 250 per intervention combination.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported total 392
+versus four stated cells of 196; later four cells of 250 provide an
+internal comparator.</p>
+<p><strong>Reasoning procedure:</strong> Sum the stated mutually
+exclusive combination cells.</p>
+<p><strong>Calculation:</strong> 4x196=784, not 392; 392/196=2.
+Conversely, 4x250=1000, consistent with the later per-combination
+statement.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> 392 may
+be a marginal two-level factorial contrast (196+196), although the
+sentence says 196 in each of four combinations.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct page confirms
+the complete statement. Missing are the power-calculation
+output/formula, allocation unit for 196/392, and production
+manuscript.</p>
+<p><strong>Quality-control relevance:</strong> Sample-size units affect
+interpretation of planned power and factorial allocation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a trial reviewer could copy an incorrect planned total or per-cell
+sample size.</p>
+<p><strong>Human verification steps:</strong> Obtain the
+calculation/output and identify whether 392 is marginal or total;
+clarify the printed phrase/number.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: __</li>
+<li>Importance: __</li>
+<li>Action: __</li>
+<li>Initials: __</li>
+<li>Notes: __</li>
+</ul>
+<h2
+id="c006--protocol-calls-a-30-versus-15-contrast-a-25-difference" class="candidate-card">C006 —
+Protocol calls a 30% versus 15% contrast a 25% difference</h2>
+<p><strong>Candidate statement:</strong> The protocol’s stated 25%
+difference does not reconcile with its displayed 30% control and 15%
+intervention incidences under ordinary absolute or relative metrics.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190007supp1_prod.pdf#page=16">DOC-002 Sample Size — PDF p.
+16</a>.</p>
+<p><strong>Source evidence:</strong> The protocol prints “difference of
+25%,” followed by 30% control and 15% intervention one-year
+incidence.</p>
+<p><strong>Reported-versus-comparator:</strong> 25% wording versus the
+two printed incidences.</p>
+<p><strong>Reasoning procedure:</strong> Compute absolute
+percentage-point and control-relative differences.</p>
+<p><strong>Calculation:</strong> 30%-15%=15 percentage points;
+(30%-15%)/30%=50%; risk ratio=15%/30%=0.50. None equals 25%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The 25%
+may refer to an unstated calculation parameter or drafting
+carryover.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct page confirms
+all three values. Missing are the metric definition, calculation
+parameterization/output, and amendment/draft history.</p>
+<p><strong>Quality-control relevance:</strong> Event-rate assumptions
+determine a power calculation’s documented meaning.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a protocol reviewer could extract the wrong assumed effect size.</p>
+<p><strong>Human verification steps:</strong> Retrieve the power
+calculation and define what “25%” was intended to represent.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: __</li>
+<li>Importance: __</li>
+<li>Action: __</li>
+<li>Initials: __</li>
+<li>Notes: __</li>
+</ul>
+<h2
+id="c007--protocol-and-publication-state-different-sample-size-assumptions" class="candidate-card">C007
+— Protocol and publication state different sample-size assumptions</h2>
+<p><strong>Candidate statement:</strong> Matched enrollment-planning
+passages report different active event rates, uninflated sample
+quantities, and attrition assumptions.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_bot_2019_oi_190007.pdf#page=4">DOC-001 Sample Size — PDF
+p. 4</a>; <a href="../joi190007supp1_prod.pdf#page=16" target="_blank" rel="noopener">DOC-002 Sample
+Size — PDF p. 16</a>; <a
+href="../joi190007supp1_prod.pdf#page=17">DOC-002 continuation — PDF p.
+17</a>.</p>
+<p><strong>Source evidence:</strong> Publication: 30% versus 20%, 33%
+reduction, 196 stated per combination, 22% attrition, 250 per
+combination. Protocol: 30% versus 15%, 180 per group, 20% dropout, 250
+per arm.</p>
+<p><strong>Reported-versus-comparator:</strong> Same one-year factorial
+trial’s publication planning inputs versus protocol planning inputs.</p>
+<p><strong>Reasoning procedure:</strong> Match trial/design/time frame,
+then compare effect-rate, pre-attrition, and attrition quantities.</p>
+<p><strong>Calculation:</strong> Protocol contrast: 15 percentage
+points/50% relative reduction. Publication: 10 points/33.3% relative
+reduction. Attrition differs by 2 points; both final targets imply
+4x250=1000.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Protocol version 7 may reflect another planning stage or a legitimate
+amendment; the compared pages do not document the transition.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct pages confirm
+both passages. Missing are original calculation files, dated
+amendments/change history, plan provenance, and the assumptions that
+governed enrollment.</p>
+<p><strong>Quality-control relevance:</strong> Cross-document planning
+assumptions should be traceable when the same trial is described.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could record inconsistent anticipated event rates or power
+assumptions.</p>
+<p><strong>Human verification steps:</strong> Locate dated
+amendments/recalculations and identify the final operative
+assumptions.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: __</li>
+<li>Importance: __</li>
+<li>Action: __</li>
+<li>Initials: __</li>
+<li>Notes: __</li>
+</ul>
+<h2
+id="c008--protocol-uses-incompatible-dsm-editions-for-the-primary-endpoint" class="candidate-card">C008
+— Protocol uses incompatible DSM editions for the primary endpoint</h2>
+<p><strong>Candidate statement:</strong> The protocol names DSM-IV and
+DSM-5 for the same MINI-assessed 12-month MDD endpoint and schedule.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190007supp1_prod.pdf#page=8">DOC-002 endpoint summary — PDF
+p. 8</a>; <a href="../joi190007supp1_prod.pdf#page=28" target="_blank" rel="noopener">DOC-002 Methods
+8.1.1 — PDF p. 28</a>; <a
+href="../jama_bot_2019_oi_190007.pdf#page=4">DOC-001 Primary Outcome —
+PDF p. 4</a>.</p>
+<p><strong>Source evidence:</strong> Protocol p. 8 prints DSM-IV/MINI;
+p. 28 prints DSM-5/MINI V5.01, both with baseline, 3-, 6-, and 12-month
+assessment. The article identifies DSM-IV/MINI 5.0.</p>
+<p><strong>Reported-versus-comparator:</strong> DSM-IV endpoint label
+versus DSM-5 label for matching endpoint/schedule.</p>
+<p><strong>Reasoning procedure:</strong> Compare diagnostic-edition
+labels after matching endpoint, MINI family, and time schedule.</p>
+<p><strong>Calculation:</strong> Logical comparison only: DSM-IV and
+DSM-5 are distinct labels; no arithmetic applies.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unrevised section may remain, or the label difference may not have
+altered the operational MINI assessment.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct pages confirm
+both labels. Missing are administered MINI forms/modules, scoring
+algorithm, operative case-definition manual, training/data dictionary,
+amendment history, and classification-impact evidence.</p>
+<p><strong>Quality-control relevance:</strong> The diagnostic standard
+labels the primary endpoint’s measurement definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence synthesis could record an inconsistent diagnostic standard
+for the endpoint.</p>
+<p><strong>Human verification steps:</strong> Confirm the operative
+diagnostic edition and whether any version transition changed
+assessment/classification.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: __</li>
+<li>Importance: __</li>
+<li>Action: __</li>
+<li>Initials: __</li>
+<li>Notes: __</li>
+</ul>
+<h2
+id="c009--analysis-plan-significance-threshold-lacks-a-comparison-operator" class="candidate-card">C009
+— Analysis-plan significance threshold lacks a comparison operator</h2>
+<p><strong>Candidate statement:</strong> The statistical analysis plan
+prints <code>p 0.05</code> for the two-sided significance threshold
+without an operator.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190007supp2_prod.pdf#page=3">DOC-003 statistical analysis
+plan — PDF p. 3</a>; <a href="../joi190007supp2_prod.pdf#page=5" target="_blank" rel="noopener">local
+interaction rule — PDF p. 5</a>.</p>
+<p><strong>Source evidence:</strong> The global sentence is
+<code>the 2-sided significance threshold will be set at p 0.05</code>. A
+p. 5 local modifier rule separately prints <code>p&lt;0.05</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Operator-free global
+threshold versus the locally explicit <code>&lt;</code> comparison.</p>
+<p><strong>Reasoning procedure:</strong> A threshold must specify the
+relation that classifies P values.</p>
+<p><strong>Calculation:</strong> The p. 3 syntax cannot classify 0.049,
+0.050, or 0.051. Under p. 5’s local <code>p&lt;0.05</code>, 0.049 meets
+that local rule; this comparator does not correct p. 3.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+less-than glyph may have been lost in production; it renders elsewhere
+in the same plan.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF text and
+rendering confirm no operator on p. 3. Missing are the editable plan,
+conversion history, global equality rule, and confirmation that p. 5
+applies globally.</p>
+<p><strong>Quality-control relevance:</strong> An operator is essential
+for a reproducible stated significance convention.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could be unable to determine the plan’s exact significance
+rule.</p>
+<p><strong>Human verification steps:</strong> Inspect the original
+SAP/source file and confirm whether the intended convention was
+<code>P&lt;.05</code>, <code>P&lt;=.05</code>, or another rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li>Validity: __</li>
+<li>Importance: __</li>
+<li>Action: __</li>
+<li>Initials: __</li>
+<li>Notes: __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, these issues could affect copied treatment labels,
+adherence definitions, table-note interpretation, P-value notation,
+planned sample-size inputs, or endpoint diagnostic labels. Such effects
+are bounded to potential reuse in data extraction, systematic reviews,
+meta-analyses, or guidance work; this review does not establish that any
+propagation occurred or that any study conclusion changed.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>Direct PDF confirmation was available for every candidate, but
+individual-level data, unrounded analysis output, source-table proofs,
+original power calculations, amendment histories, and some model/test
+details were not supplied. Therefore, the review does not determine
+boundary classifications for C002, an exact P value for C004, intended
+production corrections for C001/C003/C009, the operative power
+assumptions for C005-C007, or the operative DSM assessment definition
+for C008. OCR confidence/provenance metadata was incomplete and was not
+treated as final evidence. No structured-table, workbook, CSV, or
+figure-data asset was supplied.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ul>
+<li>Review each card’s direct PDF evidence and its named missing
+inputs.</li>
+<li>Determine validity, importance, action, initials, and notes for each
+C001-C009 card.</li>
+<li>Preserve the distinction between printed observation, derived
+comparison, and possible explanation.</li>
+<li>If a correction is contemplated, verify it against the production
+source, original analysis output, protocol/SAP revision history, or data
+dictionary as appropriate.</li>
+</ul>
+<h2
+id="reproducibility-source-integrity-and-performance-metadata">Reproducibility,
+Source-Integrity, and Performance Metadata</h2>
+<ul>
+<li><strong>Review profile:</strong> 1.4.1; reusable evidence assets
+with restarted candidate discovery.</li>
+<li><strong>Direct source scope:</strong> 5 PDFs, 102/102 pages.</li>
+<li><strong>Reusable assets before review:</strong> 72; source and
+reused-artifact before-hash manifests retained in
+<code>review_1_4_1/</code>.</li>
+<li><strong>Target elapsed minutes:</strong> 20-25</li>
+<li><strong>Started UTC:</strong> 2026-08-18T06:09:33Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-18T06:58:55Z</li>
+<li><strong>Observed elapsed minutes:</strong> 49.4</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> Final quality-audit repair
+required direct mapping of 81 pages without reusable extraction;
+runtime-profile repair reran both statistical passes at explicit Terra
+high effort; expanded coverage increased the relationship set to 95
+numeric and 54 statistical units and the candidate set to 9.</li>
+</ul>
+<p>The coordinator must finalize the timing fields immediately after
+Markdown assembly, recompute source and reused-asset hashes, render
+standalone HTML once, and run the profile validator.</p>
+</body>
+</html>
