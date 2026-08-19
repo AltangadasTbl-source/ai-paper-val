@@ -4,13 +4,13 @@ quantitative relationship mapping, uncapped candidate discovery, source recheck,
 reporting. Preserve but ignore all old OCR, extraction, candidate, queue, verifier/critic, endetail,
 and report records as evidence inputs.
 
-Use the machine-level OpenRouter provider from `~/.codex/config.toml`. Keep the coordinator, every
-named role, and every default or repair subagent on `~openai/gpt-latest`; never substitute a built-in
-model slug. Follow `OPENROUTER_SETUP.md` and start no work if this session was opened under another
-provider.
+Use the OpenRouter provider and `env_key` supplied by `launch_openrouter.sh`. Keep the coordinator,
+every named role, and every default or repair subagent on `~openai/gpt-latest`/`high`; never substitute
+a built-in model slug or lower the reasoning effort. The launcher ignores conflicting base user
+defaults for this run.
 
-Require the launcher-created `routing_preflight.md`, including `Named agent presets: PASS`, before
-scientific work. Use a fresh, distinct
+Require the launcher-created `routing_preflight.md`, including `Authentication probe: PASS` and
+`Named agent presets: PASS`, before scientific work. Use a fresh, distinct
 runtime agent for every mandatory specialist stage. Prefer the configured named role; when it is not
 available, spawn a fresh default agent with the complete role contract and explicit reasoning effort,
 while omitting a model override so the launcher-enforced default remains in force. Never reuse one
@@ -24,9 +24,9 @@ renderer, and validator Python helpers supplied by this workflow.
 Set a package-specific latency target after inventory using total units, fresh-mapping burden, source
 formats, OCR/conversion needs, and expected review waves. Do not assume a fixed SAP or package length.
 Treat the earlier 102-total-page, 81-fresh-page run only as calibration for comparable workloads, not
-as a universal 35–50 minute default. Use medium reasoning for ordinary specialist roles. Spawn distinct new
+as a universal 35–50 minute default. Use high reasoning for every specialist role. Spawn distinct new
 `~openai/gpt-latest`/`high` agents for statistical passes 1 and 2, record them in
-`agent_execution_manifest.md`, and never use follow-up to promote a medium agent. Treat timing as a
+`agent_execution_manifest.md`, and never use follow-up to change an agent's contract. Treat timing as a
 planning goal, never as permission to sample evidence, stop early, cap candidates, or omit cards.
 
 Record every actual runtime agent in `agent_execution_manifest.md`, including the coordinator,

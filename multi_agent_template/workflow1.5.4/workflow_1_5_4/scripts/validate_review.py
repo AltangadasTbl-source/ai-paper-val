@@ -119,24 +119,24 @@ PLAIN_ARTIFACT_PATH = re.compile(
 )
 REQUIRED_AGENT_STAGES = {
     "coordinator": ("high", "CURRENT_SESSION", "run_state.md"),
-    "fresh_source_preprocessor": ("medium", "FRESH_SPAWN", "source_inventory.md"),
+    "fresh_source_preprocessor": ("high", "FRESH_SPAWN", "source_inventory.md"),
     "main_quantitative_mapper": (
-        "medium",
+        "high",
         "FRESH_SPAWN",
         "extraction/main_quantitative_evidence.md",
     ),
     "support_quantitative_mapper": (
-        "medium",
+        "high",
         "FRESH_SPAWN",
         "extraction/support_quantitative_evidence.md",
     ),
     "numeric_consistency_reviewer": (
-        "medium",
+        "high",
         "FRESH_SPAWN",
         "checkers/numeric_consistency.md",
     ),
     "cross_source_consistency_reviewer": (
-        "medium",
+        "high",
         "FRESH_SPAWN",
         "checkers/cross_source_consistency.md",
     ),
@@ -148,7 +148,7 @@ REQUIRED_AGENT_STAGES = {
         "FRESH_SPAWN",
         "quality/evidence_quality_audit.md",
     ),
-    "report_generator": ("medium", "FRESH_SPAWN", "limitations.md"),
+    "report_generator": ("high", "FRESH_SPAWN", "limitations.md"),
 }
 
 
@@ -483,12 +483,17 @@ def validate_routing_preflight(text: str, errors: list[str]) -> None:
         "Coordinator model": "~openai/gpt-latest",
         "Default subagent model": "~openai/gpt-latest",
         "Coordinator reasoning effort": "high",
-        "Default subagent reasoning effort": "medium",
+        "Default subagent reasoning effort": "high",
+        "Named agent reasoning effort": "high",
         "Named agent presets": "PASS",
         "Named agent preset count": "9",
         "Mandatory specialist stages": "10",
         "Mandatory agent start contract": "FRESH_DISTINCT",
-        "Enforcement": "CLI_OVERRIDES",
+        "Authentication probe": "PASS",
+        "Credential source": "OPENROUTER_API_KEY via env_key",
+        "User config": "IGNORED",
+        "Enforcement": "CLI_OVERRIDES_PLUS_IGNORED_USER_CONFIG",
+        "Execution mode": "CODEX_EXEC",
     }
     for label, value in expected.items():
         match = re.search(rf"^- {re.escape(label)}:\s*(.+?)\s*$", text, re.MULTILINE)
@@ -518,8 +523,10 @@ def validate_agent_execution_manifest(
                 f"Agent execution line {number} must use the OpenRouter model slug "
                 f"~openai/gpt-latest, got {model}."
             )
-        if effort not in {"medium", "high"}:
-            errors.append(f"Agent execution line {number} has invalid reasoning effort: {effort}.")
+        if effort != "high":
+            errors.append(
+                f"Agent execution line {number} must use high reasoning effort, got {effort}."
+            )
         if stage != "coordinator" and start_mode != "FRESH_SPAWN":
             errors.append(f"Agent execution stage {stage} must use FRESH_SPAWN.")
         if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._:/-]{2,}", agent_id) or re.search(

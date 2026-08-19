@@ -37,19 +37,18 @@ bound is exceeded.
 | Coordinator | `~openai/gpt-latest` | `high` | Current coordinator session |
 | Statistical consistency pass 1 | `~openai/gpt-latest` | `high` | New specialist agent |
 | Statistical consistency pass 2 | `~openai/gpt-latest` | `high` | Different new specialist agent |
-| All other specialist roles | `~openai/gpt-latest` | `medium` | New specialist when delegated |
+| All other specialist roles | `~openai/gpt-latest` | `high` | New specialist when delegated |
 | Mechanical evidence recheck | `~openai/gpt-latest` | `high` | New specialist when delegated |
 | Final evidence-quality audit | `~openai/gpt-latest` | `high` | New specialist when delegated |
 
-Never ask an existing medium-effort agent through a follow-up message to act as a high-effort
-statistical reviewer. Spawn each statistical pass as a fresh configured agent with reasoning effort
-`high`; when the named preset is unavailable, omit the spawn-model override so the launcher-enforced
-`~openai/gpt-latest` default applies. The two passes use distinct runtime agent IDs and read durable
-artifacts rather than shared chat context. Record both executions in `agent_execution_manifest.md`.
+Every role uses `high` effort. Spawn each statistical pass as a fresh configured agent; when the named
+preset is unavailable, omit the spawn-model override so the launcher-enforced
+`~openai/gpt-latest`/`high` default applies. The two passes use distinct runtime agent IDs and read
+durable artifacts rather than shared chat context. Record both executions in
+`agent_execution_manifest.md`.
 
-Do not silently raise another specialist role above this table. A one-off escalation requires a concrete
-failed check or unresolved relationship recorded in `run_state.md` and a new explicitly configured
-agent.
+Do not lower a specialist below `high`. Repairs and fallback default agents use the same model/effort
+contract.
 
 ## Latency rules
 

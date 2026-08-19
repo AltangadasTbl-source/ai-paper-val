@@ -139,8 +139,8 @@ Spawn a new configured statistical agent for pass 1 with reasoning effort `high`
 role is unavailable, use a fresh default agent, omit the model override so the launcher-enforced
 `~openai/gpt-latest` default applies, and set reasoning effort `high` explicitly. After the full
 cross-lane candidate ledger and mechanical recheck exist, spawn a different new agent under the same
-model/effort contract for pass 2. Never repurpose a medium agent through follow-up and never use a
-follow-up request as evidence of changed reasoning effort. Pass 2 revisits every `S` relationship for
+model/effort contract for pass 2. Never repurpose an existing agent through follow-up and never use a
+follow-up request as evidence of a fresh, distinct pass-2 spawn. Pass 2 revisits every `S` relationship for
 denominator, arithmetic, label, scale, duplicate-value, cross-source, and recheck implications. Every
 relationship receives an explicit `PASS_1_COMPLETE` and `PASS_2_COMPLETE` record, including
 relationships that yield no candidate or cannot be mechanically reconciled because a named definition
@@ -154,16 +154,16 @@ current coordinator exactly once:
 | Stage | Agent ID | Model | Reasoning effort | Start mode | Artifact |
 |---|---|---|---|---|---|
 | coordinator | COORDINATOR-CURRENT-SESSION | ~openai/gpt-latest | high | CURRENT_SESSION | run_state.md |
-| reuse_asset_curator | RUNTIME-ID-CURATOR | ~openai/gpt-latest | medium | FRESH_SPAWN | source_inventory.md |
-| main_quantitative_mapper | RUNTIME-ID-MAIN-MAPPER | ~openai/gpt-latest | medium | FRESH_SPAWN | extraction/main_quantitative_evidence.md |
-| support_quantitative_mapper | RUNTIME-ID-SUPPORT-MAPPER | ~openai/gpt-latest | medium | FRESH_SPAWN | extraction/support_quantitative_evidence.md |
-| numeric_consistency_reviewer | RUNTIME-ID-NUMERIC | ~openai/gpt-latest | medium | FRESH_SPAWN | checkers/numeric_consistency.md |
-| cross_source_consistency_reviewer | RUNTIME-ID-CROSS-SOURCE | ~openai/gpt-latest | medium | FRESH_SPAWN | checkers/cross_source_consistency.md |
+| reuse_asset_curator | RUNTIME-ID-CURATOR | ~openai/gpt-latest | high | FRESH_SPAWN | source_inventory.md |
+| main_quantitative_mapper | RUNTIME-ID-MAIN-MAPPER | ~openai/gpt-latest | high | FRESH_SPAWN | extraction/main_quantitative_evidence.md |
+| support_quantitative_mapper | RUNTIME-ID-SUPPORT-MAPPER | ~openai/gpt-latest | high | FRESH_SPAWN | extraction/support_quantitative_evidence.md |
+| numeric_consistency_reviewer | RUNTIME-ID-NUMERIC | ~openai/gpt-latest | high | FRESH_SPAWN | checkers/numeric_consistency.md |
+| cross_source_consistency_reviewer | RUNTIME-ID-CROSS-SOURCE | ~openai/gpt-latest | high | FRESH_SPAWN | checkers/cross_source_consistency.md |
 | statistics_pass_1 | RUNTIME-ID-1 | ~openai/gpt-latest | high | FRESH_SPAWN | checkers/statistical_pass_1.md |
 | evidence_rechecker | RUNTIME-ID-RECHECK | ~openai/gpt-latest | high | FRESH_SPAWN | verification/evidence_recheck.md |
 | statistics_pass_2 | RUNTIME-ID-2 | ~openai/gpt-latest | high | FRESH_SPAWN | checkers/statistical_pass_2.md |
 | quality_control_auditor | RUNTIME-ID-AUDIT | ~openai/gpt-latest | high | FRESH_SPAWN | quality/evidence_quality_audit.md |
-| report_generator | RUNTIME-ID-REPORT | ~openai/gpt-latest | medium | FRESH_SPAWN | limitations.md |
+| report_generator | RUNTIME-ID-REPORT | ~openai/gpt-latest | high | FRESH_SPAWN | limitations.md |
 ```
 
 Replace every placeholder runtime ID. All mandatory specialist rows must have different IDs, and each

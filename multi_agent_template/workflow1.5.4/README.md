@@ -9,8 +9,8 @@ outputs remain untouched but are not evidence inputs.
 
 - Timing is set separately after each package inventory; no SAP length, page count, or timing band is
   universal. The prior 102-total-page run is calibration only for comparable workloads.
-- Ordinary specialist roles use `medium` reasoning; only the two-pass statistical consistency role
-  retains `high` reasoning, and each pass must start in a distinct fresh OpenRouter/high agent.
+- Every coordinator and specialist role uses `~openai/gpt-latest` with `high` reasoning. Mandatory
+  stages still start in distinct fresh agents.
 - Larger default shards and fewer redundant waves reduce orchestration latency without permitting
   sampling, early stopping, or incomplete coverage.
 - Source inventory and evidence preparation restart from the supplied files.
@@ -22,9 +22,9 @@ outputs remain untouched but are not evidence inputs.
   without claiming serious harm or conclusion change.
 - Agents lead the scientific workflow. Python is limited to optional Office structure extraction,
   deterministic token-cost calculation, local HTML rendering, and mechanical validation.
-- Validation checks full source-unit coverage, launcher routing preflight, a distinct fresh runtime ID
-  and configured model/effort for every mandatory specialist, exact `__` human placeholders, and one
-  artifact path per coverage row without requiring root `.codex` files.
+- Validation checks full source-unit coverage, authenticated launcher routing preflight, a distinct
+  fresh runtime ID and `~openai/gpt-latest`/`high` for every mandatory specialist, exact `__` human
+  placeholders, and one artifact path per coverage row without requiring root `.codex` files.
 - A coherent very small P value printed as zero is explicitly excluded as a standalone candidate;
   only an independent source-grounded contradiction can qualify.
 - Every runtime agent, including the coordinator and repair agents, is tracked. Authoritative token
@@ -34,11 +34,14 @@ outputs remain untouched but are not evidence inputs.
 
 ## Installation and start
 
-First satisfy `OPENROUTER_SETUP.md` at machine scope. Copy the workflow controls into one
+First satisfy `OPENROUTER_SETUP.md`. Copy the workflow controls into one
 paper-package root. Preserve all source files and old
-`.ai_paper_validation/` records. The hidden `.codex` presets are optional; do not overwrite an existing
-or read-only root `.codex`. From the package root run
-`bash workflow_1_5_4/scripts/launch_openrouter.sh`; do not start with plain `codex` or `resume`.
+`.ai_paper_validation/` records. Merge the nine hidden `.codex/agents/` role presets without
+overwriting unrelated root `.codex` controls; do not place provider credentials in project config.
+From the package root run
+`bash workflow_1_5_4/scripts/launch_openrouter.sh`; do not start with plain `codex` or `resume`. The
+launcher authenticates one ephemeral request, ignores conflicting base user defaults, and then runs
+the review to completion through `codex exec`.
 
 ## Main outputs
 

@@ -1,18 +1,27 @@
 # Workflow 1.5.3 Usage
 
-1. Verify the machine-level OpenRouter configuration and environment in `OPENROUTER_SETUP.md`.
+1. Export `OPENROUTER_API_KEY` in the shell that will launch the workflow and review
+   `OPENROUTER_SETUP.md`. Do not add `[model_providers.openrouter.auth]` to a paper package: Codex
+   ignores project-scoped provider/auth configuration, and this workflow uses `env_key` instead.
 2. Confirm that the paper package contains reusable OCR, text, table, workbook, page, or document-map
    assets. Use workflow 1.5.4 when those assets are absent or a source-first restart is required.
 3. Back up the package-root `AGENTS.md`. Leave an existing or read-only `.codex/` unchanged.
-4. Copy `AGENTS.md`, `OPENROUTER_SETUP.md`, the common controls, and `workflow_1_5_3/` into the package root. The supplied
-   `.codex/` presets may be merged only when safe; they are not required by the validator. Do not move,
-   rename, or overwrite scientific records under `.ai_paper_validation/`.
-5. From the package root, run `bash workflow_1_5_3/scripts/launch_openrouter.sh`. Do not use plain
-   `codex` or `resume`; the launcher applies the highest-precedence coordinator/default-subagent model
-   overrides, verifies them, and sends the complete `START_PROMPT.md` as the first request.
+4. Copy the current `AGENTS.md`, `OPENROUTER_SETUP.md`, common controls, `.codex/agents/` presets, and
+   `workflow_1_5_3/` into the package root. Re-copy these updated control files into any paper package
+   created from an older 1.5.3 template. The launcher requires the nine supplied role presets; merge
+   them without overwriting unrelated `.codex` controls. They contain no provider credentials. Do not
+   move, rename, or overwrite scientific records under `.ai_paper_validation/`.
+5. From the package root, optionally run
+   `bash workflow_1_5_3/scripts/launch_openrouter.sh --preflight-only`, then run
+   `bash workflow_1_5_3/scripts/launch_openrouter.sh`. Do not use plain `codex` or `resume`; the launcher
+   uses `codex exec --ignore-user-config`, injects the complete OpenRouter provider with
+   `env_key="OPENROUTER_API_KEY"`, fixes the coordinator and every default/named subagent at
+   `~openai/gpt-latest`/`high`, performs a real ephemeral authentication request, and sends the
+   complete `START_PROMPT.md` as the first review request.
 6. Confirm that `.ai_paper_validation/review_1_5_3/routing_preflight.md` reports `PASS`, provider
-   `openrouter`, model `~openai/gpt-latest`, and `Named agent presets: PASS` before scientific work
-   begins.
+   `openrouter`, model `~openai/gpt-latest`, reasoning effort `high`, `Authentication probe: PASS`,
+   `Credential source: OPENROUTER_API_KEY via env_key`, `User config: IGNORED`, and
+   `Named agent presets: PASS` before scientific work begins.
 7. Confirm these outputs:
 
    - `.ai_paper_validation/final_report_1_5_3.md`

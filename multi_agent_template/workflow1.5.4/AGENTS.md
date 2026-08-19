@@ -30,18 +30,22 @@ path and returns only compact status, exact scope, counts, limitations, and one 
 two agents write the same artifact concurrently. Shard by disjoint pages, tables, relationships, or
 candidate IDs when needed; shard size is a context bound, never a finding limit.
 
-Do not create, rewrite, or require a writable package-root `.codex/` directory during validation.
-The bundled `.codex` files are optional runtime presets. When a named preset is unavailable, spawn a
-fresh default agent with the full role contract and explicit reasoning effort, but omit the spawn-model
-override so the launcher-enforced `agents.default_subagent_model` remains authoritative.
+Do not put provider credentials or provider selection in the package-root `.codex/config.toml`.
+The authenticated launcher requires the nine bundled `.codex/agents/` role presets and verifies each
+one before the review begins. Preserve unrelated package `.codex` controls when copying those files.
+Validation does not rewrite `.codex/`; fallback or repair agents inherit the launcher-enforced model
+and effort without a spawn-model override.
 
 ## OpenRouter routing contract
 
 Start only through `workflow_1_5_4/scripts/launch_openrouter.sh`. Before scientific work, require the
 launcher-created `routing_preflight.md` to report `PASS`, provider `openrouter`, coordinator/default
-subagent model `~openai/gpt-latest`, and all nine named agent presets verified against their required
-model/effort pairs. The launcher uses CLI overrides because they take precedence over
-project and user configuration; a nested package `.codex/config.toml` is not sufficient enforcement.
+subagent model `~openai/gpt-latest`, reasoning effort `high`, `Authentication probe: PASS`, credential
+source `OPENROUTER_API_KEY via env_key`, `User config: IGNORED`, execution mode `CODEX_EXEC`, and all
+nine named agent presets verified against their required model/effort pairs. The launcher uses
+`codex exec --ignore-user-config` and supplies the complete provider through CLI overrides. A nested
+package `.codex/config.toml` cannot enforce provider or authentication settings because Codex ignores
+project-scoped `model_provider` and `model_providers` keys.
 
 Every mandatory specialist stage uses a fresh agent and a distinct runtime ID. Use the named custom
 agent preset when available. Otherwise use a fresh default agent, inherit the launcher-enforced model,
@@ -84,7 +88,7 @@ of an old audit directory is to avoid writing into or overwriting it.
    relative artifact path; put every shard part on its own row.
 4. Run fresh, distinct `qc15_main_quantitative_mapper` and `qc15_support_quantitative_mapper` agents in parallel over disjoint
    newly prepared units. Map all result-relevant numeric and statistical relationships.
-5. Run numeric and cross-source review in two distinct fresh `~openai/gpt-latest`/`medium` agents. Independently spawn a new
+5. Run numeric and cross-source review in two distinct fresh `~openai/gpt-latest`/`high` agents. Independently spawn a new
    `~openai/gpt-latest`/`high` agent for statistical pass 1; do not reuse a mapper agent or use follow-up to
    request a reasoning-effort change. Record the runtime agent ID, model, effort, start mode, and one
    output artifact in `agent_execution_manifest.md`. After each completed model response, retain its
@@ -100,7 +104,7 @@ of an old audit directory is to avoid writing into or overwriting it.
 9. Run a fresh `qc15_quality_control_auditor`/`high` agent over every stable ID, coverage row, source-coverage row, and the
    statistical execution manifest. Repair supportable
    omissions, but never delete or suppress an assigned candidate ID.
-10. Run a fresh `qc15_report_generator`/`medium` agent to assemble the complete Markdown report. It must contain every ledger
+10. Run a fresh `qc15_report_generator`/`high` agent to assemble the complete Markdown report. It must contain every ledger
     candidate. If complete coverage finds none, produce a zero-candidate report documenting coverage
     and limitations. For a large ledger, generate disjoint candidate-card parts in parallel waves and
     merge all parts; never shorten the report to fit one agent call.

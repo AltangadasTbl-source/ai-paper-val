@@ -37,10 +37,12 @@ reports stored directly below `.ai_paper_validation/`:
     └── review_validation.json
 ```
 
-`routing_preflight.md` is created only by `scripts/launch_openrouter.sh` before the Codex session
-starts. It records the resolved provider/coordinator/default route and confirms that all nine named
-agent presets contain their required model/effort pairs. Agents must preserve it unchanged; a
-coordinator-authored replacement is not valid routing evidence.
+`routing_preflight.md` is created only by `scripts/launch_openrouter.sh` before the review session
+starts. The launcher first completes a real ephemeral Responses API request through OpenRouter using
+`OPENROUTER_API_KEY` via `env_key`. The artifact records `Authentication probe: PASS`, ignored user
+configuration, the provider/coordinator/default route, and verification that all nine named agent
+presets contain their required model/effort pairs. Agents must preserve it unchanged; a
+coordinator-authored replacement is not valid routing or authentication evidence.
 
 Stage-specific shard parts may live in `parts/` subdirectories. Every part must be listed in
 `coverage_manifest.md` on its own row and merged without loss into the canonical artifact. The
