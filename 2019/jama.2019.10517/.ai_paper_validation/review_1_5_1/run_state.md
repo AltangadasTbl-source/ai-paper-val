@@ -1,0 +1,26 @@
+# Workflow 1.5.1 Run State
+
+- **Status:** COMPLETE
+- **Profile:** 1.5.1
+- **Package root:** /home/bulunte/ai-paper-val/2019/jama.2019.10517
+- **Target basis:** Four supplied PDFs totaling 63 pages; 20 pages have reusable page-level extraction while 43 pages require fresh direct-source mapping, including one 42-page supplement with tables/figures. The package is smaller than the 102-page calibration package and has a lower fresh-extraction burden, but still requires four-source cross-document and two-pass statistical review.
+- **Total source units:** 63
+- **Fresh-source units:** 43
+- **Target elapsed minutes:** 30-45
+- **Started UTC:** 2026-08-18T22:15:04Z
+- **Finished UTC:** 2026-08-18T22:50:37Z
+- **Observed elapsed minutes:** 35.6
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Scientific coverage status:** COMPLETE — 63/63 source units mapped
+- **Candidate registration status:** COMPLETE — C001, C002, C003
+- **Evidence recheck status:** COMPLETE — C001, C002, C003
+- **Statistical pass 1 status:** COMPLETE — S001 through S048
+- **Statistical pass 2 status:** COMPLETE — S001 through S048; C001 through C003 reconciled; no new leads
+- **Evidence-quality audit status:** COMPLETE — zero candidate repairs; one metadata repair completed
+- **Markdown report status:** COMPLETE — C001, C002, C003 and finalized accounting metadata included
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE — 12/12 manifested agents recorded; no authoritative runtime token counts exposed
+- **HTML render status:** COMPLETE — standalone HTML5 with embedded CSS and table of contents
+- **Mechanical validation status:** PASS
+- **Current limitations:** C001 point-estimator/rounding definition absent; C002 intended HbA1c coefficient unit/transformation absent; C003 recruitment-version/population distinction absent; multiple secondary statistical reconstruction inputs and eFigure band definitions absent. No scientific-coverage gap remains.
+- **Repair/escalation record:** Evidence-quality audit identified stale statistical-inventory pass cells; all 48 rows were updated to PASS_1_COMPLETE and PASS_2_COMPLETE without changing scientific content or IDs.

@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--jama-202023138"
+id="toc-quantitative-quality-control-consistency-review--jama-202023138">Quantitative
+Quality-Control Consistency Review — JAMA 2020.23138</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--randomized-total-differs-between-the-flow-diagram-and-article-population"
+id="toc-c001--randomized-total-differs-between-the-flow-diagram-and-article-population">C001
+— Randomized total differs between the flow diagram and article
+population</a></li>
+<li><a
+href="#c002--baseline-digoxin-nt-probnp-summaries-differ-between-main-tables-1-and-3"
+id="toc-c002--baseline-digoxin-nt-probnp-summaries-differ-between-main-tables-1-and-3">C002
+— Baseline digoxin NT-proBNP summaries differ between main Tables 1 and
+3</a></li>
+<li><a
+href="#c003--baseline-digoxin-12-lead-ecg-heart-rate-mean-differs-between-main-table-1-and-etable-2"
+id="toc-c003--baseline-digoxin-12-lead-ecg-heart-rate-mean-differs-between-main-table-1-and-etable-2">C003
+— Baseline digoxin 12-lead ECG heart-rate mean differs between main
+Table 1 and eTable 2</a></li>
+<li><a
+href="#c004--baseline-digoxin-apical-heart-rate-mean-differs-between-main-table-1-and-etable-2"
+id="toc-c004--baseline-digoxin-apical-heart-rate-mean-differs-between-main-table-1-and-etable-2">C004
+— Baseline digoxin apical heart-rate mean differs between main Table 1
+and eTable 2</a></li>
+<li><a
+href="#c005--baseline-digoxin-radial-pulse-sd-differs-between-main-table-1-and-etable-2"
+id="toc-c005--baseline-digoxin-radial-pulse-sd-differs-between-main-table-1-and-etable-2">C005
+— Baseline digoxin radial-pulse SD differs between main Table 1 and
+eTable 2</a></li>
+<li><a
+href="#c006--protocol-assigns-both-pcs-and-physical-functioning-labels-to-the-primary-endpoint"
+id="toc-c006--protocol-assigns-both-pcs-and-physical-functioning-labels-to-the-primary-endpoint">C006
+— Protocol assigns both PCS and physical-functioning labels to the
+primary endpoint</a></li>
+<li><a
+href="#c007--protocol-outcome-wording-says-bnp-while-assay-and-results-say-nt-probnp"
+id="toc-c007--protocol-outcome-wording-says-bnp-while-assay-and-results-say-nt-probnp">C007
+— Protocol outcome wording says BNP while assay and results say
+NT-proBNP</a></li>
+<li><a
+href="#c008--sap-afeqt-template-footnote-calls-the-scale-a-visual-analogue-score"
+id="toc-c008--sap-afeqt-template-footnote-calls-the-scale-a-visual-analogue-score">C008
+— SAP AFEQT template footnote calls the scale a visual-analogue
+score</a></li>
+<li><a href="#c009--sap-reverses-the-favorable-direction-for-ee-prime"
+id="toc-c009--sap-reverses-the-favorable-direction-for-ee-prime">C009 —
+SAP reverses the favorable direction for E/e-prime</a></li>
+<li><a
+href="#c010--sap-nt-probnp-heading-says-six-months-but-its-table-includes-a-12-month-row"
+id="toc-c010--sap-nt-probnp-heading-says-six-months-but-its-table-includes-a-12-month-row">C010
+— SAP NT-proBNP heading says six months but its table includes a
+12-month row</a></li>
+<li><a href="#c011--sap-ehra-example-uses-an-undefined-class-3a"
+id="toc-c011--sap-ehra-example-uses-an-undefined-class-3a">C011 — SAP
+EHRA example uses an undefined class 3a</a></li>
+<li><a
+href="#c012--sap-ambulatory-hr-template-uses-monitor-duration-where-the-visit-time-point-is-expected"
+id="toc-c012--sap-ambulatory-hr-template-uses-monitor-duration-where-the-visit-time-point-is-expected">C012
+— SAP ambulatory-HR template uses monitor duration where the visit time
+point is expected</a></li>
+<li><a
+href="#c013--results-supplement-heart-rate-table-describes-higher-values-as-better-quality-of-life"
+id="toc-c013--results-supplement-heart-rate-table-describes-higher-values-as-better-quality-of-life">C013
+— Results-supplement heart-rate table describes higher values as better
+quality of life</a></li>
+<li><a
+href="#c014--main-table-3-uses-a-universal-higher-is-better-footnote-for-lower-is-better-measures"
+id="toc-c014--main-table-3-uses-a-universal-higher-is-better-footnote-for-lower-is-better-measures">C014
+— Main Table 3 uses a universal higher-is-better footnote for
+lower-is-better measures</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--jama-202023138">Quantitative
+Quality-Control Consistency Review — JAMA 2020.23138</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>Every observation in this report is <strong>Pending Human
+Adjudication</strong>. This is a quantitative reporting quality-control
+review, not a determination of paper validity or a conclusion-level
+finding.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete source coverage and two statistical passes produced 14
+stable, source-linked reporting-consistency candidates (C001-C014). The
+candidates are small, preventable defects or ambiguities that may matter
+if confirmed because a downstream evidence extractor, systematic review,
+meta-analysis, or guideline could copy an inconsistent number, label,
+time point, or direction. This report does not assert that propagation
+occurred, that any pooled result changed, or that the paper's
+conclusions changed.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains five supplied PDFs: the main article (12 pages),
+protocol (69), statistical analysis plan (45), results supplement (20),
+and data-sharing statement (1). Native reusable page text covered all 12
+main-article pages and all 20 results-supplement pages. The remaining
+115 pages received fresh direct-source mapping. Reused text and rendered
+material were used as locators and transcription aids; candidate
+evidence was mechanically rechecked against the cited source PDF
+pages.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All 147 direct-source PDF-page units were mapped: 32 reusable-backed
+and 115 fresh-required. No direct DOC, DOCX, workbook, or CSV source was
+present. The review covered numeric, denominator, statistical,
+cross-document, label/scale, and rate/count relationships. Coherent
+display-zero P values alone were excluded; no candidate was created for
+display-zero formatting alone. There was no review queue, top-N subset,
+deferred-by-cap section, ranking, or candidate limit.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The complete relationship inventory contains 125 numeric
+relationships and 90 inferential-statistical relationships. Both
+independent statistical passes are recorded as
+<code>PASS_1_COMPLETE</code> and <code>PASS_2_COMPLETE</code>. Candidate
+discovery, mechanical recheck, and quality audit all retain the same
+stable ID set: C001-C014.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Randomized total differs between the flow diagram and article
+population</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Baseline digoxin NT-proBNP summaries differ between main Tables 1
+and 3</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Baseline digoxin 12-lead ECG heart-rate mean differs between main
+Table 1 and eTable 2</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Baseline digoxin apical heart-rate mean differs between main Table 1
+and eTable 2</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Baseline digoxin radial-pulse SD differs between main Table 1 and
+eTable 2</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Protocol assigns both PCS and physical-functioning labels to the
+primary endpoint</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Protocol outcome wording says BNP while assay and results say
+NT-proBNP</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>SAP AFEQT template footnote calls the scale a visual-analogue
+score</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>SAP reverses the favorable direction for E/e-prime</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>SAP NT-proBNP heading says six months but its table includes a
+12-month row</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>SAP EHRA example uses an undefined class 3a</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>SAP ambulatory-HR template uses monitor duration where the visit
+time point is expected</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>Results-supplement heart-rate table describes higher values as
+better quality of life</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>Main Table 3 uses a universal higher-is-better footnote for
+lower-is-better measures</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--randomized-total-differs-between-the-flow-diagram-and-article-population" class="candidate-card">C001
+— Randomized total differs between the flow diagram and article
+population</h2>
+<p><strong>Candidate statement:</strong> Figure 1 prints 161 randomized,
+while the article population is 160; the source also prints a
+replacement explanation that narrows the question to clear population
+labeling.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=1">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 1</a>, <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=3">PDF p.
+3</a>, and <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=4">PDF p.
+4</a>.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints 551 assessed, 390
+excluded, and 161 randomized; its treatment boxes show 80 in each arm.
+The abstract and Results describe 160 participants. Page 4 states that
+one randomized person did not complete baseline assessment or start
+treatment and was replaced to maintain sample size.</p>
+<p><strong>Reported-versus-comparator:</strong> 161 initial randomized
+events versus 160 participants in the replacement-maintained
+treated/full-analysis cohort.</p>
+<p><strong>Reasoning procedure:</strong> Compare the flow totals, arm
+totals, and page-4 replacement statement; distinguish direct printed
+facts from the inferred population labels.</p>
+<p><strong>Calculation:</strong> <code>551 - 390 = 161</code>;
+<code>80 + 80 = 160</code>; <code>161 - 1 = 160</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> 161 may
+be initial allocation events including the pretreatment withdrawal,
+whereas 160 may be the replacement-maintained treated/full-analysis
+cohort; the figure does not explicitly label that distinction.</p>
+<p><strong>Mechanical evidence recheck:</strong> Locations and printed
+totals were found; the arithmetic and replacement explanation were
+reproduced. Missing are the withdrawn participant's allocated arm,
+whether the replacement is included in the 161 node, and the intended
+technical population labels.</p>
+<p><strong>Quality-control relevance:</strong> The flow diagram and
+population wording could be made more explicit even though the supplied
+source provides a plausible reconciliation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy 161 or 160 as the trial population without
+recognizing the distinct population definitions; no conclusion change is
+established.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+definition of randomized, treated, and full-analysis populations and
+whether the figure should show the replacement pathway.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--baseline-digoxin-nt-probnp-summaries-differ-between-main-tables-1-and-3" class="candidate-card">C002
+— Baseline digoxin NT-proBNP summaries differ between main Tables 1 and
+3</h2>
+<p><strong>Candidate statement:</strong> Repeated baseline digoxin
+NT-proBNP summaries with displayed n=80 differ between Tables 1 and
+3.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=5">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 5</a>, <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=6">PDF p.
+6</a>, and <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=7">PDF p.
+7</a>.</p>
+<p><strong>Source evidence:</strong> Table 1 and narrative print 1095
+(IQR 715-1527) pg/mL; Table 3 prints 1091 (710-1522) pg/mL for baseline
+digoxin, n=80.</p>
+<p><strong>Reported-versus-comparator:</strong> 1095 (715-1527) versus
+1091 (710-1522) pg/mL.</p>
+<p><strong>Reasoning procedure:</strong> Compare the named analyte, arm,
+baseline time point, displayed denominator, unit, and summary
+convention.</p>
+<p><strong>Calculation:</strong> Median difference
+<code>1095 - 1091 = 4</code> pg/mL; IQR endpoint differences
+<code>715 - 710 = 5</code> and <code>1527 - 1522 = 5</code> pg/mL.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unstated analytic subset, data freeze, or median/IQR convention may
+differ.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both table cells and
+narrative repetition were found and calculations reproduced;
+participant-level data, quartile convention, and table-freeze history
+are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> Repeated baseline
+summaries should identify any differing dataset or convention.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy either baseline NT-proBNP triple; no effect on
+the paper's conclusions is established.</p>
+<p><strong>Human verification steps:</strong> Establish whether the
+tables use the same 80 measurements and the same summary convention,
+then identify the intended printed triple.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--baseline-digoxin-12-lead-ecg-heart-rate-mean-differs-between-main-table-1-and-etable-2" class="candidate-card">C003
+— Baseline digoxin 12-lead ECG heart-rate mean differs between main
+Table 1 and eTable 2</h2>
+<p><strong>Candidate statement:</strong> Matched baseline digoxin
+12-lead ECG means differ across the main article and results
+supplement.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=5">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 5</a> and <a
+href="../joi200126supp3_prod_1607962892.5372.pdf#page=14">joi200126supp3_prod_1607962892.5372.pdf
+— PDF p. 14</a>.</p>
+<p><strong>Source evidence:</strong> Main Table 1 prints 100.1 (16.8)
+/min; eTable 2 prints 100.3 (16.8) beats/min, both for baseline digoxin
+n=80. Main Table 3 repeats 100.3 (16.8).</p>
+<p><strong>Reported-versus-comparator:</strong> 100.1 (16.8) versus
+100.3 (16.8) beats/min.</p>
+<p><strong>Reasoning procedure:</strong> Match arm, baseline time,
+12-lead ECG measure, denominator, and SD before comparing the
+one-decimal means.</p>
+<p><strong>Calculation:</strong> <code>100.3 - 100.1 = 0.2</code>
+beats/min.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Separate table freezes, ECG processing definitions, or an unlabelled
+subset may explain the values.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both cells and n=80
+were found; the displayed difference was reproduced. Processing rules,
+source dataset, and table-version history are absent.</p>
+<p><strong>Quality-control relevance:</strong> This is a distinct
+12-lead ECG mean cell, not the apical or radial-pulse cell in
+C004-C005.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy either one-decimal baseline ECG mean; no
+adjusted-effect or conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Confirm whether both cells
+summarize the same 80 ECG measurements and identify the intended
+mean.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--baseline-digoxin-apical-heart-rate-mean-differs-between-main-table-1-and-etable-2" class="candidate-card">C004
+— Baseline digoxin apical heart-rate mean differs between main Table 1
+and eTable 2</h2>
+<p><strong>Candidate statement:</strong> Matched baseline digoxin
+30-second apical heart-rate means differ across the main article and
+results supplement.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=5">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 5</a> and <a
+href="../joi200126supp3_prod_1607962892.5372.pdf#page=14">joi200126supp3_prod_1607962892.5372.pdf
+— PDF p. 14</a>.</p>
+<p><strong>Source evidence:</strong> Main Table 1 prints 98.2 (15.1)
+/min; eTable 2 prints 98.3 (15.1) beats/min, both baseline digoxin
+n=80.</p>
+<p><strong>Reported-versus-comparator:</strong> 98.2 (15.1) versus 98.3
+(15.1) beats/min.</p>
+<p><strong>Reasoning procedure:</strong> Match the 30-second apical
+assessment, arm, time, denominator, and SD.</p>
+<p><strong>Calculation:</strong> <code>98.3 - 98.2 = 0.1</code>
+beats/min.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Independent rounding inputs, a distinct source statistic, or an
+unlabelled measurement/subset distinction may exist.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both cells were found
+and the difference reproduced; participant set, rounding rule, and table
+history are not supplied.</p>
+<p><strong>Quality-control relevance:</strong> This is a separate apical
+mean relationship from C003 and C005.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy either apical mean; no treatment-effect or
+paper-conclusion impact is established.</p>
+<p><strong>Human verification steps:</strong> Verify whether the cells
+derive from the same 80 apical assessments and which mean is
+intended.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--baseline-digoxin-radial-pulse-sd-differs-between-main-table-1-and-etable-2" class="candidate-card">C005
+— Baseline digoxin radial-pulse SD differs between main Table 1 and
+eTable 2</h2>
+<p><strong>Candidate statement:</strong> The SD for matched baseline
+digoxin radial-pulse data differs across the main article and results
+supplement.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=5">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 5</a> and <a
+href="../joi200126supp3_prod_1607962892.5372.pdf#page=14">joi200126supp3_prod_1607962892.5372.pdf
+— PDF p. 14</a>.</p>
+<p><strong>Source evidence:</strong> Main Table 1 prints 87.8 (12.1)
+/min; eTable 2 prints 87.8 (12.0) beats/min, both baseline digoxin
+n=80.</p>
+<p><strong>Reported-versus-comparator:</strong> SD 12.1 versus 12.0
+beats/min, with the same displayed mean 87.8.</p>
+<p><strong>Reasoning procedure:</strong> Match the radial-pulse cell by
+arm, baseline time, denominator, unit, and mean before comparing the
+SD.</p>
+<p><strong>Calculation:</strong> <code>12.1 - 12.0 = 0.1</code>
+beats/min.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A table
+refresh, SD convention, independently computed values, or an unstated
+subset may explain the difference.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both cells and n=80
+were found; the SD difference was reproduced. The source lacks
+calculation inputs and SD-convention details.</p>
+<p><strong>Quality-control relevance:</strong> This is a separate
+radial-pulse SD relationship from the two mean discrepancies in
+C003-C004.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy either radial-pulse SD; no adjusted-effect or
+conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Confirm common
+observations and SD convention, then identify the intended SD.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--protocol-assigns-both-pcs-and-physical-functioning-labels-to-the-primary-endpoint" class="candidate-card">C006
+— Protocol assigns both PCS and physical-functioning labels to the
+primary endpoint</h2>
+<p><strong>Candidate statement:</strong> Protocol primary-endpoint
+wording alternates between the SF-36 physical component summary (PCS)
+and the physical-functioning domain, while the SAP and article identify
+PCS.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi200126supp1_prod_1607962892.5372.pdf#page=14">joi200126supp1_prod_1607962892.5372.pdf
+— PDF p. 14</a>, <a
+href="../joi200126supp1_prod_1607962892.5372.pdf#page=21">PDF p. 21</a>,
+<a href="../joi200126supp1_prod_1607962892.5372.pdf#page=22" target="_blank" rel="noopener">PDF p.
+22</a>, <a href="../joi200126supp1_prod_1607962892.5372.pdf#page=54" target="_blank" rel="noopener">PDF
+p. 54</a>, <a
+href="../joi200126supp1_prod_1607962892.5372.pdf#page=56">PDF p. 56</a>,
+<a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=18">joi200126supp2_prod_1607962892.5372.pdf
+— PDF p. 18</a>, and <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=6">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 6</a>.</p>
+<p><strong>Source evidence:</strong> Protocol pp.14/22/54 name six-month
+PCS; pp.21/56 call the primary measure physical functioning. The SAP and
+article identify PCS, while physical functioning is separately
+reported.</p>
+<p><strong>Reported-versus-comparator:</strong> PCS versus
+physical-functioning domain as the named primary endpoint.</p>
+<p><strong>Reasoning procedure:</strong> Compare the endpoint labels
+across protocol, SAP, and article; the rule is measure-label identity
+rather than arithmetic.</p>
+<p><strong>Calculation:</strong> Not applicable; this is a
+label-identity comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Physical-functioning wording may be drafting carryover or a superseded
+label; amendment history is not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Each cited statement
+was found. The package does not supply amendment history or an explicit
+statement equating the two measures.</p>
+<p><strong>Quality-control relevance:</strong> Primary-outcome naming
+should distinguish PCS from the separately reported physical-functioning
+domain.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could classify the primary endpoint as PCS or physical
+functioning; no change to the reported PCS estimate or paper conclusion
+is established.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+primary endpoint throughout and whether protocol pp.21/56 require
+clarification.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--protocol-outcome-wording-says-bnp-while-assay-and-results-say-nt-probnp" class="candidate-card">C007
+— Protocol outcome wording says BNP while assay and results say
+NT-proBNP</h2>
+<p><strong>Candidate statement:</strong> Protocol outcome lists say BNP
+while the protocol assay, SAP, and reported result identify
+NT-proBNP.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi200126supp1_prod_1607962892.5372.pdf#page=14">joi200126supp1_prod_1607962892.5372.pdf
+— PDF p. 14</a>, <a
+href="../joi200126supp1_prod_1607962892.5372.pdf#page=22">PDF p. 22</a>,
+<a href="../joi200126supp1_prod_1607962892.5372.pdf#page=41" target="_blank" rel="noopener">PDF p.
+41</a>, <a href="../joi200126supp1_prod_1607962892.5372.pdf#page=54" target="_blank" rel="noopener">PDF
+p. 54</a>, <a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=40">joi200126supp2_prod_1607962892.5372.pdf
+— PDF p. 40</a>, and <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=7">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 7</a>.</p>
+<p><strong>Source evidence:</strong> The protocol outcome lists use BNP;
+its assay section identifies NT-proBNP; the SAP uses BNP (NTproBNP); and
+the article reports NT-proBNP.</p>
+<p><strong>Reported-versus-comparator:</strong> BNP outcome wording
+versus NT-proBNP assay, SAP, and results wording.</p>
+<p><strong>Reasoning procedure:</strong> Compare the printed analyte
+labels. The supplied sources do not declare the labels interchangeable,
+and no numeric conversion is the rule.</p>
+<p><strong>Calculation:</strong> Not applicable; this is an
+analyte-label comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> BNP may
+have been used as informal peptide-family shorthand, but the package
+does not say so.</p>
+<p><strong>Mechanical evidence recheck:</strong> Relevant locations and
+labels were found. Protocol PDF page 15 contains no BNP or NT-proBNP
+evidence and is not used here.</p>
+<p><strong>Quality-control relevance:</strong> Outcome and assay
+terminology should consistently identify the analyte.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could classify the biomarker as BNP rather than NT-proBNP;
+no numeric-result or conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+biomarker outcome and whether the protocol outcome lists should be
+standardized.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--sap-afeqt-template-footnote-calls-the-scale-a-visual-analogue-score" class="candidate-card">C008
+— SAP AFEQT template footnote calls the scale a visual-analogue
+score</h2>
+<p><strong>Candidate statement:</strong> An SAP template headed AFEQT
+overall score applies a footnote calling its 0-100 range a visual
+analogue score.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=17">joi200126supp2_prod_1607962892.5372.pdf
+— PDF p. 17</a>, <a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=19">PDF p. 19</a>,
+<a href="../joi200126supp2_prod_1607962892.5372.pdf#page=36" target="_blank" rel="noopener">PDF p.
+36</a>, <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=7">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 7</a>, and <a
+href="../joi200126supp3_prod_1607962892.5372.pdf#page=16">joi200126supp3_prod_1607962892.5372.pdf
+— PDF p. 16</a>.</p>
+<p><strong>Source evidence:</strong> The SAP defines AFEQT and headings
+name AFEQT overall score; the p.36 footnote says visual analogue score.
+EQ-5D VAS is separately named.</p>
+<p><strong>Reported-versus-comparator:</strong> AFEQT overall score
+versus visual analogue score label.</p>
+<p><strong>Reasoning procedure:</strong> Compare the measure names and
+table context; a shared 0-100 range does not establish measure
+identity.</p>
+<p><strong>Calculation:</strong> Not applicable; shared numerical range
+is not an identity calculation.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+footnote may have been copied from the preceding EQ-5D VAS template.</p>
+<p><strong>Mechanical evidence recheck:</strong> The AFEQT heading and
+footnote were found. The package does not document why the footnote
+appears in that template.</p>
+<p><strong>Quality-control relevance:</strong> The table footnote should
+name the measure it describes.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could mislabel AFEQT as a visual-analogue measure; no
+paper-conclusion effect is established.</p>
+<p><strong>Human verification steps:</strong> Verify the intended AFEQT
+score anchors and replace or clarify the footnote if needed.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c009--sap-reverses-the-favorable-direction-for-ee-prime" class="candidate-card">C009 —
+SAP reverses the favorable direction for E/e-prime</h2>
+<p><strong>Candidate statement:</strong> Two SAP statements give opposed
+favorable-direction rules for the E/e-prime contrast.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=20">joi200126supp2_prod_1607962892.5372.pdf
+— PDF p. 20</a>, <a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=37">PDF p. 37</a>,
+and <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=7">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 7</a>.</p>
+<p><strong>Source evidence:</strong> SAP p.20 states lower E/e-prime is
+better; p.37 says higher values and a positive difference favor digoxin.
+The reported adjusted difference is -0.1 (-1.1 to 0.9).</p>
+<p><strong>Reported-versus-comparator:</strong> Lower/negative favorable
+versus higher/positive favorable for the same digoxin-minus-bisoprolol
+contrast.</p>
+<p><strong>Reasoning procedure:</strong> Compare the two direction
+rules; they cannot both define the favorable direction for that signed
+contrast.</p>
+<p><strong>Calculation:</strong> Not applicable; the reported -0.1
+interval is contextual and internally coherent, not an arithmetic
+contradiction.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+p.37 sentence may be generic higher-is-better boilerplate.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both direction
+statements and the reported estimate were found; no source says that the
+fitted model or conclusion was reversed.</p>
+<p><strong>Quality-control relevance:</strong> C009 concerns the two
+opposed SAP statements and is distinct from C014's main-table footnote
+scope.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could reverse favorable-direction coding for E/e-prime; no
+observed reversal or conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+E/e-prime direction wording on SAP p.37.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--sap-nt-probnp-heading-says-six-months-but-its-table-includes-a-12-month-row" class="candidate-card">C010
+— SAP NT-proBNP heading says six months but its table includes a
+12-month row</h2>
+<p><strong>Candidate statement:</strong> The SAP NT-proBNP table heading
+says “at 6 months” while the displayed template includes baseline,
+6-month, and 12-month rows.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=17">joi200126supp2_prod_1607962892.5372.pdf
+— PDF p. 17</a>, <a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=21">PDF p. 21</a>,
+<a href="../joi200126supp2_prod_1607962892.5372.pdf#page=40" target="_blank" rel="noopener">PDF p.
+40</a>, and <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=7">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 7</a>.</p>
+<p><strong>Source evidence:</strong> SAP p.40 is headed NT-proBNP “at 6
+months” but displays baseline, 6-month, and 12-month rows. SAP p.21
+plans both follow-ups and the article reports both.</p>
+<p><strong>Reported-versus-comparator:</strong> A six-month-only heading
+versus a table containing a 12-month row.</p>
+<p><strong>Reasoning procedure:</strong> Compare the follow-up set named
+by the heading with the displayed row labels and stated analysis
+plan.</p>
+<p><strong>Calculation:</strong> Not applicable; pg/mL and ng/L are
+equivalent-unit context, not an independent contradiction or a second
+candidate.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+title may be an unrevised template heading; the evidence does not show
+that the 12-month result was unplanned or omitted.</p>
+<p><strong>Mechanical evidence recheck:</strong> Heading, rows, plan,
+and article result were found; the mismatch is limited to the time
+heading.</p>
+<p><strong>Quality-control relevance:</strong> Table headings should
+identify all displayed follow-up time points.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could miss or misclassify the planned 12-month NT-proBNP
+row; no numeric-effect or conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Confirm whether p.40
+should name both 6- and 12-month NT-proBNP analyses.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c011--sap-ehra-example-uses-an-undefined-class-3a" class="candidate-card">C011 — SAP
+EHRA example uses an undefined class 3a</h2>
+<p><strong>Candidate statement:</strong> An SAP example uses EHRA class
+3a although the same page defines the set as 1, 2a, 2b, 3, and 4.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=18">joi200126supp2_prod_1607962892.5372.pdf
+— PDF p. 18</a>.</p>
+<p><strong>Source evidence:</strong> The SAP defines modified EHRA
+classes <code>{1, 2a, 2b, 3, 4}</code> and illustrates two-class
+improvement with “3a” to 2a.</p>
+<p><strong>Reported-versus-comparator:</strong> Example class 3a versus
+the explicitly defined category set.</p>
+<p><strong>Reasoning procedure:</strong> Apply set membership:
+<code>3a</code> is not among the printed classes.</p>
+<p><strong>Calculation:</strong>
+<code>3a ∉ {1, 2a, 2b, 3, 4}</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> “3a”
+may be a typographic substitution for class 3; that is inferred, not
+directly declared.</p>
+<p><strong>Mechanical evidence recheck:</strong> Definition and example
+were found. The source does not say whether any realized result used
+class 3a.</p>
+<p><strong>Quality-control relevance:</strong> An example implementing a
+binary-improvement rule should use a defined category.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an implementer could copy an undefined EHRA category into the
+binary-improvement rule; no reported-result or conclusion change is
+established.</p>
+<p><strong>Human verification steps:</strong> Confirm whether the
+example intended baseline EHRA class 3 and clarify it if needed.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--sap-ambulatory-hr-template-uses-monitor-duration-where-the-visit-time-point-is-expected" class="candidate-card">C012
+— SAP ambulatory-HR template uses monitor duration where the visit time
+point is expected</h2>
+<p><strong>Candidate statement:</strong> The SAP ambulatory-heart-rate
+row uses <code>24-hour</code> in a <code>Time point</code> cell, while
+the result is labeled end uptitration; the recheck confirms this is not
+a baseline-placement issue.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=20">joi200126supp2_prod_1607962892.5372.pdf
+— PDF p. 20</a>, <a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=38">PDF p. 38</a>,
+and <a
+href="../joi200126supp3_prod_1607962892.5372.pdf#page=9">joi200126supp3_prod_1607962892.5372.pdf
+— PDF p. 9</a>.</p>
+<p><strong>Source evidence:</strong> SAP p.20 says the 24-hour
+ambulatory measure is collected once with no baseline score. Direct
+visual recheck of p.38 shows <code>24-hour</code> in the ambulatory
+row's <code>Time point</code> cell; the nearby Baseline cell belongs to
+the separate 12-lead ECG section. The results supplement labels the
+measure end uptitration.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>24-hour</code>
+monitor duration in the Time point cell versus the end-uptitration visit
+label.</p>
+<p><strong>Reasoning procedure:</strong> Interpret the column heading as
+visit timing and distinguish monitor duration from a visit label; this
+is a narrowed source-grounded question, not a claim of known timing
+error.</p>
+<p><strong>Calculation:</strong> Not applicable.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+template may intentionally use duration in that column while leaving
+visit timing implicit.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct visual
+inspection confirmed the <code>24-hour</code> cell and corrected the
+stale baseline-placement premise. No explicit SAP declaration explains
+the intended column use.</p>
+<p><strong>Quality-control relevance:</strong> Timing and duration
+labels should be distinguishable for structured data extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could label monitor duration as the assessment visit or
+omit end uptitration; no numerical or conclusion effect is
+established.</p>
+<p><strong>Human verification steps:</strong> Determine whether p.38
+should identify end uptitration in the Time point cell rather than
+repeat monitor duration.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--results-supplement-heart-rate-table-describes-higher-values-as-better-quality-of-life" class="candidate-card">C013
+— Results-supplement heart-rate table describes higher values as better
+quality of life</h2>
+<p><strong>Candidate statement:</strong> A results-supplement heart-rate
+table in beats/min carries a footnote stating that higher values
+represent better quality of life.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi200126supp3_prod_1607962892.5372.pdf#page=14">joi200126supp3_prod_1607962892.5372.pdf
+— PDF p. 14</a>, <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=4">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 4</a>, and <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=6">PDF p.
+6</a>.</p>
+<p><strong>Source evidence:</strong> eTable 2 contains beats/min
+outcomes and footnote a says higher values represent better quality of
+life in the digoxin arm. The same clause appears on an AFEQT
+quality-of-life table on supplement p.16.</p>
+<p><strong>Reported-versus-comparator:</strong> Heart-rate measure in
+beats/min versus quality-of-life direction language.</p>
+<p><strong>Reasoning procedure:</strong> Compare the measure unit and
+table identity with the footnote language; no supplied definition
+equates heart rate with a QoL scale.</p>
+<p><strong>Calculation:</strong> Not applicable.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+clause may be copied from QoL eTables and may only have intended to
+state contrast direction.</p>
+<p><strong>Mechanical evidence recheck:</strong> The heart-rate table
+and footnote were found. The evidence does not establish that a
+heart-rate effect was interpreted incorrectly elsewhere.</p>
+<p><strong>Quality-control relevance:</strong> A footnote should
+describe the measure in the table where it appears.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could misclassify a heart-rate contrast as a
+quality-of-life interpretation; no paper-conclusion effect is
+established.</p>
+<p><strong>Human verification steps:</strong> Confirm whether the QoL
+clause should be removed or replaced with a heart-rate-specific
+direction statement.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c014--main-table-3-uses-a-universal-higher-is-better-footnote-for-lower-is-better-measures" class="candidate-card">C014
+— Main Table 3 uses a universal higher-is-better footnote for
+lower-is-better measures</h2>
+<p><strong>Candidate statement:</strong> Main Table 3 applies an
+unqualified higher-is-better footnote while including NYHA score and
+E/e-prime, which supplied text defines as lower-is-better.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=6">jama_kotecha_2020_oi_200126_1607962892.52158.pdf
+— PDF p. 6</a>, <a
+href="../jama_kotecha_2020_oi_200126_1607962892.52158.pdf#page=7">PDF p.
+7</a>, and <a
+href="../joi200126supp2_prod_1607962892.5372.pdf#page=20">joi200126supp2_prod_1607962892.5372.pdf
+— PDF p. 20</a>.</p>
+<p><strong>Source evidence:</strong> Table 3 footnote b says higher
+values indicate better response with digoxin; the table includes NYHA
+score and E/e-prime, for which supplied text defines lower values as
+better. Their printed adjusted differences are -0.6 and -0.1.</p>
+<p><strong>Reported-versus-comparator:</strong> Universal
+higher-is-better footnote versus lower-is-better directions for NYHA and
+E/e-prime.</p>
+<p><strong>Reasoning procedure:</strong> Test the scope of the
+unqualified footnote across all listed measures. This is distinct from
+C009, which compares opposed SAP statements for E/e-prime.</p>
+<p><strong>Calculation:</strong> Unadjusted NYHA means give
+<code>1.5 - 2.0 = -0.5</code>, directionally consistent with adjusted
+-0.6; the adjusted/unadjusted difference is not a candidate.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+footnote may have been intended only for applicable higher-is-better
+outcomes, but its scope is not delimited.</p>
+<p><strong>Mechanical evidence recheck:</strong> The footnote,
+lower-is-better context, and estimates were found. The evidence does not
+establish that every Table 3 row or fitted result is directionally
+reversed.</p>
+<p><strong>Quality-control relevance:</strong> Mixed-direction outcome
+tables need measure-specific direction statements or clear
+exceptions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could assign the wrong favorable direction to
+lower-is-better rows; no conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Confirm whether Table 3
+should limit the higher-is-better statement and explicitly state
+lower-is-better exceptions.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If a human confirms a candidate, the immediate risk is limited to
+downstream copying of a population total, baseline summary,
+endpoint/analyte label, direction convention, or time-point label.
+Systematic reviewers, meta-analysts, guideline authors, and other
+extractors may benefit from resolving such details before reuse. The
+supplied package does not establish any actual propagation, effect on a
+pooled estimate, guideline impact, clinical impact, or change in the
+paper's conclusions.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The supplied package contains no participant-level data,
+table-generation programs, protocol/SAP amendment history, table-freeze
+history, or complete inferential implementation details. Exact
+reconstruction can be limited by missing degrees of freedom, variance
+estimator, covariance, sidedness, realized model route, and estimand
+mapping. These gaps are retained as candidate-specific human questions.
+The recheck also corrected two nuances: C001 has a printed replacement
+explanation, and C012's <code>24-hour</code> cell is not under Baseline.
+Current evidence supports neutral reporting-consistency questions
+only.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ul>
+<li>Confirm each candidate against the cited source PDF page(s).</li>
+<li>Decide whether the stated comparator and rule apply to the intended
+population, measure, time point, model, or table version.</li>
+<li>Record validity, importance, action, initials, and notes in every
+card.</li>
+<li>If a correction is adopted, preserve the original location and
+document the authoritative replacement outside this review report.</li>
+</ul>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>Source and reused-evidence inventories, coverage records,
+relationship inventories, checker outputs, mechanical recheck, and
+quality audit are retained under <a
+href="review_1_5_1/">review_1_5_1</a>. Source coverage is complete for
+all five direct PDF sources. This Markdown report was assembled from the
+stable candidate ledger and canonical review artifacts; direct-source
+links above are relative to <code>.ai_paper_validation/</code> and end
+in the applicable PDF page anchor.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<p>The execution manifest records the coordinator, reuse curator, four
+mappers, numeric and cross-source reviewers, two distinct high-effort
+statistical-pass agents, evidence rechecker, quality auditor, and report
+generator: <a
+href="review_1_5_1/agent_execution_manifest.md">agent_execution_manifest.md</a>.</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Five supplied PDFs contain 147 pages
+requiring complete mapping; reusable page-level quantitative text exists
+for the 12-page main article and 20-page results supplement, while
+protocol, SAP, and data-sharing pages require fresh direct-source
+inspection. The package is larger than the 102-unit calibration example
+but has a comparable reusable native-text pathway and no workbook or CSV
+complexity.</li>
+<li><strong>Total source units:</strong> 147</li>
+<li><strong>Fresh-source units:</strong> 115</li>
+<li><strong>Target elapsed minutes:</strong> 50-75</li>
+<li><strong>Started UTC:</strong> 2026-08-18T23:23:00Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-19T00:01:21Z</li>
+<li><strong>Observed elapsed minutes:</strong> 38.4</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Token-only API-equivalent estimate
+(USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete estimate __</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete estimate __</td>
+</tr>
+</tbody>
+</table>
+<p>Authoritative response-level runtime token counts were not exposed
+for any manifested agent, so the known token subtotal is 0 while the
+complete total and price remain explicitly unavailable rather than
+estimated. Cached input and cache-write counts are input subsets, and
+reasoning counts are output subsets; none is added again to package
+totals. Amounts are token-only API-equivalent estimates under the
+2026-08-18 pricing snapshot, not invoices. Per-agent detail is retained
+in <a
+href="review_1_5_1/token_usage_summary.md">token_usage_summary.md</a>.</p>
+</body>
+</html>

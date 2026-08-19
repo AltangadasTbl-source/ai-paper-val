@@ -1,0 +1,14 @@
+# Package Limitations and Missing Definitions
+
+These limitations bound the quantitative quality-control review; they do not reduce the completed direct-source coverage.
+
+- The package supplies four PDFs and no raw participant-level data, analysis code, structured result dataset, workbook, CSV, or underlying statistical output. DOC-004 explicitly states that data are not available.
+- The supplied protocol is version 4 dated October 17, 2017. No amendment history, final operative case-report definition, or event-adjudication manual is supplied, so the article/protocol pH-threshold difference cannot be resolved from the package alone.
+- Exact confidence-interval construction, variance estimators, continuity handling, small-sample test choices, degrees of freedom, multiplicity procedures, and some exploratory/subgroup test and display conventions are not fully specified. Diagnostic arithmetic and test reconstructions therefore cannot replace the reported analyses.
+- The unrounded analysis output underlying the article's -8.7 day-7 respiratory-failure difference is absent. The displayed counts reproduce Table 2's -8.5, but do not identify the mechanism that produced -8.7.
+- The intended coding definitions for the hypercapnic ineffective-cough and abundant-secretions cells are absent. Their printed percentages reproduce complementary categories, but the package does not establish whether a numerator, percentage, or label is the intended component.
+- Protocol duration wording is unresolved: PDF p. 32 prints 51 total months with 36 study months plus 12 analysis months, while PDF p. 11 prints 51 total months with 39 study months plus 12 analysis months and separately gives 36 months of inclusion and 3 months of participant follow-up. The omitted three-month follow-up is a plausible source-grounded explanation but does not make the p. 32 displayed two-part arithmetic equal 51.
+- DOC-002 PDF p. 42 has a heading-only native text layer. Its quantitative weaning-form fields were mapped by direct visual inspection, so this is a reusable-derivative limitation rather than a remaining scientific-coverage gap.
+- Exact plotted survival probabilities were not printed and the curves were not digitized. Printed P values, labels, and numbers at risk were checked without inferring unprinted graphical values.
+- Reusable derivatives did not cover DOC-001 pp. 10-11, DOC-002 pp. 1-48, or DOC-004 p. 1. Fresh direct-source mappings cover all 51 of those pages, leaving no direct-source unit unmapped.
+- The review is limited to supplied-package numeric, denominator, statistical, cross-document, measure/label/scale, and rate/count consistency. It does not provide a broad methodology, clinical, misconduct, novelty, or raw-data audit, and it does not determine whether any candidate changes the paper's conclusions.
