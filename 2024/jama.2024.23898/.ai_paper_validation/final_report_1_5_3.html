@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.3 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.3 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.3 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--workflow-153"
+id="toc-quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--primary-outcome-72-hour-clock-origin-is-not-stated-consistently"
+id="toc-c001--primary-outcome-72-hour-clock-origin-is-not-stated-consistently">C001
+— Primary-outcome 72-hour clock origin is not stated
+consistently</a></li>
+<li><a
+href="#c002--postoperative-opioid-consumption-window-is-24-hours-versus-72-hours"
+id="toc-c002--postoperative-opioid-consumption-window-is-24-hours-versus-72-hours">C002
+— Postoperative opioid-consumption window is 24 hours versus 72
+hours</a></li>
+<li><a
+href="#c003--unplanned-readmission-window-is-90-days-versus-30-days"
+id="toc-c003--unplanned-readmission-window-is-90-days-versus-30-days">C003
+— Unplanned-readmission window is 90 days versus 30 days</a></li>
+<li><a
+href="#c004--eras-subgroup-cut-points-differ-from-the-protocol-bands"
+id="toc-c004--eras-subgroup-cut-points-differ-from-the-protocol-bands">C004
+— ERAS subgroup cut points differ from the protocol bands</a></li>
+<li><a
+href="#c005--the-efigure-assigns-both-99-and-95-labels-to-the-same-intervals"
+id="toc-c005--the-efigure-assigns-both-99-and-95-labels-to-the-same-intervals">C005
+— The eFigure assigns both 99% and 95% labels to the same
+intervals</a></li>
+<li><a
+href="#c006--day-5-eq-5d-inference-conflicts-with-blanket-no-difference-prose"
+id="toc-c006--day-5-eq-5d-inference-conflicts-with-blanket-no-difference-prose">C006
+— Day-5 EQ-5D inference conflicts with blanket no-difference
+prose</a></li>
+<li><a
+href="#c007--eras-subgroup-is-labeled-as-two-levels-versus-three-levels"
+id="toc-c007--eras-subgroup-is-labeled-as-two-levels-versus-three-levels">C007
+— ERAS subgroup is labeled as two levels versus three levels</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>All seven candidate consistency issues in this report are
+<strong>Pending Human Adjudication</strong>. They are reproducible
+reporting-quality observations, not findings that the paper’s
+conclusions are wrong. Small preventable defects can matter to
+downstream evidence extraction; this report does not claim propagation,
+conclusion change, or serious harm occurred.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete mapping of the supplied package identified
+<strong>7</strong> stable quantitative reporting-quality candidates:
+C001–C007. They concern endpoint clock origins and windows, subgroup
+category definitions and labels, confidence-interval labeling, and a
+table-to-prose inferential summary. No candidate is based on a
+display-zero P value. The complete stable set is presented below without
+a review queue, top-N subset, or deferred-by-cap section.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains five supplied PDFs: the main article (10 pages),
+protocol (66), SAP (40), results supplement (2), and data-sharing
+statement (1). Reusable source-linked native/normalized text and
+selected page renders covered the 10 main-article pages and 2
+results-supplement pages. The remaining 107 pages were freshly extracted
+and mapped from their supplied PDFs. Reused evidence was a locator and
+transcription aid; cited candidate evidence was mechanically confirmed
+against the direct source pages.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Units</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh-required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001 main article</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002 protocol</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">66</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003 SAP</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">40</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-004 results supplement</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-005 data-sharing statement</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>119</strong></td>
+<td style="text-align: right;"><strong>12</strong></td>
+<td style="text-align: right;"><strong>107</strong></td>
+<td style="text-align: right;"><strong>119</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The review covered numeric, denominator, statistical, cross-document,
+measure/label/scale, and rate-versus-count relationships. Blank
+templates, protocol recruitment projections, references, and the
+administrative data-sharing statement were not treated as observed
+result values. No workbook, CSV, DOC, or DOCX was supplied.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The numeric inventory covers N001–N065. The statistical inventory
+covers S001–S033; both statistical passes record
+<code>PASS_1_COMPLETE</code> and <code>PASS_2_COMPLETE</code> for every
+statistical relationship. The cross-source review covered all five
+direct sources and 12 matched-result groups. The two pre-ID duplicates
+were correctly merged into C003 and C005; C004 and C007 remain separate
+because their comparators and consistency rules differ.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Category</th>
+<th>Candidate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Primary-outcome 72-hour clock origin is not stated consistently</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Postoperative opioid-consumption window is 24 hours versus 72
+hours</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Unplanned-readmission window is 90 days versus 30 days</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>ERAS subgroup cut points differ from the protocol bands</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Statistical reporting inconsistency</td>
+<td>The eFigure assigns both 99% and 95% labels to the same
+intervals</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Statistical reporting inconsistency</td>
+<td>Day-5 EQ-5D inference conflicts with blanket no-difference
+prose</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>ERAS subgroup is labeled as two levels versus three levels</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--primary-outcome-72-hour-clock-origin-is-not-stated-consistently" class="candidate-card">C001
+— Primary-outcome 72-hour clock origin is not stated consistently</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The matched primary GI-3 result
+is described as 72 hours “after surgery/operation” in the article but as
+72 hours “after the start of operation” in the SAP; the printed clock
+origin is not explicitly aligned.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=1">main
+article — PDF p. 1</a>; <a
+href="../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=5">main
+article — PDF p. 5</a>; <a
+href="../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=6">main
+article — PDF p. 6</a>; <a
+href="../joi240139supp2_prod_1741633738.17362.pdf#page=9">SAP — PDF p.
+9</a>.</p>
+<p><strong>Source evidence:</strong> The article reports the same
+160/279 versus 164/278 GI-3 result as “72 hours after surgery,” “at 72
+hours after operation,” and “by 72 h after operation.”</p>
+<p><strong>Reported-versus-comparator:</strong> The SAP defines the same
+GI-3 composite “at 72 hours after the start of operation.”</p>
+<p><strong>Reasoning procedure:</strong> A fixed time-window endpoint
+needs an identifiable time zero. The SAP explicitly names operation
+start; the article wording does not. This is a label-alignment question,
+not a demonstrated difference in derivation.</p>
+<p><strong>Calculation:</strong> No numerical recalculation is claimed.
+The matched counts and effects agree; the reproducible comparison is the
+presence versus absence of “start of operation.”</p>
+<p><strong>Alternative source-grounded interpretations:</strong> “After
+surgery/operation” may be shorthand for the SAP origin, or the final
+derivation may have used completion of surgery, anaesthesia start, or
+another timestamp not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> All four cited pages
+and the otherwise matching GI-3 result were found. The package lacks the
+final derivation specification, timestamp fields, analysis code, and a
+definition equating the article wording with operation start.</p>
+<p><strong>Quality-control relevance:</strong> An endpoint clock origin
+is part of the quantitative definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy an ambiguous endpoint clock origin; no
+propagation or conclusion change is assumed.</p>
+<p><strong>Human verification steps:</strong> Inspect the final data
+dictionary, timestamp fields, and derivation code; identify time zero;
+then align each article label to the confirmed definition.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--postoperative-opioid-consumption-window-is-24-hours-versus-72-hours" class="candidate-card">C002
+— Postoperative opioid-consumption window is 24 hours versus 72
+hours</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The article defines and reports
+postoperative morphine-equivalent consumption through 24 hours, while
+the protocol and SAP define the matched endpoint through 72 hours.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=4">main
+article — PDF p. 4</a>; <a
+href="../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=6">main
+article — PDF p. 6</a>; <a
+href="../joi240139supp1_prod_1741633738.16362.pdf#page=17">protocol —
+PDF p. 17</a>; <a
+href="../joi240139supp2_prod_1741633738.17362.pdf#page=11">SAP — PDF p.
+11</a>.</p>
+<p><strong>Source evidence:</strong> The article names postoperative
+opioid consumption “up to 24 hours” and reports OME medians 70.6 mg
+versus 45.0 mg, each n=210.</p>
+<p><strong>Reported-versus-comparator:</strong> The protocol specifies
+cumulative morphine-equivalent consumption until 72 hours after
+operation start; the SAP specifies total in-hospital opioid consumption
+up to 72 hours.</p>
+<p><strong>Reasoning procedure:</strong> Cumulative consumption over 24
+and 72 hours are different measures unless a supplied source establishes
+equivalence or a distinct endpoint.</p>
+<p><strong>Calculation:</strong>
+<code>72 hours − 24 hours = 48 hours</code>. Aggregate 24-hour medians
+cannot reconstruct 72-hour medians.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+final analysis may intentionally report a distinct 24-hour measure, or
+the planned 72-hour endpoint may have changed before final analysis.</p>
+<p><strong>Mechanical evidence recheck:</strong> All cited labels,
+medians, IQRs, sample sizes, and planning definitions were matched. No
+final amendment, outcome dictionary, 72-hour output, participant-level
+data, or derivation record is supplied.</p>
+<p><strong>Quality-control relevance:</strong> The accumulation window
+defines the reported quantity.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could attach the published medians to the wrong window; no
+propagation or conclusion change is assumed.</p>
+<p><strong>Human verification steps:</strong> Obtain the final outcome
+definition/amendment and output; confirm the window generating 70.6 and
+45.0 mg; determine whether 72-hour values were analysed.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--unplanned-readmission-window-is-90-days-versus-30-days" class="candidate-card">C003 —
+Unplanned-readmission window is 90 days versus 30 days</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> Table 3 labels 31 versus 34
+unplanned readmissions within 90 days, while article Methods, protocol,
+and SAP define the endpoint within 30 days.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=4">main
+article — PDF p. 4</a>; <a
+href="../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=8">main
+article — PDF p. 8</a>; <a
+href="../joi240139supp1_prod_1741633738.16362.pdf#page=18">protocol —
+PDF p. 18</a>; <a
+href="../joi240139supp2_prod_1741633738.17362.pdf#page=10">SAP — PDF p.
+10</a>; <a
+href="../joi240139supp2_prod_1741633738.17362.pdf#page=27">SAP — PDF p.
+27</a>.</p>
+<p><strong>Source evidence:</strong> Article Methods says within 30
+days; Table 3 says within 90 days and prints 31/279 (11.1%) versus
+34/278 (12.2%).</p>
+<p><strong>Reported-versus-comparator:</strong> The protocol and SAP
+(including the SAP dummy-table heading) specify unplanned readmission
+within 30 days.</p>
+<p><strong>Reasoning procedure:</strong> Counts and proportions from 30-
+and 90-day ascertainment windows are not interchangeable without an
+identified redefinition.</p>
+<p><strong>Calculation:</strong>
+<code>90 days − 30 days = 60 days</code>;
+<code>31 / 279 × 100 = 11.11%</code> and
+<code>34 / 278 × 100 = 12.23%</code>, reproducing the printed
+percentages at one decimal place but not the window.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Table 3
+may contain 30-day counts under a 90-day label, or the final endpoint
+may have changed to 90 days while other text remained unrevised.</p>
+<p><strong>Mechanical evidence recheck:</strong> All five locations,
+windows, counts, denominators, and percentages were matched.
+Participant-level readmission dates, final cutoff output, endpoint
+dictionary, and amendment history are absent.</p>
+<p><strong>Quality-control relevance:</strong> Follow-up window is
+necessary to identify a readmission measure.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could record the wrong follow-up duration for these
+proportions; no propagation or conclusion change is assumed.</p>
+<p><strong>Human verification steps:</strong> Reproduce counts under
+both windows from final data; inspect amendment history and final
+output; align Methods and Table 3 to the confirmed definition.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--eras-subgroup-cut-points-differ-from-the-protocol-bands" class="candidate-card">C004
+— ERAS subgroup cut points differ from the protocol bands</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The protocol gives example ERAS
+compliance bands of 0–30%, 30–60%, and greater than 60%, whereas the
+eFigure defines low as fewer than 5 and high as at least 7 of 10
+criteria; the printed definitions are not directly reconciled.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240139supp1_prod_1741633738.16362.pdf#page=17">protocol —
+PDF p. 17</a>; <a
+href="../joi240139supp1_prod_1741633738.16362.pdf#page=18">protocol —
+PDF p. 18</a>; <a
+href="../joi240139supp2_prod_1741633738.17362.pdf#page=15">SAP — PDF p.
+15</a>; <a
+href="../joi240139supp3_prod_1741633738.18862.pdf#page=2">results
+supplement — PDF p. 2</a>.</p>
+<p><strong>Source evidence:</strong> The eFigure displays high n=191,
+moderate n=274, low n=92; it defines high as ≥7/10 and low as &lt;5/10,
+and says the definitions were not predefined.</p>
+<p><strong>Reported-versus-comparator:</strong> The protocol calls its
+bands “e.g.” 0–30%, 30–60%, and &gt;60%; the SAP names high/moderate/low
+without cut points.</p>
+<p><strong>Reasoning procedure:</strong> A categorization rule must map
+criterion counts to categories unambiguously. The protocol qualifier
+means its bands cannot be assumed to govern the final analysis.</p>
+<p><strong>Calculation:</strong> <code>4 / 10 × 100 = 40%</code>. The
+eFigure classifies 4/10 as low, while 40% is in the protocol’s printed
+30–60% example band. <code>191 + 274 + 92 = 557</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+“e.g.” bands may be illustrative and a final 0–4/5–6/7–10 rule may have
+superseded them; alternatively, the scales may not have been aligned.
+The eFigure does not expressly define moderate.</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited bands,
+thresholds, counts, and category labels were found. Final code,
+eligible-item denominator/missing-data rule, explicit moderate
+definition, and supersession record are absent.</p>
+<p><strong>Quality-control relevance:</strong> Subgroup categories need
+a reproducible scale definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could reproduce or label adherence categories incorrectly;
+no erroneous subgroup assignment, propagation, or conclusion change is
+assumed.</p>
+<p><strong>Human verification steps:</strong> Obtain final ERAS variable
+list, denominator rule, and categorization code; reproduce all three
+counts; determine whether the example protocol bands were
+superseded.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--the-efigure-assigns-both-99-and-95-labels-to-the-same-intervals" class="candidate-card">C005
+— The eFigure assigns both 99% and 95% labels to the same intervals</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The eFigure legend labels
+horizontal subgroup intervals as 99% CIs, while its caption calls the
+displayed within-subgroup intervals 95% CIs.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240139supp3_prod_1741633738.18862.pdf#page=2">results
+supplement — PDF p. 2</a>; <a
+href="../joi240139supp2_prod_1741633738.17362.pdf#page=15">SAP — PDF p.
+15</a>.</p>
+<p><strong>Source evidence:</strong> The eFigure legend says “99% CI”;
+its caption states that right-hand within-subgroup relative risks have
+“95% confidence interval.”</p>
+<p><strong>Reported-versus-comparator:</strong> The SAP specifies
+two-sided 1% subgroup tests and corresponding 99% CIs, supporting the
+legend’s planned convention but not proving the plotted calculation.</p>
+<p><strong>Reasoning procedure:</strong> One displayed within-subgroup
+interval set requires an unambiguous confidence-level label unless
+separate interval sets are explicitly distinguished.</p>
+<p><strong>Calculation:</strong>
+<code>99% − 95% = 4 percentage points</code>; the explicit labels have
+no rounding tolerance.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+caption may use generic 95% wording, the legend may be incorrect, or
+different interval types may have been intended but not
+distinguished.</p>
+<p><strong>Mechanical evidence recheck:</strong> The legend, caption,
+plotted linkage, interval values, and SAP convention were directly
+matched. Populated output, interval-construction metadata, SEs,
+covariance details, and confirmed confidence level are absent.</p>
+<p><strong>Quality-control relevance:</strong> Confidence level changes
+the uncertainty represented by a forest plot.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could record subgroup intervals under the wrong confidence
+level; no effect-estimate, propagation, or conclusion change is
+assumed.</p>
+<p><strong>Human verification steps:</strong> Inspect populated subgroup
+output and interval-construction settings; determine the level for each
+interval; then correct or distinguish legend and caption wording.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--day-5-eq-5d-inference-conflicts-with-blanket-no-difference-prose" class="candidate-card">C006
+— Day-5 EQ-5D inference conflicts with blanket no-difference prose</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> Table 2 reports a day-5
+EQ-5D-5L contrast with a 95% CI excluding zero and P=.04, whereas
+Results says there was no statistically significant EQ-5D-5L difference
+between groups.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=5">main
+article — PDF p. 5</a>; <a
+href="../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=6">main
+article — PDF p. 6</a>; <a
+href="../joi240139supp2_prod_1741633738.17362.pdf#page=13">SAP — PDF p.
+13</a>; <a
+href="../joi240139supp2_prod_1741633738.17362.pdf#page=14">SAP — PDF p.
+14</a>.</p>
+<p><strong>Source evidence:</strong> Day 5 is −0.057 (95% CI, −0.111 to
+−0.003), P=.04; Results uses blanket “no significant difference” prose
+for EQ-5D-5L.</p>
+<p><strong>Reported-versus-comparator:</strong> The SAP uses 95% CIs
+apart from subgroups, no secondary-outcome multiplicity adjustment, and
+time-by-treatment contrasts at each EQ-5D time point.</p>
+<p><strong>Reasoning procedure:</strong> Under the printed time-specific
+framework, the row is nominally non-null. The comparison does not
+establish an overall EQ-5D effect, clinical importance, or that the
+paper conclusion is wrong.</p>
+<p><strong>Calculation:</strong>
+<code>−0.111 &lt; −0.057 &lt; −0.003</code>; zero is outside the
+interval; <code>.04 &lt; .05</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+prose may summarize an overall repeated-measures pattern, use an
+unstated endpoint-level decision rule, or omit mention of a nominal
+time-point result.</p>
+<p><strong>Mechanical evidence recheck:</strong> The table, prose, CI
+framework, repeated-measures description, and no-adjustment statement
+were matched. No omnibus statistic, endpoint hierarchy, narrative
+decision rule, or populated model output is supplied.</p>
+<p><strong>Quality-control relevance:</strong> Narrative statistical
+summaries should make clear their relation to displayed time-specific
+results.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could omit a nominal day-5 contrast or apply the blanket
+summary to every time point; no overall effect, propagation, or
+conclusion change is assumed.</p>
+<p><strong>Human verification steps:</strong> Identify the estimand and
+decision rule governing the prose; inspect model output for the
+time-specific contrast and any omnibus test; qualify the narrative
+accordingly.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--eras-subgroup-is-labeled-as-two-levels-versus-three-levels" class="candidate-card">C007
+— ERAS subgroup is labeled as two levels versus three levels</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> Article Methods calls the ERAS
+subgroup “high vs low,” while the SAP and eFigure name high, moderate,
+and low strata for the displayed interaction.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=5">main
+article — PDF p. 5</a>; <a
+href="../joi240139supp2_prod_1741633738.17362.pdf#page=15">SAP — PDF p.
+15</a>; <a
+href="../joi240139supp3_prod_1741633738.18862.pdf#page=2">results
+supplement — PDF p. 2</a>.</p>
+<p><strong>Source evidence:</strong> The eFigure prints high n=191,
+moderate n=274, and low n=92, with one interaction P=.966; the SAP names
+the same three levels.</p>
+<p><strong>Reported-versus-comparator:</strong> The article phrase names
+only high and low and does not identify it as shorthand or a separate
+extreme-level contrast.</p>
+<p><strong>Reasoning procedure:</strong> A subgroup label should
+identify levels represented in the reported interaction. Three displayed
+rows do not, by themselves, prove the final model matrix or degrees of
+freedom.</p>
+<p><strong>Calculation:</strong> <code>191 + 274 + 92 = 557</code>. One
+interaction P appears beside the three-row factor, supporting a
+three-level display without reconstructing its coding.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> “High
+vs low” may be shorthand for the three-level factor, or it may describe
+an extreme-level contrast while the eFigure displays a separate
+three-level interaction.</p>
+<p><strong>Mechanical evidence recheck:</strong> The two-level article
+phrase, three-level SAP/eFigure labels, counts, RRs, intervals, and P
+value were matched. Final formula, factor coding, degrees of freedom,
+contrast matrix, and populated output are absent.</p>
+<p><strong>Quality-control relevance:</strong> Complete subgroup labels
+are needed to identify the reported factor.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could record a two-level subgroup for a three-stratum
+display; no interaction-calculation, propagation, or conclusion change
+is assumed.</p>
+<p><strong>Human verification steps:</strong> Inspect final model
+formula, coding, degrees of freedom, contrasts, and output; confirm
+represented levels; align Methods wording with the analysis
+performed.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed after human review, these observations could affect how
+an evidence extractor records endpoint windows, clock origins, subgroup
+categories, confidence levels, or nominal time-point findings. They do
+not establish that any extraction error, systematic-review propagation,
+guideline effect, treatment effect, or conclusion change occurred.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>See <a href="review_1_5_3/limitations.md">limitations.md</a>. The
+package lacks participant-level data, final endpoint derivation records,
+complete amendment history, populated model output, subgroup interval
+metadata, ERAS coding, factor coding/contrasts, and a stated EQ-5D
+narrative decision rule. Planning documents cannot alone determine
+whether a later documented change was appropriate.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each candidate: confirm direct source wording; obtain the named
+final analysis record or code; select among only the source-grounded
+alternatives; document the resolution; and complete Validity,
+Importance, Action, Initials, and Notes in the card. Do not infer a
+conclusion change from this report.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<ul>
+<li><strong>Routing preflight:</strong> PASS; Coordinator inference:
+PASS; execution mode: INTERACTIVE_CLI.</li>
+<li><strong>Source coverage:</strong> 119 total units; 12 reusable
+units; 107 fresh-source units; 119 mapped units.</li>
+<li><strong>Source integrity:</strong> PASS. All five direct-source and
+all 38 reused-artifact SHA-256 baselines were recomputed after report
+assembly and matched their pre-review values.</li>
+<li><strong>Candidate-ID reconciliation:</strong> Ledger, recheck,
+quality audit, and this report contain C001, C002, C003, C004, C005,
+C006, C007.</li>
+</ul>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>root/reuse_asset_curator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>root/main_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>root/support_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>root/numeric_consistency_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>root/cross_source_consistency_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistical_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>root/evidence_rechecker</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistical_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>root/quality_control_auditor</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> This package has five direct PDF
+sources and 119 unique PDF-page units. Twelve units have complete
+reusable native-text or visual coverage, while 107 units across the
+66-page protocol, 40-page SAP, and one-page data-sharing statement
+require fresh direct-source mapping. The encrypted protocol and SAP have
+usable copy permissions but no reusable extraction, and the workflow
+requires complete main/support mapping, two statistical passes,
+rechecking, audit, and report assembly.</li>
+<li><strong>Total source units:</strong> 119</li>
+<li><strong>Fresh-source units:</strong> 107</li>
+<li><strong>Target elapsed minutes:</strong> 65-90</li>
+<li><strong>Started UTC:</strong> 2026-08-19T04:39:46Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-19T05:03:45Z</li>
+<li><strong>Observed elapsed minutes:</strong> 24.0</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>Authoritative response-level token counts were not exposed by this
+runtime for the coordinator or any manifested specialist. Accordingly,
+the deterministic summary retains a known subtotal of zero while the
+total-token count and complete price remain incomplete; no usage was
+estimated from report text. Cached input and cache-write counts are
+input subsets; reasoning is an output subset and is not added again. Any
+available amount uses the bundled pricing snapshot dated 2026-08-18 and
+is a token-only estimate, not an invoice. Per-agent detail is in
+<code>review_1_5_3/token_usage_summary.md</code>.</p>
+</body>
+</html>

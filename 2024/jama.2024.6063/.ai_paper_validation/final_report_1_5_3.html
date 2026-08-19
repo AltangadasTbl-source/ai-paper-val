@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.3 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.3 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.3 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--workflow-153"
+id="toc-quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--placebo-discontinuation-counts-differ-between-figure-1-and-the-results-text"
+id="toc-c001--placebo-discontinuation-counts-differ-between-figure-1-and-the-results-text">C001
+— Placebo discontinuation counts differ between Figure 1 and the Results
+text</a></li>
+<li><a
+href="#c002--etable-2-names-167-and-165-for-the-overall-adherence-population"
+id="toc-c002--etable-2-names-167-and-165-for-the-overall-adherence-population">C002
+— eTable 2 names 167 and 165 for the overall adherence
+population</a></li>
+<li><a
+href="#c003--etable-5-krill-smaller-by-1-unit-percentage-conflicts-with-10-of-107"
+id="toc-c003--etable-5-krill-smaller-by-1-unit-percentage-conflicts-with-10-of-107">C003
+— eTable 5 krill “Smaller by 1 unit” percentage conflicts with 10 of
+107</a></li>
+<li><a
+href="#c004--etable-5-krill-no-change-percentage-conflicts-with-80-of-107"
+id="toc-c004--etable-5-krill-no-change-percentage-conflicts-with-80-of-107">C004
+— eTable 5 krill “No change” percentage conflicts with 80 of
+107</a></li>
+<li><a
+href="#c005--etable-5-krill-larger-by-1-unit-percentage-conflicts-with-12-of-107"
+id="toc-c005--etable-5-krill-larger-by-1-unit-percentage-conflicts-with-12-of-107">C005
+— eTable 5 krill “Larger by 1 unit” percentage conflicts with 12 of
+107</a></li>
+<li><a
+href="#c006--etable-5-placebo-smaller-by-2-units-percentage-conflicts-with-2-of-109"
+id="toc-c006--etable-5-placebo-smaller-by-2-units-percentage-conflicts-with-2-of-109">C006
+— eTable 5 placebo “Smaller by 2 units” percentage conflicts with 2 of
+109</a></li>
+<li><a
+href="#c007--etable-5-placebo-smaller-by-1-unit-percentage-conflicts-with-16-of-109"
+id="toc-c007--etable-5-placebo-smaller-by-1-unit-percentage-conflicts-with-16-of-109">C007
+— eTable 5 placebo “Smaller by 1 unit” percentage conflicts with 16 of
+109</a></li>
+<li><a
+href="#c008--etable-5-placebo-no-change-percentage-conflicts-with-75-of-109"
+id="toc-c008--etable-5-placebo-no-change-percentage-conflicts-with-75-of-109">C008
+— eTable 5 placebo “No change” percentage conflicts with 75 of
+109</a></li>
+<li><a
+href="#c009--etable-4-repeats-week-4-function-changes-in-the-weight-bearing-pain-row"
+id="toc-c009--etable-4-repeats-week-4-function-changes-in-the-weight-bearing-pain-row">C009
+— eTable 4 repeats week-4 function changes in the weight-bearing-pain
+row</a></li>
+<li><a
+href="#c010--etable-4-repeats-week-4-back-pain-results-in-week-12-lower-leg-strength"
+id="toc-c010--etable-4-repeats-week-4-back-pain-results-in-week-12-lower-leg-strength">C010
+— eTable 4 repeats week-4 back-pain results in week-12 lower-leg
+strength</a></li>
+<li><a
+href="#c011--etable-4-repeats-the-week-12-hscrp-result-in-fasting-glucose"
+id="toc-c011--etable-4-repeats-the-week-12-hscrp-result-in-fasting-glucose">C011
+— eTable 4 repeats the week-12 hsCRP result in fasting glucose</a></li>
+<li><a
+href="#c012--key-points-and-other-matched-primary-result-displays-use-opposite-signs"
+id="toc-c012--key-points-and-other-matched-primary-result-displays-use-opposite-signs">C012
+— Key Points and other matched primary-result displays use opposite
+signs</a></li>
+<li><a
+href="#c013--placebo-extremity-pain-event-count-is-6-in-table-3-and-5-elsewhere"
+id="toc-c013--placebo-extremity-pain-event-count-is-6-in-table-3-and-5-elsewhere">C013
+— Placebo extremity-pain event count is 6 in Table 3 and 5
+elsewhere</a></li>
+<li><a
+href="#c014--table-3-regular-adverse-event-footnote-points-to-etable-4-instead-of-etable-7"
+id="toc-c014--table-3-regular-adverse-event-footnote-points-to-etable-4-instead-of-etable-7">C014
+— Table 3 regular-adverse-event footnote points to eTable 4 instead of
+eTable 7</a></li>
+<li><a
+href="#c015--table-3-serious-adverse-event-footnote-points-to-etables-5-and-6-instead-of-etable-8"
+id="toc-c015--table-3-serious-adverse-event-footnote-points-to-etables-5-and-6-instead-of-etable-8">C015
+— Table 3 serious-adverse-event footnote points to eTables 5 and 6
+instead of eTable 8</a></li>
+<li><a
+href="#c016--main-text-95-adherence-does-not-reproduce-the-cited-etable-2-overall-result"
+id="toc-c016--main-text-95-adherence-does-not-reproduce-the-cited-etable-2-overall-result">C016
+— Main-text 95% adherence does not reproduce the cited eTable 2 overall
+result</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance-profile"
+id="toc-performance-profile">Performance profile</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>Every candidate in this report is <strong>Pending Human
+Adjudication</strong>. These are source-grounded quantitative reporting
+quality-control observations, not conclusions about validity,
+authorship, misconduct, or the paper's conclusions.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete review coverage registered <strong>16 stable candidates
+(C001–C016)</strong>. The candidates concern reported counts,
+denominators and percentages, repeated table output, a sign/orientation
+discrepancy, adverse-event counts, cross-references, and an adherence
+percentage. Small preventable reporting defects can matter for
+downstream evidence extraction; this report does not claim that any
+defect propagated, changed a conclusion, or caused serious harm.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The supplied package contains four direct PDF sources. Direct source
+PDFs were the evidence authority; reusable native text, layout text,
+page maps, and rendered material were used as locators and transcription
+aids. The mechanical recheck confirmed every cited candidate location
+against the original supplied PDF page. Source and reusable-artifact
+inventories, hashes, and fitness assessments are recorded in the
+versioned review artifacts.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All <strong>41 of 41</strong> PDF-page source units were mapped: main
+article 10/10, Supplement 1 15/15, Supplement 2 1/1, and Supplement 3
+15/15. Reusable and fresh-required units partitioned every source: 24
+reusable and 17 fresh-required units. No scientific-coverage gap
+remains.</p>
+<p>The review addressed quantitative reporting consistency: arithmetic,
+denominators, percentages, statistics, duplicated output,
+sign/direction, matched cross-document values, labels, and rate/count
+distinctions. It did not conduct a broad clinical, methodological,
+misconduct, raw-data, or external-literature audit. Coherent
+display-zero P values were not candidates; no assigned relationship
+contained <code>P = 0</code>, <code>p = 0.000</code>, or an equivalent
+display zero.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>Numeric/reporting relationships <strong>N001–N028</strong> were
+completed. Inferential-statistical relationships
+<strong>S001–S091</strong> were completed in two fresh, distinct
+statistical passes: pass 1 and pass 2. Pass 2 revisited all 91 S
+relationships and the complete cross-lane ledger/recheck facts; it added
+no stable candidate. The statistically implicated existing candidates
+are C009, C010, C011, and C012. Candidate registration, evidence
+recheck, and evidence-quality audit each cover the identical stable set
+C001–C016.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Placebo discontinuation counts differ between Figure 1 and
+Results</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>eTable 2 names 167 and 165 for overall adherence</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>eTable 5 krill “Smaller by 1 unit” percentage</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>eTable 5 krill “No change” percentage</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>eTable 5 krill “Larger by 1 unit” percentage</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>eTable 5 placebo “Smaller by 2 units” percentage</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>eTable 5 placebo “Smaller by 1 unit” percentage</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>eTable 5 placebo “No change” percentage</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>eTable 4 duplicated week-4 changes</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>eTable 4 duplicated lower-leg-strength result</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>eTable 4 duplicated hsCRP/glucose result</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Opposite signs in matched primary-result displays</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>Placebo extremity-pain count differs across displays</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>Regular-adverse-event footnote cross-reference</td>
+</tr>
+<tr>
+<td>C015</td>
+<td>Serious-adverse-event footnote cross-reference</td>
+</tr>
+<tr>
+<td>C016</td>
+<td>Main-text 95% adherence versus cited eTable 2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--placebo-discontinuation-counts-differ-between-figure-1-and-the-results-text" class="candidate-card">C001
+— Placebo discontinuation counts differ between Figure 1 and the Results
+text</h2>
+<p><strong>Candidate statement:</strong> Figure 1 and Results print
+different placebo-arm discontinuation/completion counts if their
+disposition terms refer to the same participants.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_laslett_2024_oi_240048_1727199125.7595.pdf#page=3">Main
+article — PDF p. 3</a>; <a
+href="../jama_laslett_2024_oi_240048_1727199125.7595.pdf#page=7">Main
+article — PDF p. 7</a>.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints 132 placebo
+randomized, 111 completing treatment, and 21 discontinuing. Results
+prints 23 placebo participants withdrew or were lost and 222 total
+completed.</p>
+<p><strong>Reported-versus-comparator:</strong> Figure 1’s placebo 21
+discontinuations and 111 completers versus Results’ 23
+withdrawals/losses and implied 109 placebo completers.</p>
+<p><strong>Reasoning procedure:</strong> Apply randomized-arm accounting
+only conditionally, because the source does not define the compared
+disposition categories as identical.</p>
+<p><strong>Calculation:</strong> <code>111 + 21 = 132</code>;
+<code>132 - 23 = 109</code>, not 111. Across arms, Figure 1 has 38
+discontinuations/224 completers versus Results’ 40/222.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Results
+may include two placebo participants outside Figure 1’s discontinuation
+category, or one display may have a transcription difference.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both pages and all
+printed counts were found; category equivalence remains undefined.</p>
+<p><strong>Quality-control relevance:</strong> A disposition-count
+mismatch can impede reproducible participant-flow extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy an inconsistent placebo completion or
+discontinuation count; no propagation or conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Reconcile
+participant-level dispositions and define the Figure 1 and Results
+completion/withdrawal categories.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--etable-2-names-167-and-165-for-the-overall-adherence-population" class="candidate-card">C002
+— eTable 2 names 167 and 165 for the overall adherence population</h2>
+<p><strong>Candidate statement:</strong> The overall eTable 2 row is
+supported by 167 participants while its adherence footnote names
+165.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=3">Supplement 3 —
+PDF p. 3</a>.</p>
+<p><strong>Source evidence:</strong> The overall 0–24-week row prints
+<code>n = 167</code>, 82 (98.8%), and 81 (96.4%); the footnote names
+<code>n = 165</code> for pill-count data and completers.</p>
+<p><strong>Reported-versus-comparator:</strong> Row total 167 and
+percentage-supported arm denominators versus footnote total 165.</p>
+<p><strong>Reasoning procedure:</strong> Reproduce the two displayed
+one-decimal percentages and compare their summed denominators with the
+footnote population.</p>
+<p><strong>Calculation:</strong> <code>82/83 × 100 = 98.7952%</code>;
+<code>81/84 × 100 = 96.4286%</code>; <code>83 + 84 = 167</code>, not
+165.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+footnote may describe an unlabelled narrower subset, or it may be stale
+relative to the row.</p>
+<p><strong>Mechanical evidence recheck:</strong> The row, footnote,
+counts, and percentages were found and reproduced.</p>
+<p><strong>Quality-control relevance:</strong> A denominator definition
+is required to interpret and extract adherence percentages
+consistently.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could copy the wrong adherence denominator or population; no
+downstream use or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the precise
+participant set for 165 and its relation to the row’s 167.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--etable-5-krill-smaller-by-1-unit-percentage-conflicts-with-10-of-107" class="candidate-card">C003
+— eTable 5 krill “Smaller by 1 unit” percentage conflicts with 10 of
+107</h2>
+<p><strong>Candidate statement:</strong> The printed 12% does not
+reproduce from the printed krill count 10 and total 107.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=8">Supplement 3 —
+PDF p. 8</a>.</p>
+<p><strong>Source evidence:</strong> The krill
+<code>Smaller - 1 unit</code> cell is <code>10 (12%)</code>; its total
+is <code>107 (100%)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed 12% versus the
+percentage from 10/107.</p>
+<p><strong>Reasoning procedure:</strong> Apply whole-percentage rounding
+to the displayed count divided by the displayed arm total.</p>
+<p><strong>Calculation:</strong> <code>10/107 × 100 = 9.3458%</code>,
+which rounds to 9%, not 12%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unprinted denominator or a different table version could explain the
+discrepancy.</p>
+<p><strong>Mechanical evidence recheck:</strong> The count, percentage,
+and total were found; no alternative denominator is printed.</p>
+<p><strong>Quality-control relevance:</strong> Count/percentage
+reconciliation supports reliable categorical-outcome extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy a mismatched category percentage; no propagation
+or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+count, percentage, and denominator from the table source.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--etable-5-krill-no-change-percentage-conflicts-with-80-of-107" class="candidate-card">C004
+— eTable 5 krill “No change” percentage conflicts with 80 of 107</h2>
+<p><strong>Candidate statement:</strong> The printed 72% does not
+reproduce from the printed krill count 80 and total 107.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=8">Supplement 3 —
+PDF p. 8</a>.</p>
+<p><strong>Source evidence:</strong> Krill <code>No change</code> is
+<code>80 (72%)</code>; the arm total is <code>107 (100%)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed 72% versus the
+percentage from 80/107.</p>
+<p><strong>Reasoning procedure:</strong> Apply whole-percentage rounding
+to the printed count and total.</p>
+<p><strong>Calculation:</strong> <code>80/107 × 100 = 74.7664%</code>,
+which rounds to 75%, not 72%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+different unprinted denominator or a table-version difference is
+possible.</p>
+<p><strong>Mechanical evidence recheck:</strong> The printed cells were
+found; no category-specific denominator is supplied.</p>
+<p><strong>Quality-control relevance:</strong> The observation
+identifies an unresolved categorical denominator/percentage
+relationship.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a categorical outcome percentage could be copied inconsistently; no
+downstream effect is claimed.</p>
+<p><strong>Human verification steps:</strong> Verify whether 80, 72%, or
+107 is the intended reported value.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--etable-5-krill-larger-by-1-unit-percentage-conflicts-with-12-of-107" class="candidate-card">C005
+— eTable 5 krill “Larger by 1 unit” percentage conflicts with 12 of
+107</h2>
+<p><strong>Candidate statement:</strong> The printed 12% does not
+reproduce from the printed krill count 12 and total 107.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=8">Supplement 3 —
+PDF p. 8</a>.</p>
+<p><strong>Source evidence:</strong> Krill <code>Larger - 1 unit</code>
+is <code>12 (12%)</code>; the arm total is <code>107 (100%)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed 12% versus the
+percentage from 12/107.</p>
+<p><strong>Reasoning procedure:</strong> Apply whole-percentage rounding
+to the displayed count and total.</p>
+<p><strong>Calculation:</strong> <code>12/107 × 100 = 11.2150%</code>,
+which rounds to 11%, not 12%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Another
+unprinted denominator or a table-version difference could explain the
+cells.</p>
+<p><strong>Mechanical evidence recheck:</strong> The count, percentage,
+and total were found; an alternative denominator is absent.</p>
+<p><strong>Quality-control relevance:</strong> Reconciled
+count/percentage pairs are needed for reproducible outcome
+extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+the percentage for this category could be copied incorrectly; no
+propagation or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Verify the source
+denominator and intended percentage.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--etable-5-placebo-smaller-by-2-units-percentage-conflicts-with-2-of-109" class="candidate-card">C006
+— eTable 5 placebo “Smaller by 2 units” percentage conflicts with 2 of
+109</h2>
+<p><strong>Candidate statement:</strong> The printed 1.9% does not
+reproduce from the printed placebo count 2 and total 109 at one-decimal
+precision.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=8">Supplement 3 —
+PDF p. 8</a>.</p>
+<p><strong>Source evidence:</strong> Placebo
+<code>Smaller - 2 units</code> is <code>2 (1.9%)</code>; the arm total
+is <code>109 (100%)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed 1.9% versus the
+percentage from 2/109.</p>
+<p><strong>Reasoning procedure:</strong> Apply one-decimal percentage
+rounding with a 0.05 percentage-point tolerance.</p>
+<p><strong>Calculation:</strong> <code>2/109 × 100 = 1.8349%</code>,
+which rounds to 1.8%, not 1.9%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+denominator near 105 or a table-version difference could account for
+1.9%; neither is supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> The cell and total were
+found and the arithmetic was reproduced.</p>
+<p><strong>Quality-control relevance:</strong> The small rounding
+discrepancy remains a reproducible reporting check, not a conclusion
+about clinical importance.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a detailed categorical percentage could be transcribed differently by
+evidence users; no propagation or harm is claimed.</p>
+<p><strong>Human verification steps:</strong> Confirm the category
+denominator and the intended one-decimal value.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--etable-5-placebo-smaller-by-1-unit-percentage-conflicts-with-16-of-109" class="candidate-card">C007
+— eTable 5 placebo “Smaller by 1 unit” percentage conflicts with 16 of
+109</h2>
+<p><strong>Candidate statement:</strong> The printed 12% does not
+reproduce from the printed placebo count 16 and total 109.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=8">Supplement 3 —
+PDF p. 8</a>.</p>
+<p><strong>Source evidence:</strong> Placebo
+<code>Smaller - 1 unit</code> is <code>16 (12%)</code>; the arm total is
+<code>109 (100%)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed 12% versus the
+percentage from 16/109.</p>
+<p><strong>Reasoning procedure:</strong> Apply whole-percentage rounding
+to the printed count and total.</p>
+<p><strong>Calculation:</strong> <code>16/109 × 100 = 14.6789%</code>,
+which rounds to 15%, not 12%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+denominator near 133 would yield 12%, but it conflicts with the printed
+total; a version difference is also possible.</p>
+<p><strong>Mechanical evidence recheck:</strong> The printed count,
+percentage, and total were confirmed.</p>
+<p><strong>Quality-control relevance:</strong> The discrepancy affects
+the reproducibility of a categorical descriptive result.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could extract a category percentage inconsistent with its
+displayed total; no downstream outcome is asserted.</p>
+<p><strong>Human verification steps:</strong> Determine which displayed
+value and denominator are intended.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--etable-5-placebo-no-change-percentage-conflicts-with-75-of-109" class="candidate-card">C008
+— eTable 5 placebo “No change” percentage conflicts with 75 of 109</h2>
+<p><strong>Candidate statement:</strong> The printed 72% does not
+reproduce from the printed placebo count 75 and total 109.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=8">Supplement 3 —
+PDF p. 8</a>.</p>
+<p><strong>Source evidence:</strong> Placebo <code>No change</code> is
+<code>75 (72%)</code>; the arm total is <code>109 (100%)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed 72% versus the
+percentage from 75/109.</p>
+<p><strong>Reasoning procedure:</strong> Apply whole-percentage rounding
+to the printed count and total.</p>
+<p><strong>Calculation:</strong> <code>75/109 × 100 = 68.8073%</code>,
+which rounds to 69%, not 72%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+denominator near 104 or a different table version could explain 72%;
+neither is printed.</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited cell and
+total were found and the calculation was reproduced.</p>
+<p><strong>Quality-control relevance:</strong> This is a distinct
+placebo categorical-outcome percentage relationship.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a categorical percentage could be copied inconsistently into evidence
+extraction; no propagation or conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Confirm the applicable
+denominator and intended percentage.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--etable-4-repeats-week-4-function-changes-in-the-weight-bearing-pain-row" class="candidate-card">C009
+— eTable 4 repeats week-4 function changes in the weight-bearing-pain
+row</h2>
+<p><strong>Candidate statement:</strong> eTable 4 prints the same two
+week-4 arm-change estimate/interval pairs for weight-bearing pain and
+function.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=5">Supplement 3 —
+PDF p. 5</a>.</p>
+<p><strong>Source evidence:</strong> Weight-bearing pain and the
+adjacent function row both print <code>-84 (-122 to -46)</code> and
+<code>-103 (-141 to -65)</code>; weight-bearing final/baseline values
+are 100/127 and 108/141.</p>
+<p><strong>Reported-versus-comparator:</strong> Identical arm-change
+estimate/interval pairs across distinct, separately labelled outcome
+rows.</p>
+<p><strong>Reasoning procedure:</strong> Apply an exact duplicate-value
+check; use final-minus-baseline only as a labelled diagnostic, not as
+reconstruction of model estimates.</p>
+<p><strong>Calculation:</strong> The paired printed values match
+character for character. Diagnostics: <code>100 - 127 = -27</code> and
+<code>108 - 141 = -33</code>, not -84 and -103.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Modelled changes may differ from descriptive subtraction; copying,
+displacement, or coincidence is not established from the package.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both rows, labels,
+values, intervals, and adjustment context were confirmed; source model
+output is absent.</p>
+<p><strong>Quality-control relevance:</strong> Exact output duplication
+across endpoints can obstruct accurate endpoint-specific extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+the two weight-bearing-pain arm-change cells could be copied into
+evidence products; no propagation or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Inspect source analysis
+output, cell-level estimand mapping, and table-production history.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--etable-4-repeats-week-4-back-pain-results-in-week-12-lower-leg-strength" class="candidate-card">C010
+— eTable 4 repeats week-4 back-pain results in week-12 lower-leg
+strength</h2>
+<p><strong>Candidate statement:</strong> eTable 4 prints the complete
+week-4 back-pain output again for week-12 lower-leg strength.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=6">Supplement 3 —
+PDF p. 6</a>.</p>
+<p><strong>Source evidence:</strong> Both rows print arm changes
+<code>-2.8 (-6.0 to 0.4)</code> and <code>-4.2 (-7.4 to -1.1)</code>,
+and between-group <code>-1.4 (-5.9 to 3.0)</code>, <code>P = .53</code>;
+strength final/baseline values are 72.6/66.5 and 70.2/65.9.</p>
+<p><strong>Reported-versus-comparator:</strong> Identical arm changes,
+estimate, interval, and P value across differently labelled outcomes,
+times, units, and directions.</p>
+<p><strong>Reasoning procedure:</strong> Apply exact duplicated-output
+checking; do not reconstruct adjusted results from descriptive
+means.</p>
+<p><strong>Calculation:</strong> All displayed output fields match
+exactly. Diagnostic strength changes are <code>72.6 - 66.5 = +6.1</code>
+and <code>70.2 - 65.9 = +4.3</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+modelled change can differ from subtraction, and coincidence is
+possible; no supplied definition explains complete identity.</p>
+<p><strong>Mechanical evidence recheck:</strong> All compared fields
+were confirmed against the source page; model mapping and production
+history are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> A full repeated
+inferential result may prevent unambiguous extraction for the strength
+outcome.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+the week-12 strength result fields could be copied incorrectly; no
+propagation or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Obtain the strength
+analysis output and table-production source for the intended estimate,
+interval, and P value.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c011--etable-4-repeats-the-week-12-hscrp-result-in-fasting-glucose" class="candidate-card">C011
+— eTable 4 repeats the week-12 hsCRP result in fasting glucose</h2>
+<p><strong>Candidate statement:</strong> eTable 4 prints the same
+between-group estimate, interval, and P value for week-12 hsCRP and
+fasting glucose.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=6">Supplement 3 —
+PDF p. 6</a>.</p>
+<p><strong>Source evidence:</strong> Both rows print
+<code>0.07 (-1.19 to 1.33)</code>, <code>P = .92</code>; glucose arm
+changes are <code>0.09 (-0.07 to 0.24)</code> and
+<code>0.15 (-0.01 to 0.31)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Identical
+estimate/interval/P output for separately labelled measures with
+different arm-level changes.</p>
+<p><strong>Reasoning procedure:</strong> Apply exact duplicate-value and
+measure-label checking; retain arm-change subtraction as a diagnostic
+only.</p>
+<p><strong>Calculation:</strong> The three between-group fields match
+exactly. Diagnostic glucose contrast: <code>0.09 - 0.15 = -0.06</code>,
+which does not reconstruct an adjusted model.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+separately modelled glucose result may differ from subtraction, and
+equality may be coincidental; no supplied rule explains the full
+repeated output.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both rows and all
+result fields were found; model estimand mapping and source output are
+absent.</p>
+<p><strong>Quality-control relevance:</strong> Exact duplication can
+affect the clarity and extractability of the glucose result.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+the glucose estimate, interval, and P value could be copied
+inconsistently; no downstream consequence is asserted.</p>
+<p><strong>Human verification steps:</strong> Verify the glucose source
+analysis output and table-production mapping.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--key-points-and-other-matched-primary-result-displays-use-opposite-signs" class="candidate-card">C012
+— Key Points and other matched primary-result displays use opposite
+signs</h2>
+<p><strong>Candidate statement:</strong> Otherwise matched displays of
+the 24-week primary result print <code>+0.30</code> in Key Points and
+<code>-0.3</code>/<code>-0.27</code> elsewhere, without defining a
+common signed operand order.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_laslett_2024_oi_240048_1727199125.7595.pdf#page=2">Main
+article — PDF p. 2</a>; <a
+href="../jama_laslett_2024_oi_240048_1727199125.7595.pdf#page=1">Main
+article — PDF p. 1</a>; <a
+href="../jama_laslett_2024_oi_240048_1727199125.7595.pdf#page=6">Main
+article — PDF p. 6</a>; <a
+href="../jama_laslett_2024_oi_240048_1727199125.7595.pdf#page=7">Main
+article — PDF p. 7</a>; <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=2">Supplement 3 —
+PDF p. 2</a>.</p>
+<p><strong>Source evidence:</strong> Key Points prints
+<code>0.30 (95% CI -6.9 to 6.4; P = .94)</code>. Abstract, Table 2, and
+Results print <code>-0.3</code>; eTable 1 prints
+<code>-0.27 (-6.92 to 6.38)</code>, <code>P = .94</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Positive
+<code>0.30</code> in Key Points versus negative matched point estimates
+with matching intervals and P values.</p>
+<p><strong>Reasoning procedure:</strong> Compare the matched endpoint,
+24-week time point, interval, and P value; do not infer an operand
+orientation absent from the supplied source.</p>
+<p><strong>Calculation:</strong> Rounding <code>-0.27</code> to one
+decimal gives <code>-0.3</code>, not <code>+0.30</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Key
+Points may intend an unsigned magnitude; one display may use an unstated
+opposite operand order; or a sign may have been lost. The sources do not
+define a common signed contrast orientation.</p>
+<p><strong>Mechanical evidence recheck:</strong> All five displays and
+their surrounding matching fields were confirmed. No assertion of
+krill-minus-placebo orientation is supported.</p>
+<p><strong>Quality-control relevance:</strong> A signed primary-result
+display needs an explicit, consistent orientation for reproducible
+extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+the signed primary mean difference could be copied with the wrong sign
+or orientation; no propagation, interval change, P-value change, or
+conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Determine the intended
+signed operand order in each display and whether Key Points intended an
+unsigned magnitude or lost sign.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--placebo-extremity-pain-event-count-is-6-in-table-3-and-5-elsewhere" class="candidate-card">C013
+— Placebo extremity-pain event count is 6 in Table 3 and 5
+elsewhere</h2>
+<p><strong>Candidate statement:</strong> Table 3 prints six placebo
+<code>Pain in extremity</code> events, while matched Abstract,
+narrative, and eTable 7 displays print five.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_laslett_2024_oi_240048_1727199125.7595.pdf#page=1">Main
+article — PDF p. 1</a>; <a
+href="../jama_laslett_2024_oi_240048_1727199125.7595.pdf#page=8">Main
+article — PDF p. 8</a>; <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=10">Supplement 3
+— PDF p. 10</a>.</p>
+<p><strong>Source evidence:</strong> Table 3 prints pain in extremity as
+1 krill and 6 placebo events. Abstract, narrative, and eTable 7 print
+lower-extremity/pain-in-extremity as 1 and 5.</p>
+<p><strong>Reported-versus-comparator:</strong> Table 3 placebo count 6
+versus three matched displays’ placebo count 5.</p>
+<p><strong>Reasoning procedure:</strong> Compare exact event counts
+while retaining category identity/aggregation as an explicit
+condition.</p>
+<p><strong>Calculation:</strong> Krill is 1 in all locations; placebo
+differs by one event: <code>6 - 5 = 1</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+phrasings could denote different coding aggregates, though eTable 7 uses
+<code>Pain in extremity</code> and prints 5; a transcription difference
+is also possible.</p>
+<p><strong>Mechanical evidence recheck:</strong> All source locations
+and counts were found. No adverse-event coding dictionary is
+supplied.</p>
+<p><strong>Quality-control relevance:</strong> Consistent event counts
+are necessary for transparent adverse-event tabulation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent placebo event count,
+not a participant risk; no propagation or conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Consult the coding
+dictionary and source event listings to confirm category identity and
+intended Table 3 count.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c014--table-3-regular-adverse-event-footnote-points-to-etable-4-instead-of-etable-7" class="candidate-card">C014
+— Table 3 regular-adverse-event footnote points to eTable 4 instead of
+eTable 7</h2>
+<p><strong>Candidate statement:</strong> Table 3 footnote a directs
+regular-adverse-event detail to eTable 4, whereas eTable 7 is the
+supplied adverse-event table cited by the narrative.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_laslett_2024_oi_240048_1727199125.7595.pdf#page=8">Main
+article — PDF p. 8</a>; <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=5">Supplement 3 —
+PDF p. 5</a>; <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=10">Supplement 3
+— PDF p. 10</a>.</p>
+<p><strong>Source evidence:</strong> Footnote a cites eTable 4 for
+detailed information. eTable 4 is
+<code>Change in secondary endpoints</code>; the narrative cites eTable
+7, <code>Summary of adverse events</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Footnote destination
+eTable 4 versus the supplied table that contains the stated
+adverse-event subject, eTable 7.</p>
+<p><strong>Reasoning procedure:</strong> Compare the cross-reference
+subject with the cited tables’ printed headers and contents.</p>
+<p><strong>Calculation:</strong> Not applicable; logical header/content
+matching identifies eTable 4 as a secondary-endpoint table and eTable 7
+as the adverse-event table.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Footnote a may retain an earlier supplement numbering scheme.</p>
+<p><strong>Mechanical evidence recheck:</strong> Footnote, narrative,
+table titles, and contents were confirmed; production history is
+absent.</p>
+<p><strong>Quality-control relevance:</strong> Accurate cross-references
+support traceable access to event details.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reader or extractor could be directed to the wrong supporting table;
+no propagation or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Check supplement
+production history and confirm the intended footnote destination.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c015--table-3-serious-adverse-event-footnote-points-to-etables-5-and-6-instead-of-etable-8" class="candidate-card">C015
+— Table 3 serious-adverse-event footnote points to eTables 5 and 6
+instead of eTable 8</h2>
+<p><strong>Candidate statement:</strong> Table 3 footnote c directs
+serious-adverse-event detail to eTables 5 and 6, while eTable 8 contains
+the supplied serious-adverse-event detail.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_laslett_2024_oi_240048_1727199125.7595.pdf#page=8">Main
+article — PDF p. 8</a>; <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=8">Supplement 3 —
+PDF p. 8</a>; <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=9">Supplement 3 —
+PDF p. 9</a>; <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=14">Supplement 3
+— PDF p. 14</a>.</p>
+<p><strong>Source evidence:</strong> Footnote c cites eTables 5 and 6.
+Those tables concern WORMS effusion score and analgesic use; the
+narrative cites eTable 8, the serious-adverse-event table.</p>
+<p><strong>Reported-versus-comparator:</strong> Footnote destinations
+eTables 5/6 versus eTable 8, which contains the stated serious-event
+subject.</p>
+<p><strong>Reasoning procedure:</strong> Compare the footnote claim with
+printed table titles and the narrative’s matched reference.</p>
+<p><strong>Calculation:</strong> Not applicable; neither eTable 5 nor
+eTable 6 contains serious-event detail, while eTable 8 does.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+footnote may reflect an earlier supplement layout or numbering
+scheme.</p>
+<p><strong>Mechanical evidence recheck:</strong> All cited references,
+headers, and contents were confirmed; production history is not
+supplied.</p>
+<p><strong>Quality-control relevance:</strong> Accurate serious-event
+cross-references are needed for auditable evidence navigation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reader or evidence extractor could be directed away from the relevant
+detailed table; no propagation or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Verify supplement
+production history and the intended Table 3 footnote-c reference.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c016--main-text-95-adherence-does-not-reproduce-the-cited-etable-2-overall-result" class="candidate-card">C016
+— Main-text 95% adherence does not reproduce the cited eTable 2 overall
+result</h2>
+<p><strong>Candidate statement:</strong> The main text’s 95% 24-week
+adherence statement does not reproduce from the cited eTable 2 overall
+row, conditional on a shared population.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_laslett_2024_oi_240048_1727199125.7595.pdf#page=7">Main
+article — PDF p. 7</a>; <a
+href="../joi240048supp3_prod_1727199125.83025.pdf#page=3">Supplement 3 —
+PDF p. 3</a>.</p>
+<p><strong>Source evidence:</strong> Main text states 95% consumed at
+least 80% of softgels over 24 weeks and cites eTable 2. The overall row
+prints <code>n = 167</code>, 82 (98.8%), and 81 (96.4%); its footnote
+separately names 165.</p>
+<p><strong>Reported-versus-comparator:</strong> Main-text 95% versus
+pooled 163 of 167 from the cited row.</p>
+<p><strong>Reasoning procedure:</strong> Match the named threshold and
+time period, then compute the row’s pooled percentage while explicitly
+retaining the absent narrative denominator as a condition.</p>
+<p><strong>Calculation:</strong> <code>82 + 81 = 163</code>;
+<code>163/167 × 100 = 97.6048%</code>, displayed as 97.6% or 98%, not
+95%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+main text may use an unstated subset or earlier table version; the cited
+table itself names both 167 and 165.</p>
+<p><strong>Mechanical evidence recheck:</strong> Narrative, citation,
+row, footnote, counts, and percentages were confirmed. The narrative
+numerator/denominator is absent.</p>
+<p><strong>Quality-control relevance:</strong> A cited adherence
+percentage needs a defined numerator and denominator to be reproducibly
+interpreted.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could copy a 24-week adherence percentage or denominator that
+differs from the cited table; no propagation or conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the numerator and
+denominator for 95% and reconcile it with the 163/167 row and separate
+165 footnote population.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If a candidate is confirmed, its bounded relevance is to the
+corresponding count, denominator, percentage, signed estimate, event
+count, cross-reference, or table-result field that may be copied during
+evidence extraction. Systematic reviews, meta-analyses, guidelines, and
+other evidence products may rely on reported values, but this review
+does not claim that any value has propagated or that any conclusion
+changed.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The supplied package lacks participant-level disposition mapping;
+complete adherence population definitions; category-specific alternative
+denominators; source analysis output, covariance specifications, and
+cell-level estimand mappings; a common signed contrast orientation;
+adverse-event coding definitions; and supplement production-version
+histories. These limitations define human questions and do not
+themselves adjudicate any candidate. See <a
+href="review_1_5_3/limitations.md">limitations.md</a> for the versioned
+limitation record.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each card, confirm the cited source location, reproduce the
+stated arithmetic or logical comparison, assess the named
+source-grounded alternatives, obtain the specifically requested missing
+source material where needed, and complete all five adjudication fields.
+No card is ranked, accepted, rejected, or assigned severity in this
+report.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<ul>
+<li><strong>Routing preflight:</strong> PASS; coordinator inference
+PASS; execution mode INTERACTIVE_CLI.</li>
+<li><strong>Source coverage:</strong> 41/41 mapped source units; 24
+reusable units and 17 fresh-source units.</li>
+<li><strong>Relationship coverage:</strong> N001–N028 complete;
+S001–S091 <code>PASS_1_COMPLETE</code> and
+<code>PASS_2_COMPLETE</code>.</li>
+<li><strong>Stable candidate set:</strong> C001–C016 in the ledger,
+recheck, quality audit, and this report.</li>
+<li><strong>Evidence authority:</strong> original supplied PDF pages;
+reusable derivatives were locator/transcription aids.</li>
+</ul>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td><code>run_state.md</code></td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>root/reuse_asset_curator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>source_inventory.md</code></td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>root/main_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>extraction/main_quantitative_evidence.md</code></td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>root/support_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>extraction/support_quantitative_evidence.md</code></td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>root/numeric_consistency_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/numeric_consistency.md</code></td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>root/cross_source_consistency_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/cross_source_consistency.md</code></td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistical_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_1.md</code></td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>root/evidence_rechecker</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>verification/evidence_recheck.md</code></td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistical_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_2.md</code></td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>root/quality_control_auditor</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>quality/evidence_quality_audit.md</code></td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>limitations.md</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-profile">Performance profile</h3>
+<ul>
+<li><strong>Target basis:</strong> This package has 41 physical PDF-page
+source units across four PDFs. Twenty-four units have usable
+page-matched native text, while 17 units require fresh direct-source
+mapping (the main article's unextracted p10, all 15 protocol pages, and
+the one-page statistical analysis plan). The work also requires
+four-source reconciliation, two mapper lanes, and the mandatory reviewer
+waves. This is materially smaller than the 102-unit/81-fresh-unit
+calibration package, but the two wholly uncovered support sources
+require direct extraction and mapping.</li>
+<li><strong>Total source units:</strong> 41</li>
+<li><strong>Fresh-source units:</strong> 17</li>
+<li><strong>Target elapsed minutes:</strong> 30-45</li>
+<li><strong>Started UTC:</strong> 2026-08-19T04:33:27Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-19T05:02:09Z</li>
+<li><strong>Observed elapsed minutes:</strong> 28.7</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<p>Authoritative response-level runtime/API token counts were not
+exposed for the coordinator or any specialist, so the ledger records one
+<code>UNAVAILABLE</code> row for each of the 11 manifested agents. The
+known subtotal is therefore zero and the complete count and price remain
+explicitly incomplete; no text-length estimate was made. See
+<code>review_1_5_3/token_usage_summary.md</code> for per-agent detail.
+Cached input and cache-write counts are input subsets; reasoning is an
+output subset and is not added to total tokens. Any available amount
+uses the bundled pricing snapshot dated 2026-08-18 and is a token-only
+estimate, not an invoice.</p>
+</body>
+</html>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.3 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.3 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.3 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-reporting-quality-control-consistency-review--workflow-153"
+id="toc-quantitative-reporting-quality-control-consistency-review--workflow-153">Quantitative
+Reporting Quality-Control Consistency Review — Workflow 1.5.3</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a href="#c001--primary-sae-endpoint-threshold-label"
+id="toc-c001--primary-sae-endpoint-threshold-label">C001 — Primary SAE
+endpoint threshold label</a></li>
+<li><a href="#c002--planned-hospital-day-medians"
+id="toc-c002--planned-hospital-day-medians">C002 — Planned hospital-day
+medians</a></li>
+<li><a href="#c003--bayesian-intervention-priors"
+id="toc-c003--bayesian-intervention-priors">C003 — Bayesian intervention
+priors</a></li>
+<li><a href="#c004--gestational-age-boundary"
+id="toc-c004--gestational-age-boundary">C004 — Gestational-age
+boundary</a></li>
+<li><a href="#c005--primary-outcome-time-origin"
+id="toc-c005--primary-outcome-time-origin">C005 — Primary-outcome time
+origin</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-reporting-quality-control-consistency-review--workflow-153">Quantitative
+Reporting Quality-Control Consistency Review — Workflow 1.5.3</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>Every candidate in this report is <strong>Pending Human
+Adjudication</strong>. This is a quantitative reporting quality-control
+review, not a determination about authors, validity of the paper, or the
+paper’s conclusions.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete uncapped coverage registered five stable
+reporting-consistency candidates: <code>C001</code> through
+<code>C005</code>. They concern endpoint thresholds, planned design
+values, prior descriptions, subgroup-boundary labels, and outcome-window
+terminology. Small preventable reporting defects can matter for
+downstream evidence extraction; the supplied package does not establish
+propagation, a conclusion change, or serious harm.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package comprises five direct sources: the main article (10 PDF
+pages), protocol (25 PDF pages), statistical analysis plan (10 PDF
+pages), results supplement (8 PDF pages), and a 237-paragraph auxiliary
+DOCX. Direct-source hashes and reused-asset hashes were recorded before
+review in <a
+href="review_1_5_3/source_hashes_before.sha256">source_hashes_before.sha256</a>
+and <a
+href="review_1_5_3/reused_artifact_hashes_before.sha256">reused_artifact_hashes_before.sha256</a>.
+Reused native text and renders were location/transcription aids only;
+the supplied PDFs remained authoritative.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Total</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main article PDF</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Protocol PDF</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Statistical analysis plan PDF</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Results supplement PDF</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Auxiliary DOCX paragraphs</td>
+<td style="text-align: right;">237</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">237</td>
+<td style="text-align: right;">237</td>
+<td>Complete structural coverage; legacy assertions excluded from
+discovery</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>290</strong></td>
+<td style="text-align: right;"><strong>14</strong></td>
+<td style="text-align: right;"><strong>276</strong></td>
+<td style="text-align: right;"><strong>290</strong></td>
+<td><strong>Complete</strong></td>
+</tr>
+</tbody>
+</table>
+<p>All mapped units are supported by the complete main/support
+scientific maps, including explicit no-applicable units and the required
+DOCX structural exclusion. Candidate discovery was uncapped and did not
+use older candidate content or external sources. A coherent display-zero
+P value was not a candidate; no mapped relationship used
+<code>P = 0</code>, <code>p = 0.000</code>, or equivalent notation.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<ul>
+<li>Numeric/reporting relationships: <code>N001</code>-<code>N041</code>
+(41 complete relationships).</li>
+<li>Statistical relationships: <code>S001</code>-<code>S020</code> (20
+complete relationships).</li>
+<li>Cross-source review: 19 matched result/definition families across
+the four scientific PDFs.</li>
+<li>Statistical pass 1: fresh <code>gpt-5.6-terra</code> high-effort
+review of <code>S001</code>-<code>S020</code>; complete.</li>
+<li>Statistical pass 2: distinct fresh <code>gpt-5.6-terra</code>
+high-effort review of <code>S001</code>-<code>S020</code>, the complete
+ledger, and recheck facts; complete with no new candidate.</li>
+</ul>
+<p>The relationship inventories and pass records are available in <a
+href="review_1_5_3/relationships/numeric_relationship_inventory.md">numeric
+relationship inventory</a>, <a
+href="review_1_5_3/statistics/relationship_inventory.md">statistical
+relationship inventory</a>, <a
+href="review_1_5_3/checkers/statistical_pass_1.md">statistical pass
+1</a>, and <a
+href="review_1_5_3/checkers/statistical_pass_2.md">statistical pass
+2</a>.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Category</th>
+<th>Candidate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#c001--primary-sae-endpoint-threshold-label">C001</a></td>
+<td>Measure, label, or scale inconsistency</td>
+<td><code>&gt;1</code> versus <code>≥1</code>/“any” SAE threshold</td>
+</tr>
+<tr>
+<td><a href="#c002--planned-hospital-day-medians">C002</a></td>
+<td>Cross-document numeric inconsistency</td>
+<td>planned median hospital-day values</td>
+</tr>
+<tr>
+<td><a href="#c003--bayesian-intervention-priors">C003</a></td>
+<td>Statistical reporting inconsistency</td>
+<td>article/SAP intervention-prior ranges</td>
+</tr>
+<tr>
+<td><a href="#c004--gestational-age-boundary">C004</a></td>
+<td>Measure, label, or scale inconsistency</td>
+<td><code>≥28</code> versus <code>&gt;28</code> gestational-age
+boundary</td>
+</tr>
+<tr>
+<td><a href="#c005--primary-outcome-time-origin">C005</a></td>
+<td>Measure, label, or scale inconsistency</td>
+<td>enrollment versus randomization time origin</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2 id="c001--primary-sae-endpoint-threshold-label" class="candidate-card">C001 — Primary SAE
+endpoint threshold label</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> Matched primary SAE results are
+labeled <code>≥1</code>/“any” in the main article and SAP but
+<code>&gt;1</code> in the protocol and eTable.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_blakely_2024_oi_240020_1710443209.74411.pdf#page=6">main
+article — PDF p. 6</a>, Table 2; <a
+href="../joi240020supp3_prod_1710443209.75411.pdf#page=5">results
+supplement — PDF p. 5</a>, eTable 2; <a
+href="../joi240020supp1_prod_1710443209.74911.pdf#page=2">protocol — PDF
+p. 2</a>; <a
+href="../joi240020supp2_prod_1710443209.75411.pdf#page=4">SAP — PDF p.
+4</a>.</p>
+<p><strong>Source evidence:</strong> Table 2 reports 44/159 and 27/149
+as “Had ≥1 serious adverse event”; eTable 2 uses the same counts,
+percentages, and denominators under “Infant had &gt; 1 SAE.”</p>
+<p><strong>Reported-versus-comparator:</strong> <code>≥1</code>, “at
+least 1,” and “any” include exactly one SAE; <code>&gt;1</code> means at
+least two SAEs.</p>
+<p><strong>Reasoning procedure:</strong> Compare the printed threshold
+operators after matching population, arms, denominators, and
+results.</p>
+<p><strong>Calculation:</strong> <code>44/159 = 27.67%</code> (28%) and
+<code>27/149 = 18.12%</code> (18%). The differing sets are
+<code>{k: k ≥ 1}</code> and <code>{k: k &gt; 1}</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Repeated “any,” “at least one,” and <code>≥1</code> wording supports the
+possibility that <code>&gt;1</code> was used informally for more than
+zero. The number with exactly one SAE is not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-page recheck
+confirmed both operators and the matched counts; see <a
+href="review_1_5_3/verification/evidence_recheck.md#c001--primary-sae-endpoint-is-labeled-1-and-1any-for-matched-results">evidence
+recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> The endpoint label should
+identify the estimand associated with the reported counts.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy the wrong SAE threshold alongside 44/159 and
+27/149; no propagation or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Determine the executable
+endpoint rule and whether any location requires correction,
+clarification, or version qualification.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c002--planned-hospital-day-medians" class="candidate-card">C002 — Planned hospital-day
+medians</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> Protocol/SAP locations print
+incompatible arm-specific planned median hospital-day values.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240020supp1_prod_1710443209.74911.pdf#page=3">protocol — PDF
+p. 3</a>; <a
+href="../joi240020supp1_prod_1710443209.74911.pdf#page=12">protocol —
+PDF p. 12</a>; <a
+href="../joi240020supp2_prod_1710443209.75411.pdf#page=3">SAP — PDF p.
+3</a>.</p>
+<p><strong>Source evidence:</strong> Protocol p. 3 gives planned medians
+18 early/15 late; p. 12 gives medians 8/5 and means 18/13. The SAP
+explicitly calls the p. 3 18/15 medians incorrect and identifies 8/5 as
+intended.</p>
+<p><strong>Reported-versus-comparator:</strong> Planned median pairs
+18/15 versus 8/5 days for the same early/late contrast.</p>
+<p><strong>Reasoning procedure:</strong> Compare the same planned
+measure, scale, contrast, and arm assignments; retain the SAP
+clarification as direct source evidence.</p>
+<p><strong>Calculation:</strong> <code>18−15=3</code>,
+<code>8−5=3</code>, <code>18−8=10</code>, and <code>15−5=10</code>
+days.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+page-12 mean/median distinction and the SAP’s explicit 8/5 clarification
+are supported. Amendment or drafting history is not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-page recheck
+confirmed both median pairs, the means, and the SAP clarification; see
+<a
+href="review_1_5_3/verification/evidence_recheck.md#c002--planned-median-hospital-day-values-conflict-across-protocolsap-locations">evidence
+recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> Arm-specific planning
+values should be internally traceable even when the stated contrast is
+preserved.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor or replication reviewer could copy incorrect
+arm-specific planning medians; no effect on observed results or
+conclusions is asserted.</p>
+<p><strong>Human verification steps:</strong> Verify final design inputs
+and version history, then determine whether any location requires
+correction, clarification, or version qualification.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c003--bayesian-intervention-priors" class="candidate-card">C003 — Bayesian intervention
+priors</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The article’s common
+intervention-prior range differs from the SAP’s class-specific prior
+descriptions.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_blakely_2024_oi_240020_1710443209.74411.pdf#page=4">main
+article — PDF p. 4</a>; <a
+href="../joi240020supp2_prod_1710443209.75411.pdf#page=8">SAP — PDF p.
+8</a>.</p>
+<p><strong>Source evidence:</strong> The article states 0.33-3.0 for
+categorical and count intervention effects. The SAP gives categorical OR
+0.2-4 with <code>Normal(0, SD=0.7)</code> on log-OR scale, and count RR
+0.33-3.3.</p>
+<p><strong>Reported-versus-comparator:</strong> A common 0.33-3.0 range
+versus categorical 0.2-4 and count 0.33-3.3 ranges.</p>
+<p><strong>Reasoning procedure:</strong> Compare printed prior endpoints
+by outcome class and stated effect scale without inferring final model
+code.</p>
+<p><strong>Calculation:</strong> Categorical endpoint differences:
+<code>0.33−0.20=0.13</code> and <code>4.0−3.0=1.0</code>; count
+upper-endpoint difference: <code>3.3−3.0=0.3</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied documents do not select which stated range governed each final
+model. Amendment, simplification, and implementation history are not
+supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-page recheck
+confirmed the article and SAP descriptions; see <a
+href="review_1_5_3/verification/evidence_recheck.md#c003--bayesian-intervention-prior-ranges-differ-between-the-article-and-sap">evidence
+recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> Statistical-prior
+descriptions should allow a reader to identify the stated model
+specification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a replication or evidence-synthesis reader could copy an incorrect
+stated prior; no estimate, conclusion, or propagation effect is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Inspect final
+outcome-specific model specifications and determine how the article and
+SAP descriptions should be reconciled.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c004--gestational-age-boundary" class="candidate-card">C004 — Gestational-age
+boundary</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The actual-result subgroup
+label <code>≥28</code> weeks differs from planned SAP wording
+<code>&gt;28</code> weeks.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_blakely_2024_oi_240020_1710443209.74411.pdf#page=8">main
+article — PDF p. 8</a>, Figure 3; <a
+href="../joi240020supp2_prod_1710443209.75411.pdf#page=3">SAP — PDF p.
+3</a>; <a href="../joi240020supp2_prod_1710443209.75411.pdf#page=8" target="_blank" rel="noopener">SAP
+— PDF p. 8</a>; <a
+href="../joi240020supp2_prod_1710443209.75411.pdf#page=9">SAP — PDF p.
+9</a>.</p>
+<p><strong>Source evidence:</strong> Figure 3 reports
+<code>&lt;28 wk</code> and <code>≥28 wk</code>. SAP pp. 3 and 9 use
+<code>&lt;28</code>/<code>&gt;28</code>; SAP p. 8 itself uses
+<code>&lt;28</code>/<code>≥28</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>≥28</code>
+includes exactly 28 weeks; <code>&gt;28</code> excludes it.</p>
+<p><strong>Reasoning procedure:</strong> Compare the stated partitions
+and retain only source-supported context about their internal
+wording.</p>
+<p><strong>Calculation:</strong> At exactly 28 weeks, <code>GA≥28</code>
+is true and <code>GA&gt;28</code> is false. The Figure 3 subgroup
+denominators partition the analysis populations: <code>102+57=159</code>
+and <code>99+50=149</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> SAP p.
+8 and the article’s complete displayed partition support a possible
+inconsistent <code>&gt;28</code> label. Exact gestational-age coding and
+exactly-28-week assignment are not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-page recheck
+confirmed the competing operators and subgroup partition; see <a
+href="review_1_5_3/verification/evidence_recheck.md#c004--gestational-age-subgroup-boundary-is-printed-as-28-and-28-weeks">evidence
+recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> A subgroup boundary
+should identify which infants belong to each reported effect
+stratum.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy the wrong subgroup boundary with reported
+subgroup effects; no reassignment, propagation, or conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Verify cut point,
+representation/rounding convention, and assignment of exactly-28-week
+records.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c005--primary-outcome-time-origin" class="candidate-card">C005 — Primary-outcome time
+origin</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> Primary SAE ascertainment is
+labeled from enrollment in protocol text and from randomization in
+SAP/main-article text.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240020supp1_prod_1710443209.74911.pdf#page=3">protocol — PDF
+p. 3</a>; <a
+href="../joi240020supp1_prod_1710443209.74911.pdf#page=11">protocol —
+PDF p. 11</a>; <a
+href="../joi240020supp2_prod_1710443209.75411.pdf#page=7">SAP — PDF p.
+7</a>; <a
+href="../jama_blakely_2024_oi_240020_1710443209.74411.pdf#page=3">main
+article — PDF p. 3</a>. <a
+href="../jama_blakely_2024_oi_240020_1710443209.74411.pdf#page=6">Main
+article — PDF p. 6</a> footnote g is secondary-outcome context only, as
+it attaches to the hospital-stay row.</p>
+<p><strong>Source evidence:</strong> Protocol text defines SAE
+ascertainment from enrollment through 10 months after enrollment; the
+SAP and main article state primary-outcome collection for 10 months
+after randomization.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>[enrollment, enrollment + 10 months]</code> versus
+<code>[randomization, randomization + 10 months]</code>.</p>
+<p><strong>Reasoning procedure:</strong> Compare named time origins
+without assuming that enrollment and randomization were
+simultaneous.</p>
+<p><strong>Calculation:</strong> The two windows have the same duration
+but different named origins unless enrollment equals randomization; the
+supplied package does not define that equality.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+protocol’s mixed terminology supports possible interchangeable usage.
+Operational simultaneity and any event-count difference are not
+supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-page recheck
+confirmed the competing time-origin wording and footnote attachment; see
+<a
+href="review_1_5_3/verification/evidence_recheck.md#c005--primary-outcome-time-origin-is-labeled-enrollment-and-randomization">evidence
+recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> The reported
+primary-outcome window should state its time origin consistently.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy an incorrect observation window; no event-count
+change, propagation, or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Verify
+enrollment/randomization timestamps and the final SAE extraction
+boundary rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If a candidate is confirmed, the relevant risk is that a systematic
+review, meta-analysis, guideline, replication record, or data extractor
+could copy a threshold, planning value, prior description, subgroup
+boundary, or observation-window label that is not the intended one. This
+report does not assert that such copying occurred or that any conclusion
+changed.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>See the durable <a href="review_1_5_3/limitations.md">limitations
+artifact</a>. The supplied package lacks raw data, final code, key
+endpoint and timestamp definitions, exact gestational-age coding, and
+amendment/version history. These limitations bound the human questions;
+they do not resolve or suppress candidates.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each card, verify the cited source pages, obtain the named
+missing definition or record where available, decide the appropriate
+documentation outcome, and record all decisions only in the card’s
+human-adjudication fields.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<ul>
+<li>Routing preflight: PASS; interactive coordinator inference and all
+nine required role presets passed.</li>
+<li>Source coverage: 290/290 mapped units; 14 reusable plus 276
+fresh-required units.</li>
+<li>Source and reused-artifact pre-review hash ledgers: <a
+href="review_1_5_3/source_hashes_before.sha256">source hashes</a> and <a
+href="review_1_5_3/reused_artifact_hashes_before.sha256">reused artifact
+hashes</a>.</li>
+<li>Canonical evidence and review artifacts: <a
+href="review_1_5_3/coverage_manifest.md">coverage manifest</a>, <a
+href="review_1_5_3/candidate_ledger.md">candidate ledger</a>, <a
+href="review_1_5_3/verification/evidence_recheck.md">mechanical
+recheck</a>, and <a
+href="review_1_5_3/quality/evidence_quality_audit.md">quality
+audit</a>.</li>
+</ul>
+<h3 id="agent-execution">Agent execution</h3>
+<p>All manifested stages used their recorded model, effort, and
+fresh-start status; the two statistical passes have distinct runtime
+IDs. The authoritative full list is <a
+href="review_1_5_3/agent_execution_manifest.md">agent_execution_manifest.md</a>.</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Five direct sources contain 53 PDF
+pages and 237 DOCX paragraph units, with 276 of 290 units requiring
+fresh direct-source mapping; the package includes a protocol, a
+statistical analysis plan, a results supplement with visually confirmed
+table pages, and a legacy auxiliary DOCX that requires structural
+exclusion handling. The resulting relationship volume, fresh extraction
+burden, and required independent agent waves support this bounded
+package-specific target.</li>
+<li><strong>Total source units:</strong> 290</li>
+<li><strong>Fresh-source units:</strong> 276</li>
+<li><strong>Target elapsed minutes:</strong> 55-80</li>
+<li><strong>Started UTC:</strong> 2026-08-19T04:31:57Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-19T04:56:08Z</li>
+<li><strong>Observed elapsed minutes:</strong> 24.2</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>The interactive and collaboration runtimes exposed no authoritative
+response-level token counts, so all 11 manifested agents have explicit
+<code>UNAVAILABLE</code> rows in the <a
+href="review_1_5_3/token_usage_ledger.csv">token usage ledger</a>. The
+reported zero is the known subtotal, not a complete package count.
+Cached-input/cache-write values are input subsets and reasoning values
+are output subsets; they are not added again to total tokens. Any
+available amount uses the bundled 2026-08-18 fixed-model pricing
+snapshot and is a token-only estimate, not an invoice. Per-agent detail
+is available in <a
+href="review_1_5_3/token_usage_summary.md">token_usage_summary.md</a>.</p>
+</body>
+</html>

@@ -1,0 +1,96 @@
+# Main Quantitative Evidence Map — DOC-001
+
+## Scope, source, and method
+
+- **Direct source:** `jama_cinciripini_2024_oi_240036_1716416465.98349.pdf` (DOC-001), PDF pp. 1-10.
+- **Coverage status:** all 10 assigned fresh-required PDF pages were inspected from the current direct PDF. No stale derivative was used as evidence.
+- **Fresh derivatives used as locators:** `preprocessing/main/doc001_layout.txt` and `preprocessing/main/page-001.txt` through `page-010.txt`, generated with current-source `pdftotext -layout`; targeted 220-dpi current-source renders `doc001-figure-06.png`, `doc001-figure-07.png`, and `doc001-table-05.png` confirmed Figure 2, Figure 3, and the Table.
+- **Outcome definition:** biochemically verified 7-day point-prevalence abstinence, self-report of no smoking in the previous 7 days plus expired CO less than 6 ppm, at end of treatment (week 12). The secondary outcome is continuous abstinence assessed at follow-up. CNRT means a 21-mg nicotine patch plus 2-mg lozenges in phase 1; varenicline is 2 mg/d in phase 1.
+- **Analytical frame:** Bayesian logistic regression with normal prior on log odds, `N(mu = 0, sigma = 1000)`, and inverse-probability weighting for sequence assignment; `K = 1000` Monte Carlo simulations were used for the specified benefit-detection probability. The paper reports credible intervals (CrIs), posterior probabilities, absolute risk differences (RDs), counts, and percentages; it does not report conventional P values, test statistics, standard errors, or confidence intervals for these main results.
+- **Boundary:** This is an evidence map only. It records source facts, matched repetitions, and arithmetic-relevant inputs without candidate registration, diagnosis, severity, or adjudication.
+
+## Page-complete evidence map
+
+### PDF p. 1 — Abstract and article front matter
+
+**M001 — randomized population and phase structure.** The abstract reports 490 randomized volunteers: 210 female (43%), 287 non-Hispanic White (58%), mean age 48.1 years, and an average of 20 cigarettes/day. Initial treatment was varenicline 2 mg/d or CNRT (21-mg patch plus 2-mg lozenge) for 6 weeks; nonabstainers were rerandomized to continue, switch, or increase dosage for 6 further weeks. The study period was June 2015 through October 2019. The matching outcome is week-12 biochemical 7-day point-prevalence abstinence.
+
+**M002 — CNRT phase-1 nonabstainer partition and primary probabilities.** The abstract states 54 CNRT participants were abstinent; 191 were nonabstinent; 151 were rerandomized; 40 did not return and were assigned to continued CNRT. For the 191 phase-1 CNRT nonabstainers, continued dosage is 7/90, 8% (95% CrI, 6%-10%); increased dose is 7/50, 14% (95% CrI, 10%-18%); switch to varenicline is 7/51, 14% (95% CrI, 10%-18%). The stated parenthetical allocation percentages are 47% (90), 33% (50), and 34% (51), respectively. Relative to continuation, each alternative is reported as absolute RD 6%, with 95% CrI 6%-11% and posterior probability greater than 99% of benefit.
+
+**M003 — varenicline phase-1 nonabstainer partition and primary probabilities.** The abstract states 88 varenicline participants were abstinent; 157 were nonabstinent; 122 were rerandomized; 35 did not return and were assigned to continued varenicline. For the 157 phase-1 varenicline nonabstainers, increased dose is 8/39, 20% (95% CrI, 16%-26%); switch to CNRT is 0/41, 0% (95% CrI, 0%-0%); and continued varenicline is 2/77, 3% (95% CrI, 1%-4%). The stated parenthetical allocation percentages are 32% (39), 34% (41), and 49% (77). Switching has absolute RD -3% (95% CrI, -4% to -1%), with greater than 99% posterior probability that continuation is worse than switching. Increased dose has absolute RD 18% (95% CrI, 13%-24%) and greater than 99% posterior probability of benefit. The abstract says only increased dosages of CNRT and varenicline benefited over continuation on continuous abstinence at 6 months.
+
+**M004 — abstract conclusion claim.** The conclusion says that, after unsuccessful initial varenicline, increasing dose enhanced abstinence versus continuation; after unsuccessful CNRT, increase or switch to varenicline enhanced abstinence and may be viable rescue strategies. These claims match the direction of the reported week-12 probabilities in M002-M003.
+
+### PDF p. 2 — Methods: population, timing, doses, and contrast definitions
+
+**M005 — eligibility and treatment timing.** Inclusion was age 18-75 years, at least 5 cigarettes/day, and expired CO at least 6 ppm. Phase 1 covered weeks 1-6 and phase 2 weeks 7-12. Abstainers at week 6 continued phase-1 medication; nonabstainers entered the three-option contrast (continue, switch, increased dose). The phase-2 varenicline increase is an additional 1-mg tablet for total 3 mg/d; the CNRT increase is an additional 21-mg patch, total 42 mg/d, with 2-mg lozenges continued.
+
+**M006 — primary outcome scale and population.** The primary outcome is self-reported 7-day abstinence plus expired CO less than 6 ppm at week 12. Follow-up was 30 days after end of treatment and 6 months after the initial quit date. These definitions delimit the population, time, and scale for all week-12 and continuous-abstinence values below.
+
+### PDF p. 3 — Figure 1 trial design
+
+**M007 — graphical treatment sequence.** Figure 1 depicts phase-1 2-mg varenicline plus placebo CNRT or 21-mg patch plus 2-mg lozenges plus placebo varenicline. At week 6, abstainers continue the same medication; nonabstainers receive one of the same regimen, alternate regimen, or increased dosage. The graphic labels the increased regimens as 3-mg varenicline or two 21-mg patches with 2-mg lozenges. It contains no participant count, percentage, effect estimate, interval, P value, or test statistic.
+
+### PDF p. 4 — Methods analysis specification and participant-flow narrative
+
+**M008 — sample-size and model quantities.** The paper states the benefit-detection target as probability 0.80 or greater, estimated with `K = 1000` Monte Carlo simulations. It states that all comparisons had an 80% or greater chance of detecting a greater-than-80% posterior probability of benefit for a total of 500 participants; primary analyses did not adjust for multiplicity. Logistic regression and inverse-probability weighting are specified, with the prior in the log-odds scale as `N(mu = 0, sigma = 1000)`.
+
+**M009 — participant-flow narrative.** Results text reports 490 participants (210 women [43%], 287 non-Hispanic White [58%], mean age 48.1 years, more than 79% employed, 20 cigarettes/day). It then reports 491 randomized in phase 1, one CNRT participant eliminated after randomization leaving 490, 191 CNRT and 157 varenicline nonabstainers at week 6, and 54 CNRT and 88 varenicline abstainers. It further states that 40 CNRT and 35 varenicline nonreturners were assigned to the corresponding continuation condition for phase-2 analyses; all participants were analyzed at week 12 and those lost to follow-up were analyzed as nonabstinent (intent to treat). Figure 2 is the corresponding graphical source (M017).
+
+**M010 — phase-1 abstinence comparison.** For randomized CNRT: 54/245, 22% (95% CrI, 17%-27%). For randomized varenicline: 88/245, 36% (95% CrI, 30%-42%). The reported absolute RD is -14% (95% CrI, -22% to -6%) between conditions, with posterior probability 99% or greater of a nonzero difference. The narrative says this was contrary to the initial assumption of similar abstinence rates at 6 weeks.
+
+### PDF p. 5 — Baseline Table and primary week-12 results
+
+**M011 — Table: baseline age and sex, denominator and scale.** Both Table columns label `n = 245`: CNRT and varenicline. Age, mean (SD), years: 48.9 (11.4) versus 47.37 (11.2). Female: 105 (42.9) versus 105 (42.9). Male: 145 (57.1) versus 145 (57.1). These are printed as number (percentage) of participants, except age; Table footnote b defines CNRT as 21-mg patch plus 2-mg lozenges.
+
+**M012 — Table: race/ethnicity and employment.** CNRT versus varenicline, respectively: African American, non-Hispanic 64 (26.1) versus 65 (26.5); Asian, non-Hispanic 9 (3.7) versus 3 (1.2); Hispanic, any race 19 (7.8) versus 22 (9); more than 1 race 5 (2.0) versus 6 (2.4); White, non-Hispanic 143 (58.3) versus 144 (58.8); Other 5 (2.0) versus 5 (2.0). Employment yes is 181 (73.9) versus 179 (73.1), and no is 64 (26.1) versus 66 (26.9). Footnote c identifies the categories as NIH categories for self-reported race and ethnicity.
+
+**M013 — Table: education, income, and smoking characteristics.** CNRT versus varenicline: education, median (IQR), 13 (12-14) versus 13 (12-14) years. Income: less than $50,000, 115 (46.9) versus 107 (43.7); $50,000-$79,999, 51 (20.8) versus 68 (27.8); at least $80,000, 73 (29.8) versus 63 (25.7); not reported, 6 (2.4) versus 7 (2.9). CO, median (IQR), ppm: 19 (13-26) versus 21 (15-28); cigarettes/day, median (IQR): 20 (12-20) versus 20 (11.8-20); FTCD total score, median (IQR): 5 (3-6) versus 5 (3.8-6); years smoking, mean (SD): 28.6 (12.5) versus 28.0 (11.8); age at smoking initiation, median (IQR): 17 (14-20) versus 17 (14-19). Table footnote d says CO at least 6 ppm was required for eligibility; footnote e says FTCD range is 0-10 and higher scores mean greater dependence.
+
+**M014 — CNRT phase-2 week-12 three-arm relationship.** Among 191 CNRT week-6 nonabstainers, switch to varenicline is 7/51, 14% (95% CrI, 10%-18%); increased CNRT is 7/50, 14% (95% CrI, 10%-18%); continued initial CNRT is 7/90, 8% (95% CrI, 6%-10%). Relative to continuation, each alternative is reported as absolute RD 6% (95% CrI, 2%-11%) and greater than 99% posterior probability of nonzero benefit. This is the full-results narrative counterpart to abstract M002.
+
+**M015 — varenicline phase-2 week-12 three-arm relationship.** Among 157 varenicline week-6 nonabstainers, increased varenicline is 8/39, 20% (95% CrI, 16%-26%); switch to CNRT is 0/41, 0% (95% CrI, 0%-0%); continued varenicline is 2/77, 3% (95% CrI, 1%-4%). Relative to continuation, switch to CNRT has absolute RD -3% (95% CrI, -4% to -1%) and greater than 99% posterior probability that continuation is worse; increased dose has absolute RD 18% (95% CrI, 13%-24%) and greater than 99% posterior probability that increase is superior. The number needed to treat for each contrast is said to be in Supplement 2 eTable 4.
+
+### PDF p. 6 — Figure 2 participant flow
+
+**M017 — Figure 2 complete flow counts.** The direct visual check confirms: 2232 assessed; 1740 excluded, comprising 1052 declined (459 not interested, 377 time/distance/transportation, 198 study drug/procedure, 18 other) and 688 ineligible (134 medical condition, 103 psychiatric condition, 88 poor reporter/behavioral instability, 84 smoked fewer than 5 cigarettes/day, 61 concurrent cessation treatment, 47 illicit drug use, 32 reported adverse event to study drug, 31 no stable residence/phone, 21 exclusionary psychiatric medications, 20 exclusionary nonpsychiatric medications, 67 other). It shows 491 randomized. CNRT: 245 randomized, 245 received treatment as randomized, 1 did not receive treatment; 54 abstinent, 151 rerandomized nonabstinent, 40 nonabstainers did not attend rerandomization and were assigned to continued CNRT. Phase-2 CNRT branches are 54 continued after abstinence (0 lost; 54 analyzed), 51 switched to varenicline (1 lost; 51 analyzed), 50 increased CNRT (2 lost; 50 analyzed), and 50 rerandomized to continue CNRT plus 40 imputed continuation (37 lost; 90 analyzed). Varenicline: 245 randomized; 88 abstinent, 122 rerandomized nonabstinent, and 35 nonattenders assigned to continued varenicline. Its branches are 88 continued after abstinence (4 lost; 88 analyzed), 41 switched to CNRT (6 lost; 41 analyzed), 39 increased dose (5 lost; 39 analyzed), and 42 rerandomized to continue plus 35 imputed continuation (32 lost; 77 analyzed). Footnote a says phase-1 minimization balanced gender and race; b says the wrong phase-2 assignment was excluded from all analyses; c says nonattenders were imputed into continuation consistently with intent to treat; d defines abstinence and says continuous abstinence was measured 30 days after treatment and 6 months after target quit date.
+
+### PDF p. 7 — Figure 3, secondary outcomes, adverse events, adherence
+
+**M016 — phase-1 abstainer week-12 comparison.** Continuing CNRT after week-6 abstinence: 42/54, 78% (95% CrI, 69%-85%). Continuing varenicline after week-6 abstinence: 63/88, 72% (95% CrI, 65%-78%). The exact cross-treatment statement is on PDF p. 7: posterior probability of difference 88%; absolute RD 6% (95% CrI, -5% to 16%).
+
+**M018 — Figure 3 repeated week-12 probabilities.** Figure 3 visually confirms these `No./total`, percentage, and 95% CrI values: CNRT-abstinent continuing CNRT 42/54, 78 (69-85); varenicline-abstinent continuing varenicline 63/88, 72 (65-78); CNRT-nonabstinent switch to varenicline 7/51, 14 (10-18); CNRT-nonabstinent increased CNRT 7/50, 14 (10-18); CNRT-nonabstinent continuing CNRT 7/90, 8 (6-10); varenicline-nonabstinent switch to CNRT 0/41, 0 (0-0); varenicline-nonabstinent increased varenicline 8/39, 20 (16-26); varenicline-nonabstinent continuing varenicline 2/77, 3 (1-4). The caption specifies phase-1 CNRT 21-mg patch plus 2-mg lozenges, phase-1 varenicline 2 mg/d, increased CNRT as two patches with 2-mg lozenges, and increased varenicline 3 mg/d. This figure matches M014-M016.
+
+**M019 — adverse-event relationship.** The narrative directs phase-1 and phase-2 adverse-event frequencies and 95% CrIs to Supplement 2 eTables 5 and 6. It states no attributable adverse-event group difference exceeded 2% with nonoverlapping CrIs except nausea, higher with phase-1 varenicline than CNRT, and three serious adverse events were recorded as unrelated to treatment.
+
+**M020 — adherence values.** The source directs detail to Supplement 2 eTables 7 and 8. It reports mean prescribed dosage taken averaged 82% or higher for active varenicline and 77% or higher for active CNRT patch. Active-lozenge count ranged from median 40 (IQR, 0-118) to median 76 (IQR, 9.75-140) across phases.
+
+**M021 — secondary continuous-abstinence relationships.** At 30 days after treatment, among 191 CNRT phase-1 nonabstainers, increased dose is 8% (`n = 50`) and switch to varenicline 10% (`n = 51`), each with posterior probability greater than 99% of benefit over continued initial treatment 3% (`n = 90`); absolute RDs and 95% CrIs are directed to Supplement 2 eTable 9. Among varenicline phase-1 nonabstainers (`n = 157`), only increased dose 8% (`n = 39`) benefited relative to continuation 0% (`n = 42`). At 6 months, among phase-1 nonabstainers in both groups, only increased CNRT 3% and increased varenicline 2% benefited over respective continuation 0%, with stated nonzero-difference probabilities 96% and 99%, respectively. eTable 10 is named for increase-versus-switch RDs and probabilities.
+
+### PDF p. 8 — Discussion and conclusion: matching quantitative narrative claims
+
+**M022 — primary-result narrative restatement.** Discussion restates, for CNRT nonabstainers, week-12 8% continuation versus 14% switch and 14% increased dose, describing a 6% increase for both alternatives. For varenicline nonabstainers, it states 3% continuation versus 20% increased varenicline as a 17% abstinence increase, and 3% continuation versus 0% switch as a 3% decrement. It says no evidence was found for increased adverse-event risk with either increased-dose strategy. These are narrative percentage-point descriptions of the count/probability relationships in M014-M015, not new displayed model estimates.
+
+**M023 — phase-1 and abstainer narrative restatement.** The discussion restates phase-1 abstinence as 22% CNRT and 36% varenicline; among week-6 abstainers, it reports absolute numbers at week 12 of 63 varenicline and 42 CNRT, linking those to phase-1 quit rates 36% and 22%. It says continuous-abstinence results at 6 months suggest early quitters may benefit equally long term. The conclusion repeats the direction of M014-M015: increased varenicline after initial failure, and increased CNRT or switch to varenicline after initial CNRT failure, with continuous abstinence favoring dose increase.
+
+### PDF p. 9 — Article information and references
+
+**M024 — no new result-relevant relationship.** This page contains article-information, funding, disclosures, author contributions, and references. It contains no new study result count, denominator, percentage, effect estimate, interval, P value, test statistic, standard error, result table, figure, or matching quantitative claim requiring a main-paper relationship record.
+
+### PDF p. 10 — References
+
+**M025 — no applicable study-result unit.** This page contains references only and no new study result, table, figure, result narrative, or quantitative relationship requiring mapping.
+
+## Cross-location source facts retained for downstream checking
+
+1. **Participant totals:** abstract and Results prose use 490 analyzed/randomized participants; Results prose and Figure 2 display 491 randomized and one CNRT participant eliminated after randomization. Figure 2 also displays 245 assigned to each initial condition, while Table columns each state `n = 245`. These are recorded source quantities with their stated analysis contexts.
+2. **CNRT alternative-versus-continuation interval:** abstract M002 prints RD 6% with 95% CrI 6%-11%; full Results M014 prints RD 6% with 95% CrI 2%-11% for the same stated comparisons. Both exact text locations are preserved for independent checking.
+3. **Sex row source values:** each Table column is `n = 245`; both show female 105 (42.9) and male 145 (57.1). The same Table gives internally relevant denominators and printed percentages; no adjudication is made in this map.
+4. **CNRT branch percentages:** abstract parentheticals 90 (47%), 50 (33%), and 51 (34%) refer to stated rerandomization/analysis constructs, whereas the displayed week-12 branch totals are 90, 50, and 51. The Figure 2 footnote specifies that 40 nonattenders are imputed into the 90-person continuation condition.
+5. **Modelled versus raw percentage-point wording:** the full Results give Bayesian absolute RDs (including 18% for increased varenicline vs continuation); discussion separately gives raw percentage descriptions such as 17% from 20% minus 3%. Population/estimator and source location are retained above.
+
+## Mapping count and limitations
+
+- **Mapped relationship units:** 25 (`M001`-`M025`), including three explicit no-new-result/no-applicable units (Figure 1 has no results counts, and PDF pp. 9-10 have no result relationship); M005-M008 preserve result-defining method/model quantities.
+- **Result-relevant direct locations:** abstract, Methods outcome/model text, Table, Figures 1-3, Results, Discussion, and Conclusion were inspected on their assigned direct PDF pages.
+- **Limitations:** Supplemental eTables/eFigures named by DOC-001 are not reconstructed here because they belong to the separately assigned support-source scope. The main PDF supplies no conventional P values, test statistics, or standard errors for its Bayesian outcome relationships. Figure 2 required visual confirmation because its rotated dense flow text is not reliably sequential in native layout extraction.

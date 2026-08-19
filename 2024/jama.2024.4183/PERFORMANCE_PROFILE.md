@@ -1,6 +1,6 @@
-# Workflow 1.5.3/1.5.4 OpenRouter Performance Profile
+# Workflow 1.5.3/1.5.4 Performance Profile
 
-This document is normative for both OpenRouter workflow 1.5 profiles.
+This document is normative for both workflow 1.5 profiles.
 
 ## Per-package planning target
 
@@ -34,20 +34,19 @@ bound is exceeded.
 
 | Role class | Model | Reasoning effort | Start requirement |
 |---|---|---|---|
-| Coordinator | `~openai/gpt-latest` | `high` | Current coordinator session |
-| Statistical consistency pass 1 | `~openai/gpt-latest` | `high` | New specialist agent |
-| Statistical consistency pass 2 | `~openai/gpt-latest` | `high` | Different new specialist agent |
-| All other specialist roles | `~openai/gpt-latest` | `medium` | New specialist when delegated |
-| Mechanical evidence recheck | `~openai/gpt-latest` | `high` | New specialist when delegated |
-| Final evidence-quality audit | `~openai/gpt-latest` | `high` | New specialist when delegated |
+| Coordinator | `gpt-5.6-sol` | `high` | Current coordinator session |
+| Statistical consistency pass 1 | `gpt-5.6-terra` | `high` | New specialist agent |
+| Statistical consistency pass 2 | `gpt-5.6-terra` | `high` | Different new specialist agent |
+| All other Terra roles | `gpt-5.6-terra` | `medium` | New specialist when delegated |
+| Mechanical evidence recheck | `gpt-5.6-sol` | `high` | New specialist when delegated |
+| Final evidence-quality audit | `gpt-5.6-sol` | `high` | New specialist when delegated |
 
 Never ask an existing medium-effort agent through a follow-up message to act as a high-effort
-statistical reviewer. Spawn each statistical pass as a fresh configured agent with reasoning effort
-`high`; when the named preset is unavailable, omit the spawn-model override so the launcher-enforced
-`~openai/gpt-latest` default applies. The two passes use distinct runtime agent IDs and read durable
-artifacts rather than shared chat context. Record both executions in `agent_execution_manifest.md`.
+statistical reviewer. Spawn each statistical pass with explicit model `gpt-5.6-terra` and reasoning
+effort `high`. The two passes use distinct runtime agent IDs and read durable artifacts rather than
+shared chat context. Record both executions in `agent_execution_manifest.md`.
 
-Do not silently raise another specialist role above this table. A one-off escalation requires a concrete
+Do not silently raise another Terra role above this table. A one-off escalation requires a concrete
 failed check or unresolved relationship recorded in `run_state.md` and a new explicitly configured
 agent.
 

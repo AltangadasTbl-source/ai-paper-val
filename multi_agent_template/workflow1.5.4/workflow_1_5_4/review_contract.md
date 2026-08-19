@@ -123,9 +123,9 @@ source-grounded mismatch. If no such mismatch exists, do not assign a `C` ID.
 
 ## Two statistical passes
 
-Spawn a new configured statistical agent for pass 1 with reasoning effort `high`. If the configured
-role is unavailable, use a fresh default agent, omit the model override so the launcher-enforced
-`~openai/gpt-latest` default applies, and set reasoning effort `high` explicitly. After the full
+Spawn a new configured `gpt-5.6-terra` statistical agent for pass 1 with reasoning effort `high`. If
+the configured role is unavailable, use a fresh default agent and explicitly pass
+`gpt-5.6-terra`/`high`. After the full
 cross-lane candidate ledger and mechanical recheck exist, spawn a different new agent under the same
 model/effort contract for pass 2. Never repurpose an existing agent through follow-up and never use a
 follow-up request as evidence of a fresh, distinct pass-2 spawn. Pass 2 revisits every `S` relationship for
@@ -141,22 +141,22 @@ current coordinator exactly once:
 ```markdown
 | Stage | Agent ID | Model | Reasoning effort | Start mode | Artifact |
 |---|---|---|---|---|---|
-| coordinator | COORDINATOR-CURRENT-SESSION | ~openai/gpt-latest | high | CURRENT_SESSION | run_state.md |
-| fresh_source_preprocessor | RUNTIME-ID-PREPROCESSOR | ~openai/gpt-latest | high | FRESH_SPAWN | source_inventory.md |
-| main_quantitative_mapper | RUNTIME-ID-MAIN-MAPPER | ~openai/gpt-latest | high | FRESH_SPAWN | extraction/main_quantitative_evidence.md |
-| support_quantitative_mapper | RUNTIME-ID-SUPPORT-MAPPER | ~openai/gpt-latest | high | FRESH_SPAWN | extraction/support_quantitative_evidence.md |
-| numeric_consistency_reviewer | RUNTIME-ID-NUMERIC | ~openai/gpt-latest | high | FRESH_SPAWN | checkers/numeric_consistency.md |
-| cross_source_consistency_reviewer | RUNTIME-ID-CROSS-SOURCE | ~openai/gpt-latest | high | FRESH_SPAWN | checkers/cross_source_consistency.md |
-| statistics_pass_1 | RUNTIME-ID-1 | ~openai/gpt-latest | high | FRESH_SPAWN | checkers/statistical_pass_1.md |
-| evidence_rechecker | RUNTIME-ID-RECHECK | ~openai/gpt-latest | high | FRESH_SPAWN | verification/evidence_recheck.md |
-| statistics_pass_2 | RUNTIME-ID-2 | ~openai/gpt-latest | high | FRESH_SPAWN | checkers/statistical_pass_2.md |
-| quality_control_auditor | RUNTIME-ID-AUDIT | ~openai/gpt-latest | high | FRESH_SPAWN | quality/evidence_quality_audit.md |
-| report_generator | RUNTIME-ID-REPORT | ~openai/gpt-latest | high | FRESH_SPAWN | limitations.md |
+| coordinator | COORDINATOR-CURRENT-SESSION | gpt-5.6-sol | high | CURRENT_SESSION | run_state.md |
+| fresh_source_preprocessor | RUNTIME-ID-PREPROCESSOR | gpt-5.6-terra | medium | FRESH_SPAWN | source_inventory.md |
+| main_quantitative_mapper | RUNTIME-ID-MAIN-MAPPER | gpt-5.6-terra | medium | FRESH_SPAWN | extraction/main_quantitative_evidence.md |
+| support_quantitative_mapper | RUNTIME-ID-SUPPORT-MAPPER | gpt-5.6-terra | medium | FRESH_SPAWN | extraction/support_quantitative_evidence.md |
+| numeric_consistency_reviewer | RUNTIME-ID-NUMERIC | gpt-5.6-terra | medium | FRESH_SPAWN | checkers/numeric_consistency.md |
+| cross_source_consistency_reviewer | RUNTIME-ID-CROSS-SOURCE | gpt-5.6-terra | medium | FRESH_SPAWN | checkers/cross_source_consistency.md |
+| statistics_pass_1 | RUNTIME-ID-1 | gpt-5.6-terra | high | FRESH_SPAWN | checkers/statistical_pass_1.md |
+| evidence_rechecker | RUNTIME-ID-RECHECK | gpt-5.6-sol | high | FRESH_SPAWN | verification/evidence_recheck.md |
+| statistics_pass_2 | RUNTIME-ID-2 | gpt-5.6-terra | high | FRESH_SPAWN | checkers/statistical_pass_2.md |
+| quality_control_auditor | RUNTIME-ID-AUDIT | gpt-5.6-sol | high | FRESH_SPAWN | quality/evidence_quality_audit.md |
+| report_generator | RUNTIME-ID-REPORT | gpt-5.6-terra | medium | FRESH_SPAWN | limitations.md |
 ```
 
 Replace every placeholder runtime ID. All mandatory specialist rows must have different IDs, and each
-must be a fresh spawn. Optional shard or repair agents also receive one row, use a new ID, inherit the
-same requested route, and may not replace a mandatory stage row. If one agent has several artifacts,
+must be a fresh spawn. Optional shard or repair agents also receive one row, use a new ID, retain the
+model/effort class of the role they extend or repair, and may not replace a mandatory stage row. If one agent has several artifacts,
 list its primary durable artifact here and list all artifacts separately in `coverage_manifest.md`.
 
 ## Token usage and price calculation
@@ -171,11 +171,8 @@ record_id,agent_id,role,model,service_tier,context_class,price_multiplier,input_
 ```
 
 Use one `EXACT` row per response-level usage record. `record_id` and `usage_source` must be unique.
-Use the exact manifest `Stage` value as `role`, and keep each agent's model identical to the manifest.
-For this OpenRouter profile, that manifest model is the configured route `~openai/gpt-latest`; do not
-replace it with a built-in Codex model slug. If the runtime separately exposes a resolved upstream
-model, preserve that value in `usage_source` so a dated exact-model price can be configured later.
-Copy token counts from runtime or API usage metadata; do not infer them from characters, words, local
+Use the exact manifest `Stage` value as `role`, and keep each agent's exact fixed model identical to
+the manifest. Copy token counts from runtime or API usage metadata; do not infer them from characters, words, local
 tokenizers, context limits, or transcript length. Normalize `PRIORITY` service tier to `FAST`. Set
 `context_class` to `LONG` only when that request has more than 272,000 input tokens, otherwise use
 `SHORT`. Use `price_multiplier=1` unless a known regional or other token-price multiplier applies.
@@ -200,10 +197,8 @@ subtotals are retained.
 
 Run `calculate_token_cost.py` with the bundled `token_pricing.toml`. It deterministically writes
 `token_usage_summary.md` and `token_usage_summary.json`, with separate rollups by agent and by model,
-then a package total. The bundled snapshot intentionally has no price for the dynamic route, so exact
-usage receives `INCOMPLETE_PRICE_UNAVAILABLE` and the complete USD amount remains `__`. Add rates only
-for an exact resolved model and a verified date; never apply a stale fixed-model price to
-`~openai/gpt-latest`. Non-token tools, containers, storage, subscriptions, taxes, and other vendor
+then a package total. The bundled snapshot contains dated rates for the fixed Sol and Terra models.
+Non-token tools, containers, storage, subscriptions, taxes, and other vendor
 charges remain outside the calculation. A later model repair reopens the accounting window: update
 the finish time, append its exact usage and agent row, and rerun the calculation before validation.
 

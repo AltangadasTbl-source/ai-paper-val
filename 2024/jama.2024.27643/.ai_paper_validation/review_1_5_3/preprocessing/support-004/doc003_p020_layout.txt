@@ -1,0 +1,53 @@
+Cudkowicz (PI) HEALEY ALS Platform Trial: Master Statistical Analysis Plan          Version 3.0, 06 Feb 2023
+
+
+edaravone × visit interaction, and baseline sodium phenylbutyrate/taurursodiol use and baseline
+sodium phenylbutyrate/taurursodiol × visit interaction. Fixed terms other than treatment group
+and visit will be centered by subtracting the sample mean of a given covariate for a given
+analysis set. The model will assume unstructured covariance among participant-specific repeated
+measures. In analysis sets in which placebo participants are drawn from more than three
+regimens, the model will include random regimen-specific intercepts. In analysis samples with
+three or fewer regimens, the model will include fixed effects for regimen.
+The following equations describe the model with regimen random effects:
+
+                  ܻ௜௝ = ܽ௞(௜) + ߛଵ ‫ݐ‬௜ + ߛଶ,௝ ‫ݒ‬௝ + ࢽᇱ૜ ࢠ࢏ + ߛସ,௝ ‫ݐ‬௜ ‫ݒ‬௝ + ࢽᇱ૞,࢐ ࢠ௜ ‫ݒ‬௝ + ߳௜௝
+                                                                                                   (eqn. 1)
+                        ܽ௞ ~ ܰ(0, ߪ௥ଶ ), ࣕ࢏ή ~ ܰ(૙, ࡾ), Cov൫ܾ௞(௜) , ߳௜௝ ൯ = 0
+
+where Yij is a given efficacy endpoint measured for participant i at visit j, ak(i) is a random
+intercept for regimen k to which participant i was assigned, vj is an indicator variable for visit j, zi
+is the vector of covariates (centered time since onset, centered delta-FRS, centered baseline log-
+transformed serum NfL level, centered baseline riluzole use, centered baseline edaravone use,
+and centered baseline sodium phenylbutyrate/taurursodiol use) for participant i, ti is an indicator
+variable for treatment t to which participant i was assigned, Ȗ1, Ȗ2,j, Ȗ3, Ȗ4,j, and Ȗ5,j are estimated
+parameters and vectors of parameters for the fixed effects, and ‫׫‬ij is the residual for participant i
+at visit j. The regimen-specific random effects are normally distributed with mean 0 and variance
+ı2r. The vector of residuals for a given participant are normally distributed with mean 0 and an
+unstructured covariance matrix R. The regimen-specific random effect for a given participant
+and residuals for that participant are uncorrelated.
+The following SAS code specifies the model:
+proc mixed data=xxx method=reml;
+  class regimen id trtrnd visit;
+  model Value = trtrnd|visit
+                sx2bl|visit dFRS|visit nfl|visit rlz|visit edv|visit
+                amx|visit / solution cl;
+  random intercept / subject=regimen type=vc;
+  repeated visit / subject=id type=un;
+
+where id is a participant study identifier, trtrnd is the randomly assigned treatment group,
+visit is the visit identifier, Value is value of the efficacy endpoint being tested for a given
+participant at a given visit, sx2bl is months since ALS symptom onset, dFRS is pre-baseline
+slope, nfl is baseline log-transformed serum NfL level, rlz is an indicator of riluzole use at
+baseline, edv is an indicator of edaravone use at baseline, and amx is an indicator of sodium
+phenylbutyrate/taurursodiol use at baseline.
+The primary estimate will be the treatment-dependent difference in change from baseline to the
+Week 24 Visit. The estimate and its 95% Wald confidence bounds will be obtained by a linear
+contrast of adjusted means. The following SAS code specifies the linear contrast for a regimen
+with one active treatment assuming an endpoint measured every 8 weeks and that the sort order
+for treatment group has the active group last and visits are sorted chronologically:
+  estimate "3|Act vs Plb|dWk 24" trtrnd*visit 1 0 0 -1                        -1 0 0 1 / cl;
+
+
+
+                                                                                               Page 20 of 62
+

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.3 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.3 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.3 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#1-quantitative-quality-control-consistency-review--workflow-153"
+id="toc-1-quantitative-quality-control-consistency-review--workflow-153">1.
+Quantitative Quality-Control Consistency Review — Workflow 1.5.3</a>
+<ul>
+<li><a href="#2-pending-human-adjudication"
+id="toc-2-pending-human-adjudication">2. Pending Human
+Adjudication</a></li>
+<li><a href="#3-executive-quality-control-summary"
+id="toc-3-executive-quality-control-summary">3. Executive
+Quality-Control Summary</a></li>
+<li><a href="#4-package-and-reused-evidence-provenance"
+id="toc-4-package-and-reused-evidence-provenance">4. Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#5-scope-complete-coverage-and-exclusions"
+id="toc-5-scope-complete-coverage-and-exclusions">5. Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#6-quantitative-and-statistical-relationship-coverage"
+id="toc-6-quantitative-and-statistical-relationship-coverage">6.
+Quantitative and Statistical Relationship Coverage</a></li>
+<li><a href="#7-candidate-index" id="toc-7-candidate-index">7. Candidate
+Index</a></li>
+<li><a href="#8-candidate-evidence-cards"
+id="toc-8-candidate-evidence-cards">8. Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--itt-figure-2-mrs-distributions-conflict-with-itt-etable-2-threshold-counts"
+id="toc-c001--itt-figure-2-mrs-distributions-conflict-with-itt-etable-2-threshold-counts">C001
+— ITT Figure 2 mRS distributions conflict with ITT eTable 2 threshold
+counts</a></li>
+<li><a
+href="#c002--arr-is-labeled-as-an-absolute-risk-reduction-but-displayed-and-interpreted-as-a-ratio"
+id="toc-c002--arr-is-labeled-as-an-absolute-risk-reduction-but-displayed-and-interpreted-as-a-ratio">C002
+— <code>aRR</code> is labeled as an absolute risk reduction but
+displayed and interpreted as a ratio</a></li>
+<li><a href="#9-downstream-evidence-chain-considerations"
+id="toc-9-downstream-evidence-chain-considerations">9. Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#10-limitations-and-missing-definitions"
+id="toc-10-limitations-and-missing-definitions">10. Limitations and
+Missing Definitions</a></li>
+<li><a href="#11-human-adjudication-checklist"
+id="toc-11-human-adjudication-checklist">11. Human Adjudication
+Checklist</a></li>
+<li><a
+href="#12-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-12-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">12.
+Reproducibility, Source-Integrity, Agent-Execution, Performance,
+Token-Usage, and Cost Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting" id="toc-token-accounting">Token
+accounting</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="1-quantitative-quality-control-consistency-review--workflow-153">1.
+Quantitative Quality-Control Consistency Review — Workflow 1.5.3</h1>
+<h2 id="2-pending-human-adjudication">2. Pending Human Adjudication</h2>
+<blockquote>
+<p><strong>Pending Human Adjudication</strong></p>
+<p>This report records reproducible quantitative reporting
+quality-control candidates from the supplied package. All candidate
+determinations and any corrective action require human adjudication.</p>
+</blockquote>
+<h2 id="3-executive-quality-control-summary">3. Executive
+Quality-Control Summary</h2>
+<p>Complete source coverage produced <strong>2 stable candidate
+consistency issues</strong>: C001 and C002. Both are <strong>Pending
+Human Adjudication</strong>. The review found a potentially inconsistent
+pair of ITT mRS displays and a repeated effect-measure label/scale
+inconsistency. Small preventable reporting defects can matter for
+downstream evidence extraction; this report does not claim that either
+issue propagated, changed a conclusion, or caused serious harm.</p>
+<h2 id="4-package-and-reused-evidence-provenance">4. Package and
+Reused-Evidence Provenance</h2>
+<p>The supplied package contains seven direct PDFs: a 14-page main
+article, five support/administrative PDFs, and a 53-page results
+supplement. Direct-source identity and page counts are recorded in <a
+href="review_1_5_3/source_inventory.md">source inventory</a>; pre-review
+source hashes are in <a
+href="review_1_5_3/source_hashes_before.sha256">source_hashes_before.sha256</a>.</p>
+<p>Reusable, source-linked native text, rendered pages, page manifests,
+and document maps covered all 14 main-article pages and all 53
+results-supplement pages. The remaining 160 pages were directly mapped.
+Reused artifacts were treated as locators and transcription aids, not as
+final authority; their inventory and pre-review hashes are in <a
+href="review_1_5_3/evidence_asset_inventory.md">evidence_asset_inventory.md</a>
+and <a
+href="review_1_5_3/reused_artifact_hashes_before.sha256">reused_artifact_hashes_before.sha256</a>.</p>
+<h2 id="5-scope-complete-coverage-and-exclusions">5. Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All <strong>227/227</strong> direct PDF page units were mapped: 67
+reusable-backed units and 160 fresh-required units. Every direct-source
+row is complete in <a
+href="review_1_5_3/source_coverage.md">source_coverage.md</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Total</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh-required</th>
+<th style="text-align: right;">Mapped</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main article</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td>Support/administrative PDFs</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">160</td>
+</tr>
+<tr>
+<td>Results supplement</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">53</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>227</strong></td>
+<td style="text-align: right;"><strong>67</strong></td>
+<td style="text-align: right;"><strong>160</strong></td>
+<td style="text-align: right;"><strong>227</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The review considered numeric, denominator, statistical,
+cross-document, label/scale, and rate/count consistency. It excluded
+broad methodological or clinical judgments, external evidence, and
+coherent display-zero P values alone. No candidate was created solely
+from <code>P = 0</code>, <code>p = 0.000</code>, finite precision,
+underflow, or a reconstructed tiny P value.</p>
+<h2 id="6-quantitative-and-statistical-relationship-coverage">6.
+Quantitative and Statistical Relationship Coverage</h2>
+<p>The complete numeric inventory covers <strong>N001-N113</strong>. The
+statistical inventory covers <strong>S001-S077</strong>. Numeric,
+cross-source, and first statistical-pass reviews were completed before
+stable candidate registration. A distinct second statistical pass
+revisited all 77 statistical relationships, the cross-lane ledger, and
+mechanical recheck facts; it emitted no new candidate.</p>
+<p>The two statistical passes have explicit <code>PASS_1_COMPLETE</code>
+and <code>PASS_2_COMPLETE</code> records for every S relationship in <a
+href="review_1_5_3/checkers/statistical_pass_1.md">statistical pass
+1</a> and <a
+href="review_1_5_3/checkers/statistical_pass_2.md">statistical pass
+2</a>. Detailed coverage scopes are in <a
+href="review_1_5_3/coverage_manifest.md">coverage_manifest.md</a>.</p>
+<h2 id="7-candidate-index">7. Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>Stable ID</th>
+<th>Category</th>
+<th>Short description</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--itt-figure-2-mrs-distributions-conflict-with-itt-etable-2-threshold-counts">C001</a></td>
+<td>Cross-document numeric inconsistency</td>
+<td>ITT Figure 2 mRS distribution thresholds do not reconcile with ITT
+eTable 2 counts.</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td><a
+href="#c002--arr-is-labeled-as-an-absolute-risk-reduction-but-displayed-and-interpreted-as-a-ratio">C002</a></td>
+<td>Measure, label, or scale inconsistency</td>
+<td><code>aRR</code> is expanded as an absolute risk reduction while
+displayed and interpreted on a ratio scale.</td>
+<td>Pending Human Adjudication</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-candidate-evidence-cards">8. Candidate Evidence Cards</h2>
+<h2
+id="c001--itt-figure-2-mrs-distributions-conflict-with-itt-etable-2-threshold-counts" class="candidate-card">C001
+— ITT Figure 2 mRS distributions conflict with ITT eTable 2 threshold
+counts</h2>
+<p><strong>Candidate statement:</strong> The Figure 2 ITT 90-day mRS
+distributions and Supplement 5 eTable 2 ITT threshold counts do not
+reconcile under ordinary nearest-whole-percentage rounding, despite
+matching ITT labels and 168 participants per arm.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_sarraj_2024_oi_240006_1708623114.96234.pdf#page=7">Main
+article Figure 2 — PDF p. 7</a>; <a
+href="../joi240006supp5_prod_1708623115.01733.pdf#page=38">Supplement 5
+eTable 2 — PDF p. 38</a>; <a
+href="../jama_sarraj_2024_oi_240006_1708623114.96234.pdf#page=4">main
+Results population statement — PDF p. 4</a>; and <a
+href="../joi240006supp5_prod_1708623115.01733.pdf#page=8">Supplement 5
+eFigure 3 — PDF p. 8</a>.</p>
+<p><strong>Source evidence:</strong> Figure 2 is titled as an
+intention-to-treat 90-day mRS distribution. Its core-stratum
+denominators total EVT 117+51=168 and medical management (MM)
+119+49=168. eTable 2 is also explicitly ITT with EVT N=168 and MM N=168,
+and prints mRS 0-2 as 34/168 and 12/168, mRS 0-3 as 65/168 and 31/168,
+and mRS 5-6 as 76/168 and 102/168, respectively.</p>
+<p><strong>Reported-versus-comparator:</strong> From Figure 2's printed
+percentages and denominators, the uniquely feasible mRS 0-6 counts are
+EVT &lt;100 mL <code>[2, 7, 21, 26, 17, 9, 35]</code>, EVT &gt;=100 mL
+<code>[1, 3, 5, 10, 0, 5, 27]</code>, MM &lt;100 mL
+<code>[0, 2, 9, 17, 27, 24, 40]</code>, and MM &gt;=100 mL
+<code>[1, 0, 2, 8, 0, 8, 30]</code>. These yield Figure-derived EVT/MM
+mRS 0-2 counts of 39/14 and mRS 0-3 counts of 75/39, versus eTable 2
+counts of 34/12 and 65/31. The mRS 5-6 counts reconcile at 76/102;
+reconstructed mRS-6 counts 62/70 also reconcile with eTable
+mortality.</p>
+<p><strong>Reasoning procedure:</strong> For each printed whole
+percentage <code>p</code>, stated denominator <code>n</code>, and
+integer count <code>k</code>, the diagnostic applies ordinary
+nearest-whole-percent feasibility:
+<code>p - 0.5 &lt;= 100k/n &lt; p + 0.5</code>. The mutually exclusive
+mRS categories 0-6 must total each printed bar denominator. Threshold
+counts are then summed across the two core strata within each randomized
+arm.</p>
+<p><strong>Calculation:</strong> The Figure-derived minus eTable 2
+differences are +5 EVT and +2 MM for mRS 0-2; +10 EVT and +8 MM for mRS
+0-3; and 0/0 for mRS 5-6. The direct sources do not state the figure's
+unrounded values or percentage-production rule, so this is a
+reproducible diagnostic comparison, not an attribution of cause.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+displays may use different outcome derivations or versions despite
+identical ITT labels and arm totals; Figure 2 percentages, labels, or
+segment assignments may contain a production issue; eTable 2 may use an
+unstated outcome set; or an unstated non-nearest rounding,
+normalization, or weighting rule may invalidate the reconstruction.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-PDF recheck
+located both displays, matched the Figure 2 title, legend order, four
+denominators, eTable 2 headings and threshold rows, and reproduced the
+integer-feasibility calculation. It records the missing raw category
+counts, unrounded percentages, generation dataset/version, and stated
+calculation rule in <a
+href="review_1_5_3/verification/evidence_recheck.md">evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> If confirmed, this is a
+candidate consistency issue because a data extractor could select
+conflicting ITT functional-outcome counts or proportions from supplied
+displays.</p>
+<p><strong>Potential downstream evidence impact:</strong> A systematic
+reviewer, meta-analyst, guideline evidence extractor, or tabulator could
+copy different ITT mRS threshold values if this discrepancy is
+confirmed. This report does not assert that such copying occurred or
+that the paper's conclusion changed.</p>
+<p><strong>Human verification steps:</strong> Obtain the authoritative
+mRS 0-6 counts by treatment and core stratum; confirm whether Figure 2
+and eTable 2 share the same ITT records, category definitions,
+missing-outcome handling, and data version; then document the
+percentage-calculation rule and the display that should control.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--arr-is-labeled-as-an-absolute-risk-reduction-but-displayed-and-interpreted-as-a-ratio" class="candidate-card">C002
+— <code>aRR</code> is labeled as an absolute risk reduction but
+displayed and interpreted as a ratio</h2>
+<p><strong>Candidate statement:</strong> The main narrative and tables
+expand <code>aRR</code> as “absolute risk reduction,” while printed
+estimates, a greater-than-1 interpretation, separate <code>aRD</code>
+values, and supplied SAP statements indicate a ratio-scale measure.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_sarraj_2024_oi_240006_1708623114.96234.pdf#page=6">Main
+narrative — PDF p. 6</a>; <a
+href="../jama_sarraj_2024_oi_240006_1708623114.96234.pdf#page=7">Main
+Table 2 — PDF p. 7</a>; <a
+href="../jama_sarraj_2024_oi_240006_1708623114.96234.pdf#page=9">Main
+Table 3 — PDF p. 9</a>; <a
+href="../joi240006supp3_prod_1708623114.99733.pdf#page=17">trial SAP —
+PDF p. 17</a>; <a
+href="../joi240006supp4_prod_1708623115.00733.pdf#page=4">secondary-analysis
+SAP — PDF p. 4</a>; and <a
+href="../joi240006supp5_prod_1708623115.01733.pdf#page=43">Supplement 5
+eTable 7 — PDF p. 43</a>.</p>
+<p><strong>Source evidence:</strong> The narrative and Tables 2-3 expand
+<code>aRR</code> as “absolute risk reduction.” Table 2 states that
+values greater than 1 indicate a higher rate ratio and prints values
+including 0.89 (0.84-0.95), 0.91 (0.87-0.95), and 1.05 (1.02-1.08).
+Table 3 separately labels <code>aRD</code> as adjusted risk difference
+and gives, for example, aRR 1.33 (0.52-3.44) alongside aRD 0.178 (-0.109
+to 0.465). The SAPs specify modified-Poisson relative-risk analyses.</p>
+<p><strong>Reported-versus-comparator:</strong> An absolute risk
+reduction/risk difference is additive, expressed in risk units, and has
+a null value of 0. A risk or rate ratio is multiplicative,
+dimensionless, and has a null value of 1. The printed estimates,
+confidence intervals, and explicit greater-than-1 rate-ratio
+interpretation fit the latter scale; the repeated expansion “absolute
+risk reduction” does not reconcile with it.</p>
+<p><strong>Reasoning procedure:</strong> Compare the direct abbreviation
+expansion, table interpretation, printed null scale, representative
+estimates and intervals, separately labelled <code>aRD</code>, and
+supplied modified-Poisson/relative-risk descriptions. No unreported
+coefficient, standard error, P value, or model reconstruction is
+required.</p>
+<p><strong>Calculation:</strong> This is a logical scale comparison
+rather than a numerical reconstruction. A value 1.33 with a confidence
+interval 0.52-3.44 is ratio-scale and centered on a null of 1; the
+separately printed aRD 0.178 with an interval spanning 0 is
+additive-scale. The source's own rate-ratio sentence confirms the
+mismatch.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>aRR</code> may have been intended as adjusted risk ratio, while
+“absolute risk reduction” was a repeated abbreviation-key error. The
+tables' rate-ratio sentence may instead be unintended, or an unreported
+nonstandard term may have been used. The supplied package provides no
+definition that makes an absolute reduction compatible with the
+displayed ratio scale.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-PDF inspection
+matched the narrative, abbreviation keys, values, footnotes, separate
+<code>aRD</code> values, and SAP model statements. The recheck
+identifies the absent authoritative abbreviation dictionary and intended
+effect-measure name in <a
+href="review_1_5_3/verification/evidence_recheck.md">evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> If confirmed, a data
+extractor could classify a relative effect as an absolute effect,
+changing the recorded measure class, null value, and scale.</p>
+<p><strong>Potential downstream evidence impact:</strong> A systematic
+review, meta-analysis, guideline evidence table, or data-extraction
+workflow could record a relative estimate under an absolute-effect field
+if the label is confirmed to be inconsistent. This report does not claim
+that propagation occurred or that the study conclusion changed.</p>
+<p><strong>Human verification steps:</strong> Confirm the authoritative
+expansion of <code>aRR</code>, whether <code>a</code> denotes adjusted,
+and whether <code>RR</code> denotes risk ratio or rate ratio; reconcile
+the narrative, Tables 2-3, SAP-linked descriptions, and supplementary
+labels with the intended measure while retaining the separately reported
+<code>aRD</code> distinction.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="9-downstream-evidence-chain-considerations">9. Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, C001 could affect which ITT mRS threshold count is
+extracted, and C002 could affect effect-measure classification. These
+are bounded possibilities for later evidence products; no downstream
+propagation, conclusion change, or harm is asserted.</p>
+<h2 id="10-limitations-and-missing-definitions">10. Limitations and
+Missing Definitions</h2>
+<p>The complete limitations record is in <a
+href="review_1_5_3/limitations.md">limitations.md</a>. C001 lacks raw
+category counts, unrounded percentages, a figure-generation version, and
+a stated percentage rule. C002 lacks an authoritative <code>aRR</code>
+expansion and intended effect-measure name. The review used supplied
+local evidence only and did not undertake a raw-data or
+clinical-methodology audit.</p>
+<h2 id="11-human-adjudication-checklist">11. Human Adjudication
+Checklist</h2>
+<p>For each stable ID, a human reviewer should: confirm each cited
+direct-source page; inspect the printed values and comparator; reproduce
+the stated comparison; obtain the named missing definition or source
+record; decide whether a correction is warranted; and complete the five
+<code>__</code> fields in the card. Both IDs remain Pending Human
+Adjudication unless and until that review occurs.</p>
+<h2
+id="12-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">12.
+Reproducibility, Source-Integrity, Agent-Execution, Performance,
+Token-Usage, and Cost Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>Routing preflight passed, including the fixed model matrix,
+coordinator inference, interactive execution mode, and nine named role
+presets; see <a
+href="review_1_5_3/routing_preflight.md">routing_preflight.md</a>. The
+evidence-quality audit reports 7 direct-source and 137 reused-artifact
+hash records reproducing at its review point, complete 227/227 mapping,
+identical C001/C002 ledger/recheck/audit sets, and valid PDF page links;
+see <a
+href="review_1_5_3/quality/evidence_quality_audit.md">evidence_quality_audit.md</a>.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<p>The final manifest records the coordinator and all ten completed
+specialist stages: curator, main mapper, support mapper, numeric
+reviewer, cross-source reviewer, statistical pass 1, evidence rechecker,
+statistical pass 2, quality-control auditor, and report generator.
+Models and reasoning efforts are recorded in <a
+href="review_1_5_3/agent_execution_manifest.md">agent_execution_manifest.md</a>;
+every actual runtime agent appears exactly once.</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Seven direct PDFs contain 227 page
+units. One 14-page main article and one 53-page results supplement have
+page-linked reusable evidence, while 160 pages across five support or
+administrative PDFs require fresh direct mapping; one 40-page scanned
+statistical analysis plan may require targeted visual inspection or CPU
+OCR. The planned work also includes two mapping lanes, three concurrent
+checker lanes, two distinct statistical passes, evidence recheck,
+quality audit, and report assembly.</li>
+<li><strong>Total source units:</strong> 227</li>
+<li><strong>Fresh-source units:</strong> 160</li>
+<li><strong>Target elapsed minutes:</strong> 75-110</li>
+<li><strong>Started UTC:</strong> 2026-08-19T04:31:45Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-19T05:07:17Z</li>
+<li><strong>Observed elapsed minutes:</strong> 35.5</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting">Token accounting</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+<th>Count status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>INCOMPLETE</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>INCOMPLETE</td>
+</tr>
+</tbody>
+</table>
+<p>Authoritative response-level token counts were not exposed by this
+interactive coordinator or the specialist runtime, so every manifested
+agent has an <code>UNAVAILABLE</code> ledger record. Zero is the known
+subtotal only, not an estimate of actual usage. Per-agent detail is in
+<a
+href="review_1_5_3/token_usage_summary.md">token_usage_summary.md</a>.
+Cached input and cache-write counts are input subsets and reasoning
+tokens are an output subset; they are not additional total tokens. The
+known amount uses the bundled rates dated 2026-08-18 and is a token-only
+API-equivalent estimate, not an invoice; the complete estimate remains
+unavailable.</p>
+</body>
+</html>

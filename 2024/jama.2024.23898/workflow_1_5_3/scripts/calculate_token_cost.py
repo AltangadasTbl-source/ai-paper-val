@@ -127,23 +127,15 @@ def empty_totals() -> dict[str, Any]:
         "exact_records": 0,
         "totals_only_records": 0,
         "unavailable_records": 0,
-        "unpriced_records": 0,
         **{field: 0 for field in TOKEN_FIELDS},
         "known_token_cost_usd": Decimal(0),
     }
 
 
 def add_totals(
-    target: dict[str, Any],
-    tokens: dict[str, int],
-    cost: Decimal,
-    record_kind: str,
-    *,
-    unpriced: bool = False,
+    target: dict[str, Any], tokens: dict[str, int], cost: Decimal, record_kind: str
 ) -> None:
     target[record_kind] += 1
-    if unpriced:
-        target["unpriced_records"] += 1
     for field in TOKEN_FIELDS:
         target[field] += tokens[field]
     target["known_token_cost_usd"] += cost
@@ -151,11 +143,7 @@ def add_totals(
 
 def serial_totals(value: dict[str, Any]) -> dict[str, Any]:
     count_complete = value["unavailable_records"] == 0
-    price_complete = (
-        count_complete
-        and value["totals_only_records"] == 0
-        and value["unpriced_records"] == 0
-    )
+    price_complete = count_complete and value["totals_only_records"] == 0
     result = {
         key: item
         for key, item in value.items()
@@ -170,8 +158,6 @@ def serial_totals(value: dict[str, Any]) -> dict[str, Any]:
         result["status"] = "INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE"
     elif value["totals_only_records"]:
         result["status"] = "INCOMPLETE_BILLING_BREAKDOWN"
-    elif value["unpriced_records"]:
-        result["status"] = "INCOMPLETE_PRICE_UNAVAILABLE"
     else:
         result["status"] = "COMPLETE"
     return result
@@ -297,10 +283,8 @@ def calculate(
                 f"{tokens['input_tokens']}."
             )
         rate = rates.get((model, tier, context))
-        unpriced = rate is None
         if rate is None:
-            if not bool(pricing.get("allow_missing_rates", False)):
-                errors.append(f"{prefix} has no price rate for {model}/{tier}/{context}.")
+            errors.append(f"{prefix} has no price rate for {model}/{tier}/{context}.")
             cost = Decimal(0)
         else:
             uncached = (
@@ -315,9 +299,9 @@ def calculate(
                 + Decimal(tokens["output_tokens"]) * rate.output
             )
             cost = numerator * multiplier / Decimal(pricing["unit_tokens"])
-        add_totals(agent_totals[agent_id], tokens, cost, "exact_records", unpriced=unpriced)
-        add_totals(model_totals[model], tokens, cost, "exact_records", unpriced=unpriced)
-        add_totals(package_totals, tokens, cost, "exact_records", unpriced=unpriced)
+        add_totals(agent_totals[agent_id], tokens, cost, "exact_records")
+        add_totals(model_totals[model], tokens, cost, "exact_records")
+        add_totals(package_totals, tokens, cost, "exact_records")
 
     agents = []
     for agent_id in sorted(agent_totals):
@@ -361,17 +345,16 @@ def markdown(result: dict[str, Any]) -> str:
         "Cached-input and cache-write tokens are subsets of input tokens. Reasoning tokens are a subset "
         "of output tokens. They are shown for auditability and are not added again to total tokens. "
         "Totals-only rows retain authoritative input/output/total counts when billing breakdowns are "
-        "missing. Unpriced rows retain exact token details when a dynamic route has no configured "
-        "resolved-model rate. Amounts exclude non-token charges and are not an invoice.",
+        "missing. Amounts exclude non-token charges and are not an invoice.",
         "",
         "## By agent",
         "",
-        "| Agent ID | Role | Model | Exact records | Unpriced records | Totals-only records | Unavailable records | Input | Known cached input | Known cache writes | Output | Known reasoning | Total | Known cost USD | Complete estimated cost USD | Status |",
-        "|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
+        "| Agent ID | Role | Model | Exact records | Totals-only records | Unavailable records | Input | Known cached input | Known cache writes | Output | Known reasoning | Total | Known cost USD | Complete estimated cost USD | Status |",
+        "|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
     ]
     for row in result["agents"]:
         lines.append(
-            "| {agent_id} | {role} | {model} | {exact_records} | {unpriced_records} | {totals_only_records} | {unavailable_records} | "
+            "| {agent_id} | {role} | {model} | {exact_records} | {totals_only_records} | {unavailable_records} | "
             "{input_tokens} | {cached_input_tokens} | {cache_write_tokens} | {output_tokens} | "
             "{reasoning_tokens} | {total_tokens} | {known_token_cost_usd} | {estimated} | {status} |".format(
                 **row, estimated=row["estimated_total_token_cost_usd"] or "__"
@@ -382,13 +365,13 @@ def markdown(result: dict[str, Any]) -> str:
             "",
             "## By model",
             "",
-            "| Model | Agents | Exact records | Unpriced records | Totals-only records | Unavailable records | Input | Known cached input | Known cache writes | Output | Known reasoning | Total | Known cost USD | Complete estimated cost USD | Status |",
-            "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
+            "| Model | Agents | Exact records | Totals-only records | Unavailable records | Input | Known cached input | Known cache writes | Output | Known reasoning | Total | Known cost USD | Complete estimated cost USD | Status |",
+            "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
         ]
     )
     for row in result["models"]:
         lines.append(
-            "| {model} | {agent_count} | {exact_records} | {unpriced_records} | {totals_only_records} | {unavailable_records} | {input_tokens} | "
+            "| {model} | {agent_count} | {exact_records} | {totals_only_records} | {unavailable_records} | {input_tokens} | "
             "{cached_input_tokens} | {cache_write_tokens} | {output_tokens} | {reasoning_tokens} | "
             "{total_tokens} | {known_token_cost_usd} | {estimated} | {status} |".format(
                 **row, estimated=row["estimated_total_token_cost_usd"] or "__"

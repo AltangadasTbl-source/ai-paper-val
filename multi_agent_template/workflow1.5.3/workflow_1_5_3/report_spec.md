@@ -37,12 +37,11 @@ reports stored directly below `.ai_paper_validation/`:
     └── review_validation.json
 ```
 
-`routing_preflight.md` is created only by `scripts/launch_openrouter.sh` before the review session
-starts. The launcher first completes a real ephemeral Responses API request through OpenRouter using
-`OPENROUTER_API_KEY` via `env_key`. The artifact records `Authentication probe: PASS`, ignored user
-configuration, the provider/coordinator/default route, and verification that all nine named agent
-presets contain their required model/effort pairs. Agents must preserve it unchanged; a
-coordinator-authored replacement is not valid routing or authentication evidence.
+The interactive coordinator creates `routing_preflight.md` before scientific work. Its successful
+first response is the real provider/authentication inference check. The artifact records
+`Coordinator inference: PASS`, execution mode `INTERACTIVE_CLI`, the fixed Sol/Terra role matrix, and
+verification that all nine named presets contain their required model/effort pairs. It must not claim
+PASS if a fixed model is rejected or the first mandatory specialist cannot obtain a model response.
 
 Stage-specific shard parts may live in `parts/` subdirectories. Every part must be listed in
 `coverage_manifest.md` on its own row and merged without loss into the canonical artifact. The
@@ -128,9 +127,8 @@ The final report token-accounting subsection must contain these exact labels:
 
 Also include one compact row per model from `token_usage_summary.md` and refer to the versioned token
 summary artifact for the per-agent detail. Cached input and cache-write counts are input subsets;
-reasoning is an output subset. Never present their sum as additional total tokens. State that the
-dynamic OpenRouter route is unpriced unless the snapshot contains a dated rate for the exact resolved
-model; any available amount is a token-only estimate, not an invoice.
+reasoning is an output subset. Never present their sum as additional total tokens. State that any
+available amount uses the bundled dated fixed-model rates and is a token-only estimate, not an invoice.
 
 Do not reproduce old AI dispositions, a top-10 list, a severity ranking, or a deferred-by-cap section.
 

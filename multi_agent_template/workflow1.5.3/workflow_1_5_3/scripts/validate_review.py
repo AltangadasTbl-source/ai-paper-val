@@ -118,37 +118,47 @@ PLAIN_ARTIFACT_PATH = re.compile(
     r"^(?:\.\./)?[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*$"
 )
 REQUIRED_AGENT_STAGES = {
-    "coordinator": ("high", "CURRENT_SESSION", "run_state.md"),
-    "reuse_asset_curator": ("high", "FRESH_SPAWN", "source_inventory.md"),
+    "coordinator": ("gpt-5.6-sol", "high", "CURRENT_SESSION", "run_state.md"),
+    "reuse_asset_curator": ("gpt-5.6-terra", "medium", "FRESH_SPAWN", "source_inventory.md"),
     "main_quantitative_mapper": (
-        "high",
+        "gpt-5.6-terra",
+        "medium",
         "FRESH_SPAWN",
         "extraction/main_quantitative_evidence.md",
     ),
     "support_quantitative_mapper": (
-        "high",
+        "gpt-5.6-terra",
+        "medium",
         "FRESH_SPAWN",
         "extraction/support_quantitative_evidence.md",
     ),
     "numeric_consistency_reviewer": (
-        "high",
+        "gpt-5.6-terra",
+        "medium",
         "FRESH_SPAWN",
         "checkers/numeric_consistency.md",
     ),
     "cross_source_consistency_reviewer": (
-        "high",
+        "gpt-5.6-terra",
+        "medium",
         "FRESH_SPAWN",
         "checkers/cross_source_consistency.md",
     ),
-    "statistics_pass_1": ("high", "FRESH_SPAWN", "checkers/statistical_pass_1.md"),
-    "evidence_rechecker": ("high", "FRESH_SPAWN", "verification/evidence_recheck.md"),
-    "statistics_pass_2": ("high", "FRESH_SPAWN", "checkers/statistical_pass_2.md"),
+    "statistics_pass_1": ("gpt-5.6-terra", "high", "FRESH_SPAWN", "checkers/statistical_pass_1.md"),
+    "evidence_rechecker": ("gpt-5.6-sol", "high", "FRESH_SPAWN", "verification/evidence_recheck.md"),
+    "statistics_pass_2": ("gpt-5.6-terra", "high", "FRESH_SPAWN", "checkers/statistical_pass_2.md"),
     "quality_control_auditor": (
+        "gpt-5.6-sol",
         "high",
         "FRESH_SPAWN",
         "quality/evidence_quality_audit.md",
     ),
-    "report_generator": ("high", "FRESH_SPAWN", "limitations.md"),
+    "report_generator": ("gpt-5.6-terra", "medium", "FRESH_SPAWN", "limitations.md"),
+}
+ALLOWED_MODEL_EFFORTS = {
+    ("gpt-5.6-sol", "high"),
+    ("gpt-5.6-terra", "medium"),
+    ("gpt-5.6-terra", "high"),
 }
 
 
@@ -480,20 +490,22 @@ def validate_routing_preflight(text: str, errors: list[str]) -> None:
     expected = {
         "Status": "PASS",
         "Provider": "openrouter",
-        "Coordinator model": "~openai/gpt-latest",
-        "Default subagent model": "~openai/gpt-latest",
+        "Coordinator model": "gpt-5.6-sol",
         "Coordinator reasoning effort": "high",
-        "Default subagent reasoning effort": "high",
-        "Named agent reasoning effort": "high",
+        "Ordinary specialist model": "gpt-5.6-terra",
+        "Ordinary specialist reasoning effort": "medium",
+        "Statistical specialist model": "gpt-5.6-terra",
+        "Statistical specialist reasoning effort": "high",
+        "Sol specialist model": "gpt-5.6-sol",
+        "Sol specialist reasoning effort": "high",
+        "Fixed model matrix": "PASS",
         "Named agent presets": "PASS",
         "Named agent preset count": "9",
         "Mandatory specialist stages": "10",
         "Mandatory agent start contract": "FRESH_DISTINCT",
-        "Authentication probe": "PASS",
-        "Credential source": "OPENROUTER_API_KEY via env_key",
-        "User config": "IGNORED",
-        "Enforcement": "CLI_OVERRIDES_PLUS_IGNORED_USER_CONFIG",
-        "Execution mode": "CODEX_EXEC",
+        "Coordinator inference": "PASS",
+        "Execution mode": "INTERACTIVE_CLI",
+        "Launch command": "codex --approve-for-me",
     }
     for label, value in expected.items():
         match = re.search(rf"^- {re.escape(label)}:\s*(.+?)\s*$", text, re.MULTILINE)
@@ -518,14 +530,10 @@ def validate_agent_execution_manifest(
         stage, agent_id, model, effort, start_mode, artifact = cells
         if any(not value for value in (stage, model, effort, start_mode, artifact)):
             errors.append(f"Agent execution line {number} has an empty required field.")
-        if model != "~openai/gpt-latest":
+        if (model, effort) not in ALLOWED_MODEL_EFFORTS:
             errors.append(
-                f"Agent execution line {number} must use the OpenRouter model slug "
-                f"~openai/gpt-latest, got {model}."
-            )
-        if effort != "high":
-            errors.append(
-                f"Agent execution line {number} must use high reasoning effort, got {effort}."
+                f"Agent execution line {number} has a forbidden model/effort pair: "
+                f"{model}/{effort}."
             )
         if stage != "coordinator" and start_mode != "FRESH_SPAWN":
             errors.append(f"Agent execution stage {stage} must use FRESH_SPAWN.")
@@ -551,18 +559,18 @@ def validate_agent_execution_manifest(
                 errors.append(f"Agent execution artifact is missing or empty: {artifact}")
     if not agents:
         errors.append("agent_execution_manifest.md has no agent rows.")
-    for stage, (expected_effort, expected_start, expected_artifact) in REQUIRED_AGENT_STAGES.items():
+    for stage, (expected_model, expected_effort, expected_start, expected_artifact) in REQUIRED_AGENT_STAGES.items():
         if stage not in stage_agents:
             errors.append(f"Missing mandatory fresh agent execution row: {stage}")
             continue
         _, model, effort, start_mode, artifact = stage_agents[stage]
         if (
-            model != "~openai/gpt-latest"
+            model != expected_model
             or effort != expected_effort
             or start_mode != expected_start
         ):
             errors.append(
-                f"{stage} must record ~openai/gpt-latest/{expected_effort}/{expected_start}, got "
+                f"{stage} must record {expected_model}/{expected_effort}/{expected_start}, got "
                 f"{model}/{effort}/{start_mode}."
             )
         if artifact != expected_artifact:
@@ -626,8 +634,8 @@ def validate_token_accounting(
         )
     elif status == "INCOMPLETE_PRICE_UNAVAILABLE":
         warnings.append(
-            "Authoritative token usage is complete, but the dynamic OpenRouter route has no "
-            "configured resolved-model rate; token totals are complete and price is blank."
+            "Authoritative token usage is complete, but a required fixed-model price is unavailable; "
+            "token totals are complete and price is blank."
         )
     package_totals = expected.get("package", {})
     report_values = {
@@ -674,12 +682,11 @@ def validate_control_files_english(package: Path, profile: str, errors: list[str
         package / f"workflow_{token}/settings.toml",
         package / f"workflow_{token}/token_pricing.toml",
         package / f"workflow_{token}/scripts/calculate_token_cost.py",
-        package / f"workflow_{token}/scripts/launch_openrouter.sh",
     ]
     workflow_files = sorted(
         path
         for path in (package / f"workflow_{token}").rglob("*")
-        if path.is_file() and path.suffix.casefold() in {".md", ".toml", ".py", ".sh"}
+        if path.is_file() and path.suffix.casefold() in {".md", ".toml", ".py"}
     )
     paths = list(dict.fromkeys([*required_paths, *workflow_files]))
     for path in paths:
@@ -984,8 +991,8 @@ def main() -> None:
         if not any("integrity failure" in item.casefold() or "hash inventory" in item.casefold() for item in errors)
         else "FAIL",
         "agent_first": True,
-        "statistical_agents": "fresh-distinct-openrouter-high",
-        "mandatory_agent_routing": "fresh-distinct-openrouter-configured"
+        "statistical_agents": "fresh-distinct-terra-high",
+        "mandatory_agent_routing": "fresh-distinct-fixed-sol-terra-configured"
         if mandatory_agent_routing_ok
         else "FAIL",
         "agent_count": len(manifest_agents),

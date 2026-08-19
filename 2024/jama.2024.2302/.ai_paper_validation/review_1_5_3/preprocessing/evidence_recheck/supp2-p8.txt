@@ -1,0 +1,44 @@
+267   analyzed with a normal regression model. All models will include a random intercept for site and
+268   will include GA group (< 28 weeks and ≥ 28 weeks estimated GA) as a covariate.
+269   We will report relative risks (RR) and risk differences (RD) for binary outcomes (calculated from
+270   logistic model), RRs for count outcomes, odds ratios (OR) for ordinal outcomes, and mean
+271   group differences for continuous outcomes. We will report 95% CIs (95% CrIs for Bayesian
+272   results) for all outcomes. For probabilities of benefit/harm, we will report probabilities of any
+273   effect and probabilities of at least 3% and 5% reduction in the risk for SAE. Although we
+274   hypothesized a 10% reduction in the proportion of infants in the late IH repair group, most
+275   stakeholders would likely agree that a smaller reduction (3 or 5%) is above the minimal clinically
+276   important difference.
+277   All analyses will be conducted in R. Bayesian models will be fit using Markov chain Monte Carlo
+278   (MCMC) methods implemented in Stan via R packages ‘rstanarm’ and ‘brms’. Each model will
+279   be fit using three MCMC chains. Each chain will involve at least 5,000 burn-in samples and at
+280   least 50,000 additional iterations.
+281
+282   7.3.1 Bayesian prior specifications
+
+283   Bayesian analyses will use neutral priors for all outcomes, since there has never been a
+284   previous RCT comparing these two treatment options. For categorical outcomes, we will
+285   assume a prior centered at OR of 1.0 with 95% CrI of 0.2-4 for the intervention effect. This will
+286   take the form of a Normal distribution with mean of 0 and SD of 0.7 in the log OR scale. For
+287   count outcomes, the prior for the intervention effect will be centered at RR of 1.0 with 95% CrI of
+288   0.33-3.3. For the intercept we will use a vague Normal(0, SD=10) distribution and for GA group
+289   a weakly informative Normal(0, SD=1) prior. For the standard deviation of the random intercept,
+290   we will use a half-Normal(0, SD=1) prior distribution.
+291   For continuous outcomes, we specify priors for standardized variables. For the intervention
+292   effect we will use a Normal(0, SD=2) prior. For the intercept and GA group we will use
+293   Normal(0, SD=10) and Normal(0, SD=3) priors, respectively. For the standard deviation of the
+294   random intercept, we will use a half-Normal(0, SD=2) prior distribution.
+295   7.3.2 Assumption Checks
+
+296   Assumptions of frequentist models will be evaluated using residual plots.
+297   For Bayesian models, convergence of MCMC chains will involve visual comparisons of the trace
+298   plots from the 3 chains generated for each model. Quantitative checks such as the Geweke
+299   and Gelman/Rubin tests will be completed to ensure convergence to the posterior distribution.
+300   For Bayesian models, posterior predictive checks will be used to determine if the resulting
+301   model mimics the data sufficiently well for the inferences that will be made from this trial. The
+302   posterior predictive check will involve simulating 1,000 trials from the posterior predictive
+303   distributions of the model parameters and summarizing the average probability/number of
+304   counts/mean of the outcome by:
+
+305         Treatment
+306         GA group
+

@@ -23,8 +23,18 @@ reference_observed_minutes = 49.4
 reference_comparable_target_minutes = "35-50"
 reference_is_universal_default = false
 hard_timeout = false
-specialist_default_reasoning_effort = "medium"
-specialist_high_reasoning_roles = ["qc15_statistical_consistency_reviewer"]
+specialist_default_reasoning_effort = "high"
+specialist_high_reasoning_roles = [
+  "qc15_reuse_asset_curator",
+  "qc15_main_quantitative_mapper",
+  "qc15_support_quantitative_mapper",
+  "qc15_numeric_consistency_reviewer",
+  "qc15_cross_source_consistency_reviewer",
+  "qc15_statistical_consistency_reviewer",
+  "qc15_evidence_rechecker",
+  "qc15_quality_control_auditor",
+  "qc15_report_generator",
+]
 statistical_pass_agents = "fresh-distinct"
 avoid_redundant_agent_waves = true
 timing_artifact = ".ai_paper_validation/review_1_5_3/run_state.md"
@@ -32,15 +42,26 @@ agent_execution_artifact = ".ai_paper_validation/review_1_5_3/agent_execution_ma
 
 [model_routing]
 provider = "openrouter"
-provider_configuration_scope = "user-level"
-model = "~openai/gpt-latest"
-launcher = "workflow_1_5_3/scripts/launch_openrouter.sh"
-enforcement = "highest-precedence-cli-overrides"
+provider_configuration_scope = "user-level-config"
+coordinator_model = "gpt-5.6-sol"
+coordinator_reasoning_effort = "high"
+ordinary_specialist_model = "gpt-5.6-terra"
+ordinary_specialist_reasoning_effort = "medium"
+statistical_specialist_model = "gpt-5.6-terra"
+statistical_specialist_reasoning_effort = "high"
+sol_specialist_model = "gpt-5.6-sol"
+sol_specialist_reasoning_effort = "high"
+startup_command = "codex --approve-for-me"
+authentication = "env_key:OPENROUTER_API_KEY"
+ignore_base_user_config = false
+coordinator_inference_required = true
+enforcement = "project-model-plus-custom-agent-presets"
 preflight_artifact = ".ai_paper_validation/review_1_5_3/routing_preflight.md"
-coordinator_model_source = "launcher-cli-override"
-named_subagent_model_source = "custom-agent-preset-or-launcher-default"
-default_subagent_model_source = "launcher-cli-override"
-forbid_spawn_model_override = true
+coordinator_model_source = "project-config"
+named_subagent_model_source = "custom-agent-preset"
+named_agent_presets_required = true
+fallback_requires_explicit_model_override = true
+forbid_dynamic_model_alias = true
 mandatory_stages_require_fresh_distinct_agents = true
 
 [review]

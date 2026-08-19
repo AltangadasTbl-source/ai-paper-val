@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.3 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.3 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.3 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--workflow-153"
+id="toc-quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--balloon-angioplasty-female-percentage-does-not-reconcile-with-count-and-denominator"
+id="toc-c001--balloon-angioplasty-female-percentage-does-not-reconcile-with-count-and-denominator">C001
+— Balloon-angioplasty female percentage does not reconcile with count
+and denominator</a></li>
+<li><a
+href="#c002--balloon-angioplasty-ischemic-stroke-percentage-is-outside-ordinary-one-decimal-rounding"
+id="toc-c002--balloon-angioplasty-ischemic-stroke-percentage-is-outside-ordinary-one-decimal-rounding">C002
+— Balloon-angioplasty ischemic-stroke percentage is outside ordinary
+one-decimal rounding</a></li>
+<li><a
+href="#c003--table-s4-procedure-rows-use-241-while-the-column-header-states-249"
+id="toc-c003--table-s4-procedure-rows-use-241-while-the-column-header-states-249">C003
+— Table S4 procedure rows use 241 while the column header states
+249</a></li>
+<li><a
+href="#c004--table-s6-ba-9-39-conflicts-with-its-displayed-denominator-249"
+id="toc-c004--table-s6-ba-9-39-conflicts-with-its-displayed-denominator-249">C004
+— Table S6 BA <code>9 (3.9)</code> conflicts with its displayed
+denominator 249</a></li>
+<li><a
+href="#c005--table-s7-group-headers-conflict-with-site-totals-and-displayed-site-percentages"
+id="toc-c005--table-s7-group-headers-conflict-with-site-totals-and-displayed-site-percentages">C005
+— Table S7 group headers conflict with site totals and displayed site
+percentages</a></li>
+<li><a
+href="#c006--table-s8-per-protocol-percentages-conflict-with-headers-249252"
+id="toc-c006--table-s8-per-protocol-percentages-conflict-with-headers-249252">C006
+— Table S8 per-protocol percentages conflict with headers
+249/252</a></li>
+<li><a
+href="#c007--table-s9-as-treated-percentages-conflict-with-headers-249252"
+id="toc-c007--table-s9-as-treated-percentages-conflict-with-headers-249252">C007
+— Table S9 as-treated percentages conflict with headers 249/252</a></li>
+<li><a
+href="#c008--baseline-stenosis-categories-include-values-outside-the-stated-70-99-eligibility-range"
+id="toc-c008--baseline-stenosis-categories-include-values-outside-the-stated-70-99-eligibility-range">C008
+— Baseline stenosis categories include values outside the stated 70%-99%
+eligibility range</a></li>
+<li><a
+href="#c009--thirty-day-follow-up-tolerance-is-plus-or-minus-3-days-in-the-supplement-but-plus-or-minus-7-days-elsewhere"
+id="toc-c009--thirty-day-follow-up-tolerance-is-plus-or-minus-3-days-in-the-supplement-but-plus-or-minus-7-days-elsewhere">C009
+— Thirty-day follow-up tolerance is plus or minus 3 days in the
+supplement but plus or minus 7 days elsewhere</a></li>
+<li><a
+href="#c010--protocol-v20-gives-21-day-and-14-day-lower-bounds-for-the-same-stroke-criterion"
+id="toc-c010--protocol-v20-gives-21-day-and-14-day-lower-bounds-for-the-same-stroke-criterion">C010
+— Protocol V2.0 gives 21-day and 14-day lower bounds for the same stroke
+criterion</a></li>
+<li><a
+href="#c011--ba-3-month-aspirin-percentage-does-not-reconcile-with-count-and-displayed-arm-denominator"
+id="toc-c011--ba-3-month-aspirin-percentage-does-not-reconcile-with-count-and-displayed-arm-denominator">C011
+— BA 3-month aspirin percentage does not reconcile with count and
+displayed arm denominator</a></li>
+<li><a
+href="#c012--figure-s1-repeats-2nd-meeting-for-three-chronologically-distinct-meetings"
+id="toc-c012--figure-s1-repeats-2nd-meeting-for-three-chronologically-distinct-meetings">C012
+— Figure S1 repeats “2nd meeting” for three chronologically distinct
+meetings</a></li>
+<li><a
+href="#c013--recurring-visit-sentence-ambiguously-repeats-visit-numbers-9-and-11"
+id="toc-c013--recurring-visit-sentence-ambiguously-repeats-visit-numbers-9-and-11">C013
+— Recurring-visit sentence ambiguously repeats visit numbers 9 and
+11</a></li>
+<li><a
+href="#c014--table-s9-ba-8-33-does-not-round-from-either-supplied-ats-or-displayed-denominator"
+id="toc-c014--table-s9-ba-8-33-does-not-round-from-either-supplied-ats-or-displayed-denominator">C014
+— Table S9 BA <code>8 (3.3)</code> does not round from either supplied
+ATS or displayed denominator</a></li>
+<li><a
+href="#c015--narrative-assigns-all-11-pre-analysis-exclusions-to-consent-withdrawal-while-figure-1-assigns-only-10"
+id="toc-c015--narrative-assigns-all-11-pre-analysis-exclusions-to-consent-withdrawal-while-figure-1-assigns-only-10">C015
+— Narrative assigns all 11 pre-analysis exclusions to consent withdrawal
+while Figure 1 assigns only 10</a></li>
+<li><a
+href="#c016--table-s6-ba-event-count-9-conflicts-with-the-matched-primary-analysis-count-11"
+id="toc-c016--table-s6-ba-event-count-9-conflicts-with-the-matched-primary-analysis-count-11">C016
+— Table S6 BA event count 9 conflicts with the matched primary-analysis
+count 11</a></li>
+<li><a
+href="#c017--one-year-incidence-difference-point-estimate-lies-outside-its-confidence-interval"
+id="toc-c017--one-year-incidence-difference-point-estimate-lies-outside-its-confidence-interval">C017
+— One-year incidence-difference point estimate lies outside its
+confidence interval</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</h1>
+<blockquote>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>Every observation in this report is a source-grounded quantitative
+reporting quality-control candidate. None is a final correction or
+conclusion about the paper’s findings.</p>
+</blockquote>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete review of the supplied package identified <strong>17 stable
+candidate consistency issues</strong> (C001-C017). The review is framed
+as quantitative reporting quality control: small preventable defects can
+matter for downstream evidence extraction, but this report does not
+claim that any defect propagated, changed a conclusion, or caused
+serious harm. No review queue, top-N subset, or deferred-by-cap section
+was used. No coherent display-zero P value was registered as a
+candidate.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains three supplied PDFs: <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=1">main
+article</a>, <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=1">results
+supplement</a>, and <a
+href="../joi240088supp2_prod_1746815064.36071.pdf#page=1">protocol/SAP
+supplement</a>. Existing native/layout text and rendered pages were
+reused as locators where fit for purpose; exact candidate statements
+were mechanically checked against the supplied PDFs. The evidence-asset
+inventory records 61 hashed reusable artifacts; source and reuse
+integrity are recorded in the versioned review artifacts.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Units</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001 main article</td>
+<td style="text-align: right;">11 pages</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002 results supplement</td>
+<td style="text-align: right;">25 pages</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">25</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003 protocol/SAP supplement</td>
+<td style="text-align: right;">167 pages</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">167</td>
+<td style="text-align: right;">167</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>203</strong></td>
+<td style="text-align: right;"><strong>29</strong></td>
+<td style="text-align: right;"><strong>174</strong></td>
+<td style="text-align: right;"><strong>203</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The review covered numeric, denominator, statistical, cross-document,
+measure/label, and rate/count relationships. It excluded broad
+methodological, clinical, novelty, misconduct, and raw-data auditing. A
+P value displayed as zero alone would not qualify; none occurred in this
+scope.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>Numeric/reporting relationships N001-N042 were reviewed. Statistical
+pass 1 and independent statistical pass 2 each covered S001-S080. Pass 2
+revisited the complete candidate ledger and mechanical rechecks, found
+no new candidate, and retained existing links C004-C007, C016, and C017
+where applicable. Missing model/test definitions were retained as
+limitations rather than inferred.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>BA female percentage and displayed denominator</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>BA ischemic-stroke percentage rounding</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Table S4 procedure denominator labeling</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Table S6 <code>9 (3.9)</code> and displayed denominator</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Table S7 headers, site totals, and site percentages</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Table S8 PPS headers and percentages</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Table S9 ATS headers and percentages</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Eligibility threshold and baseline stenosis categories</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>Thirty-day follow-up tolerance</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>Protocol V2.0 stroke lower bound</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>Three-month aspirin percentage</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Figure S1 meeting ordinals</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>Recurring-visit subset-versus-sequence ambiguity</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>Table S9 <code>8 (3.3)</code> rounding</td>
+</tr>
+<tr>
+<td>C015</td>
+<td>Pre-analysis exclusion reason classification</td>
+</tr>
+<tr>
+<td>C016</td>
+<td>Table S6 versus main primary-event count</td>
+</tr>
+<tr>
+<td>C017</td>
+<td>Incidence difference and confidence interval</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--balloon-angioplasty-female-percentage-does-not-reconcile-with-count-and-denominator" class="candidate-card">C001
+— Balloon-angioplasty female percentage does not reconcile with count
+and denominator</h2>
+<p><strong>Candidate statement:</strong> The BA female percentage is
+inconsistent with the printed count and displayed arm denominator under
+ordinary nearest-one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=6">DOC-001
+Table 1, PDF p. 6</a></p>
+<p><strong>Source evidence:</strong> BA <code>n=249</code>; male
+<code>172 (69.1)</code> and female <code>77 (30.1)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported female
+<code>30.1%</code> versus <code>77/249</code>.</p>
+<p><strong>Reasoning procedure:</strong> Apply the displayed arm
+denominator and ordinary nearest-one-decimal rounding; the sex counts
+also provide an internal total check.</p>
+<p><strong>Calculation:</strong> <code>172+77=249</code>;
+<code>77/249×100=30.9237%</code>, ordinarily <code>30.9%</code>; printed
+sex percentages total <code>99.2%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+hidden row denominator, transcription difference, or another displayed
+input could explain the observation; the source does not identify the
+production field that should govern.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location, values,
+comparator, and calculation were reproduced directly from the PDF; no
+row-specific denominator or display rule is printed.</p>
+<p><strong>Quality-control relevance:</strong> This is a baseline
+count/percentage reconciliation check.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy the BA female baseline proportion incorrectly;
+no propagation or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the source
+dataset, the intended female percentage, denominator, and rounding
+rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--balloon-angioplasty-ischemic-stroke-percentage-is-outside-ordinary-one-decimal-rounding" class="candidate-card">C002
+— Balloon-angioplasty ischemic-stroke percentage is outside ordinary
+one-decimal rounding</h2>
+<p><strong>Candidate statement:</strong> The repeated BA ischemic-stroke
+percentage is conditionally inconsistent with ordinary
+nearest-one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=6">DOC-001
+Table 1, PDF p. 6</a>; <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=14">DOC-002 Table
+S1, PDF p. 14</a></p>
+<p><strong>Source evidence:</strong> Both tables print BA
+<code>n=249</code> and ischemic stroke <code>215 (86.4)</code>; the
+complement is <code>34 (13.7)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported
+<code>86.4%</code> versus <code>215/249</code>.</p>
+<p><strong>Reasoning procedure:</strong> Reproduce count/denominator
+rounding and compare the complementary row.</p>
+<p><strong>Calculation:</strong> <code>215/249×100=86.3454%</code>,
+ordinarily <code>86.3%</code>; <code>34/249×100=13.6546%</code>,
+ordinarily <code>13.7%</code>; counts sum to 249.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unstated rounding convention could produce the repeated presentation;
+the difference is near the ordinary rounding boundary and should not be
+called definitively erroneous.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both printed
+repetitions, the complement, and calculations were reproduced; no
+alternative convention is stated.</p>
+<p><strong>Quality-control relevance:</strong> This checks a repeated
+baseline event-composition percentage.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a baseline qualifying-event composition value could be copied
+differently by extractors; no further effect is assumed.</p>
+<p><strong>Human verification steps:</strong> Confirm the display
+convention and intended percentage in both source tables.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--table-s4-procedure-rows-use-241-while-the-column-header-states-249" class="candidate-card">C003
+— Table S4 procedure rows use 241 while the column header states
+249</h2>
+<p><strong>Candidate statement:</strong> Table S4 raises a
+denominator-label clarity question because procedure rows use the
+footnoted 241 participants while the column header states 249.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=17">DOC-002 Table
+S4, PDF p. 17</a></p>
+<p><strong>Source evidence:</strong> The BA header is
+<code>n=249</code>; footnote a states that 241 of 249 underwent BA.
+Procedure rows include <code>182 (75.5)</code>, <code>214 (88.8)</code>,
+and <code>42 (17.4)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Header <code>249</code>
+versus the linked footnoted procedure-applicable denominator
+<code>241</code>.</p>
+<p><strong>Reasoning procedure:</strong> Test the displayed procedure
+counts and percentages against the footnoted denominator, while treating
+the footnote as a possible resolving definition.</p>
+<p><strong>Calculation:</strong> <code>182+48+11=241</code>;
+<code>182/241=75.5%</code>, <code>214/241=88.8%</code>, and
+<code>42/241=17.4%</code> at one decimal.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+header may provide randomized-arm context and the footnote may
+sufficiently define the 241 denominator for procedure rows. The
+observation is not established incorrect arithmetic.</p>
+<p><strong>Mechanical evidence recheck:</strong> Header, footnote, rows,
+sums, and percentages were reproduced. Applicability is conditional
+because the footnote may fully resolve the presentation.</p>
+<p><strong>Quality-control relevance:</strong> Clear denominator
+labeling helps distinguish randomized-arm and procedure-applicable
+rates.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed
+as unclear, an extractor could use 249 rather than 241 for procedure
+rates; no downstream use is assumed.</p>
+<p><strong>Human verification steps:</strong> Determine whether footnote
+a is intended to govern every applicable procedure row and whether the
+current labeling is sufficiently explicit.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--table-s6-ba-9-39-conflicts-with-its-displayed-denominator-249" class="candidate-card">C004
+— Table S6 BA <code>9 (3.9)</code> conflicts with its displayed
+denominator 249</h2>
+<p><strong>Candidate statement:</strong> The Table S6 BA percentage does
+not reconcile with its displayed <code>n=249</code> under ordinary
+rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=19">DOC-002 Table
+S6, PDF p. 19</a></p>
+<p><strong>Source evidence:</strong> BA header <code>n=249</code>;
+primary-outcome cell <code>9 (3.9)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported
+<code>3.9%</code> versus <code>9/249</code>.</p>
+<p><strong>Reasoning procedure:</strong> Apply the displayed header
+denominator; distinguish this internal percentage check from C016's
+separate cross-document count comparison.</p>
+<p><strong>Calculation:</strong> <code>9/249×100=3.6145%</code>,
+ordinarily <code>3.6%</code>. Diagnostically,
+<code>9/233×100=3.8627%</code>, ordinarily <code>3.9%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The 233
+comparison is a diagnostic inference from a separately supplied PPS
+total, not a Table S6 label. An unlabelled analysis set or display rule
+remains possible.</p>
+<p><strong>Mechanical evidence recheck:</strong> The table cell, header,
+and arithmetic were reproduced; no Table S6 denominator for 3.9% is
+supplied.</p>
+<p><strong>Quality-control relevance:</strong> This checks the stated
+centre-adjusted analysis population and risk presentation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could extract an incorrect centre-adjusted population or
+risk; no conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the Table S6
+analysis denominator and intended percentage display rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--table-s7-group-headers-conflict-with-site-totals-and-displayed-site-percentages" class="candidate-card">C005
+— Table S7 group headers conflict with site totals and displayed site
+percentages</h2>
+<p><strong>Candidate statement:</strong> Table S7's group headers, site
+totals, and displayed site percentages do not all describe one disclosed
+population.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=20">DOC-002 Table
+S7, PDF p. 20</a>; <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=5">DOC-001
+Figure 1, PDF p. 5</a>; <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=23">DOC-002 Table
+S10, PDF p. 23</a></p>
+<p><strong>Source evidence:</strong> Headers are BA/AMM
+<code>233/238</code>; site totals are 256 and 245; cells include
+<code>4 (2.9)</code>, <code>19 (16.1)</code>, <code>7 (6.3)</code>, and
+<code>15 (11.2)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Header total
+<code>471</code> versus site total <code>501</code>, with cell
+percentages inconsistent with the headers.</p>
+<p><strong>Reasoning procedure:</strong> Compare totals and assess each
+displayed percentage against disclosed and diagnostic denominators.</p>
+<p><strong>Calculation:</strong> <code>233+238=471</code>;
+<code>256+245=501</code>. Rounded cells are diagnostically compatible
+with site-by-arm denominators summing to <code>249/252</code>, not
+printed as such.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Derived
+site-by-arm denominators are diagnostic only. A different disclosed
+analysis population could explain the table if identified.</p>
+<p><strong>Mechanical evidence recheck:</strong> Headers, site totals,
+cells, and source comparators were reproduced; no single disclosed
+denominator resolves all elements.</p>
+<p><strong>Quality-control relevance:</strong> Site-level denominators
+affect interpretation of subgroup and interaction tables.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+site risk or interaction-table extraction could use mismatched
+populations; no downstream outcome is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+analysis set and site-by-arm denominators, then verify the headers and
+percentage bases.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--table-s8-per-protocol-percentages-conflict-with-headers-249252" class="candidate-card">C006
+— Table S8 per-protocol percentages conflict with headers 249/252</h2>
+<p><strong>Candidate statement:</strong> Table S8 is labelled PPS but
+its printed headers conflict with the denominators that reproduce its
+percentages.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=21">DOC-002 Table
+S8, PDF p. 21</a>; <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=5">DOC-001
+Figure 1, PDF p. 5</a>; <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=23">DOC-002 Table
+S10, PDF p. 23</a></p>
+<p><strong>Source evidence:</strong> PPS headers print
+<code>249/252</code>; rows include <code>9 (3.9)</code>,
+<code>33 (13.9)</code>, <code>6 (2.6)</code>, and
+<code>20 (8.4)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Displayed
+<code>249/252</code> headers versus supplied PPS denominators
+<code>233/238</code>.</p>
+<p><strong>Reasoning procedure:</strong> Reproduce representative PPS
+cell percentages using the separately supplied PPS totals.</p>
+<p><strong>Calculation:</strong> <code>9/233=3.9%</code>,
+<code>33/238=13.9%</code>, <code>6/233=2.6%</code>, and
+<code>20/238=8.4%</code> at one decimal.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+copy-forward header is only an inferred mechanism. An outcome-specific
+PPS could exist but is not identified.</p>
+<p><strong>Mechanical evidence recheck:</strong> The cells, headers, and
+PPS comparators were reproduced; effect-estimate intervals were
+separately coherent.</p>
+<p><strong>Quality-control relevance:</strong> Per-protocol denominators
+are needed to interpret sensitivity results accurately.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+PPS denominator and risk extraction could be inconsistent; no harm or
+conclusion change is assumed.</p>
+<p><strong>Human verification steps:</strong> Confirm the PPS definition
+and whether Table S8 headers should identify <code>233/238</code> or
+another stated set.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--table-s9-as-treated-percentages-conflict-with-headers-249252" class="candidate-card">C007
+— Table S9 as-treated percentages conflict with headers 249/252</h2>
+<p><strong>Candidate statement:</strong> Table S9 is labelled ATS but
+its printed headers conflict with the denominators that reproduce its
+primary percentages.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=22">DOC-002 Table
+S9, PDF p. 22</a>; <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=23">DOC-002 Table
+S10, PDF p. 23</a></p>
+<p><strong>Source evidence:</strong> ATS headers print
+<code>249/252</code>; primary values include <code>11 (4.5)</code> and
+<code>34 (13.4)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Displayed headers
+<code>249/252</code> versus supplied ATS denominators
+<code>247/254</code>.</p>
+<p><strong>Reasoning procedure:</strong> Reproduce representative
+percentages using the supplied ATS totals and retain C014 as a separate
+cell-level rounding observation.</p>
+<p><strong>Calculation:</strong> <code>11/247=4.5%</code> and
+<code>34/254=13.4%</code> at one decimal.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Copied
+primary headers are not directly observed; a different ATS definition
+remains possible if documented.</p>
+<p><strong>Mechanical evidence recheck:</strong> The headers, cells, and
+ATS comparator were reproduced. C014 remains distinct because it tests
+<code>8 (3.3)</code> under both supplied denominators.</p>
+<p><strong>Quality-control relevance:</strong> Accurate ATS population
+labels are needed for sensitivity-analysis interpretation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+ATS population and risk values could be extracted with the wrong
+denominator; no other impact is claimed.</p>
+<p><strong>Human verification steps:</strong> Confirm the ATS set and
+intended Table S9 headers before extracting its risks.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--baseline-stenosis-categories-include-values-outside-the-stated-70-99-eligibility-range" class="candidate-card">C008
+— Baseline stenosis categories include values outside the stated 70%-99%
+eligibility range</h2>
+<p><strong>Candidate statement:</strong> A cross-location
+threshold/category mismatch is present between the stated eligibility
+interval and four Table 1 baseline categories; measurement identity is
+unresolved.</p>
+<p><strong>Category:</strong> Analysis-unit or population
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=2">DOC-001
+eligibility, PDF p. 2</a>; <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=5">DOC-001
+Figure 1, PDF p. 5</a>; <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=6">DOC-001
+Table 1, PDF p. 6</a></p>
+<p><strong>Source evidence:</strong> Eligibility is
+<code>70%-99%</code>; Table 1 includes AMM <code>2</code> at
+<code>60%-69%</code> and one participant in each arm at
+<code>100%</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Eligibility interval
+<code>70%-99%</code> versus displayed analysed baseline categories
+outside that interval.</p>
+<p><strong>Reasoning procedure:</strong> Compare the printed threshold
+to the table categories only conditionally on the same measurement time,
+reader, angiogram, and qualifying-artery definition.</p>
+<p><strong>Calculation:</strong> <code>2+1+1=4</code> displayed
+participants are outside the inclusive <code>70%-99%</code>
+interval.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Eligibility and table measurements may be from different times/readers
+or angiograms; retained protocol deviations are also possible. The
+sources do not establish identity conditions.</p>
+<p><strong>Mechanical evidence recheck:</strong> Threshold, categories,
+counts, and flow context were reproduced; measurement identity
+conditions are missing.</p>
+<p><strong>Quality-control relevance:</strong> The observation concerns
+the clarity of analysed baseline stenosis and eligibility definitions,
+not a determination that participants were ineligible.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extractors could conflate baseline stenosis distribution with the
+eligibility definition; no validity or conclusion claim is made.</p>
+<p><strong>Human verification steps:</strong> Establish the measurement
+timing, reader/method, qualifying artery, and handling of any retained
+deviations.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--thirty-day-follow-up-tolerance-is-plus-or-minus-3-days-in-the-supplement-but-plus-or-minus-7-days-elsewhere" class="candidate-card">C009
+— Thirty-day follow-up tolerance is plus or minus 3 days in the
+supplement but plus or minus 7 days elsewhere</h2>
+<p><strong>Candidate statement:</strong> The matched 30-day follow-up is
+labelled <code>±3</code> days in one supplied location and
+<code>±7</code> days in two others.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=6">DOC-002
+study-design graphic, PDF p. 6</a>; <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=3">DOC-001
+schedule, PDF p. 3</a>; <a
+href="../joi240088supp2_prod_1746815064.36071.pdf#page=15">DOC-003
+schedule, PDF p. 15</a></p>
+<p><strong>Source evidence:</strong> DOC-002 prints <code>30±3d</code>;
+DOC-001 and DOC-003 print
+<code>30±7 days</code>/<code>30d±7d</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>±3</code> versus
+<code>±7</code> for the matched nominal 30-day visit.</p>
+<p><strong>Reasoning procedure:</strong> Compare visit labels across the
+graphic, article, and protocol, absent a stated distinct operational
+window.</p>
+<p><strong>Calculation:</strong> <code>30±3</code> spans days 27-33
+(numerical endpoint-to-endpoint width 6); <code>30±7</code> spans days
+23-37 (width 14); half-widths differ by 4 days.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+graphic may depict a tighter operational contact window while the
+article/protocol allow a wider assessment window, but no source defines
+that distinction.</p>
+<p><strong>Mechanical evidence recheck:</strong> All three labels and
+their visit context were reproduced; no separate-window note was
+found.</p>
+<p><strong>Quality-control relevance:</strong> Follow-up-window labels
+support consistent protocol and outcome-time extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor or implementer could select a different 30-day tolerance;
+no downstream effect is asserted.</p>
+<p><strong>Human verification steps:</strong> Determine whether the two
+tolerances are distinct documented windows or which label governs the
+clinical visit.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--protocol-v20-gives-21-day-and-14-day-lower-bounds-for-the-same-stroke-criterion" class="candidate-card">C010
+— Protocol V2.0 gives 21-day and 14-day lower bounds for the same stroke
+criterion</h2>
+<p><strong>Candidate statement:</strong> Protocol V2.0 prints two
+different lower bounds for the matched ischemic-stroke eligibility
+criterion.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240088supp2_prod_1746815064.36071.pdf#page=7">DOC-003
+synopsis, PDF p. 7</a>; <a
+href="../joi240088supp2_prod_1746815064.36071.pdf#page=21">DOC-003 body
+eligibility, PDF p. 21</a></p>
+<p><strong>Source evidence:</strong> The synopsis prints
+<code>21-90 days</code>; the body prints <code>14-90 days</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Same-version lower bound
+<code>21</code> versus <code>14</code> days.</p>
+<p><strong>Reasoning procedure:</strong> Match protocol version,
+criterion, and upper bound before comparing lower bounds.</p>
+<p><strong>Calculation:</strong> Lower bounds differ by
+<code>21-14=7</code> days.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A stale
+synopsis, unmarked amendment, or other production difference could
+explain the mismatch; the governing criterion is not established.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both occurrences were
+found and matched to Protocol V2.0; cause is not supplied.</p>
+<p><strong>Quality-control relevance:</strong> Eligibility-window labels
+require a single interpretable definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+protocol eligibility-window extraction could differ by seven days; no
+enrolment or conclusion effect is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify which V2.0
+occurrence governed enrolment and whether one needs an amendment or
+clarification.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c011--ba-3-month-aspirin-percentage-does-not-reconcile-with-count-and-displayed-arm-denominator" class="candidate-card">C011
+— BA 3-month aspirin percentage does not reconcile with count and
+displayed arm denominator</h2>
+<p><strong>Candidate statement:</strong> The BA three-month aspirin
+percentage is inconsistent with the displayed arm denominator under
+ordinary nearest-one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=16">DOC-002 Table
+S3, PDF p. 16</a></p>
+<p><strong>Source evidence:</strong> BA header <code>n=249</code>;
+three-month aspirin <code>234 (93.9)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported
+<code>93.9%</code> versus <code>234/249</code>.</p>
+<p><strong>Reasoning procedure:</strong> Apply the only printed BA
+denominator, while retaining missingness and display-rule
+uncertainty.</p>
+<p><strong>Calculation:</strong> <code>234/249×100=93.9759%</code>,
+ordinarily <code>94.0%</code>; truncation would display
+<code>93.9%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Truncation, weighting, an undisclosed evaluated denominator, or
+missingness handling could explain the presentation. No alternative
+integer denominator no larger than 249 is identified as the answer.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cell, header, and
+arithmetic were reproduced; actual three-month denominator and display
+rule are absent.</p>
+<p><strong>Quality-control relevance:</strong> This checks follow-up
+medication-use percentage reporting.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+medication-use extraction may copy a different percentage; no clinical
+or conclusion implication is claimed.</p>
+<p><strong>Human verification steps:</strong> Confirm the evaluated
+denominator, missingness handling, and display rule for the three-month
+cell.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--figure-s1-repeats-2nd-meeting-for-three-chronologically-distinct-meetings" class="candidate-card">C012
+— Figure S1 repeats “2nd meeting” for three chronologically distinct
+meetings</h2>
+<p><strong>Candidate statement:</strong> Figure S1 repeats the ordinal
+<code>2nd meeting</code> for three different dates within the displayed
+review process.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=10">DOC-002
+Figure S1, PDF p. 10</a></p>
+<p><strong>Source evidence:</strong> The figure labels <code>1st</code>
+(2021/05/30), then <code>2nd</code> (2021/11/20, 2022/09/07, and
+2023/04/10).</p>
+<p><strong>Reported-versus-comparator:</strong> Four chronologically
+distinct dated boxes versus two unique ordinal labels.</p>
+<p><strong>Reasoning procedure:</strong> Test ordinal uniqueness only if
+the labels represent one chronological meeting sequence.</p>
+<p><strong>Calculation:</strong> Four dated boxes contain only two
+unique ordinals; <code>2nd meeting</code> appears three times.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unprinted review-cycle convention could use <code>2nd</code> repeatedly.
+The figure does not label such a cycle; its case-count arithmetic
+separately reconciles.</p>
+<p><strong>Mechanical evidence recheck:</strong> The direct rendered PDF
+page confirmed all labels and dates.</p>
+<p><strong>Quality-control relevance:</strong> Timeline labels should
+permit unambiguous interpretation of the review process.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+chronology of CEC meetings could be extracted ambiguously; endpoint
+counts are not challenged.</p>
+<p><strong>Human verification steps:</strong> Confirm whether ordinals
+denote one chronology or repeated review cycles, and clarify the figure
+accordingly.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--recurring-visit-sentence-ambiguously-repeats-visit-numbers-9-and-11" class="candidate-card">C013
+— Recurring-visit sentence ambiguously repeats visit numbers 9 and
+11</h2>
+<p><strong>Candidate statement:</strong> The identical recurring-visit
+sentence is ambiguous between a four-visit sequence with a face-to-face
+subset and a six-token sequence because it repeats visits 9 and 11.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240088supp2_prod_1746815064.36071.pdf#page=35">DOC-003
+Protocol V2.0 paragraph, PDF p. 35</a>; <a
+href="../joi240088supp2_prod_1746815064.36071.pdf#page=96">DOC-003
+Protocol V2.3 paragraph, PDF p. 96</a>; <a
+href="../joi240088supp2_prod_1746815064.36071.pdf#page=15">DOC-003
+schedule, PDF p. 15</a></p>
+<p><strong>Source evidence:</strong> V2.0 p. 35 and V2.3 p. 96 each
+print
+<code>visit 8, visit 9, visit 10, visit 11, visit 9, and visit 11 require patients to undergo face-to-face follow-up</code>;
+the schedule identifies visits 8-11 as four recurring visits.</p>
+<p><strong>Reported-versus-comparator:</strong> Six visit tokens
+<code>8,9,10,11,9,11</code> versus the four-visit schedule
+<code>8-11</code>.</p>
+<p><strong>Reasoning procedure:</strong> Compare the sentence with the
+schedule, preserving the distinction that p. 35 is Protocol V2.0 and p.
+96 is final Protocol V2.3.</p>
+<p><strong>Calculation:</strong> Six tokens contain four unique
+identifiers; 9 and 11 each occur twice.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+sentence plausibly lists visits 8-11 and then names visits 9 and 11 as
+the face-to-face subset, with missing clarifying syntax. A six-visit
+sequence is not established.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both versioned
+occurrences, the schedule, and the version identities were reproduced
+directly.</p>
+<p><strong>Quality-control relevance:</strong> Clarifying
+subset-versus-sequence syntax supports accurate longitudinal visit
+labeling.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+longitudinal follow-up schedules could be extracted ambiguously; no
+protocol-compliance or outcome effect is claimed.</p>
+<p><strong>Human verification steps:</strong> Confirm whether visits 9
+and 11 are the face-to-face subset of visits 8-11, then clarify the
+syntax in both versioned occurrences if needed.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c014--table-s9-ba-8-33-does-not-round-from-either-supplied-ats-or-displayed-denominator" class="candidate-card">C014
+— Table S9 BA <code>8 (3.3)</code> does not round from either supplied
+ATS or displayed denominator</h2>
+<p><strong>Candidate statement:</strong> The Table S9 BA
+<code>8 (3.3)</code> cell does not round to 3.3% from either the
+displayed or supplied ATS denominator.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=22">DOC-002 Table
+S9, PDF p. 22</a>; <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=23">DOC-002 Table
+S10, PDF p. 23</a></p>
+<p><strong>Source evidence:</strong> Table S9 prints BA
+<code>8 (3.3)</code> and header <code>249</code>; Table S10 supplies ATS
+<code>N=247</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported
+<code>3.3%</code> versus both <code>8/249</code> and
+<code>8/247</code>.</p>
+<p><strong>Reasoning procedure:</strong> Apply ordinary
+nearest-one-decimal rounding to both supplied denominators; this is
+distinct from C007's header/population issue.</p>
+<p><strong>Calculation:</strong> <code>8/249×100=3.2129%</code> and
+<code>8/247×100=3.2389%</code>; both ordinarily round to
+<code>3.2%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unprinted outcome-specific risk set or nonstandard display rule could
+explain <code>3.3%</code>; neither is supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both table locations,
+values, and calculations were reproduced.</p>
+<p><strong>Quality-control relevance:</strong> This is a separate early
+ATS event-risk arithmetic check.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy the early ATS risk inaccurately; no broader
+effect is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the cell's
+intended denominator and percentage convention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c015--narrative-assigns-all-11-pre-analysis-exclusions-to-consent-withdrawal-while-figure-1-assigns-only-10" class="candidate-card">C015
+— Narrative assigns all 11 pre-analysis exclusions to consent withdrawal
+while Figure 1 assigns only 10</h2>
+<p><strong>Candidate statement:</strong> The narrative and Figure 1
+reconcile to the same total removals but assign different reason
+categories to the 11 pre-analysis exclusions.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=4">DOC-001
+narrative, PDF p. 4</a>; <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=5">DOC-001
+Figure 1, PDF p. 5</a></p>
+<p><strong>Source evidence:</strong> Narrative: 11 excluded due to
+consent withdrawal. Figure: BA 7 plus AMM 3 consent withdrawals, plus 1
+erroneous randomization assignment.</p>
+<p><strong>Reported-versus-comparator:</strong> Narrative reason
+category for <code>11</code> versus Figure reason categories totaling
+<code>10+1</code>.</p>
+<p><strong>Reasoning procedure:</strong> Match the
+randomized-to-analysed flow and compare reason-category assignments
+without disputing the total.</p>
+<p><strong>Calculation:</strong> <code>7+3=10</code> consent
+withdrawals; <code>10+1=11</code> total removals; the 501-person
+analysed total reconciles.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+narrative may use umbrella shorthand, or the erroneously assigned
+participant may also have withdrawn consent; Figure 1 presents a
+separate reason.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both locations, totals,
+and reason counts were reproduced; individual-level dual classification
+is not supplied.</p>
+<p><strong>Quality-control relevance:</strong> Participant-flow reason
+categories should be consistently extractable.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a flow-data extractor could classify exclusions differently; the
+analysed total is not challenged.</p>
+<p><strong>Human verification steps:</strong> Establish whether the
+erroneous-assignment participant also withdrew consent and clarify the
+narrative/category distinction.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c016--table-s6-ba-event-count-9-conflicts-with-the-matched-primary-analysis-count-11" class="candidate-card">C016
+— Table S6 BA event count 9 conflicts with the matched primary-analysis
+count 11</h2>
+<p><strong>Candidate statement:</strong> Table S6 prints a BA count of 9
+for a matched primary endpoint and <code>n=249</code> header where the
+main narrative and Table 2 print 11; this is distinct from C004.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=5">DOC-001
+primary narrative, PDF p. 5</a>; <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=8">DOC-001
+Table 2, PDF p. 8</a>; <a
+href="../joi240088supp1_prod_1746815064.21247.pdf#page=19">DOC-002 Table
+S6, PDF p. 19</a></p>
+<p><strong>Source evidence:</strong> Main result: BA
+<code>11 (4.4)</code> and AMM <code>34 (13.5)</code> under
+<code>249/252</code>. Centre-adjusted Table S6 has the matched composite
+wording and headers but prints BA <code>9 (3.9)</code> and AMM
+<code>34 (13.5)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Table S6 BA count
+<code>9</code> versus matched main BA count <code>11</code>.</p>
+<p><strong>Reasoning procedure:</strong> Match endpoint wording and
+population headers; distinguish model-adjusted effect estimates from
+observed counts.</p>
+<p><strong>Calculation:</strong> <code>11-9=2</code>; AMM remains
+<code>34</code>. Table S10's related no-revascularization composite has
+BA 9, but Table S6 retains revascularization in its label.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unlabelled alternative set or carryover of the Table S10
+no-revascularization count could explain the entry. Centre adjustment
+alone does not explain two fewer observed events.</p>
+<p><strong>Mechanical evidence recheck:</strong> Matched labels,
+headers, counts, and the Table S10 context were reproduced. Event list,
+alternate-set definition, and Table S6 denominator remain
+unavailable.</p>
+<p><strong>Quality-control relevance:</strong> This checks whether a
+centre-adjusted sensitivity table has an interpretable event count for
+the matched endpoint.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could record the centre-adjusted sensitivity event count
+inconsistently; no paper-level conclusion impact is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the Table S6
+population and endpoint definition, the BA event list, and whether the
+count should be 9 or 11.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c017--one-year-incidence-difference-point-estimate-lies-outside-its-confidence-interval" class="candidate-card">C017
+— One-year incidence-difference point estimate lies outside its
+confidence interval</h2>
+<p><strong>Candidate statement:</strong> The printed one-year
+incidence-difference point estimate is not contained in its paired
+printed confidence interval.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_sun_2024_oi_240088_1746815064.14747.pdf#page=8">DOC-001
+Table 2, PDF p. 8</a></p>
+<p><strong>Source evidence:</strong> For stroke outside the
+qualifying-artery territory within one year: BA <code>3 (1.2)</code>,
+AMM <code>4 (1.6)</code>, incidence difference
+<code>−0.4% (95% CI, −2.4 to −1.7)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Point estimate
+<code>−0.4%</code> versus interval <code>[−2.4%, −1.7%]</code>.</p>
+<p><strong>Reasoning procedure:</strong> Test containment of a point
+estimate in its paired conventional confidence interval; treat the
+count-derived difference only as a diagnostic comparator.</p>
+<p><strong>Calculation:</strong> <code>−0.4</code> is outside
+<code>[−2.4,−1.7]</code>; <code>(3/249−4/252)×100=−0.3825</code>
+percentage points, which rounds to <code>−0.4%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+confidence-limit sign/value may be transcribed, or point and interval
+may use undisclosed different estimands/methods. The exact CI method is
+not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Row, point, interval,
+counts, denominators, and non-containment were reproduced. The interval
+construction and estimand mapping remain missing.</p>
+<p><strong>Quality-control relevance:</strong> Point/interval pairing is
+central to reliable statistical-result extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a meta-analysis or evidence table could copy an incompatible incidence
+difference and interval; no actual propagation or conclusion change is
+claimed.</p>
+<p><strong>Human verification steps:</strong> Verify intended confidence
+limits, CI construction, and whether the point estimate and interval use
+the same estimand.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, these candidate consistency issues could affect
+extraction of baseline composition, procedure and analysis-set
+denominators, follow-up windows, protocol eligibility labels,
+participant-flow reasons, sensitivity results, or statistical intervals.
+They are presented as bounded risks to evidence reuse only. The supplied
+sources do not establish propagation, patient harm, or a changed
+paper-level conclusion.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>See the complete versioned limitations record: <a
+href="review_1_5_3/limitations.md">limitations.md</a>. In brief,
+unresolved denominator/display conventions, measurement identities,
+analysis-set/endpoint definitions, and statistical-model/test details
+prevent a final correction determination.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ol type="1">
+<li>Confirm that each cited source location and comparator refer to the
+same population, time point, endpoint, and analysis set.</li>
+<li>Check production data, table shells, statistical output, protocol
+versions, and amendment history where applicable.</li>
+<li>Record the decision only in each card’s five placeholder
+fields.</li>
+<li>If a change is warranted, specify the authoritative source,
+correction, and affected cross-document occurrences.</li>
+</ol>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<ul>
+<li><strong>Routing preflight:</strong> PASS; coordinator inference
+PASS; execution mode INTERACTIVE_CLI.</li>
+<li><strong>Source integrity:</strong> 3 direct-source hashes and 61
+reused-artifact hashes were recorded before review; the quality audit
+recorded a passing 64-path hash check.</li>
+<li><strong>Coverage:</strong> 203 total source units; 174 fresh-source
+units; all 203 units mapped.</li>
+<li><strong>Candidate-set consistency:</strong> C001-C017 are identical
+across ledger, recheck, audit, and this report.</li>
+</ul>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>reuse asset curator</td>
+<td>/root/reuse_asset_curator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>main mapper</td>
+<td>/root/main_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support mapper DOC-002</td>
+<td>/root/support_mapper_doc002</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support mapper DOC-003 pp. 1-32</td>
+<td>/root/support_mapper_001_032</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support mapper DOC-003 pp. 33-64</td>
+<td>/root/support_mapper_033_064</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support mapper DOC-003 pp. 65-96</td>
+<td>/root/support_mapper_065_096</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support mapper DOC-003 pp. 97-128</td>
+<td>/root/support_mapper_097_128</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support mapper DOC-003 pp. 129-160</td>
+<td>/root/support_mapper_129_160</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support mapper DOC-003 pp. 161-167</td>
+<td>/root/support_mapper_161_167</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support mapper merge</td>
+<td>/root/support_mapper_merge</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>numeric reviewer</td>
+<td>/root/numeric_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>cross-source reviewer</td>
+<td>/root/cross_source_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>statistical pass 1</td>
+<td>/root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+</tr>
+<tr>
+<td>evidence rechecker</td>
+<td>/root/evidence_rechecker</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>statistical pass 2</td>
+<td>/root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+</tr>
+<tr>
+<td>quality auditor</td>
+<td>/root/quality_auditor</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>report generator</td>
+<td>/root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Three supplied PDFs contain 203 page
+units: an 11-page article fully covered by usable native text and
+targeted renders, a 25-page results supplement with 18 reusable pages
+and 7 uncovered pages, and a 167-page protocol/SAP with no reusable
+scientific extraction. The 174 fresh-required pages, the large
+protocol/SAP direct-mapping burden, visual-table confirmation,
+cross-document matching, and required independent reviewer stages
+justify this bounded target.</li>
+<li><strong>Total source units:</strong> 203</li>
+<li><strong>Fresh-source units:</strong> 174</li>
+<li><strong>Target elapsed minutes:</strong> 65-90</li>
+<li><strong>Started UTC:</strong> 2026-08-19T04:36:45Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-19T05:10:07Z</li>
+<li><strong>Observed elapsed minutes:</strong> 33.37</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>The coordinator will replace these markers after Markdown assembly
+from authoritative response-level runtime/API usage, then link the
+versioned <a href="review_1_5_3/token_usage_summary.md">per-agent token
+summary</a>. Cached input and cache-write counts are input subsets, and
+reasoning counts are output subsets; they are not added again to total
+tokens. Any available amount uses the bundled dated fixed-model rates
+and is a token-only estimate, not an invoice.</p>
+</body>
+</html>

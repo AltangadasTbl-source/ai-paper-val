@@ -1,0 +1,16 @@
+# Coverage Manifest
+
+| Stage | Shard ID | Exact scope | Artifact | Status |
+|---|---|---|---|---|
+| source_inventory | source-001 | All four direct PDF sources; 41 PDF pages | source_inventory.md | COMPLETE |
+| evidence_assets | assets-001 | All 55 eligible reusable evidence assets; 24 uniquely covered PDF pages | evidence_asset_inventory.md | COMPLETE |
+| main_evidence_mapping | main-001 | DOC-JAMA2024-6063-MAIN-2f574565 PDF pp. 1-10; reusable pp. 1-9 and fresh-required p. 10 | extraction/main_quantitative_evidence.md | COMPLETE |
+| support_evidence_mapping | support-001 | DOC-JAMA2024-6063-SUPP1-317ff46a PDF pp. 1-15; DOC-JAMA2024-6063-SUPP2-57681138 PDF p. 1; DOC-JAMA2024-6063-SUPP3-67e172cd PDF pp. 1-15 | extraction/support_quantitative_evidence.md | COMPLETE |
+| numeric_checks | numeric-001 | N001 through N028; every mapped numeric relationship from main and support evidence | checkers/numeric_consistency.md | COMPLETE |
+| statistics_pass_1 | statistics-001 | S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050, S051, S052, S053, S054, S055, S056, S057, S058, S059, S060, S061, S062, S063, S064, S065, S066, S067, S068, S069, S070, S071, S072, S073, S074, S075, S076, S077, S078, S079, S080, S081, S082, S083, S084, S085, S086, S087, S088, S089, S090, S091 | checkers/statistical_pass_1.md | COMPLETE |
+| cross_source_checks | cross-001 | All 52 matched relationship groups across all four direct sources | checkers/cross_source_consistency.md | COMPLETE |
+| candidate_registration | candidates-001 | C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011, C012, C013, C014, C015, C016 | candidate_ledger.md | COMPLETE |
+| evidence_recheck | recheck-001 | C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011, C012, C013, C014, C015, C016 | verification/evidence_recheck.md | COMPLETE |
+| statistics_pass_2 | statistics-002 | S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050, S051, S052, S053, S054, S055, S056, S057, S058, S059, S060, S061, S062, S063, S064, S065, S066, S067, S068, S069, S070, S071, S072, S073, S074, S075, S076, S077, S078, S079, S080, S081, S082, S083, S084, S085, S086, S087, S088, S089, S090, S091; plus C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011, C012, C013, C014, C015, C016 and complete recheck facts | checkers/statistical_pass_2.md | COMPLETE |
+| evidence_quality | quality-001 | C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011, C012, C013, C014, C015, C016 and every completed coverage row | quality/evidence_quality_audit.md | COMPLETE |
+| report_generation | report-001 | C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011, C012, C013, C014, C015, C016 plus all canonical workflow artifacts | ../final_report_1_5_3.md | COMPLETE |

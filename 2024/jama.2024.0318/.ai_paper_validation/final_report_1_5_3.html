@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.3 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.3 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.3 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--workflow-153"
+id="toc-quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--figure-1-allocation-branches-exceed-the-displayed-available-cohort-by-10-participants"
+id="toc-c001--figure-1-allocation-branches-exceed-the-displayed-available-cohort-by-10-participants">C001
+— Figure 1 allocation branches exceed the displayed available cohort by
+10 participants</a></li>
+<li><a
+href="#c002--supplement-etable-2-mixes-year-12-headings-with-year-7-quantitative-footnote-definitions"
+id="toc-c002--supplement-etable-2-mixes-year-12-headings-with-year-7-quantitative-footnote-definitions">C002
+— Supplement eTable 2 mixes year-12 headings with year-7 quantitative
+footnote definitions</a></li>
+<li><a
+href="#c003--matched-12-year-hba1c-result-has-incompatible-printed-p-values"
+id="toc-c003--matched-12-year-hba1c-result-has-incompatible-printed-p-values">C003
+— Matched 12-year HbA1c result has incompatible printed P
+values</a></li>
+<li><a
+href="#c004--the-same-year-7-glycemic-outcome-is-labeled-as-both-hba1c-less-than-or-equal-to-65-and-hba1c-below-65"
+id="toc-c004--the-same-year-7-glycemic-outcome-is-labeled-as-both-hba1c-less-than-or-equal-to-65-and-hba1c-below-65">C004
+— The same year-7 glycemic outcome is labeled as both HbA1c less than or
+equal to 6.5% and HbA1c below 6.5%</a></li>
+<li><a
+href="#c005--abstract-percentage-for-four-deaths-does-not-reconcile-with-displayed-group-counts-and-denominators"
+id="toc-c005--abstract-percentage-for-four-deaths-does-not-reconcile-with-displayed-group-counts-and-denominators">C005
+— Abstract percentage for four deaths does not reconcile with displayed
+group counts and denominators</a></li>
+<li><a
+href="#c006--the-same-exploratory-bmi-subgroup-boundary-is-labeled-as-both-35-or-greater-and-greater-than-35"
+id="toc-c006--the-same-exploratory-bmi-subgroup-boundary-is-labeled-as-both-35-or-greater-and-greater-than-35">C006
+— The same exploratory BMI subgroup boundary is labeled as both 35 or
+greater and greater than 35</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance-profile"
+id="toc-performance-profile">Performance profile</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>All six candidate consistency issues in this report are
+<strong>Pending Human Adjudication</strong>. This is a quantitative
+reporting quality-control review, not a determination that a correction
+is required or that the paper's conclusions are changed.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete source coverage identified six stable candidate consistency
+issues: two denominator/proportion/total issues, one cross-document
+numeric issue, and three measure, label, or scale issues. The review
+rebuilt discovery comprehensively and retained every stable ledger ID,
+C001 through C006. The observations are confined to supplied-source
+reporting consistency. Small preventable defects can matter when
+information is later extracted into evidence products, but this review
+does not claim that propagation, conclusion change, or serious harm
+occurred.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains four supplied PDFs: the main article (DOC-001),
+protocol/SAP (DOC-002), Supplement 2 (DOC-003), and data-sharing
+statement (DOC-004). Direct PDFs were the authority. Existing
+native/layout text and rendered pages were reused only as source-matched
+locators or transcription aids.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Direct-source units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh direct-source units</th>
+<th style="text-align: right;">Mapped units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001 main article</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr>
+<td>DOC-002 protocol/SAP</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr>
+<td>DOC-003 Supplement 2</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr>
+<td>DOC-004 data-sharing statement</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>99</strong></td>
+<td style="text-align: right;"><strong>26</strong></td>
+<td style="text-align: right;"><strong>73</strong></td>
+<td style="text-align: right;"><strong>99</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The reusable-asset inventory records 54 source-linked assets: 43
+usable and 11 partial. No reused asset was treated as final authority.
+Source and reused-asset provenance is recorded in
+<code>review_1_5_3/source_inventory.md</code>,
+<code>review_1_5_3/evidence_asset_inventory.md</code>, and the
+corresponding before-review hash manifests.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All 99 of 99 PDF-page units were mapped, with 26 reusable-backed and
+73 fresh direct-source units. The review covered numeric, denominator,
+proportion, total, inferential, cross-document, measure/label/scale, and
+rate/count relationships. Protocol planning quantities, contextual
+literature quantities, administrative text, and sparse unlabelled plot
+coordinates were mapped but not manufactured into observed-result
+comparisons. There were no supplied structured data, Office, workbook,
+or CSV sources.</p>
+<p>Coherent display-zero P values were excluded from candidate
+registration. No stable card is based on <code>P = 0</code>,
+<code>p = 0.000</code>, finite precision, underflow, or reconstructed
+tail probabilities.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<ul>
+<li>Numeric/reporting relationships: 91 stable relationships (N001-N088
+plus N038a, N038b, and N039a).</li>
+<li>Statistical/inferential relationships: 151 stable relationships
+(S001-S148 plus S028a, S028b, and S029a).</li>
+<li>Statistical pass 1: all 151 relationships received
+<code>PASS_1_COMPLETE</code> coverage.</li>
+<li>Statistical pass 2: all 151 relationships received
+<code>PASS_2_COMPLETE</code> coverage after ledger and recheck
+review.</li>
+</ul>
+<p>The supplied model definitions supported direction, label,
+interval-order, and matched-result checks. Exact statistical
+reconstruction was not used where row-specific test details, degrees of
+freedom, covariance, variance, confidence conventions, or unrounded
+output were absent.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>Stable ID</th>
+<th>Primary category</th>
+<th>Candidate statement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Figure 1 allocation branches total 315 beneath a displayed parent
+cohort of 305.</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Supplement eTable 2 mixes year-12 headings with year-7 quantitative
+footnote definitions.</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Matched 12-year HbA1c results have incompatible printed P
+values.</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>The same year-7 HbA1c outcome uses <code>&lt;=6.5%</code> in
+narrative and <code>&lt;6.5%</code> in Table 2.</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>The abstract's 2.2% for four deaths does not reconcile with
+displayed group counts and denominators.</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>The same BMI subgroup boundary is labeled both <code>&gt;=35</code>
+and <code>&gt;35</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--figure-1-allocation-branches-exceed-the-displayed-available-cohort-by-10-participants" class="candidate-card">C001
+— Figure 1 allocation branches exceed the displayed available cohort by
+10 participants</h2>
+<p><strong>Candidate statement:</strong> Figure 1 displays a 305-person
+available cohort that branches to treatment counts totaling 315.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_courcoulas_2024_oi_240004_1721756962.76052.pdf#page=3">jama_courcoulas_2024_oi_240004_1721756962.76052.pdf
+— PDF p. 3</a>, Figure 1 and adjoining Results text.</p>
+<p><strong>Source evidence:</strong> The figure states
+<code>305 Available for long-term follow-up and randomized</code>, then
+shows <code>193 Randomized to undergo bariatric surgery</code> and
+<code>122 Randomized to undergo medical/lifestyle intervention</code>.
+Its enrolled counts are 166 and 96.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported parent: 305
+available. Comparator branches: 193 + 122 = 315. Separately, enrolled
+counts 166 + 96 = 262.</p>
+<p><strong>Reasoning procedure:</strong> Treat the connected treatment
+boxes as a partition only conditionally, because the source does not
+separately define the 193/122 population. Compare their displayed sum to
+the displayed parent and keep the enrolled identity distinct.</p>
+<p><strong>Calculation:</strong> <code>193 + 122 = 315</code>;
+<code>315 - 305 = 10</code>. Separately, <code>166 + 96 = 262</code>,
+and <code>262 / 305 × 100 = 85.90%</code>, consistent with the printed
+86% after rounding.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+branch counts may preserve an earlier assignment cohort; the parent
+total may be wrong; or one or both branch counts or population labels
+may be wrong. The treatment-arm distribution of the 11 persons between
+316 eligible and 305 available is not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF inspection
+found the 305 parent, 193/122 branches, 166/96 enrolled counts, and
+adjoining flow text. The arithmetic was reproduced; no participant-level
+flow crosswalk is available.</p>
+<p><strong>Quality-control relevance:</strong> This is a reproducible
+printed flow/denominator identity issue. It does not establish that a
+treatment-effect analysis used an incorrect denominator.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy an allocation count, available-cohort count,
+retention denominator, or missingness quantity inconsistently. No
+propagation or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Inspect the
+participant-flow source dataset and figure-production record; identify
+the population represented by 193 and 122; then align the relevant
+parent count, branch count, or population label.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--supplement-etable-2-mixes-year-12-headings-with-year-7-quantitative-footnote-definitions" class="candidate-card">C002
+— Supplement eTable 2 mixes year-12 headings with year-7 quantitative
+footnote definitions</h2>
+<p><strong>Candidate statement:</strong> eTable 2 presents year-12
+headings while key footnotes define its quantitative outputs at year
+7.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240004supp2_prod_1721756962.82552.pdf#page=15">joi240004supp2_prod_1721756962.82552.pdf
+— PDF p. 15</a>, eTable 2 title, columns, rows, and footnotes a-b; <a
+href="../joi240004supp2_prod_1721756962.82552.pdf#page=16">joi240004supp2_prod_1721756962.82552.pdf
+— PDF p. 16</a>, footnotes c-e; <a
+href="../jama_courcoulas_2024_oi_240004_1721756962.76052.pdf#page=3">jama_courcoulas_2024_oi_240004_1721756962.76052.pdf
+— PDF p. 3</a>, Results pointer to eTable 2.</p>
+<p><strong>Source evidence:</strong> The supplement title and both value
+columns state year 12; footnote e calls remission a 12-year rate.
+Footnotes a-c refer to baseline and year-7 data, 7-year-over-baseline
+ratios/odds, 7-year changes, and odds at year 7. The main article
+identifies the HbA1c eTable 2 result as at 12 years.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported headings and
+main-text pointer: year 12. Comparator footnote definitions: year 7.</p>
+<p><strong>Reasoning procedure:</strong> Compare explicit time labels
+that define the same table's descriptive values, changes, comparisons,
+binary odds ratios, and P values. No rounding rule can reconcile
+distinct follow-up times.</p>
+<p><strong>Calculation:</strong> No arithmetic is required:
+<code>year 12</code> and <code>year 7</code> are distinct timepoint
+definitions.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Footnotes may retain residual year-7 wording; the title/columns may be
+wrong; or the table may intentionally combine year-12 descriptive values
+with year-7 modeled quantities without a printed explanation.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF inspection
+confirmed the title, two year-12 columns, footnotes a-c, footnote e, and
+the main-paper pointer. The missing input is a column-to-visit analysis
+or table-generation specification.</p>
+<p><strong>Quality-control relevance:</strong> The issue concerns
+timepoint/estimand labeling, not a determination that any displayed
+estimate is numerically wrong.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could attach a 7-year or 12-year timepoint to the wrong
+descriptive value, change, odds ratio, or P value. No actual propagation
+is asserted.</p>
+<p><strong>Human verification steps:</strong> Inspect eTable 2 analysis
+output and journal production proof; establish the intended visit for
+every descriptive, change, comparison, binary-odds, and P-value column;
+align all title, column, and footnote wording.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--matched-12-year-hba1c-result-has-incompatible-printed-p-values" class="candidate-card">C003
+— Matched 12-year HbA1c result has incompatible printed P values</h2>
+<p><strong>Candidate statement:</strong> The main article and eTable 2
+print the same displayed 12-year HbA1c estimate and interval with
+different P values.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_courcoulas_2024_oi_240004_1721756962.76052.pdf#page=1">jama_courcoulas_2024_oi_240004_1721756962.76052.pdf
+— PDF p. 1</a>, Abstract Results; <a
+href="../jama_courcoulas_2024_oi_240004_1721756962.76052.pdf#page=3">jama_courcoulas_2024_oi_240004_1721756962.76052.pdf
+— PDF p. 3</a>, Results; <a
+href="../joi240004supp2_prod_1721756962.82552.pdf#page=15">joi240004supp2_prod_1721756962.82552.pdf
+— PDF p. 15</a>, eTable 2 HbA1c row.</p>
+<p><strong>Source evidence:</strong> Main-paper pages 1 and 3 print a
+surgery-minus-medical/lifestyle difference of <code>-1.1%</code> (95%
+CI, <code>-1.7% to -0.5%</code>) with <code>P = .002</code>; page 3
+points to eTable 2. eTable 2 prints <code>-1.1 (-1.7, -0.5)</code> under
+its year-12 heading with <code>P &lt; .001</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Main result:
+<code>P = .002</code>. Supplement comparator for the matching displayed
+estimate and interval: <code>P &lt; .001</code>.</p>
+<p><strong>Reasoning procedure:</strong> Match population, timepoint
+label, contrast, estimate, and interval at printed precision, then
+compare the two P-value displays without reconstructing a test or tail
+probability.</p>
+<p><strong>Calculation:</strong> The estimate and interval agree at
+displayed precision. <code>.002 &lt; .001</code> is false, so a
+displayed P value of <code>.002</code> is incompatible with
+<code>&lt;.001</code> for an otherwise matched result.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> One P
+value may be intended; the supplement may use a different unlabeled
+timepoint, test, model, or variance method. C002's conflicting timepoint
+footnotes leave the supplement estimand incompletely defined.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF inspection
+confirmed both main-paper displays, the supplement row, and the
+cross-reference. Unrounded P values and complete row-specific
+analysis-output details are not supplied.</p>
+<p><strong>Quality-control relevance:</strong> This is a printed
+cross-document consistency issue. It does not determine which P value
+belongs to the intended analysis.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed
+as the same analysis, an extractor could copy <code>.002</code> or
+<code>&lt;.001</code> for one effect record. No effect on a
+meta-analysis, guideline, or paper conclusion is asserted.</p>
+<p><strong>Human verification steps:</strong> Retrieve the exact year-12
+model contrast and table-generation record; determine whether the
+locations use the same timepoint, test, model, and variance method; then
+align the P-value display or explicitly label the distinction.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--the-same-year-7-glycemic-outcome-is-labeled-as-both-hba1c-less-than-or-equal-to-65-and-hba1c-below-65" class="candidate-card">C004
+— The same year-7 glycemic outcome is labeled as both HbA1c less than or
+equal to 6.5% and HbA1c below 6.5%</h2>
+<p><strong>Candidate statement:</strong> The narrative cites Table 2 for
+the same year-7 outcome while using <code>&lt;=6.5%</code>; Table 2 uses
+<code>&lt;6.5%</code>.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_courcoulas_2024_oi_240004_1721756962.76052.pdf#page=4">jama_courcoulas_2024_oi_240004_1721756962.76052.pdf
+— PDF p. 4</a>, Results narrative; <a
+href="../jama_courcoulas_2024_oi_240004_1721756962.76052.pdf#page=6">jama_courcoulas_2024_oi_240004_1721756962.76052.pdf
+— PDF p. 6</a>, Table 2; <a
+href="../joi240004supp2_prod_1721756962.82552.pdf#page=4">joi240004supp2_prod_1721756962.82552.pdf
+— PDF p. 4</a>, binary-analysis context.</p>
+<p><strong>Source evidence:</strong> The narrative states HbA1c
+<code>less than or equal to 6.5%</code> with
+<code>P = .002; Table 2</code>. The cited table row is
+<code>HbA1c &lt;6.5%, %</code>, with 17.3% and 37.7%, OR 2.89 (95% CI
+1.48-5.64), and <code>P = .002</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported narrative
+operator: <code>&lt;=6.5%</code>. Table comparator operator:
+<code>&lt;6.5%</code>, linked by the same P value and direct Table 2
+citation.</p>
+<p><strong>Reasoning procedure:</strong> Compare the two threshold
+operators as measure definitions for the cited same outcome. Preserve
+uncertainty about data precision and programmed classification.</p>
+<p><strong>Calculation:</strong> <code>{x: x &lt; 6.5}</code> is a
+subset of <code>{x: x &lt;= 6.5}</code>; only values exactly equal to
+6.5 differ in membership.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+prose may be imprecise, the table may omit equality, or an undocumented
+measurement-precision/rounding convention may reconcile the labels. The
+package does not report the number at exactly 6.5%.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF inspection
+confirmed the narrative, cited table row, matching P value, and
+supporting GEE context. The programmed dichotomization condition,
+preclassification precision, row analysis counts, and boundary-value
+count are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> The threshold operator is
+part of the outcome measure label. The observation does not establish a
+changed OR, P value, participant classification, or conclusion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy different binary-outcome definitions. Any
+numerical impact remains conditional on observations exactly at
+6.5%.</p>
+<p><strong>Human verification steps:</strong> Inspect the
+outcome-program condition, data dictionary, measurement precision, and
+analysis dataset for the row with <code>P = .002</code>; align the
+narrative, Table 2, and supporting definition to the verified
+condition.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--abstract-percentage-for-four-deaths-does-not-reconcile-with-displayed-group-counts-and-denominators" class="candidate-card">C005
+— Abstract percentage for four deaths does not reconcile with displayed
+group counts and denominators</h2>
+<p><strong>Candidate statement:</strong> The abstract's 2.2% for four
+deaths does not match the combined percentage implied by displayed group
+counts and denominators.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_courcoulas_2024_oi_240004_1721756962.76052.pdf#page=1">jama_courcoulas_2024_oi_240004_1721756962.76052.pdf
+— PDF p. 1</a>, Abstract Results; <a
+href="../jama_courcoulas_2024_oi_240004_1721756962.76052.pdf#page=3">jama_courcoulas_2024_oi_240004_1721756962.76052.pdf
+— PDF p. 3</a>, enrolled groups; <a
+href="../jama_courcoulas_2024_oi_240004_1721756962.76052.pdf#page=7">jama_courcoulas_2024_oi_240004_1721756962.76052.pdf
+— PDF p. 7</a>, death narrative; <a
+href="../jama_courcoulas_2024_oi_240004_1721756962.76052.pdf#page=8">jama_courcoulas_2024_oi_240004_1721756962.76052.pdf
+— PDF p. 8</a>, Table 3.</p>
+<p><strong>Source evidence:</strong> The abstract reports
+<code>4 deaths (2.2%), 2 in each group</code>. The displayed enrolled
+groups are 96 medical/lifestyle and 166 surgery. Table 3 reports 2
+(2.1%) of 96 and 2 (1.2%) of 166; the Results narrative also states four
+deaths, two per group.</p>
+<p><strong>Reported-versus-comparator:</strong> Abstract: four deaths,
+2.2%. Comparator: four deaths among displayed group denominators
+totaling 262.</p>
+<p><strong>Reasoning procedure:</strong> Reproduce the two within-group
+percentages and the combined crude percentage from printed
+counts/denominators. Do not assume an unstated abstract risk set is
+absent.</p>
+<p><strong>Calculation:</strong> <code>2 / 96 × 100 = 2.0833%</code> →
+2.1%; <code>2 / 166 × 100 = 1.2048%</code> → 1.2%;
+<code>4 / (96 + 166) × 100 = 1.5267%</code> → 1.5%, not 2.2%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+abstract may use an unstated risk-set denominator or measure; its
+percentage may be a transcription difference; or Table 3 may represent a
+population not distinguished in the abstract. The package does not
+identify the abstract denominator.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF inspection
+confirmed the abstract, group counts, death narrative, Table 3 counts,
+and their pages. The displayed within-group percentages reproduce; no
+participant-level mortality risk-set definition is supplied.</p>
+<p><strong>Quality-control relevance:</strong> This is a
+count/denominator consistency issue. It does not assume that 2.2% is a
+crude proportion or establish a change in the treatment comparison.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy a mortality count, percentage, or denominator
+without a shared population definition. No propagation or paper-level
+conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Inspect the mortality
+analysis dataset, risk-set definition, and abstract production record;
+identify the denominator and measure for 2.2%; then align the abstract
+and Table 3 population wording or percentage as appropriate.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--the-same-exploratory-bmi-subgroup-boundary-is-labeled-as-both-35-or-greater-and-greater-than-35" class="candidate-card">C006
+— The same exploratory BMI subgroup boundary is labeled as both 35 or
+greater and greater than 35</h2>
+<p><strong>Candidate statement:</strong> The main article defines the
+higher exploratory BMI subgroup as 35 or greater, whereas eFigure 6
+labels it greater than 35.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_courcoulas_2024_oi_240004_1721756962.76052.pdf#page=7">jama_courcoulas_2024_oi_240004_1721756962.76052.pdf
+— PDF p. 7</a>, Results narrative; <a
+href="../joi240004supp2_prod_1721756962.82552.pdf#page=13">joi240004supp2_prod_1721756962.82552.pdf
+— PDF p. 13</a>, eFigure 6 title, legends, and explanatory text.</p>
+<p><strong>Source evidence:</strong> The main article describes BMI 27
+to <code>&lt;35</code> versus BMI <code>35 or greater</code> and cites
+eFigure 6. eFigure 6 repeatedly labels the groups
+<code>BMI &lt;35</code> and <code>BMI &gt;35</code> for the
+corresponding HbA1c and weight-loss analysis.</p>
+<p><strong>Reported-versus-comparator:</strong> Main higher subgroup:
+<code>BMI &gt;=35</code>. eFigure higher subgroup:
+<code>BMI &gt;35</code>, with lower subgroup
+<code>BMI &lt;35</code>.</p>
+<p><strong>Reasoning procedure:</strong> Compare complementary boundary
+operators for the explicitly linked two-part subgroup analysis, while
+keeping subgroup-code and boundary-value data absent.</p>
+<p><strong>Calculation:</strong> The complement of
+<code>{x: x &lt; 35}</code> is <code>{x: x &gt;= 35}</code>. The figure
+pair <code>{x: x &lt; 35}</code> and <code>{x: x &gt; 35}</code> leaves
+<code>x = 35</code> unassigned, whereas the main-text higher set
+includes it.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+figure may have omitted equality; the main wording may be imprecise; or
+no participant may have had unrounded BMI exactly 35. The supplied
+package does not establish which operator was implemented.</p>
+<p><strong>Mechanical evidence recheck:</strong> A fresh targeted
+direct-PDF recheck confirmed the main Results wording and repeated
+eFigure labels. Subgroup-creation code, data dictionary, unrounded BMI
+values, boundary-handling rule, and count exactly at 35 are
+unavailable.</p>
+<p><strong>Quality-control relevance:</strong> The observation concerns
+a subgroup-boundary label. It does not establish a different membership,
+estimate, P value, or paper-level conclusion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy <code>&gt;=35</code> or <code>&gt;35</code> as
+the subgroup definition. Any impact on membership or quantitative
+estimates remains conditional on unavailable boundary data.</p>
+<p><strong>Human verification steps:</strong> Inspect subgroup-program
+code, data dictionary, input precision, and boundary-value handling;
+determine the implemented operator and align the main-text and figure
+labels.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, these observations could affect the consistency with
+which a later systematic-review, meta-analysis, guideline, or
+data-extraction workflow records participant flow, timepoint, P value,
+threshold, event denominator, or subgroup definition. They are
+quality-control candidates only. The supplied package does not establish
+that any downstream record propagated an issue, that an effect estimate
+changed, or that the paper's conclusions changed.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The complete canonical limitations summary is in <a
+href="review_1_5_3/limitations.md">limitations.md</a>. The supplied PDFs
+lack several source records needed to resolve intended values or labels,
+including participant-level flow and risk-set definitions, analysis
+code, data dictionaries, row-specific model output, and unrounded
+boundary data. Sparse figures lacked tabulated coordinates. These
+constraints limit adjudication, not the completed coverage or inclusion
+of stable candidates.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each stable candidate, a human reviewer should:</p>
+<ol type="1">
+<li>Confirm the cited direct-source page(s) and transcription.</li>
+<li>Inspect the named source dataset, analysis output, code,
+table-generation record, or production proof when available.</li>
+<li>Decide whether a reporting inconsistency exists and, if so, identify
+the intended population, timepoint, analysis, threshold, denominator, or
+boundary.</li>
+<li>Record validity, importance, action, initials, and notes in the card
+fields without altering stable IDs.</li>
+</ol>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<ul>
+<li><strong>Routing preflight:</strong> PASS; coordinator inference
+PASS; execution mode INTERACTIVE_CLI; all nine named presets
+verified.</li>
+<li><strong>Source coverage:</strong> 99/99 mapped units; 26 reusable
+and 73 fresh direct-source units.</li>
+<li><strong>Direct-source hashes before review:</strong> DOC-001
+<code>0f153cf27727015b19cf33ba400d4c0cc36e20f58a1b85c08f74bd61f1d06647</code>;
+DOC-002
+<code>75275168ca11fb55b11821a0a07067812181adfe0ccc4487e04ff2a0673f2958</code>;
+DOC-003
+<code>4c2e87ee8ac1bcde5927e63f7b27ade27ace05dae1b6085dc81cb293c56afd81</code>;
+DOC-004
+<code>cfdde1a6a79f4b81980f2a69b095d9c0fed24c77759968078fffecd5f26979f8</code>.</li>
+<li><strong>Reused-evidence integrity:</strong> 54 hashed source-linked
+assets are listed in
+<code>review_1_5_3/reused_artifact_hashes_before.sha256</code>; final
+recomputation is coordinator-controlled.</li>
+<li><strong>Canonical review artifacts:</strong> coverage, relationship
+inventories, checker records, ledger, recheck, audit, and limitations
+are retained under <code>review_1_5_3/</code>.</li>
+</ul>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>runtime:/root/reuse_asset_curator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>runtime:/root/main_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>runtime:/root/support_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>runtime:/root/numeric_consistency_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>runtime:/root/cross_source_consistency_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>runtime:/root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>runtime:/root/evidence_rechecker</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>runtime:/root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>evidence_recheck_repair_c006</td>
+<td>runtime:/root/evidence_recheck_c006</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>runtime:/root/quality_control_auditor</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>runtime:/root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-profile">Performance profile</h3>
+<ul>
+<li><strong>Target basis:</strong> Four supplied PDFs contain 99 page
+units. Twenty-six units have source-matched reusable native text or
+rendered-page evidence, while 73 units require fresh direct-PDF mapping,
+including a 65-page protocol with no page-level derivative, seven
+uncovered supplement pages, and one administrative page. This scope is
+close to the 102-unit/81-fresh calibration but has mixed reusable visual
+evidence and requires full four-source coverage; 50-70 minutes is the
+bounded planning target.</li>
+<li><strong>Total source units:</strong> 99</li>
+<li><strong>Fresh-source units:</strong> 73</li>
+<li><strong>Target elapsed minutes:</strong> 50-70</li>
+<li><strong>Started UTC:</strong> 2026-08-19T04:28:49Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-19T04:58:55Z</li>
+<li><strong>Observed elapsed minutes:</strong> 30.1</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Responses</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">4 unavailable records</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">8 unavailable records</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>Per-agent detail is recorded in
+<code>review_1_5_3/token_usage_summary.md</code>. Cached-input and
+cache-write tokens are input subsets; reasoning tokens are an output
+subset and are not added again to total tokens. The known amount uses
+the bundled dated fixed-model rates and is a token-only estimate, not an
+invoice; complete cost remains unavailable with runtime usage
+counts.</p>
+</body>
+</html>

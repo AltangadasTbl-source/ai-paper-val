@@ -1,4 +1,4 @@
-# Workflow 1.5.3 — OpenRouter, Reuse Evidence Assets, and Restart the Review
+# Workflow 1.5.3 — Reuse Evidence Assets and Restart the Review
 
 Use this profile when a paper package already contains usable OCR, native/layout text, table or
 workbook extraction, rendered pages, or document maps. Workflow 1.5.3 treats those assets as a
@@ -11,8 +11,9 @@ reusable derivative is freshly inspected; missing derivatives are not scientific
 
 - Timing is set separately after each package inventory; no SAP length, page count, or timing band is
   universal. The prior 102-total-page run is calibration only for comparable workloads.
-- Ordinary specialist roles use `medium` reasoning; only the two-pass statistical consistency role
-  retains `high` reasoning, and each pass must start in a distinct fresh OpenRouter/high agent.
+- The coordinator uses `gpt-5.6-sol`/`high`; ordinary specialists use
+  `gpt-5.6-terra`/`medium`; both statistical passes use fresh `gpt-5.6-terra`/`high` agents; evidence
+  recheck and final quality audit use fresh `gpt-5.6-sol`/`high` agents.
 - Larger default shards and fewer redundant waves reduce orchestration latency without permitting
   sampling, early stopping, or incomplete coverage.
 - There is no candidate-count limit and no review queue. The final Markdown and HTML reports contain
@@ -25,23 +26,24 @@ reusable derivative is freshly inspected; missing derivatives are not scientific
 - Agents perform inventory, coverage planning, mapping, checking, rechecking, and synthesis. Python is
   limited to optional Office structure extraction, deterministic token-cost calculation, local HTML
   rendering, and mechanical validation.
-- Validation checks full source-unit coverage, launcher routing preflight, a distinct fresh runtime ID
-  and configured model/effort for every mandatory specialist, exact `__` human placeholders, and one
-  artifact path per coverage row without requiring root `.codex` files.
+- Validation checks full source-unit coverage, the fixed model matrix, a distinct fresh runtime ID
+  for every mandatory specialist, exact `__` human placeholders, and one artifact path per coverage
+  row without requiring root `.codex` files.
 - A coherent very small P value printed as zero is explicitly excluded as a standalone candidate;
   only an independent source-grounded contradiction can qualify.
 - Every runtime agent, including the coordinator and repair agents, is tracked. Authoritative token
-  usage is summarized separately by agent and by model. Because `~openai/gpt-latest` is a dynamic
-  OpenRouter route, the complete price stays blank unless dated rates for the exact resolved model are
-  deliberately added; the workflow never reuses a fixed-model OpenAI rate for the alias.
+  usage is summarized separately by agent and by model and priced from the bundled dated Sol/Terra
+  token-rate snapshot when complete billing detail is available.
 
 ## Installation and start
 
-First satisfy `OPENROUTER_SETUP.md` at machine scope. Copy the workflow controls into one
+First satisfy `OPENROUTER_SETUP.md`. Copy the workflow controls into one
 paper-package root. Preserve all sources and the existing
-`.ai_paper_validation/` directory. The hidden `.codex` presets are optional; do not overwrite an
-existing or read-only root `.codex`. From the package root run
-`bash workflow_1_5_3/scripts/launch_openrouter.sh`; do not start with plain `codex` or `resume`.
+`.ai_paper_validation/` directory. Merge the nine hidden `.codex/agents/` role presets without
+overwriting unrelated root `.codex` controls; do not place provider credentials in project config.
+From the package root run `codex --approve-for-me`. After the interactive session opens, send
+`Read START_PROMPT.md completely and execute Workflow 1.5.3 now.` as the first request. No shell
+launcher or non-interactive `codex exec` fallback is used.
 
 ## Main outputs
 

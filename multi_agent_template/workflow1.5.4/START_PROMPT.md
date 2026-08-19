@@ -4,17 +4,18 @@ quantitative relationship mapping, uncapped candidate discovery, source recheck,
 reporting. Preserve but ignore all old OCR, extraction, candidate, queue, verifier/critic, endetail,
 and report records as evidence inputs.
 
-Use the OpenRouter provider and `env_key` supplied by `launch_openrouter.sh`. Keep the coordinator,
-every named role, and every default or repair subagent on `~openai/gpt-latest`/`high`; never substitute
-a built-in model slug or lower the reasoning effort. The launcher ignores conflicting base user
-defaults for this run.
+This interactive session must run as `gpt-5.6-sol`/`high`. Before scientific work, verify all nine
+named presets against the fixed 1.5.1/1.5.2 model matrix and write `routing_preflight.md` with
+`Coordinator inference: PASS`, `Named agent presets: PASS`, and `Execution mode: INTERACTIVE_CLI`.
+Use `gpt-5.6-terra`/`medium` for ordinary specialist roles, distinct fresh
+`gpt-5.6-terra`/`high` agents for statistical passes 1 and 2, and `gpt-5.6-sol`/`high` for mechanical
+evidence recheck and final evidence-quality audit. Do not use `~openai/gpt-latest` or another moving
+alias.
 
-Require the launcher-created `routing_preflight.md`, including `Authentication probe: PASS` and
-`Named agent presets: PASS`, before scientific work. Use a fresh, distinct
-runtime agent for every mandatory specialist stage. Prefer the configured named role; when it is not
-available, spawn a fresh default agent with the complete role contract and explicit reasoning effort,
-while omitting a model override so the launcher-enforced default remains in force. Never reuse one
-agent for two mandatory stages or use follow-up to change its model or effort.
+Use a fresh, distinct runtime agent for every mandatory specialist stage. Prefer the configured named
+role. If a named role is unavailable, spawn a fresh default agent with the complete role contract and
+the exact model and reasoning effort required for that role. Never omit the model override on a
+fallback, reuse one agent for two mandatory stages, or use follow-up to change its model or effort.
 
 Follow AGENTS.md from source hashing through a passing validator result. Use the agent-first workflow
 and durable artifact handoffs. Keep Python auxiliary: use direct local PDF, hashing, rendering,
@@ -24,17 +25,16 @@ renderer, and validator Python helpers supplied by this workflow.
 Set a package-specific latency target after inventory using total units, fresh-mapping burden, source
 formats, OCR/conversion needs, and expected review waves. Do not assume a fixed SAP or package length.
 Treat the earlier 102-total-page, 81-fresh-page run only as calibration for comparable workloads, not
-as a universal 35–50 minute default. Use high reasoning for every specialist role. Spawn distinct new
-`~openai/gpt-latest`/`high` agents for statistical passes 1 and 2, record them in
+as a universal 35–50 minute default. Use medium reasoning for ordinary Terra roles. Spawn distinct new
+`gpt-5.6-terra`/`high` agents for statistical passes 1 and 2, record them in
 `agent_execution_manifest.md`, and never use follow-up to change an agent's contract. Treat timing as a
 planning goal, never as permission to sample evidence, stop early, cap candidates, or omit cards.
 
 Record every actual runtime agent in `agent_execution_manifest.md`, including the coordinator,
 mappers, checkers, report generator, repairs, and both statistical agents. Through the finalized
 `Finished UTC` cutoff, capture exact response-level token usage from authoritative runtime/API
-metadata in `token_usage_ledger.csv`. Summarize it by agent and model. The dynamic OpenRouter route is
-unpriced by default; leave the complete price blank unless dated rates for the exact resolved model
-have been deliberately configured. Cached input and cache writes are input
+metadata in `token_usage_ledger.csv`. Summarize it by agent and model and calculate the token-only
+API-equivalent price with the bundled dated pricing snapshot. Cached input and cache writes are input
 subsets, and reasoning is an output subset; never double count them. If runtime usage is unavailable,
 use `TOTALS_ONLY` when exact input/output/total counts remain available, otherwise use `UNAVAILABLE`
 and exact `__` token fields. Leave any unsupported complete total or price explicitly incomplete

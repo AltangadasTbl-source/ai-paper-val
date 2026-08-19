@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.3 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.3 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.3 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-reporting-quality-control-consistency-review--workflow-153"
+id="toc-quantitative-reporting-quality-control-consistency-review--workflow-153">Quantitative
+Reporting Quality-Control Consistency Review — Workflow 1.5.3</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--usual-care-exclusion-hierarchy-requires-source-layout-confirmation"
+id="toc-c001--usual-care-exclusion-hierarchy-requires-source-layout-confirmation">C001
+— Usual-care exclusion hierarchy requires source-layout
+confirmation</a></li>
+<li><a
+href="#c002--main-text-rejected-statement-percentage-conflicts-with-the-supplement-counts"
+id="toc-c002--main-text-rejected-statement-percentage-conflicts-with-the-supplement-counts">C002
+— Main-text rejected-statement percentage conflicts with the supplement
+counts</a></li>
+<li><a
+href="#c003--etable-10-labels-logistic-regression-odds-ratios-as-differences"
+id="toc-c003--etable-10-labels-logistic-regression-odds-ratios-as-differences">C003
+— eTable 10 labels logistic-regression odds ratios as
+differences</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-reporting-quality-control-consistency-review--workflow-153">Quantitative
+Reporting Quality-Control Consistency Review — Workflow 1.5.3</h1>
+<blockquote>
+<p><strong>Pending Human Adjudication:</strong> Every candidate below is
+a quality-control observation retained for human review. This report
+does not make a final correction or conclusion about the paper.</p>
+</blockquote>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete source and relationship coverage produced <strong>3 stable
+candidate IDs</strong>: C001, C002, and C003. The review concerns
+numeric reconciliation, cross-document percentages, and effect-measure
+labeling. Small preventable reporting defects can matter for downstream
+evidence extraction if confirmed; this report does not assert that any
+propagation, conclusion change, or serious harm occurred.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The supplied package contains three direct PDF sources: <a
+href="../jama_dupuis_2024_oi_240111_1733431204.38761.pdf#page=1">jama_dupuis_2024_oi_240111_1733431204.38761.pdf</a>,
+<a
+href="../joi240111supp1_prod_1733431204.57929.pdf#page=1">joi240111supp1_prod_1733431204.57929.pdf</a>,
+and <a
+href="../joi240111supp2_prod_1733431204.76024.pdf#page=1">joi240111supp2_prod_1733431204.76024.pdf</a>.
+Direct-source hashes and reusable-asset hashes were recorded before
+review in <a
+href="review_1_5_3/source_hashes_before.sha256">source_hashes_before.sha256</a>
+and <a
+href="review_1_5_3/reused_artifact_hashes_before.sha256">reused_artifact_hashes_before.sha256</a>.</p>
+<p>Reusable native text covered all 11 pages of DOC-001 and all 23 pages
+of DOC-003; DOC-002's 46 pages were freshly mapped from the supplied
+PDF. Reused derivatives were provenance and locating aids, not
+substitutes for direct-source confirmation. The reusable-asset inventory
+is <a
+href="review_1_5_3/evidence_asset_inventory.md">evidence_asset_inventory.md</a>.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Units</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh-required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001 main article</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002 protocol/SAP supplement</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">46</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003 results supplement</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">23</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>80</strong></td>
+<td style="text-align: right;"><strong>34</strong></td>
+<td style="text-align: right;"><strong>46</strong></td>
+<td style="text-align: right;"><strong>80</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The coverage manifest and source ledger record a complete, disjoint
+mapping without a review queue, top-N subset, candidate cap, or
+deferred-by-cap section: <a
+href="review_1_5_3/coverage_manifest.md">coverage_manifest.md</a> and <a
+href="review_1_5_3/source_coverage.md">source_coverage.md</a>. This
+review excludes broad study-design, clinical, novelty, misconduct, and
+raw-data auditing. Coherent display-zero P values were not treated as
+candidates; none of the three cards concerns a <code>P = 0</code>
+display.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The numeric inventory contains N001-N080, all checked by the numeric
+and cross-source lanes. The inferential inventory contains S001-S057.
+Statistical pass 1 and the independent statistical pass 2 each completed
+every S relationship; pass 2 revisited the full ledger and
+mechanical-recheck facts. C003 applies to S045-S047 and is recorded once
+because it concerns one shared header and one methods comparator.</p>
+<ul>
+<li><a
+href="review_1_5_3/relationships/numeric_relationship_inventory.md">Numeric
+relationship inventory</a> — N001-N080.</li>
+<li><a
+href="review_1_5_3/statistics/relationship_inventory.md">Statistical
+relationship inventory</a> — S001-S057, with
+<code>PASS_1_COMPLETE</code> and <code>PASS_2_COMPLETE</code>
+records.</li>
+<li><a href="review_1_5_3/checkers/statistical_pass_1.md">Statistical
+pass 1</a> and <a
+href="review_1_5_3/checkers/statistical_pass_2.md">statistical pass
+2</a> — independent complete passes.</li>
+<li><a href="review_1_5_3/verification/evidence_recheck.md">Mechanical
+evidence recheck</a> — C001-C003.</li>
+</ul>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Category</th>
+<th>Short description</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--usual-care-exclusion-hierarchy-requires-source-layout-confirmation">C001</a></td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Stable record retained to confirm the visual exclusion hierarchy;
+the source-grounded hierarchy reconciles.</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td><a
+href="#c002--main-text-rejected-statement-percentage-conflicts-with-the-supplement-counts">C002</a></td>
+<td>Cross-document numeric inconsistency</td>
+<td>Main-text 6.4% rejected versus the displayed eTable 3 aggregate of
+142/1,350 = 10.5%.</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td><a
+href="#c003--etable-10-labels-logistic-regression-odds-ratios-as-differences">C003</a></td>
+<td>Measure, label, or scale inconsistency</td>
+<td>eTable 10 <code>Difference (95% CI)</code> header versus eMethods
+odds-ratio estimand.</td>
+<td>Pending Human Adjudication</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--usual-care-exclusion-hierarchy-requires-source-layout-confirmation" class="candidate-card">C001
+— Usual-care exclusion hierarchy requires source-layout
+confirmation</h2>
+<p><strong>Candidate statement:</strong> Stable C001 is retained for
+human confirmation of Figure 1's visual parent-child hierarchy. The
+direct source supports reconciliation, not a 71-versus-58 mismatch: the
+nested reasons sum to their parent and the top-level reasons sum to
+58.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_dupuis_2024_oi_240111_1733431204.38761.pdf#page=5">jama_dupuis_2024_oi_240111_1733431204.38761.pdf
+— Figure 1, PDF p. 5</a>, usual-care branch.</p>
+<p><strong>Source evidence:</strong> The source prints
+<code>58 Patients excluded</code>. Visual indentation places
+<code>13 Physician preference</code> at the top level and
+<code>7 Disease status or progression</code>,
+<code>4 Perceived psychosocial issues</code>, and
+<code>2 Reason not provided</code> beneath it. The other top-level
+counts are 15, 14, 7, 4, 3, and 2. The parallel branch presents a
+matching parent-child convention: 32 + 4 + 2 + 4 = 42.</p>
+<p><strong>Reported-versus-comparator:</strong> The printed exclusion
+total is 58; the source-layout comparator is the top-level hierarchy,
+not a flat list of all displayed counts.</p>
+<p><strong>Reasoning procedure:</strong> Reconcile children to their
+immediate parent, then reconcile only top-level reasons to the parent
+exclusion count. This avoids double-counting a parent and its nested
+children.</p>
+<p><strong>Calculation:</strong> 7 + 4 + 2 = 13. Then 13 + 15 + 14 + 7 +
+4 + 3 + 2 = 58. The surrounding flow also reconciles: 323 - 58 = 265 and
+265 - 41 = 224.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+production-layout error could make the indentation misleading, although
+the parallel branch supports the hierarchy interpretation. No flat
+71-versus-58 comparison is carried forward.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct page inspection
+found the cited box, counts, indentation, and parallel branch. Counts
+and indentation are direct observations; interpreting indentation as
+hierarchy is the source-grounded logical reading. The remaining question
+is whether the production source confirms that intended hierarchy.</p>
+<p><strong>Quality-control relevance:</strong> A stable candidate record
+requires human layout confirmation because flattened extraction can lose
+nesting. The printed hierarchy itself reconciles; this card does not
+assert a participant-flow defect.</p>
+<p><strong>Potential downstream evidence impact:</strong> If the
+hierarchy were misread, a data extractor could double-count the
+physician-preference parent and its subreasons. This is a bounded
+possibility, not a claim that downstream propagation or conclusion
+change occurred.</p>
+<p><strong>Human verification steps:</strong> Inspect the production
+Figure 1 layout and confirm whether the indentation and parallel branch
+encode the stated parent-child structure; retain the top-level
+reconciliation if confirmed.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--main-text-rejected-statement-percentage-conflicts-with-the-supplement-counts" class="candidate-card">C002
+— Main-text rejected-statement percentage conflicts with the supplement
+counts</h2>
+<p><strong>Candidate statement:</strong> The main text reports 6.4%
+rejected across intervention sites, whereas the displayed eTable 3
+reject counts and equal denominators imply 142/1,350 = 10.5%.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_dupuis_2024_oi_240111_1733431204.38761.pdf#page=2">jama_dupuis_2024_oi_240111_1733431204.38761.pdf
+— narrative, PDF p. 2</a> and <a
+href="../joi240111supp2_prod_1733431204.76024.pdf#page=6">joi240111supp2_prod_1733431204.76024.pdf
+— eTable 3, PDF p. 6</a>.</p>
+<p><strong>Source evidence:</strong> The main text prints 40.8% adopted,
+48.7% adapted, and 6.4% rejected across intervention sites. eTable 3
+prints n=135 at each of 10 sites and reject counts of 15, 23, 5, 25, 9,
+25, 12, 11, 11, and 6.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported: 6.4% rejected.
+Comparator from the displayed eTable 3 rejection counts and
+denominators: 10.5% to one decimal place.</p>
+<p><strong>Reasoning procedure:</strong> Sum the printed reject counts
+and divide by the common displayed decision total of 10 x 135. Confirm
+the common denominator from the three adaptation-choice counts at each
+site.</p>
+<p><strong>Calculation:</strong> Rejects = 15 + 23 + 5 + 25 + 9 + 25 +
+12 + 11 + 11 + 6 = 142; total decisions = 10 x 135 = 1,350; 142 / 1,350
+x 100 = 10.5185...%, or 10.5%. Keep and adapt totals are 551 and 657,
+reproducing 40.8% and 48.7%, respectively.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+narrative could use an unprinted unique-statement population or narrower
+rejection definition rather than site-statement decisions. The supplied
+locations do not provide the numerator, denominator, exclusions,
+weighting, or aggregation rule necessary to reproduce 6.4%; equal site
+denominators make ordinary weighting insufficient as an explanation.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-source
+inspection matched the narrative, every eTable 3 denominator, counts,
+row labels, and site percentages. The aggregate calculation is
+arithmetic; a different population or definition is an unprinted
+possible explanation. The remaining human question is the exact basis of
+6.4%.</p>
+<p><strong>Quality-control relevance:</strong> The printed percentage
+and table-implied aggregate do not reconcile under the displayed common
+denominator, so the reporting basis needs human clarification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a systematic reviewer, meta-analyst, guideline developer, or data
+extractor could copy either 6.4% or 10.5% as the
+intervention-implementation rejection proportion. This report does not
+claim that any such reuse occurred or changed a conclusion.</p>
+<p><strong>Human verification steps:</strong> Identify the numerator,
+denominator, decision population, exclusions, and aggregation method
+used for the narrative percentage; then reconcile the narrative and
+eTable 3 or document their distinct definitions.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--etable-10-labels-logistic-regression-odds-ratios-as-differences" class="candidate-card">C003
+— eTable 10 labels logistic-regression odds ratios as differences</h2>
+<p><strong>Candidate statement:</strong> eTable 10 labels its
+modeled-effect columns <code>Difference (95% CI)</code>, while eMethods
+states that the documentation, any-intervention, and
+symptom-specific-intervention analyses estimate odds ratios using
+logistic regression.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240111supp2_prod_1733431204.76024.pdf#page=13">joi240111supp2_prod_1733431204.76024.pdf
+— eTable 10 start, PDF p. 13</a>; <a
+href="../joi240111supp2_prod_1733431204.76024.pdf#page=14">joi240111supp2_prod_1733431204.76024.pdf
+— eTable 10 continued values, PDF p. 14</a>; <a
+href="../joi240111supp2_prod_1733431204.76024.pdf#page=15">joi240111supp2_prod_1733431204.76024.pdf
+— eTable 10 footnote, PDF p. 15</a>; and <a
+href="../joi240111supp2_prod_1733431204.76024.pdf#page=22">joi240111supp2_prod_1733431204.76024.pdf
+— eMethods, PDF p. 22</a>.</p>
+<p><strong>Source evidence:</strong> On p. 13, eTable 10 prints
+<code>Difference (95% CI)</code> under each cohort group. Examples
+include 0.53 (0.28, 1.01) on p. 13 and 5.30 (2.50, 11.24) and 17.96
+(1.03, 313.1) on p. 14; p. 15 identifies mixed- or fixed-effects
+logistic regression for P values. On p. 22, eMethods states that the
+relevant logistic-regression analyses estimate the odds ratio.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported table label:
+<code>Difference (95% CI)</code>. Methods comparator: odds ratio, a
+multiplicative effect measure with null value 1.</p>
+<p><strong>Reasoning procedure:</strong> Compare the shared table header
+with the effect measure expressly named for all three outcome blocks in
+eMethods. This is a label-to-estimand identity check, not a
+reconstruction of P values, standard errors, or model coefficients.</p>
+<p><strong>Calculation:</strong> No arithmetic reconstruction is needed.
+The representative estimates and intervals are organized around the
+multiplicative null of 1, consistent with the named odds-ratio
+estimand.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>Difference</code> may have been intended as a generic umbrella
+label for the modeled comparison while every cell remains an odds ratio.
+The package does not define that usage or identify any block as an
+additive difference.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct inspection
+confirmed the header, three cohort and outcome blocks, representative
+values, logistic-regression footnote, and eMethods odds-ratio statement.
+The logical comparison is source-grounded; a generic-heading intent is
+inferred rather than stated.</p>
+<p><strong>Quality-control relevance:</strong> Effect-measure labels
+guide how estimates are interpreted and extracted. The observation
+concerns the column heading, not a claim that the reported odds-ratio
+values or inferential conclusions are numerically incorrect.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could misclassify these odds ratios as additive
+differences. This is a bounded risk statement and does not assert actual
+propagation, conclusion change, or harm.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+estimand for each eTable 10 block; if all are odds ratios, determine
+whether the shared header should explicitly identify odds ratios, or
+document any block using another measure.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>Reporting defects can be copied when structured data are abstracted
+into evidence tables, systematic reviews, meta-analyses, guidelines, or
+secondary analyses. Here, the bounded possibilities are double-counting
+a nested flow reason (C001), selecting a nonreconciling rejection
+percentage (C002), or assigning the wrong effect-measure type (C003).
+These are conditional extraction risks only; the package supplies no
+evidence that any downstream product used the values, that a paper
+conclusion changed, or that serious harm occurred.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The full limitations record is <a
+href="review_1_5_3/limitations.md">limitations.md</a>. In brief, C002
+lacks the printed definition needed to reproduce 6.4%; C003 lacks a
+definition for the word <code>Difference</code>; C001 needs
+production-layout confirmation even though the visual hierarchy
+reconciles; and several inferential results lack details needed for
+reverse-engineering. No external sources were used.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ol type="1">
+<li>Confirm the Figure 1 hierarchy for C001 from the production
+layout.</li>
+<li>Determine the numerator, denominator, population, and aggregation
+for C002's 6.4% value.</li>
+<li>Confirm the intended eTable 10 estimand and header for C003.</li>
+<li>Complete every five-field adjudication block in the evidence cards;
+no field has been pre-filled.</li>
+</ol>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<p>Routing preflight passed under the required interactive route, with
+all nine named role presets verified: <a
+href="review_1_5_3/routing_preflight.md">routing_preflight.md</a>.
+Direct and reusable asset hashes were captured before review; post-run
+hash comparison remains a coordinator completion step.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>root/reuse_asset_curator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>root/main_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>root/support_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>root/numeric_consistency_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>root/cross_source_consistency_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>root/evidence_rechecker</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>root/quality_control_auditor</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+</tbody>
+</table>
+<p>The authoritative execution manifest is <a
+href="review_1_5_3/agent_execution_manifest.md">agent_execution_manifest.md</a>.</p>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> This package has 80 unique PDF-page
+units across a main article, a 46-page protocol/SAP lacking any reusable
+extraction, and a 23-page results supplement. Thirty-four pages have
+complete native reusable text, while 46 require fresh direct extraction.
+The package therefore has a substantial fresh-PDF burden plus
+cross-document/table/figure relationship work, but less total unit
+volume than the 102-unit calibration package.</li>
+<li><strong>Total source units:</strong> 80</li>
+<li><strong>Fresh-source units:</strong> 46</li>
+<li><strong>Target elapsed minutes:</strong> 45-65</li>
+<li><strong>Started UTC:</strong> 2026-08-19T04:38:04Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-19T05:06:24Z</li>
+<li><strong>Observed elapsed minutes:</strong> 28.3</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<p>The timing window closed immediately after complete Markdown
+assembly; local calculation, rendering, and validation are excluded.</p>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Cached input tokens</th>
+<th style="text-align: right;">Cache-write tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Reasoning tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>Authoritative runtime token counts were not exposed for the
+coordinator or specialist responses, so every manifested agent has an
+<code>UNAVAILABLE</code> record and the complete count and price remain
+incomplete. The displayed zeros are known subtotals only, not estimates
+of unexposed usage. Per-agent detail is in <a
+href="review_1_5_3/token_usage_summary.md">token_usage_summary.md</a>.
+Cached input and cache-write tokens are input subsets, and reasoning
+tokens are an output subset; none is added again to total tokens. Any
+available cost uses the bundled dated fixed-model rates, is token-only,
+and is not an invoice.</p>
+</body>
+</html>

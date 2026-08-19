@@ -1,19 +1,19 @@
-# OpenRouter Prerequisite for Workflow 1.5.3
+# OpenRouter and Direct Codex Setup for Workflow 1.5.3
 
-This profile routes the coordinator, every named custom agent, and every default or repair subagent
-through `~openai/gpt-latest` at `high` reasoning effort.
+Workflow 1.5.3 uses the same fixed model allocation as workflows 1.5.1 and 1.5.2:
 
-For ordinary Codex sessions, place the provider in the machine-level `~/.codex/config.toml`:
+- coordinator: `gpt-5.6-sol` / `high`;
+- ordinary specialist roles: `gpt-5.6-terra` / `medium`;
+- statistical passes 1 and 2: distinct fresh `gpt-5.6-terra` / `high` agents;
+- mechanical evidence recheck and final evidence-quality audit: fresh `gpt-5.6-sol` / `high` agents.
+
+Do not use `~openai/gpt-latest` or another moving alias. Exact model IDs are required so repeated
+paper reviews use the same experimental conditions.
+
+Configure the provider only in the user-level `~/.codex/config.toml`:
 
 ```toml
 model_provider = "openrouter"
-model = "~openai/gpt-latest"
-model_reasoning_effort = "high"
-plan_mode_reasoning_effort = "high"
-
-[agents]
-default_subagent_model = "~openai/gpt-latest"
-default_subagent_reasoning_effort = "high"
 
 [model_providers.openrouter]
 name = "openrouter"
@@ -23,26 +23,28 @@ requires_openai_auth = false
 wire_api = "responses"
 ```
 
-Export `OPENROUTER_API_KEY` in the same environment that launches Codex. Do not copy the key into a
-paper package or put a literal token in TOML. Do not combine `env_key` with
-`[model_providers.openrouter.auth]`; Codex supports either source, and this workflow deliberately uses
-`env_key` for a fixed API key.
+Export `OPENROUTER_API_KEY` in the shell that launches Codex. Do not put a literal key in a paper
+package or TOML file. The package-level `.codex/config.toml` fixes the coordinator model, and the nine
+package-level `.codex/agents/` presets fix specialist models and reasoning efforts.
 
-Project-scoped `.codex/config.toml` cannot select or authenticate a provider. Therefore start this
-profile only from the package root with:
+From the paper-package root, start an interactive session directly:
 
 ```bash
-bash workflow_1_5_3/scripts/launch_openrouter.sh
+codex --approve-for-me
 ```
 
-The launcher uses `codex exec --ignore-user-config`, supplies the complete OpenRouter provider as
-highest-precedence CLI configuration, reads the bearer token directly through `env_key`, and pins the
-coordinator and all subagents to `~openai/gpt-latest`/`high`. Ignoring the base user config prevents a
-cached OpenAI login, a stale command-backed provider, or a `gpt-5.6-sol`/`low` default from leaking
-into this run.
+Then send this as the first request:
 
-Before it writes `routing_preflight.md` or starts the review, the launcher performs one small
-ephemeral model request. A `PASS` therefore confirms both configuration and bearer-token
-authentication; `doctor` output alone is not accepted. The review itself runs non-interactively to
-completion through `codex exec`. Use `--preflight-only` to test routing and authentication without
-starting the paper review.
+```text
+Read START_PROMPT.md completely and execute Workflow 1.5.3 now.
+```
+
+`--approve-for-me` requires Codex CLI 0.147.0 or newer. It keeps the workspace-write sandbox and
+routes eligible approval requests through automatic review; it does not grant additional network or
+filesystem access.
+
+The coordinator's first response is the real provider/authentication inference check. Before
+scientific work, it must verify the fixed model matrix and all nine named presets, write
+`routing_preflight.md`, and successfully start the required fresh reuse-asset curator. If the
+orchestration API rejects a fixed model ID or the specialist cannot obtain a model response, stop and
+record the runtime blocker. No shell launcher or `codex exec` fallback is part of this workflow.

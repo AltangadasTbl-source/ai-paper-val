@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.3 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.3 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.3 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--workflow-153"
+id="toc-quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--abstract-phase-2-allocation-percentages-mix-incompatible-denominators"
+id="toc-c001--abstract-phase-2-allocation-percentages-mix-incompatible-denominators">C001
+— Abstract phase-2 allocation percentages mix incompatible
+denominators</a></li>
+<li><a
+href="#c002--main-baseline-sex-counts-exceed-both-printed-arm-denominators"
+id="toc-c002--main-baseline-sex-counts-exceed-both-printed-arm-denominators">C002
+— Main baseline sex counts exceed both printed arm denominators</a></li>
+<li><a
+href="#c003--displayed-randomization-total-does-not-equal-its-two-initial-branches"
+id="toc-c003--displayed-randomization-total-does-not-equal-its-two-initial-branches">C003
+— Displayed randomization total does not equal its two initial
+branches</a></li>
+<li><a
+href="#c004--results-reverses-attendance-status-for-continuation-assignments"
+id="toc-c004--results-reverses-attendance-status-for-continuation-assignments">C004
+— Results reverses attendance status for continuation
+assignments</a></li>
+<li><a
+href="#c005--cnrt-dose-increase-primary-cri-differs-between-abstract-and-matched-results"
+id="toc-c005--cnrt-dose-increase-primary-cri-differs-between-abstract-and-matched-results">C005
+— CNRT dose-increase primary CrI differs between abstract and matched
+results</a></li>
+<li><a
+href="#c006--cnrt-switch-primary-cri-differs-across-abstract-results-and-etable"
+id="toc-c006--cnrt-switch-primary-cri-differs-across-abstract-results-and-etable">C006
+— CNRT switch primary CrI differs across abstract, Results, and
+eTable</a></li>
+<li><a
+href="#c007--varenicline-to-cnrt-switch-contrast-has-inconsistent-sign-and-reference"
+id="toc-c007--varenicline-to-cnrt-switch-contrast-has-inconsistent-sign-and-reference">C007
+— Varenicline-to-CNRT switch contrast has inconsistent sign and
+reference</a></li>
+<li><a
+href="#c008--increased-varenicline-primary-cri-upper-endpoint-differs"
+id="toc-c008--increased-varenicline-primary-cri-upper-endpoint-differs">C008
+— Increased-varenicline primary CrI upper endpoint differs</a></li>
+<li><a
+href="#c009--phase-1-abstainer-primary-cri-lower-endpoint-differs"
+id="toc-c009--phase-1-abstainer-primary-cri-lower-endpoint-differs">C009
+— Phase-1 abstainer primary CrI lower endpoint differs</a></li>
+<li><a
+href="#c010--protocol-beta-parameters-do-not-reproduce-the-paired-varenicline-response-probability"
+id="toc-c010--protocol-beta-parameters-do-not-reproduce-the-paired-varenicline-response-probability">C010
+— Protocol beta parameters do not reproduce the paired varenicline
+response probability</a></li>
+<li><a
+href="#c011--protocol-aim-1-power-increases-at-a-stricter-nested-threshold"
+id="toc-c011--protocol-aim-1-power-increases-at-a-stricter-nested-threshold">C011
+— Protocol Aim-1 power increases at a stricter nested threshold</a></li>
+<li><a
+href="#c012--protocol-table-3-duplicates-an-aim-2-comparator-label"
+id="toc-c012--protocol-table-3-duplicates-an-aim-2-comparator-label">C012
+— Protocol Table 3 duplicates an Aim-2 comparator label</a></li>
+<li><a
+href="#c013--etable-3-reverses-count-and-percentage-in-one-n--cell"
+id="toc-c013--etable-3-reverses-count-and-percentage-in-one-n--cell">C013
+— ETable 3 reverses count and percentage in one n (%) cell</a></li>
+<li><a
+href="#c014--eot30-cnrt-switch-cell-estimate-and-cri-do-not-reconcile-with-matched-figure-as-printed"
+id="toc-c014--eot30-cnrt-switch-cell-estimate-and-cri-do-not-reconcile-with-matched-figure-as-printed">C014
+— EOT+30 CNRT-switch cell estimate and CrI do not reconcile with matched
+figure as printed</a></li>
+<li><a
+href="#c015--eot30-increased-cnrt-cell-cri-upper-endpoint-does-not-reconcile-with-matched-figure-as-printed"
+id="toc-c015--eot30-increased-cnrt-cell-cri-upper-endpoint-does-not-reconcile-with-matched-figure-as-printed">C015
+— EOT+30 increased-CNRT cell CrI upper endpoint does not reconcile with
+matched figure as printed</a></li>
+<li><a
+href="#c016--eot30-cnrt-switch-ard-cri-upper-endpoint-does-not-reconcile-with-matched-table-as-printed"
+id="toc-c016--eot30-cnrt-switch-ard-cri-upper-endpoint-does-not-reconcile-with-matched-table-as-printed">C016
+— EOT+30 CNRT-switch ARD CrI upper endpoint does not reconcile with
+matched table as printed</a></li>
+<li><a
+href="#c017--eot30-increased-varenicline-narrative-has-repeated-intervals-that-do-not-reconcile-as-printed"
+id="toc-c017--eot30-increased-varenicline-narrative-has-repeated-intervals-that-do-not-reconcile-as-printed">C017
+— EOT+30 increased-varenicline narrative has repeated intervals that do
+not reconcile as printed</a></li>
+<li><a
+href="#c018--eot30-abstainer-ard-is-11-in-narrative-but-11-in-etable"
+id="toc-c018--eot30-abstainer-ard-is-11-in-narrative-but-11-in-etable">C018
+— EOT+30 abstainer ARD is 1.1% in narrative but 11% in eTable</a></li>
+<li><a
+href="#c019--six-month-cnrt-switch-cross-reference-does-not-directly-identify-the-matched-table"
+id="toc-c019--six-month-cnrt-switch-cross-reference-does-not-directly-identify-the-matched-table">C019
+— Six-month CNRT-switch cross-reference does not directly identify the
+matched table</a></li>
+<li><a
+href="#c020--six-month-abstainer-narrative-interval-and-direction-do-not-reconcile-with-matched-sources"
+id="toc-c020--six-month-abstainer-narrative-interval-and-direction-do-not-reconcile-with-matched-sources">C020
+— Six-month abstainer narrative interval and direction do not reconcile
+with matched sources</a></li>
+<li><a
+href="#c021--phase-1-abstainer-summary-cross-reference-does-not-directly-identify-the-matched-table"
+id="toc-c021--phase-1-abstainer-summary-cross-reference-does-not-directly-identify-the-matched-table">C021
+— Phase-1-abstainer summary cross-reference does not directly identify
+the matched table</a></li>
+<li><a
+href="#c022--six-month-var-plus-versus-switch-cross-reference-does-not-directly-identify-the-matched-table"
+id="toc-c022--six-month-var-plus-versus-switch-cross-reference-does-not-directly-identify-the-matched-table">C022
+— Six-month VAR-plus-versus-switch cross-reference does not directly
+identify the matched table</a></li>
+<li><a
+href="#c023--etable-3-employment-value-order-differs-from-declared-n-"
+id="toc-c023--etable-3-employment-value-order-differs-from-declared-n-">C023
+— ETable 3 employment value order differs from declared n (%)</a></li>
+<li><a
+href="#c024--etable-3-employment-totals-do-not-close-to-two-printed-column-ns"
+id="toc-c024--etable-3-employment-totals-do-not-close-to-two-printed-column-ns">C024
+— ETable 3 employment totals do not close to two printed column
+Ns</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>Every observation below is <strong>Pending Human
+Adjudication</strong>. This is a quantitative reporting quality-control
+review, not a determination of validity, correction, or paper-level
+conclusion impact. Small preventable reporting defects can matter for
+downstream evidence extraction if confirmed; propagation, conclusion
+change, and serious harm are not claimed.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete uncapped review registered 24 stable candidate consistency
+issues (C001-C024). All 91 direct-source PDF pages were mapped. No
+candidate arises solely from a coherent display-zero P value.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>Direct sources were the 10-page main article, 45-page protocol, and
+36-page results supplement. Source identities and SHA-256 values are
+recorded in <a href="review_1_5_3/source_inventory.md">source
+inventory</a>. Reused assets were inventoried but yielded zero reusable
+scientific-coverage units: DOC-001 and DOC-003 derivatives were stale
+after source-hash mismatch, and DOC-002 had no extraction. See <a
+href="review_1_5_3/evidence_asset_inventory.md">reused-evidence
+inventory</a>.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review covered numeric, denominator, statistical, cross-document,
+measure/label, and rate/count consistency in supplied sources only.
+Source coverage is complete: 91 total units, 0 reusable units, 91
+fresh-required units, and 91 mapped units (<a
+href="review_1_5_3/source_coverage.md">coverage</a>). It excluded broad
+methodological, clinical, novelty, misconduct, and raw-data audits.
+There is no review queue, count cap, top-N subset, or deferred-by-cap
+section.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The numeric relationship inventory contains N001-N072; the
+statistical relationship inventory contains S001-S030. Independent
+numeric and cross-source checks were completed, and both statistical
+passes covered all 30 relationships. Details are retained in the <a
+href="review_1_5_3/relationships/numeric_relationship_inventory.md">numeric
+inventory</a>, <a
+href="review_1_5_3/statistics/relationship_inventory.md">statistical
+inventory</a>, <a
+href="review_1_5_3/checkers/statistical_pass_1.md">pass 1</a>, and <a
+href="review_1_5_3/checkers/statistical_pass_2.md">pass 2</a>.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate consistency issue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Abstract phase-2 allocation percentages use incompatible
+denominators</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Baseline sex counts do not close to printed arm denominators</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Randomization total does not close to two displayed branches</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Attendance status differs for continuation assignments</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Conditional CNRT dose-increase CrI comparison differs</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>CNRT-switch primary CrI differs across occurrences</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Varenicline-to-CNRT switch sign/reference differs</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Increased-varenicline CrI upper endpoint differs</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>Phase-1 abstainer CrI lower endpoint differs</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>Protocol beta parameters do not reproduce paired probability</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>Protocol Aim-1 power rises at a stricter threshold</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Protocol Table 3 comparator label is duplicated</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>One ETable 3 cell order differs from n (%) heading</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>EOT+30 CNRT-switch cell values do not reconcile as printed</td>
+</tr>
+<tr>
+<td>C015</td>
+<td>EOT+30 increased-CNRT cell interval does not reconcile as
+printed</td>
+</tr>
+<tr>
+<td>C016</td>
+<td>EOT+30 CNRT-switch ARD interval does not reconcile as printed</td>
+</tr>
+<tr>
+<td>C017</td>
+<td>Repeated increased-varenicline intervals do not reconcile as
+printed</td>
+</tr>
+<tr>
+<td>C018</td>
+<td>EOT+30 abstainer ARD differs between narrative and eTable</td>
+</tr>
+<tr>
+<td>C019</td>
+<td>Six-month CNRT-switch cross-reference does not directly identify
+matched table</td>
+</tr>
+<tr>
+<td>C020</td>
+<td>Six-month abstainer interval/direction do not reconcile as
+printed</td>
+</tr>
+<tr>
+<td>C021</td>
+<td>Abstainer-summary cross-reference does not directly identify matched
+table</td>
+</tr>
+<tr>
+<td>C022</td>
+<td>VAR-plus-versus-switch cross-reference does not directly identify
+matched table</td>
+</tr>
+<tr>
+<td>C023</td>
+<td>Employment value order differs from declared n (%)</td>
+</tr>
+<tr>
+<td>C024</td>
+<td>Employment totals do not close to two printed column Ns</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--abstract-phase-2-allocation-percentages-mix-incompatible-denominators" class="candidate-card">C001
+— Abstract phase-2 allocation percentages mix incompatible
+denominators</h2>
+<p><strong>Candidate statement:</strong> Abstract phase-2 allocation
+percentages mix incompatible denominators.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=1">Main
+article p. 1</a>; <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=6">Main
+article p. 6</a>.</p>
+<p><strong>Source evidence:</strong> Among 191 CNRT nonabstainers the
+abstract prints 90 (47%), 50 (33%), and 51 (34%); among 157 varenicline
+nonabstainers it prints 39 (32%), 41 (34%), and 77 (49%). Figure 2 shows
+that 40 and 35 nonattenders were imputed into continuation.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> The percentages in each
+sentence should use its introduced denominator or explicitly distinguish
+rerandomized from full analysis populations. They sum to 114% and 115%;
+continuation uses 191/157 while other arms use 151/122.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Which denominator is
+intended for each parenthetical allocation percentage?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--main-baseline-sex-counts-exceed-both-printed-arm-denominators" class="candidate-card">C002
+— Main baseline sex counts exceed both printed arm denominators</h2>
+<p><strong>Candidate statement:</strong> Main baseline sex counts exceed
+both printed arm denominators.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=5">Main
+article p. 5</a>, baseline Table.</p>
+<p><strong>Source evidence:</strong> Each arm is <code>n=245</code>, but
+each prints female 105 (42.9) and male 145 (57.1).</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> Mutually exclusive counts must
+sum to the column total: 105+145=250, not 245; 145/245=59.2%, not
+57.1%.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Is the male count intended
+to be 140, or is another table element incorrect?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--displayed-randomization-total-does-not-equal-its-two-initial-branches" class="candidate-card">C003
+— Displayed randomization total does not equal its two initial
+branches</h2>
+<p><strong>Candidate statement:</strong> Displayed randomization total
+does not equal its two initial branches.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=4">Main
+article p. 4</a>; <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=6">Main
+article p. 6</a>.</p>
+<p><strong>Source evidence:</strong> Results/Figure 2 state 491
+randomized, followed by branches of 245 CNRT and 245 varenicline; the
+abstract/analysis population is 490 and one participant was excluded
+later.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> The two displayed initial
+branches sum to 490, not 491. A later exclusion explains an analysis
+total but does not close the displayed initial branch identity.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> What initial allocation
+includes the 491st randomized participant?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--results-reverses-attendance-status-for-continuation-assignments" class="candidate-card">C004
+— Results reverses attendance status for continuation assignments</h2>
+<p><strong>Candidate statement:</strong> Results reverses attendance
+status for continuation assignments.</p>
+<p><strong>Category:</strong> Analysis-unit or population
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=1">Main
+article p. 1</a>; <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=4">Main
+article p. 4</a>; <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=6">Main
+article p. 6</a>.</p>
+<p><strong>Source evidence:</strong> Results says the 40 CNRT and 35
+varenicline participants <code>who did attend rerandomization</code>
+were assigned to continuation; abstract and Figure 2 say they did not
+return/attend.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> The same 75-person analysis-set
+pathway cannot simultaneously be attendees and nonattendees.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Was <code>not</code>
+omitted from the Results sentence?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--cnrt-dose-increase-primary-cri-differs-between-abstract-and-matched-results" class="candidate-card">C005
+— CNRT dose-increase primary CrI differs between abstract and matched
+results</h2>
+<p><strong>Candidate statement:</strong> CNRT dose-increase primary CrI
+differs between abstract and matched results.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=1">Main
+article p. 1</a>; <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=5">Main
+article p. 5</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=21">Supplement 2
+p. 21</a>.</p>
+<p><strong>Source evidence:</strong> After listing both CNRT rescue
+arms, the abstract's singular following statement gives RD 6%, 95% CrI
+6%-11%; Results and eTable 4 explicitly give 6%, 2%-11% for increased
+CNRT versus continuation.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> If the abstract parenthetical
+applies to both rescue arms, matched population, time, contrast,
+measure, and interval level should reproduce the same endpoints absent a
+stated alternate analysis. Its grammatical scope is not explicit.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+abstract parenthetical may apply only to switching; this card remains
+conditional on grammatical scope.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Does the abstract interval
+apply only to switching or to both rescue arms, and if it applies to
+increased CNRT, is the intended lower endpoint 6% or 2%?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--cnrt-switch-primary-cri-differs-across-abstract-results-and-etable" class="candidate-card">C006
+— CNRT switch primary CrI differs across abstract, Results, and
+eTable</h2>
+<p><strong>Candidate statement:</strong> CNRT switch primary CrI differs
+across abstract, Results, and eTable.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=1">Main
+article p. 1</a>; <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=5">Main
+article p. 5</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=21">Supplement 2
+p. 21</a>.</p>
+<p><strong>Source evidence:</strong> Switch-to-varenicline versus
+continuation is RD 6% with CrI 6%-11%, 2%-11%, and 2%-10% at the three
+locations.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> One matched contrast should
+retain one displayed 95% CrI absent a named estimator/version
+distinction.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Which interval belongs to
+the final switch contrast?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--varenicline-to-cnrt-switch-contrast-has-inconsistent-sign-and-reference" class="candidate-card">C007
+— Varenicline-to-CNRT switch contrast has inconsistent sign and
+reference</h2>
+<p><strong>Candidate statement:</strong> Varenicline-to-CNRT switch
+contrast has inconsistent sign and reference.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=1">Main
+article p. 1</a>; <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=5">Main
+article p. 5</a>; <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=7">Main
+article p. 7</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=21">Supplement 2
+p. 21</a>.</p>
+<p><strong>Source evidence:</strong> Main text prints switch relative to
+continuation RD -3% (-4% to -1%) but says continuation was worse; eTable
+4 labels switch versus stay and prints +3% (1%-4%); displayed cells are
+0% switch and 3% stay.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> Contrast label, sign, interval,
+raw direction, and narrative interpretation must use the same reference
+orientation.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Which signed contrast and
+reference orientation are intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--increased-varenicline-primary-cri-upper-endpoint-differs" class="candidate-card">C008
+— Increased-varenicline primary CrI upper endpoint differs</h2>
+<p><strong>Candidate statement:</strong> Increased-varenicline primary
+CrI upper endpoint differs.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=1">Main
+article p. 1</a>; <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=5">Main
+article p. 5</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=21">Supplement 2
+p. 21</a>.</p>
+<p><strong>Source evidence:</strong> Main abstract/results print RD 18%
+(13%-24%); eTable 4 prints 18% (13%-23%).</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> A matched primary contrast
+should reproduce the same interval endpoint at the stated precision.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Is the final upper
+endpoint 24% or 23%?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c009--phase-1-abstainer-primary-cri-lower-endpoint-differs" class="candidate-card">C009
+— Phase-1 abstainer primary CrI lower endpoint differs</h2>
+<p><strong>Candidate statement:</strong> Phase-1 abstainer primary CrI
+lower endpoint differs.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cinciripini_2024_oi_240036_1716416465.98349.pdf#page=7">Main
+article p. 7</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=21">Supplement 2
+p. 21</a>.</p>
+<p><strong>Source evidence:</strong> Main Results gives
+CNRT-versus-varenicline RD 6% (-5% to 16%); eTable 4 gives 6% (-4% to
+16%).</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> A matched comparison should
+retain the same interval endpoints absent a stated analysis
+distinction.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Is the final lower
+endpoint -5% or -4%?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--protocol-beta-parameters-do-not-reproduce-the-paired-varenicline-response-probability" class="candidate-card">C010
+— Protocol beta parameters do not reproduce the paired varenicline
+response probability</h2>
+<p><strong>Candidate statement:</strong> Protocol beta parameters do not
+reproduce the paired varenicline response probability.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp1_prod_1716416466.00349.pdf#page=32">Protocol p.
+32</a>, Figure 2.</p>
+<p><strong>Source evidence:</strong> Varenicline week-6 response is
+paired as 0.50 (0.40-0.60) with Beta(785,869).</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> The beta mean from the printed
+parameters is 785/(785+869)=0.4746, not 0.50; the interval also is not
+reproduced by those concentrated parameters under the recorded
+diagnostic.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+beta parameters may represent a different quantity; the interval-to-beta
+linkage is not defined.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Do the beta parameters
+represent a different quantity, or is one printed input incorrect?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c011--protocol-aim-1-power-increases-at-a-stricter-nested-threshold" class="candidate-card">C011
+— Protocol Aim-1 power increases at a stricter nested threshold</h2>
+<p><strong>Candidate statement:</strong> Protocol Aim-1 power increases
+at a stricter nested threshold.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp1_prod_1716416466.00349.pdf#page=34">Protocol p.
+34</a>, Table 3.</p>
+<p><strong>Source evidence:</strong> Aim-1 detection power is 0.948,
+0.980, 0.974, and 0.963 at posterior thresholds 0.80, 0.85, 0.90, and
+0.95.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> On one simulation set,
+detections satisfying a stricter threshold are a subset of those
+satisfying a looser threshold; 0.980 exceeds 0.948 by 0.032.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Simulation realizations or detection definitions may differ; common use
+is not explicitly stated.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Are the first two power
+values or their threshold labels transposed, or is a nonnested
+definition missing?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--protocol-table-3-duplicates-an-aim-2-comparator-label" class="candidate-card">C012 —
+Protocol Table 3 duplicates an Aim-2 comparator label</h2>
+<p><strong>Candidate statement:</strong> Protocol Table 3 duplicates an
+Aim-2 comparator label.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp1_prod_1716416466.00349.pdf#page=29">Protocol p.
+29</a>; <a
+href="../joi240036supp1_prod_1716416466.00349.pdf#page=33">Protocol p.
+33</a>; <a
+href="../joi240036supp1_prod_1716416466.00349.pdf#page=34">Protocol p.
+34</a>.</p>
+<p><strong>Source evidence:</strong> Table 3 labels the first and third
+Aim-2 effects <code>VAR vs. NPL</code>; the third estimate 0.195 equals
+0.399-0.204, matching VAR versus NPL+, while 0.370 equals VAR versus
+NPL.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> A comparator label must
+identify the displayed effect and stated contrast formula.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Should the third label
+read <code>VAR vs. NPL+</code>?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--etable-3-reverses-count-and-percentage-in-one-n--cell" class="candidate-card">C013 —
+ETable 3 reverses count and percentage in one n (%) cell</h2>
+<p><strong>Candidate statement:</strong> ETable 3 reverses count and
+percentage in one n (%) cell.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=19">Supplement 2
+p. 19</a>, ETable 3.</p>
+<p><strong>Source evidence:</strong> Under <code>n (%)</code>,
+race/ethnicity <code>Other</code> for the N=41 VAR-nonabstainer-to-CNRT
+column is <code>4.9 (2)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> Counts must be integers and
+2/41=4.878%, so the values fit only as <code>2 (4.9)</code>.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Should the cell be
+reordered to <code>2 (4.9)</code>?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c014--eot30-cnrt-switch-cell-estimate-and-cri-do-not-reconcile-with-matched-figure-as-printed" class="candidate-card">C014
+— EOT+30 CNRT-switch cell estimate and CrI do not reconcile with matched
+figure as printed</h2>
+<p><strong>Candidate statement:</strong> EOT+30 CNRT-switch cell
+estimate and CrI do not reconcile with matched figure as printed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=10">Supplement 2
+p. 10</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=15">Supplement 2
+p. 15</a>.</p>
+<p><strong>Source evidence:</strong> Narrative prints 1.0% (7.0%-1.3%);
+matched eFigure 2 prints 5/51, 10% (7%-13%).</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> The narrative interval is
+reversed/non-containing, its estimate differs from the matched cell, and
+5/51 rounds to 10%.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Is the narrative intended
+to read 10% (7%-13%)?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c015--eot30-increased-cnrt-cell-cri-upper-endpoint-does-not-reconcile-with-matched-figure-as-printed" class="candidate-card">C015
+— EOT+30 increased-CNRT cell CrI upper endpoint does not reconcile with
+matched figure as printed</h2>
+<p><strong>Candidate statement:</strong> EOT+30 increased-CNRT cell CrI
+upper endpoint does not reconcile with matched figure as printed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=10">Supplement 2
+p. 10</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=15">Supplement 2
+p. 15</a>.</p>
+<p><strong>Source evidence:</strong> Narrative prints 8.0% (5.0%-1.1%);
+eFigure 2 prints 4/50, 8% (5%-11%).</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> The narrative interval is
+reversed and excludes its estimate; the matched cell has ordered
+endpoints.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Is <code>1.1%</code> a
+decimal-placement error for <code>11%</code>?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c016--eot30-cnrt-switch-ard-cri-upper-endpoint-does-not-reconcile-with-matched-table-as-printed" class="candidate-card">C016
+— EOT+30 CNRT-switch ARD CrI upper endpoint does not reconcile with
+matched table as printed</h2>
+<p><strong>Candidate statement:</strong> EOT+30 CNRT-switch ARD CrI
+upper endpoint does not reconcile with matched table as printed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=10">Supplement 2
+p. 10</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=33">Supplement 2
+p. 33</a>.</p>
+<p><strong>Source evidence:</strong> Narrative prints
+switch-versus-continuation ARD 6.0% (3.0%-1.0%); eTable 9 prints 6%
+(3%-10%).</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> The narrative effect interval
+is reversed/non-containing and differs from the matched contrast.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Is the intended upper
+endpoint 10%?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c017--eot30-increased-varenicline-narrative-has-repeated-intervals-that-do-not-reconcile-as-printed" class="candidate-card">C017
+— EOT+30 increased-varenicline narrative has repeated intervals that do
+not reconcile as printed</h2>
+<p><strong>Candidate statement:</strong> EOT+30 increased-varenicline
+narrative has repeated intervals that do not reconcile as printed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=10">Supplement 2
+p. 10</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=11">Supplement 2
+p. 11</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=15">Supplement 2
+p. 15</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=33">Supplement 2
+p. 33</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=34">Supplement 2
+p. 34</a>.</p>
+<p><strong>Source evidence:</strong> Narrative repeats 8.0% (5.0%-1.1%)
+for the cell and two ARDs; eFigure 2 and eTables 9-10 print 8%
+(5%-11%).</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> Each repeated narrative
+interval is reversed/non-containing and differs from its matched
+figure/table occurrence.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Should all repeated
+<code>1.1%</code> upper endpoints be <code>11%</code>?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c018--eot30-abstainer-ard-is-11-in-narrative-but-11-in-etable" class="candidate-card">C018
+— EOT+30 abstainer ARD is 1.1% in narrative but 11% in eTable</h2>
+<p><strong>Candidate statement:</strong> EOT+30 abstainer ARD is 1.1% in
+narrative but 11% in eTable.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=11">Supplement 2
+p. 11</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=15">Supplement 2
+p. 15</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=35">Supplement 2
+p. 35</a>.</p>
+<p><strong>Source evidence:</strong> Narrative gives ARD 1.1%
+(-1.0%-22%), while eTable 11 gives 11% (-1%-22%); cell probabilities are
+67% versus 56% and probability is 97%.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> The matched contrast and
+displayed cell difference support an 11-point, not 1.1-point, value at
+the displayed precision.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Is the narrative decimal
+point unintended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c019--six-month-cnrt-switch-cross-reference-does-not-directly-identify-the-matched-table" class="candidate-card">C019
+— Six-month CNRT-switch cross-reference does not directly identify the
+matched table</h2>
+<p><strong>Candidate statement:</strong> The six-month CNRT-switch
+cross-reference does not directly identify the matched outcome
+table.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=11">Supplement 2
+p. 11</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=31">Supplement 2
+p. 31</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=33">Supplement 2
+p. 33</a>.</p>
+<p><strong>Source evidence:</strong> Narrative assigns ARD 1.0%
+(-2.0%-3.0%), probability 66%, to ETable 7; ETable 7 is compliance,
+while ETable 9 contains the exact outcome contrast.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> A quantitative cross-reference
+should identify the table containing the stated measure and value.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Should the cross-reference
+be ETable 9?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c020--six-month-abstainer-narrative-interval-and-direction-do-not-reconcile-with-matched-sources" class="candidate-card">C020
+— Six-month abstainer narrative interval and direction do not reconcile
+with matched sources</h2>
+<p><strong>Candidate statement:</strong> Six-month abstainer narrative
+interval and direction do not reconcile with matched sources.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=12">Supplement 2
+p. 12</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=16">Supplement 2
+p. 16</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=35">Supplement 2
+p. 35</a>.</p>
+<p><strong>Source evidence:</strong> Narrative gives CNRT 39%, VAR 40%,
+posterior probability 55%, ARD +1.0% (-1.3% to -1.1%), and a varenicline
+benefit; eTable 11 headed CNRT vs VAR gives +1% (-11% to 12%),
+probability 56%.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> The narrative estimate is
+outside its interval; interval scale, probability, sign/reference label,
+and stated direction do not all align with the matched table/figure.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> What signed contrast,
+reference group, interval, and posterior probability are intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c021--phase-1-abstainer-summary-cross-reference-does-not-directly-identify-the-matched-table" class="candidate-card">C021
+— Phase-1-abstainer summary cross-reference does not directly identify
+the matched table</h2>
+<p><strong>Candidate statement:</strong> The phase-1-abstainer summary
+cross-reference does not directly identify the matched table.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=10">Supplement 2
+p. 10</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=34">Supplement 2
+p. 34</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=35">Supplement 2
+p. 35</a>.</p>
+<p><strong>Source evidence:</strong> The phase-1-abstainer EOT+30 and
+six-month summary cites ETable 10; ETable 10 reports
+increase-versus-switch comparisons among nonabstainers, while ETable 11
+reports the phase-1-abstainer CNRT-versus-VAR results.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> A quantitative cross-reference
+should identify the table containing the stated population and
+comparison.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Should the summary cite
+ETable 11 rather than ETable 10?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c022--six-month-var-plus-versus-switch-cross-reference-does-not-directly-identify-the-matched-table" class="candidate-card">C022
+— Six-month VAR-plus-versus-switch cross-reference does not directly
+identify the matched table</h2>
+<p><strong>Candidate statement:</strong> The VAR-plus-versus-switch
+cross-reference does not directly identify the matched direct-contrast
+table.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=12">Supplement 2
+p. 12</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=33">Supplement 2
+p. 33</a>; <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=34">Supplement 2
+p. 34</a>.</p>
+<p><strong>Source evidence:</strong> The narrative cites ETable 9 for
+both VAR+ versus continuation and VAR+ versus CNRT switch; ETable 9
+contains continuation-reference comparisons, while ETable 10 contains
+the switch-reference comparison 2% (1%-5%), greater than 99%.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> A quantitative cross-reference
+should identify the table defining and reporting the stated
+comparator.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Should the
+switch-reference clause cite ETable 10 rather than ETable 9?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c023--etable-3-employment-value-order-differs-from-declared-n-" class="candidate-card">C023
+— ETable 3 employment value order differs from declared n (%)</h2>
+<p><strong>Candidate statement:</strong> ETable 3 employment value order
+differs from the declared n (%) heading.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=19">Supplement 2
+p. 19</a>, ETable 3.</p>
+<p><strong>Source evidence:</strong> The section heading is
+<code>Employment, n (%)</code>, but every populated Employed and
+Unemployed cell prints percentage first and count in parentheses,
+including <code>72.2 (39)</code> and <code>27.8 (15)</code> under N=54
+and <code>74.5 (38)</code> and <code>25.5 (13)</code> under N=51.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> Under <code>n (%)</code>, the
+first value should be an integer count and the parenthetical value a
+percentage; the printed values reconcile only as percentage(count).</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Should the heading be
+<code>Employment, % (n)</code>, or should all employment cells be
+reordered to n (%)?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c024--etable-3-employment-totals-do-not-close-to-two-printed-column-ns" class="candidate-card">C024
+— ETable 3 employment totals do not close to two printed column Ns</h2>
+<p><strong>Candidate statement:</strong> ETable 3 employment totals do
+not close to two printed column Ns.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240036supp2_prod_1716416466.01349.pdf#page=19">Supplement 2
+p. 19</a>, ETable 3.</p>
+<p><strong>Source evidence:</strong> In the CNRT+ N=50 column,
+Employment counts are 40 and 9 (percentages 80 and 18); in the VAR+ N=39
+column they are 27 and 11 (69.2 and 28.2). No employment missingness
+category or footnote is printed.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed evidence versus
+the matched source occurrence or stated consistency rule.</p>
+<p><strong>Reasoning procedure:</strong> Displayed exhaustive
+Employed/Unemployed categories should sum to the column N or identify
+missingness. The totals are 49/50 and 38/39; percentages sum to 98% and
+97.4%.</p>
+<p><strong>Calculation:</strong> Reproduce the stated arithmetic or
+direct printed comparison at displayed precision; see source evidence
+and consistency rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplied package does not state an authoritative correction; alternative
+production or version explanations require human review.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact cited values and
+locations were independently rechecked against supplied PDFs.</p>
+<p><strong>Quality-control relevance:</strong> The printed relationship
+requires human adjudication before use as a reconciled quantitative
+record.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the affected value, interval, denominator, label, or
+cross-reference. Propagation and conclusion change are not claimed.</p>
+<p><strong>Human verification steps:</strong> Are the two shortfalls
+missing employment values, and what denominator should govern the
+displayed percentages?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, these observations could affect extraction of
+denominators, counts, percentages, interval endpoints, signed
+references, planning parameters, comparator labels, secondary-outcome
+values, or table navigation. This report does not assert that any such
+information has propagated, changed conclusions, or caused harm.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>See the durable <a href="review_1_5_3/limitations.md">limitations
+record</a>. In brief, no raw data, posterior draws, table-generation
+files, simulation code, version crosswalk, or history was supplied. C005
+remains conditional on abstract grammatical scope; C010 has no defined
+interval-to-beta linkage; and C011 has no stated common-simulation
+definition.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For every stable ID, compare the cited source pages, verify the
+stated arithmetic or matching rule, decide the intended source
+interpretation, record validity/importance/action/initials/notes in the
+card, and retain any authoritative correction separately from this
+review.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<ul>
+<li><strong>Routing preflight:</strong> PASS (<a
+href="review_1_5_3/routing_preflight.md">record</a>).</li>
+<li><strong>Direct sources:</strong> 3 PDFs; 91 PDF-page units; all 91
+mapped.</li>
+<li><strong>Source integrity:</strong> Source and reused-artifact hashes
+were recorded before review; the quality audit reports all 3 direct
+sources and 79 reused artifacts matched those records.</li>
+<li><strong>Coverage manifest:</strong> <a
+href="review_1_5_3/coverage_manifest.md">coverage_manifest.md</a>.</li>
+<li><strong>Evidence recheck:</strong> All C001-C024 were independently
+rechecked (<a
+href="review_1_5_3/verification/evidence_recheck.md">record</a>).</li>
+</ul>
+<h3 id="agent-execution">Agent execution</h3>
+<p>The execution manifest records the coordinator and every specialist,
+model, reasoning effort, fresh-start mode, and durable artifact: <a
+href="review_1_5_3/agent_execution_manifest.md">agent_execution_manifest.md</a>.
+Both statistical passes were separate fresh gpt-5.6-terra/high
+agents.</p>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Three current-source PDFs contain 91
+total page units; all 91 require fresh direct-source mapping because
+DOC-001 and DOC-003 derivatives are source-hash stale and DOC-002 has no
+extraction. The scope includes one main article, a 45-page protocol, and
+a 36-page results supplement, requiring two mapping lanes, complete
+direct extraction, visual/table confirmation where needed, and
+subsequent numeric, cross-source, two-pass statistical, recheck, audit,
+and report stages. This has fewer total units but 10 more fresh-required
+units than the 102-unit/81-fresh calibration package, so a bounded 55-75
+minute target was selected.</li>
+<li><strong>Total source units:</strong> 91</li>
+<li><strong>Fresh-source units:</strong> 91</li>
+<li><strong>Target elapsed minutes:</strong> 55-75</li>
+<li><strong>Started UTC:</strong> 2026-08-19T04:32:23Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-19T05:11:57Z</li>
+<li><strong>Observed elapsed minutes:</strong> 39.6</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>Authoritative runtime token counts were unavailable for the
+coordinator and all 15 specialist agents, so the total-token count and
+complete price remain explicitly incomplete; zero is only the known
+recorded subtotal, not an estimate of actual usage. Per-agent detail is
+in <a
+href="review_1_5_3/token_usage_summary.md">token_usage_summary.md</a>.
+Cached input and cache-write counts are input subsets; reasoning is an
+output subset; none is added again to total tokens. Any available amount
+uses the bundled pricing snapshot dated 2026-08-18 and is a token-only
+estimate, not an invoice.</p>
+</body>
+</html>

@@ -31,28 +31,28 @@ two agents write the same artifact concurrently. Shard by disjoint pages, tables
 candidate IDs when needed; shard size is a context bound, never a finding limit.
 
 Do not put provider credentials or provider selection in the package-root `.codex/config.toml`.
-The authenticated launcher requires the nine bundled `.codex/agents/` role presets and verifies each
-one before the review begins. Preserve unrelated package `.codex` controls when copying those files.
-Validation does not rewrite `.codex/`; fallback or repair agents inherit the launcher-enforced model
-and effort without a spawn-model override.
+The direct interactive session requires the nine bundled `.codex/agents/` role presets and verifies
+each one before scientific work. Preserve unrelated package `.codex` controls when copying those
+files. Validation does not rewrite `.codex/`.
 
-## OpenRouter routing contract
+## Fixed model routing contract
 
-Start only through `workflow_1_5_4/scripts/launch_openrouter.sh`. Before scientific work, require the
-launcher-created `routing_preflight.md` to report `PASS`, provider `openrouter`, coordinator/default
-subagent model `~openai/gpt-latest`, reasoning effort `high`, `Authentication probe: PASS`, credential
-source `OPENROUTER_API_KEY via env_key`, `User config: IGNORED`, execution mode `CODEX_EXEC`, and all
-nine named agent presets verified against their required model/effort pairs. The launcher uses
-`codex exec --ignore-user-config` and supplies the complete provider through CLI overrides. A nested
-package `.codex/config.toml` cannot enforce provider or authentication settings because Codex ignores
-project-scoped `model_provider` and `model_providers` keys.
+Start from the package root with `codex --approve-for-me`, then send `Read START_PROMPT.md completely
+and execute Workflow 1.5.4 now.` as the first request. The user-level Codex configuration supplies the
+provider and authentication; the project config fixes the coordinator at `gpt-5.6-sol`/`high` and the
+nine named presets fix every specialist model/effort pair. Do not use `~openai/gpt-latest`, another
+moving alias, a shell launcher, or `codex exec` fallback.
+
+Before scientific work, create `routing_preflight.md` and require it to report `PASS`, coordinator
+`gpt-5.6-sol`/`high`, ordinary specialists `gpt-5.6-terra`/`medium`, statistical specialists
+`gpt-5.6-terra`/`high`, Sol specialists `gpt-5.6-sol`/`high`, `Coordinator inference: PASS`, execution
+mode `INTERACTIVE_CLI`, and all nine named agent presets verified against their required pairs.
 
 Every mandatory specialist stage uses a fresh agent and a distinct runtime ID. Use the named custom
-agent preset when available. Otherwise use a fresh default agent, inherit the launcher-enforced model,
-set the required reasoning effort explicitly, and include the role contract in the spawn prompt. Never
-reuse an agent for another mandatory stage, promote an agent with follow-up, or pass a different model
-in a spawn call. Record the requested route `~openai/gpt-latest` in the execution manifest and token
-ledger, and preserve any separately exposed resolved upstream model in authoritative usage metadata.
+agent preset when available. Otherwise use a fresh default agent, pass the exact fixed model and
+reasoning effort for that role, and include the role contract in the spawn prompt. Never reuse an
+agent for another mandatory stage, promote an agent with follow-up, omit a fallback model override, or
+substitute Sol for a Terra role. Record the exact model ID in the execution manifest and token ledger.
 
 ## Read before reviewing
 
@@ -88,8 +88,8 @@ of an old audit directory is to avoid writing into or overwriting it.
    relative artifact path; put every shard part on its own row.
 4. Run fresh, distinct `qc15_main_quantitative_mapper` and `qc15_support_quantitative_mapper` agents in parallel over disjoint
    newly prepared units. Map all result-relevant numeric and statistical relationships.
-5. Run numeric and cross-source review in two distinct fresh `~openai/gpt-latest`/`high` agents. Independently spawn a new
-   `~openai/gpt-latest`/`high` agent for statistical pass 1; do not reuse a mapper agent or use follow-up to
+5. Run numeric and cross-source review in two distinct fresh `gpt-5.6-terra`/`medium` agents. Independently spawn a new
+   `gpt-5.6-terra`/`high` agent for statistical pass 1; do not reuse a mapper agent or use follow-up to
    request a reasoning-effort change. Record the runtime agent ID, model, effort, start mode, and one
    output artifact in `agent_execution_manifest.md`. After each completed model response, retain its
    authoritative runtime usage record for later token accounting when the runtime exposes it. Each lane completes every assigned relationship.
@@ -97,7 +97,7 @@ of an old audit directory is to avoid writing into or overwriting it.
 6. Merge only genuine duplicates before stable IDs. Assign `C001`, `C002`, ... to every distinct
    candidate and write `candidate_ledger.md`, preserving all provenance and locations.
 7. Run a fresh `qc15_evidence_rechecker`/`high` agent over every stable ID against exact source locations.
-8. Spawn a different new `~openai/gpt-latest`/`high` agent for statistical pass 2 over every statistical
+8. Spawn a different new `gpt-5.6-terra`/`high` agent for statistical pass 2 over every statistical
    relationship, the complete cross-lane ledger, and all recheck facts. Record its distinct runtime ID
    in `agent_execution_manifest.md`. Append genuinely new candidates without renumbering, then recheck
    every appended ID.
@@ -114,9 +114,8 @@ of an old audit directory is to avoid writing into or overwriting it.
     counts exist without billing details; use `UNAVAILABLE` plus exact `__` token fields when no count
     is exposed. Never approximate from text length. Run the bundled cost
     calculator, then copy the exact performance fields, token-accounting status, per-model totals,
-    package total, and complete token-only price when available into the report. Dynamic routing is
-    unpriced by default; leave the complete price blank unless dated rates for the exact resolved
-    model are deliberately configured. Recompute source hashes, render HTML
+    package total, and complete token-only price when available into the report using the bundled
+    dated Sol/Terra pricing snapshot. Recompute source hashes, render HTML
     once, and validate:
 
 ```bash
@@ -167,7 +166,7 @@ finish time and manifest/ledger, and rerun the token calculation before renderin
 
 Do not finish until every direct-source row has mapped units equal to total units; all coverage rows
 are complete and contain one artifact path; routing preflight is `PASS`; every mandatory specialist
-stage has a distinct fresh runtime agent with the required model and effort; both fresh OpenRouter/high
+stage has a distinct fresh runtime agent with the required model and effort; both fresh Terra/high
 statistical agents cover every registered relationship; every actual agent including the coordinator appears in both the
 execution manifest and token ledger; agent- and model-level token summaries are current;
 ledger/recheck/quality/report ID sets are identical; every local
