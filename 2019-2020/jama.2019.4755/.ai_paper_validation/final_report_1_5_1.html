@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--workflow-151"
+id="toc-quantitative-quality-control-consistency-review--workflow-151">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.1</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--womens-quantitative-102-µg-hbg-ppv-difference-point-estimate-is-absent"
+id="toc-c001--womens-quantitative-102-µg-hbg-ppv-difference-point-estimate-is-absent">C001
+— Women’s quantitative 10.2 µg Hb/g PPV difference point estimate is
+absent</a></li>
+<li><a
+href="#c002--womens-quantitative-170-µg-hbg-ppv-difference-point-estimate-is-absent"
+id="toc-c002--womens-quantitative-170-µg-hbg-ppv-difference-point-estimate-is-absent">C002
+— Women’s quantitative 17.0 µg Hb/g PPV difference point estimate is
+absent</a></li>
+<li><a
+href="#c003--womens-qualitative-102-µg-hbg-ppv-difference-point-estimate-is-absent"
+id="toc-c003--womens-qualitative-102-µg-hbg-ppv-difference-point-estimate-is-absent">C003
+— Women’s qualitative 10.2 µg Hb/g PPV difference point estimate is
+absent</a></li>
+<li><a href="#c004--etable-5-visible-cutoff-header-truncates-after-µg"
+id="toc-c004--etable-5-visible-cutoff-header-truncates-after-µg">C004 —
+eTable 5 visible cutoff header truncates after <code>[µg</code></a></li>
+<li><a
+href="#c005--one-sap-occurrence-omits-the-microgram-prefix-from-the-102-cutoff"
+id="toc-c005--one-sap-occurrence-omits-the-microgram-prefix-from-the-102-cutoff">C005
+— One SAP occurrence omits the microgram prefix from the 10.2
+cutoff</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+<li><a href="#token-accounting" id="toc-token-accounting">Token
+accounting</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--workflow-151">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.1</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>Every candidate in this report is <strong>Pending Human
+Adjudication</strong>. This is a quantitative reporting quality-control
+review, not a determination of paper validity or a finding about authors
+or conclusions.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete mapping of the five supplied PDFs identified five stable
+quantitative reporting-quality candidates: three visibly incomplete
+PPV-difference cells, one visibly incomplete cutoff header, and one
+repeated cutoff expression lacking an explicit microgram prefix. The
+review found no coherent display-zero P-value candidate. The cards
+retain direct observations, diagnostic calculations where appropriate,
+source-grounded alternatives, and the remaining question for human
+review.</p>
+<p>Small preventable reporting defects can matter for downstream
+evidence extraction if confirmed. The supplied package does not
+establish propagation, a change in any conclusion, or serious harm.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The direct-source inventory covers five PDFs and 88 PDF pages: <a
+href="../jama_brenner_2019_oi_190039.pdf#page=1">jama_brenner_2019_oi_190039.pdf</a>
+(DOC-001, 7 pages), <a
+href="../joi190039supp1_prod.pdf#page=1">joi190039supp1_prod.pdf</a>
+(DOC-002, 62 pages), <a
+href="../joi190039supp2_prod.pdf#page=1">joi190039supp2_prod.pdf</a>
+(DOC-003, 10 pages), <a
+href="../joi190039supp3_prod.pdf#page=1">joi190039supp3_prod.pdf</a>
+(DOC-004, 8 pages), and <a
+href="../joi190039supp4_prod.pdf#page=1">joi190039supp4_prod.pdf</a>
+(DOC-005, 1 page).</p>
+<p>Direct PDFs were the evidence authority. Reused native/layout text,
+OCR, rendered pages, document maps, and table locators were used only
+for location and transcription support. The reusable-asset inventory
+records 90 hashed assets: 12 usable unique page units, seven targeted
+rendered-page units, and stale/partial derivatives retained as
+provenance. The full inventories and baseline hashes are in <a
+href="review_1_5_1/source_inventory.md">source_inventory.md</a>, <a
+href="review_1_5_1/evidence_asset_inventory.md">evidence_asset_inventory.md</a>,
+<a
+href="review_1_5_1/source_hashes_before.sha256">source_hashes_before.sha256</a>,
+and <a
+href="review_1_5_1/reused_artifact_hashes_before.sha256">reused_artifact_hashes_before.sha256</a>.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All 88 direct PDF-page units were mapped. Reusable and fresh-required
+units partition each source, and mapped units equal total units.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Source</th>
+<th style="text-align: right;">Total</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh-required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td>jama_brenner_2019_oi_190039.pdf</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">7</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td>joi190039supp1_prod.pdf</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">62</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td>joi190039supp2_prod.pdf</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td>joi190039supp3_prod.pdf</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-005</td>
+<td>joi190039supp4_prod.pdf</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>Five supplied PDFs</strong></td>
+<td style="text-align: right;"><strong>88</strong></td>
+<td style="text-align: right;"><strong>12</strong></td>
+<td style="text-align: right;"><strong>76</strong></td>
+<td style="text-align: right;"><strong>88</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The review covered numeric arithmetic, denominators and percentages,
+labels and scales, matched cross-document values, and supplied
+inferential relationships. It did not conduct a raw-data, clinical,
+misconduct, novelty, or external-literature review. No web source was
+used. The current review had no review queue, count cap, deferred-by-cap
+section, or top-N subset.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The quantitative map contains 62 stable numeric/reporting
+relationships, N001-N062. The statistical inventory contains 23 stable
+inferential/statistical relationships, S001-S023. The numeric checker,
+cross-source checker, and direct-PDF recheck were complete. Details are
+retained in <a
+href="review_1_5_1/relationships/numeric_relationship_inventory.md">numeric_relationship_inventory.md</a>,
+<a
+href="review_1_5_1/checkers/numeric_consistency.md">numeric_consistency.md</a>,
+and <a
+href="review_1_5_1/checkers/cross_source_consistency.md">cross_source_consistency.md</a>.</p>
+<p>Two independent fresh high-effort statistical passes each explicitly
+completed S001-S023. Pass 1 registered the source-grounded unit-label
+proposal that became C005; pass 2 reviewed all stable candidates and
+added none. Both passes treated unavailable row-level test definitions
+as limitations rather than reconstructing unsupported inferential
+quantities. See <a
+href="review_1_5_1/statistics/relationship_inventory.md">relationship_inventory.md</a>,
+<a
+href="review_1_5_1/checkers/statistical_pass_1.md">statistical_pass_1.md</a>,
+and <a
+href="review_1_5_1/checkers/statistical_pass_2.md">statistical_pass_2.md</a>.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+<th>Category</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Women’s quantitative 10.2 µg Hb/g PPV difference point estimate is
+absent</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Women’s quantitative 17.0 µg Hb/g PPV difference point estimate is
+absent</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Women’s qualitative 10.2 µg Hb/g PPV difference point estimate is
+absent</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>eTable 5 visible cutoff header truncates after <code>[µg</code></td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>One SAP occurrence omits the microgram prefix from the 10.2
+cutoff</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--womens-quantitative-102-µg-hbg-ppv-difference-point-estimate-is-absent" class="candidate-card">C001
+— Women’s quantitative 10.2 µg Hb/g PPV difference point estimate is
+absent</h2>
+<p><strong>Candidate statement:</strong> In the Women/Quantitative/10.2
+row of eTable 5, the Difference in PPV point-estimate position visibly
+contains only a hyphen although both arm PPVs and a negative confidence
+interval are printed.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190039supp3_prod.pdf#page=7">joi190039supp3_prod.pdf — PDF
+p. 7</a>, DOC-004 eTable 5, Women/Quantitative/10.2, Difference in PPV;
+comparator <a
+href="../joi190039supp3_prod.pdf#page=6">joi190039supp3_prod.pdf — PDF
+p. 6</a>, DOC-004 eTable 4, same population, test, cutoff, day, and
+per-protocol analysis.</p>
+<p><strong>Source evidence:</strong> Page 7 visibly prints aspirin PPV
+15.9%, placebo PPV 34.1%, a lone hyphen in the point-estimate position,
+and 95% CI [-34.7, -1.3]. Page 6 prints TP/FP 11/58 for aspirin and
+14/27 for placebo.</p>
+<p><strong>Reported-versus-comparator:</strong> The reported cell is
+<code>-</code> versus a numeric aspirin-minus-placebo PPV difference
+that is diagnostically supported by the matched counts and displayed arm
+PPVs; no numeric magnitude is visibly rendered in the cell.</p>
+<p><strong>Reasoning procedure:</strong> Confirm the matched row
+identity and contrast direction, then compare the visible incomplete
+cell with PPVs derived from eTable 4 counts. The calculation is
+diagnostic, not a prescribed correction, because exact unrounded output
+and the table-rendering convention are not supplied.</p>
+<p><strong>Calculation:</strong>
+<code>11/(11+58) × 100 = 15.9420%</code>;
+<code>14/(14+27) × 100 = 34.1463%</code>; aspirin minus placebo =
+<code>-18.2043</code> percentage points, rounding to <code>-18.2</code>.
+The displayed values also give <code>15.9 - 34.1 = -18.2</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+detached <code>18.2</code> PDF text fragment may indicate displaced,
+clipped, or suppressed table content, but the direct rendering does not
+visibly connect it to the cell. Alternatively, an undocumented
+hyphen-only convention may have been intended.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location, printed
+values, comparator counts, contrast rule, and diagnostic calculation
+were reproduced directly from the supplied pages. Exact unrounded
+analysis output and an explicit dash/rendering convention are missing;
+direct observation is separated from the possible production explanation
+in <a
+href="review_1_5_1/verification/evidence_recheck.md">evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> A named difference column
+with arm values and a confidence interval but no visible point-estimate
+magnitude is an incomplete quantitative display requiring human
+confirmation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor or later evidence synthesis could record a missing PPV
+difference or reconstruct it inconsistently. The package does not show
+that this occurred or changed a conclusion.</p>
+<p><strong>Human verification steps:</strong> Open the cited PDF pages;
+confirm the hyphen, CI, and matched count row; then inspect
+author-approved table output or analysis records for the intended
+estimate and any dash convention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--womens-quantitative-170-µg-hbg-ppv-difference-point-estimate-is-absent" class="candidate-card">C002
+— Women’s quantitative 17.0 µg Hb/g PPV difference point estimate is
+absent</h2>
+<p><strong>Candidate statement:</strong> In the Women/Quantitative/17.0
+row of eTable 5, the Difference in PPV point-estimate position visibly
+contains only a hyphen although both arm PPVs and a negative confidence
+interval are printed.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190039supp3_prod.pdf#page=7">joi190039supp3_prod.pdf — PDF
+p. 7</a>, DOC-004 eTable 5, Women/Quantitative/17.0, Difference in PPV;
+comparator <a
+href="../joi190039supp3_prod.pdf#page=6">joi190039supp3_prod.pdf — PDF
+p. 6</a>, DOC-004 eTable 4, same population, test, cutoff, day, and
+per-protocol analysis.</p>
+<p><strong>Source evidence:</strong> Page 7 visibly prints aspirin PPV
+17.1%, placebo PPV 42.9%, a lone hyphen in the point-estimate position,
+and 95% CI [-48.4, -0.7]. Page 6 prints TP/FP 6/29 for aspirin and 9/12
+for placebo.</p>
+<p><strong>Reported-versus-comparator:</strong> The reported cell is
+<code>-</code> versus a count-derived diagnostic difference that rounds
+to -25.7 percentage points; subtracting the independently rounded
+printed PPVs gives -25.8. Neither numeric value is visibly printed in
+the named cell.</p>
+<p><strong>Reasoning procedure:</strong> Match the row and contrast,
+reproduce PPV from the source counts, and separately subtract the
+displayed one-decimal PPVs. These are diagnostics, not prescribed
+corrections: the unrounded analysis output and point-estimate rounding
+basis are absent.</p>
+<p><strong>Calculation:</strong> <code>6/(6+29) × 100 = 17.1429%</code>;
+<code>9/(9+12) × 100 = 42.8571%</code>; count-derived aspirin minus
+placebo = <code>-25.7143</code>, rounding to <code>-25.7</code>
+percentage points. Displayed-value subtraction is
+<code>17.1 - 42.9 = -25.8</code>; the 0.1-point difference is compatible
+with rounding paths.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+detached <code>25.7</code> PDF text fragment may indicate displaced,
+clipped, or suppressed content, but it is not visible in the cell. The
+intended display may have used unrounded proportions, or the hyphen may
+represent an undocumented convention.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct rendering
+confirmed the cited cell, CI, comparator counts, and matched identity.
+The calculation was reproduced; missing inputs are the unrounded
+analysis output, intended rounding basis, and rendering convention. See
+<a
+href="review_1_5_1/verification/evidence_recheck.md">evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> The table visibly lacks
+the numeric magnitude for a specified comparative PPV result, even
+though the arm values and interval are presented.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a downstream extractor could enter a missing value or use different
+rounding when reconstructing the difference. Neither propagation nor
+conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Inspect the cited pages
+and the source analysis/table-production output to determine the
+intended signed estimate, rounding basis, and whether a hyphen-only
+display rule exists.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--womens-qualitative-102-µg-hbg-ppv-difference-point-estimate-is-absent" class="candidate-card">C003
+— Women’s qualitative 10.2 µg Hb/g PPV difference point estimate is
+absent</h2>
+<p><strong>Candidate statement:</strong> In the Women/Qualitative/10.2
+row of eTable 5, the Difference in PPV point-estimate position visibly
+contains only a hyphen although both arm PPVs and a negative confidence
+interval are printed.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190039supp3_prod.pdf#page=7">joi190039supp3_prod.pdf — PDF
+p. 7</a>, DOC-004 eTable 5, Women/Qualitative/10.2, Difference in PPV;
+comparator <a
+href="../joi190039supp3_prod.pdf#page=6">joi190039supp3_prod.pdf — PDF
+p. 6</a>, DOC-004 eTable 4, same population, test, cutoff, day, and
+per-protocol analysis.</p>
+<p><strong>Source evidence:</strong> Page 7 visibly prints aspirin PPV
+9.7%, placebo PPV 31.2%, a lone hyphen in the point-estimate position,
+and 95% CI [-38.9, -3.9]. Page 6 prints TP/FP 6/56 for aspirin and 10/22
+for placebo.</p>
+<p><strong>Reported-versus-comparator:</strong> The reported cell is
+<code>-</code> versus a count-derived diagnostic difference that rounds
+to -21.6 percentage points; displayed-value subtraction gives -21.5. No
+numeric magnitude is visibly printed in the cell.</p>
+<p><strong>Reasoning procedure:</strong> Confirm the matched
+qualitative-test row and contrast, then compute PPV from the source
+confusion-matrix counts and compare this diagnostic result with the
+rounded displayed values. It is not a prescribed correction because the
+unrounded output and rendering convention are unavailable.</p>
+<p><strong>Calculation:</strong> <code>6/(6+56) × 100 = 9.6774%</code>;
+<code>10/(10+22) × 100 = 31.2500%</code>; count-derived aspirin minus
+placebo = <code>-21.5726</code>, rounding to <code>-21.6</code>
+percentage points. Displayed-value subtraction is
+<code>9.7 - 31.2 = -21.5</code>; the difference is compatible with
+independent rounding.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+detached <code>21.6</code> PDF text fragment may reflect displacement,
+clipping, or suppression during production without establishing that
+mechanism. The hyphen could instead be an undocumented display
+convention.</p>
+<p><strong>Mechanical evidence recheck:</strong> The direct pages
+support the visible hyphen, arm values, interval, counts, and diagnostic
+arithmetic. Exact unrounded output, intended rounding basis, and table
+convention remain missing. See <a
+href="review_1_5_1/verification/evidence_recheck.md">evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> The row presents a
+confidence interval for a specified PPV comparison but no visibly
+rendered numeric point estimate.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+quantitative evidence extraction could treat this as missing or
+reconstruct it under a different rounding path. The supplied materials
+do not establish downstream use or conclusion impact.</p>
+<p><strong>Human verification steps:</strong> Verify the source cells
+and counts on the cited pages, then consult the approved table source or
+analysis output for the intended estimate and display convention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c004--etable-5-visible-cutoff-header-truncates-after-µg" class="candidate-card">C004 —
+eTable 5 visible cutoff header truncates after <code>[µg</code></h2>
+<p><strong>Candidate statement:</strong> eTable 5 visibly renders
+<code>Cutoff</code> and a second-line <code>[µg</code> fragment, without
+visibly rendered <code>Hb/g]</code>, while matched cutoff displays use
+the full µg Hb/g scale.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190039supp3_prod.pdf#page=7">joi190039supp3_prod.pdf — PDF
+p. 7</a>, DOC-004 eTable 5 visible cutoff header; comparator <a
+href="../joi190039supp3_prod.pdf#page=6">joi190039supp3_prod.pdf — PDF
+p. 6</a>, DOC-004 eTable 4 header <code>Cutoff [µg Hb/g]</code>;
+additional matched main-table display <a
+href="../jama_brenner_2019_oi_190039.pdf#page=5">jama_brenner_2019_oi_190039.pdf
+— PDF p. 5</a>.</p>
+<p><strong>Source evidence:</strong> The direct rendering on page 7
+visibly shows <code>Cutoff</code> and <code>[µg</code>; neither
+<code>Hb/g</code> nor the closing bracket is visibly rendered. The same
+page applies cutoff values 10.2 and 17.0. Page 6 visibly renders
+<code>Cutoff [µg Hb/g]</code> for the corresponding day-2 per-protocol
+FIT context.</p>
+<p><strong>Reported-versus-comparator:</strong> The visible eTable 5
+label ends at <code>[µg</code> versus the matched eTable 4 and
+main-table concentration scale <code>µg Hb/g</code>. The incomplete
+string is the direct observation; the complete form is the comparator,
+not an asserted transcription of page 7.</p>
+<p><strong>Reasoning procedure:</strong> Align cutoff values, tests,
+day, and analysis context across eTables 4 and 5. Compare their
+dimensional labels: outcome columns differ, but the cutoff scale should
+remain the same for the matched test values.</p>
+<p><strong>Calculation:</strong> No arithmetic is applicable. The
+reproducible comparison is the visible incomplete mass-unit fragment
+<code>[µg</code> against the matched mass-per-mass scale
+<code>µg Hb/g</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+detached <code>Hb/g]</code> PDF text fragment supports a possible layout
+or clipping explanation but is not visibly connected to the header.
+Readers may have been expected to carry the unit from adjacent tables,
+although the page gives no such instruction.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct rendering
+confirmed the incomplete header, exact comparator headers, matched
+cutoff values, and the absence of a printed inheritance note. The text
+fragment is retained as a source-grounded alternative, not as proof of a
+production mechanism. See <a
+href="review_1_5_1/verification/evidence_recheck.md">evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> A visibly incomplete unit
+label can obscure whether a cutoff is a mass value or a mass-per-mass
+concentration scale.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could omit the denominator or transcribe the cutoff as
+mass-only when reusing PPV/NPV data. The package does not show a changed
+analytical scale, propagation, or conclusion change.</p>
+<p><strong>Human verification steps:</strong> Inspect the directly
+rendered headers on pages 6-7 and the author-approved supplement table
+source or legend to determine whether the full cutoff scale should
+render in eTable 5.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--one-sap-occurrence-omits-the-microgram-prefix-from-the-102-cutoff" class="candidate-card">C005
+— One SAP occurrence omits the microgram prefix from the 10.2
+cutoff</h2>
+<p><strong>Candidate statement:</strong> One SAP sentence prints
+<code>17 μg Hb/g feces and 10.2 Hb/g feces</code>, while matched
+occurrences specify the lower cutoff as
+<code>10.2 μg Hb/g feces</code>.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190039supp2_prod.pdf#page=6">joi190039supp2_prod.pdf — PDF
+p. 6</a>, DOC-003 §3.2; comparator <a
+href="../joi190039supp2_prod.pdf#page=8">joi190039supp2_prod.pdf — PDF
+p. 8</a>, DOC-003 §5.4; matched context <a
+href="../jama_brenner_2019_oi_190039.pdf#page=1">jama_brenner_2019_oi_190039.pdf
+— PDF p. 1</a> and <a
+href="../jama_brenner_2019_oi_190039.pdf#page=5">jama_brenner_2019_oi_190039.pdf
+— PDF p. 5</a>.</p>
+<p><strong>Source evidence:</strong> DOC-003 p. 6 visibly prints
+<code>17 μg Hb/g feces and 10.2 Hb/g feces</code>. DOC-003 p. 8 prints
+<code>Manufacturer’s threshold (17 μg Hb/g feces)</code> and
+<code>threshold for positivity (10.2 μg Hb/g feces)</code>. The article
+supplies the same two FIT-cutoff context and complete unit headers.</p>
+<p><strong>Reported-versus-comparator:</strong> The lower cutoff is
+printed as <code>10.2 Hb/g feces</code> on p. 6 versus
+<code>10.2 μg Hb/g feces</code> on p. 8 for the same lower
+quantitative-FIT threshold.</p>
+<p><strong>Reasoning procedure:</strong> Match the numerical threshold,
+test context, and repeated definition, then compare whether the
+numerator-unit prefix is retained. This is a source-label comparison,
+not a conversion or assertion that the analyzed scale changed.</p>
+<p><strong>Calculation:</strong> No arithmetic is required. The logical
+comparison checks whether the same 10.2 cutoff retains its
+<code>μg</code> numerator unit across the matched SAP occurrences.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+first <code>μg</code> may be intended to govern both coordinated
+thresholds grammatically. Because <code>Hb/g feces</code> is repeated
+after both numbers, that inheritance is not explicit; the package gives
+no editorial rule resolving it.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF inspection
+reproduced both SAP phrases and the matched article context. The
+necessary source text is available; the missing definition is an
+explicit unit-inheritance convention. See <a
+href="review_1_5_1/verification/evidence_recheck.md">evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> Repeated cutoff labels
+should make the unit scale unambiguous where they are reused in
+analytical definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy the lower cutoff without its microgram prefix or
+interpret the repeated expression inconsistently. No downstream
+propagation, altered result, or conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Compare the cited SAP
+sections and article tables, then consult the approved SAP source or
+editorial guidance to determine whether <code>μg</code> was
+intentionally shared or should be printed locally.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, these are bounded reporting-quality issues relevant to
+extraction of PPV differences or FIT cutoff units. They could affect how
+a systematic review, meta-analysis, guideline, or data-extraction
+workflow transcribes a value or label. This report does not claim that
+any such reuse occurred, that results propagated, or that the paper’s
+conclusions changed.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The complete limitations record is in <a
+href="review_1_5_1/limitations.md">limitations.md</a>. In brief, raw
+participant-level data, exact unrounded PPV-difference output,
+author-approved table-production files, a dash/rendering convention, and
+an explicit unit-inheritance convention are not supplied. These missing
+inputs constrain interpretation but do not leave a scientific-coverage
+gap: all 76 fresh-required pages were directly mapped. Inferential
+reviewers did not impose unsupported P-value, CI, or test
+reconstructions where required definitions were absent.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each card, confirm the direct source rendering, exact matched
+comparator, and identity of population, test, cutoff, time point, and
+contrast. Then inspect author-approved analysis or production records
+where the card identifies missing output or a possible rendering
+convention. Record the human decision only in the blank fields on the
+corresponding card; retain the diagnostic-versus-observed distinction
+and do not infer a conclusion effect from these quality-control
+observations alone.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>The source and reused-asset baseline hash inventories are linked
+above. The evidence-quality audit reports that all five direct-source
+hashes and all 90 reused-artifact hashes reproduced their baselines
+before final report assembly. Mapping, coverage, recheck, and audit
+provenance are preserved in <a
+href="review_1_5_1/coverage_manifest.md">coverage_manifest.md</a>, <a
+href="review_1_5_1/source_coverage.md">source_coverage.md</a>, <a
+href="review_1_5_1/verification/evidence_recheck.md">evidence_recheck.md</a>,
+and <a
+href="review_1_5_1/quality/evidence_quality_audit.md">evidence_quality_audit.md</a>.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>root/reuse_asset_curator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>evidence_asset_inventory.md</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>root/main_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>root/support_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>root/numeric_consistency_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistical_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>root/cross_source_consistency_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>root/evidence_rechecker</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistical_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>root/quality_control_auditor</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>report_generation.md</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Five-PDF package with 88 total
+PDF-page units, 76 fresh-required pages, one 62-page technical
+supplement, and expected table/statistical cross-source complexity;
+closely comparable but slightly smaller than the 102-total/81-fresh
+calibration package.</li>
+<li><strong>Total source units:</strong> 88</li>
+<li><strong>Fresh-source units:</strong> 76</li>
+<li><strong>Target elapsed minutes:</strong> 35-50</li>
+<li><strong>Started UTC:</strong> 2026-08-18T22:12:56Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-18T22:48:09Z</li>
+<li><strong>Observed elapsed minutes:</strong> 35.2</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting">Token accounting</h3>
+<p>The runtime did not expose authoritative response-level token counts
+for the coordinator or any specialist, so each manifested agent has an
+<code>UNAVAILABLE</code> ledger row and no text-length estimate was
+substituted. The known subtotal is therefore zero while the complete
+package count and price remain explicitly unavailable. Cached input and
+cache-write tokens are input subsets, and reasoning tokens are an output
+subset; none is added again to total tokens. Per-agent detail is
+retained in <a
+href="review_1_5_1/token_usage_summary.md">token_usage_summary.md</a>.</p>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Token-only API-equivalent estimate
+(USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete estimate
+unavailable</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete estimate
+unavailable</td>
+</tr>
+</tbody>
+</table>
+<p>All amounts are token-only API-equivalent estimates under the pricing
+snapshot dated 2026-08-18 UTC, not invoices; non-token tools,
+containers, storage, subscriptions, taxes, and other charges are outside
+the estimate.</p>
+</body>
+</html>

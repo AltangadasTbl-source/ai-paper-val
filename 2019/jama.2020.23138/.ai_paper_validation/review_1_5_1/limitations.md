@@ -1,5 +1,0 @@
-# Limitations
-
-This supplied-source review has no participant-level data, table-generation programs, protocol or SAP amendment history, table-freeze history, or complete inferential implementation details. Missing degrees of freedom, variance estimators, covariance, sidedness, realized model routes, and estimand mappings limit exact reconstruction for some relationships. These limitations are retained as explicit human questions rather than used to remove stable candidates.
-
-Direct recheck refined two candidate framings: C001 has a printed replacement explanation for the 161-versus-160 totals, and C012's `24-hour` entry appears in the SAP ambulatory row's `Time point` cell rather than under Baseline. C010 is limited to the time-heading mismatch; equivalent mass-concentration units are not a separate contradiction. Protocol PDF page 15 is not evidence for C007 and is excluded from that card. The supplied evidence supports neutral reporting-consistency questions only; it does not establish conclusion change, actual downstream propagation, or harm.

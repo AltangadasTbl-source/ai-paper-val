@@ -1,0 +1,98 @@
+agent: table_arithmetic_checker
+package_id: JAMA-2019-10517
+documents_reviewed:
+  - document_id: JAMA2019-10517-D01
+    filename: jama_flint_2019_oi_190079.pdf
+    result_relevant_tables_checked:
+      - "PDF p7 (printed p628), Table 3, Number of Relapse Events"
+      - "PDF p8 (printed p629), Table 4, Secondary Outcomes: Anthropometric and Metabolic Measures"
+      - "PDF p9 (printed p630), Table 5, Post Hoc Outcome: Incident High Fasting Metabolic Value"
+  - document_id: JAMA2019-10517-D03
+    filename: joi190079supp2_prod.pdf
+    result_relevant_tables_checked: []
+    scope_result: "The evidence map identifies eFigures 1-9 only; it identifies no supplementary numerical table or point labels that permit arithmetic checking."
+scope:
+  included: "Visible counts, denominators, percentages, stated rates, repeated table values, and table-linked result statements."
+  excluded: "Protocol (D02), administrative material (D04), raw-data inference, and calculations not reproducible from displayed values."
+rounding_rule: "For a displayed percentage to one decimal place, the allowable interval is [reported-0.05, reported+0.05) percentage points. Exact fractions were evaluated before rounding."
+candidates:
+  - id: TAC-01
+    category: Arithmetic inconsistency
+    severity: low
+    issue_statement: "Table 5's absolute difference is displayed as 4.3% in each of two rows, but the displayed event counts and denominators yield 4.4% to one decimal place."
+    exact_location:
+      document_id: JAMA2019-10517-D01
+      filename: jama_flint_2019_oi_190079.pdf
+      pdf_page: 9
+      printed_page: 630
+      table: "Table 5, rows 'Total' cholesterol and 'LDL' cholesterol; columns Sertraline Plus Olanzapine (n = 64), Sertraline Plus Placebo (n = 62), and Absolute Unadjusted Difference Between Groups"
+    source_values:
+      - "Total cholesterol row: 9 (14.1%) / 64 versus 6 (9.7%) / 62; reported difference 4.3% (95% CI, -8 to 17.2)."
+      - "LDL cholesterol row: 9 (14.1%) / 64 versus 6 (9.7%) / 62; reported difference 4.3% (95% CI, -8 to 17.2)."
+    calculation: "(9 / 64 - 6 / 62) x 100 = (14.0625 - 9.6774) = 4.3851 percentage points, which rounds to 4.4% at one decimal place. The reported 4.3% represents [4.25, 4.35) under the stated rounding tolerance and therefore excludes 4.3851%."
+    reasoning: "Both repeated rows have identical visible counts and denominators, so each has the same reproducible point estimate. The source table's displayed percentage difference is 0.1 percentage point lower than the exact-count calculation."
+    bounded_impact: "The discrepancy is confined to the displayed unadjusted point difference in two repeated rows; it does not alter either reported numerator, denominator, or the conclusion that the confidence intervals include 0."
+    verification_steps:
+      - "1. Confirm the two Table 5 rows each show 9/64 and 6/62 and a displayed 4.3% difference."
+      - "2. Calculate 100 x (9/64 - 6/62) and round once to one decimal place; a result of 4.4% confirms the candidate."
+      - "3. Check the production table or statistical output for whether an unstated point-estimate convention was used; such documentation resolving the displayed 4.3% would resolve the candidate."
+
+  - id: TAC-02
+    category: Arithmetic inconsistency
+    severity: low
+    issue_statement: "The reported placebo-arm psychiatric-hospitalization percentage among relapses is 32.3%, whereas the cited visible numerator and denominator, 11 of 34, yield 32.4% to one decimal place."
+    exact_location:
+      document_id: JAMA2019-10517-D01
+      filename: jama_flint_2019_oi_190079.pdf
+      pdf_page: 8
+      printed_page: 629
+      section: "Results—Other Measures of Tolerability, paragraph immediately above Discussion"
+      comparator_location: "PDF p7 (printed p628), Table 3, row 'Psychiatric hospitalization'"
+    source_values:
+      - "Narrative: '11 (32.3%) of 34 in the placebo group required psychiatric hospitalization because of the relapse.'"
+      - "Table 3 placebo column, psychiatric hospitalization: 11; primary-outcome narrative reports 34 placebo-arm relapses."
+    calculation: "(11 / 34) x 100 = 32.3529%; rounded to one decimal place, 32.4%. The reported 32.3% represents [32.25, 32.35), which excludes 32.3529%."
+    reasoning: "The numerator and denominator are stated in the same result sentence and are corroborated by Table 3 for the numerator; the reported one-decimal percentage is outside the ordinary rounding interval for 11/34."
+    bounded_impact: "This is a 0.1-percentage-point display discrepancy in a descriptive hospitalization-among-relapses percentage; the reported count of 11 and denominator of 34 remain unchanged."
+    verification_steps:
+      - "1. Confirm the narrative states 11 (32.3%) of 34 placebo-arm relapses required hospitalization."
+      - "2. Divide 11 by 34 and round to one decimal place; 32.4% confirms the candidate."
+      - "3. Confirm Table 3's placebo psychiatric-hospitalization count is 11; a different underlying denominator or a documented alternate convention would resolve the candidate."
+
+  - id: TAC-03
+    category: Presentation inconsistency
+    severity: low
+    issue_statement: "The stated treatment-by-time HbA1c estimate is labeled mg/dL, although the package's Table 4 and eFigure 8 label HbA1c in percent."
+    exact_location:
+      document_id: JAMA2019-10517-D01
+      filename: jama_flint_2019_oi_190079.pdf
+      pdf_page: 7
+      printed_page: 628
+      section: "Results—Secondary Outcomes"
+      comparators:
+        - "D01, PDF p8 (printed p629), Table 4, row 'HbA1c, %'"
+        - "D03 joi190079supp2_prod.pdf, PDF p9, eFigure 8, y-axis 'HbA1c (%)'"
+    source_values:
+      - "Stated rate: 'HbA1c levels (-0.0002 mg/dL [95% CI, -0.0021 to 0.0016], adjusted P = .99).'"
+      - "Table 4 labels the same outcome 'HbA1c, %' and gives baseline/termination values 5.9 and 5.7 in the olanzapine arm and 5.9 and 5.9 in the placebo arm."
+      - "Supplement eFigure 8 labels its y-axis 'HbA1c (%)'."
+    calculation_or_logical_chain: "The result paragraph gives the HbA1c rate a unit of mg/dL. Two result-bearing displays in the same package label HbA1c as %. No conversion is stated, so the rate's displayed unit cannot be reconciled with the package's displayed HbA1c unit."
+    reasoning: "This is a directly visible unit-label conflict, not an inference about the unobserved model or raw data."
+    bounded_impact: "The numerical estimate, CI, and P value are unchanged; the issue is limited to interpretation of the estimate's unit."
+    verification_steps:
+      - "1. Confirm the Results paragraph labels the HbA1c interaction estimate as mg/dL."
+      - "2. Confirm Table 4 and eFigure 8 label HbA1c as %."
+      - "3. Check the model-output variable units or an erratum; a documented conversion or corrected unit would resolve the candidate."
+
+no_issue_results:
+  - location: "D01 PDF p7, Table 3"
+    result: "No row-total candidate. Component-event totals are 15 (olanzapine) and 44 (placebo), but Table 3 footnote a explicitly states that more than 1 event occurred in some cases of relapse; therefore they are not required to equal 13 and 34 relapses."
+  - location: "D01 PDF p8, Table 4"
+    result: "No arithmetic candidate. All shown baseline and termination participant counts are within their randomized-arm totals (64 and 62). Apparent differences between separately displayed baseline/termination summaries and the reported change are explicitly anticipated by footnote a: 'The difference may not equal termination minus baseline because of missing data.'"
+  - location: "D01 PDF p9, Table 5, triglyceride and glucose rows"
+    result: "Visible percentages and absolute differences reproduce at one decimal place: 4/64 vs 2/62 = 3.0242% -> 3.0%; 4/64 vs 4/62 = -0.2016% -> -0.2%."
+  - location: "D01 PDF pp6-8, primary-outcome and related-result statements"
+    result: "Visible relapse and adverse-event percentages reproduce at their shown precision where both counts and denominators are supplied, except TAC-02. The NNT of 2.8 is explicitly described as based on the hazard ratio; the displayed counts alone cannot reproduce it, so no NNT candidate is asserted."
+  - location: "D03 PDF pp2-10, eFigures 1-9"
+    result: "No numerical arithmetic candidate. The evidence map documents axes and qualitative trajectories only; the figures have no point-value labels, denominators, or tabulated estimates."
+overall_result: "3 document-verifiable local candidates; no protocol or administrative table opened."

@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.3 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.3 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.3 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-reporting-quality-control-consistency-review--workflow-153"
+id="toc-quantitative-reporting-quality-control-consistency-review--workflow-153">Quantitative
+Reporting Quality-Control Consistency Review — Workflow 1.5.3</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--liberal-walk-in-transport-percentage-does-not-reconcile-with-4743"
+id="toc-c001--liberal-walk-in-transport-percentage-does-not-reconcile-with-4743">C001
+— Liberal walk-in transport percentage does not reconcile with
+4/743</a></li>
+<li><a
+href="#c002--liberal-vascular-surgery-percentage-is-nonzero-with-a-printed-zero-numerator"
+id="toc-c002--liberal-vascular-surgery-percentage-is-nonzero-with-a-printed-zero-numerator">C002
+— Liberal vascular-surgery percentage is nonzero with a printed zero
+numerator</a></li>
+<li><a
+href="#c003--matched-all-patient-adjusted-confidence-interval-upper-limit-differs-between-etables-4-and-7"
+id="toc-c003--matched-all-patient-adjusted-confidence-interval-upper-limit-differs-between-etables-4-and-7">C003
+— Matched all-patient adjusted confidence-interval upper limit differs
+between eTables 4 and 7</a></li>
+<li><a
+href="#c004--ais-less-than-3-subgroup-percentage-conflicts-with-its-count-and-matched-figure-4"
+id="toc-c004--ais-less-than-3-subgroup-percentage-conflicts-with-its-count-and-matched-figure-4">C004
+— AIS less-than-3 subgroup percentage conflicts with its count and
+matched Figure 4</a></li>
+<li><a
+href="#c005--known-lung-disease-subgroup-percentage-conflicts-with-its-count-and-matched-figure-4"
+id="toc-c005--known-lung-disease-subgroup-percentage-conflicts-with-its-count-and-matched-figure-4">C005
+— Known-lung-disease subgroup percentage conflicts with its count and
+matched Figure 4</a></li>
+<li><a
+href="#c006--postrandomization-exclusion-total-and-group-counts-do-not-reconcile-across-etable-10-and-figure-1"
+id="toc-c006--postrandomization-exclusion-total-and-group-counts-do-not-reconcile-across-etable-10-and-figure-1">C006
+— Postrandomization-exclusion total and group counts do not reconcile
+across eTable 10 and Figure 1</a></li>
+<li><a
+href="#c007--secondary-exclusion-cells-pair-within-group-denominators-with-cross-group-partition-percentages"
+id="toc-c007--secondary-exclusion-cells-pair-within-group-denominators-with-cross-group-partition-percentages">C007
+— Secondary-exclusion cells pair within-group denominators with
+cross-group partition percentages</a></li>
+<li><a
+href="#c008--missing-as-event-primary-count-uses-a-doubled-numeratordenominator-separator"
+id="toc-c008--missing-as-event-primary-count-uses-a-doubled-numeratordenominator-separator">C008
+— Missing-as-event primary count uses a doubled numerator/denominator
+separator</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance-profile"
+id="toc-performance-profile">Performance profile</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-reporting-quality-control-consistency-review--workflow-153">Quantitative
+Reporting Quality-Control Consistency Review — Workflow 1.5.3</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>Every observation in this report is <strong>Pending Human
+Adjudication</strong>. This is a quantitative reporting quality-control
+review, not a conclusion about the paper, its authors, or clinical
+validity. Small preventable reporting defects can matter for downstream
+evidence extraction if confirmed; this report does not claim that any
+defect propagated, changed a conclusion, or caused harm.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete source and relationship coverage produced <strong>8</strong>
+stable candidate consistency observations (C001-C008). They concern two
+count/percentage identities, one conditionally matched
+confidence-interval endpoint, two subgroup percentage discrepancies, two
+participant-flow/denominator presentations, and one malformed count
+separator. No candidate is based on a display-zero P value. Each
+observation remains pending human adjudication.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The supplied package contains five direct PDFs: the 11-page main
+article, 103-page protocol/SAP, 26-page results supplement, 3-page
+collaborator supplement, and 1-page data-sharing supplement. Their 144
+PDF-page units were mapped. Reused page-delimited native text covered
+all 144 units; direct PDFs remained authoritative for candidate
+confirmation. The reuse inventory recorded 38 artifacts (36 usable and 2
+duplicate derivatives); no source, workbook, CSV, DOC, or DOCX evidence
+was used.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<table>
+<thead>
+<tr>
+<th>Direct source</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh required</th>
+<th style="text-align: right;">Mapped</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main article (DOC-001)</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr>
+<td>Protocol/SAP (DOC-002)</td>
+<td style="text-align: right;">103</td>
+<td style="text-align: right;">103</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">103</td>
+</tr>
+<tr>
+<td>Results supplement (DOC-003)</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr>
+<td>Collaborator supplement (DOC-004)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Data-sharing supplement (DOC-005)</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>144</strong></td>
+<td style="text-align: right;"><strong>144</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: right;"><strong>144</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The review prioritized numeric, denominator/proportion/total,
+statistical, cross-document, measure/label/scale, and rate-versus-count
+consistency. It excluded broad methodology, clinical, novelty,
+misconduct, raw-data, and external-literature review. Planning
+quantities in the protocol/SAP were not treated as observed-result
+conflicts unless an applicable matched relationship was established.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The numeric relationship inventory contains N001-N069; all 69 were
+checked. The statistical relationship inventory contains S001-S036; both
+independent statistical passes completed every relationship.
+Cross-source review covered 29 matched quantitative relationships and 11
+protocol/SAP planning or definition relationships. The stable candidate
+set was not limited by a queue, ranking, cap, or top-N subset.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate statement</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--liberal-walk-in-transport-percentage-does-not-reconcile-with-4743">C001</a></td>
+<td>Liberal walk-in transport percentage does not reconcile with
+4/743</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c002--liberal-vascular-surgery-percentage-is-nonzero-with-a-printed-zero-numerator">C002</a></td>
+<td>Liberal vascular-surgery percentage is nonzero with a printed zero
+numerator</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c003--matched-all-patient-adjusted-confidence-interval-upper-limit-differs-between-etables-4-and-7">C003</a></td>
+<td>Matched adjusted CI upper limit differs between eTables 4 and 7</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c004--ais-less-than-3-subgroup-percentage-conflicts-with-its-count-and-matched-figure-4">C004</a></td>
+<td>AIS less-than-3 subgroup percentage conflicts with count and Figure
+4</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c005--known-lung-disease-subgroup-percentage-conflicts-with-its-count-and-matched-figure-4">C005</a></td>
+<td>Known-lung-disease subgroup percentage conflicts with count and
+Figure 4</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c006--postrandomization-exclusion-total-and-group-counts-do-not-reconcile-across-etable-10-and-figure-1">C006</a></td>
+<td>Postrandomization-exclusion totals and group counts do not
+reconcile</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c007--secondary-exclusion-cells-pair-within-group-denominators-with-cross-group-partition-percentages">C007</a></td>
+<td>Secondary-exclusion cells pair incompatible denominator
+concepts</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c008--missing-as-event-primary-count-uses-a-doubled-numeratordenominator-separator">C008</a></td>
+<td>Missing-as-event count uses a doubled separator</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--liberal-walk-in-transport-percentage-does-not-reconcile-with-4743" class="candidate-card">C001
+— Liberal walk-in transport percentage does not reconcile with
+4/743</h2>
+<p><strong>Candidate statement:</strong> The liberal-group walk-in
+transport cell does not reconcile under its printed
+count/total/percentage format.<br />
+<strong>Status:</strong> Pending Human Adjudication<br />
+<strong>Category:</strong> Denominator, proportion, or total
+inconsistency<br />
+<strong>Exact source locations:</strong> <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=15">Supplement 2,
+eTable 2, PDF p. 15</a>, liberal oxygen group, walk-in transport
+row.<br />
+<strong>Source evidence:</strong> The direct PDF prints
+<code>4/743 (5.3)</code> under <code>no./total no. (%)</code>.<br />
+<strong>Reported-versus-comparator:</strong> Reported <code>5.3%</code>
+versus the percentage derived from the paired printed numerator and
+denominator.<br />
+<strong>Reasoning procedure:</strong> Apply
+<code>100 × numerator / denominator</code> and round to the table’s
+one-decimal precision.<br />
+<strong>Calculation:</strong> <code>100 × 4 / 743 = 0.538358...%</code>,
+which rounds to <code>0.5%</code>, not <code>5.3%</code>.<br />
+<strong>Alternative source-grounded interpretations:</strong> The count,
+denominator, or percentage may be mistranscribed; adjacent cells use
+denominator 743 and no footnote supplies an alternative.<br />
+<strong>Mechanical evidence recheck:</strong> Direct layout extraction
+and rendered-page inspection confirmed <code>4/743 (5.3)</code> and the
+count/total/percentage label.<br />
+<strong>Quality-control relevance:</strong> The printed fields form an
+internally reproducible percentage mismatch; the authoritative field is
+not identifiable from the package.<br />
+<strong>Potential downstream evidence impact:</strong> If confirmed, a
+baseline-characteristics extractor could copy <code>5.3%</code> or a
+count-derived percentage without knowing which is authoritative; no
+propagation or conclusion change is asserted.<br />
+<strong>Human verification steps:</strong> Verify the underlying
+transport record or table output and identify the authoritative
+numerator, denominator, and percentage.<br />
+<strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--liberal-vascular-surgery-percentage-is-nonzero-with-a-printed-zero-numerator" class="candidate-card">C002
+— Liberal vascular-surgery percentage is nonzero with a printed zero
+numerator</h2>
+<p><strong>Candidate statement:</strong> The liberal vascular-surgery
+cell pairs a zero numerator with a nonzero percentage.<br />
+<strong>Status:</strong> Pending Human Adjudication<br />
+<strong>Category:</strong> Denominator, proportion, or total
+inconsistency<br />
+<strong>Exact source locations:</strong> <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=15">Supplement 2,
+eTable 2, PDF p. 15</a>, liberal oxygen group, vascular surgery
+row.<br />
+<strong>Source evidence:</strong> The direct PDF prints
+<code>0/747 (1.1)</code> under <code>no./total no. (%)</code>.<br />
+<strong>Reported-versus-comparator:</strong> Reported <code>1.1%</code>
+versus the percentage implied by numerator <code>0</code> and
+denominator <code>747</code>.<br />
+<strong>Reasoning procedure:</strong> Apply the displayed
+count/total/percentage identity.<br />
+<strong>Calculation:</strong> <code>100 × 0 / 747 = 0.0%</code>, not
+<code>1.1%</code>.<br />
+<strong>Alternative source-grounded interpretations:</strong> A
+typographic zero, carried-over percentage, or unprinted qualifier is
+possible; no footnote provides another rule.<br />
+<strong>Mechanical evidence recheck:</strong> Direct layout extraction
+and rendered-page inspection confirmed the printed cell and format
+label.<br />
+<strong>Quality-control relevance:</strong> The count and percentage
+cannot both represent the stated quantity under the printed
+format.<br />
+<strong>Potential downstream evidence impact:</strong> If confirmed, an
+extractor could copy an unresolved rare baseline frequency into a
+descriptive table; no propagation or conclusion change is
+asserted.<br />
+<strong>Human verification steps:</strong> Check the source surgery
+records or table-production output and identify the authoritative
+numerator and percentage.<br />
+<strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--matched-all-patient-adjusted-confidence-interval-upper-limit-differs-between-etables-4-and-7" class="candidate-card">C003
+— Matched all-patient adjusted confidence-interval upper limit differs
+between eTables 4 and 7</h2>
+<p><strong>Candidate statement:</strong> Two apparently matched
+all-patient adjusted results show different displayed upper confidence
+limits without a table-specific model distinction.<br />
+<strong>Status:</strong> Pending Human Adjudication<br />
+<strong>Category:</strong> Cross-document numeric inconsistency<br />
+<strong>Exact source locations:</strong> <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=17">Supplement 2,
+eTable 4, PDF p. 17</a>, further-adjusted primary outcome; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=20">Supplement 2,
+eTable 7, PDF p. 20</a>, all-patient adjusted odds ratio; relevant
+methods <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=5">Main
+article, PDF p. 5</a>.<br />
+<strong>Source evidence:</strong> eTable 4 prints
+<code>0.98 (0.68 to 1.41)</code> and eTable 7 prints
+<code>0.98 (0.68 to 1.39)</code> for the same displayed counts, outcome,
+contrast, effect label, point estimate, and lower endpoint.<br />
+<strong>Reported-versus-comparator:</strong> Upper limit
+<code>1.41</code> versus upper limit <code>1.39</code> at the same
+displayed precision.<br />
+<strong>Reasoning procedure:</strong> Compare the matched printed result
+fields; the relationship is conditional because the two tables do not
+explicitly bind their adjusted columns to one identical table-specific
+model.<br />
+<strong>Calculation:</strong> <code>1.41 − 1.39 = 0.02</code> displayed
+upper-limit difference.<br />
+<strong>Alternative source-grounded interpretations:</strong> The models
+may differ but be insufficiently labelled; if the models are identical,
+one endpoint is inconsistent. Unrounded intervals and fitted-model
+details are not supplied.<br />
+<strong>Mechanical evidence recheck:</strong> Direct extraction and page
+inspection confirmed both intervals, matched event counts, and the
+absence of a table-specific model formula resolving the
+comparison.<br />
+<strong>Quality-control relevance:</strong> A repeated adjusted result
+needs either matching displayed endpoints or enough model labelling to
+prevent a false same-result comparison.<br />
+<strong>Potential downstream evidence impact:</strong> If confirmed, an
+adjusted-effect extractor could copy either upper confidence limit into
+a precision field; no propagation or conclusion change is
+asserted.<br />
+<strong>Human verification steps:</strong> Determine whether the fitted
+models and data handling are identical; if so, verify the authoritative
+unrounded and displayed upper interval.<br />
+<strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--ais-less-than-3-subgroup-percentage-conflicts-with-its-count-and-matched-figure-4" class="candidate-card">C004
+— AIS less-than-3 subgroup percentage conflicts with its count and
+matched Figure 4</h2>
+<p><strong>Candidate statement:</strong> The eTable 7 liberal
+AIS-less-than-3 percentage conflicts with its printed count/denominator
+and the matched Figure 4 display.<br />
+<strong>Status:</strong> Pending Human Adjudication<br />
+<strong>Category:</strong> Cross-document numeric inconsistency<br />
+<strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=8">Main
+article, Figure 4, PDF p. 8</a>, AIS score less than 3; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=20">Supplement 2,
+eTable 7, PDF p. 20</a>, AIS less than 3.<br />
+<strong>Source evidence:</strong> Figure 4 prints liberal
+<code>48/473 (10.1)</code>; eTable 7 prints liberal
+<code>48/473 (9.2)</code>.<br />
+<strong>Reported-versus-comparator:</strong> eTable 7 <code>9.2%</code>
+versus Figure 4 <code>10.1%</code> and the percentage derived from the
+shared <code>48/473</code>.<br />
+<strong>Reasoning procedure:</strong> Match subgroup, group, numerator,
+denominator, and outcome, then apply ordinary one-decimal percentage
+rounding.<br />
+<strong>Calculation:</strong>
+<code>100 × 48 / 473 = 10.147991...%</code>, which rounds to
+<code>10.1%</code>, not <code>9.2%</code>.<br />
+<strong>Alternative source-grounded interpretations:</strong> eTable 7
+may contain a transcription error or use an undisclosed denominator
+inconsistent with its printed 473.<br />
+<strong>Mechanical evidence recheck:</strong> Direct page inspection
+confirmed both printed strings and the shared
+numerator/denominator.<br />
+<strong>Quality-control relevance:</strong> The same displayed subgroup
+count and denominator support incompatible percentages across supplied
+locations.<br />
+<strong>Potential downstream evidence impact:</strong> If confirmed, a
+subgroup extractor could copy <code>9.2%</code> rather than the
+count-derived and matched <code>10.1%</code>; no propagation or
+conclusion change is asserted.<br />
+<strong>Human verification steps:</strong> Verify the subgroup source
+data, intended denominator, and authoritative displayed
+percentage.<br />
+<strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--known-lung-disease-subgroup-percentage-conflicts-with-its-count-and-matched-figure-4" class="candidate-card">C005
+— Known-lung-disease subgroup percentage conflicts with its count and
+matched Figure 4</h2>
+<p><strong>Candidate statement:</strong> The eTable 7 liberal
+known-lung-disease percentage differs from the matched Figure 4
+percentage despite the same printed count and denominator.<br />
+<strong>Status:</strong> Pending Human Adjudication<br />
+<strong>Category:</strong> Cross-document numeric inconsistency<br />
+<strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=8">Main
+article, Figure 4, PDF p. 8</a>, known lung disease, yes; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=20">Supplement 2,
+eTable 7, PDF p. 20</a>, known lung disease, yes.<br />
+<strong>Source evidence:</strong> Figure 4 prints liberal
+<code>14/69 (20.3)</code>; eTable 7 prints liberal
+<code>14/69 (20.2)</code>.<br />
+<strong>Reported-versus-comparator:</strong> eTable 7 <code>20.2%</code>
+versus Figure 4 <code>20.3%</code> and ordinary nearest rounding of
+<code>14/69</code>.<br />
+<strong>Reasoning procedure:</strong> Match the subgroup and printed
+count/denominator, then calculate the one-decimal percentage while
+retaining an unspecified rounding convention as an alternative.<br />
+<strong>Calculation:</strong>
+<code>100 × 14 / 69 = 20.289855...%</code>, which is <code>20.3%</code>
+under ordinary nearest rounding.<br />
+<strong>Alternative source-grounded interpretations:</strong> An
+unreported truncation or production-time rounding convention, or a
+transcription difference, may explain the discrepancy; the package does
+not state a publication-wide rounding rule.<br />
+<strong>Mechanical evidence recheck:</strong> Direct page inspection
+confirmed both values and the shared <code>14/69</code>.<br />
+<strong>Quality-control relevance:</strong> Matched one-decimal subgroup
+displays are inconsistent unless a different rounding rule is
+established.<br />
+<strong>Potential downstream evidence impact:</strong> If confirmed, a
+subgroup extractor could copy either one-decimal percentage without a
+stated convention; no propagation or conclusion change is
+asserted.<br />
+<strong>Human verification steps:</strong> Verify the intended rounding
+convention and authoritative subgroup percentage.<br />
+<strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--postrandomization-exclusion-total-and-group-counts-do-not-reconcile-across-etable-10-and-figure-1" class="candidate-card">C006
+— Postrandomization-exclusion total and group counts do not reconcile
+across eTable 10 and Figure 1</h2>
+<p><strong>Candidate statement:</strong> eTable 10’s
+postrandomization-exclusion total and group counts do not reconcile with
+each other or with Figure 1 without an explained population
+restriction.<br />
+<strong>Status:</strong> Pending Human Adjudication<br />
+<strong>Category:</strong> Cross-document numeric inconsistency<br />
+<strong>Exact source locations:</strong> <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=24">Supplement 2,
+eTable 10, PDF p. 24</a>, exclusion after randomization; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=3">Main
+article, Figure 1, PDF p. 3</a>, excluded after randomization.<br />
+<strong>Source evidence:</strong> eTable 10 states <code>N=130</code>
+and prints restrictive <code>55/750 (45)</code> and liberal
+<code>67/758 (55)</code>; Figure 1 prints 59 restrictive and 71 liberal
+exclusions, totaling 130.<br />
+<strong>Reported-versus-comparator:</strong> eTable group total
+<code>122</code> versus its stated <code>130</code> and Figure 1’s
+<code>130</code>, with each Figure 1 group count four higher.<br />
+<strong>Reasoning procedure:</strong> Sum the displayed eTable group
+counts and compare them with the eTable total and matched Figure 1
+branches.<br />
+<strong>Calculation:</strong> <code>55 + 67 = 122</code>;
+<code>130 − 122 = 8</code>; <code>59 + 71 = 130</code>; each figure
+count exceeds its table count by <code>4</code>.<br />
+<strong>Alternative source-grounded interpretations:</strong> eTable 10
+may intentionally omit four Swiss-law consent-withdrawal cases per
+group, but neither its row label nor footnote defines that
+restriction.<br />
+<strong>Mechanical evidence recheck:</strong> Direct page inspection
+confirmed the eTable values, Figure 1 values, and the absence of an
+eTable explanation for the eight-person difference.<br />
+<strong>Quality-control relevance:</strong> Participant-flow totals and
+group counts should state any population restriction needed to reconcile
+linked displays.<br />
+<strong>Potential downstream evidence impact:</strong> If confirmed, an
+evidence extractor could copy inconsistent flow totals or group
+exclusions; no effect-estimate impact, propagation, or conclusion change
+is asserted.<br />
+<strong>Human verification steps:</strong> Determine whether the eight
+omissions are intentional; if so, label the population and reconcile
+total, denominators, and footnote.<br />
+<strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--secondary-exclusion-cells-pair-within-group-denominators-with-cross-group-partition-percentages" class="candidate-card">C007
+— Secondary-exclusion cells pair within-group denominators with
+cross-group partition percentages</h2>
+<p><strong>Candidate statement:</strong> eTable 10 pairs within-group
+denominators with percentages that instead partition the classified
+cross-group total.<br />
+<strong>Status:</strong> Pending Human Adjudication<br />
+<strong>Category:</strong> Denominator, proportion, or total
+inconsistency<br />
+<strong>Exact source locations:</strong> <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=24">Supplement 2,
+eTable 10, PDF p. 24</a>, secondary exclusion; count comparator <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=3">Main
+article, Figure 1, PDF p. 3</a>.<br />
+<strong>Source evidence:</strong> eTable 10 states <code>N=341</code>
+and prints restrictive <code>174/750 (51)</code> and liberal
+<code>165/758 (49)</code>; its footnote notes two missing
+randomized-oxygen assignments. Figure 1 matches counts 174 and
+165.<br />
+<strong>Reported-versus-comparator:</strong> Printed <code>51%</code>
+and <code>49%</code> versus <code>23.2%</code> and <code>21.8%</code>
+from the printed cell denominators; the printed percentages instead
+reproduce from the 339 classified exclusions.<br />
+<strong>Reasoning procedure:</strong> Calculate percentages using each
+printed cell denominator and compare them with the cross-group
+classified-total partition.<br />
+<strong>Calculation:</strong> <code>174/750 = 23.2%</code>;
+<code>165/758 = 21.8%</code>; <code>174 + 165 = 339</code>;
+<code>174/339 = 51.3%</code>; <code>165/339 = 48.7%</code>;
+<code>341 − 339 = 2</code>.<br />
+<strong>Alternative source-grounded interpretations:</strong> The
+intended estimand may be within-group exclusion incidence or allocation
+distribution among classified exclusions; the table does not choose one
+consistently or explain how to present the two unassigned
+patients.<br />
+<strong>Mechanical evidence recheck:</strong> Direct page inspection
+confirmed the values, footnote, and Figure 1 count comparator.<br />
+<strong>Quality-control relevance:</strong> The display combines
+incompatible denominator concepts in a count/total/percentage
+cell.<br />
+<strong>Potential downstream evidence impact:</strong> If confirmed, an
+extractor could copy 51%/49% as within-group rates or 23.2%/21.8% as
+allocation shares; no propagation or conclusion change is
+asserted.<br />
+<strong>Human verification steps:</strong> Establish the intended
+estimand, use one denominator consistently, and describe the two missing
+assignments.<br />
+<strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--missing-as-event-primary-count-uses-a-doubled-numeratordenominator-separator" class="candidate-card">C008
+— Missing-as-event primary count uses a doubled numerator/denominator
+separator</h2>
+<p><strong>Candidate statement:</strong> The restrictive
+missing-as-event primary-outcome count has a doubled
+numerator/denominator separator despite otherwise reconciling
+numerically.<br />
+<strong>Status:</strong> Pending Human Adjudication<br />
+<strong>Category:</strong> Measure, label, or scale inconsistency<br />
+<strong>Exact source locations:</strong> <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=25">Supplement 2,
+eTable 11, PDF p. 25</a>, primary outcome with missing counted as
+event.<br />
+<strong>Source evidence:</strong> The direct PDF visibly prints
+restrictive <code>135//750 (18.0)</code> under
+<code>no./total no. (%)</code>; the paired liberal cell is
+<code>155/758 (20.4)</code>.<br />
+<strong>Reported-versus-comparator:</strong> Doubled <code>//</code>
+separator versus the table’s single-slash count/denominator notation and
+paired cell.<br />
+<strong>Reasoning procedure:</strong> Confirm the glyph string directly
+and compare it with the table convention; separately confirm that the
+numeric percentage reconciles.<br />
+<strong>Calculation:</strong> <code>100 × 135 / 750 = 18.0%</code>; the
+numeric relation reconciles, while the doubled separator does not match
+the notation.<br />
+<strong>Alternative source-grounded interpretations:</strong> The
+doubled slash may be a typographic, encoding, or production artifact;
+the package does not identify its source stage or intended
+correction.<br />
+<strong>Mechanical evidence recheck:</strong> Direct rendering,
+high-resolution crop, raw-text and bounding-box extraction, and targeted
+CPU OCR all retained both slash glyphs.<br />
+<strong>Quality-control relevance:</strong> A malformed count separator
+can impair manual or machine extraction even when its arithmetic is
+coherent.<br />
+<strong>Potential downstream evidence impact:</strong> If confirmed, a
+manual or machine extractor could retain the malformed separator when
+copying the display verbatim; no propagation or conclusion change is
+asserted.<br />
+<strong>Human verification steps:</strong> Confirm the authoritative
+publication string and determine whether clarification of the notation
+is needed.<br />
+<strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, these observations could affect the values,
+denominators, confidence-interval endpoint, participant-flow fields, or
+notation copied into a systematic review, meta-analysis, guideline
+evidence table, or other structured extraction. The package does not
+establish that any downstream reuse occurred, that any conclusion
+changed, or that serious harm resulted.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>No raw data, table-production files, statistical code, fitted-model
+objects, unrounded estimates, covariance matrices, inverse-probability
+weights, or publication-production files were supplied. The package
+therefore cannot resolve authoritative corrections for C001-C002 and
+C004-C005; model identity for C003; population and denominator
+definitions for C006-C007; or production cause for C008. This was not a
+clinical, broad methodological, raw-data, or external-literature audit.
+See <a href="review_1_5_3/limitations.md">limitations.md</a>.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ol type="1">
+<li>Confirm each cited direct-PDF string against the authoritative
+publication display.</li>
+<li>Consult underlying data, statistical output, or production records
+where needed.</li>
+<li>Resolve only the stated human question for each candidate and
+document any correction or clarification outside this report.</li>
+<li>Complete all five human-adjudication fields for every C ID.</li>
+</ol>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>Routing preflight passed with coordinator inference recorded as PASS
+in INTERACTIVE_CLI mode. Baseline source hashes cover all five PDFs, and
+baseline reused-artifact hashes cover 38 assets. Final post-report
+<code>sha256sum -c</code> verification matched every direct source and
+every reused artifact.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>Reuse asset curator</td>
+<td>root/reuse_asset_curator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>Main quantitative mapper</td>
+<td>root/main_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>Support quantitative mapper shard A</td>
+<td>root/support_mapper_a</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>Support quantitative mapper shard B</td>
+<td>root/support_mapper_b</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>Numeric consistency reviewer</td>
+<td>root/numeric_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>Cross-source consistency reviewer</td>
+<td>root/cross_source_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>Statistical pass 1</td>
+<td>root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+</tr>
+<tr>
+<td>Evidence rechecker</td>
+<td>root/evidence_rechecker</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>Statistical pass 2</td>
+<td>root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+</tr>
+<tr>
+<td>Evidence-quality auditor</td>
+<td>root/quality_auditor</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>Report generator</td>
+<td>root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-profile">Performance profile</h3>
+<ul>
+<li><strong>Target basis:</strong> Five direct PDFs contain 144 page
+units; all units have usable page-delimited native text, so no fresh
+extraction or OCR is required, but complete quantitative mapping still
+spans a 103-page protocol/SAP, an 11-page article, a 26-page results
+supplement with tables, and two short supplements. The target includes
+the required parallel mapping, three first-pass reviews, recheck, second
+statistical pass, audit, and report stages.</li>
+<li><strong>Total source units:</strong> 144</li>
+<li><strong>Fresh-source units:</strong> 0</li>
+<li><strong>Target elapsed minutes:</strong> 55-75</li>
+<li><strong>Started UTC:</strong> 2026-08-19T05:22:40Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-19T05:50:47Z</li>
+<li><strong>Observed elapsed minutes:</strong> 28.1</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<p>The runtime did not expose authoritative response-level token counts
+for this session or its specialists. Every actual manifested agent
+therefore has an <code>UNAVAILABLE</code> ledger record; no token count
+was estimated from text. Cached input and cache-write counts are input
+subsets, and reasoning is an output subset; none is added again to total
+tokens.</p>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>The per-agent details are in
+<code>review_1_5_3/token_usage_summary.md</code>. The known amount uses
+the bundled rates dated 2026-08-18 and is a token-only estimate, not an
+invoice; the complete token count and complete price remain
+unavailable.</p>
+</body>
+</html>

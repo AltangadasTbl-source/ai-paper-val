@@ -1,0 +1,26 @@
+# Workflow 1.5.1 Run State
+
+- **Target basis:** Four supplied PDFs with 69 total PDF pages; 51 pages appear to require fresh native-text mapping, while 18 result-relevant pages have reusable page-linked extraction. The protocol is long but natively extractable, the package has no Office/workbook sources, and the expected cross-document relationship volume is moderate. Final counts will be reconciled to the curator inventory before completion.
+- **Total source units:** 69
+- **Fresh-source units:** 51
+- **Target elapsed minutes:** 30-45
+- **Started UTC:** 2026-08-18T23:16:46Z
+- **Finished UTC:** 2026-08-19T00:04:17Z
+- **Observed elapsed minutes:** 47.5
+- **Target status:** EXCEEDED_TARGET
+- **Exceedance causes:** Complete mapping of the 48-page protocol; six-candidate direct evidence recheck and quality-audit cycle; quality repair and recheck of appended C006; complete six-card report assembly
+- **Workflow profile:** 1.5.1
+- **Coordinator:** COORDINATOR-CURRENT-SESSION
+- **Current stage:** COMPLETE
+- **Scientific coverage status:** COMPLETE_69_OF_69_UNITS
+- **Candidate ledger status:** COMPLETE_6_CANDIDATES_AFTER_QUALITY_REPAIR
+- **Statistical pass 1 status:** COMPLETE_39_RELATIONSHIPS
+- **Statistical pass 2 status:** COMPLETE_39_RELATIONSHIPS_NO_APPEND
+- **Evidence recheck status:** COMPLETE_6_CANDIDATES
+- **Quality audit status:** COMPLETE_6_CANDIDATES
+- **Markdown report status:** COMPLETE_6_CARDS
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE
+- **Source integrity status:** UNCHANGED_4_OF_4
+- **Reused-artifact integrity status:** UNCHANGED_59_OF_59
+- **Validation status:** PASS
+- **Limitations:** Protocol PDF p. 42 has heading-only native text; the supplied direct PDF page remains available for visual confirmation.

@@ -1,0 +1,25 @@
+name = "legacy_patch_report_generator"
+description = "Generate the source-linked patch-1.2.2 human review report without AI adjudication."
+model = "gpt-5.6-terra"
+model_reasoning_effort = "ultra"
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Read the patch-1.2.2 report specification and all completed recovery artifacts, including the endetail
+harvest. Write detailed English to .ai_paper_validation/final_report_1_2_2.md and include an Endetail
+Reuse Summary plus exactly the stable IDs in review_queue.md, with no more than 10 self-contained
+evidence cards. Do not add a candidate that is absent from the recovered ledger and do not omit a
+queued ID. Reuse source-confirmed endetail calculations and explicitly count reused versus repaired
+cards; never reuse its dispositions.
+
+Mark every card Pending Human Adjudication. Do not display current severity, disposition, validity,
+Verified, Rejected, Uncertain, acceptance, exclusion, or a proposed correction. Historical labels
+belong only in the lineage artifact, not in the report. Use complete actual filenames and relative
+PDF links ending in #page=N; for spreadsheet-only evidence, link the workbook and state worksheet and
+cells; for CSV state row/column; for DOC/DOCX without derived PDF state paragraph/table identifiers.
+Preserve the AI Training Restriction summary separately when it exists.
+
+Run legacy_patch/scripts/render_report.py to create final_report_1_2_2.html. Write a concise recovery
+summary and limitations to .ai_paper_validation/patch_1_2_2/recovery_log.md. Never overwrite the old
+final_report files, sources, or legacy records. Return only a compact status, candidate count,
+artifacts, and remaining validator issues.
+"""

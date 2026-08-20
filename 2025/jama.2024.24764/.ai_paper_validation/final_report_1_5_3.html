@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.3 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.3 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.3 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--workflow-153"
+id="toc-quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--smoking-percentages-use-a-different-denominator-from-the-printed-smoking-totals"
+id="toc-c001--smoking-percentages-use-a-different-denominator-from-the-printed-smoking-totals">C001
+— Smoking percentages use a different denominator from the printed
+smoking totals</a></li>
+<li><a
+href="#c002--operating-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier"
+id="toc-c002--operating-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier">C002
+— Operating-surgeon level totals exceed participant denominators without
+a multi-response qualifier</a></li>
+<li><a
+href="#c003--fascia-closing-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier"
+id="toc-c003--fascia-closing-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier">C003
+— Fascia-closing surgeon level totals exceed participant denominators
+without a multi-response qualifier</a></li>
+<li><a
+href="#c004--skin-closing-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier"
+id="toc-c004--skin-closing-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier">C004
+— Skin-closing surgeon level totals exceed participant denominators
+without a multi-response qualifier</a></li>
+<li><a
+href="#c005--control-arm-mortality-differs-between-participant-flow-and-30-day-safety-reporting"
+id="toc-c005--control-arm-mortality-differs-between-participant-flow-and-30-day-safety-reporting">C005
+— Control-arm mortality differs between participant flow and 30-day
+safety reporting</a></li>
+<li><a
+href="#c006--longitudinal-quality-of-life-covariance-specification-differs-between-sap-and-final-article"
+id="toc-c006--longitudinal-quality-of-life-covariance-specification-differs-between-sap-and-final-article">C006
+— Longitudinal quality-of-life covariance specification differs between
+SAP and final article</a></li>
+<li><a
+href="#c007--length-of-stay-effect-measure-and-model-differ-between-sapprotocol-and-final-article"
+id="toc-c007--length-of-stay-effect-measure-and-model-differ-between-sapprotocol-and-final-article">C007
+— Length-of-stay effect measure and model differ between SAP/protocol
+and final article</a></li>
+<li><a
+href="#c008--australia-inclusive-length-of-stay-result-differs-from-the-stated-uk-only-analysis-population"
+id="toc-c008--australia-inclusive-length-of-stay-result-differs-from-the-stated-uk-only-analysis-population">C008
+— Australia-inclusive length-of-stay result differs from the stated
+UK-only analysis population</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+Execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-usage-and-cost" id="toc-token-usage-and-cost">Token
+Usage and Cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--workflow-153">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.3</h1>
+<blockquote>
+<p><strong>Pending Human Adjudication:</strong> Every candidate in this
+report is a quality-control observation for human review. No candidate
+is a severity rating, final disposition, or conclusion about the paper's
+validity.</p>
+</blockquote>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete supplied-source coverage identified <strong>8</strong>
+stable candidate consistency issues (C001-C008). They concern
+denominator conventions, response-unit labelling, a mortality-window
+discrepancy, and planned-versus-reported analytical specifications.
+Small preventable reporting defects can matter for downstream evidence
+extraction; this report does not assert that any defect propagated,
+changed a conclusion, or caused harm.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contained four supplied PDFs: the main article (11
+pages), SAP (46), results supplement (9), and protocol (48). Twenty
+source pages had complete reusable native-text coverage; 94 pages
+required fresh direct-source mapping. Reused OCR, page images,
+manifests, and document maps were used as locators and transcription
+aids only; the supplied PDFs remained the evidence authority. No Office
+document, workbook, or CSV source was supplied.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Total</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main article</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>SAP</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">46</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Results supplement</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">48</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>114</strong></td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: right;"><strong>94</strong></td>
+<td style="text-align: right;"><strong>114</strong></td>
+<td><strong>Complete</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The review covered numeric, denominator, statistical, cross-document,
+measure/scale, rate/count, and concrete analysis-population
+relationships. It did not conduct a raw-data, clinical, study-design,
+misconduct, or external-literature audit. No candidate was created for a
+display-zero P value: no supplied result displayed <code>P = 0</code>,
+<code>p = 0.000</code>, or equivalent.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The numeric inventory covered N001-N060; the numeric checker
+completed all 60 records. The statistical inventory covered S001-S035.
+Statistical pass 1 and the independent statistical pass 2 each completed
+all 35 records. Cross-source review compared matched quantitative
+occurrences across all four supplied PDFs. Exact reconstruction was not
+claimed where the supplied sources omitted result-specific standard
+errors, degrees of freedom, final covariance/variance settings, model
+fallback details, or numerical plot data.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Category</th>
+<th>Candidate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--smoking-percentages-use-a-different-denominator-from-the-printed-smoking-totals">C001</a></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Smoking percentages and printed smoking totals use different
+denominators.</td>
+</tr>
+<tr>
+<td><a
+href="#c002--operating-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier">C002</a></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Operating-surgeon levels exceed participant denominators without a
+multi-response qualifier.</td>
+</tr>
+<tr>
+<td><a
+href="#c003--fascia-closing-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier">C003</a></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Fascia-closing levels exceed participant denominators without a
+multi-response qualifier.</td>
+</tr>
+<tr>
+<td><a
+href="#c004--skin-closing-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier">C004</a></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Skin-closing levels exceed participant denominators without a
+multi-response qualifier.</td>
+</tr>
+<tr>
+<td><a
+href="#c005--control-arm-mortality-differs-between-participant-flow-and-30-day-safety-reporting">C005</a></td>
+<td>Cross-document numeric inconsistency</td>
+<td>Participant flow and 30-day mortality report different control
+counts.</td>
+</tr>
+<tr>
+<td><a
+href="#c006--longitudinal-quality-of-life-covariance-specification-differs-between-sap-and-final-article">C006</a></td>
+<td>Statistical reporting inconsistency</td>
+<td>SAP and final article name different QoL covariance
+specifications.</td>
+</tr>
+<tr>
+<td><a
+href="#c007--length-of-stay-effect-measure-and-model-differ-between-sapprotocol-and-final-article">C007</a></td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Planned and final length-of-stay effect measures/models differ.</td>
+</tr>
+<tr>
+<td><a
+href="#c008--australia-inclusive-length-of-stay-result-differs-from-the-stated-uk-only-analysis-population">C008</a></td>
+<td>Analysis-unit or population inconsistency</td>
+<td>Australia-inclusive length-of-stay result differs from UK-only
+planned population.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--smoking-percentages-use-a-different-denominator-from-the-printed-smoking-totals" class="candidate-card">C001
+— Smoking percentages use a different denominator from the printed
+smoking totals</h2>
+<p><strong>Candidate statement:</strong> The smoking rows print
+variable-specific totals of 405 and 402, while all six percentages
+reproduce the group-header denominators 411 and 410 without an
+explanatory convention.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=5">jama_atherton_2025_oi_240145_1741627844.85412.pdf
+— PDF p. 5, Table 1</a></p>
+<p><strong>Source evidence:</strong> Smoking counts are 220/95/90 and
+223/70/109; they sum to printed <code>Total No.</code> values 405 and
+402. Group headers are 411 and 410.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported percentages are
+53.5/23.1/21.9 and 54.4/17.1/26.6; comparator denominators are printed
+smoking totals 405/402 versus group headers 411/410.</p>
+<p><strong>Reasoning procedure:</strong> Compare each count and
+percentage with both available denominator pairs, while preserving the
+possibility that the table intentionally uses randomized-group
+denominators.</p>
+<p><strong>Calculation:</strong> <code>220+95+90=405</code>;
+<code>223+70+109=402</code>. <code>220/411=53.53%</code> and the other
+five printed percentages likewise reproduce 411/410, not 405/402.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>Total No.</code> may denote nonmissing smoking records while
+percentages intentionally use all randomized participants; the page does
+not state that convention or identify the six and eight unclassified
+records.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location, counts,
+headers, totals, percentages, and arithmetic were directly matched; the
+missing input is the intended denominator convention.</p>
+<p><strong>Quality-control relevance:</strong> A table should make clear
+whether the percentages represent observed smoking records or all
+randomized participants.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy smoking prevalence or missingness using a
+different denominator convention. No propagation or conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the table
+programming specification, smoking missingness, and intended
+denominator; add a table note if percentages deliberately use
+411/410.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--operating-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier" class="candidate-card">C002
+— Operating-surgeon level totals exceed participant denominators without
+a multi-response qualifier</h2>
+<p><strong>Candidate statement:</strong> Operating-surgeon category
+totals exceed the printed participant denominators without a statement
+that the rows permit multiple responses.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=7">jama_atherton_2025_oi_240145_1741627844.85412.pdf
+— PDF p. 7, Table 2</a></p>
+<p><strong>Source evidence:</strong> Under
+<code>No. of participants (%)</code>,
+consultant/registrar/senior-house-officer values are 319/123/4 and
+318/110/1, with group denominators 411 and 410.</p>
+<p><strong>Reported-versus-comparator:</strong> Category totals 446 and
+429 are compared with participant denominators 411 and 410; percentage
+totals are 108.5% and 104.6%.</p>
+<p><strong>Reasoning procedure:</strong> Apply the single-response
+participant-category rule conditionally, because multiple
+operating-surgeon levels could legitimately be recorded for one
+participant.</p>
+<p><strong>Calculation:</strong> <code>319+123+4=446</code> (35 above
+411); <code>318+110+1=429</code> (19 above 410).</p>
+<p><strong>Alternative source-grounded interpretations:</strong> More
+than one surgeon level may have operated on a participant, making the
+rows multi-response; no qualifier appears on the page.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed counts,
+denominators, label, and sums were matched. The necessary missing
+definition is whether one participant could contribute to more than one
+level.</p>
+<p><strong>Quality-control relevance:</strong> The response unit
+determines whether these rows are interpretable as exclusive participant
+proportions or an operator-level distribution.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could treat multi-response rows as exclusive participant
+proportions. No outcome-analysis or conclusion effect is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the
+data-collection response unit and add a multi-response/denominator
+qualifier if applicable.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--fascia-closing-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier" class="candidate-card">C003
+— Fascia-closing surgeon level totals exceed participant denominators
+without a multi-response qualifier</h2>
+<p><strong>Candidate statement:</strong> Fascia-closing surgeon-level
+totals exceed participant denominators without a stated multi-response
+rule.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=7">jama_atherton_2025_oi_240145_1741627844.85412.pdf
+— PDF p. 7, Table 2 continuation</a></p>
+<p><strong>Source evidence:</strong>
+Consultant/registrar/senior-house-officer fascia-closing counts are
+201/218/26 and 193/225/15 under group denominators 411 and 410.</p>
+<p><strong>Reported-versus-comparator:</strong> Totals 445 and 433 are
+compared with 411 and 410; percentage totals are 108.2% and 105.7%.</p>
+<p><strong>Reasoning procedure:</strong> Test the conditional
+single-response interpretation, while recognizing that co-closure could
+yield multiple level records per participant.</p>
+<p><strong>Calculation:</strong> <code>201+218+26=445</code> (34 above
+411); <code>193+225+15=433</code> (23 above 410).</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Co-closure by more than one surgeon level may make the rows
+intentionally multi-response; the table gives no response-unit
+definition.</p>
+<p><strong>Mechanical evidence recheck:</strong> Source values,
+denominators, labels, and calculations were directly matched; the
+multi-response definition is unavailable.</p>
+<p><strong>Quality-control relevance:</strong> The source should
+identify the counting unit when category totals are not mutually
+exclusive.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+reuse of these rows could apply an unsupported unit or exclusivity
+assumption. No propagation or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Verify whether one
+participant can be counted at more than one fascia-closing level and
+clarify the table label/footnote.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--skin-closing-surgeon-level-totals-exceed-participant-denominators-without-a-multi-response-qualifier" class="candidate-card">C004
+— Skin-closing surgeon level totals exceed participant denominators
+without a multi-response qualifier</h2>
+<p><strong>Candidate statement:</strong> Skin-closing surgeon-level
+totals exceed participant denominators without a stated multi-response
+rule.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=7">jama_atherton_2025_oi_240145_1741627844.85412.pdf
+— PDF p. 7, Table 2 continuation</a></p>
+<p><strong>Source evidence:</strong>
+Consultant/registrar/senior-house-officer skin-closing counts are
+115/214/96 and 102/241/73 under denominators 411 and 410.</p>
+<p><strong>Reported-versus-comparator:</strong> Totals 425 and 416 are
+compared with 411 and 410; percentage totals are 103.5% and 101.5%.</p>
+<p><strong>Reasoning procedure:</strong> Apply the single-response rule
+conditionally, as multiple people participating in a closure could
+instead explain the totals.</p>
+<p><strong>Calculation:</strong> <code>115+214+96=425</code> (14 above
+411); <code>102+241+73=416</code> (6 above 410).</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+rows may be intended multi-response entries, but the source does not
+state this.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed counts,
+percentages, denominators, and sums were matched. The response-unit
+definition remains missing.</p>
+<p><strong>Quality-control relevance:</strong> Clear labelling prevents
+category percentages from being read as an exclusive patient-level
+distribution when they are not.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a downstream table extraction could use an incorrect patient-level or
+operator-level interpretation. No harm or conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Verify the skin-closure
+recording rule and amend the label or footnote if multiple levels were
+allowed.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--control-arm-mortality-differs-between-participant-flow-and-30-day-safety-reporting" class="candidate-card">C005
+— Control-arm mortality differs between participant flow and 30-day
+safety reporting</h2>
+<p><strong>Candidate statement:</strong> Participant flow reports 25
+deaths (10 intervention, 15 control), whereas Table 3 and the safety
+narrative report 24 deaths within 30 days (10 intervention, 14
+control).</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=3">jama_atherton_2025_oi_240145_1741627844.85412.pdf
+— PDF p. 3, Figure 1</a>; <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=6">PDF
+p. 6, safety narrative</a>; <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=8">PDF
+p. 8, Table 3</a></p>
+<p><strong>Source evidence:</strong> Figure 1 reports 10 and 15 deaths.
+The narrative and Table 3 report mortality within 30 days as 10/411 and
+14/410.</p>
+<p><strong>Reported-versus-comparator:</strong> Figure 1 total 25 and
+control count 15 are compared with the explicitly 30-day total 24 and
+control count 14.</p>
+<p><strong>Reasoning procedure:</strong> Compare matched arm counts
+while preserving the source's distinct or unspecified event-time
+windows.</p>
+<p><strong>Calculation:</strong> <code>10+15=25</code>;
+<code>10+14=24</code>; intervention counts agree and control counts
+differ by one.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Figure
+1 may include one control-arm death outside the 30-day window; Figure 1
+does not name its mortality window.</p>
+<p><strong>Mechanical evidence recheck:</strong> All three locations and
+printed counts were matched. The missing input is the Figure 1
+death-time window and event dates.</p>
+<p><strong>Quality-control relevance:</strong> Event count and
+time-window labels should reconcile across flow and safety
+reporting.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy a different control-arm mortality count, total,
+or window. No assertion is made that mortality reporting or the paper's
+conclusion is wrong.</p>
+<p><strong>Human verification steps:</strong> Reconcile individual death
+dates with Figure 1 and Table 3, then state the Figure 1 mortality
+window or correct the displayed count.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--longitudinal-quality-of-life-covariance-specification-differs-between-sap-and-final-article" class="candidate-card">C006
+— Longitudinal quality-of-life covariance specification differs between
+SAP and final article</h2>
+<p><strong>Candidate statement:</strong> The SAP specifies unstructured
+covariance with robust sandwich standard errors for the QoL model
+family, while the final article specifies independent covariance.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240145supp1_prod_1741627844.87412.pdf#page=26">joi240145supp1_prod_1741627844.87412.pdf
+— PDF p. 26, SAP</a>; <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=4">jama_atherton_2025_oi_240145_1741627844.85412.pdf
+— PDF p. 4, Statistical Analysis</a></p>
+<p><strong>Source evidence:</strong> The SAP prints
+<code>unstructured</code> covariance and robust sandwich standard errors
+for SF-12/EQ-5D repeated measures; the final article prints
+<code>independent</code> covariance for that outcome-model family.</p>
+<p><strong>Reported-versus-comparator:</strong> Final-article
+independent covariance is compared with SAP unstructured covariance and
+robust sandwich variance estimation.</p>
+<p><strong>Reasoning procedure:</strong> Compare the named model
+specifications directly; do not infer whether a variance estimator was
+absent merely because the article is silent.</p>
+<p><strong>Calculation:</strong> Not applicable;
+<code>unstructured</code> and <code>independent</code> are distinct
+named covariance specifications.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+amendment, diagnostic, convergence consideration, or concise article
+description may explain the difference; no such record is supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both printed
+descriptions were directly matched. Final covariance/variance-estimation
+output and any amendment are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> Accurate
+model-specification reporting supports reproducible interpretation of
+QoL uncertainty estimates.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+evidence users could extract or interpret the QoL model specification or
+uncertainty method differently. No claim is made that estimates, P
+values, or conclusions changed.</p>
+<p><strong>Human verification steps:</strong> Inspect the final analysis
+code/output and amendment history; identify the covariance and
+variance-estimation settings used for published estimates.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--length-of-stay-effect-measure-and-model-differ-between-sapprotocol-and-final-article" class="candidate-card">C007
+— Length-of-stay effect measure and model differ between SAP/protocol
+and final article</h2>
+<p><strong>Candidate statement:</strong> SAP/protocol describe adjusted
+mean difference, or skewed-data unadjusted median difference, whereas
+the final article reports log-transformed adjusted ratios of geometric
+means for length of stay.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240145supp1_prod_1741627844.87412.pdf#page=25">joi240145supp1_prod_1741627844.87412.pdf
+— PDF p. 25, SAP</a>; <a
+href="../joi240145supp4_prod_1741627844.90412.pdf#page=39">joi240145supp4_prod_1741627844.90412.pdf
+— PDF p. 39, protocol</a>; <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=4">jama_atherton_2025_oi_240145_1741627844.85412.pdf
+— PDF p. 4</a>; <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=8">PDF
+p. 8, Table 3</a></p>
+<p><strong>Source evidence:</strong> The final article reports adjusted
+ratios of geometric means 0.91 and 0.96 after log transformation;
+SAP/protocol plan additive mean-difference or median-difference
+reporting.</p>
+<p><strong>Reported-versus-comparator:</strong> Multiplicative,
+dimensionless ratios of geometric means are compared with additive
+differences in days for the same endpoint.</p>
+<p><strong>Reasoning procedure:</strong> Compare effect-measure scale
+and model descriptions, using the UK-only result as the
+population-matched comparison and retaining population identity
+separately in C008.</p>
+<p><strong>Calculation:</strong> Not reproducible from aggregate printed
+data: medians/IQRs cannot reconstruct geometric means, fitted log-scale
+coefficients, or adjusted ratios.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Nonnormality noted in the article may have motivated the final approach,
+but the supplied skewness branch specifies a median difference and no
+amendment or decision rule is supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Planned and final
+model/effect-measure statements and Table 3 ratios were matched.
+Executed model output and amendment documentation are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> Effect-measure identity
+is necessary for correct comparison, synthesis, and interpretation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could use an incorrect LOS scale, effect measure, or
+model label. No claim is made that the ratios or conclusion are
+wrong.</p>
+<p><strong>Human verification steps:</strong> Verify the final analysis
+decision rule/amendment and state which effect measure was intended for
+extraction and interpretation.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--australia-inclusive-length-of-stay-result-differs-from-the-stated-uk-only-analysis-population" class="candidate-card">C008
+— Australia-inclusive length-of-stay result differs from the stated
+UK-only analysis population</h2>
+<p><strong>Candidate statement:</strong> SAP and protocol specify
+UK-only length-of-stay reporting, while the final article additionally
+reports a UK-and-Australia result.</p>
+<p><strong>Category:</strong> Analysis-unit or population
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240145supp1_prod_1741627844.87412.pdf#page=18">joi240145supp1_prod_1741627844.87412.pdf
+— PDF p. 18, SAP endpoint</a>; <a
+href="../joi240145supp1_prod_1741627844.87412.pdf#page=25">PDF p. 25,
+SAP population</a>; <a
+href="../joi240145supp4_prod_1741627844.90412.pdf#page=24">joi240145supp4_prod_1741627844.90412.pdf
+— PDF p. 24, protocol</a>; <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=1">jama_atherton_2025_oi_240145_1741627844.85412.pdf
+— PDF p. 1, abstract</a>; <a
+href="../jama_atherton_2025_oi_240145_1741627844.85412.pdf#page=8">PDF
+p. 8, Table 3</a></p>
+<p><strong>Source evidence:</strong> SAP/protocol state that LOS is
+UK-only and exclude Australian-randomized participants. The final
+article reports UK-only ratio 0.91 (95% CI 0.82-1.02), P=.12 and
+UK-and-Australia ratio 0.96 (0.88-1.06), P=.21.</p>
+<p><strong>Reported-versus-comparator:</strong> A UK-and-Australia
+analysis population is compared with the planned UK-only endpoint
+population.</p>
+<p><strong>Reasoning procedure:</strong> Treat population definition as
+part of result identity; do not infer whether the additional all-country
+analysis was planned, amended, sensitivity, exploratory, or post
+hoc.</p>
+<p><strong>Calculation:</strong> No arithmetic reconstruction is
+required: <code>UK patients only</code> and
+<code>UK and Australian patients</code> are different populations.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+all-country result may be an additional intended analysis while the
+UK-only result remains the designated endpoint; the supplied package
+does not label its status.</p>
+<p><strong>Mechanical evidence recheck:</strong> The SAP, final results,
+and protocol statement were directly matched. The correct protocol
+locator is PDF p. 24. Amendment status, result-specific denominators,
+and missing-data rules are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> Population labels are
+essential to correct identification and pooling of endpoint
+estimates.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+downstream extraction or pooling could attach the LOS estimate to a
+UK-only versus all-country population label incorrectly. No conclusion
+change is asserted.</p>
+<p><strong>Human verification steps:</strong> Review later
+SAPs/amendments and final model metadata; identify the all-country
+analysis status, denominators, missing-data rules, and designated
+endpoint population.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, these observations could affect how data extractors
+record denominators, response units, mortality windows, population
+labels, effect measures, or model descriptions. They are presented as
+bounded risks to downstream evidence products such as systematic
+reviews, meta-analyses, and guidelines, not as evidence that reuse
+occurred or that any conclusion changed.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The supplied package does not include participant-level data,
+executed code, final model output, later amendments, result-specific
+standard errors/degrees of freedom, all covariance/variance settings, or
+unprinted denominator and response-unit definitions. Plotted
+tipping-point coordinates were not supplied numerically. These
+limitations prevent adjudication and exact reconstruction in the
+affected records; they do not erase direct printed comparisons.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ol type="1">
+<li>Confirm each cited source location and transcription.</li>
+<li>Resolve the named denominator, response-unit, time-window, model,
+amendment, or population definition.</li>
+<li>Determine validity, importance, and any action in the card
+fields.</li>
+<li>Record reviewer initials and notes without changing stable candidate
+IDs.</li>
+</ol>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</h3>
+<ul>
+<li><strong>Routing preflight:</strong> PASS; coordinator inference
+PASS; execution mode <code>INTERACTIVE_CLI</code>; all nine named role
+presets verified.</li>
+<li><strong>Source-unit counts:</strong> 114 total; 20 reusable; 94
+fresh-required; 114 mapped.</li>
+<li><strong>Source integrity:</strong> Four direct-source SHA-256 hashes
+and 51 reused-artifact SHA-256 hashes were recorded before review.
+Pre-close recomputation and validation remain coordinator closeout
+work.</li>
+<li><strong>Evidence boundary:</strong> Supplied local package sources
+only; no web evidence used; no source or reused artifact was
+modified.</li>
+</ul>
+<h3 id="agent-execution">Agent Execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td><code>/root</code></td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td><code>/root/reuse_asset_curator</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td><code>/root/main_quantitative_mapper</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td><code>/root/support_quantitative_mapper</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td><code>/root/numeric_consistency_reviewer</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td><code>/root/cross_source_consistency_reviewer</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td><code>/root/statistical_pass_1</code></td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td><code>/root/evidence_rechecker</code></td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td><code>/root/statistical_pass_2</code></td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+</tr>
+<tr>
+<td>evidence_rechecker_append_C008</td>
+<td><code>/root/evidence_rechecker_c008</code></td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td><code>/root/quality_control_auditor</code></td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td><code>/root/report_generator</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Four supplied PDFs contain 114
+PDF-page source units. Twenty main-article/results-supplement pages have
+complete page-delimited native text, with visual/OCR companions on 13
+table/figure pages; 94 SAP/protocol pages require fresh direct-source
+mapping. The mixed main article, results supplement, SAP, and protocol
+require two mapping lanes and the mandatory downstream checking,
+recheck, and reporting waves.</li>
+<li><strong>Total source units:</strong> 114</li>
+<li><strong>Fresh-source units:</strong> 94</li>
+<li><strong>Target elapsed minutes:</strong> 55-75</li>
+<li><strong>Started UTC:</strong> 2026-08-19T05:20:02Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-19T05:44:37Z</li>
+<li><strong>Observed elapsed minutes:</strong> 24.6</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-usage-and-cost">Token Usage and Cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Token totals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td>Known total 0; 4 unavailable response records; known cost USD
+0.000000; complete total and price unavailable</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td>Known total 0; 8 unavailable response records; known cost USD
+0.000000; complete total and price unavailable</td>
+</tr>
+</tbody>
+</table>
+<p>Per-agent detail will be recorded in
+<code>review_1_5_3/token_usage_summary.md</code>. Any available amount
+uses the bundled dated fixed-model rates and is a token-only estimate,
+not an invoice. Cached input and cache-write counts are input subsets,
+and reasoning tokens are an output subset; none is added again to total
+tokens.</p>
+</body>
+</html>

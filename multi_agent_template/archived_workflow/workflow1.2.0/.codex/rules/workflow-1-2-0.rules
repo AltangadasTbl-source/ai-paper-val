@@ -1,0 +1,57 @@
+# Reviewed commands for an autonomous Linux CPU-only single-paper audit.
+
+prefix_rule(
+    pattern = [
+        ["python", "python3"],
+        [
+            "workflow_1_2_0/scripts/prepare_package.py",
+            "workflow_1_2_0/scripts/cpu_ocr_page.py",
+            "workflow_1_2_0/scripts/render_report.py",
+            "workflow_1_2_0/scripts/validate_fresh.py",
+        ],
+    ],
+    decision = "allow",
+    justification = "Prepare, CPU-OCR, render, and validate one local paper package.",
+)
+
+prefix_rule(
+    pattern = ["pdfinfo"],
+    decision = "allow",
+    justification = "Read local PDF metadata and page counts.",
+)
+
+prefix_rule(
+    pattern = ["pdftotext"],
+    decision = "allow",
+    justification = "Extract native text from supplied or locally converted PDFs.",
+)
+
+prefix_rule(
+    pattern = [["pdftoppm", "pdftocairo"]],
+    decision = "allow",
+    justification = "Render selected local PDF pages for visual checking or CPU OCR.",
+)
+
+prefix_rule(
+    pattern = ["tesseract"],
+    decision = "allow",
+    justification = "Run targeted CPU-only OCR on selected local page images.",
+)
+
+prefix_rule(
+    pattern = [["libreoffice", "soffice"]],
+    decision = "allow",
+    justification = "Convert supplied Office files to derived PDFs without changing sources.",
+)
+
+prefix_rule(
+    pattern = ["pandoc"],
+    decision = "allow",
+    justification = "Render the local versioned Markdown report as standalone HTML.",
+)
+
+prefix_rule(
+    pattern = ["sha256sum"],
+    decision = "allow",
+    justification = "Verify direct source integrity.",
+)

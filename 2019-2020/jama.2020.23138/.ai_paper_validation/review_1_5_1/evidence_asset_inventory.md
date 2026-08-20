@@ -1,0 +1,35 @@
+# Reusable Evidence Asset Inventory
+
+This inventory excludes old candidate, queue, verifier, critic, checker, endetail, and final-report content from discovery scope. Every listed file was identified only by path, file family, and source-location metadata. Hashes for all 157 reused artifacts are in `reused_artifact_hashes_before.sha256`.
+
+| Asset family and exact artifact path pattern | Count | Source locations mapped | Method | Fitness | Coverage classification and gap |
+|---|---:|---|---|---|---|
+| .ai_paper_validation/preprocessing/native_text/JAMA2020-23138-MAIN/page-001.txt through page-012.txt | 12 | DOC-001 PDF pages 1-12, one artifact per identically numbered page | Native PDF text extraction | USABLE | Complete reusable coverage of DOC-001 pages 1-12. |
+| .ai_paper_validation/preprocessing/normalized_text/JAMA2020-23138-MAIN/page-001.txt through page-012.txt | 12 | DOC-001 PDF pages 1-12, one artifact per identically numbered page | Normalized native text | DUPLICATE | Same 12 units as the usable native-text family; use native text as canonical reusable extraction. |
+| .ai_paper_validation/normalized_text/DOC-001/document-native-normalized.txt and page-001.txt through page-012.txt | 13 | DOC-001 PDF pages 1-12; document file spans pages 1-12 | Legacy normalized native text | DUPLICATE | Same 12 units; page files are duplicate page transcriptions and the document-level file is a noncanonical aggregate. |
+| .ai_paper_validation/normalized_text/DOC-001/page-003.ocr.txt, page-005.ocr.txt, page-006.ocr.txt, page-007.ocr.txt, and page-008.ocr.txt | 5 | DOC-001 PDF pages 3, 5-8 | Legacy OCR text | PARTIAL | Supplemental locator only; no additional unit coverage beyond native text, and page 3 visual-text confirmation remains a direct-source task if needed. |
+| .ai_paper_validation/preprocessing/page_images/JAMA2020-23138-MAIN/page-03.png, page-05.png through page-09.png | 6 | DOC-001 PDF pages 3, 5-9 | Rendered PDF pages | USABLE | Targeted visual support within units already covered by native text; no added reusable units. |
+| .ai_paper_validation/preprocessing/rendered_pages/DOC-001/page-003.png, page-005.png through page-009.png | 6 | DOC-001 PDF pages 3, 5-9 | Legacy rendered PDF pages | DUPLICATE | Duplicate visual derivatives for the same five units. |
+| .ai_paper_validation/preprocessing/native_text/JAMA2020-23138-SUPP03-RESULTS/page-001.txt through page-020.txt | 20 | DOC-004 PDF pages 1-20, one artifact per identically numbered page | Native PDF text extraction | USABLE | Complete reusable coverage of DOC-004 pages 1-20. |
+| .ai_paper_validation/preprocessing/normalized_text/JAMA2020-23138-SUPP03-RESULTS/page-001.txt through page-020.txt | 20 | DOC-004 PDF pages 1-20, one artifact per identically numbered page | Normalized native text | DUPLICATE | Same 20 units as usable native text. |
+| .ai_paper_validation/normalized_text/DOC-004/document-native-normalized.txt and page-001.txt through page-020.txt | 21 | DOC-004 PDF pages 1-20; document file spans pages 1-20 | Legacy normalized native text | DUPLICATE | Same 20 units; document-level aggregate is noncanonical. |
+| .ai_paper_validation/preprocessing/page_images/JAMA2020-23138-SUPP03-RESULTS/page-08.png through page-18.png | 11 | DOC-004 PDF pages 8-18 | Rendered PDF pages | USABLE | Visual support for pages 8-18; those units remain counted once through native text. |
+| .ai_paper_validation/preprocessing/rendered_pages/DOC-004/page-008.png through page-018.png | 11 | DOC-004 PDF pages 8-18 | Legacy rendered PDF pages | DUPLICATE | Duplicate visual derivatives for the same 11 units. |
+| .ai_paper_validation/preprocessing/page_manifest.json | 1 | DOC-001 pages 1-12 and DOC-004 pages 1-20 | Page/source-location manifest | USABLE | Complete location map for the 32 reusable page units; explicitly records no coverage for DOC-002, DOC-003, or DOC-005. |
+| .ai_paper_validation/preprocessing/page_manifests/DOC-001.json and DOC-004.json | 2 | DOC-001 pages 1-12; DOC-004 pages 1-20 | Per-document page/source-location maps | USABLE | Location-map support for the same 32 reusable units. |
+| .ai_paper_validation/preprocessing/page_ocr_metadata/DOC-001/page-003.json, page-005.json through page-008.json | 5 | DOC-001 PDF pages 3, 5-8 | OCR attempt metadata | STALE | Metadata reports unavailable backend/failed legacy OCR; does not supply usable text or close visual-confirmation gaps. |
+| .ai_paper_validation/preprocessing/preprocessing_provenance.json | 1 | DOC-001 pages 1-12 and DOC-004 pages 1-20 | Preprocessing source-location/provenance map | PARTIAL | Maps the 32 preprocessed units but confirms no reusable page extraction for the other 115 direct-source units. |
+| .ai_paper_validation/document_outputs/DOC-001/document_record.json through DOC-005/document_record.json | 5 | DOC-001 pages 1-12; DOC-002 pages 1-69; DOC-003 pages 1-45; DOC-004 pages 1-20; DOC-005 page 1 | Document records | PARTIAL | Inventory/location guidance only; source-page text is not a reusable scientific extraction for DOC-002, DOC-003, or DOC-005. |
+| .ai_paper_validation/document_outputs/JAMA2020-23138-MAIN/document_record.md; JAMA2020-23138-SUPP01-PROTOCOL/document_record.md; JAMA2020-23138-SUPP02-SAP/document_record.md; JAMA2020-23138-SUPP03-RESULTS/document_record.md; JAMA2020-23138-SUPP04-DATA-SHARING/document_record.md | 5 | Corresponding complete document page ranges | Document records | PARTIAL | Redundant inventory/location guidance; not counted as reusable evidence extraction. |
+| .ai_paper_validation/document_outputs/package_manifest.json | 1 | All five direct PDFs, page ranges DOC-001 1-12, DOC-002 1-69, DOC-003 1-45, DOC-004 1-20, DOC-005 1 | Package source-location map | PARTIAL | Complete source identity map, but prior selective audit routing is stale as a scientific-coverage boundary; all 115 unextracted pages require fresh direct-source mapping. |
+
+No table extraction, workbook extraction, layout-text extraction, DOC/DOCX paragraph map, XLS/XLSX sheet/cell map, or CSV row/column map exists below the audit area. No asset was unreadable. The existing OCR/backend records are stale only as OCR-method evidence; they do not alter direct-source requirements.
+
+## Unit-level fitness and gaps
+
+- DOC-001: all pages 1-12 have usable native page text. Visual assets cover pages 3 and 5-9; page 3 legacy OCR is partial, so any figure-text confirmation must use the direct PDF page.
+- DOC-002: pages 1-69 have a document record but no page-level reusable text, layout, OCR, table, or rendered-page extraction. Fresh mapping assignment: every page 1-69.
+- DOC-003: pages 1-45 have a document record but no page-level reusable text, layout, OCR, table, or rendered-page extraction. Fresh mapping assignment: every page 1-45.
+- DOC-004: all pages 1-20 have usable native page text. Rendered visual assets cover pages 8-18. The legacy audit boundary is not used to exclude pages 1-7 or 19-20.
+- DOC-005: page 1 has a document record but no reusable page extraction. Fresh mapping assignment: page 1.
+

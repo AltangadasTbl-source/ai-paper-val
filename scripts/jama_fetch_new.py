@@ -21,7 +21,7 @@ from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TEMPLATE_PACKAGE = ROOT / "jama.2025.20765"
+TEMPLATE_PACKAGE = ROOT / "2024" / "jama.2024.2302"
 TEMPLATE_FILES = ("AGENTS.md", "README.md", "prmopt.txt")
 
 
@@ -88,8 +88,12 @@ def placeholder(article: dict[str, object]) -> str:
     )
 
 
-def create_package(article: dict[str, object]) -> dict[str, object]:
-    folder = ROOT / f"jama.{doi_suffix(str(article['doi']))}"
+def create_package(
+    article: dict[str, object],
+    output_root: Path = ROOT,
+    template_package: Path = TEMPLATE_PACKAGE,
+) -> dict[str, object]:
+    folder = output_root / f"jama.{doi_suffix(str(article['doi']))}"
     created = False
     if folder.exists():
         # A package created by this script but interrupted during downloads can be
@@ -97,10 +101,10 @@ def create_package(article: dict[str, object]) -> dict[str, object]:
         if not (folder / "MAIN_PAPER_TO_DOWNLOAD.txt").is_file():
             return {"folder": str(folder), "status": "already_exists", "files": []}
     else:
-        folder.mkdir()
+        folder.mkdir(parents=True)
         created = True
         for name in TEMPLATE_FILES:
-            shutil.copy2(TEMPLATE_PACKAGE / name, folder / name)
+            shutil.copy2(template_package / name, folder / name)
         (folder / "MAIN_PAPER_TO_DOWNLOAD.txt").write_text(placeholder(article), encoding="utf-8")
 
     try:
@@ -123,6 +127,18 @@ def main() -> None:
     parser.add_argument("--end-year", type=int, required=True)
     parser.add_argument("--port", type=int, default=9223)
     parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Destination directory relative to the repository root (default: repository root).",
+    )
+    parser.add_argument(
+        "--template-package",
+        type=Path,
+        default=TEMPLATE_PACKAGE.relative_to(ROOT),
+        help="Existing article package whose AGENTS.md, README.md, and prmopt.txt are copied.",
+    )
+    parser.add_argument(
         "--existing-placeholders-only",
         action="store_true",
         help=(
@@ -133,8 +149,16 @@ def main() -> None:
     args = parser.parse_args()
     if args.start_year > args.end_year:
         parser.error("--start-year must not exceed --end-year")
-    if not TEMPLATE_PACKAGE.is_dir():
-        raise RuntimeError(f"Template package not found: {TEMPLATE_PACKAGE}")
+    output_root = (ROOT / args.output_dir).resolve()
+    template_package = (ROOT / args.template_package).resolve()
+    if output_root != ROOT and ROOT not in output_root.parents:
+        raise RuntimeError(f"Output directory must be inside the repository: {output_root}")
+    if not template_package.is_dir():
+        raise RuntimeError(f"Template package not found: {template_package}")
+    for name in TEMPLATE_FILES:
+        if not (template_package / name).is_file():
+            raise RuntimeError(f"Template file not found: {template_package / name}")
+    output_root.mkdir(parents=True, exist_ok=True)
     data = catalog(args.start_year, args.end_year, args.port)
     if "eligible" not in data:
         raise RuntimeError(f"Unexpected JAMA catalog response: {json.dumps(data)[:1000]}")
@@ -143,12 +167,12 @@ def main() -> None:
     skipped_without_placeholder = 0
     for article in data["eligible"]:
         if args.existing_placeholders_only:
-            folder = ROOT / f"jama.{doi_suffix(str(article['doi']))}"
+            folder = output_root / f"jama.{doi_suffix(str(article['doi']))}"
             if not (folder / "MAIN_PAPER_TO_DOWNLOAD.txt").is_file():
                 skipped_without_placeholder += 1
                 continue
         try:
-            outcome.append(create_package(article))
+            outcome.append(create_package(article, output_root, template_package))
         except Exception as error:
             failures.append({"doi": article["doi"], "title": article["title"], "error": str(error)})
     changed = [item for item in outcome if item["status"] in {"created", "resumed"}]

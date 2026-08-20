@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#1-quantitative-quality-control-consistency-review--jama-201910517-workflow-151"
+id="toc-1-quantitative-quality-control-consistency-review--jama-201910517-workflow-151">1.
+Quantitative Quality-Control Consistency Review — JAMA 2019.10517
+(Workflow 1.5.1)</a></li>
+<li><a href="#2-pending-human-adjudication-notice"
+id="toc-2-pending-human-adjudication-notice">2. Pending Human
+Adjudication Notice</a></li>
+<li><a href="#3-executive-quality-control-summary"
+id="toc-3-executive-quality-control-summary">3. Executive
+Quality-Control Summary</a></li>
+<li><a href="#4-package-and-reused-evidence-provenance"
+id="toc-4-package-and-reused-evidence-provenance">4. Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#5-scope-complete-coverage-and-exclusions"
+id="toc-5-scope-complete-coverage-and-exclusions">5. Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#6-quantitative-and-statistical-relationship-coverage"
+id="toc-6-quantitative-and-statistical-relationship-coverage">6.
+Quantitative and Statistical Relationship Coverage</a></li>
+<li><a href="#7-candidate-index" id="toc-7-candidate-index">7. Candidate
+Index</a></li>
+<li><a href="#8-candidate-evidence-cards"
+id="toc-8-candidate-evidence-cards">8. Candidate Evidence Cards</a>
+<ul>
+<li><a
+href="#c001--table-5-absolute-difference-does-not-reproduce-from-the-displayed-counts"
+id="toc-c001--table-5-absolute-difference-does-not-reproduce-from-the-displayed-counts">C001
+— Table 5 absolute difference does not reproduce from the displayed
+counts</a></li>
+<li><a
+href="#c002--hba1c-interaction-is-labelled-with-a-concentration-unit-while-matched-displays-use-percent"
+id="toc-c002--hba1c-interaction-is-labelled-with-a-concentration-unit-while-matched-displays-use-percent">C002
+— HbA1c interaction is labelled with a concentration unit while matched
+displays use percent</a></li>
+<li><a
+href="#c003--protocol-recruitment-target-conflicts-between-82-and-98-participants-per-site"
+id="toc-c003--protocol-recruitment-target-conflicts-between-82-and-98-participants-per-site">C003
+— Protocol recruitment target conflicts between 82 and 98 participants
+per site</a></li>
+</ul></li>
+<li><a href="#9-downstream-evidence-chain-considerations"
+id="toc-9-downstream-evidence-chain-considerations">9. Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#10-limitations-and-missing-definitions"
+id="toc-10-limitations-and-missing-definitions">10. Limitations and
+Missing Definitions</a></li>
+<li><a href="#11-human-adjudication-checklist"
+id="toc-11-human-adjudication-checklist">11. Human Adjudication
+Checklist</a></li>
+<li><a
+href="#12-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-12-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">12.
+Reproducibility, Source-Integrity, Agent-Execution, Performance,
+Token-Usage, and Cost Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance-profile"
+id="toc-performance-profile">Performance profile</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="1-quantitative-quality-control-consistency-review--jama-201910517-workflow-151">1.
+Quantitative Quality-Control Consistency Review — JAMA 2019.10517
+(Workflow 1.5.1)</h1>
+<h1 id="2-pending-human-adjudication-notice">2. Pending Human
+Adjudication Notice</h1>
+<blockquote>
+<p><strong>Pending Human Adjudication</strong></p>
+<p>This report records source-grounded quantitative reporting
+quality-control candidates. Every candidate remains <strong>Pending
+Human Adjudication</strong>. It makes no severity assignment, final
+correction, validity decision, or conclusion about the paper's overall
+findings.</p>
+</blockquote>
+<h1 id="3-executive-quality-control-summary">3. Executive
+Quality-Control Summary</h1>
+<p>Complete review of the supplied package identified <strong>3</strong>
+stable candidate consistency issues: C001, C002, and C003. The review
+covered all 63 direct-source PDF pages and did not use a review queue, a
+top-N subset, a candidate cap, or a deferred-by-cap category.</p>
+<p>The candidates concern (1) an absolute difference that does not
+reproduce from displayed counts under ordinary nearest rounding, (2) an
+HbA1c unit/scale label conflict across matched displays, and (3)
+conflicting protocol recruitment targets. These are bounded reporting
+observations requiring human verification. They do not establish that a
+paper-level conclusion changed or that any downstream use has
+occurred.</p>
+<h1 id="4-package-and-reused-evidence-provenance">4. Package and
+Reused-Evidence Provenance</h1>
+<p>The supplied package contains four direct PDFs: the main article,
+protocol/data analytic plan, results supplement, and data-sharing
+statement. Direct-source evidence has precedence throughout. Reused
+native text, normalized text, rendered pages, OCR text, OCR metadata,
+and document maps were used as locators and transcription aids only;
+cited candidate facts were confirmed against the direct PDFs.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Direct source</th>
+<th>Content class</th>
+<th style="text-align: right;">Pages</th>
+<th style="text-align: right;">Reused page-level assets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_flint_2019_oi_190079.pdf#page=1">jama_flint_2019_oi_190079.pdf
+— PDF p. 1</a></td>
+<td>Main article</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a href="../joi190079supp1_prod.pdf#page=1" target="_blank" rel="noopener">joi190079supp1_prod.pdf
+— PDF p. 1</a></td>
+<td>Protocol and data analytic plan</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a href="../joi190079supp2_prod.pdf#page=1" target="_blank" rel="noopener">joi190079supp2_prod.pdf
+— PDF p. 1</a></td>
+<td>Results supplement (eFigures 1-9)</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td><a href="../joi190079supp3_prod.pdf#page=1" target="_blank" rel="noopener">joi190079supp3_prod.pdf
+— PDF p. 1</a></td>
+<td>Data-sharing statement</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>Ninety-four designated reusable artifacts were source-matched and
+inventoried. DOC-002 and DOC-004 had only inventory-level reusable
+records, so all 43 of their pages were mapped directly. The
+direct-source and reused-artifact hashes were recorded before review and
+rechecked unchanged after scientific report assembly.</p>
+<h1 id="5-scope-complete-coverage-and-exclusions">5. Scope, Complete
+Coverage, and Exclusions</h1>
+<p>The review was limited to quantitative reporting consistency:
+numeric/arithmetic, denominator/proportion/total, statistical reporting,
+cross-document numeric, measure/label/scale, and rate-versus-count
+relationships. It was not a broad clinical, methodological, misconduct,
+raw-data, or external-literature audit.</p>
+<table>
+<thead>
+<tr>
+<th>Coverage measure</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total direct source units</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr>
+<td>Reusable units</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr>
+<td>Fresh-required units</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr>
+<td>Mapped units</td>
+<td style="text-align: right;">63</td>
+</tr>
+</tbody>
+</table>
+<p>Every source row is complete: DOC-001 10/10 mapped, DOC-002 42/42
+mapped, DOC-003 10/10 mapped, and DOC-004 1/1 mapped. Thus, 20 reusable
+plus 43 fresh-required units equals 63 total units, and 63 mapped units
+equals 63 total units.</p>
+<p>Excluded as candidates were ordinary incomplete methodological detail
+without a concrete reported inconsistency, planned-versus-final
+statements that were not matched in population/time/model, and coherent
+display-zero P-value notation. No assigned relationship displayed
+<code>P = 0</code>, <code>p = 0.000</code>, or an equivalent; no
+candidate was created from P-value display precision.</p>
+<h1 id="6-quantitative-and-statistical-relationship-coverage">6.
+Quantitative and Statistical Relationship Coverage</h1>
+<p>The numeric inventory is complete at <strong>N001-N060</strong> (60
+relationships), spanning direct article tables/figures, protocol/SAP
+quantities, results-supplement figures, and the data-sharing statement.
+N060 is an explicit no-applicable quantitative unit. Detailed
+relationship mapping is retained in <a
+href="review_1_5_1/relationships/numeric_relationship_inventory.md">numeric_relationship_inventory.md</a>.</p>
+<p>The statistical inventory is complete at <strong>S001-S048</strong>
+(48 relationships). A distinct fresh <code>gpt-5.6-terra</code>
+high-effort reviewer completed pass 1 for every S ID, and a different
+fresh <code>gpt-5.6-terra</code> high-effort reviewer completed pass 2
+for the same complete ID set. Every statistical relationship is recorded
+as <code>PASS_1_COMPLETE</code> and <code>PASS_2_COMPLETE</code>; pass 2
+reconciled C001, C002, and C003 and found no new source-grounded
+candidate. Detailed records are retained in <a
+href="review_1_5_1/statistics/relationship_inventory.md">relationship_inventory.md</a>,
+<a
+href="review_1_5_1/checkers/statistical_pass_1.md">statistical_pass_1.md</a>,
+and <a
+href="review_1_5_1/checkers/statistical_pass_2.md">statistical_pass_2.md</a>.</p>
+<p>Numeric and cross-source review covered the complete N and S
+inventories. Statistical compatibility was assessed only where
+compatible source definitions were supplied; rounded-value diagnostics
+were not treated as reconstructions of reported analyses.</p>
+<h1 id="7-candidate-index">7. Candidate Index</h1>
+<table>
+<thead>
+<tr>
+<th>Stable ID</th>
+<th>Candidate consistency issue</th>
+<th>Category</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--table-5-absolute-difference-does-not-reproduce-from-the-displayed-counts">C001</a></td>
+<td>Table 5 absolute difference does not reproduce from displayed
+counts</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td><a
+href="#c002--hba1c-interaction-is-labelled-with-a-concentration-unit-while-matched-displays-use-percent">C002</a></td>
+<td>HbA1c interaction uses <code>mg/dL</code> while matched displays use
+percent</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td><a
+href="#c003--protocol-recruitment-target-conflicts-between-82-and-98-participants-per-site">C003</a></td>
+<td>Protocol recruitment target conflicts between 82 and 98 participants
+per site</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+</tbody>
+</table>
+<h1 id="8-candidate-evidence-cards">8. Candidate Evidence Cards</h1>
+<h2
+id="c001--table-5-absolute-difference-does-not-reproduce-from-the-displayed-counts" class="candidate-card">C001
+— Table 5 absolute difference does not reproduce from the displayed
+counts</h2>
+<p><strong>Candidate statement:</strong> Table 5 prints an absolute
+unadjusted difference of 4.3% for two rows whose displayed counts and
+percentages yield approximately 4.4 percentage points under the ordinary
+raw-proportion calculation and nearest one-decimal rounding.
+<strong>Pending Human Adjudication</strong>.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=9">jama_flint_2019_oi_190079.pdf
+— PDF p. 9</a>, Table 5, total-cholesterol and LDL rows.</p>
+<p><strong>Source evidence:</strong> Each cited row prints 9/64 (14.1%)
+for sertraline plus olanzapine and 6/62 (9.7%) for sertraline plus
+placebo. Each prints <code>4.3 (-8 to 17.2)</code> in the “Absolute
+Unadjusted Difference Between Groups, % (95% CI)” column.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported point value:
+4.3%. Comparator: the first displayed raw proportion minus the second,
+<code>(9/64 − 6/62) × 100</code>, and independently
+<code>14.1 − 9.7</code> percentage points.</p>
+<p><strong>Reasoning procedure:</strong> Under the table's “absolute
+unadjusted difference” label, compare the printed point value with the
+raw difference calculated from the displayed event counts and group-size
+headers. The source does not specify a different point estimator,
+denominator, or rounding convention.</p>
+<p><strong>Calculation:</strong> <code>9/64 = 14.0625%</code> and
+<code>6/62 = 9.677419%</code>;
+<code>(9/64 − 6/62) × 100 = 4.38508065</code> percentage points, which
+is 4.4 to one decimal under nearest rounding. The displayed rounded
+percentages also give <code>14.1 − 9.7 = 4.4</code>. The gap from the
+printed 4.3 is about 0.085 percentage point, exceeding a half-unit
+one-decimal rounding interval of 0.05.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+source may have used truncation, undocumented row-specific denominators,
+a different estimator, or unprinted analysis-population inputs. The
+cited table does not identify any such basis. The repeated value could
+also be an intentional reuse of one result, but that does not establish
+how 4.3 was obtained.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF inspection
+found the cited table, counts, percentages, group sizes, repeated 4.3
+point value, and interval. The raw calculation reproduced. Available
+inputs are sufficient for the ordinary raw difference; missing inputs
+are the estimator, rounding convention, and any row-specific
+denominators. Direct observation is separated from possible production
+explanations in <a
+href="review_1_5_1/verification/evidence_recheck.md">evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> A printed absolute
+difference that does not reproduce under the displayed raw-proportion
+rule is a preventable reporting-consistency issue worth human
+verification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic reviewer, or meta-analyst could copy the
+displayed absolute difference rather than a value reproducible from the
+table's stated counts. This report does not assert that this has
+happened or that it changes any conclusion.</p>
+<p><strong>Human verification steps:</strong> Inspect the production
+table or analysis output; determine whether the point value used
+truncation, a row-specific denominator, or a defined non-raw estimator;
+then document the intended display rule without assuming a replacement
+value.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--hba1c-interaction-is-labelled-with-a-concentration-unit-while-matched-displays-use-percent" class="candidate-card">C002
+— HbA1c interaction is labelled with a concentration unit while matched
+displays use percent</h2>
+<p><strong>Candidate statement:</strong> The same HbA1c daily
+treatment-by-time estimate is labelled <code>mg/dL</code> in two
+main-article locations, whereas matched table and longitudinal figure
+displays label HbA1c as percent. <strong>Pending Human
+Adjudication</strong>.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=1">jama_flint_2019_oi_190079.pdf
+— PDF p. 1</a>, abstract Results; <a
+href="../jama_flint_2019_oi_190079.pdf#page=7">jama_flint_2019_oi_190079.pdf
+— PDF p. 7</a>, Secondary Outcomes; <a
+href="../jama_flint_2019_oi_190079.pdf#page=8">jama_flint_2019_oi_190079.pdf
+— PDF p. 8</a>, Table 4; and <a
+href="../joi190079supp2_prod.pdf#page=9">joi190079supp2_prod.pdf — PDF
+p. 9</a>, eFigure 8.</p>
+<p><strong>Source evidence:</strong> Main-article pages 1 and 7 print
+the HbA1c daily treatment-by-linear-time result as
+<code>−0.0002 mg/dL</code> (95% CI, <code>−0.0021 to 0.0016</code>);
+page 7 reports adjusted <code>P = .99</code>. Table 4 labels the outcome
+<code>HbA1c, %</code>, and eFigure 8 labels its axis
+<code>HbA1c (%)</code> for the matched mixed-model display.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported label:
+<code>mg/dL</code> for the repeated interaction coefficient and
+interval. Comparator labels: <code>%</code> in Table 4 and
+<code>HbA1c (%)</code> in eFigure 8 for the same named outcome.</p>
+<p><strong>Reasoning procedure:</strong> Compare unit/scale labels
+across matched appearances of the named HbA1c outcome, treatment
+comparison, and longitudinal time scale. A compatible alternative would
+require a source-defined transformation or a distinct
+concentration-scale outcome.</p>
+<p><strong>Calculation:</strong> This is a label comparison, not a
+numeric conversion. The coefficient and interval match exactly across
+pages 1 and 7. No conversion between <code>mg/dL</code> and
+<code>%</code>, or definition of a distinct transformed HbA1c variable,
+is supplied.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+repeated <code>mg/dL</code> label could be a production carryover from
+surrounding metabolic measures. Alternatively, the model may have used a
+transformed outcome whose unit was not defined. The supplied sources do
+not distinguish these possibilities or establish an intended replacement
+label.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF inspection
+confirmed the repeated main-text label and estimate, Table 4 percent
+label, and eFigure 8 percent axis. The logical comparison reproduced;
+necessary labels are available, while the coefficient's intended
+dimensional unit and any transformation/conversion are missing. See <a
+href="review_1_5_1/verification/evidence_recheck.md">evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> Conflicting measure
+labels can cause a quantitative effect to be classified on the wrong
+scale during evidence extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor, systematic review, meta-analysis, or guideline evidence
+table could copy or classify the HbA1c effect using an incompatible
+unit. This report does not assert that the model result, inference, or
+paper-level conclusion is wrong or that any downstream use occurred.</p>
+<p><strong>Human verification steps:</strong> Inspect the
+analysis-variable definition and production source; confirm whether the
+interaction used percent-scale HbA1c or a separately transformed
+variable; record its intended unit and transformation, if any, without
+inferring one from this report.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--protocol-recruitment-target-conflicts-between-82-and-98-participants-per-site" class="candidate-card">C003
+— Protocol recruitment target conflicts between 82 and 98 participants
+per site</h2>
+<p><strong>Candidate statement:</strong> Within the protocol/SAP, four
+sites recruiting 98 acute participants each reconcile with an acute
+total of 392, while another statement says each of four sites will
+recruit 82 patients without a stated population, phase, or version
+distinction. <strong>Pending Human Adjudication</strong>.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190079supp1_prod.pdf#page=7">joi190079supp1_prod.pdf — PDF
+p. 7</a>, Figure 1 and Section 3.9.1; <a
+href="../joi190079supp1_prod.pdf#page=17">joi190079supp1_prod.pdf — PDF
+p. 17</a>, Table 4; and <a
+href="../joi190079supp1_prod.pdf#page=21">joi190079supp1_prod.pdf — PDF
+p. 21</a>, Section 4.2.1.</p>
+<p><strong>Source evidence:</strong> Page 7 prints
+<code>Acute Phase (N=392)</code> and enrollment across four sites. Page
+17 states that each site will recruit 98 acutely ill participants and
+randomize 44 remitted participants. Page 21 states that four research
+sites will each recruit 82 patients with the stated psychotic-depression
+population.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported statement: 82
+patients per site. Comparator: 98 acutely ill participants per site and
+total acute <code>N=392</code>, all within the same supplied
+protocol/SAP.</p>
+<p><strong>Reasoning procedure:</strong> For a common four-site acute
+recruitment plan, multiply each per-site target by four and compare with
+the stated total. Applicability is conditional on the statements
+referring to the same population, phase, and protocol version.</p>
+<p><strong>Calculation:</strong> <code>98 × 4 = 392</code>, reproducing
+the acute total. <code>82 × 4 = 328</code>, 64 below 392. The per-site
+values differ by <code>98 − 82 = 16</code>. The separate randomized
+target, <code>44 × 4 = 176</code>, agrees with the planned
+discontinuation RCT total and does not resolve the acute-recruitment
+mismatch.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+82/site statement may describe an earlier or amended target, a
+human-subjects subset, or another denominator; 98/site may represent all
+acutely ill participants. None of the cited passages labels a distinct
+version, subset, phase, or time basis that resolves the difference.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF inspection
+confirmed the four-site, 392-total, 98/site, 82/site, and 44/site
+statements. The arithmetic reproduced. Necessary numerical inputs are
+available; the missing inputs are a version history and an explicit
+population/phase/subset definition. See <a
+href="review_1_5_1/verification/evidence_recheck.md">evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> Conflicting planned
+recruitment totals can affect accurate reporting and extraction of a
+protocol's denominators or per-site recruitment target.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor or evidence synthesis could copy an inconsistent planned
+recruitment denominator or site target. This report does not imply a
+defect in observed participant flow, final randomized analysis,
+paper-level conclusion, or any actual downstream propagation.</p>
+<p><strong>Human verification steps:</strong> Review protocol version
+control, amendments, and the recruitment-population definitions for
+pages 7, 17, and 21; establish whether the counts refer to different
+targets and, if not, identify the intended common target.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h1 id="9-downstream-evidence-chain-considerations">9. Downstream
+Evidence-Chain Considerations</h1>
+<p>Small preventable reporting defects can matter to downstream evidence
+extraction when a reviewer, meta-analyst, guideline developer, or data
+curator copies a number, denominator, unit, or recruitment target. The
+potential is bounded to what could be copied if a candidate is
+confirmed. No claim is made that copying, propagation, conclusion
+change, or serious harm occurred.</p>
+<h1 id="10-limitations-and-missing-definitions">10. Limitations and
+Missing Definitions</h1>
+<p>The full limitation record is retained in <a
+href="review_1_5_1/limitations.md">limitations.md</a>. In brief,
+scientific source coverage is complete, but C001 lacks a stated
+point-estimator/rounding/row-denominator definition; C002 lacks an
+intended unit or transformation definition; and C003 lacks a version,
+phase, time, or subset definition. Statistical records frequently lack
+exact SEs, test statistics, sidedness, interval construction,
+variance/covariance detail, multiplicity step positions, figure-band
+definitions, and simulation inputs. These absences limit deeper
+reconstruction but do not turn ordinary omissions into candidates.</p>
+<h1 id="11-human-adjudication-checklist">11. Human Adjudication
+Checklist</h1>
+<ol type="1">
+<li>Confirm the cited direct-PDF text and locations for each stable
+candidate.</li>
+<li>Determine whether the stated comparator concerns the same
+population, time frame, model, and definition.</li>
+<li>Review the missing definition or source record identified in each
+card.</li>
+<li>Record validity, importance, action, initials, and notes only in the
+blank fields in that candidate's card.</li>
+<li>Preserve the distinction between direct observation and a possible
+explanation; do not treat this quality-control report as a final
+correction.</li>
+</ol>
+<h1
+id="12-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">12.
+Reproducibility, Source-Integrity, Agent-Execution, Performance,
+Token-Usage, and Cost Metadata</h1>
+<h2 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h2>
+<p>The direct-source inventory, source hashes, reused-artifact hashes,
+source coverage ledger, coverage manifest, relationship inventories,
+checker records, candidate ledger, recheck, and quality audit are
+retained below <a href="review_1_5_1/">review_1_5_1</a>. Source evidence
+links in the candidate cards point to the supplied direct PDFs and end
+in truthful PDF page fragments. Direct-source and designated
+reused-artifact hash verification is finalized after Markdown
+assembly.</p>
+<h2 id="agent-execution">Agent execution</h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td><code>run_state.md</code></td>
+</tr>
+<tr>
+<td>reuse_asset_curation</td>
+<td>root/reuse_asset_curation</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>evidence_asset_inventory.md</code></td>
+</tr>
+<tr>
+<td>main_evidence_mapping</td>
+<td>root/main_mapping</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>extraction/main_quantitative_evidence.md</code></td>
+</tr>
+<tr>
+<td>support_evidence_mapping</td>
+<td>root/support_mapping_001</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_001_quantitative_evidence.md</code></td>
+</tr>
+<tr>
+<td>support_evidence_mapping</td>
+<td>root/support_mapping_002</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_002_quantitative_evidence.md</code></td>
+</tr>
+<tr>
+<td>numeric_checks</td>
+<td>root/numeric_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/numeric_consistency.md</code></td>
+</tr>
+<tr>
+<td>cross_source_checks</td>
+<td>root/cross_source_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/cross_source_consistency.md</code></td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_1.md</code></td>
+</tr>
+<tr>
+<td>evidence_recheck</td>
+<td>root/evidence_recheck</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>verification/evidence_recheck.md</code></td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_2.md</code></td>
+</tr>
+<tr>
+<td>evidence_quality</td>
+<td>root/quality_audit</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>quality/evidence_quality_audit.md</code></td>
+</tr>
+<tr>
+<td>report_generation</td>
+<td>root/report_generation</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>limitations.md</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="performance-profile">Performance profile</h2>
+<ul>
+<li><strong>Target basis:</strong> Four supplied PDFs totaling 63 pages;
+20 pages have reusable page-level extraction while 43 pages require
+fresh direct-source mapping, including one 42-page supplement with
+tables/figures. The package is smaller than the 102-page calibration
+package and has a lower fresh-extraction burden, but still requires
+four-source cross-document and two-pass statistical review.</li>
+<li><strong>Total source units:</strong> 63</li>
+<li><strong>Fresh-source units:</strong> 43</li>
+<li><strong>Target elapsed minutes:</strong> 30-45</li>
+<li><strong>Started UTC:</strong> 2026-08-18T22:15:04Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-18T22:50:37Z</li>
+<li><strong>Observed elapsed minutes:</strong> 35.6</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h2 id="token-accounting-and-cost">Token accounting and cost</h2>
+<p>Accounting uses authoritative response-level runtime/API usage
+through <code>Finished UTC</code>. This collaboration runtime exposed no
+authoritative token counts for the coordinator or any of the 11
+specialists, so each manifested agent has an <code>UNAVAILABLE</code>
+ledger row with exact token fields left <code>__</code>; no text-length
+or tokenizer estimate was substituted. The 0 below is the known subtotal
+from available records, not a claim that the run consumed zero tokens.
+Cached input and cache-write counts are input subsets; reasoning tokens
+are an output subset and are not added again to total tokens. Amounts
+are token-only API-equivalent estimates under the pricing snapshot dated
+2026-08-18, not invoices.</p>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Agents</th>
+<th style="text-align: right;">Unavailable records</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Cached input tokens</th>
+<th style="text-align: right;">Cache-write tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Reasoning tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+<th style="text-align: right;">Estimated complete token cost (USD)</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<p>Per-agent details are retained in <a
+href="review_1_5_1/token_usage_summary.md">token_usage_summary.md</a>.</p>
+</body>
+</html>
