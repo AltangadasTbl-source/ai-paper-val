@@ -1,0 +1,24 @@
+# Workflow 1.5.2 Run State
+
+- **Profile:** 1.5.2 full source-first restart
+- **Package root:** `/home/bulunte/ai-paper-val/2017-2018/jama.2017.9644`
+- **Coordinator:** `/root`
+- **Coordinator model:** `gpt-5.6-sol`
+- **Coordinator reasoning effort:** `high`
+- **Target basis:** Three supplied PDFs comprising one 10-page main article and two support documents of 14 and 6 pages; all 30 units require fresh native and layout extraction, result-relevant table/figure rendering decisions, full main/support relationship mapping, parallel numeric/statistical/cross-source checks, two distinct high-effort statistical passes, mechanical recheck, and complete reporting. The package has no Office/workbook/CSV conversion burden and is materially smaller than the 102-unit calibration package, while retaining the fixed multi-agent review stages.
+- **Total source units:** 30
+- **Fresh-source units:** 30
+- **Target elapsed minutes:** 25-40
+- **Started UTC:** 2026-08-20T16:55:45Z
+- **Finished UTC:** 2026-08-20T17:32:04Z
+- **Observed elapsed minutes:** 36.3
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Current stage:** COMPLETE
+- **Legacy audit artifacts used as evidence:** No
+- **Web or external literature used:** No
+- **GPU used:** No
+- **Accounting window:** Closed at Finished UTC
+- **Token-accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE
+- **Validation status:** PASS
+- **Unresolved limitations:** Ordinary PDF reading-order artifacts in native text; fresh layout text and selected page renders preserve aligned table and figure context. No unavailable source units.

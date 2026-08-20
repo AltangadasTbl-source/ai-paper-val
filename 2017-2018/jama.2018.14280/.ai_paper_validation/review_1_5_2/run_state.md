@@ -1,0 +1,32 @@
+# Workflow 1.5.2 Run State
+
+- **Profile:** 1.5.2
+- **Run status:** COMPLETE
+- **Target basis:** Five supplied PDFs totaling 94 pages, all requiring fresh extraction and mapping; scope is close to the 102-page five-PDF calibration package, with fewer total units but a higher fully fresh-unit burden, so a slightly wider upper bound accommodates complete preprocessing and two statistical passes.
+- **Total source units:** 94
+- **Fresh-source units:** 94
+- **Target elapsed minutes:** 35-55
+- **Started UTC:** 2026-08-20T18:01:02Z
+- **Finished UTC:** 2026-08-20T18:40:29Z
+- **Observed elapsed minutes:** 39.5
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Direct sources:** 5 PDF files
+- **Reusable evidence units:** 0
+- **Scientific evidence basis:** Supplied package sources only; all legacy audit derivatives excluded.
+- **Preprocessing status:** COMPLETE — five PDFs, 94 pages, five native-text and five layout-text assets, 56 result-relevant renders, no OCR required.
+- **Coverage planning status:** COMPLETE — full disjoint source and stage plan created before scientific extraction.
+- **Main mapping status:** COMPLETE — 35 numeric and 23 statistical relationship units.
+- **Support mapping status:** COMPLETE — 12 numeric and 15 statistical relationship units.
+- **Numeric review status:** COMPLETE — all N001 through N047 checked; 10 lane-local observations before de-duplication.
+- **Statistical pass 1 status:** COMPLETE — all S001 through S038 marked PASS_1_COMPLETE; 17 lane-local observations before de-duplication.
+- **Cross-source review status:** COMPLETE — all mapped N and S relationships matched across supplied sources; 5 lane-local observations before de-duplication.
+- **Candidate registration status:** COMPLETE — 23 distinct stable IDs after exact duplicate merging.
+- **Evidence recheck status:** COMPLETE — C001 through C023 mechanically rechecked; one SAP page locator corrected from p. 6 to p. 5.
+- **Statistical pass 2 status:** COMPLETE — all S001 through S038 marked PASS_2_COMPLETE; C001 through C023 revisited; no new candidate appended.
+- **Evidence-quality audit status:** COMPLETE — C001 through C023, all 21 coverage rows, all 5 sources/94 units, N001 through N047, S001 through S038, and both statistical executions audited; five correctable wording/scope defects repaired.
+- **Report generation status:** COMPLETE — 23 candidate cards assembled with exact human-adjudication templates and local evidence links.
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE — authoritative per-response counts were not exposed; no estimates were invented.
+- **Source integrity status:** PASS — post-review hashes equal the pre-review hashes for all five direct sources.
+- **Validation status:** PASS — `review_validation.json` reports no errors.
+- **Limitations and bounded exceptions:** None recorded at initialization.

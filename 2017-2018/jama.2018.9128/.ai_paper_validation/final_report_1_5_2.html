@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review-barkin-et-al-paper-package"
+id="toc-quantitative-quality-control-consistency-review-barkin-et-al-paper-package">Quantitative
+Quality-Control Consistency Review: Barkin et al. Paper Package</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-fresh-processing-provenance"
+id="toc-package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--intervention-3-month-bmi-observation-count-differs-across-result-displays"
+id="toc-c001--intervention-3-month-bmi-observation-count-differs-across-result-displays">C001
+— Intervention 3-month BMI-observation count differs across result
+displays</a></li>
+<li><a
+href="#c002--control-3-month-bmi-observation-count-differs-across-result-displays"
+id="toc-c002--control-3-month-bmi-observation-count-differs-across-result-displays">C002
+— Control 3-month BMI-observation count differs across result
+displays</a></li>
+<li><a
+href="#c003--intervention-9-month-bmi-observation-count-differs-across-result-displays"
+id="toc-c003--intervention-9-month-bmi-observation-count-differs-across-result-displays">C003
+— Intervention 9-month BMI-observation count differs across result
+displays</a></li>
+<li><a
+href="#c004--intervention-12-month-bmi-observation-count-differs-across-result-displays"
+id="toc-c004--intervention-12-month-bmi-observation-count-differs-across-result-displays">C004
+— Intervention 12-month BMI-observation count differs across result
+displays</a></li>
+<li><a
+href="#c005--control-12-month-bmi-observation-count-differs-across-result-displays"
+id="toc-c005--control-12-month-bmi-observation-count-differs-across-result-displays">C005
+— Control 12-month BMI-observation count differs across result
+displays</a></li>
+<li><a
+href="#c006--intervention-24-month-bmi-observation-count-differs-across-result-displays"
+id="toc-c006--intervention-24-month-bmi-observation-count-differs-across-result-displays">C006
+— Intervention 24-month BMI-observation count differs across result
+displays</a></li>
+<li><a
+href="#c007--control-24-month-bmi-observation-count-differs-across-result-displays"
+id="toc-c007--control-24-month-bmi-observation-count-differs-across-result-displays">C007
+— Control 24-month BMI-observation count differs across result
+displays</a></li>
+<li><a
+href="#c008--intervention-36-month-bmi-observation-count-differs-across-result-displays"
+id="toc-c008--intervention-36-month-bmi-observation-count-differs-across-result-displays">C008
+— Intervention 36-month BMI-observation count differs across result
+displays</a></li>
+<li><a
+href="#c009--final-sap-says-six-assessment-points-but-enumerates-five"
+id="toc-c009--final-sap-says-six-assessment-points-but-enumerates-five">C009
+— Final SAP says six assessment points but enumerates five</a></li>
+<li><a
+href="#c010--revised-protocol-gives-six-points-but-lists-seven-including-48-months"
+id="toc-c010--revised-protocol-gives-six-points-but-lists-seven-including-48-months">C010
+— Revised protocol gives six points but lists seven including 48
+months</a></li>
+<li><a
+href="#c011--original-protocol-labels-primary-outcome-as-bmi-percentilebmi-while-results-use-bmi-kgm²"
+id="toc-c011--original-protocol-labels-primary-outcome-as-bmi-percentilebmi-while-results-use-bmi-kgm²">C011
+— Original protocol labels primary outcome as BMI percentile/BMI% while
+results use BMI kg/m²</a></li>
+<li><a
+href="#c012--control-condition-session-count-and-duration-differ-across-protocol-versions-and-article"
+id="toc-c012--control-condition-session-count-and-duration-differ-across-protocol-versions-and-article">C012
+— Control-condition session count and duration differ across protocol
+versions and article</a></li>
+<li><a
+href="#c013--control-9-month-bmi-observation-count-differs-across-result-displays"
+id="toc-c013--control-9-month-bmi-observation-count-differs-across-result-displays">C013
+— Control 9-month BMI-observation count differs across result
+displays</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#final-performance-and-token-metadata"
+id="toc-final-performance-and-token-metadata">Final performance and
+token metadata</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review-barkin-et-al-paper-package">Quantitative
+Quality-Control Consistency Review: Barkin et al. Paper Package</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p><strong>All 13 candidate consistency issues in this report are
+Pending Human Adjudication.</strong> This source-first quality-control
+review records reproducible printed mismatches for human review. It does
+not assign severity, validity, acceptance, exclusion, a final
+correction, or a conclusion about the paper.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete fresh processing of the three supplied PDFs identified 13
+distinct source-grounded quantitative reporting candidates: nine
+arm-by-visit observed-BMI count mismatches, two assessment-schedule
+count/list mismatches, one outcome-scale label mismatch, and one
+control-exposure description mismatch. The candidate set is
+<code>C001</code> through <code>C013</code>; it has no queue, ranking,
+cap, or deferred subset. No candidate was created from a display-zero P
+value.</p>
+<p>The review is a quantitative reporting quality-control exercise.
+Small preventable defects can matter if a later evidence extractor
+copies a count, schedule, scale, or exposure description. This report
+does not assert that any defect propagated, altered an effect estimate,
+changed a conclusion, or caused harm.</p>
+<h2 id="package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</h2>
+<p>Only the direct supplied sources and newly created Workflow 1.5.2
+evidence assets were used. Existing audit derivatives were not evidence
+inputs or discovery boundaries.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Direct source</th>
+<th>Role</th>
+<th style="text-align: right;">Units</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_barkin_2018_oi_180075.pdf#page=1">jama_barkin_2018_oi_180075.pdf</a></td>
+<td>Main article</td>
+<td style="text-align: right;">11 PDF pages</td>
+<td><code>231de40e6ac86c81413c11d958fc410e49450ece9b6ddb0c22e2042d2c162e36</code></td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a
+href="../joi180075supp1_prod.pdf#page=1">joi180075supp1_prod.pdf</a></td>
+<td>Protocol and statistical analysis plan supplement</td>
+<td style="text-align: right;">113 PDF pages</td>
+<td><code>b67c573979a4264284b87711cc2dd9ff7a74c2d709e1b045993f54624a4c6196</code></td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a
+href="../joi180075supp2_prod.pdf#page=1">joi180075supp2_prod.pdf</a></td>
+<td>Results supplement</td>
+<td style="text-align: right;">8 PDF pages</td>
+<td><code>5417d3ddc9769fa45832d8495fb337bcbeb2396276f08c79c81efa7626556a9a</code></td>
+</tr>
+</tbody>
+</table>
+<p>Fresh native and layout PDF text were prepared for every direct
+source. Result-relevant pages were rendered; targeted CPU OCR was used
+only where the native text was inadequate for the relevant content.
+Fresh assets and methods are inventoried in <a
+href="review_1_5_2/evidence_asset_inventory.md">evidence_asset_inventory.md</a>.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Mapped units</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">113</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>132</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: right;"><strong>132</strong></td>
+<td style="text-align: right;"><strong>132</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Coverage includes all result-relevant main-article and support
+contents, not only primary outcomes or significant results. The complete
+stage assignment and artifact paths are in <a
+href="review_1_5_2/coverage_manifest.md">coverage_manifest.md</a>.
+Exclusions were limited to unsupported reconstruction: no raw
+participant data, unprinted eFigure coordinates, or unprinted model
+parameters were inferred. Coherent finite-precision P-value displays
+were not treated as candidates.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The numeric/reporting inventory covered all 64 relationships:
+<code>N001</code>, <code>N002</code>, <code>N003</code>,
+<code>N004</code>, <code>N005</code>, <code>N006</code>,
+<code>N007</code>, <code>N008</code>, <code>N009</code>,
+<code>N010</code>, <code>N011</code>, <code>N012</code>,
+<code>N013</code>, <code>N014</code>, <code>N015</code>,
+<code>N016</code>, <code>N017</code>, <code>N018</code>,
+<code>N019</code>, <code>N020</code>, <code>N021</code>,
+<code>N022</code>, <code>N023</code>, <code>N024</code>,
+<code>N025</code>, <code>N026</code>, <code>N027</code>,
+<code>N028</code>, <code>N029</code>, <code>N030</code>,
+<code>N031</code>, <code>N032</code>, <code>N033</code>,
+<code>N034</code>, <code>N035</code>, <code>N036</code>,
+<code>N037</code>, <code>N038</code>, <code>N039</code>,
+<code>N040</code>, <code>N041</code>, <code>N042</code>,
+<code>N043</code>, <code>N044</code>, <code>N045</code>,
+<code>N046</code>, <code>N047</code>, <code>N048</code>,
+<code>N049</code>, <code>N050</code>, <code>N051</code>,
+<code>N052</code>, <code>N053</code>, <code>N054</code>,
+<code>N055</code>, <code>N056</code>, <code>N057</code>,
+<code>N058</code>, <code>N059</code>, <code>N060</code>,
+<code>N061</code>, <code>N062</code>, <code>N063</code>, and
+<code>N064</code> (<a
+href="review_1_5_2/relationships/numeric_relationship_inventory.md">inventory</a>).</p>
+<p>The inferential/statistical inventory covered all 71 relationships:
+<code>S001</code>, <code>S002</code>, <code>S003</code>,
+<code>S004</code>, <code>S005</code>, <code>S006</code>,
+<code>S007</code>, <code>S008</code>, <code>S009</code>,
+<code>S010</code>, <code>S011</code>, <code>S012</code>,
+<code>S013</code>, <code>S014</code>, <code>S015</code>,
+<code>S016</code>, <code>S017</code>, <code>S018</code>,
+<code>S019</code>, <code>S020</code>, <code>S021</code>,
+<code>S022</code>, <code>S023</code>, <code>S024</code>,
+<code>S025</code>, <code>S026</code>, <code>S027</code>,
+<code>S028</code>, <code>S029</code>, <code>S030</code>,
+<code>S031</code>, <code>S032</code>, <code>S033</code>,
+<code>S034</code>, <code>S035</code>, <code>S036</code>,
+<code>S037</code>, <code>S038</code>, <code>S039</code>,
+<code>S040</code>, <code>S041</code>, <code>S042</code>,
+<code>S043</code>, <code>S044</code>, <code>S045</code>,
+<code>S046</code>, <code>S047</code>, <code>S048</code>,
+<code>S049</code>, <code>S050</code>, <code>S051</code>,
+<code>S052</code>, <code>S053</code>, <code>S054</code>,
+<code>S055</code>, <code>S056</code>, <code>S057</code>,
+<code>S058</code>, <code>S059</code>, <code>S060</code>,
+<code>S061</code>, <code>S062</code>, <code>S063</code>,
+<code>S064</code>, <code>S065</code>, <code>S066</code>,
+<code>S067</code>, <code>S068</code>, <code>S069</code>,
+<code>S070</code>, and <code>S071</code> (<a
+href="review_1_5_2/statistics/relationship_inventory.md">inventory</a>).</p>
+<p>Numeric and cross-source checks completed all applicable
+relationships. Independent statistical pass 1 recorded
+<code>PASS_1_COMPLETE</code> for all 71 S relationships; independent
+statistical pass 2 recorded <code>PASS_2_COMPLETE</code> for all 71 S
+relationships and reconciled every stable candidate and recheck fact.
+The pass artifacts are <a
+href="review_1_5_2/checkers/statistical_pass_1.md">pass 1</a> and <a
+href="review_1_5_2/checkers/statistical_pass_2.md">pass 2</a>.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate statement</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--intervention-3-month-bmi-observation-count-differs-across-result-displays">C001</a></td>
+<td>Intervention 3-month BMI-observation count differs across result
+displays</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c002--control-3-month-bmi-observation-count-differs-across-result-displays">C002</a></td>
+<td>Control 3-month BMI-observation count differs across result
+displays</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c003--intervention-9-month-bmi-observation-count-differs-across-result-displays">C003</a></td>
+<td>Intervention 9-month BMI-observation count differs across result
+displays</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c004--intervention-12-month-bmi-observation-count-differs-across-result-displays">C004</a></td>
+<td>Intervention 12-month BMI-observation count differs across result
+displays</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c005--control-12-month-bmi-observation-count-differs-across-result-displays">C005</a></td>
+<td>Control 12-month BMI-observation count differs across result
+displays</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c006--intervention-24-month-bmi-observation-count-differs-across-result-displays">C006</a></td>
+<td>Intervention 24-month BMI-observation count differs across result
+displays</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c007--control-24-month-bmi-observation-count-differs-across-result-displays">C007</a></td>
+<td>Control 24-month BMI-observation count differs across result
+displays</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c008--intervention-36-month-bmi-observation-count-differs-across-result-displays">C008</a></td>
+<td>Intervention 36-month BMI-observation count differs across result
+displays</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c009--final-sap-says-six-assessment-points-but-enumerates-five">C009</a></td>
+<td>Final SAP says six assessment points but enumerates five</td>
+<td>Numeric or arithmetic inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c010--revised-protocol-gives-six-points-but-lists-seven-including-48-months">C010</a></td>
+<td>Revised protocol gives six points but lists seven including 48
+months</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c011--original-protocol-labels-primary-outcome-as-bmi-percentilebmi-while-results-use-bmi-kgm">C011</a></td>
+<td>Original protocol labels primary outcome as BMI percentile/BMI%
+while results use BMI kg/m²</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c012--control-condition-session-count-and-duration-differ-across-protocol-versions-and-article">C012</a></td>
+<td>Control-condition session count and duration differ across protocol
+versions and article</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c013--control-9-month-bmi-observation-count-differs-across-result-displays">C013</a></td>
+<td>Control 9-month BMI-observation count differs across result
+displays</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--intervention-3-month-bmi-observation-count-differs-across-result-displays" class="candidate-card">C001
+— Intervention 3-month BMI-observation count differs across result
+displays</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The intervention 3-month BMI
+count is 288 in the flow diagram and 279 in both the observed-BMI figure
+and eTable.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_barkin_2018_oi_180075.pdf#page=3">DOC-001 Figure 1 — PDF
+p. 3</a>; <a href="../jama_barkin_2018_oi_180075.pdf#page=7" target="_blank" rel="noopener">DOC-001
+Figure 2 — PDF p. 7</a>; <a
+href="../joi180075supp2_prod.pdf#page=2">DOC-003 eTable 1 — PDF p.
+2</a>.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints
+<code>288 BMI measured at 3 mo</code> for intervention and defines the
+retained count as children for whom BMI was collected. Figure 2 and
+eTable 1 each print intervention <code>279</code> at 3 months.</p>
+<p><strong>Reported-versus-comparator:</strong> 288 versus 279 for
+intervention, 3 months; Figure 2 and eTable 1 agree with each other.</p>
+<p><strong>Reasoning procedure:</strong> Compare same arm, visit, and
+labeled observed/collected BMI quantity; an explicit differing subset is
+needed to reconcile unequal integer counts.</p>
+<p><strong>Calculation:</strong> <code>288 - 279 = 9</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Figure
+1 may count all collected measurements while Figure 2/eTable 1 may use a
+cleaned descriptive subset; no supplied caption or method defines that
+distinction.</p>
+<p><strong>Mechanical evidence recheck:</strong> All three cited
+locations were found; their printed values and labels matched; the
+integer comparison was reproduced. Missing inputs are record-level
+inclusion flags, validity/cleaning criteria, and exclusion reasons.
+Direct observation is the 288/279 mismatch; cleaning is an inferred
+explanation.</p>
+<p><strong>Quality-control relevance:</strong> A source-defined
+distinction is needed for readers to reconcile two printed intervention
+3-month BMI denominators.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy an inconsistent intervention 3-month
+observed-BMI denominator into a systematic review, meta-analysis,
+guideline evidence table, or other evidence product.</p>
+<p><strong>Human verification steps:</strong> Reconcile
+participant-level 3-month intervention BMI records and identify any
+post-collection rule separating the flow count from Figure 2/eTable
+1.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--control-3-month-bmi-observation-count-differs-across-result-displays" class="candidate-card">C002
+— Control 3-month BMI-observation count differs across result
+displays</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The control 3-month BMI count
+is 277 in the flow diagram and 271 in both the observed-BMI figure and
+eTable.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_barkin_2018_oi_180075.pdf#page=3">DOC-001 Figure 1 — PDF
+p. 3</a>; <a href="../jama_barkin_2018_oi_180075.pdf#page=7" target="_blank" rel="noopener">DOC-001
+Figure 2 — PDF p. 7</a>; <a
+href="../joi180075supp2_prod.pdf#page=2">DOC-003 eTable 1 — PDF p.
+2</a>.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints
+<code>277 BMI measured at 3 mo</code> for control; Figure 2 and eTable 1
+each print control <code>271</code> at 3 months.</p>
+<p><strong>Reported-versus-comparator:</strong> 277 versus 271 for
+control, 3 months.</p>
+<p><strong>Reasoning procedure:</strong> Same arm, visit, and
+observed/collected BMI count should agree unless a distinct subset is
+expressly defined.</p>
+<p><strong>Calculation:</strong> <code>277 - 271 = 6</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Figure
+2/eTable 1 may be a cleaned descriptive subset, but the supplied package
+does not define a cleaning or inclusion rule.</p>
+<p><strong>Mechanical evidence recheck:</strong> The locations, values,
+and comparison rule were reproduced. Missing inputs are record-level
+inclusion flags, post-collection criteria, and exclusion reasons; any
+cleaning explanation remains inferred.</p>
+<p><strong>Quality-control relevance:</strong> The control 3-month
+denominator is not reconciled across displayed results.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a later extractor could copy an inconsistent control 3-month
+observed-BMI denominator.</p>
+<p><strong>Human verification steps:</strong> Reconcile the six records
+between collection and descriptive-display denominators and document the
+governing eligibility rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--intervention-9-month-bmi-observation-count-differs-across-result-displays" class="candidate-card">C003
+— Intervention 9-month BMI-observation count differs across result
+displays</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The intervention 9-month BMI
+count is 282 in the flow diagram and 280 in both the observed-BMI figure
+and eTable.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_barkin_2018_oi_180075.pdf#page=3">DOC-001 Figure 1 — PDF
+p. 3</a>; <a href="../jama_barkin_2018_oi_180075.pdf#page=7" target="_blank" rel="noopener">DOC-001
+Figure 2 — PDF p. 7</a>; <a
+href="../joi180075supp2_prod.pdf#page=2">DOC-003 eTable 1 — PDF p.
+2</a>.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints intervention
+<code>282 BMI measured at 9 mo</code>; Figure 2 and eTable 1 each print
+280.</p>
+<p><strong>Reported-versus-comparator:</strong> 282 versus 280 for
+intervention, 9 months.</p>
+<p><strong>Reasoning procedure:</strong> Compare the repeated same-arm,
+same-visit observed-BMI count under zero integer tolerance.</p>
+<p><strong>Calculation:</strong> <code>282 - 280 = 2</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+post-collection analytic or descriptive subset could explain the
+difference, but the package supplies no definition.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited pages, printed
+values, and calculation were reproduced. Record identities and inclusion
+rules are unavailable; subset exclusion is inference, not direct
+observation.</p>
+<p><strong>Quality-control relevance:</strong> The printed intervention
+9-month denominator needs a source-defined reconciliation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+the intervention 9-month denominator could be copied inconsistently into
+later evidence extraction.</p>
+<p><strong>Human verification steps:</strong> Reconcile the two
+intervention records and the relation of Figure 1 collection counts to
+Figure 2/eTable denominators.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--intervention-12-month-bmi-observation-count-differs-across-result-displays" class="candidate-card">C004
+— Intervention 12-month BMI-observation count differs across result
+displays</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The intervention 12-month BMI
+count is 275 in the flow diagram and 274 in both the observed-BMI figure
+and eTable.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_barkin_2018_oi_180075.pdf#page=3">DOC-001 Figure 1 — PDF
+p. 3</a>; <a href="../jama_barkin_2018_oi_180075.pdf#page=7" target="_blank" rel="noopener">DOC-001
+Figure 2 — PDF p. 7</a>; <a
+href="../joi180075supp2_prod.pdf#page=2">DOC-003 eTable 1 — PDF p.
+2</a>.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints intervention
+<code>275 BMI measured at 12 mo</code>; Figure 2 and eTable 1 each print
+274.</p>
+<p><strong>Reported-versus-comparator:</strong> 275 versus 274 for
+intervention, 12 months.</p>
+<p><strong>Reasoning procedure:</strong> Same arm, time point, and
+observed/collected measure require the same integer unless different
+subsets are defined.</p>
+<p><strong>Calculation:</strong> <code>275 - 274 = 1</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> One
+record may have been excluded from a descriptive subset, but no supplied
+rule establishes that.</p>
+<p><strong>Mechanical evidence recheck:</strong> Locations, values, and
+arithmetic were reproduced. The record identity and any cleaning rule
+are missing; exclusion is only a possible explanation.</p>
+<p><strong>Quality-control relevance:</strong> The intervention 12-month
+observed-BMI denominator is not fully defined across displays.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence product could copy the wrong intervention 12-month
+denominator.</p>
+<p><strong>Human verification steps:</strong> Identify the one-record
+difference and document any display-specific inclusion rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--control-12-month-bmi-observation-count-differs-across-result-displays" class="candidate-card">C005
+— Control 12-month BMI-observation count differs across result
+displays</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The control 12-month BMI count
+is 276 in the flow diagram and 275 in both the observed-BMI figure and
+eTable.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_barkin_2018_oi_180075.pdf#page=3">DOC-001 Figure 1 — PDF
+p. 3</a>; <a href="../jama_barkin_2018_oi_180075.pdf#page=7" target="_blank" rel="noopener">DOC-001
+Figure 2 — PDF p. 7</a>; <a
+href="../joi180075supp2_prod.pdf#page=2">DOC-003 eTable 1 — PDF p.
+2</a>.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints control
+<code>276 BMI measured at 12 mo</code>; Figure 2 and eTable 1 each print
+275.</p>
+<p><strong>Reported-versus-comparator:</strong> 276 versus 275 for
+control, 12 months.</p>
+<p><strong>Reasoning procedure:</strong> Apply the same-arm, same-visit
+integer-count identity rule.</p>
+<p><strong>Calculation:</strong> <code>276 - 275 = 1</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+cleaned descriptive subset is possible but is not defined by the
+supplied materials.</p>
+<p><strong>Mechanical evidence recheck:</strong> All cited printed
+values and the arithmetic comparison were confirmed. Record-level
+disposition and subset definition are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> The control 12-month
+denominator is inconsistently displayed without an explanation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could extract an inconsistent control 12-month
+denominator.</p>
+<p><strong>Human verification steps:</strong> Reconcile the one record
+and obtain the collection-to-display inclusion definition.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--intervention-24-month-bmi-observation-count-differs-across-result-displays" class="candidate-card">C006
+— Intervention 24-month BMI-observation count differs across result
+displays</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The intervention 24-month BMI
+count is 280 in the flow diagram and 278 in both the observed-BMI figure
+and eTable.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_barkin_2018_oi_180075.pdf#page=3">DOC-001 Figure 1 — PDF
+p. 3</a>; <a href="../jama_barkin_2018_oi_180075.pdf#page=7" target="_blank" rel="noopener">DOC-001
+Figure 2 — PDF p. 7</a>; <a
+href="../joi180075supp2_prod.pdf#page=2">DOC-003 eTable 1 — PDF p.
+2</a>.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints intervention
+<code>280 BMI measured at 24 mo</code>; Figure 2 and eTable 1 each print
+278.</p>
+<p><strong>Reported-versus-comparator:</strong> 280 versus 278 for
+intervention, 24 months.</p>
+<p><strong>Reasoning procedure:</strong> Compare the repeated same-arm,
+same-time observed-BMI count; no tolerance applies to the displayed
+integers.</p>
+<p><strong>Calculation:</strong> <code>280 - 278 = 2</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+post-collection descriptive-display subset could account for the
+difference, but the package does not state one.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations,
+printed counts, and calculation matched. Participant-level disposition
+and display-inclusion criteria are absent; no exclusion is asserted.</p>
+<p><strong>Quality-control relevance:</strong> The intervention 24-month
+denominator requires clarification for consistent quantitative
+reporting.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent intervention 24-month
+denominator.</p>
+<p><strong>Human verification steps:</strong> Reconcile the two records
+and provide the rule distinguishing collection and descriptive
+display.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--control-24-month-bmi-observation-count-differs-across-result-displays" class="candidate-card">C007
+— Control 24-month BMI-observation count differs across result
+displays</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The control 24-month BMI count
+is 267 in the flow diagram and 266 in both the observed-BMI figure and
+eTable.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_barkin_2018_oi_180075.pdf#page=3">DOC-001 Figure 1 — PDF
+p. 3</a>; <a href="../jama_barkin_2018_oi_180075.pdf#page=7" target="_blank" rel="noopener">DOC-001
+Figure 2 — PDF p. 7</a>; <a
+href="../joi180075supp2_prod.pdf#page=2">DOC-003 eTable 1 — PDF p.
+2</a>.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints control
+<code>267 BMI measured at 24 mo</code>; Figure 2 and eTable 1 each print
+266.</p>
+<p><strong>Reported-versus-comparator:</strong> 267 versus 266 for
+control, 24 months.</p>
+<p><strong>Reasoning procedure:</strong> Apply the repeated
+count-identity rule to the same arm, visit, and BMI measure.</p>
+<p><strong>Calculation:</strong> <code>267 - 266 = 1</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+cleaning or descriptive-subset distinction is possible but
+unreported.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed values,
+locations, and calculation were reproduced. The individual record and
+the applicable inclusion rule are missing.</p>
+<p><strong>Quality-control relevance:</strong> The control 24-month
+observed-BMI denominator is not reconciled in the displays.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a later evidence product could copy an inconsistent control 24-month
+denominator.</p>
+<p><strong>Human verification steps:</strong> Reconcile the one record
+and document the count definition in each result display.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--intervention-36-month-bmi-observation-count-differs-across-result-displays" class="candidate-card">C008
+— Intervention 36-month BMI-observation count differs across result
+displays</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The intervention 36-month count
+is 278 retained/BMI collected in the flow diagram and 276 in both the
+observed-BMI figure and eTable.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_barkin_2018_oi_180075.pdf#page=3">DOC-001 Figure 1 — PDF
+p. 3</a>; <a href="../jama_barkin_2018_oi_180075.pdf#page=7" target="_blank" rel="noopener">DOC-001
+Figure 2 — PDF p. 7</a>; <a
+href="../joi180075supp2_prod.pdf#page=2">DOC-003 eTable 1 — PDF p.
+2</a>.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints intervention
+<code>278 Retained at 36 mo</code>; its caption defines retained as BMI
+collected. Figure 2 and eTable 1 each print 276.</p>
+<p><strong>Reported-versus-comparator:</strong> 278 versus 276 for
+intervention, 36 months.</p>
+<p><strong>Reasoning procedure:</strong> Use the Figure 1 caption's
+BMI-collected definition and compare with the same-arm observed-BMI
+result displays.</p>
+<p><strong>Calculation:</strong> <code>278 - 276 = 2</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>Retained</code> may have been used more broadly despite the
+caption, or a post-collection subset may have been used; neither is
+defined.</p>
+<p><strong>Mechanical evidence recheck:</strong> Locations, counts,
+caption, and arithmetic were confirmed. The meaning of retained and any
+record-level exclusion rule remain missing; alternatives are inference
+only.</p>
+<p><strong>Quality-control relevance:</strong> The 36-month intervention
+denominator needs a stated reconciliation between retention/collection
+and observed-BMI displays.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction of the intervention 36-month observed or retained denominator
+could be inconsistent.</p>
+<p><strong>Human verification steps:</strong> Determine whether retained
+is broader than the caption's BMI-collected definition and reconcile the
+two records.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--final-sap-says-six-assessment-points-but-enumerates-five" class="candidate-card">C009
+— Final SAP says six assessment points but enumerates five</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The final SAP states six time
+points but its parenthetical schedule lists only baseline, 3, 9, 12, and
+36 months.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180075supp1_prod.pdf#page=110">DOC-002 final SAP — PDF p.
+110</a>; <a href="../joi180075supp1_prod.pdf#page=15" target="_blank" rel="noopener">DOC-002 protocol
+schedule — PDF p. 15</a>; <a
+href="../jama_barkin_2018_oi_180075.pdf#page=4">DOC-001 Methods — PDF p.
+4</a>; <a href="../joi180075supp2_prod.pdf#page=2" target="_blank" rel="noopener">DOC-003 eTable 1 —
+PDF p. 2</a>.</p>
+<p><strong>Source evidence:</strong> The SAP says
+<code>6 time points</code> while enumerating five occasions. Other
+supplied schedules/results include 24 months; the SAP also describes six
+repeated measurements on p. 112.</p>
+<p><strong>Reported-versus-comparator:</strong> Stated total of six
+versus five listed occasions; matching sources show the otherwise
+omitted 24-month occasion.</p>
+<p><strong>Reasoning procedure:</strong> Count the explicitly enumerated
+distinct occasions and compare that count with the stated total, without
+inferring unprinted model data.</p>
+<p><strong>Calculation:</strong>
+<code>count(baseline, 3, 9, 12, 36) = 5</code>; including 24 months
+yields 6.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+final-SAP prose may have an editorial omission, and the model may still
+have used 24-month data; the package does not provide the archived
+analysis input schedule.</p>
+<p><strong>Mechanical evidence recheck:</strong> The p. 110 sentence, p.
+112 six-measurement statement, and matching 24-month locations were
+found. The five-item list and count rule are direct; identification of
+24 months as the intended omission is source-supported inference.</p>
+<p><strong>Quality-control relevance:</strong> A stated assessment
+schedule should enumerate the same number of occasions it claims.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a review or guideline evidence table could copy an incomplete planned
+measurement schedule or model-timepoint description.</p>
+<p><strong>Human verification steps:</strong> Inspect the final archived
+SAP and model input schedule to determine whether 24 months was intended
+in the parenthetical list and primary model.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--revised-protocol-gives-six-points-but-lists-seven-including-48-months" class="candidate-card">C010
+— Revised protocol gives six points but lists seven including 48
+months</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The revised protocol calls the
+schedule six points/T1-T6 while listing seven occasions, including 48
+months.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180075supp1_prod.pdf#page=64">DOC-002 revised protocol — PDF
+p. 64</a>; <a href="../jama_barkin_2018_oi_180075.pdf#page=4" target="_blank" rel="noopener">DOC-001
+Methods — PDF p. 4</a>; <a
+href="../joi180075supp2_prod.pdf#page=2">DOC-003 eTable 1 — PDF p.
+2</a>.</p>
+<p><strong>Source evidence:</strong> The revised protocol states
+<code>6-points in time (T1-T6)</code> and lists baseline, 3, 9, 12, 24,
+36, and 48 months; it also says six collection points. The article and
+eTable report through 36 months.</p>
+<p><strong>Reported-versus-comparator:</strong> Six claimed points
+versus seven listed occasions; baseline-to-36-month reported schedule
+has six occasions.</p>
+<p><strong>Reasoning procedure:</strong> Count the distinct occasions in
+the revised-protocol sentence and compare its stated total with the
+matched reported schedule.</p>
+<p><strong>Calculation:</strong>
+<code>count(baseline, 3, 9, 12, 24, 36, 48) = 7</code>, not 6.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+48-month visit may have been a separate approved extension outside
+T1-T6; amendment chronology and the intended distinction are not
+supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> The internal
+six-versus-seven wording and matched article/eTable schedule were found
+and reproduced. The missing input is dated amendment/version
+documentation; lack of a published 48-month result is not treated as
+proof of error.</p>
+<p><strong>Quality-control relevance:</strong> The revised protocol's
+total/list statement cannot be read as a single unambiguous assessment
+schedule.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+protocol schedule abstraction in systematic reviews, meta-analyses, or
+guideline evidence tables could be inconsistent.</p>
+<p><strong>Human verification steps:</strong> Review amendment dates and
+define whether 48 months was separate from the core T1-T6 assessment
+schedule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c011--original-protocol-labels-primary-outcome-as-bmi-percentilebmi-while-results-use-bmi-kgm²" class="candidate-card">C011
+— Original protocol labels primary outcome as BMI percentile/BMI% while
+results use BMI kg/m²</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The original protocol labels
+the primary outcome BMI Percentile/BMI%, whereas the final SAP, article,
+and eTable report raw BMI in kg/m².</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180075supp1_prod.pdf#page=16">DOC-002 original protocol —
+PDF p. 16</a>; <a href="../joi180075supp1_prod.pdf#page=110" target="_blank" rel="noopener">DOC-002
+final SAP — PDF p. 110</a>; <a
+href="../jama_barkin_2018_oi_180075.pdf#page=3">DOC-001 Outcomes — PDF
+p. 3</a>; <a href="../joi180075supp2_prod.pdf#page=2" target="_blank" rel="noopener">DOC-003 eTable 1 —
+PDF p. 2</a>.</p>
+<p><strong>Source evidence:</strong> The original protocol uses
+<code>child's BMI Percentile</code> and <code>BMI%</code> while
+displaying a weight(kg)/height(m²) formula. The final sources
+analyze/report raw BMI in kg/m², including values such as 17.8.</p>
+<p><strong>Reported-versus-comparator:</strong> BMI percentile/BMI%
+label versus raw-BMI kg/m² formula, analysis label, and reported
+values.</p>
+<p><strong>Reasoning procedure:</strong> Compare the printed measure
+labels and scales; percentile/BMI% and raw BMI kg/m² are distinct scales
+unless an authoritative definition or amendment equates them.</p>
+<p><strong>Calculation:</strong> No arithmetic reconstruction is
+applicable; this is a categorical scale comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>BMI%</code> may be erroneous shorthand for raw BMI, or a protocol
+amendment may have changed the primary outcome scale; neither
+explanation is resolved in the supplied package.</p>
+<p><strong>Mechanical evidence recheck:</strong> The original
+label/formula and final raw-BMI locations were found. The difference in
+labels/scales is direct; an analysis-variable change or typographical
+explanation is inferred and needs source documentation.</p>
+<p><strong>Quality-control relevance:</strong> The outcome scale needs
+an authoritative definition so planned and reported outcome descriptions
+can be reconciled.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could misclassify the prespecified or reported
+primary outcome scale.</p>
+<p><strong>Human verification steps:</strong> Review the approved
+protocol/amendment trail and primary-model analysis variable or
+codebook.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--control-condition-session-count-and-duration-differ-across-protocol-versions-and-article" class="candidate-card">C012
+— Control-condition session count and duration differ across protocol
+versions and article</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The supplied original protocol,
+revised protocol, and article describe control exposure as 12×60, 7×45,
+and 6×30 minutes, respectively, without a supplied component
+mapping.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180075supp1_prod.pdf#page=14">DOC-002 original protocol —
+PDF p. 14</a>; <a href="../joi180075supp1_prod.pdf#page=64" target="_blank" rel="noopener">DOC-002
+revised protocol — PDF p. 64</a>; <a
+href="../jama_barkin_2018_oi_180075.pdf#page=1">DOC-001 abstract — PDF
+p. 1</a>; <a href="../jama_barkin_2018_oi_180075.pdf#page=3" target="_blank" rel="noopener">DOC-001
+Methods — PDF p. 3</a>.</p>
+<p><strong>Source evidence:</strong> Original protocol: 12 quarterly
+60-minute control sessions. Revised protocol: seven 45-minute
+school-readiness/success programs. Article: six 30-minute group
+activities.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>12 × 60</code>
+versus <code>7 × 45</code> versus <code>6 × 30</code> minutes for
+descriptions of the control school-readiness exposure.</p>
+<p><strong>Reasoning procedure:</strong> Compare count and duration
+descriptions across protocol versions and the article; they cannot all
+describe one identical schedule absent a stated distinction among
+planned, ancillary, and delivered components.</p>
+<p><strong>Calculation:</strong> <code>12 × 60 = 720</code> minutes;
+<code>7 × 45 = 315</code> minutes; <code>6 × 30 = 180</code>
+minutes.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+versions may describe changed plans, ancillary components, or actual
+delivery. Session logs and a chronology/mapping of newsletters, field
+trips, baseline sessions, and activities are not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Each cited page and
+count/duration was found; arithmetic was reproduced. The unresolved
+human question is whether the descriptions refer to the same component
+or different planned/delivered components.</p>
+<p><strong>Quality-control relevance:</strong> A clear control-exposure
+mapping is needed to reconcile quantitative trial descriptions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+systematic reviews, meta-analyses, guidelines, or other extractors could
+copy inconsistent control-exposure intensity or duration.</p>
+<p><strong>Human verification steps:</strong> Review protocol
+chronology, amendment records, intervention logs, and component
+definitions to map planned and delivered control exposure.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--control-9-month-bmi-observation-count-differs-across-result-displays" class="candidate-card">C013
+— Control 9-month BMI-observation count differs across result
+displays</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The control 9-month BMI count
+is 282 in the flow diagram and 280 in both the observed-BMI figure and
+eTable.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_barkin_2018_oi_180075.pdf#page=3">DOC-001 Figure 1 — PDF
+p. 3</a>; <a href="../jama_barkin_2018_oi_180075.pdf#page=7" target="_blank" rel="noopener">DOC-001
+Figure 2 — PDF p. 7</a>; <a
+href="../joi180075supp2_prod.pdf#page=2">DOC-003 eTable 1 — PDF p.
+2</a>.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints control
+<code>282 BMI measured at 9 mo</code>; Figure 2 and eTable 1 each print
+280.</p>
+<p><strong>Reported-versus-comparator:</strong> 282 versus 280 for
+control, 9 months.</p>
+<p><strong>Reasoning procedure:</strong> Compare same arm, visit, and
+observed/collected BMI quantity under the integer-count identity
+rule.</p>
+<p><strong>Calculation:</strong> <code>282 - 280 = 2</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unreported post-collection analytic or descriptive subset could explain
+the difference, but the supplied sources do not define it.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited values, pages,
+and arithmetic were reproduced. Participant-level record reconciliation
+and inclusion criteria are unavailable; exclusion remains an inferred
+explanation.</p>
+<p><strong>Quality-control relevance:</strong> The control 9-month
+observed-BMI denominator requires a defined reconciliation across
+results displays.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a later evidence extractor could copy an inconsistent control 9-month
+denominator.</p>
+<p><strong>Human verification steps:</strong> Reconcile the two records
+and document how Figure 1 collection counts relate to Figure 2/eTable
+denominators.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, the candidates identify fields that later evidence
+users could copy: observed-BMI denominators by arm and visit, planned
+assessment schedules, outcome scale, and control-exposure intensity.
+Such fields can be carried into study-characteristic tables, data
+extraction forms, and evidence syntheses. The supplied package does not
+establish any actual downstream propagation, effect-estimate change,
+paper-level conclusion change, or harm.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The supplied package does not include participant-level denominator
+reconciliation, record-level BMI validity/cleaning and exclusion rules,
+full model matrices/covariance and degrees-of-freedom details, all
+moderator centering/coding rules, observed outputs for planned
+robustness analyses, or numerical coordinates for supplementary figures.
+DOC-002 pp. 108 and 111 have imperfect equation-glyph OCR; DOC-003
+figure OCR is incomplete, so the rendered source pages were used for
+visual inspection. Multiple protocol versions do not always distinguish
+planned from delivered components. These limitations prevent unsupported
+reconstruction but do not remove the directly printed mismatches
+retained for human adjudication.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ol type="1">
+<li>Confirm the cited source page, printed values, and comparator for
+each stable C ID.</li>
+<li>Obtain record-level or archived analysis documentation for the nine
+BMI-count differences.</li>
+<li>Verify the final SAP schedule and protocol-version/amendment
+chronology.</li>
+<li>Verify the authoritative primary-outcome scale and control-exposure
+component mapping.</li>
+<li>Complete the blank adjudication fields in each card; retain the
+original evidence and any adjudication rationale.</li>
+</ol>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>The pre-processing source hashes above match the fresh
+source-integrity audit. The direct-source inventory, coverage manifest,
+relationship inventories, candidate ledger, evidence recheck, and
+quality audit are versioned under <a
+href="review_1_5_2/">review_1_5_2</a>. The stable candidate ID set is
+identical across the ledger, recheck, quality audit, and this report:
+C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011, C012,
+C013.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<p>The execution manifest records the coordinator plus fresh
+preprocessing, main/support mapping, inventory, numeric, cross-source,
+two independent statistical-pass, evidence-recheck, quality-audit, and
+report-generation agents. Pass 1 and pass 2 were distinct fresh
+<code>gpt-5.6-terra</code> high-reasoning executions. See <a
+href="review_1_5_2/agent_execution_manifest.md">agent_execution_manifest.md</a>
+for the complete agent/model/effort/start-mode list.</p>
+<h3 id="final-performance-and-token-metadata">Final performance and
+token metadata</h3>
+<ul>
+<li><strong>Target basis:</strong> Three supplied digital PDFs totaling
+132 pages require fresh native and layout extraction. The package
+combines an 11-page main report, a 113-page protocol/SAP supplement with
+extensive definitions and planned analyses, and an 8-page results
+supplement; native text is expected to be usable, but complete
+cross-document mapping and two statistical passes create substantial
+relationship volume. No Office conversion or broad OCR burden is
+presently expected.</li>
+<li><strong>Total source units:</strong> 132</li>
+<li><strong>Fresh-source units:</strong> 132</li>
+<li><strong>Target elapsed minutes:</strong> 55-80</li>
+<li><strong>Started UTC:</strong> 2026-08-20T18:02:54Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-20T18:42:55Z</li>
+<li><strong>Observed elapsed minutes:</strong> 40.0</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<p>Authoritative response-level token counts were not exposed by the
+coordinator or specialist runtimes. Accordingly, every manifested agent
+has an <code>UNAVAILABLE</code> ledger row; no token count or cost was
+approximated from text length.</p>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Agents</th>
+<th style="text-align: right;">Exact records</th>
+<th style="text-align: right;">Totals-only records</th>
+<th style="text-align: right;">Unavailable records</th>
+<th style="text-align: right;">Known total tokens</th>
+<th style="text-align: right;">Known cost USD</th>
+<th style="text-align: right;">Complete estimated cost USD</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<p>The accounting uses the 2026-08-18 pricing snapshot. These amounts
+are token-only API-equivalent estimates, not invoices; non-token tools,
+containers, storage, subscriptions, taxes, and other vendor charges are
+excluded.</p>
+<p>Per-agent token detail is recorded in the versioned <a
+href="review_1_5_2/token_usage_summary.md">token_usage_summary.md</a>
+after the accounting window closes. Token amounts, when finalized, are
+token-only API-equivalent estimates under the dated pricing snapshot and
+are not invoices.</p>
+</body>
+</html>

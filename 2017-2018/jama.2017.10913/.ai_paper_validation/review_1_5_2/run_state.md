@@ -1,0 +1,32 @@
+# Workflow 1.5.2 Run State
+
+- **Profile:** 1.5.2 full source-first restart
+- **Run status:** COMPLETE
+- **Target basis:** Three supplied PDFs totaling 47 pages, all requiring fresh native and layout extraction; one 8-page main article, one 29-page protocol with dispersed quantitative definitions, and one 10-page results supplement with five tables require full mapping, cross-document matching, and two complete statistical passes. Native text tooling is available and no Office conversion is expected.
+- **Total source units:** 47
+- **Fresh-source units:** 47
+- **Target elapsed minutes:** 30-45
+- **Started UTC:** 2026-08-20T16:50:53Z
+- **Finished UTC:** 2026-08-20T17:27:09Z
+- **Observed elapsed minutes:** 36.3
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Direct source count:** 3
+- **Source inventory status:** INITIALIZED
+- **Fresh preprocessing status:** COMPLETE — 47/47 pages freshly extracted and classified; 43 pages rendered; OCR not required
+- **Coverage manifest status:** COMPLETE
+- **Main evidence mapping status:** COMPLETE — 47 N relationships and 31 S relationships across DOC-001 pp. 1-8
+- **Support evidence mapping status:** COMPLETE — 86 N relationships and 27 S relationships across DOC-002 pp. 1-29 and DOC-003 pp. 1-10
+- **Numeric review status:** COMPLETE — 133/133 N relationships across two disjoint shards
+- **Cross-source review status:** COMPLETE — 30 matched families
+- **Statistical pass 1 status:** COMPLETE — 58/58 S relationships, distinct fresh Terra/high agent
+- **Candidate registration status:** COMPLETE — C001, C002, C003, C004, C005, C006, C007, C008, and C009
+- **Evidence recheck status:** COMPLETE — C001, C002, C003, C004, C005, C006, C007, C008, C009
+- **Statistical pass 2 status:** COMPLETE — 58/58 S relationships, distinct fresh Terra/high agent; no appended candidates
+- **Evidence-quality audit status:** COMPLETE — C001, C002, C003, C004, C005, C006, C007, C008, C009; coordinator repairs applied
+- **Markdown report status:** COMPLETE — nine candidate cards assembled
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE — authoritative response-level counts were not exposed for 13 manifested agents; no estimates were fabricated
+- **Source integrity status:** PASS — before/after SHA-256 inventories match all three direct sources
+- **HTML rendering status:** COMPLETE — standalone HTML rendered after Markdown stabilization
+- **Mechanical validation status:** PASS
+- **Limitations:** None identified at initialization.

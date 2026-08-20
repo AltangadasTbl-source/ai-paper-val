@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review-lapergue-et-al-paper-package"
+id="toc-quantitative-quality-control-consistency-review-lapergue-et-al-paper-package">Quantitative
+Quality-Control Consistency Review: Lapergue et al. Paper Package</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-fresh-processing-provenance"
+id="toc-package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--figure-2-combines-a-percentage-axis-with-count-like-embedded-labels-without-stating-the-embedded-unit"
+id="toc-c001--figure-2-combines-a-percentage-axis-with-count-like-embedded-labels-without-stating-the-embedded-unit">C001
+— Figure 2 combines a percentage axis with count-like embedded labels
+without stating the embedded unit</a></li>
+<li><a
+href="#c002--etable-frontline-stent-header-does-not-identify-how-n175-relates-to-the-main-flow-totals"
+id="toc-c002--etable-frontline-stent-header-does-not-identify-how-n175-relates-to-the-main-flow-totals">C002
+— eTable frontline stent header does not identify how n=175 relates to
+the main flow totals</a></li>
+<li><a
+href="#c003--protocol-and-publication-report-different-design-sample-sizes"
+id="toc-c003--protocol-and-publication-report-different-design-sample-sizes">C003
+— Protocol and publication report different design sample sizes</a></li>
+<li><a
+href="#c004--protocol-and-publication-report-different-primary-analysis-methods"
+id="toc-c004--protocol-and-publication-report-different-primary-analysis-methods">C004
+— Protocol and publication report different primary analysis
+methods</a></li>
+<li><a
+href="#c005--stent-intracranial-hemorrhage-percentage-does-not-match-85188"
+id="toc-c005--stent-intracranial-hemorrhage-percentage-does-not-match-85188">C005
+— Stent intracranial-hemorrhage percentage does not match
+85/188</a></li>
+<li><a
+href="#c006--stent-hemorrhagic-infarction-percentage-does-not-match-49188"
+id="toc-c006--stent-hemorrhagic-infarction-percentage-does-not-match-49188">C006
+— Stent hemorrhagic-infarction percentage does not match 49/188</a></li>
+<li><a
+href="#c007--stent-hemorrhagic-infarction-type-1-percentage-does-not-match-24188"
+id="toc-c007--stent-hemorrhagic-infarction-type-1-percentage-does-not-match-24188">C007
+— Stent hemorrhagic-infarction type 1 percentage does not match
+24/188</a></li>
+<li><a
+href="#c008--stent-hemorrhagic-infarction-type-2-percentage-does-not-match-25188"
+id="toc-c008--stent-hemorrhagic-infarction-type-2-percentage-does-not-match-25188">C008
+— Stent hemorrhagic-infarction type 2 percentage does not match
+25/188</a></li>
+<li><a
+href="#c009--stent-parenchymal-hematoma-percentage-does-not-match-33188"
+id="toc-c009--stent-parenchymal-hematoma-percentage-does-not-match-33188">C009
+— Stent parenchymal-hematoma percentage does not match 33/188</a></li>
+<li><a
+href="#c010--stent-parenchymal-hematoma-type-1-percentage-does-not-match-19188"
+id="toc-c010--stent-parenchymal-hematoma-type-1-percentage-does-not-match-19188">C010
+— Stent parenchymal-hematoma type 1 percentage does not match
+19/188</a></li>
+<li><a
+href="#c011--stent-parenchymal-hematoma-type-2-percentage-does-not-match-14188"
+id="toc-c011--stent-parenchymal-hematoma-type-2-percentage-does-not-match-14188">C011
+— Stent parenchymal-hematoma type 2 percentage does not match
+14/188</a></li>
+<li><a
+href="#c012--stent-symptomatic-intracranial-hemorrhage-percentage-does-not-match-12188"
+id="toc-c012--stent-symptomatic-intracranial-hemorrhage-percentage-does-not-match-12188">C012
+— Stent symptomatic-intracranial-hemorrhage percentage does not match
+12/188</a></li>
+<li><a
+href="#c013--stent-subarachnoid-hemorrhage-percentage-does-not-match-13188"
+id="toc-c013--stent-subarachnoid-hemorrhage-percentage-does-not-match-13188">C013
+— Stent subarachnoid-hemorrhage percentage does not match
+13/188</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token Accounting and Cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review-lapergue-et-al-paper-package">Quantitative
+Quality-Control Consistency Review: Lapergue et al. Paper Package</h1>
+<blockquote>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>This report records 13 source-grounded quantitative reporting
+quality-control candidates. Every item is <strong>Pending Human
+Adjudication</strong>. It does not assign validity, importance,
+corrective action, acceptance, rejection, severity, or a final
+correction.</p>
+</blockquote>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Fresh, source-first review of all supplied material identified
+<strong>13 distinct stable candidates</strong> (C001-C013). They
+comprise one figure unit-label observation, one supplement
+denominator-definition observation, two protocol/publication
+plan-document divergences, and nine separate Table 3 within-row
+fraction/percentage identities. The nine Table 3 rows are retained
+separately because each has a different printed numerator, comparator,
+and potentially extracted value.</p>
+<p>This is quantitative reporting quality control, not a methodology,
+clinical, or validity audit. Small preventable defects can matter when
+values are copied into downstream data extraction, systematic reviews,
+meta-analyses, guidelines, or later evidence products; this review does
+not establish that any copying, conclusion change, or harm occurred.</p>
+<h2 id="package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</h2>
+<p>Only the three supplied PDFs were used as evidence; no web or
+external literature, old audit derivative, GPU, or source modification
+was used. Fresh native and layout text were created for every page;
+result-relevant visual checks were made from fresh renders where needed,
+and no result-relevant page required OCR.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Direct source</th>
+<th>Role</th>
+<th style="text-align: right;">Units</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_lapergue_2017_oi_170084.pdf#page=1">jama_lapergue_2017_oi_170084.pdf
+— PDF p. 1</a></td>
+<td>Main article</td>
+<td style="text-align: right;">10 PDF pages</td>
+<td><code>3bdcf2f7447faa046f272f9678753b53516678f5267938ff3670f96dbc021e30</code></td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a href="../joi170084supp1_prod.pdf#page=1" target="_blank" rel="noopener">joi170084supp1_prod.pdf
+— PDF p. 1</a></td>
+<td>Protocol/support document 1</td>
+<td style="text-align: right;">14 PDF pages</td>
+<td><code>8cd68623186d506fbbb23fc7ab47cab5185ee0ea165a67fd9237094d08253235</code></td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a href="../joi170084supp2_prod.pdf#page=1" target="_blank" rel="noopener">joi170084supp2_prod.pdf
+— PDF p. 1</a></td>
+<td>Statistical supplement/support document 2</td>
+<td style="text-align: right;">6 PDF pages</td>
+<td><code>a51cd822e6fec73022152e3e0e564c52ac60fe9344914027cb7495fe62151c81</code></td>
+</tr>
+</tbody>
+</table>
+<p>Fresh source assets and extraction decisions are documented in <a
+href="review_1_5_2/evidence_asset_inventory.md">evidence asset
+inventory</a>, with the full direct-source inventory in <a
+href="review_1_5_2/source_inventory.md">source inventory</a>.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All 30/30 direct PDF pages were fresh-required and mapped: DOC-001
+10/10, DOC-002 14/14, and DOC-003 6/6. The complete stage plan and
+completion records are in <a
+href="review_1_5_2/coverage_manifest.md">coverage manifest</a>;
+direct-source totals are in <a
+href="review_1_5_2/source_coverage.md">source coverage</a>. Mapping
+included result-relevant counts, denominators, percentages, effects,
+intervals, P values, labels, scales, time points, figure/table/caption
+material, and matched support-document content.</p>
+<p>Excluded by scope were broad study-design, clinical, misconduct,
+novelty, raw-data, and ungrounded model-specification critiques.
+Coherent display-zero P values would not have been candidates; none
+occurred in the assigned relationships.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The fresh maps registered and checked all 81 numeric/reporting
+relationships (N001-N081) and all 31 inferential-statistical
+relationships (S001-S031). <a
+href="review_1_5_2/checkers/numeric_consistency.md">Numeric checking</a>
+and <a
+href="review_1_5_2/checkers/cross_source_consistency.md">cross-source
+checking</a> covered their complete assigned scopes and 18 matched
+cross-source groups. The <a
+href="review_1_5_2/relationships/numeric_relationship_inventory.md">relationship
+inventories</a> and <a
+href="review_1_5_2/statistics/relationship_inventory.md">statistical
+inventory</a> preserve stable relationship coverage.</p>
+<p>Two independent high-effort statistical reviews each completed every
+S relationship: <a
+href="review_1_5_2/checkers/statistical_pass_1.md">pass 1</a> records
+31/31 <code>PASS_1_COMPLETE</code>, and <a
+href="review_1_5_2/checkers/statistical_pass_2.md">pass 2</a> records
+31/31 <code>PASS_2_COMPLETE</code> after reviewing the ledger and
+mechanical recheck. Pass 2 added no distinct candidate. The <a
+href="review_1_5_2/verification/evidence_recheck.md">mechanical evidence
+recheck</a> covers 13/13 stable IDs, and the <a
+href="review_1_5_2/quality/evidence_quality_audit.md">quality audit</a>
+covers all source and coverage rows, both statistical executions, and
+13/13 IDs.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+<th>Category</th>
+<th>Primary location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Figure 2 percentage axis / count-like embedded labels</td>
+<td>Rate-versus-count inconsistency</td>
+<td><a href="../jama_lapergue_2017_oi_170084.pdf#page=7" target="_blank" rel="noopener">Main PDF p.
+7</a></td>
+</tr>
+<tr>
+<td>C002</td>
+<td>eTable frontline stent <code>n=175</code> population definition</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td><a href="../joi170084supp2_prod.pdf#page=4" target="_blank" rel="noopener">Supplement 2 PDF p.
+4</a></td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Protocol/publication design sample sizes</td>
+<td>Cross-document numeric inconsistency</td>
+<td><a href="../joi170084supp1_prod.pdf#page=7" target="_blank" rel="noopener">Protocol PDF p.
+7</a></td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Protocol/publication primary analysis methods</td>
+<td>Statistical reporting inconsistency</td>
+<td><a href="../joi170084supp1_prod.pdf#page=6" target="_blank" rel="noopener">Protocol PDF p.
+6</a></td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Table 3 intracranial hemorrhage <code>85/188 (46.2)</code></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td><a href="../jama_lapergue_2017_oi_170084.pdf#page=8" target="_blank" rel="noopener">Main PDF p.
+8</a></td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Table 3 hemorrhagic infarction <code>49/188 (26.6)</code></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td><a href="../jama_lapergue_2017_oi_170084.pdf#page=8" target="_blank" rel="noopener">Main PDF p.
+8</a></td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Table 3 hemorrhagic infarction type 1
+<code>24/188 (13.0)</code></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td><a href="../jama_lapergue_2017_oi_170084.pdf#page=8" target="_blank" rel="noopener">Main PDF p.
+8</a></td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Table 3 hemorrhagic infarction type 2
+<code>25/188 (13.6)</code></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td><a href="../jama_lapergue_2017_oi_170084.pdf#page=8" target="_blank" rel="noopener">Main PDF p.
+8</a></td>
+</tr>
+<tr>
+<td>C009</td>
+<td>Table 3 parenchymal hematoma <code>33/188 (17.4)</code></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td><a href="../jama_lapergue_2017_oi_170084.pdf#page=8" target="_blank" rel="noopener">Main PDF p.
+8</a></td>
+</tr>
+<tr>
+<td>C010</td>
+<td>Table 3 parenchymal hematoma type 1 <code>19/188 (10.3)</code></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td><a href="../jama_lapergue_2017_oi_170084.pdf#page=8" target="_blank" rel="noopener">Main PDF p.
+8</a></td>
+</tr>
+<tr>
+<td>C011</td>
+<td>Table 3 parenchymal hematoma type 2 <code>14/188 (7.6)</code></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td><a href="../jama_lapergue_2017_oi_170084.pdf#page=8" target="_blank" rel="noopener">Main PDF p.
+8</a></td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Table 3 symptomatic ICH <code>12/188 (6.5)</code></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td><a href="../jama_lapergue_2017_oi_170084.pdf#page=8" target="_blank" rel="noopener">Main PDF p.
+8</a></td>
+</tr>
+<tr>
+<td>C013</td>
+<td>Table 3 subarachnoid hemorrhage <code>13/188 (7.1)</code></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td><a href="../jama_lapergue_2017_oi_170084.pdf#page=8" target="_blank" rel="noopener">Main PDF p.
+8</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--figure-2-combines-a-percentage-axis-with-count-like-embedded-labels-without-stating-the-embedded-unit" class="candidate-card">C001
+— Figure 2 combines a percentage axis with count-like embedded labels
+without stating the embedded unit</h2>
+<p><strong>Candidate statement:</strong> Figure 2A-B uses an axis
+labelled <code>Patients, %</code>, while in-bar integers sum to group
+sample sizes and reproduce count numerators.</p>
+<p><strong>Category:</strong> Rate-versus-count inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=7">Main article — PDF p.
+7</a>, Figure 2A-B; <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=6">Main article — PDF p.
+6</a>, Table 2.</p>
+<p><strong>Source evidence:</strong> Figure 2A contact values
+<code>8, 2, 18, 92, 72</code> sum to 192 and stent values
+<code>5, 5, 22, 84, 73</code> sum to 189. Figure 2B likewise sums to 192
+and 189; both axes state <code>Patients, %</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Percentage-axis wording
+versus count-like embedded values and printed group <code>n</code>
+labels.</p>
+<p><strong>Reasoning procedure:</strong> Compare the printed axis,
+segment labels, and group totals; then match the relevant segment sums
+to Table 2.</p>
+<p><strong>Calculation:</strong> <code>8+2+18+92+72=192</code>;
+<code>5+5+22+84+73=189</code>; Figure 2A <code>92+72=164</code> and
+<code>84+73=157</code>, matching Table 2.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> This
+may be an intentional 100%-stacked chart with count annotations; its
+numeric content reconciles.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited content and Table
+2 comparator found and reproduced; the missing item is an explicit
+in-bar unit definition.</p>
+<p><strong>Quality-control relevance:</strong> A mixed scale and
+annotation convention should distinguish the embedded unit.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could misclassify an internal integer as a percentage or a
+count; no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Review the production
+figure specification and confirm whether in-bar labels were
+intentionally unlabelled counts.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--etable-frontline-stent-header-does-not-identify-how-n175-relates-to-the-main-flow-totals" class="candidate-card">C002
+— eTable frontline stent header does not identify how n=175 relates to
+the main flow totals</h2>
+<p><strong>Candidate statement:</strong> The eTable header
+<code>Stent Retriever First (n=175)</code> does not identify its
+relation to 189 randomized or 170 receiving assigned stent
+treatment.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi170084supp2_prod.pdf#page=4">Supplement 2 — PDF p. 4</a>,
+eTable; <a href="../jama_lapergue_2017_oi_170084.pdf#page=4" target="_blank" rel="noopener">Main
+article — PDF p. 4</a>, Figure 1.</p>
+<p><strong>Source evidence:</strong> The eTable prints
+<code>n=175</code>; Figure 1 prints 189 randomized and 170 receiving
+stent retriever as randomized. Device-row entries total 186 and are not
+a mutually exclusive partition.</p>
+<p><strong>Reported-versus-comparator:</strong> Undefined
+treatment-labelled <code>n=175</code> versus main-flow totals 170 and
+189.</p>
+<p><strong>Reasoning procedure:</strong> Match eTable header to flow
+populations and check whether source-labelled nonreceipt components
+reconcile it.</p>
+<p><strong>Calculation:</strong> <code>189-12</code> spontaneous lyses
+<code>-1</code> groin-access failure <code>-1</code> extracranial-only
+procedure <code>=175</code>; it retains five assigned-stent participants
+treated with aspiration.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+header may intend participants assigned to stent who underwent any
+frontline device procedure, despite the abbreviated label.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both source locations,
+totals, five aspiration-device entries, and reconciliation were
+reproduced; the column-population definition is absent.</p>
+<p><strong>Quality-control relevance:</strong> A treatment-labelled
+denominator should state the population it represents.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+treatment uptake or device-use data could be abstracted using the wrong
+population; no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Obtain the eTable
+denominator definition and participant-level device mapping; confirm the
+intended header wording.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--protocol-and-publication-report-different-design-sample-sizes" class="candidate-card">C003
+— Protocol and publication report different design sample sizes</h2>
+<p><strong>Candidate statement:</strong> Protocol V1.1 reports 161
+participants per arm (322 total), whereas the article reports 190 per
+arm (380 total) for the same trial design.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi170084supp1_prod.pdf#page=7">Protocol — PDF p. 7</a>,
+sample-size section; <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=3">Main article — PDF p.
+3</a>, Statistical Analysis.</p>
+<p><strong>Source evidence:</strong> Both documents state 70% and 85%
+expected rates, two-sided alpha <code>.05</code>, and 90% power; the
+article also states a 15% failure assumption.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>322</code>
+total/<code>161</code> per arm versus <code>380</code>
+total/<code>190</code> per arm.</p>
+<p><strong>Reasoning procedure:</strong> Match trial, design premises,
+and sample-size statements across supplied documents.</p>
+<p><strong>Calculation:</strong> <code>161×2=322</code>;
+<code>190×2=380</code>; difference <code>=58</code> participants.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A later
+authorized amendment or final SAP may have added the publication's
+failure allowance or otherwise revised the design.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both numbers and stated
+shared/differing premises were found; no controlling amendment, SAP, or
+chronology is supplied.</p>
+<p><strong>Quality-control relevance:</strong> Different same-trial
+design totals should be traceable to a controlling document or
+distinguished assumptions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a planned target sample size or design premise could be copied
+inconsistently; no conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the controlling
+sample-size calculation and any approved amendment explaining 322 to
+380.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--protocol-and-publication-report-different-primary-analysis-methods" class="candidate-card">C004
+— Protocol and publication report different primary analysis
+methods</h2>
+<p><strong>Candidate statement:</strong> Protocol V1.1 specifies
+chi-square/rate-difference and center-stratified procedures, while
+publication documents mixed logistic regression with IV-thrombolysis
+fixed and center random effects.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi170084supp1_prod.pdf#page=6">Protocol — PDF p. 6</a> and <a
+href="../joi170084supp1_prod.pdf#page=7">Protocol — PDF p. 7</a>; <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=3">Main article — PDF p.
+3</a> and <a href="../joi170084supp2_prod.pdf#page=2" target="_blank" rel="noopener">Supplement 2 — PDF
+p. 2</a>.</p>
+<p><strong>Source evidence:</strong> The protocol prints chi-square,
+rate differences, center stratification/Breslow-Day; publication prints
+a mixed logistic primary model with different adjustment and center
+handling.</p>
+<p><strong>Reported-versus-comparator:</strong> Planned
+chi-square/stratified method versus published mixed-logistic method.</p>
+<p><strong>Reasoning procedure:</strong> Compare explicitly named
+primary methods, effect handling, and center treatment for the matched
+endpoint.</p>
+<p><strong>Calculation:</strong> Not applicable: this is a printed
+model-identity comparison, not an arithmetic claim.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Protocol section 5.2 anticipates a detailed SAP before database lock, so
+the publication method may be an authorized prospective revision.</p>
+<p><strong>Mechanical evidence recheck:</strong> All method statements
+were found and matched; no final SAP, amendment, or version chronology
+links the two methods.</p>
+<p><strong>Quality-control relevance:</strong> A changed prespecified
+primary method should be traceable to the controlling version.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+the prespecified analysis method or adjustment structure could be
+abstracted inconsistently; no invalidity or conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Obtain the controlling
+SAP/amendment and establish whether and when it superseded V1.1.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--stent-intracranial-hemorrhage-percentage-does-not-match-85188" class="candidate-card">C005
+— Stent intracranial-hemorrhage percentage does not match 85/188</h2>
+<p><strong>Candidate statement:</strong> Table 3 prints
+<code>85/188 (46.2)</code>, but the printed fraction rounds to
+45.2%.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=8">Main article — PDF p.
+8</a>, Table 3; <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=7">Main article — PDF p.
+7</a>, narrative repetition.</p>
+<p><strong>Source evidence:</strong> Table 3 provides numerator 85,
+denominator 188, and 46.2%; page 7 repeats 85 patients and 46.2% without
+a denominator.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>46.2%</code>
+versus <code>85/188×100=45.2128%</code>, or 45.2% to one decimal.</p>
+<p><strong>Reasoning procedure:</strong> Apply ordinary one-decimal
+rounding to the printed same-row fraction.</p>
+<p><strong>Calculation:</strong>
+<code>85÷188×100=45.2128% → 45.2%</code>;
+<code>85÷184×100=46.2%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+nearby denominator 184 would reproduce 46.2%; the package does not
+establish which displayed element governs.</p>
+<p><strong>Mechanical evidence recheck:</strong> Table/narrative content
+and arithmetic were reproduced; participant-level denominator definition
+is unavailable.</p>
+<p><strong>Quality-control relevance:</strong> A printed
+<code>No./Total (%)</code> display should internally reconcile.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+the stent-group intracranial-hemorrhage proportion or denominator could
+be copied incorrectly; no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the
+event-availability population and align numerator, denominator, and
+percentage.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--stent-hemorrhagic-infarction-percentage-does-not-match-49188" class="candidate-card">C006
+— Stent hemorrhagic-infarction percentage does not match 49/188</h2>
+<p><strong>Candidate statement:</strong> Table 3 prints
+<code>49/188 (26.6)</code>, but the fraction rounds to 26.1%.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=8">Main article — PDF p.
+8</a>, Table 3.</p>
+<p><strong>Source evidence:</strong> The row prints 49, 188, and
+26.6.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>26.6%</code>
+versus <code>49/188×100=26.0638%</code>, or 26.1% to one decimal.</p>
+<p><strong>Reasoning procedure:</strong> Apply the within-row
+fraction-to-percentage identity.</p>
+<p><strong>Calculation:</strong>
+<code>49÷188×100=26.0638% → 26.1%</code>;
+<code>49÷184×100=26.6%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+intended denominator of 184 would reconcile the percentage but is not
+printed in this row.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed row and
+arithmetic reproduced; row-specific population is not supplied.</p>
+<p><strong>Quality-control relevance:</strong> This is a distinct
+displayed fraction/percentage identity from its component rows.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a hemorrhagic-infarction proportion or denominator could be extracted
+inconsistently; no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Establish whether 188,
+184, or another documented denominator is intended.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--stent-hemorrhagic-infarction-type-1-percentage-does-not-match-24188" class="candidate-card">C007
+— Stent hemorrhagic-infarction type 1 percentage does not match
+24/188</h2>
+<p><strong>Candidate statement:</strong> Table 3 prints
+<code>24/188 (13.0)</code>, but the fraction rounds to 12.8%.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=8">Main article — PDF p.
+8</a>, Table 3.</p>
+<p><strong>Source evidence:</strong> The type 1 row prints 24, 188, and
+13.0.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>13.0%</code>
+versus <code>24/188×100=12.7660%</code>, or 12.8% to one decimal.</p>
+<p><strong>Reasoning procedure:</strong> Apply the within-row
+fraction-to-percentage identity.</p>
+<p><strong>Calculation:</strong>
+<code>24÷188×100=12.7660% → 12.8%</code>;
+<code>24÷184×100=13.0%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+nearby 184 denominator would reproduce 13.0%, but its applicability is
+unconfirmed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed inputs and
+arithmetic reproduced; intended type 1 population is absent.</p>
+<p><strong>Quality-control relevance:</strong> This row has a separate
+printed numerator and potentially extracted proportion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a type 1 hemorrhagic-infarction proportion could be copied
+inconsistently; no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the intended type
+1 analysis denominator.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--stent-hemorrhagic-infarction-type-2-percentage-does-not-match-25188" class="candidate-card">C008
+— Stent hemorrhagic-infarction type 2 percentage does not match
+25/188</h2>
+<p><strong>Candidate statement:</strong> Table 3 prints
+<code>25/188 (13.6)</code>, but the fraction rounds to 13.3%.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=8">Main article — PDF p.
+8</a>, Table 3.</p>
+<p><strong>Source evidence:</strong> The type 2 row prints 25, 188, and
+13.6.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>13.6%</code>
+versus <code>25/188×100=13.2979%</code>, or 13.3% to one decimal.</p>
+<p><strong>Reasoning procedure:</strong> Apply the within-row
+fraction-to-percentage identity.</p>
+<p><strong>Calculation:</strong>
+<code>25÷188×100=13.2979% → 13.3%</code>;
+<code>25÷184×100=13.6%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+nearby 184 denominator would reproduce 13.6%, but its applicability is
+unconfirmed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed inputs and
+arithmetic reproduced; intended type 2 population is absent.</p>
+<p><strong>Quality-control relevance:</strong> This row has a separate
+printed numerator and potentially extracted proportion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a type 2 hemorrhagic-infarction proportion could be copied
+inconsistently; no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the intended type
+2 analysis denominator.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--stent-parenchymal-hematoma-percentage-does-not-match-33188" class="candidate-card">C009
+— Stent parenchymal-hematoma percentage does not match 33/188</h2>
+<p><strong>Candidate statement:</strong> Table 3 prints
+<code>33/188 (17.4)</code>, but the fraction rounds to 17.6%.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=8">Main article — PDF p.
+8</a>, Table 3.</p>
+<p><strong>Source evidence:</strong> The parent row prints 33, 188, and
+17.4; component numerators 19 and 14 sum to 33.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>17.4%</code>
+versus <code>33/188×100=17.5532%</code>, or 17.6% to one decimal.</p>
+<p><strong>Reasoning procedure:</strong> Apply same-row
+fraction-to-percentage identity while retaining the separately coherent
+component sum.</p>
+<p><strong>Calculation:</strong>
+<code>33÷188×100=17.5532% → 17.6%</code>; <code>33÷184×100=17.9%</code>;
+<code>19+14=33</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unprinted row-specific denominator or a different table version may
+underlie 17.4%; neither 188 nor nearby 184 reconciles it.</p>
+<p><strong>Mechanical evidence recheck:</strong> Fraction, component
+sum, and both denominator diagnostics reproduced; row population is
+unavailable.</p>
+<p><strong>Quality-control relevance:</strong> The parent row remains
+distinct from the two component rows and should reconcile
+internally.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a total parenchymal-hematoma proportion or denominator could be copied
+inconsistently; no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify inputs generating
+17.4% and retain the supported component total.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--stent-parenchymal-hematoma-type-1-percentage-does-not-match-19188" class="candidate-card">C010
+— Stent parenchymal-hematoma type 1 percentage does not match
+19/188</h2>
+<p><strong>Candidate statement:</strong> Table 3 prints
+<code>19/188 (10.3)</code>, but the fraction rounds to 10.1%.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=8">Main article — PDF p.
+8</a>, Table 3.</p>
+<p><strong>Source evidence:</strong> The type 1 row prints 19, 188, and
+10.3.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>10.3%</code>
+versus <code>19/188×100=10.1064%</code>, or 10.1% to one decimal.</p>
+<p><strong>Reasoning procedure:</strong> Apply the within-row
+fraction-to-percentage identity.</p>
+<p><strong>Calculation:</strong>
+<code>19÷188×100=10.1064% → 10.1%</code>;
+<code>19÷184×100=10.3%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Denominator 184 would reconcile 10.3%, but it is not printed for this
+row.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed inputs and
+arithmetic reproduced; denominator definition remains missing.</p>
+<p><strong>Quality-control relevance:</strong> This component row has
+its own numerator and extracted value.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a type 1 parenchymal-hematoma proportion could be copied inconsistently;
+no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the intended type
+1 parenchymal-hematoma population.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c011--stent-parenchymal-hematoma-type-2-percentage-does-not-match-14188" class="candidate-card">C011
+— Stent parenchymal-hematoma type 2 percentage does not match
+14/188</h2>
+<p><strong>Candidate statement:</strong> Table 3 prints
+<code>14/188 (7.6)</code>, but the fraction rounds to 7.4%.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=8">Main article — PDF p.
+8</a>, Table 3.</p>
+<p><strong>Source evidence:</strong> The type 2 row prints 14, 188, and
+7.6.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>7.6%</code> versus
+<code>14/188×100=7.4468%</code>, or 7.4% to one decimal.</p>
+<p><strong>Reasoning procedure:</strong> Apply the within-row
+fraction-to-percentage identity.</p>
+<p><strong>Calculation:</strong> <code>14÷188×100=7.4468% → 7.4%</code>;
+<code>14÷184×100=7.6%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Denominator 184 would reconcile 7.6%, but it is not printed for this
+row.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed inputs and
+arithmetic reproduced; denominator definition remains missing.</p>
+<p><strong>Quality-control relevance:</strong> This component row has
+its own numerator and extracted value.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a type 2 parenchymal-hematoma proportion could be copied inconsistently;
+no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the intended type
+2 parenchymal-hematoma population.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--stent-symptomatic-intracranial-hemorrhage-percentage-does-not-match-12188" class="candidate-card">C012
+— Stent symptomatic-intracranial-hemorrhage percentage does not match
+12/188</h2>
+<p><strong>Candidate statement:</strong> Table 3 prints
+<code>12/188 (6.5)</code>, but the fraction rounds to 6.4%.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=8">Main article — PDF p.
+8</a>, Table 3; <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=7">Main article — PDF p.
+7</a>, narrative repetition.</p>
+<p><strong>Source evidence:</strong> Table 3 prints 12, 188, and 6.5%;
+page 7 repeats 12 patients and 6.5% without a denominator.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>6.5%</code> versus
+<code>12/188×100=6.3830%</code>, or 6.4% to one decimal.</p>
+<p><strong>Reasoning procedure:</strong> Apply the within-row
+fraction-to-percentage identity and retain narrative repetition as
+supporting provenance.</p>
+<p><strong>Calculation:</strong> <code>12÷188×100=6.3830% → 6.4%</code>;
+<code>12÷184×100=6.5%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Denominator 184 could reconcile the numerator/percentage, but it is not
+printed on the row.</p>
+<p><strong>Mechanical evidence recheck:</strong> Table/narrative content
+and arithmetic reproduced; symptomatic-ICH denominator is not
+defined.</p>
+<p><strong>Quality-control relevance:</strong> A repeated event
+percentage should retain an identifiable denominator.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a symptomatic-ICH proportion or denominator could be copied
+inconsistently; no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the intended
+symptomatic-ICH denominator and align the display.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--stent-subarachnoid-hemorrhage-percentage-does-not-match-13188" class="candidate-card">C013
+— Stent subarachnoid-hemorrhage percentage does not match 13/188</h2>
+<p><strong>Candidate statement:</strong> Table 3 prints
+<code>13/188 (7.1)</code>, but the fraction rounds to 6.9%.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=8">Main article — PDF p.
+8</a>, Table 3; <a
+href="../jama_lapergue_2017_oi_170084.pdf#page=7">Main article — PDF p.
+7</a>, pooled narrative.</p>
+<p><strong>Source evidence:</strong> Table 3 prints 13, 188, and 7.1%;
+the narrative prints pooled 26 events, and Table 3 shows 13 in each
+group.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>7.1%</code> versus
+<code>13/188×100=6.9149%</code>, or 6.9% to one decimal.</p>
+<p><strong>Reasoning procedure:</strong> Apply the within-row
+fraction-to-percentage identity while separately confirming the pooled
+numerator.</p>
+<p><strong>Calculation:</strong> <code>13÷188×100=6.9149% → 6.9%</code>;
+<code>13÷184×100=7.1%</code>; <code>13+13=26</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Denominator 184 would reproduce 7.1%, but its applicability is not
+stated.</p>
+<p><strong>Mechanical evidence recheck:</strong> Fraction, pooled-count
+comparator, and arithmetic reproduced; row population remains
+undefined.</p>
+<p><strong>Quality-control relevance:</strong> The fraction/percentage
+identity is distinct from the independently supported pooled
+numerator.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a subarachnoid-hemorrhage proportion or denominator could be copied
+inconsistently; no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the intended row
+denominator while preserving the supported numerator 13.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If a candidate is confirmed by human review, a downstream extractor
+could copy an ambiguous figure unit, an eTable population definition, a
+trial planning parameter, a prespecified analysis label, or a Table 3
+numerator/denominator/percentage. These are bounded possibilities only.
+The supplied package does not show that any systematic review,
+meta-analysis, guideline, or other evidence product copied a value, nor
+that a conclusion changed.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>All direct-source pages were available, freshly extracted, and
+mapped. The supplied package lacks the Figure 2 production definition;
+explicit eTable <code>n=175</code> population definition and
+participant-level device mapping; protocol amendment/final-SAP
+chronology; Table 3 participant-level availability and row-specific
+denominator definitions; a common result-level inferential construction
+for every CI/P diagnostic; and every test statistic/subset denominator
+for time/pass outcomes. Native PDF text has ordinary reading-order
+artifacts; fresh layout text and selected renders were used for aligned
+context. These limits do not remove any candidate and are detailed in <a
+href="review_1_5_2/limitations.md">limitations</a>.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each C001-C013: verify direct-source pagination and printed
+values; obtain any controlling source absent from the package;
+distinguish direct observation from the reported diagnostic; decide the
+appropriate human response; and record all five fields in the card.
+Preserve the stable ID and do not interpret this report as an AI
+validity determination.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<p>Source hashes were captured before review in <a
+href="review_1_5_2/source_hashes_before.sha256">source_hashes_before.sha256</a>
+and will be compared after final assembly. Fresh evidence, relationship
+maps, checks, recheck, audit, run state, and agent execution records are
+all under <a href="review_1_5_2/">review_1_5_2</a>. The execution
+manifest records the coordinator plus ten delegated stages, including
+distinct fresh <code>gpt-5.6-terra</code> high-effort agents for
+statistical passes 1 and 2.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td><code>root</code></td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr>
+<td>source_preprocessing</td>
+<td><code>root/fresh_preprocessing</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>evidence_asset_inventory.md</td>
+</tr>
+<tr>
+<td>main_evidence_mapping</td>
+<td><code>root/main_mapping</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_evidence_mapping</td>
+<td><code>root/support_mapping</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>numeric_checks</td>
+<td><code>root/numeric_review</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr>
+<td>cross_source_checks</td>
+<td><code>root/cross_source_review</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td><code>root/statistics_pass_1</code></td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr>
+<td>evidence_recheck</td>
+<td><code>root/evidence_recheck</code></td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td><code>root/statistics_pass_2</code></td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr>
+<td>evidence_quality</td>
+<td><code>root/quality_audit</code></td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr>
+<td>report_generation</td>
+<td><code>root/report_generation</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>report_generation_receipt.md</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reproducibility-performance">Reproducibility Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Three supplied PDFs comprising one
+10-page main article and two support documents of 14 and 6 pages; all 30
+units require fresh native and layout extraction, result-relevant
+table/figure rendering decisions, full main/support relationship
+mapping, parallel numeric/statistical/cross-source checks, two distinct
+high-effort statistical passes, mechanical recheck, and complete
+reporting. The package has no Office/workbook/CSV conversion burden and
+is materially smaller than the 102-unit calibration package, while
+retaining the fixed multi-agent review stages.</li>
+<li><strong>Total source units:</strong> 30</li>
+<li><strong>Fresh-source units:</strong> 30</li>
+<li><strong>Target elapsed minutes:</strong> 25-40</li>
+<li><strong>Started UTC:</strong> 2026-08-20T16:55:45Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-20T17:32:04Z</li>
+<li><strong>Observed elapsed minutes:</strong> 36.3</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token Accounting and Cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Token-only API-equivalent estimate
+(USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>The runtime did not expose authoritative response-level token counts
+for the coordinator or any of the ten specialists. Accordingly, all 11
+manifest agents are recorded as <code>UNAVAILABLE</code>, known token
+totals are zero, and the total-token count and complete price remain
+explicitly incomplete; no estimate was inferred from text length.
+Per-agent details are in the <a
+href="review_1_5_2/token_usage_summary.md">token usage summary</a>.
+Cached input and cache-write counts are input subsets, and reasoning
+counts are output subsets; they are never additional total tokens. All
+amounts are token-only API-equivalent estimates under the 2026-08-18
+pricing snapshot, not invoices.</p>
+</body>
+</html>

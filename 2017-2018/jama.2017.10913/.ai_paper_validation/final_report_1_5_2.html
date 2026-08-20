@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--workflow-152"
+id="toc-quantitative-quality-control-consistency-review--workflow-152">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.2</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-fresh-processing-provenance"
+id="toc-package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--discontinuation-reason-counts-do-not-exhaust-the-stated-65-recipients-stopping-before-4-l"
+id="toc-c001--discontinuation-reason-counts-do-not-exhaust-the-stated-65-recipients-stopping-before-4-l">C001
+— Discontinuation-reason counts do not exhaust the stated 65 recipients
+stopping before 4 L</a></li>
+<li><a
+href="#c002--usual-care-fluid-bolus-percentage-does-not-reconcile-with-its-printed-count-and-arm-denominator"
+id="toc-c002--usual-care-fluid-bolus-percentage-does-not-reconcile-with-its-printed-count-and-arm-denominator">C002
+— Usual-care fluid-bolus percentage does not reconcile with its printed
+count and arm denominator</a></li>
+<li><a
+href="#c003--usual-care-lactate-change-iqr-differs-between-narrative-and-table-2-and-is-nonascending-in-the-narrative"
+id="toc-c003--usual-care-lactate-change-iqr-differs-between-narrative-and-table-2-and-is-nonascending-in-the-narrative">C003
+— Usual-care lactate-change IQR differs between narrative and Table 2
+and is nonascending in the narrative</a></li>
+<li><a
+href="#c004--respiratory-compromise-oxygen-saturation-threshold-is-labelled-inconsistently"
+id="toc-c004--respiratory-compromise-oxygen-saturation-threshold-is-labelled-inconsistently">C004
+— Respiratory-compromise oxygen-saturation threshold is labelled
+inconsistently</a></li>
+<li><a
+href="#c005--figure-2s-942-vital-status-percentage-does-not-reconcile-with-displayed-modified-itt28-day-counts"
+id="toc-c005--figure-2s-942-vital-status-percentage-does-not-reconcile-with-displayed-modified-itt28-day-counts">C005
+— Figure 2’s 94.2% vital-status percentage does not reconcile with
+displayed modified-ITT/28-day counts</a></li>
+<li><a
+href="#c006--protocol-table-2-column-headers-and-row-percentages-use-incompatible-denominators"
+id="toc-c006--protocol-table-2-column-headers-and-row-percentages-use-incompatible-denominators">C006
+— Protocol Table 2 column headers and row percentages use incompatible
+denominators</a></li>
+<li><a
+href="#c007--printed-28-day-usual-care-mortality-percentage-does-not-round-from-displayed-follow-up-and-total-death-counts"
+id="toc-c007--printed-28-day-usual-care-mortality-percentage-does-not-round-from-displayed-follow-up-and-total-death-counts">C007
+— Printed 28-day usual-care mortality percentage does not round from
+displayed follow-up and total-death counts</a></li>
+<li><a
+href="#c008--hiv-negative-subgroup-risk-ratio-does-not-reconcile-with-its-printed-deaths-and-denominators"
+id="toc-c008--hiv-negative-subgroup-risk-ratio-does-not-reconcile-with-its-printed-deaths-and-denominators">C008
+— HIV-negative subgroup risk ratio does not reconcile with its printed
+deaths and denominators</a></li>
+<li><a
+href="#c009--protocol-background-culture-yield-percentage-does-not-round-from-its-printed-count-and-denominator"
+id="toc-c009--protocol-background-culture-yield-percentage-does-not-round-from-its-printed-count-and-denominator">C009
+— Protocol background culture-yield percentage does not round from its
+printed count and denominator</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+Execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-usage-and-cost-metadata"
+id="toc-token-usage-and-cost-metadata">Token-Usage and Cost
+Metadata</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--workflow-152">Quantitative
+Quality-Control Consistency Review — Workflow 1.5.2</h1>
+<blockquote>
+<p><strong>Pending Human Adjudication:</strong> Every candidate in this
+report is a source-grounded quantitative reporting quality-control
+observation. None is a validity decision, correction, or finding of
+paper-level conclusion change.</p>
+</blockquote>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete fresh review of the three supplied PDFs identified
+<strong>9</strong> distinct stable candidate consistency issues
+(C001-C009). Small preventable reporting defects can matter when
+numbers, definitions, or effect measures are extracted into systematic
+reviews, meta-analyses, guidelines, or later evidence products. This
+report does not claim that any defect propagated, changed a conclusion,
+or caused serious harm.</p>
+<h2 id="package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</h2>
+<p>The supplied package comprised three direct PDFs: DOC-001 (8 pages),
+DOC-002 (29 pages), and DOC-003 (10 pages), for <strong>47
+pages</strong>. All 47 pages required and received fresh native and
+layout extraction; 43 result-relevant pages were rendered for visual
+confirmation. No OCR was needed because usable native/layout text was
+available for every page. Source hashes were recorded before processing
+and rechecked unchanged. The evidence base was the supplied PDFs and
+newly generated fresh derivatives only.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review covered numeric, denominator/proportion/total,
+statistical, cross-document, measure/label/scale, and rate-versus-count
+consistency across all result-relevant main-article and support
+contents. Coverage was complete: 47/47 direct PDF pages mapped,
+<strong>133</strong> numeric relationships, <strong>58</strong>
+statistical relationships, and 30 matched cross-source families. There
+was no review queue, top-N subset, candidate cap, or deferred-by-cap
+section.</p>
+<p>Excluded from scope were broad methodology, clinical, novelty,
+misconduct, and raw-data audits. Protocol planning/background material
+was compared only when population, time point, contrast, and analysis
+role matched. Coherent P-value display zeros were not candidates; none
+occurred in this package. S407 remained a diagnostic-only statistical
+relationship because the supplied sources do not establish compatible
+P-test and confidence-interval construction details.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>Numeric mapping and checking covered N001-N047, N200-N231, and
+N600-N653 (133 relationships). Statistical pass 1 and the independent
+statistical pass 2 each completed S001-S031, S200-S215, and S400-S410
+(58 relationships). Both statistical passes used distinct fresh
+<code>gpt-5.6-terra</code> agents at high reasoning effort. Pass 2 added
+no candidates. All stable IDs were mechanically rechecked against the
+direct PDF locations and quality audited.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate statement</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Discontinuation-reason counts do not exhaust the stated 65
+recipients stopping before 4 L</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Usual-care fluid-bolus percentage does not reconcile with its
+printed count and arm denominator</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Usual-care lactate-change IQR differs between narrative and Table 2
+and is nonascending in the narrative</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Respiratory-compromise oxygen-saturation threshold is labelled
+inconsistently</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Figure 2’s 94.2% vital-status percentage does not reconcile with
+displayed modified-ITT/28-day counts</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Protocol Table 2 column headers and row percentages use incompatible
+denominators</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Printed 28-day usual-care mortality percentage does not round from
+displayed follow-up and total-death counts</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>HIV-negative subgroup risk ratio does not reconcile with its printed
+deaths and denominators</td>
+<td>Numeric or arithmetic inconsistency</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>Protocol background culture-yield percentage does not round from its
+printed count and denominator</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--discontinuation-reason-counts-do-not-exhaust-the-stated-65-recipients-stopping-before-4-l" class="candidate-card">C001
+— Discontinuation-reason counts do not exhaust the stated 65 recipients
+stopping before 4 L</h2>
+<p><strong>Status:</strong> Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The four printed
+discontinuation-reason counts total 50 rather than the stated 65
+patients stopping before 4 L, conditional on the listed reasons being
+exhaustive and non-overlapping.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=4">jama_andrews_2017_oi_170091.pdf
+— PDF p. 4</a>, Hemodynamic Interventions, left column.</p>
+<p><strong>Source evidence:</strong> The article prints 41/106 (38.7%)
+receiving 4 L or more and “the remaining 65 patients (61.3%)” stopping
+before 4 L, followed by reason counts 32, 9, 5, and 4.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported remaining
+group: 65; comparator sum of listed reasons: 32+9+5+4.</p>
+<p><strong>Reasoning procedure:</strong> Apply an integer-partition
+check only if “due to” introduces a complete, once-per-patient list.</p>
+<p><strong>Calculation:</strong> 32+9+5+4=50; 65−50=15. The displayed
+percentages total 47.2% of 106, consistent with 50 people.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+list may be non-exhaustive, reasons may overlap, or an unlisted
+operational/time reason may exist; none is specified in the passage.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-PDF recheck
+found the 65-person statement and all four counts at the cited location;
+exhaustiveness and overlap are not defined.</p>
+<p><strong>Quality-control relevance:</strong> The numbers describe
+intervention-process exposure and reasons for not reaching 4 L.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy an incomplete or ambiguously partitioned
+discontinuation-reason distribution into an intervention-process
+table.</p>
+<p><strong>Human verification steps:</strong> Confirm whether categories
+were exhaustive and mutually exclusive; identify any residual category
+or overlap rule; verify the intended denominator statement.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--usual-care-fluid-bolus-percentage-does-not-reconcile-with-its-printed-count-and-arm-denominator" class="candidate-card">C002
+— Usual-care fluid-bolus percentage does not reconcile with its printed
+count and arm denominator</h2>
+<p><strong>Status:</strong> Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The printed usual-care bolus
+result, 50 (48.3%), does not reconcile with the adjacent 103-person
+usual-care analysis population under ordinary nearest-tenth
+rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=4">jama_andrews_2017_oi_170091.pdf
+— PDF p. 4</a>, Hemodynamic Interventions and Figure 1; comparator
+DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=6">jama_andrews_2017_oi_170091.pdf
+— PDF p. 6</a>, Table 2 header.</p>
+<p><strong>Source evidence:</strong> The narrative prints “50 patients
+(48.3%)” receiving any intravenous fluid bolus. Figure 1 and Table 2
+print usual-care n=103.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 50 (48.3%)
+versus 50/103 using the displayed usual-care analysis population.</p>
+<p><strong>Reasoning procedure:</strong> Compare the count/percentage
+pair with the directly displayed arm denominator, while retaining that
+the process sentence itself does not print a denominator.</p>
+<p><strong>Calculation:</strong> 50/103×100=48.543689%, ordinarily
+48.5%, not 48.3%. The exact back-calculated denominator from 50/0.483 is
+nonintegral (about 103.52); neither 103 nor 104 yields 48.3% under
+ordinary nearest-tenth rounding.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unstated process-measure denominator or calculation rule may have been
+used, or the count or percentage may be misprinted.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-PDF recheck
+confirmed the 50 (48.3%) statement and both 103-person comparator
+displays; it found no stated available-case or rounding rule.</p>
+<p><strong>Quality-control relevance:</strong> This is a reported
+usual-care fluid-exposure proportion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy a bolus count, percentage, or denominator that
+does not describe the same population.</p>
+<p><strong>Human verification steps:</strong> Retrieve the
+process-measure denominator and rounding convention; reconcile it with
+Figure 1/Table 2; determine whether count, percentage, or population
+label needs qualification.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--usual-care-lactate-change-iqr-differs-between-narrative-and-table-2-and-is-nonascending-in-the-narrative" class="candidate-card">C003
+— Usual-care lactate-change IQR differs between narrative and Table 2
+and is nonascending in the narrative</h2>
+<p><strong>Status:</strong> Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The usual-care lactate-change
+IQR is printed as 2.2 to 1.1 in the narrative but −2.2 to 1.1 in Table
+2.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=4">jama_andrews_2017_oi_170091.pdf
+— PDF p. 4</a>, Hemodynamic Interventions, right column; comparator
+DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=6">jama_andrews_2017_oi_170091.pdf
+— PDF p. 6</a>, Table 2 lactate-change row.</p>
+<p><strong>Source evidence:</strong> p. 4 prints median −0.5 mmol/L; IQR
+2.2 to 1.1 mmol/L. Table 2 prints −0.5 (−2.2 to 1.1) mmol/L for the same
+labelled group/time point.</p>
+<p><strong>Reported-versus-comparator:</strong> Narrative lower endpoint
+2.2 versus Table 2 lower endpoint −2.2; narrative order 2.2&gt;1.1.</p>
+<p><strong>Reasoning procedure:</strong> Check endpoint ordering and
+agreement of a matched group, measure, and baseline-to-6-hour time
+point.</p>
+<p><strong>Calculation:</strong> 2.2&gt;1.1; the two displays differ by
+the sign of the lower endpoint.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Either
+location may contain a transcription/sign error, or an unlabelled subset
+distinction may exist.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-PDF recheck
+confirmed both IQR displays and their matching labels.</p>
+<p><strong>Quality-control relevance:</strong> The display reports the
+distribution of lactate change.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could copy the wrong lower-tail direction or an internally
+nonascending IQR.</p>
+<p><strong>Human verification steps:</strong> Check source data or
+production files for the intended endpoint; confirm whether both
+locations use the identical population and time point.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--respiratory-compromise-oxygen-saturation-threshold-is-labelled-inconsistently" class="candidate-card">C004
+— Respiratory-compromise oxygen-saturation threshold is labelled
+inconsistently</h2>
+<p><strong>Status:</strong> Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Respiratory compromise is
+defined as a decrease in oxygen saturation of &gt;=3% in methods/results
+but as more than 3% in a Table 2 footnote.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=3">jama_andrews_2017_oi_170091.pdf
+— PDF p. 3</a>, outcomes definition; comparator DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=6">jama_andrews_2017_oi_170091.pdf
+— PDF p. 6</a>, Table 2 footnote b.</p>
+<p><strong>Source evidence:</strong> p. 3 prints &gt;=3%; p. 4 says 3%
+or greater; Table 2 footnote b says more than 3% from baseline.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>&gt;=3%</code>
+includes exactly 3 percentage points; <code>&gt;3%</code> excludes
+exactly 3.</p>
+<p><strong>Reasoning procedure:</strong> Compare the logical boundary
+for the same named outcome.</p>
+<p><strong>Calculation:</strong> The boundary-set difference is exactly
+<code>{3%}</code>; no rounding is involved.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> “More
+than 3%” may be informal wording, one label may be typographical, or an
+undisclosed stricter table definition may exist.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-PDF recheck
+found each threshold wording at the cited locations; individual
+oxygen-saturation values and operational coding are absent.</p>
+<p><strong>Quality-control relevance:</strong> The threshold defines a
+reported safety outcome and its Table 2 count.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor or reproducer could apply a different safety-outcome
+boundary or copy an ambiguous definition.</p>
+<p><strong>Human verification steps:</strong> Confirm the operational
+threshold used for analysis; check whether exactly-3% observations
+existed; align methods, results, and table wording.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--figure-2s-942-vital-status-percentage-does-not-reconcile-with-displayed-modified-itt28-day-counts" class="candidate-card">C005
+— Figure 2’s 94.2% vital-status percentage does not reconcile with
+displayed modified-ITT/28-day counts</h2>
+<p><strong>Status:</strong> Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Figure 2 prints 194 patients
+(94.2%) with known 28-day vital status, whereas the displayed
+primary-analysis and follow-up counts yield 194/209=92.8%.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=4">jama_andrews_2017_oi_170091.pdf
+— PDF p. 4</a>, Figure 1; comparator DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=6">jama_andrews_2017_oi_170091.pdf
+— PDF p. 6</a>, Figure 2 caption.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints 106 and 103
+primary-analysis participants, 9 and 6 losses after discharge, and 97
+per group in 28-day analysis. Figure 2 prints 194 patients (94.2%) but
+no denominator.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 194 (94.2%)
+versus the 209-person cohort derived from the displayed 106+103
+counts.</p>
+<p><strong>Reasoning procedure:</strong> Reconcile Figure 1’s arm
+totals, losses, and 28-day totals with the Figure 2 percentage while
+distinguishing printed from derived denominators.</p>
+<p><strong>Calculation:</strong> 106+103=209; 9+6=15; 209−15=194;
+194/209×100=92.822967%, ordinarily 92.8%. 194/206×100=94.174757%,
+ordinarily 94.2%, but 206 is only an inferred back-calculated
+denominator and is not printed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+caption may use an unstated population rule, the percentage may be
+misprinted, or “known” may refer to a different population.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-PDF recheck
+confirmed the Figure 1 counts and that Figure 2 prints no denominator
+for its 94.2% statement.</p>
+<p><strong>Quality-control relevance:</strong> Vital-status completeness
+is a quantitative follow-up denominator.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could extract an ambiguous follow-up-completeness percentage
+or denominator.</p>
+<p><strong>Human verification steps:</strong> Identify the caption
+denominator and population rule; reconcile it with the 209
+primary-analysis participants and 194 known-status total.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--protocol-table-2-column-headers-and-row-percentages-use-incompatible-denominators" class="candidate-card">C006
+— Protocol Table 2 column headers and row percentages use incompatible
+denominators</h2>
+<p><strong>Status:</strong> Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Protocol Table 2 prints Total
+n=76, SSSP n=36, and Control n=44, although 36+44=80, and its
+control-row percentages are incompatible with n=44.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002, <a
+href="../joi170091supp1_prod.pdf#page=9">joi170091supp1_prod.pdf — PDF
+p. 9</a>, Table 2, “Baseline characteristics in SSSP participants.”</p>
+<p><strong>Source evidence:</strong> Headers print Total n=76, SSSP
+n=36, Control n=44. Control cells include 31 (78), 27 (68), 14 (35), 13
+(33), 13 (33), and 17 (42).</p>
+<p><strong>Reported-versus-comparator:</strong> Printed total 76 versus
+36+44=80; printed control percentages versus their corresponding
+count/44 percentages.</p>
+<p><strong>Reasoning procedure:</strong> Apply the exact three-column
+partition identity and calculate each cited control percentage from the
+printed n=44 header.</p>
+<p><strong>Calculation:</strong> 76 != 36+44. From n=44: 31/44=70.5%,
+27/44=61.4%, 14/44=31.8%, 13/44=29.5%, and 17/44=38.6%, not the printed
+78, 68, 35, 33, and 42. n≈40 is diagnostic only: it places the displayed
+values within 0.5 points, but no single ordinary tie rule maps the .5
+values to both printed 33 and 42.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+header, total, or row percentage may be erroneous; row-specific
+available-case denominators or mismatched preliminary versions may have
+been used.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-PDF recheck
+confirmed all headers and cited cells. The intended population, row
+denominators, and rounding rule are not supplied.</p>
+<p><strong>Quality-control relevance:</strong> The table is a
+preliminary baseline description whose denominators determine
+interpretation of its frequencies.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy baseline frequencies with incompatible
+total/group denominators.</p>
+<p><strong>Human verification steps:</strong> Verify the intended total,
+SSSP, and control populations; retrieve row-level denominators and
+rounding convention; repair headers/cells only after source
+confirmation.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--printed-28-day-usual-care-mortality-percentage-does-not-round-from-displayed-follow-up-and-total-death-counts" class="candidate-card">C007
+— Printed 28-day usual-care mortality percentage does not round from
+displayed follow-up and total-death counts</h2>
+<p><strong>Status:</strong> Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Under ordinary nearest-tenth
+rounding and matching 28-day populations, the printed usual-care
+mortality of 45.3% does not reconcile with 97 participants per group and
+109/194 total deaths.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=5">jama_andrews_2017_oi_170091.pdf
+— PDF p. 5</a>, Clinical Outcomes; comparator DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=4">jama_andrews_2017_oi_170091.pdf
+— PDF p. 4</a>, Figure 1; and DOC-003, <a
+href="../joi170091supp2_prod.pdf#page=5">joi170091supp2_prod.pdf — PDF
+p. 5</a>, eMethods.</p>
+<p><strong>Source evidence:</strong> DOC-001 prints 97 participants per
+group and 67.0% versus 45.3% mortality. DOC-003 prints 109/194 28-day
+deaths.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported usual-care
+45.3% versus the derived 44/97 percentage after ordinary rounding
+identifies 65 protocol deaths from 67.0% of 97 and subtracts from
+109.</p>
+<p><strong>Reasoning procedure:</strong> Use the supplied integer totals
+and ordinary one-decimal rounding conditionally, explicitly treating arm
+death counts as derived.</p>
+<p><strong>Calculation:</strong> 67.0% of 97 uniquely implies 65 under
+ordinary nearest-tenth rounding; 109−65=44; 44/97×100=45.360825%,
+ordinarily 45.4%, not 45.3%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+109/194 total may be from a different analysis population, the display
+may be truncated, or a count/percentage may be erroneous.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-PDF recheck
+confirmed the 97-per-arm display, mortality percentages, and 109/194
+total; direct arm death counts and a rounding rule are absent.</p>
+<p><strong>Quality-control relevance:</strong> The usual-care mortality
+percentage is a reported secondary-outcome measure.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could copy an arm mortality percentage or derive an arm death
+count that does not use the same rounding/population convention.</p>
+<p><strong>Human verification steps:</strong> Confirm arm-specific
+deaths, population identity, and rounding/truncation convention for the
+28-day result.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--hiv-negative-subgroup-risk-ratio-does-not-reconcile-with-its-printed-deaths-and-denominators" class="candidate-card">C008
+— HIV-negative subgroup risk ratio does not reconcile with its printed
+deaths and denominators</h2>
+<p><strong>Status:</strong> Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The HIV-negative subgroup’s
+printed RR of 0.75 differs from the crude risk ratio 0.60 calculated
+from the printed 3/9 and 5/9 deaths.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_andrews_2017_oi_170091.pdf#page=7">jama_andrews_2017_oi_170091.pdf
+— PDF p. 7</a>, Figure 3, HIV-negative subgroup row.</p>
+<p><strong>Source evidence:</strong> The row prints denominators 9/9,
+deaths 3 (33.3%) and 5 (55.6%), and RR 0.75 (95% CI, 0.23-2.44).</p>
+<p><strong>Reported-versus-comparator:</strong> Reported RR 0.75 versus
+the crude displayed-count ratio from 3/9 and 5/9.</p>
+<p><strong>Reasoning procedure:</strong> Calculate the crude RR only
+from the displayed event counts and denominators; do not assume it is
+the intended estimator.</p>
+<p><strong>Calculation:</strong> (3/9)/(5/9)=3/5=0.60, not 0.75. The
+displayed percentages themselves agree with 3/9 and 5/9 at one
+decimal.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The RR
+may use an undisclosed non-crude estimator, weighting, or population, or
+one displayed element may be misprinted.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-PDF recheck
+confirmed the row values and found no stated adjusted/standardized
+estimator for the subgroup RR.</p>
+<p><strong>Quality-control relevance:</strong> The effect measure is
+directly reported for a subgroup.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could record incompatible subgroup event counts and risk
+ratio.</p>
+<p><strong>Human verification steps:</strong> Obtain the subgroup
+estimator, weights/adjustment and analysis population; verify which
+displayed component is intended if the RR was crude.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--protocol-background-culture-yield-percentage-does-not-round-from-its-printed-count-and-denominator" class="candidate-card">C009
+— Protocol background culture-yield percentage does not round from its
+printed count and denominator</h2>
+<p><strong>Status:</strong> Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The protocol’s background
+culture-yield display 36 (22.3%) of 161 does not reconcile with ordinary
+one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002, <a
+href="../joi170091supp1_prod.pdf#page=7">joi170091supp1_prod.pdf — PDF
+p. 7</a>, “Blood cultures and antibiotics” background paragraph.</p>
+<p><strong>Source evidence:</strong> The paragraph prints, after
+excluding probable contaminants, 36 (22.3%) of 161 septic patients with
+positive aerobic blood cultures.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 22.3% versus
+36/161.</p>
+<p><strong>Reasoning procedure:</strong> Apply ordinary one-decimal
+percentage rounding to the printed count and denominator.</p>
+<p><strong>Calculation:</strong> 36/161×100=22.360248%, ordinarily
+22.4%, not 22.3%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+display may be truncated, a count/denominator may be contextual
+shorthand, or an unprinted denominator may have been used.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-PDF recheck
+confirmed the 36, 22.3%, and 161 values; no rounding convention is
+printed.</p>
+<p><strong>Quality-control relevance:</strong> This is a printed
+background microbiological yield.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy a culture-yield percentage that does not
+identify its calculation convention unambiguously.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and rounding/truncation convention; verify whether the printed count and
+percentage were produced from the same source population.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If a candidate is confirmed, the relevant count, percentage,
+denominator, threshold, distribution endpoint, or effect measure could
+be copied into a later extraction sheet or evidence synthesis. The
+supplied package does not establish any actual propagation, clinical
+consequence, or change in the study’s conclusions.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The package contains no raw observations, analysis code, direct
+arm-specific 28-day death counts, universal rounding convention, or
+complete row-specific estimator/test/variance details. These omissions
+constrain mechanism identification and some reconciliations; they do not
+determine an adjudication outcome. All sources were PDFs, so
+Office/workbook/CSV evidence was not applicable. Fresh text extraction
+can flatten table geometry; rendered pages were used to confirm relevant
+table/figure layouts. Protocol values may be planning, background, or
+preliminary material and were not assumed equivalent to final-trial
+results.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ol type="1">
+<li>Verify each cited PDF location against the direct supplied
+source.</li>
+<li>Confirm population, denominator, time point, contrast, and
+calculation/rounding rule for each candidate.</li>
+<li>Distinguish printed facts from diagnostic calculations and
+alternative explanations.</li>
+<li>Record validity, importance, action, initials, and notes in each
+card; do not treat this report as a final correction.</li>
+<li>Preserve candidate IDs and evidence provenance when communicating
+any adjudicated correction.</li>
+</ol>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</h3>
+<p>Fresh direct-source extraction used <code>pdfinfo</code>,
+<code>pdftotext</code>, <code>pdftotext -layout</code>, and targeted
+150-dpi <code>pdftoppm</code> rendering. No OCR was required. SHA-256
+hashes for all three direct PDFs were recorded before processing and
+matched on the preprocessing recheck. Canonical evidence, relationship,
+checker, recheck, and audit artifacts are under <a
+href="review_1_5_2/"><code>review_1_5_2/</code></a>.</p>
+<h3 id="agent-execution">Agent Execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td><code>run_state.md</code></td>
+</tr>
+<tr>
+<td>fresh_source_preprocessor</td>
+<td>root/fresh_preprocessing</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>evidence_asset_inventory.md</code></td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>root/main_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>extraction/main_quantitative_evidence.md</code></td>
+</tr>
+<tr>
+<td>support_quantitative_mapper_protocol</td>
+<td>root/support_protocol_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>extraction/parts/support_protocol_quantitative_evidence.md</code></td>
+</tr>
+<tr>
+<td>support_quantitative_mapper_results</td>
+<td>root/support_results_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>extraction/parts/support_results_quantitative_evidence.md</code></td>
+</tr>
+<tr>
+<td>numeric_consistency_main_protocol</td>
+<td>root/numeric_main_protocol</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/parts/numeric_main_protocol.md</code></td>
+</tr>
+<tr>
+<td>numeric_consistency_support_results</td>
+<td>root/numeric_support_results</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/parts/numeric_support_results.md</code></td>
+</tr>
+<tr>
+<td>cross_source_checks</td>
+<td>root/cross_source_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/cross_source_consistency.md</code></td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_1.md</code></td>
+</tr>
+<tr>
+<td>evidence_recheck</td>
+<td>root/evidence_recheck</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>verification/evidence_recheck.md</code></td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_2.md</code></td>
+</tr>
+<tr>
+<td>evidence_quality</td>
+<td>root/quality_audit</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>quality/evidence_quality_audit.md</code></td>
+</tr>
+<tr>
+<td>report_generation</td>
+<td>root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>report_generation_summary.md</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Three supplied PDFs totaling 47
+pages, all requiring fresh native and layout extraction; one 8-page main
+article, one 29-page protocol with dispersed quantitative definitions,
+and one 10-page results supplement with five tables require full
+mapping, cross-document matching, and two complete statistical passes.
+Native text tooling is available and no Office conversion is
+expected.</li>
+<li><strong>Total source units:</strong> 47</li>
+<li><strong>Fresh-source units:</strong> 47</li>
+<li><strong>Target elapsed minutes:</strong> 30-45</li>
+<li><strong>Started UTC:</strong> 2026-08-20T16:50:53Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-20T17:27:09Z</li>
+<li><strong>Observed elapsed minutes:</strong> 36.3</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-usage-and-cost-metadata">Token-Usage and Cost
+Metadata</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<p>The runtime did not expose authoritative response-level token counts
+for the coordinator or any of the 12 specialist agents. Accordingly,
+every manifested agent has an <code>UNAVAILABLE</code> ledger row with
+exact <code>__</code> token fields; the displayed zero is only the sum
+of known counts, not an estimate of actual use.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Agents</th>
+<th style="text-align: right;">Exact records</th>
+<th style="text-align: right;">Totals-only records</th>
+<th style="text-align: right;">Unavailable records</th>
+<th style="text-align: right;">Known total tokens</th>
+<th style="text-align: right;">Known cost (USD)</th>
+<th style="text-align: right;">Complete estimated cost (USD)</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<p>These amounts are token-only API-equivalent estimates under the
+pricing snapshot dated 2026-08-18T00:00:00Z, not an invoice. Per-agent
+detail is recorded in <code>review_1_5_2/token_usage_summary.md</code>
+and <code>review_1_5_2/token_usage_summary.json</code>.</p>
+<p>The coordinator fills the authoritative response-level token
+accounting after Markdown assembly and before rendering. Cached
+input/cache-write counts are input subsets and reasoning counts are
+output subsets; neither is added again to total tokens. Any price is a
+token-only API-equivalent estimate under the dated pricing snapshot, not
+an invoice. Per-agent detail will be in
+<code>review_1_5_2/token_usage_ledger.csv</code> and
+<code>review_1_5_2/token_usage_summary.md</code>.</p>
+<p>Standalone HTML rendering and mechanical validation completed
+successfully after Markdown assembly; these local steps are excluded
+from the observed review duration.</p>
+</body>
+</html>

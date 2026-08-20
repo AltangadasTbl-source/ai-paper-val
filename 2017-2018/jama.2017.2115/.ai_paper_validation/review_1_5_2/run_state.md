@@ -1,0 +1,31 @@
+# Workflow 1.5.2 Run State
+
+- **Profile:** 1.5.2
+- **Run status:** COMPLETE
+- **Target basis:** Three direct PDF sources comprising one 10-page main article and two support documents of 12 and 6 pages; all 28 unique PDF pages require fresh native and layout extraction, result-relevant visual inspection/rendering, complete main/support quantitative mapping, three parallel first-line consistency lanes, two fresh high-effort statistical passes, full candidate recheck, evidence-quality audit, and complete report generation. No Office conversion is required and all direct tools are locally available.
+- **Total source units:** 28
+- **Fresh-source units:** 28
+- **Target elapsed minutes:** 25-40
+- **Started UTC:** 2026-08-20T16:53:39Z
+- **Finished UTC:** 2026-08-20T17:28:23Z
+- **Observed elapsed minutes:** 34.7
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Direct-source count:** 3
+- **Source inventory status:** COMPLETE_INITIAL
+- **Preprocessing status:** COMPLETE
+- **Coverage manifest status:** COMPLETE
+- **Main quantitative mapping status:** COMPLETE — 47 numeric and 25 statistical source-local relationships
+- **Support quantitative mapping status:** COMPLETE — 22 numeric and 13 statistical source-local relationships
+- **Numeric review status:** COMPLETE — N001-N069 checked; three proposals
+- **Statistical pass 1 status:** COMPLETE — S001-S038 checked; three proposals
+- **Cross-source review status:** COMPLETE — all 107 canonical relationships and 24 match clusters checked; one proposal
+- **Candidate registration status:** COMPLETE — C001; C002; C003; C004; C005; C006
+- **Evidence recheck status:** COMPLETE — C001; C002; C003; C004; C005; C006
+- **Statistical pass 2 status:** COMPLETE — S001-S038 and C001-C006 assessed; zero new proposals
+- **Evidence-quality audit status:** COMPLETE — C001; C002; C003; C004; C005; C006; coverage and execution audited
+- **Markdown report status:** COMPLETE
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE — deterministic summary current for all 11 manifested agents
+- **HTML rendering status:** COMPLETE — standalone HTML with embedded CSS and table of contents
+- **Mechanical validation status:** PASS
+- **Limitations:** DOC-003 PDF p. 6 has corrupt heading glyph encodings in native/layout extraction; its body text is usable and the fresh rendering plus targeted CPU OCR are available. No missing tools or unavailable source units.

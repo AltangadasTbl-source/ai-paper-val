@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review-moon-et-al-paper-package"
+id="toc-quantitative-quality-control-consistency-review-moon-et-al-paper-package">Quantitative
+Quality-Control Consistency Review: Moon et al. Paper Package</a>
+<ul>
+<li><a href="#pending-human-adjudication-notice"
+id="toc-pending-human-adjudication-notice">Pending Human Adjudication
+Notice</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-fresh-processing-provenance"
+id="toc-package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--matched-205291-room-sharing-result-is-printed-as-both-704-and-705"
+id="toc-c001--matched-205291-room-sharing-result-is-printed-as-both-704-and-705">C001
+— Matched 205/291 room-sharing result is printed as both 70.4% and
+70.5%</a></li>
+<li><a
+href="#c002--etable-2-reports-9171263-as-727-while-the-printed-fraction-supports-726"
+id="toc-c002--etable-2-reports-9171263-as-727-while-the-printed-fraction-supports-726">C002
+— eTable 2 reports 917/1263 as 72.7% while the printed fraction supports
+72.6%</a></li>
+<li><a
+href="#c003--etable-2-uses-reduced-education-and-marital-status-denominators-without-labeling-them"
+id="toc-c003--etable-2-uses-reduced-education-and-marital-status-denominators-without-labeling-them">C003
+— eTable 2 uses reduced education and marital-status denominators
+without labeling them</a></li>
+<li><a
+href="#c004--etable-3-percentages-use-several-reduced-denominators-despite-full-group-n-headings"
+id="toc-c004--etable-3-percentages-use-several-reduced-denominators-despite-full-group-n-headings">C004
+— eTable 3 percentages use several reduced denominators despite full
+group-N headings</a></li>
+<li><a
+href="#c005--linked-etable-5-and-efigure-use-60-versus-60-days-for-the-same-display-population"
+id="toc-c005--linked-etable-5-and-efigure-use-60-versus-60-days-for-the-same-display-population">C005
+— Linked eTable 5 and eFigure use ≥60 versus &gt;60 days for the same
+display population</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+Execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token Accounting and Cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review-moon-et-al-paper-package">Quantitative
+Quality-Control Consistency Review: Moon et al. Paper Package</h1>
+<h2 id="pending-human-adjudication-notice">Pending Human Adjudication
+Notice</h2>
+<p>All five observations in this report are <strong>Pending Human
+Adjudication</strong>. They are reproducible quantitative reporting
+quality-control candidates, not findings of paper invalidity, a
+correction, severity, author intent, or conclusion change.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Fresh, source-first processing of the complete supplied package
+identified <strong>5</strong> stable candidate consistency issues: one
+cross-document percentage discrepancy, one displayed fraction/percentage
+discrepancy, two unlabeled reduced-denominator issues, and one
+non-equivalent age-threshold label. Every direct source unit, mapped
+quantitative relationship, and mapped statistical relationship was
+covered. No candidate is based solely on a display-zero P value.</p>
+<p>Small preventable reporting defects can matter when values,
+denominators, or eligibility labels are copied into later evidence
+extraction. The supplied package does not establish propagation,
+clinical harm, or a change to any study conclusion.</p>
+<h2 id="package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</h2>
+<p>This review used only the supplied direct scientific sources and
+excluded prior audit derivatives as evidence inputs. The sources were
+read without modification:</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied source</th>
+<th>Role</th>
+<th style="text-align: right;">PDF pages</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_moon_2017_oi_170077.pdf#page=1">jama_moon_2017_oi_170077.pdf</a></td>
+<td>Main article</td>
+<td style="text-align: right;">9</td>
+<td><code>f4734692348aff9419889b4ee0dbc47a27be820629a51e20e1480a48ed2af037</code></td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a
+href="../joi170077supp1_prod.pdf#page=1">joi170077supp1_prod.pdf</a></td>
+<td>Trial protocol</td>
+<td style="text-align: right;">21</td>
+<td><code>6f65a0d07d4ebfe501f80e5add4bbd01fca5eaa77c1308327e9930b48171bcf8</code></td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a
+href="../joi170077supp2_prod.pdf#page=1">joi170077supp2_prod.pdf</a></td>
+<td>Results supplement</td>
+<td style="text-align: right;">12</td>
+<td><code>8f17d4eb453ca6de44de42dc428db4d9ead3b7c7f200f1bad2337f667a0ba3ff</code></td>
+</tr>
+</tbody>
+</table>
+<p>Fresh processing created native and layout text for every page and a
+200-dpi rendering for every page. Native/layout text was usable for all
+result-relevant material, so targeted CPU OCR was not required. DOC-002
+PDF p. 21 was visually confirmed as page-number-only. The fresh
+evidence-asset inventory, coverage manifest, relationship inventories,
+recheck, and quality audit are retained under
+<code>review_1_5_2/</code>.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The complete direct-source scope was 42 PDF pages: 9 main-article
+pages, 21 protocol pages, and 12 supplement pages. Source coverage was
+complete: 42 of 42 fresh-required units were mapped, with zero reusable
+units. The 16-row coverage manifest completed the source inventory,
+fresh assets, disjoint main/support evidence mapping, numeric checking,
+cross-source checking, candidate registration, evidence recheck, two
+statistical passes, quality audit, and this report.</p>
+<p>The review assessed numeric, denominator/proportion/total,
+inferential-statistical, cross-document, measure/label/scale, and
+rate/count consistency. It did not perform a raw-data, broad
+methodology, clinical, misconduct, novelty, or conclusion-validity
+audit, and it used no external literature.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The fresh numeric relationship inventory contains <strong>64</strong>
+relationships: N001–N043 from the main article and N1001–N1021 from the
+protocol and supplement. All 64 were mapped and checked.</p>
+<p>The fresh statistical relationship inventory contains
+<strong>29</strong> relationships: S001–S017 and S1001–S1012.
+Statistical pass 1 and statistical pass 2 each completed all 29
+relationships. They were performed by distinct freshly spawned
+<code>gpt-5.6-terra</code> agents at high reasoning effort. The two
+passes found no display-zero P-value record, and no candidate was
+registered from display-zero notation.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>Stable ID</th>
+<th>Category</th>
+<th>Candidate statement</th>
+<th>Primary evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--matched-205291-room-sharing-result-is-printed-as-both-704-and-705">C001</a></td>
+<td>Cross-document numeric inconsistency</td>
+<td>The same 205/291 control room-sharing result is printed as 70.4% and
+70.5%.</td>
+<td>Main Table 3 p. 7; supplement eTable 5 p. 9</td>
+</tr>
+<tr>
+<td><a
+href="#c002--etable-2-reports-9171263-as-727-while-the-printed-fraction-supports-726">C002</a></td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>eTable 2 prints 917/1263 as 72.7%, while the fraction supports 72.6%
+at one decimal.</td>
+<td>Supplement eTable 2 p. 3</td>
+</tr>
+<tr>
+<td><a
+href="#c003--etable-2-uses-reduced-education-and-marital-status-denominators-without-labeling-them">C003</a></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>eTable 2 uses reduced education and marital-status denominators
+without labeling them.</td>
+<td>Supplement eTable 2 p. 3</td>
+</tr>
+<tr>
+<td><a
+href="#c004--etable-3-percentages-use-several-reduced-denominators-despite-full-group-n-headings">C004</a></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>eTable 3 percentages use several reduced denominators despite full
+group-N headings and no missingness labels.</td>
+<td>Supplement eTable 3 p. 5</td>
+</tr>
+<tr>
+<td><a
+href="#c005--linked-etable-5-and-efigure-use-60-versus-60-days-for-the-same-display-population">C005</a></td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Linked eTable 5 and eFigure use non-equivalent infant-age
+thresholds, ≥60 versus &gt;60 days.</td>
+<td>Supplement eTable 5 pp. 9–10; eFigure p. 11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--matched-205291-room-sharing-result-is-printed-as-both-704-and-705" class="candidate-card">C001
+— Matched 205/291 room-sharing result is printed as both 70.4% and
+70.5%</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The same printed
+room-sharing-without-bed-sharing control result, 205/291, has two
+different one-decimal percentage displays.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_moon_2017_oi_170077.pdf#page=7">jama_moon_2017_oi_170077.pdf
+— PDF p. 7, Table 3</a>, Room Sharing Without Bed Sharing, BF NQI/BF
+mHealth control arm; <a
+href="../joi170077supp2_prod.pdf#page=9">joi170077supp2_prod.pdf — PDF
+p. 9, eTable 5</a>, Sleep Location, all-race Breastfeeding/Breastfeeding
+control row.</p>
+<p><strong>Source evidence:</strong> Main Table 3 prints
+<code>205/291 (70.4)</code>; supplement eTable 5 prints
+<code>N=291</code> and <code>205 (70.5%)</code> for the matched
+result.</p>
+<p><strong>Reported-versus-comparator:</strong> The matched outcome,
+all-race control group, age criterion, numerator, denominator, raw
+measure, and one-decimal display are printed as 70.4% versus 70.5%.</p>
+<p><strong>Reasoning procedure:</strong> A single printed
+numerator/denominator under the same ordinary one-decimal rounding rule
+should yield one displayed percentage. The calculation is diagnostic and
+does not assert the table-production mechanism.</p>
+<p><strong>Calculation:</strong>
+<code>205 / 291 × 100 = 70.446735%</code>, which rounds to 70.4% to one
+decimal under round-to-nearest.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unreported rounding, weighting, export, or transcription difference may
+exist. No supplied source identifies a different denominator or
+population for the supplement row.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both locations, printed
+values, shared 205/291 fraction, matched labels, and calculation were
+mechanically re-read from the supplied PDFs. Production calculation and
+export rules are not supplied.</p>
+<p><strong>Quality-control relevance:</strong> The printed values do not
+reconcile under the stated matched-display rule and require confirmation
+of the intended percentage.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy either 70.4% or 70.5% for the same printed
+205/291 result. The supplied package does not establish that either
+value has propagated or changed a conclusion.</p>
+<p><strong>Human verification steps:</strong> Confirm whether both
+displays were generated from the identical unweighted 205/291 result and
+production rounding rule; then identify the intended displayed
+percentage.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--etable-2-reports-9171263-as-727-while-the-printed-fraction-supports-726" class="candidate-card">C002
+— eTable 2 reports 917/1263 as 72.7% while the printed fraction supports
+72.6%</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> eTable 2 prints 917 of 1263
+respondents as 72.7%, although the displayed fraction yields 72.6% to
+one decimal under ordinary nearest rounding.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi170077supp2_prod.pdf#page=3">joi170077supp2_prod.pdf — PDF
+p. 3, eTable 2</a>, respondent infant age 8–11 weeks; <a
+href="../jama_moon_2017_oi_170077.pdf#page=5">jama_moon_2017_oi_170077.pdf
+— PDF p. 5, Table 1</a>, four 8–11-week arm counts; <a
+href="../jama_moon_2017_oi_170077.pdf#page=8">jama_moon_2017_oi_170077.pdf
+— PDF p. 8</a>, narrative 72.6% statement.</p>
+<p><strong>Source evidence:</strong> eTable 2 declares respondent
+<code>N=1263</code> and prints <code>917 (72.7%)</code>. Main Table 1
+prints counts 205, 214, 262, and 236, which sum to 917. The main
+narrative prints 72.6% with wording of 8 to 12 weeks.</p>
+<p><strong>Reported-versus-comparator:</strong> The eTable’s 917/1263 is
+printed as 72.7%; the direct fraction check gives 72.6% to one decimal.
+The narrative percentage is supportive, but its 8-to-12-week wording is
+not assumed identical to the tabular 8–11-week label.</p>
+<p><strong>Reasoning procedure:</strong> Check the printed count against
+the displayed eTable denominator and stated one-decimal precision. The
+direct within-eTable calculation is independent of the narrative
+wording.</p>
+<p><strong>Calculation:</strong>
+<code>205 + 214 + 262 + 236 = 917</code>;
+<code>917 / 1263 × 100 = 72.604909%</code>, which rounds to 72.6% to one
+decimal.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unreported denominator, weighting, age-bin boundary, or export rule may
+have been used. The table’s production basis and the narrative endpoint
+meaning are not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> The supplement row and
+respondent heading were found on PDF p. 3; PDF p. 4 contains
+continuation rows. The count, denominator, four Table 1 counts, and
+narrative wording were rechecked at the cited pages.</p>
+<p><strong>Quality-control relevance:</strong> The printed fraction and
+displayed one-decimal percentage require confirmation of the intended
+denominator and presentation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could record 72.7% rather than the fraction-derived
+72.6% for 917 of 1263 respondents. The package does not establish
+propagation or conclusion change.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and production basis for the eTable 2 cell and clarify whether the
+narrative’s 8-to-12-week wording denotes the table’s 8–11-week bin.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--etable-2-uses-reduced-education-and-marital-status-denominators-without-labeling-them" class="candidate-card">C003
+— eTable 2 uses reduced education and marital-status denominators
+without labeling them</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> eTable 2 headings show
+respondent/nonrespondent/total Ns of 1263/337/1600, but education and
+marital-status percentages reproduce smaller, unlabeled
+variable-specific bases.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi170077supp2_prod.pdf#page=3">joi170077supp2_prod.pdf — PDF
+p. 3, eTable 2</a>, column headings and education/marital-status
+rows.</p>
+<p><strong>Source evidence:</strong> Education counts sum to
+1258/336/1594 and marital-status counts sum to 1248/332/1580, while
+headings give 1263/337/1600. No missing/unknown row or row-specific N is
+printed for these blocks.</p>
+<p><strong>Reported-versus-comparator:</strong> The full heading Ns are
+presented with category rows whose totals and percentages instead track
+reduced bases.</p>
+<p><strong>Reasoning procedure:</strong> Reconcile exhaustive-looking
+category totals with the displayed column Ns and use discriminating
+percentage cells to test whether the printed percentages use the full or
+reduced bases.</p>
+<p><strong>Calculation:</strong> Education leaves 5/1/6 observations
+unaccounted for and marital status leaves 15/5/20.
+<code>88/1258 = 7.00%</code>; <code>640/1248 = 51.28%</code>, matching
+the printed values, whereas <code>640/1263 = 50.67%</code> does not
+match 51.3%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Variable-specific missing observations or complete-case denominators may
+explain the reduced bases, but the table does not label them.</p>
+<p><strong>Mechanical evidence recheck:</strong> Headings, category
+counts, percentages, and the absence of a missing/unknown row or
+row-specific N were mechanically re-read from the cited supplied PDF
+page. Missing-data definitions are not supplied.</p>
+<p><strong>Quality-control relevance:</strong> The displayed denominator
+basis cannot be fully reconstructed from the table, creating a
+reproducible denominator-disclosure question.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a secondary user could mistakenly use the full respondent-status Ns as
+the education or marital-status percentage bases. The package does not
+show that this has occurred.</p>
+<p><strong>Human verification steps:</strong> Confirm the
+variable-specific nonmissing denominators and missing counts for each
+respondent-status column and determine whether the table should disclose
+them.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--etable-3-percentages-use-several-reduced-denominators-despite-full-group-n-headings" class="candidate-card">C004
+— eTable 3 percentages use several reduced denominators despite full
+group-N headings</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> eTable 3 prints group Ns of
+417/387/421/379, while selected race/ethnicity, education, and
+marital-status percentages reproduce reduced, unlabeled
+variable-specific totals.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi170077supp2_prod.pdf#page=5">joi170077supp2_prod.pdf — PDF
+p. 5, eTable 3</a>, group headings and Race/Ethnicity, Mother’s
+Education, and Marital Status rows.</p>
+<p><strong>Source evidence:</strong> Group headings give
+N=417/387/421/379. Race/ethnicity, education, and marital-status blocks
+contain selected category totals below those Ns without a
+missing/unknown category or row-specific N.</p>
+<p><strong>Reported-versus-comparator:</strong> Full group headings are
+displayed alongside percentage cells that align with reduced category
+totals rather than the heading Ns.</p>
+<p><strong>Reasoning procedure:</strong> Reconcile category sums with
+group headings, then test discriminating cells against full and reduced
+denominators at the printed precision.</p>
+<p><strong>Calculation:</strong> Race/ethnicity BF/BF totals 416 rather
+than 417: <code>155/416 = 37.26%</code> gives 37.3%, while
+<code>155/417 = 37.17%</code> gives 37.2%. SS/SS education totals 377
+rather than 379: <code>87/377 = 23.08%</code> gives 23.1%, while
+<code>87/379 = 22.96%</code> gives 23.0%. Marital totals include 414,
+419, and 377 versus headings 417, 421, and 379.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Variable-specific missing data could explain the reduced denominators,
+but the supplied table does not identify the missing values or
+bases.</p>
+<p><strong>Mechanical evidence recheck:</strong> The group headings,
+affected row counts, printed percentages, and lack of missing/row-N
+labels were mechanically re-read from the cited supplied PDF page.
+Variable-specific missingness definitions are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> The full displayed Ns and
+apparent percentage bases do not reconcile without an unprinted
+denominator definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a secondary user could reconstruct affected eTable 3 percentages with
+the displayed full group Ns instead of the apparent variable-specific
+bases. The package does not establish downstream use or conclusion
+change.</p>
+<p><strong>Human verification steps:</strong> Confirm the nonmissing Ns
+and missing counts for each affected eTable 3 group-variable block and
+determine whether row-specific bases should be disclosed.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--linked-etable-5-and-efigure-use-60-versus-60-days-for-the-same-display-population" class="candidate-card">C005
+— Linked eTable 5 and eFigure use ≥60 versus &gt;60 days for the same
+display population</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> Reciprocally linked eTable 5
+and eFigure labels use non-equivalent age thresholds:
+<code>≥60 days</code> and <code>&gt;60 days</code>.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi170077supp2_prod.pdf#page=9">joi170077supp2_prod.pdf — PDF
+p. 9, eTable 5 title</a>; <a
+href="../joi170077supp2_prod.pdf#page=10">joi170077supp2_prod.pdf — PDF
+p. 10, eTable 5 continuation</a>; <a
+href="../joi170077supp2_prod.pdf#page=11">joi170077supp2_prod.pdf — PDF
+p. 11, eFigure title and note</a>.</p>
+<p><strong>Source evidence:</strong> eTable 5 says outcomes are reported
+when the infant was <code>≥60 days</code> old and directs readers to the
+eFigure for graphical frequency data. The eFigure says
+<code>&gt;60 days</code> old and directs readers to eTable 5 for sample
+sizes.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>age ≥ 60</code>
+includes records at exactly 60 days, while <code>age &gt; 60</code>
+excludes them; the linked displays do not state a population
+distinction.</p>
+<p><strong>Reasoning procedure:</strong> Compare the printed inequality
+symbols in linked table/figure displays and apply their direct
+set-inclusion meaning. No aggregate arithmetic is required.</p>
+<p><strong>Calculation:</strong> <code>age ≥ 60</code> equals
+<code>age &gt; 60</code> plus any records with <code>age = 60</code>;
+the labels are not logically equivalent unless no exactly-60-day records
+existed or a symbol was used informally.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+figure’s strict symbol may be informal shorthand, or the displays may
+use distinct populations. Neither explanation is stated in the supplied
+package.</p>
+<p><strong>Mechanical evidence recheck:</strong> The eTable title,
+reciprocal cross-reference, eFigure title, and eFigure reference to
+eTable sample sizes were mechanically re-read on the cited supplied PDF
+pages. The operational filter and count of exactly-60-day records are
+not supplied.</p>
+<p><strong>Quality-control relevance:</strong> A non-equivalent
+eligibility label in linked displays can change the population
+definition that a reader records, even though the package does not
+establish that any underlying values differ.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could record either an inclusive or strict 60-day
+eligibility rule for the linked displays. The supplied package does not
+establish that the underlying data differ or that a downstream
+conclusion changed.</p>
+<p><strong>Human verification steps:</strong> Confirm the operational
+age filter used for both displays, determine whether any exactly-60-day
+records existed, and identify the intended labels.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>These observations are framed as bounded data-extraction risks only.
+If a candidate is confirmed, a systematic review, meta-analysis,
+guideline, or other evidence product could copy the affected percentage,
+denominator, or age-threshold label. This review has no supplied
+evidence that any such copying occurred, that an estimate changed, or
+that a clinical or other conclusion changed.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<ul>
+<li>This review is limited to quantitative reporting consistency in the
+three supplied PDFs and not to raw data, broad methodology, clinical
+practice, misconduct, novelty, or conclusion validity.</li>
+<li>The package does not provide C001/C002 table-production calculation,
+weighting, export, or rounding rules. For C002, it also does not define
+whether narrative <code>8 to 12 weeks</code> denotes the tabular
+<code>8–11 weeks</code> bin.</li>
+<li>C003/C004 lack printed variable-specific nonmissing denominators,
+missing-observation counts/categories, and exact complete-case
+percentage rules.</li>
+<li>C005 lacks the operational age filter, the number of exactly-60-day
+infants, and confirmation that eTable and eFigure use identical filtered
+records.</li>
+<li>Full statistical reconstruction is constrained by absent raw
+logistic estimates, standard errors/test statistics, covariance, working
+correlation, variance estimator, degrees of freedom, sidedness,
+conversion details, and a common CI/P inversion rule. Planned Bonferroni
+and reported Hochberg descriptions are not treated as interchangeable
+result comparators.</li>
+<li>Aggregate source documents cannot establish downstream propagation
+or conclusion change.</li>
+</ul>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ul>
+<li>Confirm each printed value, label, numerator, denominator, and
+source location against the supplied PDF page.</li>
+<li>Determine the applicable table-production, rounding, weighting,
+denominator, or eligibility-definition rule.</li>
+<li>Record the human determination only in the five blank adjudication
+fields on the applicable card.</li>
+<li>If a presentation change is warranted, document it through the
+appropriate human editorial or author-contact process; this report does
+not assign a correction.</li>
+</ul>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</h3>
+<ul>
+<li><strong>Profile:</strong> 1.5.2</li>
+<li><strong>Evidence reuse:</strong> NONE; prior audit derivatives were
+excluded from the evidence chain.</li>
+<li><strong>Direct sources:</strong> 3 supplied PDFs.</li>
+<li><strong>Total source units:</strong> 42</li>
+<li><strong>Fresh-source units:</strong> 42</li>
+<li><strong>Mapped source units:</strong> 42</li>
+<li><strong>Source hash status:</strong> UNCHANGED; all three recomputed
+SHA-256 values match <code>source_hashes_before.sha256</code> and
+<code>source_hashes_after.sha256</code>.</li>
+<li><strong>Source coverage status:</strong> 3 of 3 direct-source rows
+COMPLETE; 42 of 42 units mapped.</li>
+<li><strong>Native/layout/OCR status:</strong> 42 native-page and 42
+layout-page fresh text assets; 42 rendered pages at 200 dpi; OCR units 0
+because usable native/layout text covered all result-relevant
+content.</li>
+<li><strong>Coverage-manifest status:</strong> COMPLETE; all 16 disjoint
+rows are complete and each contains one plain relative artifact
+path.</li>
+</ul>
+<h3 id="agent-execution">Agent Execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td><code>run_state.md</code></td>
+</tr>
+<tr>
+<td>fresh_source_preprocessor</td>
+<td>root:fresh_preprocessing</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>evidence_asset_inventory.md</code></td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>root:main_mapping</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>extraction/main_quantitative_evidence.md</code></td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>root:support_mapping</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>extraction/support_quantitative_evidence.md</code></td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>root:numeric_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/numeric_consistency.md</code></td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>root:cross_source_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/cross_source_consistency.md</code></td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root:statistical_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_1.md</code></td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>root:evidence_recheck</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>verification/evidence_recheck.md</code></td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root:statistical_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_2.md</code></td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>root:quality_audit</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>quality/evidence_quality_audit.md</code></td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>root:report_generation</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>report_generation.md</code></td>
+</tr>
+</tbody>
+</table>
+<p>Both statistical passes covered all 29 relationships and used
+distinct fresh <code>gpt-5.6-terra</code> high-effort runtime
+agents.</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Three supplied PDFs totaling 42 fresh
+pages: a concise 9-page main randomized-trial article, a 21-page
+protocol with result-defining methods and planned analyses, and a
+12-page results supplement containing multiple quantitative tables and a
+figure. Native text tools are available, no Office conversion is
+required, and the package needs parallel main/support mapping plus
+complete two-pass statistical review.</li>
+<li><strong>Total source units:</strong> 42</li>
+<li><strong>Fresh-source units:</strong> 42</li>
+<li><strong>Target elapsed minutes:</strong> 30-45</li>
+<li><strong>Started UTC:</strong> 2026-08-20T16:54:31Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-20T17:31:25Z</li>
+<li><strong>Observed elapsed minutes:</strong> 36.9</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token Accounting and Cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Agents</th>
+<th style="text-align: right;">Unavailable records</th>
+<th style="text-align: right;">Known input tokens</th>
+<th style="text-align: right;">Known output tokens</th>
+<th style="text-align: right;">Known total tokens</th>
+<th style="text-align: right;">Known cost USD</th>
+<th style="text-align: right;">Complete estimated cost USD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+</tr>
+</tbody>
+</table>
+<p>The runtime exposed no authoritative response-level token counts for
+the coordinator or any specialist, so all 11 manifested agents are
+recorded as <code>UNAVAILABLE</code> with exact <code>__</code> token
+fields rather than estimates. The zero totals above are known subtotals
+only; the complete token count is explicitly incomplete. Cached-input
+and cache-write counts are input subsets, and reasoning counts are
+output subsets; none is added again to total tokens. Dollar amounts are
+token-only API-equivalent estimates under the pricing snapshot dated
+2026-08-18, not an invoice. Per-agent detail is retained in
+<code>review_1_5_2/token_usage_ledger.csv</code> and
+<code>review_1_5_2/token_usage_summary.md</code>.</p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# Workflow 1.5.2 Run State
+
+- **Profile:** 1.5.2
+- **Package root:** /home/bulunte/ai-paper-val/2017-2018/jama.2017.17426
+- **Review mode:** Full source-first restart
+- **Target basis:** Three direct PDF sources totaling 81 pages, all requiring fresh native and layout extraction; one 69-page technical supplement creates substantial quantitative mapping scope, while no Office/workbook conversion is required; targeted rendering/OCR and five prescribed review/verification stages are included.
+- **Total source units:** 81
+- **Fresh-source units:** 81
+- **Target elapsed minutes:** 30-50
+- **Started UTC:** 2026-08-20T16:51:45Z
+- **Finished UTC:** 2026-08-20T17:24:34Z
+- **Observed elapsed minutes:** 32.8
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Current stage:** COMPLETE
+- **Source inventory status:** COMPLETE
+- **Coverage manifest status:** COMPLETE
+- **Main evidence mapping status:** COMPLETE
+- **Support evidence mapping status:** COMPLETE
+- **Numeric review status:** COMPLETE
+- **Statistical pass 1 status:** COMPLETE
+- **Cross-source review status:** COMPLETE
+- **Candidate registration status:** COMPLETE
+- **Evidence recheck status:** COMPLETE
+- **Statistical pass 2 status:** COMPLETE
+- **Evidence-quality audit status:** COMPLETE
+- **Markdown report status:** COMPLETE
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE
+- **HTML render status:** COMPLETE
+- **Mechanical validation status:** PASS
+- **Boundaries:** Supplied package evidence only; no web or external literature; existing audit derivatives excluded as evidence inputs and discovery boundaries.
+- **Escalations or unresolved failed checks:** Cross-source review found a support-mapping omission for the final-protocol sample-size relationship on DOC-002 p. 37; repaired in the support map and merged into N052/S042, with the affected review lanes rerun before candidate registration.

@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#quantitative-reporting-quality-control-consistency-review"
+id="toc-quantitative-reporting-quality-control-consistency-review">Quantitative
+Reporting Quality-Control Consistency Review</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-fresh-processing-provenance"
+id="toc-package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--abstract-sex-percentage-conflicts-with-the-enrolled-sex-count"
+id="toc-c001--abstract-sex-percentage-conflicts-with-the-enrolled-sex-count">C001
+— Abstract sex percentage conflicts with the enrolled sex count</a></li>
+<li><a
+href="#c002--inqol-iqr-endpoints-exceed-the-stated-0-to-100-scale"
+id="toc-c002--inqol-iqr-endpoints-exceed-the-stated-0-to-100-scale">C002
+— INQoL IQR endpoints exceed the stated 0-to-100 scale</a></li>
+<li><a
+href="#c003--table-2-secondary-outcome-contrast-header-is-opposite-to-the-displayed-effect-signs"
+id="toc-c003--table-2-secondary-outcome-contrast-header-is-opposite-to-the-displayed-effect-signs">C003
+— Table 2 secondary-outcome contrast header is opposite to the displayed
+effect signs</a></li>
+<li><a
+href="#c004--placebo-any-adverse-reaction-percentage-does-not-reconcile-with-the-apparent-denominator"
+id="toc-c004--placebo-any-adverse-reaction-percentage-does-not-reconcile-with-the-apparent-denominator">C004
+— Placebo “Any” adverse-reaction percentage does not reconcile with the
+apparent denominator</a></li>
+<li><a
+href="#c005--bayesian-parameter-prose-swaps-mu_mexi-and-mu_placi-treatment-labels"
+id="toc-c005--bayesian-parameter-prose-swaps-mu_mexi-and-mu_placi-treatment-labels">C005
+— Bayesian parameter prose swaps <code>mu_mex[i]</code> and
+<code>mu_plac[i]</code> treatment labels</a></li>
+<li><a href="#c006--diff_clcn1-is-described-as-an-scn4a-contrast"
+id="toc-c006--diff_clcn1-is-described-as-an-scn4a-contrast">C006 —
+<code>diff_CLCN1</code> is described as an SCN4A contrast</a></li>
+<li><a href="#c007--sigmamex-is-described-as-placebo-period-variability"
+id="toc-c007--sigmamex-is-described-as-placebo-period-variability">C007
+— <code>sigma.mex</code> is described as placebo-period
+variability</a></li>
+<li><a
+href="#c008--main-text-prints-clnc1-for-the-matched-clcn1-genotype-subgroup"
+id="toc-c008--main-text-prints-clnc1-for-the-matched-clcn1-genotype-subgroup">C008
+— Main text prints <code>CLNC1</code> for the matched <code>CLCN1</code>
+genotype subgroup</a></li>
+<li><a
+href="#c009--sf-36-mental-component-p-value-conflicts-with-the-dependent-t-95-ci"
+id="toc-c009--sf-36-mental-component-p-value-conflicts-with-the-dependent-t-95-ci">C009
+— SF-36 mental-component P value conflicts with the dependent-t 95%
+CI</a></li>
+<li><a
+href="#c010--scn4a-fifth-handgrip-action-myotonia-p-value-conflicts-with-its-95-ci"
+id="toc-c010--scn4a-fifth-handgrip-action-myotonia-p-value-conflicts-with-its-95-ci">C010
+— SCN4A fifth handgrip-action-myotonia P value conflicts with its 95%
+CI</a></li>
+<li><a
+href="#c011--scn4a-fifth-transient-paresis-estimate-interval-and-p-value-do-not-form-a-compatible-dependent-t-result"
+id="toc-c011--scn4a-fifth-transient-paresis-estimate-interval-and-p-value-do-not-form-a-compatible-dependent-t-result">C011
+— SCN4A fifth transient-paresis estimate, interval, and P value do not
+form a compatible dependent-t result</a></li>
+<li><a
+href="#c012--myotonic-discharge-p-value-conflicts-with-the-dependent-t-95-ci"
+id="toc-c012--myotonic-discharge-p-value-conflicts-with-the-dependent-t-95-ci">C012
+— Myotonic-discharge P value conflicts with the dependent-t 95%
+CI</a></li>
+<li><a
+href="#c013--first-handgrip-placebo-period-interval-is-reversed-and-excludes-its-estimate"
+id="toc-c013--first-handgrip-placebo-period-interval-is-reversed-and-excludes-its-estimate">C013
+— First handgrip placebo-period interval is reversed and excludes its
+estimate</a></li>
+<li><a
+href="#c014--mean-timed-upgo-placebo-period-estimate-lies-outside-its-interval"
+id="toc-c014--mean-timed-upgo-placebo-period-estimate-lies-outside-its-interval">C014
+— Mean Timed Up&amp;Go placebo-period estimate lies outside its
+interval</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+Execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token Accounting and Cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-reporting-quality-control-consistency-review">Quantitative
+Reporting Quality-Control Consistency Review</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>All 14 registered observations in this report are <strong>Pending
+Human Adjudication</strong>. They are quantitative reporting
+quality-control candidates, not corrections, conclusions about validity,
+or determinations of importance.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Fresh, source-first review of all supplied scientific sources
+registered 14 distinct candidates (C001-C014). The candidates concern
+arithmetic compatibility, measure labels and scales, and
+statistical-result fields. They were mechanically rechecked against
+exact supplied-PDF locations. No candidate is based solely on a coherent
+display-zero P value.</p>
+<h2 id="package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</h2>
+<p>The direct scientific source set comprised four supplied PDFs: the
+main article, protocol, quantitative supplement, and data-sharing
+statement. Fresh native and layout text were prepared for all pages; all
+pages were rendered for visual alignment; no OCR was required. No old
+audit derivative was used as evidence.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All 83 direct PDF-page units were mapped: DOC-001 10/10, DOC-002
+55/55, DOC-003 17/17, and DOC-004 1/1. The review covers reported
+numeric, denominator, inferential-statistical, cross-document,
+label/scale, and rate/count relationships. It excludes broad clinical,
+design, novelty, misconduct, raw-data, and external-literature
+auditing.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The complete fresh mapping contains 57 numeric/reporting
+relationships (35 main and 22 support) and 56 inferential-statistical
+relationships (22 main and 34 support). Numeric review completed 57/57
+relationships; cross-source review completed the combined 113
+relationships. Independent statistical pass 1 completed 56/56
+relationships, and independent statistical pass 2 completed 56/56
+relationships and appended C013-C014. Every stable candidate received
+mechanical source evidence recheck and evidence-quality audit.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Abstract sex percentage conflicts with enrolled sex count</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>INQoL IQR endpoints exceed stated scale</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Table 2 contrast header is opposite displayed effect signs</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Placebo <code>Any</code> adverse-reaction percentage does not
+reconcile with apparent denominator</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Bayesian <code>mu_mex[i]</code>/<code>mu_plac[i]</code> prose
+treatment labels are swapped</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C006</td>
+<td><code>diff_CLCN1</code> is described as an SCN4A contrast</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C007</td>
+<td><code>sigma.mex</code> is described as placebo-period
+variability</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Main text prints <code>CLNC1</code> for matched <code>CLCN1</code>
+subgroup</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>SF-36 mental-component P value conflicts with dependent-t CI</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>SCN4A fifth handgrip P value conflicts with CI</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>SCN4A fifth transient-paresis fields are incompatible</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Myotonic-discharge P value conflicts with dependent-t CI</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>First handgrip placebo-period interval is reversed and excludes
+estimate</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>Mean Timed Up&amp;Go placebo-period estimate lies outside
+interval</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--abstract-sex-percentage-conflicts-with-the-enrolled-sex-count" class="candidate-card">C001
+— Abstract sex percentage conflicts with the enrolled sex count</h2>
+<p><strong>Candidate statement:</strong> The abstract's
+<code>22% men</code> is incompatible with its enrolled total and the
+later count of 22 men and 8 women.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=1">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 1</a>, Abstract Results; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=4">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 4</a>, Baseline Data.</p>
+<p><strong>Source evidence:</strong> The abstract prints 30 enrolled
+patients and <code>22% men</code>; Baseline Data prints 22 men and 8
+women.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported
+<code>22% men</code> versus comparator 22/30 men.</p>
+<p><strong>Reasoning procedure:</strong> Match the same enrolled
+population across the two locations and test count/percentage
+compatibility.</p>
+<p><strong>Calculation:</strong> <code>22 + 8 = 30</code>;
+<code>22/30 × 100 = 73.33%</code>; <code>22% × 30 = 6.6</code>, not 22
+patients.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+abstract may have intended <code>22 men</code> or approximately
+<code>73% men</code>; enrollment-level data and proof history are
+unavailable.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both printed
+statements, their common denominator, and the arithmetic were reproduced
+in the fresh evidence recheck.</p>
+<p><strong>Quality-control relevance:</strong> The candidate concerns a
+basic demographic count/percentage field for the same enrolled
+population.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy an incorrect sex distribution into a
+systematic review or evidence table; no propagation or conclusion change
+is asserted.</p>
+<p><strong>Human verification steps:</strong> Check authoritative
+enrollment data and manuscript proof to determine the intended abstract
+count, percentage, and denominator.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c002--inqol-iqr-endpoints-exceed-the-stated-0-to-100-scale" class="candidate-card">C002
+— INQoL IQR endpoints exceed the stated 0-to-100 scale</h2>
+<p><strong>Candidate statement:</strong> Table 1 reports INQoL upper IQR
+endpoints above the table's stated maximum of 100.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=5">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 5</a>, Table 1 and footnote f; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=8">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 8</a>, Table 2 footnote g.</p>
+<p><strong>Source evidence:</strong> CLCN1 is
+<code>84.0 (74.5-110.3)</code> and SCN4A is
+<code>98.0 (56.0-120.0)</code> while the footnote states
+<code>Scale, 0 to 100</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported upper endpoints
+110.3 and 120.0 versus stated upper scale bound 100.</p>
+<p><strong>Reasoning procedure:</strong> Apply the printed bound to
+quantiles of the identically named INQoL composite score.</p>
+<p><strong>Calculation:</strong> <code>110.3 - 100 = 10.3</code> and
+<code>120.0 - 100 = 20.0</code>; a bounded score's quantile cannot
+exceed its bound.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+footnote may be incomplete or the displayed values may use an
+undocumented summed/transformed scale.</p>
+<p><strong>Mechanical evidence recheck:</strong> The row values, measure
+identity, and 0-to-100 statements were visually and textually
+matched.</p>
+<p><strong>Quality-control relevance:</strong> The candidate concerns
+whether the printed baseline distribution and its scale can be
+interpreted together.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy an incorrect scale or baseline distribution into
+a review; no downstream use is assumed.</p>
+<p><strong>Human verification steps:</strong> Verify the authoritative
+INQoL scoring algorithm, range, and unrounded subgroup summaries.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--table-2-secondary-outcome-contrast-header-is-opposite-to-the-displayed-effect-signs" class="candidate-card">C003
+— Table 2 secondary-outcome contrast header is opposite to the displayed
+effect signs</h2>
+<p><strong>Candidate statement:</strong> The Table 2 header states
+placebo minus mexiletine, whereas repeated displayed change rows follow
+mexiletine minus placebo.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=7">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 7</a>, Table 2 header and change-score rows; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=8">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 8</a>, Table 2 footnotes.</p>
+<p><strong>Source evidence:</strong> The header says
+<code>Treatment Effect (Placebo-Mexiletine)</code>; effects include
+-14.22 and -2.85 under rows whose period changes are -7.22/-21.44 and
+0.46/-2.39.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed
+placebo-minus-mexiletine header versus row arithmetic consistent with
+mexiletine-minus-placebo.</p>
+<p><strong>Reasoning procedure:</strong> Recalculate direction from both
+period-change columns and compare it with the fixed header.</p>
+<p><strong>Calculation:</strong> <code>-21.44 - (-7.22) = -14.22</code>;
+<code>-2.39 - 0.46 = -2.85</code>; reversing the subtraction reverses
+both signs.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+header may be reversed, or an undocumented favorable-direction
+convention may be applied; unrounded paired data are absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Header, multiple row
+values, and repeated sign direction were reproduced; small SF-36
+magnitude differences may reflect paired unrounded data.</p>
+<p><strong>Quality-control relevance:</strong> Contrast direction is
+essential to correctly label treatment effects.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could invert an extracted effect direction during synthesis;
+no such extraction is claimed.</p>
+<p><strong>Human verification steps:</strong> Inspect analysis output to
+establish the computed contrast and decide whether header, signs, or a
+note is intended.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--placebo-any-adverse-reaction-percentage-does-not-reconcile-with-the-apparent-denominator" class="candidate-card">C004
+— Placebo “Any” adverse-reaction percentage does not reconcile with the
+apparent denominator</h2>
+<p><strong>Candidate statement:</strong> eTable 4's placebo
+<code>Any 2 (6%)</code> is not compatible with the apparent 30-patient
+denominator and neighboring nearest-whole-percent displays.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180136supp2_prod.pdf#page=6">joi180136supp2_prod.pdf — PDF
+p. 6</a>, eTable 4; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=8">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 8</a>, Adverse Events.</p>
+<p><strong>Source evidence:</strong> eTable 4 prints placebo
+<code>Any 2 (6%)</code>, mexiletine <code>Any 27 (90%)</code>, and
+count-2 rows displayed as 7%; main text prints 21 of 30 patients
+(70%).</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 2 (6%) versus
+the apparent 30-patient denominator and surrounding count/percentage
+convention.</p>
+<p><strong>Reasoning procedure:</strong> Compare the same adverse-event
+table's count/percentage pairs with the supplied main-text patient
+denominator.</p>
+<p><strong>Calculation:</strong> <code>2/30 × 100 = 6.67%</code>,
+ordinarily 7%; a denominator of 31 gives 6.45%, which can round to
+6%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The row
+may use 31 treatment-set exposures or truncation; eTable 4 does not
+print a denominator, unit, or rounding rule.</p>
+<p><strong>Mechanical evidence recheck:</strong> The count, percentage,
+neighboring pairs, and 21/30 comparator were all reproduced at the exact
+printed locations.</p>
+<p><strong>Quality-control relevance:</strong> The observation is
+conditional on a missing denominator/rounding definition and is retained
+as such.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an adverse-event rate could be copied incorrectly into evidence
+extraction; no use or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Verify eTable 4's analysis
+unit, denominator, treatment-set handling, and rounding convention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--bayesian-parameter-prose-swaps-mu_mexi-and-mu_placi-treatment-labels" class="candidate-card">C005
+— Bayesian parameter prose swaps <code>mu_mex[i]</code> and
+<code>mu_plac[i]</code> treatment labels</h2>
+<p><strong>Candidate statement:</strong> The displayed Bayesian-code
+mappings and adjacent prose assign opposite treatment meanings to
+<code>mu_mex[i]</code> and <code>mu_plac[i]</code>.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180136supp2_prod.pdf#page=11">joi180136supp2_prod.pdf — PDF
+p. 11</a>, eMethods 2 code/dictionary; <a
+href="../joi180136supp2_prod.pdf#page=13">joi180136supp2_prod.pdf — PDF
+p. 13</a>, eMethods 3 code; <a
+href="../joi180136supp2_prod.pdf#page=14">joi180136supp2_prod.pdf — PDF
+p. 14</a>, eMethods 3 dictionary.</p>
+<p><strong>Source evidence:</strong> Code maps <code>Stiff_Plac</code>
+to <code>mu_plac</code> and <code>Stiff_Mex</code> to
+<code>mu_mex</code>; dictionaries describe <code>mu_mex[i]</code> as
+placebo and <code>mu_plac[i]</code> as mexiletine.</p>
+<p><strong>Reported-versus-comparator:</strong> Prose treatment labels
+versus likelihood/data-to-parameter mappings and named population
+parameters.</p>
+<p><strong>Reasoning procedure:</strong> Follow each treatment-specific
+data branch through the printed likelihood and compare it with the
+dictionary label.</p>
+<p><strong>Calculation:</strong> <code>Stiff_Plac -&gt; mu_plac</code>
+and <code>Stiff_Mex -&gt; mu_mex</code>;
+<code>diff_patient &lt;- mu_plac[i] - mu_mex[i]</code> follows that code
+mapping.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Two
+prose rows may be transposed while executed code/output remained
+correct; executed files and logs are not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both eMethods code
+blocks and dictionaries reproduce the same code/prose mismatch.</p>
+<p><strong>Quality-control relevance:</strong> Treatment labels affect
+interpretation and reproducibility of model parameters.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+model documentation could be copied with reversed treatment meanings; no
+execution error is asserted.</p>
+<p><strong>Human verification steps:</strong> Compare the authoritative
+executed model files, run logs, and output mapping with the published
+dictionary.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c006--diff_clcn1-is-described-as-an-scn4a-contrast" class="candidate-card">C006 —
+<code>diff_CLCN1</code> is described as an SCN4A contrast</h2>
+<p><strong>Candidate statement:</strong> The dictionary describes
+<code>diff_CLCN1</code> as SCN4A although its displayed code components
+are CLCN1.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180136supp2_prod.pdf#page=13">joi180136supp2_prod.pdf — PDF
+p. 13</a>, eMethods 3 code; <a
+href="../joi180136supp2_prod.pdf#page=14">joi180136supp2_prod.pdf — PDF
+p. 14</a>, parameter dictionary.</p>
+<p><strong>Source evidence:</strong> Code defines
+<code>diff_CLCN1 &lt;- mu.plac_CLCN1 - mu.mex_CLCN1</code>; the
+dictionary says <code>mu.plac-mu.mex for SCN4A patients</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> SCN4A prose description
+versus the CLCN1 parameter suffix and both CLCN1 code components.</p>
+<p><strong>Reasoning procedure:</strong> Compare categorical genotype
+identity in the printed name, components, and dictionary row.</p>
+<p><strong>Calculation:</strong> Substituting the displayed components
+produces the CLCN1 placebo-minus-mexiletine contrast, not an SCN4A
+contrast.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The row
+may be a copy-forward of the preceding SCN4A description; executed
+output is unavailable.</p>
+<p><strong>Mechanical evidence recheck:</strong> The code, genotype
+coding, and both adjacent dictionary rows were matched.</p>
+<p><strong>Quality-control relevance:</strong> The candidate concerns
+subgroup-effect identification in model documentation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a subgroup contrast could be misidentified during model reproduction or
+evidence extraction; no such use is claimed.</p>
+<p><strong>Human verification steps:</strong> Verify the executed
+parameter-to-output mapping and intended dictionary label.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c007--sigmamex-is-described-as-placebo-period-variability" class="candidate-card">C007
+— <code>sigma.mex</code> is described as placebo-period variability</h2>
+<p><strong>Candidate statement:</strong> Both parameter dictionaries
+describe <code>sigma.mex</code> as placebo variability despite the
+displayed mexiletine model branch.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180136supp2_prod.pdf#page=11">joi180136supp2_prod.pdf — PDF
+p. 11</a>, eMethods 2 code; <a
+href="../joi180136supp2_prod.pdf#page=12">joi180136supp2_prod.pdf — PDF
+p. 12</a>, eMethods 2 dictionary; <a
+href="../joi180136supp2_prod.pdf#page=13">joi180136supp2_prod.pdf — PDF
+p. 13</a>, eMethods 3 code; <a
+href="../joi180136supp2_prod.pdf#page=14">joi180136supp2_prod.pdf — PDF
+p. 14</a>, eMethods 3 dictionary.</p>
+<p><strong>Source evidence:</strong>
+<code>tau.mex &lt;- 1/(sigma.mex*sigma.mex)</code> is used with
+<code>mu_mex</code> and <code>Stiff_Mex</code>, while prose calls
+<code>sigma.mex</code> placebo-period variability.</p>
+<p><strong>Reported-versus-comparator:</strong> Placebo wording versus
+<code>.mex</code> likelihood branch, mean parameter, and parallel
+<code>.plac</code> parameter.</p>
+<p><strong>Reasoning procedure:</strong> Follow the
+variance-to-precision-to-mean-to-data chain for the named treatment
+branch.</p>
+<p><strong>Calculation:</strong> <code>tau.mex = 1/sigma.mex^2</code>
+supplies precision for <code>mu_mex</code>, which is used for
+<code>Stiff_Mex</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+wording may be repeated copy-forward text while code remains correct;
+executed models/logs are not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both code/dictionary
+pairs show the same category-label mismatch.</p>
+<p><strong>Quality-control relevance:</strong> Variance-component
+treatment identity affects accurate interpretation and reproduction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+variance-component documentation could be copied with the wrong period
+identity; no downstream consequence is assumed.</p>
+<p><strong>Human verification steps:</strong> Check compiled model
+files, posterior parameter names, and downstream exports for the
+intended period identity.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--main-text-prints-clnc1-for-the-matched-clcn1-genotype-subgroup" class="candidate-card">C008
+— Main text prints <code>CLNC1</code> for the matched <code>CLCN1</code>
+genotype subgroup</h2>
+<p><strong>Candidate statement:</strong> A main-text subgroup result is
+labeled <code>CLNC1</code> while matched displays and the supplement
+identify CLCN1.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=4">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 4</a>, Primary Outcome; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=5">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 5</a>, Table 1/Figure 2; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=6">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 6</a>, Figure 3; <a
+href="../joi180136supp2_prod.pdf#page=4">joi180136supp2_prod.pdf — PDF
+p. 4</a>, eTable 2 footnote.</p>
+<p><strong>Source evidence:</strong> Page 4 assigns 3.84 (95% CrI
+2.52-5.16; n=16) to <code>CLNC1</code>; matched displays and gene
+definition use <code>CLCN1</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>CLNC1</code> in
+narrative versus <code>CLCN1</code> in matched subgroup displays with
+identical estimate, interval, and n.</p>
+<p><strong>Reasoning procedure:</strong> Match subgroup identity using
+population, estimate, interval, sample size, and gene-definition
+context.</p>
+<p><strong>Calculation:</strong> The numeric keys 3.84, 2.52-5.16, and
+n=16 identify one subgroup; only the gene-symbol character order
+differs.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> This
+may be a local typographical transposition; supplied evidence does not
+establish an effect on analysis.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact physical pages
+and matching quantitative keys were reproduced.</p>
+<p><strong>Quality-control relevance:</strong> The mismatch is in a
+subgroup label attached to a reported quantitative result.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a subgroup label could be copied incorrectly into a review or evidence
+table; no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Verify the intended gene
+symbol in the narrative against the authoritative subgroup definition
+and result output.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--sf-36-mental-component-p-value-conflicts-with-the-dependent-t-95-ci" class="candidate-card">C009
+— SF-36 mental-component P value conflicts with the dependent-t 95%
+CI</h2>
+<p><strong>Candidate statement:</strong> The SF-36 mental-component
+effect, CI, P value, and printed dependent-t context do not reconcile
+under the table-level N=27 assumption.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=7">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 7</a>, Table 2; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=3">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 3</a>, dependent-t method; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=4">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 4</a>, two-sided P-value convention.</p>
+<p><strong>Source evidence:</strong> The row reports effect 6.78, 95% CI
+1.64 to 11.92, and <code>P=.001</code>; Table 2 states N=27 and
+dependent t tests for non-IVR secondary outcomes.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported
+<code>.001</code> versus CI-derived two-sided diagnostic under
+df=26.</p>
+<p><strong>Reasoning procedure:</strong> Use CI half-width, printed
+effect, table-level paired-N assumption, and stated two-sided
+dependent-t method as a conditional reconciliation check.</p>
+<p><strong>Calculation:</strong> Half-width <code>5.14</code> gives SE
+about <code>5.14/2.056 = 2.50</code>; <code>t ≈ 6.78/2.50 = 2.71</code>;
+two-sided P is about <code>.012</code>, not <code>.001</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Row-specific paired n, CI construction, or inferential procedure could
+differ but are not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> The row fields and
+method/sidedness statements were matched; the N/df assumption is
+explicitly conditional.</p>
+<p><strong>Quality-control relevance:</strong> The candidate tests
+compatibility among reported inferential fields, not clinical
+interpretation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an effect/CI/P result set could be extracted inconsistently into a
+review; no synthesis consequence is asserted.</p>
+<p><strong>Human verification steps:</strong> Obtain row-specific
+complete-pair n, unrounded estimate/SE, CI method, statistic, and
+authoritative P value.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--scn4a-fifth-handgrip-action-myotonia-p-value-conflicts-with-its-95-ci" class="candidate-card">C010
+— SCN4A fifth handgrip-action-myotonia P value conflicts with its 95%
+CI</h2>
+<p><strong>Candidate statement:</strong> The SCN4A fifth handgrip
+effect, zero-crossing CI, and <code>P=.009</code> do not reconcile under
+the printed subgroup dependent-t context.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=7">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 7</a>, Table 2 row; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=8">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 8</a>, Table 2 footnotes; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=3">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 3</a>, method; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=4">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 4</a>, sidedness.</p>
+<p><strong>Source evidence:</strong> The row prints -1.96, 95% CI -3.41
+to 0.51, <code>P=.009</code>; subgroup n=11 and dependent t test are
+stated.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported
+<code>.009</code> versus a CI that crosses zero and the conditional
+df=10 diagnostic.</p>
+<p><strong>Reasoning procedure:</strong> Check interval
+containment/centering and infer an approximate SE from the printed CI
+under the stated subgroup-N convention.</p>
+<p><strong>Calculation:</strong> CI half-width 1.96 with df=10 gives SE
+about <code>1.96/2.228 = 0.88</code>;
+<code>|t| ≈ 1.96/0.88 = 2.23</code>, two-sided P about
+<code>.05</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A P
+value, endpoint, subgroup n, or CI/test definition may differ from the
+table-level rule.</p>
+<p><strong>Mechanical evidence recheck:</strong> The effect, interval, P
+value, footnote, method, and sidedness were reproduced exactly.</p>
+<p><strong>Quality-control relevance:</strong> The candidate concerns
+coherence of a printed subgroup inferential result.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+this subgroup effect/CI/P combination could be extracted inaccurately;
+no downstream use is asserted.</p>
+<p><strong>Human verification steps:</strong> Verify complete-pair n,
+paired observations, unrounded SE/statistic, CI, and P from source
+analysis output.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c011--scn4a-fifth-transient-paresis-estimate-interval-and-p-value-do-not-form-a-compatible-dependent-t-result" class="candidate-card">C011
+— SCN4A fifth transient-paresis estimate, interval, and P value do not
+form a compatible dependent-t result</h2>
+<p><strong>Candidate statement:</strong> The SCN4A fifth
+transient-paresis estimate, interval, and P value are mutually
+incompatible under the printed dependent-t context.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=7">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 7</a>, Table 2 row; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=6">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 6</a>, narrative repetition; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=8">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 8</a>, footnotes; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=3">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 3</a>, method; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=4">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 4</a>, sidedness.</p>
+<p><strong>Source evidence:</strong> The row prints 13.71, 95% CI -1.96
+to 25.47, and <code>P=.02</code>; subgroup n=11 and dependent t test are
+stated.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported estimate/CI/P
+versus interval midpoint, zero crossing, and conditional df=10
+diagnostic.</p>
+<p><strong>Reasoning procedure:</strong> Test CI centering and sign
+compatibility, then calculate a conditional interval-width
+diagnostic.</p>
+<p><strong>Calculation:</strong> Midpoint is
+<code>(-1.96 + 25.47)/2 = 11.755</code>, not 13.71; CI crosses zero;
+half-width 13.715 gives a two-sided diagnostic near <code>.05</code>,
+not <code>.02</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+lower-endpoint sign/transcription, P value, n, or procedure may be
+different; raw output is absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> The direct PDF confirms
+the row's <code>.02</code>, interval, and repeated narrative estimate at
+the recorded pages.</p>
+<p><strong>Quality-control relevance:</strong> The candidate is a
+row-specific statistical reporting consistency check.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+this subgroup inferential result could be copied inconsistently into
+later evidence products; no conclusion change is claimed.</p>
+<p><strong>Human verification steps:</strong> Check authoritative
+paired-output fields: lower endpoint, estimate, complete-pair n,
+SE/statistic, and P value.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--myotonic-discharge-p-value-conflicts-with-the-dependent-t-95-ci" class="candidate-card">C012
+— Myotonic-discharge P value conflicts with the dependent-t 95% CI</h2>
+<p><strong>Candidate statement:</strong> The myotonic-discharge effect,
+CI, and <code>P&lt;.001</code> do not reconcile under the printed N=27
+dependent-t context.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=8">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 8</a>, Table 2 continuation and footnotes; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=3">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 3</a>, dependent-t method; <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=4">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 4</a>, two-sided convention.</p>
+<p><strong>Source evidence:</strong> The row reports effect 0.67, 95% CI
+0.23 to 1.11, and <code>P&lt;.001</code>; Table 2 states N=27 and
+dependent t tests for non-IVR outcomes.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported
+<code>P&lt;.001</code> versus a CI-derived two-sided diagnostic under
+df=26.</p>
+<p><strong>Reasoning procedure:</strong> Derive conditional SE and t
+from effect and CI half-width using the printed method and table-level
+N.</p>
+<p><strong>Calculation:</strong> Half-width <code>.44</code> gives SE
+about <code>.44/2.056 = .214</code>; <code>t ≈ .67/.214 = 3.13</code>;
+two-sided P about <code>.004</code>, not below <code>.001</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Row-specific n, paired-difference variability, or exact CI/P calculation
+may differ but are not printed.</p>
+<p><strong>Mechanical evidence recheck:</strong> The result fields and
+method statements were matched; the complete-pair-N assumption is
+retained as conditional.</p>
+<p><strong>Quality-control relevance:</strong> The candidate concerns
+consistency among reported inferential fields.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy an incompatible effect/CI/P set; no downstream
+action is asserted.</p>
+<p><strong>Human verification steps:</strong> Verify row-specific n,
+paired-difference SE, statistic, CI method, and exact P value.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--first-handgrip-placebo-period-interval-is-reversed-and-excludes-its-estimate" class="candidate-card">C013
+— First handgrip placebo-period interval is reversed and excludes its
+estimate</h2>
+<p><strong>Candidate statement:</strong> The first-attempt handgrip
+placebo-period cell prints an interval in reverse order that also
+excludes its printed point estimate.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=7">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 7</a>, Table 2 first-attempt handgrip action-myotonia
+placebo-period change.</p>
+<p><strong>Source evidence:</strong> The cell prints
+<code>0.46 (-0.30 to -1.23)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed estimate 0.46
+versus printed endpoints -0.30 and -1.23.</p>
+<p><strong>Reasoning procedure:</strong> Check endpoint ordering and
+whether the stated point estimate belongs to the displayed interval.</p>
+<p><strong>Calculation:</strong> <code>-0.30 &gt; -1.23</code>; even
+when ordered as -1.23 to -0.30, 0.46 is outside. The same row gives
+<code>-2.39 - 0.46 = -2.85</code> for the observed treatment-effect
+direction.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoints may be transposed, or an endpoint sign/value or point estimate
+may be misprinted.</p>
+<p><strong>Mechanical evidence recheck:</strong> The cell and same-row
+arithmetic were read from the physical p. 7 table.</p>
+<p><strong>Quality-control relevance:</strong> This is a direct
+interval-ordering and estimate-containment check independent of
+unavailable raw data.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a placebo-period summary or interval could be copied incorrectly into
+evidence extraction; no propagation is claimed.</p>
+<p><strong>Human verification steps:</strong> Verify authoritative
+placebo estimate, interval endpoints, SE, and paired sample size.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c014--mean-timed-upgo-placebo-period-estimate-lies-outside-its-interval" class="candidate-card">C014
+— Mean Timed Up&amp;Go placebo-period estimate lies outside its
+interval</h2>
+<p><strong>Candidate statement:</strong> The mean Timed Up&amp;Go
+placebo-period estimate exceeds the upper endpoint of its printed
+interval.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_stunnenberg_2018_oi_180136.pdf#page=7">jama_stunnenberg_2018_oi_180136.pdf
+— PDF p. 7</a>, Table 2 mean Timed Up&amp;Go placebo-period change.</p>
+<p><strong>Source evidence:</strong> The cell prints
+<code>0.07 (-0.67 to 0.01)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed estimate 0.07
+versus ordered interval -0.67 to 0.01.</p>
+<p><strong>Reasoning procedure:</strong> Test whether the stated
+estimate is contained between the printed endpoints.</p>
+<p><strong>Calculation:</strong> <code>0.07 &gt; 0.01</code>; the
+estimate exceeds the printed upper endpoint by <code>0.06</code>.
+Same-row arithmetic gives <code>-1.05 - 0.07 = -1.12</code> under the
+observed table direction.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+endpoint digit, estimate sign/value, or other table field may be
+transcribed incorrectly.</p>
+<p><strong>Mechanical evidence recheck:</strong> The physical p. 7 cell,
+containment failure, and same-row arithmetic were reproduced.</p>
+<p><strong>Quality-control relevance:</strong> This is a direct
+estimate-containment consistency check.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a placebo-period estimate or interval could be copied incorrectly into
+later evidence products; no downstream use is asserted.</p>
+<p><strong>Human verification steps:</strong> Verify the authoritative
+estimate, endpoints, SE, and paired sample size in source analysis
+output.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed by human adjudication, the candidates identify fields
+that a systematic review, meta-analysis, guideline, or data extractor
+could copy: participant characteristics, baseline scales,
+treatment-effect direction, adverse-event rates, subgroup labels, model
+parameter definitions, and effect/interval/P-value sets. The supplied
+package does not show that any field was propagated, changed a
+conclusion, or caused harm.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The review is confined to the four supplied PDFs and uses no external
+literature or prior audit derivatives. Raw paired observations,
+row-specific complete-pair counts, unrounded estimates and standard
+errors, covariance data, executed Bayesian model files/logs, the eTable
+4 denominator/rounding definition, and an authoritative INQoL scoring
+worksheet are unavailable. C009-C012 use explicitly conditional
+reconciliation diagnostics; C013-C014 are direct ordering/containment
+checks. Figure geometry was not converted into invented numerical
+precision. This is not a broad methodology, clinical, raw-data-validity,
+or misconduct audit.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ul>
+<li>Review each card against the linked supplied PDF page and the named
+comparator.</li>
+<li>Obtain missing authoritative outputs or definitions where the card
+identifies them.</li>
+<li>Record validity, importance, action, initials, and notes in that
+card's blank fields.</li>
+<li>Keep candidate IDs stable and preserve the distinction between
+direct observations and alternative explanations.</li>
+</ul>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</h3>
+<p>Source SHA-256 values were recorded before review in
+<code>review_1_5_2/source_hashes_before.sha256</code> and recomputed
+unchanged after final assembly. Fresh assets comprise native text,
+layout text, metadata, and 83 rendered pages; native/layout text was
+usable for every page and CPU OCR was not required.</p>
+<h3 id="agent-execution">Agent Execution</h3>
+<p>The execution manifest records the coordinator plus fresh
+preprocessing, main/support mapping, numeric, cross-source, two
+independent statistical-pass, recheck, quality-audit, and
+report-generation agents. Statistical passes 1 and 2 are distinct fresh
+<code>gpt-5.6-terra</code> high-effort executions and each covers all 56
+statistical relationships.</p>
+<h3 id="reproducibility-performance">Reproducibility Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Four supplied scientific PDF sources
+totaling 83 pages: a 10-page main article, a 55-page protocol, a 17-page
+quantitative supplement with tables, figures, and Bayesian model
+specifications, and a 1-page data-sharing statement. All 83 units
+require fresh extraction and mapping; native PDF text is expected for
+most units, while result-relevant visual tables/figures require targeted
+rendering and OCR only if native/layout text proves unusable. This is
+smaller than the 102-page calibration package but retains substantial
+cross-document and statistical-review complexity.</li>
+<li><strong>Total source units:</strong> 83</li>
+<li><strong>Fresh-source units:</strong> 83</li>
+<li><strong>Target elapsed minutes:</strong> 30-45</li>
+<li><strong>Started UTC:</strong> 2026-08-20T18:02:32Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-20T18:45:43Z</li>
+<li><strong>Observed elapsed minutes:</strong> 43.2</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token Accounting and Cost</h3>
+<p>The runtime did not expose authoritative response-level token counts
+for the coordinator or any specialist. Every manifested execution is
+therefore recorded as <code>UNAVAILABLE</code> with exact
+<code>__</code> token fields. Known subtotals are zero because no
+authoritative token counts were exposed; this is not an estimate that
+usage was zero. Cached input and cache-write counts are input subsets;
+reasoning is an output subset and is not added again to total tokens.
+Any monetary values are token-only API-equivalent estimates under the
+2026-08-18 pricing snapshot, not an invoice.</p>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>3 agents; authoritative runtime usage unavailable.</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>8 agents; authoritative runtime usage unavailable.</td>
+</tr>
+</tbody>
+</table>
+<p>Per-agent detail is recorded in
+<code>review_1_5_2/token_usage_summary.md</code> and
+<code>review_1_5_2/token_usage_summary.json</code>.</p>
+</body>
+</html>

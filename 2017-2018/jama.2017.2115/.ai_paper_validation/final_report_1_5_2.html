@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review-lappe-et-al-2017-paper-package"
+id="toc-quantitative-quality-control-consistency-review-lappe-et-al-2017-paper-package">Quantitative
+Quality-Control Consistency Review: Lappe et al. 2017 Paper Package</a>
+<ul>
+<li><a href="#1-executive-quality-control-summary"
+id="toc-1-executive-quality-control-summary">1. Executive
+Quality-Control Summary</a></li>
+<li><a href="#2-package-and-fresh-processing-provenance"
+id="toc-2-package-and-fresh-processing-provenance">2. Package and
+Fresh-Processing Provenance</a></li>
+<li><a href="#3-scope-complete-coverage-and-exclusions"
+id="toc-3-scope-complete-coverage-and-exclusions">3. Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#4-quantitative-and-statistical-relationship-coverage"
+id="toc-4-quantitative-and-statistical-relationship-coverage">4.
+Quantitative and Statistical Relationship Coverage</a></li>
+<li><a href="#5-candidate-index" id="toc-5-candidate-index">5. Candidate
+Index</a></li>
+<li><a href="#6-candidate-evidence-cards"
+id="toc-6-candidate-evidence-cards">6. Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--table-2-placebo-calcium-n1994-exceeds-the-randomized-placebo-cohort"
+id="toc-c001--table-2-placebo-calcium-n1994-exceeds-the-randomized-placebo-cohort">C001
+— Table 2 placebo calcium <code>N=1994</code> exceeds the randomized
+placebo cohort</a></li>
+<li><a
+href="#c002--protocols-70-year-vitamin-d-limit-has-the-opposite-inequality-direction"
+id="toc-c002--protocols-70-year-vitamin-d-limit-has-the-opposite-inequality-direction">C002
+— Protocol’s ≥70-year vitamin-D “limit” has the opposite inequality
+direction</a></li>
+<li><a
+href="#c003--protocol-changes-the-calcium-target-unit-from-1200-mgday-to-1200-gday"
+id="toc-c003--protocol-changes-the-calcium-target-unit-from-1200-mgday-to-1200-gday">C003
+— Protocol changes the calcium target unit from 1200 mg/day to 1200
+g/day</a></li>
+<li><a
+href="#c004--death-difference-confidence-interval-is-discordant-with-printed-flow-counts-under-a-labelled-diagnostic-calculation"
+id="toc-c004--death-difference-confidence-interval-is-discordant-with-printed-flow-counts-under-a-labelled-diagnostic-calculation">C004
+— Death-difference confidence interval is discordant with printed flow
+counts under a labelled diagnostic calculation</a></li>
+<li><a
+href="#c005--outside-study-vitamin-d-difference-ci-includes-zero-while-printed-p002"
+id="toc-c005--outside-study-vitamin-d-difference-ci-includes-zero-while-printed-p002">C005
+— Outside-study vitamin-D difference CI includes zero while printed
+P=.002</a></li>
+<li><a
+href="#c006--figure-1-discontinuation-counts-conflict-with-p7-vitamin-dplacebo-discontinuation-total-and-percentages"
+id="toc-c006--figure-1-discontinuation-counts-conflict-with-p7-vitamin-dplacebo-discontinuation-total-and-percentages">C006
+— Figure 1 discontinuation counts conflict with p.7 vitamin-D/placebo
+discontinuation total and percentages</a></li>
+<li><a href="#7-downstream-evidence-chain-considerations"
+id="toc-7-downstream-evidence-chain-considerations">7. Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#8-limitations-and-missing-definitions"
+id="toc-8-limitations-and-missing-definitions">8. Limitations and
+Missing Definitions</a></li>
+<li><a href="#9-human-adjudication-checklist"
+id="toc-9-human-adjudication-checklist">9. Human Adjudication
+Checklist</a></li>
+<li><a
+href="#10-reproducibility-source-integrity-and-agent-execution-metadata"
+id="toc-10-reproducibility-source-integrity-and-agent-execution-metadata">10.
+Reproducibility, Source-Integrity, and Agent-Execution Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+</ul></li>
+<li><a href="#11-performance-metadata"
+id="toc-11-performance-metadata">11. Performance Metadata</a></li>
+<li><a href="#12-token-usage-and-cost-metadata"
+id="toc-12-token-usage-and-cost-metadata">12. Token-Usage and Cost
+Metadata</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review-lappe-et-al-2017-paper-package">Quantitative
+Quality-Control Consistency Review: Lappe et al. 2017 Paper Package</h1>
+<blockquote>
+<p><strong>Pending Human Adjudication:</strong> This report records
+quality-control candidates from supplied-source consistency checks. It
+makes no validity, importance, action, correction, severity, or
+scientific-disposition decision.</p>
+</blockquote>
+<h2 id="1-executive-quality-control-summary">1. Executive
+Quality-Control Summary</h2>
+<p>Fresh source-first processing of three supplied PDFs (28/28 pages)
+mapped 69 numeric relationships and 38 inferential-statistical
+relationships. Six distinct quantitative reporting quality-control
+candidates were registered and mechanically rechecked. Each remains
+<strong>Pending Human Adjudication</strong>. The review found no
+displayed-zero P value and did not create any candidate on that
+basis.</p>
+<p>The candidates concern one participant-count contradiction, two
+protocol label/unit conflicts, two conditional statistical-reporting
+questions, and one figure-versus-narrative discontinuation mismatch.
+Small preventable reporting defects can matter when values, confidence
+intervals, units, or definitions are copied into later evidence
+extraction; this report does not assert that propagation, conclusion
+change, or harm occurred.</p>
+<h2 id="2-package-and-fresh-processing-provenance">2. Package and
+Fresh-Processing Provenance</h2>
+<p>Only the three supplied direct PDFs were used as evidence: <a
+href="../jama_lappe_2017_oi_170019.pdf#page=1">jama_lappe_2017_oi_170019.pdf
+— PDF p. 1</a>, <a
+href="../joi170019supp1_prod.pdf#page=1">joi170019supp1_prod.pdf — PDF
+p. 1</a>, and <a
+href="../joi170019supp2_prod.pdf#page=1">joi170019supp2_prod.pdf — PDF
+p. 1</a>. Their before-run SHA-256 hashes are recorded in <a
+href="review_1_5_2/source_hashes_before.sha256">source_hashes_before.sha256</a>
+and fresh source inventory in <a
+href="review_1_5_2/source_inventory.md">source_inventory.md</a>.</p>
+<p>Fresh native and layout text was generated for all pages;
+result-relevant pages were rendered. Targeted CPU OCR was used only for
+DOC-003 PDF p. 6 heading-glyph corruption, while its usable body text
+and rendering remained the basis for reading. No old audit derivative,
+web source, Office conversion, GPU, or unsupplied source was used.</p>
+<h2 id="3-scope-complete-coverage-and-exclusions">3. Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review covers numeric, denominator/proportion/total,
+inferential-statistical, cross-document, measure/label/scale, and
+rate-versus-count relationships in the supplied package. It does not
+conduct a broad clinical, methodology, novelty, misconduct, raw-data, or
+final-correction audit.</p>
+<table>
+<thead>
+<tr>
+<th>Direct source</th>
+<th>Role</th>
+<th style="text-align: right;">Fresh mapped units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jama_lappe_2017_oi_170019.pdf</code></td>
+<td>Main article</td>
+<td style="text-align: right;">10/10 PDF pages</td>
+</tr>
+<tr>
+<td><code>joi170019supp1_prod.pdf</code></td>
+<td>Supporting protocol/design document</td>
+<td style="text-align: right;">12/12 PDF pages</td>
+</tr>
+<tr>
+<td><code>joi170019supp2_prod.pdf</code></td>
+<td>Supplementary figures/statistical material</td>
+<td style="text-align: right;">6/6 PDF pages</td>
+</tr>
+</tbody>
+</table>
+<p>All 28/28 direct-source pages were freshly mapped; reusable units
+were 0 and fresh-required units were 28. Reference/index-only pages were
+classified rather than treated as omitted result material. Full stage
+assignments are in <a
+href="review_1_5_2/coverage_manifest.md">coverage_manifest.md</a>.</p>
+<h2 id="4-quantitative-and-statistical-relationship-coverage">4.
+Quantitative and Statistical Relationship Coverage</h2>
+<ul>
+<li>Numeric relationship inventory: 69/69
+(<code>N001</code>–<code>N069</code>) mapped and checked; see <a
+href="review_1_5_2/relationships/numeric_relationship_inventory.md">numeric_relationship_inventory.md</a>
+and <a
+href="review_1_5_2/checkers/numeric_consistency.md">numeric_consistency.md</a>.</li>
+<li>Statistical relationship inventory: 38/38
+(<code>S001</code>–<code>S038</code>) mapped; see <a
+href="review_1_5_2/statistics/relationship_inventory.md">relationship_inventory.md</a>.</li>
+<li>Statistical pass 1: 38/38 completed by a fresh independent
+high-effort specialist; see <a
+href="review_1_5_2/checkers/statistical_pass_1.md">statistical_pass_1.md</a>.</li>
+<li>Statistical pass 2: 38/38 completed by a different fresh independent
+high-effort specialist, including all six ledger records and recheck
+facts; see <a
+href="review_1_5_2/checkers/statistical_pass_2.md">statistical_pass_2.md</a>.</li>
+<li>Cross-source review: all 69 numeric and 38 statistical relationships
+plus 24 match clusters checked; see <a
+href="review_1_5_2/checkers/cross_source_consistency.md">cross_source_consistency.md</a>.</li>
+</ul>
+<p>There was no review queue, count cap, or deferred subset.</p>
+<h2 id="5-candidate-index">5. Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Category</th>
+<th>Candidate statement</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Table 2 placebo calcium <code>N=1994</code> exceeds the randomized
+placebo cohort.</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>The protocol’s ≥70-year vitamin-D “limit” reverses inequality
+direction.</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>The protocol changes the calcium target from 1200 mg/day to 1200
+g/day.</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Statistical reporting inconsistency</td>
+<td>A death-difference CI is discordant with counts under a labelled
+diagnostic calculation.</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Statistical reporting inconsistency</td>
+<td>An outside-study vitamin-D difference CI includes zero while printed
+P=.002.</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Figure 1 discontinuation counts conflict with a p.7 total and
+percentages.</td>
+<td>Pending Human Adjudication</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-candidate-evidence-cards">6. Candidate Evidence Cards</h2>
+<h2
+id="c001--table-2-placebo-calcium-n1994-exceeds-the-randomized-placebo-cohort" class="candidate-card">C001
+— Table 2 placebo calcium <code>N=1994</code> exceeds the randomized
+placebo cohort</h2>
+<p><strong>Candidate statement:</strong> The Table 2 placebo calcium
+participant count is larger than the entire reported randomized placebo
+cohort under the printed participant-count label. Status: Pending Human
+Adjudication.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lappe_2017_oi_170019.pdf#page=5">jama_lappe_2017_oi_170019.pdf
+— PDF p. 5</a>, Table 2, outside-study calcium row; <a
+href="../jama_lappe_2017_oi_170019.pdf#page=1">PDF p. 1</a> abstract and
+<a href="../jama_lappe_2017_oi_170019.pdf#page=4" target="_blank" rel="noopener">PDF p. 4</a> Figure 1
+for placebo randomization.</p>
+<p><strong>Source evidence:</strong> Table 2 prints placebo
+<code>N=1994</code>, mean 512 (489 to 536) mg/d, versus treatment
+<code>N=1099</code>, mean 500 (475 to 525) mg/d. The paper prints 1147
+randomized placebo participants; the adjacent placebo outside-study
+vitamin-D row prints <code>N=1094</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported placebo calcium
+<code>N=1994</code> versus reported placebo randomized total
+<code>N=1147</code>, a difference of 847.</p>
+<p><strong>Reasoning procedure:</strong> A cell headed “No. of
+Participants” for a participant-level placebo-group mean cannot exceed
+the reported placebo cohort absent a supplied different-unit
+definition.</p>
+<p><strong>Calculation:</strong> <code>1994 − 1147 = 847</code>;
+separately, <code>500 − 512 = −12.0</code> mg/d, which reproduces the
+printed mean difference but does not resolve the count mismatch.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+value may be a transposition, with adjacent <code>1094</code> one
+possible numerical explanation, or it may intentionally count another
+unit despite the header. The supplied PDFs establish neither
+explanation.</p>
+<p><strong>Mechanical evidence recheck:</strong> <a
+href="review_1_5_2/verification/evidence_recheck.md">evidence_recheck.md</a>
+found the cited cell, comparator, header, adjacent row, and arithmetic
+at the direct-PDF pages.</p>
+<p><strong>Quality-control relevance:</strong> A participant count is a
+core denominator/label field for descriptive-table interpretation and
+extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy an incorrect participant count or its
+implied analysis population into a systematic-review evidence table; no
+propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Check the Table 2
+production proof or source data, determine whether the cell counts
+unique participants, and verify the intended placebo calcium count.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--protocols-70-year-vitamin-d-limit-has-the-opposite-inequality-direction" class="candidate-card">C002
+— Protocol’s ≥70-year vitamin-D “limit” has the opposite inequality
+direction</h2>
+<p><strong>Candidate statement:</strong> The protocol’s coordinated
+vitamin-D limiting instruction uses an upper bound for age &lt;70 and a
+lower bound for age ≥70. Status: Pending Human Adjudication.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi170019supp1_prod.pdf#page=7">joi170019supp1_prod.pdf — PDF
+p. 7</a>, section 5, “Intervention.”</p>
+<p><strong>Source evidence:</strong> The sentence asks participants to
+“limit” outside vitamin D to “no more than 400 IU/day” if age &lt;70 and
+“to more than 600 IU/day” if age ≥70.</p>
+<p><strong>Reported-versus-comparator:</strong> The reported ≥70 phrase
+<code>more than 600 IU/day</code> versus the paired limiting phrase
+<code>no more than 400 IU/day</code> and governing word “limit.”</p>
+<p><strong>Reasoning procedure:</strong> “No more than” defines an upper
+bound; “more than” defines a lower bound. Coordinated limits require an
+explicit different purpose to reverse direction.</p>
+<p><strong>Calculation:</strong> Age &lt;70: outside vitamin D
+<code>≤400 IU/day</code>; age ≥70: outside vitamin D
+<code>&gt;600 IU/day</code>. This is a direct inequality-direction
+comparison, not a rounding calculation.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> “No
+more than 600 IU/day” may have been intended, or the older-group clause
+may intentionally state a distinct minimum. The supplied PDFs do not
+resolve the purpose or intended limit.</p>
+<p><strong>Mechanical evidence recheck:</strong> <a
+href="review_1_5_2/verification/evidence_recheck.md">evidence_recheck.md</a>
+matched both clauses and the governing sentence at PDF p. 7.</p>
+<p><strong>Quality-control relevance:</strong> Directional symbols and
+limiting language define intervention/exposure instructions and their
+extractable dose constraints.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a protocol extractor could copy the wrong permitted vitamin-D direction
+or threshold into an intervention description; no downstream use is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Consult the protocol
+source or trial operations documentation to establish whether the
+older-age clause is an upper limit, a distinct minimum, or a production
+error.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--protocol-changes-the-calcium-target-unit-from-1200-mgday-to-1200-gday" class="candidate-card">C003
+— Protocol changes the calcium target unit from 1200 mg/day to 1200
+g/day</h2>
+<p><strong>Candidate statement:</strong> The same protocol paragraph
+presents 1200 mg/day as the regimen and 1200 g/day as the purported
+matching supplementation level. Status: Pending Human Adjudication.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi170019supp1_prod.pdf#page=7">joi170019supp1_prod.pdf — PDF
+p. 7</a>, section 5, “Intervention.”</p>
+<p><strong>Source evidence:</strong> The page specifies calcium
+<code>1200 mg/d</code> and two <code>600 mg</code> caplets daily, then
+states recommended intake was “1,200 g/day ... the level of
+supplementation that we are including.”</p>
+<p><strong>Reported-versus-comparator:</strong> Reported
+<code>1,200 g/day</code> versus the stated regimen of
+<code>600 mg × 2/day = 1200 mg/day = 1.2 g/day</code>.</p>
+<p><strong>Reasoning procedure:</strong> Exact mass-unit conversion
+compares the purported matching intake with the daily caplet
+regimen.</p>
+<p><strong>Calculation:</strong>
+<code>600 mg × 2/day = 1200 mg/day = 1.2 g/day</code>;
+<code>1200 g/day = 1,200,000 mg/day</code>, 1000-fold larger than 1200
+mg/day.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+latter text may have intended <code>1,200 mg/day</code> or
+<code>1.2 g/day</code>; the supplied PDFs do not establish a
+correction.</p>
+<p><strong>Mechanical evidence recheck:</strong> <a
+href="review_1_5_2/verification/evidence_recheck.md">evidence_recheck.md</a>
+matched the regimen, two unit strings, and conversion inputs at PDF p.
+7.</p>
+<p><strong>Quality-control relevance:</strong> Dose units are central to
+intervention labeling, comparison, and evidence extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence table or protocol summary could copy a materially wrong
+calcium unit or dose scale; no propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Check the protocol
+production source and dosing records to determine the intended unit in
+the recommended-intake sentence.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--death-difference-confidence-interval-is-discordant-with-printed-flow-counts-under-a-labelled-diagnostic-calculation" class="candidate-card">C004
+— Death-difference confidence interval is discordant with printed flow
+counts under a labelled diagnostic calculation</h2>
+<p><strong>Candidate statement:</strong> The printed death-difference CI
+upper endpoint appears discordant with the printed flow counts under an
+explicitly labelled ordinary unpooled-binomial Wald diagnostic. Status:
+Pending Human Adjudication.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lappe_2017_oi_170019.pdf#page=4">jama_lappe_2017_oi_170019.pdf
+— PDF p. 4</a>, Figure 1 and adjacent results narrative.</p>
+<p><strong>Source evidence:</strong> The page prints 7 treatment and 9
+placebo deaths among 1156 and 1147 randomized participants, death
+difference <code>.002</code>, and 95% CI <code>−.006 to .037</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported CI
+<code>−.006 to .037</code> versus the printed counts evaluated under the
+labelled diagnostic; the point difference itself is compatible with the
+counts.</p>
+<p><strong>Reasoning procedure:</strong> Reproduce placebo minus
+treatment and use an ordinary unpooled-binomial Wald interval only as a
+diagnostic; it is not claimed to be the paper’s reported CI method.</p>
+<p><strong>Calculation:</strong> <code>9/1147 − 7/1156 = .001791</code>,
+compatible with <code>.002</code>. Diagnostic <code>SE = .003463</code>;
+nominal 95% interval is approximately <code>−.0050 to .0086</code>,
+while the reported upper endpoint is <code>.037</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>.037</code> may be a transcription/typesetting endpoint, or the
+reported interval may use a nonstandard method, population, or contrast
+orientation not supplied in the package. No correction is
+established.</p>
+<p><strong>Mechanical evidence recheck:</strong> <a
+href="review_1_5_2/verification/evidence_recheck.md">evidence_recheck.md</a>
+matched counts, denominators, point difference, CI, and reproduced the
+labelled diagnostic.</p>
+<p><strong>Quality-control relevance:</strong> Confidence intervals and
+their accompanying event counts are routinely extracted statistical
+fields; this candidate is conditional on the absent reported CI
+method.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy a discordant death CI or use it in a
+quantitative summary; no conclusion change or propagation is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Recompute the
+death-proportion CI from the analysis dataset using the reported method,
+population, and contrast orientation; then compare the production
+endpoint.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--outside-study-vitamin-d-difference-ci-includes-zero-while-printed-p002" class="candidate-card">C005
+— Outside-study vitamin-D difference CI includes zero while printed
+P=.002</h2>
+<p><strong>Candidate statement:</strong> One Table 2 contrast prints a
+two-sided P=.002 while its reported 95% CI includes zero; compatibility
+is conditional on the CI and P referring to the same contrast and
+procedures. Status: Pending Human Adjudication.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lappe_2017_oi_170019.pdf#page=5">jama_lappe_2017_oi_170019.pdf
+— PDF p. 5</a>, Table 2, outside-study vitamin D3 intake (visits 2–9)
+row.</p>
+<p><strong>Source evidence:</strong> Treatment <code>N=1099</code>, 740
+(691 to 789) IU/d; placebo <code>N=1094</code>, 869 (803 to 934) IU/d;
+between-group difference <code>−128.1</code> with 95% CI
+<code>−209.5 to 46.6</code>, <code>P=.002</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported CI
+<code>−209.5 to 46.6</code>, which includes zero, versus reported
+two-sided <code>P=.002</code> in the same contrast row.</p>
+<p><strong>Reasoning procedure:</strong> A corresponding same-contrast
+two-sided 95% CI and two-sided null test ordinarily cannot pair null
+inclusion with P=.002. The source does not supply the Table 2
+CI/test/variance mapping, so the premise remains conditional.</p>
+<p><strong>Calculation:</strong> <code>740 − 869 = −129</code>,
+compatible with <code>−128.1</code>. The ordered interval contains both
+<code>−128.1</code> and zero. Changing only the upper sign to
+<code>−46.6</code> gives a normal diagnostic near <code>.002</code>, but
+that explanatory observation is not a correction.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+missing minus sign is plausible, or the CI and P may be
+non-corresponding under an unreported method. The supplied package does
+not choose between them.</p>
+<p><strong>Mechanical evidence recheck:</strong> <a
+href="review_1_5_2/verification/evidence_recheck.md">evidence_recheck.md</a>
+visually and textually confirmed that the printed upper endpoint has no
+minus sign, and matched the same-row P value.</p>
+<p><strong>Quality-control relevance:</strong> Paired effect, CI, and
+P-value fields can be extracted together; their interpretive
+compatibility depends on documented methods.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could copy an internally discordant CI/P pair into a
+quantitative evidence table or meta-analytic data check; no use or
+conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Inspect the Table 2
+analysis output and production proof, identify the CI/test construction
+and sidedness, and verify the printed upper endpoint.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--figure-1-discontinuation-counts-conflict-with-p7-vitamin-dplacebo-discontinuation-total-and-percentages" class="candidate-card">C006
+— Figure 1 discontinuation counts conflict with p.7 vitamin-D/placebo
+discontinuation total and percentages</h2>
+<p><strong>Candidate statement:</strong> Figure 1 reports 484
+intervention discontinuations while a later narrative reports 304
+participants stopping vitamin D or placebo; the construct match remains
+conditional because the figure label is not defined. Status: Pending
+Human Adjudication.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_lappe_2017_oi_170019.pdf#page=4">jama_lappe_2017_oi_170019.pdf
+— PDF p. 4</a>, Figure 1; <a
+href="../jama_lappe_2017_oi_170019.pdf#page=7">PDF p. 7</a>,
+discontinuation narrative.</p>
+<p><strong>Source evidence:</strong> Figure 1 prints 238 and 246
+“Discontinued intervention” participants with components 11+93+134 and
+16+76+154. Page 7 prints 304 participants (13.2%; 12.4% treatment and
+14.0% placebo) stopped vitamin D or placebo.</p>
+<p><strong>Reported-versus-comparator:</strong> Figure total
+<code>238 + 246 = 484</code> versus narrative total <code>304</code>
+with stated arm percentages.</p>
+<p><strong>Reasoning procedure:</strong> Compare matched trial, arm, and
+follow-up statements while retaining the unresolved possibility that
+Figure 1 uses a broader intervention-discontinuation event
+definition.</p>
+<p><strong>Calculation:</strong> <code>11+93+134=238</code>;
+<code>16+76+154=246</code>; <code>238+246=484</code>. The narrative
+percentages are compatible with about <code>143/1156=12.4%</code> and
+<code>161/1147=14.0%</code>; <code>143+161=304</code>. Rounding cannot
+reconcile 484 and 304.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Figure
+1 may include stopping either study component, a different time window,
+or another status rule; alternatively, one display may be erroneous. The
+supplied PDFs do not define the difference.</p>
+<p><strong>Mechanical evidence recheck:</strong> <a
+href="review_1_5_2/verification/evidence_recheck.md">evidence_recheck.md</a>
+matched figure components, narrative total/percentages, denominators,
+and the 484-versus-304 arithmetic.</p>
+<p><strong>Quality-control relevance:</strong> Discontinuation counts
+and definitions affect exposure/adherence descriptions and may be
+compared across figures and narratives.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy a discontinuation count or definition that is
+not comparable across displays; no propagation or effect on conclusions
+is asserted.</p>
+<p><strong>Human verification steps:</strong> Obtain the Figure 1
+event-definition and source counts, compare its supplement components,
+time window, and counting rule with the p.7 endpoint, and verify which
+values describe each construct.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="7-downstream-evidence-chain-considerations">7. Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed after human review, the identified fields could affect
+what a systematic review, meta-analysis, guideline evidence table, or
+data extractor records: a participant denominator, intervention limit,
+dose unit, confidence interval/P-value pair, or discontinuation
+definition. This is a generic extraction-risk statement only. The
+supplied package does not show that any field propagated, that a
+meta-analysis used it, or that a study conclusion changed.</p>
+<h2 id="8-limitations-and-missing-definitions">8. Limitations and
+Missing Definitions</h2>
+<p>The complete bounded limitations record is in <a
+href="review_1_5_2/limitations.md">limitations.md</a>. In particular,
+raw data and production files are absent; Table 2 CI/test mappings, the
+death-CI construction, and the Figure 1 discontinuation definition are
+not supplied. These absences prevent adjudication or correction but do
+not remove the registered candidates.</p>
+<h2 id="9-human-adjudication-checklist">9. Human Adjudication
+Checklist</h2>
+<p>For each candidate, a qualified human reviewer should: confirm
+direct-PDF location and transcription; retrieve the applicable
+production, protocol, or analysis source; verify population, unit, time
+window, contrast, and method; determine whether an alternative
+source-grounded definition resolves the mismatch; document any action
+outside this report; and complete the five blank fields in that card.
+All six records remain Pending Human Adjudication until that process
+occurs.</p>
+<h2
+id="10-reproducibility-source-integrity-and-agent-execution-metadata">10.
+Reproducibility, Source-Integrity, and Agent-Execution Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>Fresh processing is documented in <a
+href="review_1_5_2/evidence_asset_inventory.md">evidence_asset_inventory.md</a>,
+complete unit coverage in <a
+href="review_1_5_2/source_coverage.md">source_coverage.md</a>, and
+pre-run hashes in <a
+href="review_1_5_2/source_hashes_before.sha256">source_hashes_before.sha256</a>.
+The three direct PDFs had SHA-256 values: DOC-001
+<code>af73f4f45ba4d330b06c21d0ac4a54c9069641578aa7a5f8063f4160af49c34d</code>;
+DOC-002
+<code>a2782a096e4690f29d9fefa4522d19745b42dc047da7ae00c142f6bad6736d69</code>;
+DOC-003
+<code>4c6200e596fdd764522785ef39e620cc6fb0ea725877a9339edbc829bf32fab2</code>.
+Final direct recomputation matched all three pre-run hashes, so source
+integrity was unchanged.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<p>The execution manifest is <a
+href="review_1_5_2/agent_execution_manifest.md">agent_execution_manifest.md</a>.
+It records <code>root</code> (gpt-5.6-sol, high);
+<code>root/fresh_preprocessing</code>, <code>root/main_mapper</code>,
+<code>root/support_mapper</code>, <code>root/numeric_checker</code>,
+<code>root/cross_source_checker</code>, and
+<code>root/report_generator</code> (gpt-5.6-terra, medium);
+<code>root/statistics_pass_1</code> and
+<code>root/statistics_pass_2</code> (distinct gpt-5.6-terra, high,
+fresh-spawn statistical passes); and
+<code>root/evidence_rechecker</code> and
+<code>root/quality_auditor</code> (gpt-5.6-sol, high).</p>
+<h2 id="11-performance-metadata">11. Performance Metadata</h2>
+<ul>
+<li><strong>Target basis:</strong> Three direct PDF sources comprising
+one 10-page main article and two support documents of 12 and 6 pages;
+all 28 unique PDF pages require fresh native and layout extraction,
+result-relevant visual inspection/rendering, complete main/support
+quantitative mapping, three parallel first-line consistency lanes, two
+fresh high-effort statistical passes, full candidate recheck,
+evidence-quality audit, and complete report generation. No Office
+conversion is required and all direct tools are locally available.</li>
+<li><strong>Total source units:</strong> 28</li>
+<li><strong>Fresh-source units:</strong> 28</li>
+<li><strong>Target elapsed minutes:</strong> 25-40</li>
+<li><strong>Started UTC:</strong> 2026-08-20T16:53:39Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-20T17:28:23Z</li>
+<li><strong>Observed elapsed minutes:</strong> 34.7</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h2 id="12-token-usage-and-cost-metadata">12. Token-Usage and Cost
+Metadata</h2>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Agents</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token-only API-equivalent estimate
+(USD)</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<p>The finalized <a
+href="review_1_5_2/token_usage_summary.md">token_usage_summary.md</a>
+provides per-agent detail. The runtime exposed no authoritative
+response-level token counts for the coordinator or specialists, so each
+manifested agent has an <code>UNAVAILABLE</code> row and the known token
+count of 0 is not a complete package count. No count was inferred from
+text length. Cached input and cache-write counts are input subsets, and
+reasoning is an output subset, not additional total tokens. Amounts are
+token-only API-equivalent estimates under the 2026-08-18 pricing
+snapshot, not invoices.</p>
+</body>
+</html>

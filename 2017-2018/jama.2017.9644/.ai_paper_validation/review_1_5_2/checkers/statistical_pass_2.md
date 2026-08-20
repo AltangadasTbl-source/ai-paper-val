@@ -1,0 +1,68 @@
+# Statistical Consistency Pass 2
+
+## Independent scope and method
+
+This is an independent second pass over every stable inferential relationship: `S001`, `S002`, `S003`, `S004`, `S005`, `S006`, `S007`, `S008`, `S009`, `S010`, `S011`, `S012`, `S013`, `S014`, `S015`, `S016`, `S017`, `S018`, `S019`, `S020`, `S021`, `S022`, `S023`, `S024`, `S025`, `S026`, `S027`, `S028`, `S029`, `S030`, and `S031`.
+
+The pass read the three supplied direct PDFs at the cited locations, their fresh native/layout and rendered evidence assets, both fresh quantitative maps, the numeric and cross-source checker artifacts, the complete stable ledger (`C001`--`C013`), and the mechanical recheck for every ledger ID. No legacy audit derivative, web source, or external material was used. The review checked point-estimate direction and null containment; interval endpoint ordering; matched population/endpoint/timepoint/contrast; effect-measure and scale labels; denominator and duplicate-value implications; cross-location repetition; and ledger/recheck implications.
+
+Where the package does not identify a shared confidence-interval construction, variance estimator, exact test statistic, or other needed inferential rule, this pass does not infer one from convention. The diagnostic observations below are expressly not candidate-generating calculations. No `P = 0`, `p = 0.000`, or equivalent display-zero P value occurs in the assigned set.
+
+## Reconciliation of stable-ledger and mechanical-recheck implications
+
+The existing stable IDs were revisited as cross-lane context; this pass neither deletes, renumbers, merges, nor adjudicates any ID.
+
+| Ledger IDs | Pass-2 implication for statistical relationships | Result |
+|---|---|---|
+| C001 | Figure 2's `Patients, %` axis and count-like in-bar labels are a presentation-unit issue. The integer sequences reproduce the Table 2 all-procedure and first-line endpoint counts, so no statistical direction, endpoint, or duplicated-result contradiction is created. | Existing ledger item retained; no new signal. |
+| C002 | The eTable `Stent Retriever First (n=175)` is explained arithmetically by the main flow as `189 - 12` spontaneous lyses `- 1` groin-access failure `- 1` extracranial stenting without a stent retriever = `175` patients with a frontline device procedure. The eTable wording/population definition remains the registered human question, but this does not change an S-result or add an inferential contradiction. | Existing ledger item retained; no new signal. |
+| C003--C004 | Protocol V1.1 and the publication print different sample-size and primary-method plans. The protocol itself says a detailed SAP would be finalized before database lock; no controlling amendment/SAP/version chronology is supplied. These are direct plan-document divergences, not incompatible estimates from one matched final analysis. | Existing ledger items retained; no new signal. |
+| C005--C013 | The recheck reproduces every Table 3 stent-column within-row fraction/percentage mismatch. C005 and C012 also have narrative repetitions of the numerator/percentage, while C013's numerator is supported by the pooled count. These are denominator/percentage identities, not a supplied inferential statistic or treatment-effect result; no duplicate S-level candidate is generated. | Existing ledger items retained; no new signal. |
+
+## Relationship-by-relationship completion record
+
+| Stable ID | Independent pass-2 checks and direct-source basis | Pass-2 outcome |
+|---|---|---|
+| S001 | Main article p. 3, design statement: 90% power, two-sided alpha .05, 70% reference rate, 15% absolute increase, 15% failure assumption, and 190 per group/380 total. Checked labelled scale and `190 x 2 = 380`; compared C003 context. The supplied design formula and allocation/failure treatment are incomplete for a fresh power calculation. | `PASS_2_COMPLETE` — no new signal; missing design-calculation definition recorded. |
+| S002 | Main pp. 3--4: ITT, categorical frequency/percentage, and continuous-summary rules. Checked against Table 1/2 denominator and format labels, including mapped missingness. | `PASS_2_COMPLETE` — no population, denominator, or label conflict. |
+| S003 | Main pp. 3--4 and Supplement 2 p. 2: mixed logistic primary approach, IV-thrombolysis fixed effect, center random effect, adjusted OR, and marginal RD. Checked distinction between adjusted OR and marginal RD, and C004's protocol-plan context. | `PASS_2_COMPLETE` — no same-analysis numerical contradiction; amendment/SAP provenance is missing for the plan comparison. |
+| S004 | Main p. 4: core-read substitutions, per-protocol rule, and subgroup definitions. Checked that ITT, per-protocol, site-read, first-line, and all-procedure populations were not exchanged. | `PASS_2_COMPLETE` — no population or endpoint substitution. |
+| S005 | Main pp. 1, 6--7 and Supplement 2 p. 6: ITT primary result `164/192` vs `157/189`, RD `2.4% (-5.4 to 9.7)`, OR `1.20 (0.68-2.10)`, `P=.53`. Checked repeated identity, direction, null containment, and Figure 2 count link (C001). | `PASS_2_COMPLETE` — matched result is coherent; no new signal. |
+| S006 | Main p. 6: per-protocol `140/153` vs `140/165`, RD `6.8% (-0.6 to 14.11)`, OR `1.91 (0.93-3.91)`, `P=.08`. Checked distinct per-protocol population, sign, ordered CI, and null containment. | `PASS_2_COMPLETE` — no new signal. |
+| S007 | Main p. 6: site-read sensitivity `163/192` vs `163/189`, RD `-1.4% (-8.3 to 5.5)`, OR `.90 (.50-1.59)`, `P=.71`. Checked negative direction and explicitly unplanned/site-read identity. | `PASS_2_COMPLETE` — no new signal. |
+| S008 | Main p. 6: all-procedure mTICI 3 `72/192` vs `73/189`, RD `-1.1% (-11.0 to 9.0)`, OR `.95 (.62-1.45)`, `P=.82`. Checked outcome subset, direction, endpoint ordering, and null containment. | `PASS_2_COMPLETE` — no new signal. |
+| S009 | Main p. 6: all-procedure mTICI 2c/3 `108/192` vs `107/189`, RD `.4% (-10.9 to 9.7)`, OR `.99 (.65-1.48)`, `P=.84`. Rounded raw-rate and simple Wald-style diagnostics are not a common rule for this adjusted OR/marginal RD display; CI construction, variance rule, and exact P-value test are not supplied. | `PASS_2_COMPLETE` — no new signal; inferential compatibility calculation not applicable beyond labelled diagnostic. |
+| S010 | Main p. 6: first-line mTICI 2b/3 `121/192` vs `128/189`, RD `-4.7% (-13.8 to 4.4)`, OR `.81 (.53-1.24)`, `P=.34`. Checked first-line timing, direction, ordered intervals, and null containment. | `PASS_2_COMPLETE` — no new signal. |
+| S011 | Main p. 6: first-line mTICI 3 `55/192` vs `67/189`, RD `-6.8% (-16.2 to 2.5)`, OR `.73 (.54-1.13)`, `P=.16`. A rounded simple-Wald diagnostic is not a supplied common model/CI/P rule for the adjusted display. | `PASS_2_COMPLETE` — no new signal; inferential compatibility calculation not applicable beyond labelled diagnostic. |
+| S012 | Main p. 6: first-line mTICI 2c/3 `83/192` vs `94/189`, RD `-6.5% (-16.4 to 3.3)`, OR `.77 (.51-1.16)`, `P=.21`. Checked scale, direction, first-line endpoint, and null containment. | `PASS_2_COMPLETE` — no new signal. |
+| S013 | Main pp. 6--7: rescue `63/192` vs `45/189`, RD `9.0% (-.9 to 18.1)`, OR `1.57 (.99-2.47)`, `P=.05`. Checked raw positive direction, interval ordering, and rounded null-boundary interpretation without inferring unreported exact precision. | `PASS_2_COMPLETE` — no new signal. |
+| S014 | Main pp. 6--7 and Supplement 2 p. 2: 24-hour NIHSS cLDA difference `.38 (-1.42 to 2.18)`, `P=.68`. Checked zero containment and baseline-adjusted cLDA scale; raw displayed mean change is not a substitute for the adjusted interaction estimate. | `PASS_2_COMPLETE` — no new signal. |
+| S015 | Main pp. 6--7 and Supplement 2 p. 5: functional independence `82/181` vs `91/182`, RD `-4.6% (-14.7 to 6.1)`, OR `.83 (.54-1.26)`, `P=.38`. Checked completed/dead follow-up denominators, direction, eFigure mRS counts, and null containment. | `PASS_2_COMPLETE` — no new signal. |
+| S016 | Main pp. 6--7 and Supplement 2 pp. 2, 5: ordinal mRS common OR `.76 (.53-1.10)`, `P=.15`, aspiration relative to stent, with scores 5/6 combined. Checked contrast/direction, ordinal scale, model label, and repeated eFigure identity. | `PASS_2_COMPLETE` — no new signal. |
+| S017 | Main p. 7: rescue among first-line failures `57/68` vs `42/51`, OR `1.21 (.43-3.38)`, `P=.72`. Checked `68+51=119`, fractions, distinct failure subgroup, direction, and null containment. | `PASS_2_COMPLETE` — no new signal. |
+| S018 | Main p. 7 and Supplement 2 p. 2: total-pass `P=.84` and puncture-to-revascularization `P=.10`; Mann-Whitney/rank-standardized analysis is stated. No test statistic, rank-effect estimate, or applicable time subset denominator is supplied. | `PASS_2_COMPLETE` — no new signal; definitions insufficient for numerical P-value reconciliation. |
+| S019 | Main pp. 6--7: narrative repeats Table 2 NIHSS, functional-independence, and ordinal-mRS estimates. Checked matched timepoint, population, effects, CIs, and P values. | `PASS_2_COMPLETE` — exact repetitions at displayed precision; no new signal. |
+| S020 | Main p. 8 and Supplement 2 p. 2: exploratory clot-contact-to-revascularization `13 (6-38)` vs `22 (10-38)` minutes, `P=.03`; Mann-Whitney model stated. No test statistic, estimand, or analytic denominator is supplied. | `PASS_2_COMPLETE` — direction/unit/exploratory label agree; no unsupported P-value reconstruction or new signal. |
+| S021 | Protocol pp. 6--7: two-sided alpha .05, planned chi-square/rate differences, center stratification/Breslow-Day. Compared with S003/C004 only as a plan-document relationship. | `PASS_2_COMPLETE` — C004 captures the direct plan divergence; controlling SAP/amendment is missing, so no additional signal. |
+| S022 | Protocol p. 7: 70% to 85%, stated 21% increase, 90% power, `161` per arm/`322` total. Checked `85-70=15` percentage points and `15/70=21.4%` relative; compared with S001/C003. | `PASS_2_COMPLETE` — 21% is compatible with a relative increase; C003 captures the different plan totals; no additional arithmetic/scale signal. |
+| S023 | Supplement 2 p. 2: secondary mixed logistic ORs, marginal RD, and bootstrap RD CIs. Checked model and effect-measure distinction against Table 2; reviewed C004 context. | `PASS_2_COMPLETE` — no raw-rate/adjusted-effect or label contradiction; no new signal. |
+| S024 | Supplement 2 p. 2: ordinal model with 5/6 combined, treatment/IV thrombolysis fixed and center random. Checked S016/eFigure 1 scale, contrast, and direction. | `PASS_2_COMPLETE` — no new signal. |
+| S025 | Supplement 2 p. 2: constrained longitudinal NIHSS model with time-by-arm treatment effect. Checked S014's baseline-adjusted estimate and zero-containing CI. | `PASS_2_COMPLETE` — no new signal. |
+| S026 | Supplement 2 p. 2: Mann-Whitney U and rank-standardized pass/time effects with bootstrap CIs. Checked S018/S020 endpoint match and missing-data limits. | `PASS_2_COMPLETE` — no new signal; missing result-level test statistics/denominators preclude numerical reconstruction. |
+| S027 | Supplement 2 p. 5: common OR `.76 (.53-1.10)`, `P=.15`; compared with S016/Table 2/narrative. Checked exact repetition, reference group, scale, and null containment. | `PASS_2_COMPLETE` — no new signal. |
+| S028 | Supplement 2 p. 6: IV-rtPA subgroup ORs `1.69 (.68-4.17), P=.28` and `.96 (.46-1.98), P=.96`, heterogeneity `P=.34`. Checked subgroup counts sum to S005 overall counts, direction/rate agreement, interaction label, and CI null containment. | `PASS_2_COMPLETE` — no new signal. |
+| S029 | Supplement 2 p. 6: occlusion-site ORs `.95 (.45-2.01), P=.90`; `1.73 (.44-6.68), P=.43`; `.95 (.14-6.36), P=.96`; heterogeneity `P=.75`. Checked endpoint/scale/direction and availability-limited denominators without treating them as a full ITT partition. | `PASS_2_COMPLETE` — no new signal. |
+| S030 | Supplement 2 p. 6: CBS ORs `.73 (.33-1.59), P=.43` and `1.49 (.62-3.58), P=.37`; heterogeneity `P=.25`. Checked lower-CBS/higher-burden scale, direction, and incomplete availability denominators. | `PASS_2_COMPLETE` — no new signal. |
+| S031 | Supplement 2 p. 6: unplanned clot-length ORs `.74 (.26-2.11), P=.57` and `1.27 (.64-2.48), P=.49`; heterogeneity `P=.17`. Checked subgroup label, direction, interval ordering/null containment, and availability-limited denominators. | `PASS_2_COMPLETE` — no new signal. |
+
+## New-signal register
+
+No new distinct qualifying candidate signal was identified. All independent observations that satisfy a reproducible contradiction rule are already represented by the stable ledger, notably C001--C013. The pass does not create a duplicate signal from C002's reconciled `n=175`, from missing protocol/SAP provenance for C003--C004, from the Table 3 recheck identities already represented by C005--C013, or from unsupplied inferential definitions.
+
+## Completion and limitations
+
+- **Coverage:** 31/31 assigned relationships, `S001`--`S031`, each has an explicit `PASS_2_COMPLETE` record above.
+- **New distinct candidate signals:** 0.
+- **Display-zero P-value status:** None observed; none treated as a candidate.
+- **Key missing definitions:** final/amended protocol or SAP and version chronology for S001/S003/S021/S022; shared CI construction, variance estimator, and exact P-value test for the adjusted Table 2 and subgroup OR displays; rank-effect/test statistics and applicable subset denominators for the time/pass outcomes.
+- **Boundary:** All existing ledger candidates remain Pending Human Adjudication. This pass records source-grounded consistency observations only and assigns no severity, validity, acceptance, rejection, or correction.

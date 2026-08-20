@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review-polar-randomized-clinical-trial-package"
+id="toc-quantitative-quality-control-consistency-review-polar-randomized-clinical-trial-package">Quantitative
+Quality-Control Consistency Review: POLAR Randomized Clinical Trial
+Package</a>
+<ul>
+<li><a href="#pending-human-adjudication-notice"
+id="toc-pending-human-adjudication-notice">Pending Human Adjudication
+Notice</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-fresh-processing-provenance"
+id="toc-package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--normothermia-injury-severity-score-median-is-below-its-printed-iqr-lower-endpoint"
+id="toc-c001--normothermia-injury-severity-score-median-is-below-its-printed-iqr-lower-endpoint">C001
+— Normothermia Injury Severity Score median is below its printed IQR
+lower endpoint</a></li>
+<li><a
+href="#c002--primary-risk-difference-has-opposite-signs-in-matched-main-article-locations"
+id="toc-c002--primary-risk-difference-has-opposite-signs-in-matched-main-article-locations">C002
+— Primary risk difference has opposite signs in matched main-article
+locations</a></li>
+<li><a
+href="#c003--intracranial-bleeding-effect-and-p-value-reporting-conflicts-with-matched-evidence"
+id="toc-c003--intracranial-bleeding-effect-and-p-value-reporting-conflicts-with-matched-evidence">C003
+— Intracranial-bleeding effect and P-value reporting conflicts with
+matched evidence</a></li>
+<li><a
+href="#c004--extracranial-bleeding-effect-and-p-value-reporting-conflicts-with-matched-evidence"
+id="toc-c004--extracranial-bleeding-effect-and-p-value-reporting-conflicts-with-matched-evidence">C004
+— Extracranial-bleeding effect and P-value reporting conflicts with
+matched evidence</a></li>
+<li><a
+href="#c005--as-treated-evacuated-mass-lesion-cell-reverses-count-and-percentage-order"
+id="toc-c005--as-treated-evacuated-mass-lesion-cell-reverses-count-and-percentage-order">C005
+— As-treated evacuated-mass-lesion cell reverses count and percentage
+order</a></li>
+<li><a
+href="#c006--as-treated-non-evacuated-mass-lesion-cell-reverses-count-and-percentage-order"
+id="toc-c006--as-treated-non-evacuated-mass-lesion-cell-reverses-count-and-percentage-order">C006
+— As-treated non-evacuated-mass-lesion cell reverses count and
+percentage order</a></li>
+<li><a
+href="#c007--adjusted-odds-ratio-confidence-interval-string-is-malformed"
+id="toc-c007--adjusted-odds-ratio-confidence-interval-string-is-malformed">C007
+— Adjusted odds-ratio confidence-interval string is malformed</a></li>
+<li><a
+href="#c008--abstract-male-count-conflicts-with-its-percentage-and-table-1-total"
+id="toc-c008--abstract-male-count-conflicts-with-its-percentage-and-table-1-total">C008
+— Abstract male count conflicts with its percentage and Table 1
+total</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a
+href="#token-accounting-and-token-only-api-equivalent-cost-estimate"
+id="toc-token-accounting-and-token-only-api-equivalent-cost-estimate">Token
+accounting and token-only API-equivalent cost estimate</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review-polar-randomized-clinical-trial-package">Quantitative
+Quality-Control Consistency Review: POLAR Randomized Clinical Trial
+Package</h1>
+<h2 id="pending-human-adjudication-notice">Pending Human Adjudication
+Notice</h2>
+<p><strong>All eight records in this report are Pending Human
+Adjudication.</strong> They are source-grounded quantitative reporting
+quality-control candidates, not corrections, scientific validity
+findings, severity ratings, or editorial dispositions. No candidate is
+based solely on a displayed zero P value.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Fresh source-first processing identified <strong>8</strong> distinct
+quantitative reporting quality-control candidates: one numeric or
+arithmetic inconsistency, one cross-document numeric inconsistency,
+three statistical reporting inconsistencies, two measure/label/scale
+inconsistencies, and one denominator/proportion/total inconsistency. The
+complete stable set is C001-C008. Each candidate was mechanically
+rechecked at its cited supplied-source location and remains Pending
+Human Adjudication.</p>
+<p>The review checked all direct sources and did not use external
+literature, the web, or prior audit derivatives as evidence. Small
+preventable reporting defects can matter when later evidence products
+extract values; this report does not assert that any value was
+propagated, changed a conclusion, or caused harm.</p>
+<h2 id="package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</h2>
+<p>The supplied package contains four direct PDFs: the 10-page main
+article, a 194-page protocol/SAP/DSMC supplement, a 24-page
+supplementary-results document, and a 1-page data-sharing statement.
+Their fresh evidence assets include native text, layout text, and
+150-dpi page renderings. Native and layout text were usable for all
+result-relevant content; direct CPU OCR was therefore not required.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied source</th>
+<th style="text-align: right;">Units</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_cooper_2018_oi_180132.pdf#page=1">jama_cooper_2018_oi_180132.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">10 PDF pages</td>
+<td><code>14987ad9741b9c9f617a24af239ae72407ffe41ee14953df33665f1593e35253</code></td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a href="../joi180132supp1_prod.pdf#page=1" target="_blank" rel="noopener">joi180132supp1_prod.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">194 PDF pages</td>
+<td><code>305596802f9ac59c1e76fd9233529b98d92ef918d13fccd35112109ed60cb547</code></td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a href="../joi180132supp2_prod.pdf#page=1" target="_blank" rel="noopener">joi180132supp2_prod.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">24 PDF pages</td>
+<td><code>b00fbac777719817be84e45f350898aa031a3eb6d17fb73a42de710239f1ab7d</code></td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td><a href="../joi180132supp3_prod.pdf#page=1" target="_blank" rel="noopener">joi180132supp3_prod.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">1 PDF page</td>
+<td><code>7d6634553269ddfc0208a4e0d7b46639b8212f3126d59e3add8b4b033d42ebf3</code></td>
+</tr>
+</tbody>
+</table>
+<p>Fresh asset and extraction decisions are recorded in <a
+href="review_1_5_2/evidence_asset_inventory.md">evidence_asset_inventory.md</a>;
+the complete direct-source inventory is <a
+href="review_1_5_2/source_inventory.md">source_inventory.md</a>.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All 229 direct PDF-page units were freshly required and mapped:
+DOC-001 10/10, DOC-002 194/194, DOC-003 24/24, and DOC-004 1/1. The
+16-stage coverage manifest was completed without a review queue, count
+cap, top-N boundary, or early stopping. The coverage plan and
+source-unit accounting are available in <a
+href="review_1_5_2/coverage_manifest.md">coverage_manifest.md</a> and <a
+href="review_1_5_2/source_coverage.md">source_coverage.md</a>.</p>
+<p>This is a quantitative consistency review. It addresses printed
+numeric, denominator, proportion, total, effect-measure, label, scale,
+inferential-statistical, and cross-document relationships. It does not
+perform a broad clinical, methodological, raw-data, misconduct, novelty,
+or external-literature audit. The supplied documents do not provide
+participant-level data, complete unrounded model output, all test
+variants, or all externally referenced SAP/update text.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The completed numeric inventory contains N001-N073 (73/73): 40
+main-article and 33 support-source relationships. The inferential
+inventory contains S001-S032 (32/32): 10 main-article and 22
+support-source relationships. The numeric and cross-source lanes
+processed all 73 numeric and all 32 statistical relationships.</p>
+<p>Statistical pass 1 was an independent fresh
+<code>gpt-5.6-terra</code> high-effort review of S001-S032. It
+registered six source-grounded observations subsequently represented in
+C002-C007. Statistical pass 2 was a distinct fresh
+<code>gpt-5.6-terra</code> high-effort review of S001-S032 after
+complete ledger registration and mechanical recheck; it covered all
+eight IDs, found no genuinely new candidate, and did not alter the
+stable set. Both passes treated count-based RR/CI/P comparisons as
+diagnostic where exact test/model details were unavailable, not as
+reconstructions or corrections.</p>
+<p>The definitive relationship records are <a
+href="review_1_5_2/relationships/numeric_relationship_inventory.md">numeric_relationship_inventory.md</a>,
+<a
+href="review_1_5_2/statistics/relationship_inventory.md">relationship_inventory.md</a>,
+<a
+href="review_1_5_2/checkers/statistical_pass_1.md">statistical_pass_1.md</a>,
+and <a
+href="review_1_5_2/checkers/statistical_pass_2.md">statistical_pass_2.md</a>.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Primary category</th>
+<th>Concise candidate statement</th>
+<th>Source pages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--normothermia-injury-severity-score-median-is-below-its-printed-iqr-lower-endpoint">C001</a></td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Median is below printed IQR lower endpoint.</td>
+<td>DOC-001 p. 5</td>
+</tr>
+<tr>
+<td><a
+href="#c002--primary-risk-difference-has-opposite-signs-in-matched-main-article-locations">C002</a></td>
+<td>Cross-document numeric inconsistency</td>
+<td>Primary risk difference sign differs across matched locations.</td>
+<td>DOC-001 pp. 1, 5, 7</td>
+</tr>
+<tr>
+<td><a
+href="#c003--intracranial-bleeding-effect-and-p-value-reporting-conflicts-with-matched-evidence">C003</a></td>
+<td>Statistical reporting inconsistency</td>
+<td>Intracranial-bleeding effect/P display conflicts with matched
+evidence.</td>
+<td>DOC-001 p. 7; DOC-003 p. 10</td>
+</tr>
+<tr>
+<td><a
+href="#c004--extracranial-bleeding-effect-and-p-value-reporting-conflicts-with-matched-evidence">C004</a></td>
+<td>Statistical reporting inconsistency</td>
+<td>Extracranial-bleeding effect/P display conflicts with matched
+evidence.</td>
+<td>DOC-001 p. 7; DOC-003 p. 10</td>
+</tr>
+<tr>
+<td><a
+href="#c005--as-treated-evacuated-mass-lesion-cell-reverses-count-and-percentage-order">C005</a></td>
+<td>Measure, label, or scale inconsistency</td>
+<td>CT cell conflicts with its <code>No. (%)</code> header order.</td>
+<td>DOC-003 p. 18</td>
+</tr>
+<tr>
+<td><a
+href="#c006--as-treated-non-evacuated-mass-lesion-cell-reverses-count-and-percentage-order">C006</a></td>
+<td>Measure, label, or scale inconsistency</td>
+<td>CT cell conflicts with its denominator and <code>No. (%)</code>
+header.</td>
+<td>DOC-003 p. 18</td>
+</tr>
+<tr>
+<td><a
+href="#c007--adjusted-odds-ratio-confidence-interval-string-is-malformed">C007</a></td>
+<td>Statistical reporting inconsistency</td>
+<td>Adjusted OR confidence-interval string has no unambiguous two
+endpoints.</td>
+<td>DOC-003 p. 22</td>
+</tr>
+<tr>
+<td><a
+href="#c008--abstract-male-count-conflicts-with-its-percentage-and-table-1-total">C008</a></td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Abstract male count conflicts with its percentage and Table 1
+total.</td>
+<td>DOC-001 pp. 1, 5</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--normothermia-injury-severity-score-median-is-below-its-printed-iqr-lower-endpoint" class="candidate-card">C001
+— Normothermia Injury Severity Score median is below its printed IQR
+lower endpoint</h2>
+<p><strong>Candidate statement:</strong> The normothermia Injury
+Severity Score median is lower than the lower endpoint of its printed
+IQR.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cooper_2018_oi_180132.pdf#page=5">jama_cooper_2018_oi_180132.pdf
+— PDF p. 5, Table 1, normothermia Injury Severity Score</a>.</p>
+<p><strong>Source evidence:</strong> The <code>median (IQR)</code> cell
+prints <code>20.0 (20.5-35.0)</code> for normothermia.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported median
+<code>20.0</code>; comparator IQR lower endpoint <code>20.5</code> under
+the same explicit <code>median (IQR)</code> label.</p>
+<p><strong>Reasoning procedure:</strong> Apply the ordered summary
+relationship for a median and 25th-75th percentile IQR: lower quartile
+&lt;= median &lt;= upper quartile. The ordering violation is direct; a
+digit error or nonstandard convention would be an inferred
+explanation.</p>
+<p><strong>Calculation:</strong> <code>20.5 - 20.0 = 0.5</code> Injury
+Severity Score points; the labelled lower endpoint exceeds the labelled
+median.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unstated convention could theoretically alter the reading, but the cell
+label, parentheses, and parallel hypothermia median/IQR layout support
+the ordinary interpretation. No alternative definition is printed.</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited cell and row
+label were found in fresh native, layout, and rendered locators; all
+three displayed values required for the ordering check are present.
+Participant-level values and the quantile algorithm are absent, so
+intended replacements cannot be reconstructed.</p>
+<p><strong>Quality-control relevance:</strong> A baseline summary with
+internally incompatible order could be copied as a quantitative
+characteristic without the internal check.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a later extractor could copy an incompatible baseline median/IQR
+summary; this report does not assert that such copying occurred or
+altered any conclusion.</p>
+<p><strong>Human verification steps:</strong> Verify the source table
+against the production table or underlying baseline-summary output;
+establish the intended median and both IQR endpoints.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--primary-risk-difference-has-opposite-signs-in-matched-main-article-locations" class="candidate-card">C002
+— Primary risk difference has opposite signs in matched main-article
+locations</h2>
+<p><strong>Candidate statement:</strong> The abstract prints a positive
+primary risk difference while matched Results and Table 2 locations
+print a negative risk difference with the same displayed counts and
+CI.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cooper_2018_oi_180132.pdf#page=1">jama_cooper_2018_oi_180132.pdf
+— PDF p. 1, abstract Results</a>; <a
+href="../jama_cooper_2018_oi_180132.pdf#page=5">PDF p. 5, Primary
+Outcome Results</a>; <a
+href="../jama_cooper_2018_oi_180132.pdf#page=7">PDF p. 7, Table 2
+favorable outcome</a>.</p>
+<p><strong>Source evidence:</strong> All locations report hypothermia
+<code>117/240 (48.8%)</code>, normothermia <code>111/226 (49.1%)</code>,
+and CI <code>-9.4 to 8.7</code>. The abstract prints risk difference
+<code>0.4%</code>; Results and Table 2 print <code>-0.4</code>
+percentage points.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported abstract point
+estimate <code>+0.4%</code>; matched comparator Results/Table 2 point
+estimate <code>-0.4</code>, with the same group order and CI.</p>
+<p><strong>Reasoning procedure:</strong> Directly compare the matched
+printed locations, then use the displayed arm order for a diagnostic
+subtraction. The cross-location sign mismatch is direct; a missing minus
+sign or differently defined contrast is not assumed.</p>
+<p><strong>Calculation:</strong>
+<code>(117/240 - 111/226) x 100 = -0.3650</code> percentage points,
+rounding to <code>-0.4</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+reversed abstract contrast could produce approximately
+<code>+0.4</code>, but a correspondingly reversed CI would ordinarily be
+<code>-8.7 to 9.4</code>; the unchanged printed abstract CI does not
+fully reconcile that reading.</p>
+<p><strong>Mechanical evidence recheck:</strong> All three locations,
+counts, signs, and common CI were located. The abstract supplies no
+distinct contrast definition or unrounded analysis output.</p>
+<p><strong>Quality-control relevance:</strong> Effect-direction labels
+should remain consistent across an abstract, narrative, and outcome
+table.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an abstract-level reviewer or extractor could copy the positive sign
+rather than the matched negative sign; no propagation or conclusion
+change is asserted.</p>
+<p><strong>Human verification steps:</strong> Compare the abstract proof
+and analysis output with the body/table; confirm the contrast direction
+and its CI endpoints for each location.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--intracranial-bleeding-effect-and-p-value-reporting-conflicts-with-matched-evidence" class="candidate-card">C003
+— Intracranial-bleeding effect and P-value reporting conflicts with
+matched evidence</h2>
+<p><strong>Candidate statement:</strong> The intracranial-bleeding Table
+2 RR/CI/P display conflicts with its printed counts and with the matched
+supplement P value.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cooper_2018_oi_180132.pdf#page=7">jama_cooper_2018_oi_180132.pdf
+— PDF p. 7, Table 2, new or increased intracranial bleeding</a>; <a
+href="../joi180132supp2_prod.pdf#page=10">joi180132supp2_prod.pdf — PDF
+p. 10, eTable 6, same outcome</a>; <a
+href="../jama_cooper_2018_oi_180132.pdf#page=3">jama_cooper_2018_oi_180132.pdf
+— PDF p. 3, Statistical Analysis</a>.</p>
+<p><strong>Source evidence:</strong> Both result locations print
+<code>47/260 (18.1%)</code> versus <code>37/240 (15.4%)</code>. Table 2
+prints RR <code>1.23 (0.43-3.5), P=.70</code>; eTable 6 prints
+<code>P=.43</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported Table 2 RR
+<code>1.23</code> and <code>P=.70</code>; comparator printed-proportion
+RR is approximately <code>1.17</code>, and the matched eTable P is
+<code>.43</code>.</p>
+<p><strong>Reasoning procedure:</strong> Directly compare P values for
+the same named row/population, and compute a crude RR from displayed
+counts only as a diagnostic compatibility check under the article's
+stated unadjusted comparison rule. A suspected adjacent-row token
+transposition is an inference, not a correction.</p>
+<p><strong>Calculation:</strong>
+<code>(47/260)/(37/240) = 1.1726</code>, rounding to <code>1.17</code>,
+not <code>1.23</code>. A diagnostic log-scale CI is approximately
+<code>0.79-1.74</code> and an uncorrected two-proportion comparison
+approximately <code>P=.43</code>; these diagnostics do not replace the
+reported analysis.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+differently modelled effect is conceivable, but Table 2 is labelled
+<code>Relative Risk</code> and no row-specific adjusted analysis is
+identified. The neighboring row is a possible source-grounded
+token-assignment hypothesis only.</p>
+<p><strong>Mechanical evidence recheck:</strong> The matched counts,
+Table 2 RR/CI/P, eTable P, and stated analysis rule were found. Exact
+SAS options, unrounded statistics, and production source are absent.</p>
+<p><strong>Quality-control relevance:</strong> Row-specific effect,
+interval, and P-value attachment must remain consistent with the named
+adverse-event outcome.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a later evidence extractor could assign the wrong RR, CI, or P value to
+intracranial bleeding; no downstream use or conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Retrieve the Table
+2/eTable production source and unadjusted adverse-event output; verify
+which RR, CI, and P value belongs to this row.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--extracranial-bleeding-effect-and-p-value-reporting-conflicts-with-matched-evidence" class="candidate-card">C004
+— Extracranial-bleeding effect and P-value reporting conflicts with
+matched evidence</h2>
+<p><strong>Candidate statement:</strong> The extracranial-bleeding Table
+2 RR/CI/P display conflicts with its printed counts and with the matched
+supplement P value.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cooper_2018_oi_180132.pdf#page=7">jama_cooper_2018_oi_180132.pdf
+— PDF p. 7, Table 2, new significant extracranial bleeding</a>; <a
+href="../joi180132supp2_prod.pdf#page=10">joi180132supp2_prod.pdf — PDF
+p. 10, eTable 6, same outcome</a>; <a
+href="../jama_cooper_2018_oi_180132.pdf#page=3">jama_cooper_2018_oi_180132.pdf
+— PDF p. 3, Statistical Analysis</a>.</p>
+<p><strong>Source evidence:</strong> Both result locations print
+<code>8/260 (3.1%)</code> versus <code>6/240 (2.5%)</code>. Table 2
+prints RR <code>1.17 (0.79-1.74), P=.43</code>; eTable 6 prints
+<code>P=.70</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported Table 2 RR
+<code>1.17</code> and <code>P=.43</code>; comparator printed-proportion
+RR is approximately <code>1.23</code>, and the matched eTable P is
+<code>.70</code>.</p>
+<p><strong>Reasoning procedure:</strong> Directly compare P values for
+the same named row/population and use displayed counts for a diagnostic
+crude-RR compatibility check. A suspected adjacent-row token
+transposition is not asserted as a correction.</p>
+<p><strong>Calculation:</strong> <code>(8/260)/(6/240) = 1.2308</code>,
+rounding to <code>1.23</code>, not <code>1.17</code>. A diagnostic
+log-scale CI is approximately <code>0.43-3.50</code> and an uncorrected
+two-proportion comparison approximately <code>P=.70</code>; these
+diagnostics do not reconstruct the reported analysis.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+differently modelled effect is possible in theory, but no row-specific
+adjusted analysis is supplied. The adjacent intracranial row
+mathematically aligns with the printed
+<code>1.17 (0.79-1.74), P=.43</code>, which is a hypothesis about token
+assignment, not an established explanation.</p>
+<p><strong>Mechanical evidence recheck:</strong> The named locations,
+counts, RR/CI/P, matched eTable P, and stated chi-square rule were
+found. Exact test settings and production source remain unavailable.</p>
+<p><strong>Quality-control relevance:</strong> Effect and P-value fields
+must stay attached to the correct adverse-event row.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer or extractor could associate an incorrect RR, CI, or P value
+with extracranial bleeding; this report does not claim that
+happened.</p>
+<p><strong>Human verification steps:</strong> Check original
+table/eTable production data and adverse-event output; verify the
+row-specific RR, CI, and P value.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--as-treated-evacuated-mass-lesion-cell-reverses-count-and-percentage-order" class="candidate-card">C005
+— As-treated evacuated-mass-lesion cell reverses count and percentage
+order</h2>
+<p><strong>Candidate statement:</strong> An as-treated normothermia CT
+cell is inconsistent with its <code>No. (%)</code> header and displayed
+denominator.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180132supp2_prod.pdf#page=18">joi180132supp2_prod.pdf — PDF
+p. 18, eTable 10, CT Marshall classification, evacuated mass lesion V,
+normothermia</a>.</p>
+<p><strong>Source evidence:</strong> Under <code>No. (%)</code>,
+normothermia <code>(n=196)</code> prints <code>34.7 (68)</code>;
+surrounding cells use count followed by percentage.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported token order
+<code>34.7 (68)</code> versus the count-first header and denominator
+relationship represented by <code>68/196</code>.</p>
+<p><strong>Reasoning procedure:</strong> Test whether the first token
+can be a count and whether the parenthesized token is a percentage under
+the explicit header. The apparent token reversal is diagnostic only, not
+a final correction.</p>
+<p><strong>Calculation:</strong> <code>68/196 x 100 = 34.6939%</code>,
+rounding to <code>34.7%</code>; <code>34.7</code> is noninteger in the
+count position. With the adjacent reconciled category reading, the five
+CT counts can close at <code>3 + 108 + 15 + 68 + 2 = 196</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+percentage-first convention would reconcile this one cell, but conflicts
+with <code>No. (%)</code> and surrounding count-first cells; no
+row-specific exception is printed.</p>
+<p><strong>Mechanical evidence recheck:</strong> The header,
+denominator, cell tokens, parallel convention, and CT-category cells
+were found. Record-level CT classifications and production source are
+absent.</p>
+<p><strong>Quality-control relevance:</strong> Headers and
+count/percentage token order should permit unambiguous mechanical
+extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy <code>34.7</code> as a count and
+<code>68%</code> as a percentage rather than preserve the intended
+order; no actual downstream extraction is asserted.</p>
+<p><strong>Human verification steps:</strong> Inspect the eTable source
+data or table proof and confirm the intended count and percentage for
+this category.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--as-treated-non-evacuated-mass-lesion-cell-reverses-count-and-percentage-order" class="candidate-card">C006
+— As-treated non-evacuated-mass-lesion cell reverses count and
+percentage order</h2>
+<p><strong>Candidate statement:</strong> An as-treated normothermia CT
+cell does not reconcile with its <code>No. (%)</code> header, printed
+denominator, or displayed category total.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180132supp2_prod.pdf#page=18">joi180132supp2_prod.pdf — PDF
+p. 18, eTable 10, CT Marshall classification, non-evacuated mass lesion
+VI, normothermia</a>.</p>
+<p><strong>Source evidence:</strong> Under <code>No. (%)</code>,
+normothermia <code>(n=196)</code> prints <code>1 (2)</code>; other CT
+rows print <code>3 (1.5)</code>, <code>108 (55.1)</code>,
+<code>15 (7.7)</code>, and the adjacent cell <code>34.7 (68)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported literal
+count/percentage <code>1 (2)</code> versus <code>1/196</code> and the
+count-total relationship across the five displayed categories.</p>
+<p><strong>Reasoning procedure:</strong> Test the literal count-first
+interpretation against the stated denominator and total, then identify
+the order that diagnostic arithmetic would reconcile. That possible
+reversal is not a correction.</p>
+<p><strong>Calculation:</strong> <code>1/196 x 100 = 0.5102%</code>, not
+<code>2%</code>. Reading count <code>2</code> and percentage
+<code>1</code> gives <code>2/196 x 100 = 1.0204%</code>, and
+<code>3 + 108 + 15 + 68 + 2 = 196</code>; literal count <code>1</code>
+produces 195.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+row-specific denominator of 50 could make <code>1 (2)</code>
+arithmetically possible, but the table prints <code>n=196</code>, no
+row-specific denominator/missingness note, and five exhaustive
+categories.</p>
+<p><strong>Mechanical evidence recheck:</strong> The header, group
+denominator, all displayed CT tokens, and category-total comparison were
+found. Participant-level classifications, a possible row denominator,
+and production source are not supplied.</p>
+<p><strong>Quality-control relevance:</strong> Count/percentage fields
+should reconcile to their labelled denominator and permit correct
+category totals.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a later extractor could copy <code>1</code> as the count and
+<code>2%</code> as the percentage for this category; no propagation is
+claimed.</p>
+<p><strong>Human verification steps:</strong> Verify the table proof and
+underlying CT category counts, including any row-specific denominator or
+missingness convention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--adjusted-odds-ratio-confidence-interval-string-is-malformed" class="candidate-card">C007
+— Adjusted odds-ratio confidence-interval string is malformed</h2>
+<p><strong>Candidate statement:</strong> The printed adjusted odds-ratio
+confidence-interval string does not provide two unambiguous
+endpoints.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180132supp2_prod.pdf#page=22">joi180132supp2_prod.pdf — PDF
+p. 22, post-hoc adequate-cooling Results, final sentence</a>.</p>
+<p><strong>Source evidence:</strong> The source prints
+<code>adjusted odds ratio hypothermia vs normothermia; 0.95 (0.55-275 1.64) P = .84</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported parenthesized
+sequence <code>0.55-275 1.64</code> versus the same page's explicit
+odds-ratio <code>(95% CI)</code> convention requiring two identifiable
+endpoints; the unadjusted example is
+<code>0.91 (0.59-1.41) P=.68</code>.</p>
+<p><strong>Reasoning procedure:</strong> Parse the literal printed
+sequence rather than delete or replace a token. Three numeric tokens
+with no source-defined delimiter cannot be assigned as exactly two CI
+endpoints. The plausible <code>0.55-1.64</code> reading is diagnostic
+and conjectural.</p>
+<p><strong>Calculation:</strong> The ordered sequence is
+<code>0.55</code>, <code>275</code>, <code>1.64</code>. Although point
+estimate <code>0.95</code> lies between <code>0.55</code> and
+<code>1.64</code>, no source-based calculation identifies the role of
+<code>275</code> or licenses removal of it.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+same-page syntax supports a possible <code>0.55-1.64</code> interval
+with an extraneous token, but the PDF does not define <code>275</code>;
+punctuation or digits may instead be missing.</p>
+<p><strong>Mechanical evidence recheck:</strong> Native text, layout
+text, and rendered page preserve the exact malformed string.
+Coefficient, SE/covariance, fitted model output, and a definition of
+<code>275</code> are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> An interval must be
+printable as two unambiguous endpoints before it can be reliably
+extracted or interpreted.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could face an ambiguous adjusted CI when extracting the
+post-hoc result; this report neither supplies a final interval nor
+claims later use.</p>
+<p><strong>Human verification steps:</strong> Obtain the adjusted-model
+output and final table/text proof; determine the exact two CI endpoints
+and the source of <code>275</code>.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--abstract-male-count-conflicts-with-its-percentage-and-table-1-total" class="candidate-card">C008
+— Abstract male count conflicts with its percentage and Table 1
+total</h2>
+<p><strong>Candidate statement:</strong> The abstract's male count
+conflicts with both its stated percentage and the Table 1 arm total.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cooper_2018_oi_180132.pdf#page=1">jama_cooper_2018_oi_180132.pdf
+— PDF p. 1, abstract Results</a>; <a
+href="../jama_cooper_2018_oi_180132.pdf#page=5">PDF p. 5, Table 1, Men
+and Women rows</a>.</p>
+<p><strong>Source evidence:</strong> The abstract states
+<code>500 provided ongoing consent</code> and
+<code>402 men [80.2%]</code>. Table 1 gives hypothermia
+<code>207 (79.6)</code> and normothermia <code>194 (80.8)</code> men,
+and women <code>53 (20.4)</code> and <code>46 (19.2)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported abstract
+<code>402/500 (80.2%)</code> versus the arithmetic percentage
+<code>80.4%</code> and Table 1 male subtotal <code>207+194=401</code>,
+which is <code>80.2%</code> of 500.</p>
+<p><strong>Reasoning procedure:</strong> Reconcile the abstract count
+and percentage to its stated total, then sum the matched Table 1 sex
+counts. A typographical count or unreported alternative denominator
+remains an explanation, not a correction.</p>
+<p><strong>Calculation:</strong> <code>402/500 x 100 = 80.4%</code>.
+<code>207 + 194 = 401</code>; <code>401/500 x 100 = 80.2%</code>;
+sex-category totals close as <code>401 + 53 + 46 = 500</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+denominator near 501 could approximate <code>402</code> at
+<code>80.2%</code>, but the abstract anchors the text to 500 and Table 1
+reports all 500 without a missingness note.</p>
+<p><strong>Mechanical evidence recheck:</strong> The abstract
+denominator/count/percentage and both Table 1 arm counts/denominators
+were located. Participant-level sex data, an alternative denominator,
+and intended abstract count are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> Cohort-characteristic
+counts and percentages should reconcile across an abstract and baseline
+table.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an abstract-only extractor could copy an inconsistent male
+count/percentage; no actual reuse or study-level conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Check the abstract source,
+baseline dataset, and Table 1 production output; establish the intended
+male count and any distinct sex-analysis denominator.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If any candidate is confirmed, a systematic review, meta-analysis,
+guideline evidence table, or other data-extraction workflow could copy
+the relevant baseline summary, signed risk difference, adverse-event
+RR/CI/P field, CT count/percentage, or adjusted CI string. The possible
+downstream effect is bounded to the particular reported field and
+depends on later extraction choices. This review makes no claim that a
+downstream product used any candidate value, that evidence propagation
+occurred, or that any conclusion changed.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>Only supplied-package evidence was used. The direct PDFs lack
+participant-level observations, unrounded summaries, complete model
+coefficients/SEs/covariances, exact variants of several tests,
+sequential information fractions, imputed records/strata, and embedded
+text for some cited SAP/update/correction materials. Those limitations
+preclude reconstruction of intended replacements and unsupported exact
+inference, while still permitting the direct printed-value comparisons
+in the cards.</p>
+<p>Native PDF text can flatten tables or reading order. This was
+mitigated by freshly generated layout text and 150-dpi page renders for
+every source page. DOC-002 contains blank/non-substantive pages 140-162
+and separator pages; these were nevertheless extracted, rendered, and
+counted. No Office, workbook, CSV, web, or external-literature source
+was in scope. See <a
+href="review_1_5_2/limitations.md">limitations.md</a>.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ul>
+<li>Confirm each cited PDF location against the publication record or
+production source.</li>
+<li>Obtain the relevant analysis output or source table when an intended
+replacement cannot be established from the supplied PDFs.</li>
+<li>Preserve the printed evidence and distinguish direct source
+comparisons from diagnostic arithmetic.</li>
+<li>Record any human determination only in the blank card fields; do not
+infer a correction from this review alone.</li>
+</ul>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<ul>
+<li><strong>Profile:</strong> 1.5.2 full source-first restart</li>
+<li><strong>Direct sources:</strong> 4 PDFs</li>
+<li><strong>Total source units:</strong> 229</li>
+<li><strong>Fresh-source units:</strong> 229</li>
+<li><strong>Legacy audit evidence used:</strong> No</li>
+<li><strong>Web or external literature used:</strong> No</li>
+<li><strong>OCR decision:</strong> 0 pages; native/layout text and
+renders were usable for every result-relevant unit.</li>
+<li><strong>Source hashes before review:</strong> <a
+href="review_1_5_2/source_hashes_before.sha256">source_hashes_before.sha256</a></li>
+<li><strong>Source hashes after review:</strong> <a
+href="review_1_5_2/source_hashes_after.sha256">source_hashes_after.sha256</a>;
+all four hashes are unchanged.</li>
+<li><strong>Coverage manifest:</strong> 16 rows, all planned scopes
+covered; see <a
+href="review_1_5_2/coverage_manifest.md">coverage_manifest.md</a>.</li>
+</ul>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Runtime agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td><a href="review_1_5_2/run_state.md">run_state.md</a></td>
+</tr>
+<tr>
+<td>fresh source preprocessing</td>
+<td>root/fresh_preprocessing</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><a
+href="review_1_5_2/evidence_asset_inventory.md">evidence_asset_inventory.md</a></td>
+</tr>
+<tr>
+<td>main quantitative mapping</td>
+<td>root/main_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><a
+href="review_1_5_2/extraction/main_quantitative_evidence.md">main_quantitative_evidence.md</a></td>
+</tr>
+<tr>
+<td>support quantitative mapping</td>
+<td>root/support_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><a
+href="review_1_5_2/extraction/support_quantitative_evidence.md">support_quantitative_evidence.md</a></td>
+</tr>
+<tr>
+<td>numeric consistency review</td>
+<td>root/numeric_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><a
+href="review_1_5_2/checkers/numeric_consistency.md">numeric_consistency.md</a></td>
+</tr>
+<tr>
+<td>cross-source consistency review</td>
+<td>root/cross_source_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><a
+href="review_1_5_2/checkers/cross_source_consistency.md">cross_source_consistency.md</a></td>
+</tr>
+<tr>
+<td>statistical pass 1</td>
+<td>root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><a
+href="review_1_5_2/checkers/statistical_pass_1.md">statistical_pass_1.md</a></td>
+</tr>
+<tr>
+<td>evidence recheck</td>
+<td>root/evidence_recheck</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><a
+href="review_1_5_2/verification/evidence_recheck.md">evidence_recheck.md</a></td>
+</tr>
+<tr>
+<td>statistical pass 2</td>
+<td>root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><a
+href="review_1_5_2/checkers/statistical_pass_2.md">statistical_pass_2.md</a></td>
+</tr>
+<tr>
+<td>evidence-quality audit</td>
+<td>root/quality_audit</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><a
+href="review_1_5_2/quality/evidence_quality_audit.md">evidence_quality_audit.md</a></td>
+</tr>
+<tr>
+<td>report generation</td>
+<td>root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><a
+href="review_1_5_2/report_generation.md">report_generation.md</a></td>
+</tr>
+</tbody>
+</table>
+<p>The execution manifest is <a
+href="review_1_5_2/agent_execution_manifest.md">agent_execution_manifest.md</a>.
+Statistical pass 1 and pass 2 were separate fresh high-effort Terra
+agents and each covered S001-S032; pass 2 additionally integrated
+C001-C008 and the complete mechanical recheck.</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Four-PDF package with 229 fresh
+PDF-page units, including a 194-page protocol/SAP supplement, a 24-page
+statistical supplement, a 10-page main article, and a 1-page
+data-sharing supplement; all units require fresh native/layout
+extraction and result-relevant mapping, with two full statistical passes
+and cross-document review. The burden is materially above the 102-page
+calibration package, but most pages had usable native text and no Office
+conversion burden.</li>
+<li><strong>Total source units:</strong> 229</li>
+<li><strong>Fresh-source units:</strong> 229</li>
+<li><strong>Target elapsed minutes:</strong> 70-105</li>
+<li><strong>Started UTC:</strong> 2026-08-20T18:01:56Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-20T18:35:06Z</li>
+<li><strong>Observed elapsed minutes:</strong> 33.2</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3
+id="token-accounting-and-token-only-api-equivalent-cost-estimate">Token
+accounting and token-only API-equivalent cost estimate</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Agent responses</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Token-only API-equivalent cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">3 unavailable</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete estimate __</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">8 unavailable</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete estimate __</td>
+</tr>
+</tbody>
+</table>
+<p>The exact model rollups come from <a
+href="review_1_5_2/token_usage_summary.md">token_usage_summary.md</a>
+after the accounting-window cutoff. All 11 manifested agents have an
+authoritative <code>UNAVAILABLE</code> record because this runtime
+exposed no response-level token counts; zero therefore means zero known
+tokens, not zero actual usage. The per-agent detail is recorded in
+<code>review_1_5_2/token_usage_ledger.csv</code>. Cached input and
+cache-write counts are input subsets; reasoning is an output subset;
+they are not added again to total tokens. Amounts are token-only
+API-equivalent estimates under the dated 2026-08-18 pricing snapshot,
+not an invoice.</p>
+</body>
+</html>

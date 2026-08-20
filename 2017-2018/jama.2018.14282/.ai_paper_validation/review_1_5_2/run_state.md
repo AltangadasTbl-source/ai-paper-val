@@ -1,0 +1,21 @@
+# Workflow 1.5.2 Run State
+
+- **Profile:** 1.5.2 full source-first restart
+- **Run status:** COMPLETE; VALIDATION_PASS
+- **Target basis:** Four supplied PDFs totaling 144 fresh pages: a 9-page main randomized trial article, a 129-page protocol/statistical-analysis-plan supplement with substantial narrative and quantitative definitions, a 5-page results supplement with tables/figures, and a 1-page data-sharing statement. All PDFs expose native text, but result-relevant tables/figures require layout extraction and targeted rendering. The scope exceeds the 102-page calibration package in fresh units while involving fewer file formats and no anticipated Office conversion.
+- **Total source units:** 144
+- **Fresh-source units:** 144
+- **Target elapsed minutes:** 45-75
+- **Started UTC:** 2026-08-20T18:01:34Z
+- **Finished UTC:** 2026-08-20T18:51:24Z
+- **Observed elapsed minutes:** 49.8
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Current stage:** COMPLETE; TOKEN SUMMARY CURRENT; SOURCE HASHES UNCHANGED; HTML RENDERED; VALIDATOR PASS
+- **Source integrity status:** BEFORE HASHES RECOMPUTED AND ALL FOUR DIRECT SOURCES UNCHANGED; 144/144 FRESH SOURCE UNITS MAPPED
+- **Legacy evidence use:** NONE
+- **Internet use:** NONE
+- **GPU use:** NONE
+- **OCR policy:** CPU Tesseract only for result-relevant pages whose fresh native/layout text is unusable
+- **Token accounting window:** Closed at Finished UTC; authoritative token counts were not exposed by this runtime for the coordinator or specialist responses
+- **Limitations:** DOC-002 PDF pp. 78 and 129 are sparse but non-result/blank; figure renders contain visible labels/axes/risk sets but the package does not supply underlying individual plotted values.

@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#quantitative-reporting-quality-control-consistency-review"
+id="toc-quantitative-reporting-quality-control-consistency-review">Quantitative
+Reporting Quality-Control Consistency Review</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-fresh-processing-provenance"
+id="toc-package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--reversed-endpoint-in-the-etable-2-peep-interquartile-range"
+id="toc-c001--reversed-endpoint-in-the-etable-2-peep-interquartile-range">C001
+— Reversed endpoint in the eTable 2 PEEP interquartile range</a></li>
+<li><a
+href="#c002--at-risk-for-ards-percentages-use-undisclosed-denominators"
+id="toc-c002--at-risk-for-ards-percentages-use-undisclosed-denominators">C002
+— At-risk-for-ARDS percentages use undisclosed denominators</a></li>
+<li><a
+href="#c003--septic-shock-percentages-use-undisclosed-denominators"
+id="toc-c003--septic-shock-percentages-use-undisclosed-denominators">C003
+— Septic-shock percentages use undisclosed denominators</a></li>
+<li><a href="#c004--tobacco-use-categories-use-undisclosed-denominators"
+id="toc-c004--tobacco-use-categories-use-undisclosed-denominators">C004
+— Tobacco-use categories use undisclosed denominators</a></li>
+<li><a href="#c005--alcohol-use-categories-use-undisclosed-denominators"
+id="toc-c005--alcohol-use-categories-use-undisclosed-denominators">C005
+— Alcohol-use categories use undisclosed denominators</a></li>
+<li><a
+href="#c006--icu-admission-categories-use-undisclosed-denominators"
+id="toc-c006--icu-admission-categories-use-undisclosed-denominators">C006
+— ICU-admission categories use undisclosed denominators</a></li>
+<li><a
+href="#c007--sedative-infusion-percentages-omit-effective-denominators"
+id="toc-c007--sedative-infusion-percentages-omit-effective-denominators">C007
+— Sedative-infusion percentages omit effective denominators</a></li>
+<li><a
+href="#c008--analgesic-infusion-percentages-omit-effective-denominators"
+id="toc-c008--analgesic-infusion-percentages-omit-effective-denominators">C008
+— Analgesic-infusion percentages omit effective denominators</a></li>
+<li><a
+href="#c009--neuromuscular-blockade-percentages-omit-effective-denominators"
+id="toc-c009--neuromuscular-blockade-percentages-omit-effective-denominators">C009
+— Neuromuscular-blockade percentages omit effective
+denominators</a></li>
+<li><a
+href="#c010--vasopressor-use-percentages-omit-effective-denominators"
+id="toc-c010--vasopressor-use-percentages-omit-effective-denominators">C010
+— Vasopressor-use percentages omit effective denominators</a></li>
+<li><a
+href="#c011--mortality-effect-measure-wording-conflicts-with-table-2-and-the-sap"
+id="toc-c011--mortality-effect-measure-wording-conflicts-with-table-2-and-the-sap">C011
+— Mortality effect-measure wording conflicts with Table 2 and the
+SAP</a></li>
+<li><a
+href="#c012--icu-mortality-rr-does-not-reproduce-from-printed-risks"
+id="toc-c012--icu-mortality-rr-does-not-reproduce-from-printed-risks">C012
+— ICU-mortality RR does not reproduce from printed risks</a></li>
+<li><a
+href="#c013--hospital-mortality-rr-does-not-reproduce-from-printed-risks"
+id="toc-c013--hospital-mortality-rr-does-not-reproduce-from-printed-risks">C013
+— Hospital-mortality RR does not reproduce from printed risks</a></li>
+<li><a href="#c014--ards-rr-does-not-reproduce-from-printed-risks"
+id="toc-c014--ards-rr-does-not-reproduce-from-printed-risks">C014 — ARDS
+RR does not reproduce from printed risks</a></li>
+<li><a href="#c015--pneumonia-rr-does-not-reproduce-from-printed-risks"
+id="toc-c015--pneumonia-rr-does-not-reproduce-from-printed-risks">C015 —
+Pneumonia RR does not reproduce from printed risks</a></li>
+<li><a
+href="#c016--pneumothorax-rr-does-not-reproduce-from-printed-risks"
+id="toc-c016--pneumothorax-rr-does-not-reproduce-from-printed-risks">C016
+— Pneumothorax RR does not reproduce from printed risks</a></li>
+<li><a
+href="#c017--atelectasis-rr-does-not-reproduce-from-printed-risks"
+id="toc-c017--atelectasis-rr-does-not-reproduce-from-printed-risks">C017
+— Atelectasis RR does not reproduce from printed risks</a></li>
+<li><a
+href="#c018--extrapulmonary-infection-rr-does-not-reproduce-from-printed-risks"
+id="toc-c018--extrapulmonary-infection-rr-does-not-reproduce-from-printed-risks">C018
+— Extrapulmonary-infection RR does not reproduce from printed
+risks</a></li>
+<li><a
+href="#c019--extrapulmonary-sepsis-rr-does-not-reproduce-from-printed-risks"
+id="toc-c019--extrapulmonary-sepsis-rr-does-not-reproduce-from-printed-risks">C019
+— Extrapulmonary-sepsis RR does not reproduce from printed
+risks</a></li>
+<li><a href="#c020--delirium-rr-does-not-reproduce-from-printed-risks"
+id="toc-c020--delirium-rr-does-not-reproduce-from-printed-risks">C020 —
+Delirium RR does not reproduce from printed risks</a></li>
+<li><a
+href="#c021--tracheostomy-rr-does-not-reproduce-from-printed-risks"
+id="toc-c021--tracheostomy-rr-does-not-reproduce-from-printed-risks">C021
+— Tracheostomy RR does not reproduce from printed risks</a></li>
+<li><a
+href="#c022--the-same-subgroup-intervals-are-labelled-iqr-and-95-ci"
+id="toc-c022--the-same-subgroup-intervals-are-labelled-iqr-and-95-ci">C022
+— The same subgroup intervals are labelled IQR and 95% CI</a></li>
+<li><a href="#c023--enrollment-completion-dates-differ-by-two-days"
+id="toc-c023--enrollment-completion-dates-differ-by-two-days">C023 —
+Enrollment completion dates differ by two days</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+Execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+Performance</a></li>
+<li><a href="#token-accounting" id="toc-token-accounting">Token
+Accounting</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-reporting-quality-control-consistency-review">Quantitative
+Reporting Quality-Control Consistency Review</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>Every observation in this report is <strong>Pending Human
+Adjudication</strong>. This is a source-first quantitative reporting
+quality-control review, not a validity finding, correction, severity
+assessment, or conclusion-impact assessment.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>The complete fresh review registered <strong>23 distinct candidate
+consistency issues</strong> (C001-C023). No candidate was selected,
+ranked, or deferred by a cap. The printed values are documented below
+for human verification against the supplied sources.</p>
+<h2 id="package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</h2>
+<p>This review used only the five supplied PDFs:
+<code>jama_simonis_2018_oi_180108.pdf</code>,
+<code>joi180108supp1_prod.pdf</code>,
+<code>joi180108supp2_prod.pdf</code>,
+<code>joi180108supp3_prod.pdf</code>, and
+<code>joi180108supp4_prod.pdf</code>. All 94 source pages were freshly
+prepared with direct native/layout text; result-relevant pages were
+rendered as needed. No legacy audit derivative or web source was used as
+evidence.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All direct-source pages were mapped: DOC-001 9/9, DOC-002 49/49,
+DOC-003 22/22, DOC-004 13/13, and DOC-005 1/1; total 94/94
+fresh-required units. The review covered result-relevant quantitative
+and statistical relationships throughout the main article and supplied
+supports. It excluded broad clinical, methodological, validity,
+misconduct, and external-literature review. No Office or structured-data
+source was supplied.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<ul>
+<li>Numeric relationships: <strong>N001-N047 (47/47)</strong>
+checked.</li>
+<li>Statistical relationships: <strong>S001-S038 (38/38)</strong>
+checked in both independent passes.</li>
+<li>Statistical pass 1: <strong>PASS_1_COMPLETE</strong> for all 38
+relationships by <code>root/statistics_pass_1</code>
+(<code>gpt-5.6-terra</code>, high).</li>
+<li>Statistical pass 2: <strong>PASS_2_COMPLETE</strong> for all 38
+relationships by distinct agent <code>root/statistics_pass_2</code>
+(<code>gpt-5.6-terra</code>, high).</li>
+</ul>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Category</th>
+<th>Candidate statement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Reversed endpoint in eTable 2 PEEP IQR</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>At-risk-for-ARDS percentages use undisclosed denominators</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Septic-shock percentages use undisclosed denominators</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Tobacco-use categories use undisclosed denominators</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Alcohol-use categories use undisclosed denominators</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>ICU-admission categories use undisclosed denominators</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Sedative-infusion percentages omit effective denominators</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Analgesic-infusion percentages omit effective denominators</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Neuromuscular-blockade percentages omit effective denominators</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Vasopressor-use percentages omit effective denominators</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Mortality effect-measure wording conflicts with Table 2 and SAP</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Statistical reporting inconsistency</td>
+<td>ICU-mortality RR does not reproduce from printed risks</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>Statistical reporting inconsistency</td>
+<td>Hospital-mortality RR does not reproduce from printed risks</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>Statistical reporting inconsistency</td>
+<td>ARDS RR does not reproduce from printed risks</td>
+</tr>
+<tr>
+<td>C015</td>
+<td>Statistical reporting inconsistency</td>
+<td>Pneumonia RR does not reproduce from printed risks</td>
+</tr>
+<tr>
+<td>C016</td>
+<td>Statistical reporting inconsistency</td>
+<td>Pneumothorax RR does not reproduce from printed risks</td>
+</tr>
+<tr>
+<td>C017</td>
+<td>Statistical reporting inconsistency</td>
+<td>Atelectasis RR does not reproduce from printed risks</td>
+</tr>
+<tr>
+<td>C018</td>
+<td>Statistical reporting inconsistency</td>
+<td>Extrapulmonary-infection RR does not reproduce from printed
+risks</td>
+</tr>
+<tr>
+<td>C019</td>
+<td>Statistical reporting inconsistency</td>
+<td>Extrapulmonary-sepsis RR does not reproduce from printed risks</td>
+</tr>
+<tr>
+<td>C020</td>
+<td>Statistical reporting inconsistency</td>
+<td>Delirium RR does not reproduce from printed risks</td>
+</tr>
+<tr>
+<td>C021</td>
+<td>Statistical reporting inconsistency</td>
+<td>Tracheostomy RR does not reproduce from printed risks</td>
+</tr>
+<tr>
+<td>C022</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Same subgroup intervals labelled IQR and 95% CI</td>
+</tr>
+<tr>
+<td>C023</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Enrollment completion dates differ by two days</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--reversed-endpoint-in-the-etable-2-peep-interquartile-range" class="candidate-card">C001
+— Reversed endpoint in the eTable 2 PEEP interquartile range</h2>
+<p><strong>Candidate statement:</strong> The intermediate-arm PEEP value
+<code>8 (5-1)</code> is incompatible with the table's median (IQR)
+definition.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-004, Supplement 3,
+eTable 2, Other Mode of Ventilation, after titration on randomization
+day, intermediate arm, PEEP.</p>
+<p><strong>Source evidence:</strong> <a
+href="../joi180108supp3_prod.pdf#page=6">Supplement 3 — PDF p. 6</a>
+prints <code>8 (5-1)</code> cm H2O; the note defines median
+(interquartile range).</p>
+<p><strong>Reported-versus-comparator:</strong> Reported median/IQR
+<code>8 (5-1)</code> versus the ordering required for lower quartile,
+median, upper quartile.</p>
+<p><strong>Reasoning procedure:</strong> Check whether lower quartile
+&lt;= median &lt;= upper quartile.</p>
+<p><strong>Calculation:</strong> <code>5 &lt;= 8</code> is true;
+<code>8 &lt;= 1</code> is false.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+final endpoint may be truncated or mistyped; no supplied source gives a
+replacement.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location, printed
+value, IQR definition, and logical comparison were reproduced; intended
+endpoint is missing.</p>
+<p><strong>Quality-control relevance:</strong> The reported spread
+cannot be read consistently under the displayed IQR convention.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy an incorrect dispersion endpoint.</p>
+<p><strong>Human verification steps:</strong> Verify the source table
+cell and obtain the intended lower/upper quartiles.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--at-risk-for-ards-percentages-use-undisclosed-denominators" class="candidate-card">C002
+— At-risk-for-ARDS percentages use undisclosed denominators</h2>
+<p><strong>Candidate statement:</strong> Printed percentages do not
+reproduce from Table 1 arm headers, while smaller denominators reproduce
+them.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 1, Patients
+at risk for ARDS, low and intermediate arms.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=5">Main article — PDF p.
+5</a> prints <code>292 (61.6)</code> and <code>290 (60.3)</code> under
+<code>n=477</code> and <code>n=484</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>61.6%</code>/<code>60.3%</code> versus percentages calculated from
+displayed arm totals.</p>
+<p><strong>Reasoning procedure:</strong> Compare count/percentage pairs
+with stated denominators to one decimal place.</p>
+<p><strong>Calculation:</strong> <code>292/477=61.2%</code>,
+<code>290/484=59.9%</code>; <code>292/474=61.6%</code>,
+<code>290/481=60.3%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Available-case denominators 474 and 481 may have been used but are not
+printed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Counts, percentages,
+and headers were reproduced; row denominators and missing counts are
+absent.</p>
+<p><strong>Quality-control relevance:</strong> The percentage base is
+not identified by the table.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could use the header totals rather than the effective
+denominators.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominators
+and missingness rule for this row.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--septic-shock-percentages-use-undisclosed-denominators" class="candidate-card">C003 —
+Septic-shock percentages use undisclosed denominators</h2>
+<p><strong>Candidate statement:</strong> The displayed septic-shock
+percentages do not reproduce from the Table 1 arm headers.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 1, Septic
+shock, low and intermediate arms.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=5">Main article — PDF p.
+5</a> prints <code>82 (17.6)</code> and <code>74 (15.5)</code> under
+<code>n=477</code> and <code>n=484</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>17.6%</code>/<code>15.5%</code> versus header-total
+calculations.</p>
+<p><strong>Reasoning procedure:</strong> Recalculate each percentage
+from the stated arm total.</p>
+<p><strong>Calculation:</strong> <code>82/477=17.2%</code>;
+<code>74/484=15.3%</code>, not the displayed values.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Smaller
+available-case denominators may have been used; exact denominators are
+not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed pairs and
+headers were found and calculations reproduced; missingness rule is
+unavailable.</p>
+<p><strong>Quality-control relevance:</strong> The denominator basis is
+not disclosed.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extracted baseline percentages could be paired with an incorrect
+denominator.</p>
+<p><strong>Human verification steps:</strong> Identify exact
+denominators and missingness rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c004--tobacco-use-categories-use-undisclosed-denominators" class="candidate-card">C004
+— Tobacco-use categories use undisclosed denominators</h2>
+<p><strong>Candidate statement:</strong> Tobacco-use counts and
+percentages reconcile to 475/482 rather than the 477/484 arm
+headers.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 1, Patient
+tobacco use, both arms.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=5">Main article — PDF p.
+5</a> lists never/current/previous/unknown tobacco categories.</p>
+<p><strong>Reported-versus-comparator:</strong> Four category counts
+versus Table 1 arm headers.</p>
+<p><strong>Reasoning procedure:</strong> Sum mutually listed categories
+and test their displayed percentages.</p>
+<p><strong>Calculation:</strong> Low <code>106+97+75+197=475</code>;
+intermediate <code>111+97+80+194=482</code>; <code>106/475=22.3%</code>,
+<code>111/482=23.0%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> 475/482
+available records may be intended despite an Unknown category.</p>
+<p><strong>Mechanical evidence recheck:</strong> All categories,
+headers, sums, and percentage examples were reproduced; classification
+of two patients per arm is absent.</p>
+<p><strong>Quality-control relevance:</strong> The disclosed column
+total and the variable base differ.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could extract category proportions using the wrong population
+base.</p>
+<p><strong>Human verification steps:</strong> Confirm intended
+denominators and classification of unrepresented patients.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c005--alcohol-use-categories-use-undisclosed-denominators" class="candidate-card">C005
+— Alcohol-use categories use undisclosed denominators</h2>
+<p><strong>Candidate statement:</strong> Alcohol-use counts and
+percentages reconcile to 475/482 rather than Table 1 arm headers.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 1, Patient
+alcohol use, both arms.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=5">Main article — PDF p.
+5</a> prints the five alcohol-use categories.</p>
+<p><strong>Reported-versus-comparator:</strong> Category totals and
+percentage bases versus <code>n=477</code>/<code>n=484</code>
+headers.</p>
+<p><strong>Reasoning procedure:</strong> Sum printed categories and
+reproduce representative percentages.</p>
+<p><strong>Calculation:</strong> Low <code>121+47+26+59+222=475</code>;
+intermediate <code>92+61+30+56+243=482</code>;
+<code>121/475=25.5%</code>, <code>92/482=19.1%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Variable-specific available-case bases may have been intended.</p>
+<p><strong>Mechanical evidence recheck:</strong> Counts, percentages,
+headers, and totals were reproduced; two observations per arm are not
+accounted for.</p>
+<p><strong>Quality-control relevance:</strong> The category denominator
+is not explicitly identified.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could combine percentages with the wrong denominator.</p>
+<p><strong>Human verification steps:</strong> Confirm the base and
+status of the two unrepresented observations per arm.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--icu-admission-categories-use-undisclosed-denominators" class="candidate-card">C006 —
+ICU-admission categories use undisclosed denominators</h2>
+<p><strong>Candidate statement:</strong> Surgical/medical ICU-admission
+counts and percentages reconcile to 475/482 rather than arm headers.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 1, Reason for
+ICU admission, both arms.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=5">Main article — PDF p.
+5</a> prints surgical <code>82 (17.3)</code>, medical
+<code>393 (82.7)</code>, and intermediate <code>79 (16.4)</code>,
+<code>403 (83.6)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Binary-category totals
+versus Table 1 arm headers.</p>
+<p><strong>Reasoning procedure:</strong> Sum category counts and test
+percentage bases.</p>
+<p><strong>Calculation:</strong> <code>82+393=475</code>,
+<code>79+403=482</code>; <code>82/475=17.3%</code>,
+<code>79/482=16.4%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Surgical/medical status may exist only for 475/482 patients.</p>
+<p><strong>Mechanical evidence recheck:</strong> Counts, percentages,
+headers, sums, and calculations reproduced; no missing category is
+printed.</p>
+<p><strong>Quality-control relevance:</strong> An apparently exhaustive
+categorization does not reconcile to the header population.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could attribute these percentages to the randomized arm
+totals.</p>
+<p><strong>Human verification steps:</strong> Confirm row denominators
+and any missing or unclassified category.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--sedative-infusion-percentages-omit-effective-denominators" class="candidate-card">C007
+— Sedative-infusion percentages omit effective denominators</h2>
+<p><strong>Candidate statement:</strong> Sedative-infusion percentages
+reproduce from unprinted 453/462 denominators, not arm headers.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-004, Supplement 3,
+eTable 4, Sedative infusion.</p>
+<p><strong>Source evidence:</strong> <a
+href="../joi180108supp3_prod.pdf#page=8">Supplement 3 — PDF p. 8</a>
+prints <code>320 (70.6)</code> and <code>333 (72.1)</code> under headers
+477/484.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed percentages
+versus arm-header and recovered available-case denominators.</p>
+<p><strong>Reasoning procedure:</strong> Recalculate from headers and
+from denominators that reproduce one-decimal display.</p>
+<p><strong>Calculation:</strong> <code>320/477=67.1%</code>,
+<code>333/484=68.8%</code>; <code>320/453=70.6%</code>,
+<code>333/462=72.1%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+complete-case subset may apply; eTable 4 uses reduced denominators
+elsewhere.</p>
+<p><strong>Mechanical evidence recheck:</strong> Count/percentage pairs,
+headers, table note, and calculations reproduced; row totals are not
+printed.</p>
+<p><strong>Quality-control relevance:</strong> The table note calls for
+number/total (%) but these totals are absent.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+co-intervention prevalence could be extracted using the header
+total.</p>
+<p><strong>Human verification steps:</strong> Verify effective
+denominators and exclusions/missingness.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--analgesic-infusion-percentages-omit-effective-denominators" class="candidate-card">C008
+— Analgesic-infusion percentages omit effective denominators</h2>
+<p><strong>Candidate statement:</strong> Analgesic-infusion percentages
+reproduce from unprinted 453/462 denominators, not arm headers.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-004, Supplement 3,
+eTable 4, Analgesic infusion.</p>
+<p><strong>Source evidence:</strong> <a
+href="../joi180108supp3_prod.pdf#page=8">Supplement 3 — PDF p. 8</a>
+prints <code>277 (61.1)</code> and <code>273 (59.1)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed percentages
+versus header and recovered denominator calculations.</p>
+<p><strong>Reasoning procedure:</strong> Compare count/percentage pairs
+with stated headers and recoverable bases.</p>
+<p><strong>Calculation:</strong> <code>277/477=58.1%</code>,
+<code>273/484=56.4%</code>; <code>277/453=61.1%</code>,
+<code>273/462=59.1%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+453/462 complete-case population may be intended.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed values,
+headers, definition, and calculations reproduced; row totals and
+missingness rule are absent.</p>
+<p><strong>Quality-control relevance:</strong> Effective denominators
+are not reported.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a co-intervention percentage may be copied with a wrong base.</p>
+<p><strong>Human verification steps:</strong> Verify row totals and the
+missing-data rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--neuromuscular-blockade-percentages-omit-effective-denominators" class="candidate-card">C009
+— Neuromuscular-blockade percentages omit effective denominators</h2>
+<p><strong>Candidate statement:</strong> Neuromuscular-blockade
+percentages reproduce from unprinted 453/462 denominators, not arm
+headers.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-004, Supplement 3,
+eTable 4, Neuromuscular blockade.</p>
+<p><strong>Source evidence:</strong> <a
+href="../joi180108supp3_prod.pdf#page=8">Supplement 3 — PDF p. 8</a>
+prints <code>53 (11.7)</code> and <code>60 (13.0)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed percentages
+versus arm-header and recovered denominator calculations.</p>
+<p><strong>Reasoning procedure:</strong> Recalculate each
+count/percentage pair.</p>
+<p><strong>Calculation:</strong> <code>53/477=11.1%</code>,
+<code>60/484=12.4%</code>; <code>53/453=11.7%</code>,
+<code>60/462=13.0%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+453/462 available-case subset may be used.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed values,
+headers, and calculations reproduced; totals, missing counts, and
+population definition are absent.</p>
+<p><strong>Quality-control relevance:</strong> The effective bases
+cannot be verified directly from the displayed row.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could use randomized rather than effective
+denominators.</p>
+<p><strong>Human verification steps:</strong> Confirm row denominators
+and exclusions/missing observations.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--vasopressor-use-percentages-omit-effective-denominators" class="candidate-card">C010
+— Vasopressor-use percentages omit effective denominators</h2>
+<p><strong>Candidate statement:</strong> Vasopressor-use percentages
+reproduce from 454/462, not displayed arm headers.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-004, Supplement 3,
+eTable 4, Use of vasopressors.</p>
+<p><strong>Source evidence:</strong> <a
+href="../joi180108supp3_prod.pdf#page=8">Supplement 3 — PDF p. 8</a>
+prints <code>363 (80.0)</code> and <code>353 (76.4)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed percentages
+versus header and recoverable denominator calculations.</p>
+<p><strong>Reasoning procedure:</strong> Compare count/percentage values
+to arm totals and bases that reproduce display.</p>
+<p><strong>Calculation:</strong> <code>363/477=76.1%</code>,
+<code>353/484=72.9%</code>; <code>363/454=80.0%</code>,
+<code>353/462=76.4%</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Different available-case subsets may have been used; the source does not
+state whether nearby subsets are shared.</p>
+<p><strong>Mechanical evidence recheck:</strong> Count/percentage pairs,
+headers, note, and calculations reproduced; effective totals are not
+printed.</p>
+<p><strong>Quality-control relevance:</strong> The denominator policy is
+not visible in the row.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extracted vasopressor prevalence could have an incorrect base.</p>
+<p><strong>Human verification steps:</strong> Verify 454/462,
+exclusions, and relationship to nearby denominators.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c011--mortality-effect-measure-wording-conflicts-with-table-2-and-the-sap" class="candidate-card">C011
+— Mortality effect-measure wording conflicts with Table 2 and the
+SAP</h2>
+<p><strong>Candidate statement:</strong> The main Methods wording can
+assign Cox HRs to ICU/hospital mortality, while Table 2 and the SAP
+assign RRs.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001 Statistical Analysis
+and Table 2/footnotes; DOC-003 SAP secondary outcomes.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=4">Main article Methods —
+PDF p. 4</a>, <a href="../jama_simonis_2018_oi_180108.pdf#page=6" target="_blank" rel="noopener">Table
+2 — PDF p. 6</a>, and <a href="../joi180108supp2_prod.pdf#page=13" target="_blank" rel="noopener">SAP —
+PDF p. 13</a>.</p>
+<p><strong>Reported-versus-comparator:</strong> Methods says mortality
+rates were compared with Kaplan-Meier/Cox HRs; Table 2/SAP specify RR
+for ICU/hospital mortality and HR for 28/90-day mortality.</p>
+<p><strong>Reasoning procedure:</strong> Match effect-measure and model
+labels across descriptions for the same outcomes.</p>
+<p><strong>Calculation:</strong> Semantic comparison: Methods -&gt;
+HR/Cox if read broadly; Table 2 and SAP -&gt; RR/Wald for ICU/hospital
+mortality.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+Methods sentence may be overbroad and intended Cox only for time-indexed
+mortality.</p>
+<p><strong>Mechanical evidence recheck:</strong> All labels and
+locations reproduced; intended scope of the Methods sentence and model
+output are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> The effect measure and
+model label should be unambiguous for the same outcome.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could classify ICU/hospital mortality under the wrong
+effect measure.</p>
+<p><strong>Human verification steps:</strong> Confirm the actual
+model/effect measure and intended scope of the Methods sentence.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--icu-mortality-rr-does-not-reproduce-from-printed-risks" class="candidate-card">C012 —
+ICU-mortality RR does not reproduce from printed risks</h2>
+<p><strong>Candidate statement:</strong> Printed ICU-mortality RR 1.11
+does not reproduce as the crude low/intermediate ratio from displayed
+risks.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 2, ICU
+mortality and footnote c.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=6">Main article — PDF p.
+6</a> prints low <code>132/450 (29.3)</code>, intermediate
+<code>115/458 (25.1)</code>, and <code>RR, 1.11 (0.96-1.27)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported RR 1.11 versus
+crude ratio of printed risks.</p>
+<p><strong>Reasoning procedure:</strong> Divide low-arm risk by
+intermediate-arm risk, as the comparator only; the source does not
+specify a non-crude RR computation.</p>
+<p><strong>Calculation:</strong>
+<code>(132/450)/(115/458)=1.168231884</code>, rounding to 1.17, not
+1.11.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+non-crude estimator, different population, weighting, or strata may
+underlie 1.11.</p>
+<p><strong>Mechanical evidence recheck:</strong> Counts, totals, RR
+label, footnote, and calculation reproduced; estimator and analysis-set
+definition are missing.</p>
+<p><strong>Quality-control relevance:</strong> The displayed effect
+estimate cannot be mechanically reconciled to the displayed margins
+under the crude comparator.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could extract a reported RR without knowing its relation to
+the printed risks.</p>
+<p><strong>Human verification steps:</strong> Obtain the estimator,
+direction, analysis population, and model output for RR 1.11.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--hospital-mortality-rr-does-not-reproduce-from-printed-risks" class="candidate-card">C013
+— Hospital-mortality RR does not reproduce from printed risks</h2>
+<p><strong>Candidate statement:</strong> Printed hospital-mortality RR
+1.06 does not reproduce from displayed risks under the crude
+comparator.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 2, hospital
+mortality and footnote c.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=6">Main article — PDF p.
+6</a> prints low <code>151/477 (31.7)</code>, intermediate
+<code>140/484 (28.9)</code>, and RR 1.06.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported RR 1.06 versus
+displayed-risk ratio.</p>
+<p><strong>Reasoning procedure:</strong> Divide low-arm by
+intermediate-arm printed risks as the stated comparator.</p>
+<p><strong>Calculation:</strong>
+<code>(151/477)/(140/484)=1.094399521</code>, rounding to 1.09, not
+1.06.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+differently defined estimator or analysis population may underlie the
+printed RR.</p>
+<p><strong>Mechanical evidence recheck:</strong> Margins, RR, and
+footnote were reproduced; estimator, weighting, strata, and output are
+absent.</p>
+<p><strong>Quality-control relevance:</strong> The reported effect is
+not reproducible from the displayed crude risks.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+effect extraction could mix an unexplained RR with displayed risks.</p>
+<p><strong>Human verification steps:</strong> Identify the analysis that
+generated RR 1.06.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c014--ards-rr-does-not-reproduce-from-printed-risks" class="candidate-card">C014 — ARDS
+RR does not reproduce from printed risks</h2>
+<p><strong>Candidate statement:</strong> Printed ARDS RR 0.86 does not
+reproduce from displayed risks under the crude comparator.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 2,
+Development of ARDS and footnote c.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=6">Main article — PDF p.
+6</a> prints <code>17/448 (3.8)</code>, <code>23/462 (5.0)</code>, and
+RR 0.86.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported RR 0.86 versus
+printed-risk ratio.</p>
+<p><strong>Reasoning procedure:</strong> Compare the RR with
+low/intermediate risks from the table.</p>
+<p><strong>Calculation:</strong>
+<code>(17/448)/(23/462)=0.762228261</code>, rounding to 0.76, not
+0.86.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+model- or test-derived RR beyond displayed margins may have been used
+but is not described.</p>
+<p><strong>Mechanical evidence recheck:</strong> Inputs, RR, footnote,
+and calculation reproduced; exact estimator and population are
+missing.</p>
+<p><strong>Quality-control relevance:</strong> The printed RR and
+margins need an explanatory analysis definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could use an effect estimate whose derivation is unclear
+from the table.</p>
+<p><strong>Human verification steps:</strong> Confirm estimator and
+denominator population for RR 0.86.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c015--pneumonia-rr-does-not-reproduce-from-printed-risks" class="candidate-card">C015 —
+Pneumonia RR does not reproduce from printed risks</h2>
+<p><strong>Candidate statement:</strong> Printed pneumonia RR 1.07 does
+not reproduce from displayed risks under the crude comparator.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 2,
+Development of pneumonia and footnote c.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=6">Main article — PDF p.
+6</a> prints <code>19/450 (4.2)</code>, <code>17/462 (3.7)</code>, and
+RR 1.07.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported RR 1.07 versus
+printed-risk ratio.</p>
+<p><strong>Reasoning procedure:</strong> Compare the RR with
+low/intermediate risk division.</p>
+<p><strong>Calculation:</strong>
+<code>(19/450)/(17/462)=1.147450980</code>, rounding to 1.15, not
+1.07.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+procedure using information beyond displayed margins is possible but not
+described.</p>
+<p><strong>Mechanical evidence recheck:</strong> Counts, totals,
+percentages, RR, footnote, and calculation reproduced; estimator details
+are unavailable.</p>
+<p><strong>Quality-control relevance:</strong> The table does not make
+the RR derivation transparent.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could copy an RR that differs from the displayed crude
+comparison.</p>
+<p><strong>Human verification steps:</strong> Identify exact computation
+and population for RR 1.07.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c016--pneumothorax-rr-does-not-reproduce-from-printed-risks" class="candidate-card">C016 —
+Pneumothorax RR does not reproduce from printed risks</h2>
+<p><strong>Candidate statement:</strong> Printed pneumothorax RR 1.16
+does not reproduce from displayed risks under the crude comparator.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 2,
+Pneumothorax and footnote c.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=6">Main article — PDF p.
+6</a> prints <code>8/448 (1.8)</code>, <code>6/462 (1.3)</code>, and RR
+1.16.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported RR 1.16 versus
+printed-risk ratio.</p>
+<p><strong>Reasoning procedure:</strong> Divide the two displayed
+risks.</p>
+<p><strong>Calculation:</strong> <code>(8/448)/(6/462)=1.375</code>,
+rounding to 1.38, not 1.16.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A model
+or test using unprinted information may produce a different effect.</p>
+<p><strong>Mechanical evidence recheck:</strong> Values, RR, footnote,
+and calculation reproduced; estimator and analysis-set details are
+absent.</p>
+<p><strong>Quality-control relevance:</strong> The reported estimate is
+not mechanically reconciled to the printed margins.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+effect-size extraction may not reflect the table margins.</p>
+<p><strong>Human verification steps:</strong> Confirm computation and
+analysis set for RR 1.16.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c017--atelectasis-rr-does-not-reproduce-from-printed-risks" class="candidate-card">C017
+— Atelectasis RR does not reproduce from printed risks</h2>
+<p><strong>Candidate statement:</strong> Printed atelectasis RR 1.00
+does not reproduce from displayed risks under the crude comparator.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 2,
+Atelectasis and footnote c.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=6">Main article — PDF p.
+6</a> prints <code>51/449 (11.4)</code>, <code>52/464 (11.2)</code>, and
+RR 1.00.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported RR 1.00 versus
+printed-risk ratio.</p>
+<p><strong>Reasoning procedure:</strong> Divide low-arm by
+intermediate-arm printed risks.</p>
+<p><strong>Calculation:</strong>
+<code>(51/449)/(52/464)=1.013534350</code>, rounding to 1.01, not
+1.00.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+separately estimated or more heavily rounded effect could print as 1.00,
+but the source does not disclose the computation.</p>
+<p><strong>Mechanical evidence recheck:</strong> Margins, RR, footnote,
+and calculation reproduced; precise estimator and rounding rule are
+unavailable.</p>
+<p><strong>Quality-control relevance:</strong> The reported RR needs a
+derivation or rounding explanation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extracted effect can differ slightly from the table's crude
+risks.</p>
+<p><strong>Human verification steps:</strong> Confirm estimator and
+rounding rule for RR 1.00.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c018--extrapulmonary-infection-rr-does-not-reproduce-from-printed-risks" class="candidate-card">C018
+— Extrapulmonary-infection RR does not reproduce from printed risks</h2>
+<p><strong>Candidate statement:</strong> Printed
+extrapulmonary-infection RR 0.84 does not reproduce from displayed risks
+under the crude comparator.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 2,
+Extrapulmonary infection and footnote c.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=6">Main article — PDF p.
+6</a> prints <code>20/448 (4.5)</code>, <code>28/463 (6.0)</code>, and
+RR 0.84.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported RR 0.84 versus
+printed-risk ratio.</p>
+<p><strong>Reasoning procedure:</strong> Divide displayed low and
+intermediate risks.</p>
+<p><strong>Calculation:</strong>
+<code>(20/448)/(28/463)=0.738201531</code>, rounding to 0.74, not
+0.84.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unspecified procedure beyond the margins could yield the printed RR.</p>
+<p><strong>Mechanical evidence recheck:</strong> Risks, RR, footnote,
+and calculation reproduced; estimator, population, and model output are
+missing.</p>
+<p><strong>Quality-control relevance:</strong> The effect calculation is
+not transparent from the displayed result.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+data extraction could carry an unexplained effect estimate.</p>
+<p><strong>Human verification steps:</strong> Confirm procedure and
+population for RR 0.84.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c019--extrapulmonary-sepsis-rr-does-not-reproduce-from-printed-risks" class="candidate-card">C019
+— Extrapulmonary-sepsis RR does not reproduce from printed risks</h2>
+<p><strong>Candidate statement:</strong> Printed extrapulmonary-sepsis
+RR 0.87 does not reproduce from displayed risks under the crude
+comparator.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 2,
+Extrapulmonary sepsis and footnote c.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=6">Main article — PDF p.
+6</a> prints <code>12/448 (2.7)</code>, <code>16/463 (3.5)</code>, and
+RR 0.87.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported RR 0.87 versus
+printed-risk ratio.</p>
+<p><strong>Reasoning procedure:</strong> Compare reported RR with the
+crude displayed-risk ratio.</p>
+<p><strong>Calculation:</strong>
+<code>(12/448)/(16/463)=0.775111607</code>, rounding to 0.78, not
+0.87.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+non-crude RR may differ from table margins, but no implementation is
+identified.</p>
+<p><strong>Mechanical evidence recheck:</strong> Inputs, RR, footnote,
+and calculation reproduced; estimator details are absent.</p>
+<p><strong>Quality-control relevance:</strong> The table does not state
+a reconciliation for the printed estimate.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extracted effect may be mismatched to displayed event risks.</p>
+<p><strong>Human verification steps:</strong> Confirm estimator and
+analysis set for RR 0.87.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c020--delirium-rr-does-not-reproduce-from-printed-risks" class="candidate-card">C020 —
+Delirium RR does not reproduce from printed risks</h2>
+<p><strong>Candidate statement:</strong> Printed delirium RR 1.15 does
+not reproduce from displayed risks under the crude comparator.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 2, Delirium
+and footnote c.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=6">Main article — PDF p.
+6</a> prints <code>149/343 (43.4)</code>, <code>132/361 (36.6)</code>,
+and RR 1.15.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported RR 1.15 versus
+printed-risk ratio.</p>
+<p><strong>Reasoning procedure:</strong> Divide displayed low and
+intermediate risks.</p>
+<p><strong>Calculation:</strong>
+<code>(149/343)/(132/361)=1.188024560</code>, rounding to 1.19, not
+1.15.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+non-crude analysis or population not fully represented by margins may
+yield another RR.</p>
+<p><strong>Mechanical evidence recheck:</strong> Values, RR, footnote,
+and calculation reproduced; exact estimator and analysis-set definition
+are missing.</p>
+<p><strong>Quality-control relevance:</strong> The effect estimate
+requires a source-grounded derivation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an effect copied into evidence synthesis may not correspond to printed
+crude risks.</p>
+<p><strong>Human verification steps:</strong> Confirm computation and
+population for RR 1.15.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c021--tracheostomy-rr-does-not-reproduce-from-printed-risks" class="candidate-card">C021 —
+Tracheostomy RR does not reproduce from printed risks</h2>
+<p><strong>Candidate statement:</strong> Printed tracheostomy RR 1.03
+does not reproduce from displayed risks under the crude comparator.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Table 2, Need for
+tracheostomy and footnote c.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=6">Main article — PDF p.
+6</a> prints <code>54/477 (11.3)</code>, <code>52/484 (10.7)</code>, and
+RR 1.03.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported RR 1.03 versus
+printed-risk ratio.</p>
+<p><strong>Reasoning procedure:</strong> Divide displayed
+low/intermediate risks.</p>
+<p><strong>Calculation:</strong>
+<code>(54/477)/(52/484)=1.053701016</code>, rounding to 1.05, not
+1.03.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+procedure not reducible to displayed margins may have been used, but it
+is not specified.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both margins, RR,
+footnote, and calculation reproduced; estimator specification is
+absent.</p>
+<p><strong>Quality-control relevance:</strong> The reported effect
+cannot be reconciled directly from table data.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+evidence extraction could conflate the reported effect with crude event
+risks.</p>
+<p><strong>Human verification steps:</strong> Identify the exact
+analysis generating RR 1.03.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c022--the-same-subgroup-intervals-are-labelled-iqr-and-95-ci" class="candidate-card">C022 —
+The same subgroup intervals are labelled IQR and 95% CI</h2>
+<p><strong>Candidate statement:</strong> Identical subgroup intervals
+are labelled IQR in the main text and 95% CI in eTable 5.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, Subgroups and
+Exploratory Analyses; DOC-004, Supplement 3 eTable 5.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=6">Main article — PDF p.
+6</a> prints inside-ICU <code>-2.50 [IQR, -4.63 to -0.36]</code> and
+outside-ICU <code>1.45 [IQR, -0.52 to 3.43]</code>; <a
+href="../joi180108supp3_prod.pdf#page=9">Supplement 3 — PDF p. 9</a>
+labels the identical values <code>Mean Difference (95% CI)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Main-text
+<code>IQR</code> labels versus eTable 5 <code>95% CI</code> labels for
+identical point estimates and endpoints.</p>
+<p><strong>Reasoning procedure:</strong> Match the point estimates and
+four interval endpoints, then compare their attached interval type.</p>
+<p><strong>Calculation:</strong> Both sources show
+<code>-2.50 (-4.63 to -0.36)</code> and
+<code>1.45 (-0.52 to 3.43)</code>; only <code>IQR</code> versus
+<code>95% CI</code> differs.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+narrative label may be a transcription error; the supplied sources do
+not establish intended wording.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both labels and all
+numerical values were reproduced; analysis output/editorial provenance
+is unavailable.</p>
+<p><strong>Quality-control relevance:</strong> Interval type affects how
+the subgroup results are interpreted and extracted.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy the interval under the wrong uncertainty
+label.</p>
+<p><strong>Human verification steps:</strong> Confirm whether the
+intervals are 95% CIs and which wording requires clarification.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c023--enrollment-completion-dates-differ-by-two-days" class="candidate-card">C023 —
+Enrollment completion dates differ by two days</h2>
+<p><strong>Candidate statement:</strong> The main article reports
+enrollment through August 20, 2017, while the SAP reports enrollment
+complete on August 22, 2017.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001 abstract and
+Results/Patients; DOC-003 SAP abstract and introduction.</p>
+<p><strong>Source evidence:</strong> <a
+href="../jama_simonis_2018_oi_180108.pdf#page=1">Main article abstract —
+PDF p. 1</a> and <a
+href="../jama_simonis_2018_oi_180108.pdf#page=5">Results/Patients — PDF
+p. 5</a> print August 20, 2017. <a
+href="../joi180108supp2_prod.pdf#page=3">SAP abstract — PDF p. 3</a> and
+<a href="../joi180108supp2_prod.pdf#page=5" target="_blank" rel="noopener">SAP introduction — PDF p.
+5</a> print August 22, 2017.</p>
+<p><strong>Reported-versus-comparator:</strong> Main-article enrollment
+end date August 20, 2017 versus SAP enrollment-completion date August
+22, 2017.</p>
+<p><strong>Reasoning procedure:</strong> Match the trial and compare
+dates described as the end/completion of enrollment.</p>
+<p><strong>Calculation:</strong> August 22, 2017 is two calendar days
+after August 20, 2017.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> August
+20 may be the last screened/enrolled/randomized patient and August 22
+administrative completion; the supplied sources do not define distinct
+events.</p>
+<p><strong>Mechanical evidence recheck:</strong> All four locations and
+both date statements were reproduced; event definitions and
+administrative records are missing.</p>
+<p><strong>Quality-control relevance:</strong> Matched trial-enrollment
+date reporting is inconsistent unless distinct operational meanings are
+clarified.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could copy a different enrollment end date depending on
+source choice.</p>
+<p><strong>Human verification steps:</strong> Define the operational
+event for each date and confirm last enrollment/randomization date.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>Small preventable reporting defects can matter when values,
+denominators, labels, dates, or effect measures are copied into
+systematic reviews, meta-analyses, guidelines, or later evidence
+products. This review does not assert that any candidate propagated,
+changed a conclusion, or caused harm.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The supplied package contained five PDFs only. All pages had fresh
+native/layout text; renderings preserved visually relevant graphical
+pages, and no OCR was needed. No Office or structured-data source, raw
+data, analysis code, administrative records, or unpublished model output
+was supplied. Several candidates therefore retain a precise human
+question about denominators, estimator, population, or intended
+wording.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ol type="1">
+<li>Open each linked supplied PDF page and confirm the printed
+evidence.</li>
+<li>Check the stated rule and calculation against the source's
+population, model, and rounding conventions.</li>
+<li>Obtain missing source definitions or analysis output where
+identified.</li>
+<li>Record validity, importance, action, initials, and notes in the card
+template without changing stable IDs.</li>
+</ol>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</h3>
+<ul>
+<li><strong>Profile:</strong> 1.5.2</li>
+<li><strong>Direct sources:</strong> 5 PDF files</li>
+<li><strong>Total source units:</strong> 94</li>
+<li><strong>Fresh-source units:</strong> 94</li>
+<li><strong>Reusable evidence units:</strong> 0</li>
+<li><strong>Mapped source units:</strong> 94/94</li>
+<li><strong>Scientific evidence basis:</strong> Supplied package sources
+only; legacy audit derivatives excluded.</li>
+<li><strong>Source hashes before review:</strong>
+<code>.ai_paper_validation/review_1_5_2/source_hashes_before.sha256</code></li>
+<li><strong>Source hashes after review:</strong>
+<code>.ai_paper_validation/review_1_5_2/source_hashes_after.sha256</code></li>
+<li><strong>Source integrity status:</strong> PASS — all five recomputed
+SHA-256 values match the pre-review inventory.</li>
+<li><strong>Mechanical validation status:</strong> PASS —
+<code>.ai_paper_validation/review_1_5_2/review_validation.json</code>
+reports no errors.</li>
+</ul>
+<h3 id="agent-execution">Agent Execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>root</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr>
+<td>fresh_source_preprocessor</td>
+<td>root/fresh_preprocessing</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>evidence_asset_inventory.md</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>root/main_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>root/support_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>numeric_checks</td>
+<td>root/numeric_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr>
+<td>cross_source_checks</td>
+<td>root/cross_source_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr>
+<td>evidence_recheck</td>
+<td>root/evidence_recheck</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr>
+<td>evidence_quality</td>
+<td>root/quality_audit</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr>
+<td>report_generation</td>
+<td>root/report_generation</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>report_generation_summary.md</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reproducibility-performance">Reproducibility Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Five supplied PDFs totaling 94 pages,
+all requiring fresh extraction and mapping; scope is close to the
+102-page five-PDF calibration package, with fewer total units but a
+higher fully fresh-unit burden, so a slightly wider upper bound
+accommodates complete preprocessing and two statistical passes.</li>
+<li><strong>Total source units:</strong> 94</li>
+<li><strong>Fresh-source units:</strong> 94</li>
+<li><strong>Target elapsed minutes:</strong> 35-55</li>
+<li><strong>Started UTC:</strong> 2026-08-20T18:01:02Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-20T18:40:29Z</li>
+<li><strong>Observed elapsed minutes:</strong> 39.5</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting">Token Accounting</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<p>Token figures are populated only from authoritative runtime/API usage
+records through Finished UTC. Amounts are token-only API-equivalent
+estimates under the dated pricing snapshot, not invoices; cached input
+and cache-write counts are input subsets and reasoning is an output
+subset.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+<th style="text-align: right;">Estimated complete token cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+</tr>
+</tbody>
+</table>
+<p>Per-agent details are recorded in
+<code>.ai_paper_validation/review_1_5_2/token_usage_summary.md</code>.
+Authoritative runtime counts were unavailable for all 11 manifested
+agents, so zero is only the known subtotal and the complete package
+token count and estimated complete cost remain unavailable.</p>
+</body>
+</html>

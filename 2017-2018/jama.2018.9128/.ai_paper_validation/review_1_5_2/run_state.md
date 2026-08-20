@@ -1,0 +1,21 @@
+# Workflow 1.5.2 Run State
+
+- **Profile:** 1.5.2
+- **Run status:** COMPLETE
+- **Target basis:** Three supplied digital PDFs totaling 132 pages require fresh native and layout extraction. The package combines an 11-page main report, a 113-page protocol/SAP supplement with extensive definitions and planned analyses, and an 8-page results supplement; native text is expected to be usable, but complete cross-document mapping and two statistical passes create substantial relationship volume. No Office conversion or broad OCR burden is presently expected.
+- **Total source units:** 132
+- **Fresh-source units:** 132
+- **Target elapsed minutes:** 55-80
+- **Started UTC:** 2026-08-20T18:02:54Z
+- **Finished UTC:** 2026-08-20T18:42:55Z
+- **Observed elapsed minutes:** 40.0
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Current stage:** COMPLETE
+- **Direct source count:** 3
+- **Candidate count:** 13
+- **Statistical relationship count:** 71
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE
+- **Source integrity status:** VERIFIED_UNCHANGED
+- **Validation status:** PASS
+- **Open limitations:** DOC-002 pp. 108 and 111 equation glyph OCR is imperfect; DOC-003 figure OCR is incomplete, so rendered PNGs are authoritative for those units.

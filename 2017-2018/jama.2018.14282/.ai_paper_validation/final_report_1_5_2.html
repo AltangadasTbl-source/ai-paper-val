@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--jama-201814282"
+id="toc-quantitative-quality-control-consistency-review--jama-201814282">Quantitative
+Quality-Control Consistency Review — JAMA 2018.14282</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-fresh-processing-provenance"
+id="toc-package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a href="#c001--standard-arm-men-percentage-does-not-reconcile"
+id="toc-c001--standard-arm-men-percentage-does-not-reconcile">C001 —
+Standard-arm men percentage does not reconcile</a></li>
+<li><a href="#c002--standard-arm-women-percentage-does-not-reconcile"
+id="toc-c002--standard-arm-women-percentage-does-not-reconcile">C002 —
+Standard-arm women percentage does not reconcile</a></li>
+<li><a
+href="#c003--standard-arm-heart-failure-percentage-does-not-reconcile"
+id="toc-c003--standard-arm-heart-failure-percentage-does-not-reconcile">C003
+— Standard-arm heart-failure percentage does not reconcile</a></li>
+<li><a
+href="#c004--high-flow-liver-disease-percentage-conflicts-with-displayed-count"
+id="toc-c004--high-flow-liver-disease-percentage-conflicts-with-displayed-count">C004
+— High-flow liver-disease percentage conflicts with displayed
+count</a></li>
+<li><a
+href="#c005--standard-arm-kidney-disease-percentage-conflicts-with-displayed-count"
+id="toc-c005--standard-arm-kidney-disease-percentage-conflicts-with-displayed-count">C005
+— Standard-arm kidney-disease percentage conflicts with displayed
+count</a></li>
+<li><a
+href="#c006--standard-arm-nontransplant-immunosuppression-percentage-does-not-reconcile"
+id="toc-c006--standard-arm-nontransplant-immunosuppression-percentage-does-not-reconcile">C006
+— Standard-arm nontransplant immunosuppression percentage does not
+reconcile</a></li>
+<li><a
+href="#c007--high-flow-3-days-after-icu-admission-percentage-does-not-reconcile"
+id="toc-c007--high-flow-3-days-after-icu-admission-percentage-does-not-reconcile">C007
+— High-flow ≥3-days-after-ICU-admission percentage does not
+reconcile</a></li>
+<li><a
+href="#c008--standard-arm-3-days-after-icu-admission-percentage-does-not-reconcile"
+id="toc-c008--standard-arm-3-days-after-icu-admission-percentage-does-not-reconcile">C008
+— Standard-arm ≥3-days-after-ICU-admission percentage does not
+reconcile</a></li>
+<li><a
+href="#c009--standard-arm-vasopressor-percentage-does-not-reconcile"
+id="toc-c009--standard-arm-vasopressor-percentage-does-not-reconcile">C009
+— Standard-arm vasopressor percentage does not reconcile</a></li>
+<li><a
+href="#c010--high-flow-do-not-intubate-percentage-does-not-reconcile"
+id="toc-c010--high-flow-do-not-intubate-percentage-does-not-reconcile">C010
+— High-flow do-not-intubate percentage does not reconcile</a></li>
+<li><a
+href="#c011--high-flow-do-not-resuscitate-percentage-does-not-reconcile"
+id="toc-c011--high-flow-do-not-resuscitate-percentage-does-not-reconcile">C011
+— High-flow do-not-resuscitate percentage does not reconcile</a></li>
+<li><a
+href="#c012--standard-arm-do-not-resuscitate-percentage-does-not-reconcile"
+id="toc-c012--standard-arm-do-not-resuscitate-percentage-does-not-reconcile">C012
+— Standard-arm do-not-resuscitate percentage does not reconcile</a></li>
+<li><a
+href="#c013--standard-arm-unknown-goals-percentage-does-not-reconcile"
+id="toc-c013--standard-arm-unknown-goals-percentage-does-not-reconcile">C013
+— Standard-arm unknown-goals percentage does not reconcile</a></li>
+<li><a
+href="#c014--high-flow-pre-randomization-standard-oxygen-percentage-does-not-reconcile"
+id="toc-c014--high-flow-pre-randomization-standard-oxygen-percentage-does-not-reconcile">C014
+— High-flow pre-randomization standard-oxygen percentage does not
+reconcile</a></li>
+<li><a
+href="#c015--high-flow-icu-acquired-infection-percentage-does-not-reconcile"
+id="toc-c015--high-flow-icu-acquired-infection-percentage-does-not-reconcile">C015
+— High-flow ICU-acquired-infection percentage does not
+reconcile</a></li>
+<li><a
+href="#c016--standard-arm-hospital-mortality-percentage-does-not-reconcile"
+id="toc-c016--standard-arm-hospital-mortality-percentage-does-not-reconcile">C016
+— Standard-arm hospital-mortality percentage does not reconcile</a></li>
+<li><a
+href="#c017--respiratory-rate-confidence-interval-endpoint-differs-between-matched-occurrences"
+id="toc-c017--respiratory-rate-confidence-interval-endpoint-differs-between-matched-occurrences">C017
+— Respiratory-rate confidence-interval endpoint differs between matched
+occurrences</a></li>
+<li><a
+href="#c018--arm-attributed-support-needs-percentages-use-the-overall-population-denominator"
+id="toc-c018--arm-attributed-support-needs-percentages-use-the-overall-population-denominator">C018
+— Arm-attributed support-needs percentages use the overall-population
+denominator</a></li>
+<li><a
+href="#c019--etable-high-flow-invasive-mv-percentage-does-not-reconcile"
+id="toc-c019--etable-high-flow-invasive-mv-percentage-does-not-reconcile">C019
+— eTable high-flow invasive-MV percentage does not reconcile</a></li>
+<li><a
+href="#c020--etable-standard-arm-invasive-mv-percentage-does-not-reconcile"
+id="toc-c020--etable-standard-arm-invasive-mv-percentage-does-not-reconcile">C020
+— eTable standard-arm invasive-MV percentage does not reconcile</a></li>
+<li><a
+href="#c021--etable-standard-oxygen-only-percentage-does-not-reconcile"
+id="toc-c021--etable-standard-oxygen-only-percentage-does-not-reconcile">C021
+— eTable standard-oxygen-only percentage does not reconcile</a></li>
+<li><a
+href="#c022--imv-cumulative-incidence-comparison-has-incompatible-printed-test-labels"
+id="toc-c022--imv-cumulative-incidence-comparison-has-incompatible-printed-test-labels">C022
+— IMV cumulative-incidence comparison has incompatible printed test
+labels</a></li>
+<li><a
+href="#c023--figure-3a-mortality-hr-has-a-near-reciprocal-orientation-relative-to-table-2"
+id="toc-c023--figure-3a-mortality-hr-has-a-near-reciprocal-orientation-relative-to-table-2">C023
+— Figure 3A mortality HR has a near-reciprocal orientation relative to
+Table 2</a></li>
+<li><a
+href="#c024--figure-3b-imv-hr-has-a-near-reciprocal-orientation-relative-to-table-2"
+id="toc-c024--figure-3b-imv-hr-has-a-near-reciprocal-orientation-relative-to-table-2">C024
+— Figure 3B IMV HR has a near-reciprocal orientation relative to Table
+2</a></li>
+<li><a
+href="#c025--revised-superiority-sample-size-total-conflicts-with-equal-arm-counts"
+id="toc-c025--revised-superiority-sample-size-total-conflicts-with-equal-arm-counts">C025
+— Revised-superiority sample-size total conflicts with equal arm
+counts</a></li>
+<li><a
+href="#c026--noninferiority-boundsign-wording-conflicts-with-its-explanatory-axis"
+id="toc-c026--noninferiority-boundsign-wording-conflicts-with-its-explanatory-axis">C026
+— Noninferiority bound/sign wording conflicts with its explanatory
+axis</a></li>
+<li><a
+href="#c027--primary-hypothesis-intervention-is-labelled-niv-while-plans-identify-hfno"
+id="toc-c027--primary-hypothesis-intervention-is-labelled-niv-while-plans-identify-hfno">C027
+— Primary-hypothesis intervention is labelled NIV while plans identify
+HFNO</a></li>
+<li><a
+href="#c028--planned-primary-outcome-alternates-between-day-28-vital-status-and-hospital-death"
+id="toc-c028--planned-primary-outcome-alternates-between-day-28-vital-status-and-hospital-death">C028
+— Planned primary outcome alternates between day-28 vital status and
+hospital death</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#source-integrity-and-reproducibility"
+id="toc-source-integrity-and-reproducibility">Source integrity and
+reproducibility</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance-metadata"
+id="toc-performance-metadata">Performance metadata</a></li>
+<li><a href="#token-accounting-metadata"
+id="toc-token-accounting-metadata">Token-accounting metadata</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--jama-201814282">Quantitative
+Quality-Control Consistency Review — JAMA 2018.14282</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p><strong>All 28 candidate consistency issues in this report are
+Pending Human Adjudication.</strong> This is a source-grounded
+quantitative reporting quality-control review, not a validity, severity,
+misconduct, or final-correction determination.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete fresh processing identified 28 distinct candidate
+reporting-consistency issues: 19 count/percentage production or
+denominator observations, 1 matched confidence-interval display
+difference, 1 denominator-communication observation, 2
+measure/orientation observations, 3 statistical/plan-label observations,
+and 2 further cross-document/arithmetic observations. The candidates are
+not ranked and no candidate was deferred or suppressed. Small
+preventable reporting defects can matter if confirmed because they may
+be copied during downstream evidence extraction; this review does not
+assert that propagation, harm, or a conclusion change occurred.</p>
+<h2 id="package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</h2>
+<p>This source-first Workflow 1.5.2 review used only the four supplied
+PDFs and no legacy audit derivative as evidence. Direct-source
+inventory, hashes, native/layout text, targeted render review, and
+page-level coverage were prepared afresh under
+<code>review_1_5_2/</code>. No web, GPU, or OCR was used; all
+result-relevant pages had usable native/layout text.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Source</th>
+<th>Role</th>
+<th style="text-align: right;">Units</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_azoulay_2018_oi_180109.pdf#page=1">jama_azoulay_2018_oi_180109.pdf
+— PDF p.1</a></td>
+<td>Main article</td>
+<td style="text-align: right;">9</td>
+<td><code>515e58637dd5489fa605d597e7d637c52297a954616e3924f6fc14fa46d1f0b6</code></td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a href="../joi180109supp1_prod.pdf#page=1" target="_blank" rel="noopener">joi180109supp1_prod.pdf
+— PDF p.1</a></td>
+<td>Protocol and statistical analysis plan</td>
+<td style="text-align: right;">129</td>
+<td><code>8036657a65b8d2de9f209729822652f95ba1436079ce8e524d6538b64f7f87c3</code></td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a href="../joi180109supp2_prod.pdf#page=1" target="_blank" rel="noopener">joi180109supp2_prod.pdf
+— PDF p.1</a></td>
+<td>Results supplement</td>
+<td style="text-align: right;">5</td>
+<td><code>13c31ed5f073920f8c5fcd98965e4ed6a19411480939559d4eb87a792276a868</code></td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td><a href="../joi180109supp3_prod.pdf#page=1" target="_blank" rel="noopener">joi180109supp3_prod.pdf
+— PDF p.1</a></td>
+<td>Data-sharing statement</td>
+<td style="text-align: right;">1</td>
+<td><code>2fdd033524cf8076b380c2a1e9fe1bf12d2ad6b91e40781f50e3f2873442e528</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All 144 direct PDF pages were newly mapped: DOC-001 9/9, DOC-002
+129/129, DOC-003 5/5, and DOC-004 1/1. Each had zero reusable units and
+status <code>COMPLETE</code> in the fresh source-coverage record. The
+review checked numeric, denominator, statistical, cross-document,
+measure/label/scale, and rate-versus-count relationships. It excluded
+broad methodology, clinical, novelty, misconduct, raw-data, and
+final-adjudication assessments. Coherent display-zero P values alone
+were not candidates.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The numeric lane completed 54/54 relationships (N001–N054). The first
+independent statistical pass completed 38/38 relationships (S001–S038),
+and the different second independent statistical pass revisited all
+38/38 relationships, every cross-lane candidate, and all mechanical
+recheck facts. The cross-source lane covered matched results across all
+four documents after population, time, contrast, model, definition, and
+precision matching. Full stage assignments and source-unit coverage are
+recorded in <a
+href="review_1_5_2/coverage_manifest.md">coverage_manifest.md</a> and <a
+href="review_1_5_2/source_coverage.md">source_coverage.md</a>.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate statement</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Standard-arm men percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Standard-arm women percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Standard-arm heart-failure percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>High-flow liver-disease percentage conflicts with displayed
+count</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Standard-arm kidney-disease percentage conflicts with displayed
+count</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Standard-arm nontransplant immunosuppression percentage does not
+reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>High-flow ≥3-days-after-ICU-admission percentage does not
+reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Standard-arm ≥3-days-after-ICU-admission percentage does not
+reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>Standard-arm vasopressor percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>High-flow do-not-intubate percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>High-flow do-not-resuscitate percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Standard-arm do-not-resuscitate percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>Standard-arm unknown-goals percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>High-flow pre-randomization standard-oxygen percentage does not
+reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C015</td>
+<td>High-flow ICU-acquired-infection percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C016</td>
+<td>Standard-arm hospital-mortality percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C017</td>
+<td>Respiratory-rate confidence-interval endpoint differs</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td>C018</td>
+<td>Arm-attributed support-needs percentages use overall
+denominator</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C019</td>
+<td>eTable high-flow invasive-MV percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C020</td>
+<td>eTable standard-arm invasive-MV percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C021</td>
+<td>eTable standard-oxygen-only percentage does not reconcile</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C022</td>
+<td>IMV cumulative-incidence comparison has incompatible test
+labels</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C023</td>
+<td>Figure 3A mortality HR has near-reciprocal orientation</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C024</td>
+<td>Figure 3B IMV HR has near-reciprocal orientation</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C025</td>
+<td>Revised-superiority total conflicts with equal arm counts</td>
+<td>Numeric or arithmetic inconsistency</td>
+</tr>
+<tr>
+<td>C026</td>
+<td>Noninferiority bound/sign wording conflicts with explanatory
+axis</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C027</td>
+<td>Primary-hypothesis intervention is labelled NIV while plans identify
+HFNO</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C028</td>
+<td>Planned primary outcome alternates between day-28 vital status and
+hospital death</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2 id="c001--standard-arm-men-percentage-does-not-reconcile" class="candidate-card">C001 —
+Standard-arm men percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The printed standard-arm men
+count and percentage do not reconcile under nearest one-decimal
+rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> Standard Oxygen Therapy
+<code>n=388</code>, men <code>247 (63.6)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 63.6% versus
+63.7% from 247/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 247/388×100=63.6598%; nearest one
+decimal=63.7%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unstated denominator or rounding convention could explain the
+display.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and printed
+pair were found; the stated calculation reproduced; no row-specific
+denominator or rounding rule is supplied.</p>
+<p><strong>Quality-control relevance:</strong> The printed baseline
+percentage production rule is unresolved.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy a baseline men percentage that differs from
+the displayed count/denominator calculation.</p>
+<p><strong>Human verification steps:</strong> Confirm the analysis
+denominator and percentage-rounding rule used for this Table 1 cell.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c002--standard-arm-women-percentage-does-not-reconcile" class="candidate-card">C002 —
+Standard-arm women percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The printed standard-arm women
+count and percentage do not reconcile under nearest one-decimal
+rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> Standard Oxygen Therapy
+<code>n=388</code>, women <code>141 (36.4)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 36.4% versus
+36.3% from 141/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 141/388×100=36.3402%; nearest one
+decimal=36.3%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unstated denominator or rounding convention could explain the
+display.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and printed
+pair were found; the calculation reproduced; the percentage production
+rule is not supplied.</p>
+<p><strong>Quality-control relevance:</strong> The baseline
+sex-distribution display is not mechanically reconciled.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+downstream extraction could copy a baseline women percentage
+inconsistent with the count/denominator calculation.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and rounding rule used for this cell.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--standard-arm-heart-failure-percentage-does-not-reconcile" class="candidate-card">C003
+— Standard-arm heart-failure percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The standard-arm heart-failure
+percentage does not reconcile under nearest one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> Standard Oxygen Therapy
+<code>n=388</code>, heart failure <code>27 (6.9)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 6.9% versus
+7.0% from 27/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 27/388×100=6.9588%; nearest one
+decimal=7.0%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+row-specific denominator or another rounding convention is not
+documented.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and printed
+values were found; calculation reproduced; necessary alternative
+denominator is absent.</p>
+<p><strong>Quality-control relevance:</strong> The displayed baseline
+comorbidity proportion has an unresolved production rule.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy a heart-failure baseline percentage that differs
+from the printed count/denominator calculation.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and rounding rule for the Table 1 heart-failure cell.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--high-flow-liver-disease-percentage-conflicts-with-displayed-count" class="candidate-card">C004
+— High-flow liver-disease percentage conflicts with displayed count</h2>
+<p><strong>Candidate statement:</strong> The high-flow liver-disease
+count and percentage do not reconcile with the displayed arm
+denominator.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> High-Flow Oxygen Therapy
+<code>n=388</code>, liver disease <code>45 (13.3)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 13.3% versus
+11.6% from 45/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 45/388×100=11.5979%; nearest one
+decimal=11.6%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+different population, transcription, or column-placement issue could
+explain the pair; none is identified in the source.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and printed
+pair were found; the 1.7-point discrepancy reproduced; no alternate
+denominator is printed.</p>
+<p><strong>Quality-control relevance:</strong> This is a larger baseline
+count/percentage mismatch requiring source clarification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+downstream extraction could copy an incorrect liver-disease baseline
+proportion.</p>
+<p><strong>Human verification steps:</strong> Determine whether the
+count, percentage, denominator, or column placement is intended.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--standard-arm-kidney-disease-percentage-conflicts-with-displayed-count" class="candidate-card">C005
+— Standard-arm kidney-disease percentage conflicts with displayed
+count</h2>
+<p><strong>Candidate statement:</strong> The standard-arm kidney-disease
+count and percentage do not reconcile with the displayed arm
+denominator.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> Standard Oxygen Therapy
+<code>n=388</code>, kidney disease <code>69 (20.4)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 20.4% versus
+17.8% from 69/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 69/388×100=17.7835%; nearest one
+decimal=17.8%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+different population, transcription, or column-placement issue is
+possible but not identified.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and printed
+pair were found; the 2.6-point discrepancy reproduced; alternate
+denominator is unavailable.</p>
+<p><strong>Quality-control relevance:</strong> This baseline
+count/percentage pair needs clarification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy an unreconciled kidney-disease baseline
+proportion.</p>
+<p><strong>Human verification steps:</strong> Determine the intended
+count, percentage, denominator, and table placement.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--standard-arm-nontransplant-immunosuppression-percentage-does-not-reconcile" class="candidate-card">C006
+— Standard-arm nontransplant immunosuppression percentage does not
+reconcile</h2>
+<p><strong>Candidate statement:</strong> The standard-arm nontransplant
+immunosuppression percentage does not reconcile under nearest
+one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> Non-transplant-related reasons,
+Standard Oxygen Therapy <code>n=388</code>, <code>98 (25.2)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 25.2% versus
+25.3% from 98/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 98/388×100=25.2577%; nearest one
+decimal=25.3%; child counts 98+37=135 reconcile to the parent.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+undocumented adjustment across child percentages is possible; the count
+subtotal is coherent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location, pair, and
+count subtotal were found; the stated calculation reproduced.</p>
+<p><strong>Quality-control relevance:</strong> The observation concerns
+percentage production, not the coherent count subtotal.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy a baseline immunosuppression percentage differing
+from the count/denominator calculation.</p>
+<p><strong>Human verification steps:</strong> Confirm the
+percentage-production rule without altering the verified count
+subtotal.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--high-flow-3-days-after-icu-admission-percentage-does-not-reconcile" class="candidate-card">C007
+— High-flow ≥3-days-after-ICU-admission percentage does not
+reconcile</h2>
+<p><strong>Candidate statement:</strong> The high-flow
+≥3-days-after-admission percentage does not reconcile under nearest
+one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> High-flow arm <code>n=388</code>,
+randomization <code>≥3 days after</code>, <code>20 (5.1)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 5.1% versus
+5.2% from 20/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 20/388×100=5.1546%; nearest one
+decimal=5.2%; timing counts sum to 388.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+undocumented category-level adjustment could explain the display.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location, pair, and
+timing-count subtotal were found; calculation reproduced.</p>
+<p><strong>Quality-control relevance:</strong> The count subtotal is
+coherent; only the percentage-production rule is unresolved.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy an unreconciled randomization-timing
+percentage.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and rounding rule for this high-flow timing cell.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--standard-arm-3-days-after-icu-admission-percentage-does-not-reconcile" class="candidate-card">C008
+— Standard-arm ≥3-days-after-ICU-admission percentage does not
+reconcile</h2>
+<p><strong>Candidate statement:</strong> The standard-arm
+≥3-days-after-admission percentage does not reconcile under nearest
+one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> Standard arm <code>n=388</code>,
+randomization <code>≥3 days after</code>, <code>20 (5.1)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 5.1% versus
+5.2% from 20/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 20/388×100=5.1546%; nearest one
+decimal=5.2%; timing counts sum to 388.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+undocumented category-level adjustment could explain the display.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location, printed pair,
+and timing-count subtotal were found; calculation reproduced.</p>
+<p><strong>Quality-control relevance:</strong> The separate standard-arm
+printed pair requires its own percentage-production clarification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy an unreconciled standard-arm randomization-timing
+percentage.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and rounding rule for this standard-arm timing cell.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--standard-arm-vasopressor-percentage-does-not-reconcile" class="candidate-card">C009 —
+Standard-arm vasopressor percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The standard-arm vasopressor
+percentage does not reconcile under nearest one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> Standard arm <code>n=388</code>,
+vasopressors <code>39 (10.0)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 10.0% versus
+10.1% from 39/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 39/388×100=10.0515%; nearest one
+decimal=10.1%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Truncation or a hidden denominator could explain the last-place
+difference, but neither is documented.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and printed
+pair were found; calculation reproduced; no production rule is
+supplied.</p>
+<p><strong>Quality-control relevance:</strong> The baseline vasopressor
+percentage has an unresolved display rule.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy a baseline percentage inconsistent with the
+printed count.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and rounding convention for the cell.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--high-flow-do-not-intubate-percentage-does-not-reconcile" class="candidate-card">C010
+— High-flow do-not-intubate percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The high-flow do-not-intubate
+percentage does not reconcile under nearest one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> High-flow arm <code>n=388</code>,
+do not intubate <code>13 (3.3)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 3.3% versus
+3.4% from 13/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 13/388×100=3.3505%; nearest one
+decimal=3.4%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Decimal
+truncation could reproduce 3.3%, but no uniform truncation policy is
+supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and printed
+pair were found; calculation reproduced.</p>
+<p><strong>Quality-control relevance:</strong> This is a
+denominator/rounding question, not an inferred changed count.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy a do-not-intubate percentage inconsistent with the
+printed count.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and percentage-production convention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c011--high-flow-do-not-resuscitate-percentage-does-not-reconcile" class="candidate-card">C011
+— High-flow do-not-resuscitate percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The high-flow
+do-not-resuscitate percentage does not reconcile under nearest
+one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> High-flow arm <code>n=388</code>,
+do not resuscitate <code>3 (0.7)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 0.7% versus
+0.8% from 3/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 3/388×100=0.7732%; nearest one
+decimal=0.8%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Truncation is possible but unstated.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and printed
+pair were found; calculation reproduced; alternate rule is
+unavailable.</p>
+<p><strong>Quality-control relevance:</strong> The small display-rule
+discrepancy requires source clarification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy a do-not-resuscitate baseline percentage that does
+not reconcile.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and rounding convention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--standard-arm-do-not-resuscitate-percentage-does-not-reconcile" class="candidate-card">C012
+— Standard-arm do-not-resuscitate percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The standard-arm
+do-not-resuscitate percentage does not reconcile under nearest
+one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> Standard arm <code>n=388</code>, do
+not resuscitate <code>1 (0.2)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 0.2% versus
+0.3% from 1/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 1/388×100=0.2577%; nearest one
+decimal=0.3%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Truncation is possible but unstated.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and printed
+pair were found; calculation reproduced; no alternate denominator is
+supplied.</p>
+<p><strong>Quality-control relevance:</strong> The observation is
+limited to denominator/rounding production.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy a percentage inconsistent with the printed
+count.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and display convention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--standard-arm-unknown-goals-percentage-does-not-reconcile" class="candidate-card">C013
+— Standard-arm unknown-goals percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The standard-arm
+unknown-goals-of-care percentage does not reconcile under nearest
+one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> Standard arm <code>n=388</code>,
+unknown goals of care <code>27 (6.9)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 6.9% versus
+7.0% from 27/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 27/388×100=6.9588%; nearest one
+decimal=7.0%; all five goals-of-care counts sum to 388.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+adjusted display across exhaustive categories is possible; the count
+distribution is complete.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location, printed pair,
+and category-count total were found; calculation reproduced.</p>
+<p><strong>Quality-control relevance:</strong> The count distribution is
+coherent; the unresolved matter is percentage production.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy an unreconciled goals-of-care baseline
+percentage.</p>
+<p><strong>Human verification steps:</strong> Confirm the
+percentage-production rule while retaining the verified count total.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c014--high-flow-pre-randomization-standard-oxygen-percentage-does-not-reconcile" class="candidate-card">C014
+— High-flow pre-randomization standard-oxygen percentage does not
+reconcile</h2>
+<p><strong>Candidate statement:</strong> The high-flow pre-randomization
+standard-oxygen percentage does not reconcile under nearest one-decimal
+rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 Table 1 — PDF
+p. 4</a></p>
+<p><strong>Source evidence:</strong> High-flow arm <code>n=388</code>,
+received standard oxygen before randomization
+<code>311 (80.1)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 80.1% versus
+80.2% from 311/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 311/388×100=80.1546%; nearest one
+decimal=80.2%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+data-availability denominator is conceivable, but no missingness count
+or alternate denominator is printed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and printed
+pair were found; calculation reproduced; restricted denominator is not
+supplied.</p>
+<p><strong>Quality-control relevance:</strong> The baseline-treatment
+percentage has an unresolved production rule.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy a pre-randomization treatment percentage that
+differs from the count calculation.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and rounding rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c015--high-flow-icu-acquired-infection-percentage-does-not-reconcile" class="candidate-card">C015
+— High-flow ICU-acquired-infection percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The high-flow
+ICU-acquired-infection percentage does not reconcile under nearest
+one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=5">DOC-001 Table 2 — PDF
+p. 5</a></p>
+<p><strong>Source evidence:</strong> High-flow arm <code>n=388</code>,
+ICU-acquired infection <code>39 (10.0)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 10.0% versus
+10.1% from 39/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 39/388×100=10.0515%; nearest one
+decimal=10.1%; standard comparator 41/388=10.6% reconciles.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+infection-at-risk denominator is possible but not supplied in Table
+2.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and pair were
+found; calculation reproduced; this is distinct from the six-hour
+invasive-ventilation result in C019.</p>
+<p><strong>Quality-control relevance:</strong> The reported outcome
+percentage needs denominator/rounding clarification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy an ICU-acquired-infection percentage inconsistent
+with its displayed count.</p>
+<p><strong>Human verification steps:</strong> Confirm the at-risk
+denominator and percentage-production rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c016--standard-arm-hospital-mortality-percentage-does-not-reconcile" class="candidate-card">C016
+— Standard-arm hospital-mortality percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The standard-arm
+hospital-mortality percentage does not reconcile under nearest
+one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=5">DOC-001 Table 2 — PDF
+p. 5</a></p>
+<p><strong>Source evidence:</strong> Standard arm <code>n=388</code>,
+hospital mortality <code>162 (41.7)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 41.7% versus
+41.8% from 162/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 162/388×100=41.7526%; nearest one
+decimal=41.8%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+alternate hospital-disposition denominator is not supplied; no loss to
+follow-up is printed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location and printed
+pair were found; calculation reproduced.</p>
+<p><strong>Quality-control relevance:</strong> The displayed
+hospital-mortality percentage production rule is unresolved.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy a mortality percentage inconsistent with the
+displayed count; no effect on the mortality comparison is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the denominator
+and rounding rule used for hospital mortality.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c017--respiratory-rate-confidence-interval-endpoint-differs-between-matched-occurrences" class="candidate-card">C017
+— Respiratory-rate confidence-interval endpoint differs between matched
+occurrences</h2>
+<p><strong>Candidate statement:</strong> Matched abstract and results
+displays give different upper 95% confidence-interval endpoints for the
+same six-hour respiratory-rate comparison.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=1">DOC-001 abstract — PDF
+p. 1</a>; <a href="../jama_azoulay_2018_oi_180109.pdf#page=6" target="_blank" rel="noopener">DOC-001
+results — PDF p. 6</a></p>
+<p><strong>Source evidence:</strong> Both occurrences report 25 versus
+26/min, difference −1.8, and lower endpoint −3.2; the abstract upper
+endpoint is −0.2 and results upper endpoint is −0.3.</p>
+<p><strong>Reported-versus-comparator:</strong> Abstract 95% CI upper
+endpoint −0.2/min versus results −0.3/min.</p>
+<p><strong>Reasoning procedure:</strong> Match population, time,
+contrast, estimate, unit, and stated precision across occurrences.</p>
+<p><strong>Calculation:</strong> The printed endpoint difference is
+0.1/min.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Separately rounded or calculated intervals are possible, but unrounded
+endpoints, model identity, and the display rule are not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both cited locations
+and values were found; the matched-result comparison reproduced.</p>
+<p><strong>Quality-control relevance:</strong> One matched result has
+two nonidentical interval displays.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could select different confidence-interval endpoints from
+the abstract and main results.</p>
+<p><strong>Human verification steps:</strong> Identify the authoritative
+interval, model, and rounding basis; do not infer an effect on
+inference.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c018--arm-attributed-support-needs-percentages-use-the-overall-population-denominator" class="candidate-card">C018
+— Arm-attributed support-needs percentages use the overall-population
+denominator</h2>
+<p><strong>Candidate statement:</strong> Arm-attributed support-needs
+counts are paired with overall-population percentages, creating a
+denominator-communication question rather than a demonstrated arithmetic
+error.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=6">DOC-001 post hoc
+outcomes — PDF p. 6</a></p>
+<p><strong>Source evidence:</strong> The paragraph begins
+<code>In the overall population</code> and reports
+<code>153 patients (19.7%) randomized to high-flow</code> and
+<code>31 patients (4.0%) randomized to standard oxygen</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 19.7% and 4.0%
+equal 153/776 and 31/776; within-arm values would be 39.4% and 8.0%
+using 388 per arm.</p>
+<p><strong>Reasoning procedure:</strong> Reproduce each percentage using
+the stated overall population and compare it with the grammatical arm
+attribution.</p>
+<p><strong>Calculation:</strong> 153/776=19.7%; 31/776=4.0%;
+153/388=39.4%; 31/388=8.0%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+introductory overall-population phrase supports intentional overall
+denominators; the remaining issue is possible within-arm-risk
+misreading.</p>
+<p><strong>Mechanical evidence recheck:</strong> The location,
+introductory phrase, counts, and percentages were found; all stated
+calculations reproduced.</p>
+<p><strong>Quality-control relevance:</strong> Denominator basis may
+need repetition beside arm-attributed values for unambiguous
+extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could miscopy overall-population percentages as
+within-arm risks.</p>
+<p><strong>Human verification steps:</strong> Confirm whether
+denominator basis should be repeated beside each arm-attributed
+value.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c019--etable-high-flow-invasive-mv-percentage-does-not-reconcile" class="candidate-card">C019
+— eTable high-flow invasive-MV percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The eTable high-flow
+invasive-mechanical-ventilation percentage does not reconcile under
+nearest one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180109supp2_prod.pdf#page=2">DOC-003 eTable — PDF p.
+2</a></p>
+<p><strong>Source evidence:</strong> High-flow <code>N=388</code>,
+invasive mechanical ventilation <code>39 (10.0)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 10.0% versus
+10.1% from 39/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 39/388×100=10.0515%; nearest one
+decimal=10.1%; 39+349=388.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+six-hour evaluable denominator or truncation is possible but not
+printed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location, values,
+calculation, and complementary count identity were reproduced; it is
+distinct from C015 by outcome, time, and display.</p>
+<p><strong>Quality-control relevance:</strong> The eTable percentage
+production rule is unresolved.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy an invasive-MV percentage inconsistent with the
+eTable count.</p>
+<p><strong>Human verification steps:</strong> Confirm denominator and
+rounding convention for the eTable cell.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c020--etable-standard-arm-invasive-mv-percentage-does-not-reconcile" class="candidate-card">C020
+— eTable standard-arm invasive-MV percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The eTable standard-arm
+invasive-mechanical-ventilation percentage does not reconcile under
+nearest one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180109supp2_prod.pdf#page=2">DOC-003 eTable — PDF p.
+2</a></p>
+<p><strong>Source evidence:</strong> Standard arm <code>N=388</code>,
+invasive mechanical ventilation <code>46 (11.8)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 11.8% versus
+11.9% from 46/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 46/388×100=11.8557%; nearest one
+decimal=11.9%; 46+342=388.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+11.8%/88.2% pair totals 100.0%, supporting a possible forced-complement
+rule that is not documented.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location, pair,
+calculation, and complementary counts were reproduced.</p>
+<p><strong>Quality-control relevance:</strong> The invasive-MV printed
+pair needs a source-defined percentage rule.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy a standard-arm invasive-MV percentage inconsistent
+with the count.</p>
+<p><strong>Human verification steps:</strong> Confirm whether the
+percentage was independently calculated or complement-adjusted.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c021--etable-standard-oxygen-only-percentage-does-not-reconcile" class="candidate-card">C021
+— eTable standard-oxygen-only percentage does not reconcile</h2>
+<p><strong>Candidate statement:</strong> The eTable standard-oxygen-only
+percentage does not reconcile under nearest one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180109supp2_prod.pdf#page=2">DOC-003 eTable — PDF p.
+2</a></p>
+<p><strong>Source evidence:</strong> Standard arm <code>N=388</code>,
+standard oxygen only <code>342 (88.2)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported 88.2% versus
+88.1% from 342/388.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed count by the
+displayed arm denominator and round to one decimal.</p>
+<p><strong>Calculation:</strong> 342/388×100=88.1443%; nearest one
+decimal=88.1%; 342+46=388.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> 88.2%
+is exactly the complement of printed 11.8%, so a forced complementary
+display is possible but not confirmed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location, pair,
+calculation, and complementary identity were reproduced; this is
+distinct from C020.</p>
+<p><strong>Quality-control relevance:</strong> The complementary
+percentage may not have been independently generated.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could copy a standard-oxygen-only percentage inconsistent
+with the count.</p>
+<p><strong>Human verification steps:</strong> Confirm whether the value
+was independently calculated or set as a complement.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c022--imv-cumulative-incidence-comparison-has-incompatible-printed-test-labels" class="candidate-card">C022
+— IMV cumulative-incidence comparison has incompatible printed test
+labels</h2>
+<p><strong>Candidate statement:</strong> A matched
+invasive-mechanical-ventilation cumulative-incidence comparison is
+described with Gray testing in the main article and a log-rank label in
+the linked eFigure.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=4">DOC-001 methods — PDF
+p. 4</a>; <a href="../jama_azoulay_2018_oi_180109.pdf#page=6" target="_blank" rel="noopener">DOC-001
+results — PDF p. 6</a>; <a
+href="../joi180109supp2_prod.pdf#page=3">DOC-003 eFigure 1 — PDF p.
+3</a></p>
+<p><strong>Source evidence:</strong> Methods specify death without IMV
+as a competing risk and Gray testing; the eFigure prints
+<code>P (log Rank test) = 0.17</code>, matching the main P=.17.</p>
+<p><strong>Reported-versus-comparator:</strong> Gray test/competing-risk
+description versus <code>log Rank test</code> label for a matched
+result.</p>
+<p><strong>Reasoning procedure:</strong> Compare the named methods and
+figure label after matching the outcome and displayed P value.</p>
+<p><strong>Calculation:</strong> No reconstruction is used; Gray and
+log-rank are distinct named tests.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Separate tests could both round to .17; test statistics, event/censoring
+data, and generating output are absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> All three locations and
+labels were found; the logical label comparison reproduced.</p>
+<p><strong>Quality-control relevance:</strong> The test label or
+analysis identity needs clarification for this cumulative-incidence
+comparison.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+downstream evidence users could copy a test label inconsistent with the
+described competing-risk analysis.</p>
+<p><strong>Human verification steps:</strong> Identify which test
+produced each P=.17 and the competing-risk/censoring rule; no conclusion
+effect is inferred.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c023--figure-3a-mortality-hr-has-a-near-reciprocal-orientation-relative-to-table-2" class="candidate-card">C023
+— Figure 3A mortality HR has a near-reciprocal orientation relative to
+Table 2</h2>
+<p><strong>Candidate statement:</strong> Figure 3A mortality HRs are
+near reciprocals of the matched Table 2/narrative HRs under favor
+labels, but the figure reference group is not printed.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=5">DOC-001 Table 2 and
+narrative — PDF p. 5</a>; <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=7">DOC-001 Figure 3A — PDF
+p. 7</a></p>
+<p><strong>Source evidence:</strong> Same 138/388 versus 140/388 day-28
+deaths: Table/narrative HR 0.98 (0.77–1.24); Figure 3A HR 1.02
+(0.81–1.29), with <code>Favors High-Flow</code> left and
+<code>Favors Standard</code> right.</p>
+<p><strong>Reported-versus-comparator:</strong> Table/narrative 0.98
+(0.77–1.24) versus Figure 3A 1.02 (0.81–1.29).</p>
+<p><strong>Reasoning procedure:</strong> Compare matched event counts
+and interval displays; calculate reciprocal diagnostics without treating
+rounded-input reciprocals as exact identities.</p>
+<p><strong>Calculation:</strong> 1/0.98=1.020 and 1/1.24=0.806 reproduce
+1.02 and 0.81; 1/0.77=1.299 rounds to 1.30, not 1.29.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Opposite orientation is compatible with hidden precision; exact
+reciprocal identity from all rounded values is not established, and
+reference group/unrounded values are absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both pages, counts,
+estimates, intervals, and favor labels were found; near-reciprocal
+comparison reproduced.</p>
+<p><strong>Quality-control relevance:</strong> Reference-group
+definition and favor-axis alignment are not explicit for a matched
+mortality display.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could assign the HR to the wrong comparison orientation or
+reference group.</p>
+<p><strong>Human verification steps:</strong> Confirm the Figure 3A HR
+reference group, estimand, and favor-label alignment; do not infer an
+exact reciprocal or conclusion change.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c024--figure-3b-imv-hr-has-a-near-reciprocal-orientation-relative-to-table-2" class="candidate-card">C024
+— Figure 3B IMV HR has a near-reciprocal orientation relative to Table
+2</h2>
+<p><strong>Candidate statement:</strong> Figure 3B IMV HRs are near
+reciprocals of the matched Table 2/narrative cause-specific HRs under
+favor labels, but figure reference/estimand definition is not
+printed.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=5">DOC-001 Table 2 — PDF
+p. 5</a>; <a href="../jama_azoulay_2018_oi_180109.pdf#page=6" target="_blank" rel="noopener">DOC-001
+narrative — PDF p. 6</a>; <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=7">DOC-001 Figure 3B — PDF
+p. 7</a></p>
+<p><strong>Source evidence:</strong> Same 150/388 versus 170/388 IMV
+events: Table/narrative cause-specific HR 0.85 (0.68–1.06); Figure 3B HR
+1.17 (0.94–1.46) under the same favor labels.</p>
+<p><strong>Reported-versus-comparator:</strong> Table/narrative 0.85
+(0.68–1.06) versus Figure 3B 1.17 (0.94–1.46).</p>
+<p><strong>Reasoning procedure:</strong> Compare matched event counts
+and displays; use reciprocal diagnostics while preserving
+rounding/hidden-precision limits.</p>
+<p><strong>Calculation:</strong> 1/1.06=0.943 gives 0.94; 1/0.85=1.176
+gives 1.18 and 1/0.68=1.471 gives 1.47, not 1.17 and 1.46.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Hidden
+precision can support opposite orientation, but exact reciprocity cannot
+be derived from all rounded inputs; figure-specific reference group and
+estimand are absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> The three pages,
+matched counts, estimates, intervals, and labels were found;
+near-reciprocal comparison reproduced.</p>
+<p><strong>Quality-control relevance:</strong> The displayed Figure 3B
+orientation/estimand needs explicit definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could assign an IMV HR to the wrong reference group or
+estimand.</p>
+<p><strong>Human verification steps:</strong> Confirm Figure 3B
+reference group, cause-specific/cumulative estimand, and favor-label
+alignment; do not infer an exact reciprocal or conclusion change.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c025--revised-superiority-sample-size-total-conflicts-with-equal-arm-counts" class="candidate-card">C025
+— Revised-superiority sample-size total conflicts with equal arm
+counts</h2>
+<p><strong>Candidate statement:</strong> The main article's
+revised-superiority total of 779 conflicts with two stated 389-person
+groups and the matched protocol/SAP total of 778.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_azoulay_2018_oi_180109.pdf#page=3">DOC-001 — PDF p. 3</a>;
+<a href="../joi180109supp1_prod.pdf#page=91" target="_blank" rel="noopener">DOC-002 completed
+published-protocol abstract sentence — PDF p. 91</a>; <a
+href="../joi180109supp1_prod.pdf#page=103">DOC-002 statistical-plan
+comparator — PDF p. 103</a></p>
+<p><strong>Source evidence:</strong> DOC-001 prints
+<code>779 patients (389 in each group)</code>; DOC-002 prints 778 with
+389 per group under matching revised-superiority assumptions. The
+abstract sentence begins on p.90 and completes with
+<code>778 patients overall</code> on p.91.</p>
+<p><strong>Reported-versus-comparator:</strong> Main 779 total with 389
+each versus protocol/SAP 778 total with 389 each.</p>
+<p><strong>Reasoning procedure:</strong> Sum the two stated equal group
+counts and compare matched planning occurrences.</p>
+<p><strong>Calculation:</strong> 389+389=778, not 779.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+earlier unequal or rounded target is possible but not supplied; version
+history is absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> All cited pages and
+values were found; arithmetic and cross-document comparator reproduced.
+The protocol abstract comparator is cited at p.91 because its sentence
+completes there.</p>
+<p><strong>Quality-control relevance:</strong> The revised-superiority
+sample-size total and stated allocation require reconciliation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could copy different planned sample-size totals from matched
+sources.</p>
+<p><strong>Human verification steps:</strong> Determine whether 778 or
+779 was intended and document the planned allocation.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c026--noninferiority-boundsign-wording-conflicts-with-its-explanatory-axis" class="candidate-card">C026
+— Noninferiority bound/sign wording conflicts with its explanatory
+axis</h2>
+<p><strong>Candidate statement:</strong> Noninferiority wording uses a
+positive <code>less than 9%</code> lower-bound statement that is not
+reconciled with the negative-side margin on a
+new-treatment-minus-active-control axis.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180109supp1_prod.pdf#page=40">DOC-002 Figure 4 — PDF p.
+40</a>; <a href="../joi180109supp1_prod.pdf#page=42" target="_blank" rel="noopener">DOC-002 — PDF p.
+42</a></p>
+<p><strong>Source evidence:</strong> Figure 4 axis is
+<code>Difference in Efficacy (New Treatment Minus Active Control)</code>
+with margin on the negative side; text says noninferiority occurs if
+lower 95% CI boundary is <code>less than 9%</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Positive
+<code>less than 9%</code> wording versus negative-side margin on the
+printed scale.</p>
+<p><strong>Reasoning procedure:</strong> Compare the printed
+sign/direction of the axis and margin with the stated inequality.</p>
+<p><strong>Calculation:</strong> No numerical reconstruction is used;
+the positive bound/inequality is not mapped to the plotted signed
+scale.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+missing minus sign, opposite risk scale, or inequality could explain it;
+signed estimand and prespecified rule are absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both pages, axis,
+margin direction, and wording were found; logical comparison
+reproduced.</p>
+<p><strong>Quality-control relevance:</strong> The noninferiority
+decision rule needs an explicit signed effect measure and direction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+evidence users could copy an ambiguous noninferiority margin or decision
+rule.</p>
+<p><strong>Human verification steps:</strong> Provide the exact signed
+estimand and prespecified inequality; do not prescribe a correction
+here.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c027--primary-hypothesis-intervention-is-labelled-niv-while-plans-identify-hfno" class="candidate-card">C027
+— Primary-hypothesis intervention is labelled NIV while plans identify
+HFNO</h2>
+<p><strong>Candidate statement:</strong> Primary-hypothesis sentences
+label the intervention NIV while adjacent and repeated plan wording
+identifies HFNO as the experimental intervention.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180109supp1_prod.pdf#page=52">DOC-002 — PDF p. 52</a>; <a
+href="../joi180109supp1_prod.pdf#page=104">DOC-002 — PDF p. 104</a></p>
+<p><strong>Source evidence:</strong> Primary-hypothesis sentences say
+noninferiority/superiority of <code>NIV</code>; adjacent and repeated
+plan wording identifies HFNO against standard oxygen.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>NIV</code>
+primary-hypothesis label versus HFNO experimental-intervention
+definition.</p>
+<p><strong>Reasoning procedure:</strong> Compare the intervention label
+in the hypothesis sentence with the defined intervention in the same
+plan context.</p>
+<p><strong>Calculation:</strong> Not applicable; this is a source-text
+label comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> NIV may
+be a carried-forward label, but no cited passage defines it as
+equivalent to HFNO in the primary hypothesis.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both locations and
+label comparison were found; repeated wording represents the same
+relationship.</p>
+<p><strong>Quality-control relevance:</strong> The planned primary
+hypothesis should identify its experimental intervention
+unambiguously.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could misidentify the intervention associated with the
+planned hypothesis.</p>
+<p><strong>Human verification steps:</strong> Confirm whether NIV
+intentionally denotes HFNO in these sentences.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c028--planned-primary-outcome-alternates-between-day-28-vital-status-and-hospital-death" class="candidate-card">C028
+— Planned primary outcome alternates between day-28 vital status and
+hospital death</h2>
+<p><strong>Candidate statement:</strong> Plan passages classify patients
+by day-28 vital status but then specify a relative risk of hospital
+death without explicitly equating the endpoints.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180109supp1_prod.pdf#page=54">DOC-002 — PDF p. 54</a>; <a
+href="../joi180109supp1_prod.pdf#page=82">DOC-002 — PDF p. 82</a>; <a
+href="../joi180109supp1_prod.pdf#page=104">DOC-002 — PDF p. 104</a></p>
+<p><strong>Source evidence:</strong> Each plan occurrence says patients
+are followed to day 28 and classified alive/dead, then specifies a
+relative risk of <code>hospital death</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Day-28 all-cause
+vital-status endpoint versus hospital-death label.</p>
+<p><strong>Reasoning procedure:</strong> Compare endpoint/time labels
+within and across the matched plan passages.</p>
+<p><strong>Calculation:</strong> Not applicable; the endpoints/time
+horizons are distinct unless explicitly equated.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Hospital death may be shorthand for day-28 death during admission, but
+hospital-death definition, discharge handling, post-discharge deaths,
+and equivalence are not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> All three pages and the
+within-passage label switch were found; repeated occurrences represent
+one stable relationship.</p>
+<p><strong>Quality-control relevance:</strong> The planned endpoint and
+time horizon require explicit definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer could copy a different endpoint label or time horizon than
+intended.</p>
+<p><strong>Human verification steps:</strong> Confirm the exact planned
+estimand and whether hospital death is equivalent to day-28 vital
+status.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If any candidate is confirmed, systematic-review authors,
+meta-analysts, guideline teams, or data extractors could encounter a
+copied count, denominator, percentage, interval endpoint, test label,
+effect orientation, sample-size total, intervention label, or endpoint
+definition that differs from another supplied display or from the stated
+rule. This is a bounded potential for downstream extraction ambiguity
+only; the supplied package does not establish propagation, clinical
+harm, or a changed study conclusion.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The package has no patient-level data, code, model output, unrounded
+estimates, most standard errors, or exact production rounding rules.
+Nineteen stable records involve one-decimal count/percentage production.
+C017 lacks unrounded interval values and calculation identity. C018
+expressly uses an overall-population context and remains a
+denominator-communication observation. C022 lacks test output and
+event/censoring data. C023–C024 lack figure reference-group definitions
+and unrounded HRs/intervals; their displays are near reciprocal and
+compatible with hidden precision, not exact reciprocals of all rounded
+inputs. C025 lacks change history; C026–C028 lack definitive
+signed-estimand, intervention-label, or endpoint clarifications.
+Supplement figures lack underlying plotted individual/central values,
+and DOC-002 pp.78 and 129 are sparse non-result pages. These limitations
+leave human questions open; they do not adjudicate any candidate or
+establish a conclusion effect. See <a
+href="review_1_5_2/limitations.md">limitations.md</a>.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each candidate, a qualified human reviewer should verify the
+cited source location and printed evidence, identify the applicable
+denominator/model/rounding/definition, decide whether the proposed
+comparator is matched, document any source-grounded alternative
+explanation, and complete the five blank fields in that card. No
+validity, importance, action, initials, or notes value has been assigned
+by this review.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="source-integrity-and-reproducibility">Source integrity and
+reproducibility</h3>
+<p>Before-processing SHA-256 values are recorded in <a
+href="review_1_5_2/source_hashes_before.sha256">source_hashes_before.sha256</a>.
+Fresh native/layout assets, render decisions, and full page coverage are
+recorded in <a
+href="review_1_5_2/evidence_asset_inventory.md">evidence_asset_inventory.md</a>,
+<a
+href="review_1_5_2/preprocessing/page_unit_register.md">page_unit_register.md</a>,
+and the coverage artifacts cited above. Source hashes must be recomputed
+and confirmed unchanged by the coordinator before final validation.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Effort</th>
+<th>Start mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+</tr>
+<tr>
+<td>fresh_source_preprocessing</td>
+<td>root/fresh_preprocessing</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>main_quantitative_mapping</td>
+<td>root/main_mapping</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>support_quantitative_mapping</td>
+<td>root/support_mapping</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>numeric_checks</td>
+<td>root/numeric_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>cross_source_checks</td>
+<td>root/cross_source_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>evidence_recheck</td>
+<td>root/evidence_recheck</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>evidence_quality</td>
+<td>root/quality_audit</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>report_generation</td>
+<td>root/report_generation</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+</tbody>
+</table>
+<p>The two independent statistical passes were distinct fresh
+high-effort Terra agents and each covered S001–S038. The complete
+execution manifest is <a
+href="review_1_5_2/agent_execution_manifest.md">agent_execution_manifest.md</a>.</p>
+<h3 id="performance-metadata">Performance metadata</h3>
+<ul>
+<li><strong>Target basis:</strong> Four supplied PDFs totaling 144 fresh
+pages: a 9-page main randomized trial article, a 129-page
+protocol/statistical-analysis-plan supplement with substantial narrative
+and quantitative definitions, a 5-page results supplement with
+tables/figures, and a 1-page data-sharing statement. All PDFs expose
+native text, but result-relevant tables/figures require layout
+extraction and targeted rendering. The scope exceeds the 102-page
+calibration package in fresh units while involving fewer file formats
+and no anticipated Office conversion.</li>
+<li><strong>Total source units:</strong> 144</li>
+<li><strong>Fresh-source units:</strong> 144</li>
+<li><strong>Target elapsed minutes:</strong> 45-75</li>
+<li><strong>Started UTC:</strong> 2026-08-20T18:01:34Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-20T18:51:24Z</li>
+<li><strong>Observed elapsed minutes:</strong> 49.8</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-metadata">Token-accounting metadata</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+<th>Complete-cost availability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>__</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>__</td>
+</tr>
+</tbody>
+</table>
+<p>Token amounts, once finalized, are token-only API-equivalent
+estimates under the dated pricing snapshot, not invoices;
+cached/cache-write inputs and reasoning outputs are subsets and are not
+added again to total tokens. Per-agent detail will be recorded in <a
+href="review_1_5_2/token_usage_summary.md">token_usage_summary.md</a>.</p>
+</body>
+</html>
