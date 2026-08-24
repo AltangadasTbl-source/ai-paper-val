@@ -3,84 +3,139 @@
 ## Scope and method
 
 This recheck covers every stable candidate in [`candidate_ledger.md`](../candidate_ledger.md):
-C001 through C004. Each
-candidate was checked separately against the cited location in the supplied main-article PDF,
-using the fresh simple and layout text only to locate and transcribe the PDF evidence. No source,
-candidate ID, or candidate proposition was changed. All four candidates remain Pending Human
-Adjudication.
+`C001` through `C008`. Each ID was checked separately against the cited location in the three
+supplied PDFs. Fresh native/layout text and fresh page renderings were used only as locators and
+transcription aids; the supplied PDFs were the final authority. No source or candidate ID was
+changed. Every candidate remains **Pending Human Adjudication**.
 
-The supplied main article resolves at
-[`jama_jabre_2018_oi_180004.pdf`](../../../jama_jabre_2018_oi_180004.pdf) and contains 9 PDF pages.
-The cited `#page=4` and `#page=6` targets are therefore within the document. Both fresh locator
-files also resolve:
+The cited targets resolve within the supplied PDFs: DOC-001 has 9 pages, DOC-002 has 134 pages,
+and DOC-003 has 3 pages. All links below use the PDF page number, not a printed internal page
+number.
 
-- [fresh simple text](../preprocessing/pymupdf_simple_text/DOC-001_jama_jabre_2018_oi_180004.txt)
-- [fresh layout text](../preprocessing/pymupdf_layout_text/DOC-001_jama_jabre_2018_oi_180004.txt)
+## C001 — Noninferiority narrative reverses the displayed bound direction
 
-## C001 — Per-protocol ETI ROSC percentage versus numerator, denominator, and signed difference
+- **Cited location found:** Yes. DOC-001, [main article Methods, PDF p. 3](../../../jama_jabre_2018_oi_180004.pdf#page=3), Statistical Analysis, and [main article Results, PDF p. 4](../../../jama_jabre_2018_oi_180004.pdf#page=4), Primary Outcome.
+- **Source printed value/text matched:** Yes. The Methods state that noninferiority would be accepted if the lower limit of the BMV-minus-ETI CI was higher than `−1%`. The Results print difference `0.11%`, one-sided 97.5% CI `−1.64% to infinity`, and `P for noninferiority = .11`.
+- **Comparator matched:** Yes. The next Results sentence says the lower limit was “greater than the threshold of noninferiority, thus noninferiority was not demonstrated.” The printed conclusion is also consistent with the abstract and Key Points, which say the difference did not meet the 1% margin.
+- **Consistency rule applicable:** Yes. On the printed signed percentage-point scale, the lower endpoint must be numerically greater than `−1.00%` to meet the stated rule. A narrative direction word can be compared directly with the displayed endpoint and threshold.
+- **Calculation or logical comparison reproduced:** `−1.64% < −1.00%`; equivalently, `−1.64 − (−1.00) = −0.64` percentage points. Therefore, the displayed endpoint is not greater than the threshold. The printed noninferiority conclusion follows the displayed rule and values, while the word “greater” does not.
+- **Necessary inputs available:** The effect direction, margin, decision rule, lower endpoint, P value, and narrative conclusion are all printed. No additional numeric input is needed for this direction check.
+- **Exact missing inputs or definitions:** The source does not provide editorial history or intended replacement wording, and it does not state whether “greater” was meant to read “not greater,” “lower,” or another phrase.
+- **Source-grounded alternative interpretation:** The conclusion may have been intended to follow the correct comparison while one direction word was omitted or reversed. That explanation is compatible with the abstract, Key Points, P value, and stated rule, but the intended wording is not supplied.
+- **Direct observation versus inferred explanation:** The rule, endpoint, threshold, direction word, and conclusion are direct observations. Calling the word a production or wording error, or proposing “not greater,” is an inference.
+- **Exact remaining human question:** What wording was intended for the comparison between `−1.64%` and `−1.00%`, while preserving or reconsidering the separately printed noninferiority conclusion?
+- **Status:** Pending Human Adjudication.
 
-- **Cited location found:** Yes. DOC-001, [main article Table 2, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6), Per-Protocol Analysis, row “Return of spontaneous circulation.”
-- **Source printed value/text matched:** Yes. The row prints BMV `342 (34.4)`, ETI `377 (30.0)`, proportion difference `−5.6 (−9.9 to −1.3)`, and `P = .01`. The per-protocol column denominators immediately above the row are BMV `n = 995` and ETI `n = 943`. The column heading identifies the effect as `BMV(%) − ETI(%) (95% CI)`.
-- **Comparator printed value/text matched:** Yes. The ETI count `377`, ETI denominator `943`, ETI display `30.0%`, and signed BMV-minus-ETI display `−5.6` all occur in the cited table block.
-- **Consistency rule applicable:** Yes. In a column headed “No. of Patients (%),” the parenthetical percentage can be compared with `100 × count / stated analysis denominator`, allowing ordinary one-decimal rounding. The displayed BMV-minus-ETI proportion difference can also be compared with the two count-derived rates on the heading’s signed scale.
-- **Calculation or logical comparison reproduced:** `100 × 342/995 = 34.371859%`, which rounds to the printed BMV `34.4%`. `100 × 377/943 = 39.978791%`, which rounds to `40.0%`, 9.978791 percentage points above the printed ETI `30.0%`. The count-derived signed difference is `100 × (342/995 − 377/943) = −5.606932` percentage points, which rounds to the printed `−5.6`. By contrast, the two displayed percentages give `34.4 − 30.0 = +4.4` percentage points.
-- **Necessary inputs available:** The printed counts, per-protocol denominators, displayed percentages, effect direction, point difference, CI, and P value are available. Inputs needed to reproduce the count-derived percentage and signed difference are complete.
-- **Exact missing inputs or definitions:** The paper does not print an alternate denominator for this ETI row, a row-specific weighting rule, retained-precision rate different from `377/943`, or source data identifying which printed element was intended.
-- **Source-grounded alternative interpretation:** If the ETI percentage used another unprinted analysis population of approximately 1257 patients, `377` could display as about `30.0%`; however, the cited per-protocol ETI column prints `n = 943`, and the count-derived BMV-minus-ETI difference using `943` reproduces `−5.6`. Another possibility is a production or transcription issue affecting one of the four printed elements, but the supplied source does not identify which one.
-- **Direct observation versus inferred explanation:** Direct observations are the cited row label, denominators, counts, percentages, signed difference, CI, P value, and column direction. `40.0%` is only the arithmetic result of applying the printed count and denominator; treating it as intended text would be an inference. An alternate denominator or production issue is also inferred, not directly stated.
-- **Exact remaining human question:** Which printed element defines the intended per-protocol ETI ROSC result: `377`, `n = 943`, `30.0%`, or the count-derived signed difference `−5.6`; and was any analysis denominator or weighting rule omitted from Table 2?
+## C002 — Centre-5 pause contrast mixes a count outcome with seconds
 
-## C002 — Per-protocol day-28 survival point difference versus printed counts and denominators
+- **Cited location found:** Yes. DOC-001, [main article Results, PDF p. 4](../../../jama_jabre_2018_oi_180004.pdf#page=4), Post-Hoc Analyses. The outcome definition is also in [Methods, PDF p. 3](../../../jama_jabre_2018_oi_180004.pdf#page=3).
+- **Source printed value/text matched:** Yes. The Results describe “the number of pauses greater than 2 seconds,” give BMV `27` and ETI `16`, and print “difference, `11 seconds` [95% CI, `7 to 15`]; `P < .001`.” The Methods likewise call the measure the “number of pauses lasting more than 2 seconds.”
+- **Comparator matched:** Yes. The named outcome is a number of qualifying pauses, while the unit attached to the difference is seconds. The adjacent CCF result is separately and consistently expressed as percentages.
+- **Consistency rule applicable:** Yes. A difference between two event counts has a count unit. The 2-second duration is the threshold defining which pauses are counted; it does not by itself convert the number of qualifying events into elapsed time.
+- **Calculation or logical comparison reproduced:** `27 − 16 = 11`. The point arithmetic reproduces the printed difference. Under the repeated “number of pauses” wording, that result is 11 pauses, whereas the article prints 11 seconds.
+- **Necessary inputs available:** The outcome wording, duration threshold, group values, point difference, printed unit, CI, P value, and subgroup sizes (BMV `56`, ETI `59`) are available. These are sufficient for the arithmetic and unit comparison.
+- **Exact missing inputs or definitions:** The source does not say whether `27` and `16` are totals, means, medians, or another summary; it does not assign units to those group values or the CI; it does not state the CI method; and it does not supply patient-level monitor data or total pause durations.
+- **Source-grounded alternative interpretation:** The values might be duration summaries, which could make seconds appropriate, but that interpretation conflicts with the repeated “number of pauses” wording. Conversely, the values may be pause counts and the threshold’s time unit may have been carried onto the difference.
+- **Direct observation versus inferred explanation:** The outcome phrases, threshold, values, difference, seconds label, interval, P value, and subgroup sizes are direct observations. Treating either the outcome wording or the seconds label as unintended is an inference.
+- **Exact remaining human question:** Are `27` and `16` counts of qualifying pauses or time summaries, what summary statistic was used, and what unit applies to the difference and its 95% CI?
+- **Status:** Pending Human Adjudication.
 
-- **Cited location found:** Yes. DOC-001, [main article Table 2, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6), Per-Protocol Analysis, row “Survival at 28 d.”
-- **Source printed value/text matched:** Yes. The row prints BMV `54 (5.4)`, ETI `51 (5.4)`, proportion difference `0.1 (−10 to 9.7)`, and `P = .99`, beneath the per-protocol denominators BMV `n = 995` and ETI `n = 943`.
-- **Comparator printed value/text matched:** Yes. The printed point difference `0.1` is in the `BMV(%) − ETI(%)` column beside the two count/percentage pairs and their stated analysis denominators.
-- **Consistency rule applicable:** Yes. If the printed counts and per-protocol denominators define the displayed proportion-difference estimator, the point difference is `100 × (54/995 − 51/943)` and can be compared at the table’s one-decimal precision.
-- **Calculation or logical comparison reproduced:** `100 × 54/995 = 5.427136%`; `100 × 51/943 = 5.408271%`; therefore `100 × (54/995 − 51/943) = 0.018864` percentage points. Ordinary one-decimal rounding gives `0.0`, while the table prints `0.1`. The absolute separation between the printed point difference and the count-derived difference is `0.081136` percentage points, greater than half of one one-decimal display unit (`0.05`). The two printed group percentages both round to `5.4%`, so subtracting the displayed percentages also yields `0.0`.
-- **Necessary inputs available:** The counts, per-protocol denominators, displayed group percentages, effect direction, point difference, CI, and P value are available. These inputs are complete for the direct count-derived rate-difference check.
-- **Exact missing inputs or definitions:** The source does not state whether the point difference used an estimator other than the displayed count/denominator pairs, an alternate denominator, adjusted or weighted rates, or retained values not determined by the printed integer counts. No row-specific point-estimate formula is supplied beyond the proportion-difference heading.
-- **Source-grounded alternative interpretation:** A separately computed estimator or unprinted analysis denominator could produce a retained value that rounds to `0.1`, but neither is described for this row. The methods say that differences for secondary criteria expressed as rates were calculated, without specifying a different point estimator for this table cell.
-- **Direct observation versus inferred explanation:** Direct observations are the row values, denominators, effect label, CI, P value, and the methods’ general statement. The `0.0` result is conditional on the printed count/denominator pairs defining the point estimator. An unprinted retained-precision or alternate-estimator explanation is inferred.
-- **Exact remaining human question:** What exact estimator, analysis denominator, and retained group rates generated the printed `0.1` percentage-point per-protocol survival difference, and do they differ from `54/995` and `51/943`?
+## C003 — PP day-28 survival point difference does not round from the printed inputs
 
-## C003 — Per-protocol day-28 survival CI scale versus matched rates and inferential display
+- **Cited location found:** Yes. DOC-001, [main article Table 2, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6), Per-Protocol Analysis, “Survival at 28 d”; and DOC-002, [Statistical Analysis Plan, PDF p. 123](../../../joi180004supp1_prod.pdf#page=123), section 8.1.2.
+- **Source printed value/text matched:** Yes. Table 2 prints PP denominators BMV `n = 995` and ETI `n = 943`, group results `54 (5.4)` and `51 (5.4)`, BMV-minus-ETI difference `0.1`, 95% CI `−10 to 9.7`, and `P = .99`. The SAP says categorical percentages are based on nonmissing values and rounded to one decimal place.
+- **Comparator matched:** Yes. The point difference `0.1` appears in the proportion-difference column beside the two printed count/percentage pairs and denominators.
+- **Consistency rule applicable:** Yes, conditionally on the printed counts and denominators defining the table’s unadjusted point estimator. A percentage-point difference calculated from those rates can be rounded to the table’s one-decimal point-difference display. The SAP explicitly sets one-decimal rounding for categorical percentages, although it does not separately state a rounding rule for the difference column.
+- **Calculation or logical comparison reproduced:** `100 × 54/995 = 5.427136%`; `100 × 51/943 = 5.408271%`; and `100 × (54/995 − 51/943) = 0.018864` percentage points. Ordinary rounding to one decimal gives `0.0`, not the printed `0.1`. Subtracting the two displayed group percentages also gives `5.4 − 5.4 = 0.0`.
+- **Necessary inputs available:** The counts, PP denominators, displayed percentages, signed effect label, point difference, CI, P value, and categorical percentage-rounding statement are available. They are sufficient for the direct count-derived check.
+- **Exact missing inputs or definitions:** The exact point-estimate procedure, any adjustment or weighting, row-specific denominators, retained internal rates, and a specific rounding rule for percentage-point differences are not supplied.
+- **Source-grounded alternative interpretation:** A separately retained estimator, adjustment, weighting, or unprinted denominator could yield a value that rounds to `0.1`; none is identified for this row. The SAP’s one-decimal statement directly governs percentages and may not have been intended to govern differences.
+- **Direct observation versus inferred explanation:** The table cells and SAP text are direct observations. The `0.0` display is the arithmetic result conditional on using the printed counts and denominators as the estimator. Any alternate estimator or denominator is inferred.
+- **Exact remaining human question:** Which exact estimator, denominator, retained rates, and rounding convention generated the printed PP survival difference of `0.1` percentage points?
+- **Status:** Pending Human Adjudication.
 
-- **Cited location found:** Yes. DOC-001, [main article Table 2, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6), Per-Protocol Analysis, row “Survival at 28 d,” including the table heading and footnote.
-- **Source printed value/text matched:** Yes. The row prints BMV `54 (5.4)`, ETI `51 (5.4)`, difference `0.1`, 95% CI `−10 to 9.7`, and `P = .99`; the per-protocol denominators are `995` and `943`.
-- **Comparator printed value/text matched:** Yes. The heading labels the effect and interval as `BMV(%) − ETI(%) (95% CI)`. Footnote `a` says P values were calculated using a chi-square test or Fisher exact test. The methods state that, for secondary criteria expressed as rates, a chi-square test on proportions was used and corresponding 95% CIs on odds ratios and differences were calculated.
-- **Consistency rule applicable:** Yes. An interval printed in the proportion-difference column should be on the percentage-point scale of the matched group rates. Its magnitude can be checked diagnostically against a standard unpooled binomial risk-difference calculation, while keeping the exact source-specific CI construction distinct because it is not identified.
-- **Calculation or logical comparison reproduced:** The displayed counts yield `5.427136%` and `5.408271%`, with count-derived difference `+0.018864` percentage points. A diagnostic unpooled binomial standard error is `1.028756` percentage points, giving an approximate two-sided 95% interval of `−1.997498` to `2.035226` percentage points. The printed interval spans `19.7` percentage points (`−10` to `9.7`), rather than approximately `4.03` percentage points under this diagnostic construction. The printed `P = .99` is a near-unit P value and is directionally compatible with nearly equal observed rates; it does not supply the missing CI construction.
-- **Necessary inputs available:** Counts, denominators, rates, point display, CI display, effect scale, P value, test alternatives, and the general methods statement are available. These are sufficient for the scale/span diagnostic calculation.
-- **Exact missing inputs or definitions:** The exact CI formula, software procedure/options, continuity correction, pooled versus unpooled variance choice, any stratification or weighting, any adjusted estimator, and the actual chi-square-versus-Fisher selection for this row are not supplied. The source also does not state whether `−10` or `9.7` lost a decimal during production.
-- **Source-grounded alternative interpretation:** A nonstandard or adjusted interval could differ from the diagnostic interval, but the paper does not name such a method for this row. A decimal or transcription issue in one or both limits could also explain the displayed span, but no intended limits are supplied. The table heading grounds the interval on the proportion-difference scale rather than an odds-ratio scale.
-- **Direct observation versus inferred explanation:** Direct observations are the counts, denominators, percentages, point difference, interval, P value, heading, footnote, and general methods text. The diagnostic interval comes from an explicitly identified standard approximation and is not an observed or proposed replacement interval. Decimal loss, transcription, adjustment, or method choice are inferred explanations.
-- **Exact remaining human question:** Which exact CI method and software settings generated `−10 to 9.7` for the per-protocol survival proportion difference, and do the printed limits contain a decimal or transcription issue?
+## C004 — PP day-28 survival confidence interval has an unresolved scale/precision inconsistency
 
-## C004 — Centre-5 pause result count outcome versus seconds unit
+- **Cited location found:** Yes. DOC-001, [main article Methods, PDF p. 3](../../../jama_jabre_2018_oi_180004.pdf#page=3), secondary-outcome analysis rule, and [Table 2, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6), PP “Survival at 28 d”; DOC-002, [Statistical Analysis Plan, PDF p. 124](../../../joi180004supp1_prod.pdf#page=124), section 8.2.3.
+- **Source printed value/text matched:** Yes. Table 2 prints BMV `54/995 (5.4%)`, ETI `51/943 (5.4%)`, difference `0.1`, 95% CI `−10 to 9.7`, and `P = .99` in a column labelled `BMV(%) − ETI(%) (95% CI)`. The main Methods and SAP say secondary rates use a chi-square test on proportions and that corresponding CIs on differences are presented.
+- **Comparator matched:** Yes. The interval is paired with two approximately 5.4% rates from roughly 1,000 participants per group, a near-zero point difference, and `P = .99`. Visual inspection of the rendered PDF confirms that the lower endpoint is printed as `−10`, not `−1.0`.
+- **Consistency rule applicable:** Yes as a scale and precision diagnostic. A CI in the labelled proportion-difference column should use the percentage-point scale. A standard binomial risk-difference interval can test whether the printed span is numerically plausible, but it is not a replacement for the unreported source-specific construction.
+- **Calculation or logical comparison reproduced:** The count-derived rates are `5.427136%` and `5.408271%`, with difference `0.018864` points. A diagnostic unpooled binomial SE is `1.028756` percentage points, producing an ordinary Wald 95% interval of approximately `−1.9975 to 2.0352` points. The printed interval spans `19.7` points (`9.7 − (−10)`), versus approximately `4.03` points in this diagnostic. The near-unit `P = .99` is directionally compatible with the nearly equal rates but does not reproduce the printed CI.
+- **Necessary inputs available:** Counts, denominators, effect scale, point and interval displays, P value, and general analysis rule are available for the diagnostic comparison.
+- **Exact missing inputs or definitions:** The exact CI formula, SAS procedure and options, pooled versus unpooled variance, continuity correction, exact/asymptotic choice, adjustment or weighting, row-level retained data, and whether either endpoint lost a decimal are not supplied.
+- **Source-grounded alternative interpretation:** A nonstandard or adjusted method could produce a wider interval, although no such method is named for this row. A production or decimal-transcription issue could also explain the display, but the intended endpoints are not in the supplied sources.
+- **Direct observation versus inferred explanation:** The table cells, heading, P value, and methods statements are direct observations. The diagnostic interval is an explicitly labelled independent calculation, not a proposed replacement. Decimal loss, transcription, or a nonstandard method are inferred explanations.
+- **Exact remaining human question:** What exact retained inputs, CI method, software settings, scale, and generated endpoints produced the printed `−10 to 9.7` interval?
+- **Status:** Pending Human Adjudication.
 
-- **Cited location found:** Yes. DOC-001, [main article Results, PDF p. 4](../../../jama_jabre_2018_oi_180004.pdf#page=4), “Post-Hoc Analyses.” The outcome definition also appears in the Methods on [PDF p. 3](../../../jama_jabre_2018_oi_180004.pdf#page=3).
-- **Source printed value/text matched:** Yes. The Results say the analysis determined “the number of pauses greater than 2 seconds during CPR” and report BMV `27`, ETI `16`, “difference, `11 seconds` [95% CI, 7 to 15]; `P < .001`.” The same paragraph separately reports chest-compression fraction as ETI `87%`, BMV `86%`, difference `−1%` (95% CI, `−4% to 2%`; `P = .70`).
-- **Comparator printed value/text matched:** Yes. The Results’ outcome phrase is a number of qualifying pauses, while `seconds` is attached to the corresponding difference. The Methods call the measure “number of pauses lasting more than 2 seconds”; thus, `2 seconds` is the event-defining threshold in both locations.
-- **Consistency rule applicable:** Yes. A difference between two values explicitly presented as numbers of events carries a count unit. A duration unit applies only if `27` and `16` are time summaries rather than event counts. The threshold “greater than 2 seconds” does not by itself change a count of qualifying pauses into elapsed time.
-- **Calculation or logical comparison reproduced:** `27 − 16 = 11`. The arithmetic reproduces the printed point difference, but on the stated count interpretation it is 11 pauses, whereas the paragraph labels the difference `11 seconds`. No numerical tolerance is relevant to the count-versus-time-unit comparison.
-- **Necessary inputs available:** The outcome wording, threshold, group values, arithmetic difference, reported unit, CI limits, P value, centre subgroup sizes (BMV `56`, ETI `59`), and separate CCF measure are available. These are sufficient for the arithmetic and categorical unit check.
-- **Exact missing inputs or definitions:** The source does not define whether `27` and `16` are totals, means, medians, or another summary; does not state the unit intended for those group values or the CI; does not give the CI method; and does not supply patient-level monitor data or total pause durations.
-- **Source-grounded alternative interpretation:** The values could be unlabelled duration summaries, in which case `seconds` could apply to the difference, but that reading conflicts with the repeated phrase “number of pauses.” Conversely, they could be pause counts, in which case the `seconds` label attaches the event threshold’s unit to the count difference. The source does not choose between these interpretations explicitly.
-- **Direct observation versus inferred explanation:** Direct observations are the named count outcome, 2-second threshold, values `27` and `16`, difference `11 seconds`, CI `7 to 15`, P value, subgroup sizes, and distinct CCF result. Treating the unit label or the outcome description as the production problem is inferred; the source does not identify an intended change.
-- **Exact remaining human question:** Were `27` and `16` counts of qualifying pauses or duration summaries, what summary statistic was used, and what unit was intended for the difference and its 95% CI?
+## C005 — PP ROSC ETI percentage conflicts with its count, denominator, and signed difference
+
+- **Cited location found:** Yes. DOC-001, [main article Table 2, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6), Per-Protocol Analysis, “Return of spontaneous circulation.”
+- **Source printed value/text matched:** Yes. The PP denominators are BMV `n = 995` and ETI `n = 943`. The row prints BMV `342 (34.4)`, ETI `377 (30.0)`, BMV-minus-ETI difference `−5.6` with 95% CI `−9.9 to −1.3`, and `P = .01`.
+- **Comparator matched:** Yes. The ETI count, denominator, displayed percentage, and signed difference all appear in the same table block, whose heading identifies the direction as BMV minus ETI.
+- **Consistency rule applicable:** Yes. In a “No. of Patients (%)” table, a parenthetical rate can be compared with `100 × count/analysis denominator`; the signed point difference can be compared with the two count-derived rates.
+- **Calculation or logical comparison reproduced:** `100 × 342/995 = 34.371859%`, which rounds to the printed BMV `34.4%`. `100 × 377/943 = 39.978791%`, which rounds to `40.0%`, not `30.0%`. The count-derived signed difference is `100 × (342/995 − 377/943) = −5.606932` points, which rounds to the printed `−5.6`. The two displayed percentages instead imply `34.4 − 30.0 = +4.4` points.
+- **Necessary inputs available:** Counts, PP denominators, displayed rates, effect direction, difference, CI, and P value are complete for the arithmetic check.
+- **Exact missing inputs or definitions:** The source gives no alternate ETI denominator, weighted or adjusted rate, row-specific population, retained internal value, or indication of which printed element was intended.
+- **Source-grounded alternative interpretation:** An alternate denominator of about 1,257 would make `377` approximately 30.0%, but the printed PP ETI denominator is 943, and using 943 reproduces the signed difference. A production issue could affect one of the printed elements, but the source does not identify it.
+- **Direct observation versus inferred explanation:** The table values and labels are direct observations. `40.0%` is the arithmetic result from the printed count and denominator, not an adjudicated replacement. Any alternate denominator or production explanation is inferred.
+- **Exact remaining human question:** Which of `377`, `n = 943`, `30.0%`, and `−5.6` represents the intended PP ETI ROSC analysis, and was any denominator or estimator omitted?
+- **Status:** Pending Human Adjudication.
+
+## C006 — Main article and eTable report different contributing-centre counts
+
+- **Cited location found:** Yes. DOC-001, [main article Methods, PDF p. 2](../../../jama_jabre_2018_oi_180004.pdf#page=2), Study Design; and DOC-003, [Supplement 2 eTable 1, PDF p. 2](../../../joi180004supp2_prod.pdf#page=2).
+- **Source printed value/text matched:** Yes. The main article says the study involved `20` prehospital EMS centers: `15` in France and `5` in Belgium. eTable 1 is titled “Number of Cases That Each Investigator Centre Contributed” and prints 21 distinct row labels: 1, 24, 5, 9, 12, 17, 13, 8, 3, 14, 22, 11, 15, 23, 16, 18, 20, 25, 7, 6, and 2.
+- **Comparator matched:** Yes. Every eTable row has at least one participant across its two arms; centre 2 has BMV `0` and ETI `3`. The eTable column totals are labelled BMV `N = 1018` and ETI `N = 1022`.
+- **Consistency rule applicable:** Yes, conditionally on “investigator centre” rows and “prehospital EMS centers” representing the same counting unit. Distinct contributing rows can be counted and compared with the article’s centre total.
+- **Calculation or logical comparison reproduced:** Counting the eTable labels gives 21 rows. Summing their counts gives BMV `1018` and ETI `1022`, exactly matching the eTable headers and totaling `2040`. The main article’s country counts give `15 + 5 = 20`. Thus, the displayed counts are 21 investigator-centre rows versus 20 EMS centers.
+- **Necessary inputs available:** The main centre statement, all eTable row labels and arm counts, and the eTable totals are available. They are sufficient to establish the two displayed counts and the reconciliation of participant totals.
+- **Exact missing inputs or definitions:** No crosswalk links investigator-centre identifiers to EMS centers; no source identifies each row’s country, administrative unit, mobile unit, or whether two investigator records belong to one EMS center.
+- **Source-grounded alternative interpretation:** One EMS center may be represented by multiple investigator-centre rows, or the two documents may use different administrative units. The main article notes that an EMS center can have one or more mobile intensive care units, but it does not map those units to eTable rows.
+- **Direct observation versus inferred explanation:** The 20-centre statement, 21 row labels, arm counts, and reconciled totals are direct observations. A many-to-one mapping or different administrative definition is inferred.
+- **Exact remaining human question:** What is the explicit mapping of the 21 investigator-centre rows to the 20 EMS centers, including any rows that share one EMS center?
+- **Status:** Pending Human Adjudication.
+
+## C007 — Published primary-endpoint description omits the amended baseline-disability qualification
+
+- **Cited location found:** Yes. DOC-001, [main article abstract, PDF p. 1](../../../jama_jabre_2018_oi_180004.pdf#page=1), Main Outcomes and Measures, and [Methods, PDF p. 3](../../../jama_jabre_2018_oi_180004.pdf#page=3), Outcomes; DOC-002, [protocol amendment comparison, PDF p. 110](../../../joi180004supp1_prod.pdf#page=110), section 4.1.1.
+- **Source printed value/text matched:** Yes. The article defines favorable neurological outcome as CPC 1 or 2 / CPC 2 or less. The amended protocol column retains CPC 2 or less and adds that, for neurological disability before randomization, survival with the same degree of disability is considered favorable. Table 2 on [PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6) further says CPCs 1 and 2 were counted as success when coding the primary outcome.
+- **Comparator matched:** Yes. The amended baseline-disability qualification is present in Supplement 1 but absent from the article’s abstract, Methods outcome definition, and Table 2 coding footnote.
+- **Consistency rule applicable:** Yes as an endpoint-definition comparison. If the amended qualification was part of the algorithm used for the published counts, a CPC-1-or-2-only description is not logically exhaustive because a survivor retaining a worse pre-randomization disability could qualify under the amendment.
+- **Calculation or logical comparison reproduced:** No participant-level recalculation is possible. The logical scenario is reproducible: a participant with CPC greater than 2 before randomization who survives with the same disability would be favorable under the amended qualification but not under a literal CPC-1-or-2-only rule.
+- **Necessary inputs available:** Both endpoint wordings, the amendment date/context, the published success counts, and the Table 2 coding footnote are available for the definition comparison.
+- **Exact missing inputs or definitions:** The supplied sources do not identify the final participant-level coding algorithm, baseline CPC/disability values, day-28 CPC paired with baseline status, how “same degree” was operationalized, or whether any participant relied on the qualification.
+- **Source-grounded alternative interpretation:** The article may use an abbreviated general description while the full algorithm retained the qualification, or no enrolled participant may have required it. Alternatively, the published coding may have used only CPC 1 or 2. The supplied aggregate sources do not distinguish these possibilities.
+- **Direct observation versus inferred explanation:** The article wording, amended wording, Table 2 footnote, and aggregate counts are direct observations. Any effect on classification or counts is inferred because participant-level coding evidence is absent.
+- **Exact remaining human question:** What exact algorithm generated the primary counts, and did any participant qualify as favorable solely because survival preserved the same pre-randomization disability?
+- **Status:** Pending Human Adjudication.
+
+## C008 — Protocol composite technique-failure definition cannot reconcile with the article’s smaller ETI failure count if they are the same endpoint
+
+- **Cited location found:** Yes. DOC-002, [protocol amendment comparison, PDF p. 110](../../../joi180004supp1_prod.pdf#page=110), Secondary Endpoints; DOC-001, [abstract, PDF p. 1](../../../jama_jabre_2018_oi_180004.pdf#page=1), [flow and Results, PDF p. 4](../../../jama_jabre_2018_oi_180004.pdf#page=4), and [Table 3, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6).
+- **Source printed value/text matched:** Yes. The amended protocol defines technique failure as 28-day mortality, regurgitation during the procedure, or procedural failure, clarified as failure to ventilate for BMV or failure to intubate for ETI. The article prints ETI failure `21/996 (2.1%)`. The ETI ITT population has `54/1022` deaths by day 28.
+- **Comparator matched:** Yes. The flow prints 1023 randomized to ETI, 1022 in ETI ITT, 999 in the ETI-side safety analysis display, and 24 excluded in that display. Table 3 labels its analysis “Safety Population” but uses `996` as the ETI denominator for the failure row, three fewer than the `999` shown for ETI complications.
+- **Consistency rule applicable:** Conditionally. For the same endpoint in the same aligned source population, a union containing all 28-day deaths cannot have fewer events than its mortality component. The rule cannot be applied unconditionally across ITT and actual-treatment/safety displays without a participant crosswalk.
+- **Calculation or logical comparison reproduced:** The ledger’s conservative displayed-flow calculation is `54 − 24 = 30`, and `30 > 21`. If the three additional participants absent from the Table 3 failure denominator were also all deaths, the corresponding conservative bound would be `54 − 24 − 3 = 27`, still greater than 21. However, these bounds assume the ETI-side flow exclusions identify every ETI-randomized participant outside the exact 996-person failure population; the article defines safety by treatment actually received and shows crossover, so that assumption is not mechanically established from aggregate displays alone.
+- **Necessary inputs available:** The amended composite definition, ETI ITT deaths, randomized and flow counts, safety-population concept, Table 3 failure count/denominator, and regurgitation count are available. They are sufficient to reproduce the conditional comparison but not to prove participant-set alignment.
+- **Exact missing inputs or definitions:** The article does not define the Table 3 “failure” row; does not state whether it is the amended composite; does not explain why its ETI denominator is 996 rather than 999; does not give 28-day deaths within the exact 996-person population; and does not provide participant-level mappings among randomization arm, actual treatment, crossover, mortality, regurgitation, procedural failure, and Table 3 inclusion.
+- **Source-grounded alternative interpretation:** The article’s failure row may be a narrower procedural endpoint, which is consistent with its separate reporting of mortality and regurgitation. It may also use an actual-treatment population not directly comparable with ETI ITT mortality. Either interpretation would make the aggregate counts non-nested, but the row’s exact definition is not supplied.
+- **Direct observation versus inferred explanation:** The protocol definition, flow counts, ITT deaths, Table 3 values, and safety-population label are direct observations. Treating Table 3 failure as the same composite, assigning the 24 and 3 omitted participants to death status, or treating the row as a narrower endpoint are inferences.
+- **Exact remaining human question:** What exact event definition and participant set produced ETI `21/996`, how do those 996 participants map to the ETI ITT and actual-treatment populations, and is this row intentionally distinct from the amended composite technique-failure endpoint?
+- **Status:** Pending Human Adjudication.
 
 ## Coverage and limitations
 
-- Stable IDs assigned: 4.
-- Stable IDs separately rechecked: 4 (`C001`, `C002`, `C003`, `C004`).
-- Cited PDF locations found: 4 of 4.
-- Source printed value/text blocks matched: 4 of 4.
-- Comparator blocks matched: 4 of 4.
-- Arithmetic or logical comparisons reproduced: 4 of 4.
-- Candidates with all inputs needed for the stated direct or diagnostic check: 4 of 4.
-- Candidates with unprinted information needed to identify the intended source value, exact estimator, exact interval construction, or underlying measure definition: 4 of 4.
-- Unresolved source-definition items: C001 (intended ETI ROSC element or alternate denominator), C002 (exact point estimator/retained rates), C003 (exact CI construction and possible decimal/transcription issue), and C004 (group-summary definition and intended count/time unit).
+- Stable IDs assigned: 8 (`C001`–`C008`).
+- Stable IDs separately rechecked: 8 of 8.
+- Cited PDF location sets found: 8 of 8.
+- Source printed value/text blocks matched: 8 of 8.
+- Comparator blocks matched: 8 of 8.
+- Arithmetic or logical comparisons reproduced: 8 of 8.
+- IDs with all inputs needed for the narrow displayed-value comparison: C001, C002, C003, C005, and C006.
+- IDs whose exact estimator, classification, or population alignment remains unavailable: C004, C007, and C008; C002 and C003 also lack the underlying summary/estimator definitions needed to identify intended reporting.
+- No new OCR was run. No legacy audit derivative was read as evidence. No candidate rests on a display-zero P value.
 
-Fresh derivatives were used as locators and transcription aids; they do not provide source data,
-unprinted estimators, intended production text, or an adjudication. No candidate is based on a
-display-zero P value.
+All eight candidates remain **Pending Human Adjudication**. This recheck records observations,
+conditional calculations, source limitations, and human questions; it does not assign severity,
+validity, acceptance, rejection, exclusion, or a final correction.

@@ -1,64 +1,87 @@
-# Canonical Numeric and Reporting Relationship Inventory
+# Canonical Numeric/Reporting Relationship Inventory
 
-The coordinator merged the two disjoint fresh mapping lanes without candidate adjudication. Canonical IDs retain the provisional-key provenance and exact details in the named extraction artifacts. No genuine duplicates were removed: cross-location repetitions are represented within one relationship when they concern the same values, comparator, and rule.
+Fresh, lossless canonical merge of the assigned main and support mapper shards. Stable source relationship IDs are retained exactly. Candidate assessment is in `../checkers/numeric_consistency.md`.
 
-| ID | Provenance | Relationship scope | Exact PDF pages |
+# Main numeric/reporting relationship inventory — DOC-001
+
+All entries are fresh source mappings. `Rule` describes the later check enabled by the printed information; no candidate judgment is made here. Full printed values are preserved in `extraction/main_quantitative_evidence.md`.
+
+| ID | PDF location and relationship | Matching occurrence / numeric rule |
+|---|---|---|
+| N001 | p.1 abstract: 2013 randomized, 1976 (98.2%) completed; demographics age 48.8, women 1381 (69.9%), abdominal 1778 (90.1%) | Match p.4 results and Figure 1; totals/proportion/analysis-population identity. |
+| N002 | p.1: intervention arms high n=989, PEEP 12; low n=987, PEEP 4; tidal volume 7 mL/kg | Match p.2 intervention, p.3 flow, p.4 analysis. |
+| N003 | p.1: primary 211/989 (21.3%) vs 233/987 (23.6%), absolute difference -2.3% | Match p.8 narrative, p.9 Table 3, p.10 Figure 2; numerator/denominator/difference. |
+| N004 | p.1: hypoxemia 5.0% vs13.6%, difference -8.6% | Match p.9 Table 3 and p.10 narrative; rate/difference. |
+| N005 | p.2: eligibility BMI >=35, expected surgery >2h, ARISCAT >=18/26; allocation 1:1 blocks 4/6/8 | Definitions for Table 1, flow, and population checks. |
+| N006 | p.3 Figure 1: randomization and treatment flow totals (2013=1011+1002; high 993+18; low 991+11) | Sum/partition checks. |
+| N007 | p.3 Figure 1: primary 989+987=1976 and per-protocol 917+912=1829 | Match p.4 results; population identity. |
+| N008 | p.3 Figure 1: high per-protocol exclusions 72=43+29; low 75=61+14 | Partition checks; PEEP/FIO2 definitions. |
+| N009 | p.4: original/revised sample-size premises (40%, then ~20%, n748/n2013, 80%, RR .75, 5% dropout) | Planning-number labels, interim proportions 50/75/100%. |
+| N010 | p.4: 29 excluded ->1984 ITT; 8 lost (4/group) ->1976 analyzed; per protocol1829 | Match Figure 1 totals; population arithmetic. |
+| N011 | pp.5-6 Table1: age, sex, height, weight, BMI and BMI categories | Means/SD units; sex/BMI category partitions against arm n. |
+| N012 | pp.5-6 Table1: waist/hip ratio and categories with denominators 914/906 | Subgroup denominators and category completeness. |
+| N013 | pp.5-6 Table1: ARISCAT mean/risk strata; SpO2 mean/3 strata | Categories/threshold labels; arm denominators. |
+| N014 | pp.5-6 Table1: respiratory infection, anemia, incision, planned duration, emergency | Percentages against arm n; mutually exclusive incision/duration categories. |
+| N015 | pp.5-6 Table1: ASA categories 1-4 / denominators 980/976; mobility | Category sums and stated scale 1-6 / exclusions 5-6. |
+| N016 | pp.5-6 Table1: hypertension, reflux, diabetes/oral/insulin, sleep apnea | Row-specific denominators and nested diabetes proportions. |
+| N017 | pp.5-6 Table1: tobacco categories / denominators, support, cancer, COPD/therapy/steroids | Category sums/nested denominator checks. |
+| N018 | p.6 Table1: alcohol, coronary disease, atrial arrhythmia, heart failure/NYHA | Nested NYHA denominator and scale labels. |
+| N019 | p.6 Table1: statins, antibiotics, aspirin, transfusion; vital signs and laboratory values | Units and arm comparison mapping. |
+| N020 | p.6 Table1: surgery-type categories, abdominal/endoscopic/open/nonabdominal, planned ICU | Category partitions and row-specific denominators. |
+| N021 | pp.5-6 Table1 footnotes: BMI, ARISCAT, anemia, ASA, ambulation, alcohol, NYHA, incision definitions | Measure/scale and threshold labels. |
+| N022 | p.7 Table2: tidal volume at three time points | Means/SD, mL/kg predicted weight, differences. |
+| N023 | p.7 Table2: PEEP at three time points | Means/SD cm H2O and high-minus-low differences; match p.8 narrative. |
+| N024 | p.7 Table2: recruitment maneuvers 972/989 vs11/987; high timing and median number | Overall vs time-specific measures; percentage/denominator. |
+| N025 | p.7 Table2: peak pressure and driving pressure at three time points | cm H2O units; driving-pressure definition p.8 footnote. |
+| N026 | p.7 Table2: respiratory rate, FIO2, SpO2 at three times | Unit/scale/difference checks. |
+| N027 | p.7 Table2: end-tidal CO2, heart rate, MAP at three times | Units/differences. |
+| N028 | p.7 Table2: head elevation, noninvasive ventilation, anesthesia type, epidural types | Category/nested denominator partitions. |
+| N029 | p.8 Table2: blockade, monitoring/reversal; fluid, colloid, urine values | Row-specific denominators and units. |
+| N030 | p.8 Table2: blood products, blood loss, temperature, surgery/anesthesia duration | Counts/percentages, measures and units. |
+| N031 | p.8 narrative: low rescue recruitment 11 (1.1%); comparison description | Match N024 and Table2. |
+| N032 | p.8 narrative: primary composite and mild respiratory failure | Match Table3 primary/component count, percent, difference. |
+| N033 | p.8 narrative: pleural effusion 43(4.3%) vs21(2.1%), difference2.2% | Match Table3. |
+| N034 | p.9 Table3: primary PPC and 12 component event rows | Event count/percent/difference and arm denominator checks. |
+| N035 | p.9 Table3: severe PPC and extrapulmonary composite / subcomponents | Event count/percent/difference mapping. |
+| N036 | p.9 Table3: GI failure and four severity grades | Composite versus grade denominators; grade partitions. |
+| N037 | p.9 Table3: acute kidney failure and four severity grades | Composite versus grade denominators; grade partitions. |
+| N038 | p.9 Table3: remaining extrapulmonary outcomes, wound healing, ICU | Count/percent/difference mappings including zero events. |
+| N039 | p.9 Table3: hospital-free days mean/SD, median/IQR, mean difference | Unit=time/days; mean-difference label. |
+| N040 | p.9 Table3: hypoxemia, hypotension, bradycardia, in-hospital mortality | Event definitions p.10 footnotes; count/rate/difference. |
+| N041 | p.10 Table3: rescue strategy, vasoactive drugs, mortality at 5d | Post-hoc count/rate/difference; mortality time definition. |
+| N042 | p.10 Table3 footnotes: respiratory failure/GI/AKI/hypoxemia/hypotension/bradycardia thresholds | Outcome labels, scales, rates versus counts. |
+| N043 | p.10 Figure2: surgery subgroups | PPC counts/totals by laparoscopy; match overall. |
+| N044 | p.10 Figure2: BMI and baseline SpO2 subgroups | PPC counts/totals by prespecified strata; subgroup total identity. |
+| N045 | p.10 Figure2: incision and waist/hip subgroups plus all-patient line | PPC counts/totals; compare primary result with precision match. |
+| N046 | p.10 narrative: hypoxemia lower high; hypotension/bradycardia lower low | Direction match Table3. |
+| N047 | p.10 narrative: per-protocol/ITT and adjusted/sensitivity results stated similar | Analysis-population/model statement linked to p.3/p.4. |
+| N048 | pp.11-12 discussion/conclusion: intervention direction and no PPC reduction | Match primary estimate/narrative direction. |
+| N049 | pp.13-14 | No new result-bearing trial numeric/statistical relationship; author/reference pages reviewed. |
+
+
+# Support Numeric/Reporting Relationship Inventory (N200+)
+
+| ID | Exact support location | Relationship and printed values | Rule / cross-document key |
 |---|---|---|---|
-| N001 | MN001 | Trial population, sites, dates, completed-trial demographics | DOC-001 pp. 1, 4 |
-| N002 | MN002 | Assigned PEEP and tidal-volume intervention definitions | DOC-001 pp. 1, 3 |
-| N003 | MN003 | Randomization, treatment, primary-analysis, and per-protocol flow counts | DOC-001 p. 3 |
-| N004 | MN004 | Narrative flow totals and exclusions | DOC-001 p. 4 |
-| N005 | MN005 | Primary, secondary, and post-hoc outcome inventory/time windows | DOC-001 p. 3 |
-| N006 | MN006 | Hypoxemia, hypotension, and bradycardia thresholds | DOC-001 pp. 3, 10 |
-| N007 | MN007 | Baseline age, sex, anthropometry, and BMI categories | DOC-001 p. 5 |
-| N008 | MN008 | Waist/hip and ARISCAT measurements/categories | DOC-001 p. 5 |
-| N009 | MN009 | Baseline oxygenation, infection, and anemia | DOC-001 p. 5 |
-| N010 | MN010 | Incision, duration, emergency, and ASA categories | DOC-001 p. 5 |
-| N011 | MN011 | Ambulation, hypertension, reflux, and diabetes | DOC-001 p. 5 |
-| N012 | MN012 | Apnea, tobacco, NIV, cancer, and COPD | DOC-001 p. 5 |
-| N013 | MN013 | Alcohol and cardiac-history categories | DOC-001 p. 6 |
-| N014 | MN014 | Medications and vital signs | DOC-001 p. 6 |
-| N015 | MN015 | Laboratory values and prophylaxis | DOC-001 p. 6 |
-| N016 | MN016 | Surgery types and ICU planning | DOC-001 p. 6 |
-| N017 | MN017 | Narrative PEEP and recruitment values | DOC-001 pp. 6, 8 |
-| N018 | MN018 | Tidal volume and PEEP timepoint values/differences | DOC-001 p. 7 |
-| N019 | MN019 | Recruitment and peak-pressure values | DOC-001 p. 7 |
-| N020 | MN020 | Driving pressure and respiratory rate | DOC-001 p. 7 |
-| N021 | MN021 | FiO2 and SpO2 timepoints | DOC-001 p. 7 |
-| N022 | MN022 | End-tidal CO2, heart rate, and MAP | DOC-001 p. 7 |
-| N023 | MN023 | Head elevation and NIV | DOC-001 p. 7 |
-| N024 | MN024 | Anesthesia and epidural categories | DOC-001 p. 8 |
-| N025 | MN025 | Neuromuscular blockade, monitoring, reversal | DOC-001 p. 8 |
-| N026 | MN026 | Fluid volumes and categories | DOC-001 p. 8 |
-| N027 | MN027 | Blood products, loss, temperature, and procedure duration | DOC-001 p. 8 |
-| N028 | MN028 | Primary PPC counts, proportions, difference, RR, CI, and repeated locations | DOC-001 pp. 1, 2, 8-10 |
-| N029 | MN029 | Primary PPC component counts/proportions | DOC-001 p. 9 |
-| N030 | MN030 | PPC-component absolute differences/CIs | DOC-001 pp. 8-9 |
-| N031 | MN031 | Secondary outcome counts/proportions | DOC-001 p. 9 |
-| N032 | MN032 | GI-failure and AKI severity distributions | DOC-001 pp. 9-10 |
-| N033 | MN033 | Hospital-free days and intraoperative adverse events | DOC-001 p. 9 |
-| N034 | MN034 | Post-hoc rescue, vasoactive, and mortality results | DOC-001 p. 10 |
-| N035 | MN035 | First subgroup block counts, denominators, and RRs | DOC-001 p. 10 |
-| N036 | MN036 | Remaining subgroup and overall estimates | DOC-001 p. 10 |
-| N037 | MN037 | Narrative direction and analysis claims | DOC-001 pp. 10-11 |
-| N038 | UN001 | Sample-size chronology and planned enrollment | DOC-002 pp. 10-11; DOC-003 pp. 2-3 |
-| N039 | UN002 | Eligibility and ARISCAT thresholds | DOC-002 pp. 10, 29; DOC-005 pp. 18, 22 |
-| N040 | UN003 | Ventilation intervention and rescue definitions | DOC-002 pp. 12-15; DOC-005 pp. 18-20, 23 |
-| N041 | UN004 | Endpoint component and clinical threshold definitions | DOC-002 pp. 12, 19-20, 31-33; DOC-005 pp. 20-21 |
-| N042 | UN005 | Follow-up and analysis-population definitions | DOC-002 p. 34; DOC-004 pp. 1-3 |
-| N043 | UN006 | Intraoperative fluid counts, percentages, amounts | DOC-005 p. 24 |
-| N044 | UN007 | Vasoactive use and dose results | DOC-005 p. 25 |
-| N045 | UN008 | Anesthetic, analgesic, paralytic, and reversal results | DOC-005 p. 26 |
-| N046 | UN009 | Surgery priority, position, wound class, pressure | DOC-005 p. 27 |
-| N047 | UN010 | Postoperative VAS values and daily denominators | DOC-005 p. 28 |
-| N048 | UN011 | Per-protocol PPC and component results | DOC-005 p. 29 |
-| N049 | UN012 | mITT sensitivity results | DOC-005 p. 30 |
-| N050 | UN013 | Ventilation figure-series definitions; plotted values unavailable | DOC-005 pp. 31-37 |
-| N051 | UN014 | Time-to-PPC result | DOC-005 p. 38 |
-| N052 | UN015 | Time-to-severe-PPC result | DOC-005 p. 39 |
-| N053 | UN016 | Time-to-PEPC result | DOC-005 p. 40 |
-| N054 | UN017 | eFigure 11 caption/result label pairing and mortality statistics | DOC-005 p. 41 |
-| N055 | UN018 | Data/code availability statement; no supplied outcome data | DOC-006 p. 1 |
+| N200 | DOC-002 pp.8-10; DOC-003 pp.2-3 | Planned/revised enrollment: 748 initially, 1912 maximum analysis and 2013 including 5% dropout after 618 observed. | Sample-size history; compare only version-matched plan. |
+| N201 | DOC-002 pp.10-13; DOC-005 pp.18-20 | Intervention: low PEEP 4 cmH2O/no planned RM vs high 12 cmH2O/RM; 7 mL/kg IBW/PBW. | Intervention label/unit identity. |
+| N202 | DOC-002 pp.12-13; DOC-005 p.23 | Rescue FiO2/PEEP step sequences, including low final 1.0/7(+RM), high final 1.0/20(+RM). | Protocol/eTable2 match. |
+| N203 | DOC-002 p.27; DOC-005 p.22 | ARISCAT score >=26 and all OR/CI/beta/score entries, multivariable n=1624. | Appendix-i/eTable1 matched table. |
+| N204 | DOC-002 pp.29-31; DOC-005 pp.20-21 | PPC 12 components and numeric diagnostic thresholds; PEPC and mortality definitions. | Outcome-definition match key. |
+| N205 | DOC-002 p.32; DOC-003 p.1; DOC-005 pp.20-21 | Hepatic-failure ratios: bilirubin >1.7 and INR >1.0, long follow-up INR >1.5. | Definition/version match. |
+| N206 | DOC-004 pp.1-3 | Final SAP analysis populations, outcome timing, subgroup cutpoints and analysis measures. | Final-plan comparator for reported results. |
+| N207 | DOC-005 p.24 | eTable3 fluids counts/percentages, volumes and p values (complete printed values in extraction). | n=989/987 denominator/proportion/units. |
+| N208 | DOC-005 p.25 | eTable4 vasoactive drug counts/percentages, mg mean(SD), p values. | n=989/987, categories may be nonexclusive. |
+| N209 | DOC-005 p.26 | eTable5 anesthetic/paralytic/reversal counts, percentages, p values. | n=989/987, categories may be nonexclusive. |
+| N210 | DOC-005 p.27 | eTable6 priority, position, wound categories and laparoscopy pressure. | n=989/987; category subtotal/rounding checks. |
+| N211 | DOC-005 p.28 | eTable7 VAS means, SDs, available counts and p values days 1-5. | Repeated-measure timepoint/count identity. |
+| N212 | DOC-005 p.29 | eTable8 13 per-protocol PPC/component count-denominator-percent triplets and effect/P values. | n=917/912, composite/component identity. |
+| N213 | DOC-005 p.30 | eTable9 sensitivity: ORs, CIs, P values, count means/SDs and medians/IQRs. | n=989/987; model-specific measures. |
+| N214 | DOC-005 pp.31-37 | eFigures1-7 enrollment/no-dropout note; plotted means/95% CIs and driving-pressure formula. | Figure/caption label and scale. |
+| N215 | DOC-005 p.38 | eFigure8 PPC 21.3%/23.6%, HR .88(.73-1.06), P=.190, median follow-up 4(2-5). | Main primary-outcome match key. |
+| N216 | DOC-005 p.39 | eFigure9 severe PPC 11.7%/13.6%, HR .85(.66-1.09),P=.197. | Secondary-outcome match key. |
+| N217 | DOC-005 p.40 | eFigure10 PEPC 16.9%/15.2%, HR1.12(.89-1.39),P=.314. | Secondary-outcome match key. |
+| N218 | DOC-005 p.41 | eFigure11 death heading/5-day mortality 0.5%/.3%, HR1.67(.40-6.97),P=.484; narrative phrase “rate of postoperative extra-pulmonary complications”. | Exact internal label comparator retained. |
+| N219 | DOC-006 p.1 | No result-bearing numeric/statistical content. | COMPLETE no-applicable-unit record. |
 
-**Inventory count:** 55 distinct numeric/reporting relationships. Detailed printed values and direct source links are preserved in `extraction/main_quantitative_evidence.md` and `extraction/support_quantitative_evidence.md`.
 

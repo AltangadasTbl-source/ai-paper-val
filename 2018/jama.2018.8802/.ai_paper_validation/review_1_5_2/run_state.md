@@ -1,31 +1,33 @@
 # Workflow 1.5.2 Run State
 
 - **Profile:** 1.5.2
-- **Status:** COMPLETE
-- **Target basis:** Three supplied PDFs comprise 44 fresh page units (10-page main article plus 25-page and 9-page supplements), with native and layout extraction, visual result-page review, parallel relationship mapping, and two full statistical passes required; preferred Linux PDF tools are absent, adding a bounded local-tool fallback burden.
+- **Run mode:** FULL_SOURCE_FIRST_RESTART
+- **Target basis:** Three direct PDF sources (one 10-page main article and two support PDFs totaling 34 pages), 44 unique PDF-page units, zero reusable units, all-native-first extraction, multiple dense result tables/figures, two complete statistical passes, and no Office/workbook conversion burden; bounded against but materially smaller than the 102-unit workflow 1.4.1 calibration package.
 - **Total source units:** 44
 - **Fresh-source units:** 44
-- **Target elapsed minutes:** 30-60
-- **Started UTC:** 2026-08-24T00:16:27Z
-- **Finished UTC:** 2026-08-24T01:15:46Z
-- **Observed elapsed minutes:** 59.3
-- **Target status:** MET_TARGET
-- **Exceedance causes:** None
-- **Evidence basis:** Supplied package sources only; legacy audit derivatives excluded.
-- **Runtime limitations:** Preferred Linux `pdfinfo`, `pdftotext`, rendering, and Tesseract commands were not found in PATH. Installed local Acrobat automation supplied native page text and coordinate-layout evidence for all 44 pages; no result-relevant page required OCR after text-usability assessment.
-- **Unresolved checks:** Scientific relationship mapping and consistency review remain in progress.
-
-## Stage Status
-
-| Stage | Status | Notes |
-|---|---|---|
-| source_inventory | COMPLETE | Three direct research PDFs identified and hashed; 44 PDF pages total. |
-| evidence_assets | COMPLETE | Fresh native and coordinate-layout evidence exists for all 44 pages. |
-| coverage_planning | COMPLETE | Every source page and required stage has a disjoint assignment. |
-| quantitative_mapping | COMPLETE | 61 numeric/reporting and 67 statistical relationships mapped across all pages. |
-| consistency_review | IN_PROGRESS | Numeric, statistical pass 1, and cross-source lanes starting concurrently. |
-| candidate_registration | COMPLETE | 11 distinct candidates assigned C001-C011 after one genuine duplicate merge. |
-| evidence_recheck | COMPLETE | All C001-C011 mechanically rechecked; C004 source transcription corrected while its stable ID remains preserved. |
-| evidence_quality | COMPLETE | All C001-C011, 44 source units, 61 N relationships, 67 S relationships in both passes, coverage rows, and manifested agents audited; correctable link/transcription defects repaired before reporting. |
-| report_generation | COMPLETE | All 11 candidate cards assembled in canonical order. |
-| validation | COMPLETE | Standalone HTML rendered; Workflow 1.5.2 validator reports PASS with no errors. |
+- **Target elapsed minutes:** 25-40
+- **Started UTC:** 2026-08-24T01:49:45Z
+- **Finished UTC:** 2026-08-24T02:37:50Z
+- **Observed elapsed minutes:** 48.1
+- **Target status:** EXCEEDED_TARGET
+- **Exceedance causes:** A potentially legacy-contaminated statistical pass 1 was quarantined and replaced with a new clean Terra/high pass; the final quality audit required appending and checking omitted support relationship UN031/N072 and repairing linked scopes/locators.
+- **Current stage:** COMPLETE
+- **Source inventory status:** INITIALIZED
+- **Evidence preparation status:** COMPLETE — 44 native/layout units, 39 canonical result-relevant renders, 0 OCR units.
+- **Coverage manifest status:** INITIALIZED_BEFORE_SCIENTIFIC_EXTRACTION
+- **Main mapping status:** COMPLETE — 41 provisional numeric/reporting and 24 provisional statistical records.
+- **Support mapping status:** COMPLETE — 31 provisional numeric/reporting and 37 provisional statistical records after quality-audit coverage repair.
+- **Numeric review status:** COMPLETE — N001-N072; 6 provisional proposals plus N072 factual representation of existing C007.
+- **Statistical pass 1 status:** COMPLETE — clean replacement pass over S001-S061; 2 distinct provisional proposals.
+- **Cross-source review status:** COMPLETE — 27 match keys; 1 provisional proposal.
+- **Candidate registration status:** COMPLETE — C001-C008 after genuine-duplicate merge.
+- **Evidence recheck status:** COMPLETE — C001-C008 direct-source facts and calculations recorded.
+- **Statistical pass 2 status:** COMPLETE — distinct fresh Terra/high pass over S001-S061 plus C001-C008 and all recheck facts; no new candidates.
+- **Evidence-quality audit status:** COMPLETE — C001-C008, 44 source units, 17 coverage rows, N001-N072, S001-S061, and all manifested executions audited after repair.
+- **Markdown report status:** COMPLETE — C001-C008 assembled with all required labels and finalized deterministic metadata.
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE — authoritative response-level runtime counts were not exposed for any manifested execution; 12 UNAVAILABLE rows recorded without estimation.
+- **Source integrity status:** PASS — before/after SHA-256 values identical for all three direct sources.
+- **HTML rendering status:** COMPLETE — standalone HTML5 with embedded CSS and table of contents.
+- **Mechanical validation status:** PASS — final profile-1.5.2 validator completed with zero errors.
+- **Limitations / failed checks:** The first fresh statistical-pass-1 response referred to an old `C009/SP1` label, demonstrating possible legacy-file contamination. Its artifact was quarantined and excluded; a different fresh Terra/high pass 1 was required over the canonical current-run inventory.
+- **Prior-run preservation:** Pre-existing 1.5.2 artifacts were archived without use as evidence at `review_1_5_2/prior_run_snapshot_20260824T014945Z.tar` before updates began.

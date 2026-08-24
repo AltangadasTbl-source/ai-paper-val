@@ -2,82 +2,73 @@
 
 ## Pending Human Adjudication
 
-All observations in this report are **Pending Human Adjudication**. They are source-grounded quantitative reporting quality-control candidates, not conclusions about the paper, its authors, study validity, or clinical consequences.
+All eight observations in this report are **Pending Human Adjudication**. They are reproducible quality-control candidates, not findings of validity, severity, correction, acceptance, rejection, or paper-level conclusion change.
 
 ## Executive Quality-Control Summary
 
-Fresh source-first processing of the three supplied PDFs identified 11 stable candidate consistency observations (C001-C011). The work covered all 44 supplied PDF pages, 61 numeric/reporting relationships, and 67 inferential-statistical relationships in two independent statistical passes. No candidate was registered solely because of a display-zero P value; no mapped result used that display format.
-
-The report preserves a corrected discovery record for C004: direct recheck shows `23/238 (9.66)`, which reconciles at two decimal places. The retained stable ID documents that correction and is not presented as a source percentage defect.
+Fresh source-first review of the supplied paper package registered **8** distinct quantitative reporting-consistency candidates (C001-C008). The review covered all 44 direct PDF-page units, 72 numeric/reporting relationships, 61 statistical relationships, and 27 cross-source match keys. Small preventable reporting defects can matter when a data extractor, systematic review, meta-analysis, guideline, or later evidence product copies a printed value or definition; this report does not assert that such copying, propagation, or conclusion change occurred.
 
 ## Package and Fresh-Processing Provenance
 
-Only the supplied direct research sources were used:
+The direct evidence set comprised three supplied PDFs: the main article ([jama_wang_2018_oi_180070.pdf — PDF p. 1](<../jama_wang_2018_oi_180070.pdf#page=1>), 10 pages), protocol/statistical-analysis-plan support ([joi180070supp1_prod.pdf — PDF p. 1](<../joi180070supp1_prod.pdf#page=1>), 25 pages), and supplementary results ([joi180070supp2_prod.pdf — PDF p. 1](<../joi180070supp2_prod.pdf#page=1>), 9 pages). Fresh SHA-256 records are in `review_1_5_2/source_hashes_before.sha256`.
 
-| Source ID | Source | Role | Fresh units | Hash (SHA-256) |
-|---|---|---|---:|---|
-| DOC-001 | `jama_wang_2018_oi_180070.pdf` | Main article | 10 PDF pages | `f921847452d4f5ab012a3eaaa58f25542a73c2f06a858974efc443be4af70fb9` |
-| DOC-002 | `joi180070supp1_prod.pdf` | Supplement 1 | 25 PDF pages | `5faf07d9e18fb1b9dcc415818622846fb502b410d67255be7ab28aca5e52d138` |
-| DOC-003 | `joi180070supp2_prod.pdf` | Supplement 2 | 9 PDF pages | `78ebed75675211c520c6eae88b8a1963c9b1f00dc66b2b6ff324d957a1e39645` |
-
-Fresh native text and coordinate-layout extraction covered all 44 pages; 13 result-relevant pages also received fresh full-page visual confirmation. No result-relevant page required OCR. Legacy audit derivatives were excluded from the evidence chain.
+All 44 pages received fresh native and layout text extraction. Thirty-nine result-relevant pages were freshly rendered for visual confirmation; zero pages required OCR. No Office, workbook, CSV, web, external literature, raw data, or previous audit derivative was used as evidence.
 
 ## Scope, Complete Coverage, and Exclusions
 
-Each direct source has 0 reusable units, fresh-required units equal to its total, and mapped units equal to its total: 44/44 total and fresh-required units were mapped. The review addressed numeric/arithmetic, denominator/proportion/total, statistical, cross-document, measure/label/scale, rate-versus-count, and concrete analysis-unit/population inconsistencies.
+`source_coverage.md` records 10/10 mapped DOC-001 pages, 25/25 DOC-002 pages, and 9/9 DOC-003 pages. The pre-extraction coverage manifest contains 17 complete stage rows. The review prioritized reported numeric values, denominators/proportions/totals, inferential displays, matched cross-document values, and measure labels/scales.
 
-It did not perform a broad study-design, clinical, novelty, misconduct, or raw-data audit. Planned quantities were not treated as observed results, and different explicitly stated analysis sets were not treated as competing denominators. Coherent finite-precision P-value display zero would be excluded as a stand-alone candidate.
+Excluded from candidate registration were general methodology or design critique without a concrete reported-value inconsistency, unreported model detail without a direct mismatch, and display-zero reasoning. No assigned relationship printed `P = 0`, `p = 0.000`, or equivalent; threshold displays such as `P < .001` were not candidates solely on that basis.
 
 ## Quantitative and Statistical Relationship Coverage
 
-- Numeric/reporting relationships: 61/61 mapped and checked.
-- Statistical relationships: 67/67 mapped; statistical pass 1 marked all 67 `PASS_1_COMPLETE` and the distinct statistical pass 2 marked all 67 `PASS_2_COMPLETE` after review of the full ledger and mechanical recheck.
-- Cross-source matching: all 61 numeric/reporting and 67 statistical relationships were matched where population, time point, contrast, model, measure, scale, reference condition, and precision permitted comparison.
-- Stable candidates: C001-C011; one genuine duplicate discovery record for the LDL boundary was merged before stable-ID assignment. No count cap, ranking, queue, or deferred-by-cap selection was used.
+- Numeric/reporting review: N001-N072, complete. Six provisional arithmetic/label proposals and the factual representation of C007 were resolved into the stable ledger.
+- Cross-source review: 27 complete identity-matched keys, including one C007 proposal.
+- Statistical pass 1: clean independent fresh Terra/high pass over S001-S061; two proposals were registered as C002 and C008.
+- Statistical pass 2: different fresh Terra/high agent reviewed S001-S061, the entire C001-C008 ledger, and all mechanical recheck facts; no new candidate was identified.
+
+The qualifying statistical executions were `root/statistics_pass_1_clean` and `root/statistics_pass_2`, both `gpt-5.6-terra` at `high` reasoning effort. An earlier pass-1 response was quarantined for possible legacy-label contamination and excluded from the scientific evidence chain; its manifested execution remains recorded for reproducibility and token accounting.
 
 ## Candidate Index
 
-| ID | Candidate statement | Category |
-|---|---|---|
-| [C001](#c001--table-1-cadprevious-mi-percentage-does-not-reconcile-with-3112400) | CAD/previous-MI percentage versus displayed count and group total | Numeric or arithmetic inconsistency |
-| [C002](#c002--ldl-eligibility-threshold-is-printed-as-both-100-and-100-mgdl) | LDL eligibility boundary differs across sources | Measure, label, or scale inconsistency |
-| [C003](#c003--exact-20-patients-per-cluster-statement-conflicts-with-the-801-baseline-total) | Per-cluster statement versus baseline total | Denominator, proportion, or total inconsistency |
-| [C004](#c004--direct-recheck-finds-the-rtpa-cell-prints-966-and-reconciles-with-23238) | Corrected rtPA discovery transcription retained after registration | Denominator, proportion, or total inconsistency |
-| [C005](#c005--etable-4-discharge-antithrombotics-control-percentage-does-not-reconcile-with-21412400) | Discharge-antithrombotics fraction versus percentage | Denominator, proportion, or total inconsistency |
-| [C006](#c006--etable-4-af-anticoagulation-control-percentage-does-not-reconcile-with-39174) | AF-anticoagulation fraction versus percentage | Denominator, proportion, or total inconsistency |
-| [C007](#c007--etable-4-lipid-lowering-control-percentage-does-not-reconcile-with-14391586) | Lipid-lowering fraction versus percentage | Denominator, proportion, or total inconsistency |
-| [C008](#c008--etable-4-antidiabetic-medication-control-percentage-does-not-reconcile-with-557688) | Hypoglycemic-therapy fraction versus percentage | Denominator, proportion, or total inconsistency |
-| [C009](#c009--in-hospital-death-absolute-difference-p-value-conflicts-with-its-displayed-95-ci) | In-hospital-death absolute-difference CI versus P value | Statistical reporting inconsistency |
-| [C010](#c010--composite-adherence-has-conflicting-patient-level-and-care-opportunity-analysis-descriptions) | Composite analysis unit differs across descriptions | Analysis-unit or population inconsistency |
-| [C011](#c011--dvt-prophylaxis-window-is-labeled-as-both-within-48-hours-and-by-end-of-hospital-day-2) | DVT timing definition differs across sources | Measure, label, or scale inconsistency |
+| ID | Candidate | Category | Primary source location |
+|---|---|---|---|
+| C001 | Table 1 CAD/previous-myocardial-infarction percentage does not reproduce | Numeric or arithmetic inconsistency | DOC-001 PDF p. 6 |
+| C002 | LDL eligibility boundary differs between result labels and supplied measure definition | Measure, label, or scale inconsistency | DOC-001 p. 7; DOC-002 p. 15; DOC-003 pp. 3, 8 |
+| C003 | eTable 4 discharge-antithrombotics control percentage does not reproduce | Denominator, proportion, or total inconsistency | DOC-003 PDF p. 8 |
+| C004 | eTable 4 AF-anticoagulation control percentage does not reproduce | Denominator, proportion, or total inconsistency | DOC-003 PDF p. 8 |
+| C005 | eTable 4 lipid-lowering control percentage does not reproduce | Denominator, proportion, or total inconsistency | DOC-003 PDF p. 8 |
+| C006 | eTable 4 antidiabetic-medication control percentage does not reproduce | Denominator, proportion, or total inconsistency | DOC-003 PDF p. 8 |
+| C007 | Baseline-survey patient total does not reconcile with stated per-cluster inclusion | Cross-document numeric inconsistency | DOC-001 p. 6; DOC-003 p. 2 |
+| C008 | In-hospital death absolute-difference CI and P value do not reconcile | Statistical reporting inconsistency | DOC-001 pp. 4, 8 |
 
 ## Candidate Evidence Cards
 
-## C001 — Table 1 CAD/previous-MI percentage does not reconcile with 311/2400
+## C001 — Table 1 CAD/previous-myocardial-infarction percentage does not reproduce
 
-**Candidate statement:** The Table 1 intervention CAD/previous-MI cell prints a percentage that does not reproduce from the displayed count and group total, conditional on 2400 being the row denominator.
+**Candidate statement:** The intervention cell prints `311 (13.05)` under a 2,400-patient column, but the displayed fraction does not yield 13.05%.
 
 **Category:** Numeric or arithmetic inconsistency
 
-**Exact source locations:** DOC-001, [jama_wang_2018_oi_180070.pdf — PDF p. 6](<../jama_wang_2018_oi_180070.pdf#page=6>), Table 1, CAD/previous myocardial infarction, intervention column.
+**Exact source locations:** [jama_wang_2018_oi_180070.pdf — PDF p. 6](<../jama_wang_2018_oi_180070.pdf#page=6>), Table 1, `CAD/previous myocardial infarction`, intervention column and `Patients, No.` header.
 
-**Source evidence:** The cell visibly prints `311 (13.05)` and the intervention column total is 2400.
+**Source evidence:** The direct PDF prints intervention `Patients, No.` = 2400 and the row cell `311 (13.05)`.
 
-**Reported-versus-comparator:** Reported `13.05%` versus `311/2400 × 100`.
+**Reported-versus-comparator:** Reported 13.05% versus 311/2400.
 
-**Reasoning procedure:** Apply the displayed group total as the denominator and nearest rounding at the shown relevant precision; keep an unprinted row denominator as an alternative rather than assuming it absent.
+**Reasoning procedure:** Apply ordinary percentage calculation to the printed count and whole-column patient total; no row-specific alternative denominator is printed.
 
-**Calculation:** `311/2400 × 100 = 12.9583…%`, which rounds to `13.0%` at one decimal or `12.96%` at two decimals, not `13.05%`.
+**Calculation:** `311 / 2400 × 100 = 12.9583%`, which rounds to 13.0% at one decimal or 12.96% at two decimals, not 13.05%.
 
-**Alternative source-grounded interpretations:** An unstated row-specific nonmissing denominator or a production transcription could explain the cell; neither is supplied.
+**Alternative source-grounded interpretations:** A row-specific denominator or nonstandard calculation may have been used, but neither is supplied.
 
-**Mechanical evidence recheck:** Location, printed count, percentage, group total, and arithmetic were reproduced. The missing inputs are a CAD-row denominator or missingness count; the source-grounded alternative is a hidden nonmissing denominator.
+**Mechanical evidence recheck:** The direct PDF location, `311 (13.05)`, and the `2400` header were found and the calculation was reproduced.
 
-**Quality-control relevance:** The displayed baseline prevalence cannot be reproduced from the visible count and group total under the stated arithmetic rule.
+**Quality-control relevance:** A printed baseline percentage cannot be reproduced from its displayed count and column total under the stated table convention.
 
-**Potential downstream evidence impact:** If confirmed, a data extractor could copy a baseline CAD/previous-MI prevalence that does not reproduce from the printed count and group total. This report does not establish an effect on outcomes or conclusions.
+**Potential downstream evidence impact:** If confirmed, a data extractor could copy the printed percentage or count/denominator pair into a baseline-characteristic record.
 
-**Human verification steps:** Confirm the cell and Table 1 header in the cited PDF, then inspect the table-production data for a row-specific denominator, missingness count, or intended percentage.
+**Human verification steps:** Check the Table 1 analysis dataset, intended row denominator, calculation rule, and production source for this cell.
 
 **Human adjudication fields:**
 - **Validity:** __
@@ -86,31 +77,31 @@ It did not perform a broad study-design, clinical, novelty, misconduct, or raw-d
 - **Initials:** __
 - **Notes:** __
 
-## C002 — LDL eligibility threshold is printed as both >100 and ≥100 mg/dL
+## C002 — LDL eligibility boundary differs between result labels and supplied measure definition
 
-**Candidate statement:** The reported lipid-lowering measure uses `>100 mg/dL`, while supplied protocol/eTable definitions use `≥100 mg/dL` with additional eligibility routes.
+**Candidate statement:** The main and sensitivity result rows use `LDL >100 mg/dL`, while supplied formal measure definitions use `LDL ≥100 mg/dL`.
 
 **Category:** Measure, label, or scale inconsistency
 
-**Exact source locations:** DOC-001, [jama_wang_2018_oi_180070.pdf — PDF p. 3](<../jama_wang_2018_oi_180070.pdf#page=3>) Outcomes and [jama_wang_2018_oi_180070.pdf — PDF p. 7](<../jama_wang_2018_oi_180070.pdf#page=7>) Table 2; DOC-002, [joi180070supp1_prod.pdf — PDF p. 14](<../joi180070supp1_prod.pdf#page=14>) and [joi180070supp1_prod.pdf — PDF p. 15](<../joi180070supp1_prod.pdf#page=15>); DOC-003, [joi180070supp2_prod.pdf — PDF p. 3](<../joi180070supp2_prod.pdf#page=3>) eTable 1.
+**Exact source locations:** [jama_wang_2018_oi_180070.pdf — PDF p. 7](<../jama_wang_2018_oi_180070.pdf#page=7>), Table 2 lipid-lowering row; [joi180070supp1_prod.pdf — PDF p. 15](<../joi180070supp1_prod.pdf#page=15>), definition; [joi180070supp2_prod.pdf — PDF p. 3](<../joi180070supp2_prod.pdf#page=3>), eTable 1 definition; and [joi180070supp2_prod.pdf — PDF p. 8](<../joi180070supp2_prod.pdf#page=8>), eTable 4 label.
 
-**Source evidence:** DOC-001 says more than/`>100 mg/dL`; DOC-002 and DOC-003 print `≥100 mg/dL` and also describe prior lipid-lowering treatment and undocumented LDL routes.
+**Source evidence:** The result labels print `>100 mg/dL`; both supplied definitions print `≥100 mg/dL` with additional eligibility conditions.
 
-**Reported-versus-comparator:** `LDL >100 mg/dL` versus `LDL ≥100 mg/dL` plus the detailed eligibility routes.
+**Reported-versus-comparator:** A strict threshold excludes LDL exactly 100 mg/dL; an inclusive threshold includes it.
 
-**Reasoning procedure:** Compare the explicitly printed inequality predicates and complete eligibility wording for the same discharge performance measure.
+**Reasoning procedure:** Compare the printed inequality symbols in matched measure labels and definitions.
 
-**Calculation:** At `LDL = 100 mg/dL`, `100 > 100` is false and `100 ≥ 100` is true; the two displayed boundary definitions are therefore not set-equivalent.
+**Calculation:** `>100 ≠ ≥100`; no rounding tolerance applies.
 
-**Alternative source-grounded interpretations:** The main article may abbreviate the detailed specification; the package does not identify which rule constructed the reported denominators.
+**Alternative source-grounded interpretations:** The result-row wording may be abbreviated while the formal inclusive definition governed eligibility; the supplied package does not state this.
 
-**Mechanical evidence recheck:** All cited symbols and eligibility text were found and matched. Missing inputs are the implemented data rule, number of exactly-100 values, and whether the article label intentionally incorporated the other routes.
+**Mechanical evidence recheck:** All four symbol locations were directly rechecked; patient-level LDL-at-100 counts and operational code were unavailable.
 
-**Quality-control relevance:** The boundary and eligibility routes affect interpretation of the measure and its denominators.
+**Quality-control relevance:** The printed label and supplied definition identify nonidentical eligibility boundaries.
 
-**Potential downstream evidence impact:** If confirmed, a systematic reviewer or data extractor could copy a different LDL eligibility definition for this performance measure. The supplied evidence does not show that any patient was differently classified.
+**Potential downstream evidence impact:** If confirmed, an extractor could code a different eligibility boundary when reusing the adherence result or denominator definition.
 
-**Human verification steps:** Confirm each cited predicate, then inspect the analysis dataset, codebook, or prespecified measure form for the implemented boundary and eligibility routes.
+**Human verification steps:** Review the operational eligibility code and Table 2/eTable 4 analysis populations, including treatment of LDL exactly 100 mg/dL.
 
 **Human adjudication fields:**
 - **Validity:** __
@@ -119,31 +110,31 @@ It did not perform a broad study-design, clinical, novelty, misconduct, or raw-d
 - **Initials:** __
 - **Notes:** __
 
-## C003 — Exact 20-patients-per-cluster statement conflicts with the 801 baseline total
+## C003 — eTable 4 discharge-antithrombotics control percentage does not reproduce
 
-**Candidate statement:** The unqualified 20-patients-per-cluster statement does not equal the reported 801 baseline patients when paired with 40 hospitals.
+**Candidate statement:** The control cell prints `2141/2400 (89.3)`, but the fraction rounds to 89.2% at one decimal.
 
 **Category:** Denominator, proportion, or total inconsistency
 
-**Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 2](<../joi180070supp2_prod.pdf#page=2>) eAppendix; DOC-001, [jama_wang_2018_oi_180070.pdf — PDF p. 3](<../jama_wang_2018_oi_180070.pdf#page=3>) and [jama_wang_2018_oi_180070.pdf — PDF p. 6](<../jama_wang_2018_oi_180070.pdf#page=6>) Table 1.
+**Exact source locations:** [joi180070supp2_prod.pdf — PDF p. 8](<../joi180070supp2_prod.pdf#page=8>), eTable 4, `Antithrombotics`, control cell.
 
-**Source evidence:** DOC-003 states that 20 patients per cluster were prospectively included; DOC-001 identifies 40 hospitals and Table 1 prints 801 baseline-survey patients.
+**Source evidence:** The cell under `No. / Total (%)` prints `2141/2400 (89.3)`.
 
-**Reported-versus-comparator:** Reported baseline total `801` versus `20 patients/cluster × 40 clusters`.
+**Reported-versus-comparator:** Reported 89.3% versus fraction-derived 89.2083%.
 
-**Reasoning procedure:** Treat the printed per-cluster count as exact unless the source qualifies it as a target or approximation, then compare its product with the printed total.
+**Reasoning procedure:** Calculate the percentage from the explicit numerator and denominator and round to the table's one-decimal precision.
 
-**Calculation:** `20 × 40 = 800`, one fewer than 801.
+**Calculation:** `2141 / 2400 × 100 = 89.2083%`, which rounds to 89.2%; the nearest-tenth interval for 89.3% begins at 89.25%.
 
-**Alternative source-grounded interpretations:** One cluster may have included an additional patient, or 20 may describe a target; neither qualification appears in the eAppendix sentence.
+**Alternative source-grounded interpretations:** No alternative denominator or rounding convention is supplied; the header defines the displayed fraction.
 
-**Mechanical evidence recheck:** The locations, statement, hospital count, and Table 1 total were found and reproduced. Missing inputs are cluster-specific counts and confirmation that all 40 Table 1 hospitals map one-for-one to the described clusters.
+**Mechanical evidence recheck:** The direct PDF cell, header, numerator, denominator, percentage, and arithmetic were reproduced.
 
-**Quality-control relevance:** The comparison concerns the baseline-sample denominator used to describe baseline characteristics.
+**Quality-control relevance:** The printed fraction and percentage do not reproduce under ordinary one-decimal rounding.
 
-**Potential downstream evidence impact:** If confirmed, a data extractor could copy a baseline enrollment total or per-cluster description that is not mutually reproducible. No downstream conclusion change is established.
+**Potential downstream evidence impact:** If confirmed, an extractor could copy an inconsistent control numerator, denominator, or percentage from the sensitivity table.
 
-**Human verification steps:** Confirm the cited wording and inspect the cluster-level baseline enrollment record or recruitment specification.
+**Human verification steps:** Check the sensitivity-analysis output and table-production calculations for the intended cell value and rounding rule.
 
 **Human adjudication fields:**
 - **Validity:** __
@@ -152,31 +143,31 @@ It did not perform a broad study-design, clinical, novelty, misconduct, or raw-d
 - **Initials:** __
 - **Notes:** __
 
-## C004 — Direct recheck finds the rtPA cell prints 9.66 and reconciles with 23/238
+## C004 — eTable 4 AF-anticoagulation control percentage does not reproduce
 
-**Candidate statement:** A discovery transcription recorded `9.6`; direct PDF recheck instead establishes `23/238 (9.66)`, which reconciles at two decimals. The registered ID is retained to preserve the review record, without asserting a source percentage defect.
+**Candidate statement:** The control cell prints `39/174 (22.5)`, but the fraction rounds to 22.4% at one decimal.
 
 **Category:** Denominator, proportion, or total inconsistency
 
-**Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../joi180070supp2_prod.pdf#page=8>), eTable 4, IV rt-PA 2 Hour, control column.
+**Exact source locations:** [joi180070supp2_prod.pdf — PDF p. 8](<../joi180070supp2_prod.pdf#page=8>), eTable 4, `Anticoagulation for Atrial Fibrillation`, control cell.
 
-**Source evidence:** The direct PDF visibly prints `23/238 (9.66)`; the paired intervention cell prints `46/254 (18.11)`.
+**Source evidence:** The direct PDF prints `39/174 (22.5)` beneath `No. / Total (%)`.
 
-**Reported-versus-comparator:** Direct-source `23/238 (9.66)` versus the earlier discovery transcription `23/238 (9.6)`; the direct-source fraction versus its two-decimal percentage.
+**Reported-versus-comparator:** Reported 22.5% versus fraction-derived 22.4138%.
 
-**Reasoning procedure:** Give priority to the supplied PDF and reapply the fraction-to-percentage calculation at the two-decimal precision visibly printed in the row.
+**Reasoning procedure:** Reproduce the table percentage from its explicit fraction at one decimal.
 
-**Calculation:** `23/238 × 100 = 9.6639…%`, rounding to `9.66%`; `46/254 × 100 = 18.1102…%`, rounding to `18.11%`.
+**Calculation:** `39 / 174 × 100 = 22.4138%`, which rounds to 22.4%, below the 22.45% lower boundary for 22.5%.
 
-**Alternative source-grounded interpretations:** The row may intentionally use two-decimal precision or a production-formatting precision convention; the direct printed fraction and percentage themselves reconcile.
+**Alternative source-grounded interpretations:** No alternative denominator or rounding convention is supplied.
 
-**Mechanical evidence recheck:** The cited location, direct PDF text, comparator, and arithmetic were reproduced. The necessary fraction and percentage inputs are available; the remaining question is whether row-specific precision was intentional.
+**Mechanical evidence recheck:** The exact cell and all printed components were found; the arithmetic was reproduced.
 
-**Quality-control relevance:** Preserving the stable ID with its corrected fact prevents the earlier discovery transcription from being reused as source evidence.
+**Quality-control relevance:** The control-cell percentage does not reproduce from its stated fraction.
 
-**Potential downstream evidence impact:** If a discovery transcription rather than the source were reused, a data extractor could copy `9.6` instead of the source’s `9.66`. The source does not establish that any published result requires correction.
+**Potential downstream evidence impact:** If confirmed, a downstream evidence table could carry an inconsistent AF-specific control proportion.
 
-**Human verification steps:** Open the cited eTable cell, confirm the two-decimal display, and inspect the table-production record if the intended row precision needs clarification.
+**Human verification steps:** Check the AF-specific sensitivity dataset, output, and rounding method.
 
 **Human adjudication fields:**
 - **Validity:** __
@@ -185,31 +176,31 @@ It did not perform a broad study-design, clinical, novelty, misconduct, or raw-d
 - **Initials:** __
 - **Notes:** __
 
-## C005 — eTable 4 discharge-antithrombotics control percentage does not reconcile with 2141/2400
+## C005 — eTable 4 lipid-lowering control percentage does not reproduce
 
-**Candidate statement:** The eTable 4 control percentage does not reproduce from the printed discharge-antithrombotics fraction.
+**Candidate statement:** The control cell prints `1439/1586 (90.8)`, but the fraction rounds to 90.7% at one decimal.
 
 **Category:** Denominator, proportion, or total inconsistency
 
-**Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../joi180070supp2_prod.pdf#page=8>), eTable 4, discharge-antithrombotics control cell.
+**Exact source locations:** [joi180070supp2_prod.pdf — PDF p. 8](<../joi180070supp2_prod.pdf#page=8>), eTable 4, `Lipid-lowering for LDL >100 mg/dL`, control cell.
 
-**Source evidence:** The cell prints `2141/2400 (89.3)`.
+**Source evidence:** The direct PDF prints `1439/1586 (90.8)` beneath `No. / Total (%)`.
 
-**Reported-versus-comparator:** Reported `89.3%` versus `2141/2400 × 100`.
+**Reported-versus-comparator:** Reported 90.8% versus fraction-derived 90.7314%.
 
-**Reasoning procedure:** Apply nearest one-decimal percentage rounding to the displayed numerator and denominator.
+**Reasoning procedure:** Reproduce the displayed percentage from the explicit fraction at one decimal, separately from the threshold-label question in C002.
 
-**Calculation:** `2141/2400 × 100 = 89.2083…%`, which rounds to `89.2%`, not `89.3%`.
+**Calculation:** `1439 / 1586 × 100 = 90.7314%`, which rounds to 90.7%, below the 90.75% lower boundary for 90.8%.
 
-**Alternative source-grounded interpretations:** The package gives no alternate denominator or rounding rule.
+**Alternative source-grounded interpretations:** No alternative denominator or rounding convention is supplied; C002 is a separate label/definition comparator.
 
-**Mechanical evidence recheck:** The location, fraction, percentage, and arithmetic were reproduced. The missing inputs are any unprinted denominator or nonstandard rounding convention.
+**Mechanical evidence recheck:** The cell and its printed numerator, denominator, percentage, and table definition were directly rechecked.
 
-**Quality-control relevance:** The printed sensitivity-analysis percentage cannot be reproduced from its visible fraction.
+**Quality-control relevance:** The sensitivity-table percentage does not reproduce from the printed fraction.
 
-**Potential downstream evidence impact:** If confirmed, a data extractor could copy a control adherence percentage that does not reproduce from the displayed fraction. No effect on conclusions is claimed.
+**Potential downstream evidence impact:** If confirmed, evidence extraction could copy an inconsistent lipid-lowering control percentage or fraction.
 
-**Human verification steps:** Confirm the eTable cell and inspect the tabulation data for the intended count, denominator, percentage, and rounding rule.
+**Human verification steps:** Check the applicable sensitivity-analysis output, eligibility population, and rounding calculation.
 
 **Human adjudication fields:**
 - **Validity:** __
@@ -218,64 +209,31 @@ It did not perform a broad study-design, clinical, novelty, misconduct, or raw-d
 - **Initials:** __
 - **Notes:** __
 
-## C006 — eTable 4 AF-anticoagulation control percentage does not reconcile with 39/174
+## C006 — eTable 4 antidiabetic-medication control percentage does not reproduce
 
-**Candidate statement:** The eTable 4 control AF-anticoagulation percentage does not reproduce from the printed fraction.
+**Candidate statement:** The control cell prints `557/688 (81.1)`, but the fraction rounds to 81.0% at one decimal.
 
 **Category:** Denominator, proportion, or total inconsistency
 
-**Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../joi180070supp2_prod.pdf#page=8>), eTable 4, atrial-fibrillation/flutter anticoagulation control cell.
+**Exact source locations:** [joi180070supp2_prod.pdf — PDF p. 8](<../joi180070supp2_prod.pdf#page=8>), eTable 4, `Antidiabetic Medication`, control cell.
 
-**Source evidence:** The cell prints `39/174 (22.5)`.
+**Source evidence:** The direct PDF prints `557/688 (81.1)` beneath `No. / Total (%)`.
 
-**Reported-versus-comparator:** Reported `22.5%` versus `39/174 × 100`.
+**Reported-versus-comparator:** Reported 81.1% versus fraction-derived 80.9593%.
 
-**Reasoning procedure:** Apply nearest one-decimal percentage rounding to the displayed fraction.
+**Reasoning procedure:** Reproduce the table percentage from its explicit fraction using ordinary one-decimal rounding.
 
-**Calculation:** `39/174 × 100 = 22.4138…%`, which rounds to `22.4%`, not `22.5%`.
+**Calculation:** `557 / 688 × 100 = 80.9593%`, which rounds to 81.0%, below the 81.05% lower boundary for 81.1%.
 
-**Alternative source-grounded interpretations:** The package supplies no alternate denominator or percentage convention.
+**Alternative source-grounded interpretations:** No alternative denominator or rounding convention is supplied.
 
-**Mechanical evidence recheck:** The source cell and calculation were reproduced; necessary displayed inputs are available. An unprinted denominator or rounding convention remains unknown.
+**Mechanical evidence recheck:** The direct cell, table header, printed values, and arithmetic were reproduced.
 
-**Quality-control relevance:** The control adherence proportion cannot be mechanically reproduced from the displayed fraction.
+**Quality-control relevance:** The printed control proportion does not reproduce from the displayed numerator and denominator.
 
-**Potential downstream evidence impact:** If confirmed, a reviewer could copy a control adherence percentage that differs from the fraction shown in the supplied eTable. No propagation is asserted.
+**Potential downstream evidence impact:** If confirmed, an evidence product could copy an inconsistent antidiabetic-medication control proportion.
 
-**Human verification steps:** Confirm the cited cell and inspect the sensitivity-analysis tabulation data and formatting rule.
-
-**Human adjudication fields:**
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C007 — eTable 4 lipid-lowering control percentage does not reconcile with 1439/1586
-
-**Candidate statement:** The eTable 4 control lipid-lowering percentage does not reproduce from the printed fraction.
-
-**Category:** Denominator, proportion, or total inconsistency
-
-**Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../joi180070supp2_prod.pdf#page=8>), eTable 4, lipid-lowering control cell.
-
-**Source evidence:** The cell prints `1439/1586 (90.8)`.
-
-**Reported-versus-comparator:** Reported `90.8%` versus `1439/1586 × 100`.
-
-**Reasoning procedure:** Apply nearest one-decimal rounding to the printed numerator and denominator; treat the distinct LDL-boundary issue as C002.
-
-**Calculation:** `1439/1586 × 100 = 90.7314…%`, which rounds to `90.7%`, not `90.8%`.
-
-**Alternative source-grounded interpretations:** The package supplies no alternate denominator or percentage convention.
-
-**Mechanical evidence recheck:** The source cell, fraction, percentage, and arithmetic were reproduced. The applicable threshold-label comparison is separately captured in C002.
-
-**Quality-control relevance:** The displayed sensitivity-analysis percentage cannot be reproduced from the visible fraction.
-
-**Potential downstream evidence impact:** If confirmed, a meta-analysis or data extractor could copy a percentage that does not reproduce from the eTable fraction. This does not establish a change to any effect estimate.
-
-**Human verification steps:** Confirm the cited cell and review the analysis-table source for the intended fraction, denominator, percentage, and rounding rule.
+**Human verification steps:** Check the sensitivity-analysis output and table-production calculation for this control cell.
 
 **Human adjudication fields:**
 - **Validity:** __
@@ -284,31 +242,31 @@ It did not perform a broad study-design, clinical, novelty, misconduct, or raw-d
 - **Initials:** __
 - **Notes:** __
 
-## C008 — eTable 4 antidiabetic-medication control percentage does not reconcile with 557/688
+## C007 — baseline-survey patient total does not reconcile with stated per-cluster inclusion
 
-**Candidate statement:** The eTable 4 control hypoglycemic-therapy percentage does not reproduce from the printed fraction.
+**Candidate statement:** Table 1 reports 801 baseline-survey patients and 40 survey hospitals, while the supplement states that 20 patients per cluster were prospectively included, implying 800 under an exact fixed-count reading.
 
-**Category:** Denominator, proportion, or total inconsistency
+**Category:** Cross-document numeric inconsistency
 
-**Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../joi180070supp2_prod.pdf#page=8>), eTable 4, hypoglycemic-therapy control cell.
+**Exact source locations:** [jama_wang_2018_oi_180070.pdf — PDF p. 6](<../jama_wang_2018_oi_180070.pdf#page=6>), Table 1 baseline-survey `Hospitals, No.` = 40 and `Patients, No.` = 801; [joi180070supp2_prod.pdf — PDF p. 2](<../joi180070supp2_prod.pdf#page=2>), eAppendix baseline-survey statement; [jama_wang_2018_oi_180070.pdf — PDF p. 5](<../jama_wang_2018_oi_180070.pdf#page=5>), Figure 1; [joi180070supp1_prod.pdf — PDF p. 4](<../joi180070supp1_prod.pdf#page=4>) and [PDF p. 7](<../joi180070supp1_prod.pdf#page=7>), 40-cluster statements.
 
-**Source evidence:** The cell prints `557/688 (81.1)`.
+**Source evidence:** Table 1 prints 40 hospitals and 801 patients in the baseline-survey column; the eAppendix prints `20 patients per cluster were prospectively included`.
 
-**Reported-versus-comparator:** Reported `81.1%` versus `557/688 × 100`.
+**Reported-versus-comparator:** Reported total 801 versus `20 × 40 = 800` under the stated same-survey, exact-count interpretation.
 
-**Reasoning procedure:** Apply nearest one-decimal percentage rounding to the displayed fraction.
+**Reasoning procedure:** Match the baseline-survey population and cluster count across the direct sources, then multiply the stated per-cluster inclusion count.
 
-**Calculation:** `557/688 × 100 = 80.9593…%`, which rounds to `81.0%`, not `81.1%`.
+**Calculation:** `20 × 40 = 800`; the difference from the Table 1 total is one patient.
 
-**Alternative source-grounded interpretations:** The package supplies no alternate denominator or rounding rule.
+**Alternative source-grounded interpretations:** Twenty may be an operational target rather than exact realized count, or one cluster may have contributed 21 patients; neither qualification is supplied.
 
-**Mechanical evidence recheck:** The cited cell and arithmetic were reproduced. Necessary visible inputs are available; any hidden denominator or nonstandard convention is not supplied.
+**Mechanical evidence recheck:** The source-confirmed Table 1 locator is the `Baseline Survey, No. (%)` column, `Patients, No.` row = 801; the shorthand `Survey (n=801)` was not treated as verbatim source text.
 
-**Quality-control relevance:** The control-row percentage is not mechanically reproducible from its displayed numerator and denominator.
+**Quality-control relevance:** The printed cluster-level inclusion statement and matched survey total do not reconcile under an exact fixed-count reading.
 
-**Potential downstream evidence impact:** If confirmed, an evidence product could copy a control hypoglycemic-therapy proportion that differs from the displayed fraction. No conclusion change is claimed.
+**Potential downstream evidence impact:** If confirmed, an extractor could copy a baseline-survey sample total or sampling description that cannot be reconciled without clarification.
 
-**Human verification steps:** Confirm the cell and review the source data or table-production specification for the intended values.
+**Human verification steps:** Check cluster-level baseline enrollment records, confirm contributing clusters and realized counts, and clarify whether 20 was a target or fixed count.
 
 **Human adjudication fields:**
 - **Validity:** __
@@ -317,97 +275,31 @@ It did not perform a broad study-design, clinical, novelty, misconduct, or raw-d
 - **Initials:** __
 - **Notes:** __
 
-## C009 — In-hospital-death absolute-difference P value conflicts with its displayed 95% CI
+## C008 — in-hospital death absolute-difference CI and P value do not reconcile
 
-**Candidate statement:** The Table 3 in-hospital-death absolute-difference interval includes 0 while the adjacent same-column P value is `.009`.
+**Candidate statement:** The in-hospital-death adjusted absolute-difference 95% CI contains zero, while the adjacent absolute-difference P-value cell is `.009` under the article's two-sided testing statement.
 
 **Category:** Statistical reporting inconsistency
 
-**Exact source locations:** DOC-001, [jama_wang_2018_oi_180070.pdf — PDF p. 8](<../jama_wang_2018_oi_180070.pdf#page=8>), Table 3, Death—In hospital row.
+**Exact source locations:** [jama_wang_2018_oi_180070.pdf — PDF p. 8](<../jama_wang_2018_oi_180070.pdf#page=8>), Table 3 `Death` / `In hospital` row, absolute-difference and adjacent P-value columns; [jama_wang_2018_oi_180070.pdf — PDF p. 4](<../jama_wang_2018_oi_180070.pdf#page=4>), data-analysis statements.
 
-**Source evidence:** The adjusted absolute difference is `−0.7` with `95% CI, −1.1 to 0.2` and adjacent P=`.009`; the separately labelled HR is `.96 (95% CI, .90 to 1.02)` with P=`.14`.
+**Source evidence:** Table 3 prints adjusted absolute difference `−0.7%` with 95% CI `−1.1% to 0.2%` and adjacent `.009`; page 4 describes adjusted absolute differences, 95% CIs, and two-sided tests.
 
-**Reported-versus-comparator:** Same-column P=`.009` versus the displayed absolute-difference 95% CI `−1.1 to 0.2`.
+**Reported-versus-comparator:** The CI includes zero, while `.009 < .05` for the corresponding adjacent absolute-difference pairing.
 
-**Reasoning procedure:** Check whether the displayed interval excludes its null value and use a rough CI-derived diagnostic only as a diagnostic, not as a replacement analysis.
+**Reasoning procedure:** Apply CI/test duality only conditionally to the displayed two-sided 95% CI and adjacent absolute-difference P-value column; do not use the separate HR column.
 
-**Calculation:** The absolute-difference CI includes 0. Its midpoint is `−0.45`, half-width `0.65`, approximate SE `0.33`, and approximate `|z|=1.36`; this does not reproduce a conventional two-sided P near `.009`.
+**Calculation:** `−1.1 < 0 < 0.2`, so zero is inside the printed CI; `.009 < .05`.
 
-**Alternative source-grounded interpretations:** The package does not state a special non-common CI/P construction, estimator, degrees-of-freedom rule, or column assignment that reconciles the printed pair.
+**Alternative source-grounded interpretations:** The P value may use a different estimand, model, or inferential construction, but the table places it adjacent to the absolute-difference column and supplies no distinction.
 
-**Mechanical evidence recheck:** The row, estimate, interval, P value, separately labelled HR, and logical comparison were reproduced. The exact CI/P construction and any special testing convention are missing.
+**Mechanical evidence recheck:** The point estimate, CI, P value, table-column pairing, confidence level, adjustment statement, and two-sided statement were directly reproduced. Exact test and CI construction were not supplied.
 
-**Quality-control relevance:** The displayed inferential elements require a human check of column assignment and analysis specification.
+**Quality-control relevance:** The printed inferential pair warrants clarification of whether the P value and CI represent the same adjusted absolute-difference analysis.
 
-**Potential downstream evidence impact:** If confirmed, a data extractor could copy an absolute difference, interval, and P value as one matched inferential result when the supplied display does not reconcile under the stated diagnostic. This does not establish an effect on the paper’s conclusions.
+**Potential downstream evidence impact:** If confirmed, a data extractor could copy a CI and P value as a matched inferential pair when their relationship needs clarification.
 
-**Human verification steps:** Confirm the Table 3 columns in the PDF, then obtain the model output or statistical analysis specification that generated the interval and P value.
-
-**Human adjudication fields:**
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C010 — Composite adherence has conflicting patient-level and care-opportunity analysis descriptions
-
-**Candidate statement:** The package describes the composite as a patient-level average, a care-opportunity-level binary analysis, and a pooled performed/possible-interventions ratio without reconciling the analysis unit for reported quantities.
-
-**Category:** Analysis-unit or population inconsistency
-
-**Exact source locations:** DOC-001, [jama_wang_2018_oi_180070.pdf — PDF p. 3](<../jama_wang_2018_oi_180070.pdf#page=3>) Outcomes, [jama_wang_2018_oi_180070.pdf — PDF p. 4](<../jama_wang_2018_oi_180070.pdf#page=4>) analysis unit, and [jama_wang_2018_oi_180070.pdf — PDF p. 7](<../jama_wang_2018_oi_180070.pdf#page=7>) Table 2; DOC-002, [joi180070supp1_prod.pdf — PDF p. 18](<../joi180070supp1_prod.pdf#page=18>) and [joi180070supp1_prod.pdf — PDF p. 19](<../joi180070supp1_prod.pdf#page=19>); DOC-003, [joi180070supp2_prod.pdf — PDF p. 2](<../joi180070supp2_prod.pdf#page=2>).
-
-**Source evidence:** DOC-001 says the composite was calculated for each patient and averaged; DOC-002 says each eligible care opportunity contributed a binary observation; DOC-003 defines a pooled performed/possible-interventions quantity.
-
-**Reported-versus-comparator:** Patient-averaged composite description versus care-opportunity binary analysis and pooled opportunity proportion under the same composite label.
-
-**Reasoning procedure:** Compare analysis weights implied by the stated units rather than assuming that related descriptive and inferential summaries use one estimand.
-
-**Calculation:** A mean of patient percentages gives each patient equal weight; a pooled opportunity proportion weights patients by their number of eligible opportunities. These can produce different percentages, differences, and model interpretations.
-
-**Alternative source-grounded interpretations:** Descriptive and inferential summaries may intentionally use different units, but the supplied package does not reconcile them for the printed `88.2%/84.8%`, adjusted difference, and ORPA.
-
-**Mechanical evidence recheck:** All cited descriptions and Table 2 locations were found. The missing input is a complete estimator-to-output mapping showing which unit generated each printed summary.
-
-**Quality-control relevance:** Analysis-unit language can affect the interpretation of a reported composite percentage and its related estimates.
-
-**Potential downstream evidence impact:** If confirmed, a systematic reviewer or guideline evidence extractor could copy a composite result while assigning it a different analysis unit from the one used to generate it. No change to the observed result is claimed.
-
-**Human verification steps:** Confirm each cited definition, then inspect the statistical analysis specification or code that generated the Table 2 means, difference, and ORPA.
-
-**Human adjudication fields:**
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C011 — DVT-prophylaxis window is labeled as both within 48 hours and by end of hospital day 2
-
-**Candidate statement:** The protocol table labels the DVT measure as within 48 hours of admission, whereas detailed specifications and the reported table use by end of hospital day 2.
-
-**Category:** Measure, label, or scale inconsistency
-
-**Exact source locations:** DOC-002, [joi180070supp1_prod.pdf — PDF p. 13](<../joi180070supp1_prod.pdf#page=13>) protocol Table 2, [joi180070supp1_prod.pdf — PDF p. 14](<../joi180070supp1_prod.pdf#page=14>) Table 3, and [joi180070supp1_prod.pdf — PDF p. 15](<../joi180070supp1_prod.pdf#page=15>) Table 3 continuation; DOC-003, [joi180070supp2_prod.pdf — PDF p. 3](<../joi180070supp2_prod.pdf#page=3>) eTable 1; DOC-001, [jama_wang_2018_oi_180070.pdf — PDF p. 7](<../jama_wang_2018_oi_180070.pdf#page=7>) Table 2 footnote.
-
-**Source evidence:** DOC-002 p. 13 says `within 48 hours of admission`; DOC-002 pp. 14 and 15, DOC-003 p. 3, and DOC-001 p. 7 say `by end of hospital day 2` for the measure with displayed `178/645` and `66/592` results.
-
-**Reported-versus-comparator:** Elapsed-time `within 48 hours` versus calendar-boundary `by end of hospital day 2`.
-
-**Reasoning procedure:** Compare the ordinary operational boundaries without presuming that the source defines hospital day 2 as 48 elapsed hours.
-
-**Calculation:** The boundaries can include different events for a late-day admission unless an operational convention equates them; the supplied package does not provide that convention.
-
-**Alternative source-grounded interpretations:** Hospital day 2 may have been operationalized as 48 elapsed hours, or the protocol table may use shorthand; neither equivalence is stated.
-
-**Mechanical evidence recheck:** All separately linked pages and wording were found. The missing inputs are the hospital-day convention, timestamp inclusion rule, and executable definition used for the reported denominators.
-
-**Quality-control relevance:** The labels can change the measure definition used to interpret DVT-prophylaxis adherence.
-
-**Potential downstream evidence impact:** If confirmed, an extractor or guideline reviewer could copy a different DVT timing definition for the reported adherence measure. The supplied package does not show that any patient was reclassified or that an effect estimate changes.
-
-**Human verification steps:** Confirm the four source definitions and inspect the protocol case-report-form, time-stamp rule, or data dictionary to identify the implemented timing boundary.
+**Human verification steps:** Review the Table 3 analysis output, exact CI method, test statistic, and column-production mapping; confirm whether `.009` tests this absolute-difference estimand.
 
 **Human adjudication fields:**
 - **Validity:** __
@@ -418,50 +310,56 @@ It did not perform a broad study-design, clinical, novelty, misconduct, or raw-d
 
 ## Downstream Evidence-Chain Considerations
 
-Small preventable reporting defects can matter if later systematic reviews, meta-analyses, guidelines, or data-extraction workflows copy a count, denominator, percentage, timing definition, analysis unit, or inferential display. The supplied package does not establish that any candidate propagated, changed a conclusion, or caused harm. The potential impact statements above are conditional on human confirmation.
+If human adjudication confirms a candidate, the relevant printed fraction, percentage, eligibility label, survey total, CI, or P value could be copied into a systematic review, meta-analysis, guideline evidence table, or other data-extraction product. The supplied sources do not establish that this occurred, that any conclusion changed, or that harm resulted.
 
 ## Limitations and Missing Definitions
 
-The package provides no raw patient-level or cluster-level data, row-specific missingness/hidden denominators, executable LDL eligibility rule, hospital-day timestamp convention, complete estimator-to-output mapping for the composite, or exact CI/P construction details. These limitations prevent resolution beyond the stated supplied-source comparisons. Fresh native/layout text was usable for all result-relevant pages; direct visual confirmation was available for 13 selected result pages. The direct C004 fraction and percentage are available and reproduce mathematically.
+The supplied package has no raw data, analysis code, workbook/CSV, cluster-level baseline-enrollment records, or operational LDL eligibility code. Native/layout text was usable on all pages, but PDF reading order can be difficult in tables; fresh renderings were used as visual aids. C001 lacks a row-specific denominator or percentage rule; C002 lacks implemented eligibility code and exact-100 counts; C003-C006 lack calculation output or a stated rounding rule; C007 lacks realized per-cluster counts; and C008 lacks the exact test statistic, CI construction, variance estimator, and explicit same-estimand confirmation. Several eTable 2 P values lacked named test/variance constructions and were recorded as missing-definition coverage outcomes rather than reconstructed. The clean pass-1 replacement was required because an earlier response was quarantined for possible legacy-label contamination.
 
 ## Human Adjudication Checklist
 
-1. Confirm every cited source location and printed value in the supplied PDF.
-2. Obtain the needed underlying table, analysis, protocol, or code definition identified in each card.
-3. Decide the intended reported value or definition and record the decision only in the card’s blank human-adjudication fields.
-4. Keep the source-grounded observation distinct from any inferred production explanation.
+For each C ID, independently inspect the cited PDF page, confirm the transcription, consult the relevant analysis output or source dataset where available, decide whether an alternative supplied explanation applies, and record the decision only in the five human-adjudication fields on the card. No AI severity or disposition is supplied.
 
 ## Reproducibility, Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost Metadata
 
-### Source integrity and execution
+### Reproducibility and source integrity
 
-Source hashes were recorded before fresh processing and matched the current direct sources during the evidence-quality audit. The current execution manifest records every agent used in the review window:
+- **Profile:** 1.5.2
+- **Run mode:** FULL_SOURCE_FIRST_RESTART
+- **Direct sources:** 3 PDFs; 44 PDF-page units
+- **Source units mapped:** 44/44
+- **Fresh extraction:** 44 native/layout units; 39 result-relevant renders; 0 OCR units
+- **Source hashes:** pre-run and post-run SHA-256 artifacts are retained under `review_1_5_2/`.
+- **Contaminated-call quarantine:** the first pass-1 artifact was quarantined after an old label appeared; the clean replacement is the scientific pass-1 evidence artifact.
 
-| Stage | Agent ID | Model | Reasoning effort | Start mode | Primary artifact |
-|---|---|---|---|---|---|
-| coordinator | COORDINATOR-CURRENT-SESSION | gpt-5.6-sol | high | CURRENT_SESSION | `run_state.md` |
-| fresh_source_preprocessing | root/fresh_preprocessing | gpt-5.6-terra | medium | FRESH_SPAWN | `evidence_asset_inventory.md` |
-| main_evidence_mapping | root/main_mapping | gpt-5.6-terra | medium | FRESH_SPAWN | `extraction/main_quantitative_evidence.md` |
-| support_evidence_mapping | root/support_mapping | gpt-5.6-terra | medium | FRESH_SPAWN | `extraction/support_quantitative_evidence.md` |
-| numeric_checks | root/numeric_review | gpt-5.6-terra | medium | FRESH_SPAWN | `checkers/numeric_consistency.md` |
-| statistics_pass_1 | root/statistics_pass_1 | gpt-5.6-terra | high | FRESH_SPAWN | `checkers/statistical_pass_1.md` |
-| cross_source_checks | root/cross_source_review | gpt-5.6-terra | medium | FRESH_SPAWN | `checkers/cross_source_consistency.md` |
-| evidence_recheck | root/evidence_recheck | gpt-5.6-sol | high | FRESH_SPAWN | `verification/evidence_recheck.md` |
-| statistics_pass_2 | root/statistics_pass_2 | gpt-5.6-terra | high | FRESH_SPAWN | `checkers/statistical_pass_2.md` |
-| evidence_quality | root/quality_audit | gpt-5.6-sol | high | FRESH_SPAWN | `quality/evidence_quality_audit.md` |
-| report_generation | root/report_generation | gpt-5.6-terra | medium | FRESH_SPAWN | `report_generation.md` |
+### Performance
 
-### Reproducibility performance
-
-- **Target basis:** Three supplied PDFs comprise 44 fresh page units (10-page main article plus 25-page and 9-page supplements), with native and layout extraction, visual result-page review, parallel relationship mapping, and two full statistical passes required; preferred Linux PDF tools are absent, adding a bounded local-tool fallback burden.
+- **Target basis:** Three direct PDF sources (one 10-page main article and two support PDFs totaling 34 pages), 44 unique PDF-page units, zero reusable units, all-native-first extraction, multiple dense result tables/figures, two complete statistical passes, and no Office/workbook conversion burden; bounded against but materially smaller than the 102-unit workflow 1.4.1 calibration package.
 - **Total source units:** 44
 - **Fresh-source units:** 44
-- **Target elapsed minutes:** 30-60
-- **Started UTC:** 2026-08-24T00:16:27Z
-- **Finished UTC:** 2026-08-24T01:15:46Z
-- **Observed elapsed minutes:** 59.3
-- **Target status:** MET_TARGET
-- **Exceedance causes:** None
+- **Target elapsed minutes:** 25-40
+- **Started UTC:** 2026-08-24T01:49:45Z
+- **Finished UTC:** 2026-08-24T02:37:50Z
+- **Observed elapsed minutes:** 48.1
+- **Target status:** EXCEEDED_TARGET
+- **Exceedance causes:** A potentially legacy-contaminated statistical pass 1 was quarantined and replaced with a new clean Terra/high pass; the final quality audit required appending and checking omitted support relationship UN031/N072 and repairing linked scopes/locators.
+
+### Agent execution
+
+| Stage | Agent ID | Model | Reasoning effort | Start mode | Artifact |
+|---|---|---|---|---|---|
+| coordinator | COORDINATOR-CURRENT-SESSION | gpt-5.6-sol | high | CURRENT_SESSION | run_state.md |
+| fresh_source_preprocessor | root/fresh_preprocessor | gpt-5.6-terra | medium | FRESH_SPAWN | evidence_asset_inventory.md |
+| main_quantitative_mapper | root/main_mapper | gpt-5.6-terra | medium | FRESH_SPAWN | extraction/main_quantitative_evidence.md |
+| support_quantitative_mapper | root/support_mapper | gpt-5.6-terra | medium | FRESH_SPAWN | extraction/support_quantitative_evidence.md |
+| numeric_consistency | root/numeric_checker | gpt-5.6-terra | medium | FRESH_SPAWN | checkers/numeric_consistency.md |
+| statistics_pass_1_discarded_contamination | root/statistics_pass_1 | gpt-5.6-terra | high | FRESH_SPAWN | checkers/discarded_statistical_pass_1_contaminated.md |
+| statistics_pass_1 | root/statistics_pass_1_clean | gpt-5.6-terra | high | FRESH_SPAWN | checkers/statistical_pass_1.md |
+| cross_source_consistency | root/cross_source_checker | gpt-5.6-terra | medium | FRESH_SPAWN | checkers/cross_source_consistency.md |
+| evidence_recheck | root/evidence_rechecker | gpt-5.6-sol | high | FRESH_SPAWN | verification/evidence_recheck.md |
+| statistics_pass_2 | root/statistics_pass_2 | gpt-5.6-terra | high | FRESH_SPAWN | checkers/statistical_pass_2.md |
+| evidence_quality | root/quality_auditor | gpt-5.6-sol | high | FRESH_SPAWN | quality/evidence_quality_audit.md |
+| report_generation | root/report_generator | gpt-5.6-terra | medium | FRESH_SPAWN | report_generation.md |
 
 ### Token accounting and cost
 
@@ -471,9 +369,9 @@ Source hashes were recorded before fresh processing and matched the current dire
 - **Known token cost (USD):** 0.000000
 - **Estimated complete token cost (USD):** __
 
-| Model | Total tokens | Known token cost (USD) |
-|---|---:|---:|
-| gpt-5.6-sol | 0 known; incomplete | 0.000000 |
-| gpt-5.6-terra | 0 known; incomplete | 0.000000 |
+| Model | Token totals |
+|---|---|
+| gpt-5.6-sol | 3 agents; 0 known tokens; 3 unavailable records; known cost USD 0.000000; complete estimate __ |
+| gpt-5.6-terra | 9 agents; 0 known tokens; 9 unavailable records; known cost USD 0.000000; complete estimate __ |
 
-The runtime exposed no authoritative response-level token counts for the coordinator or any specialist, so each manifested agent has an `UNAVAILABLE` ledger record with exact `__` token fields. The known subtotal is therefore zero while the complete package count and price remain explicitly incomplete. Per-agent detail is in `review_1_5_2/token_usage_summary.md`. Cached input and cache-write are input subsets, and reasoning tokens are output subsets; they are not added again to total tokens. Any amount is a token-only API-equivalent estimate under the 2026-08-18 pricing snapshot, not an invoice; non-token tools, containers, storage, subscriptions, taxes, and other vendor charges are excluded.
+Per-agent detail is retained in `review_1_5_2/token_usage_ledger.csv` and the versioned token summary artifact. Amounts are token-only API-equivalent estimates under the dated price snapshot, not an invoice. Cached input/cache-write values are input subsets and reasoning values are output subsets; they are not added again to total tokens.

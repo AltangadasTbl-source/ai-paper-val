@@ -1,11 +1,11 @@
-# Fresh-preprocessing limitations
+# Limitations and Missing Definitions
 
-1. Linux `pdfinfo`, `pdftotext`, `pdftoppm`, `pdftocairo`, `tesseract`, `libreoffice`, and `soffice` are unavailable on `PATH`; safe discovery also found no qpdf, mutool, Ghostscript, pdfimages, or exiftool substitute. Pandoc rejects PDF input.
-2. A source-only local fallback provided page images and OCR but not native/layout text: Windows Chrome PDF viewer was controlled through CDP on localhost with GPU disabled, and direct Windows `tesseract.exe -l eng` created all 49 OCR files. No network URL, external source, GPU, Python, or legacy audit derivative was used.
-3. OCR can contain recognition, reading-order, symbol, table-alignment, and footnote-association errors. Reviewers must compare material OCR observations against the corresponding fresh PNG and supplied PDF page.
-4. Native/layout text search, exact text-coordinate recovery, and direct table reconstruction remain unavailable. Table count is not asserted during preprocessing.
-5. No direct Office, workbook, or CSV source was supplied.
-6. DOC001’s actual viewer count is 11 pages, superseding the Linux `file` report of 10; DOC002 and DOC003 have 25 and 13 pages.
-
-See `preprocessing/tool_availability.md` and `preprocessing/page_inventory.md`.
-
+- The supplied package contains three PDFs and no participant-level dataset, analysis code, table-production files, or structured result export. Aggregate printed consistency was reviewable; record-level reconstruction was not.
+- Exact row-specific confidence-interval algorithms, variance estimators, test statistics, interaction models, sparse-cell rules, cluster-model details, and interim futility calculations are not fully supplied. Compatibility checks were limited to relationships established by the package.
+- The unclustered Hodges-Lehmann output underlying C001 is absent, so the intended numeric interval cannot be assigned even though the printed endpoint order is directly checkable.
+- Joint first-attempt-success, waveform-availability, and hypoxemia classifications and the implemented denominator-construction rule are absent for C002. A source-grounded outcome-specific explanation remains possible.
+- Protocol amendments, implemented timing instructions, analysis-plan revisions, and paired cuff-inflation/blade-removal timestamps are absent for C003 and C004.
+- Figure curves were not digitized. Printed captions, risk sets, point estimates, intervals, reference groups, and proportional-hazards statements were mapped; no registered candidate depends on graph-coordinate extraction.
+- All relevant native and layout text was usable. Forty-one result-relevant pages were rendered for visual confirmation; no OCR was needed. No GPU was probed or used.
+- The preserved previous Workflow 1.5.2 run and old reports were excluded from evidence, discovery, candidate registration, and adjudication. No web or external literature was used.
+- Every candidate remains Pending Human Adjudication. No supplied evidence establishes a changed paper-level conclusion or actual downstream propagation.

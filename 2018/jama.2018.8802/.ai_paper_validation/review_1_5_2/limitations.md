@@ -1,7 +1,14 @@
-# Fresh-Preprocessing Limitations
+# Review Limitations and Missing Definitions
 
-1. The package contains three direct PDF research sources (44 PDF pages) and no direct Office, workbook, or CSV source.
-2. The usual Linux `pdfinfo`, `pdftotext`, `pdftoppm`, `pdftocairo`, `tesseract`, `libreoffice`, and `soffice` commands are unavailable. Fresh local Acrobat COM extraction nevertheless supplied complete native text and coordinate-layout TSVs for all 44 pages.
-3. Fresh direct full-page visual-confirmation rasters exist for 13 selected pages: DOC-001 pp. 3, 4, 6, 7, 8; DOC-002 pp. 13, 14, 15, 18, 19; and DOC-003 pp. 2, 3, 8. The native text and coordinate layout are readable on every result-relevant page, so OCR was not required. DOC-002 p. 5 is a planned flow diagram whose only text is caption/page furniture; it contains no reported result display requiring image review.
-4. Acrobat native extraction contains some duplicated adjacent token runs in support text/tables. The coordinate-layout TSVs preserve word positions and should be used to reconstruct columns and distinguish extraction artifacts from printed evidence.
-5. `capture_window.ps1`, all `*test.png` files, and the failed blank/cropped trials `DOC-003-page-008.png` and `DOC-003-page-008b.png` are excluded from evidence. No legacy derivative, external source, web content, package installation, GPU use, or source modification was used.
+- The supplied package contains three PDFs and no raw data, analysis code, workbook, CSV, DOC/DOCX, cluster-level baseline-enrollment records, or operational eligibility code.
+- Native and layout text were usable for all 44 pages. Thirty-nine result-relevant pages were freshly rendered; no page met the threshold for CPU OCR. Multi-column and table-cell reading order was visually checked where relevant.
+- C001 lacks an explicitly repeated row-specific denominator or any nonstandard percentage rule.
+- C002 lacks the implemented LDL eligibility code and the count of participants with LDL exactly 100 mg/dL.
+- C003-C006 lack source calculation output or a stated rounding convention beyond the printed `No. / Total (%)` structure.
+- C007 lacks per-cluster realized baseline-survey counts and a statement clarifying whether 20 patients per cluster was an exact count or an operational target.
+- C008 lacks the exact test statistic, CI construction, variance estimator, and explicit confirmation that the adjacent P value tests the identical adjusted absolute-difference estimand.
+- Several eTable 2 P values lack named test/variance constructions; these were recorded as missing-definition coverage outcomes and were not reconstructed from convention.
+- One initially missing support numeric relationship was repaired as UN031/N072 without changing any prior relationship or candidate ID.
+- The first statistical-pass-1 response was quarantined after it mentioned an old candidate label, demonstrating possible legacy-file contamination. It remains in execution/token accounting but is excluded from the scientific evidence chain. A distinct clean fresh Terra/high pass 1 replaced it.
+- No web, external literature, GPU, or prior audit decision was used. Every candidate remains Pending Human Adjudication.
+

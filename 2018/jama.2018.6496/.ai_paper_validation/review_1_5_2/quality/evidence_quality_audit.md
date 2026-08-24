@@ -1,135 +1,192 @@
 # Final Evidence-Quality Audit
 
-This audit covers the complete fresh-run evidence chain available before report generation. It is a quality-control audit, not a scientific disposition. All seven stable candidates remain **Pending Human Adjudication**; none is ranked, suppressed, merged, renumbered, or assigned a correction.
+**Audit stage status:** COMPLETE WITH COORDINATOR REPAIRS REQUIRED  
+**Stable candidate set:** C001, C002, C003, C004 (4/4)  
+**Candidate status:** Every stable ID remains **Pending Human Adjudication**.
 
-## Coverage and execution audit
+This is a non-adjudicative quality-control audit of the current fresh Workflow 1.5.2 artifacts. It used the three supplied PDFs, the current fresh extraction and relationship artifacts, the two current statistical-pass artifacts, the stable ledger, and the current mechanical recheck. The preserved prior review, old reports, external literature, sibling packages, and the web were not inspected or used. No stable ID was deleted, merged, renumbered, ranked, suppressed, or assigned a scientific disposition.
 
-- **Direct sources:** 3 of 3 source rows were audited. DOC001 has 11 PDF pages, DOC002 has 25, and DOC003 has 13, for 49 total source units. Every row in `source_coverage.md` has `Reusable units = 0`, `Fresh-required units = Total units`, `Mapped units = Total units`, and `Status = COMPLETE`. Totals reconcile as 11 + 25 + 13 = 49. The main and support maps contain page-level dispositions for all 49 pages, including explicit no-new-result dispositions.
-- **Fresh evidence assets:** The page inventory contains 49 rendered PNGs and 49 paired direct CPU-Tesseract text files. The recorded native/layout-text limitation is bounded: the applicable Linux tools were unavailable, and every page received the documented offline source-only fallback. The audit found no path to a legacy audit derivative in any mapper, checker, ledger, or recheck citation. The artifacts consistently state that old audit derivatives, the web, and external literature were not used as evidence.
-- **Source integrity:** Fresh recomputation of the three SHA-256 values matches `source_hashes_before.sha256`: DOC001 `684db2edf58f16d1d24e8ddb6a463429b027450314c923e06700acdd0167e7d2`, DOC002 `38c1822278c238d2e9f217cd626c307b9d7ad8152f93f3281a03f58990e6108c`, and DOC003 `b8b7e9731b69407ff10ffc262eb42477965333e3697461e848d8fe50e13b4b31`.
-- **Coverage manifest:** All 12 required stages are present. Each manifest row contains one plain relative artifact path. Source, evidence-asset, main/support mapping, numeric, pass-1, cross-source, candidate-registration, recheck, and pass-2 rows are marked `COMPLETE`. At this audit cutoff, `evidence_quality` and `report_generation` remain `PENDING`; the coordinator must mark the former complete after this artifact is written and the latter only after the complete report exists. Candidate-stage scopes enumerate C001 C002 C003 C004 C005 C006 C007 without range shorthand. Statistical-pass scopes enumerate all 38 S IDs.
-- **Relationship inventories:** The canonical numeric/reporting inventory contains N001–N055 exactly once as stable rows, and `numeric_consistency.md` returns all 55 IDs with 55/55 completion. The canonical statistical inventory contains S001–S038, and each ID has both `PASS_1_COMPLETE` and `PASS_2_COMPLETE`. Pass 1 and pass 2 each return all 38 IDs; neither uses sampling, a queue, a desired count, a top-N rule, or a candidate cap.
-- **Statistical execution:** `agent_execution_manifest.md` records `/root/statistics_pass_1` and `/root/statistics_pass_2` as two distinct fresh agent IDs, both `gpt-5.6-terra` with `high` reasoning effort and `FRESH_SPAWN` start mode. Their artifacts are distinct and complete. Every agent used through this audit, including the coordinator and this auditor, appears once. The future report generator must be added when spawned.
-- **Stable-ID closure:** `candidate_ledger.md` and `verification/evidence_recheck.md` each contain the identical seven headings C001–C007. This artifact returns the same seven headings below. Every stable ID has a mechanical recheck. The final report does not yet exist and therefore its ID set and adjudication placeholders remain a later completion gate.
-- **Display-zero exclusion:** No stable candidate is based on `P = 0`, `P = .000`, or equivalent. The only very-small displays encountered are bounded `P < .001` values. No conditional independent-contradiction field is required for C001–C007.
-- **Categories and tone:** The seven ledger categories are within `QUALITY_CONTROL_SCOPE.md`: four denominator/proportion/total observations, one statistical-reporting observation, one measure/label/scale observation, and one cross-document numeric observation. The reviewed artifacts maintain neutral quality-control wording and do not claim paper-level conclusion change or actual downstream propagation.
+## Coverage, execution, and integrity audit
 
-## C001 — Baseline oxygenation denominators conflict with stated saturation missingness
+### Direct-source inventory and source coverage
 
-- **Exact source grounding:** [DOC001 — PDF p. 5, Table 1 and footnote b](../../../jama_driver_2018_oi_180054.pdf#page=5). The page shows arm totals 381 and 376, oxygen-saturation threshold denominators 352 and 344, and footnote oxygen-saturation missingness 43 split as 19 and 24.
-- **Comparator and rule:** For one baseline oxygen-saturation availability field, arm total minus available-data denominator should equal the arm-specific missing count. The footnote's word “respectively” links its third missingness total and split to oxygen saturation.
-- **Reproduced calculation:** `381 - 352 = 29`; `376 - 344 = 32`; `29 + 32 = 61`. These do not equal the printed oxygen-saturation missing counts `19`, `24`, and `43`. The displayed threshold percentages separately round from their stated denominators, so percentage rounding is not the issue.
-- **Direct observation versus inference:** The totals, denominators, footnote values, labels, and arithmetic are direct. The assumption that the threshold denominators and footnote refer to the identical availability field/time point is supported by their placement in the same baseline table but remains the definition requiring human confirmation. A transposition among vital-sign footnote labels is a possible production explanation, not a printed fact.
-- **Source-grounded alternatives and missing inputs:** The threshold rows may use a distinct unstated waveform-quality or time-point field; alternatively, the footnote labels or splits may be transposed. No data dictionary, record-level data, production table, or erratum is supplied.
-- **Duplicate and pagination audit:** C001 is distinct from all other IDs because it uses Table 1 baseline saturation availability and the same-field missingness identity. PDF p. 5 is the correct page; the cited local source link resolves.
-- **Reportability without adjudication:** The printed values, comparator, arithmetic, limitation, and human question are sufficiently specified for a pending human review card. The card must not state which values are correct or imply an effect on trial outcomes.
-- **Required card repair/completion:** Expand the ledger record into every mandatory report field. Bound downstream wording to the possibility that an extractor could copy the wrong baseline-saturation denominator or missingness count if the observation is confirmed. Human verification should compare the production table/data dictionary with the two availability definitions.
-- **Exact human question:** Which values define baseline oxygen-saturation availability—352/344 available (29/32 missing) or 19/24 missing—and, if both are intended, what separately defined field or time point maps to each display?
+The package root contains exactly three direct paper sources, all PDFs. The source inventory identifies 49 unique PDF-page units. Current SHA-256 recalculation matches `source_hashes_before.sha256` for all three sources.
 
-## C002 — Patient-position rows leave unreported observations in both arms
+| Source row | Total units | Reusable units | Fresh-required units | Mapped units | Status | Audit result |
+|---|---:|---:|---:|---:|---|---|
+| DOC-001 — `jama_driver_2018_oi_180054.pdf` | 11 | 0 | 11 | 11 | COMPLETE | Complete; PDF metadata reports 11 pages; current SHA-256 is `684db2edf58f16d1d24e8ddb6a463429b027450314c923e06700acdd0167e7d2`. |
+| DOC-002 — `joi180054supp1_prod.pdf` | 25 | 0 | 25 | 25 | COMPLETE | Complete; PDF metadata reports 25 pages; current SHA-256 is `38c1822278c238d2e9f217cd626c307b9d7ad8152f93f3281a03f58990e6108c`. |
+| DOC-003 — `joi180054supp2_prod.pdf` | 13 | 0 | 13 | 13 | COMPLETE | Complete; PDF metadata reports 13 pages; current SHA-256 is `b8b7e9731b69407ff10ffc262eb42477965333e3697461e848d8fe50e13b4b31`. |
 
-- **Exact source grounding:** [DOC001 — PDF p. 6, Table 2 patient-position rows](../../../jama_driver_2018_oi_180054.pdf#page=6) and [DOC003 — PDF p. 9, postintubation form item 11](../../../joi180054supp2_prod.pdf#page=9). DOC001 prints three rows; DOC003 instructs “select one” and supplies four options, with `Seated Upright` as the fourth.
-- **Comparator and rule:** The Table 2 three-row sum can be compared with randomized-arm totals only conditionally. The supplied form establishes mutually exclusive one-choice position capture, but it also proves that the Table 2 display omits at least one available source-form category. It does not provide a Table 2-specific position denominator or the count assigned to `Seated Upright`.
-- **Reproduced calculation:** Bougie: `222 + 117 + 39 = 378`, leaving `381 - 378 = 3`. ETT + stylet: `244 + 96 + 32 = 372`, leaving `376 - 372 = 4`.
-- **Direct observation versus inference:** The six counts, arm totals, three Table 2 labels, one-choice form instruction, and fourth form option are direct. It is inferred—not printed—that all 3 and 4 residual observations are `Seated Upright`, or that Table 2 intended to exhaust all randomized observations.
-- **Source-grounded alternatives and missing inputs:** The fourth `Seated Upright` option is a concrete supplied-source alternative for the residuals. Missing position values or a selected-row presentation are also possible. The package does not map form responses to arm-specific Table 2 counts.
-- **Unsupported-assumption and wording repair:** The current ledger and recheck discuss only hypothetical “other” or missing positions and omit the explicit fourth form option. The report card must add DOC003 p. 9 and must frame the observation as an incomplete displayed category/denominator account, not as proof that the position data themselves are internally inconsistent.
-- **Duplicate and pagination audit:** This is not a duplicate of C004; it concerns a different form field, source page, denominator rule, and category set. DOC001 p. 6 and DOC003 p. 9 are correct and both local links resolve.
-- **Reportability without adjudication:** A pending card is supportable if the conditional rule and `Seated Upright` alternative are prominent. It must not imply that the residuals are errors or assign them to the fourth category without record-level evidence.
-- **Required card repair/completion:** Add all mandatory report fields, identify the fourth option in source evidence and alternatives, and bound downstream wording to possible incomplete extraction of the patient-position distribution. Human verification should obtain the Table 2 production count for all four form responses and any missingness.
-- **Exact human question:** What are the Bougie and ETT + stylet counts for `Seated Upright` and missing/unclassified position, and what denominator was intended for the Table 2 position display?
+Result: 3/3 direct-source rows satisfy `fresh-required units = mapped units = total units`, reusable units are zero, and all statuses are `COMPLETE`. The fresh evidence-asset inventory has one page-level usability/OCR decision for each of the 49 pages. Native and layout text were usable; no OCR or GPU use was needed. Rendered result-relevant pages are documented. These records support a fresh source-first chain rather than reuse of old derivatives.
 
-## C003 — Final-intubator categories exceed the Bougie arm total
+### Coverage-manifest row audit
 
-- **Exact source grounding:** [DOC001 — PDF p. 6, Table 2 operator rows and footnote f](../../../jama_driver_2018_oi_180054.pdf#page=6) and [DOC003 — PDF p. 7, postintubation form item 2](../../../joi180054supp2_prod.pdf#page=7). DOC001 describes the final intubating physician. DOC003 directs the recorder to circle one training level and includes G1, G2, G3, G4+/Fellow, Faculty, PA, and Other.
-- **Comparator and rule:** A one-choice final-intubator classification cannot assign more displayed category records than patients in the arm. The form strengthens the mutual-exclusivity premise, although Table 2's mapping of form categories and treatment of PA/Other are not supplied.
-- **Reproduced calculation:** Bougie: `318 + 57 + 8 = 383`, two more than 381. ETT + stylet: `334 + 37 + 5 = 376`, equal to its arm total. Independent percentage rounding does not remove the two-count excess.
-- **Direct observation versus inference:** The counts, denominators, final-physician footnote, and one-choice form instruction are direct. The precise production mechanism—role overlap despite the form, aggregation, operator changes, transcription, or denominator error—is inferred.
-- **Source-grounded alternatives and missing inputs:** The form includes PA and Other categories that are absent from Table 2, and the footnote reports four intubator changes per arm. Neither fact explains how three displayed Bougie rows alone exceed 381. Record-level operator assignments and the table-generation code are missing.
-- **Unsupported-assumption and wording repair:** The ledger/recheck should add the form's one-choice instruction and its extra PA/Other options. It should not present operator changes as a numerical reconciliation because the table expressly says it lists the final physician.
-- **Duplicate and pagination audit:** C003 has a unique operator-classification comparator and is not duplicated elsewhere. DOC001 p. 6 and DOC003 p. 7 are correct and resolve.
-- **Reportability without adjudication:** The two-count excess is directly reproducible under the supplied one-choice/final-operator rule. The card must leave the causal mechanism and any corrected value to human review.
-- **Required card repair/completion:** Add all mandatory report fields. Bound downstream wording to possible copying of an operator-composition numerator or denominator. Human verification should compare record-level final-intubator coding, including PA/Other, with the production table.
-- **Exact human question:** How were the one-choice training-level responses mapped into the three final-intubator rows, and which source value or mapping explains 383 displayed Bougie assignments for 381 patients?
+The current manifest has all 12 required stages and exactly one undecorated relative artifact path in every `Artifact` cell. Ten rows were `COMPLETE` and two were `PLANNED` when this audit began. Candidate-stage scopes for registration and recheck enumerate all four stable IDs. The quality and report scopes require the coordinator repairs listed below.
 
-## C004 — Video-screen-use categories do not account for their printed denominators
+| Stage / shard | Assigned scope audited | One artifact path | Current-stage audit |
+|---|---|---|---|
+| `source_inventory` / `source-001` | DOC-001 pp. 1-11; DOC-002 pp. 1-25; DOC-003 pp. 1-13 | Yes | COMPLETE; all 49 source units assigned. |
+| `evidence_assets` / `assets-001` | Same 49 source units | Yes | COMPLETE; all units have a fresh asset/decision record. |
+| `main_evidence_mapping` / `main-001` | DOC-001 pp. 1-11 | Yes | COMPLETE; 11/11 pages mapped, subject to the two exact wording repairs below. |
+| `support_evidence_mapping` / `support-001` | DOC-002 pp. 1-25 and DOC-003 pp. 1-13 | Yes | COMPLETE; 38/38 support pages mapped. |
+| `numeric_checks` / `numeric-001` | N001-N047 | Yes | COMPLETE; 47/47 explicit completion records and four discovery records. |
+| `statistics_pass_1` / `statistics-001` | S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037 | Yes | COMPLETE; 37/37 `PASS_1_COMPLETE` records. |
+| `cross_source_checks` / `cross-001` | N001-N047 and S001-S037; 118 direct occurrence comparisons | Yes | COMPLETE; 84/84 relationship records addressed. |
+| `candidate_registration` / `candidates-001` | C001, C002, C003, C004 | Yes | COMPLETE; stable set is 4/4. |
+| `evidence_recheck` / `recheck-001` | C001, C002, C003, C004 | Yes | COMPLETE; recheck set equals ledger set. |
+| `statistics_pass_2` / `statistics-002` | S001-S037 plus C001, C002, C003, C004 and recheck facts | Yes | COMPLETE; 37/37 `PASS_2_COMPLETE` records and 4/4 stable IDs revisited. |
+| `evidence_quality` / `quality-001` | Current text says “All stable C IDs” plus all source/coverage rows | Yes | This artifact completes the work, but the manifest scope must explicitly enumerate `C001, C002, C003, C004` and status must be changed to `COMPLETE`. |
+| `report_generation` / `report-001` | Current text says “All stable C IDs” plus metadata | Yes | Still legitimately `PLANNED`; before completion, explicitly enumerate `C001, C002, C003, C004`, create the assigned artifact, and change status to `COMPLETE`. |
 
-- **Exact source grounding:** [DOC001 — PDF p. 6, Table 2 video-screen-use rows and footnote g](../../../jama_driver_2018_oi_180054.pdf#page=6) and [DOC003 — PDF p. 10, postintubation form item 14](../../../joi180054supp2_prod.pdf#page=10). The form supplies the three Table 2 options plus an explicit `N/A - Blade inserted and removed before attempting intubation` option.
-- **Comparator and rule:** A category sum-to-denominator check is conditional on the displayed rows being the full partition of nonmissing responses. The form establishes a fourth source-defined response, so the three Table 2 rows are not the complete response set even though footnote g reports only four missing values in each arm.
-- **Reproduced calculation:** Bougie: `218 + 78 + 75 = 371`; `377 - 371 = 6`. ETT + stylet: `182 + 90 + 98 = 370`; `372 - 370 = 2`. The row denominators reconcile with randomized totals less the four stated missing values: `381 - 4 = 377` and `376 - 4 = 372`.
-- **Direct observation versus inference:** The fractions, denominators, missingness footnote, form options, and arithmetic are direct. It is inferred—not shown—that the N/A responses account for some or all of the residual 6 and 2. No record-level linkage is supplied, and the nearby first-device N/A/withdrawal counts should not be substituted automatically for screen-use responses.
-- **Source-grounded alternatives and missing inputs:** The explicit N/A option is the leading supplied-source alternative. Additional mapping rules or table-production exclusions may apply. Counts for the N/A response and a complete screen-use codebook are missing.
-- **Unsupported-assumption and wording repair:** The current ledger/recheck omits the explicit N/A response and treats only hypothetical unprinted patterns as alternatives. The report must add DOC003 p. 10 and avoid asserting that the three rows were intended to exhaust the printed denominators.
-- **Duplicate and pagination audit:** C004 is distinct from C002 because it uses screen-use response options, explicit available-data denominators, and a different form page. DOC001 p. 6 and DOC003 p. 10 are correct and resolve.
-- **Reportability without adjudication:** A pending card is supportable as a question about the relationship among the printed denominator, the three displayed rows, the explicit N/A option, and the four-missing footnote. It must not call the residuals erroneous without the N/A counts.
-- **Required card repair/completion:** Add all mandatory report fields and the form-defined N/A alternative. Bound downstream wording to possible incomplete extraction of screen-use category frequencies or denominators. Human verification should reproduce Table 2 from all four form responses plus missing values.
-- **Exact human question:** How many patients in each arm had the explicit N/A screen-use response, and how were those responses and the four missing values incorporated into denominators 377 and 372 and the three displayed rows?
+### Relationship and checker completeness
 
-## C005 — Main Table 3 reverses duration confidence-interval endpoints
+- The canonical numeric inventory is sequential N001-N047; the numeric checker contains 47/47 explicit `COMPLETE` rows. Four discoveries, NC-01 through NC-04, map without loss to C001 through C004.
+- The canonical statistical inventory is sequential S001-S037. Pass 1 contains 37/37 relationship rows with `PASS_1_COMPLETE`; pass 2 independently contains 37/37 relationship rows with `PASS_2_COMPLETE` and revisits all four ledger/recheck records.
+- The cross-source checker covers all 47 numeric and 37 statistical relationships and documents 118 occurrence-to-occurrence comparisons after matching population, time, contrast, analysis set, model, measure, scale, unit, reference, and precision.
+- No relationship was omitted because of a desired count, queue, top-N rule, or early stopping. The artifacts repeatedly state uncapped complete coverage, and their explicit ID sets support that statement.
+- No assigned relationship prints `P = 0`, `p = 0.000`, or an equivalent display zero. Values such as `<.001` are inequalities. None of C001-C004 is based on display-zero reasoning, so no conditional independent-contradiction field is required.
 
-- **Exact source grounding:** [DOC001 — PDF p. 7, Table 3](../../../jama_driver_2018_oi_180054.pdf#page=7), [DOC003 — PDF p. 2, eTable 1](../../../joi180054supp2_prod.pdf#page=2), and [DOC003 — PDF p. 3, clustering note](../../../joi180054supp2_prod.pdf#page=3). The main table visibly prints `1 (4 to -1)` seconds; the clustered supplement prints `1 (-1 to 4)` seconds and says its inferential columns were recalculated for physician clustering.
-- **Comparator and rule:** The direct rule is internal to DOC001: a confidence interval displays lower endpoint before upper endpoint, and the point estimate should lie within those ordered endpoints. DOC003 is corroboration of conventional ordering, not proof of the unadjusted numerical output because it uses a different analysis.
-- **Reproduced calculation:** `4 > -1`, so `4 to -1` is descending and cannot satisfy `lower <= 1 <= upper`. Reordering the printed endpoints gives `-1 <= 1 <= 4`. No raw unadjusted confidence-interval calculation is possible from the supplied package.
-- **Direct observation versus inference:** The two printed displays and clustering note are direct. A typographical transposition, and the proposition that the ordinary unadjusted interval was exactly `-1 to 4`, are inferred.
-- **Source-grounded alternatives and missing inputs:** The clustered eTable may independently round to the same endpoints under a different model. Patient-level durations, the unadjusted interval method/output, and the production table are missing.
-- **Duplicate and pagination audit:** Pass-1 and cross-source signals concern the same DOC001 values, comparator, and endpoint-order rule and were appropriately merged before C005. C005 is not a duplicate of C006, which concerns endpoint definition. All three cited PDF pages are correct and resolve.
-- **Reportability without adjudication:** The descending endpoint order is directly observable and reportable as pending human review. The card must not prescribe a corrected interval or treat the clustered P value `.95` as contradicting the main `.24`.
-- **Required card repair/completion:** Add every mandatory report field. Bound downstream wording to the possibility that a data extractor could reverse or miscopy the interval endpoints. Human verification should inspect the unadjusted statistical output and production-table source.
-- **Exact human question:** What lower and upper confidence limits were produced by the unadjusted Table 3 analysis, and what order was intended in the published display?
+### Agent-execution manifest
 
-## C006 — Published duration outcome uses a different endpoint from the protocol
+The current manifest has 10 distinct agent IDs, each exactly once and with one primary relative artifact path. All current primary artifacts exist after creation of this audit.
 
-- **Exact source grounding:** [DOC002 — PDF p. 9, protocol section 2.2](../../../joi180054supp1_prod.pdf#page=9), [DOC002 — PDF p. 10, measurement section 3.2](../../../joi180054supp1_prod.pdf#page=10), [DOC001 — PDF p. 3, Trial Outcomes](../../../jama_driver_2018_oi_180054.pdf#page=3), [DOC001 — PDF p. 7, Table 3 footnote](../../../jama_driver_2018_oi_180054.pdf#page=7), and [DOC003 — PDF p. 3, eTable footnote](../../../joi180054supp2_prod.pdf#page=3).
-- **Comparator and rule:** The protocol's named first-attempt time-to-intubation outcome begins with the attempt and ends at ETT-cuff inflation in the trachea. The article and eTable's reported first-attempt duration begins at blade entry and ends at blade removal. Matched outcome measures require a documented endpoint mapping because cuff inflation and blade removal are distinct end events.
-- **Reproduced logical comparison:** Protocol interval: `[laryngoscope entry, ETT-cuff inflation]`. Published tabular duration interval: `[laryngoscope-blade entry, laryngoscope-blade removal]`. The starts align; the end events do not. The elapsed difference between those end events is not supplied.
-- **Direct observation versus inference:** The protocol, article, and eTable definitions and the reported tabular seconds are direct. An amendment, variable rename, or recording change is inferred. It is also not directly established that every Kaplan-Meier curve and hazard ratio used blade removal as the terminal event; those displays say time until successful intubation and require separate variable mapping.
-- **Source-grounded alternatives and missing inputs:** A dated amendment, analysis-plan mapping, or distinct-variable explanation could reconcile the definitions. No amendment, raw timestamp field, data dictionary, or model input definition is supplied.
-- **Unsupported-assumption and wording repair:** The ledger/recheck appropriately ask which endpoint generated each result, but the report card must distinguish directly evidenced Table 3/eTable duration definitions from the inferred linkage to Kaplan-Meier/Cox outcomes. It must not say the published numerical estimates are wrong.
-- **Duplicate and pagination audit:** The pass-1 and cross-source endpoint signals were appropriately merged because they compare the same protocol and published endpoint definitions. C006 remains distinct from C005's interval-order display. All cited pages are correct and resolve.
-- **Reportability without adjudication:** The endpoint nonidentity is directly source-grounded and can be reported as a measure/label/scale consistency question. Paper-level conclusion impact is not established.
-- **Required card repair/completion:** Add every mandatory report field and separate evidence for medians/differences from the unresolved curve/HR mapping. Bound downstream wording to the risk that an extractor could treat blade-removal duration as the protocol's cuff-inflation time-to-intubation endpoint if the distinction is not preserved.
-- **Exact human question:** Which recorded timestamp endpoint generated each tabular duration estimate and each time-to-event analysis, and what dated amendment or analysis mapping connects the published measure to the protocol measure?
+| Stage | Agent ID | Model / effort | Start mode | Audit result |
+|---|---|---|---|---|
+| coordinator | `/root` | `gpt-5.6-sol` / high | CURRENT_SESSION | Current coordinator recorded once. |
+| fresh_source_preprocessing | `/root/fresh_preprocessing` | `gpt-5.6-terra` / medium | FRESH_SPAWN | Role allocation and artifact agree. |
+| main_evidence_mapping | `/root/main_mapper` | `gpt-5.6-terra` / medium | FRESH_SPAWN | Role allocation and artifact agree. |
+| support_evidence_mapping | `/root/support_mapper` | `gpt-5.6-terra` / medium | FRESH_SPAWN | Role allocation and artifact agree. |
+| numeric_checks | `/root/numeric_review` | `gpt-5.6-terra` / medium | FRESH_SPAWN | Role allocation and artifact agree. |
+| cross_source_checks | `/root/cross_source_review` | `gpt-5.6-terra` / medium | FRESH_SPAWN | Role allocation and artifact agree. |
+| statistics_pass_1 | `/root/statistics_pass_1` | `gpt-5.6-terra` / high | FRESH_SPAWN | Fresh statistical pass 1; 37/37 relationships. |
+| evidence_recheck | `/root/evidence_recheck` | `gpt-5.6-sol` / high | FRESH_SPAWN | Mechanical recheck covers C001-C004. |
+| statistics_pass_2 | `/root/statistics_pass_2` | `gpt-5.6-terra` / high | FRESH_SPAWN | Fresh statistical pass 2; 37/37 relationships and 4/4 rechecks. |
+| evidence_quality | `/root/evidence_quality_audit` | `gpt-5.6-sol` / high | FRESH_SPAWN | Current final evidence-quality audit. |
 
-## C007 — Interim analysis occurred at 507 rather than the protocol’s 500 patients
+The required Terra/high statistical reviewers are fresh, distinct runtime IDs: `/root/statistics_pass_1` and `/root/statistics_pass_2`. Their files self-identify the same IDs, model, effort, and fresh start, and their assigned S sets are complete. Any later report-generation or repair agent must be appended exactly once to both the execution manifest and the token ledger by the coordinator.
 
-- **Exact source grounding:** [DOC002 — PDF p. 21, section 8.6.2](../../../joi180054supp1_prod.pdf#page=21) and [DOC003 — PDF p. 6, eAppendix 1](../../../joi180054supp2_prod.pdf#page=6). The protocol says the analysis will occur after 500 are enrolled and then specifically refers to analysis of data from the first 500; the eAppendix reports analysis after 507 and gives denominators 257 and 250.
-- **Comparator and rule:** The strongest exact comparator is the protocol's `first 500 patients` analysis set versus the reported interim counts totaling 507. The phrase `after 500 patients are enrolled`, standing alone, does not require execution at exactly 500 and must not be treated as an exact-equality rule without the accompanying first-500 clause.
-- **Reproduced calculation:** `257 + 250 = 507`; the reported fractions round as printed: `250/257 = 97.28%` and `213/250 = 85.2%`. The planned first-500 data quantity and the reported 507-patient quantity differ by 7.
-- **Direct observation versus inference:** The two protocol quantities, reported 507, arm fractions, and arithmetic are direct. Operational overshoot, continuing enrollment, delayed cutoff, data cleaning, or an authorized window are inferred.
-- **Source-grounded alternatives and missing inputs:** “After 500” may permit operational overshoot, while the separate “first 500” wording raises the unresolved analysis-set question. The package lacks the cutoff rule, enrollment timestamps, interim dataset definition, DSMB instruction, and any amendment.
-- **Unsupported-assumption and wording repair:** The current title and parts of the ledger/recheck can be read as equating “after 500” with “at exactly 500.” The report card should instead frame the observation as `protocol first-500 interim data versus reported 507-patient interim denominators` and preserve operational overshoot as a prominent alternative. The cross-source checker's closure table says there was no cross-document numeric signal for S033/S038 even though pass 1, the ledger, recheck, and pass 2 retain C007; that row should be repaired to acknowledge this pending comparison or explain its bounded interpretation.
-- **Duplicate and pagination audit:** C007 is a distinct interim-analysis-set/trigger comparison and does not duplicate any other stable ID. DOC002 p. 21 and DOC003 p. 6 are correct and resolve.
-- **Reportability without adjudication:** A pending card is supportable if it relies on the first-500 analysis-set clause and does not claim protocol noncompliance, invalid futility analysis, or altered trial conclusions.
-- **Required card repair/completion:** Add every mandatory report field. Bound downstream wording to possible copying of the interim analysis-set size or trigger description. Human verification should inspect the contemporaneous cutoff rule, DSMB record, and interim dataset definition.
-- **Exact human question:** Did the interim analysis use the protocol-specified first 500 records or all 507 reported enrollees, and what contemporaneous rule or amendment authorized and documented the seven-record difference?
+### Identity, links, categories, and tone
 
-## Cross-artifact repairs required before package completion
+- Ledger IDs and recheck IDs are identical: C001, C002, C003, C004. This audit returns the same four headings in the same order.
+- Mechanical inspection of all current-run Markdown before this artifact found 312 local link occurrences and no unresolved target. All 311 PDF page-fragment occurrences were within the respective 11-, 25-, or 13-page bounds. Candidate and recheck links resolve from their own artifact directories to the supplied PDFs.
+- Candidate pagination was also checked against direct `pdftotext -f/-l -layout` reads of DOC-001 pp. 3, 7, and 9; DOC-002 pp. 9-10; and DOC-003 pp. 2-3 and 10. No false candidate pagination was found.
+- Every candidate uses exactly one category from `QUALITY_CONTROL_SCOPE.md`: C001 uses `Statistical reporting inconsistency`; C002 uses `Denominator, proportion, or total inconsistency`; C003 and C004 use `Measure, label, or scale inconsistency`.
+- The wording remains neutral and bounded. No candidate claims that a paper-level conclusion changed or that downstream propagation occurred.
 
-1. Add the DOC003 p. 9 `Seated Upright` form option to C002's ledger/recheck alternatives and to the final card; do not assign the residual 3 and 4 to that option without counts.
-2. Add the DOC003 p. 10 explicit screen-use N/A option to C004's ledger/recheck alternatives and final card; do not infer its arm counts.
-3. Add DOC003 p. 7's one-choice intubator-training instruction and PA/Other options to C003's evidence and alternatives.
-4. Frame C007 around the protocol's `first 500 patients` analysis-set language plus the reported 507 denominators. Repair the contradictory cross-source closure row that currently says there was no cross-document numeric signal for this relationship.
-5. In C006, separate direct tabular endpoint evidence from the unresolved inference about Kaplan-Meier/Cox terminal-event definitions.
-6. Repair the main mapper's PDF links. Links such as `jama_driver_2018_oi_180054.pdf#page=6` are relative to `extraction/` and do not resolve; from that artifact they must point to `../../../jama_driver_2018_oi_180054.pdf#page=N`. Candidate recheck links and all source links in this audit resolve, and no false candidate pagination was found.
-7. Clarify `source_coverage.md` so “Mapped units” denotes completed fresh scientific page disposition as well as asset preparation; the numeric totals are already complete and are supported by the 49 page-level mapper dispositions.
-8. After this audit, mark the `evidence_quality` coverage row `COMPLETE`. After report generation, add the report-generator agent once, mark `report_generation` complete, and make the report ID set exactly C001–C007.
-9. Every final report card must include every bold field required by `report_spec.md`. Its human-adjudication block must use exactly:
+## C001 — Reverse-ordered confidence-interval endpoints for all-patient first-attempt duration
 
-```markdown
+- **Status:** Pending Human Adjudication.
+- **Category and threshold audit:** `Statistical reporting inconsistency` is the applicable primary category. Exact source values, a reproducible interval-order rule, direct-versus-inferred separation, an alternative interpretation, and an exact human question are all present.
+- **Exact evidence and provenance:** [DOC-001 Table 3 — PDF p. 7](../../../jama_driver_2018_oi_180054.pdf#page=7) prints all-patient medians `38 (29 to 51)` and `36 (25 to 54)` seconds, difference `1 (4 to -1)`, and `P=.24`. [DOC-003 eTable 1 — PDF p. 2](../../../joi180054supp2_prod.pdf#page=2) prints `1 s (-1 s to 4 s), P=0.95`; [its note — PDF p. 3](../../../joi180054supp2_prod.pdf#page=3) says inferential columns were recalculated for physician clustering. Provenance aligns across NC-01, cross-source record 1, P1-01, N021/N043, and S007/S030.
+- **Mechanical recheck alignment:** The recheck found each cited location and matched both source strings. The rule is applicable: a displayed interval in `L to U` form requires `L <= U`. The direct calculation is `4 > -1`; endpoint order fails. The separately clustered interval is contextual evidence only and is not an unclustered replacement.
+- **Direct observation versus inference:** Direct observation is limited to the descending printed sequence and the distinct clustered display. Endpoint transposition or a table-production mechanism is plausible inference, not a source-established correction.
+- **Alternative source-grounded interpretation:** An unstated reverse-order convention or source-specific transcription could explain the main display, although other intervals use ascending endpoints. The unclustered analysis output is unavailable.
+- **Missing definitions/inputs:** Analysis-specific unclustered Hodges-Lehmann output, original table-production record, individual durations, and any special endpoint-order convention.
+- **Duplicate and cross-relationship audit:** C001 is not a duplicate of C004. C001 concerns the order of the two printed CI limits; C004 concerns the outcome's stop event. S007 is the direct inferential relationship and S030 is explicitly model-distinct supporting context.
+- **Arithmetic, pagination, and assumption audit:** `4 > -1` is correct, source page 7 is correct, and no ordinary subtraction of group medians is used to challenge the Hodges-Lehmann estimate. No P-value display-zero reasoning is present.
+- **Report-card completeness requirement:** The ledger has evidence, category, comparator/rule, calculation, alternatives, and human question, but is not itself a final report card. The final card must add the exact labels `Candidate statement`, `Reported-versus-comparator`, `Reasoning procedure`, `Mechanical evidence recheck`, `Quality-control relevance`, `Potential downstream evidence impact`, `Human verification steps`, and `Human adjudication fields`, while retaining all existing source/provenance content.
+- **Candidate statement required in report:** DOC-001 Table 3 prints the all-patient first-attempt-duration confidence limits in descending order (`4 to -1`); the intended unclustered limits remain unresolved.
+- **Quality-control relevance:** A descending interval display can cause a reader or data extractor to reverse, normalize, or copy the limits inconsistently.
+- **Potential downstream evidence impact:** If human adjudication confirms a display defect, a systematic-review or meta-analysis extractor could otherwise copy the two confidence limits in the wrong order. No supplied evidence shows that this has occurred or that a conclusion changed.
+- **Human verification steps:** Inspect the original unclustered Hodges-Lehmann output and table-production file; identify the intended two limits and their order; document whether the main-table sequence was transposed.
+
 **Human adjudication fields:**
 - **Validity:** __
 - **Importance:** __
 - **Action:** __
 - **Initials:** __
 - **Notes:** __
-```
 
-At this audit cutoff the final report is not present, so placeholder conformance cannot yet be confirmed; it remains a mandatory completion check.
+## C002 — Two-patient ETT+stylet denominator difference across linked hypoxemia outcomes
 
-## Audit limitations and completion status
+- **Status:** Pending Human Adjudication.
+- **Category and threshold audit:** `Denominator, proportion, or total inconsistency` is the applicable primary category. The directly printed denominator difference is reproducible, but the identity rule is conditional; the final card must preserve that condition and must not assert that the two denominators necessarily should be equal.
+- **Exact evidence and provenance:** [DOC-001 Table 3 — PDF p. 7](../../../jama_driver_2018_oi_180054.pdf#page=7) prints ETT+stylet first-attempt success without hypoxemia as `282/366 (77%)`. [DOC-001 Table 5 — PDF p. 9](../../../jama_driver_2018_oi_180054.pdf#page=9) prints ETT+stylet hypoxemia as `50/364 (14%)`. Both footnotes use the same hypoxemia threshold/window and state that a valid pulse-oximetry waveform was unavailable for all patients; Bougie uses denominator 371 in both rows. [DOC-002 protocol — PDF p. 9](../../../joi180054supp1_prod.pdf#page=9) defines the composite as first-attempt success plus no hypoxemia. Provenance aligns across NC-02, cross-source record 2, N019/N027/N035, S006/S018, and the pass-2 reconciliation.
+- **Mechanical recheck alignment:** The recheck found both locations and reproduced `366 - 364 = 2`, `376 - 366 = 10`, and `376 - 364 = 12`. It correctly states that denominator identity follows only if both rows require observed hypoxemia classification for every denominator member.
+- **Direct observation versus inference:** Direct observations are the two ETT+stylet denominators, the same hypoxemia wording, the waveform limitation, and matching Bougie denominators. An unreported exclusion, data-cleaning rule, or deterministic classification is inference.
+- **Alternative source-grounded interpretation:** A known first-attempt failure may be classifiable as not achieving the composite even when no valid waveform permits classification of hypoxemia alone. That mechanism could validly make the composite denominator larger. The aggregate sources do not show whether this explains the two patients.
+- **Missing definitions/inputs:** Joint patient-level first-attempt-success/hypoxemia/waveform table, the identities and outcome states of the two patients, implemented denominator-construction code or rule, and outcome-specific data-recovery records.
+- **Duplicate and cross-relationship audit:** C002 is not a duplicate of C003. C002 concerns who enters two denominators; C003 concerns the end event defining the hypoxemia observation window. The relationships can share hypoxemia evidence without sharing the same comparator or rule.
+- **Arithmetic, pagination, and assumption audit:** All three subtractions are correct and pages 7, 9, and protocol page 9 are correct. The current ledger and recheck avoid the unsupported assumption that hypoxemia and success-without-hypoxemia are simple complements. The final report must retain the conditional rule and must not propose a corrected denominator or rate.
+- **Report-card completeness requirement:** The ledger supplies category, exact evidence, a conditional rule, calculation, alternatives, and human question, but the final card must add the exact labels `Candidate statement`, `Reported-versus-comparator`, `Reasoning procedure`, `Mechanical evidence recheck`, `Quality-control relevance`, `Potential downstream evidence impact`, `Human verification steps`, and `Human adjudication fields`. The alternative deterministic-classification explanation is mandatory context.
+- **Candidate statement required in report:** The ETT+stylet denominators differ by two across linked waveform-dependent outcomes (`366` versus `364`), and the supplied aggregate sources do not establish whether the difference is intentional under an outcome-specific denominator rule.
+- **Quality-control relevance:** Without a stated construction rule, a reader cannot reproduce which ETT+stylet patients contribute to each displayed percentage.
+- **Potential downstream evidence impact:** If human adjudication identifies a denominator-label or documentation defect, an outcome extractor could otherwise copy a percentage without the correct analysis denominator. No supplied evidence shows propagation or conclusion change.
+- **Human verification steps:** Reconcile patient IDs across first-attempt success, waveform availability, and hypoxemia; inspect the analysis code and missing-data log; determine whether the two extra composite-denominator patients were deterministically classifiable failures; document the applicable rule.
 
-- The package lacks record-level data, production tables, statistical code/output, complete variable mappings, protocol amendments, and interim cutoff/DSMB records. These absences limit causal explanation and human resolution but do not change the stable-ID set.
-- OCR can introduce recognition or reading-order error. Material pages for Table 2 and the DOC003 form alternatives were visually inspected in the fresh rendered images; the supplied PDFs remain authoritative.
-- Evidence-stage audit coverage is complete: 3/3 direct sources, 49/49 source units, 14/14 current coverage-manifest rows, 55/55 N relationships, 38/38 S relationships in both statistical passes, 7/7 stable candidates, 7/7 mechanical rechecks, and 10/10 currently manifested execution rows.
-- Canonical stable-ID set returned: C001 C002 C003 C004 C005 C006 C007.
-- Package-level completion remains pending the enumerated repairs, complete Markdown/HTML reports, exact human placeholders, final agent/token accounting, post-report source-hash check, and validator `PASS`.
+**Human adjudication fields:**
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C003 — Protocol and published hypoxemia observation windows use different endpoint events
+
+- **Status:** Pending Human Adjudication.
+- **Category and threshold audit:** `Measure, label, or scale inconsistency` is the applicable primary category. The candidate compares the same named hypoxemia threshold/window across supplied protocol and published sources and isolates the nonidentical end events.
+- **Exact evidence and provenance:** [DOC-002 protocol — PDF p. 9](../../../joi180054supp1_prod.pdf#page=9) states that hypoxemia recording ends one minute after ETT-cuff inflation; [measurement procedure — PDF p. 10](../../../joi180054supp1_prod.pdf#page=10) repeats the cuff-inflation endpoint. [DOC-001 Table 3 — PDF p. 7](../../../jama_driver_2018_oi_180054.pdf#page=7), [DOC-001 Table 5 — PDF p. 9](../../../jama_driver_2018_oi_180054.pdf#page=9), and [DOC-003 eTable note — PDF p. 3](../../../joi180054supp2_prod.pdf#page=3) use one minute after completion of the intubation attempt. [DOC-003 data form — PDF p. 10](../../../joi180054supp2_prod.pdf#page=10) says attempt 1 ends when the blade is removed. Provenance aligns across NC-03, cross-source record 3, N035, S033/S034, and both later checks.
+- **Mechanical recheck alignment:** Threshold and starting event match. The logical comparison is `one minute after ETT-cuff inflation` versus `one minute after attempt completion/blade removal`. No source-supplied identity equates those named events.
+- **Direct observation versus inference:** The two end-event descriptions are direct. A protocol amendment, editorial shorthand, synchronization in practice, or operational equivalence is inferred as possible and is not supplied.
+- **Alternative source-grounded interpretation:** “Attempt completion” could be shorthand for cuff inflation, or the events could occur close together. The data form's explicit blade-removal end definition prevents assuming equivalence from the supplied package alone.
+- **Missing definitions/inputs:** Implemented surveillance-stop timestamp, patient-level cuff-inflation/blade-removal times, protocol amendment or analysis-plan revision, and any operational instruction equating the events.
+- **Duplicate and cross-relationship audit:** C003 is distinct from C004. C003 changes the event eligibility window for a binary hypoxemia outcome; C004 changes the stop timestamp of a duration measure. The two candidates may share documentation but not comparator, measure, or possible extracted field.
+- **Arithmetic, pagination, and assumption audit:** No arithmetic is applicable. PDF pages 9-10, 7, 9, 3, and 10 were directly located. The current wording appropriately avoids asserting that different wording changed any observed event count or rate.
+- **Report-card completeness requirement:** The ledger supplies category, source statements, rule, alternatives, and human question, but the final card must add the exact labels `Candidate statement`, `Reported-versus-comparator`, `Reasoning procedure`, `Mechanical evidence recheck`, `Quality-control relevance`, `Potential downstream evidence impact`, `Human verification steps`, and `Human adjudication fields`. Protocol-planned versus implemented-result status must remain explicit.
+- **Candidate statement required in report:** The protocol ends hypoxemia surveillance one minute after ETT-cuff inflation, while the published materials end it one minute after intubation-attempt completion; the supplied package does not document whether those events were treated as equivalent or whether the definition changed.
+- **Quality-control relevance:** The named stop event determines which desaturation observations are eligible for the outcome and therefore should be traceable across protocol and results reporting.
+- **Potential downstream evidence impact:** If human adjudication confirms a definition change or labeling defect, a review or guideline extractor could otherwise record the published hypoxemia result under the protocol's different observation window. No supplied evidence establishes actual propagation or a changed conclusion.
+- **Human verification steps:** Inspect the implemented case-report timing instructions, amendment history, analysis specification, and timestamp logic; identify the surveillance-stop event used in the analyzed data; document any approved change or equivalence rule.
+
+**Human adjudication fields:**
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C004 — Protocol and published first-attempt-duration measures use different endpoint events
+
+- **Status:** Pending Human Adjudication.
+- **Category and threshold audit:** `Measure, label, or scale inconsistency` is the applicable primary category. Exact planned and published definitions are available, the start events are compatible, and the stop events are nonidentical.
+- **Exact evidence and provenance:** [DOC-002 protocol — PDF p. 9](../../../joi180054supp1_prod.pdf#page=9) defines first-attempt time to intubation from attempt start through ETT-cuff inflation with the tube in the trachea. [DOC-001 outcome methods — PDF p. 3](../../../jama_driver_2018_oi_180054.pdf#page=3) and [DOC-001 Table 3 — PDF p. 7](../../../jama_driver_2018_oi_180054.pdf#page=7) define and report blade-entry-to-blade-removal duration, including all-patient medians `38` versus `36` seconds. [DOC-003 eTable note — PDF p. 3](../../../joi180054supp2_prod.pdf#page=3) and [data form — PDF p. 10](../../../joi180054supp2_prod.pdf#page=10) repeat the blade-removal endpoint. Provenance aligns across NC-04, cross-source record 4, N036, S005/S007/S023/S027/S030, and both later checks.
+- **Mechanical recheck alignment:** With blade insertion as a compatible start, the planned endpoint is cuff inflation and the published endpoint is blade removal. Their patient-level difference would be `time(blade removal) - time(cuff inflation)`, but no source supplies both timestamps, so no numerical effect is assigned.
+- **Direct observation versus inference:** The planned and published definitions and reported summaries are direct. An intended measurement change, harmonized timing instruction, amendment, or accommodation of failed attempts is inferred as possible but not documented.
+- **Alternative source-grounded interpretation:** The published blade-removal measure may deliberately assign a duration to failed attempts, whereas protocol time to cuff inflation naturally describes successful tracheal placement. Repetition across the article, supplement, and form supports deliberate use of the published operational measure but does not document its relationship to the protocol outcome.
+- **Missing definitions/inputs:** Patient-level cuff-inflation and blade-removal timestamps, stopwatch stop instruction, revised plan/amendment, and handling of a failed first attempt that never reaches cuff inflation.
+- **Duplicate and cross-relationship audit:** C004 is not a duplicate of C001 or C003. It addresses the duration scale; C001 addresses one interval's endpoint order; C003 addresses the hypoxemia observation window. Shared source rows and timing terminology do not make the consistency rules identical.
+- **Arithmetic, pagination, and assumption audit:** The symbolic timing relationship is correct, no unsupported numerical difference is calculated, and source pages 9, 3, 7, 3, and 10 are correct. The current wording does not assert that the published medians, interval, or P value are numerically wrong.
+- **Report-card completeness requirement:** The ledger supplies category, exact definitions, comparison rule, alternatives, and human question, but the final card must add the exact labels `Candidate statement`, `Reported-versus-comparator`, `Reasoning procedure`, `Mechanical evidence recheck`, `Quality-control relevance`, `Potential downstream evidence impact`, `Human verification steps`, and `Human adjudication fields`. Planned-versus-implemented scope and failed-attempt handling must remain explicit.
+- **Candidate statement required in report:** The protocol defines first-attempt time to intubation through ETT-cuff inflation, whereas the published analyses use blade removal; the supplied package does not document how or why the measurement endpoint changed.
+- **Quality-control relevance:** The stop event defines the reported time scale and affects whether failed attempts have a measurable duration under the same rule.
+- **Potential downstream evidence impact:** If human adjudication confirms a definition or labeling defect, a meta-analysis or outcome extractor could otherwise treat the protocol and published duration as the same measure. No supplied evidence shows actual propagation or conclusion change.
+- **Human verification steps:** Inspect the protocol/amendment history, stopwatch/data-collection instructions, analysis code, and available timestamp fields; determine which stop event generated each published duration analysis and how failed attempts were handled.
+
+**Human adjudication fields:**
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## Coordinator repair register
+
+The following repairs are exact and supportable from current fresh artifacts. They do not change the stable candidate set.
+
+1. In `extraction/main_quantitative_evidence.md`, provisional relationship MN014 currently says the Table 2 operator and laryngoscope categories “sum to full arms.” Repair it to state that Bougie operator counts sum to 383 (`318 + 57 + 8`) because the Table 2 footnote records physician changes, while the ETT+stylet operator counts sum to 376 and the laryngoscope categories sum to 381 and 376. The numeric checker already carries the correct distinction.
+2. In `extraction/main_quantitative_evidence.md`, provisional relationship MN027 currently says the Table 5 hypoxemia denominators “match” the Table 3 all-patient success-without-hypoxemia denominators. Repair it to state that Bougie matches at 371, while ETT+stylet differs (`364` versus `366`) and is the denominator relationship carried into C002.
+3. In `coverage_manifest.md`, replace “All stable C IDs” in the `evidence_quality` exact scope with `C001, C002, C003, C004`, then mark that row `COMPLETE` after this artifact is durable.
+4. Before final completion, replace “All stable C IDs” in the `report_generation` exact scope with `C001, C002, C003, C004`, create its one assigned artifact, and mark the row `COMPLETE`.
+5. The report generator must emit all four cards with every exact field required by `report_spec.md`, the exact five `__` adjudication placeholders, neutral candidate wording, and the bounded downstream statements above. Where C003 uses evidence from both protocol pages 9 and 10, provide separate page-anchored links in the final card.
+6. Append any report-generation or later repair agent to `agent_execution_manifest.md` exactly once and include it in token accounting. The present 10-row manifest is complete for the agents active through this audit.
+
+## Audit limitations
+
+- Individual-level trial data, analysis code, row-specific interval/test algorithms, continuous-outcome analysis output, denominator-construction logic, cluster-model details, protocol amendments, and event timestamps are not supplied. These absences remain human questions and were not filled by convention.
+- Figure curves were audited through printed captions, risk sets, effect estimates, and model labels; no curve-coordinate digitization was required for the registered candidates.
+- The final Markdown/HTML report, finalized run-state fields, post-review hashes, token ledger/summary, and validator result did not yet exist when this stage began. They remain coordinator/report-generation tasks and cannot be certified by this artifact in advance.
+
+## Completion statement
+
+Current evidence-quality coverage is complete for all 3 source rows, all 12 current coverage rows, all 10 currently manifested agents, N001-N047, both 37/37 statistical passes, and C001-C004. Ledger, recheck, and quality-audit ID sets are identical. Four stable candidates remain **Pending Human Adjudication**. Six bounded coordinator actions are listed above; no candidate suppression, renumbering, scientific disposition, or replacement value is recommended.

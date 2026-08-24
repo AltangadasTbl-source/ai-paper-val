@@ -1,99 +1,99 @@
-# Statistical Consistency Review — Pass 2
+# Independent Statistical Consistency Pass 2
 
-## Independent pass-2 scope and method
+**Explicit PASS_2_COMPLETE relationship register:** S001 S002 S003 S004 S005 S006 S007 S008 S009 S010 S011 S012 S013 S014 S015 S016 S017 S018 S019 S020 S021 S022 S023 S024 S025 S026 S027 S028 S029 S030 S031 S032 S033 S034 S035 S036 S037 S038 S039 S040 S041 S042 S043 S044 S045 S046 S047 S048 S049 S050 S051 S052 S053 S300 S301 S302 S303 S304 S305 S306 S307 S308 S309 S310 S311.
 
-This independent pass revisited every canonical inferential relationship: `S001`–`S050` and `S501`–`S513` (63 total). It used only the supplied four PDFs as authoritative evidence, with the current-run statistical and numeric inventories, fresh evidence maps, the complete stable candidate ledger (`C001`–`C005`), and the mechanical evidence recheck as locators and comparison records. No old audit derivative, web material, or new OCR was used.
+**Runtime role:** independent second statistical pass; this pass did not reuse the pass-1 agent.
+**Scope complete:** S001-S053 and S300-S311, **65 of 65** assigned inferential/statistical relationships.
+**Evidence basis:** supplied DOC-001 through DOC-004 PDFs, the fresh mapping artifacts, all three pass-1 checker artifacts, the complete stable ledger C001-C005, and `verification/evidence_recheck.md`. No external source, old audit derivative, raw data, or unprovided amendment was used.
 
-For every record, the pass rechecked, when printed values made the check applicable: denominator/arithmetic and population implications; point-estimate containment and interval ordering; sign/direction; effect-measure, comparator, and scale labels; repeated/duplicate values; and cross-location agreement. Interval/P-value/test/statistic/SE reconciliation was not inferred from convention. It was used only where the supplied result provided compatible model and inferential definitions; no relationship supplied the complete same-test sidedness, degrees-of-freedom, variance-estimator/covariance, and multiplicity inputs needed to reconstruct a reported P value, statistic, or SE. The limited comparisons stated below are display diagnostics, not re-estimation of fitted models.
+## Method and pass-2 boundaries
 
-No supplied result in this scope displays `P = 0`, `p = 0.000`, or an equivalent finite-precision display zero. Thus no `DISPLAY_ZERO_NOT_CANDIDATE` record is applicable. The printed `P<.001` at S003 is not a display zero and was not converted to, or tested as, a tiny tail probability.
+For every S relationship, this pass revisited the matched outcome/population/contrast, denominator or eligibility implications, arithmetic where source-defined, effect-measure and scale labels, interval endpoint order and estimate containment, sign/direction, duplicate values, cross-source repetitions, and applicable mechanical-recheck facts. Inferential compatibility was not reconstructed where the supplied record did not specify the necessary model, variance estimator, covariance, degrees of freedom, sidedness, multiplicity rule, or estimand mapping. Crude percentages, adjusted marginal risk differences, odds ratios, quantile-regression coefficients, interaction effects, and planning quantities were kept distinct unless the source defined them as the same estimand.
 
-## Stable-ledger and recheck reconciliation
+All records below are **PASS_2_COMPLETE**. A completed pass is not a validity, severity, acceptance, correction, or adjudication decision.
 
-The complete ledger and recheck were considered for every related relationship. The following statements are coverage links, not a severity, validity, acceptance, rejection, or correction decision.
+## Complete relationship register and results
 
-| Stable ID | Related pass-2 relationship(s) | Pass-2 reconciliation |
+| IDs revisited | Pass-2 result |
+|---|---|
+| S001-S004 | Planning sample-size/power, model, interim-boundary, and exploratory-secondary labels agree across the article, protocol, and SAP when treated as planning/analysis definitions, not observed results. The z/level pairs are stated in both matched locations; no unprovided tail-probability, test-statistic, or multiplicity reconstruction was attempted. |
+| S005 | Prehospital aspirin RD 3.80% is inside 2.08% to 5.52%; OR 1.40 is inside 1.21 to 1.62. Both adjusted effects favor the positive intervention-minus-control direction. |
+| S006 | STEMI prehospital thrombolysis RD -0.04% and OR 0.95 each lie in their ordered null-crossing intervals. Crude percentages were not substituted for model effects. |
+| S007 | In-hospital aspirin RD -0.05% and OR 0.98 are contained in ordered null-crossing intervals; the adjusted-effect labels are compatible. |
+| S008 | In-hospital second-antiplatelet RD -0.05% and OR 0.98 are contained in ordered null-crossing intervals; the adjusted-effect labels are compatible. |
+| S009 | In-hospital beta-blocker Table 2 values are internally ordered and contained. The exact table/narrative RD upper-limit conflict remains C001; the mechanical recheck found both 8.40% and 8.10% at the cited locations and no distinct analysis label. |
+| S010-S011 | Anticoagulant and echocardiography RDs/ORs are each contained in ordered CIs and directionally coherent on their stated adjusted scales. Eligibility denominators differ by measure as the Table 2 footnote permits. |
+| S012 | Diagnostic angiography is explicitly nonestimable for both effect fields; no missing numeric value or implied null effect was inferred. |
+| S013-S014 | PCI and primary-PCI RDs/ORs are contained in ordered intervals. Negative/less-than-one estimates, including the primary-PCI null crossing, are directionally coherent within their adjusted models. |
+| S015 | Door-to-balloon difference 6.18 is contained in -4.78 to 17.14 and beta 13.00 in 3.64 to 22.36. The source identifies a quantile-regression coefficient, so it was not equated to the raw median contrast. |
+| S016 | STEMI thrombolysis RD 5.56 and OR 1.59 are contained in ordered positive CIs; crude 23.1%/23.2% rates are not the adjusted estimand. |
+| S017 | Door-to-needle difference 0.40 and beta 5.00 are contained in their ordered intervals. Raw medians and adjusted coefficient remain distinct. |
+| S018-S019 | Any reperfusion and rescue-PCI RDs/ORs are contained in ordered positive CIs and use their separately printed STEMI/applicable denominators. |
+| S020-S021 | Discharge aspirin and discharge second-antiplatelet RDs/ORs are contained in ordered intervals. The latter null-crosses consistently; discharged eligible populations are not equated to allocation totals. |
+| S022 | The Table 2 discharge beta-blocker values are internally ordered and contained. Its exact narrative/table point-estimate mismatch remains C002; both source occurrences and identical printed intervals were mechanically rechecked. |
+| S023-S024 | Discharge statin and ACE inhibitor/ARB RDs/ORs are contained in ordered CIs. Different applicability/contraindication denominators are explicitly defined and do not create a rate/count conflict. |
+| S025 | Cardiac-rehabilitation effect fields are explicitly nonestimable; no unsupported calculation was performed. |
+| S026-S032 | Every Table 3 cluster-only and primary temporal-adjusted RD/OR pair is contained in its ordered interval and has compatible within-model direction. Cluster-only, primary, and crude count/percentage values are labelled as distinct analyses; no raw-rate equality was imposed. |
+| S033 | Optimal in-hospital medication Table 3 effects are contained in ordered CIs. The repeated composite-definition comparison remains C005; eTable 5 uses `anticoagulant` while eTable 6 uses `heparin`, with no supplied proof of equivalence. |
+| S034-S035 | Optimal discharge medication and tobacco-advice cluster/primary effects are contained in ordered CIs and retain their distinct eligibility denominators. |
+| S036-S037 | Expanded-MACE and 30-day-mortality narrative values match their matched Table 3/eTable 7 values at printed precision after cluster-only versus primary analyses are distinguished. |
+| S038-S040 | All Figure 3 age-stratum RDs/ORs are contained in ordered CIs. The three displayed age bands remain the separately recorded C004 conflict with the SAP's two age bands; no supplied amendment resolves it. |
+| S041-S044 | Figure 3 sex and STEMI/NSTEMI effects are contained in ordered intervals and directionally compatible on the adjusted scale; crude subgroup event rates were not treated as the same estimand. |
+| S045-S048 | Figure 3 hospital-size effects are contained in ordered intervals. The size categories match the supplied SAP's hospital-size subgroup category, though the exact enrollment bands are final-display definitions. |
+| S049-S051 | Figure 3 hospital-type effects are contained in ordered intervals. A distinct prespecification-label conflict is newly identified as SP2-001: the article calls hospital type prespecified, but the supplied SAP lists toolkit-component use rather than hospital type. |
+| S052 | The discharge beta-blocker narrative repeats 6.63%/1.47 against Table 2's 6.69%/1.48 with identical printed intervals. This is C002; no source distinguishes a second model, population, or precision convention. |
+| S053 | Complete/missing-follow-up troponin 1.3 versus 4.6 ng/mL matches eTable 1's displayed groups and direction. The p<.001 threshold has no stated test/model inputs for compatibility testing; it is not a literal display zero. |
+| S300-S302 | Protocol/SAP planning values, mixed-model specification, and missing-data plan are internally labelled and are not contradicted by a matched final sensitivity result. Final missingness detail does not supply enough input to test the planned MI/complete-case implementation. |
+| S303 | The SAP age subgroup cut points (<65 and >65) conflict with Figure 3's <50, 50-69, and >=70 bands under a prespecified label, retained as C004. The SAP also names toolkit-component use, not hospital type, which is separately emitted as SP2-001 rather than merged with the distinct age-cutpoint issue. |
+| S304 | The SAP's O'Brien-Fleming statements (z=2.797/P<.005 and z=1.977/P<.048) agree in substance with the main article. No unprovided test reconstruction was attempted. |
+| S305 | eTable 1's complete/missing columns and its intervention-minus-control footnote remain C003. Multiple printed row differences—including age, male percentage, and troponin—follow missing minus complete numerically; no source defines the footnote as applicable to these columns. |
+| S306 | All 17 eTable 2 intervention-minus-control marginal differences lie in ordered CIs and match the corresponding displayed marginal-effect direction. The stated mixed logistic/linear/quantile models distinguish them from Table 1 summaries. |
+| S307 | All 40 eTable 5 ORs lie within ordered positive CIs. Four differently adjusted columns are explicitly labelled; equal or nearby values across them are not duplicates. Its in-hospital composite definition supplies one side of C005. |
+| S308 | All 10 eTable 6 time-exposure interaction ORs lie within ordered positive CIs. Interaction estimands are not equated to primary effects. Its `heparin` composite footnote supplies the other side of C005. |
+| S309 | All four eTable 7 cluster/primary RDs and ORs are contained in ordered CIs, use intervention-minus-control/ intervention-versus-control labels, and agree with the expanded-MACE narrative at matching model/precision. |
+| S310 | eFigure 1A labels zero as the mean MACE rate and uses 5% significance-level wording. It supplies no exact plotted values; no unlabelled point was inferred and no display-zero P issue occurs. |
+| S311 | eFigures 1B, 2A, and 2B distinguish within-hospital difference from unadjusted rates and show graphical 95% CIs, but do not provide exact point labels. No arithmetic or inferential reconstruction is source-defined. |
+
+The register contains all 65 IDs exactly once: S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050, S051, S052, S053, S300, S301, S302, S303, S304, S305, S306, S307, S308, S309, S310, S311.
+
+## Stable-ledger candidate reconciliation
+
+All five stable records remain **Pending Human Adjudication**. No ID was deleted, merged, renumbered, accepted, rejected, or corrected.
+
+| Stable ID | Pass-2 additional source facts located | Pass-2 reconciliation |
 |---|---|---|
-| C001 | S008 | Fully represented. The rechecked Table 2/narrative upper-limit mismatch (`8.40` versus `8.10`) remains the same printed-value/comparator/rule relationship; no additional distinct candidate was found. |
-| C002 | S021 | Fully represented. The rechecked Table 2/narrative RD (`6.69` versus `6.63`) and OR (`1.48` versus `1.47`) mismatch remains one matched-result relationship; no additional distinct candidate was found. |
-| C003 | S507 | Fully represented. The rechecked eTable 1 complete/missing columns, intervention/control footnote, and missing-minus-complete arithmetic remain one label/comparator relationship; no additional distinct candidate was found. |
-| C004 | S032 | Fully represented. The SAP/published in-hospital-composite component-set comparison is linked to the reported Table 3 inferential outcome. The article’s stated four-component definition and missing-statin disclosure do not resolve the missing amendment/change-control definition; they also do not create a second same-values/comparator/rule candidate. |
-| C005 | S505, S037, S038, S039 | Fully represented. The SAP `<65`/`>65` categories and the published `<50`/`50-69`/`≥70` display labelled prespecified remain one planned-versus-published category-definition relationship; no additional distinct candidate was found. |
+| C001 | No new source-side value beyond the recheck. The same-page Table 2/narrative retain identical adjusted RD point/lower CI, OR, and OR CI, but upper RD CIs of 8.40% and 8.10%. | The supplied source still does not name a second model or output. The mechanical recheck supports the printed contradiction; no adjudication. |
+| C002 | No new effect value beyond the recheck. Table 2 retains 6.69% and 1.48; the narrative retains 6.63% and 1.47, with the same printed CI endpoints. | Neither population, contrast, model, nor displayed precision is separately defined for the narrative. The rechecked reporting contradiction remains. |
+| C003 | Yes. Besides age, the male and initial-troponin rows also calculate as missing-follow-up minus complete-follow-up: 71.2-75.8=-4.6 and 4.6-1.3=3.3. | These additional direct values reinforce that the displayed columns use a different comparator from the footnote; no supplied CI method/contrast definition resolves it. |
+| C004 | Yes. The article's p.3 and p.9 prespecified labels both accompany Figure 3; the SAP still gives only <65/>65 for age and supplies no amendment. | The age-cutpoint contradiction is retained. A separate hospital-type prespecification discrepancy is not a duplicate and is emitted below. |
+| C005 | No new component definition beyond the recheck: Table 3/eTable 5 say `anticoagulant`, while eTable 6 says `heparin`. | The supplied sources do not establish that heparin exhausts the study's anticoagulant definition; the repeated named-composite label conflict remains. |
 
-## Complete pass-2 relationship records
+## NEW PROVISIONAL CANDIDATE SP2-001 — Hospital-type subgroup is reported as prespecified but is not in the supplied SAP list
 
-`PASS_2_COMPLETE` means this pass completed the stated source-grounded checks. It does not assert an unreported model property or make an adjudicative disposition. `No new proposal` means no distinct supplied-source contradiction was identified after applying the same-values/comparator/rule merge standard.
+**Category:** Cross-document numeric/subgroup-definition inconsistency.
+**Related relationships:** S049-S051 and S303.
+**Exact source locations:** DOC-001, `jama_huffman_2018_oi_170166.pdf`, PDF p.3, Statistical Analysis; PDF p.9, Figure 3 title, hospital-type rows, and adjacent Results narrative; DOC-003, `joi170166supp2_prod.pdf`, PDF p.7, section 7.5.2.
 
-| S ID | PASS-2 record | Pass-2 checks, reconciliation, and exact limitation |
-|---|---|---|
-| S001 | PASS_2_COMPLETE — No new proposal | Planning target, alpha, direction, ICC, and loss inputs repeat compatibly. The supplied design-effect/correlation and event-allocation algorithm are insufficient to reconstruct power. |
-| S002 | PASS_2_COMPLETE — No new proposal | Interim/final z and two-sided threshold labels agree with the SAP boundary record (S506). Boundary-calculation inputs beyond the named O’Brien-Fleming labels are not supplied. |
-| S003 | PASS_2_COMPLETE — No new proposal | Troponin medians retain clear units and direction; the reported `P<.001` is not a display zero. Test, sidedness, and variance rule are absent, so no P/statistic diagnostic was applied. |
-| S004 | PASS_2_COMPLETE — No new proposal | Prehospital-aspirin RD and OR are inside ordered CIs; intervention-minus-control/intervention-versus-control labels and raw-denominator direction are compatible. |
-| S005 | PASS_2_COMPLETE — No new proposal | Thrombolysis RD and OR are inside ordered CIs; their null crossing and STEMI denominator label are compatible. |
-| S006 | PASS_2_COMPLETE — No new proposal | In-hospital-aspirin RD/OR containment, endpoint order, comparator direction, and contraindication-excluded denominators are compatible. |
-| S007 | PASS_2_COMPLETE — No new proposal | Second-antiplatelet RD/OR containment, endpoint order, and intervention/control labels are compatible. |
-| S008 | PASS_2_COMPLETE — C001 fully represented; no new proposal | The Table 2 versus narrative RD upper endpoint mismatch is mechanically rechecked in C001. Estimate, lower limit, OR, contrast, and label otherwise match; no supplied distinct model/population explains the two upper limits. |
-| S009 | PASS_2_COMPLETE — No new proposal | Anticoagulant RD/OR are CI-contained with ordered endpoints and compatible labels. The adjusted positive RD need not equal the identical rounded crude percentages. |
-| S010 | PASS_2_COMPLETE — No new proposal | Echocardiography RD/OR are CI-contained, ordered, and directionally compatible with the control/intervention denominators. |
-| S011 | PASS_2_COMPLETE — No new proposal | Both adjusted fields are explicitly `Nonestimable`; no competing estimate, scale conflict, or supplied estimation rule exists for further reconciliation. |
-| S012 | PASS_2_COMPLETE — No new proposal | PCI negative RD and OR below 1 are contained in ordered intervals and agree with the labelled intervention-versus-control direction. |
-| S013 | PASS_2_COMPLETE — No new proposal | Primary-PCI RD/OR are contained in ordered intervals; the STEMI population label and null-crossing pattern are compatible. |
-| S014 | PASS_2_COMPLETE — No new proposal | Quantile-model marginal difference and beta coefficient are separately labelled measures, each CI-contained and ordered; they are not duplicate values expected to agree. |
-| S015 | PASS_2_COMPLETE — No new proposal | Thrombolysis RD/OR containment, endpoint order, scale, and intervention/control direction are compatible. |
-| S016 | PASS_2_COMPLETE — No new proposal | Door-to-needle marginal difference and quantile beta are separately labelled, CI-contained, and ordered; no direct equality rule is supplied. |
-| S017 | PASS_2_COMPLETE — No new proposal | Any-reperfusion RD/OR containment and labels are compatible. The adjusted direction was not replaced by crude-rate arithmetic. |
-| S018 | PASS_2_COMPLETE — No new proposal | Rescue-PCI RD/OR containment, ordered endpoints, STEMI denominators, and direction labels are compatible. |
-| S019 | PASS_2_COMPLETE — No new proposal | Discharge-aspirin RD/OR containment, endpoint order, discharged/eligible denominator label, and direction are compatible. |
-| S020 | PASS_2_COMPLETE — No new proposal | Discharge second-antiplatelet RD/OR containment and ordered endpoints are compatible with its discharged population. |
-| S021 | PASS_2_COMPLETE — C002 fully represented; no new proposal | The Table 2 versus narrative RD and OR point-estimate mismatch is mechanically rechecked in C002. Identical printed intervals do not supply a rule that distinguishes an intended point estimate. |
-| S022 | PASS_2_COMPLETE — No new proposal | Discharge-statin RD/OR are CI-contained, ordered, and compatible with effect and discharged-population labels. |
-| S023 | PASS_2_COMPLETE — No new proposal | ACE/ARB RD/OR containment, order, and intervention/control labels are compatible with the EF≤40% restricted denominator. |
-| S024 | PASS_2_COMPLETE — No new proposal | Both rehabilitation adjusted fields are explicitly `Nonestimable`; no comparator estimate or supplied rule creates a conflict. |
-| S025 | PASS_2_COMPLETE — No new proposal | Table 3, abstract, and narrative primary MACE estimates match at printed precision. Cluster and temporal models are explicitly distinct; each printed RD/OR is CI-contained and ordered. |
-| S026 | PASS_2_COMPLETE — No new proposal | Repeated mortality estimates match at printed precision; cluster and temporal model labels, direction, and intervals are compatible. |
-| S027 | PASS_2_COMPLETE — No new proposal | Cardiovascular-mortality cluster/temporal outputs are explicitly distinct and each is CI-contained with ordered endpoints. |
-| S028 | PASS_2_COMPLETE — No new proposal | In-hospital-mortality cluster/temporal outputs are separately labelled, CI-contained, and directionally compatible. |
-| S029 | PASS_2_COMPLETE — No new proposal | Reinfarction cluster/temporal outputs are separately labelled, CI-contained, and not duplicate-result contradictions. |
-| S030 | PASS_2_COMPLETE — No new proposal | Stroke cluster/temporal outputs are separately labelled with ordered CIs containing their estimates. |
-| S031 | PASS_2_COMPLETE — No new proposal | Major-GUSTO-bleeding cluster/temporal outputs have compatible rate/count labels and ordered, CI-containing estimates. |
-| S032 | PASS_2_COMPLETE — C004 fully represented; no new proposal | Table 3’s four-component in-hospital composite remains labelled and modelled consistently within the article. C004 captures the distinct SAP-versus-publication component-set/retained-name issue; the supplied sources lack statin observations and amendment/change-control definitions. |
-| S033 | PASS_2_COMPLETE — No new proposal | Optimal-discharge-medication cluster/temporal RDs and ORs are CI-contained, ordered, and compatible with its separately defined component set and denominator. |
-| S034 | PASS_2_COMPLETE — No new proposal | Equal printed cluster/temporal point estimates are not an erroneous duplicate: models and CIs are separately labelled and differ. |
-| S035 | PASS_2_COMPLETE — No new proposal | Expanded MACE narrative and eTable 7 match at printed precision. Cluster-only and temporal outputs remain explicitly distinct, CI-contained models. |
-| S036 | PASS_2_COMPLETE — No new proposal | Figure 2 is expressly unadjusted with defined control/intervention markers and 95% CI bars. Exact plotted values are absent, so no numerical interval or duplicate-value test is defined. |
-| S037 | PASS_2_COMPLETE — C005 fully represented; no new proposal | Age <50 Figure 3 RD/OR are CI-contained and ordered. Its prespecified-category implication is represented with C005; crude rates are not a substitute for adjusted estimates. |
-| S038 | PASS_2_COMPLETE — C005 fully represented; no new proposal | Age 50-69 Figure 3 RD/OR are CI-contained and ordered. The stratum spans the SAP 65-year boundary, as recorded under C005. |
-| S039 | PASS_2_COMPLETE — C005 fully represented; no new proposal | Age ≥70 Figure 3 RD/OR are CI-contained and ordered; its category-definition implication is represented by C005. |
-| S040 | PASS_2_COMPLETE — No new proposal | Male Figure 3 adjusted RD/OR are CI-contained and ordered; adjusted values need not reproduce crude-rate differences. |
-| S041 | PASS_2_COMPLETE — No new proposal | Female Figure 3 adjusted RD/OR are CI-contained and ordered; labels and direction are compatible. |
-| S042 | PASS_2_COMPLETE — No new proposal | STEMI Figure 3 adjusted RD/OR are CI-contained and ordered; raw and adjusted scales are distinguished. |
-| S043 | PASS_2_COMPLETE — No new proposal | NSTEMI Figure 3 adjusted RD/OR are CI-contained and ordered; population and effect-direction labels are compatible. |
-| S044 | PASS_2_COMPLETE — No new proposal | Extra-large-hospital Figure 3 RD/OR are CI-contained and ordered; the hospital-size category is printed consistently with Table 1. |
-| S045 | PASS_2_COMPLETE — No new proposal | Large-hospital Figure 3 RD/OR are CI-contained and ordered; no unmatched duplicate value is implied. |
-| S046 | PASS_2_COMPLETE — No new proposal | Medium-hospital Figure 3 RD/OR are CI-contained and ordered; labels and direction are compatible. |
-| S047 | PASS_2_COMPLETE — No new proposal | Small-hospital Figure 3 RD/OR are CI-contained and ordered; labels and direction are compatible. |
-| S048 | PASS_2_COMPLETE — No new proposal | Government-hospital Figure 3 RD/OR are CI-contained and ordered; the hospital-type label is compatible with Table 1. |
-| S049 | PASS_2_COMPLETE — No new proposal | Nonprofit-hospital Figure 3 RD/OR are CI-contained and ordered; the hospital-type label is compatible with Table 1. |
-| S050 | PASS_2_COMPLETE — No new proposal | Private-hospital Figure 3 RD/OR are CI-contained and ordered; the hospital-type label is compatible with Table 1. |
-| S501 | PASS_2_COMPLETE — No new proposal | Protocol and SAP stepped-wedge comparison, five-step schedule, and hospital/cohort/time framing are compatible; planned quantities are not compared as reported outcome estimates. |
-| S502 | PASS_2_COMPLETE — No new proposal | Repeated planned power inputs agree across protocol/SAP/main article. ICC/design-effect/correlation and calculation algorithm are insufficient for diagnostic power reconstruction. |
-| S503 | PASS_2_COMPLETE — No new proposal | ITT, complete-case, and multiple-imputation procedures are separately stated; no matched reported inferential result is supplied to test. |
-| S504 | PASS_2_COMPLETE — No new proposal | SAP primary mixed-effects logistic model (hospital random effect, four-month fixed time effect) matches the main paper’s named primary-model structure. |
-| S505 | PASS_2_COMPLETE — C005 fully represented; no new proposal | SAP age cutpoints and the published Figure 3 prespecified-age label remain the C005 category-definition comparison. No supplied amendment or mapping defines 50/70-year cutpoints. |
-| S506 | PASS_2_COMPLETE — No new proposal | SAP O’Brien-Fleming z/P boundaries match the main threshold record. No convention-based p reconstruction was made because the detailed boundary/test definition is not supplied. |
-| S507 | PASS_2_COMPLETE — C003 fully represented; no new proposal | eTable 1’s columns, footnote, and printed differences remain the mechanically rechecked C003 label/comparator conflict. Its group Ns reconcile to 21,374, but that arithmetic does not resolve the footnote. |
-| S508 | PASS_2_COMPLETE — No new proposal | eTable 2 marginal differences are within ordered CIs, have an expressly stated intervention-minus-control direction, and are separately model-derived from crude Table 1 differences. |
-| S509 | PASS_2_COMPLETE — No new proposal | eTable 5 sensitivity-model ORs have positive ordered endpoints containing their estimates. Repeated values with Table 3 occur under separately printed covariate models, not as unexplained duplicates. |
-| S510 | PASS_2_COMPLETE — No new proposal | eTable 6 time-exposure interaction ORs have ordered CIs containing estimates and are expressly a separate interaction model, not a base-effect duplicate. |
-| S511 | PASS_2_COMPLETE — No new proposal | eTable 7 event rates reconcile to printed denominators at display precision; its RD/OR labels, CI ordering/containment, cluster-only/temporal models, and expanded-MACE narrative repetition are compatible. |
-| S512 | PASS_2_COMPLETE — No new proposal | Residual plot defines zero, CI interpretation, left/right direction, and multilevel model. Exact graphical values are not printed for numerical compatibility checking. |
-| S513 | PASS_2_COMPLETE — No new proposal | eFigures are labelled unadjusted and distinguish `Control - Intervention` graphical differences from intervention-minus-control analytic RDs. Exact plotted values are absent. |
+**Direct printed evidence:** DOC-001 p.3 states that results are reported by “prespecified subgroups” of participant age, sex, STEMI versus NSTEMI, hospital size, and **hospital type**. Figure 3 is titled `... by Prespecified Subgroups` and displays hospital type as Government (n=9), Nonprofit (n=12), and Private (n=42); the adjacent p.9 narrative again names hospital type among the prespecified subgroups. DOC-003 p.7 lists a priori site-level characteristics as **hospital size** and **use of quality improvement toolkit components**, with no hospital-type subgroup.
 
-## Pass-2 totals and limitations
+**Consistency rule:** A final subgroup reported as prespecified should appear in the supplied prespecification record or the supplied sources should identify an amendment/redefinition. A distinct planned toolkit-component subgroup should not be silently replaced by hospital type under the same prespecified label.
 
-- **Relationships completed:** 63/63 (`S001`–`S050`, `S501`–`S513`), each with an explicit `PASS_2_COMPLETE` record.
-- **Existing stable IDs represented:** 5/5 (`C001`, `C002`, `C003`, `C004`, `C005`).
-- **New candidate proposals:** 0. The pass found no additional distinct same-values/comparator/rule relationship beyond the complete stable ledger.
-- **Display-zero P-value records:** 0; none were supplied in scope.
-- **Limitations:** The PDFs do not supply raw data, fitted-model output, unrounded effect estimates, test degrees of freedom, sidedness for every result, covariance/variance estimators, multiplicity-adjustment rules, or amendment/change-control records. Therefore no model result was reverse-engineered from crude rates, no P/test/statistic/SE compatibility was presumed by convention, and graphical displays without exact point labels were checked only for their printed labels, direction, and scale.
+**Reproducible comparison:** The article's final set includes `hospital type` (three categories: government/nonprofit/private); the SAP's site-level list contains `hospital size` and `use of quality improvement toolkit components`, not hospital type. This is a categorical subgroup-definition mismatch; no numerical rounding tolerance applies.
+
+**Direct observation versus inference:** The final hospital-type labels, the two prespecified claims, and the SAP list are direct observations. Whether a later amendment authorized hospital type, whether a protocol provision elsewhere was intended to control, or whether `prespecified` is used broadly is not supplied and remains an inference.
+
+**Alternative source-grounded interpretation:** An unprovided amended or final SAP could have added hospital type, or a broader prespecification document may exist outside the supplied package. The supplied protocol/SAP/article set contains no such amendment or explanation.
+
+**Exact human question:** What supplied or archived prespecification authorized the Figure 3 hospital-type subgroup, and why does the final prespecified subgroup set omit the SAP-listed toolkit-component subgroup?
+
+**Status:** Pending Human Adjudication.
+
+## Limitations and display-zero rule
+
+- No literal `P = 0`, `p = 0.000`, or equivalent finite-precision display zero occurs in this 65-relationship scope. `DISPLAY_ZERO_NOT_CANDIDATE` is therefore not applicable; no candidate is based on P-value display notation.
+- The supplied package lacks raw data, model outputs, covariance matrices, degrees of freedom, variance estimators, sidedness statements for individual effects, multiplicity implementation details, production history, and a final/amended prespecification record. Missing inputs were not supplied by convention or diagnostic back-calculation.
+- The pass is confined to reporting consistency in supplied sources. It makes no broad methodology, clinical, study-validity, or correction determination.
+
+## Completion statement
+
+All 65 assigned S relationships have PASS_1_COMPLETE and PASS_2_COMPLETE in the canonical inventory. Five stable candidates were reconciled with the mechanical recheck, and one genuinely distinct new provisional candidate (SP2-001) is supplied for coordinator append-and-recheck handling. New provisional candidate count: **1**.

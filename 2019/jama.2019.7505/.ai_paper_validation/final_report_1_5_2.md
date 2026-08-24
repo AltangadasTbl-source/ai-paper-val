@@ -1,308 +1,176 @@
-# Quantitative Quality-Control Consistency Review — Workflow 1.5.2
+# Quantitative Quality-Control Consistency Review
 
 ## Pending Human Adjudication
 
-Every candidate in this report is **Pending Human Adjudication**. This is a source-first quantitative reporting quality-control review, not a finding about authors, study conclusions, or clinical effects.
+Every observation in this report is a **Pending Human Adjudication** quality-control candidate. This review does not assign validity, importance, severity, acceptance, exclusion, correction, or a paper-level conclusion.
 
 ## Executive Quality-Control Summary
 
-Complete fresh review of six supplied PDFs (100 PDF-page units) registered **8** distinct candidate consistency issues: two denominator/proportion displays, two cross-document numeric displays, and four measure, label, or scale displays. Small preventable reporting defects can matter when a later data extractor or evidence product reuses a printed field; this review does not establish propagation, a conclusion change, or serious harm.
+Fresh source-first processing of six supplied PDFs (100 of 100 physical PDF-page units mapped) identified four distinct quantitative reporting-consistency candidates: one abstract/table confidence-interval mismatch, one count-to-risk-ratio reconciliation issue, and two measure/outcome-label issues. The review is limited to supplied-package evidence. Small preventable reporting defects can matter to later evidence extraction, but this report does not claim downstream propagation, conclusion change, or harm.
 
 ## Package and Fresh-Processing Provenance
 
-The direct package comprised the main article `jama_bluth_2019_oi_190055_16092.pdf` (DOC-001; 14 pages) and support PDFs `joi190055supp1_prod_16092.pdf` through `joi190055supp5_prod_16092.pdf` (DOC-002–DOC-006; 36, 3, 3, 43, and 1 pages). All 100 units were freshly processed; no prior audit derivative was used as evidence. Fresh native and layout text were generated for every unit. The source inventory, extraction decisions, and SHA-256 values are recorded in [the current-run source inventory](review_1_5_2/source_inventory.md), [evidence-asset inventory](review_1_5_2/evidence_asset_inventory.md), and [pre-review hashes](review_1_5_2/source_hashes_before.sha256).
+The evidence set was the six direct supplied PDFs only: DOC-001 main article; DOC-002 protocol; DOC-003 protocol-change overview; DOC-004 final statistical analysis plan (SAP); DOC-005 online supplement; and DOC-006 data-sharing statement. Existing audit derivatives were preserved but excluded from evidence and discovery.
+
+Fresh local processing created native and layout text for all source PDFs and rendered 67 result-relevant pages. Native/layout text was usable for every result-relevant page, so no OCR was required. No web, GPU, Office conversion, raw data, analysis code, or external evidence was used.
 
 ## Scope, Complete Coverage, and Exclusions
 
-All direct-source rows are complete: DOC-001 14/14, DOC-002 36/36, DOC-003 3/3, DOC-004 3/3, DOC-005 43/43, and DOC-006 1/1 freshly mapped units, for **100/100**. The coverage plan assigns every stage a separate artifact path and records report generation for all eight stable IDs in [the coverage manifest](review_1_5_2/coverage_manifest.md).
+All six direct sources were fully mapped: DOC-001 14/14 pages, DOC-002 36/36, DOC-003 3/3, DOC-004 3/3, DOC-005 43/43, and DOC-006 1/1; total 100/100 (100%). The review checked numeric, denominator, arithmetic, inferential, cross-document, effect-measure/label/scale, and rate/count relationships where the supplied sources supported comparison.
 
-The scope was numeric, denominator/proportion/total, inferential-statistical, cross-document, measure/label/scale, and rate-versus-count consistency. It excluded broad methodology, clinical, misconduct, raw-data, and conclusion audits. No candidate was created from P-value display precision alone; no coherent `P = 0` display was encountered in the reviewed relationships.
+There was no review queue, top-N selection, candidate cap, or deferred-by-cap category. A visually resolved apparent ARISCAT extraction ambiguity and the undefined eTable 8 effect-measure heading were retained as non-candidate limitations because they did not meet the supplied-source contradiction threshold. A coherent display-zero P value was never registered solely because of its display notation.
 
 ## Quantitative and Statistical Relationship Coverage
 
-The fresh numeric relationship inventory contains **55/55** canonical relationships (N001–N055). The statistical inventory contains **31/31** relationships (S001–S031). Independent statistical pass 1 completed 31/31 and independent statistical pass 2 completed 31/31; the second pass revisited every stable candidate and added none. Completion markers and relationship-level limitations are in [numeric consistency review](review_1_5_2/checkers/numeric_consistency.md), [statistical pass 1](review_1_5_2/checkers/statistical_pass_1.md), [cross-source review](review_1_5_2/checkers/cross_source_consistency.md), and [statistical pass 2](review_1_5_2/checkers/statistical_pass_2.md).
+The complete numeric/reporting inventory contains 69 mapped relationships: N001-N049 and N200-N219. The complete inferential-statistical inventory contains 53 relationships: S001-S038 and S200-S214.
+
+Statistical pass 1 was performed by `root/statistics_pass_1` (gpt-5.6-terra, high) and statistical pass 2 by the distinct `root/statistics_pass_2` (gpt-5.6-terra, high). Both passes covered all 53 statistical relationships. Pass 2 revisited the complete cross-lane ledger and all mechanical recheck facts; it made no new proposal.
 
 ## Candidate Index
 
-| ID   | Candidate consistency issue                                      | Category                                        |
-|------|------------------------------------------------------------------|-------------------------------------------------|
-| C001 | Intraoperative adverse-event threshold definitions differ        | Measure, label, or scale inconsistency          |
-| C002 | White-blood-cell magnitude and unit use incompatible scales      | Measure, label, or scale inconsistency          |
-| C003 | Per-protocol effect estimates have a generic, unreconciled label | Measure, label, or scale inconsistency          |
-| C004 | eFigure 11 body label conflicts with mortality statistics        | Measure, label, or scale inconsistency          |
-| C005 | Abstract hypoxemia interval upper endpoint differs in sign       | Cross-document numeric inconsistency            |
-| C006 | Matched synthetic-colloid rows have different P values           | Cross-document numeric inconsistency            |
-| C007 | Monitoring percentages do not reproduce from fractions           | Denominator, proportion, or total inconsistency |
-| C008 | Reversal percentages do not reproduce from fractions             | Denominator, proportion, or total inconsistency |
+| ID | Candidate | Category | Status |
+|---|---|---|---|
+| [C001](#c001--hypoxemia-confidence-interval-endpoint-sign-differs-between-abstract-and-table-3) | Hypoxemia CI endpoint sign differs between abstract and Table 3 | Cross-document numeric inconsistency | Pending Human Adjudication |
+| [C002](#c002--dic-row-finite-risk-ratio-and-narrow-interval-do-not-reconcile-with-zero-comparator-events) | DIC finite risk ratio/interval does not reconcile with zero comparator events | Statistical reporting inconsistency | Pending Human Adjudication |
+| [C003](#c003--protocol-analysis-sentence-combines-odds-ratio-and-relative-risk-labels) | Protocol sentence combines odds-ratio and relative-risk labels | Measure, label, or scale inconsistency | Pending Human Adjudication |
+| [C004](#c004--efigure-11-mortality-values-are-described-as-extra-pulmonary-complications) | eFigure 11 mortality values are described as extra-pulmonary complications | Measure, label, or scale inconsistency | Pending Human Adjudication |
 
 ## Candidate Evidence Cards
 
-## C001 — Intraoperative adverse-event threshold definitions differ within the main article
+## C001 — Hypoxemia confidence-interval endpoint sign differs between abstract and Table 3
 
-**Candidate statement:** The methods and Table 3 footnotes print different operational criteria for the same named intraoperative hypoxemia and hypotension outcomes. **Pending Human Adjudication.**
+**Status:** Pending Human Adjudication
 
-**Category:** Measure, label, or scale inconsistency
-
-**Exact source locations:** [jama_bluth_2019_oi_190055_16092.pdf — PDF p. 3](../jama_bluth_2019_oi_190055_16092.pdf#page=3); [jama_bluth_2019_oi_190055_16092.pdf — PDF p. 10](../jama_bluth_2019_oi_190055_16092.pdf#page=10).
-
-**Source evidence:** P. 3 defines hypoxemia as SpO2 at or below 92% for more than 1 minute and hypotension as systolic pressure below 90 mm Hg for more than 2 minutes. P. 10 adds baseline-dependent alternative thresholds (greater than 5% SpO2 decline when already below 92%; greater than 10-mm-Hg systolic decline when already below 90) and does not print the durations.
-
-**Reported-versus-comparator:** The same named outcomes have a duration-based methods definition versus a table-footnote definition with extra baseline-dependent branches.
-
-**Reasoning procedure:** Direct observation: the two printed rule sets are textually nonidentical. Diagnostic inference: the alternative branches could affect reported numerators, but the package does not identify which complete algorithm generated Table 3.
-
-**Calculation:** Logical comparison only: the methods contain “more than 1 minute” and “more than 2 minutes”; the footnotes omit these durations and add two alternative branches.
-
-**Alternative source-grounded interpretations:** P. 3 may be abbreviated while p. 10 is complete, or the footnote may describe a table-specific rescue convention. The supplied package does not resolve this.
-
-**Mechanical evidence recheck:** Recheck located both pages, reproduced the nonidentical criteria, and retained the unavailable visual decoding of the p. 3 inequality glyph as a limitation.
-
-**Quality-control relevance:** Outcome algorithms should be identifiable when interpreting Table 3 event counts.
-
-**Potential downstream evidence impact:** If confirmed, a data extractor could copy a different hypoxemia or hypotension definition into a systematic review or later evidence product; no downstream use or conclusion change is established.
-
-**Human verification steps:** Visually inspect both pages; identify the count-generating algorithm, its durations, and whether either definition is explicitly abbreviated or superseded.
-
-**Human adjudication fields:**
-
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C002 — White-blood-cell magnitude and unit are on incompatible printed scales
-
-**Candidate statement:** Table 1 pairs white-blood-cell values in the thousands with a `×10^9/L` unit. **Pending Human Adjudication.**
-
-**Category:** Measure, label, or scale inconsistency
-
-**Exact source locations:** [jama_bluth_2019_oi_190055_16092.pdf — PDF p. 6](../jama_bluth_2019_oi_190055_16092.pdf#page=6); [joi190055supp4_prod_16092.pdf — PDF p. 20](../joi190055supp4_prod_16092.pdf#page=20).
-
-**Source evidence:** DOC-001 prints `White blood cells, ×10^9/L` with 8224 (2346) and 8347 (2758). DOC-005 uses leukocyte thresholds below 4000 or above 12000 cells/mm3.
-
-**Reported-versus-comparator:** Four-digit values are displayed beneath a per-litre `10^9` unit, while the supplied supplement gives comparable four-digit cells/mm3 thresholds.
-
-**Reasoning procedure:** Direct observation: the printed magnitude/unit pairing differs by scale from the internal threshold scale. Diagnostic inference: a unit-label carryover or omitted decimal placement could explain it; neither is documented.
-
-**Calculation:** `8224 cells/mm3 = 8.224 ×10^9/L`; `8347 cells/mm3 = 8.347 ×10^9/L`; conversely, `8224 ×10^9/L = 8,224,000 cells/mm3`. This is a factor-of-1000 identity, not a rounding difference.
-
-**Alternative source-grounded interpretations:** The intended unit may be cells/mm3, or the intended displayed values under `×10^9/L` may be about 8.224 and 8.347.
-
-**Mechanical evidence recheck:** Recheck found the Table 1 row and supplement thresholds and reproduced the conversion. The multiplication glyph on p. 6 requires visual confirmation.
-
-**Quality-control relevance:** Laboratory measure units and magnitudes should be mutually interpretable within the supplied package.
-
-**Potential downstream evidence impact:** If confirmed, an extractor could copy an incompatible baseline laboratory unit or magnitude into a review table or later evidence product; no downstream use or conclusion change is established.
-
-**Human verification steps:** Visually inspect the unit glyph and obtain the authoritative laboratory export or table specification to determine whether the unit or decimal placement is intended.
-
-**Human adjudication fields:**
-
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C003 — Per-protocol effect estimates are generically labeled and do not reproduce as crude ratios
-
-**Candidate statement:** Supplement eTable 8 labels its column only `Effect Estimate 95% CI`, and the printed estimates do not equal crude ratios from its displayed counts. **Pending Human Adjudication.**
-
-**Category:** Measure, label, or scale inconsistency
-
-**Exact source locations:** [joi190055supp4_prod_16092.pdf — PDF p. 29](../joi190055supp4_prod_16092.pdf#page=29); [jama_bluth_2019_oi_190055_16092.pdf — PDF p. 9](../jama_bluth_2019_oi_190055_16092.pdf#page=9); [jama_bluth_2019_oi_190055_16092.pdf — PDF p. 10](../jama_bluth_2019_oi_190055_16092.pdf#page=10).
-
-**Source evidence:** eTable 8 gives PPC 186/917 versus 209/912 with 0.92, pleural effusion 38/917 versus 18/912 with 1.37, and cardiopulmonary edema 15/917 versus 7/912 with 1.36, under a generic header. The analogous main Table 3 calls its effect column `Risk Ratio`.
-
-**Reported-versus-comparator:** Generic eTable 8 estimates are compared with crude risk and odds ratios from their own exact inputs; the main table is a label comparator, not a numerical per-protocol comparator.
-
-**Reasoning procedure:** Direct observation: the header is generic and the printed effects do not equal the crude ratios. Diagnostic inference: the estimates could be adjusted or model-based; the package does not name their measure, direction, estimand, model, variance method, or adjustment set.
-
-**Calculation:** Crude high-versus-low risk ratios are 0.885100, 2.099600, and 2.131173; crude odds ratios are 0.855864, 2.147137, and 2.149984. None equals 0.92, 1.37, or 1.36 at displayed precision. These diagnostics do not assert an error in an unidentified model.
-
-**Alternative source-grounded interpretations:** An adjusted, clustered, site-effect, time-to-event, or other model could produce different values, but its definition is absent from the eTable 8 display.
-
-**Mechanical evidence recheck:** Recheck confirmed the counts, denominators, estimates, intervals, generic header, and main-table label; it retained the unreported model definition as the exact missing input.
-
-**Quality-control relevance:** An effect estimate should have an identifiable measure, reference direction, and model when it cannot be read as a crude ratio.
-
-**Potential downstream evidence impact:** If confirmed, a review or meta-analysis extractor could misclassify the eTable 8 effect measure or direction; no downstream use or conclusion change is established.
-
-**Human verification steps:** Obtain the per-protocol analysis specification and confirm the named estimand, reference direction, model, adjustments, variance, interval, and test for eTable 8.
-
-**Human adjudication fields:**
-
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C004 — eFigure 11 body text assigns mortality statistics to extra-pulmonary complications
-
-**Candidate statement:** eFigure 11 identifies 5-day mortality in its title and numerical result, while its body sentence names postoperative extra-pulmonary complications. **Pending Human Adjudication.**
-
-**Category:** Measure, label, or scale inconsistency
-
-**Exact source locations:** [joi190055supp4_prod_16092.pdf — PDF p. 41](../joi190055supp4_prod_16092.pdf#page=41); [joi190055supp4_prod_16092.pdf — PDF p. 40](../joi190055supp4_prod_16092.pdf#page=40); [jama_bluth_2019_oi_190055_16092.pdf — PDF p. 10](../jama_bluth_2019_oi_190055_16092.pdf#page=10).
-
-**Source evidence:** eFigure 11 prints 0.5% versus 0.3%, hazard ratio 1.67 (0.40–6.97), P=.484 for 5-day mortality, but calls the rate postoperative extra-pulmonary complications. eFigure 10 prints PEPC 16.9% versus 15.2%, HR 1.12 (0.89–1.39), P=.314; DOC-001 matches the mortality result.
-
-**Reported-versus-comparator:** The p. 41 body label is compared with its mortality title/statistics, the matching main-table mortality result, and the separately printed PEPC statistics on p. 40.
-
-**Reasoning procedure:** Direct observation: mortality and PEPC are distinct named outcomes attached to distinct supplied statistic sets. Diagnostic inference: a p. 40 production carryover is plausible but is not documented.
-
-**Calculation:** Identity comparison: the p. 41 0.5%/0.3% and HR 1.67 match mortality, not the p. 40 PEPC 16.9%/15.2% and HR 1.12.
-
-**Alternative source-grounded interpretations:** The body phrase may have been copied from eFigure 10 while the p. 41 title and mortality statistics are intended. The plot itself was not visually available.
-
-**Mechanical evidence recheck:** Recheck confirmed all three locations and the distinct statistic sets; the visual identity of the p. 41 curve remains unavailable.
-
-**Quality-control relevance:** A figure body label should identify the same outcome as its title and displayed statistics.
-
-**Potential downstream evidence impact:** If confirmed, an extractor could assign mortality statistics to PEPC, or vice versa, in an evidence table; no downstream use or conclusion change is established.
-
-**Human verification steps:** Visually inspect eFigure 11 and its curve/axes, then confirm the intended outcome name for its body text.
-
-**Human adjudication fields:**
-
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C005 — Abstract hypoxemia confidence interval loses the negative sign on its upper endpoint
-
-**Candidate statement:** The abstract and Table 3 print opposite signs for the upper endpoint of the same hypoxemia difference interval. **Pending Human Adjudication.**
+**Candidate statement:** The abstract and Table 3 print opposite signs for the upper endpoint of the otherwise matched high-minus-low hypoxemia risk-difference confidence interval.
 
 **Category:** Cross-document numeric inconsistency
 
-**Exact source locations:** [jama_bluth_2019_oi_190055_16092.pdf — PDF p. 1](../jama_bluth_2019_oi_190055_16092.pdf#page=1); [jama_bluth_2019_oi_190055_16092.pdf — PDF p. 9](../jama_bluth_2019_oi_190055_16092.pdf#page=9).
+**Exact source locations:** DOC-001, [`jama_bluth_2019_oi_190055_16092.pdf` — PDF p. 1, abstract](<../jama_bluth_2019_oi_190055_16092.pdf#page=1>) and [PDF p. 9, Table 3](<../jama_bluth_2019_oi_190055_16092.pdf#page=9>).
 
-**Source evidence:** The abstract prints 5.0% versus 13.6%, difference −8.6%, interval −11.1% to 6.1%, P\<.001. Table 3 prints the matched 49/989 and 134/987, the same rounded percentages/difference, and interval −11.1 to −6.1.
+**Source evidence:** Both locations report intraoperative hypoxemia of 49/989 (5.0%) versus 134/987 (13.6%), a difference of -8.6 percentage points, and P < .001. The abstract prints 95% CI -11.1 to +6.1; Table 3 prints -11.1 to -6.1 and RR 0.51 (0.40 to 0.65).
 
-**Reported-versus-comparator:** Matched outcome, population, contrast, estimate, and interval displays differ only in the sign of the upper endpoint.
+**Reported-versus-comparator:** Abstract upper endpoint +6.1 versus Table 3 upper endpoint -6.1 for the same matched result.
 
-**Reasoning procedure:** Direct observation: the upper endpoints are 6.1 and −6.1. Diagnostic inference: a typographical minus-sign omission is plausible, but the package does not identify the authoritative production value.
+**Reasoning procedure:** Match population, outcome, treatment order, point estimate, confidence level, precision, and P value across locations, then compare interval endpoints including sign.
 
-**Calculation:** `49/989 × 100 = 4.9545%`; `134/987 × 100 = 13.5765%`; the unrounded difference is −8.6220 percentage points, consistent with −8.6. The Table 3 interval is wholly negative and contains −8.6; the abstract interval crosses zero. Rounding cannot change the endpoint sign.
+**Calculation:** 5.0 - 13.6 = -8.6 percentage points. The printed upper endpoint changes by 12.2 percentage points. A direct unpooled Wald calculation from the displayed counts is a diagnostic approximation of about -11.15 to -6.09 percentage points; it supports Table 3's displayed precision but does not determine which source should be corrected.
 
-**Alternative source-grounded interpretations:** The abstract may have omitted a minus sign, or Table 3 may be the intended display; no correction record is supplied.
+**Alternative source-grounded interpretations:** Either the abstract or Table 3 may contain the production error. A dropped abstract minus sign is plausible, but the package does not provide an authoritative analysis-output record or designate an authoritative display.
 
-**Mechanical evidence recheck:** Recheck found both matched displays, reproduced the fractions, and confirmed that the endpoint sign difference is not a rounding issue.
+**Mechanical evidence recheck:** The cited pages, printed values, comparator, and sign mismatch were independently found and reproduced. Necessary counts, denominators, treatment order, confidence level, and endpoints are available; the exact published interval implementation and authoritative output are unavailable. Direct observation is the sign mismatch; any production explanation is inferred.
 
-**Quality-control relevance:** Repeated confidence intervals for the same result should retain their endpoint signs.
+**Quality-control relevance:** The two locations cannot both represent the same interval at the displayed precision and therefore require human confirmation.
 
-**Potential downstream evidence impact:** If confirmed, a data extractor could copy a confidence interval that crosses zero instead of one that does not into a systematic review or later evidence product; no downstream use or conclusion change is established.
+**Potential downstream evidence impact:** If confirmed, an abstract-focused extractor could copy an interval crossing zero while a table-focused extractor could copy an interval wholly below zero. No propagation or conclusion change is claimed.
 
-**Human verification steps:** Compare the abstract, Table 3, and authoritative production/statistical output to identify the intended upper endpoint.
+**Human verification steps:** Inspect the publisher proof/source and analysis output for the hypoxemia high-minus-low risk-difference CI; confirm the intended upper endpoint and align every supplied representation.
 
 **Human adjudication fields:**
-
 - **Validity:** __
 - **Importance:** __
 - **Action:** __
 - **Initials:** __
 - **Notes:** __
 
-## C006 — Matched synthetic-colloid-use rows print different P values
+## C002 — DIC row finite risk ratio and narrow interval do not reconcile with zero comparator events
 
-**Candidate statement:** The main article and supplement repeat the same synthetic-colloid-use counts but print P=.09 and P=.10. **Pending Human Adjudication.**
+**Status:** Pending Human Adjudication
 
-**Category:** Cross-document numeric inconsistency
+**Candidate statement:** The Table 3 DIC row prints 1 versus 0 events but a finite RR 2.00 with a narrow interval excluding 1; the source does not supply the estimator needed to reconcile these values.
 
-**Exact source locations:** [jama_bluth_2019_oi_190055_16092.pdf — PDF p. 8](../jama_bluth_2019_oi_190055_16092.pdf#page=8); [joi190055supp4_prod_16092.pdf — PDF p. 24](../joi190055supp4_prod_16092.pdf#page=24).
+**Category:** Statistical reporting inconsistency
 
-**Source evidence:** Both locations print 74/989 (7.5%) versus 56/987 (5.7%). The main table prints difference 1.8 (−0.3 to 4.0), P=.09; eTable 3 prints P=.10 for the synthetic-colloid row.
+**Exact source locations:** DOC-001, [`jama_bluth_2019_oi_190055_16092.pdf` — PDF p. 9, Table 3](<../jama_bluth_2019_oi_190055_16092.pdf#page=9>); [PDF p. 10, continued Table 3 footnotes](<../jama_bluth_2019_oi_190055_16092.pdf#page=10>); and [PDF p. 4, binary-outcome method](<../jama_bluth_2019_oi_190055_16092.pdf#page=4>).
 
-**Reported-versus-comparator:** Identical displayed group sizes, counts, percentages, population, and contrast have P displays .09 versus .10.
+**Source evidence:** The row prints disseminated intravascular coagulation as 1/989 (0.1%) versus 0/987, absolute difference 0.1 (95% CI -0.1 to 0.3), RR 2.00 (95% CI 1.91 to 2.09), and P > .99. Table footnotes label the effect as a risk ratio and identify broad interval/test methods.
 
-**Reasoning procedure:** Direct observation: `.09 ≠ .10`. Diagnostic inference: different tests or rounding pipelines could explain it, but neither location identifies a row-specific rule; no tail probability is reconstructed.
+**Reported-versus-comparator:** A finite RR 2.00 with interval [1.91, 2.09] is displayed against a comparator risk of zero; the same row prints P > .99.
 
-**Calculation:** `74/989 = 7.4823%`; `56/987 = 5.6738%`; difference = 1.8085 percentage points. The candidate comparison is the printed P values, not a reconstructed P value.
+**Reasoning procedure:** Apply the ordinary printed risk-ratio identity to the displayed event counts, then identify the exact source-supplied method information needed for an alternative finite estimate. The interval/P comparison remains conditional because the source names different broad procedures without complete implementations.
 
-**Alternative source-grounded interpretations:** The displays may use different undocumented tests or rounding pipelines, or one may be transcribed differently.
+**Calculation:** High risk = 1/989 = 0.0010111; low risk = 0/987 = 0. Thus (1/989)/(0/987) has a zero denominator and is not a finite direct RR. The printed interval excludes 1. No replacement RR, CI, or P value is calculated.
 
-**Mechanical evidence recheck:** Recheck confirmed p. 24’s 0.10 belongs to synthetic colloids and that its separate 0.09 belongs to the next summary line, not this row.
+**Alternative source-grounded interpretations:** An unstated zero-cell correction, alternate estimator, cell alignment issue, or transcription error could explain part of the display. The supplied package does not identify a zero-cell rule, exact interval formula/software call, chi-square variant, or row-specific alternate population.
 
-**Quality-control relevance:** A matched repeated binary result should identify any intentional difference in its P-value calculation or display.
+**Mechanical evidence recheck:** The row, denominators, RR, CI, P value, table footnotes, and general method were independently found. The direct count-to-RR conflict was reproduced. Missing inputs are the zero-cell/estimator rule and exact inferential implementations; possible explanations are not treated as established.
 
-**Potential downstream evidence impact:** If confirmed, an extractor could copy a different P value for this row into a review table or later evidence product; no downstream use or conclusion change is established.
+**Quality-control relevance:** The printed effect and interval require a stated reconciliation rule before their relationship to the displayed 1-versus-0 events can be understood.
 
-**Human verification steps:** Check the row-specific test, sidedness, continuity/variance rule, unrounded P values, and rounding pipeline for both displays.
+**Potential downstream evidence impact:** If confirmed, an extractor could copy a precise finite RR/CI without the undisclosed rule needed to reconcile it with the displayed counts. No propagation or paper-level conclusion change is claimed.
+
+**Human verification steps:** Retrieve the analysis output or method call; identify the zero-cell rule, estimator, interval formula, and hypothesis-test implementation; then confirm whether the RR, CI, and P-value cells align with the 1-versus-0 row.
 
 **Human adjudication fields:**
-
 - **Validity:** __
 - **Importance:** __
 - **Action:** __
 - **Initials:** __
 - **Notes:** __
 
-## C007 — Neuromuscular-monitoring percentages do not match their printed fractions
+## C003 — Protocol analysis sentence combines odds-ratio and relative-risk labels
 
-**Candidate statement:** Table 2 monitoring percentages do not reproduce from their printed numerators and denominators. **Pending Human Adjudication.**
+**Status:** Pending Human Adjudication
 
-**Category:** Denominator, proportion, or total inconsistency
+**Candidate statement:** A protocol planned-analysis sentence joins “odds ratio” and “relative risks” without a separator, alternative-analysis definition, or conversion rule, while the final SAP specifies a primary risk ratio.
 
-**Exact source locations:** [jama_bluth_2019_oi_190055_16092.pdf — PDF p. 8](../jama_bluth_2019_oi_190055_16092.pdf#page=8).
+**Category:** Measure, label, or scale inconsistency
 
-**Source evidence:** The monitoring row prints 632/982 (64.9%) versus 651/984 (67.7%), with difference −1.8 (−6.0 to 2.4), P=.40.
+**Exact source locations:** DOC-002, [`joi190055supp1_prod_16092.pdf` — physical PDF p. 23 (footer p. 22), section 8.2 Analysis](<../joi190055supp1_prod_16092.pdf#page=23>); comparator definitions in DOC-004, [`joi190055supp3_prod_16092.pdf` — PDF p. 2](<../joi190055supp3_prod_16092.pdf#page=2>) and [PDF p. 3](<../joi190055supp3_prod_16092.pdf#page=3>).
 
-**Reported-versus-comparator:** Each parenthetical percentage is compared with its adjacent printed fraction; the row difference is also compared with the fraction-derived and displayed-percentage differences.
+**Source evidence:** DOC-002 states that “the odds ratio relative risks with corresponding 95% confidence levels interval” will be calculated using logistic regression. DOC-004 identifies the primary effect as a risk ratio and separately uses odds ratios for specified exploratory analyses.
 
-**Reasoning procedure:** Direct observation: neither percentage equals its fraction under one-decimal rounding and the printed percentages subtract to a different difference. Diagnostic inference: the displayed −1.8 may have been generated from counts, but the table does not state its rule.
+**Reported-versus-comparator:** The uninterrupted compound protocol label “odds ratio relative risks” versus the final SAP's explicit primary-outcome risk-ratio label and distinct exploratory odds-ratio contexts.
 
-**Calculation:** `632/982 × 100 = 64.3585%` → 64.4%, not 64.9%; `651/984 × 100 = 66.1585%` → 66.2%, not 67.7%. Count-derived difference = −1.8001 points; printed percentage subtraction = −2.8 points.
+**Reasoning procedure:** Compare the exact planned-analysis measure labels. Odds ratio and risk ratio are distinct measures; one output must identify the intended measure or expressly identify separate analyses/conversion.
 
-**Alternative source-grounded interpretations:** One or more counts, denominators, percentages, or the difference may have been transcribed differently; an alternative denominator or adjustment is not supplied.
+**Calculation:** No arithmetic is needed. The reproducible comparison is the uninterrupted compound label against the SAP's measure-specific wording.
 
-**Mechanical evidence recheck:** Recheck located the complete row and reproduced both fraction-to-percentage calculations and the two different displayed differences.
+**Alternative source-grounded interpretations:** The phrase may be an editing artifact; the final SAP may supersede earlier wording by selecting risk ratio for the primary outcome; or distinct analyses may have been intended. The package does not resolve which explanation applies.
 
-**Quality-control relevance:** A `No./total No. (%)` display should let readers reconcile adjacent counts, denominators, and percentages.
+**Mechanical evidence recheck:** Physical PDF p. 23 visibly contains the uninterrupted phrase; footer page 22 is an internal footer, not the PDF page locator. The SAP comparator pages explicitly distinguish primary risk-ratio and exploratory odds-ratio contexts. The intended punctuation, estimand, and any conversion are missing.
 
-**Potential downstream evidence impact:** If confirmed, a data extractor could copy inconsistent monitoring proportions or a different contrast into a systematic review or later evidence product; no downstream use or conclusion change is established.
+**Quality-control relevance:** The protocol's printed planned-analysis effect-measure label is internally indeterminate and should be clarified by a human reviewer.
 
-**Human verification steps:** Verify the authoritative numerator, denominator, percentage, and difference fields and determine whether an unprinted denominator, weighting, or adjustment was used.
+**Potential downstream evidence impact:** If confirmed, a protocol or registry extractor could code the planned effect measure ambiguously. No claim is made that the final analysis used the wrong estimand or that conclusions changed.
+
+**Human verification steps:** Inspect the archived protocol source/proof and associated analysis plan; determine whether section 8.2 intended an odds ratio, a risk ratio, or distinct analyses, and clarify the archived wording if appropriate.
 
 **Human adjudication fields:**
-
 - **Validity:** __
 - **Importance:** __
 - **Action:** __
 - **Initials:** __
 - **Notes:** __
 
-## C008 — Neuromuscular-reversal percentages do not match their printed fractions
+## C004 — eFigure 11 mortality values are described as extra-pulmonary complications
 
-**Candidate statement:** Table 2 reversal percentages do not reproduce from their printed numerators and denominators. **Pending Human Adjudication.**
+**Status:** Pending Human Adjudication
 
-**Category:** Denominator, proportion, or total inconsistency
+**Candidate statement:** eFigure 11's narrative calls its displayed mortality values postoperative extra-pulmonary complications, although its title, axis, effect label, and matching Table 3 values identify five-day mortality.
 
-**Exact source locations:** [jama_bluth_2019_oi_190055_16092.pdf — PDF p. 8](../jama_bluth_2019_oi_190055_16092.pdf#page=8).
+**Category:** Measure, label, or scale inconsistency
 
-**Source evidence:** The reversal row prints 724/982 (74.3%) versus 723/984 (75.2%), with difference 0.2 (−3.6 to 4.1), P=.90.
+**Exact source locations:** DOC-005, [`joi190055supp4_prod_16092.pdf` — PDF p. 41, eFigure 11](<../joi190055supp4_prod_16092.pdf#page=41>); comparator [PDF p. 40, eFigure 10](<../joi190055supp4_prod_16092.pdf#page=40>); and DOC-001, [`jama_bluth_2019_oi_190055_16092.pdf` — PDF p. 10, Table 3](<../jama_bluth_2019_oi_190055_16092.pdf#page=10>).
 
-**Reported-versus-comparator:** Each parenthetical percentage is compared with its adjacent printed fraction; the printed percentages imply a different-sign difference from the displayed difference.
+**Source evidence:** eFigure 11 is titled “Probability of death in the first 5 postoperative days,” labels the effect “hazard ratio for 5-day mortality,” and prints 0.5% versus 0.3%, HR 1.67 (0.40 to 6.97), P = .484. Its narrative calls those same values “the rate of postoperative extra-pulmonary complications.” eFigure 10 separately prints extra-pulmonary complications of 16.9% versus 15.2%, HR 1.12; Table 3 matches the eFigure 11 mortality values.
 
-**Reasoning procedure:** Direct observation: neither percentage equals its fraction under one-decimal rounding, and 74.3 − 75.2 = −0.9 while the row prints +0.2. Diagnostic inference: a model-based calculation or unprinted inputs could explain +0.2, but no such rule is supplied.
+**Reported-versus-comparator:** The eFigure 11 narrative outcome noun conflicts with its mortality title, axis, effect label, and matched mortality values; eFigure 10 supplies the distinct extra-pulmonary-complication comparator.
 
-**Calculation:** `724/982 × 100 = 73.7271%` → 73.7%, not 74.3%; `723/984 × 100 = 73.4756%` → 73.5%, not 75.2%. Fraction-derived difference = +0.2515 points, which ordinarily rounds to +0.3, not +0.2; printed percentage subtraction = −0.9 points.
+**Reasoning procedure:** Match title, axis, effect label, percentages, HR/CI, and cross-document values, then check whether the narrative names the same outcome.
 
-**Alternative source-grounded interpretations:** One or more counts, denominators, percentages, or the difference may have been transcribed differently, or the difference may use a model or unprinted inputs.
+**Calculation:** 5/989 = 0.5056% and 3/987 = 0.3040%, rounding to 0.5% and 0.3%. These mortality values are not rounding variants of the separately displayed 16.9% and 15.2% extra-pulmonary-complication values.
 
-**Mechanical evidence recheck:** Recheck located the complete row and reproduced the fraction arithmetic, ordinary one-decimal rounding, and the sign disagreement.
+**Alternative source-grounded interpretations:** Carry-forward wording from neighboring eFigure 10 is plausible, or the sentence may refer to a neighboring figure, but neither explanation is stated in the supplied sources.
 
-**Quality-control relevance:** A `No./total No. (%)` display should let readers reconcile its fractions, percentages, and stated contrast.
+**Mechanical evidence recheck:** The title, axis, mortality label, values, HR/CI/P, local narrative noun, eFigure 10 comparator, and Table 3 mortality row were independently found and matched. The direct observation is the conflicting outcome noun; the production mechanism and appropriate correction remain unknown.
 
-**Potential downstream evidence impact:** If confirmed, an extractor could copy inconsistent reversal proportions or a conflicting direction into a systematic review or later evidence product; no downstream use or conclusion change is established.
+**Quality-control relevance:** A figure narrative should identify the same outcome as its displayed values and effect estimate.
 
-**Human verification steps:** Verify the authoritative numerator, denominator, percentage, and difference fields and obtain the exact rule, unrounded inputs, or model for the positive 0.2 difference.
+**Potential downstream evidence impact:** If confirmed, an extractor could misclassify a five-day mortality effect as an extra-pulmonary-complication effect. No propagation, harm, or conclusion change is claimed.
+
+**Human verification steps:** Inspect the final eFigure 11 proof/source, confirm the outcome noun associated with 0.5%/0.3% and HR 1.67, and determine whether the figure narrative or another linked representation needs correction.
 
 **Human adjudication fields:**
-
 - **Validity:** __
 - **Importance:** __
 - **Action:** __
@@ -311,53 +179,57 @@ The fresh numeric relationship inventory contains **55/55** canonical relationsh
 
 ## Downstream Evidence-Chain Considerations
 
-These are candidate reporting-consistency issues, not demonstrated downstream effects. If a candidate is confirmed, the relevant counts, percentages, intervals, effect labels, outcome labels, definitions, units, or P value could be copied into a data-extraction form, systematic review, meta-analysis, guideline, or later evidence product. The supplied package does not show that such copying occurred, that any conclusion changed, or that harm resulted.
+If confirmed by human adjudication, the candidates identify specific fields that could be copied differently by abstract/table, protocol, or figure extractors: a confidence-interval endpoint, a finite effect estimate and interval, a planned effect-measure label, or an outcome label. This is a bounded evidence-extraction concern only; the supplied package does not establish downstream reuse, propagation, conclusion change, or harm.
 
 ## Limitations and Missing Definitions
 
-Fresh text covered all 100 source units, but `pdfinfo`, Linux rendering tools, and CPU Tesseract were unavailable. DOC-001’s fresh text has 14 form-feed pages despite a preliminary 10-page `file` string; the fresh count governed coverage. Page rendering/OCR were unavailable; DOC-001 Tables 2/3 are partly column-serialized, graphical values on DOC-005 pp. 31–37 and 42 were not invented, and the eFigure 11 plotted curve could not be visually identified. The p. 3 inequality and p. 6 multiplication glyphs also need visual confirmation. Candidate-specific missing definitions include the complete adverse-event algorithm, intended white-blood-cell scale, eTable 8 measure/model/reference/variance/test, synthetic-colloid tests and rounding, and authoritative neuromuscular row fields. These limitations do not establish a conclusion change and do not remove any stable ID. See [limitations](review_1_5_2/limitations.md).
+- The package contains published PDFs but no raw data, analysis code, unrounded output, publisher production source, or author clarification.
+- Several tables and figures lack enough test, variance, repeated-measures, interval-construction, or group-sequential implementation detail for strict reconstruction; unreported conventions were not imported.
+- The DIC row does not identify a zero-cell correction or alternate estimator; no replacement RR, CI, or P value is proposed.
+- eTable 8's “Effect Estimate 95% CI” header omits a measure label but has no conflicting printed label, so it remains a limitation rather than a candidate.
+- The DOC-001 ARISCAT phrase was visually resolved as superscript reference 18 following “score,” followed by “of 26 or greater”; it is not a candidate.
+- No coherent display-zero P value was treated as a candidate.
+- DOC-006 is a data-sharing statement with no result-bearing numeric/statistical relationship.
 
 ## Human Adjudication Checklist
 
-For each card, confirm the cited original PDF locations, reproduce the stated arithmetic or identity comparison, identify any missing analysis or production definition, determine the intended display from the authoritative record, and complete all five blank fields on that card. Keep each C ID distinct when documenting a decision.
+For each candidate, confirm the cited locations against authoritative publication/analysis materials if available; determine whether the printed values or labels represent a reportable defect; record validity, importance, action, initials, and notes in the card template; and preserve the stable candidate ID regardless of the human decision.
 
 ## Reproducibility, Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost Metadata
 
-### Reproducibility and source integrity
+### Reproducibility and Source Integrity
 
-The current-run coverage and exact fresh-processing methods are recorded in the linked provenance artifacts above. The initial source SHA-256 inventory covers six supplied PDFs; the coordinator must compare it with the post-review hash inventory before final validation. No web source or prior audit derivative was used as review evidence.
+Fresh source hashes recorded before preprocessing and recomputed during quality audit matched for all six direct PDFs. The source inventory records these SHA-256 values: DOC-001 `a76e0d8789cfcdbb51d86edaaf407e29ada6f2c0d3a2a8a7b95bb50565d12bc1`; DOC-002 `60c2f9990f89ad4a7199ea7b682a6c5b80f84532c589cacace5778fce686e1e2`; DOC-003 `0d830c7fcdb532f85c16b9ce4afd2e6e8a8577a4758a66aadcc5cbbb60bf73f9`; DOC-004 `768cc455241d2cfa437b613adcfd878d03ceff6ddcd324819f057652d3a9a11b`; DOC-005 `93774bc97dc923b3d322fa299c2659f014ed2ff9ee12226c6e8c4caee6f3a605`; DOC-006 `7ff68bf44095d24434ed4f366e4e13dbc9c125b10f1f802015c19e0acae25385`.
 
-### Agent execution
+### Agent Execution
 
-| Stage               | Runtime agent ID            | Model         | Reasoning effort | Start mode      |
-|---------------------|-----------------------------|---------------|------------------|-----------------|
-| coordinator         | COORDINATOR-CURRENT-SESSION | gpt-5.6-sol   | high             | CURRENT_SESSION |
-| fresh preprocessing | /root/fresh_preprocessing   | gpt-5.6-terra | medium           | FRESH_SPAWN     |
-| main mapping        | /root/main_mapping          | gpt-5.6-terra | medium           | FRESH_SPAWN     |
-| support mapping     | /root/support_mapping       | gpt-5.6-terra | medium           | FRESH_SPAWN     |
-| numeric review      | /root/numeric_checks        | gpt-5.6-terra | medium           | FRESH_SPAWN     |
-| cross-source review | /root/cross_source_checks   | gpt-5.6-terra | medium           | FRESH_SPAWN     |
-| statistical pass 1  | /root/statistics_pass_1     | gpt-5.6-terra | high             | FRESH_SPAWN     |
-| evidence recheck    | /root/evidence_recheck      | gpt-5.6-sol   | high             | FRESH_SPAWN     |
-| statistical pass 2  | /root/statistics_pass_2     | gpt-5.6-terra | high             | FRESH_SPAWN     |
-| quality audit       | /root/quality_audit         | gpt-5.6-sol   | high             | FRESH_SPAWN     |
-| report generation   | /root/report_generation     | gpt-5.6-terra | medium           | FRESH_SPAWN     |
+| Stage | Agent ID | Model | Reasoning effort | Start mode | Primary artifact |
+|---|---|---|---|---|---|
+| coordinator | root | gpt-5.6-sol | high | CURRENT_SESSION | `run_state.md` |
+| fresh_source_preprocessor | root/fresh_preprocessing | gpt-5.6-terra | medium | FRESH_SPAWN | `evidence_asset_inventory.md` |
+| main_quantitative_mapper | root/main_mapper | gpt-5.6-terra | medium | FRESH_SPAWN | `extraction/main_quantitative_evidence.md` |
+| support_quantitative_mapper | root/support_mapper | gpt-5.6-terra | medium | FRESH_SPAWN | `extraction/support_quantitative_evidence.md` |
+| numeric_consistency_reviewer | root/numeric_review | gpt-5.6-terra | medium | FRESH_SPAWN | `checkers/numeric_consistency.md` |
+| cross_source_consistency_reviewer | root/cross_source_review | gpt-5.6-terra | medium | FRESH_SPAWN | `checkers/cross_source_consistency.md` |
+| statistics_pass_1 | root/statistics_pass_1 | gpt-5.6-terra | high | FRESH_SPAWN | `checkers/statistical_pass_1.md` |
+| evidence_rechecker | root/evidence_recheck | gpt-5.6-sol | high | FRESH_SPAWN | `verification/evidence_recheck.md` |
+| statistics_pass_2 | root/statistics_pass_2 | gpt-5.6-terra | high | FRESH_SPAWN | `checkers/statistical_pass_2.md` |
+| evidence_quality_auditor | root/quality_audit | gpt-5.6-sol | high | FRESH_SPAWN | `quality/evidence_quality_audit.md` |
+| report_generator | root/report_generator | gpt-5.6-terra | medium | FRESH_SPAWN | `report_generation.md` |
 
-The coordinator will normalize the manifest IDs and complete final source-integrity and accounting checks after Markdown assembly.
+### Reproducibility Performance
 
-### Performance
-
-- **Target basis:** Six direct PDF sources comprising one 14-page main article and five heterogeneous support files (36, 3, 3, 43, and 1 pages); all 100 PDF pages require fresh inventory and mapping, with two long support documents, multiple cross-document checks, and no reusable evidence units. The 100-unit scope is near the 102-page calibration package but has one additional direct source and a fully fresh burden, so a bounded 40-60 minute planning target is selected.
+- **Target basis:** Six supplied PDFs totaling 100 pages require fresh native and layout extraction, complete mapping, two statistical passes, and report regeneration; this is close to the 102-unit calibration package but has 100 fresh-required units rather than 81, so a bounded 40-60 minute planning range is selected.
 - **Total source units:** 100
 - **Fresh-source units:** 100
 - **Target elapsed minutes:** 40-60
-- **Started UTC:** 2026-08-24T00:20:28Z
-- **Finished UTC:** 2026-08-24T01:07:37Z
-- **Observed elapsed minutes:** 47.2
+- **Started UTC:** 2026-08-24T01:52:52Z
+- **Finished UTC:** 2026-08-24T02:27:53Z
+- **Observed elapsed minutes:** 35.0
 - **Target status:** MET_TARGET
 - **Exceedance causes:** None
 
-### Token accounting
+### Token Accounting and Cost
 
 - **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE
 - **Total-token count status:** INCOMPLETE
@@ -365,9 +237,9 @@ The coordinator will normalize the manifest IDs and complete final source-integr
 - **Known token cost (USD):** 0.000000
 - **Estimated complete token cost (USD):** __
 
-| Model                             | Input tokens | Cached input tokens | Cache-write tokens | Output tokens | Reasoning tokens | Total tokens | Token-only API-equivalent estimate (USD) |
-|-----------------------------------|-------------:|--------------------:|-------------------:|--------------:|-----------------:|-------------:|-----------------------------------------:|
-| gpt-5.6-sol | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 known; complete estimate __ |
-| gpt-5.6-terra | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 known; complete estimate __ |
+| Model | Input tokens | Output tokens | Total tokens | Known token cost (USD) | Estimated complete token cost (USD) |
+|---|---:|---:|---:|---:|---:|
+| gpt-5.6-sol | 0 | 0 | 0 | 0.000000 | __ |
+| gpt-5.6-terra | 0 | 0 | 0 | 0.000000 | __ |
 
-The coordinator will replace these single-line accounting placeholders from the authoritative response-level ledger and dated pricing snapshot after this report-agent response. Cached input and cache-write values are input subsets, and reasoning is an output subset; they are not added again to total tokens. Per-agent detail is in [token_usage_summary.md](review_1_5_2/token_usage_summary.md); all monetary amounts are token-only API-equivalent estimates, not invoices.
+Token amounts, when finalized, are authoritative response-level runtime/API counts through Finished UTC. Costs are token-only API-equivalent estimates under the dated pricing snapshot, not invoices; non-token tools, containers, storage, subscriptions, taxes, and other vendor charges are excluded. See `review_1_5_2/token_usage_summary.md` for per-agent detail.

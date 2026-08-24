@@ -1,0 +1,286 @@
+ 1   Primary / Secondary Analysis
+ 2
+ 3
+ 4   Analysis Plan
+ 5
+ 6   The primary analysis was a hospital-level analysis. All hospitals had observations on the baseline
+ 7   period and on the intervention period. There are two types of outcome variables:
+ 8           those for which a patient can experience once, such as Hospital Mortality (binary)
+ 9           those for which a patient can experience more than once, such as Clinical
+10              Deterioration Events (count).
+11
+12   For each outcome a ‘numerator’ and a ‘denominator’ was identified. For a binary outcome, the
+13   numerator was the number of events in a hospital during a particular period (baseline or
+14   intervention), and the denominator was the number of discharges. For a count outcome the
+15   numerator was the number of events in a hospital during a particular period, and the denominator
+16   was the number of patient-days. See following table for variable and macro names.
+17
+18   Generalized estimating equations (GEE) methods were used to account for clustering by
+19   hospital, with an exchangeable correlation structure.
+20
+21   Binary outcomes:
+22   For a binary outcome, a GEE binomial model was used. There were two separate analyses, both
+23   using the number of events (x) and the number of discharges (n):
+24
+25   -   a logit link was used, so that the log-odds of the outcome was modelled as a function of the
+26       predictors
+27   -   an identify link was used, so that the probability of the outcome was modelled as a function
+28       of the predictors
+29
+30   The predictor variables were:
+31
+32          (1) the treatment dummy indicator and
+33          (2) the corresponding summary statistic (log odds or probability) for that hospital during
+34          the baseline period.
+35
+36   R code for GEE model of binary outcomes at the group level
+37
+38   # load geepack library
+39   # n is the number of discharges at a hospital
+40   # x is the number of events at that hospital in the post-
+41   #   randomization period
+42   # Hospital is the categorical variable indicating which hospital
+43   #   the above numbers come from
+44   # logitBaseline logit of baseline probability for this hospital,
+
+     EPOCH SAP                                                                                           1
+45   #   calculated with addition of 0.5 to numerator and 1 to
+46   #   denominator if x = 0
+47   # probBaseline baseline probability for this hospital,
+48
+49
+50
+51   #model for log-odds of outcome at the group level
+52
+53   GEEfit.OR <- geeglm(cbind(x, n-x)~Intervention + logitBaseline,
+54                             id = Hospital,
+55                             family = binomial,
+56                             data=EPOCH,
+57                             corstr = "exchangeable")
+58
+59
+60   # model for probability of outcome at the group level
+61
+62   GEEfit.RD <- geeglm(cbind(x, n-x)~Intervention + probBaseline,
+63                      id = Hospital,
+64                      family =binomial(link=make.link("identity")),
+65                      data=EPOCH,
+66                      corstr = "exchangeable")
+67
+68
+69   # model for probability of outcome at the indovidual level
+70
+71   # y = 1 for outcome, 0 for no outcome
+72
+73   GEEfit.RD <- geeglm(y~Intervention + probBaseline,
+74                       id = Hospital,
+75                      family =binomial(link=make.link("identity")),
+76                      data=EPOCH,
+77                      corstr = "exchangeable")
+78
+79
+80   Count outcomes:
+81
+82   For a count outcome, a GEE Poisson model was used. There were two separate analyses, both
+83   using the number of events (x) and the number of patient-days (time):
+84
+85   -   a log link was used, so that the log-rate was modelled as a function of the predictors
+86   -   an identify link was used, so that the rate was modelled as a function of the predictors
+87
+88   Both models included the number of patient days. With the log link, include log(patient days) as
+89   the offset. With the identity link, the code below shows how patient days were included
+     EPOCH SAP                                                                                      2
+ 90
+ 91   The predictor variables were
+ 92           (1) the treatment dummy indicator and
+ 93           (2) the corresponding summary statistic (log rate or rate) for that hospital during the
+ 94           baseline period.
+ 95   See following example R code for details.
+ 96
+ 97   # Modelling the log-rate
+ 98   # N is the number of patient days in the post-randomization
+ 99   #     period
+100   # x is the number of events in the post-randomization period
+101   # Hospital is the categorical variable indicating which hospital
+102   #   the above numbers come from
+103   # logBaseline is log of baseline rate for this hospital,
+104   #   calculated with addition of 0.5 to numerator if x = 0
+105   # Baseline is baseline rate for this hospital
+106
+107
+108   geefit.RR <- geeglm(x ~offset(log(N)+Intervention + logBaseline,
+109                       id = Hospital,
+110                       family = poisson,
+111                       data=EPOCH,
+112                       corstr = "exchangeable"))
+113
+114   # The linear model needs this rearrangement of the data to
+115   # incorporate the time at risk
+116   # Nlin – its coefficient is the usual care intercept
+117   # NlinG – its coefficient is the rate difference
+118   # NlinB – its coefficient is the increase in the rate per unit
+119   #    increase of the baseline rate
+120
+121    EPOCH$Nlin            <- EPOCH$N/1000
+122    EPOCH$GNlin           <- EPOCH$N*(d$Group=="BedsidePEWS")
+123    EPOCH$$BNlin          <- EPOCH$N*(EPOCH$Baseline)
+124
+125   # modelling the rate
+126
+127    geefit.RD <- geeglm(x~Nlin+GNlin+BNlin-1,
+128                       id = Hospital,
+129                       family = poisson("identity"),
+130                       data=EPOCH,
+131                       corstr = "exchangeable"))
+132
+133   Continuous outcomes at the individual level:
+134
+
+      EPOCH SAP                                                                                         3
+135   The patient level continuous outcomes in Tables 2 and S4 were also modelled with a GEE, using
+136   a Gaussian model. Although the data are not normal at the individual level, the large sample size
+137   and the robustness of GEE implies that comparisons of means are largely unaffected by this non-
+138   normality.
+139
+140   For an individual-level outcome, these models all had the same structure
+141
+142   # y is a continuous outcome for a patient
+143   # Hospital is the hospital the patient is in
+144   # x0 is the mean value at baseline for the hospital a
+145   # patient is in
+146
+147   geefit.RR <- geeglm(x ~Intervention + x0,
+148                       id = Hospital,
+149                       data=EPOCH,
+150                       corstr = "exchangeable")
+151
+152
+153   Sensitivity to model choice
+154
+155   As the results of the analysis of cluster RCTs can vary somewhat with the method of analysis,
+156   models for odds ratios, probabilities, and rate ratios were also run using several other approaches
+157
+158   Logit and log-rate models
+159      GEE on only post-intervention values
+160      Generalized linear mixed effects regression model (GLMER) on only post-intervention
+161          values
+162      GEE with both pre and post values as outcomes, estimating interaction between time and
+163          intervention
+164      GLMER with both pre and post values as outcomes, estimating interaction between time
+165          and intervention
+166      GEE on post-intervention values with baseline value as a covariate
+167      Generalized linear mixed effects regression model (GLMER) on post-intervention values
+168          with baseline value as a covariate
+169      Weighted linear model (weight = 1/(variance of logit) or weight = 1/variance (log-rate)))
+170          for logits (or log-rates), with baseline logit (or log-rate)as covariate.
+171      Quasibinomial logistic or Poisson regression (which allows for more variance than the
+172          binomial or Poisson) on post-data, with baseline logit (or log rate) as covariate
+173
+174   Models for probability or rate
+175       GEE on only post-intervention values (binomial or Poisson variance, identity link)
+176       GEE with both pre and post values as outcomes, estimating interaction between time and
+177          intervention (binomial or Poisson variance, identity link)
+
+
+      EPOCH SAP                                                                                         4
+178          GEE on post-intervention values with baseline value as a covariate (binomial or Poisson
+179           variance, identity link)
+180          Weighted linear model for post-probabilities (weight=1/(variance probability) or
+181           1/(variance weight)), with baseline probability or rate as covariate
+182          Quasibinomial regression (which allows for more variance than the binomial or Poisson)
+183           on post-data, with baseline probability as covariate (binomial or Poisson variance,
+184           identity link)
+185
+186   Shell Tables
+187
+188   Continuous outcomes
+      Resuscitation     B_rt/B_PatientDays            P_rt/P_PatientDays           Poisson
+      Team Calls
+
+      Stat Calls        B_sc/B_PatientDays            P_sc/P_PatientDays           Poisson
+
+      Urgent ICU        B_rr/B_PatientDays            P_rr/P_PatientDays           Poisson
+      Consultations
+
+      Urgent ICU        B_uicu/B_PatientDays          P_uicu/P_PatientDays         Poisson
+      Admissions
+
+      Unplanned ICU     B_icur/                       P_icur/                      Poisson
+      Readmissions      B_PatientDischargesICU        P_PatientDischargesICU
+
+      Unplanned         B__hr/                        P__hr/                       Poisson
+      Hospital          B_PatientDischarges           P_PatientDischarges
+      Readmission
+189
+
+
+
+
+      EPOCH SAP                                                                                     5
+190
+191
+192   Subgroup Analysis Plan
+193
+194   Two subgroup analyses are planned using the same methodology described in the previous
+195   section. In the first, ECMO, the hospitals will be divided into two groups: those that have ECMO
+196   service and those who do not. In the second, MET, the hospitals will be divided into two groups:
+197   those that have MET service and those who do not.
+198
+199   For each subgroup analysis, the treatment effect (BedsidePEWS vs. usual care) will be estimated
+200   in each group of hospitals and the presence of a subgroup effect will be assessed in a single GEE
+201   model with a one-term treatment by subgroup interaction term.
+202
+
+
+
+
+      EPOCH SAP                                                                                       6
+203   ICU Analysis
+204
+205
+206   Analysis Plan
+207
+208   This was a patient-level analysis that followed the same general procedures as outlined above.
+209   However, the data has a record for each admission to the ICU, and a patient may have more than
+210   one admission; the table below shows how these were handled. Furthermore, a few patients had
+211   admissions to the same ICU in both study periods; these patients were eliminated from this
+212   analysis. The analysis was done with one record per patient as described in the table below.
+213
+      Outcome                              Description of the per patient outcome variable
+
+
+      Total length of stay                 The sum over admissions of the lengths of stay
+
+
+      Average length of stay               The average over admissions of the lengths of stay
+
+
+      PIM at admission                     The average over admissions of the PIM at admission
+
+
+      PIM II Prediction Mortality (/1000   The average probability over admissions of the PIM
+      urgent ICU discharges)               II predicted mortality
+      (inverse-logit of PIM)
+
+      Ventilation Free Days                The days free of ventilation for the first admission
+
+
+      Days of technology use               Sum of all days over all admissions of mechanical
+                                           ventilation days, nitric oxide days, ECMO days and
+                                           dialysis days
+
+      Use of a technology (HFOV,           Binary indicator of whether the technology was used
+      ECMO, NO. Dialysis, MV)              on any of the days in the ICU.
+
+      24-hour PELOD                        The average over admissions of the PELOD score for
+                                           the first 24 hours
+
+      PELOD ICU Stay                       The average over admissions of the PELOD score for
+                                           the entire admission
+214
+
+
+
+
+      EPOCH SAP                                                                                    7
+

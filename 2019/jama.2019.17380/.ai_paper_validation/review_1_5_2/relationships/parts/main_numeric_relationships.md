@@ -1,51 +1,41 @@
-# Main Numeric Relationship Inventory Part — DOC-001
+# Main Numeric and Reporting Relationships — DOC-001
 
-All IDs are provisional (`MN`) for coordinator assignment to the canonical `N` sequence. Exact evidence locations are PDF pages of `jama_de_boer_2019_oi_190122.pdf` (DOC-001).
+Provisional IDs are local to this mapper. Locations are `jama_de_boer_2019_oi_190122.pdf#page=N`.
 
-| Provisional ID | Relationship / printed values | Exact location |
+| ID | Relationship and exact evidence locations | Mapping status / observation |
 |---|---|---|
-| MN001 | Four factorial randomized cells reconcile: 370+333+289+320=1312 randomized. | p.1 abstract; p.5 Table 1; p.6 Fig.1 |
-| MN002 | Completion: 934/1312=71% as printed. | p.1 abstract; p.4 retention |
-| MN003 | Abstract population characteristics: mean age 67.6 y, 46% women, 31% minority; baseline eGFR 85.8 (SD 22.1). | p.1 abstract |
-| MN004 | Vitamin-D eGFR change comparison: −12.3 vs −13.1, modeled difference 0.9 (−0.7 to 2.5) mL/min/1.73 m². | p.1 abstract; p.4 results; p.8 Table 2 |
-| MN005 | Omega-3 eGFR change comparison: −12.2 vs −13.1, difference 0.9 (−0.7 to 2.6). | p.1 abstract; p.4 results; p.8 Table 2 |
-| MN006 | Adverse-event component counts: stones 32+26=58; GI bleed 28+17=45. | p.1 abstract; p.6 adverse events |
-| MN007 | Intervention amounts: D3 2000 IU/d; omega-3 1 g/d, with EPA 465 mg+DHA 375 mg; nonstudy D limit 800 IU/d. | pp.1-2 |
-| MN008 | Parent trial N=25 871; ancillary enrolment goal 1320, final N=1312. | p.2 methods |
-| MN009 | Randomization blocks of 8 and four-cell 2×2 assignment. | p.2 methods |
-| MN010 | Secondary outcome thresholds: ≥40% eGFR decline and ACR doubling with final ≥30 mg/g; post hoc ≥30% decline. | p.3 methods |
-| MN011 | Collection schedule baseline/year 2/year 5; adherence threshold ≥two-thirds. | p.3 methods |
-| MN012 | Sample-size relationship: N=1320, 80% power, detectable difference ≥2.3, two-sided α=.05, assumed 80% follow-up. | p.3 methods |
-| MN013 | Stated conversion: 0.75 mL/min/1.73 m²/y ×5=3.75 over five years. | p.3 methods; p.7 discussion |
-| MN014 | Full analytic vs complete-case eGFR change: −12.7 (−13.6 to −11.7) vs −12.4 (−13.3 to −11.4), n=932 complete case. | p.4 results |
-| MN015 | Baseline/2-y/5-y overall eGFR: 85.8 (22.1), 80.0 (21.5), 73.5 (21.9). | p.4 results |
-| MN016 | Baseline eGFR <60: 165 (13%); ACR ≥30:117 (9%), including ≥300:24 (2%). | p.4 results |
-| MN017 | Blood retention: 1090/1312=83%, year-5 934/1312=71% and 76% alive; urine:1091=83%, year-5 945=72% and 77% alive. | p.4 results |
-| MN018 | Medication adherence at 2/5 y: D assignment 92%/88%; omega-3 91%/89%. | p.4 results |
-| MN019 | Biomarker contrast: D 25(OH)D 41.4 (11.0) vs 29.8 (11.1) ng/mL; omega-3 index 3.6% (1.0) vs 2.3% (0.8). | p.4 results |
-| MN020 | Medication time values: DPP-4 inhibitor 9%→14%, ARB 20%→29%, SGLT2 initiated 5%. | p.4 results |
-| MN021 | Composite event components: total 164; eGFR decline 80, kidney failure 11, deaths 80, with overlaps. | p.4 results |
-| MN022 | Geometric ACR year 2/year 5: 5.1 (4.6-5.7) and 9.2 (8.4-10.1) mg/g; narrative approximately threefold baseline-year-5. | p.4 results |
-| MN023 | Table 1 four-arm baseline characteristics, all counts/percentages and continuous values, including nonmissing race Ns 361/327/284/314. | p.5 Table 1 |
-| MN024 | Table 1 sex counts reconcile each randomized arm: 184+186=370; 143+190=333; 131+158=289; 151+169=320. | p.5 Table 1 |
-| MN025 | Table 1 duration categories and 25(OH)D categories are percentages of nonmissing responses, not necessarily arm Ns. | p.5 Table 1 footnote |
-| MN026 | Screening flow: 3244 assessed−1932 excluded=1312 randomized; 438+1494=1932 excluded. | p.6 Fig.1 |
-| MN027 | D3+omega-3 flow: 370 randomized/primary/adverse; 303 blood; 259 complete case; 260 completed; 110 lost; 89 no final blood; 21 deaths; 111 exclusion includes 1 baseline-eGFR missing. | p.6 Fig.1 |
-| MN028 | D3+placebo flow: 333 randomized/primary/adverse; 280 blood; 236 complete/completed; 97 lost; 78 no final blood; 19 deaths; 1 of 97 lost also baseline-eGFR missing. | p.6 Fig.1 |
-| MN029 | Placebo+omega-3 flow: 289 randomized/primary/adverse; 242 blood; 211 complete; 212 completed; 77 lost; 56 no final blood; 21 deaths; 1 baseline-eGFR missing. | p.6 Fig.1 |
-| MN030 | Two-placebo flow: 320 randomized/primary/adverse; 265 blood; 226 complete/completed; 94 lost; 75 no final blood; 19 deaths; 1 of 94 lost also baseline-eGFR missing. | p.6 Fig.1 |
-| MN031 | Figure 2 contributor counts at 0/2/5 years for eGFR D/placebo 701/607,531/459,496/438; omega-3 contrast same; ACR 702/609,529/463,505/440. | p.7 Fig.2 |
-| MN032 | Table 2 vitamin-D model values at baseline/year2/year5, including Ns, eGFR, changes, and differences: 701/607;531/459;496/438. | p.8 Table 2 |
-| MN033 | Table 2 omega-3 model values at baseline/year2/year5, including Ns, eGFR, changes, and differences: 657/651;499/491;472/462. | p.8 Table 2 |
-| MN034 | Table 2 defines positive difference as higher year-5 eGFR/slower decline active vs placebo; change data use multiple imputation; four baseline eGFR missing. | p.8 Table 2 footnotes |
-| MN035 | Figure 3 raw subgroup n and mean(SD) changes for six vitamin-D subgroup families are fully mapped in main evidence artifact. | p.8 Fig.3 |
-| MN036 | Figure 4 raw subgroup n and mean(SD) changes for five omega-3 subgroup families are fully mapped in main evidence artifact. | p.9 Fig.4 |
-| MN037 | Table 3 vitamin-D composite: events 85 vs79; rates2.5 vs2.7 per100 PY; rate difference −0.2; HR0.92. | p.9 Table 3 |
-| MN038 | Table 3 vitamin-D ≥40% decline: 42 vs38; rates1.6 vs1.7; difference −0.1; HR0.97. | p.9 Table 3 |
-| MN039 | Table 3 vitamin-D ACR:111 vs74; rates4.4 vs3.3; difference1.1; HR1.34. | p.9 Table 3 |
-| MN040 | Table 3 omega-3 composite:86 vs78; rates2.7 vs2.5; difference0.3; HR1.11. | p.9 Table 3 |
-| MN041 | Table 3 omega-3 ≥40% decline:40 vs40; rates1.6 vs1.6; difference0.0; HR0.99. | p.9 Table 3 |
-| MN042 | Table 3 omega-3 ACR:96 vs89; rates4.0 vs3.7; difference0.3; HR1.08. | p.9 Table 3 |
-| MN043 | Table 3 rates are per 100 person-years; eGFR analyses exclude four missing baseline eGFR and ACR analysis one missing baseline ACR. | p.9 Table 3 footnotes |
-| MN044 | Discussion comparison: mean eGFR decrease 12.7 over five years vs expected aging 2-3 over five years; detectable 2.3. | p.6 discussion |
-| MN045 | Follow-up limitation repeats: final serum 71%, any postrandomization serum 83%. | p.10 limitations |
+| MAIN-N001 | Randomized four cells sum: 370+333+289+320=1312 (p1 abstract; p6 Fig1). | MAPPED; reconciles. |
+| MAIN-N002 | Fig1 screening: 438 ineligible+1494 declined=1932 excluded; 1932+1312 randomized=3244 assessed (p6). | MAPPED; reconciles. |
+| MAIN-N003 | Each Fig1 cell randomization equals primary-analysis and adverse-event population: 370/333/289/320 (p6); abstract (p1) repeats cells. | MAPPED; reconciles. |
+| MAIN-N004 | Fig1 complete/loss/death relation per cells: 260+110=370;236+97=333;212+77=289;226+94=320. The no-final-blood figures 89/78/56/75 include deaths and must not be added to loss/death (p6). | MAPPED; denominators explicit. |
+| MAIN-N005 | Fig1 complete case plus exclusions:259+111=370;236+97=333;211+78=289;226+94=320; missing baseline eGFR 1/0/1/0 (p6). | MAPPED; reconciles. |
+| MAIN-N006 | Retention narrative: blood 1090/1312=83%; year5 934/1312=71%, 934/1229 alive≈76%; urine 1091/1312=83%; y5 945/1312=72%,945/1229≈77% (p4). | MAPPED; displayed rounding. |
+| MAIN-N007 | Baseline eGFR<60:165/1312=12.6%=13%; ACR>=30:117/1312=8.9%=9%; ACR>=300:24/1312=1.8%=2% (p4). | MAPPED; displayed rounding. |
+| MAIN-N008 | Baseline mean eGFR 85.8(SD22.1) in abstract (p1), narrative (p4), and Figure/Table context (pp7-8). | MAPPED; matched repetition. |
+| MAIN-N009 | Participant characteristics summary: 46% women and31% minority (p1,p2,p4), attributable to table cell data with nonmissing denominators (p5). | MAPPED; matched summary/definitions. |
+| MAIN-N010 | Table 1 four-cell baseline quantities: demographics, history, medications, supplements, physical and laboratory values, as transcribed in extraction map (p5); percentages are nonmissing-response percentages. | MAPPED; matrix relationship. |
+| MAIN-N011 | Table1 race rows sum to stated nonmissing Ns:361,327,284,314 (p5). | MAPPED; reconciles. |
+| MAIN-N012 | Table1 diabetes-duration category counts sum to 369,332,288,319 (one missing each cell) and percentages use nonmissing responses (p5). | MAPPED; denominator definition explains totals. |
+| MAIN-N013 | Baseline 25OHD categories total355,317,274,311; categories are nonmissing-response percentages (p5). | MAPPED. |
+| MAIN-N014 | Interventions: vitamin D3 2000 IU/d and omega 1g/d (EPA465mg+DHA375mg); nonstudy vitamin D<=800IU/d (p1,p2). | MAPPED; unit/quantity labels. |
+| MAIN-N015 | Sample-size rule: N1320, 80% power, detectable 2.3 mL/min/1.73m2 over5y, 80% return, two-sided alpha .05 (p3). | MAPPED. |
+| MAIN-N016 | eGFR time course: 85.8(SD22.1) baseline,80.0(21.5)y2,73.5(21.9)y5; full change -12.7(-13.6,-11.7); complete case n932 -12.4(-13.3,-11.4) (p4). | MAPPED. |
+| MAIN-N017 | Vitamin-D primary data Table2: baseline 701 vs607; y2 531 vs459 with changes -5.2 vs-6.1/diff0.9; y5 496 vs438 with changes -12.3 vs-13.1/diff0.9 (p8). | MAPPED; see S001. |
+| MAIN-N018 | Omega-3 primary data Table2: baseline657 vs651; y2 499 vs491 with changes -5.7 vs-5.5/diff-0.3; y5 472 vs462 with changes -12.2 vs-13.1/diff0.9 (p8). | MAPPED; see S002. |
+| MAIN-N019 | Primary results (values and CI) repeat between p1 abstract, p2 Key Points, p4 narrative, p8 Table2, and p8 conclusion-related text. | MAPPED; matched results. |
+| MAIN-N020 | Figure2 vitamin-D counts match Table2 vitamin-D eGFR N: placebo607/459/438, active701/531/496 (pp7-8). | MAPPED; reconciles. |
+| MAIN-N021 | Figure2 omega eGFR counts print placebo607/459/438 and active701/531/496, but Table2 omega cells are651/491/462 and657/499/472 (pp7-8). | OBSERVATION RECORDED; candidate assessment deferred. |
+| MAIN-N022 | Figure2 omega urine-ACR counts print same as vitamin-D counts: placebo609/463/440 and active702/529/505 (p7); factorial omega analysis would have different group memberships. | OBSERVATION RECORDED; no main-table comparator on this page. |
+| MAIN-N023 | Adherence quantities: D 92%/88%, omega91%/89% at y2/y5 (p4); biomarker contrasts 41.4 vs29.8ng/mL and3.6% vs2.3% (p4). | MAPPED; inferential links S003-S004. |
+| MAIN-N024 | Composite components:164 participants;80 measured decline,11 kidney failure,80 deaths; overlap stated (p4). | MAPPED; totals not expected to sum because overlap. |
+| MAIN-N025 | ACR geometric means y2 5.1(4.6-5.7),y5 9.2(8.4-10.1) mg/g; narrative approximately threefold (p4). | MAPPED. |
+| MAIN-N026 | Adverse events: stones58=32 vitamin-D+26 placebo; GI bleeding45=28 omega+17 placebo (p1,p4). | MAPPED; reconciles. |
+| MAIN-N027 | Table3 D3 events/rates/rate-differences:85/2.5 vs79/2.7/-0.2;42/1.6 vs38/1.7/-0.1;111/4.4 vs74/3.3/1.1 (p9). | MAPPED; rate unit per100 person-years. |
+| MAIN-N028 | Table3 omega events/rates/rate-differences:86/2.7 vs78/2.5/0.3;40/1.6 vs40/1.6/0.0;96/4.0 vs89/3.7/0.3 (p9). | MAPPED; rate unit per100 person-years. |
+| MAIN-N029 | Table3 exclusions: eGFR outcomes exclude4 baseline eGFR missing; ACR excludes1 baseline ACR missing (p9 footnote). | MAPPED; population distinction. |
+| MAIN-N030 | Fig3 subgroup displayed Ns/means/SDs/P interactions, all categories and randomized omega strata (p8). | MAPPED; full matrix in extraction map. |
+| MAIN-N031 | Fig4 subgroup displayed Ns/means/SDs/P interactions, all categories and randomized D3 strata (p9). | MAPPED; full matrix in extraction map. |
+| MAIN-N032 | Figure 3/4 effects are change from baseline to year5, active-placebo, adjusted age/sex/baseline ACR; BMI definition kg/m2 (pp8-9 captions). | MAPPED; measure/direction labels. |
+| MAIN-N033 | Discussion numerical comparisons: 12.7 decline/5y vs aging2-3/5y; detectable2.3; surrogate0.75/y=3.75/5y (pp5,7). | MAPPED. |
+| MAIN-N034 | Prespecified thresholds: >=40% decline and ACR doubling with final >=30mg/g; post hoc >=30% decline (pp3-4,p9). | MAPPED. |
+| MAIN-N035 | Full population M=20 imputation; complete case n932; “similar” sensitivity analyses (pp3-4). | MAPPED; analytic population/model label. |

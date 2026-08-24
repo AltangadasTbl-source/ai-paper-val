@@ -1,70 +1,85 @@
-# Cross-source consistency review
+# Cross-Source Consistency Review
 
 ## Scope and method
 
-This independent lane compared every canonical numeric relationship `N001`–`N098` and every canonical statistical relationship `S001`–`S055` against the newly prepared native-text/layout-text evidence and, only where explicitly authorized, the supplied OCR provenance assets. It did not use an old audit output, run OCR, or use web evidence.
+This lane reviewed all current canonical relationships: numeric `N001`--`N051` and statistical `S001`--`S038`. Evidence was limited to freshly prepared assets for the three supplied direct sources: DOC-001 (main article), DOC-002 (protocol versions, amendments, and SAP), and DOC-003 (eTables). No web source, legacy audit derivative, or new OCR was used.
 
-For every proposed difference, the comparison first matched the population, analysis set, time point, treatment contrast, model/test, endpoint, unit/scale, reference group, and printed precision. Planned protocol/SAP inputs, administrative deadlines, blank forms, and externally cited studies were not substituted for observed CAAM results.
+For every comparison, the review first matched the analysis population, endpoint, time point, treatment contrast, model or test, measure, unit, reference group, version, and displayed precision. Planned values were not compared as if they were observed results. The records below are candidate signals for human adjudication, not stable candidate IDs or judgments.
 
-## Distinct cross-source candidate propositions
+## Qualifying candidate signals
 
-### CROSS-CAND-001 — Per-protocol ETI ROSC percentage conflicts with its displayed numerator, denominator, and signed risk difference
+### XSC-01 -- Per-protocol ETI ROSC percentage does not match its printed numerator, denominator, or signed difference
 
-- **Locations:** [main article Table 2, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6), Per-Protocol Analysis, “Return of spontaneous circulation”; supporting fresh layout transcription `preprocessing/pymupdf_layout_text/DOC-001_jama_jabre_2018_oi_180004.txt` lines 549-567; canonical relationships `N022` and `S008`.
-- **Matched comparison:** Per-protocol population, ROSC outcome (not survival or CPC), BMV minus ETI risk-difference column, and percentage scale.
-- **Printed values:** BMV `342 (34.4)` of `n=995`; ETI `377 (30.0)` of `n=943`; printed BMV-minus-ETI difference `−5.6` percentage points (95% CI `−9.9 to −1.3`), `P=.01`.
-- **Comparison logic:** `342 / 995 × 100 = 34.37%`, compatible with `34.4%`. `377 / 943 × 100 = 39.98%`, which rounds to `40.0%`, not `30.0%`. The count-derived difference is `34.37 − 39.98 = −5.61` percentage points, compatible with the printed `−5.6`; it is incompatible with `34.4 − 30.0 = +4.4` percentage points. Thus the ETI printed percentage conflicts with both its own count/denominator and the table's signed difference/CI direction.
-- **Supported alternative(s):** The supplied evidence supports `40.0%` as the percentage consistent with the displayed `377/943` and `−5.6` difference. It does not establish whether the error was confined to the percentage glyph or arose upstream in a source table.
-- **Human verification question:** In the publisher-quality Table 2 source, should the ETI per-protocol ROSC display read `377 (40.0)` rather than `377 (30.0)`? Confirm the underlying PP ROSC count and the risk-difference computation.
+- **Category:** Denominator, proportion, or total inconsistency; cross-document numeric consistency check.
+- **Exact locations:** [DOC-001 Table 2, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6), Per-Protocol Analysis, Return of spontaneous circulation; mapped in `N019` and `S013`.
+- **Matched result:** Per-protocol participants, ROSC, BMV minus ETI percentage-point contrast.
+- **Printed values:** BMV `342/995 (34.4%)`; ETI `377/943 (30.0%)`; difference `-5.6` percentage points (95% CI `-9.9` to `-1.3`), `P=.01`.
+- **Comparison logic and calculation:** `342/995 = 34.37%`, which rounds to `34.4%`. `377/943 = 39.98%`, which rounds to `40.0%`, not `30.0%`. The count-derived contrast is `34.37 - 39.98 = -5.61` percentage points, agreeing with printed `-5.6`; the two displayed percentages instead imply `+4.4` percentage points.
+- **Supported alternative:** The displayed count, denominator, signed difference, and CI direction all support an ETI percentage of `40.0%`. They do not establish whether only the percentage display or an upstream result was affected.
+- **Human verification question:** Confirm the PP ROSC numerator, denominator, and published percentage in the production table; should the ETI display be `377 (40.0%)`?
 
-### CROSS-CAND-002 — Per-protocol day-28 survival CI is incompatible with the displayed event rates and accompanying P value at its stated percentage-point scale
+### XSC-02 -- Per-protocol day-28-survival confidence-interval display requires verification against its matched counts and scale
 
-- **Locations:** [main article Table 2, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6), Per-Protocol Analysis, “Survival at 28 d”; fresh simple/layout transcriptions `preprocessing/pymupdf_simple_text/DOC-001_jama_jabre_2018_oi_180004.txt` lines 776-783 and `preprocessing/pymupdf_layout_text/DOC-001_jama_jabre_2018_oi_180004.txt` lines 549-551; canonical `N021` and `S008`.
-- **Matched comparison:** Per-protocol population, day-28 survival (not the primary CPC<=2 endpoint), BMV minus ETI absolute percentage-difference column, and two-sided 95% CI/P-value display.
-- **Printed values:** BMV `54/995 (5.4%)`; ETI `51/943 (5.4%)`; printed difference `0.1` percentage points, 95% CI `−10 to 9.7`, `P=.99`.
-- **Comparison logic:** The count-derived rates are `5.427%` and `5.408%`, a difference of `+0.018864` percentage points, which rounds to `0.0`, not the printed `0.1`; that distinct point-display issue is registered separately as C002. As a diagnostic approximation only, a standard unpooled binomial calculation from these two displayed numerators/denominators gives an approximate 95% risk-difference interval of about `−2.00 to 2.04` percentage points (standard error about `1.03` percentage points), not a span of `−10 to 9.7` percentage points. The same-row `P=.99` is retained as observed near-null context; it does not independently identify the CI variance or prove the printed span incompatible. The table footnote says the P values were calculated using chi-square or Fisher exact tests, and the supplied SAP says the secondary rate outcomes use percentage/difference estimates and 95% CIs, but neither gives the row-specific CI construction. The displayed CI scale/span therefore requires source verification against the matched counts and rates without asserting a replacement interval.
-- **Supported alternative(s):** The evidence supports that the printed interval requires source verification. The supplied sources do **not** identify the intended lower/upper limits or prove that a decimal point alone accounts for the display; no replacement interval is asserted here.
-- **Human verification question:** What are the generated 95% BMV-minus-ETI risk-difference CI limits for PP day-28 survival, and does the publisher table omit/misplace a decimal or contain another transcription error?
+- **Category:** Statistical reporting inconsistency.
+- **Exact locations:** [DOC-001 Table 2, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6), Per-Protocol Analysis, Survival at 28 d; mapped in `N020` and `S010`.
+- **Matched result:** Per-protocol participants, all-cause survival at day 28, BMV minus ETI percentage-point contrast, two-sided 95% CI.
+- **Printed values:** BMV `54/995 (5.4%)`; ETI `51/943 (5.4%)`; difference `0.1` percentage points, 95% CI `-10 to 9.7`, `P=.99`.
+- **Comparison logic and calculation:** The count-derived rates are `5.427%` and `5.408%` (difference `+0.019` percentage points). As a diagnostic approximation, the unpooled binomial standard error from the printed counts is about `1.03` percentage points, giving an approximate two-sided 95% risk-difference interval of `-2.00` to `2.04` percentage points. The displayed interval spans `19.7` percentage points despite a roughly 1,000-per-arm population. The SAP specifies a 95% CI for secondary proportion differences but does not supply this row's exact CI method, so this approximation does not establish a replacement value.
+- **Supported alternative:** A decimal-place, transcription, or method/population-label explanation remains possible; no intended interval is recoverable from supplied evidence alone.
+- **Human verification question:** Retrieve the generated PP day-28-survival risk-difference CI and confirm the intended endpoints and precision of both displayed limits.
 
-## Explicit coverage register — numeric relationships
+### XSC-03 -- Main article reports 20 EMS centres whereas the supplied eTable lists 21 contributing investigator centres
 
-| Relationship IDs reviewed | Cross-source result after matching controls |
+- **Category:** Cross-document numeric inconsistency.
+- **Exact locations:** [DOC-001 Methods, PDF p. 2](../../../jama_jabre_2018_oi_180004.pdf#page=2) states that the trial involved `20` prehospital EMS centres (`15` in France and `5` in Belgium); [DOC-003 eTable 1, PDF p. 2](../../../joi180004supp2_prod.pdf#page=2) lists 21 distinct investigator-centre rows: 1, 24, 5, 9, 12, 17, 13, 8, 3, 14, 22, 11, 15, 23, 16, 18, 20, 25, 7, 6, and 2. Mapped in `N044`.
+- **Matched result:** Trial contributing-centre count, not the protocol's planned-centre total. The eTable is explicitly identified by the main article as the detailed source for inclusions by investigator centre.
+- **Printed values and calculation:** The eTable has 21 labelled contributor rows; its BMV and ETI contributions sum respectively to the main ITT totals `1018` and `1022`. Centre 2 contributes `0` BMV and `3` ETI cases, so all 21 rows contain at least one participant across the two arms.
+- **Comparison logic:** On the ordinary reading of `EMS centers` and `investigator centre`, the reported counts differ by one for the same enrolled trial. The supplied files do not state a one-to-many mapping that would make 21 investigator-centre rows correspond to 20 EMS centres.
+- **Supported alternative:** One EMS centre may have been represented by more than one investigator-centre record, or the terms may be administrative rather than coextensive. The protocol amendment's planned 25-centre version is not used as the comparator.
+- **Human verification question:** Provide the trial centre master list and identify whether the 21 eTable rows represent 20 EMS centres; if so, state the mapping or correct the relevant published count.
+
+### XSC-04 -- Published primary-endpoint definition omits the later protocol's baseline-neurologic-disability qualification
+
+- **Category:** Measure, label, or scale inconsistency.
+- **Exact locations:** [DOC-001 abstract, PDF p. 1](../../../jama_jabre_2018_oi_180004.pdf#page=1) and [Methods, PDF p. 3](../../../jama_jabre_2018_oi_180004.pdf#page=3) define favorable outcome as CPC `1 or 2`; [DOC-002 amendment comparison, PDF p. 110](../../../joi180004supp1_prod.pdf#page=110), protocol v1.4 dated 22 September 2015, retains CPC `<=2` but states that, for neurologic disability before randomization, survival with the same degree of disability is considered favorable. Mapped in `N041`, `N051`, and `S037`.
+- **Matched result:** Primary 28-day favorable-neurologic-survival endpoint. The comparison preserves the amendment version and is not a comparison to the earlier SAP alone.
+- **Printed statements:** The main article's definition is CPC 1--2 with no baseline-disability qualification. The amendment explicitly adds the qualification to avoid bias from the pre-arrest neurologic state.
+- **Comparison logic:** The later protocol text expands or qualifies the outcome classification beyond a CPC 1--2-only rule. The main article presents only the latter rule while reporting the primary counts `44/1018` and `43/1022`; supplied sources do not say whether any participant's classification depended on the qualification.
+- **Supported alternative:** The article may use a concise description while its analysis implemented the amended definition, or no participant required the qualification. Neither alternative can be confirmed from the supplied package.
+- **Human verification question:** Which primary-endpoint algorithm was applied to the reported primary counts, and were pre-randomization neurologic-disability cases adjudicated under the v1.4 qualification?
+
+### XSC-05 -- Protocol's composite technique-failure definition is not reconcilable with the smaller ETI failure count if the article uses the same endpoint
+
+- **Category:** Measure, label, or scale inconsistency.
+- **Exact locations:** [DOC-002 amended protocol comparison, PDF p. 110](../../../joi180004supp1_prod.pdf#page=110) defines technique failure as 28-day mortality, regurgitation during the procedure, or failure to ventilate/intubate; [DOC-001 abstract, PDF p. 1](../../../jama_jabre_2018_oi_180004.pdf#page=1), [Results, PDF p. 4](../../../jama_jabre_2018_oi_180004.pdf#page=4), and [Table 3, PDF p. 6](../../../jama_jabre_2018_oi_180004.pdf#page=6) report ETI failure `21/996 (2.1%)`; Table 2 reports ITT ETI 28-day deaths `54/1022`. Mapped in `N012`, `N015`, `N022`, `N051`, `S015`, and `S037`.
+- **Matched comparison:** The issue is definitional, not a direct comparison of ITT and safety rates. The safety ETI group has `999` people; only `24` of the `1023` ETI-randomized patients are excluded from that actual-treatment group in the flow diagram.
+- **Comparison logic and calculation:** The flow shows 24 participants outside the 999-person ETI safety display, and the failure row has a further three-person denominator reduction to 996. Under a conservative conditional alignment, `54 - 24 - 3 = 27`, still exceeding 21. This supports a definition/population question if the article row is the protocol composite, but exact participant-set alignment is not mechanically established from aggregate ITT and actual-treatment displays.
+- **Supported alternative:** The article's `BMV or ETI failure` may be a narrower procedural-failure measure, rather than the protocol's composite `technique failure`; a revised final analysis specification could also define it differently. The supplied sources do not define the article's row sufficiently to resolve this.
+- **Human verification question:** What exact analysis definition and source population produced the Table 3 `failure` row, and was it intentionally distinct from the amended protocol's composite technique-failure endpoint?
+
+## Complete coverage register
+
+| Relationships reviewed | Matched-source result |
 |---|---|
-| N001-N002 | Allocation/completion totals reconcile: arm sums and completion rounding agree across abstract, figure, and narrative. |
-| N003-N009 | ITT primary, survival/admission/ROSC, and actual-treatment safety values reconcile across the matched abstract/narrative/tables with their row-specific denominators. |
-| N010-N013 | Figure receipt/analysis branches reconcile where branches are non-overlapping; rescue-event rows explicitly permit multiple reasons and were not converted into persons. |
-| N014-N019 | Table 1 count percentages, category totals, row-specific denominators, and continuous-measure labels/units are compatible with the displayed values. |
-| N020 | ITT CPC categories total their matched denominators and CPC 1+2 yields the primary numerators. |
-| N021 | PP survival and CPC distribution counts/percentages are internally compatible; the CI issue is separately recorded in CROSS-CAND-002. |
-| N022 | PP admission is compatible; PP ROSC has the separate percentage conflict in CROSS-CAND-001. |
-| N023-N024 | Table 3 preserves distinct row denominators; complication counts/percentages and scale labels are compatible. |
-| N025 | Centre 5 population and CCF percentage are coherent; the pause arithmetic is coherent, but the named count-versus-seconds label remains the separately registered NUM-CAND-003/C004 issue. No additional cross-source proposition is created. |
-| N026-N029 | Planned design values are distinct from observed results; hierarchy/PP model values and discussion repeat are matched to their proper analysis sets. |
-| N030-N046 | Protocol V1.3 endpoint, secondary inventory, planned recruitment/sample-size/interim, centre/follow-up, administrative, and mRS-scale definitions match only like-for-like main/SAP content; no concrete numeric conflict. |
-| N047-N052 | Protocol V1.4 scales, IDS/VAS/Han units, and blank SAE identifier fields remain definition/instrument evidence, not observed rates; no conflict. |
-| N053-N084 | Repeated protocol endpoint/NI/design/analysis/missingness and recruitment statements are genuine planned-definition overlaps. The `5/centre/month` recruitment target is a rounded operational target, not an asserted equality to 2,000/20/24; no candidate. |
-| N085-N093 | Later forms/amendment/SAP scales, centre amendment, endpoint, analysis-set, rounding, and missing-data statements agree with the appropriately versioned protocol content. |
-| N094-N095 | eTable 1 centre counts total BMV 1018 and ETI 1022; one-decimal percentages are compatible. Centre labels are compatible with the amendment context and do not infer zero-participant centres. |
-| N096-N098 | eTable 2 post-hoc rows use their own denominators; count-derived percentages, signed differences, CIs, and SAP direction/end-point labels are compatible after population matching. |
+| N001-N008 | Allocation, analysis-set, baseline denominator, component-total, and one-decimal percentage relationships reconcile after retaining stated row denominators and overlapping-exclusion footnotes. |
+| N009-N018 | ITT and PP primary/survival/admission/CPC results reconcile across abstract, narrative, figure, and Table 2 when population and endpoint are matched. |
+| N019-N020 | XSC-01 and XSC-02 recorded above. |
+| N021-N028 | Safety/adverse-event, CCF/pauses, scale, unit, analysis-set, and time-window records reconcile after retaining their row-specific denominators and measures. |
+| N029-N040 | Original and early revised protocol endpoint, scale, population, planned recruitment, and analysis definitions have no additional qualifying contradiction after planned-versus-observed and version matching. |
+| N041-N043 | Primary-endpoint and noninferiority definitions support XSC-04; the published primary result and margin conclusion otherwise match the appropriate rule. |
+| N044-N045 | eTable 1 denominators and rounded percentages reconcile; its 21 contributor rows support XSC-03. |
+| N046-N050 | eTable 2 post-hoc results, VAS, IDS, mRS, and CPC records reconcile with their distinct populations, contrasts, and scale definitions. |
+| N051 | Versioned complication/failure definitions support XSC-04 and XSC-05; later additions are not otherwise treated as contradictions. |
+| S001-S020 | Main primary, secondary, safety, post-hoc, and scale relationships reviewed. XSC-01, XSC-02, and XSC-05 are the applicable signals; all other like-for-like statistical displays are coherent at shown precision. |
+| S021-S029 | Original/revised protocol ITT/PP, margin, CI, test, interim, sample-size, safety, and missing-data statements are planned definitions and have no additional matched conflict. |
+| S030-S034 | SAP primary rule, analysis-set, missing-data, rounding, and secondary/safety test definitions are compatible with the matched published results. |
+| S035-S036 | eTable 2 post-hoc P values, confidence intervals, counts, and percentage-point differences are coherent at displayed precision. |
+| S037-S038 | Versioned endpoint/safety definitions reviewed: S037 contributes to XSC-04/XSC-05; fresh visual confirmation shows the IDS bands are coherent (`0<IDS<=5` slight and `IDS>5` difficult), with no scale contradiction. |
 
-## Explicit coverage register — statistical relationships
+## Versioned noncontradictions and limitations
 
-| Relationship IDs reviewed | Cross-source result after matching controls |
-|---|---|
-| S001-S003 | ITT, hierarchical, and PP noninferiority results match only the corresponding endpoint, population, model, contrast, and one-sided 97.5% CI rule; no additional conflict. |
-| S004-S007 | ITT day-28 survival/admission/ROSC and CPC-distribution estimates use matched two-sided rate/difference displays; no conflict. |
-| S008-S009 | PP secondary and CPC-distribution displays reviewed. S008 includes CROSS-CAND-001 and CROSS-CAND-002; S009 is otherwise coherent. |
-| S010-S017 | Safety, secondary-analysis, post-hoc CCF/pause, and design/interpretive records reconcile after retaining row-specific denominators, tests, units, and planned-versus-observed distinction. |
-| S018-S031 | V1.3 protocol NI, population, missingness, and analysis rules are planned definitions; compatible with matched main/SAP definitions and not substituted for trial results. |
-| S032-S045 | V1.4/V2 repetitions and external background statistics are appropriately labelled; no eligible within-package CAAM conflict. |
-| S046-S052 | SAP native text controls over duplicate authorized OCR. Its direction, margin, ITT/PP/AT, rounding, and test/CI rules are compatible with matching displays. |
-| S053 | eTable 1 is a denominator/contribution table, not an inferential comparison; arithmetic and rounding reconcile. |
-| S054-S055 | eTable 2 post-hoc comparisons use distinct analysis populations. Their signed BMV-minus-ETI differences, counts, and CIs are coherent; no cross-population substitution made. |
+- The protocol's planned 2,000 participants, 20 centres, interim timing, and sample-size assumptions are not observed-result denominators. The later protocol administrative plan for up to 25 centres is likewise not used to contradict the final eTable contributor count.
+- SAP version 1 (18 February 2015) predates the later v1.4/v2 amendments. Its narrower safety list is recorded as versioned provenance, not a standalone discrepancy.
+- The supplied sources do not contain participant-level baseline neurologic-disability data, a centre crosswalk, or a final analysis-data dictionary defining the Table 3 failure row. Those omissions are why XSC-03 through XSC-05 retain explicit human questions.
 
-## Limitations
-
-- This review is limited to supplied local evidence. It does not determine the intended correction, source-data value, or whether either candidate arose before publication.
-- DOC-002 p. 134 is empty in the fresh text assets and lacks authorized OCR; its absence is already recorded in the canonical inventories and it provided no matchable relationship.
-- Authorized OCR was used only as documented for DOC-002 pp. 52, 108-109, and 126-133; readable native protocol/SAP text controls where the sources duplicate each other.
-
-**Lane count:** 153/153 assigned canonical relationships explicitly covered (98 numeric; 55 statistical); 2 distinct candidate propositions; 151 relationship records with no additional qualifying cross-source candidate.
+**Lane count:** 89 of 89 current canonical relationships explicitly reviewed (51 numeric; 38 statistical). Five distinct qualifying candidate signals were emitted; the remaining relationship records had no additional qualifying cross-source inconsistency after matching controls.

@@ -1,18 +1,25 @@
 # Workflow 1.5.2 Run State
 
-- **Target basis:** Three PDFs with 49 wholly fresh page units, full browser-render and CPU-OCR fallback burden, one main trial report plus protocol and methods supplements, moderate expected quantitative relationship volume, and all mandated independent review lanes
+- **Profile:** 1.5.2
+- **Run status:** COMPLETE
+- **Evidence policy:** Full source-first restart; prior audit artifacts excluded from evidence and discovery.
+- **Target basis:** Three direct PDFs contain 49 pages (11-page main article plus 25- and 13-page support files); all 49 pages require fresh native/layout extraction, complete result-relevant mapping, and two statistical passes, with no Office conversion expected and targeted rendering only for visual verification.
 - **Total source units:** 49
 - **Fresh-source units:** 49
-- **Target elapsed minutes:** 35-55
-- **Started UTC:** 2026-08-24T00:17:53Z
-- **Finished UTC:** 2026-08-24T01:21:58Z
-- **Observed elapsed minutes:** 64.1
-- **Target status:** EXCEEDED_TARGET
-- **Exceedance causes:** Direct Linux PDF text/raster/OCR tools were unavailable, requiring an offline Chrome-render plus direct CPU-Tesseract fallback for all 49 pages; complete review retained all 93 canonical relationships, two independent statistical passes, seven rechecks, and the final evidence-quality audit
+- **Target elapsed minutes:** 25-40
+- **Started UTC:** 2026-08-24T01:50:53Z
+- **Finished UTC:** 2026-08-24T02:27:16Z
+- **Observed elapsed minutes:** 36.4
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Source integrity before review:** RECORDED
+- **Source integrity after review:** VERIFIED_UNCHANGED
+- **Markdown assembly:** COMPLETE
+- **Token accounting cutoff:** 2026-08-24T02:27:16Z
+- **HTML rendering:** COMPLETE
+- **Mechanical validation:** PASS
 
-## Current state
+## Run Notes
 
-- Mandatory workflow controls were read completely before scientific review.
-- Fresh run directories were initialized without reading any legacy audit derivative as evidence.
-- Direct Linux Poppler, rasterization, OCR, and Office executables were not visible on the sandbox or approved host PATH at initialization.
-- Local Chrome PDF rendering and direct Windows CPU Tesseract recovered fresh full-page evidence for all 49 units without web access or Python PDF extraction.
+- The previous canonical Workflow 1.5.2 directory was preserved as `.ai_paper_validation/review_1_5_2_prior_20260824T015053Z/` before fresh artifacts were created.
+- That preserved directory is not an evidence input, discovery boundary, or source of decisions for this run.

@@ -1,84 +1,111 @@
-# Cross-Source Consistency Check
+# Cross-Source Consistency Review
 
-## Scope, method, and result
+**Stage:** cross-source checks  
+**Scope:** all 53 numeric/reporting relationships (`N001`-`N037`, `N300`-`N315`) and all 65 inferential/statistical relationships (`S001`-`S053`, `S300`-`S311`) in the fresh mapping artifacts.  
+**Sources checked:** DOC-001 main article; DOC-002 protocol; DOC-003 SAP; DOC-004 eAppendix, eTables, and eFigures.  
+**Method:** A repeated result was compared only after matching its population, event/time window, contrast direction, model or adjustment set, effect measure, unit/scale, analysis set, and displayed precision. Planned quantities were not compared as though they were final results. Display-zero P values were not present; none was treated as a candidate.
 
-This check covers all 126 assigned canonical relationships: numeric/reporting IDs N001–N035 and N501–N528, and inferential/statistical IDs S001–S050 and S501–S513. It compared only matched results after checking population, time window, intervention/control contrast, analysis set, model, effect measure, scale, units, reference group, and printed precision. The direct sources were the main article, protocol, SAP, and online supplement. Existing current-run text/layout assets were used; no OCR was run and no prior audit derivative was used as evidence.
+## Complete relationship coverage
 
-Five distinct candidate consistency issues are proposed below. All are **Pending Human Adjudication**; none is a correction, validity decision, or severity judgment.
+The following explicit register confirms that every assigned identifier was included once in the review scope. The grouped table that follows records the matched-source outcome for each listed identifier.
 
-## Explicit relationship coverage
+- **Numeric/reporting:** N001, N002, N003, N004, N005, N006, N007, N008, N009, N010, N011, N012, N013, N014, N015, N016, N017, N018, N019, N020, N021, N022, N023, N024, N025, N026, N027, N028, N029, N030, N031, N032, N033, N034, N035, N036, N037, N300, N301, N302, N303, N304, N305, N306, N307, N308, N309, N310, N311, N312, N313, N314, N315.
+- **Inferential/statistical:** S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050, S051, S052, S053, S300, S301, S302, S303, S304, S305, S306, S307, S308, S309, S310, S311.
 
-### Numeric/reporting relationships
+### Main numeric/reporting relationships
 
-- **N001, N002, N003, N004, N005, N006, N007, N008, N009, N010, N011, N012, N013, N014, N015, N016, N017, N018, N019, N020, N021, N022, N023, N024, N025, N026, N027, N028, N029, N030, N031, N032, N033, N034, N035 — COMPLETE.** Compared matched abstract, results narrative, Tables 1–3, Figures 1–3, captions, and table footnotes. Counts, denominators, rounded percentages, outcome definitions, direction labels, and repeated main-paper values were concordant after distinction of crude versus model-derived measures, except the Table 2/narrative comparisons proposed below.
+| Relationship IDs | Cross-source locations matched | Result |
+|---|---|---|
+| N001-N004 | DOC-001 PDF p. 1 abstract; p. 2 Key Points/methods; p. 7 Table 3 where applicable | Eligible total, allocation totals, follow-up total, baseline summary, and primary event percentages agree at printed precision. |
+| N005-N012 | DOC-001 PDF pp. 4-6 Figure 1, Table 1/narrative | Flow, exclusions, follow-up, and allocation counts are internally and cross-location consistent. |
+| N013-N018 | DOC-001 PDF p. 5 Table 1; DOC-004 PDF p. 18 eTable 2; pp. 19-20 eTables 3-4 | The main table gives unadjusted marginal group summaries; eTable 2 gives temporally and cluster-adjusted marginal effects, and eTables 3-4 give step-specific summaries. These are not the same estimands; no unmatched value was called a conflict. |
+| N019-N023 | DOC-001 PDF p. 6 Table 2/narrative; DOC-004 PDF pp. 3-16 toolkit definitions and p. 21 eTable 5 where applicable | Medication/process terminology, applicable denominators, units, and adjusted-model labels were matched. The discharge beta-blocker repeated result is separately recorded as XC-001. Toolkit thresholds are instructional definitions, not final outcome values. |
+| N024-N029 | DOC-001 PDF pp. 1, 7-9; DOC-004 PDF pp. 21-23 eTables 5-7 | MACE, mortality, and expanded-MACE results agree when the endpoint and adjustment set are the same. eTable 5 sensitivity ORs and eTable 7 expanded endpoint results use stated distinct analyses and are not conflicts. |
+| N030-N035 | DOC-001 PDF pp. 2-4, 8-9 Figures 2-3; DOC-003 PDF p. 7 SAP | Figure 2 denominators duplicate Figure 1. Figure 3 partitions reconcile with final allocation totals. The figure's use of the label “prespecified subgroups” is compared with the SAP and is separately recorded as XC-003. |
+| N036-N037 | DOC-001 PDF pp. 6-7; DOC-004 PDF p. 17 eTable 1 | The beta-blocker table/narrative mismatch is XC-001. The main text's complete-versus-missing follow-up troponin statement matches eTable 1's 1.3 versus 4.6 ng/mL. eTable 1's incompatible difference-footnote label is XC-002. |
 
-- **N501, N502, N503, N504, N505, N506, N507, N508, N509, N510, N511, N512, N513, N514, N515, N516, N517, N518, N519, N520, N521, N522, N523, N524, N525, N526, N527, N528 — COMPLETE.** Compared protocol/SAP planned quantities and definitions with the support tables and figures. Planned sample-size and interim values were not treated as reported outcomes. Support eTable 1’s group labels and footnote were checked separately (candidate proposal CP-03). The online-supplement graphical displays without exact printed point labels were checked for measure, direction, and scale only. The protocol/SAP versus published definitions and subgroup cut points are proposed below (CP-04 and CP-05).
+### Support numeric/reporting relationships
 
-### Inferential/statistical relationships
+| Relationship IDs | Cross-source locations matched | Result |
+|---|---|---|
+| N300-N304 | DOC-002 PDF pp. 6-7, 9, 16, 18, 21; DOC-003 PDF pp. 3-8; DOC-001 PDF pp. 2-3 | Protocol/SAP planning design, power, endpoint, follow-up, and interim-rule values are mutually compatible. Planned 15,000/15,750 participant quantities and 12-per-cohort illustrations are clearly planning values, not final denominators. |
+| N305-N307 | DOC-004 PDF pp. 3-16; DOC-001 PDF pp. 2-3, 6; DOC-002 PDF pp. 10-19 | Audit-report/checklist metrics are definitions or illustrative performance material, not final trial estimates; their scale and denominator labels do not conflict with final results. |
+| N308 | DOC-004 PDF p. 17 eTable 1; DOC-001 PDF p. 6 narrative | Follow-up strata and the troponin comparison match. The eTable's difference footnote calls the comparison intervention minus control even though its columns are complete versus missing follow-up: XC-002. |
+| N309-N311 | DOC-004 PDF pp. 18-20 eTables 2-4; DOC-001 PDF pp. 1, 4-5 | Final total counts and step counts agree after distinguishing unadjusted Table 1 from adjusted eTable 2 estimates. No rate/count, unit, or label conflict found. |
+| N312-N315 | DOC-004 PDF pp. 21-27 eTables 5-7/eFigures; DOC-001 PDF pp. 7-10 | Sensitivity, interaction, expanded-endpoint, and plot definitions use distinct stated models/endpoints. Same-model repetitions agree at displayed precision; eFigure points are unlabeled and were not numerically inferred. |
 
-- **S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050 — COMPLETE.** Checked all main-paper estimates against their matched repeated displays and named model/scale conventions. Apparent differences between unadjusted proportions and model-derived marginal risk differences were not called discrepancies. Two same-result Table 2/narrative conflicts are proposed in CP-01 and CP-02. The published composite definition and age subgroup labels were compared to SAP definitions in CP-04 and CP-05.
+### Main inferential/statistical relationships
 
-- **S501, S502, S503, S504, S505, S506, S507, S508, S509, S510, S511, S512, S513 — COMPLETE.** Checked planned stepped-wedge/model/interim definitions and all supplied support inferential tables and figure conventions. No display-zero P value occurred. The eTable 1 contrast-footnote conflict is proposed in CP-03; planned-versus-published definitions are proposed in CP-04 and CP-05. No other matched support estimate, interval, OR direction, RD convention, population, or scale conflict was found.
+| Relationship IDs | Cross-source locations matched | Result |
+|---|---|---|
+| S001-S004 | DOC-001 PDF p. 3; DOC-003 PDF pp. 4, 6-8; DOC-002 PDF p. 18 | Planning assumptions, primary-model description, interim boundaries, and exploratory-secondary interpretation agree. |
+| S005-S025 | DOC-001 PDF p. 6 Table 2 and narrative; DOC-004 PDF pp. 3-16, 21 | Process results retain their stated outcome-specific denominator and mixed-effects/quantile model. All exact Table 2/narrative repetitions agree except discharge beta-blocker, XC-001. Nonestimable rows were not treated as contradictions. |
+| S026-S035 | DOC-001 PDF pp. 1, 7-8; DOC-004 PDF pp. 21-23 eTables 5-7 | Table 3, abstract, narrative, and support results agree after matching primary versus cluster-only versus sensitivity models and endpoints. |
+| S036-S037 | DOC-001 PDF pp. 7-9; DOC-004 PDF p. 23 eTable 7 | Expanded-MACE and mortality narrative values match their exact table/supplement comparators and their model labels. |
+| S038-S051 | DOC-001 PDF p. 9 Figure 3; DOC-003 PDF p. 7 SAP | Figure estimates have appropriate adjusted-effect labels. The source's claim that these are “prespecified” is inconsistent with the SAP's supplied subgroup definitions: XC-003. |
+| S052-S053 | DOC-001 PDF pp. 6-7; DOC-004 PDF p. 17 | S052 is XC-001. S053's printed included/missing troponin summaries agree with eTable 1; its P threshold has no inconsistent matched comparator. |
 
-## Candidate-proposal register
+### Support inferential/statistical relationships
 
-### CP-01 — In-hospital beta-blocker adjusted-risk-difference upper CI differs between the table and narrative
+| Relationship IDs | Cross-source locations matched | Result |
+|---|---|---|
+| S300-S304 | DOC-002 PDF pp. 18-19; DOC-003 PDF pp. 4, 6-8; DOC-001 PDF p. 3 | Planned power/model/missing-data/subgroup/interim definitions were compared with final labels. The final “prespecified subgroup” claim is XC-003; final sample counts were not compared with planning targets. |
+| S305 | DOC-004 PDF p. 17 eTable 1; DOC-001 PDF p. 6 | eTable 1's strata and troponin result agree with main text; the footnote label is XC-002. |
+| S306-S311 | DOC-004 PDF pp. 18, 21-27; DOC-001 PDF pp. 5-10 | Effect measures, models, adjustment labels, and graphical scales are distinct and consistently described. No unsupported numerical comparison was made for unlabeled eFigure points. |
 
-- **Category:** Cross-document numeric inconsistency.
-- **Exact source locations:** [Main article, Table 2 — PDF p. 6](../../../jama_huffman_2018_oi_170166.pdf#page=6); [main article, Results narrative — PDF p. 7](../../../jama_huffman_2018_oi_170166.pdf#page=7).
-- **Matched result:** In-hospital beta-blocker use among eligible participants without contraindications; intervention versus control; mixed-effects logistic model accounting for hospital clustering and temporal trends; adjusted risk difference in percentage points.
-- **Printed values:** Table 2: `6.25% (95% CI, 4.10% to 8.40%)`, OR `1.46 (1.29-1.65)`. Narrative: `6.25% (95% CI, 4.10% to 8.10%)`, OR `1.46 (1.29-1.65)`.
-- **Comparison logic:** The population, contrast, estimate, lower CI endpoint, OR, and OR CI are the same, but the risk-difference upper endpoint is printed as `8.40%` in the table and `8.10%` in the narrative. This is not explained by rounding because both locations print hundredths.
-- **Supported alternatives:** One occurrence could be a transcription or typesetting error; supplied sources do not identify which endpoint is authoritative.
-- **Human verification steps:** Locate the model output or locked analysis table for this row; confirm the upper endpoint and harmonize the table/narrative display if required.
+## Provisional candidates
 
-### CP-02 — Discharge beta-blocker adjusted result differs between Table 2 and the narrative
+### XC-001 — Discharge beta-blocker adjusted effect differs between main-text narrative and Table 2
 
-- **Category:** Cross-document numeric inconsistency.
-- **Exact source locations:** [Main article, Table 2 — PDF p. 6](../../../jama_huffman_2018_oi_170166.pdf#page=6); [main article, Results narrative — PDF p. 7](../../../jama_huffman_2018_oi_170166.pdf#page=7).
-- **Matched result:** Discharge beta-blocker use among discharged eligible participants; intervention versus control; mixed-effects logistic model accounting for hospital clustering and temporal trends.
-- **Printed values:** Table 2: adjusted risk difference `6.69% (95% CI, 4.43% to 8.95%)`, OR `1.48 (1.30-1.68)`. Narrative: adjusted risk difference `6.63% (95% CI, 4.43% to 8.95%)`, OR `1.47 (1.30-1.68)`.
-- **Comparison logic:** The displayed analysis context and CI endpoints match, while the narrative changes both the point risk difference (`6.69` versus `6.63`) and OR (`1.48` versus `1.47`). Both are printed to two decimals, so the mismatch is not resolved by the stated display precision.
-- **Supported alternatives:** The narrative may be copied from a nearby analysis run while Table 2 may reflect a different run; the supplied package does not establish which printed point estimates are intended.
-- **Human verification steps:** Reproduce this row from the finalized analysis output using the Table 2 eligibility definition; compare the stored point estimates before deciding whether either printed location needs amendment.
+**Status:** Pending Human Adjudication  
+**Primary category:** Cross-document numeric inconsistency
 
-### CP-03 — eTable 1 labels its complete-versus-missing comparison as an intervention-versus-control difference
+**Exact source locations:** [DOC-001 main article — PDF p. 6](../../../jama_huffman_2018_oi_170166.pdf#page=6), Table 2, discharge beta-blocker row; [DOC-001 main article — PDF p. 7](../../../jama_huffman_2018_oi_170166.pdf#page=7), Results narrative beginning “The intervention group had a higher rate of discharge ... β-blocker use.”
 
-- **Category:** Measure, label, or scale inconsistency.
-- **Exact source locations:** [Online supplement 3, eTable 1 — PDF p. 17](../../../joi170166supp3_prod.pdf#page=17); [main article, missing-follow-up narrative referring to eTable 1 — PDF p. 6](../../../jama_huffman_2018_oi_170166.pdf#page=6).
-- **Matched result:** eTable 1 columns are explicitly `Complete Follow Up n=21,079` and `Missing Follow Up n=295`; the main narrative describes these same groups as included participants and participants missing follow-up.
-- **Printed values:** The eTable footnote says `Difference = intervention minus control`. However, its tobacco values are `30.8%` (complete) and `42.4%` (missing), with a printed difference `11.6%`; this equals missing minus complete, not intervention minus control. The age values `60.6` (complete) and `60.0` (missing), with `-0.6`, likewise match missing minus complete.
-- **Comparison logic:** The table’s population columns are follow-up-completion groups, not randomized intervention/control groups. The printed differences numerically follow the table’s column groups, while the footnote assigns a different contrast. This produces a direct label/contrast conflict.
-- **Supported alternatives:** The footnote may have been inadvertently carried over from eTable 2, which genuinely uses intervention minus control; alternatively the eTable title or column labels would need source confirmation. The values themselves do not indicate an intervention/control comparison.
-- **Human verification steps:** Check the eTable production file and analysis code to identify the intended contrast label; verify whether every displayed eTable 1 difference is missing minus complete before updating any label.
+**Printed evidence:** Table 2 reports an adjusted risk difference of **6.69% (95% CI, 4.43% to 8.95%)** and adjusted OR **1.48 (95% CI, 1.30 to 1.68)** for discharge beta-blocker use. The narrative reports **6.63% (95% CI, 4.43% to 8.95%)** and **1.47 (95% CI, 1.30 to 1.68)** for the same stated intervention-versus-control discharge beta-blocker result.
 
-### CP-04 — Published “optimal in-hospital medication” outcome excludes statin, unlike the SAP’s named composite
+**Comparison logic:** The outcome, discharged eligible population, contrast, adjusted effect measures, and confidence-interval endpoints are identical. Values printed to two decimal places should match exactly when they purport to report the same adjusted result. The 0.06 percentage-point difference and 0.01 OR difference are not explained by a population, time, model, measure, or displayed-precision change in either location.
 
-- **Category:** Measure, label, or scale inconsistency.
-- **Exact source locations:** [SAP, secondary endpoint definition — PDF p. 5](../../../joi170166supp2_prod.pdf#page=5); [main article, secondary-outcome definition — PDF p. 3](../../../jama_huffman_2018_oi_170166.pdf#page=3); [main article, Table 3 footnote — PDF p. 7](../../../jama_huffman_2018_oi_170166.pdf#page=7).
-- **Matched result:** The named secondary outcome `optimal in-hospital medication use`.
-- **Printed values/statements:** The SAP defines it as aspirin, ADP-receptor antagonist, heparin, **statin**, and beta blocker. The article defines it as aspirin, ADP-receptor antagonist, anticoagulant, and beta blocker and states that in-hospital statin use was predefined but data were not collected. Table 3 uses that latter four-component definition for the reported `31.7%` control and `35.8%` intervention outcome.
-- **Comparison logic:** The supplied SAP and article use the same outcome name for different printed component sets: statin is included in the SAP and omitted from the reported composite. The article directly defines its four-component measure and explains that predefined statin data were not collected; the package supplies no amendment or change-control record linking the two definitions.
-- **Supported alternatives:** This may be a transparent post-plan operational deviation rather than a numerical transcription issue, because the article states that in-hospital statin data were not collected. The supplied package contains no amendment or finalized analysis-plan documentation that resolves whether the unchanged label was intended.
-- **Human verification steps:** Review the finalized protocol/SAP amendment history and data-collection specification to establish whether and when the component set was formally changed.
+**Supported alternatives:** The narrative may contain a transcription or calculation-output selection error; alternatively, one location may use an unlabelled analysis variant. The source does not state an alternative model or population for the narrative figures.
 
-### CP-05 — Published figure calls its age strata prespecified, but they differ from the SAP’s stated age strata
+**Human verification steps:** Retrieve the finalized model output and table/narrative production files for discharge beta-blocker use; confirm the analysis population, model specification, and unrounded marginal effect/OR; determine which pair should be retained or whether an unlabelled different model was intended.
 
-- **Category:** Measure, label, or scale inconsistency.
-- **Exact source locations:** [SAP, §7.5.2 subgroup analyses — PDF p. 7](../../../joi170166supp2_prod.pdf#page=7); [main article, Figure 3 — PDF p. 9](../../../jama_huffman_2018_oi_170166.pdf#page=9); [main article, Results narrative — PDF p. 9](../../../jama_huffman_2018_oi_170166.pdf#page=9).
-- **Matched result:** Age subgroup analysis of 30-day MACE.
-- **Printed values/statements:** The SAP specifies age `<65 years and >65 years` for an a priori participant-level subgroup. Figure 3 is titled as analysis by `Prespecified Subgroups` but reports age `<50`, `50-69`, and `≥70` years; the Results narrative calls these prespecified subgroups.
-- **Comparison logic:** The analysis sets and age cut points do not match: the SAP describes a two-category 65-year split, while the published figure reports three categories with 50 and 70 cut points. The paper’s “prespecified” label therefore does not match the supplied SAP wording without an unprovided amendment or revised plan.
-- **Supported alternatives:** A subsequent prespecified amendment or a separate analysis plan may have changed the cut points; the SAP itself also uses `>65`, which may be an imprecise rendering for `≥65`. Neither possibility explains the displayed 50/70 categories from supplied evidence alone.
-- **Human verification steps:** Check dated SAP versions, statistical-analysis archive, and figure-programming specification to establish whether the 50/70 strata were prespecified and whether the figure/narrative should identify the analysis as modified or exploratory.
+### XC-002 — eTable 1 difference footnote identifies an intervention-control contrast although the table columns are follow-up strata
+
+**Status:** Pending Human Adjudication  
+**Primary category:** Measure, label, or scale inconsistency
+
+**Exact source locations:** [DOC-004 Supplement 3 — PDF p. 17](../../../joi170166supp3_prod.pdf#page=17), eTable 1 heading, columns, and footnote a; [DOC-001 main article — PDF p. 6](../../../jama_huffman_2018_oi_170166.pdf#page=6), Results paragraph describing participants with complete versus missing follow-up.
+
+**Printed evidence:** eTable 1 is headed “Baseline Characteristics in ACS QUIK Patients by Complete and Missing Follow-up,” with columns **Complete Follow Up n=21,079** and **Missing Follow Up n=295**. Its footnote a states, **“Difference = intervention minus control.”** The same table gives initial troponin **1.3** versus **4.6 ng/mL**, and the main narrative describes those as participants “included in the analysis compared with those with missing follow-up data.”
+
+**Comparison logic:** The displayed comparison groups are follow-up completion strata, not intervention/control groups. Therefore an intervention-minus-control direction label does not identify the contrast represented by the printed eTable 1 difference column. The numeric values themselves are not asserted to be wrong; the qualifying issue is the contrast label.
+
+**Supported alternatives:** Footnote a may have been carried over from eTable 2, which directly follows and does compare intervention with control; the eTable 1 difference direction may instead be missing-follow-up minus complete-follow-up (as its printed values suggest). The supplied source does not explicitly define the intended eTable 1 subtraction direction.
+
+**Human verification steps:** Check the analysis code/table shell for eTable 1; identify the actual contrast and direction used for each difference and CI; correct the footnote or column label while retaining the observed follow-up strata.
+
+### XC-003 — Figure 3 calls displayed age and hospital-type analyses “prespecified,” but its displayed definitions differ from the SAP’s a priori subgroup list
+
+**Status:** Pending Human Adjudication  
+**Primary category:** Measure, label, or scale inconsistency
+
+**Exact source locations:** [DOC-001 main article — PDF p. 3](../../../jama_huffman_2018_oi_170166.pdf#page=3), Statistical Analysis statement that results are reported by prespecified age, sex, STEMI/NSTEMI, hospital-size, and hospital-type subgroups; [DOC-001 main article — PDF p. 9](../../../jama_huffman_2018_oi_170166.pdf#page=9), Figure 3 title “... by Prespecified Subgroups” and its age/hospital-type rows; [DOC-003 SAP — PDF p. 7](../../../joi170166supp2_prod.pdf#page=7), section 7.5.2.
+
+**Printed evidence:** Figure 3 presents age groups **<50**, **50-69**, and **>=70 years**, and hospital type **government**, **nonprofit**, and **private**, under a “Prespecified Subgroups” title. The SAP says its a priori participant-level age subgroups are **“Age (<65 years and >65 years)”** and lists site-level **hospital size** and **use of quality improvement toolkit components**; it does not list hospital type.
+
+**Comparison logic:** A result described as prespecified should retain, or explicitly disclose departure from, the supplied SAP subgroup definition. The final figure’s age cutpoints differ from the planned cutpoints and it reports hospital type in place of the SAP-listed toolkit-component subgroup. This is a reporting-label/definition discrepancy, not a claim that the resulting estimates are invalid.
+
+**Supported alternatives:** The final analysis may have used an amended SAP, a prespecified protocol provision not located in the supplied documents, or a broader meaning of “prespecified” than the SAP subsection. The supplied package contains no amendment or explicit statement that explains these different subgroup definitions.
+
+**Human verification steps:** Locate the final/amended prespecification record and analysis-plan version used at database lock; verify whether the Figure 3 age cutpoints and hospital-type subgroup were prespecified, and if not, relabel them or disclose the analytic change and the omitted toolkit-component subgroup.
 
 ## Limitations
 
-This was a consistency check, not a raw-data, clinical, or general methodological audit. Model-derived marginal differences were not recomputed from crude displayed percentages, and graphical points without exact printed labels were not treated as numeric comparators. The provided sources contain no analysis-output archive or amendment record, so the authoritative value/definition for each proposal requires human source verification.
+- This lane compared only supplied local sources and the fresh relationship maps. It did not inspect raw data, analysis code, unpublished amendments, or external trial records.
+- Unadjusted summaries, marginal model estimates, cluster-only estimates, primary temporal-adjusted estimates, sensitivity estimates, interaction estimates, and planning quantities were deliberately kept distinct. A numerical difference across those distinct estimands was not treated as a conflict.
+- Exact numeric values were not inferred from unlabeled eFigure plotted points, and the illustrative toolkit/audit appendix was not treated as a source of final trial estimates.
 
-## Compact completion record
+## Completion statement
 
-- **Assigned relationships checked:** 126 of 126.
-- **Candidate proposals:** 5 distinct proposals (CP-01 through CP-05), all Pending Human Adjudication.
-- **Display-zero P-value records:** None applicable; no candidate was proposed on that basis.
-- **Artifact:** `.ai_paper_validation/review_1_5_2/checkers/cross_source_consistency.md`.
+All assigned mapped relationships were checked. Three distinct provisional candidates (XC-001 through XC-003) meet the source-location, printed-value/statement, comparator, and reproducible-rule threshold. All remain **Pending Human Adjudication**.

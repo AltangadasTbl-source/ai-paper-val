@@ -1,101 +1,103 @@
 # Statistical consistency pass 1
 
-## Scope, evidence, and decision rules
+## Scope and evidence boundary
 
-This fresh pass independently reviewed every canonical statistical relationship, `S001` through `S067`, against the new direct-source native and coordinate-layout assets for DOC-001, DOC-002, and DOC-003. It used the canonical inventory, its two fresh provisional mapping parts, the fresh main/support quantitative extractions, and the numeric relationship inventory only to locate matching denominators and definitions. No legacy audit derivative or web source was used.
+Fresh independent pass 1 over the canonical 61 stable inferential relationships (`S001` through `S061`). This review used only the current relationship inventory and mapper artifacts, the current native/layout PDF evidence, and the three supplied PDFs: DOC-001 `jama_wang_2018_oi_180070.pdf`, DOC-002 `joi180070supp1_prod.pdf`, and DOC-003 `joi180070supp2_prod.pdf`. No earlier checker, candidate, recheck, quality, report, archive, or prior audit output was read.
 
-Checks applied where relevant were: point-estimate containment in its displayed interval; interval endpoint ordering; estimate/interval and label/direction agreement; agreement of the matched repeated result after population, time, contrast, model, and precision were matched; and P-value/interval compatibility only where the supplied article/table establishes an adjusted 95% CI and a separately printed P value for the same displayed contrast. The main article states that tests were two-sided and that comparative cumulative incidences/absolute differences with 95% CIs were adjusted for the listed patient and hospital characteristics (DOC-001 PDF p. 4); the Table 2 and Table 3 footnotes identify that same adjustment set. The supplied material does not define a common variance estimator, degrees of freedom, or an exact CI-to-P construction, so no exact reconstructed P value was used as a decision rule. Any diagnostic approximation below is expressly non-authoritative.
+Checks applied where the supplied source defined a compatible comparison included point-estimate containment, endpoint ordering, sign/direction, effect-measure and scale labels, repeated matched occurrences, and CI/P compatibility. The article states that its tests were two-sided and displays adjusted absolute-difference CIs/P values and model-specific OR/HR CIs/P values. Exact SEs, covariance, and all individual test constructions were not supplied; no convention was assumed to reconstruct them. No assigned relationship contains a `P = 0`, `p = 0.000`, or equivalent display zero; `<.001` was not treated as a display zero or as a candidate.
 
-`NO_QUALIFYING_CONTRADICTION` means the displayed values were compatible at the available precision, or any apparent difference was explained by a supplied distinct population, time point, denominator, outcome, or model. `DEFINITION_LIMITATION_RECORDED` means the complete display was checked but a requested exact compatibility calculation is not source-defined. No mapped relationship contains `P = 0`, `p = 0.000`, or equivalent; consequently no `DISPLAY_ZERO_NOT_CANDIDATE` record was required.
+## Provisional candidate proposals for coordinator registration
 
-## Per-relationship results
+### P1CAND001 — In-hospital mortality absolute-difference CI/P pairing does not reconcile
 
-| Stable ID | PASS_1 status | Evidence and checks completed | Result |
-|---|---|---|---|
-| S001 | PASS_1_COMPLETE | DOC-001 p. 4; DOC-002 p. 17. Planned 4,800/40 clusters, 80% power, 5% significance, ICC .02, and 5% target improvement matched across the two supplied locations. Exact sample-size reconstruction is not defined. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S002 | PASS_1_COMPLETE | DOC-001 pp. 1, 5, 7. Composite 88.2 vs 84.8, difference 3.54 (CI .68-6.40), absolute-difference P=.02, and ORPA 1.39 (1.12-1.72), P=.003 agree in direction, interval containment, and matched repeats. | NO_QUALIFYING_CONTRADICTION |
-| S003 | PASS_1_COMPLETE | DOC-001 pp. 1, 5, 7. All-or-none 53.8 vs 47.8, difference 6.69 (-.41-13.79), P=.06, ORPA 1.19 (.85-1.67), P=.31 are directionally and interval/P compatible at printed precision. | NO_QUALIFYING_CONTRADICTION |
-| S004 | PASS_1_COMPLETE | DOC-001 pp. 1, 5, 8. Three-month vascular events 93/2400 vs 127/2400, difference -2.03 (-3.51 to -.55), P=.007; HR .65 (.49-.86), P=.002. Repeated values match and both effect directions favor intervention. | NO_QUALIFYING_CONTRADICTION |
-| S005 | PASS_1_COMPLETE | DOC-001 pp. 1, 5, 8. Six-month vascular events 150/2400 vs 186/2400, difference -2.18 (-4.0 to -.35), P=.02; HR .72 (.57-.90), P=.004. | NO_QUALIFYING_CONTRADICTION |
-| S006 | PASS_1_COMPLETE | DOC-001 pp. 1, 5, 8 and Figure 2A. Twelve-month vascular events 218/2400 vs 282/2400, difference -3.13 (-5.28 to -.97), P=.005; HR .72 (.60-.87), P<.001. Narrative, table, and figure agree. | NO_QUALIFYING_CONTRADICTION |
-| S007 | PASS_1_COMPLETE | DOC-001 p. 4; Table 2 p. 7; Table 3 p. 8; DOC-002 pp. 18-19. Supplied GEE/logistic/Cox/binary-link model labels, 95% CI convention, adjustment set, two-sided threshold, and exploratory-secondary qualification are consistent. No common variance/df rule is supplied for exact P reconstruction. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S008 | PASS_1_COMPLETE | DOC-001 pp. 5, 8. Three-month disability 418/2180 vs 443/2105, difference -3.72 (-6.7 to -.79), P=.01; OR .76 (.63-.91), P=.002. Direction and interval/P signs agree. | NO_QUALIFYING_CONTRADICTION |
-| S009 | PASS_1_COMPLETE | DOC-001 pp. 5, 8. Six-month disability 326/2058 vs 360/2009, difference -3.86 (-6.60 to -1.13), P=.006; OR .74 (.61-.89), P=.002. | NO_QUALIFYING_CONTRADICTION |
-| S010 | PASS_1_COMPLETE | DOC-001 pp. 5, 8. Twelve-month disability 236/1852 vs 264/1798, difference -3.13 (-5.80 to -.46), P=.02; OR .74 (.59-.93), P=.01. | NO_QUALIFYING_CONTRADICTION |
-| S011 | PASS_1_COMPLETE | DOC-001 p. 5; DOC-003 p. 8. Sensitivity composite 85.3 vs 80.9/80.91, difference 4.20 (1.77-6.63), absolute-difference P<.001, ORPA 1.36 (1.11-1.67), ORPA P=.003. Main text reports the latter P after the ORPA; eTable separates both P columns. | NO_QUALIFYING_CONTRADICTION |
-| S012 | PASS_1_COMPLETE | DOC-001 p. 7. rtPA <=3 h: 46/212 vs 23/204, 7.3 (-5.3 to 19.9), P=.26; ORPA 3.18 (.94-10.78), P=.06. Point, interval, direction, and labels agree. | NO_QUALIFYING_CONTRADICTION |
-| S013 | PASS_1_COMPLETE | DOC-001 p. 7. Early antithrombotics: 2307/2353 vs 2253/2330, 1.5 (-.3 to 3.2), P=.10; ORPA 1.93 (.94-3.95), P=.07. | NO_QUALIFYING_CONTRADICTION |
-| S014 | PASS_1_COMPLETE | DOC-001 p. 7. Dysphagia: 2255/2328 vs 2040/2139, 1.6 (-2.1 to 5.3), P=.41; ORPA 2.49 (.84-7.40), P=.10. | NO_QUALIFYING_CONTRADICTION |
-| S015 | PASS_1_COMPLETE | DOC-001 p. 7. DVT prophylaxis: 178/645 vs 66/592, 15.6 (3.3-27.9), P=.01; ORPA 2.42 (1.02-5.72), P=.04. Positive-difference and ORPA directions agree. | NO_QUALIFYING_CONTRADICTION |
-| S016 | PASS_1_COMPLETE | DOC-001 p. 7. Discharge antithrombotics: 2272/2324 vs 2141/2305, 4.2 (-.6 to 8.9), P=.09; ORPA 2.29 (.86-6.11), P=.10. | NO_QUALIFYING_CONTRADICTION |
-| S017 | PASS_1_COMPLETE | DOC-001 p. 7. AF anticoagulation: 63/155 vs 39/137, 12.9 (-5.8 to 31.6), P=.18; ORPA 1.80 (.68-4.75), P=.23. | NO_QUALIFYING_CONTRADICTION |
-| S018 | PASS_1_COMPLETE | DOC-001 p. 7. LDL lowering: 1415/1481 vs 1439/1547, 2.4 (-1.6 to 6.4), P=.25; ORPA 1.35 (.67-2.73), P=.40. | NO_QUALIFYING_CONTRADICTION |
-| S019 | PASS_1_COMPLETE | DOC-001 p. 7. Antihypertensive: 1510/1838 vs 1372/1771, 6.1 (-.6 to 12.7), P=.07; ORPA 1.44 (.94-2.20), P=.10. | NO_QUALIFYING_CONTRADICTION |
-| S020 | PASS_1_COMPLETE | DOC-001 p. 7. Antidiabetic: 653/728 vs 557/663, 5.0 (.8-9.3), P=.02; ORPA 1.57 (1.08-2.28), P=.02. | NO_QUALIFYING_CONTRADICTION |
-| S021 | PASS_1_COMPLETE | DOC-001 p. 8 Figure 2A and Table 3. HR .72 (.60-.87), P<.001 matches the 12-month vascular-event outcome and stated log-rank context. Figure uses the same event/time definition. | NO_QUALIFYING_CONTRADICTION |
-| S022 | PASS_1_COMPLETE | DOC-001 p. 8 Figure 2B and Table 3. Death HR .86 (.68-1.09), P=.21 is compatible with an interval containing 1 and matched 12-month death result. | NO_QUALIFYING_CONTRADICTION |
-| S023 | PASS_1_COMPLETE | DOC-001 p. 8 Table 3. In-hospital death 11/2400 vs 23/2400; adjusted absolute difference -.7% (95% CI -1.1 to .2), reported P=.009; HR .96 (.90-1.02), P=.14. The absolute-difference CI includes 0 whereas the P value in that CI column is below .05. | SP1-001 |
-| S024 | PASS_1_COMPLETE | DOC-001 p. 8. Three-month death 66/2400 vs 76/2400, difference -1.0 (-2.1 to .1), P=.08; HR .81 (.57-1.15), P=.23. | NO_QUALIFYING_CONTRADICTION |
-| S025 | PASS_1_COMPLETE | DOC-001 p. 8. Six-month death 103/2400 vs 101/2400, difference -.5 (-1.7 to .6), P=.38; HR .97 (.73-1.29), P=.81. Distinct displayed crude counts do not override the adjusted effect columns. | NO_QUALIFYING_CONTRADICTION |
-| S026 | PASS_1_COMPLETE | DOC-001 p. 8. Twelve-month death 139/2400 vs 160/2400, difference -1.5 (-3.0 to -.0), P=.05; HR .86 (.68-1.09), P=.21. The rounded `-.0` endpoint and `.05` are boundary-compatible at displayed precision. | NO_QUALIFYING_CONTRADICTION |
-| S027 | PASS_1_COMPLETE | DOC-001 p. 5. Symptomatic ICH 1/46 (2.2%) vs 2/23 (8.7%), P=.26. Direction agrees with counts; no named test/CI/variance rule permits further mechanical compatibility testing. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S028 | PASS_1_COMPLETE | DOC-002 p. 17. Protocol sample-size parameters repeat S001 (80% power, 5% significance, ICC .02, 5% target). | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S029 | PASS_1_COMPLETE | DOC-002 p. 18. Planned descriptive summaries specify proportion, mean (SD), and median (IQR) by distribution. No printed result conflict is present. | NO_QUALIFYING_CONTRADICTION |
-| S030 | PASS_1_COMPLETE | DOC-002 p. 18. Planned chi-square, Student t, and Mann-Whitney U tests are appropriately scoped to univariate categorical/continuous comparisons. No mapped P is asserted to be a uniquely reconstructable application of one of them. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S031 | PASS_1_COMPLETE | DOC-002 pp. 18-19. GEE and population-average OR/mean-difference, each with 95% CI, match the main article's composite/performance-measure modeling description. | NO_QUALIFYING_CONTRADICTION |
-| S032 | PASS_1_COMPLETE | DOC-002 pp. 19-20. Kaplan-Meier and proportional-hazards Cox plan for events/mortality at the stated time points matches the article outcome model labels. | NO_QUALIFYING_CONTRADICTION |
-| S033 | PASS_1_COMPLETE | DOC-003 p. 2. Baseline composite has no numerical P but explicitly says no statistically significant cluster-group difference; 80.2 vs 79.5 is a pre-randomization, not trial-outcome, comparison. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S034 | PASS_1_COMPLETE | DOC-003 p. 5 eTable 2. Age P=.81 accompanies matched 65 (56-74) versus 64 (56-74) groups. Exact test assignment is not printed in this table. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S035 | PASS_1_COMPLETE | DOC-003 p. 5 eTable 2. Male 2497/3949 vs 546/851, P=.61; direction and denominators are coherent. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S036 | PASS_1_COMPLETE | DOC-003 p. 5 eTable 2. Ischemic stroke 1137/3949 vs 251/851, P=.68. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S037 | PASS_1_COMPLETE | DOC-003 p. 5 eTable 2. Diabetes 890/3949 vs 196/851, P=.75. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S038 | PASS_1_COMPLETE | DOC-003 p. 5 eTable 2. Hypertension 2552/3949 vs 538/851, P=.44. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S039 | PASS_1_COMPLETE | DOC-003 p. 5 eTable 2. Dyslipidemia 285/3949 vs 62/851, P=.94. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S040 | PASS_1_COMPLETE | DOC-003 p. 5 eTable 2. CAD/previous MI 512/3949 vs 97/851, P=.21. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S041 | PASS_1_COMPLETE | DOC-003 p. 5 eTable 2. Atrial fibrillation 200/3949 vs 45/851, P=.79. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S042 | PASS_1_COMPLETE | DOC-003 p. 5 eTable 2. Ever smoking 1736/3949 vs 380/851, P=.71. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S043 | PASS_1_COMPLETE | DOC-003 p. 5 eTable 2. Admission NIHSS 3 (2-6) vs 3 (2-6), P=.99; NIHSS scale is supplied as 0-42. | NO_QUALIFYING_CONTRADICTION; DEFINITION_LIMITATION_RECORDED |
-| S044 | PASS_1_COMPLETE | DOC-003 p. 6. Three-month ischemic stroke: -0.57 (-1.91 to .76), P=.40; HR .89 (.59-1.36), P=.59. Both intervals contain null and directions match event counts 44 vs 55. | NO_QUALIFYING_CONTRADICTION |
-| S045 | PASS_1_COMPLETE | DOC-003 p. 6. Three-month hemorrhagic stroke: -.35 (-.92 to .22), P=.23; HR .85 (.40-1.83), P=.68. | NO_QUALIFYING_CONTRADICTION |
-| S046 | PASS_1_COMPLETE | DOC-003 p. 6. Three-month MI: -.10 (-.36 to .17), P=.48; HR .58 (.13-2.67), P=.48. | NO_QUALIFYING_CONTRADICTION |
-| S047 | PASS_1_COMPLETE | DOC-003 p. 6. Three-month vascular death: -1.43 (-2.33 to -.54), P=.001; HR .62 (.42-.92), P=.02. | NO_QUALIFYING_CONTRADICTION |
-| S048 | PASS_1_COMPLETE | DOC-003 p. 6. Six-month ischemic stroke: -1.40 (-2.82 to -.02), P=.05; HR .72 (.53-.99), P=.04. Both are rounded boundary displays compatible with their directions. | NO_QUALIFYING_CONTRADICTION |
-| S049 | PASS_1_COMPLETE | DOC-003 p. 6. Six-month hemorrhagic stroke: -.25 (-.80 to .30), P=.38; HR .92 (.46-1.82), P=.80. | NO_QUALIFYING_CONTRADICTION |
-| S050 | PASS_1_COMPLETE | DOC-003 p. 6. Six-month MI: -.03 (-.35 to .29), P=.86; HR .78 (.27-2.24), P=.64. Equal event counts do not require adjusted HR=1 under the supplied Cox model. | NO_QUALIFYING_CONTRADICTION |
-| S051 | PASS_1_COMPLETE | DOC-003 p. 6. Six-month vascular death: -1.06 (-2.08 to -.04), P=.04; HR .78 (.56-1.10), P=.16. Absolute difference and HR are distinct labeled measures. | NO_QUALIFYING_CONTRADICTION |
-| S052 | PASS_1_COMPLETE | DOC-003 p. 6. Twelve-month ischemic stroke: -1.84 (-3.45 to -.23), P=.03; HR .73 (.57-.93), P=.01. | NO_QUALIFYING_CONTRADICTION |
-| S053 | PASS_1_COMPLETE | DOC-003 p. 6. Twelve-month hemorrhagic stroke: -.08 (-.71 to .55), P=.80; HR 1.02 (.55-1.88), P=.96. | NO_QUALIFYING_CONTRADICTION |
-| S054 | PASS_1_COMPLETE | DOC-003 p. 6. Twelve-month MI: -.13 (-.46 to .21), P=.45; HR .71 (.30-1.67), P=.43. | NO_QUALIFYING_CONTRADICTION |
-| S055 | PASS_1_COMPLETE | DOC-003 p. 6. Twelve-month vascular death: -1.94 (-3.26 to -.62), P=.004; HR .71 (.54-.94), P=.02. | NO_QUALIFYING_CONTRADICTION |
-| S056 | PASS_1_COMPLETE | DOC-003 pp. 6-7. eTable 3 explicitly says a patient may have different new vascular events; thus component-event sums need not equal the main-table number of patients with any new vascular event. The adjustment footnote matches the stated covariate set. | NO_QUALIFYING_CONTRADICTION |
-| S057 | PASS_1_COMPLETE | DOC-003 p. 8. Sensitivity composite: mean difference 4.20 (1.77-6.63), P<.001; ORPA 1.36 (1.11-1.67), P=.003. Main p. 5 and eTable agree after matching P to its respective column. | NO_QUALIFYING_CONTRADICTION |
-| S058 | PASS_1_COMPLETE | DOC-003 p. 8. Sensitivity rtPA <2 h: 46/254 vs 23/238, 5.81 (-4.57 to 16.19), P=.27; ORPA 2.60 (.76-8.87), P=.13. This is overall-population sensitivity analysis, distinct from S012 eligible-patient denominators. | NO_QUALIFYING_CONTRADICTION |
-| S059 | PASS_1_COMPLETE | DOC-003 p. 8. Sensitivity early antithrombotics: 2.68 (.48-4.87), P=.02; ORPA 1.73 (1.05-2.87), P=.03. Overall-population denominators distinguish it from S013. | NO_QUALIFYING_CONTRADICTION |
-| S060 | PASS_1_COMPLETE | DOC-003 p. 8. Sensitivity dysphagia: 1.72 (-1.95 to 5.40), P=.36; ORPA 2.37 (.69-8.18), P=.17. Denominators/model distinguish it from S014. | NO_QUALIFYING_CONTRADICTION |
-| S061 | PASS_1_COMPLETE | DOC-003 p. 8. Sensitivity DVT: 14.79 (3.16-26.42), P=.01; ORPA 2.09 (.95-4.62), P=.07. Denominators/model distinguish it from S015. | NO_QUALIFYING_CONTRADICTION |
-| S062 | PASS_1_COMPLETE | DOC-003 p. 8. Sensitivity discharge antithrombotics: 5.32 (.44-10.20), P=.03; ORPA 1.89 (.99-3.64), P=.05. Denominators/model distinguish it from S016. | NO_QUALIFYING_CONTRADICTION |
-| S063 | PASS_1_COMPLETE | DOC-003 p. 8. Sensitivity AF anticoagulation: 12.90 (-3.51 to 29.3), P=.12; ORPA 1.78 (.61-5.14), P=.29. | NO_QUALIFYING_CONTRADICTION |
-| S064 | PASS_1_COMPLETE | DOC-003 p. 8. Sensitivity lipid lowering: 2.46 (-2.03 to 6.95), P=.28; ORPA 1.17 (.61-2.24), P=.63. | NO_QUALIFYING_CONTRADICTION |
-| S065 | PASS_1_COMPLETE | DOC-003 p. 8. Sensitivity antihypertensive: 6.32 (-.58 to 13.21), P=.07; ORPA 1.47 (.97-2.23), P=.07. | NO_QUALIFYING_CONTRADICTION |
-| S066 | PASS_1_COMPLETE | DOC-003 p. 8. Sensitivity antidiabetic: 6.16 (1.70-10.62), P=.007; ORPA 1.59 (1.11-2.23), P=.01. | NO_QUALIFYING_CONTRADICTION |
-| S067 | PASS_1_COMPLETE | DOC-003 p. 9. eTable 4 defines the adjustment covariates and ORPA; all sensitivity effects in S057-S066 use that supplied population-average OR label. | NO_QUALIFYING_CONTRADICTION |
+- **Affected relationship:** S019.
+- **Category:** Statistical reporting inconsistency.
+- **Exact evidence:** DOC-001, PDF p. 8, Table 3, in-hospital death row: absolute difference `−0.7% (95% CI, −1.1% to 0.2%)`, with the adjacent absolute-difference `P Value` of `.009`. The table footnote identifies these values as adjusted for the listed patient and hospital characteristics. DOC-001 p. 4 states that all tests were 2-sided and that absolute differences with 95% CIs were presented and adjusted.
+- **Rule and calculation:** Zero lies within the printed interval: `−1.1 < 0 < 0.2`. Under the supplied two-sided 95% CI/P convention for the same absolute-difference table column, an interval containing the null is not compatible with `P = .009` (which is below .05). The adjacent HR `0.96 (0.90-1.02), P=.14` is a separate effect-measure column and is not used as the comparator.
+- **Direct observation versus inference:** Directly observed: the Table 3 CI and P value above. Inference: their same-column presentation and the supplied two-sided convention make the displayed pair discordant. The review does not infer whether the CI, P value, column alignment, or underlying analysis is the source of the issue.
+- **Alternative source-grounded interpretation:** The P value could have been generated by a different estimand or model than the printed adjusted absolute-difference CI, but the supplied table labels it in the absolute-difference P-value column and does not state such a distinction.
+- **Exact human question:** Does `.009` belong to the displayed in-hospital absolute-difference analysis and its 95% CI, or is either the CI, P value, or table-column pairing incorrect?
 
-## Provisional candidate emitted by pass 1
+### P1CAND002 — LDL eligibility threshold label differs from supplied measure definition
 
-### SP1-001 — In-hospital death absolute-difference P value conflicts with its displayed 95% CI
+- **Affected relationships:** S009 and S059.
+- **Category:** Measure, label, or scale inconsistency.
+- **Exact evidence:** DOC-001, PDF p. 7, Table 2 labels the row `Lipid-lowering for LDL >100 mg/dL`. DOC-003, PDF p. 8, eTable 4 uses the same row label, `Lipid-lowering for LDL >100 mg/dL`. DOC-003, PDF p. 3, eTable 1 defines the eligible measure as lipid lowering at discharge if LDL is `≥100 mg/dL`, with additional eligibility conditions for previous treatment or undocumented LDL.
+- **Rule and calculation:** A strict `>100` threshold excludes a value exactly equal to 100 mg/dL; `≥100` includes it. These are nonidentical eligibility labels. No calculation from patient-level data is possible because none was supplied.
+- **Direct observation versus inference:** Directly observed: the strict table labels and the inclusive definition. Inference: if the row labels describe the analysis eligibility threshold, the two descriptions classify LDL exactly equal to 100 mg/dL differently. The review does not infer which wording governed the analysis.
+- **Alternative source-grounded interpretation:** The `>100` table wording may be a shortened display label while the eTable 1 definition controlled eligibility; the supplied sources do not resolve this.
+- **Exact human question:** Which threshold was used for the reported lipid-lowering analyses, and should the Table 2/eTable 4 row labels be inclusive (`≥100 mg/dL`) or the formal eligibility definition be amended?
 
-- **Primary category:** Statistical reporting inconsistency.
-- **Exact supplied-source location:** DOC-001, [jama_wang_2018_oi_180070.pdf — PDF p. 8](<../../../jama_wang_2018_oi_180070.pdf#page=8>), Table 3, `Death — In hospital` row.
-- **Direct observation:** The adjusted absolute-difference column prints `−0.7 (−1.1 to 0.2)` as a 95% CI and the immediately adjacent P-value column prints `.009`. The same row separately prints HR `.96 (.90 to 1.02)` and its P value `.14`.
-- **Consistency rule:** Under the supplied Table 3 labeling, this is a two-sided 95% CI and a P value in the same absolute-difference result column. At the printed precision, a 95% CI that includes the absolute-difference null (0) does not agree with an associated P=.009 (which is below .05) for that same result.
-- **Diagnostic calculation (not a replacement analysis):** The displayed CI midpoint is approximately -0.45 percentage points and its half-width approximately 0.65; this gives a rough CI-derived standard error of 0.65/1.96≈0.33 and a rough |z|≈1.36, not an exact reconstruction because the source does not give the CI/P variance estimator or degrees of freedom. The directly observed CI-null/P-threshold discordance, rather than this approximation, is the candidate basis.
-- **Matched-result and alternative checks:** No repeated in-hospital absolute-difference P value was located elsewhere in the supplied sources. The HR/P pair is separately labeled and internally compatible (its CI includes 1 and P=.14); it does not resolve the absolute-difference P value. The article does state adjustment and two-sided testing but not whether the displayed absolute-difference CI and P use a special non-common construction.
-- **Exact human question:** Does `.009` belong to the in-hospital absolute difference as tabled, and if so what supplied-analysis rule yields that P with `−1.1 to 0.2` as the stated 95% CI? Otherwise, which printed table value is to be corrected?
-- **Status:** Pending Human Adjudication. This is a provisional pass-1 candidate, not a stable `C` ID or a final correction.
+## Complete relationship records
 
-## Pass-1 completion and limitations
+| Stable ID | Explicit pass-1 record | Evidence checked and result |
+|---|---|---|
+| S001 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 pp. 1, 5, 7. Composite difference and ORPA both have ordered intervals containing their point estimate; positive directions and repeated abstract/text/table values agree. Difference and ORPA are distinct estimands; their respective P values are directionally compatible. |
+| S002 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 pp. 1, 5, 7. All-or-none difference and ORPA intervals contain the estimates and both include their nulls; P=.06 and P=.31 respectively are compatible at printed precision. |
+| S003 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 7. rtPA difference and ORPA are positive, their ordered intervals contain the estimates and include null; P=.26/.06 are compatible at displayed precision. S053 is a defined overall-population sensitivity result, not an identity comparator. |
+| S004 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 7. Early-antithrombotics difference/ORPA estimates, ordered intervals, directions, and P=.10/.07 are mutually compatible at printed precision; S054 has a different stated sensitivity denominator. |
+| S005 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 7. Dysphagia difference/ORPA estimates lie within ordered intervals, directions agree, and P=.41/.10 are compatible; no cross-location mismatch found. |
+| S006 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 7. DVT difference and ORPA are positive with intervals above null; P=.01/.04 is compatible with the displays and row direction. |
+| S007 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 7. Discharge-antithrombotics difference/ORPA intervals contain their estimates and include null; P=.09/.10 is compatible at printed precision. |
+| S008 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 7. AF-anticoagulation difference/ORPA signs, endpoints, and P=.18/.23 are compatible; the row's AF population is explicitly narrower than all patients. |
+| S009 | PASS_1_COMPLETE — CANDIDATE_PROPOSED P1CAND002 | DOC-001 p. 7 difference/ORPA intervals, directions, and P=.25/.40 are otherwise compatible. The displayed strict LDL `>100 mg/dL` label conflicts with the inclusive supplied eligibility definition; see P1CAND002. |
+| S010 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 7. Antihypertensive difference/ORPA intervals contain estimates and include null; positive directions and P=.07/.10 are compatible. |
+| S011 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 7. Antidiabetic difference/ORPA intervals are ordered, contain estimates, and exclude null; P=.02/.02 is compatible. |
+| S012 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 5 and DOC-003 p. 8. The sensitivity composite's estimate, interval, and ORPA exactly match S052. DOC-003 separately prints difference P<.001 and ORPA P=.003; DOC-001's adjacent P=.003 follows ORPA, so no cross-source P conflict is shown. |
+| S013 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 pp. 1, 5, 8. Three-month vascular-event difference and HR are negative/below one with ordered non-null intervals; P=.007/.002 is compatible and rounded repetitions agree. |
+| S014 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 pp. 1, 5, 8. Six-month vascular-event difference and HR have concordant direction, ordered non-null intervals, and compatible P=.02/.004; repeated values agree within stated rounding. |
+| S015 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 pp. 1, 5, 8, Figure 2. Twelve-month difference and HR directions/intervals agree; Table 3 and Figure 2 repeat HR=.72 and P<.001 without mismatch. |
+| S016 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 pp. 5, 8. Three-month disability difference is negative and OR=.76; intervals are ordered and exclude their nulls, with compatible P=.01/.002. |
+| S017 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 pp. 5, 8. Six-month disability difference/OR direction, intervals, and P=.006/.002 are compatible. |
+| S018 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 pp. 5, 8. Twelve-month disability difference/OR direction, intervals, and P=.02/.01 are compatible. |
+| S019 | PASS_1_COMPLETE — CANDIDATE_PROPOSED P1CAND001 | DOC-001 p. 8. The HR display is internally compatible, but the in-hospital absolute-difference 95% CI contains zero while its same-column P=.009 is below .05 under the stated two-sided convention; see P1CAND001. |
+| S020 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 8. Three-month death difference and HR intervals contain their estimates and include null; P=.08/.23 is compatible at printed precision. |
+| S021 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 8. Six-month death difference/HR intervals contain estimates and include null; directions and P=.38/.81 are compatible. |
+| S022 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-001 p. 8 and Figure 2. Twelve-month death difference has printed upper endpoint `−0.0` with P=.05, a boundary display not sufficient to infer a contradiction; HR=.86 (0.68-1.09), P=.21 repeats in Figure 2. |
+| S023 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-001 p. 5 reports symptomatic ICH 1/46 vs 2/23, P=.26. The source does not identify the exact test, cluster adjustment, or variance rule used for this sparse-event P value; no reconstructed P or candidate is made. |
+| S024 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-001 p. 4 gives the 5% improvement, 80% power, 5% significance, ICC=.02, 40-cluster/4800-patient design. Parameters agree with S025, but no sample-size formula, sidedness, variance assumptions, or design effect is supplied for mechanical reproduction. |
+| S025 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-002 p. 17 repeats the S024 design inputs. It provides no sample-size formula, sidedness, variance assumptions, or test statistic; no compatibility calculation is inferred. |
+| S026 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-002 p. 18 defines χ2, Student t, and Mann-Whitney U selection rules but contains no individual result to reconcile. The conditional test-selection label is internally coherent. |
+| S027 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-002 pp. 18-19 defines GEE for within-hospital correlation and population-average OR/mean difference with 95% CIs. The effect-measure and care-opportunity labels are coherent; this definition record has no paired reported statistic. |
+| S028 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-002 p. 19 defines Kaplan-Meier/Cox clinical-outcome analysis at discharge and 3/6/12 months and the contraindication-in-denominator sensitivity population. These definitions match the applicable recorded result types; no numerical result is asserted here. |
+| S029 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-003 p. 2 reports baseline composite 80.2% vs 79.5% and says no statistically significant difference, but supplies no exact P, CI, test, model, or cluster rule. The narrative cannot be mechanically reconciled further. |
+| S030 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-003 p. 5 eTable 2 age medians/IQRs and P=.81 have no stated selected test, distribution decision, or cluster/variance rule. No P reconstruction is inferred. |
+| S031 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-003 p. 5 eTable 2 male percentages and P=.61 lack an identified test/variance rule; values are in range and no direct conflict is printed. |
+| S032 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-003 p. 5 eTable 2 ischemic-stroke-history percentages and P=.68 lack an identified test/variance rule; no convention-based reconstruction was made. |
+| S033 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-003 p. 5 eTable 2 diabetes percentages and P=.75 lack an identified test/variance rule; no direct mismatch is printed. |
+| S034 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-003 p. 5 eTable 2 hypertension percentages and P=.44 lack an identified test/variance rule; no direct mismatch is printed. |
+| S035 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-003 p. 5 eTable 2 dyslipidemia percentages and P=.94 lack an identified test/variance rule; no direct mismatch is printed. |
+| S036 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-003 p. 5 eTable 2 CAD/previous-MI percentages and P=.21 lack an identified test/variance rule; no direct mismatch is printed. |
+| S037 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-003 p. 5 eTable 2 atrial-fibrillation percentages and P=.79 lack an identified test/variance rule; no direct mismatch is printed. |
+| S038 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-003 p. 5 eTable 2 smoking percentages and P=.71 lack an identified test/variance rule; no direct mismatch is printed. |
+| S039 | PASS_1_COMPLETE — MISSING_DEFINITION_WITH_REASON | DOC-003 p. 5 eTable 2 NIHSS medians/IQRs and P=.99 lack an identified test/distribution rule; the stated 0-42 scale is compatible with the displayed values. |
+| S040 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Three-month ischemic-stroke difference and HR have ordered intervals containing estimates and their nulls; directions/P=.40/.59 are compatible. Difference-P test construction is not supplied, so no exact recalculation is claimed. |
+| S041 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Three-month hemorrhagic-stroke difference/HR endpoint ordering, direction, null containment, and P=.23/.68 are compatible at display precision. |
+| S042 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Three-month MI difference/HR have ordered intervals containing estimates and null; P=.48/.48 is compatible. |
+| S043 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Three-month vascular-death difference is negative with non-null CI and HR=.62 below one with non-null CI; P=.001/.02 is compatible. |
+| S044 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Six-month ischemic-stroke difference interval ends at .02 with P=.05, a rounding-boundary pairing not sufficient to infer a mismatch; HR=.72 (0.53-0.99), P=.04 is directionally compatible. |
+| S045 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Six-month hemorrhagic-stroke difference/HR intervals contain estimates and null; P=.38/.80 is compatible. |
+| S046 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Six-month MI difference/HR intervals contain estimates and null; P=.86/.64 is compatible. |
+| S047 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Six-month vascular-death difference has non-null negative CI and P=.04, while its distinct HR CI includes one with P=.16; both estimands are internally compatible. |
+| S048 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Twelve-month ischemic-stroke difference and HR have concordant negative/below-one directions, ordered non-null intervals, and compatible P=.03/.01. |
+| S049 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Twelve-month hemorrhagic-stroke difference/HR intervals contain estimate and null; P=.80/.96 is compatible. |
+| S050 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Twelve-month MI difference/HR intervals contain estimate and null; P=.45/.43 is compatible. |
+| S051 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 6 eTable 3. Twelve-month vascular-death difference and HR have concordant negative/below-one directions, ordered non-null intervals, and compatible P=.004/.02. |
+| S052 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 8 eTable 4 exactly repeats the S012 composite estimate and ORPA. Separate difference P<.001 and ORPA P=.003 are clearly column-specific and do not conflict with DOC-001's ORPA-adjacent P=.003. |
+| S053 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 8 eTable 4. Sensitivity rtPA difference/ORPA intervals contain estimates and null; P=.27/.13 is compatible. Its explicitly overall-population denominators differ from S003, so equality is not expected. |
+| S054 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 8 eTable 4. Sensitivity early-antithrombotics difference/ORPA intervals are ordered, positive, and exclude null; P=.02/.03 is compatible. Different stated denominators from S004 explain nonidentity. |
+| S055 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 8 eTable 4. Sensitivity dysphagia difference/ORPA intervals contain estimates and null; P=.36/.17 is compatible. |
+| S056 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 8 eTable 4. Sensitivity DVT difference is positive with non-null CI/P=.01; its distinct ORPA CI includes one/P=.07. Both are internally compatible and denominators differ from S006 by the named sensitivity population. |
+| S057 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 8 eTable 4. Sensitivity discharge-antithrombotics difference is positive with non-null CI/P=.03; ORPA CI includes one/P=.05, a distinct compatible estimand. |
+| S058 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 8 eTable 4. Sensitivity AF-anticoagulation difference/ORPA intervals contain estimates and null; P=.12/.29 is compatible. |
+| S059 | PASS_1_COMPLETE — CANDIDATE_PROPOSED P1CAND002 | DOC-003 p. 8 eTable 4 difference/ORPA intervals, directions, and P=.28/.63 are otherwise compatible. Its strict LDL `>100 mg/dL` row label shares the inclusive-definition discrepancy in P1CAND002. |
+| S060 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 8 eTable 4. Sensitivity antihypertensive difference/ORPA intervals contain estimates and null; P=.07/.07 is compatible. |
+| S061 | PASS_1_COMPLETE — NO_CANDIDATE | DOC-003 p. 8 eTable 4. Sensitivity antidiabetic difference/ORPA intervals are ordered, contain estimates, exclude null, and P=.007/.01 is compatible. |
 
-- **Canonical relationships completed:** 67 of 67 (`S001`-`S067`), each explicitly marked `PASS_1_COMPLETE` above.
-- **Provisional candidates emitted:** 1 (`SP1-001`).
-- **Display-zero exclusion:** no mapped display-zero P values; none were made candidates.
-- **Key limitation:** Native-text decimal glyph duplication in DOC-003 was resolved using the fresh coordinate-layout-supported mapper records. Exact P/CI reconstruction was intentionally not attempted where the supplied sources omit an applicable common estimator, sidedness/df rule, covariance structure, or model-to-estimand mapping.
+## Pass-1 counts and limitations
+
+- **Assigned relationships completed:** 61 of 61 (`S001`-`S061`).
+- **Records with `NO_CANDIDATE`:** 44.
+- **Records with `CANDIDATE_PROPOSED`:** 3 relationship records, representing 2 distinct provisional candidate proposals (`P1CAND001`, `P1CAND002`).
+- **Records with `MISSING_DEFINITION_WITH_REASON`:** 14.
+- **Limitations:** No participant-level data, model output, SEs, covariance, degrees of freedom, sample-size formula, or exact test construction for several displays was supplied. CI/P checks were limited to expressly paired, source-defined same-column displays and diagnostic rounding-aware comparisons. No candidate is an adjudication, correction, severity assessment, or validity determination; every proposal requires human adjudication.

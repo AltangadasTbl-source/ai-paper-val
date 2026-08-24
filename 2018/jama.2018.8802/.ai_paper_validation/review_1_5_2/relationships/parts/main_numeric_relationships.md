@@ -1,17 +1,13 @@
-# Main numeric relationship part — DOC-001
+# Main numeric/reporting relationships — DOC-001
 
-This part indexes the 30 provisional numeric/reporting records `MN001`–`MN030` extracted in `extraction/main_quantitative_evidence.md`. Each record is complete at its stated row/display granularity and preserves source location, population, time, contrast, unit/scale, and all printed numeric values. No candidate conclusion is made here.
+Fresh-source mapping only. Provisional unique IDs `MN001`-`MN041`; no candidate or checker judgment.
 
-| Keys | Main source locations | Coverage |
-|---|---|---|
-| MN001–MN006 | PDF p. 1, Abstract | Design, allocation, follow-up, all headline outcomes/results |
-| MN007 | PDF p. 2 | Key Points, timing, population thresholds/context |
-| MN008 | PDF p. 3 | Randomization and outcome definitions |
-| MN009–MN011 | PDF p. 4 | Power/design inputs, imputation, analysis and participant accounting |
-| MN012–MN015 | PDF p. 5 | Results narrative, sensitivity result, Figure 1 |
-| MN016–MN020 | PDF p. 6, Table 1 | All baseline hospital and patient row values |
-| MN021–MN024 | PDF p. 7, Table 2 | Co-primary and all nine performance-measure rows, definitions/adjustment footnotes |
-| MN025–MN029 | PDF p. 8, Figure 2 and Table 3 | Risk sets, follow-up, all vascular event/disability/death rows |
-| MN030 | PDF p. 9 | Quantitative limitation statements |
+| IDs | Complete relationship scope and rule | Exact source locations | Cross-source status |
+|---|---|---|---|
+| MN001-MN008 | Enrollment, allocation, follow-up, sample-size, analysis-unit, imputation and flow. Compare printed counts/percentages with explicit denominators; retain cluster/patient distinction. | PDF pp1-5, Figure 1 p5 | Abstract/narrative/Figure repetitions mapped; support pending. |
+| MN009-MN024 | Primary definitions and every Table 2 adherence numerator, denominator, percentage, difference, CI, ORPA, ICC, adjustment/direction label and sensitivity result. Rule: rounded n/total yields displayed percentage; positive difference favors intervention. | PDF pp1,3,5,7 | Abstract/narrative/Table 2 matching mapped; support pending. |
+| MN025-MN032 | Every Table 1 hospital/patient count, percentage, median, IQR, time, LDL/NIHSS unit and scale. Rule: category subtotals and denominators where supplied; retain rounded/table precision. | PDF p6 | Supplement baseline matching pending. |
+| MN033-MN040 | Every Table 3/Figure 2 outcome count, denominator, percentage, risk difference, interval, HR/OR, P, time, risk set and follow-up. Rule: table rounding can differ from narrative higher precision; Figure 2 repeats 12-month HR results. | PDF pp1,5,8 | Abstract/narrative/Table/Figure internal matches mapped; support pending. |
+| MN041 | Printed limitation compares 3.4% composite difference with planned 5% detectable improvement. | PDF p4,p9 | Internal planned-versus-interpretive match mapped. |
 
-**Relationship count:** 30 at the described display/row granularity. The complete values are intentionally retained in the extraction artifact rather than duplicated here.
+All relationship IDs have exact evidence cards in `extraction/main_quantitative_evidence.md`.

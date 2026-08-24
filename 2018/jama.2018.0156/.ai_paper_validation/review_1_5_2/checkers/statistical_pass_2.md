@@ -2,90 +2,77 @@
 
 ## Scope, evidence boundary, and method
 
-This independent second statistical pass revisited every canonical inferential relationship, `S001` through `S055`, after reading the complete statistical inventory, numeric relationship inventory (`N001`--`N098`), pass-1, numeric, and cross-source checker artifacts, the stable candidate ledger (`C001`--`C004`), and the mechanical evidence recheck. Direct-source evidence was limited to the fresh native/layout PDF-text assets and the explicitly authorized existing OCR provenance recorded in this run. No web material, old audit derivative, new OCR, or adjudication was used.
+This independent second pass revisited every fresh canonical inferential relationship, `S001` through `S038`, after reviewing the current statistical and numeric relationship inventories, fresh mapping artifacts, the three fresh checker artifacts, the complete stable candidate ledger (`C001` through `C008`), and the mechanical evidence recheck. Only supplied-package evidence recorded in the fresh 1.5.2 artifacts was used. No web source, legacy audit derivative, source modification, new OCR, severity, validity, correction, or adjudication was used.
 
-Each record below is `PASS_2_COMPLETE`, including records with no candidate and records for which a source omits a necessary model or test definition. Checks included population/denominator matching, arithmetic and rounding where printed inputs permit it, estimate/interval containment and endpoint ordering, direction, measure and scale labels, repeated values, cross-source controls, and the recheck implications. Inferential reconstructions were not made where the supplied sources do not identify a compatible test, sidedness, variance estimator, covariance, CI construction, or row-specific test selection.
+For each relationship, this pass checked the available denominator/population alignment, arithmetic, estimate containment, endpoint ordering, sign/direction, effect-measure/scale label, duplicate/repeated display, cross-source correspondence, ledger implications, and recheck facts. Interval/P-value/test/statistic/SE compatibility was assessed only when the evidence supplied a compatible rule and matched result; no sidedness, degrees of freedom, covariance, variance estimator, multiplicity, denominator, model, or estimand mapping was inferred from convention. Any binomial interval calculation cited below is a labelled diagnostic approximation, not a replacement analysis.
 
 ## Relationship-by-relationship pass-2 register
 
-| S ID | PASS_2_COMPLETE result |
+| S ID | PASS_2_COMPLETE review record |
 |---|---|
-| S001 | **PASS_2_COMPLETE.** ITT primary result remains on the BMV-minus-ETI percentage-point scale: `0.11%` is within the one-sided 97.5% interval `-1.64% to infinity`; the lower bound fails the supplied strict `>-1%` NI rule. Protocol/SAP two-sided-95% and article one-sided-97.5% formulations are matching representations after endpoint, population, contrast, and margin controls. No compatible exact test/variance record is supplied for a further reconstruction. |
-| S002 | **PASS_2_COMPLETE.** The hierarchical centre-random-effect result (`0.05%`, lower limit `-1.70%`) is separately labelled and has no cross-location duplicate requiring substitution for S001. Estimate direction and interval ordering are coherent. |
-| S003 | **PASS_2_COMPLETE.** PP primary `0.08%` is within `-1.74% to infinity` and fails the same matched margin rule; `P=.12` is not independently reconstructable without the model variance/test details. The PP analysis set is not conflated with ITT. |
-| S004 | **PASS_2_COMPLETE.** ITT day-28 survival counts `55/1018` and `54/1022` give about `+0.119` pp, compatible with printed `0.1`; the ordered two-sided interval `-1.8 to 2.1` contains it. Matched abstract/narrative/table displays agree. |
-| S005 | **PASS_2_COMPLETE.** ITT admission `294/1018` minus `333/1022` is about `-3.70` pp, matching `-3.7` within `-7.7 to 0.3`. Population, direction, and repeated locations agree. |
-| S006 | **PASS_2_COMPLETE.** ITT ROSC `348/1018` minus `397/1022` is about `-4.66` pp, compatible with `-4.7` within `-8.8 to -0.5`. A row-specific chi-square/Fisher choice is absent, so P/CI reconstruction is not warranted. |
-| S007 | **PASS_2_COMPLETE.** The ITT CPC-distribution `P=.68` is attached to the five-category distribution, while CPC 1+2 yields the separately reported primary numerators `44` and `43`. No distribution-test definition permits recalculation. |
-| S008 | **PASS_2_COMPLETE.** PP secondary intervals are ordered and contain their displayed point estimates. This row has the independently rechecked C001 (ETI ROSC percentage), C002 (survival point display conditional on printed estimator), and C003 (survival CI scale diagnostic) implications; no additional distinct proposition arises. |
-| S009 | **PASS_2_COMPLETE.** PP CPC-distribution `P=.76` remains correctly attached to the PP five-category distribution, not to a single CPC class. No compatible distribution-test construction is supplied. |
-| S010 | **PASS_2_COMPLETE.** Safety difficulty `186/1027` versus `134/996` gives about `+4.66` pp, compatible with `4.7` inside `1.5 to 7.9`; safety denominators are retained. |
-| S011 | **PASS_2_COMPLETE.** Safety failure `69/1028` versus `21/996` gives about `+4.61` pp, compatible with `4.6` inside `2.8 to 6.4`. `P<.001` is a threshold display, not a display zero. |
-| S012 | **PASS_2_COMPLETE.** Regurgitation `156/1027` versus `75/999` gives about `+7.68` pp, compatible with `7.7` inside `4.9 to 10.4`. `P<.001` is not a display zero. |
-| S013 | **PASS_2_COMPLETE.** Table 3 names chi-square or Fisher exact testing without a row-specific selection. No test-statistic/P-value compatibility claim can be made from convention alone; no printed contradiction was found. |
-| S014 | **PASS_2_COMPLETE.** The supplied secondary-analysis plan keeps odds-ratio CIs distinct from risk-difference CIs and quantitative tests conditional on distribution. No table result is relabelled across those scales. |
-| S015 | **PASS_2_COMPLETE.** Centre-5 CCF BMV-minus-ETI `-1%` agrees with `86%` versus `87%` and lies within `-4% to 2%`. The small subgroup’s quantitative-test details are not supplied. |
-| S016 | **PASS_2_COMPLETE.** Centre-5 pause result `11` lies within `7 to 15`, but the count-outcome versus seconds label is the separately rechecked C004 issue. `P<.001` is a threshold, not a display-zero candidate. No additional inferential contradiction is source-defined. |
-| S017 | **PASS_2_COMPLETE.** Planned `3%/2%`, 1% margin, 956/group, and 80% power remain clearly distinguished from observed primary values; no cross-source plan/result substitution is justified. |
-| S018 | **PASS_2_COMPLETE.** Protocol primary NI contrast, two-sided 95% CI rule, and strict lower-limit rule match S001 after population, endpoint, contrast, and sidedness controls. No observed protocol result is printed. |
-| S019 | **PASS_2_COMPLETE.** The protocol’s exact-CI condition is conditional and does not identify an observed CI procedure for reconciliation. |
-| S020 | **PASS_2_COMPLETE.** Protocol NI hypotheses retain the stated boundary inequalities; no observed boundary case creates a discrepancy. |
-| S021 | **PASS_2_COMPLETE.** The planned post-NI difference test has no printed observed counterpart or enough alpha/test detail for a compatibility check. |
-| S022 | **PASS_2_COMPLETE.** Planned secondary chi-square and 95% OR/difference CI language does not make any specific table CI an OR CI; no effect-scale conflict is printed. |
-| S023 | **PASS_2_COMPLETE.** T-test/Mann-Whitney selection is distribution-conditional; no endpoint-specific selection or statistic is supplied. |
-| S024 | **PASS_2_COMPLETE.** Interim analyses at 50%/75% are planned futility/sample-size-recalculation steps; no alpha-spending/stopping boundary or observed interim result is supplied. |
-| S025 | **PASS_2_COMPLETE.** The repeated planned sample-size inputs (`3%`, `2%`, 1%, 956/group, `.8`, `.025`, 2,000, 5,000 simulations) agree across matching protocol locations and are not trial results. |
-| S026 | **PASS_2_COMPLETE.** Planned ITT/PP definitions are compatible with labelled ITT and PP article analyses; no concrete denominator/population contradiction is shown. |
-| S027 | **PASS_2_COMPLETE.** Planned safety/dichotomized chi-square and 95% OR-CI language does not identify an observed row-specific inferential construction. |
-| S028 | **PASS_2_COMPLETE.** Exploratory logistic regression has no reported numeric model result, covariate list, or estimand for a reconciliation. |
-| S029 | **PASS_2_COMPLETE.** ITT missing-primary worst-case and conditional sensitivity/multiple-imputation definitions have no supplied conflicting observed denominator or result. |
-| S030 | **PASS_2_COMPLETE.** Centre-stratified blocked randomization is a design rule; no block sequence/size or realized-allocation requirement is provided for an arithmetic inference. |
-| S031 | **PASS_2_COMPLETE.** Planned SAS 9.2 identifies software but creates no result-level numerical relationship. |
-| S032 | **PASS_2_COMPLETE.** The repeated V1.4 primary two-sided-95% / strict `>-0.01` NI framework matches the correctly controlled article convention; no conflict. |
-| S033 | **PASS_2_COMPLETE.** Repeated NI hypotheses and post-NI sequence preserve contrast/margin; no observed boundary or follow-on difference test is supplied. |
-| S034 | **PASS_2_COMPLETE.** Repeated ITT day-28 CPC<=2 definition matches the primary endpoint controls for S001. |
-| S035 | **PASS_2_COMPLETE.** Repeated secondary-rate plan distinguishes OR and difference CIs; no matched result reverses or mislabels either. |
-| S036 | **PASS_2_COMPLETE.** The repeated method leaves row-level test and variance/CI construction unspecified, so stricter P/CI reconciliation is unavailable. |
-| S037 | **PASS_2_COMPLETE.** Repeated t/Mann-Whitney rule remains conditional on unreported outcome distribution and endpoint-specific selection. |
-| S038 | **PASS_2_COMPLETE.** Repeated 50%/75% interim plan has no observed interim result or stated alpha/futility threshold. |
-| S039 | **PASS_2_COMPLETE.** Repeated planned sample-size quantities agree internally and remain planning evidence only. |
-| S040 | **PASS_2_COMPLETE.** Repeated ITT/PP definitions remain compatible with article labels; major-violation classification is not supplied. |
-| S041 | **PASS_2_COMPLETE.** Repeated safety/OR-CI/logistic-regression plan contains no observed model-specific result to compare. |
-| S042 | **PASS_2_COMPLETE.** Repeated missing-primary and conditional-imputation rules have no supplied incompatible observed handling. |
-| S043 | **PASS_2_COMPLETE.** Stratified blocked randomization repeats without any supplied equal-realized-allocation rule; no imbalance claim is inferred. |
-| S044 | **PASS_2_COMPLETE.** `40/120 (33%)` versus `69/573 (12%)`, `P<.0001`, is labelled external background with a different context from CAAM. The P display is a threshold, not a display zero. |
-| S045 | **PASS_2_COMPLETE.** External observational `2.9%` among 367,837 BMV versus `1.0%` among 41,972 TI is not matched to the CAAM trial’s population/outcome/time and is not a cross-source contradiction. |
-| S046 | **PASS_2_COMPLETE.** SAP NI framework and primary endpoint match the protocol/article after BVM/TI wording, endpoint, and population controls. Fresh native SAP text controls over duplicate OCR uncertainty. |
-| S047 | **PASS_2_COMPLETE.** SAP planned `3%/2%`, 1%, 956/group, `.8`, `.025`, 2,000, and 5,000 Newcombe-Wilson simulations agree with repeated planning evidence; its `.025` planning alpha is distinct from later secondary-test policy. |
-| S048 | **PASS_2_COMPLETE.** SAP ITT/PP/AT and missing-data definitions have no matched observed denominator/result conflict. |
-| S049 | **PASS_2_COMPLETE.** SAP primary day-28 CPC<=2 and secondary-outcome labels/time points match the article/eTable controls without a scale or direction conflict. |
-| S050 | **PASS_2_COMPLETE.** SAP non-missing categorical denominators and one-decimal rounding rules support rather than override direct count/denominator checks. |
-| S051 | **PASS_2_COMPLETE.** SAP two-sided 95% CI for BVM-minus-tracheal with strict `>-0.01` lower-limit rule is compatible with the article’s matched one-sided 97.5% interval; exact CI procedure remains conditional. |
-| S052 | **PASS_2_COMPLETE.** SAP secondary chi-square/OR/difference CI, t/Mann-Whitney, two-tailed `.05`, and safety chi-square/Fisher statements are conditional alternatives. No unreported row-specific test, covariance, or estimator is assumed. |
-| S053 | **PASS_2_COMPLETE.** eTable 1 BMV `1018` and ETI `1022` contribution totals and one-decimal percentages reconcile; it contains no inferential comparison. |
-| S054 | **PASS_2_COMPLETE.** eTable 2 exclusion result has analysis-specific denominators `43/971` and `39/978`, rate difference about `0.44` pp compatible with `0.4`, and interval `-2.2 to 1.3` containing it. Row-specific test/CI details are absent. |
-| S055 | **PASS_2_COMPLETE.** eTable 2 reclassification result has distinct denominators `41/863` and `45/1174`, rate difference about `0.92` pp compatible with `0.9`, and interval `-0.9 to 2.7` containing it. No row-specific test/CI construction is supplied. |
+| S001 | **PASS_2_COMPLETE.** DOC-001 defines BMV minus ETI primary noninferiority with a two-sided 95% CI lower bound strictly greater than `-1%`; the one-sided 97.5% published form is a matched representation of that stated lower-bound rule. This definition itself has no conflicting observed value. |
+| S002 | **PASS_2_COMPLETE.** ITT difference `0.11%` is contained in the ordered one-sided 97.5% interval `-1.64%` to infinity, and the lower endpoint fails the stated `>-1%` rule. The conclusion of noninferiority not demonstrated is coherent, but the narrative word “greater” conflicts with `-1.64% < -1.00%`; this is the separately rechecked C001, not a new candidate. |
+| S003 | **PASS_2_COMPLETE.** The centre-random-effect post-hoc difference `0.05%` is contained in `-1.70%` to infinity. Its distinct model prevents substituting it for the unadjusted ITT result; no compatible model variance or test record supports further reconstruction. |
+| S004 | **PASS_2_COMPLETE.** PP `4.3%` versus `4.2%`, difference `.08%`, is contained in `-1.74%` to infinity and its lower bound remains below the matched margin. PP is retained as a distinct population; no exact P-value reconstruction is source-defined. |
+| S005 | **PASS_2_COMPLETE.** The secondary-endpoint rule specifies chi-square tests and 95% OR/difference CIs, with t/Mann-Whitney alternatives for quantitative outcomes. It does not select a row-specific test or CI estimator, so it does not authorize exact secondary P/CI reconstruction. |
+| S006 | **PASS_2_COMPLETE.** ITT day-28 survival `55/1018` minus `54/1022` is about `+0.12` percentage points, compatible with printed `.1`, which is contained in ordered `-1.8` to `2.1`. Matched abstract, narrative, and table displays agree; P `.90` is not reconstructed. |
+| S007 | **PASS_2_COMPLETE.** ITT CPC-distribution `P=.68` is an omnibus value for the displayed multicategory distribution, not a P value for one CPC category. Test statistic, degrees of freedom, and selected method are not supplied. |
+| S008 | **PASS_2_COMPLETE.** ITT admission `294/1018 - 333/1022` is about `-3.70` points, matching `-3.7` inside ordered `-7.7` to `.3`; repeated locations and the BMV-minus-ETI direction agree. No row-specific inferential construction is defined. |
+| S009 | **PASS_2_COMPLETE.** ITT ROSC `348/1018 - 397/1022` is about `-4.66` points, compatible with `-4.7` inside `-8.8` to `-.5`. The narrative that ETI had higher ROSC agrees with the signed contrast. |
+| S010 | **PASS_2_COMPLETE.** PP survival `.1` is inside ordered `-10` to `9.7`, but the printed counts/denominators yield about `.019` points, ordinarily `.0` at one decimal: existing C003. The 19.7-point displayed span has a labelled ordinary unpooled-binomial diagnostic interval of about `-2.00` to `2.04` points, while exact CI construction is absent: existing C004. Neither establishes an intended replacement or a further candidate. |
+| S011 | **PASS_2_COMPLETE.** PP CPC-distribution `P=.76` remains attached to the full PP five-category display; no selected distribution test, statistic, or degrees of freedom are supplied. |
+| S012 | **PASS_2_COMPLETE.** PP hospital admission `289/995 - 312/943` is about `-4.04` points, compatible with `-4.0` inside ordered `-7.6` to `.6`. The displayed P `.055` is not mechanically reconstructable from supplied row-level methods. |
+| S013 | **PASS_2_COMPLETE.** The printed `-5.6` is contained in `-9.9` to `-1.3`, but `377/943` is `39.98%`, not printed `30.0%`; the count-derived contrast is `-5.61` points while displayed rates imply `+4.4`. This is the separately rechecked C005; no additional distinct proposition arises. |
+| S014 | **PASS_2_COMPLETE.** Safety difficulty `186/1027 - 134/996` is about `+4.66` points, compatible with `4.7` inside `1.5` to `7.9`. The row-specific denominators, measure, direction, and repeated locations agree. |
+| S015 | **PASS_2_COMPLETE.** Safety failure `69/1028 - 21/996` is about `+4.60` points, compatible with `4.6` inside `2.8` to `6.4`. `P<.001` is an inequality display, not a display-zero result. The protocol-versus-article endpoint/population question is already C008 and does not permit an unqualified nested-count inference. |
+| S016 | **PASS_2_COMPLETE.** Regurgitation `156/1027 - 75/999` is about `+7.68` points, compatible with `7.7` inside `4.9` to `10.4`. `P<.001` is an inequality display, not a display-zero result. |
+| S017 | **PASS_2_COMPLETE.** Centre-5 CCF BMV-minus-ETI `-1%` agrees with BMV `86%` versus ETI `87%` and is contained in `-4` to `2`. The subgroup test/variance specification is unavailable. |
+| S018 | **PASS_2_COMPLETE.** The reported `11` is within `7` to `15`, but the stated outcome is the number of pauses longer than 2 seconds whereas the contrast/CI are labelled seconds. This is the separately rechecked C002. `P<.001` is an inequality display, not a display zero. |
+| S019 | **PASS_2_COMPLETE.** Planning values `956` per group, 80% power, two-sided 95% CI, 5,000 simulations, and 2,000 target participants are retained as planning inputs; `956 x 2 = 1,912` does not conflict with a 2,000 target. They are not substituted for observed results. |
+| S020 | **PASS_2_COMPLETE.** VAS `0-100 mm`, Han `>2`, IDS `>5`, and median/IQR labels remain distinct scales/measures. No inferential result or conflicting repeated label is supplied. |
+| S021 | **PASS_2_COMPLETE.** Protocol ITT/PP definitions agree with the article’s population labels. Major-deviation membership and any participant-level population mapping are not supplied and are not inferred. |
+| S022 | **PASS_2_COMPLETE.** Protocol two-sided-95% CI and strict lower-bound `>-.01` rule agrees with the matched article primary framework after contrast and scale matching. No protocol observed CI is present. |
+| S023 | **PASS_2_COMPLETE.** The protocol H0/H1 boundary direction agrees with S022 and states a difference test only after noninferiority. No post-noninferiority observed test is supplied. |
+| S024 | **PASS_2_COMPLETE.** Protocol chi-square/OR/difference-CI and t/Mann-Whitney statements are conditional rules; no specific observed test selection, statistic, or SE is named. |
+| S025 | **PASS_2_COMPLETE.** Planned 50% and 75% interim reviews have no supplied observed interim output, stopping boundary, or alpha-spending rule for comparison. |
+| S026 | **PASS_2_COMPLETE.** Repeated planning assumptions (`3%`, `2%`, 1% margin, 956 per arm, `.8`, `.025`, 2,000, 5,000 simulations) are internally coherent and remain planning evidence only. |
+| S027 | **PASS_2_COMPLETE.** Planned safety chi-square/OR and exploratory logistic-regression definitions provide no reported row-specific model, covariates, or statistic to reconcile. |
+| S028 | **PASS_2_COMPLETE.** Worst-case no-success primary ITT missing-data handling and potential multiple-imputation sensitivity have no supplied conflicting missingness total, analysis denominator, or result. |
+| S029 | **PASS_2_COMPLETE.** The revised-protocol summary repeats S021-S026 definitions at the mapped locations. Historical versions are not compared as if they were the same observed analysis. |
+| S030 | **PASS_2_COMPLETE.** SAP BVM-minus-TI margin `-.01`, H0/H1 direction, and two-sided alpha `.05` agree with the primary noninferiority framework after distinction from secondary testing. |
+| S031 | **PASS_2_COMPLETE.** SAP primary two-sided 95% CI, strict `>-.01` lower-limit rule, possible exact CI, and ITT/PP/AT populations are compatible with the matched published lower-bound presentation. Exact CI construction is not supplied. |
+| S032 | **PASS_2_COMPLETE.** SAP cancellation of interims, final-only analysis, no multiplicity adjustment, primary missing-as-no-success, and no secondary imputation have no supplied conflicting matched result. |
+| S033 | **PASS_2_COMPLETE.** SAP nonmissing categorical denominators and one-decimal rounding permit count/denominator checks but do not define a row-specific CI estimator. These definitions support the conditional wording of C003 and do not duplicate it. |
+| S034 | **PASS_2_COMPLETE.** SAP safety ITT/AT and chi-square/Fisher/t/Mann-Whitney alternatives do not identify the test or analysis population for every displayed Table 3 row. No unreported selection is assumed. |
+| S035 | **PASS_2_COMPLETE.** DOC-003 post-hoc exclusion difference `.4` is contained in ordered `[-2.2, 1.3]`; `43/971 - 39/978` is about `.44` points. P `.63` is not reconstructed without a selected test/CI method. |
+| S036 | **PASS_2_COMPLETE.** DOC-003 post-hoc reclassification difference `.9` is contained in ordered `[-.9, 2.7]`; `41/863 - 45/1174` is about `.92` points. P `.31` is not reconstructed without a selected test/CI method. |
+| S037 | **PASS_2_COMPLETE.** The SAP safety list predates later protocol additions, a versioned-definition difference. C007 and C008 require the separately stated final-algorithm and population-alignment human questions; no same-result contradiction is inferred merely from historical versions. |
+| S038 | **PASS_2_COMPLETE.** Fresh visual recheck of DOC-002 rendered p.103 shows `0<IDS<=5` slight and `IDS>5` moderate-major. This agrees with the main article's `>5` difficult label and explicitly categorizes score 5; no candidate. |
 
-## Stable-candidate and mechanical-recheck reconciliation
+## Stable-ledger and mechanical-recheck reconciliation
 
-All four current stable candidates were revisited against the ledger and recheck facts. They remain source-grounded candidate consistency issues for human adjudication; this pass assigns no validity, severity, correction, or disposition.
+Every stable ID was revisited. This pass preserves all IDs and reports no disposition.
 
 | Stable ID | Pass-2 reconciliation |
 |---|---|
-| C001 | Recheck confirms the same PP ROSC row prints `377/943 (30.0%)` and BMV-minus-ETI `-5.6`; `377/943` is `39.979%`, while the count-derived signed difference is `-5.607` pp. The denominator/proportion/direction contradiction is source-grounded and distinct. No new proposition. |
-| C002 | Recheck confirms the PP survival values `54/995`, `51/943`, and printed `0.1` pp. The count-derived unrounded difference is `0.018864` pp, which ordinarily rounds to `0.0` pp. The ledger’s conditional wording and exact estimator/retained-rate human question remain necessary; no new proposition. |
-| C003 | Recheck confirms `0.1` pp, `-10 to 9.7`, and `P=.99` in the same PP survival row. The stated percentage-point scale and diagnostic unpooled interval support the existing scale/span question, but the source lacks row-specific CI construction. This pass does not infer an intended limit or duplicate C002. |
-| C004 | Recheck confirms the named count outcome, `27` versus `16`, arithmetic difference `11`, and attached `seconds` label. The source does not identify whether the group values are totals or another summary, so the existing count-versus-time human question remains; no additional candidate is distinct. |
+| C001 | Recheck confirms the primary rule, `-1.64%` lower endpoint, and narrative “greater” wording. `-1.64% < -1.00%`; the direction-word contradiction is fully represented by S002. |
+| C002 | Recheck confirms the repeated count-outcome wording, BMV `27`, ETI `16`, arithmetic difference `11`, and seconds label. The summary type/CI method remain undefined; S018 yields no distinct additional proposition. |
+| C003 | Recheck confirms PP survival counts, denominators, `.1` point difference, and one-decimal categorical-rounding statement. The count-derived `.019` point calculation remains conditional on the printed inputs being the point estimator; S010 yields no duplicate. |
+| C004 | Recheck confirms PP survival `.1`, `-10` to `9.7`, and `P=.99` in the percentage-point column. The binomial interval comparison remains diagnostic because the row-level CI method, inputs, and precision process are undefined; S010 yields no duplicate. |
+| C005 | Recheck confirms PP ROSC `342/995 (34.4%)`, `377/943 (30.0%)`, and `-5.6`. Count/denominator arithmetic and the signed contrast establish the existing S013 contradiction; no additional proposition is distinct. |
+| C006 | Recheck confirms 20 EMS centres in DOC-001 and 21 contributing investigator-centre rows in DOC-003, whose arm totals match ITT totals. The absent centre crosswalk leaves the counting-unit mapping unresolved; no inferential relationship adds a new candidate. |
+| C007 | Recheck confirms the article’s CPC-1-or-2 wording and the amended baseline-disability qualification. The final coding algorithm and any affected participant are absent; this remains the existing endpoint-definition question, not a new inferential claim. |
+| C008 | Recheck confirms the amended composite definition, ETI ITT deaths, flow values, and article failure row. The exact `21/996` participant set and endpoint definition are not aligned with ITT from supplied evidence; the conditional nested-count issue remains C008 and is not extended. |
 
 ## New-proposition register
 
-No genuinely new distinct proposition was identified (`STAT2-NEW` count: **0**). The observed S008 implications are already represented by C001--C003, and the S016 implication is already represented by C004; they were not duplicated.
+No genuinely new distinct candidate proposition was identified (`STAT2-NEW` count: **0**). The pass did not assign a candidate ID, alter a stable ID, or suppress any existing candidate.
 
-## Display-zero exclusion, coverage, and limitations
+## Display-zero coverage, counts, and limitations
 
-- **Assigned relationships completed:** **55/55** (`S001`--`S055`), each explicitly marked `PASS_2_COMPLETE` above.
-- **Existing stable candidates revisited:** **4/4** (`C001`, `C002`, `C003`, `C004`).
-- **New distinct propositions:** **0**.
-- **DISPLAY_ZERO_NOT_CANDIDATE records:** **0**. No reviewed relationship displays `P = 0`, `p = 0.000`, or an equivalent finite-precision zero. `P<.001` and `P<.0001` are threshold displays and were not treated as display-zero records or candidates.
+- **Assigned relationships completed:** **38/38** (`S001`–`S038`), each explicitly marked `PASS_2_COMPLETE` above.
+- **Stable candidates revisited:** **8/8** (`C001`–`C008`).
+- **New distinct candidate propositions:** **0**.
+- **DISPLAY_ZERO_NOT_CANDIDATE records:** **0**. No mapped relationship displays `P = 0`, `p = 0.000`, or an equivalent finite-precision zero. All `P<.001` values are inequality displays, not display zeros.
 
-Limitations: the package does not provide row-specific chi-square-versus-Fisher selection, CI construction, variance/covariance specifications, or all endpoint-specific estimators for every secondary result. Planned protocol/SAP definitions cannot replace observed result methods without an exact supplied match. These limitations prevent further inference but do not erase the direct, separately rechecked printed inconsistencies in C001--C004.
+Limitations: supplied evidence does not identify every row-level chi-square-versus-Fisher selection, test statistic, degrees of freedom, CI construction, variance/covariance rule, adjustment, retained denominator, or estimand mapping. The exact primary noninferiority direction rule is supplied; the PP-survival interval calculation is only diagnostic. These missing definitions limit mechanical reconciliation but do not remove the independently rechecked printed-value and label inconsistencies already registered in the stable ledger.

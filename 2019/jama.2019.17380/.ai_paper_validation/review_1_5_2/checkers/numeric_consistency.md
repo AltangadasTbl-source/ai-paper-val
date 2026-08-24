@@ -1,119 +1,127 @@
-# Numeric Consistency Check — Complete N Inventory
+# Numeric Consistency Review
 
-## Scope, evidence, and decision boundary
+## Scope, method, and outcome
 
-- **Assigned inventory:** canonical `N001` through `N066` (66/66 complete).
-- **Fresh evidence used:** the canonical fresh inventory plus the fresh main and support quantitative mappings, all sourced from the page-addressable native text under `preprocessing/native_text/`. Exact source locations below are PDF pages in the supplied files: DOC-001 `jama_de_boer_2019_oi_190122.pdf`, DOC-002 `joi190122supp1_prod.pdf`, DOC-003 `joi190122supp2_prod.pdf`, and DOC-004 `joi190122supp3_prod.pdf`.
-- **Not used:** web material, old audit outputs, old candidate sets, or any adjudicative conclusion.
-- **Method:** for each relationship, checked the applicable printed arithmetic, count/denominator identity, percentage rounding, flow/population definition, matched result occurrence, measure/unit/reference label, and rate-versus-count distinction. Percentages were accepted when the printed percentage equals the count divided by its stated denominator after ordinary rounding to a whole percent; rate differences were accepted when compatible with one-decimal rounding of separately rounded rates. A non-applicable check is recorded as such, not inferred.
-- **Qualifying numeric proposals:** 3 distinct proposals, now registered by the coordinator as stable candidates `C002`, `C003`, and `C004`. They are described below without a lane-local adjudication or disposition.
+This review covers the complete canonical numeric/reporting inventory `N001`--`N062` and the numeric, denominator, percentage, scale, rate/count, and repeated-value implications of statistical relationships `S001`--`S039`. Evidence was limited to the supplied PDFs and their fresh 1.5.2 native/layout text and rendered-page assets. Prior audit derivatives were not used.
 
-## Complete relationship outcomes
+For printed integer identities, the tolerance was exactly zero. For printed percentages, the accepted interval was the usual nearest-whole-percent interval: a count divided by its stated denominator may differ from the printed percentage by at most 0.5 percentage point (or by the displayed special `<1%` convention). For displayed decimal values, arithmetic was assessed at the printed precision; a difference no greater than one final displayed unit was treated as compatible with rounding. Rates per 100 person-years were never tested as proportions because their person-time denominators are not participant denominators.
 
-| ID | Exact checked source location(s) | Printed inputs and rule/calculation | Outcome |
-|---|---|---|---|
-| N001 | DOC-001 pp.1, 5 Table 1, 6 Figure 1 | Four cells: 370+333+289+320=1312. Matched total is 1312. | **COMPLETE — no candidate.** Exact arithmetic and repeated total agree. |
-| N002 | DOC-001 pp.1, 4 | 934 completed of 1312: 934/1312=71.19%, printed 71%. | **COMPLETE — no candidate.** Whole-percent rounding is correct. |
-| N003 | DOC-001 p.1 | Age 67.6, women 46%, minority 31%, eGFR 85.8 (22.1); checked as population descriptors against p.4 and Table 1 where comparable. | **COMPLETE — no candidate.** No matched-population numeric conflict found. |
-| N004 | DOC-001 pp.1, 4, 8 Table 2 | D: −12.3 vs −13.1; displayed model difference 0.9 (−0.7,2.5). Raw displayed subtraction is 0.8, within 0.1 rounding/model-adjustment tolerance; all three occurrences match. | **COMPLETE — no candidate.** Direct observation: repeated values agree; the 0.1 gap is compatible with displayed rounding of an adjusted model. |
-| N005 | DOC-001 pp.1, 4, 8 Table 2 | Omega-3: −12.2 vs −13.1; difference 0.9 (−0.7,2.6). Arithmetic difference 0.9 and locations match. | **COMPLETE — no candidate.** |
-| N006 | DOC-001 pp.1, 6; DOC-003 p.16 eTable 11 | Stones 32+26=58; omega-3 GI bleeding 28+17=45. eTable 11 contains the same factorial comparisons and labels counts of participants with ≥1 occasion. | **COMPLETE — no candidate.** Counts and summed abstract totals reconcile. |
-| N007 | DOC-001 pp.1-2; DOC-002 pp.15-16 | D3=2000 IU/d; omega capsule=1 g with EPA 465 mg+DHA 375 mg=840 mg; protocol says EPA+DHA 840 mg/d. | **COMPLETE — no candidate.** 1000-mg capsule is not mislabeled as 840 mg EPA+DHA; the remaining 160 mg is not claimed to be EPA+DHA. |
-| N008 | DOC-001 p.2 | Parent actual N=25,871; ancillary target 1320; final randomized N=1312. | **COMPLETE — no candidate.** Target and realized enrollment are explicitly distinct quantities. |
-| N009 | DOC-001 p.2; DOC-002 p.14 | Block size 8 and four factorial cells with two allocations per cell; 2×4=8. | **COMPLETE — no candidate.** Allocation labels and block arithmetic agree. |
-| N010 | DOC-001 p.3; DOC-002 pp.17,32 | Final thresholds include ≥40% eGFR loss and ACR doubling/final ≥30 mg/g; protocol's former ≥12 mL/4 y definition is identified as original. | **COMPLETE — no candidate.** Timepoint/revision definitions are distinguished, not conflicting. |
-| N011 | DOC-001 p.3; DOC-002 pp.31-33 | Baseline/year 2/year 5 schedule and adherence ≥two-thirds; support gives final contact definition. | **COMPLETE — no candidate.** No numeric/label conflict. |
-| N012 | DOC-001 p.3; DOC-002 pp.32-33 | Final power: planned N=1320; assumed 80% follow-up → 1056, while addendum simulation specifies 1058 contributors and 2.3 detectable difference. | **COMPLETE — no candidate.** 1320×0.80=1056 is a planning approximation; addendum's 1058 is a separately specified simulation input, not a claimed exact product. |
-| N013 | DOC-001 pp.3, 7 | 0.75 mL/min/1.73m²/y × 5 y=3.75 mL/min/1.73m². | **COMPLETE — no candidate.** Exact conversion. |
-| N014 | DOC-001 p.4; DOC-003 p.9 eTable 4 | Full analytic −12.7 (−13.6,−11.7); complete-case −12.4 (−13.3,−11.4), n=932. eTable complete subset totals 495+437=932. | **COMPLETE — no candidate.** Distinct analytic populations are labelled and N identity reconciles. |
-| N015 | DOC-001 p.4 | Overall eGFR 85.8, 80.0, 73.5; 85.8−73.5=12.3 whereas reported overall model change is −12.7. | **COMPLETE — no candidate.** Directly printed cross-time means and mixed-model change need not equal because the latter uses its stated model/imputation; no source claims they are the same unadjusted subtraction. |
-| N016 | DOC-001 p.4 | eGFR<60: 165/1312=12.58%→13%; ACR≥30:117/1312=8.92%→9%; ≥300:24/1312=1.83%→2%. | **COMPLETE — no candidate.** All denominator/proportion checks pass. |
-| N017 | DOC-001 p.4; p.6 Figure 1 | Blood:1090/1312=83.08%; 934/1312=71.19%. Figure deaths 21+19+21+19=80; survivors=1232; 934/1232=75.81%→76%. Urine:1091/1312=83.16%;945/1312=72.03%;945/1232=76.70%→77%. | **COMPLETE — no candidate.** All retention percentages and alive denominators reconcile. |
-| N018 | DOC-001 p.4; DOC-003 p.6 eTable 1 | At y2/y5 D 92%/88%, omega-3 91%/89%; support entries give corresponding questionnaire-response/adherence definitions. | **COMPLETE — no candidate.** Different denominators are explicitly stated; no mismatch. |
-| N019 | DOC-001 p.4 | 25(OH)D active/placebo 41.4/29.8 ng/mL; omega-3 index 3.6%/2.3%; units and active-placebo direction checked. | **COMPLETE — no candidate.** No unit, scale, or comparator reversal. |
-| N020 | DOC-001 p.4; DOC-003 p.7-8 eTables 2-3 | DPP-4 9%→14%, ARB20%→29%, SGLT2 y5=5%; support all-column values 115/1312=9%,126/916=14%,260/1312=20%,270/916=29%,46/916=5%. | **COMPLETE — no candidate.** Counts/whole-percent rounding and repeated values reconcile. |
-| N021 | DOC-001 p.4, p.9 Table 3 | Composite total 164; components 80 decline+11 kidney failure+80 deaths=171, with overlaps explicitly stated. | **COMPLETE — no candidate.** Components are non-mutually-exclusive; no invalid total inference. |
-| N022 | DOC-001 p.4; DOC-003 p.11 eTable 6 | Geometric ACR y2=5.1, y5=9.2; y5/baseline approximate threefold is narrative. | **COMPLETE — no candidate.** Baseline geometric mean is not printed in this relationship, so no unsupported exact ratio test was made; unit is mg/g. |
-| N023 | DOC-001 p.5 Table 1 | All baseline table cells checked for stated nonmissing denominators, category closure where mutually exclusive, and percentage rounding. Race nonmissing Ns 361/327/284/314. | **COMPLETE — no candidate.** Race category counts sum to each stated nonmissing N; categorical percentages have ordinary rounding tolerance. |
-| N024 | DOC-001 p.5 Table 1 | Female/male:184+186=370;143+190=333;131+158=289;151+169=320. | **COMPLETE — no candidate.** Exact arm closure. |
-| N025 | DOC-001 p.5 Table 1 footnote | Duration and 25(OH)D categories use nonmissing-response denominators. Category totals can be below randomized arm N. | **COMPLETE — no candidate.** Footnote supplies the alternative population explanation. |
-| N026 | DOC-001 p.6 Figure 1 | 3244−1932=1312; exclusions 438+1494=1932. | **COMPLETE — no candidate.** Exact flow arithmetic. |
-| N027 | DOC-001 p.6 Figure 1 | Cell 370: complete 259; exclusions 110 lost+1 baseline missing=111; 370−111=259. Final blood absent=89 includes 21 deaths and 68 other absence; completion=260 and loss=110 are separately labelled. | **COMPLETE — no candidate.** No forced equality was imposed across differently labelled flow branches. |
-| N028 | DOC-001 p.6 Figure 1 | Cell 333: complete/completed=236; 333−97 lost=236. Footnote says one of 97 also baseline-eGFR missing. | **COMPLETE — no candidate.** Overlap note prevents double counting. |
-| N029 | DOC-001 p.6 Figure 1 | Cell 289: complete=211; 77 lost+1 baseline missing=78;289−78=211; completed=212 separately. | **COMPLETE — no candidate.** Population/flow labels explain the one-person difference. |
-| N030 | DOC-001 p.6 Figure 1 | Cell 320: complete/completed=226;320−94 lost=226; one of 94 also baseline-eGFR missing. | **COMPLETE — no candidate.** Footnote-resolved overlap. |
-| N031 | DOC-001 p.7 Figure 2 panels A-D; DOC-001 p.8 Table 2 omega-3 rows; DOC-003 p.11 eTable 6 omega-3 rows | Figure 2 B, labelled omega-3 versus placebo, prints eGFR 701/607, 531/459, 496/438—the same sequence as vitamin-D panel A. Matched Table 2 omega-3 counts are 657/651, 499/491, 472/462; respective shifts are +44/−44, +32/−32, +24/−24 while totals remain 1308,990,934. Figure 2 D, labelled omega-3 versus placebo, prints urine ACR 702/609,529/463,505/440—the same sequence as vitamin-D panel C. Matched eTable 6 omega-3 counts are 658/653,502/490,478/467; shifts +44/−44,+27/−27,+27/−27 while totals remain 1311,992,945. | **COMPLETE — qualifying proposals linked to C002 and C003.** Direct observation: within each endpoint, the omega-3 figure panel repeats vitamin-D allocations but the matched omega-3 table has a different active/placebo allocation. Inference: copying/reordering is only a possible explanation. **Visual limitation:** native text supplies the panel headings and sequences but is not layout-preserving; rendered PDF p.7 must confirm physical number-to-panel association. Exact human question: does rendered Figure 2 B/D associate the repeated counts with omega-3 versus placebo, and if so, why do the matched omega-3 table allocations differ? |
-| N032 | DOC-001 p.8 Table 2; pp.1,4 | Vitamin-D Table 2 repeated y5 change/difference equals abstract/results. Year-specific contributor Ns are correctly labelled; changes use imputation. | **COMPLETE — no candidate.** Model output is not incorrectly required to equal raw means. |
-| N033 | DOC-001 p.8 Table 2; pp.1,4 | Omega-3 Table 2 y5 change −12.2/−13.1 and difference0.9 match abstract/results; factorial Ns 657+651=1308,499+491=990,472+462=934. | **COMPLETE — no candidate.** All displayed total identities and cross-location values match. |
-| N034 | DOC-001 p.8 Table 2 footnotes; DOC-003 p.9 | Positive difference=higher y5 eGFR/slower loss active vs placebo; four baseline eGFR missing; mixed model/imputation stated. | **COMPLETE — no candidate.** Sign, reference group, measure, and missingness labels are coherent. |
-| N035 | DOC-001 p.8 Figure 3 | Raw subgroup Ns/means(SD) checked for each displayed family; subgroup partitions are not all exhaustive because of missing values and alternative stratifiers. | **COMPLETE — no candidate.** No arithmetic conflict found. Native text does not securely associate the six P values with individual plotted families, so no P-row reconciliation was inferred. |
-| N036 | DOC-001 p.9 Figure 4 | Raw subgroup Ns/means(SD) checked; factor partitions and overall counts accord with factorial groups subject to displayed subgroup missingness. | **COMPLETE — no candidate.** Native text cannot securely align each of five P values to its plotted family; no unsupported pairing was made. |
-| N037 | DOC-001 p.9 Table 3 | D composite:85/2.5×100≈3400 person-years;79/2.7×100≈2926; rate difference 2.5−2.7=−0.2; HR0.92 uses Cox, not rate ratio. | **COMPLETE — no candidate.** Rates, count-derived approximate person-time, and labels are coherent under one-decimal rounding. |
-| N038 | DOC-001 p.9 Table 3 | D ≥40%:42 at1.6 vs38 at1.7;1.6−1.7=−0.1; HR0.97. | **COMPLETE — no candidate.** Rate difference and HR labels distinct and coherent. |
-| N039 | DOC-001 p.9 Table 3 | D ACR:111 at4.4 vs74 at3.3;4.4−3.3=1.1; HR1.34. | **COMPLETE — no candidate.** Exact displayed-rate difference; outcome label includes doubling and final threshold. |
-| N040 | DOC-001 p.9 Table 3 | Omega composite:86 at2.7 vs78 at2.5; rounded difference=0.2, printed 0.3. | **COMPLETE — no candidate.** Direct observation: separately rounded rates do not determine the rounded difference; values are compatible (e.g., 2.74−2.49=0.25→0.3). No contradiction is established. |
-| N041 | DOC-001 p.9 Table 3 | Omega ≥40%:40 at1.6 vs40 at1.6; rate difference0.0; HR0.99. | **COMPLETE — no candidate.** Equal event counts do not require identical exact person-time; displayed rate difference and HR label are coherent. |
-| N042 | DOC-001 p.9 Table 3 | Omega ACR:96 at4.0 vs89 at3.7;4.0−3.7=0.3; HR1.08. | **COMPLETE — no candidate.** |
-| N043 | DOC-001 p.9 Table 3 footnotes; DOC-003 p.15 | Rates are per100 person-years; eGFR outcomes exclude4 baseline missing and ACR excludes1. | **COMPLETE — no candidate.** Explicit exclusions reconcile baseline contributor totals. |
-| N044 | DOC-001 pp.6-7 discussion; p.3 | Observed overall decline12.7 over5y; expected aging2-3; detectable difference2.3; surrogate0.75/y=3.75/5y. | **COMPLETE — no candidate.** These are differently framed comparator quantities, clearly labelled. |
-| N045 | DOC-001 p.10; p.4 | Final serum 71%; any postrandomization serum83%; matches 934/1312 and1090/1312. | **COMPLETE — no candidate.** Repeated values agree. |
-| N046 | DOC-002 pp.4,11,14-16; DOC-001 pp.1-2 | Protocol planned parent N20,000/ancillary1500 versus realized parent25,871/ancillary1312; 2×2 and doses match in scale (2000 IU/d; EPA+DHA840 mg/d). | **COMPLETE — no candidate.** Planned and realized populations are explicitly different; dose components reconcile. |
-| N047 | DOC-002 pp.5,17; p.32 | Original year-4 formulas and thresholds checked against addendum final year-5 definitions. | **COMPLETE — no candidate.** Protocol evolution is documented, with no final report falsely labelled as original year-4 result. |
-| N048 | DOC-002 p.17 | Original eGFR loss≥12 mL/4y=3 mL/y;12/4=3. | **COMPLETE — no candidate.** Exact threshold conversion; this is an original-protocol definition. |
-| N049 | DOC-002 pp.19-20 | Power rows are monotone with larger ACR/eGFR effects (81→>99%;71→97%), and N1500×80%=1200. | **COMPLETE — no candidate.** Projection table is internally coherent; values are not treated as observed trial results. |
-| N050 | DOC-002 p.20 | Projected placebo incidences~17%,~17%,<1%,~4.6%, composite20-30%; checked as projections. | **COMPLETE — no candidate.** No claim equates projections to observed rates. |
-| N051 | DOC-002 pp.31-33; DOC-001 p.3 | Final eGFR5−eGFR0; n1058 (80%) follow-up; power2.3. | **COMPLETE — no candidate.** 1058 is simulation-specific; it differs from 80% of1320 by2 but is not represented as that exact product. |
-| N052 | DOC-003 pp.2-4 | QC sets20 each, ≥8 measurements; calibration multiplier5.49/5.961; r=.999 and creatinine≤4.5% stated. | **COMPLETE — no candidate.** Units and calibration direction are specified; no incompatible result comparator. |
-| N053 | DOC-003 p.6 eTable 1 | Overall through-y5 adherence1032(79):1032/1312=78.66%→79%; active D546/703=77.67%→78%, placebo486/609=79.80%→80%; omega active518/659=78.60%→79%, placebo514/653=78.71%→79%. | **COMPLETE — no candidate.** Questionnaire-response denominators and ≥4/6-contact definition explain the counts. |
-| N054 | DOC-003 p.7 eTable 2 | Medication denominators1312/988/916; all-column counts tested against percentages, including DPP-4 115/1312=9%,126/916=14%, SGLT2 46/916=5%. | **COMPLETE — no candidate.** Whole-percent rounding and nonmissing-response denominator are correct. |
-| N055 | DOC-003 p.8 eTable 3 | Same denominators1312/988/916; ACEi/ARB is a union, so it is not expected to equal ACEi+ARB where overlap exists. | **COMPLETE — no candidate.** No invalid subgroup-sum premise or percentage error found. |
-| N056 | DOC-003 p.9 eTable 4; DOC-001 pp.1,4,8 | 1308 baseline,932 both,376 baseline-only,4 no baseline:932+376+4=1312. D 495+437=932; omega470+462=932. | **COMPLETE — no candidate.** Exact population identity; effect values are a complete-case sensitivity result, correctly distinct from main imputed values. |
-| N057 | DOC-003 p.10 eTable 5 | Adherent population1032; D y5 N461+404=865 and omega438+426=864 are observed contributors, not asserted equal to adherence N. | **COMPLETE — no candidate.** Missing outcome data and model/imputation labels prevent a false denominator conflict. |
-| N058 | DOC-003 p.11 eTable 6 | uACR geometric mean ratios D .99(.84,1.17), omega .96(.81,1.14), units mg albumin/g creatinine; ratios are positive and intervals contain point estimates. | **COMPLETE — no candidate.** Ratio scale, unit, reference, and interval order coherent. |
-| N059 | DOC-003 p.12 eTable 7 title, rows, and footnote `*` | Title says available baseline/year-5 measurements `(N=944*)`; row denominators are D504+440=944 and omega-3 477+467=944. Attached footnote says 1311 baseline urine, 991 both baseline/year-5 and “were included in this analysis”; 991+320+1=1312. Difference between stated included count and title/rows:991−944=47. | **COMPLETE — qualifying proposal linked to C004.** Direct observation: the title/rows say 944 while the attached footnote says 991 were included. Inference: 47 may lack usable ACR or a required covariate, but no supplied footnote states that rule. Exact human question: which is the intended eTable 7 analysis population, and what defined exclusion explains 47 participants? |
-| N060 | DOC-003 p.13 eTable 8 | Adherent uACR contrasts1.02(.85,1.22) and.99(.83,1.19), positive ratio scale, ordered intervals. | **COMPLETE — no candidate.** No measure or label conflict. |
-| N061 | DOC-003 p.14 eTable 9 | UTI-visit-excluded uACR contrasts.99(.84,1.17) and.98(.83,1.16), with separately labelled observed Ns. | **COMPLETE — no candidate.** Exclusion sensitivity is clearly defined; interval/scale checks pass. |
-| N062 | DOC-003 p.15 eTable 10 | Eight event/rate/IR-difference/HR rows checked. All printed IR differences are compatible with subtraction of separately rounded rates (including 1.7 vs1.7 with printed0.1); HRs are explicitly Cox estimates, not rate ratios. | **COMPLETE — no candidate.** Rate/count/HR distinctions and one-decimal rounding explain apparent nonexact differences. |
-| N063 | DOC-003 p.16 eTable 11; DOC-001 p.1 | Adverse-effect cells are participant counts with≥1 occasion, denominators D703/609 and omega659/653; stones and GI bleeding match their corresponding abstract factorial totals. | **COMPLETE — no candidate.** Counts are not mislabeled as rates or percentages; different factorial contrasts remain distinct. |
-| N064 | DOC-003 p.17 eFigure 1 | Exposure markers baseline-y2; eGFR baseline-y5; all available data. | **COMPLETE — no candidate.** Time window/population label coherent; no native-text plot value available for numeric comparison. |
-| N065 | DOC-003 pp.18-19 eFigures 2-3 | ACR active-v-placebo difference-in-change baseline-y5 adjusted age/sex. | **COMPLETE — no candidate.** Native text has no plotted values/CI coordinates; label and timepoint are recoverable but no value was inferred. |
-| N066 | DOC-004 p.1 | Data availability date2021-11-08 and deidentified-data statement. | **COMPLETE — no candidate.** Administrative date is not a trial-result numeric relationship and has no supplied-source comparator. |
+**Completed relationships:** 62/62 N relationships, plus all 35 S relationships with applicable displayed numeric implications; S021-S023 and S039 were reviewed as prospective definition relationships without an additional observed count identity.
 
-## Numeric proposals linked to the stable ledger
+**Lane observations requiring later candidate merging:** 4.
+**No-candidate checks:** all other relationships described below reconciled, were definitionally non-additive, or lacked a supplied denominator/model definition needed for a stronger mechanical test.
 
-The coordinator registered the three distinct numeric proposals below as `C002`-`C004`. This checker does not adjudicate them; each remains subject to human review in the stable ledger.
+## Complete N-relationship register
 
-### C002 — Figure 2 omega-3 eGFR contributor allocations versus Table 2
+| ID | Checks performed and result |
+|---|---|
+| N001 | **COMPLETE — PASS.** DOC-001 p1/p6: `370+333+289+320=1312`; abstract and Figure 1 agree. |
+| N002 | **COMPLETE — PASS.** DOC-001 p6: `438+1494=1932`; `1932+1312=3244`. |
+| N003 | **COMPLETE — PASS.** DOC-001 p1/p6: all four randomized cells (370/333/289/320) repeat as primary-analysis and adverse-event populations. |
+| N004 | **COMPLETE — PASS.** DOC-001 p6: complete plus lost/dead is `260+110=370`, `236+97=333`, `212+77=289`, `226+94=320`. “No final blood” is an overlapping status including deaths, so it is not addable to loss/death. |
+| N005 | **COMPLETE — PASS.** DOC-001 p6: complete-case plus exclusion identities are `259+111=370`, `236+97=333`, `211+78=289`, `226+94=320`; baseline-eGFR missing counts explain the specified exclusions. |
+| N006 | **COMPLETE — PASS.** DOC-001 p4: 1090/1312=83.1%; 934/1312=71.2%; 934/1229 alive=76.0%; 1091/1312=83.2%; 945/1312=72.0%; 945/1229=76.9%. All reconcile under nearest-percent rounding. |
+| N007 | **COMPLETE — PASS.** DOC-001 p4: 165/1312=12.58%→13%, 117/1312=8.92%→9%, and 24/1312=1.83%→2%. |
+| N008 | **COMPLETE — PASS.** DOC-001 pp1,4,7-8: baseline eGFR 85.8 (SD 22.1) has matched value/unit across occurrences. |
+| N009 | **COMPLETE — PASS.** DOC-001 pp1,2,4-5: 46% women and 31% minority are compatible with the displayed cell data/nonmissing definitions; no single common denominator is claimed for all Table 1 items. |
+| N010 | **COMPLETE — PASS.** DOC-001 p5: Table 1 values use stated nonmissing-response percentages; category and unit labels agree with each row. |
+| N011 | **COMPLETE — PASS.** DOC-001 p5: six race-category counts total 361, 327, 284, and 314 respectively. |
+| N012 | **COMPLETE — PASS.** DOC-001 p5: diabetes-duration category totals are 369, 332, 288, and 319, exactly one below each randomized cell; stated nonmissing denominators explain this. |
+| N013 | **COMPLETE — PASS.** DOC-001 p5: 25(OH)D category totals 355,317,274,311 are compatible with nonmissing-response denominators and their printed percentages. |
+| N014 | **COMPLETE — PASS.** DOC-001 pp1-2: D3 2000 IU/d, omega-3 1 g/d (EPA 465 mg+DHA 375 mg), and nonstudy D3 <=800 IU/d retain coherent units; `465+375=840 mg` is compatible with a 1-g capsule containing other constituents. |
+| N015 | **COMPLETE — PASS.** DOC-001 p3: N=1320, 80% power, 2.3 mL/min/1.73 m2, 80% return, and two-sided alpha .05 are a stated design calculation; no observed-result denominator is implied. |
+| N016 | **COMPLETE — PASS.** DOC-001 p4: 85.8→73.5 gives displayed change about -12.3 using marginal means, whereas modelled full-population change is -12.7; the supplied mixed-model/imputation definition means these need not equal simple subtraction. Units and time ordering are coherent. |
+| N017 | **COMPLETE — PASS.** DOC-001 p8 Table 2: D3 group Ns 701/607, 531/459, 496/438 and means/changes/differences are internally coherent to displayed rounding. Cross-display check is recorded separately at N020/N021. |
+| N018 | **COMPLETE — PASS.** DOC-001 p8 Table 2: omega group Ns 657/651, 499/491, 472/462 and displayed means/changes/differences are coherent to displayed rounding. |
+| N019 | **COMPLETE — PASS.** DOC-001 pp1,2,4,8: matched primary-results values (including 0.9 contrasts and CIs) agree after stated rounding. |
+| N020 | **COMPLETE — PASS.** DOC-001 pp7-8: Figure 2 D3 eGFR counts 607/459/438 placebo and 701/531/496 active match Table 2. |
+| N021 | **COMPLETE — OBSERVATION NUM-OBS-001.** Exact mismatch is documented below. |
+| N022 | **COMPLETE — OBSERVATION NUM-OBS-002.** Exact mismatch is documented below. |
+| N023 | **COMPLETE — PASS.** DOC-001 p4: adherence labels are percentages at distinct time points; biomarker values retain their stated ng/mL and percent units. No count denominator is printed for direct reconstruction. |
+| N024 | **COMPLETE — PASS.** DOC-001 p4: 80+11+80=171 component occurrences versus 164 composite participants is explicitly compatible with overlapping components; it is not a failed total. |
+| N025 | **COMPLETE — PASS.** DOC-001 p4: ACR 5.1 to 9.2 mg/g is about 1.80-fold between y2/y5; “approximately 3-fold” explicitly refers to baseline-to-y5, whose baseline value is not printed in that sentence. No incompatible same-time comparison. |
+| N026 | **COMPLETE — PASS.** DOC-001 pp1,4: kidney stones `32+26=58`; GI bleeding `28+17=45`. |
+| N027 | **COMPLETE — PASS.** DOC-001 p9: Table 3 D3 event counts, per-100-person-year rates, rate differences, and Cox HR columns have distinct labelled measures. Printed rate differences reconcile to displayed precision (2.5-2.7=-0.2; 1.6-1.7=-0.1; 4.4-3.3=1.1). |
+| N028 | **COMPLETE — PASS.** DOC-001 p9: omega rate differences reconcile at displayed precision (2.7-2.5=0.2→0.3 with unrounded rates; 1.6-1.6=0.0; 4.0-3.7=0.3). Counts are not treated as rates. |
+| N029 | **COMPLETE — PASS.** DOC-001 p9 footnote: eGFR outcome population excludes 4 baseline-eGFR missing and ACR population excludes 1 baseline-ACR missing; this is consistent with Figure 1 and denominators. |
+| N030 | **COMPLETE — PASS.** DOC-001 p8 Figure 3: all subgroup Ns, signs, SDs, interaction labels, and factorial omega strata are coherent; subgroup categories are not mutually exhaustive where a missing category is possible. |
+| N031 | **COMPLETE — PASS.** DOC-001 p9 Figure 4: all subgroup Ns, signs, SDs, interaction labels, and factorial D3 strata are coherent under the printed definitions. |
+| N032 | **COMPLETE — PASS.** DOC-001 pp8-9 captions: adjusted active-minus-placebo change from baseline to y5, BMI kg/m2, and directions are consistently labelled. |
+| N033 | **COMPLETE — PASS.** DOC-001 pp3,5,7: 0.75/year ×5=3.75/5y; all comparison quantities preserve mL/min/1.73 m2 and period labels. |
+| N034 | **COMPLETE — PASS.** DOC-001 pp3-4,9: thresholds preserve units and logical criteria (ACR doubling plus final >=30 mg/g); post-hoc >=30% threshold is separately labelled. |
+| N035 | **COMPLETE — PASS.** DOC-001 pp3-4: full M=20 imputed population and n=932 complete-case population are explicitly distinct, not competing denominators. |
+| N036 | **COMPLETE — PASS.** DOC-002 pp11-16: planned factorial doses and target populations are internally unit-consistent; protocol plans are not compared as observed results. |
+| N037 | **COMPLETE — PASS.** DOC-002 pp12-14: projected `40,000×50%=20,000`; blocks of 8 with two per factorial cell are arithmetically coherent. |
+| N038 | **COMPLETE — PASS.** DOC-002 pp15-16: two 5-mL cryovials have 10-mL capacity and six 2-mL aliquot vials have 12-mL aggregate capacity; the text does not state every aliquot vial is filled to capacity (and precipitation is removed before aliquoting), so capacity is not an asserted volume total. Dose conversions are explicitly supplied. |
+| N039 | **COMPLETE — PASS.** DOC-002 p17: formulae distinguish percent ACR change, absolute eGFR change, and composite thresholds; units/scales are coherent. |
+| N040 | **COMPLETE — PASS.** DOC-002 pp19-20: each listed effect-power pair is a prospective calculation; monotonic power ordering (81→>99%, 71→97%) follows increasing effect size. |
+| N041 | **COMPLETE — PASS.** DOC-002 pp32-33: addendum switches planned primary time contrast/definitions explicitly; 1058 is 80% of about 1323, compatible with the stated rounded 80% design figure and not an observed trial total. |
+| N042 | **COMPLETE — PASS.** DOC-003 pp2-4: calibration multiplier is printed as 5.49/5.961, and the regression/units are calibration relations rather than participant outcomes. |
+| N043 | **COMPLETE — PASS.** DOC-003 p6 eTable 1: each overall adherence numerator equals active+placebo: e.g., D3 642+566=1208, 573+506=1079, 378+331=709; omega 608+600=1208, 537+540=1077, 368+353=721. Percentages are among questionnaire responders, so they are not tested against randomized 1312. |
+| N044 | **COMPLETE — PASS.** DOC-003 p7 eTable 2: for every displayed medication/time, the all-group count equals either factorial active+placebo partition (e.g., biguanides baseline 469+420=889 and 446+443=889) and percentages use stated nonmissing N=1312/988/916. Overlapping medication classes are not summed. |
+| N045 | **COMPLETE — PASS.** DOC-003 p8 eTable 3: all-group counts equal the corresponding active+placebo partition (e.g., ACEi baseline 311+254=565 and 284+281=565); combination ACEi/ARB is not required to equal ACEi+ARB because overlap is possible. Denominators 1312/988/916 are stated. |
+| N046 | **COMPLETE — PASS.** DOC-003 p9 eTable 4: complete-case D3 N495+437=932 and omega N470+462=932; y5 counts retain the complete-case definition. Mean-change values and `.87` active-placebo difference agree to rounding. |
+| N047 | **COMPLETE — PASS.** DOC-003 p9 eTable 4: omega N470+462=932; y5 change -12.4 versus -12.4 and difference `.09` are modelled/rounded values, not an arithmetic contradiction. |
+| N048 | **COMPLETE — PASS.** DOC-003 p10 eTable 5: adherent D3 baseline 544+485=1029 and y5 461+404=865; different time-point availability is labelled. Means/changes/difference `.89` agree to rounding. |
+| N049 | **COMPLETE — PASS.** DOC-003 p10 eTable 5: adherent omega baseline 517+513=1030 (one differs from 1031 overall adherence count because this is a distinct eGFR-available population); y5 438+426=864. No incompatible common denominator is asserted. |
+| N050 | **COMPLETE — PASS.** DOC-003 p11 eTable 6: D3 ACR N702+609=1311 at baseline, y5 505+440=945; ratios and active:placebo effect use geometric/adjusted scales and are not simple mean differences. |
+| N051 | **COMPLETE — PASS.** DOC-003 p11 eTable 6: omega ACR baseline 658+653=1311 and y5 478+467=945; ratio labels/scales coherent. |
+| N052 | **COMPLETE — PASS.** DOC-003 p12 eTable 7: available-case N504+440=944 (D3) and 477+467=944 (omega); 1311 baseline and 991 y5 samples do not need to equal the available-pair analysis population. |
+| N053 | **COMPLETE — PASS.** DOC-003 p13 eTable 8: adherence-restricted ACR totals/attrition are explicitly time-specific; all effects retain ratio scale and mg/g unit. |
+| N054 | **COMPLETE — PASS.** DOC-003 p14 eTable 9: UTI-visit exclusion yields separately defined time-specific Ns; effects remain ratios, not counts/rates. |
+| N055 | **COMPLETE — PASS.** DOC-003 p15 eTable 10: D3 event counts, rates per 100 person-years, incidence-rate differences, and HRs are distinct columns; printed rate differences are compatible with unrounded rates. |
+| N056 | **COMPLETE — PASS.** DOC-003 p15 eTable 10: same checks pass for omega outcomes; stated exclusions prevent using all 1312 as every outcome denominator. |
+| N057 | **COMPLETE — PASS.** DOC-003 p16 eTable 11: for every safety row, D3 active+placebo equals omega active+placebo (e.g., hypercalcemia 9+10=14+5=19; stones 32+26=31+27=58; GI bleed 19+26=28+17=45). Counts are persons with >=1 report, not mutually exclusive outcome totals. |
+| N058 | **COMPLETE — PASS.** DOC-003 p17: r=-.05 and r=-.02 have correct correlation scale and no supplied N/P/model for further reconstruction. |
+| N059 | **COMPLETE — OBSERVATION NUM-OBS-003.** Exact participant-count-column identity mismatch is documented below. |
+| N060 | **COMPLETE — OBSERVATION NUM-OBS-004.** Exact participant-count-column identity mismatch is documented below. |
+| N061 | **COMPLETE — PASS.** DOC-004 p1 is an administrative data-sharing statement; no quantitative trial result requires reconciliation. |
+| N062 | **COMPLETE — PASS.** DOC-002 p23: z=3 corresponds to two-sided P about .0027 under standard normal rounding; it is a planned monitoring rule. |
 
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** DOC-001 PDF p.7, Figure 2 panel B; DOC-001 PDF p.8, Table 2 omega-3 rows.
-- **Printed values and reproducible rule:** Panel B prints baseline/year-2/year-5 701/607, 531/459, and 496/438 for omega-3/placebo. The matched Table 2 omega-3 rows print 657/651, 499/491, and 472/462. The same endpoint, timepoint, and factorial contrast should retain the omega-3 active/placebo allocation, not substitute the vitamin-D allocation.
-- **Calculation and tolerance:** Differences are +44/−44, +32/−32, +24/−24. Totals remain 1308, 990, 934, so no ordinary rounding tolerance can convert one arm allocation into the other.
-- **Direct observation versus inference:** Printed sequences/headings are direct; a copied figure sequence is an inference only.
-- **Alternative and exact human question:** The non-layout native extractor may have reordered visual elements. Does rendered Figure 2 panel B attach 701/607, 531/459, and 496/438 to omega-3 versus placebo, and if so why do they conflict with Table 2's matched allocation?
+## S-relationship numeric implications
 
-### C003 — Figure 2 omega-3 urine-ACR contributor allocations versus eTable 6
+All listed S relationships were checked alongside their linked Ns. `S001-S020` and `S024-S038` have complete numeric implications; `S021-S023` and `S039` are prospective/statistical-definition relations with no additional observed count identity. The following cross-links were specifically completed: `S001/S002↔N017/N018/N019/N020/N021`; `S006-S012↔N027-N029`; `S025-S028↔N046-N049`; `S029-S033↔N050-N054`; `S034-S035↔N055-N056`; and `S037-S038↔N059-N060`.
 
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** DOC-001 PDF p.7, Figure 2 panel D; DOC-003 PDF p.11, eTable 6 omega-3 rows.
-- **Printed values and reproducible rule:** Panel D prints baseline/year-2/year-5 702/609,529/463,505/440 for omega-3/placebo. Matched eTable 6 omega-3 rows print 658/653,502/490,478/467. The omega-3 active/placebo allocation should agree across matched endpoint/timepoint displays.
-- **Calculation and tolerance:** Differences are +44/−44,+27/−27,+27/−27. Totals remain 1311,992,945; allocation shifts are exact integer differences and cannot be rounding.
-- **Direct observation versus inference:** Printed sequences/headings are direct; copying/reordering is an inference only.
-- **Alternative and exact human question:** Native text may have reordered visual panel components. Does rendered Figure 2 panel D attach 702/609,529/463,505/440 to omega-3 versus placebo, and if so why do they conflict with eTable 6?
+The printed point estimates lie within their printed intervals, interval endpoints are ordered, and all null-crossing patterns match the non-significant P-value labels where a compatible model is supplied. No `P=0` or `p=.000` display occurs; therefore no display-zero record is applicable. Statistical inference beyond the source-supplied model is intentionally deferred to the statistical-review lanes.
 
-### C004 — eTable 7 analysis N versus attached inclusion footnote
+## Lane observations for candidate merging (no C IDs)
 
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source location:** DOC-003 PDF p.12, eTable 7 title, rows, and footnote `*`.
-- **Printed values and reproducible rule:** The title says `N=944`; D rows give 504+440=944 and omega-3 rows give477+467=944. The attached footnote states 991 participants with baseline and year-5 urine “were included in this analysis.” An inclusion footnote must reconcile with the title and analysis rows or state the further exclusion.
-- **Calculation and tolerance:** 991−944=47. The footnote flow itself reconciles:991+320+1=1312. The unaccounted 47-person difference is integer-valued and not a rounding issue.
-- **Direct observation versus inference:** The counts/text and arithmetic are direct. A possible unusable-ACR/covariate explanation is inferred; no supplied text names it.
-- **Alternative and exact human question:** Which count is the intended analysis population—944 or 991—and what source-defined exclusion or denominator rule accounts for the 47 participants?
+### NUM-OBS-001 — Figure 2 omega eGFR participant counts conflict with Table 2
 
-No `P = 0`/`p = 0.000` display-zero issue was registered; no such display was used as a proposal basis.
+- **Exact evidence:** DOC-001 [Figure 2, PDF p7](../../../jama_de_boer_2019_oi_190122.pdf#page=7) prints omega-3 placebo `607/459/438` and omega-3 active `701/531/496` at baseline/year 2/year 5. DOC-001 [Table 2, PDF p8](../../../jama_de_boer_2019_oi_190122.pdf#page=8) prints omega placebo `651/491/462` and omega active `657/499/472` for the same outcome/time points.
+- **Rule/calculation:** matched factorial omega comparison, outcome (eGFR), and time points require identical contributing-count sequences. They differ at every displayed time point; integer tolerance 0.
+- **Direct observation vs inference:** direct observations are the two printed sequences. The inferred concern is a cross-display numeric inconsistency, not a calculation from unreported data.
+- **Alternatives:** Figure 2 may have retained the vitamin-D count series, or a panel/table population definition may be unstated; the caption describes both as contributing participants and supplies no alternative population definition.
+- **Quality-control relevance:** a reader could attach the plotted omega distributions to the wrong sample sizes.
+- **Exact human question:** Which omega-3 eGFR contributing counts are intended for Figure 2, and should the figure panel be corrected or qualified against Table 2?
 
-## Limitations and exact human questions
+### NUM-OBS-002 — Figure 2 omega urine-ACR participant counts conflict with eTable 6
 
-- The current fresh native text has no recoverable plotted coordinates for DOC-003 eFigures 1-3 and no layout-secure association of the Figure 3/4 interaction-P sequence with individual plotted families. The affected relationships (`N035`, `N036`, `N064`, `N065`) were completed for all recoverable printed counts, labels, and definitions, but no unexposed value was reconstructed.
-- Native-text extraction preserves table content but not all visual table geometry. Where a formula/model footnote or stated denominator determined the relevant check, that printed definition was used. No missing visual alignment was converted into a candidate.
-- If a human needs to test Figure 3/4 row-specific interaction P values or eFigure plotted effects, the exact human question is: **Do the visual PDF rows associate each displayed P value, point estimate, and interval with the same subgroup label and active-placebo contrast described by its caption?** This is an evidence-access follow-up, not a candidate proposal.
+- **Exact evidence:** DOC-001 [Figure 2, PDF p7](../../../jama_de_boer_2019_oi_190122.pdf#page=7) prints omega placebo `609/463/440` and omega active `702/529/505` at baseline/year 2/year 5. DOC-003 [eTable 6, PDF p11](../../../joi190122supp2_prod.pdf#page=11) prints omega active `658/502/478` and placebo `653/490/467` for corresponding ACR time points; its arm totals are 1311/992/945.
+- **Rule/calculation:** matched omega comparison, ACR outcome, and time points require the same arm-specific contributor counts unless a different analysis population is stated. The figure repeats the D3 ACR count sequences, whereas the table supplies different omega sequences; integer tolerance 0.
+- **Direct observation vs inference:** direct observations are printed counts; inference is the unmatched-result identity. The figure caption supplies no distinct population definition.
+- **Alternatives:** the panel could have a deliberate but unstated different set of contributors, or it may contain copied D3 counts.
+- **Quality-control relevance:** incorrect arm/time denominators can affect interpretation of plotted ACR distributions.
+- **Exact human question:** What omega-3 ACR contributor counts and population definition were intended for Figure 2, and are its printed counts copied from the vitamin-D panel?
+
+### NUM-OBS-003 — eFigure 2 participant counts map to the opposite vitamin-D arms
+
+- **Exact evidence:** DOC-003 [eFigure 2, PDF p18](../../../joi190122supp2_prod.pdf#page=18) labels columns `Placebo` N=703 and `Active intervention` N=609, with overall change ratios 3.02 and 2.97. DOC-003 [eTable 6, PDF p11](../../../joi190122supp2_prod.pdf#page=11) identifies vitamin-D active baseline N=702, y5 ratio 2.97 and placebo N=609, y5 ratio 3.02.
+- **Rule/calculation:** randomized vitamin-D active totals `370+333=703` and placebo totals `289+320=609`; the figure places these Ns under the opposite headings. Separately, its `3.02` placebo and `2.97` active changes agree with eTable 6 under the printed headings.
+- **Direct observation vs inference:** the direct observation is the overall and nested N-column mismatch. A transposition limited to participant counts is a plausible inference; reversal of headings, changes, or forest estimates is not established.
+- **Alternatives:** only the N columns may be transposed. The active measured baseline N differs by one from randomized N=703 because eTable 6 excludes one baseline-ACR-missing participant.
+- **Quality-control relevance:** an evidence extractor could attach subgroup participant counts to the wrong vitamin-D arm.
+- **Exact human question:** Should only eFigure 2's N columns be exchanged, or do any subgroup changes or plotted estimates also require remapping?
+
+### NUM-OBS-004 — eFigure 3 participant counts map to the opposite omega-3 arms
+
+- **Exact evidence:** DOC-003 [eFigure 3, PDF p19](../../../joi190122supp2_prod.pdf#page=19) labels `Placebo` N=659 and `Active intervention` N=653, with overall ratios 3.05 and 2.94. DOC-003 [eTable 6, PDF p11](../../../joi190122supp2_prod.pdf#page=11) identifies omega active baseline N=658, y5 ratio 2.94 and placebo N=653, y5 ratio 3.05.
+- **Rule/calculation:** randomized omega-3 active totals `370+289=659` and placebo totals `333+320=653`; the figure places these Ns under the opposite headings. Separately, its `3.05` placebo and `2.94` active changes agree with eTable 6 under the printed headings.
+- **Direct observation vs inference:** the direct observation is the overall and nested N-column mismatch. A count-only transposition is plausible; reversal of headings, changes, or forest estimates is not established.
+- **Alternatives:** only the N columns may be transposed. The one-person 659/658 difference is compatible with randomized versus measured baseline availability but does not resolve the N mapping.
+- **Quality-control relevance:** an evidence extractor could attach subgroup participant counts to the wrong omega-3 arm.
+- **Exact human question:** Should only eFigure 3's N columns be exchanged, or do any subgroup changes or plotted estimates also require remapping?
+
+## Limitations
+
+The source does not provide individual-level data, exact person-time totals, full unrounded estimates, every questionnaire-response denominator by arm/time, or all graphical forest-plot coordinates. Therefore rate/count checks used the supplied rate labels and printed precision; percentages with explicitly nonmissing/questionnaire denominators were not forced onto randomized N; and graphical results were checked only to the legible printed labels, Ns, ratios, and interaction P values. These limitations do not affect the four direct printed cross-display observations above.

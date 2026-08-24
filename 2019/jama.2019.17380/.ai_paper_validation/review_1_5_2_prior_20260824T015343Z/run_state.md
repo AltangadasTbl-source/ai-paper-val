@@ -1,0 +1,32 @@
+# Workflow 1.5.2 Run State
+
+- **Profile:** 1.5.2 full source-first restart
+- **Run status:** COMPLETE
+- **Target basis:** Four direct PDF sources comprising one 11-page main article and three supplements (33, 19, and 1 page), all 64 units requiring fresh processing; multiple supplements and expected table/statistical cross-document mapping increase relationship volume, while the package has no Office or structured-data sources. Direct PDF/OCR utilities are unavailable, but a fresh page-addressable local Acrobat native-text fallback covers all units; layout rendering remains unavailable.
+- **Total source units:** 64
+- **Fresh-source units:** 64
+- **Target elapsed minutes:** 45-70
+- **Started UTC:** 2026-08-24T00:21:14Z
+- **Finished UTC:** 2026-08-24T01:15:15Z
+- **Observed elapsed minutes:** 54.0
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Coordinator:** COORDINATOR-CURRENT-SESSION
+- **Source inventory status:** INITIALIZED
+- **Preprocessing status:** COMPLETE
+- **Coverage planning status:** COMPLETE
+- **Main quantitative mapping status:** COMPLETE — 45 numeric and 25 statistical relationships
+- **Support quantitative mapping status:** COMPLETE — 21 numeric and 19 statistical relationships
+- **Numeric consistency status:** COMPLETE AFTER QUALITY REPAIR — 66/66 relationships; three proposals registered as C002, C003, C004
+- **Statistical pass 1 status:** COMPLETE — 44/44 relationships; one proposal
+- **Cross-source consistency status:** COMPLETE AFTER QUALITY REPAIR — 110/110 N/S relationships; matched-display candidates C002 and C003 synchronized; C004 recognized as internal same-table evidence
+- **Candidate registration status:** COMPLETE AFTER QUALITY REPAIR — C001, C002, C003, C004; no renumbering or suppression
+- **Evidence recheck status:** COMPLETE — C001, C002, C003, C004 mechanically rechecked
+- **Statistical pass 2 status:** COMPLETE AFTER QUALITY REPAIR — distinct fresh Terra/high agent; 44/44 relationships and C001 through C004 reviewed; zero new proposals
+- **Evidence-quality audit status:** COMPLETE — C001 through C004, 12/12 coverage rows, 4/4 source rows, 64/64 mapped units, and execution records audited
+- **Report generation status:** COMPLETE — four-card Markdown assembled
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE — authoritative response-level runtime usage was not exposed for the coordinator or any specialist
+- **Source integrity status:** UNCHANGED — before/after SHA-256 records match for all four direct sources
+- **HTML rendering status:** COMPLETE — standalone HTML rendered with profile 1.5.2
+- **Mechanical validation status:** PASS — `review_validation.json` reports profile 1.5.2 PASS with four candidates and no errors
+- **Runtime limitation:** `pdfinfo`, `pdftotext`, `pdftoppm`, `pdftocairo`, `tesseract`, `libreoffice`, and `soffice` were not found on PATH at initialization. Fresh page-addressable native text was obtained for all 64 pages using the installed local Acrobat COM page interface; layout rendering and OCR remain unavailable. No software was installed and no GPU was probed or invoked.

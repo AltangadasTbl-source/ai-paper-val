@@ -14,17 +14,17 @@ Cached-input and cache-write tokens are subsets of input tokens. Reasoning token
 
 | Agent ID | Role | Model | Exact records | Totals-only records | Unavailable records | Input | Known cached input | Known cache writes | Output | Known reasoning | Total | Known cost USD | Complete estimated cost USD | Status |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| COORDINATOR-CURRENT-SESSION | coordinator | gpt-5.6-sol | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
-| root/cross_source_checks | cross_source_checks | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
+| root | coordinator | gpt-5.6-sol | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
+| root/cross_source_review | cross_source_checks | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
 | root/evidence_quality_audit | evidence_quality | gpt-5.6-sol | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
 | root/evidence_recheck | evidence_recheck | gpt-5.6-sol | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
-| root/fresh_preprocessing | source_preprocessing | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
-| root/main_mapper | main_quantitative_mapping | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
-| root/numeric_checks | numeric_checks | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
+| root/fresh_preprocessing | fresh_source_preprocessing | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
+| root/main_mapper | main_evidence_mapping | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
+| root/numeric_review | numeric_checks | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
 | root/report_generator | report_generation | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
 | root/statistics_pass_1 | statistics_pass_1 | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
 | root/statistics_pass_2 | statistics_pass_2 | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
-| root/support_mapper | support_quantitative_mapping | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
+| root/support_mapper | support_evidence_mapping | gpt-5.6-terra | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | __ | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
 
 ## By model
 

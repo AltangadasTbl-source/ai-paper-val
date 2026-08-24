@@ -2,79 +2,173 @@
 
 ## Audit scope and evidence boundary
 
-This fresh quality-control audit covers the complete current-run source inventory, evidence-asset inventory, `source_coverage.md`, all 23 rows of `coverage_manifest.md`, both canonical relationship inventories and all eight relationship-map parts, all four checker artifacts, the stable candidate ledger, the four-record mechanical evidence recheck, and all 14 current rows of `agent_execution_manifest.md`. It uses only supplied package sources, fresh-run artifacts, and the explicitly user-authorized source-hash-matched OCR assets. No web source, new OCR, prior candidate set, old checker conclusion, old final report, top-N rule, review queue, or candidate-count target was used.
+This canonical audit uses only the current Workflow 1.5.2 artifacts and the three supplied source PDFs. It does not use `legacy_previous_run_20260824T015518Z/`, any previous candidate set, checker output, recheck, quality audit, final report, extracted text, or prior OCR as evidence or as a discovery boundary. No web source was used. The current run's freshly generated native text, layout text, rendered pages, and targeted CPU OCR for DOC-002 PDF pp. 52 and 103 were reviewed as transcription aids; the direct PDFs and fresh renderings remain the evidence authority. Prior OCR reuse is zero.
 
-The direct-source SHA-256 values were independently recomputed and match `source_hashes_before.sha256` for all three PDFs. The authorized OCR text and image paths all resolve. One copied OCR image checksum is inaccurate and is listed below as a required provenance repair; it does not affect C001-C004, which all use DOC-001.
+Discovery was relationship-complete rather than candidate-count-driven. No top-N rule, review queue, candidate cap, severity rank, or expected finding count controlled mapping, checking, registration, recheck, or this audit.
 
-## Mechanical coverage status
+## Complete mechanical coverage audit
 
-| Audit item | Completed scope | Audit result |
+| Audit domain | Current scope | Audit result |
 |---|---:|---|
-| Direct sources | 3/3 | DOC-001 `9/9`, DOC-002 `134/134`, and DOC-003 `3/3` have `Reusable units = 0`, `Fresh-required units = Total units`, `Mapped units = Total units`, and `COMPLETE`. DOC-002 p. 134 remains an explicit empty-page limitation. |
-| Source units | 146/146 | Every page belongs to one disjoint evidence-mapping shard. The user-authorized OCR exception is bounded to the provenance index; no OCR was run in this review. |
-| Numeric relationships | 98/98 | N001-N098 are gap-free; shard totals are 29 + 17 + 38 + 14 = 98; the numeric checker has 98 explicit relationship rows. |
-| Statistical relationships | 55/55 in each pass | S001-S055 are gap-free; shard totals are 17 + 14 + 14 + 10 = 55; both pass artifacts contain 55 explicit `PASS_1_COMPLETE` or `PASS_2_COMPLETE` rows. |
-| Cross-source relationships | 153/153 | N001-N098 plus S001-S055 are explicitly covered. Two cross-lane wording/calculation reconciliations are required below. |
-| Stable candidates | 4/4 | Ledger and recheck ID sets are identical: C001, C002, C003, C004. This audit returns the same set. No stable ID is deleted, merged, ranked, renumbered, or suppressed. |
-| Evidence rechecks | 4/4 | Location, source text, comparator, rule, calculation, available/missing inputs, alternatives, inference boundary, and human question are present separately for every stable ID. |
-| Coverage rows | 23/23 structurally checked | Every existing row contains exactly one undecorated relative artifact path. All 21 rows currently marked `COMPLETE` resolve. The audit and report rows are correctly still `PENDING` at the time of this audit. Two canonical relationship-inventory rows are missing and require addition. |
-| Statistical agents | 2/2 | Pass 1 agent `73b64cf4-d780-58b8-b200-d7723373321d` and pass 2 agent `23866370-c384-545f-af7b-e837892be6b0` are distinct fresh `gpt-5.6-terra`/`high` agents with distinct artifacts and full S001-S055 scopes. |
-| Current execution manifest | 14/14 rows checked | The coordinator appears once; every current row has one agent ID, model, effort, start mode, and one artifact. The later report-generator agent and any repair agent must be added when actually spawned. |
-| Candidate evidence links | 4/4 | DOC-001 links for PDF pp. 4 and 6 resolve; both anchors are within the 9-page source. Recheck links to the ledger and fresh simple/layout locator files also resolve. No false pagination was found. |
-| Display-zero rule | 4/4 candidates compliant | No source relationship displays `P = 0`, `p = 0.000`, or an equivalent display zero. `P < .001` and `P < .0001` are correctly treated as thresholds. No candidate is based on display-zero reasoning, so the conditional independent-contradiction field is not applicable. |
+| Direct sources | 3/3 | DOC-001 has 9 pages, DOC-002 has 134 pages, and DOC-003 has 3 pages. SHA-256 verification against `source_hashes_before.sha256` succeeds for all three sources. |
+| Direct-source units | 146/146 | Every source row has `Reusable units = 0`, `Fresh-required units = Total units`, `Mapped units = Total units`, and `COMPLETE`: 9/9, 134/134, and 3/3. |
+| Numeric relationships | 51/51 | The canonical inventory is gap-free from N001 through N051. `numeric_consistency.md` explicitly completes every relationship and emits three source-grounded signals without a count boundary. |
+| Statistical relationships | 38/38 per pass | The canonical inventory is gap-free from S001 through S038. Both statistical passes contain one explicit completion row for every S ID. |
+| Cross-source review | 89/89 | N001-N051 and S001-S038 are covered; five cross-source signals are reported, with matched populations, time points, contrasts, measures, versions, and limitations retained. |
+| Stable candidates | 8/8 | The ledger set is exactly C001-C008. The eight IDs are preserved without deletion, merging, ranking, renumbering, suppression, severity, or scientific disposition. |
+| Evidence recheck | 8/8 | The recheck set is exactly C001-C008. Every ID has its cited location, printed evidence, comparator, rule, reproduced calculation or logical comparison, available and missing inputs, alternative interpretation, inference boundary, human question, and `Pending Human Adjudication` status. |
+| Statistical pass 2 | 38/38 plus 8/8 | Every S relationship and every rechecked stable ID was revisited. The genuinely new candidate count is 0. |
+| Coverage manifest | 22/22 rows | Every row has exactly one undecorated relative artifact path. The 20 `COMPLETE` rows resolve; the quality row is `ASSIGNED` while this artifact is being written, and the report row is `PENDING`. |
+| Agent execution manifest | 12/12 rows | The coordinator and all currently manifested agents appear once, with one ID, model, effort, start mode, and artifact. Every manifested artifact resolves. |
+| Display-zero rule | 8/8 candidates compliant | No mapped relationship or candidate is based on `P = 0`, `p = 0.000`, or equivalent. The `P<.001` displays are inequalities, not display zero. No independent-contradiction field is required. |
 
-The candidate categories are single allowed `QUALITY_CONTROL_SCOPE.md` categories. All stable records remain exactly `Pending Human Adjudication`; no scientific disposition or severity is assigned. The downstream-reuse statements are bounded to what an extractor or later evidence product could copy if a candidate is confirmed, and none claims observed propagation or a changed paper conclusion.
+The canonical relationship counts are 51 numeric and 38 statistical, not the stale counts in the superseded audit. The ledger, recheck, both statistical passes, numeric checker, and cross-source checker consistently use the current ID scopes.
 
-## C001 — Per-protocol ETI ROSC proportion/denominator relationship
+## Coverage-manifest row and artifact-path audit
 
-- **Coverage and source grounding:** DOC-001 Table 2, PDF p. 6, directly prints PP denominators `995` and `943`, BMV `342 (34.4)`, ETI `377 (30.0)`, BMV-minus-ETI `-5.6 (-9.9 to -1.3)`, and `P = .01`. The ledger and recheck locations resolve and agree.
-- **Reproduction:** `100 x 342/995 = 34.371859%`; `100 x 377/943 = 39.978791%`; and `100 x (342/995 - 377/943) = -5.606932` percentage points. The displayed ETI percentage is therefore 9.978791 percentage points below the count-derived value, while the count-derived signed difference agrees with `-5.6` at one decimal.
-- **Fields, category, and inference boundary:** The ledger has every recheck-required field. `Denominator, proportion, or total inconsistency` is an allowed primary category. The alternative denominator/production explanations and intended-value question are explicitly separated from direct observation. The merged propositions compare the same row, printed values, and rule; no possible duplicate remains.
-- **Required repair:** In `checkers/statistical_pass_1.md`, `STAT1-CAND-002`, change the purported exact count-derived difference from `-5.6068...` to `-5.606932...` (or a correctly rounded `-5.6069`). Do not turn the arithmetic correction into an intended source correction.
-- **Audit limitation:** The package does not identify which printed element was intended or provide an alternate ETI denominator. Human adjudication remains required.
+| Row scope | Artifact path | Status/path audit |
+|---|---|---|
+| Source inventory | `source_inventory.md` | COMPLETE; one path; resolves. |
+| Evidence assets | `evidence_asset_inventory.md` | COMPLETE; one path; resolves. |
+| Main evidence map, DOC-001 pp. 1-9 | `extraction/main_quantitative_evidence.md` | COMPLETE; one path; resolves. |
+| Main numeric part | `relationships/parts/main_numeric_relationships.md` | COMPLETE; one path; resolves. |
+| Main statistical part | `statistics/parts/main_statistical_relationships.md` | COMPLETE; one path; resolves. |
+| Canonical N001-N051 inventory | `relationships/numeric_relationship_inventory.md` | COMPLETE; one path; resolves. |
+| Canonical S001-S038 inventory | `statistics/relationship_inventory.md` | COMPLETE; one path; resolves. |
+| Support A evidence, DOC-002 pp. 1-67 | `extraction/parts/support_a_quantitative_evidence.md` | COMPLETE; one path; resolves. |
+| Support A numeric part | `relationships/parts/support_a_numeric_relationships.md` | COMPLETE; one path; resolves. |
+| Support A statistical part | `statistics/parts/support_a_statistical_relationships.md` | COMPLETE; one path; resolves. |
+| Support B evidence, DOC-002 pp. 68-134 and DOC-003 pp. 1-3 | `extraction/parts/support_b_quantitative_evidence.md` | COMPLETE; one path; resolves. |
+| Support B numeric part | `relationships/parts/support_b_numeric_relationships.md` | COMPLETE; one path; resolves. |
+| Support B statistical part | `statistics/parts/support_b_statistical_relationships.md` | COMPLETE; one path; resolves. |
+| Canonical support evidence | `extraction/support_quantitative_evidence.md` | COMPLETE; one path; resolves. |
+| Numeric checks, N001-N051 | `checkers/numeric_consistency.md` | COMPLETE; one path; resolves. |
+| Statistical pass 1, S001-S038 | `checkers/statistical_pass_1.md` | COMPLETE; one path; resolves. |
+| Cross-source checks, N001-N051 and S001-S038 | `checkers/cross_source_consistency.md` | COMPLETE; one path; resolves. |
+| Candidate registration, C001-C008 | `candidate_ledger.md` | COMPLETE; one path; resolves. |
+| Evidence recheck, C001-C008 | `verification/evidence_recheck.md` | COMPLETE; one path; resolves. |
+| Statistical pass 2, S001-S038 plus C001-C008 and recheck facts | `checkers/statistical_pass_2.md` | COMPLETE; one path; resolves. |
+| Evidence quality, all current scopes | `quality/evidence_quality_audit.md` | ASSIGNED during write; one path; resolves. Change to COMPLETE after this artifact is durable. |
+| Report generation, C001-C008 | `../final_report_1_5_2.md` | PENDING. The existing file is a stale four-candidate derivative and must be overwritten, not used as evidence. |
 
-## C002 — Per-protocol day-28-survival displayed point difference
+The source-page shards are disjoint and exhaustive: DOC-001 pp. 1-9, DOC-002 pp. 1-67, DOC-002 pp. 68-134, and DOC-003 pp. 1-3. Canonical union rows are separately identified and do not create double assignment of source units. Blank DOC-002 pp. 108-109 and 126-134 remain counted and mapped as direct-source pages.
 
-- **Coverage and source grounding:** DOC-001 Table 2, PDF p. 6, directly prints `54/995 (5.4%)`, `51/943 (5.4%)`, BMV-minus-ETI `0.1`, CI `-10 to 9.7`, and `P = .99`. The ledger and recheck locations resolve and agree.
-- **Reproduction:** `100 x 54/995 = 5.427136%`; `100 x 51/943 = 5.408271%`; the direct count-derived difference is `0.018864` percentage points, not `0.0191` or `0.01907`. Its distance from the printed `0.1` is `0.081136` percentage points, exceeding a 0.05-percentage-point half-last-place tolerance. Ordinary one-decimal rounding gives `0.0`.
-- **Fields, category, and inference boundary:** The ledger has every recheck-required field. `Numeric or arithmetic inconsistency` is allowed. The ledger correctly makes the calculation conditional on the printed pairs defining the estimator and names the missing estimator/denominator/retained-rate definitions. C002 is not a duplicate of C003: C002 checks the point display and rounding, while C003 checks the interval scale/span.
-- **Required repairs:** (1) In `candidate_ledger.md`, C002 `Reproducible rule and calculation` and `Tolerance`, replace `0.0191` and `0.0809` with `0.018864` and `0.081136` (or correctly rounded equivalents). (2) In `checkers/statistical_pass_1.md`, `STAT1-CAND-001`, replace `0.01907...` with `0.018864...`. (3) In `checkers/cross_source_consistency.md`, `CROSS-CAND-002`, replace the false statement that about `0.019` is compatible with displayed `0.1` after rounding; state that it rounds to `0.0` and cross-reference the distinct point-display proposition without creating another stable ID.
-- **Audit limitation:** The source does not supply a row-specific estimator or retained group rates, so the audit cannot assign a replacement point estimate.
+## Statistical-agent execution audit
 
-## C003 — Per-protocol day-28-survival confidence-interval scale/span
+Statistical pass 1 is recorded as `/root/statistics_pass_1`, `gpt-5.6-terra`, `high`, `FRESH_SPAWN`, with artifact `checkers/statistical_pass_1.md`. Statistical pass 2 is recorded as `/root/statistics_pass_2`, `gpt-5.6-terra`, `high`, `FRESH_SPAWN`, with artifact `checkers/statistical_pass_2.md`. The runtime IDs are distinct, both agents are fresh spawns, and each artifact covers S001-S038. Pass 2 also covers the complete C001-C008 ledger and recheck facts. No mapper agent was reused for either statistical pass.
 
-- **Coverage and source grounding:** The same DOC-001 Table 2 row directly prints the percentage-point effect label, counts, group percentages, `0.1`, 95% CI `-10 to 9.7`, and `P = .99`; the article methods supply chi-square/Fisher alternatives but not the row-specific CI construction.
-- **Reproduction:** From the printed count/denominator pairs, the diagnostic unpooled binomial standard error is `1.028756` percentage points, and `0.018864 +/- 1.96 x 1.028756` gives approximately `-1.997498 to 2.035226` percentage points. This diagnostic interval is not a proposed correction. The printed interval spans 19.7 percentage points. `P = .99` is a near-unit P value and is directionally compatible with a near-null point estimate; it does not independently identify the CI variance or prove the interval span incompatible.
-- **Fields, category, and inference boundary:** The ledger has every recheck-required field. `Statistical reporting inconsistency` is allowed. The diagnostic method, missing row-specific construction, possible alternate/adjusted method, and possible production issue are distinguished. C003 remains distinct from C002 because its comparator and rule concern interval scale/span, not one-decimal point rounding.
-- **Required repairs:** (1) In `candidate_ledger.md`, C003 `Comparator`, replace `near-zero P-value display` with `near-unit P-value display` or neutral `same-row P-value display`. (2) In the same card, replace the approximate SE/interval values `1.05` and `-2.0 to 2.1` with the rechecked values above, or state a consistently rounded `about 1.03` and `about -2.00 to 2.04`. (3) Remove or bound wording that suggests `P = .99` independently contradicts the wide interval; retain it only as observed context that does not supply the missing CI construction. (4) Apply the same arithmetic and inference-boundary repairs to `CROSS-CAND-002` in `checkers/cross_source_consistency.md`, especially the statements that the wide interval is not coherent with `P = .99` and that the printed counts yield a P-value contradiction.
-- **Audit limitation:** The exact CI formula, variance estimator, row-specific test selection, adjustment, and software options are not supplied. The audit supports a verification question, not intended interval limits or a final correction.
+The execution manifest currently contains 12 unique rows, including the coordinator, the original quality auditor, and this repair specialist. Each row has exactly one artifact path. Token-ledger inclusion and final report-generator registration remain later closeout duties after the accounting window is finalized.
 
-## C004 — Centre-5 count outcome versus seconds unit
+## C001 — Noninferiority narrative reverses the displayed bound direction
 
-- **Coverage and source grounding:** DOC-001 Results, PDF p. 4, and Methods, PDF p. 3, both name the `number of pauses` exceeding a 2-second threshold. Results print BMV `27`, ETI `16`, `difference, 11 seconds`, CI `7 to 15`, and `P < .001`. Both PDF pages and locator files resolve.
-- **Reproduction:** `27 - 16 = 11`. Under the explicitly named count interpretation, `11` is a difference in qualifying pauses; `2 seconds` defines the event threshold and does not supply a duration unit for the count. No rounding tolerance applies.
-- **Fields, category, and inference boundary:** The ledger has every recheck-required field. `Measure, label, or scale inconsistency` is allowed. The source does not define whether 27 and 16 are totals, means, medians, or duration summaries; the ledger preserves that alternative rather than assigning a correction. This relationship is distinct from the CCF percentage result and from C001-C003.
-- **Required repair:** In `checkers/cross_source_consistency.md`, the N025 coverage row currently says the pause seconds/count wording is not conflated and the matched result is coherent. Replace that with bounded cross-lane reconciliation: the arithmetic is coherent, but the named count-versus-seconds label remains the separately registered NUM-CAND-003/C004 issue; no additional cross-source proposition is created.
-- **Audit limitation:** No underlying monitor data or group-summary definition is supplied, so the audit cannot choose whether the count wording or time unit was intended.
+- **Card-field audit:** The ledger and recheck contain the required category, exact locations, printed evidence, comparator/rule, calculation, alternative/limitation, provenance, human question, and exact status. The final report card has not yet been regenerated.
+- **Evidence and pagination:** DOC-001 PDF pp. 3 and 4 exist within the nine-page source. The recheck links resolve and use PDF page anchors.
+- **Calculation audit:** `-1.64% < -1.00%`, with a `-0.64` percentage-point difference from the threshold. The printed noninferiority conclusion follows the displayed values; only the narrative word `greater` conflicts.
+- **Assumption audit:** No unreported model or P-value reconstruction is needed. Treating the word as an editorial error or choosing replacement wording would be an inference and is appropriately left to human adjudication.
+- **Duplicate and impact audit:** This is the single proposition from S002/SP1-01. It does not duplicate any other C ID. Current wording does not claim that the paper conclusion changed or that downstream propagation occurred.
+- **Repair status:** No remaining candidate-artifact repair identified.
 
-## Global required repairs before report assembly
+## C002 — Centre-5 pause contrast mixes a count outcome with seconds
 
-1. **Authorized OCR provenance checksum:** In `preprocessing/reused_ocr/DOC-002_authorized_ocr_provenance.md`, DOC-002 p. 129 `Image SHA-256`, replace `97bd40bf0758a17204a30cd62791725b379595119872f2e72e3b31ef16b30ba0` with the independently recomputed `97bd40bf189df679ac64199e8a3bc06e379ddf56cfe5c7cfb37b1d0fab85a5ef`. All other listed OCR text/image checksums matched. This repair changes provenance metadata only.
-2. **Source-coverage table structure:** `source_coverage.md` contains the three required direct-source rows plus a fourth bold total row. The contract requires exactly one data row per direct source. Move the `146/0/146/146` aggregate to prose outside the table so the table has exactly three data rows; retain all three source rows unchanged.
-3. **Coverage-manifest canonical inventories:** Add one unique coverage row for `relationships/numeric_relationship_inventory.md` with scope N001-N098 and one unique row for `statistics/relationship_inventory.md` with scope S001-S055. Each row must contain exactly one plain relative artifact path. These canonical merge artifacts exist and are represented by the manifested relationship-inventory work but are absent from the current 23-row manifest.
-4. **Stage closeout after this artifact:** Change only the `evidence_quality` row in `coverage_manifest.md` from `PENDING` to `COMPLETE` after this file is durable. Keep report generation pending until its artifact exists.
-5. **Report and execution closeout:** The future report generator, and any agent used for the repairs above, must be added exactly once to `agent_execution_manifest.md` and later to `token_usage_ledger.csv`. The report-generation coverage row must enumerate C001, C002, C003, C004 and change to `COMPLETE` only after the Markdown exists.
-6. **Human-adjudication placeholders:** The final report does not yet exist, so its card fields cannot be mechanically confirmed in this audit. Every C001-C004 final card must use exactly `Validity: __`, `Importance: __`, `Action: __`, `Initials: __`, and `Notes: __`. No dash, prose, checkbox, or prefilled adjudication is permitted.
+- **Card-field audit:** The ledger and recheck contain the required fields and preserve the summary-type and unit uncertainty. The final report card remains to be regenerated.
+- **Evidence and pagination:** DOC-001 PDF p. 4 exists; the supporting Methods wording on p. 3 also resolves in the recheck.
+- **Calculation audit:** `27 - 16 = 11`. Under the repeated `number of pauses` wording, the quantity is a count; the 2-second value defines the qualifying-event threshold.
+- **Assumption audit:** The source does not establish whether 27 and 16 are totals, means, medians, or time summaries, or identify the CI method. The card does not choose whether the count wording or seconds label was intended.
+- **Duplicate and impact audit:** N026, S018, NUM-CAND-003, and SP1-05 are the same relationship signal and were correctly merged into one stable ID. No downstream propagation or conclusion effect is asserted.
+- **Repair status:** No remaining candidate-artifact repair identified.
+
+## C003 — PP day-28 survival point difference does not round from the printed inputs
+
+- **Card-field audit:** The ledger and recheck contain the required fields and explicitly condition the check on the printed counts and denominators defining the displayed estimator. The final report card remains to be regenerated.
+- **Evidence and pagination:** DOC-001 PDF p. 6 and DOC-002 PDF p. 123 exist within their respective 9- and 134-page sources; recheck links resolve.
+- **Calculation audit:** `100 x (54/995 - 51/943) = 0.018864` percentage points, which ordinarily rounds to `0.0` at one decimal, not the printed `0.1`. The arithmetic is current and reproducible.
+- **Assumption audit:** The exact point-estimation procedure, any adjustment or weighting, retained internal rates, row-specific denominator, and explicit rounding rule for the difference column are not supplied. The candidate remains conditional and does not assign `0.0` as a correction.
+- **Duplicate and impact audit:** This is distinct from C004: C003 concerns the point display and rounding; C004 concerns interval scale/precision. Repeated N016/S010/numeric/pass-1 signals were correctly merged into C003.
+- **Repair status:** No remaining candidate-artifact repair identified.
+
+## C004 — PP day-28 survival confidence interval has an unresolved scale/precision inconsistency
+
+- **Card-field audit:** The ledger and recheck contain the required fields, identify the diagnostic calculation as nonreplacement reasoning, and retain the missing row-level method. The final report card remains to be regenerated.
+- **Evidence and pagination:** DOC-001 PDF pp. 3 and 6 and DOC-002 PDF p. 124 exist; visual confirmation that the lower endpoint is printed as `-10`, not `-1.0`, is recorded in the recheck.
+- **Calculation audit:** From the printed rates, the diagnostic unpooled-binomial SE is exactly `1.028756` percentage points at the reported precision used in the artifacts. With point difference `0.018864`, the ordinary Wald diagnostic interval is `-1.997498 to 2.035226` percentage points. These values are arithmetically correct and are not proposed endpoints.
+- **Assumption audit:** The exact CI formula, software options, variance estimator, correction, adjustment, retained row data, and production precision are unavailable. The same-row `P=.99` is context only and does not independently determine or contradict the printed CI.
+- **Duplicate and impact audit:** C004 is distinct from C003 by comparator and rule. N020/S010/XSC-02/SP1-03 were correctly merged into this one interval proposition. No paper-level conclusion change is claimed.
+- **Repair status:** The previously identified SE and interval arithmetic defect is repaired in the current ledger and recheck; no remaining candidate-artifact repair identified.
+
+## C005 — PP ROSC ETI percentage conflicts with its count, denominator, and signed difference
+
+- **Card-field audit:** The ledger and recheck contain the required fields and do not assign an intended correction. The final report card remains to be regenerated.
+- **Evidence and pagination:** DOC-001 PDF p. 6 exists and the Table 2 location resolves.
+- **Calculation audit:** `100 x 377/943 = 39.978791%`, which rounds to `40.0%`, not `30.0%`. `100 x (342/995 - 377/943) = -5.606932` percentage points, matching the displayed `-5.6`; the printed percentages instead imply `+4.4`.
+- **Assumption audit:** No alternate denominator, adjusted rate, or retained internal value is supplied. `40.0%` remains a count-derived comparison, not an adjudicated correction.
+- **Duplicate and impact audit:** N019, S013, NUM-CAND-001, XSC-01, and SP1-04 are the same row-level proposition and were correctly merged. No unbounded downstream or conclusion-impact claim appears.
+- **Repair status:** No remaining candidate-artifact repair identified.
+
+## C006 — Main article and eTable report different contributing-centre counts
+
+- **Card-field audit:** The ledger and recheck contain the required fields and explicitly retain the counting-unit limitation. The final report card remains to be regenerated.
+- **Evidence and pagination:** DOC-001 PDF p. 2 and DOC-003 PDF p. 2 exist. The eTable has 21 distinct contributing investigator-centre rows; their arm totals reproduce 1018 and 1022.
+- **Calculation audit:** The main article's country counts give `15 + 5 = 20`, while the eTable contains 21 contributing rows. No row is empty across both arms.
+- **Assumption audit:** Equality of `EMS center` and `investigator centre` counting units is not established because no crosswalk is supplied. The candidate is correctly framed as a mapping question, not proof that either count is wrong.
+- **Duplicate and impact audit:** N044/XSC-03 form one cross-document proposition. It is not duplicated elsewhere and does not assert a changed result or observed reuse.
+- **Repair status:** No remaining candidate-artifact repair identified.
+
+## C007 — Published primary-endpoint description omits the amended baseline-disability qualification
+
+- **Card-field audit:** The ledger and recheck contain the required fields and distinguish the printed definition difference from any effect on participant classification. The final report card remains to be regenerated.
+- **Evidence and pagination:** DOC-001 PDF pp. 1 and 3, DOC-001 Table 2 on p. 6, and DOC-002 PDF p. 110 exist; all recheck links resolve.
+- **Logical-rule audit:** The amended definition can classify a survivor who retains worse baseline disability as favourable even though a literal CPC-1-or-2-only description would not. This is a definitional comparison; aggregate sources do not permit participant-level recalculation.
+- **Assumption audit:** The final coding algorithm, paired baseline/day-28 disability, operational definition of `same degree`, and number of affected participants are unavailable. The card does not assume that any reported count changed.
+- **Duplicate and impact audit:** N041/N051/S037/XSC-04 form one endpoint-description proposition. C007 is distinct from C008, which concerns a separate technique-failure endpoint and population.
+- **Repair status:** No remaining candidate-artifact repair identified.
+
+## C008 — Protocol composite technique-failure definition cannot reconcile with the article's smaller ETI failure count if they are the same endpoint
+
+- **Card-field audit:** The ledger and recheck contain the required fields, including the explicit conditional population-alignment limitation. The final report card remains to be regenerated.
+- **Evidence and pagination:** DOC-002 PDF p. 110 and DOC-001 PDF pp. 1, 4, and 6 exist; all recheck links resolve.
+- **Calculation audit:** The current conservative conditional calculation is `54 - 24 - 3 = 27`, and `27 > 21`. It allows all 24 participants outside the 999-person ETI-side safety display and all 3 further denominator omissions from 999 to 996 to be deaths before comparing with the displayed failure count.
+- **Assumption audit:** Exact alignment among ETI randomization, actual treatment, the 996-person Table 3 row, deaths, regurgitation, and procedural failure is not mechanically established. The article may use a narrower procedural endpoint or a different final population. The candidate appropriately states the relationship conditionally and does not treat 27 as an observed count.
+- **Duplicate and impact audit:** N012/N022/N051/S015/S037/XSC-05 form one conditional definition/population proposition. It is distinct from C007 and makes no unbounded downstream-impact or paper-conclusion claim.
+- **Repair status:** The previous unqualified population-alignment defect is repaired. No remaining candidate-artifact repair identified.
+
+## Card-set, category, tone, and placeholder audit
+
+The ledger and recheck ID sets are identical at C001-C008. The categories are exact allowed categories from `QUALITY_CONTROL_SCOPE.md`: C001 and C004 are `Statistical reporting inconsistency`; C002, C007, and C008 are `Measure, label, or scale inconsistency`; C003 is `Numeric or arithmetic inconsistency`; C005 is `Denominator, proportion, or total inconsistency`; and C006 is `Cross-document numeric inconsistency`. All wording remains neutral quality control, every status is exactly `Pending Human Adjudication`, and no severity, validity, acceptance, rejection, exclusion, or final correction is assigned.
+
+The current canonical report-generation row is still `PENDING`. The pre-existing Markdown/HTML report pair contains only a stale C001-C004 set and is not a current-run evidence artifact. It must be overwritten with exactly C001-C008. For each of the eight new report cards, all report-spec fields must be present and the human-adjudication template must be exactly:
+
+```markdown
+**Human adjudication fields:**
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+```
+
+No current candidate mentions a display-zero P value. Therefore the conditional `Independent contradiction beyond P=0 display` report field is not applicable.
+
+## Remaining closeout repairs
+
+1. After this artifact is durable, change the `evidence_quality` coverage row from `ASSIGNED` to `COMPLETE`.
+2. Overwrite the stale four-candidate Markdown and HTML reports with the current C001-C008 report. Then change the report-generation coverage row from `PENDING` to `COMPLETE`.
+3. Confirm the final report ID set is C001-C008 and every candidate has all required report fields and the five exact `__` adjudication placeholders.
+4. Add the report generator and any later repair agents to the execution manifest exactly once, include every manifested agent in the token ledger, finalize the accounting window, rerender HTML once, and run the final validator.
+
+No additional candidate-artifact arithmetic, pagination, duplicate, category, display-zero, unsupported-assumption, or tone repair remains in the current ledger or recheck. New candidate count from this audit: **0**.
 
 ## Audit totals and limitations
 
-- Stable IDs audited: **4/4**.
-- Stable IDs with source location, comparator, rule, and mechanical recheck: **4/4**.
-- Candidate-specific repair groups: **4** (C001 exact pass-1 arithmetic; C002 arithmetic/rounding reconciliation; C003 P-value wording and diagnostic arithmetic; C004 cross-lane wording).
-- Global repair groups: **6** (OCR checksum, source-table structure, two missing canonical coverage rows, evidence-quality stage closeout, future agent/report closeout, and final-card blank placeholders).
-- Stable IDs rejected, deleted, merged, ranked, renumbered, or suppressed: **0**.
-- Display-zero-only stable IDs: **0**.
-- False candidate PDF pagination found: **0**.
-- Broken candidate/recheck local links found: **0**.
+- Stable IDs audited and returned: **8/8** (C001-C008).
+- Source rows audited: **3/3**, **146/146** units fresh-required and mapped.
+- Numeric relationships audited through the completed lanes: **51/51**.
+- Statistical relationships audited through both fresh passes: **38/38 in pass 1** and **38/38 in pass 2**.
+- Coverage rows audited: **22/22**, each with one plain artifact path.
+- Manifest rows audited: **12/12** currently recorded.
+- Stable IDs absent from recheck: **0**.
+- Stable IDs based only on display-zero P values: **0**.
+- False candidate pagination or broken recheck evidence links found: **0**.
+- Candidate-specific remaining repairs: **0**.
+- New candidate propositions: **0**.
 
-The current evidence supports carrying all four stable IDs forward as neutral quality-control candidates pending human adjudication. The repairs above are reproducibility, arithmetic, inference-boundary, cross-lane-consistency, provenance, and closeout repairs; none assigns a scientific disposition, severity, intended source correction, or paper-level conclusion impact.
+The supplied aggregate evidence cannot identify intended corrections, all row-level estimators or CI methods, participant-level classifications, the centre crosswalk, or the exact Table 3 failure population. Those limitations preserve the need for human adjudication; they do not justify removing or scientifically disposing of any stable ID.

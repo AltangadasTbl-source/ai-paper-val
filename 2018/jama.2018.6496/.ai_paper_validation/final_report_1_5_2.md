@@ -1,210 +1,77 @@
-# Quantitative Quality-Control Consistency Review: JAMA 2018.6496
+# Quantitative Quality-Control Consistency Review
 
-# 1. Pending Human Adjudication Notice
+## Pending Human Adjudication Notice
 
-**Pending Human Adjudication:** This report records source-grounded quantitative reporting quality-control candidates. It does not determine validity, severity, acceptance, exclusion, correction, or clinical consequences. Every candidate below remains Pending Human Adjudication.
+**All four candidate consistency issues in this report are Pending Human Adjudication.** This source-first review records printed quantitative, statistical, denominator, and definition relationships for human follow-up. It does not adjudicate candidates or prescribe a final correction.
 
-# 2. Executive Quality-Control Summary
+## Executive Quality-Control Summary
 
-Complete fresh review of 49 supplied PDF pages identified seven distinct quantitative reporting consistency candidates (`C001`–`C007`). They concern baseline availability denominators, category completeness, a confidence-interval endpoint order, an outcome-endpoint definition, and an interim-analysis-set comparison. No candidate is based solely on a small displayed P value; no coherent display-zero P value was encountered.
+Fresh review of the three supplied PDFs identified four distinct quantitative reporting quality-control candidates: one reverse-ordered confidence-interval display, one bounded denominator question, and two protocol-to-publication measure-definition comparisons. All are Pending Human Adjudication. The review mapped all 49 direct-source pages, registered all four stable IDs without a count cap, and did not treat any coherent display-zero P value as a candidate.
 
-These observations are framed for quantitative reporting quality control. If confirmed, small preventable defects can matter when downstream evidence products extract counts, denominators, intervals, definitions, or analysis-set descriptions. This review does not assert that any defect propagated, changed a conclusion, or caused harm.
+Small preventable reporting defects can matter when numeric results and outcome definitions are copied into systematic reviews, meta-analyses, guidelines, or later evidence products. The supplied package does not establish that propagation, a conclusion change, or harm occurred.
 
-# 3. Package and Fresh-Processing Provenance
+## Package and Fresh-Processing Provenance
 
-Only the three supplied package-root PDFs were used as scientific evidence. No web or external literature was used, and no prior audit derivative was used as evidence. Fresh page images and CPU OCR were prepared for all units; the PDFs remain authoritative.
+The direct-source package contains three PDFs: the 11-page main article, a 25-page protocol, and a 13-page supporting-results/data-form document. All 49 PDF-page units were freshly prepared from supplied sources; zero units were reused. Fresh native and layout text were generated for every PDF. Forty-one result-relevant pages were rendered for visual confirmation. Relevant native/layout text was usable, so CPU OCR was not required (0 OCR pages), and no GPU was used.
 
-| Document | Supplied source | Fresh units | SHA-256 |
-|---|---|---:|---|
-| DOC001 | [jama_driver_2018_oi_180054.pdf — PDF p. 1](<../jama_driver_2018_oi_180054.pdf#page=1>) | 11 PDF pages | `684db2edf58f16d1d24e8ddb6a463429b027450314c923e06700acdd0167e7d2` |
-| DOC002 | [joi180054supp1_prod.pdf — PDF p. 1](<../joi180054supp1_prod.pdf#page=1>) | 25 PDF pages | `38c1822278c238d2e9f217cd626c307b9d7ad8152f93f3281a03f58990e6108c` |
-| DOC003 | [joi180054supp2_prod.pdf — PDF p. 1](<../joi180054supp2_prod.pdf#page=1>) | 13 PDF pages | `b8b7e9731b69407ff10ffc262eb42477965333e3697461e848d8fe50e13b4b31` |
+| Source ID | Direct source | Role | Units mapped |
+|---|---|---|---:|
+| DOC-001 | `jama_driver_2018_oi_180054.pdf` | Main randomized clinical-trial article | 11/11 |
+| DOC-002 | `joi180054supp1_prod.pdf` | Supporting clinical-trial protocol | 25/25 |
+| DOC-003 | `joi180054supp2_prod.pdf` | Supporting results, interim analysis, figures, and data form | 13/13 |
 
-The fresh source inventory and preprocessing record are in `review_1_5_2/source_inventory.md` and `review_1_5_2/evidence_asset_inventory.md`.
+No previous audit derivative, prior report, web material, external literature, or structured source outside these PDFs was used as evidence or as a discovery boundary.
 
-# 4. Scope, Complete Coverage, and Exclusions
+## Scope, Complete Coverage, and Exclusions
 
-All 49 direct-source units were freshly prepared, given a result-relevance disposition, and mapped: DOC001 11/11, DOC002 25/25, and DOC003 13/13. The coverage manifest assigns all source, mapping, checking, registration, recheck, quality, and reporting stages without a review queue, top-N subset, or count cap.
+The review covered numeric, denominator/proportion/total, inferential-statistical, cross-document, effect-measure/label/scale, and rate-versus-count relationships. Every direct source has zero reusable units, fresh-required units equal to total units, mapped units equal to total units, and `COMPLETE` status: 49/49 overall.
 
-The review focused on numeric, denominator/proportion/total, inferential-statistical, cross-document, effect-measure/label/scale, and rate-versus-count consistency. It did not conduct a broad clinical, design, misconduct, novelty, or raw-data audit. Analysis-unit or population issues were considered only where they created a concrete reported-number or interpretation consistency question.
+The review did not perform a general methodology, clinical, misconduct, raw-data, or conclusion-validity audit. Analysis-unit and population considerations were considered only where they created a concrete reported-number, denominator, label, or interpretation question. Coherent finite-precision P-value displays were not candidates; no assigned relationship displayed `P = 0` or equivalent.
 
-# 5. Quantitative and Statistical Relationship Coverage
+## Quantitative and Statistical Relationship Coverage
 
-The fresh main mapper recorded 35 numeric/reporting relationships and 28 statistical relationships; the fresh support mapper recorded 20 numeric/reporting relationships and 10 statistical relationships. The canonical inventories therefore contain 55 numeric/reporting relationships (`N001`–`N055`) and 38 statistical relationships (`S001`–`S038`).
+The canonical numeric/reporting inventory contains 47 relationships (`N001` through `N047`). Numeric and cross-source checks addressed the complete inventory, including 118 matched occurrence comparisons after population, time, contrast, model, measure, scale, unit, reference, and precision matching.
 
-Numeric and cross-source checks completed their assigned relationships. Independent statistical pass 1 and independent statistical pass 2 each completed all 38 statistical relationships. The second pass reviewed the complete cross-lane ledger and all mechanical recheck facts; it appended no new candidate. The inventories and complete pass records are in `review_1_5_2/relationships/numeric_relationship_inventory.md`, `review_1_5_2/statistics/relationship_inventory.md`, and `review_1_5_2/checkers/`.
+The inferential-statistical inventory contains 37 relationships (`S001` through `S037`). A fresh high-effort Terra statistical reviewer completed pass 1 for 37/37 relationships, and a different fresh high-effort Terra statistical reviewer completed pass 2 for 37/37 relationships while revisiting all four ledger/recheck records. Pass 2 added no stable candidate. No relationship was excluded due to a queue, ranking, cap, or early stopping rule.
 
-# 6. Candidate Index
+## Candidate Index
 
-| ID | Pending quantitative reporting quality-control question | Primary locations |
-|---|---|---|
-| [C001](#c001--baseline-oxygenation-denominators-conflict-with-stated-saturation-missingness) | Oxygen-saturation denominators versus stated missingness | DOC001 p. 5 |
-| [C002](#c002--patient-position-rows-leave-unreported-observations-in-both-arms) | Patient-position rows versus arm totals and fourth form option | DOC001 p. 6; DOC003 p. 9 |
-| [C003](#c003--final-intubator-categories-exceed-the-bougie-arm-total) | Final-intubator categories versus Bougie arm total | DOC001 p. 6; DOC003 p. 7 |
-| [C004](#c004--video-screen-use-categories-do-not-account-for-their-printed-denominators) | Screen-use rows versus available-data denominators and N/A form option | DOC001 p. 6; DOC003 p. 10 |
-| [C005](#c005--main-table-3-reverses-duration-confidence-interval-endpoints) | Reversed Table 3 duration interval endpoints | DOC001 p. 7; DOC003 pp. 2-3 |
-| [C006](#c006--published-duration-outcome-uses-a-different-endpoint-from-the-protocol) | Protocol cuff-inflation endpoint versus published blade-removal endpoint | DOC002 pp. 9-10; DOC001 pp. 3, 7; DOC003 p. 3 |
-| [C007](#c007--reported-507-patient-interim-set-differs-from-the-protocols-first-500-analysis-set) | Protocol first-500 interim data versus reported 507 denominators | DOC002 p. 21; DOC003 p. 6 |
+| ID | Candidate | Category | Status |
+|---|---|---|---|
+| [C001](#c001--reverse-ordered-confidence-interval-endpoints-for-all-patient-first-attempt-duration) | Reverse-ordered confidence-interval endpoints for all-patient first-attempt duration | Statistical reporting inconsistency | Pending Human Adjudication |
+| [C002](#c002--two-patient-ettstylet-denominator-difference-across-linked-hypoxemia-outcomes) | Two-patient ETT+stylet denominator difference across linked hypoxemia outcomes | Denominator, proportion, or total inconsistency | Pending Human Adjudication |
+| [C003](#c003--protocol-and-published-hypoxemia-observation-windows-use-different-endpoint-events) | Protocol and published hypoxemia observation windows use different endpoint events | Measure, label, or scale inconsistency | Pending Human Adjudication |
+| [C004](#c004--protocol-and-published-first-attempt-duration-measures-use-different-endpoint-events) | Protocol and published first-attempt-duration measures use different endpoint events | Measure, label, or scale inconsistency | Pending Human Adjudication |
 
-# 7. Candidate Evidence Cards
+## Candidate Evidence Cards
 
-## C001 — Baseline oxygenation denominators conflict with stated saturation missingness
+## C001 — Reverse-ordered confidence-interval endpoints for all-patient first-attempt duration
 
-**Candidate statement:** Table 1 oxygen-saturation available-data denominators imply 61 missing values, while its oxygen-saturation footnote reports 43.
+**Status:** Pending Human Adjudication
 
-**Category:** Denominator, proportion, or total inconsistency
-
-**Exact source locations:** [DOC001 `jama_driver_2018_oi_180054.pdf` — PDF p. 5, Table 1 and footnote b](<../jama_driver_2018_oi_180054.pdf#page=5>).
-
-**Source evidence:** Arm totals are 381 and 376; oxygen-saturation rows use denominators 352 and 344. Footnote b reports oxygen saturation unavailable for 43 patients, split 19 and 24.
-
-**Reported-versus-comparator:** Reported missingness is 19 + 24 = 43; arm totals minus displayed oxygen-saturation denominators give 29 + 32 = 61.
-
-**Reasoning procedure:** Applied the same-field available-data identity to each printed arm total and denominator, then compared the implied missing counts with the footnote's stated oxygen-saturation counts.
-
-**Calculation:** `381 - 352 = 29`; `376 - 344 = 32`; `29 + 32 = 61`; footnote `19 + 24 = 43`.
-
-**Alternative source-grounded interpretations:** The threshold rows may use a distinct unstated availability field or time point; vital-sign labels or group splits in the footnote may be transposed. The package does not establish either explanation.
-
-**Mechanical evidence recheck:** The cited Table 1 values, denominators, footnote ordering, and arithmetic were found and reproduced in `review_1_5_2/verification/evidence_recheck.md`.
-
-**Quality-control relevance:** A baseline availability denominator and missingness statement should identify the same underlying field if both are intended to describe oxygen saturation.
-
-**Potential downstream evidence impact:** If confirmed, a data extractor could copy an inconsistent baseline oxygen-saturation availability or missingness count into a descriptive evidence table.
-
-**Human verification steps:** Inspect the source data dictionary, Table 1 production file, and any erratum to identify the field/time point behind denominators 352 and 344 and footnote b.
-
-**Human adjudication fields:**
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C002 — Patient-position rows leave unreported observations in both arms
-
-**Candidate statement:** The three published patient-position rows total 378/381 and 372/376, while the source form provides a fourth `Seated Upright` option with no published counts.
-
-**Category:** Denominator, proportion, or total inconsistency
-
-**Exact source locations:** [DOC001 — PDF p. 6, Table 2](<../jama_driver_2018_oi_180054.pdf#page=6>); [DOC003 — PDF p. 9, postintubation form item 11](<../joi180054supp2_prod.pdf#page=9>).
-
-**Source evidence:** Table 2 lists Bougie counts 222, 117, and 39 and ETT+stylet counts 244, 96, and 32. DOC003 item 11 instructs selection of one of four positions, including `Seated Upright` in addition to the three displayed types.
-
-**Reported-versus-comparator:** The printed rows are compared with randomized-arm headers 381 and 376, conditional on whether the table intended them to be exhaustive.
-
-**Reasoning procedure:** Summed the printed categories and compared each sum with its arm header; then checked the supplied form for an omitted defined response.
-
-**Calculation:** `222 + 117 + 39 = 378`; `381 - 378 = 3`. `244 + 96 + 32 = 372`; `376 - 372 = 4`.
-
-**Alternative source-grounded interpretations:** `Seated Upright` or missing/unclassified observations may account for residuals, but the package provides no arm counts for that form option. The residuals must not be assigned to it without counts.
-
-**Mechanical evidence recheck:** All six counts, headers, and DOC003's four-option instruction were rechecked at the cited pages; category exhaustiveness remains an explicit unresolved premise.
-
-**Quality-control relevance:** A reader needs the complete response set and denominator to interpret reported procedural position frequencies.
-
-**Potential downstream evidence impact:** If confirmed, an evidence extractor could treat the three published rows as a complete position distribution when a fourth response or missing category was present.
-
-**Human verification steps:** Reproduce Table 2 from the patient-position form records, including `Seated Upright`, missing, and unclassified responses by arm.
-
-**Human adjudication fields:**
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C003 — Final-intubator categories exceed the Bougie arm total
-
-**Candidate statement:** Bougie final-intubator counts total 383 against an arm total of 381, although the form calls for one training-level choice and includes PA/Other options not shown in Table 2.
-
-**Category:** Denominator, proportion, or total inconsistency
-
-**Exact source locations:** [DOC001 — PDF p. 6, Table 2 and footnote f](<../jama_driver_2018_oi_180054.pdf#page=6>); [DOC003 — PDF p. 7, postintubation form item 2](<../joi180054supp2_prod.pdf#page=7>).
-
-**Source evidence:** Bougie rows are 318 senior resident/fellow, 57 junior resident, and 8 faculty. Footnote f labels these the final intubating physician. DOC003 item 2 says to circle one training level from G1, G2, G3, G4+/Fellow, Faculty, PA, or Other.
-
-**Reported-versus-comparator:** Three published Bougie counts are compared with the Bougie randomized-arm total under the singular final-intubator description.
-
-**Reasoning procedure:** Added the three published categories and compared the result with 381, while preserving uncertainty about the mapping from the full form response set to Table 2.
-
-**Calculation:** `318 + 57 + 8 = 383`; `383 - 381 = 2`.
-
-**Alternative source-grounded interpretations:** The PA/Other form choices may have been mapped into published categories, or a count/denominator transcription difference may exist. The one-choice instruction disfavors within-form overlap, but the package does not provide the coding map.
-
-**Mechanical evidence recheck:** The counts, arm total, final-physician footnote, one-choice instruction, and PA/Other options were rechecked in `review_1_5_2/verification/evidence_recheck.md`.
-
-**Quality-control relevance:** Final-operator categories should have a transparent classification rule when presented against an arm-level denominator.
-
-**Potential downstream evidence impact:** If confirmed, a data extractor could copy an operator-training distribution whose published total is not reconciled to its patient denominator.
-
-**Human verification steps:** Inspect the Table 2 coding specification and source form records to map every one-choice training-level response into the published rows.
-
-**Human adjudication fields:**
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C004 — Video-screen-use categories do not account for their printed denominators
-
-**Candidate statement:** Three screen-use rows total 371/377 and 370/372; the form includes an additional explicit N/A response whose arm counts are not published.
-
-**Category:** Denominator, proportion, or total inconsistency
-
-**Exact source locations:** [DOC001 — PDF p. 6, Table 2 and footnote g](<../jama_driver_2018_oi_180054.pdf#page=6>); [DOC003 — PDF p. 10, postintubation form item 14](<../joi180054supp2_prod.pdf#page=10>).
-
-**Source evidence:** Bougie counts are 218/377, 78/377, and 75/377; ETT+stylet counts are 182/372, 90/372, and 98/372. Footnote g gives four missing values per arm. DOC003 offers the three table patterns plus `N/A - Blade inserted and removed before attempting intubation`.
-
-**Reported-versus-comparator:** The sums of the three displayed rows are compared with their explicit available-data denominators, conditionally on whether rows were intended to partition those observations.
-
-**Reasoning procedure:** Reproduced availability denominators from the footnote, summed table rows, and checked the form for source-defined responses absent from the display.
-
-**Calculation:** `381 - 4 = 377`; `376 - 4 = 372`. `218 + 78 + 75 = 371`; `377 - 371 = 6`. `182 + 90 + 98 = 370`; `372 - 370 = 2`.
-
-**Alternative source-grounded interpretations:** The N/A response may account for some observations, or the three rows may overlap or be nonexhaustive. The package gives no N/A counts; residuals 6 and 2 must not be assigned to it.
-
-**Mechanical evidence recheck:** The fractions, missingness footnote, and explicit DOC003 N/A response were rechecked; exclusivity and exhaustiveness are not stated.
-
-**Quality-control relevance:** Table rows and denominators need a complete response-category rule to support accurate interpretation of procedural screen use.
-
-**Potential downstream evidence impact:** If confirmed, an evidence extractor could copy incomplete screen-use category frequencies or attach the available-data denominators to an incomplete response set.
-
-**Human verification steps:** Reproduce the table from all four form responses plus missing values, with arm-specific counts and the production inclusion rule.
-
-**Human adjudication fields:**
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C005 — Main Table 3 reverses duration confidence-interval endpoints
-
-**Candidate statement:** Main Table 3 prints the all-patient duration difference as `1 (4 to -1)` seconds, whereas the supplied clustered supplement prints ordered endpoints `1 (-1 to 4)`.
+**Candidate statement:** DOC-001 Table 3 prints the all-patient first-attempt-duration confidence limits in descending order (`4 to -1`); the intended unclustered limits remain unresolved.
 
 **Category:** Statistical reporting inconsistency
 
-**Exact source locations:** [DOC001 — PDF p. 7, Table 3](<../jama_driver_2018_oi_180054.pdf#page=7>); [DOC003 — PDF p. 2, eTable 1](<../joi180054supp2_prod.pdf#page=2>); [DOC003 — PDF p. 3, clustering note](<../joi180054supp2_prod.pdf#page=3>).
+**Exact source locations:** [DOC-001 Table 3 — PDF p. 7](<../jama_driver_2018_oi_180054.pdf#page=7>); [DOC-003 eTable 1 — PDF p. 2](<../joi180054supp2_prod.pdf#page=2>); [DOC-003 eTable 1 note — PDF p. 3](<../joi180054supp2_prod.pdf#page=3>); [DOC-001 statistical-analysis methods — PDF p. 4](<../jama_driver_2018_oi_180054.pdf#page=4>).
 
-**Source evidence:** DOC001 gives medians 38 versus 36 seconds and difference `1 (4 to -1)`, P=.24. DOC003 gives the same medians and point difference with `1 s (-1 s to 4 s)`, P=.95, and states that inferential columns were recalculated for physician clustering.
+**Source evidence:** Table 3 prints all-patient medians of `38 (29 to 51)` and `36 (25 to 54)` seconds, difference `1 (4 to -1)`, and `P=.24`. The main methods name Hodges-Lehmann median between-group differences with associated 95% confidence intervals. The clustered eTable prints `1 s (-1 s to 4 s), P=.95` and states that inferential columns were recalculated for physician clustering.
 
-**Reported-versus-comparator:** The direct comparator is the conventional lower-to-upper order for a confidence interval in DOC001. DOC003 is corroborating endpoint-order evidence, not the same inferential model.
+**Reported-versus-comparator:** The reported main-table interval is `4 to -1`; the applicable lower-to-upper display convention requires a lower endpoint not greater than the upper endpoint. The clustered interval is contextual distinct-model evidence, not an unclustered replacement.
 
-**Reasoning procedure:** Tested whether the printed bounds are ascending and contain the displayed point estimate, then compared the endpoint order with the separately clustered display without equating the two models.
+**Reasoning procedure:** Compare the two printed main-table endpoints in their displayed order and verify that other intervals use lower-to-upper notation. Preserve the unclustered/clustered model distinction rather than substituting one analysis for another.
 
-**Calculation:** `4 > -1`; literal lower-to-upper reading would require `4 <= 1 <= -1`, which fails. Reordering yields `-1 <= 1 <= 4`.
+**Calculation:** `4 > -1`; the displayed sequence is decreasing. Reordering to `-1 to 4` is only a diagnostic possibility, not an assigned correction.
 
-**Alternative source-grounded interpretations:** A typographical endpoint transposition is possible. The clustered analysis may independently round to the same endpoints and does not prove the intended unadjusted interval.
+**Alternative source-grounded interpretations:** An unstated reverse-order convention or source-specific transcription could explain the display. The clustered result supports the possibility of a reversed display, but its stated recalculation for physician clustering means it does not establish the intended unclustered values.
 
-**Mechanical evidence recheck:** The printed strings and clustering qualification were rechecked at all cited pages. Raw unadjusted confidence-interval output is not supplied.
+**Mechanical evidence recheck:** All cited locations were found and their source strings matched. The endpoint-order rule is applicable; the direct comparison was reproduced. Individual durations, the unclustered analysis-specific output, and a table-production record are unavailable, so the recheck cannot determine whether endpoints were transposed.
 
-**Quality-control relevance:** Confidence-interval endpoint order affects the direction and uncertainty an evidence user records.
+**Quality-control relevance:** A descending interval display can cause a reader or data extractor to reverse, normalize, or copy the limits inconsistently.
 
-**Potential downstream evidence impact:** If confirmed, a systematic reviewer or meta-analytic data extractor could reverse or miscopy the duration interval endpoints.
+**Potential downstream evidence impact:** If human adjudication confirms a display defect, a systematic-review or meta-analysis extractor could otherwise copy the confidence limits in the wrong order. No supplied evidence shows that this occurred or that a conclusion changed.
 
-**Human verification steps:** Inspect the unadjusted Table 3 statistical output and production table source to establish the intended lower and upper limits.
+**Human verification steps:** Inspect the original unclustered Hodges-Lehmann output and table-production file; identify the intended limits and their order; document whether the Table 3 sequence was transposed.
 
 **Human adjudication fields:**
 - **Validity:** __
@@ -213,64 +80,68 @@ Numeric and cross-source checks completed their assigned relationships. Independ
 - **Initials:** __
 - **Notes:** __
 
-## C006 — Published duration outcome uses a different endpoint from the protocol
+## C002 — Two-patient ETT+stylet denominator difference across linked hypoxemia outcomes
 
-**Candidate statement:** The protocol defines first-attempt time to intubation through ETT-cuff inflation, while the published tabular duration measure ends at laryngoscope-blade removal.
+**Status:** Pending Human Adjudication
+
+**Candidate statement:** The ETT+stylet denominators differ by two across linked waveform-dependent outcomes (`366` versus `364`), and the supplied aggregate sources do not establish whether the difference is intentional under an outcome-specific denominator rule.
+
+**Category:** Denominator, proportion, or total inconsistency
+
+**Exact source locations:** [DOC-001 Table 3 — PDF p. 7](<../jama_driver_2018_oi_180054.pdf#page=7>); [DOC-001 Table 5 — PDF p. 9](<../jama_driver_2018_oi_180054.pdf#page=9>); [DOC-002 protocol secondary outcomes — PDF p. 9](<../joi180054supp1_prod.pdf#page=9>); [DOC-002 analytic issues — PDF p. 21](<../joi180054supp1_prod.pdf#page=21>).
+
+**Source evidence:** Table 3 reports ETT+stylet first-attempt success without hypoxemia as `282/366 (77%)`. Table 5 reports ETT+stylet hypoxemia as `50/364 (14%)`. Both footnotes invoke matching hypoxemia threshold/window language and unavailable valid waveform; the Bougie denominators are 371 in both linked rows. The protocol defines success without hypoxemia as first-attempt success plus no hypoxemia.
+
+**Reported-versus-comparator:** The ETT+stylet denominators are `366` for the composite and `364` for hypoxemia alone. Denominator identity is expected only if both rows require an observed hypoxemia classification for every denominator member; the printed sources do not state the implemented denominator-construction rule.
+
+**Reasoning procedure:** Compare the two arm-specific denominators, their common waveform qualification, matching Bougie denominators, and the protocol composite definition. Do not assume the outcomes are simple complements.
+
+**Calculation:** `366 - 364 = 2`. Relative to the randomized ETT+stylet total, `376 - 366 = 10` and `376 - 364 = 12`. Aggregate counts cannot identify the two patients.
+
+**Alternative source-grounded interpretations:** A patient known to have failed the first attempt may be deterministically classifiable as not achieving the composite without a usable waveform, while lacking a hypoxemia-only classification. Outcome-specific missing-data handling could therefore make the composite denominator larger. The aggregate sources do not show whether either explanation accounts for these two patients.
+
+**Mechanical evidence recheck:** Both table locations, the shared waveform wording, and the protocol definition were found and matched. The arithmetic was reproduced. The conditional denominator rule remains necessary because joint patient-level classifications, the implemented code/rule, and the relevant patient identities are absent.
+
+**Quality-control relevance:** Without a stated construction rule, a reader cannot reproduce which ETT+stylet patients contribute to each displayed percentage.
+
+**Potential downstream evidence impact:** If human adjudication identifies a denominator-label or documentation defect, an outcome extractor could otherwise copy a percentage without the correct analysis denominator. No supplied evidence shows propagation or conclusion change.
+
+**Human verification steps:** Reconcile patient IDs across first-attempt success, waveform availability, and hypoxemia; inspect analysis code and the missing-data log; determine whether the two additional composite-denominator patients were deterministically classifiable failures; document the applicable rule.
+
+**Human adjudication fields:**
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C003 — Protocol and published hypoxemia observation windows use different endpoint events
+
+**Status:** Pending Human Adjudication
+
+**Candidate statement:** The protocol ends hypoxemia surveillance one minute after ETT-cuff inflation, while the published materials end it one minute after intubation-attempt completion; the supplied package does not document whether those events were treated as equivalent or whether the definition changed.
 
 **Category:** Measure, label, or scale inconsistency
 
-**Exact source locations:** [DOC002 — PDF p. 9, protocol section 2.2](<../joi180054supp1_prod.pdf#page=9>); [DOC002 — PDF p. 10, section 3.2](<../joi180054supp1_prod.pdf#page=10>); [DOC001 — PDF p. 3](<../jama_driver_2018_oi_180054.pdf#page=3>); [DOC001 — PDF p. 7, Table 3](<../jama_driver_2018_oi_180054.pdf#page=7>); [DOC003 — PDF p. 3, eTable footnote](<../joi180054supp2_prod.pdf#page=3>).
+**Exact source locations:** [DOC-002 protocol secondary outcomes — PDF p. 9](<../joi180054supp1_prod.pdf#page=9>); [DOC-002 protocol measurement procedure — PDF p. 10](<../joi180054supp1_prod.pdf#page=10>); [DOC-001 Table 3 — PDF p. 7](<../jama_driver_2018_oi_180054.pdf#page=7>); [DOC-001 Table 5 — PDF p. 9](<../jama_driver_2018_oi_180054.pdf#page=9>); [DOC-003 eTable 1 note — PDF p. 3](<../joi180054supp2_prod.pdf#page=3>); [DOC-003 postintubation form — PDF p. 10](<../joi180054supp2_prod.pdf#page=10>).
 
-**Source evidence:** DOC002 defines first-attempt time from attempt beginning to ETT-cuff inflation in the trachea. DOC001 and DOC003 define their tabular duration from blade entry into the mouth to blade removal; Table 3 reports medians and differences using that published definition.
+**Source evidence:** DOC-002 states that hypoxemia observation begins at first-attempt start and ends one minute after ETT-cuff inflation; page 10 repeats the cuff-inflation endpoint and 20-second recording schedule. DOC-001 Tables 3 and 5 and DOC-003 eTable 1 describe hypoxemia during or within one minute after completion of the intubation attempt. DOC-003 defines attempt 1 end as blade removal.
 
-**Reported-versus-comparator:** The named protocol timing outcome is compared with the named published tabular duration outcome: their start event aligns, but cuff inflation and blade removal are distinct end events.
+**Reported-versus-comparator:** The threshold and starting event agree. The planned endpoint is one minute after cuff inflation; the published endpoint is one minute after attempt completion/blade removal. These are nonidentical named procedural events.
 
-**Reasoning procedure:** Compared source definitions event by event and separated direct evidence for tabular medians/differences from the unsupplied variable mapping for time-to-event analyses.
+**Reasoning procedure:** Compare the exact protocol and published window-end text, then apply the supplied data-form definition of attempt completion. Do not infer that cuff inflation and blade removal are interchangeable without a supplied identity or change rule.
 
-**Calculation:** Protocol interval: `[laryngoscope entry, ETT-cuff inflation]`. Published tabular interval: `[blade entry, blade removal]`. The elapsed time between terminal events is not supplied.
+**Calculation:** No numeric recalculation is applicable. The reproducible comparison is `one minute after ETT-cuff inflation` versus `one minute after attempt completion/blade removal`.
 
-**Alternative source-grounded interpretations:** An intentional amendment, renamed distinct variable, or recording change may reconcile the definitions. The package has no dated amendment, data dictionary, or analysis mapping. It is not directly established that every Kaplan-Meier curve or Cox hazard ratio used blade removal as its terminal event.
+**Alternative source-grounded interpretations:** “Attempt completion” could be shorthand for cuff inflation, or the events could have occurred close together in practice. The data form explicitly defines attempt end as blade removal, so operational equivalence is not established by the supplied package.
 
-**Mechanical evidence recheck:** The protocol and publication definitions and Table 3/eTable locations were rechecked. Direct tabular endpoint evidence is distinct from the unresolved curve/HR terminal-event mapping.
+**Mechanical evidence recheck:** The protocol pages 9 and 10, published tables, eTable note, and data form were found and matched. The threshold and start event align; the end-event terms do not. No amendment, implemented surveillance-stop timestamp, or operational equivalence rule is supplied.
 
-**Quality-control relevance:** Identically or similarly named duration outcomes require an explicit event-boundary mapping across protocol and publication.
+**Quality-control relevance:** The named stop event determines which desaturation observations are eligible for the outcome and should be traceable across protocol and results reporting.
 
-**Potential downstream evidence impact:** If confirmed, an evidence extractor could treat blade-removal duration as the protocol's cuff-inflation time-to-intubation endpoint without preserving the distinction.
+**Potential downstream evidence impact:** If human adjudication confirms a definition change or labeling defect, a review or guideline extractor could otherwise record the published hypoxemia result under the protocol's different observation window. No supplied evidence establishes actual propagation or a changed conclusion.
 
-**Human verification steps:** Obtain the dated amendment or analysis plan, timing-variable dictionary, and model input definitions for each tabular and time-to-event result.
-
-**Human adjudication fields:**
-- **Validity:** __
-- **Importance:** __
-- **Action:** __
-- **Initials:** __
-- **Notes:** __
-
-## C007 — Reported 507-patient interim set differs from the protocol’s first-500 analysis set
-
-**Candidate statement:** The protocol describes an interim analysis of data from the first 500 patients, while the eAppendix reports interim denominators totaling 507; operational overshoot remains a supplied-source-grounded alternative.
-
-**Category:** Cross-document numeric inconsistency
-
-**Exact source locations:** [DOC002 — PDF p. 21, section 8.6.2](<../joi180054supp1_prod.pdf#page=21>); [DOC003 — PDF p. 6, eAppendix 1](<../joi180054supp2_prod.pdf#page=6>).
-
-**Source evidence:** DOC002 says the analysis will occur after 500 patients are enrolled and specifically describes analysis of data from the first 500 patients. DOC003 says the interim analysis occurred after 507 and reports 250/257 versus 213/250.
-
-**Reported-versus-comparator:** The direct comparison is the protocol's first-500 analysis-set language versus reported interim denominators totaling 507. “After 500” alone is not treated as an exact-500 requirement.
-
-**Reasoning procedure:** Added the reported arm denominators and compared that total with the explicit first-500 protocol analysis-set language, retaining trigger-window and cutoff definitions as missing inputs.
-
-**Calculation:** `257 + 250 = 507`; `507 - 500 = 7`.
-
-**Alternative source-grounded interpretations:** Operational enrollment overshoot, delayed cutoff, data cleaning, or an authorized trigger window may explain the seven-record difference. The package supplies no cutoff rule, interim dataset definition, DSMB record, or amendment.
-
-**Mechanical evidence recheck:** The protocol wording, eAppendix denominators, and arithmetic were rechecked. No inference about protocol compliance, the futility decision, or trial conclusions is made.
-
-**Quality-control relevance:** Interim analysis-set size and trigger wording should be sufficiently explicit for readers to reconcile planned and reported quantities.
-
-**Potential downstream evidence impact:** If confirmed, an evidence product could copy an interim analysis-set size or trigger description without the protocol's first-500 qualification.
-
-**Human verification steps:** Inspect contemporaneous enrollment/cutoff records, the interim dataset definition, DSMB documentation, and any amendment defining the permitted window.
+**Human verification steps:** Inspect implemented timing instructions, amendment history, analysis specification, and timestamp logic; identify the surveillance-stop event used in analyzed data; document any approved change or equivalence rule.
 
 **Human adjudication fields:**
 - **Validity:** __
@@ -279,51 +150,103 @@ Numeric and cross-source checks completed their assigned relationships. Independ
 - **Initials:** __
 - **Notes:** __
 
-# 8. Downstream Evidence-Chain Considerations
+## C004 — Protocol and published first-attempt-duration measures use different endpoint events
 
-The candidates are pending source-document questions, not determinations of downstream use. If confirmed, they could affect how a systematic review, meta-analysis, guideline evidence table, or other extractor records baseline availability, procedural category frequencies, interval bounds, duration definitions, or interim sample-set descriptions. No supplied package evidence establishes propagation, conclusion change, or harm.
+**Status:** Pending Human Adjudication
 
-# 9. Limitations and Missing Definitions
+**Candidate statement:** The protocol defines first-attempt time to intubation through ETT-cuff inflation, whereas the published analyses use blade removal; the supplied package does not document how or why the measurement endpoint changed.
 
-The supplied package lacks individual-level data, production tables, statistical code and output, complete variable mappings, confidence-interval construction details, protocol amendments, a complete table-to-form codebook, and interim cutoff/DSMB records. These omissions prevent reconstruction and limit explanatory conclusions. OCR can introduce reading or layout error; material pages were checked against fresh rendered images and the direct PDFs, which remain the authority. Native/layout PDF text and direct table reconstruction were unavailable in the local environment; see `review_1_5_2/limitations.md`.
+**Category:** Measure, label, or scale inconsistency
 
-# 10. Human Adjudication Checklist
+**Exact source locations:** [DOC-002 protocol — PDF p. 9](<../joi180054supp1_prod.pdf#page=9>); [DOC-001 outcome methods — PDF p. 3](<../jama_driver_2018_oi_180054.pdf#page=3>); [DOC-001 Table 3 — PDF p. 7](<../jama_driver_2018_oi_180054.pdf#page=7>); [DOC-003 eTable 1 note — PDF p. 3](<../joi180054supp2_prod.pdf#page=3>); [DOC-003 data form — PDF p. 10](<../joi180054supp2_prod.pdf#page=10>).
 
-For each pending card, a human reviewer should inspect the cited PDF pages and the relevant source-production or data-definition record; reproduce the stated arithmetic or definition comparison; determine whether a source-grounded alternative explains the display; document any correction or clarification outside this report; and complete the five blank fields on the applicable card. Human review should preserve the distinction between directly printed evidence and inferred explanations.
+**Source evidence:** The protocol defines first-attempt time to intubation from attempt start through ETT-cuff inflation with the tube in the trachea. The article and eTable define duration from laryngoscope-blade insertion through blade removal and report all-patient medians of 38 versus 36 seconds. The data form also identifies blade removal as attempt end.
 
-# 11. Reproducibility, Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost Metadata
+**Reported-versus-comparator:** The start event is compatible. The planned endpoint is cuff inflation; the published endpoint is blade removal. The latter can define a different time scale and a duration for failed attempts.
 
-## Source integrity and execution record
+**Reasoning procedure:** Compare the explicitly named timing endpoints across protocol, main methods, table, eTable, and data form. Keep the protocol-planned and published implemented measures distinct unless a supplied amendment or harmonization rule connects them.
 
-The pre-review hashes are retained in `review_1_5_2/source_hashes_before.sha256`. Direct-source coverage is 49/49 mapped units. The complete stage assignments are retained in `review_1_5_2/coverage_manifest.md`; the mechanically rechecked stable-ID set is identical to the ledger set (`C001`–`C007`).
+**Calculation:** No numeric recalculation is applicable. The patient-level difference would be `time(blade removal) - time(cuff inflation)`, but neither paired timestamps nor a defined equivalence are supplied.
+
+**Alternative source-grounded interpretations:** The final analysis may deliberately use blade removal so failed attempts receive a duration, or the labels may refer to a harmonized timing procedure not described in the sources. Repetition in article, supplement, and form supports use of the published operational measure but does not document its relation to the protocol endpoint.
+
+**Mechanical evidence recheck:** Each cited location was found and matched. The comparison retains a compatible start and nonidentical end events. Patient-level timing data, revised-plan/amendment documentation, stopwatch-stop instructions, and failed-attempt handling are unavailable.
+
+**Quality-control relevance:** The stop event defines the reported time scale and affects whether failed attempts have a measurable duration under the same rule.
+
+**Potential downstream evidence impact:** If human adjudication confirms a definition or labeling defect, a meta-analysis or outcome extractor could otherwise treat the protocol and published duration as the same measure. No supplied evidence shows actual propagation or conclusion change.
+
+**Human verification steps:** Inspect protocol/amendment history, stopwatch/data-collection instructions, analysis code, and timestamp fields; determine which stop event generated each published duration analysis and how failed attempts were handled.
+
+**Human adjudication fields:**
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## Downstream Evidence-Chain Considerations
+
+If confirmed by human adjudication, the candidates describe information a downstream evidence user could copy: confidence-interval ordering, denominator construction, a hypoxemia observation window, or a duration-measure endpoint. Such details can affect faithful data extraction and measure matching. This report makes no claim that any downstream product copied these data, that any conclusion changed, or that harm occurred.
+
+## Limitations and Missing Definitions
+
+- The supplied package contains aggregate PDF evidence only; participant-level data, analysis code, table-production files, and structured result exports are absent.
+- Exact row-specific confidence-interval algorithms, variance estimators, test statistics, interaction models, sparse-cell rules, cluster-model details, and interim futility calculations are incompletely specified.
+- C001 lacks unclustered Hodges-Lehmann output; C002 lacks joint success/waveform/hypoxemia classifications and denominator-construction logic; C003 and C004 lack amendments, implemented timing instructions, and paired cuff-inflation/blade-removal timestamps.
+- Figure curves were not digitized. Printed captions, risk sets, effect estimates, intervals, reference groups, and model labels were mapped; no registered candidate depends on curve-coordinate extraction.
+- All relevant native and layout text was usable; 41 pages were rendered and 0 pages required OCR. No web or external literature was used.
+
+## Human Adjudication Checklist
+
+- Confirm each cited printed value or definition in the supplied PDF locations.
+- Obtain source records needed to answer the candidate-specific human verification steps.
+- Record validity, importance, action, initials, and notes in each card without changing stable IDs.
+- If an amendment, analysis record, or production record resolves a candidate, preserve the original candidate and document the adjudication separately.
+
+## Reproducibility, Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost Metadata
+
+### Source Integrity and Fresh Coverage
+
+| Source | SHA-256 before review | Units |
+|---|---|---:|
+| `jama_driver_2018_oi_180054.pdf` | `684db2edf58f16d1d24e8ddb6a463429b027450314c923e06700acdd0167e7d2` | 11/11 |
+| `joi180054supp1_prod.pdf` | `38c1822278c238d2e9f217cd626c307b9d7ad8152f93f3281a03f58990e6108c` | 25/25 |
+| `joi180054supp2_prod.pdf` | `b8b7e9731b69407ff10ffc262eb42477965333e3697461e848d8fe50e13b4b31` | 13/13 |
+
+Pre-review hashes were recorded for all three direct sources and recomputed after report assembly. All three hashes remained unchanged; source inputs were not modified by this review.
+
+### Agent-Execution Metadata
 
 | Stage | Agent ID | Model | Reasoning effort | Start mode | Primary artifact |
 |---|---|---|---|---|---|
-| coordinator | COORDINATOR-CURRENT-SESSION | gpt-5.6-sol | high | CURRENT_SESSION | `run_state.md` |
-| source_preprocessing | root/fresh_preprocessing | gpt-5.6-terra | medium | FRESH_SPAWN | `source_inventory.md` |
-| main_quantitative_mapping | root/main_mapper | gpt-5.6-terra | medium | FRESH_SPAWN | `extraction/main_quantitative_evidence.md` |
-| support_quantitative_mapping | root/support_mapper | gpt-5.6-terra | medium | FRESH_SPAWN | `extraction/support_quantitative_evidence.md` |
-| numeric_checks | root/numeric_checks | gpt-5.6-terra | medium | FRESH_SPAWN | `checkers/numeric_consistency.md` |
-| cross_source_checks | root/cross_source_checks | gpt-5.6-terra | medium | FRESH_SPAWN | `checkers/cross_source_consistency.md` |
-| statistics_pass_1 | root/statistics_pass_1 | gpt-5.6-terra | high | FRESH_SPAWN | `checkers/statistical_pass_1.md` |
-| evidence_recheck | root/evidence_recheck | gpt-5.6-sol | high | FRESH_SPAWN | `verification/evidence_recheck.md` |
-| statistics_pass_2 | root/statistics_pass_2 | gpt-5.6-terra | high | FRESH_SPAWN | `checkers/statistical_pass_2.md` |
-| evidence_quality | root/evidence_quality_audit | gpt-5.6-sol | high | FRESH_SPAWN | `quality/evidence_quality_audit.md` |
-| report_generation | root/report_generator | gpt-5.6-terra | medium | FRESH_SPAWN | `report_generation_summary.md` |
+| coordinator | `root` | gpt-5.6-sol | high | CURRENT_SESSION | `run_state.md` |
+| fresh_source_preprocessing | `root/fresh_preprocessing` | gpt-5.6-terra | medium | FRESH_SPAWN | `evidence_asset_inventory.md` |
+| main_evidence_mapping | `root/main_mapper` | gpt-5.6-terra | medium | FRESH_SPAWN | `extraction/main_quantitative_evidence.md` |
+| support_evidence_mapping | `root/support_mapper` | gpt-5.6-terra | medium | FRESH_SPAWN | `extraction/support_quantitative_evidence.md` |
+| numeric_checks | `root/numeric_review` | gpt-5.6-terra | medium | FRESH_SPAWN | `checkers/numeric_consistency.md` |
+| cross_source_checks | `root/cross_source_review` | gpt-5.6-terra | medium | FRESH_SPAWN | `checkers/cross_source_consistency.md` |
+| statistics_pass_1 | `root/statistics_pass_1` | gpt-5.6-terra | high | FRESH_SPAWN | `checkers/statistical_pass_1.md` |
+| evidence_recheck | `root/evidence_recheck` | gpt-5.6-sol | high | FRESH_SPAWN | `verification/evidence_recheck.md` |
+| statistics_pass_2 | `root/statistics_pass_2` | gpt-5.6-terra | high | FRESH_SPAWN | `checkers/statistical_pass_2.md` |
+| evidence_quality | `root/evidence_quality_audit` | gpt-5.6-sol | high | FRESH_SPAWN | `quality/evidence_quality_audit.md` |
+| report_generation | `root/report_generator` | gpt-5.6-terra | medium | FRESH_SPAWN | `report_generation_summary.md` |
 
-## Performance profile
+The two required statistical reviewers are distinct fresh agents and each completed all 37 assigned statistical relationships.
 
-- **Target basis:** Three PDFs with 49 wholly fresh page units, full browser-render and CPU-OCR fallback burden, one main trial report plus protocol and methods supplements, moderate expected quantitative relationship volume, and all mandated independent review lanes
+### Reproducibility Performance
+
+- **Target basis:** Three direct PDFs contain 49 pages (11-page main article plus 25- and 13-page support files); all 49 pages require fresh native/layout extraction, complete result-relevant mapping, and two statistical passes, with no Office conversion expected and targeted rendering only for visual verification.
 - **Total source units:** 49
 - **Fresh-source units:** 49
-- **Target elapsed minutes:** 35-55
-- **Started UTC:** 2026-08-24T00:17:53Z
-- **Finished UTC:** 2026-08-24T01:21:58Z
-- **Observed elapsed minutes:** 64.1
-- **Target status:** EXCEEDED_TARGET
-- **Exceedance causes:** Direct Linux PDF text/raster/OCR tools were unavailable, requiring an offline Chrome-render plus direct CPU-Tesseract fallback for all 49 pages; complete review retained all 93 canonical relationships, two independent statistical passes, seven rechecks, and the final evidence-quality audit
+- **Target elapsed minutes:** 25-40
+- **Started UTC:** 2026-08-24T01:50:53Z
+- **Finished UTC:** 2026-08-24T02:27:16Z
+- **Observed elapsed minutes:** 36.4
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
 
-## Token accounting and token-only API-equivalent cost
+### Token-Usage and Cost Metadata
 
 - **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE
 - **Total-token count status:** INCOMPLETE
@@ -331,9 +254,9 @@ The pre-review hashes are retained in `review_1_5_2/source_hashes_before.sha256`
 - **Known token cost (USD):** 0.000000
 - **Estimated complete token cost (USD):** __
 
-All amounts, when finalized, are token-only API-equivalent estimates under the dated local price snapshot, not invoices. Cached input/cache-write counts are input subsets and reasoning tokens are output subsets; they are not added again to total tokens. Per-agent detail is retained in `review_1_5_2/token_usage_ledger.csv` and `review_1_5_2/token_usage_summary.md`.
+| Model | Token totals and token-only API-equivalent estimate under the dated price snapshot |
+|---|---|
+| gpt-5.6-sol | 3 agents; known total tokens 0; known cost USD 0.000000; complete estimated cost USD __; INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
+| gpt-5.6-terra | 8 agents; known total tokens 0; known cost USD 0.000000; complete estimated cost USD __; INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE |
 
-| Model | Known total tokens | Token count status | Token-only API-equivalent estimate (USD) |
-|---|---:|---|---:|
-| gpt-5.6-sol | 0 | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE | __ |
-| gpt-5.6-terra | 0 | INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE | __ |
+Per-agent response-level detail is recorded in `review_1_5_2/token_usage_ledger.csv` and summarized in `review_1_5_2/token_usage_summary.md`. Cached input and cache-write counts are input subsets, and reasoning counts are output subsets; they are not added again to total tokens. Amounts are token-only API-equivalent estimates under the dated pricing snapshot, not invoices; non-token tools, storage, subscriptions, taxes, and other charges are outside this estimate.

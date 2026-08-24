@@ -1,263 +1,117 @@
 # Final Evidence-Quality Audit
 
-## Scope and evidence boundary
+## Audit scope and outcome
 
-This final refresh audits all four direct sources, all 12 coverage-manifest rows, `N001`-`N066`,
-`S001`-`S044`, both statistical passes, the complete stable ledger (`C001`, `C002`, `C003`, `C004`),
-the complete mechanical recheck, `source_coverage.md`, `agent_execution_manifest.md`, and the current
-`run_state.md`. It incorporates the completed quality-repair wave that registered and rechecked C002,
-C003, and C004 without deleting, merging, suppressing, or renumbering C001.
+This audit covers all four direct sources, all 64 source pages, all 19 rows currently present in `coverage_manifest.md`, all four rows in `source_coverage.md`, canonical relationships `N001` through `N062` and `S001` through `S039`, both statistical passes, every checker output, stable candidates `C001` through `C007`, the complete mechanical recheck, and every current row in `agent_execution_manifest.md`.
 
-Only supplied-package PDFs, fresh page-addressable Acrobat native text, and current workflow 1.5.2
-artifacts were used. The audit did not use an old audit derivative, an old candidate set, the web,
-external literature, a top-N rule, a desired count, or a review queue. All language below is neutral
-quality control. Every C ID remains **Pending Human Adjudication**.
+**Coverage status:** COMPLETE for the evidence-quality scope. Four direct PDFs contain 64 pages; every source row has `Reusable units = 0`, `Fresh-required units = Total units`, `Mapped units = Total units`, and `Status = COMPLETE`. The canonical inventories contain 62 distinct N relationships and 39 distinct S relationships. Numeric checking covers all 62 N IDs; both statistical passes contain one explicit completion record for each of the 39 S IDs; cross-source checking covers all 101 relationships; the candidate ledger, evidence recheck, statistical pass 2 reconciliation, and this audit all cover C001, C002, C003, C004, C005, C006, and C007.
 
-## Source and coverage audit
+All seven stable candidates remain **Pending Human Adjudication**. This audit assigns no validity, importance, action, severity, acceptance, rejection, or scientific disposition. No stable ID is deleted, merged, ranked, renumbered, or suppressed.
 
-### Direct-source rows
+## Source, evidence, and coverage controls
 
-| Source | Total | Reusable | Fresh-required | Mapped | Status | Fresh page markers | Current SHA-256 versus before |
-|---|---:|---:|---:|---:|---|---:|---|
-| DOC-001 `jama_de_boer_2019_oi_190122.pdf` | 11 | 0 | 11 | 11 | COMPLETE | 11 | Identical |
-| DOC-002 `joi190122supp1_prod.pdf` | 33 | 0 | 33 | 33 | COMPLETE | 33 | Identical |
-| DOC-003 `joi190122supp2_prod.pdf` | 19 | 0 | 19 | 19 | COMPLETE | 19 | Identical |
-| DOC-004 `joi190122supp3_prod.pdf` | 1 | 0 | 1 | 1 | COMPLETE | 1 | Identical |
+- The direct-source hashes recomputed during this audit match `source_hashes_before.sha256` for DOC-001 through DOC-004. The supplied PDFs are unchanged.
+- Fresh `pdfinfo`, native-text, layout-text, and page-render assets are present for every direct source. All 64 pages have fresh native and layout extraction. Forty-four result-relevant pages were rendered; the remaining 20 protocol pages have usable fresh text and no result display requiring visual confirmation. No page met the targeted OCR criterion.
+- Current evidence artifacts cite only DOC-001 through DOC-004 and derivatives below `review_1_5_2/preprocessing/`. No current evidence, checker, ledger, or recheck artifact cites the retained prior-audit directory. Direct PDF spot checks independently reproduced every candidate value and page used below. This supports the recorded statement that old audit derivatives were not used as evidence.
+- The source and extraction maps explicitly cover DOC-001 pp. 1-11, DOC-002 pp. 1-33, DOC-003 pp. 1-19, and DOC-004 p. 1. Pages without a result display are still mapped with their content classification; they were not silently omitted.
+- Every coverage-manifest row contains one plain relative artifact path. All required workflow stages are represented. Seventeen current rows are `COMPLETE`; `evidence_quality` is correctly `IN_PROGRESS` until the coordinator incorporates this artifact, and `report_generation` is `PENDING`. The coordinator must change those lifecycle rows only after the corresponding artifacts are complete.
+- Candidate-stage scopes enumerate all seven IDs without a range. Statistical-pass scopes enumerate all 39 S IDs without a range. The manifest therefore documents complete unions rather than sampled shards.
+- The relationship and checker artifacts state full-scope processing, and no top-N, target count, review queue, or early-stop boundary appears in the current review artifacts. Seven candidates are the result of complete mapped coverage, not a discovery limit.
+- `agent_execution_manifest.md` contains the coordinator and every current specialist exactly once. Statistical pass 1 is `/root/statistical_pass_1`, and statistical pass 2 is `/root/statistical_pass_2`; these are distinct non-placeholder runtime IDs. Both are recorded as fresh spawns using `gpt-5.6-terra` at `high` reasoning effort and point to distinct canonical pass artifacts. The two pass files each cover S001-S039, and pass 2 additionally covers the complete C001-C007 ledger and recheck.
+- No `P = 0`, `p = 0.000`, or equivalent display zero occurs in the mapped S inventory. No stable candidate is based on display-zero notation, finite precision, underflow, or mathematical nonzero-tail reasoning. The printed `P < .001` records are ordinary inequality displays and are not candidate bases.
+- All existing candidate-ledger and recheck PDF links resolve to the supplied PDFs and use valid `#page=N` destinations. One provenance-link omission for C005 and C006 is identified below for coordinator repair.
+- The current ledger and recheck do not contain human-adjudication subfields, so there is no nonblank adjudication value in them. The pending final report must include all five required subfields for every C ID and set each value to the exact placeholder `__`.
 
-Result: 4/4 rows pass. The totals are 64 total units, 0 reusable units, 64 fresh-required units, and
-64 mapped units. Thus `fresh-required = mapped = total` for every source. The 64 fresh page markers
-reproduce the 11+33+19+1 inventory. Recomputed hashes match `source_hashes_before.sha256` for all four
-sources. DOC-004's one stable page is consistently documented as the final catalog page rather than
-three incremental revisions of the same page object.
+## C001 — Figure 2 omega-3 eGFR contributor counts conflict with Table 2
 
-The evidence-asset inventory truthfully records the absence of layout-preserving PDF extraction,
-rendering, and usable CPU OCR in this environment. Fresh Acrobat native text is page-addressable for
-all units. This establishes complete structural source coverage, while leaving the stated visual-layout
-limitations for C001-C003 and graphical numeric checks.
+- **Coverage and provenance:** Complete. Candidate provenance joins N018, N021, S001, and S002 with NUM-OBS-001, XSC-001, and the eGFR part of STAT-P1-OBS-001. The merge is appropriate because these records compare the same six printed arm/time counts under the same eGFR identity rule.
+- **Exact evidence and pagination:** Reproduced at [DOC-001 Figure 2, PDF p. 7](<../../../jama_de_boer_2019_oi_190122.pdf#page=7>) and [DOC-001 Table 2, PDF p. 8](<../../../jama_de_boer_2019_oi_190122.pdf#page=8>). Figure 2 panel B prints placebo `607/459/438` and omega-3 `701/531/496`; Table 2 prints placebo `651/491/462` and active `657/499/472` at baseline/year 2/year 5.
+- **Calculation:** Figure minus table is `-44/-32/-24` for placebo and `+44/+32/+24` for active. Both locations total `1308/990/934`, isolating the observation to the arm split. Panel B exactly repeats panel A's vitamin-D counts.
+- **Category and framing:** `Cross-document numeric inconsistency` is a valid single primary category. The direct observation is the six-cell mismatch and exact duplicated sequence. A copied annotation or unstated figure-specific arm subset is an inferred alternative, not a source-established cause.
+- **Alternatives and human question:** Both are present and bounded. The question asks which arm-specific counts and population definition were intended.
+- **Duplicate and impact control:** C001 is not a duplicate of C002 because it concerns eGFR, different printed counts, Table 2, and a distinct same-outcome identity. No paper-conclusion impact is established. Any downstream statement must be limited to possible copying of the displayed eGFR contributor counts if human review confirms the observation.
+- **Candidate repair needed:** None in the canonical ledger or recheck.
 
-### Coverage-manifest rows
+## C002 — Figure 2 omega-3 urine-ACR contributor counts conflict with eTable 6
 
-| Stage | Scope check | Artifact-cell check | Status at audit refresh | Audit result |
-|---|---|---|---|---|
-| source_inventory | DOC-001 through DOC-004 | One plain path | COMPLETE | Complete |
-| evidence_assets | All 64 source pages | One plain path | COMPLETE | Complete |
-| main_evidence_mapping | DOC-001 pp.1-11 | One plain path | COMPLETE | Complete |
-| support_evidence_mapping | DOC-002 pp.1-33; DOC-003 pp.1-19; DOC-004 p.1 | One plain path | COMPLETE | Complete |
-| numeric_checks | Every ID N001-N066 individually enumerated | One plain path | COMPLETE | Complete after C002-C004 repair |
-| statistics_pass_1 | Every ID S001-S044 individually enumerated | One plain path | COMPLETE | Complete |
-| cross_source_checks | All N and S relationships across DOC-001-DOC-004 | One plain path | COMPLETE | Structurally complete; remaining durable-artifact refresh noted below |
-| candidate_registration | C001, C002, C003, C004 | One plain path | COMPLETE | Complete |
-| evidence_recheck | C001, C002, C003, C004 | One plain path | COMPLETE | Complete |
-| statistics_pass_2 | Every S ID, all four C IDs, and all recheck facts | One plain path | IN_PROGRESS | Artifact work is complete; manifest status needs coordinator finalization |
-| evidence_quality | All four C IDs and every coverage/source row | One plain path | IN_PROGRESS | Completed by this refreshed artifact; manifest status needs coordinator finalization |
-| report_generation | C001, C002, C003, C004 | One plain path | PENDING | Correct pre-report state |
+- **Coverage and provenance:** Complete. N022, N050, N051, S029, and S030 are connected to NUM-OBS-002, XSC-002, and the urine-ACR portion of STAT-P1-OBS-001. The merged lane records concern the same six ACR contributor counts and the same comparator.
+- **Exact evidence and pagination:** Reproduced at [DOC-001 Figure 2, PDF p. 7](<../../../jama_de_boer_2019_oi_190122.pdf#page=7>) and [DOC-003 eTable 6, PDF p. 11](<../../../joi190122supp2_prod.pdf#page=11>). Figure panel D prints placebo `609/463/440` and omega-3 `702/529/505`; eTable 6 prints placebo `653/490/467` and active `658/502/478`.
+- **Calculation:** Figure minus table is `-44/-27/-27` for placebo and `+44/+27/+27` for active. Both sources total `1311/992/945`. Panel D exactly repeats the panel-C vitamin-D split.
+- **Category and framing:** `Cross-document numeric inconsistency` is valid. The direct observation, inferred production explanations, missing figure-specific rule, and source-grounded alternatives are separated correctly.
+- **Alternatives and human question:** Complete. The source does not identify a different plotting population; it also does not prove a copying mechanism.
+- **Duplicate and impact control:** C002 is distinct from C001 because the outcome, six values, and comparator source differ. Any downstream statement must be limited to potential reuse of the displayed ACR contributor counts if confirmed.
+- **Candidate repair needed:** None in the canonical ledger or recheck.
 
-All 12 required stages occur. Every row has exactly one undecorated POSIX-style relative artifact path.
-All artifacts marked complete resolve locally. The pending final report does not yet exist, consistent
-with its status. Candidate-stage scopes enumerate all four IDs rather than using a range.
+## C003 — Figure 3 assigns vitamin-D arm sizes to the opposite column labels
 
-## Relationship and statistical-execution audit
+- **Coverage and provenance:** Complete. N001, N017, N030, N032, and S013 support the count-column identity check. XSC-003 and STAT-P1-OBS-002 are genuine duplicate lane observations of the same Figure 3 count mapping.
+- **Exact evidence and pagination:** Reproduced at [DOC-001 abstract, PDF p. 1](<../../../jama_de_boer_2019_oi_190122.pdf#page=1>) and [DOC-001 Table 2 and Figure 3, PDF p. 8](<../../../jama_de_boer_2019_oi_190122.pdf#page=8>). Active vitamin D is `370+333=703`; vitamin-D placebo is `289+320=609`. Figure 3 prints `703` under Placebo and `609` under Vitamin D, with the nested factorial counts following the same opposite-arm mapping.
+- **Category and framing:** `Measure, label, or scale inconsistency` is valid for a count-to-treatment-label conflict. The canonical ledger, recheck, and pass 2 correctly restrict the observation to participant-count columns. The overall changes `-13.1` under placebo and `-12.3` under vitamin D remain aligned with the treatment headings and Table 2; the source does not support reversal of mean changes or forest estimates.
+- **Alternatives and human question:** Complete and appropriately conditional. Figure-production metadata and an independent cell-level mapping for all subgroup estimates are unavailable.
+- **Duplicate and impact control:** C003 is distinct from C005 because it concerns eGFR Figure 3 rather than urine-ACR eFigure 2. No conclusion impact is established; bounded reuse risk concerns subgroup participant-count extraction only.
+- **Candidate repair needed:** None in the canonical ledger or recheck. Earlier cross-source wording requires the systematic count-only repair listed in the coordinator section.
 
-| Record set | Required set | Found | Missing/duplicate IDs | Result |
-|---|---|---:|---|---|
-| Numeric inventory | N001-N066 | 66 | None | Complete |
-| Numeric checker | N001-N066 | 66 | None | Complete after repaired N031 and N059 |
-| Statistical inventory | S001-S044 | 44 | None | Complete |
-| Statistical pass 1 | S001-S044 | 44 explicit `PASS_1_COMPLETE` records | None | Complete |
-| Statistical pass 2 | S001-S044 | 44 explicit `PASS_2_COMPLETE` records | None | Complete |
-| Stable ledger | C001-C004 | 4 | None | Complete |
-| Mechanical recheck | C001-C004 | 4 | None | Complete |
-| Quality audit | C001-C004 | 4 headings below | None | Complete |
+## C004 — Figure 4 assigns omega-3 arm sizes to the opposite column labels
 
-The repaired numeric checker now records three distinct qualifying proposals linked to C002-C004:
-two separate N031 endpoint/count relationships and one N059 analysis-population relationship. It no
-longer treats agreement of combined totals as proof that treatment-specific allocations agree, and it
-explicitly reproduces the 944-versus-991 N059 difference.
+- **Coverage and provenance:** Complete. N001, N018, N031, N032, and S014 support the count mapping; XSC-004 and STAT-P1-OBS-003 are duplicate lane observations correctly merged before stable IDs.
+- **Exact evidence and pagination:** Reproduced at [DOC-001 abstract, PDF p. 1](<../../../jama_de_boer_2019_oi_190122.pdf#page=1>), [DOC-001 Table 2, PDF p. 8](<../../../jama_de_boer_2019_oi_190122.pdf#page=8>), and [DOC-001 Figure 4, PDF p. 9](<../../../jama_de_boer_2019_oi_190122.pdf#page=9>). Active omega-3 is `370+289=659`; omega-3 placebo is `333+320=653`. Figure 4 places those Ns under the opposite treatment headings, including the nested factorial rows.
+- **Category and framing:** `Measure, label, or scale inconsistency` is valid. The canonical ledger/recheck/pass 2 correctly limit the observation to participant counts. The overall changes `-13.1` under placebo and `-12.2` under omega-3 agree with the treatment headings and Table 2 at printed precision.
+- **Alternatives and human question:** Complete. The source does not establish which production element caused the N-column exchange or whether any subgroup estimate needs remapping.
+- **Duplicate and impact control:** C004 is distinct from C006 because the outcome and display are different. No paper-level conclusion effect is established. Bounded reuse risk concerns the Figure 4 subgroup counts.
+- **Candidate repair needed:** None in the canonical ledger or recheck. Earlier cross-source wording requires count-only narrowing.
 
-Statistical pass 1 and pass 2 use distinct runtime IDs, `/root/statistics_pass_1` and
-`/root/statistics_pass_2`. Both manifest rows record model `gpt-5.6-terra`, reasoning effort `high`,
-start mode `FRESH_SPAWN`, and one canonical artifact. Pass 2 retains all 44 original S records and now
-contains a repair addendum reviewing C001-C004 plus the updated recheck facts. It emits no duplicate
-candidate and no new inferential candidate.
+## C005 — eFigure 2 places vitamin-D participant counts under the opposite headings
 
-No mapped relationship displays `P = 0`, `p = 0.000`, or an equivalent display zero. No stable ID has
-a display-zero basis, so no independent-contradiction conditional field is applicable. The relationship
-counts and explicit per-ID records show no count cap, top-N boundary, or early stopping.
+- **Coverage and provenance:** Complete. N050, N059, S029, and S037 support the comparison; NUM-OBS-003, XSC-005, and STAT-P1-OBS-004 are overlapping observations of the same eFigure 2 participant-count mapping.
+- **Exact evidence and pagination:** Reproduced at [DOC-003 eTable 6, PDF p. 11](<../../../joi190122supp2_prod.pdf#page=11>) and [DOC-003 eFigure 2, PDF p. 18](<../../../joi190122supp2_prod.pdf#page=18>). The allocation identity used by the calculation is printed at [DOC-001 abstract, PDF p. 1](<../../../jama_de_boer_2019_oi_190122.pdf#page=1>). Active vitamin D totals `370+333=703`; placebo totals `289+320=609`. eFigure 2 prints N=703 under Placebo and N=609 under Active intervention, and its nested N values preserve that opposite mapping.
+- **Value-versus-count boundary:** The overall change values do not reverse with the Ns. eFigure 2 prints `3.02` under Placebo and `2.97` under Active intervention; eTable 6 identifies placebo `3.02` and active `2.97`. The reproducible issue is therefore participant-count identity only. The randomized-versus-measured difference `703` versus `702` does not explain the opposite N mapping.
+- **Category and framing:** `Measure, label, or scale inconsistency` is valid when explicitly confined to displayed participant counts. The canonical ledger, recheck, and pass 2 apply that boundary correctly.
+- **Alternatives and human question:** Complete. The source supports possible N-column transposition but does not establish that headings, change values, or forest estimates should be reversed.
+- **Duplicate and impact control:** C005 is not a duplicate of C003 because it concerns a distinct outcome, source display, values, and ratio-scale context. No conclusion impact is established. Any downstream statement must concern possible extraction of eFigure 2 subgroup Ns only.
+- **Coordinator repair applied:** DOC-001 abstract p. 1 was added to the ledger's exact source locations, and earlier lane wording was narrowed to the participant-count-only observation.
 
-## Candidate-card quality audit
+## C006 — eFigure 3 places omega-3 participant counts under the opposite headings
 
-Each ledger record has an exact location, printed evidence and comparator, an applicable consistency
-rule, a reproducible calculation or logical comparison, direct observation separated from inferred
-explanation, a source-grounded alternative, necessary missing input/definition, an exact human
-question, and bounded downstream relevance. Categories exactly follow `QUALITY_CONTROL_SCOPE.md`.
+- **Coverage and provenance:** Complete. N051, N060, S030, and S038 support the comparison; NUM-OBS-004, XSC-006, and STAT-P1-OBS-005 are genuine duplicates of the same eFigure 3 count relationship.
+- **Exact evidence and pagination:** Reproduced at [DOC-003 eTable 6, PDF p. 11](<../../../joi190122supp2_prod.pdf#page=11>) and [DOC-003 eFigure 3, PDF p. 19](<../../../joi190122supp2_prod.pdf#page=19>). The allocation identity is printed at [DOC-001 abstract, PDF p. 1](<../../../jama_de_boer_2019_oi_190122.pdf#page=1>). Active omega-3 totals `370+289=659`; placebo totals `333+320=653`. eFigure 3 places N=659 under Placebo and N=653 under Active intervention, including the nested count mapping.
+- **Value-versus-count boundary:** eFigure 3's `3.05` under Placebo and `2.94` under Active intervention agree with eTable 6's placebo and active change ratios. Only the participant counts map to the opposite assignments. The `659` versus measured-baseline `658` difference does not resolve the exchange.
+- **Category and framing:** `Measure, label, or scale inconsistency` is valid under count-only framing. The canonical ledger, recheck, and pass 2 are appropriately narrow.
+- **Alternatives and human question:** Complete. The source does not show that the change values, ratio direction, or forest estimates are reversed.
+- **Duplicate and impact control:** C006 is distinct from C004 because the source display, outcome, values, and effect scale differ. No conclusion impact is established; bounded reuse risk concerns eFigure 3 subgroup Ns only.
+- **Coordinator repair applied:** DOC-001 abstract p. 1 was added to the ledger's exact locations, and earlier lane descriptions were narrowed to participant counts.
 
-## C001 — eFigure 2 and eFigure 3 comparator wording conflicts with the active-versus-placebo contrast
+## C007 — Imputation count differs between the analytic-plan addendum and article methods
 
-- **Threshold and category:** Pass. `Measure, label, or scale inconsistency` is an allowed primary
-  category. DOC-003 pp.18-19 print titles framed as active treatment `Versus Placebo` and captions
-  saying `comparing the active treatment assignment to year 5`; DOC-003 p.11 and DOC-001 p.4 identify
-  placebo as the comparison group.
-- **Rule and reasoning:** Pass. The same sentence already identifies baseline-to-year-5 as the change
-  window; a time point does not supply the control-group label for an active-versus-placebo effect.
-  No arithmetic is required. The direct phrases are separated from the inference that placebo may
-  have been intended.
-- **Assumptions and limitation:** Supportable. The ledger and recheck do not assume a correction. They
-  retain the possibility that non-layout extraction omitted or reordered a visual element and require
-  rendered-page confirmation.
-- **Location and link check:** Pass. DOC-003 pp.18, 19, and 11 and DOC-001 p.4 are true page-marked
-  locations. All recheck links resolve and end in `#page=N`.
-- **Duplicate check:** Pass. The two captions repeat the same statement, comparator rule, and change
-  window. One C001 retains both occurrences. It is not duplicated by C002-C004.
-- **Impact wording:** Pass. It states only what a data extractor could copy if confirmed and explicitly
-  disclaims established propagation or conclusion change.
-- **Remaining human question:** Does visual rendering confirm the caption phrase, and if so should the
-  comparison-group wording identify placebo while preserving the baseline-to-year-5 window?
+- **Coverage and provenance:** Complete. N035, N041, S016, and S023 support STAT-P1-OBS-006. This relationship is distinct from all count/label candidates.
+- **Exact evidence and pagination:** Reproduced at [DOC-002 Section 15c, PDF p. 32](<../../../joi190122supp1_prod.pdf#page=32>) and [DOC-001 Methods, PDF p. 3](<../../../jama_de_boer_2019_oi_190122.pdf#page=3>). The addendum states `10 imputation datasets`; the article states implemented multiple imputation `M = 20`. Both name Rubin-rule combination. The direct arithmetic is `20-10=10`, and 20 is twice 10.
+- **Category and framing:** `Cross-document numeric inconsistency` is acceptable only as a neutral plan-versus-implemented-method difference. The source does not establish an analysis error or a disclosure obligation. The article's broader imputation description, a possible later amendment, and an intentional increase are all retained as source-grounded alternatives.
+- **Direct versus inferred:** The two printed counts and document roles are direct. Intent, governance by this exact plan version, rationale, and need for clarification are unresolved rather than inferred as facts.
+- **Alternatives and human question:** Complete. The remaining question asks whether the change was intentional and documented in a later governing record.
+- **Duplicate and impact control:** No duplicate relationship exists. No outcome-estimate or conclusion effect is established. Any downstream statement must be limited to possible extraction of a planned-versus-implemented analytic-method count if confirmed relevant by human review.
+- **Coordinator repair applied:** STAT-P1-OBS-006 now cites DOC-002 PDF p. 32, matching the canonical ledger, recheck, and pass 2.
 
-## C002 — Omega-3 eGFR panel repeats vitamin-D contributor counts instead of omega-3 allocation counts
+## Coordinator repair disposition
 
-- **Threshold and category:** Pass. `Denominator, proportion, or total inconsistency` is allowed.
-  DOC-001 p.7 Figure 2 panel B and DOC-001 p.8 Table 2 are matched to the same omega-3/placebo eGFR
-  endpoint and baseline/year-2/year-5 timepoints.
-- **Arithmetic reproduced:** Panel B prints 701/607, 531/459, 496/438; Table 2 prints 657/651,
-  499/491, 472/462. Combined totals agree at 1308, 990, and 934, while allocation differences are
-  +44/-44, +32/-32, and +24/-24. Panel B's sequence equals vitamin-D panel A's sequence. No rounding
-  rule can reconcile integer arm allocations.
-- **Assumptions and limitation:** Supportable. Copying is only a possible explanation. The native text
-  associates values with panel B, but the candidate retains visual-panel confirmation as a missing
-  input because extraction is not layout-preserving.
-- **Location and link check:** Pass. DOC-001 pp.7-8 are exact, and both recheck links resolve with
-  `#page=7` and `#page=8`.
-- **Duplicate check:** Pass. C002 concerns eGFR and Table 2. It is not merged with C003's ACR/eTable 6
-  relationship merely because a copying mechanism might be shared.
-- **Impact wording:** Pass. It is limited to possible copying of arm-specific contributor denominators
-  if confirmed; no estimate or conclusion change is claimed.
-- **Remaining human question:** Does the rendered panel B attach the repeated counts to omega-3 versus
-  placebo, and if so what source-defined reason accounts for the Table 2 difference?
+Four supportable evidence-record repair groups were identified and completed by the coordinator. None changed the stable ID set.
 
-## C003 — Omega-3 urine-ACR panel repeats vitamin-D contributor counts instead of omega-3 allocation counts
+1. **COMPLETED:** `checkers/numeric_consistency.md` now records 35 S relationships with applicable displayed numeric implications and separately identifies S021-S023 and S039 as reviewed prospective definitions.
+2. **COMPLETED:** `checkers/statistical_pass_1.md` now cites DOC-002 PDF p. 32 for STAT-P1-OBS-006.
+3. **COMPLETED:** XSC-003-XSC-006, NUM-OBS-003/004, STAT-P1-OBS-004/005, N059/N060, and support-map wording now confine C003-C006 to participant-count columns; treatment-aligned means, changes, and forest directions are not claimed inconsistent.
+4. **COMPLETED:** C005 and C006 in `candidate_ledger.md` now include DOC-001 abstract PDF p. 1 as provenance for randomized factorial totals.
 
-- **Threshold and category:** Pass. `Denominator, proportion, or total inconsistency` is allowed.
-  DOC-001 p.7 Figure 2 panel D and DOC-003 p.11 eTable 6 are matched to the same omega-3/placebo ACR
-  endpoint and timepoints.
-- **Arithmetic reproduced:** Panel D prints 702/609, 529/463, 505/440; eTable 6 prints 658/653,
-  502/490, 478/467. Totals agree at 1311, 992, and 945, but allocation differences are +44/-44,
-  +27/-27, and +27/-27. Panel D's sequence equals vitamin-D panel C's sequence.
-- **Assumptions and limitation:** Supportable. No copying cause or correction is asserted. The required
-  visual panel/count association remains explicit.
-- **Location and link check:** Pass. DOC-001 p.7 and DOC-003 p.11 are exact; both recheck links resolve
-  and end in page fragments.
-- **Duplicate check:** Pass. Different endpoint, printed count set, and exact comparator source make
-  C003 distinct from C002. It is also distinct from C001's caption label and C004's analysis N.
-- **Impact wording:** Pass. Possible downstream copying is conditional and bounded; no actual reuse or
-  conclusion effect is claimed.
-- **Remaining human question:** Does the rendered panel D attach the repeated counts to omega-3 versus
-  placebo, and if so what source-defined reason accounts for the eTable 6 difference?
+Following these completed repairs, the coordinator must generate the full report for C001-C007 and then mark `report_generation` complete. Every final report card must contain all required fields. Its human-adjudication block must use exactly:
 
-## C004 — eTable 7 reports 944 analyzed participants but its footnote states that 991 were included
-
-- **Threshold and category:** Pass. `Denominator, proportion, or total inconsistency` is allowed.
-  DOC-003 p.12 contains the title, both factorial row totals, the attached asterisk, and the inclusion
-  footnote.
-- **Arithmetic reproduced:** 504+440=944; 477+467=944; 991+320+1=1312; 1311-320=991; and 991-944=47.
-  The title and rows therefore identify 944, while the attached footnote says 991 `were included in
-  this analysis`. No rounding issue exists.
-- **Assumptions and limitation:** Supportable. The possibility that 47 donated sample pairs lacked
-  usable ACR or another required input is clearly inferred, not supplied. The missing source-defined
-  exclusion/population rule is named.
-- **Location and link check:** Pass. DOC-003 p.12 is exact; its recheck link resolves and ends in
-  `#page=12`.
-- **Duplicate check:** Pass. C004 compares one table's title/rows to its attached footnote and is
-  distinct from the figure allocation relationships.
-- **Impact wording:** Pass. It only identifies a denominator an evidence extractor could copy if the
-  issue is confirmed and does not claim estimate or conclusion impact.
-- **Remaining human question:** Is the intended analysis population 944 or 991, and what exact
-  availability or population rule accounts for the 47 participants?
-
-### Required final-report card normalization
-
-The ledger is a registration artifact rather than the final report card. It supplies the evidence
-needed for all required report fields, but the report generator must use these exact labels on every
-C001-C004 card: `Candidate statement`, `Category`, `Exact source locations`, `Source evidence`,
-`Reported-versus-comparator`, `Reasoning procedure`, `Calculation`, `Alternative source-grounded
-interpretations`, `Mechanical evidence recheck`, `Quality-control relevance`, `Potential downstream
-evidence impact`, `Human verification steps`, and `Human adjudication fields`.
-
-Every card must contain this exact blank template:
-
+```markdown
 **Human adjudication fields:**
 - **Validity:** __
 - **Importance:** __
 - **Action:** __
 - **Initials:** __
 - **Notes:** __
+```
 
-No C card mentions a display-zero P value, so the conditional `Independent contradiction beyond P=0
-display` field is not required.
+No candidate card may claim that propagation or a conclusion change occurred. Potential downstream wording must identify only the exact count, label, or imputation-method value that an evidence extractor could copy if the candidate is confirmed.
 
-## Agent, run-state, and provenance audit
+## Limitations
 
-The agent manifest currently has ten unique rows: the coordinator, fresh preprocessor, two mappers,
-numeric checker, cross-source checker, pass 1, rechecker, pass 2, and this quality auditor. Each has one
-primary artifact. The coordinator occurs exactly once. Both required statistical agents are fresh,
-distinct, Terra/high, and their artifacts cover 44/44 S relationships. Any future report generator or
-new repair agent must be added exactly once before token accounting; every final manifested agent must
-then have a token-ledger record.
-
-`run_state.md` correctly records 64 total/fresh units, 45+21=66 numeric relationships, 25+19=44
-statistical relationships, the three quality-repair registrations, preservation of C001, and pending
-report/token/hash-finalization/rendering/validation work. Its package-specific 45-70 minute target is
-bounded to the four-source extraction and relationship burden. `Finished UTC`, elapsed time, target
-status, and exceedance causes correctly remain blank before complete report assembly.
-
-The fresh-evidence declarations are mutually consistent across preprocessing, mappings, checkers,
-recheck, and pass 2: old audit outputs and external sources were not evidence inputs. This audit can
-confirm the documented evidence chain and local paths; it cannot reconstruct an independent process
-transcript beyond those durable records. No artifact examined uses a legacy derivative as cited
-scientific evidence.
-
-## Repair resolution and remaining coordinator actions
-
-The three scientific omissions found in the first audit are resolved in the durable ledger, repaired
-numeric checker, mechanical recheck, and statistical-pass-2 addendum:
-
-- N031 eGFR allocation omission -> C002, retained and rechecked.
-- N031 ACR allocation omission -> separate C003, retained and rechecked.
-- N059 944-versus-991 omission -> C004, retained and rechecked.
-
-No additional stable candidate is supportable from the refreshed artifacts. No stable ID should be
-deleted, merged, ranked, suppressed, or assigned a scientific disposition.
-
-Concrete coordinator actions still required before report generation begins:
-
-1. Refresh `checkers/cross_source_consistency.md` so its N031 matched-source discussion acknowledges
-   C002 and C003 without duplicating them; its current zero-proposal narrative predates the quality
-   repair and does not document the corrected group-allocation comparison.
-2. Change the `statistics_pass_2` coverage row and run-state field from in-progress to complete now
-   that the addendum covers C001-C004, and change `evidence_quality` to complete after accepting this
-   artifact.
-3. Ensure `run_state.md` describes the evidence-quality scope as C001-C004 rather than C001 only.
-4. Generate the report with all four cards, exact page-fragment links, exact required labels, bounded
-   impact language, and the five exact `__` placeholders per card. Add the report generator to the
-   agent manifest if a new agent is used.
-
-After report assembly, the coordinator must finalize timing, account for every manifested agent,
-recompute source hashes, calculate token summaries, render standalone HTML, and validate. Those are
-required later workflow stages rather than defects in this pre-report evidence audit.
-
-## Final audit status
-
-- **Source rows:** 4/4; 64/64 total units fresh-required and mapped; 0 reusable.
-- **Coverage rows:** 12/12 audited; one artifact path per row.
-- **Numeric relationships:** 66/66; repaired candidates C002-C004 retained.
-- **Statistical relationships:** pass 1 44/44 and pass 2 44/44.
-- **Stable IDs:** ledger = recheck = quality = `{C001, C002, C003, C004}`.
-- **Candidate threshold/card audits:** 4/4 support all threshold elements; final report label/template
-  normalization remains required.
-- **Display-zero-only candidates:** 0.
-- **Source links:** all recheck PDF targets resolve and all end in `#page=N`.
-- **Scientific repair status:** complete; three discovered omissions registered and rechecked.
-- **Remaining pre-report coordinator repairs:** four bounded synchronization/report-preparation actions
-  above; no new scientific candidate registration required.
-- **Go/no-go:** **NO-GO for report generation until actions 1-3 are completed; GO immediately afterward
-  for four-card report generation under action 4.**
-- **Primary artifact:** `quality/evidence_quality_audit.md`.
+The package supplies no participant-level data, figure-production files, unrounded model outputs, complete person-time denominators, or later change-control record for the imputation plan. These missing materials prevent determination of production mechanism, correction, or scientific consequence. They do not prevent reproduction of the seven printed comparisons. This audit is a source-grounded quality-control review and leaves every candidate for human adjudication.

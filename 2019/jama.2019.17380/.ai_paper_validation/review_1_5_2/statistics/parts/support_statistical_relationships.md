@@ -1,27 +1,32 @@
-# Support Inferential-Statistical Relationship Part
+# Support Statistical Relationship Inventory
 
-Provisional IDs are local to this support shard. They are complete mapping records for assigned support sources, not statistical conclusions or candidates.
+Fresh support scope only. Provisional IDs. All inferential values below are printed source facts; planned protocol equations are definitions, not retrospective tests.
 
-| ID | Exact source location | Printed statistical relationship / definition | Required later comparison boundary |
+| ID | Location | Statistical relationship | Status / candidate note |
 |---|---|---|---|
-| US001 | DOC-003 PDF pp.2-4 | Cystatin-C post-shift calibration multiplier 5.49/5.961; harmonization `0.006801+1.037603×pre-shift`; QC r=.999. | Laboratory transform, not an outcome test. |
-| US002 | DOC-002 PDF p.17 | Original ACR ANCOVA/log transform and eGFR equation; alpha=.05, no multiple-comparison correction; chi-square for composite proportions; rank-sum if indicated. | Original plan, year-4, not automatically equivalent to final plan. |
-| US003 | DOC-002 PDF p.18 | Original factorial interaction equation beta4 on log(ACR4); P<.05 interaction rule; additive contrast defined as joint-active difference versus sum of two single-active differences. | Need matched outcome/scale/timepoint to compare. |
-| US004 | DOC-002 PDF pp.18-19 | Original hypothesis-test equations: exp(beta2)-1 is relative ACR percent-change difference; eGFR beta2 is active-v-placebo difference. | ANCOVA plan; baseline adjustment explicit. |
-| US005 | DOC-002 PDF pp.19-20 | Original power model assumptions and displayed power table, including 90% at 17% ACR and 2.6 eGFR. | Projection only; no observed effect inference. |
-| US006 | DOC-002 PDF p.23 | Haybittle-Peto interim rule z=3, P=.0027; multiple looks. | Parent monitoring rule; not a reported P value. |
-| US007 | DOC-002 PDF p.32 | Final addendum missing-data plan: chained-equation MI for missing y5 eGFR with baseline plus y2 eGFR/ACR; 10 datasets and Rubin rules. | Final-plan model distinction from original complete-case text. |
-| US008 | DOC-002 PDF p.32 | Final factorial mixed interaction model; categorical time j=0,2,5; random patient effect; beta6 P<.05 is interaction evidence. | Final interaction definition. |
-| US009 | DOC-002 PDF pp.32-33 | Final primary random-intercept mixed model: beta3 = active-D3 vs placebo difference in eGFR change; 95% CI/P for effect; inference year5 only. ACR log-continuous; discrete Cox for categorical secondary outcomes. | Match test/model/endpoint before CI/P checks. |
-| US010 | DOC-002 PDF p.33 | Simulation 2,000 replications; n=1,058, two-sided alpha=.05; 80% power for 2.3 mL/min/1.73m2 at y5. | Projection only. |
-| US011 | DOC-003 PDF p.9 | eTable 4 eGFR: linear mixed model adjusted age/sex/baseline urine ACR, MI; P tests year5 difference in change. D .87 (-.83,2.58), P=.32; omega .09 (-1.61,1.80), P=.92. | Same endpoint/model/contrast for interval-P compatibility. |
-| US012 | DOC-003 PDF p.10 | eTable 5 eGFR adherent: same mixed-model/MI footnote; D .89 (-.74,2.52), P=.28; omega .42 (-1.22,2.06), P=.61. | Sensitivity population differs from US011. |
-| US013 | DOC-003 PDF p.11 | eTable 6 uACR mixed model adjusted age/sex, MI; P tests y5 change difference; ratio effects D .99 (.84,1.17), P=.90; omega .96 (.81,1.14), P=.64. | Ratio/null=1, not eGFR difference/null=0. |
-| US014 | DOC-003 PDF p.12 | eTable 7 paired uACR: same model/MI, D 1.03 (.86,1.22), P=.77; omega .93 (.78,1.11), P=.44. | Paired baseline/y5 subset. |
-| US015 | DOC-003 PDF p.13 | eTable 8 adherent uACR: D 1.02 (.85,1.22), P=.87; omega .99 (.83,1.19), P=.94. | Adherent population. |
-| US016 | DOC-003 PDF p.14 | eTable 9 UTI-excluded uACR: D .99 (.84,1.17), P=.90; omega .98 (.83,1.16), P=.80. | Visit-exclusion sensitivity. |
-| US017 | DOC-003 PDF p.15 | eTable 10 post-hoc Cox regression HRs, P tests HR=1; eight HR/CI/P records. | HR/null=1 and event-rate versus HR distinction. |
-| US018 | DOC-003 PDF p.17 | eFigure 1 correlations, changes marker baseline-y2/eGFR baseline-y5, complete available data. Correlation coefficients/plot values unavailable in native text. | No coefficient or P inferred. |
-| US019 | DOC-003 PDF pp.18-19 | eFigure 2/3 subgroup ACR difference-in-change estimates adjusted age/sex. Plot estimates/CIs/P/subgroup strata unavailable in native text. | No inferential reconciliation possible without direct visual values. |
+| SUPPORT-S001 | DOC-002 pp.17-18 | Original protocol: multiplicative interaction ANCOVA beta4 P<.05; ACR `log(ACR4)` model and eGFR ANCOVA; no multiplicity correction. | Planned definition. |
+| SUPPORT-S002 | DOC-002 pp.19-20 | Planned power as N1500 with 20% loss and specified effect/power pairs; composite RR power .69-.76 (80%) and .65-.73 (90%). | Planned calculation. |
+| SUPPORT-S003 | DOC-002 pp.32-33 | Addendum linear mixed models, beta6 interaction P<.05; 10 imputation sets/Rubin rules; two-sided alpha .05; simulation 2,000. | Planned definition. |
+| SUPPORT-S019 | DOC-002 p.23 | Parent-trial Haybittle-Peto interim rule z=3 / P=.0027, adjusted for multiple looks. | Planned monitoring definition; no result. |
+| SUPPORT-S004 | DOC-003 pp.2-4 | Calibration multiplier 5.49/5.961, regression .006801+1.037603 pre-shift, QC correlation r=.999. | QC statistical relation; no candidate. |
+| SUPPORT-S005 | DOC-003 p.9 | eGFR complete cases D3 difference .87, 95%CI(-.83,2.58), P=.32. | CI contains null; coherent. |
+| SUPPORT-S006 | DOC-003 p.9 | eGFR complete cases omega difference .09, 95%CI(-1.61,1.80), P=.92. | CI contains null; coherent. |
+| SUPPORT-S007 | DOC-003 p.10 | Adherent eGFR D3 .89(-.74,2.52), P=.28. | CI contains null; coherent. |
+| SUPPORT-S008 | DOC-003 p.10 | Adherent eGFR omega .42(-1.22,2.06), P=.61. | CI contains null; coherent. |
+| SUPPORT-S009 | DOC-003 p.11 | Full ACR D3 ratio .99(.84,1.17), P=.90. | Ratio CI contains 1; coherent. |
+| SUPPORT-S010 | DOC-003 p.11 | Full ACR omega ratio .96(.81,1.14), P=.64. | Ratio CI contains 1; coherent. |
+| SUPPORT-S011 | DOC-003 p.12 | Available-case ACR D3 1.03(.86,1.22), P=.77; omega .93(.78,1.11),P=.44. | Both ratio CIs contain 1. |
+| SUPPORT-S012 | DOC-003 p.13 | Adherent ACR D3 1.02(.85,1.22),P=.87; omega .99(.83,1.19),P=.94. | Both ratio CIs contain 1. |
+| SUPPORT-S013 | DOC-003 p.14 | UTI-excluded ACR D3 .99(.84,1.17),P=.90; omega .98(.83,1.16),P=.80. | Both ratio CIs contain 1. |
+| SUPPORT-S014 | DOC-003 p.15 | D3 post-hoc HRs 1.03(.68,1.58),.82(.64,1.05),.82(.61,1.09),.79(.59,1.06); P .88,.12,.17,.12. | Each CI contains HR=1; coherent. |
+| SUPPORT-S015 | DOC-003 p.15 | Omega post-hoc HRs 1.07(.70,1.63),.96(.75,1.23),.89(.66,1.19),.86(.64,1.15); P .77,.77,.44,.31. | Each CI contains HR=1; coherent. |
+| SUPPORT-S016 | DOC-003 p.17 | Correlations: r=-.05 and r=-.02; no P value, N, or regression definition printed. | No mechanical inference beyond printed r. |
+| SUPPORT-S017 | DOC-003 p.18 | Vitamin-D eFigure subgroup interaction P values .89,.30,.99,.77,.69,.21,.53; effect shown as active/placebo ratio with 95%CI graphical. | All printed P>.05; participant-count-column observation separately recorded as SUPPORT-OBS-001. |
+| SUPPORT-S018 | DOC-003 p.19 | Omega eFigure subgroup interaction P values .64,.50,.79,.31,.68,.53; effect ratio/95%CI graphical. | All printed P>.05; participant-count-column observation SUPPORT-OBS-002. |
 
-Statistical coverage limitation: no `P=0` display occurs in the mapped usable support text. All CIs, P values, effect measures, model labels, and definitions exposed by the fresh native text are listed above. DOC-004 contains no inferential result.
+## Statistical definition notes
+
+- eGFR table differences are from linear mixed models adjusted for age, sex, baseline urine ACR, with missing data handled by multiple imputation; positive means higher year-5 eGFR/less loss for active treatment.
+- ACR table ratios are from linear mixed models adjusted for age and sex with multiple imputation. P values test differential baseline-to-year-5 change.
+- eTable 10 HRs are Cox-regression post-hoc analyses; P tests HR=1. Incidence-rate differences use per-100-person-years scale and are not counts.
+- No display-zero P value appears in assigned support sources, so no `DISPLAY_ZERO_NOT_CANDIDATE` record is required.

@@ -1,67 +1,94 @@
-# Candidate Ledger
+# Stable Candidate Ledger
 
-All candidates remain **Pending Human Adjudication**. Similar evidence from the two supplement figures is retained as one genuine duplicate because it concerns the same repeated caption phrase, the same active-versus-placebo comparator, and the same label-consistency rule.
+All seven candidates below remain **Pending Human Adjudication**. Lane records were merged only when they concerned the same printed values, comparator, and consistency rule. No candidate was deleted, capped, ranked, or assigned an AI disposition.
 
-## C001 — eFigure 2 and eFigure 3 comparator wording conflicts with the active-versus-placebo contrast
+## C001 — Figure 2 omega-3 eGFR contributor counts conflict with Table 2
 
 - **Status:** Pending Human Adjudication
-- **Origin:** Statistical pass 1 proposal SP001; numeric and cross-source lanes emitted no duplicate proposal.
+- **Category:** Cross-document numeric inconsistency
+- **Relationships:** N018, N021, S001, S002
+- **Provenance:** NUM-OBS-001; XSC-001; STAT-P1-OBS-001 (eGFR portion)
+- **Exact source locations:** [DOC-001 Figure 2, PDF p. 7](<../../jama_de_boer_2019_oi_190122.pdf#page=7>); [DOC-001 Table 2, PDF p. 8](<../../jama_de_boer_2019_oi_190122.pdf#page=8>).
+- **Printed evidence:** Figure 2 panel B prints omega-3 placebo `607/459/438` and omega-3 active `701/531/496` at baseline/year 2/year 5. Table 2 prints omega-3 placebo `651/491/462` and omega-3 active `657/499/472` at the same time points. The Figure 2 sequences exactly duplicate its vitamin-D panel.
+- **Consistency rule:** The arm-specific contributor counts for the same factorial contrast, outcome, and time points should agree unless a distinct plotting population is stated.
+- **Direct observation:** The two six-number sequences differ at every time point and arm.
+- **Source-grounded alternatives:** Figure 2 may use an unstated figure-specific subset, or panel B may have retained panel A's count annotations; the caption states only that these are participants contributing data at each time point.
+- **Human question:** What omega-3 eGFR counts and population definition were intended for Figure 2 panel B?
+
+## C002 — Figure 2 omega-3 urine-ACR contributor counts conflict with eTable 6
+
+- **Status:** Pending Human Adjudication
+- **Category:** Cross-document numeric inconsistency
+- **Relationships:** N022, N050, N051, S029, S030
+- **Provenance:** NUM-OBS-002; XSC-002; STAT-P1-OBS-001 (urine-ACR portion)
+- **Exact source locations:** [DOC-001 Figure 2, PDF p. 7](<../../jama_de_boer_2019_oi_190122.pdf#page=7>); [DOC-003 eTable 6, PDF p. 11](<../../joi190122supp2_prod.pdf#page=11>).
+- **Printed evidence:** Figure 2 panel D prints omega-3 placebo `609/463/440` and active `702/529/505`; eTable 6 prints omega-3 placebo `653/490/467` and active `658/502/478` for baseline/year 2/year 5. The figure sequences exactly duplicate its vitamin-D ACR panel.
+- **Consistency rule:** The same omega-3 contrast, ACR outcome, and time-point contributor counts should agree absent a stated population difference.
+- **Direct observation:** Both arms differ at all three time points.
+- **Source-grounded alternatives:** A distinct unstated plotting subset is possible, or panel D may contain copied panel C count annotations.
+- **Human question:** What omega-3 ACR contributor counts and population definition were intended for Figure 2 panel D?
+
+## C003 — Figure 3 assigns vitamin-D arm sizes to the opposite column labels
+
+- **Status:** Pending Human Adjudication
 - **Category:** Measure, label, or scale inconsistency
-- **Exact source locations:** DOC-003 (`joi190122supp2_prod.pdf`) PDF p.18, eFigure 2 title/caption; DOC-003 PDF p.19, eFigure 3 title/caption; comparator context at DOC-003 PDF p.11, eTable 6, and DOC-001 (`jama_de_boer_2019_oi_190122.pdf`) PDF p.4.
-- **Direct source evidence:** eFigure 2 is titled “Effects of Vitamin D Versus Placebo …”; eFigure 3 is titled “Effects of Omega-3 Fatty Acids Versus Placebo …”. Each caption states that estimates compare “the active treatment assignment to year 5,” even though the same sentence already defines baseline to year 5 as the change window. eTable 6 labels the relevant contrast “Ratio of change from baseline, active to placebo,” and the main article describes active interventions versus placebo.
-- **Reported-versus-comparator:** Printed comparator labels in both figure titles: active treatment versus placebo. Printed comparator phrase in both captions: active treatment assignment “to year 5,” which names a follow-up timepoint rather than a control group.
-- **Consistency rule:** An effect estimate’s comparator label must identify the comparison group. A follow-up timepoint can define the outcome window but cannot replace the placebo comparator in figures explicitly titled active treatment versus placebo.
-- **Calculation / logical comparison:** No arithmetic is required. The titles identify placebo as comparator; the captions use year 5 as the object of “comparing,” while baseline-to-year-5 already defines time. The two labels do not reconcile under the displayed active-versus-placebo contrast.
-- **Direct observation versus inferred explanation:** The titles and caption phrases are direct observations from fresh page-addressable native text. It is an inference, not a final correction, that the intended comparator may have been placebo.
-- **Alternative source-grounded interpretation:** The non-layout Acrobat extraction may have omitted or reordered a visual caption element. No permitted page renderer was available to confirm glyph placement. Alternatively, both figure captions may reproduce the same wording defect.
-- **Necessary missing input:** Direct visual rendering of DOC-003 pp.18-19 is unavailable in this run; plotted estimates, intervals, and P values are also unavailable from native text.
-- **Exact human question:** Do the rendered source pages actually print “comparing the active treatment assignment to year 5”; if so, should the comparator wording identify placebo while retaining baseline to year 5 as the change window?
-- **Potential downstream evidence-chain relevance:** If confirmed, a data extractor could copy an ambiguous comparator label when recording these subgroup effects. The package does not establish that this has occurred or that any conclusion changes.
+- **Relationships:** N001, N017, N030, N032, S013
+- **Provenance:** XSC-003; STAT-P1-OBS-002
+- **Exact source locations:** [DOC-001 abstract, PDF p. 1](<../../jama_de_boer_2019_oi_190122.pdf#page=1>); [DOC-001 Table 2 and Figure 3, PDF p. 8](<../../jama_de_boer_2019_oi_190122.pdf#page=8>).
+- **Printed evidence:** Figure 3 labels `Placebo` with `N=703` and `Vitamin D` with `N=609`. The factorial cells establish vitamin-D assignment as `370+333=703` and vitamin-D placebo as `289+320=609`; Table 2 likewise places active before placebo.
+- **Consistency rule:** Intervention and placebo labels must retain the source-established randomized arm identities in a subgroup display.
+- **Direct observation:** The two overall arm sizes appear beneath the opposite Figure 3 headings; the same column pattern extends through subgroup rows.
+- **Source-grounded alternatives:** The headings or the N/subgroup columns may be transposed. No supplied source defines 703 as vitamin-D placebo and 609 as active vitamin D.
+- **Human question:** Are only the Figure 3 participant-count columns transposed, and what N belongs under each treatment heading for every subgroup row while preserving the intended means and forest estimates?
 
-## C002 — Omega-3 eGFR panel repeats vitamin-D contributor counts instead of the omega-3 allocation counts
+## C004 — Figure 4 assigns omega-3 arm sizes to the opposite column labels
 
 - **Status:** Pending Human Adjudication
-- **Origin:** Final evidence-quality audit repair of N031; omitted by the initial numeric lane.
-- **Category:** Denominator, proportion, or total inconsistency
-- **Exact source locations:** DOC-001 (`jama_de_boer_2019_oi_190122.pdf`) PDF p.7, Figure 2 panels A and B; DOC-001 PDF p.8, Table 2 omega-3 rows.
-- **Direct source evidence:** Figure 2 panel A (vitamin D versus placebo) gives active/placebo contributor counts 701/607 at baseline, 531/459 at year 2, and 496/438 at year 5. Panel B (omega-3 versus placebo) repeats exactly 701/607, 531/459, and 496/438. Table 2’s matched omega-3 active/placebo counts are 657/651, 499/491, and 472/462.
-- **Reported-versus-comparator:** Omega-3 Figure 2 panel B: 701/607, 531/459, 496/438; matched omega-3 Table 2: 657/651, 499/491, 472/462. The repeated panel-B counts instead equal the vitamin-D panel-A/Table-2 grouping.
-- **Consistency rule:** Contributor counts for the same omega-3 versus placebo eGFR panels, timepoints, and analysis display should use the omega-3 factorial regrouping, not the different vitamin-D regrouping. Equal overall totals do not make the active/placebo allocation counts interchangeable.
-- **Calculation / logical comparison:** At baseline both groupings total 1308, but the allocations differ: 701−657=44 and 607−651=−44. At year 2, 531−499=32 and 459−491=−32. At year 5, 496−472=24 and 438−462=−24. Thus panel B preserves totals while shifting participants between the printed active/placebo groups.
-- **Direct observation versus inferred explanation:** The two Figure 2 count sequences and the Table 2 omega-3 sequence are direct observations from fresh page-addressable native text. Copying from panel A is a possible production explanation, not an established cause or correction.
-- **Alternative source-grounded interpretation:** Non-layout extraction might have reordered panel labels or count sequences; a rendered page could establish the exact visual association. However, the native sequence explicitly places the repeated values within panel B’s omega-3 section.
-- **Necessary missing input:** Direct page rendering is unavailable; visual confirmation of panel placement remains necessary.
-- **Exact human question:** Does rendered Figure 2 panel B associate the repeated 701/607, 531/459, and 496/438 values with omega-3 versus placebo, and if so, why do they differ from the matched omega-3 contributor counts in Table 2?
-- **Potential downstream evidence-chain relevance:** If confirmed, a data extractor could copy incorrect arm-specific contributor denominators for omega-3 eGFR timepoints. The package does not show that this has happened or that estimates/conclusions change.
+- **Category:** Measure, label, or scale inconsistency
+- **Relationships:** N001, N018, N031, N032, S014
+- **Provenance:** XSC-004; STAT-P1-OBS-003
+- **Exact source locations:** [DOC-001 abstract, PDF p. 1](<../../jama_de_boer_2019_oi_190122.pdf#page=1>); [DOC-001 Table 2, PDF p. 8](<../../jama_de_boer_2019_oi_190122.pdf#page=8>); [DOC-001 Figure 4, PDF p. 9](<../../jama_de_boer_2019_oi_190122.pdf#page=9>).
+- **Printed evidence:** Figure 4 labels `Placebo` with `N=659` and `Omega-3 Fatty Acids` with `N=653`. Factorial cells establish omega-3 assignment as `370+289=659` and omega-3 placebo as `333+320=653`; Table 2 preserves that arm identity.
+- **Consistency rule:** Intervention and placebo labels must retain the source-established randomized arm identities.
+- **Direct observation:** The overall arm sizes appear beneath the opposite Figure 4 headings, with the same column pattern in subgroup rows.
+- **Source-grounded alternatives:** The headings or N/subgroup columns may be transposed; no different omega-3 allocation definition is supplied.
+- **Human question:** Are only the Figure 4 participant-count columns transposed, and what N belongs under each treatment heading for every subgroup row while preserving the intended means and forest estimates?
 
-## C003 — Omega-3 urine-ACR panel repeats vitamin-D contributor counts instead of the omega-3 allocation counts
+## C005 — eFigure 2 places vitamin-D participant counts under the opposite headings
 
 - **Status:** Pending Human Adjudication
-- **Origin:** Final evidence-quality audit repair of N031; distinct endpoint/value set from C002.
-- **Category:** Denominator, proportion, or total inconsistency
-- **Exact source locations:** DOC-001 (`jama_de_boer_2019_oi_190122.pdf`) PDF p.7, Figure 2 panels C and D; DOC-003 (`joi190122supp2_prod.pdf`) PDF p.11, eTable 6 omega-3 rows.
-- **Direct source evidence:** Figure 2 panel C (vitamin D versus placebo) gives active/placebo urine-ACR contributor counts 702/609 at baseline, 529/463 at year 2, and 505/440 at year 5. Panel D (omega-3 versus placebo) repeats exactly 702/609, 529/463, and 505/440. eTable 6’s matched omega-3 counts are 658/653, 502/490, and 478/467.
-- **Reported-versus-comparator:** Omega-3 Figure 2 panel D: 702/609, 529/463, 505/440; matched omega-3 eTable 6: 658/653, 502/490, 478/467. The panel-D sequence instead equals the vitamin-D panel-C grouping.
-- **Consistency rule:** Counts for the same omega-3 versus placebo urine-ACR timepoints must reflect the omega-3 factorial regrouping; equal totals do not authorize reuse of the vitamin-D arm split.
-- **Calculation / logical comparison:** At baseline, panel D differs from eTable 6 by +44 active and −44 placebo; at year 2 by +27 and −27; at year 5 by +27 and −27. Overall totals reconcile (1311, 992, and 945), but the printed arm allocations do not.
-- **Direct observation versus inferred explanation:** Figure and eTable sequences are directly observed in fresh native text. A copied-panel explanation is inferred and is not a final correction.
-- **Alternative source-grounded interpretation:** Native text may have reordered visual elements, although the sequence places the repeated counts inside panel D’s omega-3 section. Rendering is needed to confirm the visual association.
-- **Necessary missing input:** Direct page rendering and visual panel confirmation are unavailable.
-- **Exact human question:** Does rendered Figure 2 panel D associate 702/609, 529/463, and 505/440 with omega-3 versus placebo, and if so, why do those arm counts differ from eTable 6’s matched omega-3 counts?
-- **Potential downstream evidence-chain relevance:** If confirmed, a data extractor could copy incorrect arm-specific contributor denominators for omega-3 urine-ACR timepoints. No downstream use or conclusion change is established.
+- **Category:** Measure, label, or scale inconsistency
+- **Relationships:** N050, N059, S029, S037
+- **Provenance:** NUM-OBS-003; XSC-005; STAT-P1-OBS-004
+- **Exact source locations:** [DOC-001 abstract, PDF p. 1](<../../jama_de_boer_2019_oi_190122.pdf#page=1>); [DOC-003 eTable 6, PDF p. 11](<../../joi190122supp2_prod.pdf#page=11>); [DOC-003 eFigure 2, PDF p. 18](<../../joi190122supp2_prod.pdf#page=18>).
+- **Printed evidence:** eFigure 2 labels `Placebo` `N=703`, ratio `3.02`, and `Active intervention` `N=609`, ratio `2.97`. eTable 6 identifies vitamin-D active baseline `N=702`, year-5 ratio `2.97`, and placebo `N=609`, ratio `3.02`; the randomization totals are 703 active and 609 placebo.
+- **Consistency rule:** A displayed participant count must preserve the randomized treatment identity of the arm named by its heading; arm-specific change values are checked separately.
+- **Direct observation:** The overall and nested N values map to the opposite vitamin-D assignments, while the overall `3.02` placebo and `2.97` active changes agree with eTable 6 under the printed headings.
+- **Source-grounded alternatives:** Only the N columns may be transposed while headings, change values, and forest direction remain as printed. The 703-versus-702 difference reflects randomized versus measured baseline availability and does not resolve the N-column exchange.
+- **Human question:** Should only the eFigure 2 N columns be exchanged, or do any subgroup changes or plotted estimates also require remapping?
 
-## C004 — eTable 7 reports 944 analyzed participants but its footnote states that 991 were included
+## C006 — eFigure 3 places omega-3 participant counts under the opposite headings
 
 - **Status:** Pending Human Adjudication
-- **Origin:** Final evidence-quality audit repair of N059; omitted by the initial numeric lane.
-- **Category:** Denominator, proportion, or total inconsistency
-- **Exact source locations:** DOC-003 (`joi190122supp2_prod.pdf`) PDF p.12, eTable 7 title, active/placebo rows, and footnote marked `*`.
-- **Direct source evidence:** The title states that participants with available baseline and year-5 measurements number `N = 944*`. The displayed factorial arm counts reconcile to 944 for both treatment dimensions: 504+440=944 and 477+467=944. The attached footnote states that 991 participants donated both baseline and year-5 urine samples and “were included in this analysis”; it also states that 320 baseline-only participants and 1 participant without baseline were excluded from 1312.
-- **Reported-versus-comparator:** Title and displayed arm denominators: 944. Attached inclusion footnote: 991. Difference: 47 participants.
-- **Consistency rule:** A footnote attached to the table’s analysis N and explicitly stating how many participants “were included in this analysis” should reconcile with the title and displayed analysis denominators, or name a further exclusion/population distinction.
-- **Calculation / logical comparison:** 504+440=944; 477+467=944; 991−944=47. The footnote flow also gives 991+320+1=1312, so it does not name the additional 47-person reduction represented by the rows/title.
-- **Direct observation versus inferred explanation:** The title, rows, footnote statement, and arithmetic are direct observations. It is inferred—but not established—that 991 may be the count donating samples while 944 is a paired complete-case analysis after an unreported additional rule.
-- **Alternative source-grounded interpretation:** Some of the 991 urine donors may lack usable ACR measurements or another necessary covariate, but the supplied footnote says all 991 were included and does not state a 47-participant exclusion.
-- **Necessary missing input:** A definition or flow explaining the 47-person difference is absent from the table text.
-- **Exact human question:** Which count is the intended eTable 7 analysis population, 944 or 991, and what source-defined exclusion or denominator rule accounts for the 47-participant difference?
-- **Potential downstream evidence-chain relevance:** If confirmed, an evidence extractor could record the wrong complete-case analysis denominator. The package does not establish propagation or impact on effect estimates.
+- **Category:** Measure, label, or scale inconsistency
+- **Relationships:** N051, N060, S030, S038
+- **Provenance:** NUM-OBS-004; XSC-006; STAT-P1-OBS-005
+- **Exact source locations:** [DOC-001 abstract, PDF p. 1](<../../jama_de_boer_2019_oi_190122.pdf#page=1>); [DOC-003 eTable 6, PDF p. 11](<../../joi190122supp2_prod.pdf#page=11>); [DOC-003 eFigure 3, PDF p. 19](<../../joi190122supp2_prod.pdf#page=19>).
+- **Printed evidence:** eFigure 3 labels `Placebo` `N=659`, ratio `3.05`, and `Active intervention` `N=653`, ratio `2.94`. eTable 6 identifies omega-3 active baseline `N=658`, year-5 ratio `2.94`, and placebo `N=653`, ratio `3.05`; randomization totals are 659 active and 653 placebo.
+- **Consistency rule:** A participant count must preserve the randomized treatment identity of the arm named by its heading; arm-specific change values are checked separately.
+- **Direct observation:** The overall and nested N values map to the opposite omega-3 assignments, while the overall `3.05` placebo and `2.94` active changes agree with eTable 6 under the printed headings.
+- **Source-grounded alternatives:** Only the N columns may be transposed while headings, change values, and forest direction remain as printed. The 659-versus-658 availability difference does not resolve the N-column exchange.
+- **Human question:** Should only the eFigure 3 N columns be exchanged, or do any subgroup changes or plotted estimates also require remapping?
+
+## C007 — Imputation count differs between the analytic-plan addendum and article methods
+
+- **Status:** Pending Human Adjudication
+- **Category:** Cross-document numeric inconsistency
+- **Relationships:** N035, N041, S016, S023
+- **Provenance:** STAT-P1-OBS-006
+- **Exact source locations:** [DOC-002 analytic-plan addendum, PDF p. 32](<../../joi190122supp1_prod.pdf#page=32>); [DOC-001 Methods, PDF p. 3](<../../jama_de_boer_2019_oi_190122.pdf#page=3>).
+- **Printed evidence:** The addendum prospectively states that missing values will be imputed to create `10` complete data sets; the article reports that the implemented multiple imputation used `M=20`. Both state Rubin-rule combination.
+- **Consistency rule:** The supplied plan and implemented-method records report different exact counts for the same missing-data procedure; an intentional change is possible but is not explained in the package.
+- **Direct observation:** The exact values are 10 planned and 20 reported as used.
+- **Source-grounded alternatives:** The authors may intentionally have increased the number of imputations after the addendum. Plan and implemented method need not be identical, but the supplied record does not state the reason or timing.
+- **Human question:** Was the change from 10 to 20 imputed data sets intentional, and does the supplied record require clarification of the implemented analysis?

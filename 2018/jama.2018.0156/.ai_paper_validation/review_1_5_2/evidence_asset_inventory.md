@@ -1,24 +1,67 @@
-# Evidence Asset Inventory
+# Fresh Evidence-Asset Inventory
 
-This inventory records only artifacts prepared or explicitly authorized for this fresh Workflow 1.5.2 preprocessing stage. It does not adopt prior audit conclusions.
+## Tooling and method record
 
-| Asset group | Source and exact units | Method | Fresh artifact or permitted reference | Result and limitation |
-|---|---|---|---|---|
-| Source identity metadata | DOC-001 pp. 1-9; DOC-002 pp. 1-134; DOC-003 pp. 1-3 | Local `sha256sum`, `stat`, and `file` | `source_inventory.md`; `source_hashes_before.sha256` | Complete source identity, type, size, and stable page-unit inventory. |
-| Simple PDF text | All 146 PDF pages | Coordinator-authorized `/home/juliz/venvs/stt/bin/pymupdf gettext -mode simple` fallback | `preprocessing/pymupdf_simple_text/DOC-001_jama_jabre_2018_oi_180004.txt`; `preprocessing/pymupdf_simple_text/DOC-002_joi180004supp1_prod.txt`; `preprocessing/pymupdf_simple_text/DOC-003_joi180004supp2_prod.txt` | Complete page-delimiter coverage: 9 + 134 + 3 form feeds. DOC-002 pp. 108-109 and 126-134 have no extractable text. |
-| Layout-preserving PDF text | All 146 PDF pages | Coordinator-authorized `/home/juliz/venvs/stt/bin/pymupdf gettext -mode layout` fallback | `preprocessing/pymupdf_layout_text/DOC-001_jama_jabre_2018_oi_180004.txt`; `preprocessing/pymupdf_layout_text/DOC-002_joi180004supp1_prod.txt`; `preprocessing/pymupdf_layout_text/DOC-003_joi180004supp2_prod.txt` | Complete page-delimiter coverage: 9 + 134 + 3 form feeds. DOC-002 pp. 108-109 and 126-134 have no extractable text. |
-| PDF metadata | DOC-001 pp. 1-9; DOC-002 pp. 1-134; DOC-003 pp. 1-3 | Required direct `pdfinfo` | None | Blocked: `pdfinfo` not installed or available in `PATH`. Page counts used here are 9 and 3 as supplied for this run and 134 from the hash-matched OCR manifest for DOC-002. |
-| Fresh result-page rendering | All 146 PDF pages | Required direct `pdftoppm` or `pdftocairo` | None | Blocked: both renderers are absent from `PATH`. The successful text-extraction fallback does not provide visual table/figure rendering. |
-| Authorized supplied OCR text and images | DOC-002 pp. 52, 108, 109, 126, 127, 128, 129, 130, 131, 132, 133 | Reuse only under explicit user override; no engine invoked in this run | `preprocessing/reused_ocr/DOC-002_authorized_ocr_provenance.md` | Complete source-hash-matched reference inventory for 11 pages. Text and page-image paths resolve to the supplied artifacts outside this fresh directory. |
-| New OCR | All PDF pages | CPU Tesseract would normally apply only after unusable native/layout text | None | Explicitly prohibited by user override. No CPU or GPU OCR was probed or run. |
+All processing was new under `.ai_paper_validation/review_1_5_2/preprocessing/`. No legacy output was read, copied, or reused. The package contains only PDFs, so no Office conversion or Office structure extraction was applicable.
 
-## Tool record
+| Tool | Version observed | Use |
+|---|---|---|
+| `pdfinfo` | 26.01.0 | Direct PDF metadata and page-count determination. |
+| `pdftotext` | 26.01.0 | Fresh native and layout-preserving extraction for every PDF. |
+| `pdftoppm` | 26.01.0 | 200-dpi PNG rendering of selected result-relevant pages. |
+| `tesseract` | 5.5.0 | Direct CPU-only English OCR (`--psm 6`) of the two pages with unusable relevant native/layout text. |
+| `file` | system utility | Direct PDF type confirmation. |
+| `sha256sum` | system utility | Direct-source integrity hashing. |
 
-- Commands successfully used: `sha256sum`, `stat`, `file`, and coordinator-authorized `/home/juliz/venvs/stt/bin/pymupdf gettext` (PyMuPDF 1.28.0).
-- Tools unavailable: `pdfinfo`, `pdftotext`, `pdftoppm`, `pdftocairo`.
-- OCR handling: no OCR command was run. The supplied DOC-002 OCR manifest reports `rapidocr-cuda`, but that is historical provenance only; it was not invoked, validated as an engine choice, or generalized to any other page.
-- Office conversion and the optional Office structure extractor were not applicable: there are no direct Office sources.
+Commands were applied with explicit direct-source filenames:
 
-## Coverage implication
+```text
+pdfinfo "jama_jabre_2018_oi_180004.pdf"
+pdfinfo "joi180004supp1_prod.pdf"
+pdfinfo "joi180004supp2_prod.pdf"
+pdftotext "SOURCE.pdf" ".../preprocessing/native_text/SOURCE.txt"
+pdftotext -layout "SOURCE.pdf" ".../preprocessing/layout_text/SOURCE.txt"
+pdftoppm -r 200 -f N -l N -singlefile -png "SOURCE.pdf" ".../preprocessing/rendered_pages/DOC-NNN-pNNN"
+tesseract ".../rendered_pages/DOC-002-p052.png" ".../ocr_text/DOC-002-p052" -l eng --psm 6
+tesseract ".../rendered_pages/DOC-002-p103.png" ".../ocr_text/DOC-002-p103" -l eng --psm 6
+```
 
-All 146 page units now have fresh simple and layout extraction delimiters. DOC-002 has 11 empty direct-text page segments: pp. 108-109 and 126-134. The explicitly authorized source-hash-matched OCR supplies text-plus-image evidence for ten of those pages (pp. 108-109 and 126-133); p. 134 remains empty in both fresh text outputs and has no user-authorized OCR. This is recorded as a source-page limitation, not a scientific conclusion.
+`SOURCE.pdf` and `N` in the command record denote only the explicitly enumerated source/page scopes below; no unresolved source glob was used. OCR ran on the CPU through direct Tesseract invocation; no GPU was probed or invoked.
+
+## Fresh native and layout text
+
+| Source ID | Direct-source scope | Asset | Bytes | Method and assessment |
+|---|---|---|---:|---|
+| DOC-001 | PDF pp. 1-9 | `preprocessing/native_text/jama_jabre_2018_oi_180004.txt` | 53231 | Fresh `pdftotext`; usable narrative, flow, table, and result text on all pages. |
+| DOC-001 | PDF pp. 1-9 | `preprocessing/layout_text/jama_jabre_2018_oi_180004.txt` | 86882 | Fresh `pdftotext -layout`; retained aligned table displays for visual comparison. |
+| DOC-002 | PDF pp. 1-134 | `preprocessing/native_text/joi180004supp1_prod.txt` | 278554 | Fresh `pdftotext`; usable text on pp. 1-107 and 110-125. Direct PDF pp. 108-109 and 126-134 are blank/result-irrelevant. |
+| DOC-002 | PDF pp. 1-134 | `preprocessing/layout_text/joi180004supp1_prod.txt` | 337197 | Fresh `pdftotext -layout`; retained protocol/SAP tables and aligned displays. Relevant content on pp. 52 and 103 was not sufficiently captured and is supplemented with fresh OCR below. |
+| DOC-003 | PDF pp. 1-3 | `preprocessing/native_text/joi180004supp2_prod.txt` | 2412 | Fresh `pdftotext`; usable eTable text on pp. 2-3. |
+| DOC-003 | PDF pp. 1-3 | `preprocessing/layout_text/joi180004supp2_prod.txt` | 4400 | Fresh `pdftotext -layout`; retained aligned eTable displays. |
+
+## Rendered result-relevant pages
+
+All following PNG assets are fresh 200-dpi direct renderings in `preprocessing/rendered_pages/`.
+
+| Source ID | Rendered PDF pages | Evidence purpose |
+|---|---|---|
+| DOC-001 | 1, 4, 5, 6, 8 | Abstract/results; participant-flow figure; Tables 1-2; primary-result narrative. Assets: `DOC-001-p001.png`, `DOC-001-p004.png`, `DOC-001-p005.png`, `DOC-001-p006.png`, `DOC-001-p008.png`. |
+| DOC-002 | 9-11, 15-17, 21-22, 24, 36-37, 50-54, 64-66, 70-72, 76-77, 79, 91-92, 101-105, 110-112, 114-117, 119-124 | Original/final protocol endpoints, population/target counts, statistical rules, scales, amendments, and SAP. Every rendered page has one asset named `DOC-002-pNNN.png`. |
+| DOC-003 | 2-3 | eTable 1 centre contributions and eTable 2 post-hoc analyses. Assets: `DOC-003-p002.png`, `DOC-003-p003.png`. |
+
+Rendered-page count: 52 (DOC-001: 5; DOC-002: 45; DOC-003: 2). Result-relevant pages not separately rendered remain freshly mapped through the complete native and layout extraction above; rendered pages were selected for tables, figures, endpoint/statistical definitions, amendments, and visual validation.
+
+## Targeted fresh OCR decisions
+
+| Source ID | PDF page | Native/layout decision | Fresh assets | OCR assessment |
+|---|---:|---|---|---|
+| DOC-002 | 52 | Relevant Intubation Difficulty Scale table had only a short heading in native/layout text (81 non-whitespace native characters); table content was unusable. | `preprocessing/rendered_pages/DOC-002-p052.png`; `preprocessing/ocr_text/DOC-002-p052.txt` | Fresh CPU Tesseract recovered the IDS parameter, score, and difficulty bands. Retain the rendered page as the visual authority because OCR has ordinary symbol/typographic imperfections. |
+| DOC-002 | 103 | Relevant final-protocol Intubation Difficulty Scale table had only a short heading in native/layout text (101 non-whitespace native characters); table content was unusable. | `preprocessing/rendered_pages/DOC-002-p103.png`; `preprocessing/ocr_text/DOC-002-p103.txt` | Fresh CPU Tesseract recovered the IDS table and score bands. Retain the rendered page as the visual authority because OCR has ordinary symbol/typographic imperfections. |
+
+No other result-relevant page required OCR: the fresh native plus layout text was usable. Blank DOC-002 pp. 108-109 and 126-134 were not OCR targets because they contain no result-relevant evidence.
+
+## Limitations
+
+- PDFs only: no conversion or Office-structure assets exist, by design.
+- OCR is a convenience transcription for two visual scale tables, not a replacement for the cited source PDF or rendered PNG. Mathematical symbols/subscripts and a few typographic characters can be imperfectly recognized.
+- DOC-002 includes blank pages (108-109 and 126-134) that remain in the 134-page direct-source coverage count; they have no extractable or result-relevant content.

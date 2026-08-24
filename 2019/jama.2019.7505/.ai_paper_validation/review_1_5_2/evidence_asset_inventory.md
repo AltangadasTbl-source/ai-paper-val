@@ -1,32 +1,44 @@
-# Fresh evidence-asset inventory
+# Fresh Evidence-Asset Inventory
 
-## Scope and method
+## Tooling and method
 
-This inventory is limited to the six direct PDFs in this package. It was prepared without opening or using any prior audit derivative. The Linux tools `pdfinfo`, `pdftotext`, `pdftoppm`/`pdftocairo`, and `tesseract` are unavailable, but the installed direct executable `/mnt/c/Program Files/Git/mingw64/bin/pdftotext.exe` (v4.00) was used with host permission and Windows UNC source/output paths to create fresh native and layout text for every source. Each text file contains form-feed boundaries for every listed page and non-empty readable text on every page.
+All commands were run locally in the package root against the six direct PDF sources. No network, GPU, software installation, Office conversion, Office-structure helper, or prior audit derivative was used.
 
-`file` verified that each item is a PDF and supplied a preliminary page-count string. DOC-001 differs: `file` says 10 pages while fresh native and layout extraction each contain 14 form-feed-delimited pages. Since `pdfinfo` is unavailable, this count difference remains a recorded metadata limitation; the fresh extraction boundary count is used for coverage. SHA-256 was calculated freshly; the coordinator maintains the canonical pre-review hash file.
-
-| Source ID | Package-relative source | Likely role | Type and fresh file result | Provisional units | SHA-256 | Native text / layout text | Rendered result pages | OCR pages | Source-specific limitation |
-|---|---|---|---|---:|---|---|---|---|---|
-| DOC-001 | jama_bluth_2019_oi_190055_16092.pdf | Main article | PDF 1.4; `file`: 10 pp.; fresh form-feed boundaries: 14 pp. | 14 PDF pages | a76e0d8789cfcdbb51d86edaaf407e29ada6f2c0d3a2a8a7b95bb50565d12bc1 | `native_text/DOC-001.txt` (76,473 bytes; 14 form feeds) and `layout_text/DOC-001.txt` (113,978 bytes; 14 form feeds). | Not created: approved Linux renderers unavailable; native/layout text is non-empty on pp. 1-14. | 0: no render input; CPU OCR unavailable and not indicated by readable text. | `pdfinfo` unavailable; reconcile its 10-page `file` string with the 14 fresh extraction boundaries when the tool becomes available. |
-| DOC-002 | joi190055supp1_prod_16092.pdf | Supplementary PDF 1 | PDF 1.3; 36 fresh form-feed boundaries | 36 PDF pages | 60c2f9990f89ad4a7199ea7b682a6c5b80f84532c589cacace5778fce686e1e2 | `native_text/DOC-002.txt` (65,809 bytes; 36 form feeds) and `layout_text/DOC-002.txt` (74,061 bytes; 36 form feeds). | Not created: approved Linux renderers unavailable; native/layout text is non-empty on pp. 1-36. | 0: no render input; CPU OCR unavailable and not indicated by readable text. | Visual confirmation of tables/figures remains unavailable; map text and layout displays, and flag only a later page-specific unreadability. |
-| DOC-003 | joi190055supp2_prod_16092.pdf | Supplementary PDF 2 | PDF 1.5 (zip deflate encoded); 3 fresh form-feed boundaries | 3 PDF pages | 0d830c7fcdb532f85c16b9ce4afd2e6e8a8577a4758a66aadcc5cbbb60bf73f9 | `native_text/DOC-003.txt` (6,421 bytes; 3 form feeds) and `layout_text/DOC-003.txt` (6,392 bytes; 3 form feeds). | Not created: approved Linux renderers unavailable; native/layout text is non-empty on pp. 1-3. | 0: no render input; CPU OCR unavailable and not indicated by readable text. | Visual confirmation of tables/figures remains unavailable; map text and layout displays, and flag only a later page-specific unreadability. |
-| DOC-004 | joi190055supp3_prod_16092.pdf | Supplementary PDF 3 | PDF 1.3; 3 fresh form-feed boundaries | 3 PDF pages | 768cc455241d2cfa437b613adcfd878d03ceff6ddcd324819f057652d3a9a11b | `native_text/DOC-004.txt` (9,249 bytes; 3 form feeds) and `layout_text/DOC-004.txt` (9,577 bytes; 3 form feeds). | Not created: approved Linux renderers unavailable; native/layout text is non-empty on pp. 1-3. | 0: no render input; CPU OCR unavailable and not indicated by readable text. | Visual confirmation of tables/figures remains unavailable; map text and layout displays, and flag only a later page-specific unreadability. |
-| DOC-005 | joi190055supp4_prod_16092.pdf | Supplementary PDF 4 | PDF 1.3; 43 fresh form-feed boundaries | 43 PDF pages | 93774bc97dc923b3d322fa299c2659f014ed2ff9ee12226c6e8c4caee6f3a605 | `native_text/DOC-005.txt` (76,786 bytes; 43 form feeds) and `layout_text/DOC-005.txt` (93,439 bytes; 43 form feeds). | Not created: approved Linux renderers unavailable; native/layout text is non-empty on pp. 1-43. | 0: no render input; CPU OCR unavailable and not indicated by readable text. | Visual confirmation of tables/figures remains unavailable; map text and layout displays, and flag only a later page-specific unreadability. |
-| DOC-006 | joi190055supp5_prod_16092.pdf | Supplementary PDF 5 | PDF 1.4; 1 fresh form-feed boundary | 1 PDF page | 7ff68bf44095d24434ed4f366e4e13dbc9c125b10f1f802015c19e0acae25385 | `native_text/DOC-006.txt` (1,130 bytes; 1 form feed) and `layout_text/DOC-006.txt` (1,158 bytes; 1 form feed). | Not created: approved Linux renderers unavailable; native/layout text is non-empty on p. 1. | 0: no render input; CPU OCR unavailable and not indicated by readable text. | Visual confirmation of tables/figures remains unavailable; map text and layout displays, and flag only a later page-specific unreadability. |
-
-## Derivative-tree status
-
-| Intended location | Status | Exact reason |
+| Tool | Version observed | Applied method |
 |---|---|---|
-| `preprocessing/native_text/` | Six source derivatives created | Direct `pdftotext.exe` v4.00 native extraction; 100 form-feed-delimited page units. |
-| `preprocessing/layout_text/` | Six source derivatives created | Direct `pdftotext.exe` v4.00 layout extraction; 100 form-feed-delimited page units. |
-| `preprocessing/rendered_pages/` | Directory created; no source derivatives | `pdftoppm` and `pdftocairo` are absent. |
-| `preprocessing/ocr_text/` | Directory created; no source derivatives | Rendering prerequisites and `tesseract` are absent. |
-| `preprocessing/metadata/tool_availability.md` | Created | Exact tool availability, tool versions, and checked command pattern. |
+| `sha256sum` | GNU coreutils system utility | SHA-256 calculated for each direct source before preprocessing; values are recorded in `source_inventory.md` and the coordinator-owned before-hash artifact. |
+| `file` | system utility | File type inspected for each source; DOC-001's page estimate conflicted with `pdfinfo` and was not used as the unit count. |
+| `pdfinfo` | 26.01.0 | Metadata and authoritative page count written per source to `preprocessing/pdfinfo/`. |
+| `pdftotext` | 26.01.0 | Fresh native text written for every page of every source. |
+| `pdftotext -layout` | 26.01.0 | Fresh layout-preserving text written for every source, including tables, aligned displays, and figures. |
+| `pdftoppm` | 26.01.0 | 150-dpi PNG renders created for result-relevant pages listed below. |
+| `tesseract` | 5.5.0 | Not invoked: native and layout text were usable for every result-relevant page. |
 
-No Office source, worksheet, CSV row, or table/cell unit exists among the six direct sources assigned to this preprocessing lane. Native and layout text are fresh and usable for all extracted pages. Rendering is unavailable, so no visual-table/figure claim has been manufactured; a mapper should use the layout text and record any page-specific evidence that later proves visually unreadable.
+## Per-source derivatives and decisions
 
-## Handoff limitation
+| Source ID | Metadata asset | Native-text asset | Layout-text asset | Rendered result-relevant pages | OCR decision and limitation |
+|---|---|---|---|---|---|
+| DOC-001 | `preprocessing/pdfinfo/jama_bluth_2019_oi_190055_16092.pdfinfo.txt` | `preprocessing/native_text/jama_bluth_2019_oi_190055_16092.txt` (76,343 bytes) | `preprocessing/layout_text/jama_bluth_2019_oi_190055_16092.txt` (131,510 bytes) | pp. 1-12; 12 PNG assets named `preprocessing/rendered_pages/jama_bluth_2019_oi_190055_16092-pN.png` | No OCR: native/layout extraction was legible and contained abstract, flow, tables, outcome results, captions, and narrative. Reference-only pp. 13-14 were not rendered. |
+| DOC-002 | `preprocessing/pdfinfo/joi190055supp1_prod_16092.pdfinfo.txt` | `preprocessing/native_text/joi190055supp1_prod_16092.txt` (65,459 bytes) | `preprocessing/layout_text/joi190055supp1_prod_16092.txt` (79,641 bytes) | pp. 8-24, 29-34; 23 PNG assets named `preprocessing/rendered_pages/joi190055supp1_prod_16092-pN.png` | No OCR: native/layout text was usable. Render scope covers objectives, population/intervention/endpoints, analysis, and quantitative appendices; introductory/reference/administrative-only pages were not rendered. |
+| DOC-003 | `preprocessing/pdfinfo/joi190055supp2_prod_16092.pdfinfo.txt` | `preprocessing/native_text/joi190055supp2_prod_16092.txt` (6,094 bytes) | `preprocessing/layout_text/joi190055supp2_prod_16092.txt` (6,887 bytes) | pp. 1-3; 3 PNG assets named `preprocessing/rendered_pages/joi190055supp2_prod_16092-pN.png` | No OCR: all pages have usable text and are analysis-change relevant. |
+| DOC-004 | `preprocessing/pdfinfo/joi190055supp3_prod_16092.pdfinfo.txt` | `preprocessing/native_text/joi190055supp3_prod_16092.txt` (9,310 bytes) | `preprocessing/layout_text/joi190055supp3_prod_16092.txt` (9,516 bytes) | pp. 1-3; 3 PNG assets named `preprocessing/rendered_pages/joi190055supp3_prod_16092-pN.png` | No OCR: all pages have usable text and are final-analysis-plan relevant. |
+| DOC-005 | `preprocessing/pdfinfo/joi190055supp4_prod_16092.pdfinfo.txt` | `preprocessing/native_text/joi190055supp4_prod_16092.txt` (75,193 bytes) | `preprocessing/layout_text/joi190055supp4_prod_16092.txt` (94,059 bytes) | pp. 18-42; 25 PNG assets named `preprocessing/rendered_pages/joi190055supp4_prod_16092-pN.png` | No OCR: native/layout text was usable. Render scope covers eMethods, eTables, and eFigures. Committee/investigator-list pp. 1-17 and references p. 43 were not rendered because they contain no result-bearing quantitative display. |
+| DOC-006 | `preprocessing/pdfinfo/joi190055supp5_prod_16092.pdfinfo.txt` | `preprocessing/native_text/joi190055supp5_prod_16092.txt` (1,124 bytes) | `preprocessing/layout_text/joi190055supp5_prod_16092.txt` (1,126 bytes) | p. 1; 1 PNG asset `preprocessing/rendered_pages/joi190055supp5_prod_16092-p1.png` | No OCR: the single page has usable native/layout text. |
 
-Fresh text-based quantitative mapping can proceed over all 100 form-feed-delimited PDF-page units. Remaining limitations are the unavailable `pdfinfo` metadata confirmation, unavailable Linux renderer, and unavailable CPU OCR. If a mapper identifies a result-relevant page whose fresh native/layout text is unusable, it must be recorded as an exact page-specific visual-evidence limitation; do not substitute prior audit products.
+**Derivative totals:** 6 `pdfinfo` records; 6 native-text files; 6 layout-text files; 67 rendered PNG pages; 0 OCR text files. `preprocessing/office_structure/` and `preprocessing/converted_pdf/` are intentionally empty because no Office source was supplied.
+
+## Exact command pattern
+
+For each explicitly named source, the following direct commands were used, with destination basename matched to the source basename:
+
+```text
+sha256sum -- "SOURCE.pdf"
+file --brief "SOURCE.pdf"
+pdfinfo "SOURCE.pdf" > ".ai_paper_validation/review_1_5_2/preprocessing/pdfinfo/SOURCE.pdfinfo.txt"
+pdftotext -- "SOURCE.pdf" ".ai_paper_validation/review_1_5_2/preprocessing/native_text/SOURCE.txt"
+pdftotext -layout -- "SOURCE.pdf" ".ai_paper_validation/review_1_5_2/preprocessing/layout_text/SOURCE.txt"
+pdftoppm -f N -l N -singlefile -r 150 -png -- "SOURCE.pdf" ".ai_paper_validation/review_1_5_2/preprocessing/rendered_pages/SOURCE-pN"
+```
+
+No result-relevant page met the workflow condition for OCR: unusable relevant native/layout text.
+

@@ -1,50 +1,115 @@
 # Mechanical Evidence Recheck
 
-## Assigned stable-ID scope
+All seven stable IDs in `candidate_ledger.md` were checked separately against the supplied PDFs. Fresh native/layout text and page renders were used only to locate passages; the supplied PDFs were inspected as the final authority. Coverage is 7/7 stable IDs. Earlier Supplement 3 locator defects for C001 and C004 were repaired in the current ledger so that both now cite the exact eTable 1 passage on PDF page 6. All current ledger locations resolve to the stated source evidence. No ID is removed or renumbered. Every item remains **Pending Human Adjudication**.
 
-The canonical `candidate_ledger.md` contains no `C` headings and records a stable candidate count of 0. The numeric-consistency, cross-source, and statistical pass-1 candidate parts each independently record 0 candidate records. No stable candidate was added by any reviewed discovery artifact.
+## C001 — Inclusive versus exclusive fluid threshold in the SCD definition
 
-**Stable-ID coverage:** 0/0 `C` IDs mechanically rechecked.
+- **Cited location found:** The cited passages were found in [`jama_parshuram_2018_oi_180015.pdf#page=4`](../../../jama_parshuram_2018_oi_180015.pdf#page=4), [`joi180015supp1_prod.pdf#page=24`](../../../joi180015supp1_prod.pdf#page=24), and Supplement 3 eTable 1 on [`joi180015supp3_prod.pdf#page=6`](../../../joi180015supp3_prod.pdf#page=6). These are the locations recorded in the current ledger.
+- **Source printed text/value matched:** Main-article page 4 prints fluid boluses of `60 mL/kg or greater` within the 12 hours before ICU admission. Protocol Table 5 on page 24 prints `<60ml/kg` for Early Transfer and `>60ml/kg` for Circulatory support within the same 12-hour interval. Supplement 3 eTable 1 on page 6 prints `>60 ml/kg` within the 12 hours before transfer.
+- **Comparator matched:** Yes. The compared statements define the fluid component of the significant clinical deterioration/late ICU admission outcome for the same 12-hour pre-transfer or pre-admission window.
+- **Consistency rule applicable:** Yes. For a numeric threshold on the same measure and scale, `60 mL/kg or greater` means `x >= 60`, whereas `>60 mL/kg` means `x > 60`; those sets differ at exactly `x = 60`.
+- **Calculation or logical comparison reproduced:** Let `x` be total qualifying fluid in mL/kg. At `x = 60`, the main-article condition `x >= 60` is true, but the protocol and Supplement 3 condition `x > 60` is false. The boundary discrepancy is reproduced. Protocol Table 5 additionally leaves `x = 60` outside both the printed `<60` and `>60` fluid bands, absent another qualifying intervention.
+- **Necessary inputs available / exact missing inputs or definitions:** The printed threshold, unit, and time window are available and sufficient to reproduce the boundary comparison. Missing are the operational adjudication/coding instruction that governed an exact 60 mL/kg exposure, the rule for rounding accumulated fluid to the displayed value, and event-level data showing whether any patient was at that boundary.
+- **Source-grounded alternative interpretation:** The two support documents may preserve the operational strict boundary while the article paraphrases it inclusively; alternatively, the article may preserve an inclusive operational definition and the two support statements may have retained a strict sign. The supplied package does not select between these readings.
+- **Direct observation:** The main article prints an inclusive boundary; both support documents print a strict boundary. The Supplement 3 passage is on PDF page 6.
+- **Inferred explanation:** Any assertion that one operator is a typographical or paraphrasing error is inferential. Whether patient classification changed is also inferential without boundary-case data.
+- **Exact remaining human question:** Which operator and rounding rule were actually applied when cumulative fluid equaled 60 mL/kg?
+- **State:** Pending Human Adjudication.
 
-No stable candidates were identified
+## C002 — Mortality absolute-risk-reduction percent/unit conflict
 
-There is therefore no individual `C` record for which a cited source location, printed source value or text, comparator, consistency rule, reproduced calculation or logical comparison, input sufficiency, missing definition, alternative interpretation, direct observation, inferred explanation, or remaining human question can be recorded. The absence of per-ID records preserves exact identity with the empty canonical ledger; it does not remove, merge, renumber, or adjudicate any candidate.
+- **Cited location found:** The matched planning statements were found in [`joi180015supp1_prod.pdf#page=1`](../../../joi180015supp1_prod.pdf#page=1), [`joi180015supp1_prod.pdf#page=14`](../../../joi180015supp1_prod.pdf#page=14), [`joi180015supp1_prod.pdf#page=29`](../../../joi180015supp1_prod.pdf#page=29), and [`jama_parshuram_2018_oi_180015.pdf#page=4`](../../../jama_parshuram_2018_oi_180015.pdf#page=4).
+- **Source printed text/value matched:** Protocol page 1 prints an absolute risk reduction of `0.9 deaths/1000` equal to an 18% relative reduction from a baseline of `5.1/1000`. Protocol page 14 prints `Absolute Risk Reduction 0.09%` for the same 18% relative reduction and baseline. The appendix on protocol page 29 prints `18% relative risk reductions` corresponding to `0.9%`, and its assumption table pairs relative reduction `0.178` with baseline `5.1 / 1000 discharges`. Main-article page 4 prints a detectable absolute risk reduction of `0.9 per 1000 hospital discharges`.
+- **Comparator matched:** Yes. All statements concern the mortality power calculation with an approximately 18% relative reduction and a baseline near 5.1 deaths per 1000 discharges.
+- **Consistency rule applicable:** Yes. An absolute reduction expressed per 1000 and the same reduction expressed as a percentage must differ by the conversion `1 per 1000 = 0.1%`.
+- **Calculation or logical comparison reproduced:** `5.1 per 1000 x 0.178 = 0.9078 per 1000`. Dividing by 1000 gives probability `0.0009078`; multiplying by 100 gives `0.09078%`, which rounds to `0.09%`. Thus `0.9 per 1000` and `0.09%` agree to rounding, while `0.9%` equals `9 per 1000` and is ten times the matched absolute reduction.
+- **Necessary inputs available / exact missing inputs or definitions:** Baseline, relative reduction, and relevant units are available and sufficient to reproduce the scale conversion. Missing is an editorial or calculation record identifying the intended unit on appendix page 29; no alternative baseline near 50.6 per 1000 is supplied that would produce a 0.9 percentage-point reduction at 17.8%.
+- **Source-grounded alternative interpretation:** Appendix page 29 may have intended `0.09%`, matching protocol page 14, or `0.9 per 1000`, matching protocol page 1 and the main article. The package does not establish which wording should replace the printed appendix value.
+- **Direct observation:** Three locations express the matched reduction as either 0.9 per 1000 or 0.09%, while appendix page 29 expresses it as 0.9%.
+- **Inferred explanation:** Calling the percent sign or decimal placement a transcription error is an inferred explanation; the source itself does not identify an editing history.
+- **Exact remaining human question:** On protocol appendix PDF page 29, was the intended absolute mortality reduction 0.09% or 0.9 per 1000, and what source record supports that intended unit?
+- **State:** Pending Human Adjudication.
 
-## Ledger-identity and provenance checks
+## C003 — Cardiac-arrest events assigned incompatible resuscitation-scale categories
 
-| Artifact | Candidate records found | Identity result |
-|---|---:|---|
-| `candidate_ledger.md` | 0 | Empty canonical stable set. |
-| `checkers/candidate_parts/numeric_candidates.md` | 0 | No record requiring registration or recheck. |
-| `checkers/candidate_parts/cross_source_candidates.md` | 0 | No record requiring registration or recheck. |
-| `checkers/candidate_parts/statistical_pass_1_candidates.md` | 0 | No record requiring registration or recheck. |
+- **Cited location found:** The three passages were found in [`joi180015supp1_prod.pdf#page=11`](../../../joi180015supp1_prod.pdf#page=11), [`joi180015supp1_prod.pdf#page=24`](../../../joi180015supp1_prod.pdf#page=24), and [`joi180015supp1_prod.pdf#page=27`](../../../joi180015supp1_prod.pdf#page=27).
+- **Source printed text/value matched:** Protocol page 11 names the seven-point Children’s Resuscitation Intensity Scale and states that cardiac arrest without a preceding DNR order is rated `6 or 7`. Table 5 on page 24 assigns cardiopulmonary resuscitation to category 6 and death to category 7. The Table 6 legend on page 27 says that its items are documented for clinical deterioration events that include cardiac arrest, `scale rating 4 or 5`.
+- **Comparator matched:** Yes, with one stated limitation. Pages 11 and 24 explicitly identify the Children’s Resuscitation Intensity Scale. Page 27 uses `scale rating` for the same cardiac-arrest event context but does not name the scale there.
+- **Consistency rule applicable:** Yes. If the page 27 legend refers to the named seven-category Children’s Resuscitation Intensity Scale used for these deterioration events, the same cardiac-arrest class cannot be assigned both 4/5 and 6/7. If page 27 refers to a different scale, that scale requires a definition to make the labels interpretable.
+- **Calculation or logical comparison reproduced:** This is a discrete-category comparison. The sets `{4, 5}` and `{6, 7}` have an empty intersection, and Table 5 directly maps cardiopulmonary resuscitation to 6 and death to 7. Therefore page 27 cannot be reconciled with pages 11 and 24 under a single unchanged scale.
+- **Necessary inputs available / exact missing inputs or definitions:** The named seven-point scale and its categories are available, as is the conflicting page 27 label. Missing are a Table 6-specific scale name or definition, a version history for that legend, and an operational abstraction manual establishing which category numbers were used.
+- **Source-grounded alternative interpretation:** Because page 27 omits the scale name, `scale rating 4 or 5` could refer to a separate unstated abstraction scale rather than the Children’s Resuscitation Intensity Scale. No such second scale is defined in the supplied package.
+- **Direct observation:** The protocol prints `6 or 7` for cardiac arrest on page 11, category 6 for CPR and 7 for death on page 24, and `4 or 5` for events including cardiac arrest on page 27.
+- **Inferred explanation:** A residual legend from another scale or protocol version is an inferred explanation, not a statement printed in the package.
+- **Exact remaining human question:** Which named scale does `scale rating 4 or 5` on protocol PDF page 27 refer to, and what category codes were operationally used for the cardiac-arrest events abstracted with Table 6?
+- **State:** Pending Human Adjudication.
 
-The canonical numeric inventory contains 0 `N` relationships, and the canonical inferential-statistical inventory contains 0 `S` relationships. The complete 69-page direct-source scope is structurally mapped in the fresh main and support mapping artifacts, but no readable scientific result was available from which a stable candidate could meet the source-grounded threshold.
+## C004 — Preventability threshold excludes and includes rating 4
 
-## Mechanical-field completion for the empty set
+- **Cited location found:** The cited passages were found in [`joi180015supp1_prod.pdf#page=11`](../../../joi180015supp1_prod.pdf#page=11), [`joi180015supp1_prod.pdf#page=28`](../../../joi180015supp1_prod.pdf#page=28), [`jama_parshuram_2018_oi_180015.pdf#page=7`](../../../jama_parshuram_2018_oi_180015.pdf#page=7), and Supplement 3 eTable 1 on [`joi180015supp3_prod.pdf#page=6`](../../../joi180015supp3_prod.pdf#page=6). These are the locations recorded in the current ledger.
+- **Source printed text/value matched:** Protocol page 11 prints `rating of at >4` and immediately says `Thus` ratings 4, 5, and 6 are deemed potentially preventable. Table 7 on protocol page 28 states that a rating of `4 or more` is a high degree of preventability. Supplement 3 eTable 1 on page 6 explicitly defines ratings 4, 5, and 6 as potentially preventable. Main-article Table 3 footnote i on page 7 says rating 4 indicates `more than likely preventable` in the description of potentially preventable cardiac arrest.
+- **Comparator matched:** Yes. The passages use the same six-point preventability scale for cardiac-arrest assessment; protocol page 11 contains both forms in consecutive sentences.
+- **Consistency rule applicable:** Yes. On a discrete 1-to-6 scale, `rating > 4` selects `{5, 6}`, while `rating >= 4` or ratings 4 through 6 select `{4, 5, 6}`.
+- **Calculation or logical comparison reproduced:** Evaluate rating 4. The expression `4 > 4` is false, but `4 >= 4` is true, and the next sentence on page 11 explicitly includes rating 4. The printed operator and printed category list therefore differ at rating 4.
+- **Necessary inputs available / exact missing inputs or definitions:** The scale values and compared thresholds are available and sufficient for the logical comparison. Missing are the operational classification instructions or adjudication dataset showing whether rating-4 events were counted, plus an editing/version record identifying the intended operator in the first page-11 sentence.
+- **Source-grounded alternative interpretation:** Table 7, Supplement 3, and the sentence immediately following `>4` may state the applied inclusion rule, while the strict sign may be a textual artifact. Alternatively, the strict sign may state an intended narrower rule that the later category lists did not preserve. The supplied sources do not independently identify the operative rule.
+- **Direct observation:** Protocol page 11 excludes rating 4 through the strict operator and includes rating 4 through its following category list; protocol page 28 and Supplement 3 page 6 include rating 4.
+- **Inferred explanation:** Treating the strict greater-than sign as typographical is inferred. The actual event-count impact cannot be determined from aggregate reporting.
+- **Exact remaining human question:** Were consensus ratings of exactly 4 included in the reported potentially preventable cardiac-arrest counts?
+- **State:** Pending Human Adjudication.
 
-| Required per-ID field | Empty-set record |
-|---|---|
-| Location found | Not instantiated: there is no assigned `C` ID or candidate citation to locate. |
-| Source value or text matched | Not instantiated: there is no assigned candidate source value or text. |
-| Comparator matched | Not instantiated: there is no assigned comparator. |
-| Consistency rule applicable | Not instantiated: there is no candidate relationship or rule. |
-| Calculation or logical comparison reproduced | Not instantiated: there are no candidate inputs to calculate or compare. |
-| Necessary inputs available | No candidate-specific inputs exist. Scientific page content is unavailable across the complete direct-source scope. |
-| Exact missing inputs or definitions | For candidate discovery and any later recheck, fresh page-readable scientific text or images are missing for all 69 PDF pages; consequently, printed values, comparators, result labels, definitions, and applicable rules cannot be identified. |
-| Source-grounded alternative interpretation | The empty stable set reflects blocked scientific-content access, not supplied-source evidence that the documents contain no quantitative relationships or no reporting inconsistencies. |
-| Direct observation versus inferred explanation | Direct observation: all reviewed candidate artifacts and the canonical ledger contain 0 candidate records, and the fresh inventories contain 0 `N` and 0 `S` relationships. Inferred explanation: none is offered for the paper's scientific content; structural page records do not disclose it. |
-| Exact remaining human question | Can fresh page-addressable native text, layout text, rendered images, or direct CPU-OCR output be produced from the supplied PDFs so that all printed relationships can be registered and any resulting stable `C` IDs can be rechecked against the direct supplied sources? |
+## C005 — The same SCDE reference count is labelled annual and two-year
 
-## Direct-source authority and access limitation
+- **Cited location found:** The matched passages were found in [`joi180015supp1_prod.pdf#page=14`](../../../joi180015supp1_prod.pdf#page=14) and [`joi180015supp1_prod.pdf#page=30`](../../../joi180015supp1_prod.pdf#page=30).
+- **Source printed text/value matched:** Protocol page 14 says data from four pediatric hospitals in Ontario describe `1052 Urgent ICU admissions/ year`, with an assumed 40% being SCDE and a rate of 2 per 1000 patient-days. Appendix page 30 labels the SCDE source as four major pediatric referral hospitals in 2007-8 and says the data represent `2 years`; it then states that in the two years following 31 January 2007 there were 55,963 hospital discharges, 1,052 urgent PICU admissions, and 150 code-blue events.
+- **Comparator matched:** Yes. Both passages identify Ontario data from four pediatric hospitals, use the identical count of 1,052 urgent ICU/PICU admissions, and connect it to the SCDE planning assumption.
+- **Consistency rule applicable:** Yes. The same unadjusted count and source cohort cannot be both a one-year total and a two-year total unless one statement is explicitly annualized or refers to a different extraction window.
+- **Calculation or logical comparison reproduced:** If 1,052 is the two-year total, its simple annual average is `1052 / 2 = 526`, not 1,052. The page-30 planning rate can be approximately reproduced from its two-year values and assumptions: `1052 x 0.40 = 420.8` assumed SCDEs; `55,963 discharges x 4 days = 223,852 patient-days`; `420.8 / 223,852 x 1000 = 1.88` SCDE per 1000 patient-days, which rounds to 2. If 1,052 were instead an annual count while the 55,963 discharges remained a two-year denominator, the analogous rate would be approximately 3.76 per 1000, not 2.
+- **Necessary inputs available / exact missing inputs or definitions:** Enough inputs are available to reproduce the approximate two-year rate on page 30 and the factor-of-two period-label difference. Missing are year-stratified urgent-admission counts, the exact patient-day denominator for the four-hospital Ontario cohort, confirmation of whether 55,963 discharges is a two-year total, and clarification of whether `/ year` on page 14 denotes annualization or a separate dataset.
+- **Source-grounded alternative interpretation:** Page 14 may have annualized a different or duplicated observation window, but it gives no adjusted count and repeats 1,052 unchanged. Page 30 may preserve the raw two-year cohort while page 14 abbreviates the planning input. Neither interpretation is explicitly documented.
+- **Direct observation:** Page 14 attaches `/ year` to 1,052; page 30 attaches a two-year observation period to the same count and supports an approximately 2-per-1000 rate using the two-year discharge count and four-day stay assumption.
+- **Inferred explanation:** Describing either period label as shorthand or a transcription error is inferential. The supplied package does not provide the cohort-level patient-day file or year-specific tabulation.
+- **Exact remaining human question:** Was 1,052 the raw total for the two-year Ontario cohort or an annual count, and what exact cohort patient-day denominator was used for the 2-per-1000 SCDE planning rate?
+- **State:** Pending Human Adjudication.
 
-The direct supplied PDFs remain the final authority. Fresh text, OCR, table, or rendered derivatives would serve only as locators and were not substituted for the sources. In this run, no such readable derivatives exist because `pdfinfo`, `pdftotext` including layout mode, `pdftoppm`/`pdftocairo`, and `tesseract` were unavailable.
+## C006 — Stat-call absolute reduction does not reproduce from the printed inputs
 
-The affected direct-source scope is:
+- **Cited location found:** The complete planning statement was found in the `Stat Calls` paragraph on [`joi180015supp1_prod.pdf#page=30`](../../../joi180015supp1_prod.pdf#page=30).
+- **Source printed text/value matched:** The paragraph prints a preliminary baseline rate of `8.13 stat calls per 1000 patient days`, a maximum relative risk reduction of `0.181`, and a corresponding absolute risk reduction of `1.45 calls per thousand patient days`.
+- **Comparator matched:** Yes. The paragraph explicitly describes the absolute reduction as corresponding to the baseline rate and maximum relative reduction in the same stat-call power calculation.
+- **Consistency rule applicable:** Yes. On a common denominator, the absolute rate reduction implied by a baseline rate `B` and relative reduction `r` is `B x r`.
+- **Calculation or logical comparison reproduced:** Using the displayed inputs, `8.13 x 0.181 = 1.47153` calls per 1000 patient-days, which conventionally rounds to `1.47` at two decimal places, not `1.45`.
+- **Rounding bounds reproduced:** If `8.13` was rounded to the nearest 0.01, its underlying value lies from 8.125 through values below 8.135; if `0.181` was rounded to the nearest 0.001, its underlying value lies from 0.1805 through values below 0.1815. The corresponding product range is from `8.125 x 0.1805 = 1.4665625` through values below `8.135 x 0.1815 = 1.4765025`. A value displayed as `1.45` to the nearest 0.01 would require an underlying product from 1.445 through values below 1.455. These ranges do not overlap.
+- **Necessary inputs available:** The displayed baseline rate, relative reduction, denominator, and claimed absolute reduction are sufficient to reproduce the multiplication and test conventional rounding.
+- **Exact missing inputs or definitions:** The package does not supply the unrounded baseline rate, unrounded relative reduction, original power-calculation output, or a stated nonstandard rounding method.
+- **Source-grounded alternative interpretation:** The calculation may have used unprinted inputs later displayed as 8.13 and 0.181, but ordinary rounding of both displayed inputs cannot yield 1.45 within the reproduced bounds. Alternatively, 1.45 may reflect a different planning input that is not printed in the paragraph. The supplied package does not identify such an input.
+- **Direct observation:** Page 30 prints 8.13, 0.181, and 1.45 as matched planning values, while the first two multiply to 1.47153.
+- **Inferred explanation:** Any claim that an unprinted input, transcription step, or nonstandard rounding convention produced 1.45 is inferential because the underlying calculation record is absent.
+- **Exact remaining human question:** What exact unrounded baseline rate and relative-reduction inputs produced the stated 1.45-per-1000 absolute reduction, and what rounding convention was applied?
+- **State:** Pending Human Adjudication.
 
-- `jama_parshuram_2018_oi_180015.pdf#page=1` through `jama_parshuram_2018_oi_180015.pdf#page=11`;
-- `joi180015supp1_prod.pdf#page=1` through `joi180015supp1_prod.pdf#page=37`;
-- `joi180015supp2_prod.pdf#page=1` through `joi180015supp2_prod.pdf#page=7`; and
-- `joi180015supp3_prod.pdf#page=1` through `joi180015supp3_prod.pdf#page=14`.
+## C007 — Urgent PICU admission rates do not match the printed counts and denominators at conventional rounding
 
-This is an access-limited 0/0 recheck. It is not an AI disposition and does not supply a paper-level conclusion. If later statistical pass 2 or quality review appends a new stable ID without renumbering the existing set, that appended ID requires a separate source-location recheck containing every mechanical field above.
+- **Cited location found:** The four-hospital SCDE reference table and its explanatory paragraph were found on [`joi180015supp1_prod.pdf#page=30`](../../../joi180015supp1_prod.pdf#page=30).
+- **Source printed text/value matched:** The table prints 55,963 hospital admissions, 7,300 PICU discharges, 1,052 unplanned PICU admissions, `14.5% /PICU Discharges`, and `18 /1000 Hospital Discharges`. The paragraph below calls the same cohort 55,963 hospital discharges and 1,052 urgent PICU admissions over two years.
+- **Comparator matched:** Yes. The printed rate labels place the 1,052 unplanned/urgent PICU admissions over the displayed PICU-discharge and hospital-discharge denominators, respectively; the prose repeats the hospital count and urgent-admission numerator for the same four-hospital cohort.
+- **Consistency rule applicable:** Yes. A percentage is `numerator / denominator x 100`; a rate per 1000 is `numerator / denominator x 1000`. Conventional rounding should be applied only after those quotients are calculated.
+- **Calculation or logical comparison reproduced:** `1052 / 7300 x 100 = 14.4109589%`, which conventionally rounds to `14.4%` at one decimal, not 14.5%. `1052 / 55963 x 1000 = 18.7977778` per 1000, which conventionally rounds to `19` at zero decimals, not 18.
+- **Rounding bounds reproduced:** A percentage displayed as 14.5% to the nearest 0.1% requires an underlying percentage from 14.45% through values below 14.55%; 14.4109589% is below that interval. With numerator 1,052, an integer denominator from 7,231 through 7,280 would produce a percentage in that display interval; the printed 7,300 is outside it. A rate displayed as 18 per 1000 to the nearest whole number requires an underlying rate from 17.5 through values below 18.5; 18.7977778 is above that interval. With numerator 1,052, an integer denominator from 56,865 through 60,114 would produce a rate in that display interval; the printed 55,963 is outside it.
+- **Necessary inputs available:** The numerator, both displayed denominators, both rate scales, and both displayed rates are sufficient to reproduce the quotients and conventional rounding tests.
+- **Exact missing inputs or definitions:** The package does not supply alternative source denominators, unrounded weighted estimates, a rule explaining why table `Hospital Admissions` becomes `/1000 Hospital Discharges`, or a stated rounding/truncation convention. It also does not state whether the displayed counts and rates came from different data extracts.
+- **Source-grounded alternative interpretation:** The displayed rates may have been computed from undisclosed denominators and then placed beside updated counts. The whole-number 18 could result from truncating 18.7977778, but the same truncation approach would display 14.4109589% as 14.4%, not 14.5%; therefore a single conventional truncation rule does not reconcile both rows.
+- **Direct observation:** The page-30 integer pairs yield 14.4109589% and 18.7977778 per 1000, whereas the table displays 14.5% and 18 per 1000.
+- **Inferred explanation:** Use of alternative denominators, mixed rounding rules, truncation, or data-extract updates is inferential; none is documented in the supplied source.
+- **Exact remaining human question:** Which exact denominators and calculation/display conventions produced 14.5% and 18 per 1000, and were the printed counts and rates derived from the same four-hospital data extract?
+- **State:** Pending Human Adjudication.
+
+## Recheck completion
+
+- Stable IDs assigned: 7.
+- Stable IDs rechecked: 7 (`C001`-`C007`).
+- IDs whose current ledger locations all resolve to the stated source passages: 7 (`C001`-`C007`).
+- Prior ledger locator defects repaired: 2 (`C001`, `C004`; both current Supplement 3 citations point to PDF page 6).
+- Items remaining for human review: 7.
+
+No event-level clinical dataset, operational coding manual, adjudication dataset, or document version history is supplied. Those absences limit determination of the applied rule and any event-count consequence, but they do not prevent the printed comparisons above from being reproduced.

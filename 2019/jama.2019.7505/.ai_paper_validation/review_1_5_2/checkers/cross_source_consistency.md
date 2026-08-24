@@ -1,81 +1,72 @@
-# Cross-source quantitative consistency check
+# Cross-Source Consistency Review
 
-## Scope, source basis, and matching rule
+## Scope, evidence boundary, and comparison method
 
-This checker reviewed the complete canonical relationship set: numeric/reporting relationships `N001` through `N055` and inferential-statistical relationships `S001` through `S031`. It used only the current-run extraction maps, relationship inventories and freshly prepared native/layout text for DOC-001 through DOC-006. No prior audit derivative, external source, web material, renderer substitute, OCR substitute, or structured-data file was used.
+This review independently checked every assigned mapped relationship: numeric/reporting `N001`–`N049` and `N200`–`N219`, plus inferential/statistical `S001`–`S038` and `S200`–`S214`. The source set was DOC-001 (main article), DOC-002 (protocol), DOC-003 (protocol-change log), DOC-004 (final SAP), DOC-005 (online supplement), and DOC-006 (data-sharing statement). Only the supplied PDFs and current-run native/layout text and rendered-page assets were used; preserved audit outputs were not used as evidence.
 
-Before comparing printed material, each possible match was checked for population/analysis set, time window, intervention contrast, outcome definition, model or test, effect measure, scale, units, reference group, and displayed precision. Planned protocol/SAP material was not compared as an observed result unless it stated the same final analysis definition. A different analysis set (for example, modified intention-to-treat versus per-protocol), a different summary statistic (mean versus median), or a different estimand (risk ratio versus hazard ratio) was not treated as a numerical conflict.
+Before comparing printed items, this review required the same population/analysis set, time window, treatment contrast and reference group, outcome definition, model/effect measure, scale/unit, and display precision. A difference caused by a distinct analysis (for example, a time-to-event HR versus a cumulative-risk RR), a different population (ITT versus per protocol), or rounding was recorded as not comparable rather than treated as a discrepancy. `P = 0`/`P = .000` formatting was not observed as a standalone issue and would not qualify by itself in any event.
 
-## Complete cross-source coverage
+PDF links below resolve from this checker artifact.
 
-| Canonical relationships reviewed | Matched locations and comparison coverage | Result of cross-source comparison |
+## Complete relationship coverage
+
+| Assigned IDs | Matched cross-source scope | Result |
 |---|---|---|
-| N001-N006; S001-S003 | DOC-001 abstract, methods, flow figure, narrative, Table 3 footnotes; DOC-002 protocol; DOC-003 change history; DOC-004 SAP; DOC-005 eMethods | Population, allocation/analysis totals, assigned PEEP/tidal volume, outcome window, thresholds, sample-size chronology and final primary-analysis definitions were checked. Protocol history was separated from final analysis. The final primary alpha of .044 is concordant between DOC-001 p. 4 and DOC-004 p. 2; the generic .05 wording in DOC-001 applies to other tests and is not a conflicting primary threshold. No qualifying candidate from these relationships. |
-| N007-N016 | DOC-001 Table 1, Figure 2 subgroup denominators, and related eligibility/ARISCAT material in DOC-002 pp. 10, 29 and DOC-005 pp. 18, 22 | Baseline percentages reconcile to their stated denominators at displayed precision. Figure 2 uses defined subgroup denominators, rather than the full modified intention-to-treat total, where appropriate. ARISCAT score values and the >=26 threshold match across support sources. No qualifying candidate. |
-| N017-N027; S004-S006 | DOC-001 narrative/Table 2 and DOC-005 eTables 3-6; DOC-002/DOC-005 intervention and rescue definitions | Intervention levels, units, and arm denominators match. Repeated total-fluid P value (.79), crystalloid-amount P value (.97), vasoactive-use values (491/989 [49.6%] versus 439/987 [44.5%], P=.02), and general surgery/anesthetic descriptions match when the same outcome is displayed. Mean amounts in eTable 3 and median volumes in Table 2 are different summary statistics and were not compared as interchangeable values. One repeated same-count P value is recorded below. |
-| N028-N037; S007-S014 | DOC-001 abstract, Key Points, results narrative, Table 3, Figure 2, discussion, and DOC-005 eTables 7-9/eFigures 8-12 | The primary modified intention-to-treat PPC result is repeated as 211/989 (21.3%) versus 233/987 (23.6%), difference -2.3% (95% CI -5.9% to 1.4%), RR 0.93 (95% CI 0.83 to 1.04), P=.23. Per-protocol eTable 8 and sensitivity eTable 9 use expressly different analysis sets/models and were not compared to that risk ratio as identical results. Time-to-event eFigures use hazard ratios and are not conflicting with the Table 3 risk ratios. The abstract-to-Table 3 hypoxemia interval and eFigure 11 outcome label are recorded below. |
-| N038-N042; S015-S018 | DOC-002 protocol, DOC-003 protocol-change record, DOC-004 SAP, DOC-001 final methods | Original and revised sample-size plans, interim looks/boundaries, and the shift from earlier protocol wording to the finalized SAP were checked as time-stamped planned definitions. The 1912 maximum plus 5% dropout = 2013 enrollment plan matches DOC-002/DOC-003 and the final 2013 randomized count. No qualifying candidate. |
-| N043-N049; S019-S026 | DOC-005 eTables 1 and 3-9 against DOC-001 Tables 1-3 and narrative | ARISCAT table values, arm size (989/987), need for vasoactive drugs, fluid categories, and outcome totals were checked. Pain/dyspnea tables have daily observed denominators and no same-value counterpart in the main article beyond a qualitative comparability statement. Per-protocol and model-specific sensitivity values are explicitly separate from the main modified intention-to-treat estimates. One synthetic-colloid P-value discrepancy is recorded below. |
-| N050-N054; S027-S031 | DOC-005 eFigures 1-12, captions/legends, DOC-001 results/Table 3, DOC-006 availability statement | eFigures 1-7 and 12 supply series definitions/captions but no recoverable plotted coordinates in fresh text; no numeric comparison was invented. eFigures 8-10 have outcome-specific hazards and rates matching the corresponding main outcome counts at displayed precision, without treating HR and RR as the same measure. eFigure 11's title and mortality statistic match the main mortality result, but its body text names another outcome; this is recorded below. DOC-006 supplies no outcome data. |
+| N001–N004; S001–S002 | Abstract, results, Table 3, and Figure 2: randomized/analyzed totals, primary PPC, and hypoxemia. | One CI-sign proposal for N004/S002; otherwise matches after precision and measure checks. |
+| N005–N010; N200; N206; S003–S004 | Eligibility, allocation, flow, sample-size history, analysis population, alpha, and final-plan rules across main article/protocol/change log/SAP. | One ARISCAT threshold proposal (N005); versioned sample-size values and modified-ITT exclusions are appropriately non-identical. |
+| N011–N021 | Table 1 characteristics, row denominators, units, categories, and footnote definitions. | No separate cross-location comparator with a conflicting matched result; complete no-applicable cross-source record. |
+| N022–N033; S005–S019; N201–N202; N207–N211; N214 | Table 2, narrative, protocol/eMethods/eTables, and anesthesia time-series figures: intervention intensity, rescue sequence, intraoperative measures, counts, units, and displayed P values. | Matched items agree; no proposal. Protocol `IBW` and main/eMethods `predicted body weight` use the same printed sex-specific formula, so no measure conflict was established. |
+| N034–N042; S020–S033; N204–N205; N212–N213 | Table 3 outcomes/definitions, SAP and eMethods, per-protocol table, sensitivity table, and time-to-event figures. | Matched main/supplement event rates agree. RR versus HR, ITT versus per-protocol, and `.48` versus `.484` are non-conflicting because their model/population/precision differ. |
+| N043–N048; S034–S038 | Figure 2 subgroup results and main narrative/discussion statements. | All-patient primary RR agrees across Table 3/Figure 2/abstract; narrative event directions agree. Qualitative sensitivity wording has no same-scale numeric comparator. |
+| N203 | Protocol Appendix i and DOC-005 eTable 1 ARISCAT ORs, CIs, beta coefficients, scores, and n=1624. | Exact matched-table agreement; no proposal. |
+| N215–N217; S210–S213 | DOC-005 eFigures 2–10 versus Table 3 and definitions. | Same outcome rates agree where comparable; survival HRs are distinct time-to-event analyses and not inconsistent with Table 3 RRs. |
+| N218; S214 | DOC-005 eFigure 11 mortality display, its narrative, main Table 3, and mortality definitions. | One internal outcome-label proposal; numerical mortality results otherwise match at displayed precision. |
+| N049; N219 | Main-article reference/author pages and DOC-006 data-sharing statement. | COMPLETE no-applicable-result record. |
+| S200–S205 | Protocol/change log/final SAP sample-size, interim-boundary, effect-measure, multiplicity, and planned-model relationships. | No conflict after matching document version and planned-versus-final status. |
+| S206–S209 | DOC-005 ARISCAT, eTables 3–8, and matching main/protocol displays. | No cross-document mismatch found. eTable 8 column's unspecified effect-measure heading is a within-display label limitation, not a cross-source value conflict in this lane. |
+| S214 | DOC-005 eFigure 11 mortality HR/CI/P and label. | Covered in the eFigure 11 proposal below. |
 
-**Coverage count:** 55 of 55 `N` relationships and 31 of 31 `S` relationships reviewed; six direct sources reviewed; three distinct qualifying provisional candidates recorded. The remaining repeated quantitative material was either concordant at displayed precision or was not a like-for-like result after the stated matching rule.
+## Matched results with no qualifying difference
 
-## Qualifying provisional candidates
+- **Primary PPC (N003/S001/S036):** The abstract, Table 3, Figure 2 all-patient line, and DOC-005 eFigure 8 consistently print 211/989 (21.3%) versus 233/987 (23.6%). The abstract/Table 3/Figure 2 RR is 0.93 (95% CI, 0.83–1.04); eFigure 8's HR 0.88 (0.73–1.06) is a separate time-to-event measure and is not a contradiction.
+- **Hypoxemia rates and direction (N004/N040/N046/S030):** Apart from the abstract CI sign recorded below, the abstract and Table 3 both print 5.0% versus 13.6%, a −8.6 percentage-point difference, and P<.001; the narrative correctly says hypoxemia was less common with high PEEP.
+- **Intervention and rescue definition (N002/N023–N024/N031/N201–N202):** Main article, protocol, eMethods, and eTable 2 agree on high PEEP 12 cm H2O with recruitment versus low PEEP 4 cm H2O without planned recruitment and on the group-specific rescue endpoints.
+- **Analysis/population and outcome timing (N006–N010/N204/N206):** The final SAP's modified-ITT definition accords with the article's 1976 analyzed participants; the article separately reports the randomized total (2013) and per-protocol population (1829). Main/supplement distinguish 5-day mortality from in-hospital mortality.
+- **Definitions and effect labels (N039–N042/S029–S033):** Hospital-free days is a day-90 mean-difference analysis, while 5-day mortality uses Cox HRs. These labels match the final SAP and the Table 3 footnotes. The mortality P values `.48` (Table 3) and `.484` (eFigure 11) agree at Table 3's two-decimal precision.
+- **Supplement outcome figures (N215–N217/S211–S213):** eFigures 8–10 label PPC, severe PPC, and PEPC separately and print rates consistent with Table 3 (21.3/23.6, 11.7/13.6, and 16.9/15.2%, respectively).
 
-### XS-001 — Abstract hypoxemia confidence-interval upper limit lacks the negative sign shown in the results table
+## Distinct candidate proposals (no stable C IDs assigned)
 
-**Category:** Cross-document numeric inconsistency.
+### Proposal CS-01 — Hypoxemia confidence interval has an opposite upper-endpoint sign in the abstract
 
-**Exact source locations:** [DOC-001 abstract — PDF p. 1](../../../jama_bluth_2019_oi_190055_16092.pdf#page=1); [DOC-001 Table 3 — PDF p. 9](../../../jama_bluth_2019_oi_190055_16092.pdf#page=9).
+- **Category:** Cross-document numeric inconsistency; statistical reporting inconsistency.
+- **Exact source locations:** [DOC-001 abstract, PDF p. 1](../../../jama_bluth_2019_oi_190055_16092.pdf#page=1); [DOC-001 Table 3, PDF p. 9](../../../jama_bluth_2019_oi_190055_16092.pdf#page=9).
+- **Printed values:** The abstract reports hypoxemia 5.0% versus 13.6%, difference −8.6% (95% CI, −11.1% to **6.1%**), P<.001. Table 3 prints the same event rates and difference but a 95% CI of −11.1% to **−6.1%**, with RR 0.51 (95% CI, 0.40–0.65).
+- **Comparison logic:** Same ITT groups, same intraoperative hypoxemia outcome, same percentage-point difference, and same displayed P value. A confidence interval for a −8.6 percentage-point difference that extends to +6.1 would include the null and point in a direction opposite to the Table 3 interval; it is not a precision-only difference.
+- **Supported alternatives:** The abstract upper endpoint may have lost a minus sign; Table 3 may instead be the erroneous location. The supplied package does not identify the authoritative typeset value.
+- **Human verification steps:** Inspect the publisher proof/source file and analysis output for the hypoxemia absolute risk-difference CI; confirm whether the abstract endpoint should be −6.1% and align every reuse-facing abstract/metadata representation.
+- **Duplicate key:** `DOC001|hypoxemia|ITT high-v-low|absolute-difference CI|abstract p1 vs Table3 p9`.
 
-**Matched result:** Intraoperative hypoxemia among the same modified intention-to-treat population (high PEEP n=989 versus low PEEP n=987), with the same high-minus-low percentage-point contrast and 95% confidence interval.
+### Proposal CS-02 — Main-text ARISCAT eligibility threshold is printed as 18 of 26 or greater, unlike supplied protocol/eMethods threshold of 26 or greater
 
-**Printed values:** The abstract reports 5.0% versus 13.6%, difference -8.6% (95% CI, -11.1% to **6.1%**), P<.001. Table 3 reports hypoxemia as 49 (5.0%) versus 134 (13.6%), difference -8.6% (95% CI, -11.1% to **-6.1%**).
+- **Category:** Cross-document numeric inconsistency; measure, label, or scale inconsistency.
+- **Exact source locations:** [DOC-001 Patients, PDF p. 2](../../../jama_bluth_2019_oi_190055_16092.pdf#page=2); [DOC-002 inclusion criteria, PDF p. 9](../../../joi190055supp1_prod_16092.pdf#page=9); [DOC-005 eMethods inclusion criteria, PDF p. 18](../../../joi190055supp4_prod_16092.pdf#page=18); [DOC-005 eTable 1, PDF p. 22](../../../joi190055supp4_prod_16092.pdf#page=22).
+- **Printed values:** DOC-001 says intermediate-to-high risk was indicated by an ARISCAT “score **18 of 26 or greater**.” DOC-002 states ARISCAT score **≥26**; DOC-005 eMethods says ARISCAT **≥26** is intermediate-to-high risk, and eTable 1 identifies the score framework.
+- **Comparison logic:** These locations describe the same trial's participant eligibility risk threshold, not different analysis populations or time points. `18 of 26 or greater` contains a numeric threshold incompatible with the unqualified ≥26 wording in the protocol/eMethods. The phrase could be a textual/reference-marker corruption, so its intended meaning cannot be resolved from the supplied sources alone.
+- **Supported alternatives:** DOC-001 may have intended `score 18^ of 26 or greater`, where `18` is a citation superscript rather than an eligibility cutoff; alternatively, the printed main-text phrase may be a threshold error. The protocol and eMethods support ≥26 but do not establish the intended typography of DOC-001.
+- **Human verification steps:** Examine the typeset PDF at high magnification and original manuscript/XML to determine whether `18` is citation 18; verify eligibility data/codebook threshold and correct any plain-text accessibility or indexing rendition if it encodes 18 as part of the threshold.
+- **Duplicate key:** `ARISCAT|eligibility threshold|main p2 phrase vs protocol p9/eMethods p18|18-of-26 vs >=26`.
 
-**Comparison logic:** The identical arm percentages and point difference identify the same outcome, population, contrast, and scale. A high-minus-low difference of -8.6 percentage points with a wholly negative interval is consistent with the Table 3 upper endpoint of -6.1%, not with the positive 6.1% printed in the abstract. The differing sign is not explainable by display precision because it changes the interval side of zero.
+### Proposal CS-03 — eFigure 11 mortality narrative calls its displayed mortality rate postoperative extra-pulmonary complications
 
-**Supported alternatives:** The abstract may have lost a typographic minus sign during production, or the table may be the intended canonical display. The supplied sources do not establish which production version governs; the observation concerns the two printed displays only.
+- **Category:** Measure, label, or scale inconsistency; cross-document numeric inconsistency.
+- **Exact source locations:** [DOC-005 eFigure 11, PDF p. 41](../../../joi190055supp4_prod_16092.pdf#page=41); [DOC-005 eFigure 10, PDF p. 40](../../../joi190055supp4_prod_16092.pdf#page=40); [DOC-001 Table 3, PDF p. 10](../../../jama_bluth_2019_oi_190055_16092.pdf#page=10); [DOC-005 eMethods outcome definitions, PDF pp. 20–21](../../../joi190055supp4_prod_16092.pdf#page=20).
+- **Printed values:** eFigure 11 is headed “Probability of death in the first 5 postoperative days” and its parenthetical analysis says “hazard ratio for 5-day mortality, 1.67; 95% CI 0.40 to 6.97; P=0.484.” Its narrative immediately before those values calls 0.5% versus 0.3% “the rate of **postoperative extra-pulmonary complications**.” eFigure 10 is the separately headed PEPC display and correctly reports 16.9% versus 15.2% with HR 1.12. Table 3 separately prints 5-day death 5 (0.5%) versus 3 (0.3%), HR 1.67 (0.40–6.97), P=.48.
+- **Comparison logic:** The figure heading, mortality HR label, Table 3 matched rates, and eMethods distinguish mortality from PEPC. Thus the eFigure 11 narrative label identifies a different defined outcome while retaining the mortality values; it is not a rate-versus-count or rounding difference.
+- **Supported alternatives:** The sentence may have been copied from eFigure 10 without changing its outcome noun; the numerical mortality values and HR may be the intended eFigure 11 content. Supplied sources do not establish which text version is authoritative.
+- **Human verification steps:** Compare eFigure 11 with the final figure proof/source, confirm the outcome noun associated with 0.5%/0.3% and HR 1.67, and correct any caption, figure narrative, or accessibility text that identifies those mortality data as PEPC.
+- **Duplicate key:** `DOC005|eFigure11 p41|mortality 0.5-v-0.3 HR1.67|narrative PEPC label`.
 
-**Human verification steps:** Open the supplied DOC-001 PDF at p. 1 and p. 9; verify the minus sign before the abstract upper endpoint and Table 3 upper endpoint; confirm both locations refer to intraoperative hypoxemia, high minus low PEEP, and the modified intention-to-treat denominators; then consult the final production record to establish the intended abstract interval.
+## Limitations
 
-### XS-002 — Same synthetic-colloid use counts have different displayed P values in the main table and supplement
-
-**Category:** Cross-document numeric inconsistency.
-
-**Exact source locations:** [DOC-001 Table 2 — PDF p. 8](../../../jama_bluth_2019_oi_190055_16092.pdf#page=8); [DOC-005 eTable 3 — PDF p. 24](../../../joi190055supp4_prod_16092.pdf#page=24).
-
-**Matched result:** Synthetic-colloid use during surgery in the same modified intention-to-treat arms, high PEEP n=989 versus low PEEP n=987; binary use measure, high-minus-low percentage-point contrast.
-
-**Printed values:** DOC-001 Table 2 prints 74 (7.5%) versus 56 (5.7%), difference 1.8% (95% CI, -0.3% to 4.0%), **P=.09**. DOC-005 eTable 3 prints the same 74 (7.5%) versus 56 (5.7%), **P=.10**.
-
-**Comparison logic:** Population, intraoperative period, contrast, numerator/denominator, percentage scale, and displayed two-decimal P-value precision all match. The two locations therefore present the same binary-use result but two different rounded P values. This is distinct from the eTable's immediately following amount row (50 [211] versus 35 [171], P=.09), which is a different mean-amount measure and is not the comparator.
-
-**Supported alternatives:** The values may arise from different unnamed tests, continuity corrections, or calculation/rounding pipelines; the source package does not state a row-specific test in either location. If different tests were intentionally used, the result is a labeling/definition clarification rather than a transcription difference.
-
-**Human verification steps:** Inspect the supplied PDF table headers and footnotes on DOC-001 p. 8 and DOC-005 p. 24; confirm that each P value belongs to the binary `Synthetic colloids, No. (%)` row rather than the amount row; obtain the prespecified or analysis-program test for this binary comparison; reproduce it from 74/989 versus 56/987 and determine which displayed precision follows the stated method.
-
-### XS-003 — eFigure 11 title and mortality statistic conflict with its body-text outcome label
-
-**Category:** Measure, label, or scale inconsistency.
-
-**Exact source locations:** [DOC-005 eFigure 11 — PDF p. 41](../../../joi190055supp4_prod_16092.pdf#page=41); [DOC-001 Table 3, post hoc mortality — PDF p. 10](../../../jama_bluth_2019_oi_190055_16092.pdf#page=10).
-
-**Matched result:** Five-day mortality in the modified intention-to-treat high- versus low-PEEP comparison, assessed with a time-to-event hazard ratio.
-
-**Printed values:** eFigure 11 is titled `Probability of death in the first 5 postoperative days` and prints 0.5% versus 0.3%, `hazard ratio for 5-day mortality, 1.67; 95% CI 0.40 to 6.97; P=.484`. Its body sentence instead states that the rate is for `postoperative extra-pulmonary complications`. DOC-001 Table 3 reports five-day mortality as 5 (0.5%) versus 3 (0.3%), HR 1.67 (95% CI 0.40 to 6.97), P=.48.
-
-**Comparison logic:** The eFigure title, hazard-ratio label, rates, interval, and P value match the main-paper five-day mortality result at displayed precision. They cannot describe postoperative extrapulmonary complications, whose main-paper rates are 16.9% versus 15.2% and whose eFigure 10 HR is 1.12 (95% CI 0.89 to 1.39), P=.314. Thus the eFigure 11 body-text outcome label conflicts with its own displayed measure and with the matched main result.
-
-**Supported alternatives:** The phrase `postoperative extra-pulmonary complications` in eFigure 11 may be a carryover from eFigure 10, while the mortality title/statistics may be intended. The package does not establish whether any underlying figure curve is also mislabeled because its plotted coordinates are not recoverable from fresh text.
-
-**Human verification steps:** Open DOC-005 pp. 40-41 and DOC-001 p. 10; verify eFigure 10's extrapulmonary-complication values and eFigure 11's death title, body sentence, and mortality hazard ratio; confirm the main Table 3 mortality row; inspect the original figure labels/curve legend and final supplement production files to determine the intended outcome label.
-
-## Noncandidate records and limitations
-
-- The protocol's .05 design language and the SAP/main article's final .044 primary-outcome alpha were checked with their time and purpose matched. DOC-001 p. 4 explicitly states the .044 primary threshold, and DOC-004 p. 2 states the same threshold; this is not a candidate.
-- The main primary PPC risk ratio (0.93) and eFigure 8 time-to-PPC hazard ratio (0.88) have the same population/window but different estimands and models. The values were not treated as conflicting.
-- Main modified intention-to-treat estimates and eTable 8 per-protocol estimates have different analysis sets; eTable 9 random-effect, proportional-odds, GEE, and average-relative-effect values have different models/scales. They were not compared as repeated identical results.
-- eFigures 1-7 and 12 could be checked for printed labels, captions, model descriptions, and available result text, but their plotted coordinates/P values are unavailable in the fresh text assets and no current-run renderer/OCR tool is available. No coordinate-level cross-source claim was made.
-- No coherent finite-precision `P=0` or equivalent display-zero P value was encountered as a basis for a candidate.
-
-**Checker limitation:** Fresh native/layout extraction partly scrambles Table 2 p. 7 and Table 3 p. 9 column alignment. This checker used only rows whose identity and comparator are explicitly recoverable in the fresh text and did not infer row-to-column assignments from the scramble.
+The review is confined to supplied PDFs and their fresh extraction/rendering assets. It does not infer unreported model specifications or adjudicate which conflicting location is correct. DOC-006 contains no result-bearing quantitative content, and author/reference pages contain no matched trial result. No candidate ID, severity, validity judgment, or correction is assigned here; all three proposals require human adjudication.

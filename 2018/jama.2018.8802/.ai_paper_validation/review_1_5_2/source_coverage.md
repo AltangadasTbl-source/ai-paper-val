@@ -1,4 +1,4 @@
-# Fresh Source Coverage
+# Source Coverage
 
 | Source ID | Source path | Unit type | Total units | Reusable units | Fresh-required units | Mapped units | Status |
 |---|---|---|---:|---:|---:|---:|---|
@@ -6,6 +6,4 @@
 | DOC-002 | joi180070supp1_prod.pdf | PDF_PAGE | 25 | 0 | 25 | 25 | COMPLETE |
 | DOC-003 | joi180070supp2_prod.pdf | PDF_PAGE | 9 | 0 | 9 | 9 | COMPLETE |
 
-Mapped units mean every source page has fresh native text, fresh coordinate-layout evidence, an assigned result-relevant scope, and an explicit usability decision in `evidence_asset_inventory.md`. This is fresh source preparation; quantitative relationship discovery is a later stage.
-
-**Totals:** 44 total source units; 0 reusable units; 44 fresh-required units; 44 mapped units.
+Fresh-source units: 44. Reusable units were fixed at zero for the source-first restart. “Mapped” here means fresh preprocessing coverage and evidence-asset assignment, not scientific relationship mapping.

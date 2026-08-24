@@ -1,8 +1,7 @@
 # Limitations and Missing Definitions
 
-- All four direct PDF sources were freshly mapped across 64 of 64 declared PDF-page units, but the available fresh extraction was page-addressable native text rather than layout-preserving text.
-- `pdfinfo`, `pdftotext`, `pdftoppm`, `pdftocairo`, `tesseract`, `libreoffice`, and `soffice` were unavailable in the runtime. Consequently, no direct rendered-page inspection or CPU OCR was available for layout-sensitive tables and figures.
-- C001 requires visual confirmation that the caption wording and its apparent comparator are displayed together as represented by the native text. C002 and C003 require visual confirmation that the count sequences are positioned under the respective omega-3 panel labels. These are named human-verification steps, not reasons to remove the candidates.
-- C004 lacks a supplied definition accounting for the 47-person difference between the table title/rows and its attached inclusion footnote.
-- The review is limited to supplied-package quantitative reporting consistency. It does not audit raw data, clinical validity, study design generally, author intent, or downstream use.
-- No external literature, web source, legacy audit derivative, GPU, or source modification was used.
+- The supplied package contains no participant-level data or figure-production files, so the review cannot determine whether count-column inconsistencies arose in data preparation, plotting code, or publication production, and it cannot prescribe a final correction.
+- The package does not provide unrounded model output, full person-time denominators, every interaction-test coefficient/standard error/degrees of freedom, proportional-hazards diagnostic statistics, or correlation sample sizes/test definitions. Exact checks were limited to source-supported rules and labelled diagnostic approximations.
+- For C003-C006, supplied evidence supports participant-count-column identity mismatches only. Overall means or geometric-change ratios remain aligned with printed treatment headings; the package does not establish that subgroup estimates or forest directions require remapping.
+- For C007, the package lacks a later change-control record or rationale explaining the move from 10 planned to 20 implemented imputations. An intentional analysis update remains possible.
+- No candidate is an adjudication, severity rating, correction, or conclusion-impact claim. All seven remain Pending Human Adjudication.

@@ -1,32 +1,27 @@
 # Workflow 1.5.2 Run State
 
-- **Profile:** 1.5.2 full source-first restart
+- **Profile:** 1.5.2
 - **Run status:** COMPLETE
-- **Target basis:** Four direct PDF sources comprising one 11-page main article and three supplements (33, 19, and 1 page), all 64 units requiring fresh processing; multiple supplements and expected table/statistical cross-document mapping increase relationship volume, while the package has no Office or structured-data sources. Direct PDF/OCR utilities are unavailable, but a fresh page-addressable local Acrobat native-text fallback covers all units; layout rendering remains unavailable.
+- **Target basis:** Four supplied PDFs contain 64 pages: an 11-page main article plus 33-page, 19-page, and 1-page support files. All 64 pages require fresh native and layout extraction; result-relevant pages may require targeted rendering, and complete main/support mapping plus two independent statistical passes is required. The scope is smaller than the 102-page calibration package but has no reusable units.
 - **Total source units:** 64
 - **Fresh-source units:** 64
-- **Target elapsed minutes:** 45-70
-- **Started UTC:** 2026-08-24T00:21:14Z
-- **Finished UTC:** 2026-08-24T01:15:15Z
-- **Observed elapsed minutes:** 54.0
+- **Target elapsed minutes:** 30-45
+- **Started UTC:** 2026-08-24T01:53:43Z
+- **Finished UTC:** 2026-08-24T02:34:32Z
+- **Observed elapsed minutes:** 40.8
 - **Target status:** MET_TARGET
 - **Exceedance causes:** None
-- **Coordinator:** COORDINATOR-CURRENT-SESSION
-- **Source inventory status:** INITIALIZED
-- **Preprocessing status:** COMPLETE
-- **Coverage planning status:** COMPLETE
-- **Main quantitative mapping status:** COMPLETE — 45 numeric and 25 statistical relationships
-- **Support quantitative mapping status:** COMPLETE — 21 numeric and 19 statistical relationships
-- **Numeric consistency status:** COMPLETE AFTER QUALITY REPAIR — 66/66 relationships; three proposals registered as C002, C003, C004
-- **Statistical pass 1 status:** COMPLETE — 44/44 relationships; one proposal
-- **Cross-source consistency status:** COMPLETE AFTER QUALITY REPAIR — 110/110 N/S relationships; matched-display candidates C002 and C003 synchronized; C004 recognized as internal same-table evidence
-- **Candidate registration status:** COMPLETE AFTER QUALITY REPAIR — C001, C002, C003, C004; no renumbering or suppression
-- **Evidence recheck status:** COMPLETE — C001, C002, C003, C004 mechanically rechecked
-- **Statistical pass 2 status:** COMPLETE AFTER QUALITY REPAIR — distinct fresh Terra/high agent; 44/44 relationships and C001 through C004 reviewed; zero new proposals
-- **Evidence-quality audit status:** COMPLETE — C001 through C004, 12/12 coverage rows, 4/4 source rows, 64/64 mapped units, and execution records audited
-- **Report generation status:** COMPLETE — four-card Markdown assembled
-- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE — authoritative response-level runtime usage was not exposed for the coordinator or any specialist
-- **Source integrity status:** UNCHANGED — before/after SHA-256 records match for all four direct sources
-- **HTML rendering status:** COMPLETE — standalone HTML rendered with profile 1.5.2
-- **Mechanical validation status:** PASS — `review_validation.json` reports profile 1.5.2 PASS with four candidates and no errors
-- **Runtime limitation:** `pdfinfo`, `pdftotext`, `pdftoppm`, `pdftocairo`, `tesseract`, `libreoffice`, and `soffice` were not found on PATH at initialization. Fresh page-addressable native text was obtained for all 64 pages using the installed local Acrobat COM page interface; layout rendering and OCR remain unavailable. No software was installed and no GPU was probed or invoked.
+- **Current stage:** COMPLETE
+- **Source integrity before preprocessing:** RECORDED
+- **Source integrity after review:** VERIFIED_UNCHANGED
+- **Coverage status:** COMPLETE_ALL_64_SOURCE_UNITS_AND_ALL_REQUIRED_STAGE_ROWS
+- **Statistical pass 1:** COMPLETE_FOR_S001_THROUGH_S039
+- **Statistical pass 2:** COMPLETE_FOR_S001_THROUGH_S039_NO_NEW_CANDIDATES
+- **Candidate ledger status:** COMPLETE_C001_THROUGH_C007
+- **Evidence recheck status:** COMPLETE_C001_THROUGH_C007
+- **Evidence-quality audit status:** COMPLETE_C001_THROUGH_C007_REPAIRS_APPLIED
+- **Markdown report status:** COMPLETE_C001_THROUGH_C007
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE; TOTAL_TOKEN_COUNT_INCOMPLETE; KNOWN_TOTAL_0; KNOWN_COST_USD_0.000000; ESTIMATED_COMPLETE_COST_UNAVAILABLE
+- **HTML render status:** COMPLETE_STANDALONE_HTML5_WITH_EMBEDDED_CSS_AND_TOC
+- **Mechanical validation status:** PASS
+- **Recorded limitations or failed checks:** Runtime/API token counts were not exposed for the coordinator or specialists, so authoritative token totals and a complete token-price estimate are unavailable; scientific evidence limitations are recorded in limitations.md.

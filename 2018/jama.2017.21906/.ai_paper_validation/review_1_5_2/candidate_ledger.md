@@ -1,66 +1,75 @@
 # Stable Candidate Ledger
 
-All five distinct source-grounded consistency candidates remain **Pending Human Adjudication**. Duplicate proposals were merged only when they concerned the same printed values, comparator, and rule. Stable IDs will not be deleted, merged, or renumbered.
+All records below are quality-control candidates and remain **Pending Human Adjudication**. Genuine duplicate discoveries from the numeric, cross-source, and statistical lanes were merged before these stable IDs were assigned. No candidate was deleted, capped, ranked, or adjudicated.
 
-## Duplicate-merge record
+## C001 — In-hospital beta-blocker adjusted-risk-difference CI endpoint differs between Table 2 and narrative
 
-- Numeric NCP-001, cross-source CP-01, and statistical P1-S008-01 were merged as C001.
-- Cross-source CP-02 and statistical P1-S021-01 were merged as C002.
-- Numeric NCP-002, cross-source CP-03, and statistical P1-S507-01 were merged as C003.
-- Cross-source CP-04 remained distinct as C004.
-- Cross-source CP-05 and statistical P1-S505-01 were merged as C005.
+- **Category:** Statistical reporting inconsistency
+- **Provenance:** S009; SP1-001.
+- **Exact source locations:** DOC-001, `jama_huffman_2018_oi_170166.pdf`, PDF p. 6, Table 2 and adjacent Results narrative.
+- **Printed evidence:** Table 2 reports adjusted risk difference 6.25% (95% CI, 4.10% to 8.40%) and OR 1.46 (1.29 to 1.65). The narrative reports the same named in-hospital beta-blocker comparison as 6.25% (95% CI, 4.10% to 8.10%) and OR 1.46 (1.29 to 1.65).
+- **Consistency rule and calculation:** A same-model, same-contrast repetition should preserve the same CI endpoints. The printed upper endpoints differ by 0.30 percentage point (8.40 minus 8.10).
+- **Direct observation versus inference:** The differing printed endpoints are direct observations. Treating the two occurrences as the same adjusted result is supported by the identical outcome, point estimate, lower endpoint, OR, and OR interval; the source does not identify a second model.
+- **Alternative source-grounded interpretation:** One occurrence may be a transcription error or may use an unlabelled distinct output; the package does not establish which value is supported by the analysis output.
+- **Exact human question:** Which upper confidence-limit endpoint is supported for the adjusted in-hospital beta-blocker risk difference?
+- **Status:** Pending Human Adjudication
 
-## C001 — In-hospital beta-blocker adjusted-risk-difference CI endpoint mismatch
-
-- **Category:** Cross-document numeric inconsistency
-- **Relationships/provenance:** N024; S008; numeric, cross-source, and statistical-pass-1 proposals.
-- **Exact source locations:** [Main article Table 2 — PDF p. 6](../../jama_huffman_2018_oi_170166.pdf#page=6); [main article Results narrative — PDF p. 7](../../jama_huffman_2018_oi_170166.pdf#page=7).
-- **Direct source evidence:** Table 2 prints adjusted risk difference `6.25 (4.10 to 8.40)`; the matched narrative prints `6.25% [95% CI, 4.10%-8.10%]`. OR `1.46 (1.29-1.65)` matches in both locations.
-- **Comparator and rule:** Same eligible population, intervention-control contrast, adjusted measure, point estimate, lower endpoint, and OR imply a matched result. The upper endpoints differ by `8.40 - 8.10 = 0.30` percentage points, exceeding two-decimal rounding tolerance.
-- **Alternative source-grounded interpretations:** Either occurrence may be a transcription/typesetting error, or an unstated distinct analysis may exist; supplied locations identify no different population, adjustment set, time point, or estimand.
-- **Remaining human question:** Which upper 95% CI endpoint is authoritative for this result?
-- **Status:** Pending Human Adjudication.
-
-## C002 — Discharge beta-blocker adjusted point estimates mismatch
+## C002 — Discharge beta-blocker adjusted point estimates differ between Table 2 and narrative
 
 - **Category:** Cross-document numeric inconsistency
-- **Relationships/provenance:** S021; cross-source and statistical-pass-1 proposals.
-- **Exact source locations:** [Main article Table 2 — PDF p. 6](../../jama_huffman_2018_oi_170166.pdf#page=6); [main article Results narrative — PDF p. 7](../../jama_huffman_2018_oi_170166.pdf#page=7).
-- **Direct source evidence:** Table 2 prints adjusted risk difference `6.69 (4.43 to 8.95)` and OR `1.48 (1.30-1.68)`; the matched narrative prints `6.63% [4.43%-8.95%]` and OR `1.47 [1.30-1.68]`.
-- **Comparator and rule:** The named population, contrast, adjusted analysis, and interval endpoints match, while RD differs by `0.06` percentage points and OR by `0.01` at the printed precision.
-- **Alternative source-grounded interpretations:** One occurrence may be a transcription/rounding issue or each may derive from a different analysis run, but no different model or population is printed.
-- **Remaining human question:** Which RD and OR point estimates belong to the finalized discharge beta-blocker analysis?
-- **Status:** Pending Human Adjudication.
+- **Provenance:** N036; S052; NC-001; XC-001; SP1-002.
+- **Exact source locations:** DOC-001, `jama_huffman_2018_oi_170166.pdf`, PDF p. 6, Table 2; PDF p. 7, Results narrative.
+- **Printed evidence:** Table 2 reports adjusted risk difference 6.69% (95% CI, 4.43% to 8.95%) and OR 1.48 (1.30 to 1.68). The narrative reports 6.63% with the same risk-difference interval and OR 1.47 with the same OR interval.
+- **Consistency rule and calculation:** A same-outcome, same-contrast, same-model repetition should preserve point estimates at displayed precision unless a different analysis is named. The risk differences differ by 0.06 percentage point and the ORs by 0.01, while both printed intervals are identical.
+- **Direct observation versus inference:** The two printed estimate pairs and identical intervals are direct observations. Their identity as the same adjusted result is inferred from the named discharge outcome, intervention-versus-control contrast, and unchanged intervals.
+- **Alternative source-grounded interpretation:** Unreported higher-precision or distinct model output could explain the values; no such distinction is supplied.
+- **Exact human question:** Do both locations report the same adjusted analysis and, if so, which risk difference and OR should be retained?
+- **Status:** Pending Human Adjudication
 
-## C003 — eTable 1 difference footnote conflicts with the displayed comparison groups
-
-- **Category:** Measure, label, or scale inconsistency
-- **Relationships/provenance:** N517; S507; numeric, cross-source, and statistical-pass-1 proposals.
-- **Exact source locations:** [Supplement 3 eTable 1 — PDF p. 17](../../joi170166supp3_prod.pdf#page=17); [main article missing-follow-up narrative — PDF p. 6](../../jama_huffman_2018_oi_170166.pdf#page=6).
-- **Direct source evidence:** Columns are `Complete Follow Up n=21,079` and `Missing Follow Up n=295`, but footnote a says `Difference = intervention minus control`. Printed examples follow missing minus complete: age `60.0-60.6=-0.6`, male `71.2%-75.8%=-4.6%`, tobacco `42.4%-30.8%=11.6%`.
-- **Comparator and rule:** A difference footnote must name the displayed comparator populations. Complete/missing follow-up and intervention/control are distinct package-defined partitions.
-- **Alternative source-grounded interpretations:** The footnote may be copied from eTable 2; alternatively the table heading could be wrong, but the printed arithmetic supports missing-minus-complete.
-- **Remaining human question:** Should footnote a identify `missing follow-up minus complete follow-up`, or was another comparison intended?
-- **Status:** Pending Human Adjudication.
-
-## C004 — SAP and article use different component sets under the same outcome name
+## C003 — eTable 1 difference footnote names groups not displayed in the table
 
 - **Category:** Measure, label, or scale inconsistency
-- **Relationships/provenance:** N026, N027, S032, and cross-source CP-04; planned/reported measure-definition relationship.
-- **Exact source locations:** [SAP secondary endpoint — PDF p. 5](../../joi170166supp2_prod.pdf#page=5); [main article outcome definition — PDF p. 3](../../jama_huffman_2018_oi_170166.pdf#page=3); [main article Table 3 footnote — PDF p. 7](../../jama_huffman_2018_oi_170166.pdf#page=7).
-- **Direct source evidence:** The SAP defines `optimal in-hospital medication use` as aspirin, ADP-receptor antagonist, heparin, statin, and beta blocker. The article uses the same outcome label for aspirin, ADP-receptor antagonist, anticoagulant, and beta blocker; it states in-hospital statin use was predefined but not collected. Table 3 reports 31.7% control and 35.8% intervention under the four-component definition.
-- **Comparator and rule:** The supplied SAP and article use the same outcome name for different printed component sets. The article directly defines its four-component measure and explains why statin is absent; the package supplies no amendment or change-control record linking that definition to the five-component SAP measure.
-- **Alternative source-grounded interpretations:** This may be an operational deviation transparently explained by absent statin data, and a nonsupplied amendment may authorize the modified composite.
-- **Remaining human question:** Was the component-set change formally prespecified or amended, and when did the four-component definition replace the SAP definition?
-- **Status:** Pending Human Adjudication.
+- **Provenance:** N308; S305; NC-002; XC-002; SP1-003.
+- **Exact source locations:** DOC-004, `joi170166supp3_prod.pdf`, PDF p. 17, eTable 1 title, headers, values, and footnote a.
+- **Printed evidence:** eTable 1 is titled for complete versus missing follow-up and displays columns `Complete Follow Up` (n=21,079) and `Missing Follow Up` (n=295), followed by `Difference (95% CI)`. Footnote a states `Difference = intervention minus control.` For age, the printed difference -0.6 equals 60.0 minus 60.6, the displayed missing-minus-complete contrast.
+- **Consistency rule and calculation:** A difference footnote should name the groups actually compared. The displayed columns contain follow-up-status groups, not intervention/control groups; 60.0 - 60.6 = -0.6.
+- **Direct observation versus inference:** The headers, footnote, and age arithmetic are direct. A carried-over footnote is a possible explanation, not an established cause.
+- **Alternative source-grounded interpretation:** The footnote may have been copied from eTable 2, but the supplied package does not explicitly define the eTable 1 sign convention for every row.
+- **Exact human question:** What comparator order and sign convention were used for the eTable 1 differences?
+- **Status:** Pending Human Adjudication
 
-## C005 — Published prespecified age strata do not match the supplied SAP
+## C004 — Reported prespecified age-subgroup boundaries differ from the supplied SAP
+
+- **Category:** Cross-document numeric inconsistency
+- **Provenance:** S303; S038; S039; S040; XC-003; SP1-004.
+- **Exact source locations:** DOC-003, `joi170166supp2_prod.pdf`, PDF p. 7, section 7.5.2; DOC-001, `jama_huffman_2018_oi_170166.pdf`, PDF p. 3, statistical-analysis description, and PDF p. 9, Figure 3.
+- **Printed evidence:** The supplied SAP lists the a priori participant-level age subgroup as younger than 65 years versus older than 65 years. The article states that results were reported by prespecified subgroups, while Figure 3 displays age groups younger than 50, 50-69, and 70 years or older.
+- **Consistency rule and calculation:** A numeric subgroup definition described as prespecified should match the supplied prespecification or identify a documented amendment. The supplied boundaries change from a two-group boundary at 65 years to three groups bounded at 50 and 70 years.
+- **Direct observation versus inference:** The two printed sets of cut points and the article's prespecified label are direct observations. Whether an unprovided amendment exists is unknown.
+- **Alternative source-grounded interpretation:** A separate or amended analysis plan could have authorized the displayed categories, but none is included in the package.
+- **Exact human question:** Were the Figure 3 age categories prespecified in a supplied or unsupplied amendment, and what definition should the prespecified label reference?
+- **Status:** Pending Human Adjudication
+
+## C005 — The named optimal in-hospital medication composite uses different component labels across final-result tables
 
 - **Category:** Measure, label, or scale inconsistency
-- **Relationships/provenance:** S505 with S037-S039; cross-source and statistical-pass-1 proposals.
-- **Exact source locations:** [SAP subgroup analyses — PDF p. 7](../../joi170166supp2_prod.pdf#page=7); [main article Methods — PDF p. 3](../../jama_huffman_2018_oi_170166.pdf#page=3); [main article Figure 3 — PDF p. 9](../../jama_huffman_2018_oi_170166.pdf#page=9).
-- **Direct source evidence:** The SAP specifies age `<65 years and >65 years`. Figure 3 is titled as `Prespecified Subgroups` but displays `<50`, `50-69`, and `≥70` years; the article narrative also calls the subgroups prespecified.
-- **Comparator and rule:** An exact subgroup display labelled prespecified should map to the supplied prespecified categories. A two-category 65-year split does not map to the three displayed 50/70-year strata.
-- **Alternative source-grounded interpretations:** A later amendment or separate prespecification may exist, or the article may use “prespecified” at a broader category level; no supplied source documents that mapping.
-- **Remaining human question:** Were the 50/70-year categories prespecified in an amendment or other supplied-to-authors analysis record?
-- **Status:** Pending Human Adjudication.
+- **Provenance:** S033; S307; S308; SP1-005.
+- **Exact source locations:** DOC-001, `jama_huffman_2018_oi_170166.pdf`, PDF p. 3 and PDF p. 7, Table 3 footnote c; DOC-004, `joi170166supp3_prod.pdf`, PDF p. 21, eTable 5 footnote c, and PDF p. 22, eTable 6 footnote b.
+- **Printed evidence:** The main article and eTable 5 define optimal in-hospital medication with aspirin, an ADP-receptor antagonist, an anticoagulant, and a beta-blocker. eTable 6 uses the same composite name but lists aspirin, an ADP-receptor antagonist, heparin, and a beta-blocker.
+- **Consistency rule and calculation:** A repeated named composite should retain the same component definition or explicitly distinguish a narrower construct. The printed component substitution is `anticoagulant` versus `heparin`.
+- **Direct observation versus inference:** The component wording is directly printed. Whether heparin was the only anticoagulant in the analyzed data is not supplied.
+- **Alternative source-grounded interpretation:** If heparin was the only qualifying anticoagulant, the terms could be extensionally equivalent; the package does not establish that fact.
+- **Exact human question:** Did eTable 6 analyze the same medication composite as Table 3 and eTable 5, and what exact anticoagulant component definition was used?
+- **Status:** Pending Human Adjudication
+
+## C006 — Hospital-type subgroup is reported as prespecified but is absent from the supplied SAP subgroup list
+
+- **Category:** Cross-document numeric inconsistency
+- **Provenance:** S049; S050; S051; S303; SP2-001.
+- **Exact source locations:** DOC-001, `jama_huffman_2018_oi_170166.pdf`, PDF p. 3, Statistical Analysis, and PDF p. 9, Figure 3 and adjacent Results narrative; DOC-003, `joi170166supp2_prod.pdf`, PDF p. 7, section 7.5.2.
+- **Printed evidence:** The article says results are reported by prespecified subgroups including hospital type, and Figure 3 displays government (9 hospitals), nonprofit (12), and private (42). The supplied SAP lists site-level subgroups as hospital size and use of quality-improvement toolkit components; it does not list hospital type.
+- **Consistency rule and calculation:** A final subgroup labelled prespecified should appear in the supplied prespecification or a supplied amendment. The article's list includes the three-category hospital-type subgroup, whereas the supplied SAP list includes toolkit-component use and does not name hospital type; this is a categorical definition comparison rather than rounding arithmetic.
+- **Direct observation versus inference:** The article's prespecified label, its three hospital-type categories, and the SAP list are direct observations. Whether a later unprovided amendment added hospital type is unknown.
+- **Alternative source-grounded interpretation:** A separate or amended plan could have authorized hospital type, but no such document is included in the package.
+- **Exact human question:** Was hospital type prespecified in an amendment or separate plan, and how should the article's prespecified label relate to the subgroup list supplied here?
+- **Status:** Pending Human Adjudication

@@ -1,115 +1,115 @@
 # Stable Candidate Ledger
 
-All checker outputs were merged before stable IDs. Records were merged only when they concern the same printed values or statements, comparator, and rule. `NC002` and `XC001` are one genuine duplicate; all other provisional records remain distinct. Every candidate is **Pending Human Adjudication**.
+Eight distinct quality-control candidates were registered after merging only genuine duplicate proposals. `NCAND002` and `P1CAND002` concerned the same printed LDL threshold contrast and were merged as C002 with both provenances retained. All other proposals concern different printed values, comparators, or rules. Stable IDs will not be deleted, merged, or renumbered. Every entry remains **Pending Human Adjudication**.
 
-## C001 — Table 1 CAD/previous-MI percentage does not reconcile with 311/2400
+## C001 — Table 1 CAD/previous-myocardial-infarction percentage does not reproduce
 
-- **Discovery provenance:** NC001.
-- **Category:** Numeric or arithmetic inconsistency.
-- **Exact source locations:** DOC-001, [jama_wang_2018_oi_180070.pdf — PDF p. 6](<../../jama_wang_2018_oi_180070.pdf#page=6>), Table 1, `CAD/previous myocardial infarction`, intervention column.
-- **Direct source evidence:** The cell prints `311 (13.05)` and the intervention denominator is 2400.
-- **Rule/calculation:** `311 / 2400 × 100 = 12.9583%`, which rounds to `13.0%` at one decimal or `12.96%` at two decimals, not `13.05%`.
-- **Alternative source-grounded interpretation:** An unstated denominator or a transcription issue could explain the cell; neither is supplied.
-- **Human question:** Does the direct PDF intentionally report `13.05`, and which count, denominator, or percentage is intended?
+- **Candidate statement:** The intervention cell prints `311 (13.05)` under a 2,400-patient column, but the displayed fraction does not yield 13.05%.
+- **Category:** Numeric or arithmetic inconsistency
+- **Exact source locations:** DOC-001, `jama_wang_2018_oi_180070.pdf`, PDF p. 6, Table 1, `CAD/previous myocardial infarction`, intervention column and `Patients, No. 2400` header.
+- **Source evidence:** Numerator 311; denominator 2,400; percentage 13.05.
+- **Reported-versus-comparator:** Reported 13.05%; exact fraction 311/2,400.
+- **Consistency rule:** A printed percentage should reproduce from its printed numerator and denominator within its displayed precision.
+- **Calculation:** `311 / 2400 × 100 = 12.9583%`, which rounds to 13.0% at one decimal or 12.96% at two decimals, not 13.05%.
+- **Alternative source-grounded interpretations:** No alternative denominator or calculation is printed; a typographic error or unprinted rule remains possible but unestablished.
+- **Provenance:** N030; NCAND001.
+- **Exact remaining human question:** Does 13.05 use an unprinted denominator/calculation, or which displayed element is intended?
+- **Status:** Pending Human Adjudication
 
-## C002 — LDL eligibility threshold is printed as both >100 and ≥100 mg/dL
+## C002 — LDL eligibility boundary differs between result labels and supplied measure definition
 
-- **Discovery provenance:** NC002 and XC001, merged as the same comparator/rule.
-- **Category:** Measure, label, or scale inconsistency.
-- **Exact source locations:** DOC-001, [PDF p. 3](<../../jama_wang_2018_oi_180070.pdf#page=3>) Outcomes and [PDF p. 7](<../../jama_wang_2018_oi_180070.pdf#page=7>) Table 2; DOC-002, [PDF p. 14](<../../joi180070supp1_prod.pdf#page=14>) and [PDF p. 15](<../../joi180070supp1_prod.pdf#page=15>); DOC-003, [PDF p. 3](<../../joi180070supp2_prod.pdf#page=3>) eTable 1.
-- **Direct source evidence:** The article uses `LDL >100 mg/dL`; the protocol and eTable definition use `LDL ≥100 mg/dL` and state additional eligibility conditions.
-- **Rule/calculation:** `>100` excludes exactly 100 mg/dL, whereas `≥100` includes it, so the eligible denominator definitions are not identical.
-- **Alternative source-grounded interpretation:** The main article may abbreviate the full specification; the package does not identify the rule used to construct the displayed denominators.
-- **Human question:** Which boundary and eligibility conditions governed the reported lipid-lowering denominators?
+- **Candidate statement:** The main and sensitivity result rows use `LDL >100 mg/dL`, while the supplied formal measure definition uses `LDL ≥100 mg/dL`.
+- **Category:** Measure, label, or scale inconsistency
+- **Exact source locations:** DOC-001, `jama_wang_2018_oi_180070.pdf`, PDF p. 7, Table 2 lipid-lowering row; DOC-002, `joi180070supp1_prod.pdf`, PDF p. 15, lipid-lowering definition; DOC-003, `joi180070supp2_prod.pdf`, PDF p. 3, eTable 1 definition, and PDF p. 8, eTable 4 result label.
+- **Source evidence:** Result labels state `>100 mg/dL`; definition states `≥100 mg/dL`, with other separately stated eligibility conditions.
+- **Reported-versus-comparator:** A strict threshold excludes LDL exactly 100 mg/dL; an inclusive threshold includes it.
+- **Consistency rule:** Matched measure labels and definitions should identify the same boundary and resulting eligibility population.
+- **Calculation:** Discrete-symbol comparison: `>100 ≠ ≥100`; no rounding tolerance applies.
+- **Alternative source-grounded interpretations:** The result-row wording may be an abbreviated display while the formal definition controlled eligibility, but the supplied package does not say so.
+- **Provenance:** N023, N044, S009, S059; NCAND002 and P1CAND002 merged as a genuine duplicate.
+- **Exact remaining human question:** Which threshold governed the reported denominators, particularly for LDL exactly 100 mg/dL?
+- **Status:** Pending Human Adjudication
 
-## C003 — Exact 20-patients-per-cluster statement conflicts with the 801 baseline total
+## C003 — eTable 4 discharge-antithrombotics control percentage does not reproduce
 
-- **Discovery provenance:** NC003.
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 2](<../../joi180070supp2_prod.pdf#page=2>), baseline-survey statement; DOC-001, [PDF p. 3](<../../jama_wang_2018_oi_180070.pdf#page=3>), 40 hospitals, and [PDF p. 6](<../../jama_wang_2018_oi_180070.pdf#page=6>), Table 1 header reporting 801 baseline patients.
-- **Direct source evidence:** The supplement states that 20 patients per cluster were prospectively included; the package reports 40 clusters and 801 baseline-survey patients.
-- **Rule/calculation:** `20 × 40 = 800`, one fewer than the printed 801 total.
-- **Alternative source-grounded interpretation:** One cluster may have included an extra patient, or 20 may describe a target, but the source does not qualify the statement as approximate.
-- **Human question:** Was 20 exact for every cluster, and if so why is the baseline denominator 801?
+- **Candidate statement:** The control cell prints `2141/2400 (89.3)`, but the fraction rounds to 89.2% at one decimal.
+- **Category:** Denominator, proportion, or total inconsistency
+- **Exact source locations:** DOC-003, `joi180070supp2_prod.pdf`, PDF p. 8, eTable 4, `Antithrombotics`, control cell.
+- **Source evidence:** 2,141 numerator; 2,400 denominator; 89.3% percentage.
+- **Reported-versus-comparator:** Reported 89.3%; fraction-derived 89.2083%.
+- **Consistency rule:** A percentage printed beside a fraction should equal the fraction after ordinary rounding to the displayed precision.
+- **Calculation:** `2141 / 2400 × 100 = 89.2083%`, which rounds to 89.2%; the nearest-tenth interval for 89.3% begins at 89.25%.
+- **Alternative source-grounded interpretations:** The overall-population sensitivity label does not replace the printed denominator; no nonstandard rounding rule is supplied.
+- **Provenance:** N065; NCAND003.
+- **Exact remaining human question:** Which of the count, denominator, or percentage represents the intended control result?
+- **Status:** Pending Human Adjudication
 
-## C004 — Direct recheck finds the rtPA cell prints 9.66 and reconciles with 23/238
+## C004 — eTable 4 AF-anticoagulation control percentage does not reproduce
 
-- **Discovery provenance:** NC004.
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../../joi180070supp2_prod.pdf#page=8>), eTable 4, `IV rt-PA 2 Hour`, control column.
-- **Direct source evidence:** Mechanical direct-PDF recheck found that the cell visibly prints `23/238 (9.66)`, not the discovery transcription `9.6`; the paired intervention cell prints `46/254 (18.11)`.
-- **Rule/calculation:** `23 / 238 × 100 = 9.6639%`, which rounds to the printed `9.66%` at two decimals. Likewise, `46 / 254 × 100 = 18.1102%`, which rounds to `18.11%`.
-- **Alternative source-grounded interpretation:** Both cells support intentional row-specific two-decimal precision; the source does not say whether that precision was intentional or a production-formatting artifact.
-- **Human question:** Should the rtPA row be read using the visibly printed two-decimal values, and was its row-specific precision intentional? The stable ID is retained as required after registration; this mechanical fact is not an AI adjudication.
+- **Candidate statement:** The control cell prints `39/174 (22.5)`, but the fraction rounds to 22.4% at one decimal.
+- **Category:** Denominator, proportion, or total inconsistency
+- **Exact source locations:** DOC-003, `joi180070supp2_prod.pdf`, PDF p. 8, eTable 4, `Anticoagulation for Atrial Fibrillation`, control cell.
+- **Source evidence:** 39 numerator; 174 denominator; 22.5% percentage.
+- **Reported-versus-comparator:** Reported 22.5%; fraction-derived 22.4138%.
+- **Consistency rule:** A percentage printed beside a fraction should reproduce after ordinary rounding.
+- **Calculation:** `39 / 174 × 100 = 22.4138%`, which rounds to 22.4%; it is below the 22.45% lower boundary for a one-decimal display of 22.5%.
+- **Alternative source-grounded interpretations:** No alternative denominator or rounding convention is supplied.
+- **Provenance:** N066; NCAND004.
+- **Exact remaining human question:** Which printed control value represents the intended AF-anticoagulation proportion?
+- **Status:** Pending Human Adjudication
 
-## C005 — eTable 4 discharge-antithrombotics control percentage does not reconcile with 2141/2400
+## C005 — eTable 4 lipid-lowering control percentage does not reproduce
 
-- **Discovery provenance:** NC005.
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../../joi180070supp2_prod.pdf#page=8>), eTable 4, discharge-antithrombotics control cell.
-- **Direct source evidence:** The cell prints `2141/2400 (89.3)`.
-- **Rule/calculation:** `2141 / 2400 × 100 = 89.2083%`, which rounds to `89.2%`, not `89.3%`.
-- **Alternative source-grounded interpretation:** The package gives no alternate denominator or rounding rule.
-- **Human question:** Which count, denominator, or percentage is intended?
+- **Candidate statement:** The control cell prints `1439/1586 (90.8)`, but the fraction rounds to 90.7% at one decimal.
+- **Category:** Denominator, proportion, or total inconsistency
+- **Exact source locations:** DOC-003, `joi180070supp2_prod.pdf`, PDF p. 8, eTable 4, lipid-lowering row, control cell.
+- **Source evidence:** 1,439 numerator; 1,586 denominator; 90.8% percentage.
+- **Reported-versus-comparator:** Reported 90.8%; fraction-derived 90.7314%.
+- **Consistency rule:** A percentage printed beside a fraction should reproduce after ordinary rounding.
+- **Calculation:** `1439 / 1586 × 100 = 90.7314%`, which rounds to 90.7%; it is below the 90.75% lower boundary for a one-decimal display of 90.8%.
+- **Alternative source-grounded interpretations:** No alternative denominator or rounding convention is supplied; the LDL boundary issue is separately registered as C002 because it uses a different comparator and rule.
+- **Provenance:** N067; NCAND005.
+- **Exact remaining human question:** Which of the count, denominator, or percentage represents the intended sensitivity result?
+- **Status:** Pending Human Adjudication
 
-## C006 — eTable 4 AF-anticoagulation control percentage does not reconcile with 39/174
+## C006 — eTable 4 antidiabetic-medication control percentage does not reproduce
 
-- **Discovery provenance:** NC006.
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../../joi180070supp2_prod.pdf#page=8>), eTable 4, atrial-fibrillation/flutter anticoagulation control cell.
-- **Direct source evidence:** The cell prints `39/174 (22.5)`.
-- **Rule/calculation:** `39 / 174 × 100 = 22.4138%`, which rounds to `22.4%`, not `22.5%`.
-- **Alternative source-grounded interpretation:** The package supplies no alternate denominator or percentage convention.
-- **Human question:** Which displayed value is intended for the control adherence proportion?
+- **Candidate statement:** The control cell prints `557/688 (81.1)`, but the fraction rounds to 81.0% at one decimal.
+- **Category:** Denominator, proportion, or total inconsistency
+- **Exact source locations:** DOC-003, `joi180070supp2_prod.pdf`, PDF p. 8, eTable 4, `Antidiabetic Medication`, control cell.
+- **Source evidence:** 557 numerator; 688 denominator; 81.1% percentage.
+- **Reported-versus-comparator:** Reported 81.1%; fraction-derived 80.9593%.
+- **Consistency rule:** A percentage printed beside a fraction should reproduce after ordinary rounding.
+- **Calculation:** `557 / 688 × 100 = 80.9593%`, which rounds to 81.0%; it is below the 81.05% lower boundary for a one-decimal display of 81.1%.
+- **Alternative source-grounded interpretations:** No alternative denominator or rounding convention is supplied.
+- **Provenance:** N069; NCAND006.
+- **Exact remaining human question:** Which printed value represents the intended antidiabetic-medication proportion?
+- **Status:** Pending Human Adjudication
 
-## C007 — eTable 4 lipid-lowering control percentage does not reconcile with 1439/1586
+## C007 — baseline-survey patient total does not reconcile with stated per-cluster inclusion
 
-- **Discovery provenance:** NC007.
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../../joi180070supp2_prod.pdf#page=8>), eTable 4, lipid-lowering control cell.
-- **Direct source evidence:** The cell prints `1439/1586 (90.8)`.
-- **Rule/calculation:** `1439 / 1586 × 100 = 90.7314%`, which rounds to `90.7%`, not `90.8%`.
-- **Alternative source-grounded interpretation:** The threshold-definition issue is separately C002; no alternate denominator or rounding rule explains this percentage cell.
-- **Human question:** Which of 1439, 1586, or 90.8% is intended?
+- **Candidate statement:** The main Table 1 baseline-survey column reports `Patients, No.` = 801, whereas the supplement says 20 patients per cluster were included and the same table reports 40 survey hospitals, implying 800 under an exact fixed-count reading.
+- **Category:** Cross-document numeric inconsistency
+- **Exact source locations:** DOC-001, `jama_wang_2018_oi_180070.pdf`, PDF p. 6, Table 1 `Baseline Survey, No. (%)` column, `Hospitals, No.` = 40 and `Patients, No.` = 801 rows; DOC-003, `joi180070supp2_prod.pdf`, PDF p. 2, eAppendix baseline-survey statement; DOC-001 PDF p. 5 Figure 1 and DOC-002, `joi180070supp1_prod.pdf`, PDF pp. 4 and 7, 40-cluster statements.
+- **Source evidence:** Baseline-survey patient total 801; baseline-survey hospital total 40; statement that 20 patients per cluster were prospectively included.
+- **Reported-versus-comparator:** Reported total 801 versus `20 × 40 = 800` under the stated same-survey interpretation.
+- **Consistency rule:** A fixed per-cluster inclusion count multiplied by the complete cluster count should equal the matched survey total.
+- **Calculation:** `20 × 40 = 800`; difference from reported 801 is one patient.
+- **Alternative source-grounded interpretations:** One cluster may have contributed 21 patients, or 20 may have been an operational target rather than an exact realized count, but neither qualification is supplied.
+- **Provenance:** N025, N028, N042, N072; XCAND001.
+- **Exact remaining human question:** Did all 40 clusters contribute exactly 20 baseline-survey patients, and if so why is the table denominator 801?
+- **Status:** Pending Human Adjudication
 
-## C008 — eTable 4 antidiabetic-medication control percentage does not reconcile with 557/688
+## C008 — in-hospital death absolute-difference CI and P value do not reconcile
 
-- **Discovery provenance:** NC008.
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../../joi180070supp2_prod.pdf#page=8>), eTable 4, hypoglycemic-therapy control cell.
-- **Direct source evidence:** The cell prints `557/688 (81.1)`.
-- **Rule/calculation:** `557 / 688 × 100 = 80.9593%`, which rounds to `81.0%`, not `81.1%`.
-- **Alternative source-grounded interpretation:** The package supplies no alternate denominator or rounding rule.
-- **Human question:** Which printed value is intended for this control row?
-
-## C009 — In-hospital-death absolute-difference P value conflicts with its displayed 95% CI
-
-- **Discovery provenance:** SP1-001.
-- **Category:** Statistical reporting inconsistency.
-- **Exact source locations:** DOC-001, [jama_wang_2018_oi_180070.pdf — PDF p. 8](<../../jama_wang_2018_oi_180070.pdf#page=8>), Table 3, Death—In hospital row.
-- **Direct source evidence:** The adjusted absolute difference is `−0.7` with `95% CI, −1.1 to 0.2`, while the adjacent P value is `.009`; the separately labeled HR is `.96 (95% CI, .90 to 1.02)` with P=.14.
-- **Rule/calculation:** The displayed absolute-difference 95% CI includes 0, while its same-column P=.009 is below .05. A rough CI-based diagnostic gives midpoint −0.45, half-width 0.65, SE about 0.33, and |z| about 1.36; this is not a replacement analysis.
-- **Alternative source-grounded interpretation:** The source does not give a special non-common CI/P construction, estimator, or degrees-of-freedom rule that would reconcile the pair.
-- **Human question:** Does `.009` belong to this absolute-difference row and, if so, what stated analysis rule reconciles it with the printed CI?
-
-## C010 — Composite adherence has conflicting patient-level and care-opportunity analysis descriptions
-
-- **Discovery provenance:** XC002.
-- **Category:** Analysis-unit or population inconsistency.
-- **Exact source locations:** DOC-001, [PDF p. 3](<../../jama_wang_2018_oi_180070.pdf#page=3>) Outcomes, [PDF p. 4](<../../jama_wang_2018_oi_180070.pdf#page=4>) analysis unit, and [PDF p. 7](<../../jama_wang_2018_oi_180070.pdf#page=7>) Table 2; DOC-002, [PDF p. 18](<../../joi180070supp1_prod.pdf#page=18>) and [PDF p. 19](<../../joi180070supp1_prod.pdf#page=19>); DOC-003, [PDF p. 2](<../../joi180070supp2_prod.pdf#page=2>).
-- **Direct source evidence:** The article says the composite was calculated for each patient and averaged; the protocol says each eligible care opportunity contributed a binary observation; the appendix gives a pooled performed/possible-interventions definition.
-- **Rule/calculation:** A mean of patient percentages weights patients equally; a pooled opportunity proportion weights patients according to eligible opportunities. These can produce different reported composite percentages, differences, and model interpretations.
-- **Alternative source-grounded interpretation:** Descriptive and inferential summaries may intentionally use different units, but the supplied package does not reconcile them under the common composite label.
-- **Human question:** Which unit generated the printed 88.2%/84.8%, adjusted difference, and ORPA?
-
-## C011 — DVT-prophylaxis window is labeled as both within 48 hours and by end of hospital day 2
-
-- **Discovery provenance:** XC003.
-- **Category:** Measure, label, or scale inconsistency.
-- **Exact source locations:** DOC-002, [PDF p. 13](<../../joi180070supp1_prod.pdf#page=13>) protocol Table 2, [PDF p. 14](<../../joi180070supp1_prod.pdf#page=14>) Table 3, and [PDF p. 15](<../../joi180070supp1_prod.pdf#page=15>) continuation; DOC-003, [PDF p. 3](<../../joi180070supp2_prod.pdf#page=3>) eTable 1; DOC-001, [PDF p. 7](<../../jama_wang_2018_oi_180070.pdf#page=7>) Table 2 footnote.
-- **Direct source evidence:** Protocol Table 2 says `within 48 hours of admission`; the detailed specification, eTable, and reported-table footnote say `by end of hospital day 2`.
-- **Rule/calculation:** An elapsed 48-hour window and a calendar hospital-day-2 boundary can include different events unless the operational definition explicitly equates them.
-- **Alternative source-grounded interpretation:** Hospital day 2 may have been operationalized as 48 elapsed hours; no such definition is supplied.
-- **Human question:** Which timing rule generated the displayed 178/645 and 66/592 denominators and percentages?
-
-**Stable candidate count:** 11. No candidate is based on a display-zero P value.
+- **Candidate statement:** The in-hospital-death adjusted absolute-difference 95% CI contains zero, while the corresponding adjacent absolute-difference P-value cell is `.009` under the article's two-sided testing statement.
+- **Category:** Statistical reporting inconsistency
+- **Exact source locations:** DOC-001, `jama_wang_2018_oi_180070.pdf`, PDF p. 8, Table 3 in-hospital death row and absolute-difference/P columns; DOC-001 PDF p. 4, two-sided-test and adjusted-absolute-difference reporting statements.
+- **Source evidence:** Adjusted absolute difference `−0.7%`; 95% CI `−1.1% to 0.2%`; adjacent P value `.009`; tests described as two-sided.
+- **Reported-versus-comparator:** The interval includes the null, while `.009 < .05` for the displayed same-column result.
+- **Consistency rule:** Under a supplied same-estimand two-sided 95% CI/P pairing, an interval containing zero is not compatible with P below .05.
+- **Calculation:** `−1.1 < 0 < 0.2`, so zero lies inside the printed interval; `.009 < .05`.
+- **Alternative source-grounded interpretations:** The P value could arise from a different estimand/model, but the supplied table places it in the absolute-difference P-value column and states no such distinction. The adjacent HR is a separate effect-measure column and is not the comparator.
+- **Provenance:** S019; P1CAND001.
+- **Exact remaining human question:** Does `.009` belong to this adjusted absolute-difference CI, or is the CI, P value, or table-column pairing different from what is printed?
+- **Status:** Pending Human Adjudication

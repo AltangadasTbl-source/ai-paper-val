@@ -1,104 +1,98 @@
-# Statistical consistency review — pass 2
+# Statistical Consistency Review — Pass 2
 
-## Independent pass-2 scope and evidence basis
+## Independent pass-2 scope and evidence boundary
 
-This is an independent second statistical pass by a fresh specialist runtime, `/root/statistics_pass_2`, distinct from statistical pass 1. It revisits all 31 canonical inferential-statistical relationships, `S001` through `S031`, after stable registration of `C001` through `C008` and after the mechanical recheck. The evidence basis is limited to the current 1.5.2 source-first inventories, fresh native/layout source assets and source-matched quantitative mappings for DOC-001 through DOC-005, the canonical candidate ledger, and `verification/evidence_recheck.md`. No previous audit derivative, web material, sibling package, GPU process, or external convention was used.
+This fresh, distinct statistical pass revisited all canonical inferential relationships: `S001`–`S038` and `S200`–`S214` (53 total). It used only the supplied six PDFs, current-run fresh preprocessing/evidence maps, the complete current numeric and cross-source checker artifacts, `candidate_ledger.md` (`C001`–`C004`), and `verification/evidence_recheck.md`. Preserved prior-run material and the web were not used.
 
-For every relationship, this pass revisited available denominator and arithmetic identities; point-estimate containment and endpoint ordering; sign/direction; effect-measure, population, reference, label, and scale; duplicated or repeated values; figure/cross-source matches; and implications of the complete candidate ledger and mechanical recheck. Interval/P-value/test/statistic/SE compatibility was considered only where the supplied sources name a compatible model or inferential rule. Where a numerical comparison is described as a **diagnostic approximation**, it is only a rounded display check and is not substituted for the reported analysis. Sidedness, degrees of freedom, covariance, variance estimator, multiplicity, denominator, model, or estimand mapping was never filled in from convention.
+For each relationship, pass 2 rechecked applicable denominator/count arithmetic, point-estimate containment, endpoint order, sign/direction, effect-measure/scale/label, duplicate/repeated values, cross-source identity, and the mechanical-recheck implications. Interval/P-value/test/statistic/SE compatibility was required only where the PDFs supply compatible inferential definitions. Sidedness, degrees of freedom, covariance, variance estimator, zero-cell rule, multiplicity implementation, model-to-estimand mapping, and denominators were not supplied by convention.
 
-The fresh source text remains partly column-serialized on DOC-001 Table 2 (PDF p. 7) and Table 3 (PDF p. 9). Accordingly, no row-to-statistic association was inferred where the fresh assets do not preserve one. DOC-005 eFigures 1-7 have no recoverable plotted values or P values in current fresh text. These are definition/evidence limitations, not reasons to omit their relationships.
+`PASS_2_COMPLETE` is a coverage record only. It makes no severity, validity, acceptance, rejection, correction, or other adjudication decision. No literal `P = 0`, `p = 0.000`, or equivalent was a candidate in this scope; no such display was found as a relationship-specific issue.
 
-## Ledger and mechanical-recheck reconciliation
+## Per-relationship pass-2 records
 
-All eight existing stable candidates were revisited. This pass does not delete, renumber, adjudicate, rank, or assign a correction to any ID.
-
-| Stable ID | Pass-2 relationship to the statistical scope | Recheck implication retained |
+| ID | Exact supplied-source scope | Pass-2 reconciliation and result |
 |---|---|---|
-| C001 | The operational criteria discrepancy for intraoperative hypoxemia/hypotension affects interpretation of Table 3 fields within S011, but it is an outcome-definition comparison rather than a supplied compatible CI/P/test calculation. | Both distinct printed criteria and the missing rule identifying the count-generating definition remain recorded. No separate statistical duplicate was created. |
-| C002 | The white-blood-cell unit/scale issue is a baseline laboratory-display relationship, not an `S` inferential relationship. | The factor-of-1000 scale question remains confined to its existing numeric/label record; it supplies no new inference contradiction. |
-| C003 | The generic eTable 8 `Effect Estimate` header is directly relevant to S025. | Exact counts, denominators, estimates, and intervals were re-read. The generic label and absent measure/reference/model definitions remain the supplied-source issue; crude ratios remain diagnostic only. |
-| C004 | The eFigure 11 mortality-versus-PEPC label mismatch is directly relevant to S031. | The title, rates, mortality HR/CI/P, eFigure 10 PEPC comparator, and main Table 3 mortality comparator remain distinct printed fields. This is the same label-identity observation, not a new candidate. |
-| C005 | The abstract/Table 3 hypoxemia CI sign mismatch is directly relevant to S011. | The matched counts, contrast, point estimate, and opposite printed upper-endpoint signs remain source-grounded. This is the same cross-location observation, not a new candidate. |
-| C006 | The matched synthetic-colloid P-value discrepancy is directly relevant to S020. | The `P=.09` and `P=.10` cells remain distinct direct displays for the same reported counts/population. The unstated row-specific test and rounding pipeline remain precisely missing. |
-| C007 | The monitoring fraction/percentage mismatch is directly relevant to S006. | The fractions, parenthetical percentages, and displayed difference remain direct values. Ordinary one-decimal fraction rounding remains the applicable arithmetic check. |
-| C008 | The reversal fraction/percentage mismatch is directly relevant to S006. | The fractions, parenthetical percentages, and displayed difference remain direct values. The calculation rule for the printed `0.2` difference remains unreported. |
+| S001 | DOC-001 PDF pp. 1, 9 | Primary PPC counts/rates, high-minus-low difference, RR, ordered CIs, and abstract/Table 3 repetition agree. `PASS_2_COMPLETE` — no new proposal. |
+| S002 | DOC-001 PDF pp. 1, 9 | Both printed intervals contain the −8.6-point estimate, but their upper endpoints have opposite signs for an otherwise matched result; C001 recheck supports that direct cross-location mismatch. `PASS_2_COMPLETE` — covered by C001; no new proposal. |
+| S003 | DOC-001 PDF p. 4 | Primary alpha `.044`, RR/CI, chi-square, Cox HR, and random-site sensitivity labels are stated; no result-level comparator is supplied here. `PASS_2_COMPLETE` — definition-bounded; no new proposal. |
+| S004 | DOC-001 PDF p. 4 | Binary RR, hospital-free-day mean-difference/t-test, mortality Cox-HR, and secondary-alpha labels distinguish measures/scales. `PASS_2_COMPLETE` — no new proposal. |
+| S005 | DOC-001 PDF p. 7 Table 2 | Tidal-volume estimates are contained in ordered CIs and their displayed directions agree with group means. Table-specific test/CI/repeated-measure rules are absent. `PASS_2_COMPLETE` — definition-bounded; no new proposal. |
+| S006 | DOC-001 PDF p. 7 Table 2 | PEEP differences, positive CIs, units, and group direction agree. `PASS_2_COMPLETE` — unnamed Table 2 inference rule prevents P reconstruction; no new proposal. |
+| S007 | DOC-001 PDF p. 7 Table 2 | Recruitment counts, 97.1-point difference, CI order/containment, and direction reconcile. `PASS_2_COMPLETE` — no new proposal. |
+| S008 | DOC-001 PDF p. 7 Table 2 | Peak-pressure effects are contained in positive ordered CIs and agree with means. `PASS_2_COMPLETE` — Table 2 inferential construction not named; no new proposal. |
+| S009 | DOC-001 PDF p. 7 Table 2 | Driving-pressure effects/CIs are negative as expected from high-minus-low means; the plateau-minus-PEEP definition fixes the scale. `PASS_2_COMPLETE` — no new proposal. |
+| S010 | DOC-001 PDF p. 7 Table 2 | Respiratory-rate effects/CIs agree with group direction; displayed zero endpoints are compatible with finite rounding. `PASS_2_COMPLETE` — no new proposal. |
+| S011 | DOC-001 PDF p. 7 Table 2 | FIO2 effects/CIs agree with group means and units; a printed endpoint `0` is finite rounding, not an inferential contradiction. `PASS_2_COMPLETE` — no new proposal. |
+| S012 | DOC-001 PDF p. 7 Table 2 | SpO2 effects are contained in positive ordered CIs and directions agree. `PASS_2_COMPLETE` — no new proposal. |
+| S013 | DOC-001 PDF p. 7 Table 2 | End-tidal CO2 directions, CI order/containment, and units agree. `PASS_2_COMPLETE` — Table 2 test/CI definition absent; no new proposal. |
+| S014 | DOC-001 PDF p. 7 Table 2 | Heart-rate directions and all estimates/ordered CIs agree with displayed means. `PASS_2_COMPLETE` — no new proposal. |
+| S015 | DOC-001 PDF p. 7 Table 2 | Mean-arterial-pressure effects are contained and sign-consistent; apparent mean/difference granularity is compatible with rounding. `PASS_2_COMPLETE` — no new proposal. |
+| S016 | DOC-001 PDF pp. 7-8 Table 2 | Categorical distributions, available differences/CIs, denominators, and P labels are coherent; treatment subtypes are not falsely treated as one partition. `PASS_2_COMPLETE` — Table 2 categorical-test rule absent; no new proposal. |
+| S017 | DOC-001 PDF p. 8 Table 2 | Blockade/monitoring/reversal counts, denominators, effects, CIs, and direction reconcile. `PASS_2_COMPLETE` — no new proposal. |
+| S018 | DOC-001 PDF p. 8 Table 2 | Fluid, colloid, and urine labels distinguish volume, use, median/IQR, and difference; estimates are contained in ordered CIs. `PASS_2_COMPLETE` — medians versus displayed difference estimator/test not defined; no new proposal. |
+| S019 | DOC-001 PDF p. 8 Table 2 | Blood-product/count-rate distinctions and continuous-measure CIs are coherent; `P > .99` is not a display-zero result. `PASS_2_COMPLETE` — unnamed Table 2 rules; no new proposal. |
+| S020 | DOC-001 PDF p. 9 Table 3 | Mild/moderate/severe respiratory-failure counts, RRs, CIs, and directions reconcile. `PASS_2_COMPLETE` — no new proposal. |
+| S021 | DOC-001 PDF p. 9 Table 3 | Atelectasis, pleural effusion, and infiltrates labels/effects/CIs agree with event direction; pleural CI excludes 1 consistently with its printed P. `PASS_2_COMPLETE` — no new proposal. |
+| S022 | DOC-001 PDF p. 9 Table 3 | Edema through pneumothorax effects are contained and direction-consistent at printed precision; `P > .99` does not denote a display-zero. `PASS_2_COMPLETE` — no new proposal. |
+| S023 | DOC-001 PDF p. 9 Table 3 | Severe-PPC and extrapulmonary-composite event risks/RRs/CIs agree. `PASS_2_COMPLETE` — no new proposal. |
+| S024 | DOC-001 PDF p. 9 Table 3 | SIRS, sepsis, severe-sepsis, and shock RRs/CIs/directions agree with displayed risks. `PASS_2_COMPLETE` — no new proposal. |
+| S025 | DOC-001 PDF p. 9 Table 3 | GI-failure RR/CI is contained and the grade-distribution P is separately labeled. `PASS_2_COMPLETE` — distribution-test definition absent; no new proposal. |
+| S026 | DOC-001 PDF p. 9 Table 3 | AKI RR/CI and grade totals/rates reconcile; grade-distribution P is separately labeled. `PASS_2_COMPLETE` — distribution-test definition absent; no new proposal. |
+| S027 | DOC-001 PDF pp. 4, 9-10 Table 3 | DIC prints 1/989 versus 0/987 with finite RR `2.00 (1.91-2.09)` and `P > .99`; C002 recheck confirms that a zero-cell rule/alternate estimator is missing and that interval/P duality cannot be imposed across differently named procedures. `PASS_2_COMPLETE` — covered by C002; no new proposal. |
+| S028 | DOC-001 PDF p. 9 Table 3 | Wound-healing and unexpected-ICU RRs/CIs/directions agree with event counts. `PASS_2_COMPLETE` — no new proposal. |
+| S029 | DOC-001 PDF p. 9 Table 3 | Hospital-free-days mean difference is contained in its ordered CI and the mean-difference/t-test label is explicit. `PASS_2_COMPLETE` — no new proposal. |
+| S030 | DOC-001 PDF p. 9 Table 3 | Hypoxemia, hypotension, and bradycardia event directions/RRs/CIs agree; the hypoxemia abstract interval is separately C001/S002. `PASS_2_COMPLETE` — no new proposal. |
+| S031 | DOC-001 PDF p. 9 Table 3 | In-hospital-mortality RR is contained in its CI; scale/timepoint remain distinct from five-day Cox mortality. `PASS_2_COMPLETE` — no new proposal. |
+| S032 | DOC-001 PDF p. 10 Table 3 | Rescue and vasoactive outcome effects/CIs/directions agree. `PASS_2_COMPLETE` — no new proposal. |
+| S033 | DOC-001 PDF p. 10 Table 3 | Five-day mortality HR is contained in an ordered CI; the Cox label distinguishes it from the Table 3 RRs. `PASS_2_COMPLETE` — no new proposal. |
+| S034 | DOC-001 PDF p. 10 Figure 2 | Surgery and BMI subgroup RRs/CIs are contained and ordered; interaction P values have no printed model coefficients/variance. `PASS_2_COMPLETE` — definition-bounded; no new proposal. |
+| S035 | DOC-001 PDF p. 10 Figure 2 | SpO2, incision, waist/hip subgroup RRs/CIs and labels reconcile; interaction reconstruction is not defined. `PASS_2_COMPLETE` — definition-bounded; no new proposal. |
+| S036 | DOC-001 PDF pp. 1, 9-10 | All-patient PPC RR `.93 (.83-1.04)` repeats across abstract, Table 3, and Figure 2 with matched population/contrast. `PASS_2_COMPLETE` — no new proposal. |
+| S037 | DOC-001 PDF pp. 8, 10; Table 3 pp. 9-10 | Narrative primary/mild/pleural/adverse-event statements retain the Table 3 values and directions. `PASS_2_COMPLETE` — no new proposal. |
+| S038 | DOC-001 PDF pp. 10-12; DOC-005 PDF pp. 29-30 | ITT, per-protocol, adjusted, and sensitivity analyses are distinct estimands; qualitative “similar/not significantly different” text has no numerical same-model comparator. `PASS_2_COMPLETE` — definition-bounded; no new proposal. |
+| S200 | DOC-002 PDF pp. 9-10; DOC-003 PDF pp. 2-3 | Original/revised sample-size assumptions agree when matched by protocol version; no software/rounding implementation supports an independent reconstruction. `PASS_2_COMPLETE` — definition-bounded; no new proposal. |
+| S201 | DOC-002 PDF pp. 20-23; DOC-003 PDF pp. 2-3 | Interim looks, gamma, and efficacy/futility boundaries repeat exactly. `PASS_2_COMPLETE` — spending implementation and sidedness not fully supplied; no new proposal. |
+| S202 | DOC-002 physical PDF p. 23 (footer p. 22); DOC-004 PDF pp. 2-3 | The uninterrupted protocol phrase combines `odds ratio` and `relative risks`; C003 recheck confirms no separator, conversion, or intended measure is supplied, while final SAP names primary RR. `PASS_2_COMPLETE` — covered by C003; no new proposal. |
+| S203 | DOC-004 PDF pp. 1-3; DOC-001 PDF p. 4 | Final-SAP and article definitions agree on primary RR/CI, alpha `.044`, and time-to-event methods. `PASS_2_COMPLETE` — no new proposal. |
+| S204 | DOC-004 PDF pp. 1-3 | Secondary RR/CI/chi-square, day-90 mean difference/t test, and zero-inflated-beta mean ratio are explicitly distinguished. `PASS_2_COMPLETE` — no direct result comparator for the mean-ratio model; no new proposal. |
+| S205 | DOC-004 PDF pp. 2-3; DOC-005 PDF p. 30 | Interaction, mixed-effect, proportional-odds, Bonferroni CI, GEE OR, and average-relative-effect labels are distinguished and agree with eTable 9 footnotes where applicable. `PASS_2_COMPLETE` — no unprinted mapping inferred; no new proposal. |
+| S206 | DOC-005 PDF p. 22; DOC-002 PDF pp. 27-33 | ARISCAT OR/CIs, betas, score arithmetic, score scale, and `n=1624` match between sources; beta-times-10 rounding is defined. `PASS_2_COMPLETE` — no new proposal. |
+| S207 | DOC-005 PDF pp. 24-28 | eTables 3-7 counts/percentages/means and P columns have no supplied per-table test, variance, or repeated-measure rule. `PASS_2_COMPLETE` — definition-bounded; no new proposal. |
+| S208 | DOC-005 PDF p. 29; DOC-004 PDF pp. 1-3 | eTable 8's `Effect Estimate 95% CI` header omits a measure label. The complete ledger records this as a missing definition only; no same-result contradictory label or explicit mapping is supplied. `PASS_2_COMPLETE` — definition-bounded, no new proposal. |
+| S209 | DOC-005 PDF p. 30; DOC-004 PDF pp. 2-3 | eTable 9 separates random-effect OR, proportional-odds OR/Wilcoxon, common-effect GEE OR, interaction P, and average-relative effect; CIs are ordered and estimates contained. `PASS_2_COMPLETE` — full coefficients/variance not printed; no new proposal. |
+| S210 | DOC-005 PDF pp. 31-37 | eFigures 2-7 label means/95% CIs and time-by-group mixed-effect P values. `PASS_2_COMPLETE` — coordinates, variance, and repeated-measure details do not permit a mechanical P recheck; no new proposal. |
+| S211 | DOC-005 PDF p. 38 | PPC HR `.88 (.73-1.06)`, P `.190`, and Schoenfeld P `.05` use identified but different quantities. Diagnostic log-HR/rounded-CI Wald approximation is about `.18`; common effect-test/CI construction is not supplied. `PASS_2_COMPLETE` — diagnostic only, no new proposal. |
+| S212 | DOC-005 PDF p. 39 | Severe-PPC HR `.85 (.66-1.09)`, P `.197`, and Schoenfeld P `.28` are label-distinguished. Diagnostic log-HR/rounded-CI Wald approximation is about `.20`; compatible rule absent. `PASS_2_COMPLETE` — diagnostic only, no new proposal. |
+| S213 | DOC-005 PDF p. 40 | PEPC HR `1.12 (.89-1.39)`, P `.314`, and Schoenfeld P `.67` are label-distinguished. Diagnostic log-HR/rounded-CI Wald approximation is about `.32`; compatible rule absent. `PASS_2_COMPLETE` — diagnostic only, no new proposal. |
+| S214 | DOC-005 PDF p. 41; DOC-001 PDF p. 10; DOC-005 PDF p. 40 | eFigure 11's title/axis, HR/CI/P, and matched Table 3 values identify five-day mortality, while its narrative calls the same `.5%/.3%` values extra-pulmonary complications; C004 recheck supports the label mismatch. `PASS_2_COMPLETE` — covered by C004; no new proposal. |
 
-No `P = 0`, `p = 0.000`, or equivalent finite-precision display-zero result was encountered in the assigned relationships. Printed `<.001`, `>.99`, and `1.00` displays were not treated as display-zero candidates, and no tail probability was derived to criticize a display format.
+## Existing stable-candidate reconciliation
 
-## Relationship-level pass-2 records
+| Stable ID | Statistical relationship(s) revisited | Pass-2 support check |
+|---|---|---|
+| C001 | S002 | The abstract and Table 3 are same population/outcome/contrast/estimate/confidence level and visibly print `+6.1` versus `−6.1` as the upper endpoint. Both contain `−8.6`; the supported issue is the cross-location sign mismatch, not noncontainment. |
+| C002 | S027 | Displayed counts have a zero low-group risk; a finite RR requires an unprinted zero-cell rule/alternate estimator. CI/P incompatibility was not mechanically asserted because the source names different CI and P procedures. |
+| C003 | S202 | The protocol’s unseparated compound odds-ratio/relative-risk phrase is directly printed; final SAP distinguishes primary RR and separate OR contexts. No intended protocol estimand can be inferred. |
+| C004 | S214 | eFigure 11 narrative outcome noun conflicts with its mortality title/axis/effect label and Table 3 matching mortality values; eFigure 10 supplies the distinct PEPC comparator. |
 
-| ID | `PASS_2_COMPLETE` record | Existing candidate relationship / new provisional append key | Missing definition or evidence limitation retained |
-|---|---|---|---|
-| S001 | Sample-size stages were re-matched across main article, protocol, change history, and SAP: original `748`, revised `1912` plus 5% dropout `=2013`, target RR `.75`, power 80%, and final primary alpha `.044` identify planned chronology rather than competing observed estimates. No new candidate observation. | None / None | Full power inputs, actual spending-function implementation, and interim test outputs are not supplied; no power calculation was reconstructed. |
-| S002 | Primary PPC counts, difference `-2.3% (-5.9 to 1.4)`, RR `.93 (.83-1.04)`, and `P=.23` have ordered intervals, appropriate null containment, coherent high-versus-low direction, and repeated-location agreement. A log-CI/P comparison is only a diagnostic approximation and gives no distinct observation. | None / None | The supplied Wald likelihood-ratio/chi-square wording does not provide a full RR estimand, variance, or count-to-estimate mapping. |
-| S003 | Secondary RR, t-test/mean-difference, HR, and exploratory-alpha statements were re-compared with the SAP definitions. No matched supplied result contradicts a named rule. | None / None | Individual continuous-outcome row-to-test and variance details are not fully supplied. |
-| S004 | Tidal-volume and PEEP estimates on DOC-001 p. 7 have ordered CIs containing their shown estimates; signs agree with group means and intervention direction. No new candidate observation. | None / None | Table-column serialization and absent continuous-outcome CI/test linkage preclude row-level P/CI reconstruction. |
-| S005 | Recoverable peak/driving pressure, respiratory rate, FiO2, SpO2, CO2, heart-rate, and MAP differences retain ordered endpoints, estimate containment, and signs consistent with displayed arm values. No new candidate observation. | None / None | Same DOC-001 p. 7 serialized-column and unspecified test/variance limitations. |
-| S006 | Procedure comparisons were rechecked for count/denominator arithmetic, direction, and available P/CI displays. Monitoring and reversal reproduce the already registered fraction/percentage observations C007 and C008; no other distinct mismatch was found. | C007; C008 / None | No compatible model for Table 2 interval/P reconciliation is supplied; the reversal-difference calculation rule is unreported. |
-| S007 | Primary PPC repeats across abstract, Key Points, narrative, Table 3, and Figure 2 remain `211/989` versus `233/987`, difference `-2.3%`, RR `.93 (.83-1.04)`, `P=.23`. Interval/null and direction checks remain coherent. | None / None | Crude count ratio is not assumed to be the reported RR estimand. |
-| S008 | Mild respiratory failure repeats as difference `-1.9% (-5.1 to 1.2)`, RR `.92 (.80-1.05)`, `P=.22`; endpoints, null containment, and direction remain coherent. | None / None | Complete row-level Table 3 model/variance mapping is unavailable. |
-| S009 | Pleural-effusion difference `2.2% (.7 to 3.8)`, RR `1.35 (1.14-1.62)`, and `P=.005` remain directionally and cross-location coherent; both intervals exclude their applicable null values. | None / None | The precise RR estimator and test/CI linkage is not provided beyond the general primary-analysis description. |
-| S010 | Remaining primary-component fields were reconsidered only where fresh extraction preserves a defensible row association. Recoverable displays retain endpoint order and estimate containment; no new candidate observation. | None / None | DOC-001 p. 9 column serialization prevents assigning every RR/CI/P sequence to a component row. |
-| S011 | Secondary/postoperative/adverse-event fields were rechecked against ledger and source matches. C005 is the same abstract/Table 3 hypoxemia CI-sign mismatch, and C001 is the same criteria-definition mismatch affecting interpretation of intraoperative outcomes; no separate candidate was created. Other recoverable fields provide no new independent contradiction. | C001; C005 / None | Table 3 serialization prevents complete row-level inferential matching; exact operational rule that generated event counts is not specified where C001 applies. |
-| S012 | Desaturation rescue, vasoactive drug use, and 5-day mortality retain ordered intervals containing their estimates and directionally compatible contrasts. The named Cox mortality result is diagnostically compatible with its CI/P at display precision; no new candidate observation. | None / None | The diagnostic approximation does not establish the exact test, sidedness, covariance, or binary-RR estimator. |
-| S013 | Figure 2 subgroup RRs/CIs retain ordered endpoints, estimate containment, and directions matching displayed subgroup risks. Interaction P values are retained as displayed. | None / None | Interaction coefficients, covariance, model parameterization, and sidedness are absent; no interaction-P reconstruction was attempted. |
-| S014 | Narrative ITT/per-protocol and sensitivity wording remains directionally compatible with separately labelled eTable 8/eTable 9 analyses. It does not create an identical-result comparison. | None / None | Some narrative claims lack numerical estimates; `similar` is not a mechanically defined effect. |
-| S015 | Planned sample-size, alpha, power, RR, and re-estimation fields in the protocol/change history remain coherent versions of the trial plan and final enrollment. | None / None | No interim implementation outputs or complete power-calculation inputs are supplied. |
-| S016 | Gamma-spending schedule, look sizes, efficacy/futility bounds, and planned model descriptions remain protocol definitions; final `.044` primary alpha matches main/SAP material. | None / None | No observed interim test statistics or final analysis-to-boundary mapping is supplied. |
-| S017 | SAP primary RR/CI/chi-square and two-sided alpha `.044` retain agreement with the main article primary-analysis description. | None / None | General method wording does not define all estimator/variance details required for count-to-RR reproduction. |
-| S018 | SAP secondary, subgroup, and sensitivity model labels were re-read. The stated Bonferroni confidence level is arithmetically compatible with `1-.05/12=.99583`, displayed as 99.58%; no new candidate observation. | None / None | No component-specific adjusted-CI result set permits a full planned-method-to-observed-result recheck. |
-| S019 | ARISCAT ORs have ordered CIs containing their estimates; printed coefficients exponentiate to printed ORs within display precision as a diagnostic approximation. | None / None | Coefficient rounding, original covariance, and exact model fit are absent; diagnostic exponentiation is not a model audit. |
-| S020 | eTable 3 was revisited for repeated values and P labels. The matched synthetic-colloid count row remains the existing C006 `.09` versus `.10` display discrepancy; all other matched summary-statistic comparisons remain nonidentical measures or concordant displays. | C006 / None | Row-specific test, sidedness, continuity rule, variance, unrounded P values, and rounding pipeline are not supplied. |
-| S021 | eTable 4 vasoactive-use P `.02` remains matched to the main-table `.02`; other use/dose rows have no internally matched incompatible repetition. | None / None | Table-specific test type, distributional rule, and dose-model definition are not supplied. |
-| S022 | eTable 5 medication P values retain their population, count/percentage, label, and scale checks; no matched same-result contradiction was found. | None / None | Test types and multiplicity treatment are unstated. |
-| S023 | eTable 6 category and intra-abdominal-pressure P values retain label/scale/population checks; no duplicate-value or rate/count contradiction was found. | None / None | Multilevel-category test definitions and continuous-pressure inference rules are unstated. |
-| S024 | Daily VAS means, observed denominators, and P displays remain compatible with the main qualitative `comparable` wording without representing an identical repeated result. | None / None | Repeated-measures method, missing-data handling, covariance, and row-specific test definition are not supplied. |
-| S025 | Per-protocol eTable 8 endpoints contain their generic effect estimates and the PPC result is directionally compatible with its separately labelled analysis set. C003 remains the same generic-effect-label and crude-nonidentity observation; it is not an additional crude-ratio contradiction because the supplied measure/model/reference definitions are missing. | C003 / None | Effect measure, reference direction, estimand, adjustment set, model, variance, CI method, and test for eTable 8 remain unnamed. |
-| S026 | Random-site, proportional-odds, common-GEE, interaction, and average-relative-effect outputs retain correct displayed endpoint order and labels. CI/P comparisons, including the average-relative-effect display, remain diagnostic only and yield no new candidate without a supplied common test/CI/variance/estimand rule. | None / None | Required linkage among transformation, CI, test statistic, covariance, GEE variance estimator, and average-relative-effect estimand is not provided. |
-| S027 | eFigures 1-7 were rechecked for available mean/95% CI, scale, and mixed-model interaction labels. No exact plotted values or P values are recoverable to compare. | None / None | Fresh text has no usable plotted coordinates or figure-specific P values for DOC-005 pp. 31-37. |
-| S028 | Time-to-PPC HR `.88 (.73-1.06)`, `P=.190`, and Schoenfeld P `.05` retain distinct stated roles; the HR CI contains 1 and its diagnostic log-scale P is broadly compatible with `.190`. | None / None | Schoenfeld P tests proportional-hazards assumptions, not the HR effect; exact Cox test/CI linkage and variance details are not supplied. |
-| S029 | Time-to-severe-PPC HR `.85 (.66-1.09)`, `P=.197`, and Schoenfeld P `.28` retain ordered endpoints, null containment, and directional coherence; diagnostic CI/P comparison yields no new observation. | None / None | Schoenfeld P is a separate assumption test; exact Cox inference details are absent. |
-| S030 | Time-to-PEPC HR `1.12 (.89-1.39)`, `P=.314`, and Schoenfeld P `.67` retain ordered endpoints, null containment, and label/measure distinction; diagnostic CI/P comparison yields no new observation. | None / None | Schoenfeld P is a separate assumption test; exact Cox inference details are absent. |
-| S031 | Mortality HR `1.67 (.40-6.97)`, `P=.484`, and Schoenfeld P `.14` retain internally compatible display relationships and match the main mortality result at displayed precision. C004 remains the same eFigure 11 mortality-versus-PEPC body-label mismatch; no new candidate was created. | C004 / None | Schoenfeld P is distinct from the mortality-effect P; visual plot identity remains unavailable in current fresh assets. |
+All four stable records remain supported by the mechanical recheck facts. This pass assigns no disposition beyond the ledger’s existing `Pending Human Adjudication` status.
 
-## Pass-2 completion markers
+## New proposals
 
-- S001 — `PASS_2_COMPLETE`
-- S002 — `PASS_2_COMPLETE`
-- S003 — `PASS_2_COMPLETE`
-- S004 — `PASS_2_COMPLETE`
-- S005 — `PASS_2_COMPLETE`
-- S006 — `PASS_2_COMPLETE`
-- S007 — `PASS_2_COMPLETE`
-- S008 — `PASS_2_COMPLETE`
-- S009 — `PASS_2_COMPLETE`
-- S010 — `PASS_2_COMPLETE`
-- S011 — `PASS_2_COMPLETE`
-- S012 — `PASS_2_COMPLETE`
-- S013 — `PASS_2_COMPLETE`
-- S014 — `PASS_2_COMPLETE`
-- S015 — `PASS_2_COMPLETE`
-- S016 — `PASS_2_COMPLETE`
-- S017 — `PASS_2_COMPLETE`
-- S018 — `PASS_2_COMPLETE`
-- S019 — `PASS_2_COMPLETE`
-- S020 — `PASS_2_COMPLETE`
-- S021 — `PASS_2_COMPLETE`
-- S022 — `PASS_2_COMPLETE`
-- S023 — `PASS_2_COMPLETE`
-- S024 — `PASS_2_COMPLETE`
-- S025 — `PASS_2_COMPLETE`
-- S026 — `PASS_2_COMPLETE`
-- S027 — `PASS_2_COMPLETE`
-- S028 — `PASS_2_COMPLETE`
-- S029 — `PASS_2_COMPLETE`
-- S030 — `PASS_2_COMPLETE`
-- S031 — `PASS_2_COMPLETE`
+None. Every source-grounded statistical inconsistency identified in this pass is already represented by `C001`–`C004`. No proposal was emitted for display notation, an unreported inferential definition, a diagnostic approximation, or a non-comparable analysis/population/effect measure.
 
-## Handoff
+## Limitations
 
-- **Canonical relationship coverage:** 31/31 (`S001` through `S031`), each explicitly marked `PASS_2_COMPLETE`.
-- **Existing stable-candidate observations revisited:** 8/8 (`C001`, `C002`, `C003`, `C004`, `C005`, `C006`, `C007`, `C008`); statistical-scope intersections are identified above without a new disposition.
-- **Genuinely new candidate observations for append:** 0; therefore no provisional append key is emitted.
-- **Display-zero result:** no applicable display-zero relationship encountered; no candidate was based on P-value formatting.
-- **Key retained limitations:** DOC-001 pp. 7 and 9 column serialization; unrecoverable plotted values/P values for DOC-005 eFigures 1-7; and the specifically named missing estimator, test, variance/covariance, sidedness, model, reference-direction, or estimand definitions.
+- Table 2 does not state table-specific tests, CI construction, variance estimators, degrees of freedom, or repeated-time handling.
+- eTables 3-7 and eFigures 2-7 lack all definitions needed to reconstruct displayed P values from summaries.
+- Group-sequential calculations lack a fully reproducible spending/software/sidedness specification.
+- The DIC record lacks its estimator, zero-cell correction, exact CI formula, chi-square variant, and analysis-output alignment.
+- Survival figures do not state a compatible common effect-test statistic and CI construction; the stated Schoenfeld P values concern a different diagnostic.
+- eTable 8 does not identify its effect-measure column; the supplied sources do not explicitly map it to a specific per-protocol estimand.
+
+## Pass-2 counts
+
+- **Relationship scope completed:** 53 (`S001`–`S038`; `S200`–`S214`).
+- **Existing stable candidates revisited:** 4 (`C001`, `C002`, `C003`, `C004`).
+- **Genuinely new proposals:** 0.
+- **Display-zero-only candidates:** 0.

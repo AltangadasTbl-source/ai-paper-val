@@ -2,170 +2,162 @@
 
 ## Scope and method
 
-Completed independent numeric review of all 61 canonical `N` relationships (`N001`–`N061`) using only the fresh direct-source PDF native and coordinate-layout assets, the numeric inventory, and the linked statistical inventory for applicable numeric implications. Checks included printed numerator/denominator/percentage reconciliation, totals and subgroup sums, cross-location matching, scale/threshold labels, rates versus counts, participant-flow identities, and rounding. Unless a table displayed more precision, a percentage printed to one decimal place was checked against a nearest-tenth tolerance of plus or minus 0.05 percentage points; exact counts were treated as exact.
+Fresh numeric review of all 71 canonical relationships (`N001`–`N071`) used only current-run DOC-001/DOC-002/DOC-003 native/layout PDF evidence and mappings. Exact printed counts were treated as exact. Percentages were checked to nearest printed precision (normally 0.05 points at one decimal; 0.005 at two). The source labels absolute differences, HRs, and ORPA as adjusted; they were not required to equal crude fractions.
 
-`COMPLETE_NO_CANDIDATE` means that the reviewed relationship did not yield a qualifying distinct candidate. It is not a validity or adjudication statement. No display-zero P value occurred in the mapped source set, so no `DISPLAY_ZERO_NOT_CANDIDATE` record was needed.
+`NO_CANDIDATE` and `NOT_APPLICABLE_WITH_REASON` are coverage outcomes only, not adjudications.
 
-## Relationship completion record
+## Relationship completion records
 
-| Relationship | Status | Numeric review observation |
+| Relationship | Completion record | Result and numeric/label check |
 |---|---|---|
-| N001 | COMPLETE_NO_CANDIDATE | 40 hospitals and 2,400 per arm reconcile to 4,800. |
-| N002 | COMPLETE_NO_CANDIDATE | Outcome classes and time points are internally distinct. |
-| N003 | COMPLETE_NO_CANDIDATE | 1,757/4,800 = 36.6% and 3,980/4,800 = 82.9% to one decimal. |
-| N004 | COMPLETE_NO_CANDIDATE | Matched composite display is coherent across abstract, narrative, and Table 2 at displayed precision. |
-| N005 | COMPLETE_NO_CANDIDATE | 1,290/2,400 and 1,147/2,400 reconcile to 53.8% and 47.8%. |
-| N006 | COMPLETE_NO_CANDIDATE | Event counts, percentages, and abstract/narrative/Table 3 values reconcile at displayed precision. |
-| N007 | COMPLETE_NO_CANDIDATE | 27 provinces plus 4 municipalities equals 31 locations; repeated headline values match. |
-| N008 | COMPLETE_WITH_NC002 | The LDL eligibility threshold conflicts with the supplied supplement definition; see NC002. |
-| N009 | COMPLETE_NO_CANDIDATE | 40 x 120 = 4,800; cited program time intervals are distinct from the later multi-year discussion comparison. |
-| N010 | COMPLETE_NO_CANDIDATE | Care-opportunity example reconciles: 3 met plus 2 unmet equals 5 eligible. |
-| N011 | COMPLETE_NO_CANDIDATE | Follow-up totals reconcile with 2,003 plus 1,977 = 3,980; cluster range accommodates mean 120. |
-| N012 | COMPLETE_NO_CANDIDATE | Matched co-primary values agree with Table 2 at stated precision. |
-| N013 | COMPLETE_NO_CANDIDATE | Clinical-event and disability displays match Table 3 at stated precision. |
-| N014 | COMPLETE_NO_CANDIDATE | Sensitivity composite values match eTable 4 at available precision. |
-| N015 | COMPLETE_NO_CANDIDATE | Figure 1 pairs intervention 2,400 - 397 = 2,003 and control 2,400 - 423 = 1,977. |
-| N016 | COMPLETE_NO_CANDIDATE | Hospital subgroup/category totals and percentages reconcile. |
-| N017 | COMPLETE_NO_CANDIDATE | Median/IQR displays require no additive identity and have coherent ordering. |
-| N018 | COMPLETE_NO_CANDIDATE | Table 1 intervention/control denominators reconcile; baseline denominator is addressed with N049. |
-| N019 | COMPLETE_WITH_NC001 | CAD/previous-MI intervention percentage does not reconcile with its printed count and denominator; see NC001. |
-| N020 | COMPLETE_NO_CANDIDATE | All count/denominator percentages and LDL conversion label reconcile at printed precision. |
-| N021 | COMPLETE_NO_CANDIDATE | Co-primary numerators, denominators, percentages, and repeated values reconcile. |
-| N022 | COMPLETE_NO_CANDIDATE | All four early-hospitalization row percentages reconcile to their printed counts/denominators. |
-| N023 | COMPLETE_WITH_NC002 | Main-table LDL threshold is part of the NC002 cross-document threshold conflict; other discharge-row percentages reconcile. |
-| N024 | COMPLETE_NO_CANDIDATE | Adjustment and drug-list labels do not create a numeric identity conflict. |
-| N025 | COMPLETE_NO_CANDIDATE | Risk sets decline over time and remain compatible with follow-up accounting. |
-| N026 | COMPLETE_NO_CANDIDATE | Death-figure risk sets decline over time and have no duplicate/value conflict. |
-| N027 | COMPLETE_NO_CANDIDATE | New-vascular-event counts/denominators/percentages reconcile to rounding tolerance. |
-| N028 | COMPLETE_NO_CANDIDATE | Disability counts/denominators/percentages reconcile to rounding tolerance. |
-| N029 | COMPLETE_NO_CANDIDATE | Death counts/denominators/percentages reconcile to rounding tolerance; adjusted differences are not substituted for crude differences. |
-| N030 | COMPLETE_NO_CANDIDATE | 3.4% is a rounded restatement of the 3.54-point result and is distinct from the planned 5% input. |
-| N031 | COMPLETE_NO_CANDIDATE | Single contextual annual-cost quantity; no internal comparator. |
-| N032 | COMPLETE_NO_CANDIDATE | 40-cluster design is consistent with main source. |
-| N033 | COMPLETE_NO_CANDIDATE | 27 plus 4 equals 31; approximately 20 per location is not treated as an exact total. |
-| N034 | COMPLETE_NO_CANDIDATE | Eligibility time/age thresholds have no conflicting displayed value. |
-| N035 | COMPLETE_NO_CANDIDATE | 40 clusters and 1:1 allocation agree with 20 per arm. |
-| N036 | COMPLETE_NO_CANDIDATE | Two providers and two-day workshop have no comparator conflict. |
-| N037 | COMPLETE_NO_CANDIDATE | Seven-day pathway is a definition, not a rate/count inconsistency. |
-| N038 | COMPLETE_NO_CANDIDATE | Two-hour/three-hour/day-2 thresholds are consistent with their named protocol measures. |
-| N039 | COMPLETE_NO_CANDIDATE | Weekly-monitoring recommendation has no numeric comparator. |
-| N040 | COMPLETE_NO_CANDIDATE | Thirty-patient feedback cycle is distinct from total trial enrollment. |
-| N041 | COMPLETE_WITH_NC002 | Supplement definition uses LDL greater than or equal to 100 mg/dL; see NC002. |
-| N042 | COMPLETE_NO_CANDIDATE | Exclusion time points/conditions have no displayed numeric conflict. |
-| N043 | COMPLETE_NO_CANDIDATE | Composite and all-or-none denominator definitions are distinct and coherent. |
-| N044 | COMPLETE_NO_CANDIDATE | Secondary outcome time points and mRS range match main source. |
-| N045 | COMPLETE_NO_CANDIDATE | Planned 40 x 120 approximately equals 4,800; stated approximate quantity and power inputs are not a calculation contradiction. |
-| N046 | COMPLETE_NO_CANDIDATE | Three cycles x 30 patients x 40 clusters = 3,600; this planned cycle quantity is not stated as total trial enrollment. |
-| N047 | COMPLETE_NO_CANDIDATE | Three met plus two unmet equals five eligible care opportunities. |
-| N048 | COMPLETE_NO_CANDIDATE | Discharge and 3/6/12-month analysis scope is coherent with main outcome definitions. |
-| N049 | COMPLETE_WITH_NC003 | Exact per-cluster baseline statement conflicts with the 801 baseline-patient total; see NC003. |
-| N050 | COMPLETE_NO_CANDIDATE | Baseline adherence percentages are descriptive and lack count denominators for an arithmetic check. |
-| N051 | COMPLETE_WITH_NC002 | eTable 1 supplies the LDL greater-than-or-equal threshold involved in NC002. |
-| N052 | COMPLETE_NO_CANDIDATE | 3,949 plus 851 equals 4,800. |
-| N053 | COMPLETE_NO_CANDIDATE | All eTable 2 counts/denominators/percentages reconcile to one decimal. |
-| N054 | COMPLETE_NO_CANDIDATE | Three-month eTable 3 counts/percentages reconcile; event-type sums are governed by N057. |
-| N055 | COMPLETE_NO_CANDIDATE | Six-month eTable 3 counts/percentages reconcile; event-type sums are governed by N057. |
-| N056 | COMPLETE_NO_CANDIDATE | Twelve-month eTable 3 counts/percentages reconcile; event-type sums are governed by N057. |
-| N057 | COMPLETE_NO_CANDIDATE | Footnote expressly permits an individual to contribute different event types, so type sums exceeding patient-event totals are explained. |
-| N058 | COMPLETE_NO_CANDIDATE | Sensitivity composite mean/SD values match the main narrative at stated precision. |
-| N059 | COMPLETE_RECHECK_CORRECTED | Direct PDF recheck shows `23/238 (9.66)`, which reconciles at two decimals; the registered NC004/C004 ID is preserved with this correction. |
-| N060 | COMPLETE_WITH_NC005, NC006, NC007, NC008 | Four distinct eTable 4 control percentages are outside nearest-tenth tolerance; see NC005–NC008. |
-| N061 | COMPLETE_NO_CANDIDATE | Adjustment covariates and ORPA definition have no numeric/label conflict. |
+| N001 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 20+20 hospitals and 2,400+2,400 patients reconcile to 40 and 4,800. |
+| N002 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 1,757/4,800=36.60% and 3,980/4,800=82.92%, matching 36.6% and 82.9%. |
+| N003 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 40 clusters with 1:1 allocation agrees with 20 hospitals per arm. |
+| N004 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 40×120=4,800; 3×30=90, and 90 is not stated as all enrollment. |
+| N005 | NUMERIC_CHECK_COMPLETE | NOT_APPLICABLE_WITH_REASON — reporting rules supply no distinct arithmetic comparator. |
+| N006 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 3 met+2 unmet=5 eligible opportunities; missingness is a stated rule. |
+| N007 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 2,003/2,400=83.46% and 1,977/2,400=82.38%, matching 83.5%/82.4%. |
+| N008 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 2,400−397=2,003; 2,400−423=1,977; 40−3+3=40. |
+| N009 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — composite (opportunity) and all-or-none (patient) use intentionally distinct units. |
+| N010 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — composite values match abstract, text, and Table 2 at display precision. |
+| N011 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 1,290/2,400=53.75%; 1,147/2,400=47.79%, matching 53.8%/47.8%. |
+| N012 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — mean(SD) composite is not a count proportion; matched values agree. |
+| N013 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — all-or-none fractions reconcile; adjusted difference need not be crude difference. |
+| N014 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 46/212=21.70%; 23/204=11.27%, matching display. |
+| N015 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 2,307/2,353=98.05%; 2,253/2,330=96.70%, matching display. |
+| N016 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 2,255/2,328=96.86%; 2,040/2,139=95.37%, matching display. |
+| N017 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 178/645=27.60%; 66/592=11.15%, matching display. |
+| N018 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 2,272/2,324=97.76%; 2,141/2,305=92.89%, matching display. |
+| N019 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 63/155=40.65%; 39/137=28.47%, matching display. |
+| N020 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 1,415/1,481=95.54%; 1,439/1,547=93.02%, matching display. |
+| N021 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 1,510/1,838=82.15%; 1,372/1,771=77.47%, matching display. |
+| N022 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 653/728=89.70%; 557/663=84.01%, matching display. |
+| N023 | NUMERIC_CHECK_COMPLETE | CANDIDATE_PROPOSED — NCAND002: `LDL >100` conflicts with support `LDL ≥100`. |
+| N024 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 85.3−80.91=4.39 crude points; 4.20 is explicitly adjusted. |
+| N025 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — grade strata sum to 40 overall and 20 per arm. |
+| N026 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — regions sum 20+9+11=40 and 20 per arm. |
+| N027 | NUMERIC_CHECK_COMPLETE | NOT_APPLICABLE_WITH_REASON — medians/IQRs lack an additive identity. |
+| N028 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — separately labelled 801/2,400/2,400 populations; sex fractions reconcile. |
+| N029 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — all printed fractions in this medical-history block reconcile. |
+| N030 | NUMERIC_CHECK_COMPLETE | CANDIDATE_PROPOSED — NCAND001: 311/2,400 does not yield 13.05%. |
+| N031 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — NIHSS/time/transport labels and fractions reconcile. |
+| N032 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — mg/dL conversion is stated; medians/IQRs are not additive. |
+| N033 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — event fractions reconcile; component sums are addressed at N070. |
+| N034 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — disability fractions reconcile to stated follow-up denominators. |
+| N035 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — mortality fractions reconcile; adjusted differences are not crude differences. |
+| N036 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — higher-precision narrative values round to Table 3. |
+| N037 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 1/46=2.17%; 2/23=8.70%, matching 2.2%/8.7%. |
+| N038 | NUMERIC_CHECK_COMPLETE | NOT_APPLICABLE_WITH_REASON — inferential P-value compatibility belongs to statistical review. |
+| N039 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — figure repeats 12-month HRs; risk sets decline and are not labelled event counts. |
+| N040 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 364/365-day follow-up is compatible with the day scale. |
+| N041 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 3.4% is compatible rounding of 3.54%, distinct from planned 5%. |
+| N042 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — protocol 40 clusters/1:1 matches main totals. |
+| N043 | NUMERIC_CHECK_COMPLETE | NOT_APPLICABLE_WITH_REASON — frame/eligibility quantities are definitions, not results denominators. |
+| N044 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — windows/exclusions preserve measure identity; no rate/count substitution. |
+| N045 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — composite/all-or-none denominators are intentionally different. |
+| N046 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 40×120=4,800 and 3×30=90; no stated contradiction. |
+| N047 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — eTable 2 fractions reconcile to 3,949 or 851. |
+| N048 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 44/2,400=1.83%; 55/2,400=2.29%, matching display. |
+| N049 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 14/2,400=0.58%; 20/2,400=0.83%, matching display. |
+| N050 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 3/2,400=0.125%; 5/2,400=0.208%, matching one-decimal display. |
+| N051 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 46/2,400=1.92%; 67/2,400=2.79%, matching display. |
+| N052 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 74/2,400=3.08%; 102/2,400=4.25%, matching display. |
+| N053 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 17/2,400=0.71%; 21/2,400=0.88%, matching display. |
+| N054 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 8/2,400=0.33% both arms; equal rounded values need not mean exact adjusted difference zero. |
+| N055 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 70/2,400=2.92%; 82/2,400=3.42%, matching display. |
+| N056 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 117/2,400=4.88%; 160/2,400=6.67%, matching display. |
+| N057 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 23/2,400=0.96%; 24/2,400=1.00%, matching display. |
+| N058 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 11/2,400=0.46%; 14/2,400=0.58%, matching display. |
+| N059 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 91/2,400=3.79%; 125/2,400=5.21%, matching display. |
+| N060 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — sensitivity composite mean(SD) matches DOC-001; it is not a fraction. |
+| N061 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 46/254=18.11%; 23/238=9.66%, matching two-decimal display. |
+| N062 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 2,307/2,400=96.125%; 2,253/2,400=93.875%, matching one decimal. |
+| N063 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 2,255/2,328=96.86%; 2,040/2,139=95.37%, matching display. |
+| N064 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 178/672=26.49%; 66/606=10.89%, matching display. |
+| N065 | NUMERIC_CHECK_COMPLETE | CANDIDATE_PROPOSED — NCAND003: 2,141/2,400=89.21%, not 89.3%. |
+| N066 | NUMERIC_CHECK_COMPLETE | CANDIDATE_PROPOSED — NCAND004: 39/174=22.41%, not 22.5%. |
+| N067 | NUMERIC_CHECK_COMPLETE | CANDIDATE_PROPOSED — NCAND005: 1,439/1,586=90.73%, not 90.8%. |
+| N068 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — 1,510/1,870=80.75%; 1,372/1,803=76.10%, matching display. |
+| N069 | NUMERIC_CHECK_COMPLETE | CANDIDATE_PROPOSED — NCAND006: 557/688=80.96%, not 81.1%. |
+| N070 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — eTable footnote permits multiple event types per patient. |
+| N071 | NUMERIC_CHECK_COMPLETE | NO_CANDIDATE — protocol timepoints and component outcomes are compatible. |
+| N072 | NUMERIC_CHECK_COMPLETE | C007_FACTUALLY_REPRESENTED; NO_NEW_CANDIDATE — DOC-003 p. 2 states 20 baseline-survey patients per cluster; 20×40 hospitals=800 versus Table 1 N028 baseline-survey total 801 under an exact fixed-count reading. Other p. 2 percentages lack printed counts/denominators, so no additional arithmetic comparator is available. |
 
-## Provisional numeric candidates for registration
+## Provisional candidate proposals
 
-All records below are `Pending Human Adjudication`. The `NC` labels are provisional discovery labels only, not stable candidate IDs or dispositions.
+### NCAND001 — Table 1 CAD/previous myocardial infarction percentage cannot be reproduced
 
-### NC001 — Table 1 CAD/previous-MI intervention percentage does not reconcile with 311/2,400
+- **Category:** Numeric or arithmetic inconsistency
+- **Exact source locations:** DOC-001, [jama_wang_2018_oi_180070.pdf — PDF p. 6](<../../../jama_wang_2018_oi_180070.pdf#page=6>), Table 1 `CAD/previous myocardial infarction`, intervention column and `Patients, No. 2400` header (N030).
+- **Printed inputs:** `311 (13.05)`; `2400`.
+- **Rule and calculation:** 311 ÷ 2,400 × 100 = 12.9583%; it rounds to 13.0% (one decimal) or 12.96% (two), not 13.05%.
+- **Tolerance:** Exact numerator/denominator; two-decimal tolerance ±0.005 points. Difference from 13.05 is 0.0917 points.
+- **Direct observation versus inference:** Inputs are direct. Typographic error, unstated denominator, or another process is inference only.
+- **Alternative source-grounded interpretations:** No alternative denominator is printed.
+- **Quality-control relevance:** The baseline percentage cannot be mechanically reproduced.
+- **Exact human question:** Does 13.05 intentionally use an unprinted denominator/calculation, or should one displayed element change?
 
-- **Category:** Numeric or arithmetic inconsistency.
-- **Exact source locations:** [jama_wang_2018_oi_180070.pdf — PDF p. 6](<../../../jama_wang_2018_oi_180070.pdf#page=6>), Table 1, `CAD/previous myocardial infarction`, intervention column; N019.
-- **Direct observation:** The printed intervention cell is `311 (13.05)`; the same table identifies 2,400 intervention patients.
-- **Rule and calculation:** Exact numerator/denominator percentage: 311 / 2,400 x 100 = 12.9583%. This rounds to 13.0% at one decimal or 12.96% at two decimals, not 13.05%. No compatible one- or two-decimal rounding interval contains 13.05%.
-- **Tolerance:** Exact count; one-decimal percentage tolerance plus or minus 0.05 points, two-decimal tolerance plus or minus 0.005 points. Observed discrepancy versus 13.05% is 0.0917 points.
-- **Inference and alternatives:** The mismatch is directly observable. Whether `13.05` is a typographical percentage, a source extraction artifact, or reflects an unstated denominator cannot be determined from the supplied package.
-- **Quality-control relevance:** A baseline prevalence copied from this table could be numerically inconsistent with its stated count and analysis denominator.
-- **Human question:** Does the PDF cell intentionally report 13.05%, and if so, what denominator or calculation produced it?
+### NCAND002 — LDL eligibility boundary differs between main article and supplied support definitions
 
-### NC002 — LDL eligibility threshold is displayed as both `>100` and `>=100 mg/dL`
+- **Category:** Measure, label, or scale inconsistency
+- **Exact source locations:** DOC-001, [jama_wang_2018_oi_180070.pdf — PDF p. 7](<../../../jama_wang_2018_oi_180070.pdf#page=7>), Table 2 `LDL >100 mg/dL`; DOC-002, [joi180070supp1_prod.pdf — PDF p. 15](<../../../joi180070supp1_prod.pdf#page=15>), definition; DOC-003, [joi180070supp2_prod.pdf — PDF p. 3](<../../../joi180070supp2_prod.pdf#page=3>), eTable 1 (N023/N044).
+- **Printed inputs:** Main `LDL >100 mg/dL`; support `LDL ≥100 mg/dL` plus separately stated alternative eligibility conditions.
+- **Rule and calculation:** `>` excludes exactly 100 mg/dL; `≥` includes it. Discrete label contrast: no rounding tolerance.
+- **Direct observation versus inference:** Symbols are direct. Whether exactly-100 observations existed or the main label was abbreviated is not supplied.
+- **Alternative source-grounded interpretations:** Other support eligibility conditions do not make `>` identical to `≥`.
+- **Quality-control relevance:** The boundary can alter denominator membership and percentage interpretation.
+- **Exact human question:** Which boundary applied to reported lipid-lowering denominators, especially LDL exactly 100 mg/dL?
 
-- **Category:** Measure, label, or scale inconsistency.
-- **Exact source locations:** [jama_wang_2018_oi_180070.pdf — PDF p. 3](<../../../jama_wang_2018_oi_180070.pdf#page=3>), Outcomes; [jama_wang_2018_oi_180070.pdf — PDF p. 7](<../../../jama_wang_2018_oi_180070.pdf#page=7>), Table 2 lipid-lowering row; [joi180070supp1_prod.pdf — PDF p. 15](<../../../joi180070supp1_prod.pdf#page=15>), protocol performance-measure definition; [joi180070supp2_prod.pdf — PDF p. 3](<../../../joi180070supp2_prod.pdf#page=3>), eTable 1. N008, N023, N041, N051.
-- **Direct observation:** The main article labels lipid lowering as for `LDL >100 mg/dL`. The supplied protocol/eTable definition states lipid lowering if `LDL >=100 mg/dL` (also including stated other eligibility conditions).
-- **Rule and comparison:** A strict-greater threshold excludes exactly 100 mg/dL; a greater-than-or-equal threshold includes it. These are nonidentical eligibility denominators and cannot be reconciled by decimal rounding.
-- **Tolerance:** None; comparator is a discrete boundary label.
-- **Inference and alternatives:** The competing symbols are directly observed. The package does not state whether the main-table label was intentionally abbreviated, whether exactly-100 values existed, or which definition governed the reported denominators.
-- **Quality-control relevance:** The boundary can change eligibility and denominator interpretation for the lipid-lowering performance measure.
-- **Human question:** Which LDL boundary was applied to the reported main and sensitivity-analysis lipid-lowering denominators, including patients at exactly 100 mg/dL?
+### NCAND003 — eTable 4 discharge-antithrombotics control percentage does not reproduce
 
-### NC003 — Baseline per-cluster count conflicts with the Table 1 baseline total
+- **Category:** Denominator, proportion, or total inconsistency
+- **Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../../../joi180070supp2_prod.pdf#page=8>), eTable 4 `Antithrombotics`, control cell (N065).
+- **Printed inputs:** `2141/2400 (89.3)`.
+- **Rule and calculation:** 2,141 ÷ 2,400 × 100 = 89.2083%, rounding to 89.2%, not 89.3%.
+- **Tolerance:** 89.3% nearest-tenth interval [89.25%,89.35%); computed value is outside it by 0.0417 points.
+- **Direct observation versus inference:** Fraction and percentage are direct; nonstandard rounding or another denominator is unprinted.
+- **Alternative source-grounded interpretations:** The sensitivity label does not replace the printed denominator 2,400.
+- **Quality-control relevance:** The displayed proportion cannot be reproduced from the cell fraction.
+- **Exact human question:** Which of the count, denominator, or 89.3% is intended?
 
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** [joi180070supp2_prod.pdf — PDF p. 2](<../../../joi180070supp2_prod.pdf#page=2>), eAppendix baseline-survey statement; [jama_wang_2018_oi_180070.pdf — PDF p. 6](<../../../jama_wang_2018_oi_180070.pdf#page=6>), Table 1 patient-column header (`801` baseline-survey patients); [jama_wang_2018_oi_180070.pdf — PDF p. 3](<../../../jama_wang_2018_oi_180070.pdf#page=3>), 40 eligible hospitals. N018 and N049.
-- **Direct observation:** The eAppendix says `20 patients per cluster were prospectively included`; the article identifies 40 clusters/hospitals and Table 1 reports 801 baseline-survey patients.
-- **Rule and calculation:** 20 patients/cluster x 40 clusters = 800 patients, whereas the displayed baseline total is 801. Exact-total difference = 1 patient.
-- **Tolerance:** None for the explicit count statement; the text does not qualify 20 as approximate.
-- **Inference and alternatives:** The numeric mismatch is direct. One cluster may have enrolled an additional patient, or the phrase may describe an intended rather than exact enrollment, but neither explanation is supplied.
-- **Quality-control relevance:** The baseline-sample denominator affects interpretation of baseline characteristics and pre-randomization adherence reporting.
-- **Human question:** Was the baseline survey intended to enroll exactly 20 patients in every cluster, and if so, why does Table 1 report 801 patients?
+### NCAND004 — eTable 4 AF-anticoagulation control percentage does not reproduce
 
-### NC004 — Recheck correction: eTable 4 rtPA control cell prints 23/238 (9.66)
+- **Category:** Denominator, proportion, or total inconsistency
+- **Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../../../joi180070supp2_prod.pdf#page=8>), eTable 4 `Anticoagulation for Atrial Fibrillation`, control cell (N066).
+- **Printed inputs:** `39/174 (22.5)`.
+- **Rule and calculation:** 39 ÷ 174 × 100 = 22.4138%, rounding to 22.4%, not 22.5%.
+- **Tolerance:** 22.5% nearest-tenth interval [22.45%,22.55%); computed value is outside by 0.0362 points.
+- **Direct observation versus inference:** Fraction/percentage direct; alternate denominator or rounding rule absent.
+- **Alternative source-grounded interpretations:** None supplied.
+- **Quality-control relevance:** The control proportion is not mechanically reproducible.
+- **Exact human question:** Which printed control value represents this proportion?
 
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** [joi180070supp2_prod.pdf — PDF p. 8](<../../../joi180070supp2_prod.pdf#page=8>), eTable 4, `IV rt-PA 2 Hour`, control column; N059.
-- **Direct observation:** Exact-source raster recheck shows `23/238 (9.66)`, not the discovery transcription `9.6`; the paired intervention cell prints `46/254 (18.11)`.
-- **Rule and calculation:** 23 / 238 x 100 = 9.6639%, which rounds to the printed 9.66% at two decimals; 46 / 254 x 100 = 18.1102%, which rounds to 18.11%.
-- **Tolerance:** Both visible two-decimal values reconcile under nearest rounding.
-- **Inference and alternatives:** The row may intentionally use two-decimal precision or may contain a production-formatting precision artifact; the printed fraction/percentage pair itself reconciles.
-- **Quality-control relevance:** The stable ID is preserved after registration so the corrected source fact prevents the discovery transcription from propagating into later evidence extraction.
-- **Human question:** Was row-specific two-decimal precision intentional? This fact is not an AI adjudication of the retained stable ID.
+### NCAND005 — eTable 4 lipid-lowering control percentage does not reproduce
 
-### NC005 — eTable 4 discharge-antithrombotics control percentage does not reconcile with 2,141/2,400
+- **Category:** Denominator, proportion, or total inconsistency
+- **Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../../../joi180070supp2_prod.pdf#page=8>), eTable 4 `Lipid-lowering for LDL >100 mg/dL`, control cell (N067).
+- **Printed inputs:** `1439/1586 (90.8)`.
+- **Rule and calculation:** 1,439 ÷ 1,586 × 100 = 90.7314%, rounding to 90.7%, not 90.8%.
+- **Tolerance:** 90.8% nearest-tenth interval [90.75%,90.85%); computed value is outside by 0.0186 points.
+- **Direct observation versus inference:** Inputs are direct. Threshold contrast is separately NCAND002 because it has another comparator/rule.
+- **Alternative source-grounded interpretations:** No alternate denominator/rounding convention supplied.
+- **Quality-control relevance:** The printed sensitivity percentage is not mechanically reproducible.
+- **Exact human question:** Which of the count, denominator, or 90.8% should be used?
 
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** [joi180070supp2_prod.pdf — PDF p. 8](<../../../joi180070supp2_prod.pdf#page=8>), eTable 4, `Discharge Antithrombotics`, control column; N060.
-- **Direct observation:** The cell prints `2141/2400 (89.3)`.
-- **Rule and calculation:** 2,141 / 2,400 x 100 = 89.2083%, which rounds to 89.2% to one decimal, not 89.3%.
-- **Tolerance:** One-decimal nearest-rounding interval for 89.3% is [89.25%, 89.35%); exact value is outside it by 0.0917 points.
-- **Inference and alternatives:** The mismatch is direct; an unstated alternative denominator or nonstandard rounding method is not provided.
-- **Quality-control relevance:** The sensitivity-analysis adherence percentage cannot be reproduced from the printed fraction.
-- **Human question:** Which of the displayed control count, denominator, or percentage is intended for this row?
+### NCAND006 — eTable 4 antidiabetic-medication control percentage does not reproduce
 
-### NC006 — eTable 4 AF-anticoagulation control percentage does not reconcile with 39/174
-
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** [joi180070supp2_prod.pdf — PDF p. 8](<../../../joi180070supp2_prod.pdf#page=8>), eTable 4, `Anticoagulation for Atrial Fibrillation/Flutter`, control column; N060.
-- **Direct observation:** The cell prints `39/174 (22.5)`.
-- **Rule and calculation:** 39 / 174 x 100 = 22.4138%, which rounds to 22.4% to one decimal, not 22.5%.
-- **Tolerance:** One-decimal nearest-rounding interval for 22.5% is [22.45%, 22.55%); exact value is outside it by 0.0862 points.
-- **Inference and alternatives:** The mismatch is direct; the package supplies no alternative denominator or stated truncation/rounding rule.
-- **Quality-control relevance:** The printed sensitivity-analysis proportion cannot be mechanically reproduced from its fraction.
-- **Human question:** Which displayed value should be used to represent the control AF-anticoagulation adherence proportion?
-
-### NC007 — eTable 4 lipid-lowering control percentage does not reconcile with 1,439/1,586
-
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** [joi180070supp2_prod.pdf — PDF p. 8](<../../../joi180070supp2_prod.pdf#page=8>), eTable 4, `Lipid-lowering for LDL >100 mg/dL`, control column; N060.
-- **Direct observation:** The cell prints `1439/1586 (90.8)`.
-- **Rule and calculation:** 1,439 / 1,586 x 100 = 90.7314%, which rounds to 90.7% to one decimal, not 90.8%.
-- **Tolerance:** One-decimal nearest-rounding interval for 90.8% is [90.75%, 90.85%); exact value is outside it by 0.0686 points.
-- **Inference and alternatives:** The mismatch is direct; an unstated alternative denominator or different percentage convention is not provided. Its threshold-label issue remains separately captured as NC002 because it uses a different comparator and rule.
-- **Quality-control relevance:** A data extractor cannot reproduce the printed sensitivity-analysis percentage from the printed fraction.
-- **Human question:** Which of the count, denominator, or 90.8% control percentage is the intended eTable 4 value?
-
-### NC008 — eTable 4 antidiabetic-medication control percentage does not reconcile with 557/688
-
-- **Category:** Denominator, proportion, or total inconsistency.
-- **Exact source locations:** [joi180070supp2_prod.pdf — PDF p. 8](<../../../joi180070supp2_prod.pdf#page=8>), eTable 4, `Hypoglycemic therapy for diabetes mellitus`, control column; N060.
-- **Direct observation:** The cell prints `557/688 (81.1)`.
-- **Rule and calculation:** 557 / 688 x 100 = 80.9593%, which rounds to 81.0% to one decimal, not 81.1%.
-- **Tolerance:** One-decimal nearest-rounding interval for 81.1% is [81.05%, 81.15%); exact value is outside it by 0.1407 points.
-- **Inference and alternatives:** The mismatch is direct; the supplied package does not give an alternative denominator or a rounding rule that explains it.
-- **Quality-control relevance:** The displayed sensitivity-analysis percentage is not reproducible from its stated numerator and denominator.
-- **Human question:** Which printed value should be corrected or clarified for this control antidiabetic-medication row?
+- **Category:** Denominator, proportion, or total inconsistency
+- **Exact source locations:** DOC-003, [joi180070supp2_prod.pdf — PDF p. 8](<../../../joi180070supp2_prod.pdf#page=8>), eTable 4 `Antidiabetic Medication`, control cell (N069).
+- **Printed inputs:** `557/688 (81.1)`.
+- **Rule and calculation:** 557 ÷ 688 × 100 = 80.9593%, rounding to 81.0%, not 81.1%.
+- **Tolerance:** 81.1% nearest-tenth interval [81.05%,81.15%); computed value is outside by 0.0907 points.
+- **Direct observation versus inference:** Inputs direct; alternate denominator or rounding convention unprinted.
+- **Alternative source-grounded interpretations:** None supplied.
+- **Quality-control relevance:** The displayed proportion cannot be reproduced from its stated fraction.
+- **Exact human question:** Which printed value represents this control antidiabetic-medication proportion?
 
 ## Limitations
 
-The supplied fresh coordinate-layout assets provide direct recoverable table text, but no rendered PDF images were available in this Linux run. Duplicate tokens in DOC-003 were treated as an extraction artifact only after location/coordinate confirmation; all candidate inputs above were independently located in the direct PDF text/layout record. Adjusted risk differences and model-based estimates were not forced to equal crude fractions when the source identifies adjustment. No raw data, per-cluster baseline counts, or stated table-rounding convention was supplied.
+No raw data, per-hospital baseline records, or source-stated rounding convention was supplied. This lane did not replace adjusted estimates with crude arithmetic and did not perform inferential-statistical reconciliation. No display-zero P value was registered as a candidate.
 
-**Counts:** 61/61 relationships complete; 8 distinct provisional numeric candidates (`NC001`–`NC008`); 53 relationships with no qualifying numeric candidate.
+**Counts:** 72 relationships checked; 6 distinct provisional candidates (`NCAND001`–`NCAND006`); 61 `NO_CANDIDATE`; 4 `NOT_APPLICABLE_WITH_REASON`; 1 existing-candidate-factually-represented record (`N072`, `C007_FACTUALLY_REPRESENTED`).

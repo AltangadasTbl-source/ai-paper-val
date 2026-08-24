@@ -1,8 +1,10 @@
-# Report Generation Handoff
+# Report Generation Assembly Record
 
-- **Scope:** Complete Workflow 1.5.2 Markdown assembly from current-run canonical artifacts only.
-- **Output:** `../final_report_1_5_2.md`.
-- **Stable cards completed:** C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011 (11/11, ledger order).
-- **C004 handling:** Direct-source fact corrected to `23/238 (9.66)`; the retained stable ID does not assert a source percentage defect.
-- **Required report-link repairs included:** DOC-001 p. 4 in C010; separate DOC-002 pp. 14 and 15 links in C011; all source-PDF report links use `../filename.pdf#page=N`.
-- **Pending coordinator fields:** Finished UTC, observed elapsed minutes, target status/exceedance causes, authoritative token accounting, per-model totals, and cost.
+The complete fresh Workflow 1.5.2 Markdown report was assembled from current source-first canonical artifacts. Candidate cards C001-C008 were all included in stable-ID order; no review queue, cap, deferred section, prior report, archived derivative, or quarantined scientific artifact was used as report evidence.
+
+Output paths:
+
+- `.ai_paper_validation/final_report_1_5_2.md`
+- `.ai_paper_validation/review_1_5_2/report_generation.md`
+
+Coordinator-only performance and token-accounting placeholders remain for cutoff-time completion and deterministic token-cost calculation. HTML was not rendered in this stage.
