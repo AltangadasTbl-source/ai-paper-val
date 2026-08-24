@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--jama-2018-paper-package"
+id="toc-quantitative-quality-control-consistency-review--jama-2018-paper-package">Quantitative
+Quality-Control Consistency Review — JAMA 2018 Paper Package</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-fresh-processing-provenance"
+id="toc-package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-usage-and-cost" id="toc-token-usage-and-cost">Token
+usage and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--jama-2018-paper-package">Quantitative
+Quality-Control Consistency Review — JAMA 2018 Paper Package</h1>
+<blockquote>
+<p><strong>Pending Human Adjudication</strong></p>
+<p>This is a quantitative reporting quality-control record, not a
+validity determination. No stable candidate was identified in the
+accessible fresh evidence, and any later candidate would remain
+<strong>Pending Human Adjudication</strong>. The zero-candidate result
+is access-limited and must not be interpreted as evidence that the
+supplied paper package has no quantitative or statistical reporting
+inconsistency.</p>
+</blockquote>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p><strong>Stable candidate count:</strong> 0.</p>
+<p><strong>No stable candidates were identified</strong> from the
+accessible fresh evidence.</p>
+<p>The review structurally covered all four supplied PDFs (69 of 69 PDF
+pages) using a fresh, source-first inventory. The required readable
+scientific-content path was unavailable: native and layout text
+extraction, page rendering, and CPU OCR could not be performed locally.
+Consequently, no source-readable numeric or inferential-statistical
+relationship could be registered, and no source-grounded candidate
+threshold could be evaluated. This is a documented access limitation,
+not a substantive consistency conclusion about the paper or its
+supplements.</p>
+<h2 id="package-and-fresh-processing-provenance">Package and
+Fresh-Processing Provenance</h2>
+<p>This review used only the four supplied root-level PDFs and fresh
+Workflow 1.5.2 artifacts. No legacy audit derivative, web material,
+external literature, or source modification was used as evidence.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source ID</th>
+<th>Direct source</th>
+<th>Type</th>
+<th style="text-align: right;">Pages</th>
+<th>SHA-256</th>
+<th>Fresh-processing outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td><a
+href="../jama_parshuram_2018_oi_180015.pdf#page=1">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 1</a></td>
+<td>PDF 1.4</td>
+<td style="text-align: right;">11</td>
+<td><code>92c3a3edd598a1073e39f8d0733352b3aea3bec30731b9ef0326e68f2e6088ba</code></td>
+<td>Structural page mapping completed; scientific text/layout/render/OCR
+unavailable.</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td><a href="../joi180015supp1_prod.pdf#page=1" target="_blank" rel="noopener">joi180015supp1_prod.pdf
+— PDF p. 1</a></td>
+<td>PDF 1.3</td>
+<td style="text-align: right;">37</td>
+<td><code>67409a1493b032cb49b26a4444e37eabeb2a432d2d0b5576914baac310490306</code></td>
+<td>Structural page mapping completed; scientific text/layout/render/OCR
+unavailable.</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td><a href="../joi180015supp2_prod.pdf#page=1" target="_blank" rel="noopener">joi180015supp2_prod.pdf
+— PDF p. 1</a></td>
+<td>PDF 1.5</td>
+<td style="text-align: right;">7</td>
+<td><code>6dab9fdc7fa6ca0da2031d5a483a58ba8ad9a3b0c6c4e7c45eb17708535465a4</code></td>
+<td>Structural page mapping completed; scientific text/layout/render/OCR
+unavailable.</td>
+</tr>
+<tr class="even">
+<td>DOC-004</td>
+<td><a href="../joi180015supp3_prod.pdf#page=1" target="_blank" rel="noopener">joi180015supp3_prod.pdf
+— PDF p. 1</a></td>
+<td>PDF 1.6</td>
+<td style="text-align: right;">14</td>
+<td><code>3b58616d0af25610fe9e4bab11ac42c7e38dae588e3d965ec306b8e5b55d1eb3</code></td>
+<td>Structural page mapping completed; specific scientific content
+indeterminate.</td>
+</tr>
+</tbody>
+</table>
+<p>The fresh evidence asset record documents the read-only page-tree
+method used to establish the 69-page source-unit total and the
+unavailable local tools. The direct PDFs remain authoritative;
+structural page records identify units but do not disclose scientific
+values, tables, figures, captions, or statistical definitions. Source
+hashes matched at the evidence-quality audit point.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review scope was numeric, denominator/proportion/total,
+inferential-statistical, cross-document numeric,
+effect-measure/label/scale, and rate-versus-count consistency.
+Analysis-unit or population issues were in scope only if they could
+produce a concrete reported-number, statistic, denominator, label, or
+interpretation inconsistency.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source ID</th>
+<th>Unit type</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Structurally mapped units</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">37</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-004</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>PDF_PAGE</strong></td>
+<td style="text-align: right;"><strong>69</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: right;"><strong>69</strong></td>
+<td style="text-align: right;"><strong>69</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Structural source-unit coverage is complete. Result-level
+relationship discovery is not demonstrably complete because every page
+lacked a permissible readable derivative. No broad methodology,
+clinical, novelty, misconduct, raw-data, or paper-validity audit was
+performed.</p>
+<p>The review also applied the display-zero rule: a coherent
+<code>P = 0</code>, <code>p = 0.000</code>, or equivalent notation alone
+would not create a candidate. No P-value display was source-accessible
+in this run, so no <code>DISPLAY_ZERO_NOT_CANDIDATE</code> relationship
+was registered and no display-zero candidate card was created.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Coverage domain</th>
+<th style="text-align: right;">Registered relationships</th>
+<th>Review status</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numeric/reporting relationships (<code>N</code>)</td>
+<td style="text-align: right;">0</td>
+<td>Complete for the registered empty set</td>
+<td>No readable source scientific content was available from which to
+register printed values, denominators, totals, labels, or
+comparators.</td>
+</tr>
+<tr class="even">
+<td>Inferential-statistical relationships (<code>S</code>)</td>
+<td style="text-align: right;">0</td>
+<td>Complete for the registered empty set</td>
+<td>No readable estimates, intervals, P values, tests, models, scales,
+or definitions were available.</td>
+</tr>
+<tr class="odd">
+<td>Cross-source matched results</td>
+<td style="text-align: right;">0</td>
+<td>Complete for the registered empty set</td>
+<td>No readable main or supplement result occurrence could be matched by
+population, time, contrast, model, measure, scale, or precision.</td>
+</tr>
+</tbody>
+</table>
+<p>Both required independent statistical passes were completed over the
+complete registered empty <code>S</code> set:</p>
+<ul>
+<li>Pass 1: <code>PASS_1_COMPLETE</code> for 0/0 <code>S</code>
+relationships.</li>
+<li>Pass 2: <code>PASS_2_COMPLETE</code> for 0/0 <code>S</code>
+relationships, the empty stable candidate ledger, and 0/0 mechanical
+recheck facts.</li>
+</ul>
+<p>For this access-limited empty set, arithmetic, denominator, interval,
+estimate-direction, P-value/test, label/scale, rate/count,
+duplicate-value, figure, population, and cross-source comparisons were
+not mechanically applicable. No diagnostic approximation was used.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<p>No stable candidates were identified.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Stable ID</th>
+<th>Candidate statement</th>
+<th>Category</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No entries</td>
+<td>No stable candidates were identified from the accessible fresh
+evidence.</td>
+<td>Not applicable</td>
+<td>Pending Human Adjudication if a candidate is later registered</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<p>No stable candidates were identified. Accordingly, there are zero
+candidate evidence cards and no candidate-specific human-adjudication
+fields to instantiate. Any future stable ID must be added without
+renumbering, mechanically rechecked against exact direct-source
+locations, and marked <strong>Pending Human Adjudication</strong> with
+the required <code>__</code> placeholders.</p>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>This review does not assert that a defect propagated, that any
+conclusion changed, or that harm occurred. If a future source-grounded
+reporting inconsistency is confirmed, a data extractor, systematic
+review, meta-analysis, guideline, or later evidence product could
+potentially copy the affected number, denominator, label, effect
+measure, or statistical result. That bounded possibility is why small
+preventable reporting defects merit human review. No particular
+downstream item can be identified from the inaccessible scientific
+content in this run.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>At preprocessing, the local PATH contained <code>file</code> and
+<code>sha256sum</code> but not <code>pdfinfo</code>,
+<code>pdftotext</code>, <code>pdftoppm</code>, <code>pdftocairo</code>,
+<code>tesseract</code>, <code>libreoffice</code>, or
+<code>soffice</code>. Therefore no fresh native text, layout text,
+rendered PDF page, OCR text, or Office-conversion derivative could be
+produced.</p>
+<p>This limitation affects all 69 pages: DOC-001 pp. 1-11, DOC-002 pp.
+1-37, DOC-003 pp. 1-7, and DOC-004 pp. 1-14. Structural page-tree counts
+support source-unit coverage only; they cannot reveal result text,
+visual tables, figures, captions, footnotes, numbers, definitions, or
+page-level quantitative relationships. No GPU was probed or used, no
+software was installed, no web resource was accessed, and no legacy
+audit derivative was used as evidence.</p>
+<p>The exact remaining human question is: can fresh page-addressable
+native text, layout text, rendered images, or direct CPU-OCR output be
+produced from the supplied PDFs so that every printed numeric and
+inferential relationship can be registered, compared, and checked
+against exact supplied-source locations?</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>There are no current candidate cards to adjudicate. If a stable
+candidate is later registered, the human reviewer should:</p>
+<ol type="1">
+<li>Confirm both cited direct-source locations and printed values or
+statements.</li>
+<li>Confirm that the comparator identifies the same population, time
+point, contrast, model, measure, scale, and precision where
+applicable.</li>
+<li>Reproduce the stated arithmetic, statistical, identity, or labeling
+rule from supplied evidence.</li>
+<li>Consider source-grounded alternative interpretations and any missing
+definitions.</li>
+<li>Record the adjudication only in the candidate card’s required human
+fields; do not treat this review as an automated validity or severity
+decision.</li>
+</ol>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<ul>
+<li>Fresh review profile: 1.5.2.</li>
+<li>Direct sources: 4 PDFs, 69 PDF pages.</li>
+<li>Before-processing hashes: recorded in
+<code>review_1_5_2/source_hashes_before.sha256</code>.</li>
+<li>Audit hash check: all four source hashes matched at the
+evidence-quality audit point.</li>
+<li>Fresh preprocessing provenance:
+<code>review_1_5_2/evidence_asset_inventory.md</code> and
+<code>review_1_5_2/preprocessing/tool_and_page_status.md</code>.</li>
+<li>No legacy audit derivative, web material, external literature,
+source modification, GPU use, or software installation was used.</li>
+</ul>
+<h3 id="agent-execution">Agent execution</h3>
+<p>Every manifested review agent is listed below. The two statistical
+passes were distinct fresh high-effort Terra executions. Runtime
+canonical task identifiers returned with a leading <code>/</code> are
+shown in validator-safe normalized form with only that leading slash
+removed.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td><code>run_state.md</code></td>
+</tr>
+<tr class="even">
+<td>fresh_source_preprocessing</td>
+<td>root/fresh_preprocessing</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>source_inventory.md</code></td>
+</tr>
+<tr class="odd">
+<td>main_quantitative_mapping</td>
+<td>root/main_mapping</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>extraction/main_quantitative_evidence.md</code></td>
+</tr>
+<tr class="even">
+<td>support_quantitative_mapping</td>
+<td>root/support_mapping</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>extraction/support_quantitative_evidence.md</code></td>
+</tr>
+<tr class="odd">
+<td>numeric_checks</td>
+<td>root/numeric_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/numeric_consistency.md</code></td>
+</tr>
+<tr class="even">
+<td>cross_source_checks</td>
+<td>root/cross_source_review</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/cross_source_consistency.md</code></td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_1</td>
+<td>root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_1.md</code></td>
+</tr>
+<tr class="even">
+<td>evidence_recheck</td>
+<td>root/evidence_recheck</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>verification/evidence_recheck.md</code></td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_2</td>
+<td>root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_2.md</code></td>
+</tr>
+<tr class="even">
+<td>evidence_quality</td>
+<td>root/evidence_quality_audit</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>quality/evidence_quality_audit.md</code></td>
+</tr>
+<tr class="odd">
+<td>report_generation</td>
+<td>root/report_generation</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>report_generation/report_generation_record.md</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Four PDFs with 69 fresh-required
+pages (11-page main article and 58 support pages), fewer source units
+than the 102-page calibration package but with complete source-access
+limitation documentation required because native-text, rendering, and
+CPU OCR executables are unavailable.</li>
+<li><strong>Total source units:</strong> 69</li>
+<li><strong>Fresh-source units:</strong> 69</li>
+<li><strong>Target elapsed minutes:</strong> 30-45</li>
+<li><strong>Started UTC:</strong> 2026-08-24T00:18:52Z</li>
+<li><strong>Finished UTC:</strong> 2026-08-24T00:41:30Z</li>
+<li><strong>Observed elapsed minutes:</strong> 22.6</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-usage-and-cost">Token usage and cost</h3>
+<p>Authoritative response-level runtime token counts were not exposed
+for the coordinator or any specialist response. Each manifested agent
+therefore has one <code>UNAVAILABLE</code> ledger record with exact
+<code>__</code> token fields; no text-length or tokenizer estimate was
+substituted. The known numeric subtotal is zero because there are no
+authoritative counted records, while the complete package token count
+and price remain unavailable.</p>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th style="text-align: right;">Agents</th>
+<th style="text-align: right;">Known total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+<th style="text-align: right;">Complete estimated cost (USD)</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+<tr class="even">
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<p>Per-agent detail is in
+<code>review_1_5_2/token_usage_summary.md</code>. Cached input and
+cache-write tokens are input subsets, and reasoning tokens are an output
+subset; none is added again to total tokens. Every amount is a
+token-only API-equivalent estimate under the pricing snapshot dated
+2026-08-18, not an invoice; non-token tools, containers, storage,
+subscriptions, taxes, and other vendor charges are excluded.</p>
+</body>
+</html>

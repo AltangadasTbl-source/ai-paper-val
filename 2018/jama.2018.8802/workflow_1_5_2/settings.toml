@@ -1,0 +1,90 @@
+[runtime]
+platform = "linux"
+autonomous = true
+agent_first = true
+ask_before_execution = false
+
+[parallel]
+enabled = true
+max_specialists = 6
+specialist_return_max_lines = 8
+
+[context]
+max_normalized_text_chars_per_shard = 200000
+max_rendered_pages_per_shard = 32
+max_relationships_per_shard = 120
+max_candidates_per_recheck_shard = 60
+
+[performance]
+target_policy = "package-specific-after-inventory"
+reference_total_source_units = 102
+reference_fresh_source_units = 81
+reference_observed_minutes = 49.4
+reference_comparable_target_minutes = "35-50"
+reference_is_universal_default = false
+hard_timeout = false
+terra_default_reasoning_effort = "medium"
+terra_high_reasoning_roles = ["qc15_statistical_consistency_reviewer"]
+statistical_pass_agents = "fresh-distinct"
+avoid_redundant_agent_waves = true
+timing_artifact = ".ai_paper_validation/review_1_5_2/run_state.md"
+agent_execution_artifact = ".ai_paper_validation/review_1_5_2/agent_execution_manifest.md"
+
+[review]
+candidate_limit = "none"
+report_all_candidates = true
+ai_adjudication = false
+tone = "quality-control"
+primary_focus = "numeric-statistical-reporting-consistency"
+exclude_display_zero_p_value_only = true
+p_zero_candidate_requires_independent_contradiction = true
+
+[evidence]
+reuse_existing_extractions = false
+restart_preprocessing = true
+restart_candidate_discovery = true
+legacy_audit_outputs_are_evidence_inputs = false
+full_source_mapping = true
+source_coverage_status_required = "COMPLETE"
+
+[ocr]
+mode = "cpu"
+allow_gpu = false
+native_text_first = true
+new_ocr_scope = "pages-with-unusable-native-text"
+preferred_backend = "tesseract-cpu"
+missing_backend = "record-and-continue"
+
+[validation]
+package_root_codex_required = false
+human_adjudication_placeholder = "__"
+coverage_artifacts_per_row = 1
+
+[token_accounting]
+required = true
+scope = "started-through-finished-utc"
+include_coordinator = true
+include_every_manifested_agent = true
+usage_granularity = "response-level"
+authoritative_usage_only = true
+unavailable_placeholder = "__"
+allowed_record_statuses = ["EXACT", "TOTALS_ONLY", "UNAVAILABLE"]
+pricing_snapshot = "token_pricing.toml"
+price_basis = "token-only-api-equivalent-estimate"
+aggregate_by = ["agent", "model", "package"]
+cached_and_cache_write_are_input_subsets = true
+reasoning_is_output_subset = true
+
+[python]
+role = "auxiliary-only"
+allowed_scripts = ["extract_office_source.py", "calculate_token_cost.py", "render_report.py", "validate_review.py"]
+
+[tools]
+pandoc = "pandoc"
+pdfinfo = "pdfinfo"
+pdftotext = "pdftotext"
+pdftoppm = "pdftoppm"
+pdftocairo = "pdftocairo"
+tesseract = "tesseract"
+libreoffice = "libreoffice"
+sha256sum = "sha256sum"

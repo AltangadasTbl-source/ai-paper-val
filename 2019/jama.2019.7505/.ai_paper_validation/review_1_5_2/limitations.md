@@ -1,0 +1,9 @@
+# Limitations and Missing Definitions
+
+- Linux `pdfinfo`, `pdftotext`, `pdftoppm`/`pdftocairo`, and CPU Tesseract were unavailable. Fresh native and layout text for all 100 units was produced directly with the already-installed Git-for-Windows `pdftotext.exe` 4.00; no software was installed.
+- DOC-001's preliminary `file` classification said 10 pages, while both fresh text modes returned 14 form-feed-delimited non-empty pages, consistent with printed article pages 2292-2305. The 14-page count governs coverage; independent `pdfinfo` confirmation was unavailable.
+- Page rendering and OCR were unavailable. DOC-001 Table 2 p. 7 and Table 3 p. 9 are partly serialized out of column alignment, so only recoverable or narratively corroborated row assignments were used. DOC-005 pp. 31-37 and 42 contain graphic values not recoverable from fresh text; captions and definitions were mapped but coordinates were not invented.
+- The direct text layer did not decode the inequality glyph before the p. 3 SpO2 threshold or the multiplication glyph in the p. 6 white-blood-cell unit. Surrounding supplied text supports the recorded readings, but human visual confirmation remains necessary.
+- The visual identity of the plotted eFigure 11 curve could not be confirmed; the title, caption text, and printed mortality/PEPC statistics were checked textually.
+- Several candidates retain exact missing definitions: the complete adverse-event algorithm; the intended white-blood-cell scale; the per-protocol effect measure/model/reference/variance/test; the synthetic-colloid row-specific tests and unrounded P values; and the authoritative source fields or calculation rules for the neuromuscular rows.
+- These are bounded evidence-access and definition limitations. They do not authorize candidate deletion, AI adjudication, severity assignment, or claims that any paper-level conclusion or downstream product changed.
