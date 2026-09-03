@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#quantitative-quality-control-consistency-review"
+id="toc-quantitative-quality-control-consistency-review">Quantitative
+Quality-Control Consistency Review</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--baseline-index-stroke-type-counts-differ-across-baseline-tables"
+id="toc-c001--baseline-index-stroke-type-counts-differ-across-baseline-tables">C001
+— Baseline index-stroke type counts differ across baseline
+tables</a></li>
+<li><a
+href="#c002--baseline-nihss-statistic-and-label-do-not-reconcile-across-tables"
+id="toc-c002--baseline-nihss-statistic-and-label-do-not-reconcile-across-tables">C002
+— Baseline NIHSS statistic and label do not reconcile across
+tables</a></li>
+<li><a
+href="#c003--time-from-stroke-onset-to-randomization-differs-across-baseline-tables"
+id="toc-c003--time-from-stroke-onset-to-randomization-differs-across-baseline-tables">C003
+— Time from stroke onset to randomization differs across baseline
+tables</a></li>
+<li><a
+href="#c004--estimand-4-confidence-interval-upper-endpoint-differs-within-etable-2"
+id="toc-c004--estimand-4-confidence-interval-upper-endpoint-differs-within-etable-2">C004
+— Estimand 4 confidence-interval upper endpoint differs within eTable
+2</a></li>
+<li><a
+href="#c005--levodopa-promis-29-descriptive-mean-differs-between-main-text-and-etable-4"
+id="toc-c005--levodopa-promis-29-descriptive-mean-differs-between-main-text-and-etable-4">C005
+— Levodopa PROMIS-29 descriptive mean differs between main text and
+eTable 4</a></li>
+<li><a
+href="#c006--promis-10-descriptive-means-differ-between-main-text-and-etable-4"
+id="toc-c006--promis-10-descriptive-means-differ-between-main-text-and-etable-4">C006
+— PROMIS-10 descriptive means differ between main text and eTable
+4</a></li>
+<li><a
+href="#c007--placebo-five-week-fma-standard-deviation-differs-from-etable-4"
+id="toc-c007--placebo-five-week-fma-standard-deviation-differs-from-etable-4">C007
+— Placebo five-week FMA standard deviation differs from eTable
+4</a></li>
+<li><a
+href="#c008--placebo-prai-no-improvement-numerator-differs-between-main-text-and-etable-4"
+id="toc-c008--placebo-prai-no-improvement-numerator-differs-between-main-text-and-etable-4">C008
+— Placebo PRAI no-improvement numerator differs between main text and
+eTable 4</a></li>
+<li><a
+href="#c009--etable-6-overall-adverse-event-total-is-one-below-arms-and-category-sums"
+id="toc-c009--etable-6-overall-adverse-event-total-is-one-below-arms-and-category-sums">C009
+— eTable 6 overall adverse-event total is one below arms and category
+sums</a></li>
+<li><a
+href="#c010--efigure-4-switches-locally-from-fma-to-fmma-without-qualification"
+id="toc-c010--efigure-4-switches-locally-from-fma-to-fmma-without-qualification">C010
+— eFigure 4 switches locally from FMA to FMMA without
+qualification</a></li>
+<li><a
+href="#c011--estimand-4-win-ratio-appears-under-an-fma-mean-difference-column-heading"
+id="toc-c011--estimand-4-win-ratio-appears-under-an-fma-mean-difference-column-heading">C011
+— Estimand 4 win ratio appears under an FMA mean-difference column
+heading</a></li>
+<li><a
+href="#c012--estimand-4-is-called-an-odds-ratio-in-prose-and-a-win-ratio-in-the-table"
+id="toc-c012--estimand-4-is-called-an-odds-ratio-in-prose-and-a-win-ratio-in-the-table">C012
+— Estimand 4 is called an odds ratio in prose and a win ratio in the
+table</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting" id="toc-token-accounting">Token
+accounting</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="quantitative-quality-control-consistency-review">Quantitative
+Quality-Control Consistency Review</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>All 12 candidate consistency issues in this report are
+<strong>Pending Human Adjudication</strong>. They are source-grounded
+quantitative reporting quality-control observations, not findings about
+study validity, author intent, or the paper's conclusions.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete local review of seven supplied PDFs (159 stable PDF-page
+units) registered 12 distinct candidates
+(<code>C001</code>-<code>C012</code>). The candidates concern
+cross-location values, totals, statistical interval display, and measure
+or label consistency. Small preventable reporting defects can matter if
+later evidence users copy them; this report does not assert that
+copying, conclusion change, or harm occurred.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains the main article and six supplied supplements:
+<code>jama_engelter_2025_oi_250066_1761597796.45511.pdf</code>,
+<code>joi250066supp1_prod_1761597796.4601.pdf</code> through
+<code>joi250066supp6_prod_1761597796.4801.pdf</code>. Direct-source
+identity and the seven-source inventory are recorded in <a
+href="review_1_5_1/source_inventory.md">source_inventory.md</a>;
+before/after source and reused-asset integrity checks are recorded in <a
+href="review_1_5_1/source_hashes_before.sha256">source_hashes_before.sha256</a>
+and <a
+href="review_1_5_1/reused_artifact_hashes_before.sha256">reused_artifact_hashes_before.sha256</a>.
+Reused extraction, OCR, layout text, table maps, and rendered pages were
+used as locators and transcription aids; exact supplied PDF pages
+remained the evidence authority.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All seven direct sources are complete in <a
+href="review_1_5_1/source_coverage.md">source_coverage.md</a>: 159 total
+units, 28 reusable-backed units, 131 fresh-required units, and 159
+mapped units. <a
+href="review_1_5_1/coverage_manifest.md">coverage_manifest.md</a>
+records disjoint completed scopes and one artifact path per row. The
+review covered quantitative reporting consistency only: arithmetic,
+totals, denominators, statistical displays, matched cross-document
+results, measures, labels, scales, and rate/count distinctions. It
+excluded external sources, raw data reconstruction, broad methodology
+review, clinical assessment, misconduct assessment, and any ranked-count
+or cap-based process.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The complete numeric inventory contains
+<code>N001</code>-<code>N033</code>; the inferential-statistical
+inventory contains <code>S001</code>-<code>S021</code>. Numeric and
+cross-source checks are recorded in <a
+href="review_1_5_1/checkers/numeric_consistency.md">numeric_consistency.md</a>
+and <a
+href="review_1_5_1/checkers/cross_source_consistency.md">cross_source_consistency.md</a>.
+Both independent statistical passes cover every S relationship: <a
+href="review_1_5_1/checkers/statistical_pass_1.md">statistical_pass_1.md</a>
+and <a
+href="review_1_5_1/checkers/statistical_pass_2.md">statistical_pass_2.md</a>.
+Coherent display-zero P values were not registered as candidates; no
+stable candidate in this report mentions a display-zero P value.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate statement</th>
+<th>Primary category</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Baseline index-stroke type counts differ across baseline tables</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Baseline NIHSS statistic and label do not reconcile across
+tables</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Time from stroke onset to randomization differs across baseline
+tables</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Estimand 4 confidence-interval upper endpoint differs within eTable
+2</td>
+<td>Statistical reporting inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Levodopa PROMIS-29 descriptive mean differs between main text and
+eTable 4</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>PROMIS-10 descriptive means differ between main text and eTable
+4</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Placebo five-week FMA standard deviation differs from eTable 4</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Placebo PRAI no-improvement numerator differs between main text and
+eTable 4</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>eTable 6 overall adverse-event total is one below arms and category
+sums</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>eFigure 4 switches locally from FMA to FMMA without
+qualification</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>Estimand 4 win ratio appears under an FMA mean-difference column
+heading</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Estimand 4 is called an odds ratio in prose and a win ratio in the
+table</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--baseline-index-stroke-type-counts-differ-across-baseline-tables" class="candidate-card">C001
+— Baseline index-stroke type counts differ across baseline tables</h2>
+<p><strong>Candidate statement:</strong> The same randomized levodopa
+arm has different ischemic/hemorrhagic index-stroke counts in two
+baseline tables. <strong>Pending Human Adjudication.</strong></p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=4">main
+article — PDF p. 4</a>, Table 1; DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=10">Supplement 3 —
+PDF p. 10</a> and <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=11">PDF p. 11</a>,
+eTable 1.</p>
+<p><strong>Source evidence:</strong> Main Table 1 prints levodopa
+<code>n=307</code>: ischemic <code>260 (84.7%)</code>, hemorrhagic
+<code>47 (15.3%)</code>. eTable 1 prints levodopa <code>n=307</code>:
+ischemic <code>263 (85.7%)</code>, hemorrhagic <code>44 (14.3%)</code>;
+placebo values match.</p>
+<p><strong>Reported-versus-comparator:</strong> Main <code>260/47</code>
+versus supplement <code>263/44</code> for the same named arm and
+categories.</p>
+<p><strong>Reasoning procedure:</strong> Compare matched arm, population
+label, and mutually exclusive category labels across the two tables.</p>
+<p><strong>Calculation:</strong> <code>260 + 47 = 307</code>;
+<code>263 + 44 = 307</code>; the category changes are <code>+3/-3</code>
+at an unchanged arm total.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unstated recoding or data cut could explain the difference; neither
+table identifies one.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both cited locations
+and printed values were found; the identity comparison reproduced. Group
+labels and totals are present; a recoding/data-version definition is
+missing. Direct observation is the different pairs, while a cause is
+inferred.</p>
+<p><strong>Quality-control relevance:</strong> A same-arm
+baseline-category mismatch requires source confirmation before use as a
+trial characteristic.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor or systematic review could copy an incorrect
+stroke-type count.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+levodopa pair and whether a classification rule or data version
+differs.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--baseline-nihss-statistic-and-label-do-not-reconcile-across-tables" class="candidate-card">C002
+— Baseline NIHSS statistic and label do not reconcile across tables</h2>
+<p><strong>Candidate statement:</strong> eTable 1 labels its NIHSS row
+as median [IQR] but prints a decimal-plus-one-parenthesized-value form
+that does not identify the same summary as the main table.
+<strong>Pending Human Adjudication.</strong></p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=4">main
+article — PDF p. 4</a>, Table 1, and <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=5">PDF
+p. 5</a>, Results; DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=11">Supplement 3 —
+PDF p. 11</a>, eTable 1.</p>
+<p><strong>Source evidence:</strong> Main values are median (IQR)
+<code>7 (5-11)</code> levodopa, <code>8 (5-10)</code> placebo, and
+overall <code>7 (5-10)</code>. eTable 1 labels
+<code>Median NIHSS at randomization [IQR]</code> yet prints
+<code>8.2 (3.9)</code>, <code>8.3 (3.8)</code>, and
+<code>8.2 (3.9)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> A labelled median/IQR
+row with two-endpoint main summaries versus one decimal and one
+parenthesized value in the supplement.</p>
+<p><strong>Reasoning procedure:</strong> Assess whether the declared
+statistic and displayed form supply reconcilable central and IQR
+summaries.</p>
+<p><strong>Calculation:</strong> Main summaries contain a central value
+and two IQR endpoints; each supplement summary has one central decimal
+and one parenthesized number, so mapping requires a missing
+definition.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+supplement values may be means (SDs) under a stale label, or may use an
+unstated one-number convention; neither interpretation is stated
+there.</p>
+<p><strong>Mechanical evidence recheck:</strong> Locations, labels, and
+values were found. The measure/label rule applies; the statistic
+represented by <code>8.2 (3.9)</code> and meaning of <code>(3.9)</code>
+are missing. Mean (SD) is an inference, not a source fact.</p>
+<p><strong>Quality-control relevance:</strong> The baseline-severity
+summary should have an unambiguous statistic and dispersion label.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+baseline NIHSS could be extracted with the wrong statistic or dispersion
+measure.</p>
+<p><strong>Human verification steps:</strong> Identify the statistic and
+dispersion for each supplement value and confirm whether the label or
+values should change.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--time-from-stroke-onset-to-randomization-differs-across-baseline-tables" class="candidate-card">C003
+— Time from stroke onset to randomization differs across baseline
+tables</h2>
+<p><strong>Candidate statement:</strong> Same-named
+time-to-randomization summaries differ across tables; the supplement
+omits the unit needed to make the cross-source comparison unconditional.
+<strong>Pending Human Adjudication.</strong></p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=4">main
+article — PDF p. 4</a>, Table 1; DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=11">Supplement 3 —
+PDF p. 11</a>, eTable 1.</p>
+<p><strong>Source evidence:</strong> Main prints
+<code>Time from stroke onset to randomization, median (IQR), d</code>:
+<code>3.0 (2.0-5.0)</code> for both arms. eTable 1 prints
+<code>7 [5,10]</code> overall, <code>8 [5,10]</code> placebo, and
+<code>7 [5-11]</code> levodopa without a visible unit.</p>
+<p><strong>Reported-versus-comparator:</strong> Main arm medians
+<code>3.0/3.0</code> versus supplement <code>8/7</code> for the same
+named variable.</p>
+<p><strong>Reasoning procedure:</strong> Compare wording and arms,
+conditioning any day-based identity claim on confirmation that the
+omitted supplement unit and derivation match.</p>
+<p><strong>Calculation:</strong> If the supplement values are days,
+levodopa differs by <code>7-3=4</code> days and placebo by
+<code>8-3=5</code> days; these are not rounding differences.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+different unstated unit, time origin, derivation, population, or data
+version may be used.</p>
+<p><strong>Mechanical evidence recheck:</strong> Locations and values
+were found. The comparison is conditionally applicable because the
+supplement unit, time origin, derivation, and population definition are
+absent. The values are observed; treating the supplement as days is
+inferred.</p>
+<p><strong>Quality-control relevance:</strong> Cross-source timing
+summaries need an explicit common unit and derivation before they can be
+treated as identical.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed
+under the same unit, a trial-timing value could be copied incorrectly
+into evidence extraction.</p>
+<p><strong>Human verification steps:</strong> Confirm the supplement
+unit, time origin, and intended arm-specific values.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--estimand-4-confidence-interval-upper-endpoint-differs-within-etable-2" class="candidate-card">C004
+— Estimand 4 confidence-interval upper endpoint differs within eTable
+2</h2>
+<p><strong>Candidate statement:</strong> Two matched Estimand 4 displays
+in eTable 2 have different upper 95% CI endpoints. <strong>Pending Human
+Adjudication.</strong></p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=12">Supplement 3 —
+PDF p. 12</a>, eTable 2 narrative; <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=13">PDF p. 13</a>,
+Estimand 4 row.</p>
+<p><strong>Source evidence:</strong> Narrative:
+<code>1.06 (95% CI, 0.86 to 1.25)</code>. Matched full-analysis-set
+composite row: <code>1.06 [0.86-1.26]</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Identical point
+estimate/lower endpoint with upper endpoint <code>1.25</code> versus
+<code>1.26</code>.</p>
+<p><strong>Reasoning procedure:</strong> Match estimand number,
+population, composite endpoint, confidence level, and estimate, then
+compare the repeated interval endpoints.</p>
+<p><strong>Calculation:</strong> <code>1.06=1.06</code>,
+<code>0.86=0.86</code>, and <code>1.26-1.25=0.01</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+rounding-boundary or one-hundredth transcription difference is possible;
+no unrounded output or separate calculation is supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both displays were
+found and reproduced. The repeated-result rule applies; unrounded
+upper-bound output and an explanation of any display difference are
+missing. Mechanism is inferred.</p>
+<p><strong>Quality-control relevance:</strong> A repeated statistical
+interval should have one traceable displayed endpoint.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an effect-precision endpoint could be copied inconsistently into a
+meta-analysis or evidence table.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended upper
+endpoint using the analysis output and document any rounding rule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--levodopa-promis-29-descriptive-mean-differs-between-main-text-and-etable-4" class="candidate-card">C005
+— Levodopa PROMIS-29 descriptive mean differs between main text and
+eTable 4</h2>
+<p><strong>Candidate statement:</strong> The main-text levodopa
+PROMIS-29 mean does not follow ordinary whole-number rounding of the
+matched eTable 4 mean. <strong>Pending Human Adjudication.</strong></p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=6">main
+article — PDF p. 6</a>, Secondary Outcomes; DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=15">Supplement 3 —
+PDF p. 15</a>, eTable 4.</p>
+<p><strong>Source evidence:</strong> Main: levodopa
+<code>66 (14)</code>, placebo <code>65 (14)</code>. eTable: levodopa
+<code>64.74 (14.33)</code>, placebo <code>65.11 (13.79)</code>, effect
+<code>-0.37</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Main levodopa
+<code>66 (14)</code> versus detailed <code>64.74 (14.33)</code>.</p>
+<p><strong>Reasoning procedure:</strong> Check whether detailed
+same-outcome, same-arm descriptive values reproduce the narrative
+display under ordinary whole-number rounding.</p>
+<p><strong>Calculation:</strong> <code>64.74</code> rounds to
+<code>65</code>, not <code>66</code>; <code>64.74-65.11=-0.37</code>,
+matching the eTable effect.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unstated scoring transformation, analysis set, or
+descriptive-versus-model summary could differ.</p>
+<p><strong>Mechanical evidence recheck:</strong> Pages and values were
+found; the rounding comparison reproduced. Scoring version, analysis
+population, and unrounded main-text inputs are unavailable. An
+explanation is inferred.</p>
+<p><strong>Quality-control relevance:</strong> Matched secondary-outcome
+descriptive values should identify a common scoring and analysis
+basis.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a PROMIS-29 mean could be copied incorrectly into a secondary-outcome
+extraction.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+levodopa mean, score transformation, and analysis population.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--promis-10-descriptive-means-differ-between-main-text-and-etable-4" class="candidate-card">C006
+— PROMIS-10 descriptive means differ between main text and eTable 4</h2>
+<p><strong>Candidate statement:</strong> Both detailed PROMIS-10 means
+are near 30, whereas the main text prints 28 for both arms.
+<strong>Pending Human Adjudication.</strong></p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=6">main
+article — PDF p. 6</a>, Secondary Outcomes; DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=15">Supplement 3 —
+PDF p. 15</a>, eTable 4.</p>
+<p><strong>Source evidence:</strong> Main prints <code>28 (6)</code> in
+both arms. eTable prints placebo <code>29.87 (5.74)</code> and levodopa
+<code>30.04 (5.73)</code>, with adjusted effect <code>0.18</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Main
+<code>28 (6)</code>/<code>28 (6)</code> versus eTable
+<code>29.87 (5.74)</code>/<code>30.04 (5.73)</code>.</p>
+<p><strong>Reasoning procedure:</strong> Compare matched instrument and
+arm summaries; keep the adjusted effect separate from the raw
+descriptive contrast.</p>
+<p><strong>Calculation:</strong> <code>29.87</code> and
+<code>30.04</code> each round to <code>30</code>, not <code>28</code>;
+<code>30.04-29.87=0.17</code>, while the labelled adjusted effect is
+<code>0.18</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unstated PROMIS-10 scoring version or analysis population may
+differ.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both pages and values
+were found. The rounding comparison reproduced; scoring/version,
+analysis-population, and unrounded narrative inputs are missing. The
+alternative is not established.</p>
+<p><strong>Quality-control relevance:</strong> Instrument summaries
+should be traceable to the same score scale and population across
+locations.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a PROMIS-10 descriptive mean could be copied incorrectly into evidence
+extraction.</p>
+<p><strong>Human verification steps:</strong> Confirm the score
+transformation, population, and intended group means.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--placebo-five-week-fma-standard-deviation-differs-from-etable-4" class="candidate-card">C007
+— Placebo five-week FMA standard deviation differs from eTable 4</h2>
+<p><strong>Candidate statement:</strong> The main placebo five-week FMA
+SD does not follow ordinary whole-number rounding of eTable 4.
+<strong>Pending Human Adjudication.</strong></p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=6">main
+article — PDF p. 6</a>, Secondary Outcomes; DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=15">Supplement 3 —
+PDF p. 15</a>, eTable 4.</p>
+<p><strong>Source evidence:</strong> Main placebo mean (SD) is
+<code>56 (26)</code>; eTable placebo is <code>56.27 (25.20)</code>.
+Levodopa <code>57 (27)</code> aligns with
+<code>57.37 (26.70)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Placebo SD
+<code>26</code> versus detailed <code>25.20</code>.</p>
+<p><strong>Reasoning procedure:</strong> Compare same-arm five-week FMA
+mean (SD) and reproduce ordinary whole-number rounding.</p>
+<p><strong>Calculation:</strong> <code>56.27</code> rounds to
+<code>56</code>; <code>25.20</code> rounds to <code>25</code>, not
+<code>26</code>; levodopa <code>57.37 (26.70)</code> rounds to
+<code>57 (27)</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unstated population, imputation summary, or SD convention could
+differ.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited values were found
+and rounding reproduced. Unrounded main inputs, population/imputation
+definition, and nonstandard rounding rule are missing. Causes are
+inferred.</p>
+<p><strong>Quality-control relevance:</strong> Descriptive dispersion
+values should remain traceable across matched results.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a placebo FMA SD could be copied incorrectly into descriptive-variance
+extraction.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+placebo SD and common population/rounding convention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--placebo-prai-no-improvement-numerator-differs-between-main-text-and-etable-4" class="candidate-card">C008
+— Placebo PRAI no-improvement numerator differs between main text and
+eTable 4</h2>
+<p><strong>Candidate statement:</strong> The placebo PRAI no-improvement
+numerator differs by one at the same printed denominator.
+<strong>Pending Human Adjudication.</strong></p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=6">main
+article — PDF p. 6</a>, Secondary Outcomes; DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=15">Supplement 3 —
+PDF p. 15</a>, eTable 4.</p>
+<p><strong>Source evidence:</strong> Main placebo is
+<code>52/270 (19%)</code>; eTable placebo is
+<code>51 (18.89%) (n=270)</code>. Levodopa is <code>51/276</code> in
+both.</p>
+<p><strong>Reported-versus-comparator:</strong> Same placebo denominator
+<code>270</code> with numerator <code>52</code> versus
+<code>51</code>.</p>
+<p><strong>Reasoning procedure:</strong> Match arm, denominator, time
+point, and binary outcome wording; check each percentage against its own
+numerator.</p>
+<p><strong>Calculation:</strong> <code>51/270=18.888...%</code>,
+matching <code>18.89%</code>; <code>52/270=19.259...%</code>, compatible
+with <code>19%</code>. The printed numerator differs by one.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Different handling of <code>no improvement</code> and
+<code>no relevant improvement</code> could affect one record, but no
+distinct rule is supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Values, denominator,
+and category labels were found; the percentage calculations reproduced.
+Record-level classifications and any response-category definition are
+missing. Recoding is inferred.</p>
+<p><strong>Quality-control relevance:</strong> A matched binary-outcome
+numerator should use a clearly defined response category.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a binary-outcome count could be copied incorrectly into an evidence
+table or meta-analysis input.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+placebo numerator and whether identical PRAI response categories were
+used.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--etable-6-overall-adverse-event-total-is-one-below-arms-and-category-sums" class="candidate-card">C009
+— eTable 6 overall adverse-event total is one below arms and category
+sums</h2>
+<p><strong>Candidate statement:</strong> eTable 6 prints an overall
+adverse-event total of 145 although arm and exhaustive category totals
+are 146. <strong>Pending Human Adjudication.</strong></p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=6">main
+article — PDF p. 6</a>, Table 2 and narrative, and <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=7">PDF
+p. 7</a>; DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=17">Supplement 3 —
+PDF p. 17</a>, eTable 6.</p>
+<p><strong>Source evidence:</strong> Main reports 146 events: 79
+levodopa and 67 placebo. eTable header gives overall <code>n=145</code>,
+placebo <code>67</code>, levodopa <code>79</code>; its intensity,
+outcome, and relation rows also provide complete classifications.</p>
+<p><strong>Reported-versus-comparator:</strong> Header <code>145</code>
+versus arms and category sums <code>146</code>.</p>
+<p><strong>Reasoning procedure:</strong> Reconcile the overall event
+header against arm counts and each exhaustive classification in the same
+table.</p>
+<p><strong>Calculation:</strong> <code>67+79=146</code>; intensity
+<code>58+86+2=146</code>; outcome <code>1+29+116=146</code>; relation
+<code>2+66+23+2+39+14=146</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> One
+event might be subject to an unstated exclusion or duplicate-event rule,
+but no footnote supports a different overall set.</p>
+<p><strong>Mechanical evidence recheck:</strong> All cited totals were
+found and each reconciliation reproduced. An exclusion/duplicate-event
+rule is missing. The explanations are inferred, not observed.</p>
+<p><strong>Quality-control relevance:</strong> Event totals and
+classification totals should identify one consistent event set.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a safety-event total could be copied incorrectly into evidence
+extraction.</p>
+<p><strong>Human verification steps:</strong> Confirm whether the
+overall total should be 146 or document the rule that makes 145
+intentional.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--efigure-4-switches-locally-from-fma-to-fmma-without-qualification" class="candidate-card">C010
+— eFigure 4 switches locally from FMA to FMMA without qualification</h2>
+<p><strong>Candidate statement:</strong> eFigure 4 uses <code>FMA</code>
+in its title/legend and <code>FMMA</code> on its axis without a local
+qualification. <strong>Pending Human Adjudication.</strong></p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=23">Supplement 3 —
+PDF p. 23</a>, eFigure 4; DOC-003, <a
+href="../joi250066supp2_prod_1761597796.4701.pdf#page=2">Supplement 2 —
+PDF p. 2</a>, SAP objective; DOC-001, <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=1">main
+article — PDF p. 1</a>, <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=3">PDF
+p. 3</a>, and <a
+href="../jama_engelter_2025_oi_250066_1761597796.45511.pdf#page=6">PDF
+p. 6</a>.</p>
+<p><strong>Source evidence:</strong> eFigure 4 title/legend use
+<code>FMA</code>; its axis reads
+<code>Adjusted Mean Difference (FMMA points)</code>. The SAP defines
+Fugl-Meyer Motor Assessment as <code>FMMA</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Within the same figure,
+<code>FMA</code> versus <code>FMMA</code> for the stated assessment.</p>
+<p><strong>Reasoning procedure:</strong> Compare the local figure
+terminology, then check supplied source definitions before
+characterizing the abbreviation switch.</p>
+<p><strong>Calculation:</strong> No numeric calculation applies; the
+reproduced comparison is the local unqualified abbreviation switch.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+SAP's explicit <code>FMMA</code> definition supports that
+<code>FMMA</code> may be an intentional synonym for the FMA used in the
+article; it is not evidence of a numeric error.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct source rendering
+confirmed the figure title <code>FMA Total Score</code> and axis
+<code>FMMA points</code>. The SAP definition was found. The observation
+is local terminology; an intentional synonym is source-grounded and
+unresolved.</p>
+<p><strong>Quality-control relevance:</strong> A figure should use one
+locally clear abbreviation or qualify synonymous abbreviations.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed
+as a presentation issue, an extractor could copy inconsistent outcome
+terminology; no numeric or conclusion impact is established.</p>
+<p><strong>Human verification steps:</strong> Confirm whether the switch
+is intentional and whether the figure should use one abbreviation or
+define both locally.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c011--estimand-4-win-ratio-appears-under-an-fma-mean-difference-column-heading" class="candidate-card">C011
+— Estimand 4 win ratio appears under an FMA mean-difference column
+heading</h2>
+<p><strong>Candidate statement:</strong> Estimand 4's win ratio is
+displayed under a column headed as an FMA mean difference.
+<strong>Pending Human Adjudication.</strong></p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=13">Supplement 3 —
+PDF p. 13</a>, eTable 2 column heading and Estimand 4 row.</p>
+<p><strong>Source evidence:</strong> The heading reads
+<code>Estimated Effect of Levodopa: Mean Difference on FMA, [CI]</code>.
+Estimand 4 identifies a death-and-3-month-FMA composite summary as
+<code>win ratio [95% CI]</code> and prints
+<code>1.06 [0.86-1.26]</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> A dimensionless win
+ratio row versus an FMA-point mean-difference heading.</p>
+<p><strong>Reasoning procedure:</strong> Compare the row-specific effect
+definition and displayed scale with the spanning column heading.</p>
+<p><strong>Calculation:</strong> No arithmetic is required: a win ratio
+and an FMA-point mean difference are different measures/scales under the
+supplied labels.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+heading may be intended for all rows except Estimand 4, but no exception
+or qualifying footnote is shown.</p>
+<p><strong>Mechanical evidence recheck:</strong> Heading and row were
+found on the same page. The label/scale comparison applies; an intended
+header scope or exception is missing. A row-specific override is an
+alternative, not a resolution.</p>
+<p><strong>Quality-control relevance:</strong> Table headings should
+make the effect measure and scale for each row unambiguous.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an effect estimate could be copied under the wrong measure into an
+evidence table or meta-analysis dataset.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+heading scope and amend the heading or row label as appropriate.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--estimand-4-is-called-an-odds-ratio-in-prose-and-a-win-ratio-in-the-table" class="candidate-card">C012
+— Estimand 4 is called an odds ratio in prose and a win ratio in the
+table</h2>
+<p><strong>Candidate statement:</strong> Matched Estimand 4 displays
+label the same <code>1.06</code> effect as an odds ratio in prose and a
+win ratio in the table. <strong>Pending Human Adjudication.</strong></p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-004, <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=12">Supplement 3 —
+PDF p. 12</a>, eTable 2 narrative; <a
+href="../joi250066supp3_prod_1761597796.4701.pdf#page=13">PDF p. 13</a>,
+Estimand 4 row.</p>
+<p><strong>Source evidence:</strong> Narrative calls
+<code>1.06 (95% CI, 0.86 to 1.25)</code> an <code>odds ratio</code>; the
+matched full-analysis-set composite row calls
+<code>1.06 [0.86-1.26]</code> a <code>win ratio [95% CI]</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>Odds ratio</code>
+in prose versus <code>win ratio</code> in the matched table row.</p>
+<p><strong>Reasoning procedure:</strong> Match estimand, population,
+composite, estimate, and interval before comparing the declared measure
+labels.</p>
+<p><strong>Calculation:</strong> No arithmetic is required: odds ratio
+and win ratio are not interchangeable labels under the supplied
+definitions.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+modelling relationship may exist, but the supplied package does not
+define the terms as synonyms.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both labels, matched
+estimate, and locations were found. The measure-label comparison
+applies; a model definition equating terms is absent. Such a
+relationship is inferred, not established.</p>
+<p><strong>Quality-control relevance:</strong> A repeated estimand
+should have one identifiable effect-measure label.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an effect estimate could be extracted under the wrong measure by an
+evidence user.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+Estimand 4 measure and align the narrative or table label.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>Confirmed reporting inconsistencies can matter when a data extractor,
+systematic reviewer, meta-analyst, guideline developer, or other
+downstream evidence user copies a count, summary, interval endpoint,
+effect-measure label, or outcome terminology. This is a bounded
+quality-control consideration only: the supplied package does not
+establish any actual propagation, paper-level conclusion change, or
+harm.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>See the bounded source-specific limitations in <a
+href="review_1_5_1/limitations.md">limitations.md</a>. This review uses
+supplied package evidence only and cannot resolve missing units,
+derivations, raw analysis output, scoring definitions, event-counting
+rules, or model definitions.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ul>
+<li>Confirm each cited source location and printed value against the
+supplied PDF.</li>
+<li>Determine whether matched results use the same population, timing,
+outcome definition, analysis set, scale, and rounding convention.</li>
+<li>Obtain the missing source definitions or analysis output where
+identified in each card.</li>
+<li>Record any disposition, importance, action, initials, and notes only
+in the card's blank human adjudication fields.</li>
+</ul>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>The direct-source and reused-artifact hash baselines were recomputed
+at audit and returned <code>OK</code> for all 7 direct sources and 88
+reused artifacts. Canonical evidence, relationship, recheck, and
+quality-control artifacts are linked from <a
+href="review_1_5_1/coverage_manifest.md">coverage_manifest.md</a>. The
+complete stable candidate set is documented in <a
+href="review_1_5_1/candidate_ledger.md">candidate_ledger.md</a>, <a
+href="review_1_5_1/verification/evidence_recheck.md">evidence_recheck.md</a>,
+and <a
+href="review_1_5_1/quality/evidence_quality_audit.md">evidence_quality_audit.md</a>.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<p>Every coordinator and specialist execution is listed in <a
+href="review_1_5_1/agent_execution_manifest.md">agent_execution_manifest.md</a>.
+The two statistical passes used distinct fresh high-effort Terra runtime
+agents and cover <code>S001</code>-<code>S021</code>.</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Seven supplied PDFs contain 159
+pages, including a 94-page protocol, an 18-page SAP, and a 27-page
+results supplement; 131 pages initially lack reusable page extraction,
+and several result-relevant tables and cross-document relationships
+require fresh mapping and two independent statistical passes.</li>
+<li><strong>Total source units:</strong> 159</li>
+<li><strong>Fresh-source units:</strong> 131</li>
+<li><strong>Target elapsed minutes:</strong> 60-90</li>
+<li><strong>Started UTC:</strong> 2026-09-03T03:42:25Z</li>
+<li><strong>Finished UTC:</strong> 2026-09-03T06:49:32Z</li>
+<li><strong>Observed elapsed minutes:</strong> 187.1</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> Host load averages near 609 on 8
+CPUs caused prolonged shared-filesystem and tool latency; protocol/SAP
+native encoding failures required fresh direct layout/render inspection;
+targeted source-page visual confirmation and audit repairs were
+completed.</li>
+</ul>
+<h3 id="token-accounting">Token accounting</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Token-only API-equivalent estimate
+(USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete estimate
+unavailable</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete estimate
+unavailable</td>
+</tr>
+</tbody>
+</table>
+<p>Per-agent detail is in <a
+href="review_1_5_1/token_usage_summary.md">token_usage_summary.md</a>.
+Amounts are token-only API-equivalent estimates under the dated pricing
+snapshot, not invoices; non-token tools, containers, storage,
+subscriptions, taxes, and other vendor charges are excluded.</p>
+</body>
+</html>

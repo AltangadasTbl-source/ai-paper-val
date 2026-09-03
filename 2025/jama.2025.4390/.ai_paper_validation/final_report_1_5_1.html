@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--jama20254390"
+id="toc-quantitative-quality-control-consistency-review--jama20254390">Quantitative
+Quality-Control Consistency Review — jama.2025.4390</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--figure-3-all-patient-rate-column-conflict-with-the-matched-primary-outcome-rate"
+id="toc-c001--figure-3-all-patient-rate-column-conflict-with-the-matched-primary-outcome-rate">C001
+— Figure 3 all-patient rate-column conflict with the matched
+primary-outcome rate</a></li>
+<li><a
+href="#c002--bedtime-diuretic-six-month-timing-count-triplets-differ-between-efigure-4-and-etable-6"
+id="toc-c002--bedtime-diuretic-six-month-timing-count-triplets-differ-between-efigure-4-and-etable-6">C002
+— Bedtime-diuretic six-month timing count triplets differ between
+eFigure 4 and eTable 6</a></li>
+<li><a
+href="#c003--etable-5-other-ethnicity-row-duplicates-whitecaucasian-values-and-exceeds-randomized-other-totals"
+id="toc-c003--etable-5-other-ethnicity-row-duplicates-whitecaucasian-values-and-exceeds-randomized-other-totals">C003
+— eTable 5 <code>Other</code> ethnicity row duplicates White/Caucasian
+values and exceeds randomized <code>Other</code> totals</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--jama20254390">Quantitative
+Quality-Control Consistency Review — jama.2025.4390</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p><strong>All three candidate consistency issues in this report are
+Pending Human Adjudication.</strong> This review is a quantitative
+reporting quality-control aid. It does not determine validity,
+importance, a correction, or any paper-level conclusion.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete source coverage identified <strong>3</strong> distinct,
+source-grounded quantitative reporting candidates: C001, C002, and C003.
+The candidates concern a figure rate-column conflict, a
+medication-timing count discrepancy between a figure and table, and a
+duplicated subgroup ethnicity row whose printed counts conflict with
+parent-arm totals. No candidate was registered for a display-zero P
+value alone.</p>
+<p>The review found no basis to state that any candidate changed the
+paper's conclusion, propagated to another product, or caused harm. Small
+preventable reporting defects can nevertheless matter if a downstream
+evidence extractor copies a displayed number, label, denominator, or
+measure without its surrounding context.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The direct-source package comprises four PDFs: the 12-page main
+article, an 18-page protocol supplement, a 7-page statistical analysis
+plan supplement, and a 49-page results supplement. Current source
+SHA-256 values are recorded in <a
+href="review_1_5_1/source_hashes_before.sha256">source_hashes_before.sha256</a>.</p>
+<p>One hundred eight pre-existing evidence assets were hashed before
+review. Six source-matched metadata records were usable as locators, two
+renders were partial, and 100 assets were stale; none was accepted as
+reusable scientific page coverage. In particular, legacy derivatives for
+DOC-001 and DOC-004 did not match the current source identities. The
+retained assets are documented as provenance in <a
+href="review_1_5_1/evidence_asset_inventory.md">evidence_asset_inventory.md</a>,
+not as final evidentiary authority.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Units</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh-required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001 main article</td>
+<td style="text-align: right;">12 PDF pages</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002 protocol supplement</td>
+<td style="text-align: right;">18 PDF pages</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003 SAP supplement</td>
+<td style="text-align: right;">7 PDF pages</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-004 results supplement</td>
+<td style="text-align: right;">49 PDF pages</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">49</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>86</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: right;"><strong>86</strong></td>
+<td style="text-align: right;"><strong>86</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Every direct-source page was freshly mapped from the current PDFs.
+The complete stage and shard partition is retained in <a
+href="review_1_5_1/coverage_manifest.md">coverage_manifest.md</a>. This
+review assessed supplied-package numeric, denominator, rate/count,
+label/scale, inferential, and cross-document consistency. It did not
+undertake a broad clinical, methodology, misconduct, raw-data, or
+external-literature audit.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The numeric/reporting map covers all <strong>67</strong>
+relationships, <code>N001</code> through <code>N067</code>, in <a
+href="review_1_5_1/relationships/numeric_relationship_inventory.md">numeric_relationship_inventory.md</a>.
+The inferential-statistical map covers all <strong>35</strong>
+relationships, <code>S001</code> through <code>S035</code>, in <a
+href="review_1_5_1/statistics/relationship_inventory.md">relationship_inventory.md</a>.</p>
+<p>Both independent statistical passes completed all 35 relationships.
+Pass 1 was performed by <code>/root/statistics_pass_1</code> and pass 2
+by the distinct <code>/root/statistics_pass_2</code>; both used
+<code>gpt-5.6-terra</code> at high reasoning effort. The pass records
+are <a
+href="review_1_5_1/checkers/statistical_pass_1.md">statistical_pass_1.md</a>
+and <a
+href="review_1_5_1/checkers/statistical_pass_2.md">statistical_pass_2.md</a>.
+No display-zero-only candidate was registered; the only display-zero
+item considered in pass 2 was recorded as
+<code>DISPLAY_ZERO_NOT_CANDIDATE</code>.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>Stable ID</th>
+<th>Candidate consistency issue</th>
+<th>Category</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--figure-3-all-patient-rate-column-conflict-with-the-matched-primary-outcome-rate">C001</a></td>
+<td>Figure 3 all-patient rate-column conflict with the matched
+primary-outcome rate</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td><a
+href="#c002--bedtime-diuretic-six-month-timing-count-triplets-differ-between-efigure-4-and-etable-6">C002</a></td>
+<td>Bedtime-diuretic six-month timing count triplets differ between
+eFigure 4 and eTable 6</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td><a
+href="#c003--etable-5-other-ethnicity-row-duplicates-whitecaucasian-values-and-exceeds-randomized-other-totals">C003</a></td>
+<td>eTable 5 <code>Other</code> ethnicity row duplicates White/Caucasian
+values and exceeds randomized <code>Other</code> totals</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--figure-3-all-patient-rate-column-conflict-with-the-matched-primary-outcome-rate" class="candidate-card">C001
+— Figure 3 all-patient rate-column conflict with the matched
+primary-outcome rate</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> Figure 3 prints
+<code>71.0</code> for both all-patient treatment arms under columns
+labeled <code>Rate per 100 patient-years</code>, whereas the matched
+primary-outcome analysis reports 2.30 and 2.44 per 100 patient-years for
+the same arm-specific event counts.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_garrison_2025_oi_250019_1749674951.29054.pdf#page=9">jama_garrison_2025_oi_250019_1749674951.29054.pdf
+— Figure 3, PDF p. 9</a>; <a
+href="../jama_garrison_2025_oi_250019_1749674951.29054.pdf#page=8">jama_garrison_2025_oi_250019_1749674951.29054.pdf
+— Table 2, PDF p. 8</a>; <a
+href="../jama_garrison_2025_oi_250019_1749674951.29054.pdf#page=1">main
+article abstract, PDF p. 1</a>; <a
+href="../jama_garrison_2025_oi_250019_1749674951.29054.pdf#page=6">primary-outcome
+narrative, PDF p. 6</a>.</p>
+<p><strong>Source evidence:</strong> Figure 3 names the composite
+primary outcome and prints all-patient events of 163 (bedtime) and 173
+(morning), followed by <code>71.0</code> and <code>71.0</code> beneath
+<code>Rate per 100 patient-years</code>; it also prints HR 0.96 (95% CI
+0.77-1.19). Table 2 prints the same endpoint, arm order, event counts,
+and HR, with rates 2.30 and 2.44 per 100 patient-years. The abstract and
+narrative give rounded rates 2.3 and 2.4.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported Figure 3
+values: 71.0/71.0 under the printed rate header. Matched comparator:
+Table 2 2.30/2.44 per 100 patient-years, with abstract/narrative
+rounding to 2.3/2.4.</p>
+<p><strong>Reasoning procedure:</strong> Match the population (all
+randomized patients), comparison (bedtime versus morning), composite
+endpoint, arm-specific event counts, effect estimate, and stated rate
+unit across locations. Compare only at displayed precision and
+distinguish direct observations from possible production
+explanations.</p>
+<p><strong>Calculation:</strong> Ordinary rounding reconciles 2.30 with
+2.3 and 2.44 with 2.4, but cannot reconcile 71.0 with either rate under
+the shared printed unit. The exact event counts match: 163 = 163 and 173
+= 173. As a diagnostic alternative only, if 71.0 were hundreds of
+patient-years, <code>163 / 7100 × 100 = 2.2958</code> and
+<code>173 / 7100 × 100 = 2.4366</code>, which round to the Table 2
+rates; the PDF does not label 71.0 that way.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+values may represent an unlabeled exposure quantity, the Figure 3 column
+header may be mislabeled, a figure value may have entered production
+incorrectly, or the figure may use an unreported denominator. The
+supplied package does not identify which display is authoritative.</p>
+<p><strong>Mechanical evidence recheck:</strong> The current PDF was
+directly re-opened and the cited pages were freshly extracted and
+rendered. The figure header, values, matched events, and comparator rate
+values were confirmed. Complementary Figure 3 subgroup values also
+partition to 71.0 (for example, bedtime male + female: 30.5 + 40.5),
+which supports but does not prove the exposure-scale interpretation.</p>
+<p><strong>Quality-control relevance:</strong> A matched primary result
+has a printed rate-column mismatch. The record is kept as one candidate
+despite the related measure/label implication because it concerns the
+same printed values, comparator, and consistency rule.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy 71.0 as an event rate or reuse the Figure 3
+rate-column labeling. This report does not establish that this occurred
+or changed any conclusion.</p>
+<p><strong>Human verification steps:</strong> Inspect the locked Figure
+3 production dataset and specification; identify the intended measure
+and denominator for every displayed 71.0 field; calculate arm-specific
+rates from exact person-time; then verify the values and header
+together.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--bedtime-diuretic-six-month-timing-count-triplets-differ-between-efigure-4-and-etable-6" class="candidate-card">C002
+— Bedtime-diuretic six-month timing count triplets differ between
+eFigure 4 and eTable 6</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> eFigure 4 and eTable 6 print
+different medication-level timing counts for the same six-month
+bedtime-allocation diuretic total of 424.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250019supp3_prod_1749674951.30054.pdf#page=26">joi250019supp3_prod_1749674951.30054.pdf
+— eFigure 4, PDF p. 26</a>; <a
+href="../joi250019supp3_prod_1749674951.30054.pdf#page=42">joi250019supp3_prod_1749674951.30054.pdf
+— eTable 6, PDF p. 42</a> (table begins on <a
+href="../joi250019supp3_prod_1749674951.30054.pdf#page=41">PDF p.
+41</a>).</p>
+<p><strong>Source evidence:</strong> eFigure 4 identifies PM as the
+bedtime group and prints diuretic counts 278 as allocated, 138 off
+allocation, and 8 twice or more daily. eTable 6 reports the same bedtime
+diuretic total of 424 as 277/424 (65.3%) as allocated, 139/424 (32.8%)
+off allocation, and 8/424 (1.9%) twice or more daily.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported figure triplet:
+278/138/8. Matched table triplet: 277/139/8 of 424, with the stated
+percentages.</p>
+<p><strong>Reasoning procedure:</strong> Match allocation (bedtime),
+time point (six months), medicine class (diuretic), three displayed
+timing categories, and total medication count. Test the triplets and
+displayed percentages at their printed precision; do not infer an
+undisclosed coding rule or data freeze.</p>
+<p><strong>Calculation:</strong> Both triplets sum to 424:
+<code>278 + 138 + 8 = 424</code> and <code>277 + 139 + 8 = 424</code>.
+The first two cells differ by one in opposite directions; 8 agrees. The
+table percentages reproduce its counts:
+<code>277/424 × 100 = 65.33%</code>,
+<code>139/424 × 100 = 32.78%</code>, and
+<code>8/424 × 100 = 1.89%</code>, rounding to 65.3%, 32.8%, and 1.9%.
+The figure's first two counts instead yield 65.6% and 32.5% at one
+decimal.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> One
+medication may have been recoded between as-allocated and
+off-allocation, the displays may use undisclosed data cuts, or one
+figure/table value may have changed during production. Both triplets are
+compatible with the shared total; the source does not select an intended
+triplet.</p>
+<p><strong>Mechanical evidence recheck:</strong> The current PDF was
+directly re-opened and the figure and table pages were freshly extracted
+and rendered. Titles, arm key, category labels, total, triplets, and
+table percentages were confirmed.</p>
+<p><strong>Quality-control relevance:</strong> The same class-specific
+six-month relationship has discordant numerators across a figure and
+table. The total alone does not resolve the category assignment.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy one incorrect class-specific adherence
+numerator and derive a correspondingly incorrect percentage. This report
+does not establish propagation or conclusion change.</p>
+<p><strong>Human verification steps:</strong> Compare the locked
+medication-level extracts, data-freeze dates, and coding rules used for
+eFigure 4 and eTable 6; identify the discrepant medication record;
+confirm the intended category; then regenerate or relabel the affected
+display as authorized by a human reviewer.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--etable-5-other-ethnicity-row-duplicates-whitecaucasian-values-and-exceeds-randomized-other-totals" class="candidate-card">C003
+— eTable 5 <code>Other</code> ethnicity row duplicates White/Caucasian
+values and exceeds randomized <code>Other</code> totals</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> In eTable 5, the
+<code>Other</code> ethnicity row repeats the White/Caucasian values for
+participants unable to be followed through administrative data; those
+repeated counts exceed the randomized baseline <code>Other</code> counts
+for each allocation arm in eTable 3.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250019supp3_prod_1749674951.30054.pdf#page=37">joi250019supp3_prod_1749674951.30054.pdf
+— eTable 5, PDF p. 37</a>; <a
+href="../joi250019supp3_prod_1749674951.30054.pdf#page=29">joi250019supp3_prod_1749674951.30054.pdf
+— eTable 3, PDF p. 29</a>.</p>
+<p><strong>Source evidence:</strong> eTable 5 is headed morning
+allocation n=44 and bedtime allocation n=57. Its White/Caucasian row
+prints 40 (90.9%) and 53 (93.0%); its later <code>Other</code> row
+prints exactly the same values. eTable 3 gives randomized baseline
+<code>Other</code> counts of 5/1680 (0.3%) morning and 9/1677 (0.5%)
+bedtime, while its White counts are 1587/1680 and 1565/1677.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported eTable 5
+<code>Other</code> row: morning 40 (90.9%) and bedtime 53 (93.0%),
+identical to White/Caucasian. Matched parent-arm comparator: eTable 3
+<code>Other</code> counts of 5 morning and 9 bedtime.</p>
+<p><strong>Reasoning procedure:</strong> Compare the directly printed
+eTable 5 rows with each other and then with the matched allocation-arm
+baseline category totals. Treat a common <code>Other</code> category
+definition as a necessary condition and state that its data dictionary
+is not supplied.</p>
+<p><strong>Calculation:</strong> The duplicated eTable 5 counts
+reproduce its displayed percentages: <code>40/44 × 100 = 90.91%</code>
+and <code>53/57 × 100 = 92.98%</code>. Under the displayed common
+category definition, the subgroup-to-parent comparisons are impossible:
+<code>40 &gt; 5</code> morning and <code>53 &gt; 9</code> bedtime. These
+are printed-count conflicts, not rounding differences.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Values
+may have been duplicated from White/Caucasian, a row may be mislabeled
+or misplaced, or an undisclosed coding difference may exist. The package
+does not state that <code>Other</code> overlaps White/Caucasian and does
+not provide the data dictionary needed to determine intended replacement
+cells.</p>
+<p><strong>Mechanical evidence recheck:</strong> The current PDF was
+directly re-opened and both table pages were freshly extracted and
+rendered. The eTable 5 cohort denominators, duplicated White/Caucasian
+and <code>Other</code> values, and the eTable 3 parent-arm
+<code>Other</code> totals were confirmed.</p>
+<p><strong>Quality-control relevance:</strong> The record preserves a
+direct row duplication and a parent-subset count conflict as one
+candidate. It does not assert a corrected count or an associated
+corrected P value.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy duplicated subgroup counts or reuse an
+ethnicity-comparison result based on an incorrect displayed row. This
+report does not establish that either occurred or altered a
+conclusion.</p>
+<p><strong>Human verification steps:</strong> Inspect the eTable 5
+analysis export and participant-level baseline ethnicity coding for the
+morning n=44 and bedtime n=57 cohort; confirm whether coding matches
+eTable 3; recover the intended <code>Other</code> cells; and rerun the
+associated ethnicity comparison if the displayed inputs change.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If a candidate is confirmed, a downstream systematic review,
+meta-analysis, guideline, or data-extraction workflow could copy a rate,
+class-specific numerator, percentage, category count, or table label
+from the affected display. This is a general conditional risk statement
+only: the supplied package does not show downstream reuse, propagation,
+harm, or a changed paper-level conclusion.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The bounded source, production, and model-definition limitations are
+recorded in <a href="review_1_5_1/limitations.md">limitations.md</a>.
+Missing production datasets, timing-code history, an ethnicity data
+dictionary, and row-specific test output prevent selection of intended
+replacement values. DOC-003's embedded-text encoding limitation was
+addressed with direct rendering. These constraints do not create a
+scientific-coverage gap because all 86 source pages were directly
+mapped.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ul>
+<li>Confirm each cited current-PDF location and the matched population,
+time point, contrast, outcome, unit, and category definition.</li>
+<li>Retrieve the applicable locked production source, data extract,
+code, or data dictionary before selecting any replacement value or
+label.</li>
+<li>Determine whether each printed mismatch is a value, label, timing,
+coding, or layout issue; document any corrected calculations.</li>
+<li>Record the human decision only in each card's five adjudication
+fields.</li>
+<li>Recheck any affected cross-location display after an authorized
+correction.</li>
+</ul>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>The source inventory, before-run hashes, asset inventory, coverage
+manifest, relationship maps, checks, recheck, and quality audit are
+retained under <a href="review_1_5_1/">review_1_5_1</a>. Direct-source
+evidence was authoritative for every candidate recheck. After report
+assembly, every direct-source hash and all 108 reused-asset hashes were
+recomputed and matched their before-run ledgers.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr>
+<td>Reuse asset curation</td>
+<td>task:/root/reuse_asset_curator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>evidence_asset_inventory.md</td>
+</tr>
+<tr>
+<td>Main evidence mapping</td>
+<td>task:/root/main_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>Support evidence mapping</td>
+<td>task:/root/support_protocol_sap_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/parts/support_protocol_sap.md</td>
+</tr>
+<tr>
+<td>Support evidence mapping</td>
+<td>task:/root/support_results_a_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/parts/support_results_001_024.md</td>
+</tr>
+<tr>
+<td>Support evidence mapping</td>
+<td>task:/root/support_results_b_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/parts/support_results_025_049.md</td>
+</tr>
+<tr>
+<td>Numeric checks</td>
+<td>task:/root/numeric_checker</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr>
+<td>Cross-source checks</td>
+<td>task:/root/cross_source_checker</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr>
+<td>Statistical pass 1</td>
+<td>task:/root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr>
+<td>Evidence recheck</td>
+<td>task:/root/evidence_rechecker</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr>
+<td>Statistical pass 2</td>
+<td>task:/root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr>
+<td>Evidence quality</td>
+<td>task:/root/quality_auditor</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr>
+<td>Report generation</td>
+<td>task:/root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<p>The authoritative one-agent-per-row record is <a
+href="review_1_5_1/agent_execution_manifest.md">agent_execution_manifest.md</a>.</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Four-PDF package with 86 pages, all
+86 requiring fresh direct-source mapping after source-hash fitness
+checks, plus table-dense results requiring cross-document and two-pass
+statistical review; bounded against the 102-page/81-fresh-page
+calibration while accounting for slightly fewer total units but a fully
+fresh evidence burden.</li>
+<li><strong>Total source units:</strong> 86</li>
+<li><strong>Fresh-source units:</strong> 86</li>
+<li><strong>Target elapsed minutes:</strong> 40-60</li>
+<li><strong>Started UTC:</strong> 2026-09-03T03:48:59Z</li>
+<li><strong>Finished UTC:</strong> 2026-09-03T04:56:53Z</li>
+<li><strong>Observed elapsed minutes:</strong> 67.9</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> All 86 pages required fresh
+mapping after stale-derivative hash findings; malformed DOC-003 embedded
+text required rendered-page inspection; table-dense cross-source checks
+and direct visual evidence rechecks exceeded the upper bound.</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Response count</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Cached input tokens</th>
+<th style="text-align: right;">Cache-write tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Reasoning tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Token-only API-equivalent cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>Authoritative response-level runtime/API token counts were not
+exposed for this coordinator session or any spawned agent, so each agent
+is recorded as <code>UNAVAILABLE</code> with exact <code>__</code> token
+fields in the ledger; no text-length estimate was substituted. The zero
+values above are known recorded subtotals, not a claim of zero actual
+use. Per-agent detail is in <a
+href="review_1_5_1/token_usage_summary.md">token_usage_summary.md</a>.
+Cached input and cache-write counts are input subsets; reasoning is an
+output subset; none is added again to total tokens. Amounts are
+token-only API-equivalent estimates under the dated price snapshot, not
+an invoice.</p>
+</body>
+</html>

@@ -1,0 +1,2594 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#quantitative-reporting-quality-control-consistency-review"
+id="toc-quantitative-reporting-quality-control-consistency-review">Quantitative
+Reporting Quality-Control Consistency Review</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--conditional-figure-1-further-ineligibility-component-subtotal-gap"
+id="toc-c001--conditional-figure-1-further-ineligibility-component-subtotal-gap">C001
+— Conditional Figure 1 further-ineligibility component subtotal
+gap</a></li>
+<li><a href="#c002--overall-etable-1-follow-up-pattern-partition"
+id="toc-c002--overall-etable-1-follow-up-pattern-partition">C002 —
+Overall eTable 1 follow-up-pattern partition</a></li>
+<li><a href="#c003--paintrainer-etable-1-follow-up-pattern-partition"
+id="toc-c003--paintrainer-etable-1-follow-up-pattern-partition">C003 —
+painTRAINER eTable 1 follow-up-pattern partition</a></li>
+<li><a href="#c004--health-coach-etable-1-follow-up-pattern-partition"
+id="toc-c004--health-coach-etable-1-follow-up-pattern-partition">C004 —
+Health Coach eTable 1 follow-up-pattern partition</a></li>
+<li><a
+href="#c005--workbook-current-depression-percentage-incompatible-with-its-count"
+id="toc-c005--workbook-current-depression-percentage-incompatible-with-its-count">C005
+— Workbook current-depression percentage incompatible with its
+count</a></li>
+<li><a href="#c006--workbook-social-role-cutoff-labeled-as-mean-sd"
+id="toc-c006--workbook-social-role-cutoff-labeled-as-mean-sd">C006 —
+Workbook social-role cutoff labeled as mean (SD)</a></li>
+<li><a
+href="#c007--workbook-physical-function-cutoff-labeled-as-mean-sd"
+id="toc-c007--workbook-physical-function-cutoff-labeled-as-mean-sd">C007
+— Workbook physical-function cutoff labeled as mean (SD)</a></li>
+<li><a
+href="#c008--pain-severity-12-month-paintrainer-smd-outside-printed-ci"
+id="toc-c008--pain-severity-12-month-paintrainer-smd-outside-printed-ci">C008
+— Pain-severity 12-month painTRAINER SMD outside printed CI</a></li>
+<li><a
+href="#c009--pain-severity-12-month-health-coach-smd-outside-printed-ci"
+id="toc-c009--pain-severity-12-month-health-coach-smd-outside-printed-ci">C009
+— Pain-severity 12-month Health Coach SMD outside printed CI</a></li>
+<li><a
+href="#c010--pain-intensity-12-month-health-coach-smd-outside-printed-ci"
+id="toc-c010--pain-intensity-12-month-health-coach-smd-outside-printed-ci">C010
+— Pain-intensity 12-month Health Coach SMD outside printed CI</a></li>
+<li><a
+href="#c011--pain-interference-12-month-paintrainer-smd-outside-printed-ci"
+id="toc-c011--pain-interference-12-month-paintrainer-smd-outside-printed-ci">C011
+— Pain-interference 12-month painTRAINER SMD outside printed CI</a></li>
+<li><a
+href="#c012--pain-interference-12-month-health-coach-smd-outside-printed-ci"
+id="toc-c012--pain-interference-12-month-health-coach-smd-outside-printed-ci">C012
+— Pain-interference 12-month Health Coach SMD outside printed
+CI</a></li>
+<li><a
+href="#c013--social-role-3-month-paintrainer-smd-endpoints-reversed"
+id="toc-c013--social-role-3-month-paintrainer-smd-endpoints-reversed">C013
+— Social-role 3-month painTRAINER SMD endpoints reversed</a></li>
+<li><a
+href="#c014--social-role-3-month-health-coach-smd-endpoints-reversed"
+id="toc-c014--social-role-3-month-health-coach-smd-endpoints-reversed">C014
+— Social-role 3-month Health Coach SMD endpoints reversed</a></li>
+<li><a
+href="#c015--social-role-3-month-health-coach-versus-paintrainer-smd-endpoints-reversed"
+id="toc-c015--social-role-3-month-health-coach-versus-paintrainer-smd-endpoints-reversed">C015
+— Social-role 3-month Health Coach versus painTRAINER SMD endpoints
+reversed</a></li>
+<li><a
+href="#c016--social-role-6-month-paintrainer-smd-endpoints-reversed"
+id="toc-c016--social-role-6-month-paintrainer-smd-endpoints-reversed">C016
+— Social-role 6-month painTRAINER SMD endpoints reversed</a></li>
+<li><a
+href="#c017--social-role-6-month-health-coach-smd-endpoints-reversed"
+id="toc-c017--social-role-6-month-health-coach-smd-endpoints-reversed">C017
+— Social-role 6-month Health Coach SMD endpoints reversed</a></li>
+<li><a
+href="#c018--social-role-6-month-health-coach-versus-paintrainer-smd-endpoints-reversed"
+id="toc-c018--social-role-6-month-health-coach-versus-paintrainer-smd-endpoints-reversed">C018
+— Social-role 6-month Health Coach versus painTRAINER SMD endpoints
+reversed</a></li>
+<li><a
+href="#c019--social-role-12-month-paintrainer-smd-endpoints-reversed"
+id="toc-c019--social-role-12-month-paintrainer-smd-endpoints-reversed">C019
+— Social-role 12-month painTRAINER SMD endpoints reversed</a></li>
+<li><a
+href="#c020--social-role-12-month-health-coach-smd-endpoints-reversed"
+id="toc-c020--social-role-12-month-health-coach-smd-endpoints-reversed">C020
+— Social-role 12-month Health Coach SMD endpoints reversed</a></li>
+<li><a
+href="#c021--social-role-12-month-health-coach-versus-paintrainer-smd-endpoints-reversed"
+id="toc-c021--social-role-12-month-health-coach-versus-paintrainer-smd-endpoints-reversed">C021
+— Social-role 12-month Health Coach versus painTRAINER SMD endpoints
+reversed</a></li>
+<li><a
+href="#c022--physical-function-3-month-paintrainer-smd-endpoints-reversed"
+id="toc-c022--physical-function-3-month-paintrainer-smd-endpoints-reversed">C022
+— Physical-function 3-month painTRAINER SMD endpoints reversed</a></li>
+<li><a
+href="#c023--physical-function-3-month-health-coach-smd-endpoints-reversed"
+id="toc-c023--physical-function-3-month-health-coach-smd-endpoints-reversed">C023
+— Physical-function 3-month Health Coach SMD endpoints reversed</a></li>
+<li><a
+href="#c024--physical-function-3-month-health-coach-versus-paintrainer-smd-endpoints-reversed"
+id="toc-c024--physical-function-3-month-health-coach-versus-paintrainer-smd-endpoints-reversed">C024
+— Physical-function 3-month Health Coach versus painTRAINER SMD
+endpoints reversed</a></li>
+<li><a
+href="#c025--physical-function-6-month-paintrainer-smd-endpoints-reversed-and-exclude-estimate"
+id="toc-c025--physical-function-6-month-paintrainer-smd-endpoints-reversed-and-exclude-estimate">C025
+— Physical-function 6-month painTRAINER SMD endpoints reversed and
+exclude estimate</a></li>
+<li><a
+href="#c026--physical-function-6-month-health-coach-smd-endpoints-reversed"
+id="toc-c026--physical-function-6-month-health-coach-smd-endpoints-reversed">C026
+— Physical-function 6-month Health Coach SMD endpoints reversed</a></li>
+<li><a
+href="#c027--physical-function-6-month-health-coach-versus-paintrainer-smd-endpoints-reversed-and-exclude-estimate"
+id="toc-c027--physical-function-6-month-health-coach-versus-paintrainer-smd-endpoints-reversed-and-exclude-estimate">C027
+— Physical-function 6-month Health Coach versus painTRAINER SMD
+endpoints reversed and exclude estimate</a></li>
+<li><a
+href="#c028--physical-function-12-month-paintrainer-smd-endpoints-reversed-and-exclude-estimate"
+id="toc-c028--physical-function-12-month-paintrainer-smd-endpoints-reversed-and-exclude-estimate">C028
+— Physical-function 12-month painTRAINER SMD endpoints reversed and
+exclude estimate</a></li>
+<li><a
+href="#c029--physical-function-12-month-health-coach-smd-endpoints-reversed-and-exclude-estimate"
+id="toc-c029--physical-function-12-month-health-coach-smd-endpoints-reversed-and-exclude-estimate">C029
+— Physical-function 12-month Health Coach SMD endpoints reversed and
+exclude estimate</a></li>
+<li><a
+href="#c030--physical-function-12-month-health-coach-versus-paintrainer-smd-endpoints-reversed-and-exclude-estimate"
+id="toc-c030--physical-function-12-month-health-coach-versus-paintrainer-smd-endpoints-reversed-and-exclude-estimate">C030
+— Physical-function 12-month Health Coach versus painTRAINER SMD
+endpoints reversed and exclude estimate</a></li>
+<li><a
+href="#c031--pgic-pain-12-month-paintrainer-smd-outside-printed-ci"
+id="toc-c031--pgic-pain-12-month-paintrainer-smd-outside-printed-ci">C031
+— PGIC-pain 12-month painTRAINER SMD outside printed CI</a></li>
+<li><a
+href="#c032--pgic-pain-12-month-health-coach-smd-outside-printed-ci"
+id="toc-c032--pgic-pain-12-month-health-coach-smd-outside-printed-ci">C032
+— PGIC-pain 12-month Health Coach SMD outside printed CI</a></li>
+<li><a
+href="#c033--pgic-pain-12-month-health-coach-versus-paintrainer-smd-outside-printed-ci"
+id="toc-c033--pgic-pain-12-month-health-coach-versus-paintrainer-smd-outside-printed-ci">C033
+— PGIC-pain 12-month Health Coach versus painTRAINER SMD outside printed
+CI</a></li>
+<li><a
+href="#c034--female-total-differs-across-sources-if-the-printed-derivations-are-intended-to-match"
+id="toc-c034--female-total-differs-across-sources-if-the-printed-derivations-are-intended-to-match">C034
+— Female total differs across sources if the printed derivations are
+intended to match</a></li>
+<li><a
+href="#c035--narrative-current-depression-percentage-differs-from-table-1workbook-record"
+id="toc-c035--narrative-current-depression-percentage-differs-from-table-1workbook-record">C035
+— Narrative current-depression percentage differs from Table 1/workbook
+record</a></li>
+<li><a
+href="#c036--paintrainer-3-month-pain-severity-smd-differs-between-narrative-and-table-3"
+id="toc-c036--paintrainer-3-month-pain-severity-smd-differs-between-narrative-and-table-3">C036
+— painTRAINER 3-month pain-severity SMD differs between narrative and
+Table 3</a></li>
+<li><a
+href="#c037--health-coach-3-month-pain-severity-smd-differs-between-narrative-and-table-3"
+id="toc-c037--health-coach-3-month-pain-severity-smd-differs-between-narrative-and-table-3">C037
+— Health Coach 3-month pain-severity SMD differs between narrative and
+Table 3</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-reporting-quality-control-consistency-review">Quantitative
+Reporting Quality-Control Consistency Review</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>Every observation in this report is <strong>Pending Human
+Adjudication</strong>. It is a reproducible quantitative reporting
+quality-control review, not a finding of study invalidity, author
+intent, or conclusion change. No severity, validity determination,
+disposition, or correction is assigned here.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete source coverage and two independent statistical passes
+identified 37 distinct candidate consistency issues (C001-C037). They
+include conditional participant-flow arithmetic, follow-up and workbook
+denominator/label observations, printed confidence-interval containment
+or endpoint-order observations, and matched cross-document differences.
+Small preventable defects can matter when downstream users extract
+numeric evidence, but this review does not claim that propagation, harm,
+or conclusion change occurred.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The supplied package comprises six direct sources: the 14-page main
+article, a 77-page protocol, a 29-page statistical analysis plan, a
+7-page intervention description, a 19-page results supplement, and one
+workbook worksheet. Direct-source SHA-256 identities and stable-unit
+counts are recorded in <a href="review_1_5_1/source_inventory.md">source
+inventory</a> and <a
+href="review_1_5_1/source_hashes_before.sha256">source hashes</a>.
+Reused derivatives were inventory-only locators/transcription aids;
+direct PDFs and the native workbook were authoritative for recheck. The
+reusable-asset scope, fitness, and hashes are documented in <a
+href="review_1_5_1/evidence_asset_inventory.md">evidence-asset
+inventory</a> and <a
+href="review_1_5_1/reused_artifact_hashes_before.sha256">reused-artifact
+hashes</a>.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All 147 direct-source units were mapped: 31 reusable-backed and 116
+fresh-required. The partition and source-level completion are recorded
+in <a href="review_1_5_1/source_coverage.md">source coverage</a>; the
+disjoint execution scopes are recorded in <a
+href="review_1_5_1/coverage_manifest.md">coverage manifest</a>. The
+review assessed numeric, denominator, statistical, cross-document,
+measure/label, and rate/count consistency. It did not perform a broad
+clinical, design, misconduct, raw-data, or conclusion-validity audit.
+Coherent display-zero P values alone were excluded from candidates; no
+display-zero-only observation received a stable ID.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>All numeric relationships N001-N036 were checked and recorded in <a
+href="review_1_5_1/relationships/numeric_relationship_inventory.md">numeric
+relationship inventory</a> and <a
+href="review_1_5_1/checkers/numeric_consistency.md">numeric consistency
+review</a>. Both independent statistical passes covered S001-S109: <a
+href="review_1_5_1/checkers/statistical_pass_1.md">pass 1</a> and <a
+href="review_1_5_1/checkers/statistical_pass_2.md">pass 2</a>.
+Cross-source comparison coverage is in <a
+href="review_1_5_1/checkers/cross_source_consistency.md">cross-source
+consistency review</a>. The <a
+href="review_1_5_1/verification/evidence_recheck.md">mechanical evidence
+recheck</a> and <a
+href="review_1_5_1/quality/evidence_quality_audit.md">evidence-quality
+audit</a> cover the complete stable candidate set.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate consistency issue</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Conditional Figure 1 further-ineligibility component subtotal
+gap</td>
+<td>Numeric or arithmetic inconsistency</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Overall eTable 1 follow-up-pattern partition</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>painTRAINER eTable 1 follow-up-pattern partition</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Health Coach eTable 1 follow-up-pattern partition</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Workbook current-depression percentage incompatible with its
+count</td>
+<td>Denominator, proportion, or total inconsistency</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Workbook social-role cutoff labeled as mean (SD)</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Workbook physical-function cutoff labeled as mean (SD)</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Pain-severity 12-month painTRAINER SMD outside printed CI</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>Pain-severity 12-month Health Coach SMD outside printed CI</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>Pain-intensity 12-month Health Coach SMD outside printed CI</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>Pain-interference 12-month painTRAINER SMD outside printed CI</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Pain-interference 12-month Health Coach SMD outside printed CI</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>Social-role 3-month painTRAINER SMD endpoints reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>Social-role 3-month Health Coach SMD endpoints reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C015</td>
+<td>Social-role 3-month Health Coach versus painTRAINER SMD endpoints
+reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C016</td>
+<td>Social-role 6-month painTRAINER SMD endpoints reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C017</td>
+<td>Social-role 6-month Health Coach SMD endpoints reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C018</td>
+<td>Social-role 6-month Health Coach versus painTRAINER SMD endpoints
+reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C019</td>
+<td>Social-role 12-month painTRAINER SMD endpoints reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C020</td>
+<td>Social-role 12-month Health Coach SMD endpoints reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C021</td>
+<td>Social-role 12-month Health Coach versus painTRAINER SMD endpoints
+reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C022</td>
+<td>Physical-function 3-month painTRAINER SMD endpoints reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C023</td>
+<td>Physical-function 3-month Health Coach SMD endpoints reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C024</td>
+<td>Physical-function 3-month Health Coach versus painTRAINER SMD
+endpoints reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C025</td>
+<td>Physical-function 6-month painTRAINER SMD endpoints reversed and
+exclude estimate</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C026</td>
+<td>Physical-function 6-month Health Coach SMD endpoints reversed</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C027</td>
+<td>Physical-function 6-month Health Coach versus painTRAINER SMD
+endpoints reversed and exclude estimate</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C028</td>
+<td>Physical-function 12-month painTRAINER SMD endpoints reversed and
+exclude estimate</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C029</td>
+<td>Physical-function 12-month Health Coach SMD endpoints reversed and
+exclude estimate</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C030</td>
+<td>Physical-function 12-month Health Coach versus painTRAINER SMD
+endpoints reversed and exclude estimate</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C031</td>
+<td>PGIC-pain 12-month painTRAINER SMD outside printed CI</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C032</td>
+<td>PGIC-pain 12-month Health Coach SMD outside printed CI</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C033</td>
+<td>PGIC-pain 12-month Health Coach versus painTRAINER SMD outside
+printed CI</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td>C034</td>
+<td>Female total differs across sources if printed derivations are
+intended to match</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td>C035</td>
+<td>Narrative current-depression percentage differs from Table
+1/workbook record</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td>C036</td>
+<td>painTRAINER 3-month pain-severity SMD differs between narrative and
+Table 3</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td>C037</td>
+<td>Health Coach 3-month pain-severity SMD differs between narrative and
+Table 3</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--conditional-figure-1-further-ineligibility-component-subtotal-gap" class="candidate-card">C001
+— Conditional Figure 1 further-ineligibility component subtotal gap</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Conditional
+Figure 1 further-ineligibility component subtotal gap.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=5">main
+article — PDF p. 5</a>, Figure 1, “4481 Ineligible.”</p>
+<p><strong>Source evidence:</strong> Further-reason subtotal
+<code>1243</code>; listed counts
+<code>411, 273, 189, 121, 95, 34</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> If the displayed six
+reasons exhaust the “one or more of” subtotal, their sum must be at
+least its union: <code>411+273+189+121+95+34=1123</code>, 120 below
+1243.</p>
+<p><strong>Reasoning procedure:</strong> Printed counts and gap are
+direct; exhaustiveness of the listed reasons is the diagnostic
+assumption. Checker provenance: numeric CANDIDATE_NUM-01.</p>
+<p><strong>Calculation:</strong> If the displayed six reasons exhaust
+the “one or more of” subtotal, their sum must be at least its union:
+<code>411+273+189+121+95+34=1123</code>, 120 below 1243.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> One or
+more further reasons may be omitted, or a count/subtotal may be wrong;
+overlap cannot make a component sum below the union. Human question:
+Does the figure intend the six reasons to exhaust 1243, and which value
+should reconcile?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was rechecked against the source; the printed values and stated
+mechanical comparison were retained for human adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation. A small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream; this card does not determine the paper’s
+conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> A
+screening-reason denominator could be copied into trial-flow extraction.
+This describes a possible extraction exposure only; no propagation,
+conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: Does
+the figure intend the six reasons to exhaust 1243, and which value
+should reconcile?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c002--overall-etable-1-follow-up-pattern-partition" class="candidate-card">C002 —
+Overall eTable 1 follow-up-pattern partition</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Overall eTable 1
+follow-up-pattern partition.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250046supp4_prod_1755300121.15587.pdf#page=7">results
+supplement — PDF p. 7</a>, eTable 1, Overall column.</p>
+<p><strong>Source evidence:</strong> At least one follow-up
+<code>2036</code>; one/two/three observed follow-ups
+<code>188/283/1568</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Mutually exclusive
+follow-up patterns should partition the total:
+<code>188+283+1568=2039</code>, not 2036 (difference 3; integer
+tolerance 0).</p>
+<p><strong>Reasoning procedure:</strong> Values and labels are direct;
+partition identity follows their one/two/three labels. Checker
+provenance: numeric CANDIDATE_NUM-02.</p>
+<p><strong>Calculation:</strong> Mutually exclusive follow-up patterns
+should partition the total: <code>188+283+1568=2039</code>, not 2036
+(difference 3; integer tolerance 0).</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+pattern row, total, or source-data definition differs; no alternate
+denominator is printed. Human question: Which printed Overall value
+defines the intended partition?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was rechecked against the source; the printed values and stated
+mechanical comparison were retained for human adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation. A small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream; this card does not determine the paper’s
+conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong>
+Follow-up-pattern totals may be reused for missing-data assessment. This
+describes a possible extraction exposure only; no propagation,
+conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve:
+Which printed Overall value defines the intended partition?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c003--paintrainer-etable-1-follow-up-pattern-partition" class="candidate-card">C003 —
+painTRAINER eTable 1 follow-up-pattern partition</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: painTRAINER
+eTable 1 follow-up-pattern partition.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250046supp4_prod_1755300121.15587.pdf#page=7">results
+supplement — PDF p. 7</a>, eTable 1, painTRAINER column.</p>
+<p><strong>Source evidence:</strong> At least one follow-up
+<code>643</code>; one/two/three <code>77/103/464</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>77+103+464=644</code>, one above 643 (integer tolerance 0).</p>
+<p><strong>Reasoning procedure:</strong> Values are direct; partition
+rule follows row labels. Checker provenance: numeric
+CANDIDATE_NUM-03.</p>
+<p><strong>Calculation:</strong> <code>77+103+464=644</code>, one above
+643 (integer tolerance 0).</p>
+<p><strong>Alternative source-grounded interpretations:</strong> One
+pattern count or arm total may be discrepant; no alternate denominator
+is printed. Human question: Is 643 or the 644 pattern sum
+authoritative?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was rechecked against the source; the printed values and stated
+mechanical comparison were retained for human adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation. A small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream; this card does not determine the paper’s
+conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> Arm-level
+follow-up distribution may be copied into missingness analyses. This
+describes a possible extraction exposure only; no propagation,
+conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: Is
+643 or the 644 pattern sum authoritative?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c004--health-coach-etable-1-follow-up-pattern-partition" class="candidate-card">C004 —
+Health Coach eTable 1 follow-up-pattern partition</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Health Coach
+eTable 1 follow-up-pattern partition.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250046supp4_prod_1755300121.15587.pdf#page=7">results
+supplement — PDF p. 7</a>, eTable 1, Health Coach column.</p>
+<p><strong>Source evidence:</strong> At least one follow-up
+<code>690</code>; one/two/three <code>47/81/564</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>47+81+564=692</code>, two above 690 (integer tolerance 0).</p>
+<p><strong>Reasoning procedure:</strong> Values are direct; partition
+rule follows row labels. Checker provenance: numeric
+CANDIDATE_NUM-04.</p>
+<p><strong>Calculation:</strong> <code>47+81+564=692</code>, two above
+690 (integer tolerance 0).</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+pattern count or arm total may be discrepant; no alternative denominator
+is shown. Human question: Is 690 or the 692 pattern sum
+authoritative?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was rechecked against the source; the printed values and stated
+mechanical comparison were retained for human adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation. A small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream; this card does not determine the paper’s
+conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong>
+Differential-follow-up quantities may be reused in evidence extraction.
+This describes a possible extraction exposure only; no propagation,
+conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: Is
+690 or the 692 pattern sum authoritative?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--workbook-current-depression-percentage-incompatible-with-its-count" class="candidate-card">C005
+— Workbook current-depression percentage incompatible with its
+count</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Workbook
+current-depression percentage incompatible with its count.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250046supp5_prod_1755300121.16087.xlsx">workbook</a>,
+worksheet <code>eTable 3</code>, cells A82:E83 and E2:E3.</p>
+<p><strong>Source evidence:</strong> All Observed N <code>1568</code>,
+missing <code>2</code>, current depression <code>711 (73.2)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Missing-excluded
+denominator is <code>1566</code>; <code>711/1566=45.4%</code>, not 73.2%
+(and <code>711/1568=45.3%</code>).</p>
+<p><strong>Reasoning procedure:</strong> Cells are direct; percentage
+calculation is deterministic. Checker provenance: numeric
+CANDIDATE_NUM-05.</p>
+<p><strong>Calculation:</strong> Missing-excluded denominator is
+<code>1566</code>; <code>711/1566=45.4%</code>, not 73.2% (and
+<code>711/1568=45.3%</code>).</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+count may be right with a mistyped percentage, or percentage/denominator
+may belong elsewhere; <code>162+243+711=1116</code> supports the count.
+Human question: Should E82 be <code>711 (45.4%)</code>, or does a
+different unprinted denominator apply?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was rechecked against the source; the printed values and stated
+mechanical comparison were retained for human adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation. A small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream; this card does not determine the paper’s
+conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> This baseline
+prevalence/predictor could be copied in missingness reporting. This
+describes a possible extraction exposure only; no propagation,
+conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve:
+Should E82 be <code>711 (45.4%)</code>, or does a different unprinted
+denominator apply?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c006--workbook-social-role-cutoff-labeled-as-mean-sd" class="candidate-card">C006 —
+Workbook social-role cutoff labeled as mean (SD)</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Workbook
+social-role cutoff labeled as mean (SD).</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250046supp5_prod_1755300121.16087.xlsx">workbook</a>,
+worksheet <code>eTable 3</code>, cells A103:E104.</p>
+<p><strong>Source evidence:</strong> Label
+<code>PROMIS Social role functioning &lt;=40, mean (sd)</code>; values
+<code>818 (35.7)|113 (38.8)|180 (38.7)|525 (34.2)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Entries are
+count/percentages: <code>525/(1568-31)=34.2%</code>; they are not
+mean/SD values.</p>
+<p><strong>Reasoning procedure:</strong> Label/cells are direct; N(%)
+interpretation follows calculation and table convention. Checker
+provenance: numeric CANDIDATE_NUM-06.</p>
+<p><strong>Calculation:</strong> Entries are count/percentages:
+<code>525/(1568-31)=34.2%</code>; they are not mean/SD values.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>mean (sd)</code> may be a template carryover; intended label may
+be <code>N (%)</code>. Human question: Should the cutoff row be
+relabeled <code>N (%)</code>?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was rechecked against the source; the printed values and stated
+mechanical comparison were retained for human adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation. A small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream; this card does not determine the paper’s
+conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> Incorrect
+scale labeling can lead to incorrect categorical-measure extraction.
+This describes a possible extraction exposure only; no propagation,
+conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve:
+Should the cutoff row be relabeled <code>N (%)</code>?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c007--workbook-physical-function-cutoff-labeled-as-mean-sd" class="candidate-card">C007
+— Workbook physical-function cutoff labeled as mean (SD)</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Workbook
+physical-function cutoff labeled as mean (SD).</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250046supp5_prod_1755300121.16087.xlsx">workbook</a>,
+worksheet <code>eTable 3</code>, cells A106:E107.</p>
+<p><strong>Source evidence:</strong> Label
+<code>PROMIS Physical functioning &lt;=40, mean (sd)</code>; values
+<code>1709 (74.1)|209 (72.6)|357 (76.8)|1143 (73.6)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>1143/(1568-14)=73.6%</code>; displayed cells are N(%), not
+mean(SD).</p>
+<p><strong>Reasoning procedure:</strong> Label/cells are direct;
+interpretation follows reproduced proportion. Checker provenance:
+numeric CANDIDATE_NUM-07.</p>
+<p><strong>Calculation:</strong> <code>1143/(1568-14)=73.6%</code>;
+displayed cells are N(%), not mean(SD).</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Formatting/template carryover may explain the label. Human question:
+Should the cutoff row be relabeled <code>N (%)</code>?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was rechecked against the source; the printed values and stated
+mechanical comparison were retained for human adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation. A small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream; this card does not determine the paper’s
+conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> A
+functional-limitation measure could be categorized incorrectly
+downstream. This describes a possible extraction exposure only; no
+propagation, conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve:
+Should the cutoff row be relabeled <code>N (%)</code>?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--pain-severity-12-month-paintrainer-smd-outside-printed-ci" class="candidate-card">C008
+— Pain-severity 12-month painTRAINER SMD outside printed CI</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Pain-severity
+12-month painTRAINER SMD outside printed CI.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, pain severity 12 months, painTRAINER
+vs usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>-0.25 (-0.24 to 0.01)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Point estimate must lie
+within its interval; <code>-0.25 &lt; -0.24</code>.</p>
+<p><strong>Reasoning procedure:</strong> Printed estimate/CI and
+containment failure are direct mechanical facts. Checker provenance:
+statistical P1-001 (S013).</p>
+<p><strong>Calculation:</strong> Point estimate must lie within its
+interval; <code>-0.25 &lt; -0.24</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Estimate or CI endpoint may be transcribed incorrectly. Human question:
+What estimate and CI does the analysis output support?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was rechecked against the source; the printed values and stated
+mechanical comparison were retained for human adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation. A small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream; this card does not determine the paper’s
+conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI may
+be extracted for synthesis. This describes a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+estimate and CI does the analysis output support?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--pain-severity-12-month-health-coach-smd-outside-printed-ci" class="candidate-card">C009
+— Pain-severity 12-month Health Coach SMD outside printed CI</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Pain-severity
+12-month Health Coach SMD outside printed CI.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, pain severity 12 months, Health Coach
+vs usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>-0.36 (-0.35 to -0.12)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>-0.36 &lt; -0.35</code>, so estimate is outside CI.</p>
+<p><strong>Reasoning procedure:</strong> Direct printed containment
+check. Checker provenance: statistical P1-002 (S013).</p>
+<p><strong>Calculation:</strong> <code>-0.36 &lt; -0.35</code>, so
+estimate is outside CI.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Point
+estimate or CI endpoint may be erroneous. Human question: What matched
+CI is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was rechecked against the source; the printed values and stated
+mechanical comparison were retained for human adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation. A small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream; this card does not determine the paper’s
+conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI may
+be copied into evidence synthesis. This describes a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+matched CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--pain-intensity-12-month-health-coach-smd-outside-printed-ci" class="candidate-card">C010
+— Pain-intensity 12-month Health Coach SMD outside printed CI</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Pain-intensity
+12-month Health Coach SMD outside printed CI.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, pain intensity 12 months, Health Coach
+vs usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>-0.27 (-0.26 to -0.12)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>-0.27 &lt; -0.26</code>, outside CI.</p>
+<p><strong>Reasoning procedure:</strong> Direct printed containment
+check. Checker provenance: statistical P1-003 (S016).</p>
+<p><strong>Calculation:</strong> <code>-0.27 &lt; -0.26</code>, outside
+CI.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Estimate or CI endpoint may differ from intended output. Human question:
+What matched CI is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI may
+be copied into evidence synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+matched CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c011--pain-interference-12-month-paintrainer-smd-outside-printed-ci" class="candidate-card">C011
+— Pain-interference 12-month painTRAINER SMD outside printed CI</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Pain-interference
+12-month painTRAINER SMD outside printed CI.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, interference 12 months, painTRAINER vs
+usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>-0.26 (-0.25 to 0.01)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>-0.26 &lt; -0.25</code>, outside CI.</p>
+<p><strong>Reasoning procedure:</strong> Direct printed containment
+check. Checker provenance: statistical P1-004 (S019).</p>
+<p><strong>Calculation:</strong> <code>-0.26 &lt; -0.25</code>, outside
+CI.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Estimate or endpoint may be incorrect. Human question: What matched CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI may
+be copied into evidence synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+matched CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--pain-interference-12-month-health-coach-smd-outside-printed-ci" class="candidate-card">C012
+— Pain-interference 12-month Health Coach SMD outside printed CI</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Pain-interference
+12-month Health Coach SMD outside printed CI.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, interference 12 months, Health Coach
+vs usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>-0.37 (-0.36 to -0.11)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>-0.37 &lt; -0.36</code>, outside CI.</p>
+<p><strong>Reasoning procedure:</strong> Direct printed containment
+check. Checker provenance: statistical P1-005 (S019).</p>
+<p><strong>Calculation:</strong> <code>-0.37 &lt; -0.36</code>, outside
+CI.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Estimate or endpoint may be incorrect. Human question: What matched CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI may
+be copied into evidence synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+matched CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--social-role-3-month-paintrainer-smd-endpoints-reversed" class="candidate-card">C013 —
+Social-role 3-month painTRAINER SMD endpoints reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Social-role
+3-month painTRAINER SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, social role, 3 months, painTRAINER vs
+usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.12 (0.23 to 0.11)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Interval endpoints must
+be low-to-high; <code>0.23 &gt; 0.11</code>.</p>
+<p><strong>Reasoning procedure:</strong> Values/order failure are
+direct. Checker provenance: statistical P1-006 (S020).</p>
+<p><strong>Calculation:</strong> Interval endpoints must be low-to-high;
+<code>0.23 &gt; 0.11</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Signs,
+endpoint order, or transcription may be wrong. Human question: What
+ordered CI is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c014--social-role-3-month-health-coach-smd-endpoints-reversed" class="candidate-card">C014
+— Social-role 3-month Health Coach SMD endpoints reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Social-role
+3-month Health Coach SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, social role, 3 months, Health Coach vs
+usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.01 (0.12 to -0.00)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.12 &gt; -0.00</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct printed ordering check.
+Checker provenance: statistical P1-007 (S020).</p>
+<p><strong>Calculation:</strong> <code>0.12 &gt; -0.00</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Signs/order may be erroneous. Human question: What ordered CI is
+intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c015--social-role-3-month-health-coach-versus-paintrainer-smd-endpoints-reversed" class="candidate-card">C015
+— Social-role 3-month Health Coach versus painTRAINER SMD endpoints
+reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Social-role
+3-month Health Coach versus painTRAINER SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, social role, 3 months, Health Coach vs
+painTRAINER SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.20 (0.29 to 0.19)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.29 &gt; 0.19</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct ordering check. Checker
+provenance: statistical P1-008 (S020).</p>
+<p><strong>Calculation:</strong> <code>0.29 &gt; 0.19</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs may be incorrect. Human question: What ordered CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c016--social-role-6-month-paintrainer-smd-endpoints-reversed" class="candidate-card">C016 —
+Social-role 6-month painTRAINER SMD endpoints reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Social-role
+6-month painTRAINER SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, social role, 6 months, painTRAINER vs
+usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.18 (0.23 to 0.05)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.23 &gt; 0.05</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct ordering check. Checker
+provenance: statistical P1-009 (S021).</p>
+<p><strong>Calculation:</strong> <code>0.23 &gt; 0.05</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs may be incorrect. Human question: What ordered CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c017--social-role-6-month-health-coach-smd-endpoints-reversed" class="candidate-card">C017
+— Social-role 6-month Health Coach SMD endpoints reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Social-role
+6-month Health Coach SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, social role, 6 months, Health Coach vs
+usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.06 (0.11 to -0.06)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.11 &gt; -0.06</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct ordering check. Checker
+provenance: statistical P1-010 (S021).</p>
+<p><strong>Calculation:</strong> <code>0.11 &gt; -0.06</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs may be incorrect. Human question: What ordered CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c018--social-role-6-month-health-coach-versus-paintrainer-smd-endpoints-reversed" class="candidate-card">C018
+— Social-role 6-month Health Coach versus painTRAINER SMD endpoints
+reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Social-role
+6-month Health Coach versus painTRAINER SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, social role, 6 months, Health Coach vs
+painTRAINER SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.26 (0.30 to 0.15)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.30 &gt; 0.15</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct ordering check. Checker
+provenance: statistical P1-011 (S021).</p>
+<p><strong>Calculation:</strong> <code>0.30 &gt; 0.15</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs may be incorrect. Human question: What ordered CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c019--social-role-12-month-paintrainer-smd-endpoints-reversed" class="candidate-card">C019
+— Social-role 12-month painTRAINER SMD endpoints reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Social-role
+12-month painTRAINER SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, social role, 12 months, painTRAINER vs
+usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.19 (0.21 to 0.01)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.21 &gt; 0.01</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct ordering check. Checker
+provenance: statistical P1-012 (S022).</p>
+<p><strong>Calculation:</strong> <code>0.21 &gt; 0.01</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs may be incorrect. Human question: What ordered CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c020--social-role-12-month-health-coach-smd-endpoints-reversed" class="candidate-card">C020
+— Social-role 12-month Health Coach SMD endpoints reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Social-role
+12-month Health Coach SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, social role, 12 months, Health Coach
+vs usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.07 (0.09 to -0.10)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.09 &gt; -0.10</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct ordering check. Checker
+provenance: statistical P1-013 (S022).</p>
+<p><strong>Calculation:</strong> <code>0.09 &gt; -0.10</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs may be incorrect. Human question: What ordered CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c021--social-role-12-month-health-coach-versus-paintrainer-smd-endpoints-reversed" class="candidate-card">C021
+— Social-role 12-month Health Coach versus painTRAINER SMD endpoints
+reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Social-role
+12-month Health Coach versus painTRAINER SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, social role, 12 months, Health Coach
+vs painTRAINER SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.27 (0.28 to 0.12)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.28 &gt; 0.12</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct ordering check. Checker
+provenance: statistical P1-014 (S022).</p>
+<p><strong>Calculation:</strong> <code>0.28 &gt; 0.12</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs may be incorrect. Human question: What ordered CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c022--physical-function-3-month-paintrainer-smd-endpoints-reversed" class="candidate-card">C022
+— Physical-function 3-month painTRAINER SMD endpoints reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Physical-function
+3-month painTRAINER SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, physical function, 3 months,
+painTRAINER vs usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.09 (0.16 to 0.07)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.16 &gt; 0.07</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct ordering check. Checker
+provenance: statistical P1-015 (S023).</p>
+<p><strong>Calculation:</strong> <code>0.16 &gt; 0.07</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs may be incorrect. Human question: What ordered CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c023--physical-function-3-month-health-coach-smd-endpoints-reversed" class="candidate-card">C023
+— Physical-function 3-month Health Coach SMD endpoints reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Physical-function
+3-month Health Coach SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, physical function, 3 months, Health
+Coach vs usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>-0.02 (0.05 to -0.04)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.05 &gt; -0.04</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct ordering check. Checker
+provenance: statistical P1-016 (S023).</p>
+<p><strong>Calculation:</strong> <code>0.05 &gt; -0.04</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs may be incorrect. Human question: What ordered CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c024--physical-function-3-month-health-coach-versus-paintrainer-smd-endpoints-reversed" class="candidate-card">C024
+— Physical-function 3-month Health Coach versus painTRAINER SMD
+endpoints reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Physical-function
+3-month Health Coach versus painTRAINER SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, physical function, 3 months, Health
+Coach vs painTRAINER SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.16 (0.22 to 0.15)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.22 &gt; 0.15</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct ordering check. Checker
+provenance: statistical P1-017 (S023).</p>
+<p><strong>Calculation:</strong> <code>0.22 &gt; 0.15</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs may be incorrect. Human question: What ordered CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c025--physical-function-6-month-paintrainer-smd-endpoints-reversed-and-exclude-estimate" class="candidate-card">C025
+— Physical-function 6-month painTRAINER SMD endpoints reversed and
+exclude estimate</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Physical-function
+6-month painTRAINER SMD endpoints reversed and exclude estimate.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, physical function, 6 months,
+painTRAINER vs usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.15 (0.09 to -0.06)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.09 &gt; -0.06</code>; sorting endpoints still gives
+<code>[-0.06,0.09]</code>, which excludes 0.15.</p>
+<p><strong>Reasoning procedure:</strong> Printed values and
+ordering/containment checks are direct. Checker provenance: statistical
+P1-018 (S024).</p>
+<p><strong>Calculation:</strong> <code>0.09 &gt; -0.06</code>; sorting
+endpoints still gives <code>[-0.06,0.09]</code>, which excludes
+0.15.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Signs/order or estimate/CI may be incorrect. Human question: What
+estimate and ordered CI are intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI
+could be copied into synthesis. This is a possible extraction exposure
+only; no propagation, conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+estimate and ordered CI are intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c026--physical-function-6-month-health-coach-smd-endpoints-reversed" class="candidate-card">C026
+— Physical-function 6-month Health Coach SMD endpoints reversed</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Physical-function
+6-month Health Coach SMD endpoints reversed.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, physical function, 6 months, Health
+Coach vs usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.02 (0.03 to -0.18)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.03 &gt; -0.18</code>; endpoints are reversed.</p>
+<p><strong>Reasoning procedure:</strong> Direct ordering check. Checker
+provenance: statistical P1-019 (S024).</p>
+<p><strong>Calculation:</strong> <code>0.03 &gt; -0.18</code>; endpoints
+are reversed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Signs/order may be incorrect. Human question: What ordered CI is
+intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD
+interval could be copied into synthesis. This is a possible extraction
+exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+ordered CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c027--physical-function-6-month-health-coach-versus-paintrainer-smd-endpoints-reversed-and-exclude-estimate" class="candidate-card">C027
+— Physical-function 6-month Health Coach versus painTRAINER SMD
+endpoints reversed and exclude estimate</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Physical-function
+6-month Health Coach versus painTRAINER SMD endpoints reversed and
+exclude estimate.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, physical function, 6 months, Health
+Coach vs painTRAINER SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.22 (0.16 to 0.05)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.16 &gt; 0.05</code>; sorted interval <code>[0.05,0.16]</code>
+excludes 0.22.</p>
+<p><strong>Reasoning procedure:</strong> Direct printed checks. Checker
+provenance: statistical P1-020 (S024).</p>
+<p><strong>Calculation:</strong> <code>0.16 &gt; 0.05</code>; sorted
+interval <code>[0.05,0.16]</code> excludes 0.22.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs or estimate/CI may be wrong. Human question: What
+estimate and ordered CI are intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI
+could be copied into synthesis. This is a possible extraction exposure
+only; no propagation, conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+estimate and ordered CI are intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c028--physical-function-12-month-paintrainer-smd-endpoints-reversed-and-exclude-estimate" class="candidate-card">C028
+— Physical-function 12-month painTRAINER SMD endpoints reversed and
+exclude estimate</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Physical-function
+12-month painTRAINER SMD endpoints reversed and exclude estimate.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, physical function, 12 months,
+painTRAINER vs usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.20 (0.18 to -0.03)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.18 &gt; -0.03</code>; sorted interval <code>[-0.03,0.18]</code>
+excludes 0.20.</p>
+<p><strong>Reasoning procedure:</strong> Direct printed checks. Checker
+provenance: statistical P1-021 (S025).</p>
+<p><strong>Calculation:</strong> <code>0.18 &gt; -0.03</code>; sorted
+interval <code>[-0.03,0.18]</code> excludes 0.20.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs or estimate/CI may be wrong. Human question: What
+estimate and ordered CI are intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI
+could be copied into synthesis. This is a possible extraction exposure
+only; no propagation, conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+estimate and ordered CI are intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c029--physical-function-12-month-health-coach-smd-endpoints-reversed-and-exclude-estimate" class="candidate-card">C029
+— Physical-function 12-month Health Coach SMD endpoints reversed and
+exclude estimate</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Physical-function
+12-month Health Coach SMD endpoints reversed and exclude estimate.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, physical function, 12 months, Health
+Coach vs usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.07 (0.04 to -0.16)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.04 &gt; -0.16</code>; sorted interval <code>[-0.16,0.04]</code>
+excludes 0.07.</p>
+<p><strong>Reasoning procedure:</strong> Direct printed checks. Checker
+provenance: statistical P1-022 (S025).</p>
+<p><strong>Calculation:</strong> <code>0.04 &gt; -0.16</code>; sorted
+interval <code>[-0.16,0.04]</code> excludes 0.07.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs or estimate/CI may be wrong. Human question: What
+estimate and ordered CI are intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI
+could be copied into synthesis. This is a possible extraction exposure
+only; no propagation, conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+estimate and ordered CI are intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c030--physical-function-12-month-health-coach-versus-paintrainer-smd-endpoints-reversed-and-exclude-estimate" class="candidate-card">C030
+— Physical-function 12-month Health Coach versus painTRAINER SMD
+endpoints reversed and exclude estimate</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Physical-function
+12-month Health Coach versus painTRAINER SMD endpoints reversed and
+exclude estimate.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3, physical function, 12 months, Health
+Coach vs painTRAINER SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>0.27 (0.25 to 0.09)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>0.25 &gt; 0.09</code>; sorted interval <code>[0.09,0.25]</code>
+excludes 0.27.</p>
+<p><strong>Reasoning procedure:</strong> Direct printed checks. Checker
+provenance: statistical P1-023 (S025).</p>
+<p><strong>Calculation:</strong> <code>0.25 &gt; 0.09</code>; sorted
+interval <code>[0.09,0.25]</code> excludes 0.27.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Endpoint order/signs or estimate/CI may be wrong. Human question: What
+estimate and ordered CI are intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI
+could be copied into synthesis. This is a possible extraction exposure
+only; no propagation, conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+estimate and ordered CI are intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c031--pgic-pain-12-month-paintrainer-smd-outside-printed-ci" class="candidate-card">C031 —
+PGIC-pain 12-month painTRAINER SMD outside printed CI</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: PGIC-pain
+12-month painTRAINER SMD outside printed CI.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11">main
+article — PDF p. 11</a>, Table 3, PGIC-pain, 12 months, painTRAINER vs
+usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>-0.55 (-0.50 to 0.05)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>-0.55 &lt; -0.50</code>, outside CI.</p>
+<p><strong>Reasoning procedure:</strong> Direct containment check.
+Checker provenance: statistical P1-024 (S028).</p>
+<p><strong>Calculation:</strong> <code>-0.55 &lt; -0.50</code>, outside
+CI.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Estimate or endpoint may be incorrect. Human question: What matched CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI
+could be copied into synthesis. This is a possible extraction exposure
+only; no propagation, conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+matched CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c032--pgic-pain-12-month-health-coach-smd-outside-printed-ci" class="candidate-card">C032 —
+PGIC-pain 12-month Health Coach SMD outside printed CI</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: PGIC-pain
+12-month Health Coach SMD outside printed CI.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11">main
+article — PDF p. 11</a>, Table 3, PGIC-pain, 12 months, Health Coach vs
+usual care plus SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>-0.57 (-0.54 to -0.08)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>-0.57 &lt; -0.54</code>, outside CI.</p>
+<p><strong>Reasoning procedure:</strong> Direct containment check.
+Checker provenance: statistical P1-025 (S028).</p>
+<p><strong>Calculation:</strong> <code>-0.57 &lt; -0.54</code>, outside
+CI.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Estimate or endpoint may be incorrect. Human question: What matched CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI
+could be copied into synthesis. This is a possible extraction exposure
+only; no propagation, conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+matched CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c033--pgic-pain-12-month-health-coach-versus-paintrainer-smd-outside-printed-ci" class="candidate-card">C033
+— PGIC-pain 12-month Health Coach versus painTRAINER SMD outside printed
+CI</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: PGIC-pain
+12-month Health Coach versus painTRAINER SMD outside printed CI.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11">main
+article — PDF p. 11</a>, Table 3, PGIC-pain, 12 months, Health Coach vs
+painTRAINER SMD.</p>
+<p><strong>Source evidence:</strong>
+<code>-0.29 (-0.25 to 0.14)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>-0.29 &lt; -0.25</code>, outside CI.</p>
+<p><strong>Reasoning procedure:</strong> Direct containment check.
+Checker provenance: statistical P1-026 (S028).</p>
+<p><strong>Calculation:</strong> <code>-0.29 &lt; -0.25</code>, outside
+CI.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Estimate or endpoint may be incorrect. Human question: What matched CI
+is intended?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An SMD/CI
+could be copied into synthesis. This is a possible extraction exposure
+only; no propagation, conclusion change, or harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+matched CI is intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c034--female-total-differs-across-sources-if-the-printed-derivations-are-intended-to-match" class="candidate-card">C034
+— Female total differs across sources if the printed derivations are
+intended to match</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Female total
+differs across sources if the printed derivations are intended to
+match.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=1">main
+article — PDF p. 1</a>, Abstract; <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=6">main
+article — PDF p. 6</a>, Table 1; <a
+href="../joi250046supp5_prod_1755300121.16087.xlsx">workbook</a>,
+worksheet <code>eTable 3</code>, cells A11:B11.</p>
+<p><strong>Source evidence:</strong> Abstract
+<code>1712 [74%] women</code>; Table 1 female counts
+<code>571/776</code>, <code>572/778</code>, <code>569/777</code>;
+workbook Overall <code>1713 (73.5)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> If Table 1 and the
+workbook intend the same sex variable for the same N=2331 cohort, their
+counts should agree: <code>571+572+569=1712</code>, not workbook 1713.
+<code>1712/2331=73.444873...%</code>, which rounds to 73.4% at one
+decimal; <code>1713/2331=73.487773...%</code>, which rounds to
+73.5%.</p>
+<p><strong>Reasoning procedure:</strong> Counts, cohort labels, and
+percentages are direct; treating the variables as equivalent is
+conditional because their printed derivation notes differ. Checker
+provenance: cross-source observation A.</p>
+<p><strong>Calculation:</strong> If Table 1 and the workbook intend the
+same sex variable for the same N=2331 cohort, their counts should agree:
+<code>571+572+569=1712</code>, not workbook 1713.
+<code>1712/2331=73.444873...%</code>, which rounds to 73.4% at one
+decimal; <code>1713/2331=73.487773...%</code>, which rounds to
+73.5%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Table 1
+uses self-reported sex with EHR fallback, while workbook row 11 is
+footnoted as EHR-derived; these may intentionally be different
+variables. A data-version update may also exist but is not stated. Human
+question: Are these sources intended to report the same sex derivation,
+and, if so, which female count is authoritative?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> A demographic
+count may be copied into study-characteristic extraction. This is a
+possible extraction exposure only; no propagation, conclusion change, or
+harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: Are
+these sources intended to report the same sex derivation, and, if so,
+which female count is authoritative?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c035--narrative-current-depression-percentage-differs-from-table-1workbook-record" class="candidate-card">C035
+— Narrative current-depression percentage differs from Table 1/workbook
+record</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Narrative
+current-depression percentage differs from Table 1/workbook record.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4">main
+article — PDF p. 4</a>, Results; <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=6">main
+article — PDF p. 6</a>, Table 1; <a
+href="../joi250046supp5_prod_1755300121.16087.xlsx">workbook</a>,
+worksheet <code>eTable 3</code>, cells A82:B82.</p>
+<p><strong>Source evidence:</strong> Narrative <code>47.8%</code>; Table
+1 <code>373/775</code>, <code>373/777</code>, <code>370/777</code>;
+workbook <code>1116 (47.9)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Same PHQ-8 &gt;=10
+baseline definition; <code>1116/(775+777+777)=1116/2329=47.9176%</code>,
+or 47.9% to one decimal, not 47.8%.</p>
+<p><strong>Reasoning procedure:</strong> Printed values are direct;
+arithmetic is deterministic. Checker provenance: cross-source
+observation B.</p>
+<p><strong>Calculation:</strong> Same PHQ-8 &gt;=10 baseline definition;
+<code>1116/(775+777+777)=1116/2329=47.9176%</code>, or 47.9% to one
+decimal, not 47.8%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Narrative may use an unprinted denominator or earlier data snapshot.
+Human question: What numerator/denominator generated the narrative
+value?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> Baseline
+depression prevalence may be copied into evidence tables. This is a
+possible extraction exposure only; no propagation, conclusion change, or
+harm is asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve: What
+numerator/denominator generated the narrative value?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c036--paintrainer-3-month-pain-severity-smd-differs-between-narrative-and-table-3" class="candidate-card">C036
+— painTRAINER 3-month pain-severity SMD differs between narrative and
+Table 3</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: painTRAINER
+3-month pain-severity SMD differs between narrative and Table 3.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=7">main
+article — PDF p. 7</a>, Secondary Outcomes; <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3.</p>
+<p><strong>Source evidence:</strong> Narrative SMD <code>-0.26</code>;
+Table 3 painTRAINER vs usual care plus SMD
+<code>-0.25 (-0.28 to -0.02)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Same adjusted
+outcome/time/contrast/effect measure, explicitly cross-referenced;
+<code>-0.26 != -0.25</code>, displayed difference 0.01.</p>
+<p><strong>Reasoning procedure:</strong> Direct matched-value
+comparison. Checker provenance: statistical P1-027; cross-source
+observation C.</p>
+<p><strong>Calculation:</strong> Same adjusted
+outcome/time/contrast/effect measure, explicitly cross-referenced;
+<code>-0.26 != -0.25</code>, displayed difference 0.01.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Differently rounded source outputs are possible but not stated. Human
+question: Which 3-month SMD is authoritative?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> A standardized
+effect may be copied into meta-analysis extraction. This is a possible
+extraction exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve:
+Which 3-month SMD is authoritative?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c037--health-coach-3-month-pain-severity-smd-differs-between-narrative-and-table-3" class="candidate-card">C037
+— Health Coach 3-month pain-severity SMD differs between narrative and
+Table 3</h2>
+<p><strong>Candidate statement:</strong> Pending Human Adjudication. The
+printed values identify a candidate consistency issue: Health Coach
+3-month pain-severity SMD differs between narrative and Table 3.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=7">main
+article — PDF p. 7</a>, Secondary Outcomes; <a
+href="../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10">main
+article — PDF p. 10</a>, Table 3.</p>
+<p><strong>Source evidence:</strong> Narrative SMD <code>-0.36</code>;
+Table 3 Health Coach vs usual care plus SMD
+<code>-0.34 (-0.36 to -0.13)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Same adjusted
+outcome/time/contrast/effect measure; <code>-0.36 != -0.34</code>,
+displayed difference 0.02.</p>
+<p><strong>Reasoning procedure:</strong> Direct matched-value
+comparison. Checker provenance: statistical P1-028; cross-source
+observation D.</p>
+<p><strong>Calculation:</strong> Same adjusted
+outcome/time/contrast/effect measure; <code>-0.36 != -0.34</code>,
+displayed difference 0.02.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Differently rounded source outputs are possible but not stated. Human
+question: Which 3-month SMD is authoritative?</p>
+<p><strong>Mechanical evidence recheck:</strong> The cited direct-source
+location was mechanically rechecked against the direct source; the
+printed values and stated comparison were retained for human
+adjudication.</p>
+<p><strong>Quality-control relevance:</strong> This is a quantitative
+reporting quality-control observation; a small preventable defect can
+matter when numeric values, denominators, labels, or effect measures are
+extracted downstream, without determining the paper’s conclusions.</p>
+<p><strong>Potential downstream evidence impact:</strong> A standardized
+effect may be copied into meta-analysis extraction. This is a possible
+extraction exposure only; no propagation, conclusion change, or harm is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Re-open the cited source
+location, confirm the printed values and definitions, then resolve:
+Which 3-month SMD is authoritative?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, a candidate could affect the particular value,
+denominator, label, or effect estimate copied by a data extractor,
+systematic review, meta-analysis, guideline, or later publication. This
+is a bounded possibility only: this review makes no claim that any item
+was propagated, changed an evidence synthesis, or altered a study
+conclusion.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>See the complete <a href="review_1_5_1/limitations.md">limitations
+record</a>. The package does not provide participant-level records or
+unrounded model output required to determine intended values for several
+cards. Complex rotated PDF tables were verified against direct sources
+and targeted renders, but no source can determine an unprinted intended
+correction. Conditional C001 and C034 require the stated
+definition/derivation confirmation.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each card: confirm the direct source location and transcription;
+confirm the matching population, time point, contrast, denominator, and
+measure; obtain source analysis/table-production material when required;
+decide whether the printed elements are intended to match; and complete
+the five human fields. Keep each decision separate from this report's
+pending status.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<ul>
+<li><strong>Source-unit counts:</strong> 147 total; 31 reusable-backed;
+116 fresh-required; 147 mapped.</li>
+<li><strong>Source integrity:</strong> End-of-run SHA-256 recomputation
+verified all 6 direct sources and all 78 reused artifacts unchanged;
+before/after hash records are retained in
+<code>review_1_5_1/</code>.</li>
+<li><strong>Agent execution:</strong> The complete coordinator and
+specialist manifest, including both distinct Terra/high statistical
+reviewers and this report generator, is <a
+href="review_1_5_1/agent_execution_manifest.md">agent_execution_manifest.md</a>.</li>
+</ul>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Six-source mixed-format package with
+147 stable units (146 PDF pages and 1 worksheet), reusable extraction
+for all 14 main-article pages, 16 of 19 results-supplement pages, and
+the workbook worksheet, with fresh direct mapping required for 116 units
+across the protocol, SAP, intervention description, and uncovered
+results pages; quantitative relationship volume and visual-table checks
+required bounded specialist waves.</li>
+<li><strong>Total source units:</strong> 147</li>
+<li><strong>Fresh-source units:</strong> 116</li>
+<li><strong>Target elapsed minutes:</strong> 55-80</li>
+<li><strong>Started UTC:</strong> 2026-09-03T03:41:48Z</li>
+<li><strong>Finished UTC:</strong> 2026-09-03T06:52:15Z</li>
+<li><strong>Observed elapsed minutes:</strong> 190.5</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> repeated transient
+model-capacity failures during curation/protocol mapping; exhaustive
+direct-source confirmation for 37 candidates; full 109-relationship dual
+statistical passes and 37-card report assembly</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Responses</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Token-only API-equivalent estimate
+(USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>Per-agent detail is in <a
+href="review_1_5_1/token_usage_summary.md">token_usage_summary.md</a>.
+Amounts are token-only API-equivalent estimates under the dated price
+snapshot, not invoices. Cached input and cache-write are input subsets;
+reasoning is an output subset and is not added again to total
+tokens.</p>
+</body>
+</html>

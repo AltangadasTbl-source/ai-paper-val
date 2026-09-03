@@ -1,0 +1,28 @@
+# Workflow 1.5.1 Run State
+
+- **Profile:** 1.5.1
+- **Package root:** `/home/bulunte/ai-paper-val/2025/jama.2025.15185`
+- **Target basis:** Seven supplied PDFs contain 159 pages, including a 94-page protocol, an 18-page SAP, and a 27-page results supplement; 131 pages initially lack reusable page extraction, and several result-relevant tables and cross-document relationships require fresh mapping and two independent statistical passes.
+- **Total source units:** 159
+- **Fresh-source units:** 131
+- **Target elapsed minutes:** 60-90
+- **Started UTC:** 2026-09-03T03:42:25Z
+- **Finished UTC:** 2026-09-03T06:49:32Z
+- **Observed elapsed minutes:** 187.1
+- **Target status:** EXCEEDED_TARGET
+- **Exceedance causes:** Host load averages near 609 on 8 CPUs caused prolonged shared-filesystem and tool latency; protocol/SAP native encoding failures required fresh direct layout/render inspection; targeted source-page visual confirmation and audit repairs were completed.
+- **Current stage:** COMPLETE
+- **Scientific coverage status:** COMPLETE_159_OF_159
+- **Candidate registration status:** COMPLETE_12_REGISTERED
+- **Statistical pass 1 status:** COMPLETE_21_OF_21
+- **Statistical pass 2 status:** COMPLETE_21_OF_21_NO_NEW_CANDIDATES
+- **Evidence recheck status:** COMPLETE_12_OF_12
+- **Evidence-quality audit status:** COMPLETE_12_OF_12_AND_FULL_COVERAGE
+- **Markdown report status:** COMPLETE_12_CARDS_METADATA_SYNCHRONIZED
+- **HTML report status:** COMPLETE_STANDALONE_WITH_TOC
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE
+- **Source integrity status:** PASS_7_OF_7_UNCHANGED
+- **Reused-artifact integrity status:** PASS_88_OF_88_UNCHANGED
+- **Validation status:** PASS
+- **Limitations:** None established at initialization.
+- **Runtime notes:** Coordinator runtime does not expose authoritative response-level token counts in the local tool interface; record `UNAVAILABLE` unless exact usage metadata becomes available before the accounting cutoff.

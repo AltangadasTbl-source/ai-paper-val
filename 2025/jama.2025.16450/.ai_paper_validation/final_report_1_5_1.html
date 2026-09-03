@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#quantitative-quality-control-consistency-review"
+id="toc-quantitative-quality-control-consistency-review">Quantitative
+Quality-Control Consistency Review</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--etable-4-expands-rr-as-risk-difference-although-the-table-reports-relative-risk"
+id="toc-c001--etable-4-expands-rr-as-risk-difference-although-the-table-reports-relative-risk">C001
+— eTable 4 expands RR as risk difference although the table reports
+relative risk</a></li>
+<li><a
+href="#c002--registered-eligibility-bound-discrepancy-is-not-reproduced-on-direct-source-recheck"
+id="toc-c002--registered-eligibility-bound-discrepancy-is-not-reproduced-on-direct-source-recheck">C002
+— Registered eligibility-bound discrepancy is not reproduced on
+direct-source recheck</a></li>
+<li><a
+href="#c003--registered-first-dose-discrepancy-is-not-reproduced-on-direct-source-recheck"
+id="toc-c003--registered-first-dose-discrepancy-is-not-reproduced-on-direct-source-recheck">C003
+— Registered first-dose discrepancy is not reproduced on direct-source
+recheck</a></li>
+<li><a
+href="#c004--severe-ndi-gmfcs-cutoff-differs-between-the-manual-and-sap"
+id="toc-c004--severe-ndi-gmfcs-cutoff-differs-between-the-manual-and-sap">C004
+— Severe-NDI GMFCS cutoff differs between the manual and SAP</a></li>
+<li><a
+href="#c005--registered-severe-ndi-instrument-edition-discrepancy-is-not-reproduced-on-direct-source-recheck"
+id="toc-c005--registered-severe-ndi-instrument-edition-discrepancy-is-not-reproduced-on-direct-source-recheck">C005
+— Registered severe-NDI instrument-edition discrepancy is not reproduced
+on direct-source recheck</a></li>
+<li><a
+href="#c006--registered-first-interim-alpha-discrepancy-is-not-reproduced-on-direct-source-recheck"
+id="toc-c006--registered-first-interim-alpha-discrepancy-is-not-reproduced-on-direct-source-recheck">C006
+— Registered first-interim-alpha discrepancy is not reproduced on
+direct-source recheck</a></li>
+<li><a
+href="#c007--final-primary-analysis-alpha-differs-between-the-article-and-prospective-documents"
+id="toc-c007--final-primary-analysis-alpha-differs-between-the-article-and-prospective-documents">C007
+— Final primary-analysis alpha differs between the article and
+prospective documents</a></li>
+<li><a
+href="#c008--trial-center-count-differs-between-final-and-prospective-documents"
+id="toc-c008--trial-center-count-differs-between-final-and-prospective-documents">C008
+— Trial center count differs between final and prospective
+documents</a></li>
+<li><a
+href="#c009--table-3-rr-label-conflicts-with-a-stated-common-or-approximation"
+id="toc-c009--table-3-rr-label-conflicts-with-a-stated-common-or-approximation">C009
+— Table 3 RR label conflicts with a stated common-OR
+approximation</a></li>
+<li><a
+href="#c010--etable-3-relative-risk-header-conflicts-with-odds-ratio-approximation-footnote"
+id="toc-c010--etable-3-relative-risk-header-conflicts-with-odds-ratio-approximation-footnote">C010
+— eTable 3 relative-risk header conflicts with odds-ratio approximation
+footnote</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#source-integrity-and-coverage"
+id="toc-source-integrity-and-coverage">Source Integrity and
+Coverage</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+Execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token Accounting and Cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="quantitative-quality-control-consistency-review">Quantitative
+Quality-Control Consistency Review</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>Every observation in this report is <strong>Pending Human
+Adjudication</strong>. This is a quantitative reporting quality-control
+review of supplied local sources. It does not determine validity,
+importance, action, correction, or paper-level conclusions.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete source coverage produced 10 stable candidate consistency
+issues (<code>C001</code>-<code>C010</code>). Six have reproduced
+direct-source support (C001, C004, C007-C010). Four retained audit-trail
+IDs (C002, C003, C005, C006) have direct-source rechecks that contradict
+the earlier ledger transcription; their originally claimed mismatches
+were not reproduced. No candidate is based solely on a display-zero P
+value.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains five supplied PDFs: the 11-page main article
+(DOC-001), 35-page protocol (DOC-002), 162-page manual (DOC-003),
+48-page SAP (DOC-004), and 16-page results supplement (DOC-005). All
+direct PDF pages were retained as the evidence authority. Existing
+page-level native text was usable for DOC-001 and DOC-005 (27 units); it
+served as a locator and transcription aid, not a replacement for
+direct-source confirmation. The evidence-asset inventory records 63
+hashed reused artifacts and their fitness.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review mapped all 272 direct-source PDF-page units: 27
+reusable-backed and 245 fresh-required units. Every source row is
+complete (272 mapped units). Scope emphasized numeric,
+denominator/proportion/total, inferential-statistical, cross-document,
+effect-measure/label/scale, and rate-versus-count consistency. It
+excluded web material, external literature, raw data, pharmacy records,
+analysis programs, and amendment history not supplied in the
+package.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The canonical inventories contain 129 numeric relationships and 56
+statistical relationships. Numeric and cross-source review was
+completed, and both independent statistical passes completed all 56
+statistical relationships. Exact-source mechanical recheck and the final
+evidence-quality audit each covered all 10 stable IDs.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+<th>Direct-source recheck status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--etable-4-expands-rr-as-risk-difference-although-the-table-reports-relative-risk">C001</a></td>
+<td>eTable 4 RR expansion</td>
+<td>Reproduced</td>
+</tr>
+<tr>
+<td><a
+href="#c002--registered-eligibility-bound-discrepancy-is-not-reproduced-on-direct-source-recheck">C002</a></td>
+<td>Eligibility upper bound</td>
+<td>Original mismatch not reproduced</td>
+</tr>
+<tr>
+<td><a
+href="#c003--registered-first-dose-discrepancy-is-not-reproduced-on-direct-source-recheck">C003</a></td>
+<td>First-dose volume</td>
+<td>Original mismatch not reproduced</td>
+</tr>
+<tr>
+<td><a
+href="#c004--severe-ndi-gmfcs-cutoff-differs-between-the-manual-and-sap">C004</a></td>
+<td>Severe-NDI GMFCS cutoff</td>
+<td>Reproduced</td>
+</tr>
+<tr>
+<td><a
+href="#c005--registered-severe-ndi-instrument-edition-discrepancy-is-not-reproduced-on-direct-source-recheck">C005</a></td>
+<td>Severe-NDI instrument edition</td>
+<td>Original mismatch not reproduced</td>
+</tr>
+<tr>
+<td><a
+href="#c006--registered-first-interim-alpha-discrepancy-is-not-reproduced-on-direct-source-recheck">C006</a></td>
+<td>First interim alpha</td>
+<td>Original mismatch not reproduced</td>
+</tr>
+<tr>
+<td><a
+href="#c007--final-primary-analysis-alpha-differs-between-the-article-and-prospective-documents">C007</a></td>
+<td>Final primary-analysis alpha</td>
+<td>Reproduced, conditional interpretation</td>
+</tr>
+<tr>
+<td><a
+href="#c008--trial-center-count-differs-between-final-and-prospective-documents">C008</a></td>
+<td>Trial center count</td>
+<td>Reproduced, conditional interpretation</td>
+</tr>
+<tr>
+<td><a
+href="#c009--table-3-rr-label-conflicts-with-a-stated-common-or-approximation">C009</a></td>
+<td>Table 3 RR/common-OR wording</td>
+<td>Reproduced</td>
+</tr>
+<tr>
+<td><a
+href="#c010--etable-3-relative-risk-header-conflicts-with-odds-ratio-approximation-footnote">C010</a></td>
+<td>eTable 3 RR/OR wording</td>
+<td>Reproduced</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--etable-4-expands-rr-as-risk-difference-although-the-table-reports-relative-risk" class="candidate-card">C001
+— eTable 4 expands RR as risk difference although the table reports
+relative risk</h2>
+<p><strong>Candidate statement:</strong> eTable 4 uses <code>RR</code>
+for ratio-scale relative-risk estimates but its abbreviation line
+expands <code>RR</code> as risk difference.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-005 <a
+href="../joi250072supp4_prod_1761000786.6988.pdf#page=7">results
+supplement — PDF p. 7</a> (eTable 4 header and PDA row); <a
+href="../joi250072supp4_prod_1761000786.6988.pdf#page=8">results
+supplement — PDF p. 8</a> (abbreviations and binary-outcome model
+text).</p>
+<p><strong>Source evidence:</strong> Page 7 prints
+<code>Relative Risk (RR) or Mean Difference (MD)</code> and PDA
+<code>RR: 0.86 (0.75, 0.99)</code>; page 8 prints
+<code>RR = risk difference</code> while stating binary outcomes report
+relative risks.</p>
+<p><strong>Reported-versus-comparator:</strong> The abbreviation says
+risk difference; the table header, model description, and estimates say
+or use relative risk.</p>
+<p><strong>Reasoning procedure:</strong> Compare the printed expansion
+with the stated measure and the null/scale implied by the displayed
+estimate.</p>
+<p><strong>Calculation:</strong> From displayed PDA counts,
+<code>(159/319)/(175/308) = 0.8772</code>;
+<code>100 x (159/319 - 175/308) = -6.97</code> percentage points. The
+adjusted <code>.86</code> is ratio-scale.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The p.
+8 line may be an isolated copyediting or transcription error; the
+package does not establish cause.</p>
+<p><strong>Mechanical evidence recheck:</strong> Reproduced directly:
+header, ratio-form estimate, abbreviation, and model text are present on
+the cited pages.</p>
+<p><strong>Quality-control relevance:</strong> One abbreviation should
+not identify two distinct measures with different scales and null
+values.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor, systematic review, meta-analysis, or guideline could
+copy the RR abbreviation as risk difference rather than relative risk;
+no propagation or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the p. 8
+abbreviation against the eTable 4 header and the binary-outcome model
+description; determine the intended expansion.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--registered-eligibility-bound-discrepancy-is-not-reproduced-on-direct-source-recheck" class="candidate-card">C002
+— Registered eligibility-bound discrepancy is not reproduced on
+direct-source recheck</h2>
+<p><strong>Candidate statement:</strong> The prior ledger recorded
+<code>27 6/7</code> weeks for DOC-002, but direct-source recheck shows
+<code>28 6/7</code>; the original cross-document mismatch is not
+reproduced.</p>
+<p><strong>Category:</strong> Analysis-unit or population
+inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250072supp1_prod_1761000786.68881.pdf#page=4">protocol — PDF
+p. 4</a>; DOC-003 <a
+href="../joi250072supp2_prod_1761000786.6938.pdf#page=7">manual — PDF p.
+7</a>; DOC-004 <a
+href="../joi250072supp3_prod_1761000786.6988.pdf#page=8">SAP — PDF p.
+8</a> and <a
+href="../joi250072supp3_prod_1761000786.6988.pdf#page=15">SAP — PDF p.
+15</a>; DOC-001 <a
+href="../jama_ambalavanan_2025_oi_250072_1761000786.6838.pdf#page=2">main
+article — PDF p. 2</a>.</p>
+<p><strong>Source evidence:</strong> The protocol directly prints
+<code>22 0/7 - 28 6/7 weeks gestation</code>; the compared direct
+sources also print an upper bound of 28 weeks 6 days.</p>
+<p><strong>Reported-versus-comparator:</strong> Earlier ledger
+transcription <code>27 6/7</code> versus direct-page <code>28 6/7</code>
+in DOC-002 and every comparator.</p>
+<p><strong>Reasoning procedure:</strong> Directly read each eligibility
+passage, match the upper bound, and compare values.</p>
+<p><strong>Calculation:</strong> Pairwise upper-bound difference is 0
+days, not 7 days.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+earlier extraction may have misread a custom-encoded <code>8</code> as
+<code>7</code>; the mechanism is inferred, not established.</p>
+<p><strong>Mechanical evidence recheck:</strong> Not reproduced as a
+source mismatch. Direct-page inspection contradicts the ledger
+transcription.</p>
+<p><strong>Quality-control relevance:</strong> Preserving this stable ID
+documents correction of a source-transcription issue and prevents it
+from being reused as a scientific discrepancy.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed
+as a transcription correction, an extractor could avoid copying
+<code>27 6/7</code> as the eligibility limit; no downstream use or
+conclusion effect is asserted.</p>
+<p><strong>Human verification steps:</strong> Read DOC-002 p. 4 visually
+and confirm whether any supplied direct page prints
+<code>27 6/7</code>.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--registered-first-dose-discrepancy-is-not-reproduced-on-direct-source-recheck" class="candidate-card">C003
+— Registered first-dose discrepancy is not reproduced on direct-source
+recheck</h2>
+<p><strong>Candidate statement:</strong> The prior ledger assigned
+<code>1.25 mL/kg</code> to the first dose in DOC-002, but direct-source
+recheck shows <code>2.5 mL/kg</code>; the original mismatch is not
+reproduced.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250072supp1_prod_1761000786.68881.pdf#page=4">protocol — PDF
+p. 4</a>; DOC-003 <a
+href="../joi250072supp2_prod_1761000786.6938.pdf#page=7">manual — PDF p.
+7</a> and <a
+href="../joi250072supp2_prod_1761000786.6938.pdf#page=12">manual — PDF
+p. 12</a>; DOC-004 <a
+href="../joi250072supp3_prod_1761000786.6988.pdf#page=8">SAP — PDF p.
+8</a>; DOC-001 <a
+href="../jama_ambalavanan_2025_oi_250072_1761000786.6838.pdf#page=2">main
+article — PDF p. 2</a>; DOC-005 <a
+href="../joi250072supp4_prod_1761000786.6988.pdf#page=4">results
+supplement — PDF p. 4</a>.</p>
+<p><strong>Source evidence:</strong> All cited pages identify
+<code>2.5 mL/kg</code> as dose 1; the manual and results supplement
+identify <code>1.25 mL/kg</code> as dose 2.</p>
+<p><strong>Reported-versus-comparator:</strong> Earlier first-dose
+transcription <code>1.25 mL/kg</code> versus direct-source first-dose
+<code>2.5 mL/kg</code>.</p>
+<p><strong>Reasoning procedure:</strong> Match dose order, volume, and
+intervention context across the cited direct pages.</p>
+<p><strong>Calculation:</strong> <code>2.5 / 2.5 = 1</code>; difference
+<code>0 mL/kg</code> for the compared first-dose values.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Earlier
+extraction may have transferred the second-dose value or misread the
+first-dose volume; cause is not documented.</p>
+<p><strong>Mechanical evidence recheck:</strong> Not reproduced as a
+source mismatch. Direct-page inspection contradicts the ledger
+transcription.</p>
+<p><strong>Quality-control relevance:</strong> The audit trail prevents
+an incorrect dose-order transcription from being treated as a
+trial-document inconsistency.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed
+as a correction, an extractor could avoid copying
+<code>1.25 mL/kg</code> as the first dose; no downstream use or
+conclusion effect is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the dose-order
+wording on DOC-002 p. 4 and the second-dose wording on DOC-003 p. 12 or
+DOC-005 p. 4.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--severe-ndi-gmfcs-cutoff-differs-between-the-manual-and-sap" class="candidate-card">C004
+— Severe-NDI GMFCS cutoff differs between the manual and SAP</h2>
+<p><strong>Candidate statement:</strong> The manual defines severe NDI
+using GMFCS levels <code>3-5</code>, whereas the SAP uses
+<code>4-5</code>.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-003 <a
+href="../joi250072supp2_prod_1761000786.6938.pdf#page=14">manual — PDF
+p. 14</a> and <a
+href="../joi250072supp2_prod_1761000786.6938.pdf#page=16">manual — PDF
+p. 16</a>; DOC-004 <a
+href="../joi250072supp3_prod_1761000786.6988.pdf#page=10">SAP — PDF p.
+10</a> and <a
+href="../joi250072supp3_prod_1761000786.6988.pdf#page=33">SAP — PDF p.
+33</a>.</p>
+<p><strong>Source evidence:</strong> The manual prints <code>3-5</code>;
+the SAP prints <code>4-5</code>/<code>level 4-5</code> for the
+severe-NDI component.</p>
+<p><strong>Reported-versus-comparator:</strong> Manual threshold
+<code>{3,4,5}</code> versus SAP threshold <code>{4,5}</code>.</p>
+<p><strong>Reasoning procedure:</strong> Compare the direct
+endpoint-definition cutoffs and identify category membership that
+differs.</p>
+<p><strong>Calculation:</strong> Exact set difference is
+<code>{3}</code>; the cutoff shifts by one GMFCS level.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+versioned definition change is possible, but no governing amendment or
+implemented follow-up algorithm is supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Reproduced directly on
+the cited manual and SAP pages.</p>
+<p><strong>Quality-control relevance:</strong> A binary endpoint
+component should use one traceable threshold or be explicitly
+version-qualified.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed
+and later reported, an extractor could copy a different severe-NDI
+component threshold; no endpoint effect or conclusion change is
+established.</p>
+<p><strong>Human verification steps:</strong> Identify the governing
+endpoint definition, amendment history, and treatment of GMFCS level
+3.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--registered-severe-ndi-instrument-edition-discrepancy-is-not-reproduced-on-direct-source-recheck" class="candidate-card">C005
+— Registered severe-NDI instrument-edition discrepancy is not reproduced
+on direct-source recheck</h2>
+<p><strong>Candidate statement:</strong> The prior ledger reported
+Bayley-III versus BSID-IV, but direct-source recheck shows
+BSID-IV/fourth edition throughout; the original mismatch is not
+reproduced.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-003 <a
+href="../joi250072supp2_prod_1761000786.6938.pdf#page=14">manual — PDF
+p. 14</a> and <a
+href="../joi250072supp2_prod_1761000786.6938.pdf#page=16">manual — PDF
+p. 16</a>; DOC-004 <a
+href="../joi250072supp3_prod_1761000786.6988.pdf#page=10">SAP — PDF p.
+10</a>, <a href="../joi250072supp3_prod_1761000786.6988.pdf#page=33" target="_blank" rel="noopener">SAP
+— PDF p. 33</a>, and <a
+href="../joi250072supp3_prod_1761000786.6988.pdf#page=34">SAP — PDF p.
+34</a>.</p>
+<p><strong>Source evidence:</strong> The cited passages print BSID-IV or
+<code>4th edition (BSID-IV)</code> with cognitive score
+<code>&lt;70</code>; none prints Bayley-III.</p>
+<p><strong>Reported-versus-comparator:</strong> Earlier ledger
+Bayley-III transcription versus direct-source fourth-edition/BSID-IV
+wording.</p>
+<p><strong>Reasoning procedure:</strong> Match instrument edition and
+threshold in the direct endpoint-definition passages.</p>
+<p><strong>Calculation:</strong> <code>4th edition</code> and
+<code>BSID-IV</code> are the same edition; all cited passages retain
+<code>&lt;70</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+prior extraction may have read <code>IV</code> as <code>III</code> or
+carried text from another template; cause is not established.</p>
+<p><strong>Mechanical evidence recheck:</strong> Not reproduced as a
+source mismatch. Direct-page inspection contradicts the ledger
+transcription.</p>
+<p><strong>Quality-control relevance:</strong> The record distinguishes
+a corrected transcription from an instrument-definition conflict.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed
+as a correction, an extractor could avoid recording Bayley-III for this
+endpoint; no different instrument use or conclusion effect is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the SAP p. 33
+wording and determine whether any supplied direct page identifies
+Bayley-III for severe NDI.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--registered-first-interim-alpha-discrepancy-is-not-reproduced-on-direct-source-recheck" class="candidate-card">C006
+— Registered first-interim-alpha discrepancy is not reproduced on
+direct-source recheck</h2>
+<p><strong>Candidate statement:</strong> The prior ledger recorded
+protocol alpha <code>0.00015</code>, but both direct pages print
+<code>0.000015</code>; the original tenfold mismatch is not
+reproduced.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250072supp1_prod_1761000786.68881.pdf#page=29">protocol —
+PDF p. 29</a>; DOC-004 <a
+href="../joi250072supp3_prod_1761000786.6988.pdf#page=26">SAP — PDF p.
+26</a>.</p>
+<p><strong>Source evidence:</strong> Both schedules print first-look
+alpha <code>0.000015</code>, followed by <code>.0030</code>,
+<code>.0183</code>, and <code>.0440</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Earlier protocol
+transcription <code>0.00015</code> versus direct protocol and SAP
+<code>0.000015</code>.</p>
+<p><strong>Reasoning procedure:</strong> Compare matched 25%
+efficacy-look nominal-alpha strings on the direct pages.</p>
+<p><strong>Calculation:</strong> <code>0.000015 / 0.000015 = 1</code>;
+difference <code>0</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+earlier extraction may have dropped one zero in custom-encoded text;
+cause is inferred only.</p>
+<p><strong>Mechanical evidence recheck:</strong> Not reproduced as a
+source mismatch. Direct-page inspection contradicts the ledger
+transcription.</p>
+<p><strong>Quality-control relevance:</strong> The audit trail prevents
+a dropped-zero transcription from being reused as a statistical
+reporting conflict.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed
+as a correction, an extractor could avoid copying <code>0.00015</code>
+as the first-look alpha; no altered inference or conclusion effect is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Visually confirm the
+decimal strings in both schedules and search supplied protocol pages for
+an alternative <code>0.00015</code> statement.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--final-primary-analysis-alpha-differs-between-the-article-and-prospective-documents" class="candidate-card">C007
+— Final primary-analysis alpha differs between the article and
+prospective documents</h2>
+<p><strong>Candidate statement:</strong> The article reports
+primary-analysis alpha <code>.049</code>; the protocol and SAP list
+planned final alpha <code>.0440</code>.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001 <a
+href="../jama_ambalavanan_2025_oi_250072_1761000786.6838.pdf#page=3">main
+article — PDF p. 3</a> and <a
+href="../jama_ambalavanan_2025_oi_250072_1761000786.6838.pdf#page=7">main
+article — PDF p. 7</a>; DOC-002 <a
+href="../joi250072supp1_prod_1761000786.68881.pdf#page=29">protocol —
+PDF p. 29</a>; DOC-004 <a
+href="../joi250072supp3_prod_1761000786.6988.pdf#page=26">SAP — PDF p.
+26</a>.</p>
+<p><strong>Source evidence:</strong> Article text and Table 2 footnote
+state <code>.049</code>; the prospective schedules state
+<code>.0440</code> for the planned final look.</p>
+<p><strong>Reported-versus-comparator:</strong> Executed article alpha
+<code>.049</code> versus prospective planned final alpha
+<code>.0440</code>.</p>
+<p><strong>Reasoning procedure:</strong> Compare matched
+primary-analysis thresholds while preserving planned-versus-realized
+context.</p>
+<p><strong>Calculation:</strong> <code>.049 - .0440 = .0050</code>;
+<code>.049/.0440 = 1.1136</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+realized Lan-DeMets boundary, recovery of unspent alpha, different
+information timing, unperformed looks, or amendment could explain the
+values. Relevant execution output is absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Reproduced values; the
+consistency question remains conditional because planned and realized
+boundaries need not be equal.</p>
+<p><strong>Quality-control relevance:</strong> The executed threshold
+should be traceable to the prospective alpha-spending framework or a
+documented recalculation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed
+unresolved, an extractor could record different primary significance
+thresholds; no incorrect estimate, propagation, or conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Obtain realized
+information fractions, look dates/status, alpha-spending output, and
+amendment/recovery documentation.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--trial-center-count-differs-between-final-and-prospective-documents" class="candidate-card">C008
+— Trial center count differs between final and prospective
+documents</h2>
+<p><strong>Candidate statement:</strong> The article states 17 centers;
+the protocol and SAP state 15 centers in prospective context.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001 <a
+href="../jama_ambalavanan_2025_oi_250072_1761000786.6838.pdf#page=1">main
+article — PDF p. 1</a>; DOC-002 <a
+href="../joi250072supp1_prod_1761000786.68881.pdf#page=29">protocol —
+PDF p. 29</a>; DOC-004 <a
+href="../joi250072supp3_prod_1761000786.6988.pdf#page=8">SAP — PDF p.
+8</a>.</p>
+<p><strong>Source evidence:</strong> DOC-001 reports 17 US centers; the
+prospective documents refer to 15 NRN centers/planned participation.</p>
+<p><strong>Reported-versus-comparator:</strong> Completed-study count 17
+versus planned count 15.</p>
+<p><strong>Reasoning procedure:</strong> Match the trial setting and
+compare counts while retaining the documents' time-tense and
+counting-basis context.</p>
+<p><strong>Calculation:</strong> <code>17 - 15 = 2</code> centers.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Later
+site activation or a different center/hospital/pooling definition is
+plausible; activation/enrollment records are absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Reproduced values;
+whether they are inconsistent is conditional on shared operational
+period and definition.</p>
+<p><strong>Quality-control relevance:</strong> Trial-setting counts
+should be time/version qualified when prospective and completed counts
+differ.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed
+unresolved, an extractor could copy 15 or 17 as the trial setting; no
+model-estimate or conclusion effect is asserted.</p>
+<p><strong>Human verification steps:</strong> Obtain center activation
+and enrollment records and determine the center-counting definition used
+in each document.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--table-3-rr-label-conflicts-with-a-stated-common-or-approximation" class="candidate-card">C009
+— Table 3 RR label conflicts with a stated common-OR approximation</h2>
+<p><strong>Candidate statement:</strong> Table 3 labels an estimate RR
+while footnote g describes a common-OR approximation after
+robust-Poisson nonconvergence.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001 <a
+href="../jama_ambalavanan_2025_oi_250072_1761000786.6838.pdf#page=8">main
+article — PDF p. 8</a> (Table 3 additional open-label surfactant row and
+footnote g).</p>
+<p><strong>Source evidence:</strong> The row prints
+<code>RR: 0.69 (0.33 to 1.46)</code> for 13/312 versus 18/299; footnote
+g names Mantel-Haenszel methods
+<code>approximated by the common OR</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> RR row label versus
+common-OR approximation wording.</p>
+<p><strong>Reasoning procedure:</strong> Compare the measure label,
+estimator description, and diagnostic crude measures without treating
+crude values as the stratified result.</p>
+<p><strong>Calculation:</strong> Crude RR
+<code>(13/312)/(18/299) = 0.6921</code>; crude OR
+<code>[13 x 281]/[299 x 18] = 0.6787</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+target estimand may be RR while a common OR was used as a sparse-event
+approximation. Stratum counts, weights, and model output are
+unavailable.</p>
+<p><strong>Mechanical evidence recheck:</strong> Reproduced directly on
+Table 3 and footnote g.</p>
+<p><strong>Quality-control relevance:</strong> The reported estimator
+and target measure should be unambiguous because RR and OR are distinct
+measures.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor, systematic review, meta-analysis, or guideline could
+classify the estimate as RR or OR differently; no numeric error,
+propagation, or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Review the model output
+and stratified Mantel-Haenszel specification; determine the formal
+estimator and label.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--etable-3-relative-risk-header-conflicts-with-odds-ratio-approximation-footnote" class="candidate-card">C010
+— eTable 3 relative-risk header conflicts with odds-ratio approximation
+footnote</h2>
+<p><strong>Candidate statement:</strong> eTable 3's effect-estimate
+header says relative risk while footnote b identifies odds-ratio
+approximations for marked sparse rows.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-005 <a
+href="../joi250072supp4_prod_1761000786.6988.pdf#page=5">results
+supplement — PDF p. 5</a> and <a
+href="../joi250072supp4_prod_1761000786.6988.pdf#page=6">results
+supplement — PDF p. 6</a> (eTable 3 header and footnote b).</p>
+<p><strong>Source evidence:</strong> The header says
+<code>Relative Risk (95% CI) or P-value</code>; footnote b says marked
+low-prevalence rows use crude unadjusted odds ratios with exact 95% CIs
+as an approximation. Marked examples include <code>.73</code>,
+<code>.65</code>, and <code>2.64</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Table-level RR header
+versus odds-ratio approximation footnote for superscript-b rows.</p>
+<p><strong>Reasoning procedure:</strong> Compare header and row-footnote
+measure wording and calculate crude OR diagnostics from displayed
+counts.</p>
+<p><strong>Calculation:</strong>
+<code>(3 x 309)/(319 x 4) = 0.7265</code>;
+<code>(2 x 310)/(320 x 3) = 0.6458</code>;
+<code>(8 x 310)/(314 x 3) = 2.6327</code>, close to <code>.73</code>,
+<code>.65</code>, and <code>2.64</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+header may name the target measure and the footnote the approximating
+estimator. Exact CI reproduction needs the specified exact-interval
+algorithm and row inputs.</p>
+<p><strong>Mechanical evidence recheck:</strong> Reproduced directly on
+the cited eTable 3 pages.</p>
+<p><strong>Quality-control relevance:</strong> Rows using OR
+approximations should have an unambiguous reported measure label.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a row-level extractor, systematic review, meta-analysis, or guideline
+could classify marked estimates as RR or OR differently; no conclusion
+change or actual propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Determine intended
+extraction labels for superscript-b rows and confirm the exact interval
+and estimator convention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>Small preventable numeric or labeling defects can matter when
+evidence is later abstracted into systematic reviews, meta-analyses,
+guidelines, or other structured evidence products. This report only
+identifies what could be copied if a candidate is confirmed. It does not
+assert propagation, harm, or a change to any study conclusion.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The review uses only the five supplied PDFs. Nonstandard embedded
+fonts in DOC-002 through DOC-004 required direct-render visual
+inspection for exact transcription. Individual/stratum-level data,
+fitted-model output, exact CI algorithms, realized alpha-spending
+output, amendment history, and center activation/enrollment records are
+unavailable. These gaps limit C004, C007-C010 to the printed
+relationships and their specified human questions. Four historical
+candidate transcriptions (C002, C003, C005, C006) are contradicted by
+direct-source recheck and are retained solely as required audit trail
+IDs.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ul>
+<li>Confirm each cited source location against the direct PDF page.</li>
+<li>Determine whether a reproduced difference is explained by version,
+timing, estimator, or definition.</li>
+<li>Complete the five blank human-adjudication fields on each card.</li>
+<li>Record any action in an adjudication system separate from this
+report; this review makes none.</li>
+</ul>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="source-integrity-and-coverage">Source Integrity and
+Coverage</h3>
+<ul>
+<li><strong>Direct sources:</strong> 5 PDFs.</li>
+<li><strong>Source-unit counts:</strong> 272 total; 27 reusable; 245
+fresh-required; 272 mapped.</li>
+<li><strong>Source integrity baseline:</strong>
+<code>review_1_5_1/source_hashes_before.sha256</code>.</li>
+<li><strong>Reused-artifact integrity baseline:</strong>
+<code>review_1_5_1/reused_artifact_hashes_before.sha256</code>.</li>
+<li><strong>Coverage and evidence artifacts:</strong>
+<code>review_1_5_1/source_coverage.md</code>,
+<code>review_1_5_1/coverage_manifest.md</code>, relationship
+inventories, checker artifacts,
+<code>verification/evidence_recheck.md</code>, and
+<code>quality/evidence_quality_audit.md</code>.</li>
+</ul>
+<h3 id="agent-execution">Agent Execution</h3>
+<p>The execution manifest records the coordinator plus reuse curation,
+main and support mapping, numeric, cross-source, two independent
+statistical-pass, exact-source recheck, evidence-quality, and
+report-generation agents. Statistical passes 1 and 2 were completed by
+distinct new <code>gpt-5.6-terra</code> high-effort agents. See
+<code>review_1_5_1/agent_execution_manifest.md</code> for runtime IDs,
+models, efforts, start modes, and artifact ownership.</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Five-PDF paper package with 272
+direct-source pages, including a 162-page manual and a 48-page SAP;
+reusable page-level text is visibly available for the 11-page main
+article and 16-page results supplement, while three support PDFs require
+unit-level curator confirmation and likely fresh native/layout mapping.
+The range allows parallel evidence mapping plus two mandatory full
+statistical passes and complete recheck/audit/report stages.</li>
+<li><strong>Total source units:</strong> 272</li>
+<li><strong>Fresh-source units:</strong> 245</li>
+<li><strong>Target elapsed minutes:</strong> 100-150</li>
+<li><strong>Started UTC:</strong> 2026-09-03T03:43:52Z</li>
+<li><strong>Finished UTC:</strong> 2026-09-03T06:48:20Z</li>
+<li><strong>Observed elapsed minutes:</strong> 184.5</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> Severe host CPU contention (load
+approximately 610 on 8 allocated CPUs); embedded-font extraction and
+empty OCR required rendered-page inspection of 245 fresh units and a
+33-page SAP coverage repair; canonical relationship ranges required
+expansion to 185 individual IDs; direct-source recheck corrected four
+extraction-derived candidate transcriptions.</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token Accounting and Cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Token-accounting status</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Token-only API-equivalent estimate
+(USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+<td style="text-align: right;">0 (known; incomplete)</td>
+<td style="text-align: right;">0.000000 known; complete estimate
+unavailable</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+<td style="text-align: right;">0 (known; incomplete)</td>
+<td style="text-align: right;">0.000000 known; complete estimate
+unavailable</td>
+</tr>
+</tbody>
+</table>
+<p>The accounting window is closed. The runtime exposed no authoritative
+response-level token counts for the coordinator or any specialist, so
+each manifested agent has an <code>UNAVAILABLE</code> record and no
+text-length estimate was substituted. The displayed zero is the known
+subtotal from exact records, not a claim of zero actual usage. Cached
+input and cache-write counts are input subsets and reasoning counts are
+output subsets; they are not added again to total tokens. Any cost is a
+token-only API-equivalent estimate under the 2026-08-18 pricing
+snapshot, not an invoice. Per-agent detail is in
+<code>review_1_5_1/token_usage_summary.md</code> and
+<code>review_1_5_1/token_usage_ledger.csv</code>.</p>
+</body>
+</html>

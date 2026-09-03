@@ -1,0 +1,25 @@
+# Workflow 1.5.1 Run State
+
+- **Profile:** 1.5.1
+- **Package:** jama.2025.4390
+- **Target basis:** Four-PDF package with 86 pages, all 86 requiring fresh direct-source mapping after source-hash fitness checks, plus table-dense results requiring cross-document and two-pass statistical review; bounded against the 102-page/81-fresh-page calibration while accounting for slightly fewer total units but a fully fresh evidence burden.
+- **Total source units:** 86
+- **Fresh-source units:** 86
+- **Target elapsed minutes:** 40-60
+- **Started UTC:** 2026-09-03T03:48:59Z
+- **Finished UTC:** 2026-09-03T04:56:53Z
+- **Observed elapsed minutes:** 67.9
+- **Target status:** EXCEEDED_TARGET
+- **Exceedance causes:** All 86 pages required fresh mapping after stale-derivative hash findings; malformed DOC-003 embedded text required rendered-page inspection; table-dense cross-source checks and direct visual evidence rechecks exceeded the upper bound.
+- **Current stage:** COMPLETE
+- **Scientific coverage status:** COMPLETE_86_OF_86
+- **Candidate ledger status:** COMPLETE_C001_C002_C003
+- **Statistical pass 1 status:** COMPLETE_35_OF_35
+- **Statistical pass 2 status:** COMPLETE_35_OF_35_NO_NEW_CANDIDATES
+- **Evidence recheck status:** COMPLETE_C001_C002_C003
+- **Quality audit status:** COMPLETE_C001_C002_C003
+- **Markdown report status:** COMPLETE_C001_C002_C003
+- **HTML report status:** COMPLETE_STANDALONE
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE
+- **Validation status:** PASS
+- **Runtime notes:** CPU-only; web and external literature prohibited; existing reusable assets preserved read-only.

@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review-jama20257710"
+id="toc-quantitative-quality-control-consistency-review-jama20257710">Quantitative
+Quality-Control Consistency Review: jama.2025.7710</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#1-executive-quality-control-summary"
+id="toc-1-executive-quality-control-summary">1. Executive
+Quality-Control Summary</a></li>
+<li><a href="#2-package-and-reused-evidence-provenance"
+id="toc-2-package-and-reused-evidence-provenance">2. Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#3-scope-complete-coverage-and-exclusions"
+id="toc-3-scope-complete-coverage-and-exclusions">3. Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#4-quantitative-and-statistical-relationship-coverage"
+id="toc-4-quantitative-and-statistical-relationship-coverage">4.
+Quantitative and Statistical Relationship Coverage</a></li>
+<li><a href="#5-candidate-index" id="toc-5-candidate-index">5. Candidate
+Index</a></li>
+<li><a href="#6-candidate-evidence-cards"
+id="toc-6-candidate-evidence-cards">6. Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--conflicting-economic-price-year-labels-within-the-protocol"
+id="toc-c001--conflicting-economic-price-year-labels-within-the-protocol">C001
+— Conflicting economic price-year labels within the protocol</a></li>
+<li><a
+href="#c002--primary-composite-counting-rationale-does-not-reconcile-with-the-displayed-endpoint-list"
+id="toc-c002--primary-composite-counting-rationale-does-not-reconcile-with-the-displayed-endpoint-list">C002
+— Primary-composite counting rationale does not reconcile with the
+displayed endpoint list</a></li>
+<li><a
+href="#c003--economic-comparator-label-conflicts-with-the-detailed-trial-comparison"
+id="toc-c003--economic-comparator-label-conflicts-with-the-detailed-trial-comparison">C003
+— Economic comparator label conflicts with the detailed trial
+comparison</a></li>
+<li><a
+href="#c004--reported-no-adjustment-statement-conflicts-with-the-supplied-multiplicity-plan"
+id="toc-c004--reported-no-adjustment-statement-conflicts-with-the-supplied-multiplicity-plan">C004
+— Reported no-adjustment statement conflicts with the supplied
+multiplicity plan</a></li>
+<li><a href="#7-downstream-evidence-chain-considerations"
+id="toc-7-downstream-evidence-chain-considerations">7. Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#8-limitations-and-missing-definitions"
+id="toc-8-limitations-and-missing-definitions">8. Limitations and
+Missing Definitions</a></li>
+<li><a href="#9-human-adjudication-checklist"
+id="toc-9-human-adjudication-checklist">9. Human Adjudication
+Checklist</a></li>
+<li><a
+href="#10-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-10-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">10.
+Reproducibility, Source-Integrity, Agent-Execution, Performance,
+Token-Usage, and Cost Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution-manifest"
+id="toc-agent-execution-manifest">Agent execution manifest</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting-and-token-only-cost-estimate"
+id="toc-token-accounting-and-token-only-cost-estimate">Token accounting
+and token-only cost estimate</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review-jama20257710">Quantitative
+Quality-Control Consistency Review: jama.2025.7710</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>Every candidate in this report is <strong>Pending Human
+Adjudication</strong>. This is a quantitative reporting quality-control
+review of supplied local materials, not a severity assessment, validity
+decision, correction, or conclusion about the study.</p>
+<h2 id="1-executive-quality-control-summary">1. Executive
+Quality-Control Summary</h2>
+<p>Complete coverage of the supplied package registered
+<strong>4</strong> distinct quantitative reporting quality-control
+candidates: C001, C002, C003, and C004. The review mapped all 72
+direct-source PDF pages, including 66 freshly mapped pages and 6
+reusable-backed pages confirmed against their source. It reviewed 80
+numeric/reporting relationships and 53 inferential-statistical
+relationships; both independent statistical passes covered all 53
+statistical relationships.</p>
+<p>The candidates concern monetary-base-year labeling, primary-composite
+component counting, economic-comparator labeling, and
+planned-versus-reported multiplicity handling. They are source-grounded
+questions for human review. Small preventable reporting defects can
+matter when data are extracted for downstream evidence products, but
+this review does not claim that any defect propagated, affected a
+conclusion, or caused harm.</p>
+<h2 id="2-package-and-reused-evidence-provenance">2. Package and
+Reused-Evidence Provenance</h2>
+<p>The supplied package contains four PDFs: the main article (DOC-001),
+protocol (DOC-002), draft statistical analysis plan (DOC-003), and
+results supplement (DOC-004). No supplied DOC, DOCX, XLS, XLSX, or CSV
+source was present.</p>
+<p>Reusable evidence assets were inventoried before review: 43 eligible
+assets. Six DOC-004 pages had usable reusable-backed coverage. DOC-001
+derivative identity was stale against the current source hash; DOC-002
+and DOC-003 did not have usable page-level scientific extraction. Reused
+assets were locators and transcription aids only; supplied PDFs remained
+the evidence authority.</p>
+<h2 id="3-scope-complete-coverage-and-exclusions">3. Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review covered all direct-source units:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Total pages</th>
+<th style="text-align: right;">Reusable-backed</th>
+<th style="text-align: right;">Fresh-required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001 —
+<code>jama_kumar_2025_oi_250034_1750956984.08518.pdf</code></td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002 — <code>joi250034supp1_prod_1750956984.09018.pdf</code></td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">26</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003 — <code>joi250034supp2_prod_1750956984.11521.pdf</code></td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">29</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-004 — <code>joi250034supp3_prod_1750956984.12018.pdf</code></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>72</strong></td>
+<td style="text-align: right;"><strong>6</strong></td>
+<td style="text-align: right;"><strong>66</strong></td>
+<td style="text-align: right;"><strong>72</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The scope was numeric, denominator/proportion/total,
+inferential-statistical, cross-document numeric,
+effect-measure/label/scale, and rate-versus-count consistency. It
+excluded broad methodology, clinical, novelty, misconduct, raw-data, and
+external-literature review. No web evidence was used.</p>
+<h2 id="4-quantitative-and-statistical-relationship-coverage">4.
+Quantitative and Statistical Relationship Coverage</h2>
+<p>The canonical numeric/reporting inventory contains <strong>N001-N080
+(80 relationships)</strong>. The inferential-statistical inventory
+contains <strong>S001-S053 (53 relationships)</strong>. Numeric
+consistency review and cross-source consistency review covered their
+complete assigned inventories.</p>
+<p>Statistical pass 1, a fresh Terra/high execution, covered
+<strong>S001-S053</strong>. Statistical pass 2, a different fresh
+Terra/high execution, independently covered <strong>S001-S053</strong>,
+the N-lane crosswalk, C001-C004, and the mechanical recheck. Both passes
+recorded complete coverage and no appended candidate. No candidate is
+based on a display-zero P value; no literal display-zero P-value
+relationship was found.</p>
+<h2 id="5-candidate-index">5. Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+<th>Category</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Conflicting economic price-year labels within the protocol</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Primary-composite counting rationale does not reconcile with the
+displayed endpoint list</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Economic comparator label conflicts with the detailed trial
+comparison</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Reported no-adjustment statement conflicts with the supplied
+multiplicity plan</td>
+<td>Statistical reporting inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-candidate-evidence-cards">6. Candidate Evidence Cards</h2>
+<h2
+id="c001--conflicting-economic-price-year-labels-within-the-protocol" class="candidate-card">C001
+— Conflicting economic price-year labels within the protocol</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Two linked protocol
+descriptions of the economic-analysis framework state different monetary
+price years.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250034supp1_prod_1750956984.09018.pdf#page=16">joi250034supp1_prod_1750956984.09018.pdf
+— PDF p. 16, section 7.2.3</a>; <a
+href="../joi250034supp1_prod_1750956984.09018.pdf#page=17">joi250034supp1_prod_1750956984.09018.pdf
+— PDF p. 17, section 8.2</a>.</p>
+<p><strong>Source evidence:</strong> Section 7.2.3 states that all costs
+will be presented in 2024/25 dollars, with no discounting, for a
+payer-perspective one-year cost-utility analysis and five-year
+budget-impact analysis. Section 8.2 describes the same perspective,
+horizons, and no-discounting statement but says all costs will be
+presented in 2023/24 dollars.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported: 2024/25
+dollars (p. 16). Comparator: 2023/24 dollars (p. 17).</p>
+<p><strong>Reasoning procedure:</strong> Compare the monetary base-year
+label after matching the described economic-analysis perspective, time
+horizons, and discounting convention.</p>
+<p><strong>Calculation:</strong> <code>2024/25</code> is not equal to
+<code>2023/24</code>; no rounding or transformation is involved.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> One
+section may retain wording from an intended price-year update, or the
+sections may have meant different explicitly converted analyses. The
+supplied protocol neither identifies a superseded section nor
+distinguishes separate price-year conventions.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-page recheck
+found both cited locations and matched the printed labels and
+surrounding framework. Missing inputs are an authoritative
+amendment/version note, executed economic specification, and stated
+conversion rule.</p>
+<p><strong>Quality-control relevance:</strong> An unambiguous monetary
+base-year label is needed to describe a planned economic analysis
+consistently.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an economic-data extractor or evidence synthesis could copy an ambiguous
+price-year label; this report does not assert that any extraction or
+economic result was affected.</p>
+<p><strong>Human verification steps:</strong> Review approved
+protocol/amendment history and the economic-analysis plan; identify the
+prespecified and executed base year; determine whether either statement
+requires correction or qualification.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--primary-composite-counting-rationale-does-not-reconcile-with-the-displayed-endpoint-list" class="candidate-card">C002
+— Primary-composite counting rationale does not reconcile with the
+displayed endpoint list</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The protocol displays ten
+separate endpoint bullets but explains a total of ten by saying two
+listed outcomes each contain two individual components.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250034supp1_prod_1750956984.09018.pdf#page=15">joi250034supp1_prod_1750956984.09018.pdf
+— PDF p. 15, section 7.1</a>; <a
+href="../joi250034supp1_prod_1750956984.09018.pdf#page=16">joi250034supp1_prod_1750956984.09018.pdf
+— PDF p. 16, section 7.2.1</a>.</p>
+<p><strong>Source evidence:</strong> Page 15 displays ten separate
+primary-composite endpoint bullets. Page 16 states, “There are ten items
+because outcomes (i) and (viii) each contain two individual components.”
+Section 7.1.1 groups intrapartum stillbirth with 28-day neonatal death,
+while 7.1.2 separately defines 28-day neonatal mortality; the eighth
+bullet names Special Care or Intensive Care within one
+neonatal-unit-admission endpoint.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported list: ten
+displayed bullets. Comparator rationale: a total of ten attributed to
+expanding outcomes (i) and (viii).</p>
+<p><strong>Reasoning procedure:</strong> Reconcile the displayed
+enumeration with the stated expansion rule, retaining possible grouped
+endpoint structures only where the source provides them.</p>
+<p><strong>Calculation:</strong> Displayed count = <code>10</code>.
+Under the conditional reading that two already displayed items are each
+expanded from one to two components, <code>10 + 1 + 1 = 12</code>. An
+<code>8 + 1 + 1 = 10</code> reconciliation would require an
+authoritative eight-group starting list, which is not displayed at the
+cited locations.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+7.1.1 heading and Special Care/Intensive Care wording could reflect an
+older or unstated eight-group structure. That structure is not the
+displayed ten-bullet list, and the supplied materials do not provide a
+definitive numbered taxonomy.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-page recheck
+matched the ten bullets, the explanatory sentence, headings, and
+care-setting wording. It identified the missing authoritative component
+taxonomy, explicit eight-group list, and component definitions for the
+care settings.</p>
+<p><strong>Quality-control relevance:</strong> The count and definition
+of composite components should be consistently specified for reporting
+and extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor or evidence synthesis could code the component
+definition ambiguously; this report does not state that the implemented
+composite or an observed estimate is wrong.</p>
+<p><strong>Human verification steps:</strong> Obtain the authoritative
+numbered list of ten components; establish whether stillbirth/neonatal
+death and Special Care/Intensive Care are separate components or grouped
+alternatives; align the display and rationale.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--economic-comparator-label-conflicts-with-the-detailed-trial-comparison" class="candidate-card">C003
+— Economic comparator label conflicts with the detailed trial
+comparison</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> A protocol economic-analysis
+label uses <code>CS vs standard care</code>, while the detailed economic
+comparison and trial synopsis identify sildenafil citrate
+(<code>SC</code>) versus placebo/standard care.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250034supp1_prod_1750956984.09018.pdf#page=5">joi250034supp1_prod_1750956984.09018.pdf
+— PDF p. 5, synopsis and schema</a>; <a
+href="../joi250034supp1_prod_1750956984.09018.pdf#page=16">joi250034supp1_prod_1750956984.09018.pdf
+— PDF p. 16, section 7.2.3</a>; <a
+href="../joi250034supp1_prod_1750956984.09018.pdf#page=17">joi250034supp1_prod_1750956984.09018.pdf
+— PDF p. 17, section 8.2</a>.</p>
+<p><strong>Source evidence:</strong> Page 16 describes cost
+effectiveness and budget impact of <code>CS vs standard care</code>.
+Page 17 specifies treatment with <code>SC</code> versus placebo
+(standard of care). The synopsis defines <code>SC</code> as sildenafil
+citrate, <code>CS</code> as caesarean section, the study treatment as 50
+mg SC, and the control as matching placebo.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported economic label:
+<code>CS vs standard care</code>. Comparator description:
+<code>SC</code> versus placebo/standard care.</p>
+<p><strong>Reasoning procedure:</strong> Map each abbreviation and
+treatment/reference label to the protocol's supplied trial-arm
+definitions, then compare the labels used for the described economic
+comparison.</p>
+<p><strong>Calculation:</strong> Supplied mappings are
+<code>SC = sildenafil citrate</code>,
+<code>CS = caesarean section</code>, and control = matching placebo.
+Thus <code>CS</code> does not denote the same supplied intervention
+label as <code>SC</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>CS</code> may be a transposition of <code>SC</code>, a locally
+intended abbreviation not defined at the cited location, or an
+insufficiently explained comparison. No completed economic analysis is
+supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-page recheck
+matched the p. 16 label, p. 17 model comparison, and p. 5
+abbreviation/arm definitions. Missing inputs are an executed
+economic-model specification and any local redefinition of
+<code>CS</code>.</p>
+<p><strong>Quality-control relevance:</strong> Intervention and
+comparator labels should identify the same analysis consistently across
+a protocol.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer or economic-data extractor could copy an ambiguous comparator
+label; this report does not claim that an executed model used an
+incorrect comparator.</p>
+<p><strong>Human verification steps:</strong> Check the approved
+economic-analysis specification and abbreviation list; determine whether
+<code>CS</code> should read <code>SC</code>; confirm the model's
+treatment and reference groups; correct or explain the label as
+warranted.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--reported-no-adjustment-statement-conflicts-with-the-supplied-multiplicity-plan" class="candidate-card">C004
+— Reported no-adjustment statement conflicts with the supplied
+multiplicity plan</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The article reports no
+adjustment for multiple testing, while the supplied protocol and draft
+SAP plan Benjamini-Hochberg adjusted P values for the ten component
+comparisons.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_kumar_2025_oi_250034_1750956984.08518.pdf#page=4">jama_kumar_2025_oi_250034_1750956984.08518.pdf
+— PDF p. 4, Statistical Analysis</a>; <a
+href="../jama_kumar_2025_oi_250034_1750956984.08518.pdf#page=7">jama_kumar_2025_oi_250034_1750956984.08518.pdf
+— PDF p. 7, Table 3</a>; <a
+href="../joi250034supp1_prod_1750956984.09018.pdf#page=20">joi250034supp1_prod_1750956984.09018.pdf
+— PDF p. 20, section 13.2</a>; <a
+href="../joi250034supp2_prod_1750956984.11521.pdf#page=12">joi250034supp2_prod_1750956984.11521.pdf
+— PDF p. 12, section 3.2</a>; <a
+href="../joi250034supp2_prod_1750956984.11521.pdf#page=25">joi250034supp2_prod_1750956984.11521.pdf
+— PDF p. 25, proposed Table 11</a>.</p>
+<p><strong>Source evidence:</strong> The article states, “There was no
+adjustment for multiple testing,” and its Table 3 displays ten component
+rows with one P-value column. The protocol and draft SAP state that
+adjusted P values for ten component comparisons will be derived using
+the Benjamin-Hochberg procedure; the SAP shell includes separate P-value
+and adjusted-P-value columns. The SAP identifies itself as Draft Version
+1.2 on p. 1.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported multiplicity
+treatment: no adjustment. Comparator planned treatment: adjusted P
+values for ten component comparisons.</p>
+<p><strong>Reasoning procedure:</strong> Match the same ten component
+comparisons across the article, protocol, and draft SAP; distinguish a
+planned-versus-reported treatment difference from arithmetic evaluation
+of raw P values; condition the comparison on document governance.</p>
+<p><strong>Calculation:</strong> Article:
+<code>adjustment applied = no</code>. Protocol/draft SAP:
+<code>adjusted P values for 10 component comparisons = planned</code>;
+the SAP Table 11 shell allocates an adjusted-P-value column. These
+descriptions cannot both be the implemented treatment for the same
+comparisons without a superseding plan decision or a narrower scope for
+the article statement.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A final
+approved SAP, amendment, or documented pre-unblinding decision may have
+superseded the supplied draft plan. The article notes an interpretive
+approach to interrelated secondary outcomes, but does not state that the
+planned adjustment was superseded. Raw P values are not thereby
+arithmetically invalid.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-page recheck
+matched the article statement, Table 3 component rows, protocol plan,
+draft-SAP plan, and Table 11 shell. Missing inputs are a final approved
+SAP, amendment/departure record, analysis output containing adjusted
+values, and an explicit scope limitation for the article statement.</p>
+<p><strong>Quality-control relevance:</strong> Reporting should make the
+multiplicity treatment for the component comparisons traceable to the
+governing analysis plan or a documented change.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor or evidence synthesis could treat the displayed component P
+values as the prespecified multiplicity presentation; this report does
+not claim that those values are arithmetically invalid, that conclusions
+changed, or that propagation occurred.</p>
+<p><strong>Human verification steps:</strong> Obtain the final approved
+SAP, amendment log, and analysis-program specification; determine
+whether the adjustment was abandoned, performed but omitted, or
+replaced; verify adjusted values and the reporting rationale if
+applicable.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="7-downstream-evidence-chain-considerations">7. Downstream
+Evidence-Chain Considerations</h2>
+<p>If a candidate is confirmed, a downstream reviewer, systematic
+review, meta-analysis, guideline evidence table, or data extractor could
+copy a monetary base-year label, component definition, comparator label,
+or multiplicity description. These are conditional considerations only.
+The supplied evidence does not establish that copying occurred, that any
+evidence product changed, or that the trial conclusion changed.</p>
+<h2 id="8-limitations-and-missing-definitions">8. Limitations and
+Missing Definitions</h2>
+<p>The detailed limitations record is <a
+href="review_1_5_1/limitations.md">review_1_5_1/limitations.md</a>. The
+principal limitations are the draft status of the supplied SAP; absence
+of final SAP/amendment and adjusted-output documentation; absence of
+executed economic-analysis materials and authoritative
+price-year/comparator documentation; absence of a definitive component
+taxonomy; and absence of structured data or raw model inputs. This
+review uses supplied local evidence only and does not adjudicate
+candidates.</p>
+<h2 id="9-human-adjudication-checklist">9. Human Adjudication
+Checklist</h2>
+<p>For each stable ID, a human reviewer should verify the source pages
+and governing documentation, decide the five blank fields in the card,
+record any supporting amendment or analysis-output evidence, and retain
+the stable ID regardless of the adjudication outcome. The checklist is
+not a severity ranking or an instruction to correct a source.</p>
+<h2
+id="10-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">10.
+Reproducibility, Source-Integrity, Agent-Execution, Performance,
+Token-Usage, and Cost Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<ul>
+<li><strong>Profile:</strong> 1.5.1</li>
+<li><strong>Target basis:</strong> Four supplied PDFs contain 72 total
+pages; the package combines a main article with three heterogeneous
+support documents, has reusable extraction for only part of the source
+set, and is expected to require substantial fresh native/layout mapping
+plus several cross-document and statistical relationship waves.</li>
+<li><strong>Total source units:</strong> 72</li>
+<li><strong>Fresh-source units:</strong> 66</li>
+<li><strong>Target elapsed minutes:</strong> 30-45</li>
+<li><strong>Source coverage:</strong> 72 total / 66 fresh-required / 6
+reusable-backed / 72 mapped.</li>
+<li><strong>Relationship coverage:</strong> N=80 numeric/reporting; S=53
+inferential-statistical.</li>
+<li><strong>Statistical pass coverage:</strong> Pass 1 and Pass 2 each
+covered S001-S053; their Terra/high agents were distinct fresh
+executions.</li>
+<li><strong>Source integrity:</strong> All four direct-source SHA-256
+values matched their before-work ledger on recheck.</li>
+<li><strong>Reused-artifact integrity:</strong> All 43 reused-asset
+SHA-256 values matched their before-work ledger on recheck.</li>
+</ul>
+<h3 id="agent-execution-manifest">Agent execution manifest</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr>
+<td>reuse_asset_curation</td>
+<td>root/reuse_asset_curator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>evidence_asset_inventory.md</td>
+</tr>
+<tr>
+<td>main_quantitative_mapping</td>
+<td>root/main_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapping</td>
+<td>root/support_quantitative_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>numeric_checks</td>
+<td>root/numeric_consistency_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistical_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr>
+<td>cross_source_checks</td>
+<td>root/cross_source_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr>
+<td>evidence_recheck</td>
+<td>root/evidence_rechecker</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistical_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr>
+<td>evidence_quality</td>
+<td>root/quality_control_auditor</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr>
+<td>report_generation</td>
+<td>root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Started UTC:</strong> 2026-09-03T03:50:35Z</li>
+<li><strong>Finished UTC:</strong> 2026-09-03T04:29:52Z</li>
+<li><strong>Observed elapsed minutes:</strong> 39.3</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-token-only-cost-estimate">Token accounting
+and token-only cost estimate</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<p>The following model totals are token-only API-equivalent estimates
+under the dated local price snapshot, not an invoice. Cached-input and
+cache-write tokens are input subsets; reasoning tokens are an output
+subset and are not added again to total tokens. Per-agent detail is
+recorded in <code>review_1_5_1/token_usage_summary.md</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Responses</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Cached input tokens</th>
+<th style="text-align: right;">Cache-write input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Reasoning output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known cost (USD)</th>
+<th style="text-align: right;">Estimated complete cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">__</td>
+</tr>
+</tbody>
+</table>
+<p>Authoritative response-level token counts were not exposed by this
+runtime for the coordinator or any specialist. The zero values above are
+known counted tokens only and must not be interpreted as complete usage;
+the total-token count and complete price therefore remain
+unavailable.</p>
+</body>
+</html>

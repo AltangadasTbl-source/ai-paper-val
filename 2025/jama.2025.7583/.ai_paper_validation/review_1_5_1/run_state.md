@@ -1,0 +1,26 @@
+# Workflow 1.5.1 Run State
+
+- **Profile:** 1.5.1
+- **Status:** COMPLETE
+- **Target basis:** Five supplied PDFs comprise 119 pages, including a 9-page main article and 110 support pages; reusable page-level text covers 24 pages while 95 support pages require fresh native/layout mapping, with protocol, administrative appendix, results supplement, and SAP relationships requiring cross-source review. Calibrated above the 102-unit/81-fresh reference because this package has more total and fresh units plus three newly mapped support documents.
+- **Total source units:** 119
+- **Fresh-source units:** 95
+- **Target elapsed minutes:** 45-70
+- **Started UTC:** 2026-09-03T03:49:55Z
+- **Finished UTC:** 2026-09-03T04:46:29Z
+- **Observed elapsed minutes:** 56.6
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Candidate count:** 3
+- **Source coverage status:** COMPLETE_119_OF_119
+- **Source integrity status:** VERIFIED_UNCHANGED
+- **Reused-artifact integrity status:** VERIFIED_UNCHANGED_92_OF_92
+- **Statistical pass 1 status:** COMPLETE_52_OF_52
+- **Statistical pass 2 status:** COMPLETE_52_OF_52_NO_NEW_CANDIDATES
+- **Evidence recheck status:** COMPLETE_3_OF_3
+- **Quality audit status:** COMPLETE_WITH_COORDINATOR_REPAIRS_APPLIED
+- **Markdown report status:** COMPLETE
+- **HTML report status:** COMPLETE_STANDALONE
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE_FINALIZED
+- **Validation status:** PASS
+- **Coordinator notes:** Prior candidate/checker/verifier/quality/report records are excluded from scientific input. Existing source-linked extraction assets may be reused after fitness assessment. Supplement 2 is referenced but not supplied and therefore is not a direct-source row.

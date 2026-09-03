@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#quantitative-quality-control-consistency-review"
+id="toc-quantitative-quality-control-consistency-review">Quantitative
+Quality-Control Consistency Review</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--adjusted-self-reported-abstinence-interval-endpoint-printed-as-42"
+id="toc-c001--adjusted-self-reported-abstinence-interval-endpoint-printed-as-42">C001
+— Adjusted self-reported abstinence interval endpoint printed as
+42</a></li>
+<li><a
+href="#c002--discussion-labels-the-all-cause-death-percentage-as-tb-deaths"
+id="toc-c002--discussion-labels-the-all-cause-death-percentage-as-tb-deaths">C002
+— Discussion labels the all-cause death percentage as TB deaths</a></li>
+<li><a
+href="#c003--178-message-total-conflicts-with-its-printed-frequency-schedule"
+id="toc-c003--178-message-total-conflicts-with-its-printed-frequency-schedule">C003
+— 178-message total conflicts with its printed frequency
+schedule</a></li>
+<li><a
+href="#c004--repeated-2384-participant-plan-names-44-and-48-facilities"
+id="toc-c004--repeated-2384-participant-plan-names-44-and-48-facilities">C004
+— Repeated 2,384-participant plan names 44 and 48 facilities</a></li>
+<li><a
+href="#c005--134-message-total-conflicts-with-its-printed-frequency-schedule"
+id="toc-c005--134-message-total-conflicts-with-its-printed-frequency-schedule">C005
+— 134-message total conflicts with its printed frequency
+schedule</a></li>
+<li><a
+href="#c006--tam-sampling-header-conflicts-with-contemporaneous-narrative-and-equations"
+id="toc-c006--tam-sampling-header-conflicts-with-contemporaneous-narrative-and-equations">C006
+— TAM sampling header conflicts with contemporaneous narrative and
+equations</a></li>
+<li><a
+href="#c007--later-2716-participant-plan-gives-48-clinics-versus-a-63-site-diagram"
+id="toc-c007--later-2716-participant-plan-gives-48-clinics-versus-a-63-site-diagram">C007
+— Later 2,716-participant plan gives 48 clinics versus a 63-site
+diagram</a></li>
+<li><a
+href="#c008--phase-4-design-effect-equality-does-not-reproduce-from-printed-inputs"
+id="toc-c008--phase-4-design-effect-equality-does-not-reproduce-from-printed-inputs">C008
+— Phase-4 design-effect equality does not reproduce from printed
+inputs</a></li>
+<li><a href="#c009--phase-4-diagram-is-labelled-phase-3superiority"
+id="toc-c009--phase-4-diagram-is-labelled-phase-3superiority">C009 —
+Phase-4 diagram is labelled Phase 3/Superiority</a></li>
+<li><a
+href="#c010--phase-3-design-effect-display-gives-undocumented-1080-effective-sample-size"
+id="toc-c010--phase-3-design-effect-display-gives-undocumented-1080-effective-sample-size">C010
+— Phase-3 design-effect display gives undocumented 1,080 effective
+sample size</a></li>
+<li><a href="#c011--mpss-score-range-conflicts-with-stated-item-scale"
+id="toc-c011--mpss-score-range-conflicts-with-stated-item-scale">C011 —
+MPSS score range conflicts with stated item scale</a></li>
+<li><a
+href="#c012--site-2008-death-count-and-percentage-lack-a-compatible-supplied-denominator"
+id="toc-c012--site-2008-death-count-and-percentage-lack-a-compatible-supplied-denominator">C012
+— Site 2008 death count and percentage lack a compatible supplied
+denominator</a></li>
+<li><a
+href="#c013--protocol-message-dose-changes-from-178-to-134-without-supplied-reconciliation"
+id="toc-c013--protocol-message-dose-changes-from-178-to-134-without-supplied-reconciliation">C013
+— Protocol message dose changes from 178 to 134 without supplied
+reconciliation</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+Execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token Accounting and Cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="quantitative-quality-control-consistency-review">Quantitative
+Quality-Control Consistency Review</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p><strong>Every observation in this report is Pending Human
+Adjudication.</strong> This is a quantitative reporting quality-control
+review, not a finding of invalidity, correction, or a conclusion about
+the paper.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete current-run coverage identified <strong>13</strong> distinct
+candidate consistency issues (C001-C013). The candidates concern
+arithmetic, labels, denominators, scale descriptions, and cross-document
+identities. Small preventable reporting defects can matter if confirmed
+because downstream evidence extraction may copy a value, label,
+denominator, or intervention description; this report does not assert
+that copying, conclusion change, or harm occurred.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The direct-source package comprised three PDFs: <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=1">DOC-001
+main article</a>, <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=1">DOC-002
+Supplement 1</a>, and <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=1">DOC-003
+Supplement 2</a>. Source identities and before-review hashes are
+recorded in <code>review_1_5_1/source_inventory.md</code> and
+<code>review_1_5_1/source_hashes_before.sha256</code>.</p>
+<p>Reusable page-addressable text was used as a locator only for DOC-001
+pp. 1-9 and DOC-003 pp. 3-16, with direct-PDF confirmation. DOC-002 pp.
+1-109 and DOC-003 pp. 1-2 required fresh direct-source mapping. The
+reusable-asset inventory and before-reuse hash snapshot are
+<code>review_1_5_1/evidence_asset_inventory.md</code> and
+<code>review_1_5_1/reused_artifact_hashes_before.sha256</code>.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All <strong>134/134</strong> direct PDF pages were mapped: DOC-001
+9/9, DOC-002 109/109, and DOC-003 16/16. Reusable and fresh-required
+units partition the scope exactly: 23 reusable and 111 fresh-required
+pages. The full ledger is in
+<code>review_1_5_1/source_coverage.md</code> and the unit-level
+assignments are in <code>review_1_5_1/coverage_manifest.md</code>.</p>
+<p>The review was limited to reproducible quantitative reporting
+consistency: numeric/arithmetic, denominator/proportion/total,
+statistical, cross-document, measure/label/scale, and rate-versus-count
+relationships. It did not undertake a general methodology, clinical,
+novelty, misconduct, raw-data, or external-literature review. Coherent
+display-zero P values were not candidates; no stable candidate was
+created on that basis.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The current-run numeric inventory contains <strong>88/88</strong>
+completed relationships. The statistical inventory contains
+<strong>41/41</strong> relationships, independently reviewed in
+statistical pass 1 and pass 2. Pass 1 identified the relationship later
+represented by C010; pass 2 reviewed all 41 relationships, the full
+ledger, and recheck facts, and added no distinct candidate. Both passes
+retained <code>DISPLAY_ZERO_NOT_CANDIDATE</code> handling where
+applicable.</p>
+<p>Supporting artifacts:
+<code>review_1_5_1/relationships/numeric_relationship_inventory.md</code>,
+<code>review_1_5_1/statistics/relationship_inventory.md</code>,
+<code>review_1_5_1/checkers/statistical_pass_1.md</code>, and
+<code>review_1_5_1/checkers/statistical_pass_2.md</code>.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--adjusted-self-reported-abstinence-interval-endpoint-printed-as-42">C001</a></td>
+<td>Adjusted self-reported abstinence interval endpoint printed as
+42</td>
+<td>Numeric or arithmetic inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c002--discussion-labels-the-all-cause-death-percentage-as-tb-deaths">C002</a></td>
+<td>Discussion labels all-cause death percentage as TB deaths</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c003--178-message-total-conflicts-with-its-printed-frequency-schedule">C003</a></td>
+<td>178-message total conflicts with its frequency schedule</td>
+<td>Numeric or arithmetic inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c004--repeated-2384-participant-plan-names-44-and-48-facilities">C004</a></td>
+<td>Repeated 2,384-participant plan names 44 and 48 facilities</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c005--134-message-total-conflicts-with-its-printed-frequency-schedule">C005</a></td>
+<td>134-message total conflicts with its frequency schedule</td>
+<td>Numeric or arithmetic inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c006--tam-sampling-header-conflicts-with-contemporaneous-narrative-and-equations">C006</a></td>
+<td>TAM sampling header conflicts with narrative and equations</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c007--later-2716-participant-plan-gives-48-clinics-versus-a-63-site-diagram">C007</a></td>
+<td>2,716-participant plan gives 48 clinics versus 63 sites</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c008--phase-4-design-effect-equality-does-not-reproduce-from-printed-inputs">C008</a></td>
+<td>Phase-4 design-effect equality does not reproduce</td>
+<td>Numeric or arithmetic inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c009--phase-4-diagram-is-labelled-phase-3superiority">C009</a></td>
+<td>Phase-4 diagram is labelled Phase 3/Superiority</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c010--phase-3-design-effect-display-gives-undocumented-1080-effective-sample-size">C010</a></td>
+<td>Phase-3 design-effect display gives undocumented 1,080 effective
+sample size</td>
+<td>Statistical reporting inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c011--mpss-score-range-conflicts-with-stated-item-scale">C011</a></td>
+<td>MPSS score range conflicts with stated item scale</td>
+<td>Measure, label, or scale inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c012--site-2008-death-count-and-percentage-lack-a-compatible-supplied-denominator">C012</a></td>
+<td>Site 2008 death count and percentage lack a compatible
+denominator</td>
+<td>Rate-versus-count inconsistency</td>
+</tr>
+<tr>
+<td><a
+href="#c013--protocol-message-dose-changes-from-178-to-134-without-supplied-reconciliation">C013</a></td>
+<td>Protocol message dose changes from 178 to 134 without
+reconciliation</td>
+<td>Cross-document numeric inconsistency</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--adjusted-self-reported-abstinence-interval-endpoint-printed-as-42" class="candidate-card">C001
+— Adjusted self-reported abstinence interval endpoint printed as 42</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The printed adjusted
+self-reported abstinence RR interval has upper endpoint 42, an unusual
+interval field requiring confirmation against the fitted model
+output.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001 <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">main
+article — PDF p. 6</a>, Table 2, continuous abstinence, self-reported
+only (ITT), adjusted RR.</p>
+<p><strong>Source evidence:</strong> Adjusted RR is printed as
+<code>2.8 (1.9 to 42)</code>; the same row's crude RR is
+<code>2.7 (1.8 to 4.1)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed upper endpoint
+<code>42</code> versus the same-row estimate and companion interval
+context.</p>
+<p><strong>Reasoning procedure:</strong> Direct observation is that the
+rendered table visibly prints 42. The derived asymmetry is a
+transcription-quality signal, not proof of a different endpoint;
+mixed-effects model output is unavailable.</p>
+<p><strong>Calculation:</strong> <code>42/2.8=15.0</code>;
+<code>1.9/2.8=0.6786</code>. Ordinary rounding cannot convert 42 to
+4.2.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+genuinely wide asymmetric interval remains possible under the stated
+mixed-effects model; the package lacks coefficient, SE, and model-output
+details.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF rendering
+confirmed the printed <code>2.8 (1.9 to 42)</code> and the listed crude
+comparator.</p>
+<p><strong>Quality-control relevance:</strong> An interval field should
+be transcribed and verified accurately.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy an erroneous adjusted RR interval into a
+review table.</p>
+<p><strong>Human verification steps:</strong> Inspect the fitted
+adjusted-model output and verify whether 42 is the intended endpoint; do
+not infer 4.2 as a correction.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--discussion-labels-the-all-cause-death-percentage-as-tb-deaths" class="candidate-card">C002
+— Discussion labels the all-cause death percentage as TB deaths</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The discussion's 4.8% phrase
+“died of TB” matches the all-cause death total rather than the supplied
+TB-cause count.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001 <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=8">main
+article — PDF p. 8</a>, Discussion; <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=5">PDF p.
+5</a> and <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">PDF p.
+6</a>, Results/Table 2; DOC-003 <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=6">Supplement 2 —
+PDF p. 6</a>, eTable 4.</p>
+<p><strong>Source evidence:</strong> The discussion says 4.8% died of
+TB; Table 2 gives 25/720 and 27/360 deaths, and eTable 4 classifies
+32/52 deaths as TB cause.</p>
+<p><strong>Reported-versus-comparator:</strong> 4.8% labelled TB deaths
+versus 52/1080 all-cause deaths and 32/1080 TB-cause deaths.</p>
+<p><strong>Reasoning procedure:</strong> Compare the discussion label
+with matched all-cause counts and the explicitly classified cause
+count.</p>
+<p><strong>Calculation:</strong> <code>52/1080×100=4.81%</code> (4.8%);
+<code>32/1080×100=2.96%</code> (3.0%).</p>
+<p><strong>Alternative source-grounded interpretations:</strong> “Died
+of TB” could be loose contextual wording; eTable 4 is the explicit cause
+classification and no alternate TB-death denominator is supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct pages confirmed
+the wording, all-cause counts, and TB-cause count.</p>
+<p><strong>Quality-control relevance:</strong> All-cause and
+cause-specific mortality are distinct reusable outcomes.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a review could misclassify all-cause mortality as TB-specific
+mortality.</p>
+<p><strong>Human verification steps:</strong> Confirm whether the
+discussion should say all-cause deaths or identify a distinct TB-death
+denominator/source.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--178-message-total-conflicts-with-its-printed-frequency-schedule" class="candidate-card">C003
+— 178-message total conflicts with its printed frequency schedule</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> A six-month plan states 178 SMS
+but its own minimum printed schedule exceeds that total.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=16">Supplement 1
+— PDF p. 16</a>.</p>
+<p><strong>Source evidence:</strong> <code>178</code> SMS over six
+months; first two months <code>4-5/day</code>, next two
+<code>2-3/day</code>, final two <code>1-2/week</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed total 178 versus
+the schedule's conservative minimum.</p>
+<p><strong>Reasoning procedure:</strong> Apply the lowest printed
+frequency in each period using conservative month/week durations.</p>
+<p><strong>Calculation:</strong> <code>2×28×4 + 2×28×2 + 8×1=344</code>,
+166 above 178; at 30-day months, <code>368</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+“Message” may mean a send, template, or another undefined unit;
+frequency, duration, or total may be from unlabelled plan states.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF rendering
+confirmed the total and schedule; the corrected 28-day minimum is
+344.</p>
+<p><strong>Quality-control relevance:</strong> Dose is a reproducible
+intervention-exposure definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an intervention taxonomy or replication could use the wrong dose.</p>
+<p><strong>Human verification steps:</strong> Identify the intended
+message unit, schedule, period, and protocol version.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--repeated-2384-participant-plan-names-44-and-48-facilities" class="candidate-card">C004
+— Repeated 2,384-participant plan names 44 and 48 facilities</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> Matched repeated plan text
+gives 44 facilities in one location and 48 clinics in another.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=10">Supplement 1
+— PDF p. 10</a> and <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=26">PDF p.
+26</a>.</p>
+<p><strong>Source evidence:</strong> Both locations describe the
+2,384-participant plan, approximately 50 recruits, 10% missing primary
+outcome, 16 pilot participants, and matching Phase-3/4 allocation
+assumptions, but list 44 and 48 sites.</p>
+<p><strong>Reported-versus-comparator:</strong> 44 versus 48 sites for
+the same printed plan.</p>
+<p><strong>Reasoning procedure:</strong> Compare repeated plan
+identities and their implied recruits per site.</p>
+<p><strong>Calculation:</strong> <code>2384/44=54.18</code>;
+<code>2384/48=49.67</code>; the latter aligns with approximately 50.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Facility/clinic definitions or amendment chronology may differ but are
+not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct pages confirmed
+both counts and shared plan context.</p>
+<p><strong>Quality-control relevance:</strong> Cluster count affects
+planned recruitment and design-effect interpretation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a protocol reviewer could record the wrong cluster total.</p>
+<p><strong>Human verification steps:</strong> Establish which count
+governed the plan and whether the other occurrence needs correction or
+version labeling.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--134-message-total-conflicts-with-its-printed-frequency-schedule" class="candidate-card">C005
+— 134-message total conflicts with its printed frequency schedule</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> A 134-message six-month
+statement conflicts with the minimum implied by its printed
+schedule.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=53">Supplement 1
+— PDF p. 53</a>.</p>
+<p><strong>Source evidence:</strong> <code>134</code> SMS over six
+months; first two months <code>4-5/day</code>, next two
+<code>1-2/day</code>, final two <code>1/week</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed total 134 versus
+schedule minimum.</p>
+<p><strong>Reasoning procedure:</strong> Apply the lowest stated
+frequency with conservative durations.</p>
+<p><strong>Calculation:</strong> <code>2×28×4 + 2×28×1 + 8×1=288</code>,
+154 above 134; the 30-day calculation is 308.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Unique-template versus send units or an unlabelled version may explain
+the text; p. 80 has a different 134-message schedule but does not label
+p. 53 as a separate plan state.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct rendering
+confirmed the statement at p. 53, correcting a stale p. 51 locator.</p>
+<p><strong>Quality-control relevance:</strong> The total and schedule
+should identify the same intervention exposure.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+intervention coding could misstate intensity or duration.</p>
+<p><strong>Human verification steps:</strong> Verify the dose definition
+and protocol version for the p. 53 schedule.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--tam-sampling-header-conflicts-with-contemporaneous-narrative-and-equations" class="candidate-card">C006
+— TAM sampling header conflicts with contemporaneous narrative and
+equations</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> A TAM sampling header says 30%,
+while contemporaneous phase-specific narrative and equations show 20%
+Phase 3 and all Phase 4 participants.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=55">Supplement 1
+— PDF p. 55</a>.</p>
+<p><strong>Source evidence:</strong> Header <code>30%</code>; narrative
+<code>20%</code> in Phase 3 and all in Phase 4; equations
+<code>10×40×20%=80</code>, <code>8×40×20%=64</code>,
+<code>11×45=495</code>, and <code>7×45=315</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> 30% header versus
+20%/100% phase-specific calculation.</p>
+<p><strong>Reasoning procedure:</strong> Sum phase-specific samples and
+compare each to its stated base.</p>
+<p><strong>Calculation:</strong> <code>80+64=144=20%</code> of 720
+Phase-3 A participants; <code>495+315=810=100%</code> of Phase-4 A
+participants.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> 30%
+could refer to an unstated pooled or earlier target.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct page inspection
+confirmed the header, narrative, and equations at p. 55.</p>
+<p><strong>Quality-control relevance:</strong> Sampling percentage
+defines the TAM analysis population.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a secondary-process-study denominator could be misreported.</p>
+<p><strong>Human verification steps:</strong> Clarify whether the header
+should be phase-specific or identify its distinct 30% denominator.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--later-2716-participant-plan-gives-48-clinics-versus-a-63-site-diagram" class="candidate-card">C007
+— Later 2,716-participant plan gives 48 clinics versus a 63-site
+diagram</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> A later 2,716-participant plan
+presents 48 clinics and approximately 50 recruits per clinic, while
+related text and diagram present 63 sites and approximately 43 per
+site.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=48">Supplement 1
+— PDF p. 48</a>, <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=51">PDF p.
+51</a>, <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=52">PDF p.
+52</a>, and <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=62">PDF p.
+62</a>.</p>
+<p><strong>Source evidence:</strong> p. 48 and the pp. 51-52 diagram
+give 2,716 participants, 63 sites (27+36), and approximately 43/site; p.
+62 gives 2,716, approximately 50 from 48 clinics.</p>
+<p><strong>Reported-versus-comparator:</strong> Same plan total with
+48/~50 versus 63/~43.</p>
+<p><strong>Reasoning procedure:</strong> Compare repeated total, site
+counts, and implied mean recruits.</p>
+<p><strong>Calculation:</strong> <code>2716/63=43.11</code>;
+<code>2716/48=56.58</code>; site counts differ by 15.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The 48
+clinics may be an unstated subset or earlier plan.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct pages confirmed
+p. 48 and pp. 51-52 rather than stale p. 46 and pp. 49-50 locators, and
+confirmed p. 62.</p>
+<p><strong>Quality-control relevance:</strong> Site count and average
+are sample-size/design-effect quantities.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+protocol-level cluster denominators could be copied incorrectly.</p>
+<p><strong>Human verification steps:</strong> Define the 48-clinic
+population and reconcile or version-label the p. 62 statement.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c008--phase-4-design-effect-equality-does-not-reproduce-from-printed-inputs" class="candidate-card">C008
+— Phase-4 design-effect equality does not reproduce from printed
+inputs</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> A Phase-4 display equates 1,036
+multiplied by 1.56 to 1,620, although the exact product differs.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=64">Supplement 1
+— PDF p. 64</a>.</p>
+<p><strong>Source evidence:</strong> <code>864+(864×0.2)=1036</code>;
+<code>1036/36=29</code>; <code>DE=1+0.02(29-1)=1.56</code>;
+<code>ESS=1036×1.56=1620</code>; diagram <code>36×45=1620</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Displayed
+<code>1036×1.56=1620</code> versus exact product and the separate
+site-target total.</p>
+<p><strong>Reasoning procedure:</strong> Recalculate displayed
+arithmetic while retaining the diagram as a separately reproducible
+cluster target.</p>
+<p><strong>Calculation:</strong> <code>864×1.2=1036.8</code>;
+<code>1036×1.56=1616.16</code>; <code>36×45=1620</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+cluster-level ceiling/allocation step can explain 1,620 but is not
+stated.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct page inspection
+confirmed both the printed equality and 36-by-45 diagram.</p>
+<p><strong>Quality-control relevance:</strong> Sample-size rationale
+should state reproducible rounding/allocation conventions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a protocol appraisal could reproduce an unclear design-effect
+calculation.</p>
+<p><strong>Human verification steps:</strong> Identify the
+rounding/allocation sequence and distinguish the cluster target from the
+arithmetic product.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c009--phase-4-diagram-is-labelled-phase-3superiority" class="candidate-card">C009 —
+Phase-4 diagram is labelled Phase 3/Superiority</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> A diagram within a Phase-4
+noninferiority section is labelled “Phase 3 (Superiority trial).”</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=64">Supplement 1
+— PDF p. 64</a>.</p>
+<p><strong>Source evidence:</strong> Local text says Phase 4,
+noninferiority, A vs B, 36 sites, 1,620 participants; diagram says
+“Total clusters in Phase 3 (Superiority trial) = 36 sites.”</p>
+<p><strong>Reported-versus-comparator:</strong> Phase-3/Superiority
+label versus local Phase-4/noninferiority plan.</p>
+<p><strong>Reasoning procedure:</strong> Match the diagram's
+36-site/1,620-participant allocation to the local Phase-4 plan and
+distinguish it from Phase 3.</p>
+<p><strong>Calculation:</strong> <code>18+18=36</code>;
+<code>36×45=1620</code>; the separate Phase-3 plan uses 27 sites and
+1,080 participants.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+carry-over caption is plausible but not established by the supplied
+record.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF rendering
+confirmed the categorical label conflict.</p>
+<p><strong>Quality-control relevance:</strong> Phase and objective
+identify comparator and interpretation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a protocol synthesis could misclassify the trial phase or objective.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+phase/objective label for the diagram.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c010--phase-3-design-effect-display-gives-undocumented-1080-effective-sample-size" class="candidate-card">C010
+— Phase-3 design-effect display gives undocumented 1,080 effective
+sample size</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> A Phase-3 display reports
+<code>704×1.50≈1080</code> and calls it effective sample size without
+documenting the cluster-rounding/allocation transition or
+terminology.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=63">Supplement 1
+— PDF p. 63</a> and <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=83">PDF p.
+83</a>.</p>
+<p><strong>Source evidence:</strong> p. 63 gives
+<code>N=587+(587×0.2)=704</code>, 27 sites, <code>704/27=26</code>,
+<code>DE=1+0.02(26−1)=1.50</code>, and
+<code>ESS=704×1.50≈1080 (40/site)</code>; p. 83 repeats 704, 26, DE
+1.50, and 1080/40/site.</p>
+<p><strong>Reported-versus-comparator:</strong>
+<code>704×1.50≈1080</code> and “effective sample size” versus exact
+multiplication and the independent <code>27×40=1080</code> cluster
+allocation.</p>
+<p><strong>Reasoning procedure:</strong> Recalculate the displayed
+product, then distinguish a possible upward cluster target from an
+information-equivalent effective sample size.</p>
+<p><strong>Calculation:</strong> <code>704×1.50=1056</code>;
+<code>1080/704=1.5341</code>; <code>27×40=1080</code>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+1,056 design-effect-inflated target may have been rounded upward to 40
+per site; that is plausible but unstated, and 1,080 is not asserted
+impossible.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF rendering
+confirmed p. 63 and repeated p. 83 (correcting a stale p. 82
+locator).</p>
+<p><strong>Quality-control relevance:</strong> Arithmetic and
+terminology should explain a statistical design parameter.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a sample-size rationale could be copied as a nonreproducible
+calculation.</p>
+<p><strong>Human verification steps:</strong> Confirm the
+cluster-rounding rule and whether “effective sample size” should instead
+describe an inflated recruitment target.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c011--mpss-score-range-conflicts-with-stated-item-scale" class="candidate-card">C011 —
+MPSS score range conflicts with stated item scale</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The MPSS description names five
+5-point domains but gives a summed 5-35 range without explaining the
+scoring rule.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=85">Supplement 1
+— PDF p. 85</a>.</p>
+<p><strong>Source evidence:</strong> MPSS has <code>five</code> domains
+rated on a <code>5-point</code> scale and summed <code>5-35</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed 5-35 range
+versus the stated five-domain 5-point description.</p>
+<p><strong>Reasoning procedure:</strong> Evaluate the range
+conditionally under ordinary unit-spaced 1-to-5 coding; the observed
+issue is that the description does not explain 35.</p>
+<p><strong>Calculation:</strong> Under ordinary 1-to-5 coding, five
+items span <code>5×1=5</code> to <code>5×5=25</code>, not 35.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Additional items, non-unit coding, weights, anchors, or transformation
+could yield 35; none is supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct rendering
+confirmed the definition at p. 85, correcting a stale p. 84 locator.</p>
+<p><strong>Quality-control relevance:</strong> Scale range controls
+meaning and comparability of an MPSS result.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a review could code the outcome scale incorrectly.</p>
+<p><strong>Human verification steps:</strong> Obtain the response
+anchors, item count, weights, and scoring rule that produce the stated
+range.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--site-2008-death-count-and-percentage-lack-a-compatible-supplied-denominator" class="candidate-card">C012
+— Site 2008 death count and percentage lack a compatible supplied
+denominator</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> Site 2008 is reported as 5
+deaths (7.5%) without a denominator compatible with the supplied
+same-site recruitment/ITT total.</p>
+<p><strong>Category:</strong> Rate-versus-count inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-003 <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=8">Supplement 2 —
+PDF p. 8</a>, eTable 5; <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=9">PDF p. 9</a>,
+eTable 6.</p>
+<p><strong>Source evidence:</strong> eTable 5 gives site 2008
+recruitment/ITT denominator <code>40</code>; eTable 6 gives
+<code>5 (7.5%)</code> deaths without printing a denominator.</p>
+<p><strong>Reported-versus-comparator:</strong> 5 deaths (7.5%) versus
+matched same-site 40-person recruitment/ITT denominator.</p>
+<p><strong>Reasoning procedure:</strong> Treat the 40 as a cross-table
+comparator, not as an eTable 6 observation; retain every calculation as
+conditional.</p>
+<p><strong>Calculation:</strong> If denominator is 40,
+<code>5/40×100=12.5%</code>; <code>5/0.075=66.67</code>, and no 66-67
+site population is supplied.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+distinct unprinted death denominator may exist.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct pages confirmed
+the count/percentage, absence of an eTable 6 denominator, and 40 in
+eTable 5.</p>
+<p><strong>Quality-control relevance:</strong> Count/proportion pairs
+are readily reused in cluster summaries.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a cluster mortality rate could be copied incorrectly.</p>
+<p><strong>Human verification steps:</strong> Identify the denominator
+for 7.5%; do not presume a replacement count, percentage, or
+denominator.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--protocol-message-dose-changes-from-178-to-134-without-supplied-reconciliation" class="candidate-card">C013
+— Protocol message dose changes from 178 to 134 without supplied
+reconciliation</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> Protocol and main-article
+materials give 178 and 134 messages for the six-month mTB-Tobacco
+participant dose without an explicit crosswalk or supersession
+statement.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002 <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=16">Supplement 1
+— PDF p. 16</a>, <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=53">PDF p.
+53</a>, <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=80">PDF p.
+80</a>, and <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=101">PDF p.
+101</a> through <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=109">PDF p.
+109</a>; DOC-001 <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">main
+article — PDF p. 3</a>.</p>
+<p><strong>Source evidence:</strong> p. 16 says 178 SMS; pp. 53 and 80
+say 134 with differing schedules; pp. 101-109 show a 1-134 log; main p.
+3 reports 134 unique messages as <code>100+30+4</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> 178 versus 134 for
+matched six-month intervention dose.</p>
+<p><strong>Reasoning procedure:</strong> Compare the displayed total,
+schedule, message-log range, and main-article component total while
+retaining unlabelled version change as inference.</p>
+<p><strong>Calculation:</strong> <code>178−134=44</code>;
+<code>100+30+4=134</code>; the log begins at 1 and ends at 134.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+formal amendment is plausible, but supplied material does not explicitly
+link the 178-message passage to the later 134-message regimen or
+establish what participants received.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct pages confirmed
+both schedules/totals, the 1-134 log, and the main-article components;
+p. 53 replaces a stale p. 51 locator.</p>
+<p><strong>Quality-control relevance:</strong> Dose-version identity is
+needed to interpret and replicate an intervention.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+evidence syntheses could attribute the trial to the wrong intervention
+regimen.</p>
+<p><strong>Human verification steps:</strong> Obtain the
+amendment/version crosswalk and label obsolete versus current regimen
+without assuming either.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, these observations identify fields that a systematic
+review, meta-analysis, guideline, protocol synthesis, or data extractor
+might copy: effect interval endpoints, mortality type, message dose,
+site count, sample-size arithmetic, phase/objective labels, scale
+ranges, and count/percentage pairs. This is a conditional
+evidence-extraction consideration only; the review does not claim
+propagation, changed conclusions, or serious harm.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>DOC-002's embedded text layer was substitution-garbled. All 109 pages
+were freshly rendered and visually mapped; this is a derivative-quality
+limitation rather than an uncovered scientific unit. CPU OCR was
+nonresponsive, so direct rendered-page inspection was used. The package
+lacks model output for C001; explicit message-unit and amendment
+crosswalks for C003, C005, and C013; facility/clinic definitions and
+chronology for C004 and C007; rounding/allocation conventions for C008
+and C010; complete MPSS anchors/scoring for C011; and the eTable 6 death
+denominator for C012. Figure-only Bayesian values lacked printed numeric
+endpoints and were not reconstructed.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ol type="1">
+<li>Verify each card against the cited direct PDF page.</li>
+<li>Obtain missing model output, denominator, scoring, schedule, or
+version documentation where identified.</li>
+<li>Determine validity, importance, and action for each candidate in the
+blank card fields.</li>
+<li>Record initials and notes; retain the stable ID regardless of the
+eventual human decision.</li>
+</ol>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and Source
+Integrity</h3>
+<ul>
+<li><strong>Profile:</strong> 1.5.1</li>
+<li><strong>Source-unit counts:</strong> 134 total; 111 fresh-source; 23
+reusable-backed</li>
+<li><strong>Scientific coverage:</strong> COMPLETE — 134/134
+direct-source pages mapped; 88 numeric and 41 statistical relationships
+checked</li>
+<li><strong>Source hash snapshot:</strong>
+<code>review_1_5_1/source_hashes_before.sha256</code></li>
+<li><strong>Reused-artifact hash snapshot:</strong>
+<code>review_1_5_1/reused_artifact_hashes_before.sha256</code></li>
+<li><strong>Canonical evidence recheck:</strong>
+<code>review_1_5_1/verification/evidence_recheck.md</code></li>
+<li><strong>Evidence-quality audit:</strong>
+<code>review_1_5_1/quality/evidence_quality_audit.md</code></li>
+</ul>
+<h3 id="agent-execution">Agent Execution</h3>
+<p>All manifested current-run agents are recorded in
+<code>review_1_5_1/agent_execution_manifest.md</code>: coordinator
+(gpt-5.6-sol/high); reuse asset curator; main evidence mapper; four
+support evidence mappers; numeric consistency reviewer; cross-source
+reviewer; statistical pass 1 (gpt-5.6-terra/high); interrupted
+evidence-recheck attempt; evidence-recheck retry (gpt-5.6-sol/high);
+statistical pass 2 (gpt-5.6-terra/high); evidence-quality auditor
+(gpt-5.6-sol/high); and report generator (gpt-5.6-terra/medium).</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Three direct PDF sources totaling 134
+pages, with usable reusable extraction expected for 23 pages and fresh
+direct-source mapping required for 111 pages; the package has one short
+main article, one long 109-page support document, and one 16-page
+support document, requiring parallel mapping plus two complete
+statistical passes.</li>
+<li><strong>Total source units:</strong> 134</li>
+<li><strong>Fresh-source units:</strong> 111</li>
+<li><strong>Target elapsed minutes:</strong> 50-75</li>
+<li><strong>Started UTC:</strong> 2026-09-03T03:46:35Z</li>
+<li><strong>Finished UTC:</strong> 2026-09-03T05:33:39Z</li>
+<li><strong>Observed elapsed minutes:</strong> 107.1</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> DOC-002's embedded text
+extraction was substitution-garbled, requiring fresh rendering and full
+visual inspection of 109 pages; CPU Tesseract was nonresponsive; the
+first high-reasoning evidence recheck returned no durable artifact and
+the full 13-candidate recheck was repeated in a fresh specialist.</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token Accounting and Cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<p>The runtime exposed no authoritative response-level token counts for
+the coordinator or specialists, so every manifested agent is recorded
+with <code>UNAVAILABLE</code>; the zero below is the known subtotal, not
+an estimate of actual use. Cached input/cache-write counts are input
+subsets and reasoning counts are output subsets; they are not added
+again to total tokens. Amounts are token-only API-equivalent estimates
+under the 2026-08-18 pricing snapshot, not an invoice. Per-agent detail
+is in <code>review_1_5_1/token_usage_ledger.csv</code> and
+<code>review_1_5_1/token_usage_summary.md</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Known input tokens</th>
+<th style="text-align: right;">Known output tokens</th>
+<th style="text-align: right;">Known total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+<th>Count status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>INCOMPLETE</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000</td>
+<td>INCOMPLETE</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

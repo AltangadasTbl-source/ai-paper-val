@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review-uk-rox-paper-package"
+id="toc-quantitative-quality-control-consistency-review-uk-rox-paper-package">Quantitative
+Quality-Control Consistency Review: UK-ROX Paper Package</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--extraneous-pressure-unit-after-the-usual-group-spo2-summary"
+id="toc-c001--extraneous-pressure-unit-after-the-usual-group-spo2-summary">C001
+— Extraneous pressure unit after the usual-group SpO2 summary</a></li>
+<li><a
+href="#c002--results-supplement-contents-page-does-not-identify-actual-etables-1-4"
+id="toc-c002--results-supplement-contents-page-does-not-identify-actual-etables-1-4">C002
+— Results-supplement contents page does not identify actual eTables
+1-4</a></li>
+<li><a
+href="#c003--final-sap-contains-an-unresolved-reference-after-quantitative-separationadherence-rules"
+id="toc-c003--final-sap-contains-an-unresolved-reference-after-quantitative-separationadherence-rules">C003
+— Final SAP contains an unresolved reference after quantitative
+separation/adherence rules</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-usage-and-cost-metadata"
+id="toc-token-usage-and-cost-metadata">Token-usage and cost
+metadata</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review-uk-rox-paper-package">Quantitative
+Quality-Control Consistency Review: UK-ROX Paper Package</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p><strong>All three observations in this report are Pending Human
+Adjudication.</strong> They are source-grounded quantitative reporting
+quality-control candidates, not findings of paper invalidity, author
+intent, misconduct, or a required correction. No severity, acceptance,
+rejection, or validity disposition is assigned here.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete review of the supplied package identified <strong>3</strong>
+distinct candidate consistency issues after complete direct-source
+mapping, two statistical-review passes, cross-source review, mechanical
+evidence recheck, and evidence-quality audit. The stable candidate set
+is <strong>C001, C002, C003</strong>; no candidate cap, top-N selection,
+review queue, or deferred-by-cap section was used.</p>
+<p>The candidates concern an extraneous unit adjacent to an
+oxygen-saturation summary, contents entries that do not identify their
+same-numbered results-supplement tables, and an unresolved internal SAP
+reference after quantitative adherence/separation rules. They are framed
+as quality-control observations. If confirmed, small preventable
+reporting defects can matter to downstream evidence extraction; this
+review does not assert that any propagation, conclusion change, or harm
+occurred.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The direct-source package contains three PDFs:</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Direct source</th>
+<th style="text-align: right;">PDF pages</th>
+<th>SHA-256 recorded before review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_martin_2025_oi_250042_1753377747.91025.pdf#page=1">jama_martin_2025_oi_250042_1753377747.91025.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">11</td>
+<td><code>2081dc4315dd23f92712a5fd95cc03c5d3e9b7ee4fc8e24a27d8bf24d68c3266</code></td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a
+href="../joi250042supp1_prod_1753377747.92525.pdf#page=1">joi250042supp1_prod_1753377747.92525.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">136</td>
+<td><code>6fd5db6abde804baaa62264ddd158e664307941e4162fe1f2e80b4eb80662504</code></td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a
+href="../joi250042supp2_prod_1753377747.93025.pdf#page=1">joi250042supp2_prod_1753377747.93025.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">29</td>
+<td><code>bcd3bce5a729190ce6917128dc271f60ad99acb2f48395d86d69f88653e2469c</code></td>
+</tr>
+</tbody>
+</table>
+<p>The source inventory, source hashes, reusable-artifact inventory, and
+reusable-artifact hashes are retained in <a
+href="review_1_5_1/source_inventory.md">review_1_5_1/source_inventory.md</a>,
+<a
+href="review_1_5_1/source_hashes_before.sha256">review_1_5_1/source_hashes_before.sha256</a>,
+<a
+href="review_1_5_1/evidence_asset_inventory.md">review_1_5_1/evidence_asset_inventory.md</a>,
+and <a
+href="review_1_5_1/reused_artifact_hashes_before.sha256">review_1_5_1/reused_artifact_hashes_before.sha256</a>.
+A total of 115 eligible pre-existing derivative and map assets were
+inventoried and hashed. Reused native text, OCR, rendered pages, and
+maps were locators and transcription aids; direct PDFs remained the
+authority for candidate confirmation.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>All direct-source units were mapped. Reusable and fresh-required
+units partition the package exactly, and mapped units equal total units
+for every source.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Mapped units</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">136</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">29</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Package total</strong></td>
+<td style="text-align: right;"><strong>176</strong></td>
+<td style="text-align: right;"><strong>37</strong></td>
+<td style="text-align: right;"><strong>139</strong></td>
+<td style="text-align: right;"><strong>176</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>DOC-001 was mapped across PDF pp. 1-11 using source-matched reusable
+extraction with direct-source confirmation. DOC-002 was freshly mapped
+across all 136 PDF pages in five disjoint shards (pp. 1-28, 29-56,
+57-84, 85-112, and 113-136). DOC-003 was mapped across pp. 1-29, using
+reusable support on pp. 2-27 and fresh direct-source mapping for pp. 1,
+28, and 29. The complete stage/shard record is <a
+href="review_1_5_1/coverage_manifest.md">review_1_5_1/coverage_manifest.md</a>,
+and the source-unit ledger is <a
+href="review_1_5_1/source_coverage.md">review_1_5_1/source_coverage.md</a>.</p>
+<p>The review was limited to quantitative reporting consistency:
+numeric, denominator, statistical, cross-document, measure/label/scale,
+and rate-versus-count relationships. It did not conduct a general
+study-design, clinical, novelty, misconduct, raw-data, or
+external-literature audit. Graph-only ordinates and bin heights not
+printed as exact values were not digitized.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The canonical numeric/reporting inventory contains
+<strong>33/33</strong> completed relationships, N001-N033. The
+inferential-statistical inventory contains <strong>34/34</strong>
+completed relationships, S001-S034. Numeric checks, cross-source checks,
+and both independent statistical passes covered their complete assigned
+inventories. Every statistical relationship records both
+<code>PASS_1_COMPLETE</code> and <code>PASS_2_COMPLETE</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Review lane</th>
+<th>Complete scope</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numeric/reporting relationships</td>
+<td>N001-N033 (33/33)</td>
+<td>All received explicit numeric consistency records.</td>
+</tr>
+<tr>
+<td>Statistical pass 1</td>
+<td>S001-S034 (34/34)</td>
+<td>All received <code>PASS_1_COMPLETE</code>.</td>
+</tr>
+<tr>
+<td>Cross-source review</td>
+<td>N001-N033 and S001-S034</td>
+<td>Matched results compared only after population, time, contrast,
+model, measure, and precision matching.</td>
+</tr>
+<tr>
+<td>Mechanical evidence recheck</td>
+<td>C001, C002, C003</td>
+<td>Exact source locations, printed text, rules, and remaining human
+questions confirmed.</td>
+</tr>
+<tr>
+<td>Statistical pass 2</td>
+<td>S001-S034 (34/34), C001-C003 reconciliation</td>
+<td>All received <code>PASS_2_COMPLETE</code>; 0 genuinely new
+candidates.</td>
+</tr>
+</tbody>
+</table>
+<p>Prospective protocol/SAP rules and versioned amendments were not
+treated as observed-result contradictions without a matched same-version
+comparator. Coherent display-zero P-value formatting was not registered
+as a candidate; no stable candidate depends on <code>P = 0</code>,
+<code>P = .000</code>, finite precision, or reconstructed tail
+probabilities.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate consistency issue</th>
+<th>Category</th>
+<th>Primary evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--extraneous-pressure-unit-after-the-usual-group-spo2-summary">C001</a></td>
+<td>Extraneous pressure unit after usual-group SpO2 summary</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>DOC-001 PDF p. 6; DOC-003 PDF p. 21</td>
+</tr>
+<tr>
+<td><a
+href="#c002--results-supplement-contents-page-does-not-identify-actual-etables-14">C002</a></td>
+<td>Results-supplement contents page does not identify actual eTables
+1-4</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>DOC-003 PDF pp. 1, 15, 17, 18, 19</td>
+</tr>
+<tr>
+<td><a
+href="#c003--final-sap-contains-an-unresolved-reference-after-quantitative-separationadherence-rules">C003</a></td>
+<td>Final SAP contains an unresolved reference after quantitative
+separation/adherence rules</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>DOC-002 PDF p. 118</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--extraneous-pressure-unit-after-the-usual-group-spo2-summary" class="candidate-card">C001
+— Extraneous pressure unit after the usual-group SpO2 summary</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The main article places
+<code>mm Hg</code> immediately after the usual-group SpO2 summary,
+producing <code>95.1% (2.4%) mm Hg</code>, although the sentence’s
+respective pairing and the matched supplement table identify SpO2 as
+percent and PaO2 as mm Hg.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-001, <a
+href="../jama_martin_2025_oi_250042_1753377747.91025.pdf#page=6">jama_martin_2025_oi_250042_1753377747.91025.pdf
+— PDF p. 6 (printed article p. 403), Oxygen Exposure paragraph</a>;
+comparator DOC-003, <a
+href="../joi250042supp2_prod_1753377747.93025.pdf#page=21">joi250042supp2_prod_1753377747.93025.pdf
+— PDF p. 21, eTable 5</a>.</p>
+<p><strong>Source evidence:</strong> DOC-001 prints conservative-group
+median SpO2 as <code>93.3% (2.8%)</code> and PaO2 as
+<code>71.5 (13.9) mm Hg</code>, then usual-group values as
+<code>95.1% (2.4%) mm Hg</code> and <code>79.5 (17.9) mm Hg</code>,
+respectively. DOC-003 eTable 5 separately labels the corresponding rows
+<code>Patient median SpO2, %</code> and
+<code>Patient median PaO2, mmHg</code>, with values 93.3/95.1 and
+71.5/79.5.</p>
+<p><strong>Reported-versus-comparator:</strong> The reported DOC-001
+usual-group first value has both a percent sign and a trailing pressure
+unit. The comparator labels the 95.1 (2.4) value as SpO2 on a percent
+scale and the 79.5 (17.9) value as PaO2 in mm Hg.</p>
+<p><strong>Reasoning procedure:</strong> Apply the explicit
+“respectively” construction to the two measures and values in each
+group: first measure/value is SpO2/percent; second is PaO2/mm Hg.
+Compare the placement of each unit in DOC-001 with the unambiguous
+separate row labels in DOC-003.</p>
+<p><strong>Calculation:</strong> No arithmetic; logical unit pairing
+reproduced.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Because
+the next phrase reports PaO2, a reader might visually associate the
+trailing <code>mm Hg</code> with that following phrase despite its
+grammatical placement. eTable 5 supports that possible intended pairing.
+A unit carryover, displacement, or production mechanism is not
+established by the supplied package.</p>
+<p><strong>Mechanical evidence recheck:</strong> The direct PDF location
+and comparator were found; the printed strings, respective pairing,
+separate row units, logical comparison, available inputs, and remaining
+human question were reproduced. The direct observation is the unit
+string and pairing; any typesetting explanation remains inferred. See <a
+href="review_1_5_1/verification/evidence_recheck.md">review_1_5_1/verification/evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> The printed unit
+placement is a candidate label consistency issue. It can make a
+narrative measurement summary ambiguous even though the matched
+supplement table supplies a clear measure/unit pairing.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy the usual-group SpO2 summary with a pressure
+unit or preserve an ambiguity in a downstream evidence table. This
+report does not assert that such extraction or propagation occurred.</p>
+<p><strong>Human verification steps:</strong> Compare the approved
+article source and production proof against the direct PDF sentence and
+eTable 5; determine whether <code>mm Hg</code> after
+<code>95.1% (2.4%)</code> should be removed or repositioned so it
+applies only to PaO2.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--results-supplement-contents-page-does-not-identify-actual-etables-1-4" class="candidate-card">C002
+— Results-supplement contents page does not identify actual eTables
+1-4</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> DOC-003’s contents entries for
+eTables 1-4 do not identify the actual same-numbered tables later
+printed in that PDF.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-003, <a
+href="../joi250042supp2_prod_1753377747.93025.pdf#page=1">joi250042supp2_prod_1753377747.93025.pdf
+— PDF p. 1, contents</a>; actual <a
+href="../joi250042supp2_prod_1753377747.93025.pdf#page=15">eTable 1 —
+PDF p. 15</a>, <a
+href="../joi250042supp2_prod_1753377747.93025.pdf#page=17">eTable 2 —
+PDF p. 17</a>, <a
+href="../joi250042supp2_prod_1753377747.93025.pdf#page=18">eTable 3 —
+PDF p. 18</a>, and <a
+href="../joi250042supp2_prod_1753377747.93025.pdf#page=19">eTable 4 —
+PDF p. 19</a>.</p>
+<p><strong>Source evidence:</strong> The contents page calls eTable 1
+“Results of quality assessment per study,” eTable 2 “Diagnostic
+performance of serological tests – test combinations,” eTable 3
+“Patients randomized by site,” and eTable 4 “Additional patient
+characteristics.” The actual headings are eTable 1 “Patients randomized
+by site,” eTable 2 “Additional patient characteristics,” eTable 3
+“Representativeness of patients recruited to the UK-ROX trial,” and
+eTable 4 “Patient baseline characteristics by data collection
+group.”</p>
+<p><strong>Reported-versus-comparator:</strong> For same-numbered
+eTables 1, 2, 3, and 4, the contents-page title differs from the actual
+heading. The contents eTable 3 topic matches actual eTable 1, and the
+contents eTable 4 topic approximates actual eTable 2, while the first
+two contents topics do not identify their actual tables.</p>
+<p><strong>Reasoning procedure:</strong> Match each contents
+number-title pair to the table bearing the same number in the same
+supplied PDF, then compare titles. The four mismatches share one
+contents list, comparator set, and identity rule, so they constitute one
+candidate rather than four ranked findings.</p>
+<p><strong>Calculation:</strong> No arithmetic; four same-number
+identity comparisons reproduced.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+contents titles may be retained from another document, shifted, or
+incompletely updated. These are possible explanations only; the supplied
+package does not establish the production history or intended
+replacement wording.</p>
+<p><strong>Mechanical evidence recheck:</strong> The contents page and
+all four table headings were found directly; all eight number-title
+pairs and the four identity comparisons were reproduced. The direct
+observation is the mismatch. A stale-template or shift explanation
+remains inferred. See <a
+href="review_1_5_1/verification/evidence_recheck.md">review_1_5_1/verification/evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> The contents entries do
+not provide reliable navigation to the same-numbered quantitative tables
+in the printed supplement.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer or extractor relying on the contents page could open or cite
+the wrong table when locating quantitative material. This report does
+not assert that mis-citation or evidence propagation occurred.</p>
+<p><strong>Human verification steps:</strong> Compare PDF p. 1 against
+the approved results-supplement contents or production source; determine
+whether the eTable 1-4 entries should be changed to the actual
+same-numbered headings without presuming any alteration of the table
+bodies.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--final-sap-contains-an-unresolved-reference-after-quantitative-separationadherence-rules" class="candidate-card">C003
+— Final SAP contains an unresolved reference after quantitative
+separation/adherence rules</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The final SAP directs readers
+to “Section 3.2 and Error! Reference source not found.” for further
+details after quantitative separation/adherence rules, leaving one
+stated reference destination unidentifiable.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> DOC-002, <a
+href="../joi250042supp1_prod_1753377747.92525.pdf#page=118">joi250042supp1_prod_1753377747.92525.pdf
+— PDF p. 118 (SAP p. 8), section 2.5 and Table 1</a>, immediately after
+the separation/adherence definition.</p>
+<p><strong>Source evidence:</strong> The page states, “See Section 3.2
+and Error! Reference source not found. for further details about
+assessment of separation and treatment adherence.” It follows Table 1
+traffic-light thresholds and an adherence definition that includes FIO2
+handling, including 22%/23% values treated as 21%, SpO2 above 92%, and
+duration of at least 3 hours, subject to the stated Section 3.2.2
+caveat.</p>
+<p><strong>Reported-versus-comparator:</strong> One stated destination,
+Section 3.2, is identifiable; the second is literal unresolved-reference
+text and names no section, appendix, table, or other location. Section
+3.2.2 is separately identifiable as a caveat but is not printed as the
+missing second destination.</p>
+<p><strong>Reasoning procedure:</strong> Identify the two destinations
+joined by “and” in the sentence offering further details. Confirm
+whether each destination can be located in the direct PDF. Section 3.2
+resolves, whereas the second destination does not.</p>
+<p><strong>Calculation:</strong> No arithmetic; one of two stated
+reference destinations is identifiable and the other is not.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Sections 3.2 and 3.2.2 may already supply sufficient detail to apply the
+rules. The wording nevertheless promises a second source of further
+details. The intended target, its content, and an unrefreshed
+cross-reference mechanism are not established by the supplied
+package.</p>
+<p><strong>Mechanical evidence recheck:</strong> The page was directly
+visually confirmed because DOC-002 native text is glyph-mapped. The
+literal error string, valid Section 3.2 reference, quantitative context,
+logical comparison, available inputs, and missing target were
+reproduced. The direct observation is the unresolved string; the
+intended content is unavailable. See <a
+href="review_1_5_1/verification/evidence_recheck.md">review_1_5_1/verification/evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> This is a candidate
+quantitative-definition navigation issue: a stated source of further
+detail for thresholds and adherence definitions cannot be fully
+located.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reviewer applying or extracting the thresholds could lack the promised
+second detail source. This report does not assert that any threshold was
+misapplied or that a trial result was affected.</p>
+<p><strong>Human verification steps:</strong> Inspect the approved SAP
+and its Word or production cross-reference field; identify the intended
+second destination and determine whether it adds a separation or
+treatment-adherence quantity or definition not otherwise supplied by
+Section 3.2, Section 3.2.2, and Table 1.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>These are bounded quality-control considerations, not claims of
+observed downstream effects. If a candidate is confirmed, an evidence
+extractor, systematic reviewer, meta-analyst, or guideline developer
+could respectively preserve an incorrect unit association, navigate to
+or cite an incorrect supplement table, or lack a promised source of
+quantitative-definition detail. The supplied package does not establish
+that any such copying, propagation, clinical consequence, or change to
+the paper’s conclusions occurred.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<ul>
+<li>Graph-only ordinates and bin heights not printed as exact values
+were not digitized; this does not leave a source-unit or
+relationship-coverage gap.</li>
+<li>Several secondary-outcome P values cannot be exactly reconstructed
+because the supplied article does not specify every needed test scale,
+variance, covariance, degrees of freedom, or imputation-combination
+rule. Both statistical passes retained those missing definitions without
+manufacturing candidates.</li>
+<li>DOC-002 native text is glyph-mapped. Direct rendered inspection was
+authoritative for C003; this did not prevent mapped-page closure.</li>
+<li>The intended destination and content of C003’s broken reference are
+unavailable in the supplied package.</li>
+<li>Report timing, token accounting, final source/reused-artifact
+rehashes, HTML rendering, and validator status are finalized by the
+coordinator after this report-generation response is included in the
+accounting window.</li>
+</ul>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each stable ID, a human reviewer should:</p>
+<ol type="1">
+<li>Open the linked direct-PDF evidence pages and compare the
+transcribed printed material.</li>
+<li>Confirm that the comparator, rule, and calculation/logical
+comparison are applicable.</li>
+<li>Distinguish the direct observation from the possible production
+explanation.</li>
+<li>Resolve the exact remaining human question and record the result
+only in the five placeholders on the card.</li>
+<li>If an editorial action is considered, consult the approved source or
+production record rather than inferring authorial intent from this
+quality-control report.</li>
+</ol>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>The review used supplied local evidence only. Source and
+reusable-artifact hashes were recorded before review; direct-PDF
+evidence links in the cards use physical PDF page fragments. Current
+complete mapping, relationship, recheck, and audit records are linked
+throughout this report. Final source and reused-artifact hash
+recomputation is coordinator-owned after report assembly.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<p>Every manifested runtime agent is listed below. The two statistical
+passes used distinct fresh <code>gpt-5.6-terra</code> high-effort agents
+and covered S001-S034 in both passes.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td><code>run_state.md</code></td>
+</tr>
+<tr>
+<td>source_inventory_and_reuse</td>
+<td>root/reuse_asset_curation</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>source_inventory.md</code></td>
+</tr>
+<tr>
+<td>main_evidence_mapping</td>
+<td>root/main_mapping_doc001</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/main_mapping_doc001.md</code></td>
+</tr>
+<tr>
+<td>support_evidence_mapping</td>
+<td>root/support_doc002_a</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_mapping_doc002_pp001_028.md</code></td>
+</tr>
+<tr>
+<td>support_evidence_mapping</td>
+<td>root/support_doc002_b</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_mapping_doc002_pp029_056.md</code></td>
+</tr>
+<tr>
+<td>support_evidence_mapping</td>
+<td>root/support_doc002_c</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_mapping_doc002_pp057_084.md</code></td>
+</tr>
+<tr>
+<td>support_evidence_mapping</td>
+<td>root/support_doc002_d</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_mapping_doc002_pp085_112.md</code></td>
+</tr>
+<tr>
+<td>support_evidence_mapping</td>
+<td>root/support_doc002_e</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_mapping_doc002_pp113_136.md</code></td>
+</tr>
+<tr>
+<td>support_evidence_mapping</td>
+<td>root/support_doc003</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_mapping_doc003.md</code></td>
+</tr>
+<tr>
+<td>relationship_consolidation</td>
+<td>root/relationship_consolidation</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>relationships/numeric_relationship_inventory.md</code></td>
+</tr>
+<tr>
+<td>numeric_checks</td>
+<td>root/numeric_consistency</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/numeric_consistency.md</code></td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistical_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_1.md</code></td>
+</tr>
+<tr>
+<td>cross_source_checks</td>
+<td>root/cross_source_consistency</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/cross_source_consistency.md</code></td>
+</tr>
+<tr>
+<td>evidence_recheck</td>
+<td>root/evidence_recheck</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>verification/evidence_recheck.md</code></td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistical_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_2.md</code></td>
+</tr>
+<tr>
+<td>evidence_quality</td>
+<td>root/evidence_quality_audit</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>quality/evidence_quality_audit.md</code></td>
+</tr>
+<tr>
+<td>report_generation</td>
+<td>root/report_generation</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>report_generation_record.md</code></td>
+</tr>
+</tbody>
+</table>
+<p>The authoritative manifest is <a
+href="review_1_5_1/agent_execution_manifest.md">review_1_5_1/agent_execution_manifest.md</a>.</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Three supplied PDFs comprise 176
+pages: an 11-page main article, a 136-page protocol/SAP supplement, and
+a 29-page results supplement. Existing reusable extraction appears
+extensive for the main article and partial for the results supplement
+but absent for the long protocol/SAP; fresh native/layout extraction,
+complete mapping, two statistical passes, candidate rechecks, audit,
+report generation, and validation are required. The range is
+package-specific and reflects both the high fresh-source burden and
+heterogeneous quantitative/statistical content.</li>
+<li><strong>Total source units:</strong> 176</li>
+<li><strong>Fresh-source units:</strong> 139</li>
+<li><strong>Target elapsed minutes:</strong> 60-100</li>
+<li><strong>Started UTC:</strong> 2026-09-03T03:52:47Z</li>
+<li><strong>Finished UTC:</strong> 2026-09-03T06:50:18Z</li>
+<li><strong>Observed elapsed minutes:</strong> 177.5</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> The 136-page protocol/SAP had an
+unusable glyph-mapped native text layer and required disjoint visual
+direct-source mapping; two complete fresh Terra/high statistical passes
+and direct visual evidence rechecks were retained; a final
+audit-identified main-paper pagination provenance offset required repair
+before report assembly.</li>
+</ul>
+<h3 id="token-usage-and-cost-metadata">Token-usage and cost
+metadata</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Token count status</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Token-only API-equivalent cost (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td>INCOMPLETE</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete estimate
+unavailable</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td>INCOMPLETE</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete estimate
+unavailable</td>
+</tr>
+</tbody>
+</table>
+<p>Per-agent usage detail and final model rollups are recorded in <a
+href="review_1_5_1/token_usage_summary.md">review_1_5_1/token_usage_summary.md</a>.
+Because authoritative response-level runtime counts were unavailable for
+all manifested agents, the known subtotal is zero while the complete
+count and cost remain unavailable; no estimate was inferred from text.
+Amounts are token-only API-equivalent estimates under the dated local
+price snapshot, not invoices; cached input and cache-write are input
+subsets and reasoning is an output subset, so none is added again to
+total tokens.</p>
+</body>
+</html>

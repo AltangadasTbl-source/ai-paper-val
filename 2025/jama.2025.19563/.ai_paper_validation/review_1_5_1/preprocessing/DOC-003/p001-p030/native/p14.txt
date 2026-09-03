@@ -1,0 +1,45 @@
+R Code for MVPA Calculation
+The following R code was used to preprocess wrist-worn ActiGraph data and compute total and bouted
+MVPA using vector magnitude thresholds.
+rm(list = ls())
+# Set working directory to "code" folder
+setwd('D:/OneDrive - Johns Hopkins/1 Studies/1 Ongoing/DDP trial/Accelerometry/code')
+# Load packages and source bout calculation function
+source('BoutsOfPA.R')
+library(lubridate)
+library(dplyr)
+library(readr)
+library(arctools)
+# Define file path
+file_path <- "D:/OneDrive - Johns Hopkins/1 Studies/1 Ongoing/DDP trial/Accelerometry/csv/"
+files <- dir(file_path, recursive = TRUE)
+files <- files[grep('.csv', files)]
+# Bouts definition
+bouts_min <- c(10)
+bouts_max <- c(Inf)
+# Summarize MVPA Activity
+out_activity <- data.frame(
+id = numeric(),
+visit = numeric(),
+site = numeric(),
+tas = numeric(),
+n_days = numeric(),
+n_valid_days = numeric(),
+wear_time_on_valid_days = numeric(),
+min_spent_active_1853 = numeric(),
+min_spent_active_2185 = numeric(),
+min_spent_active_2859 = numeric(),
+min_spent_active_3941 = numeric(),
+stringsAsFactors = FALSE
+)
+pb <- txtProgressBar(min = 0, max = length(files), style = 3)
+for (j in 1:length(files)) {
+name <- files[j]
+name.full <- paste0(file_path, name)
+id <- substr(name, 1, 3)
+visit <- substr(name, 5, 6)
+site <- substr(name, 8, 11)
+© 2025 American Medical Association. All rights reserved, including those for text and data mining, AI
+training, and similar technologies.
+
+

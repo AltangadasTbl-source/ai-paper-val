@@ -1,0 +1,48 @@
+datai <- read.csv(name.full)
+colnames(datai) <- c("timestamp", "serialnumber", "axis1", "axis2", "axis3", "steps", "vectormagnitude",
+"capsense")
+ac <- datai$vectormagnitude
+timestamp <- ymd_hms(datai$timestamp)
+tas <- datai$serialnumber[nrow(datai)]
+ac_mid <- midnight_to_midnight(ac, timestamp)
+wnw <- get_wear_flag(ac_mid, nonwear_0s_minimum_window = 90)
+valid.long <- get_valid_day_flag(wnw, validday_nonwear_maximum_window = 840)
+ac_imp <- impute_missing_data(ac_mid, wnw, valid.long)
+result_summary_1853 <- activity_stats(ac, timestamp)
+result_summary_2185 <- activity_stats(ac, timestamp, sedentary_thres = 2185)
+result_summary_2859 <- activity_stats(ac, timestamp, sedentary_thres = 2859)
+result_summary_3941 <- activity_stats(ac, timestamp, sedentary_thres = 3941)
+active <- data.frame(cbind(
+id, visit, site, tas,
+result_summary_1853$n_days,
+result_summary_1853$n_valid_days,
+result_summary_1853$wear_time_on_valid_days,
+result_summary_1853$time_spent_active,
+result_summary_2185$time_spent_active,
+result_summary_2859$time_spent_active,
+result_summary_3941$time_spent_active
+))
+
+}
+
+out_activity <- rbind(out_activity, active)
+setTxtProgressBar(pb, j)
+
+close(pb)
+colnames(out_activity) <- c(
+"id", "visit", "site", "tas",
+"n.weardays", "n.valid.weardays", "minutes.on.valid.weardays",
+"minutes.active.1853", "minutes.mvpa.2185",
+"minutes.lmvpa.2859", "minutes.mvpa.3941"
+)
+# MVPA Bouts Calculation
+out_bouts <- data.frame(
+id = numeric(),
+visit = numeric(),
+site = numeric(),
+n.mvpa.10toInf_bouts.2185 = numeric(),
+minutes.mvpa.10toInf_bouts.2185 = numeric(),
+© 2025 American Medical Association. All rights reserved, including those for text and data mining, AI
+training, and similar technologies.
+
+

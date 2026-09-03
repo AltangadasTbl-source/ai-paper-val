@@ -1,0 +1,26 @@
+# Workflow 1.5.1 Run State
+
+- **Profile:** 1.5.1
+- **Status:** COMPLETE
+- **Target basis:** Five-PDF paper package with 272 direct-source pages, including a 162-page manual and a 48-page SAP; reusable page-level text is visibly available for the 11-page main article and 16-page results supplement, while three support PDFs require unit-level curator confirmation and likely fresh native/layout mapping. The range allows parallel evidence mapping plus two mandatory full statistical passes and complete recheck/audit/report stages.
+- **Total source units:** 272
+- **Fresh-source units:** 245
+- **Target elapsed minutes:** 100-150
+- **Started UTC:** 2026-09-03T03:43:52Z
+- **Finished UTC:** 2026-09-03T06:48:20Z
+- **Observed elapsed minutes:** 184.5
+- **Target status:** EXCEEDED_TARGET
+- **Exceedance causes:** Severe host CPU contention (load approximately 610 on 8 allocated CPUs); embedded-font extraction and empty OCR required rendered-page inspection of 245 fresh units and a 33-page SAP coverage repair; canonical relationship ranges required expansion to 185 individual IDs; direct-source recheck corrected four extraction-derived candidate transcriptions.
+- **Candidate count:** 10
+- **Scientific coverage status:** COMPLETE
+- **Statistical pass 1 status:** COMPLETE
+- **Statistical pass 2 status:** COMPLETE
+- **Evidence recheck status:** COMPLETE
+- **Evidence quality audit status:** COMPLETE
+- **Markdown report status:** COMPLETE
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE
+- **Source integrity status:** VERIFIED_UNCHANGED
+- **Reused-artifact integrity status:** VERIFIED_UNCHANGED
+- **HTML render status:** COMPLETE
+- **Validation status:** PASS
+- **Coordinator notes:** Start time preceded inventory. Curator totals were reconciled to source coverage before mapping. The review accounting window closed immediately after complete Markdown assembly; authoritative token counts were not exposed by the coordinator or specialist runtime interface, so no text-length estimate was substituted.

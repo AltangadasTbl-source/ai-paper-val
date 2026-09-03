@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--jama-20259110"
+id="toc-quantitative-quality-control-consistency-review--jama-20259110">Quantitative
+Quality-Control Consistency Review — JAMA 2025.9110</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--invasive-ventilation-descriptive-summary-is-labeled-mean-sd-but-displays-two-endpoints"
+id="toc-c001--invasive-ventilation-descriptive-summary-is-labeled-mean-sd-but-displays-two-endpoints">C001
+— Invasive-ventilation descriptive summary is labeled mean (SD) but
+displays two endpoints</a></li>
+<li><a
+href="#c002--etable-10-uses-a-comma-in-one-one-decimal-survival-percentage"
+id="toc-c002--etable-10-uses-a-comma-in-one-one-decimal-survival-percentage">C002
+— eTable 10 uses a comma in one one-decimal survival percentage</a></li>
+<li><a
+href="#c003--bayesian-quantile-row-is-labeled-mean-sd-despite-its-associated-median-estimand-and-two-endpoint-group-displays"
+id="toc-c003--bayesian-quantile-row-is-labeled-mean-sd-despite-its-associated-median-estimand-and-two-endpoint-group-displays">C003
+— Bayesian quantile row is labeled mean (SD) despite its associated
+median estimand and two-endpoint group displays</a></li>
+<li><a
+href="#c004--discussion-describes-the-matched-day-10-urea-summaries-as-means-while-results-reports-medians-iqr"
+id="toc-c004--discussion-describes-the-matched-day-10-urea-summaries-as-means-while-results-reports-medians-iqr">C004
+— Discussion describes the matched day-10 urea summaries as means while
+Results reports medians (IQR)</a></li>
+<li><a
+href="#c005--etable-10-tracheostomy-row-switches-percent-sign-notation-across-period-cells"
+id="toc-c005--etable-10-tracheostomy-row-switches-percent-sign-notation-across-period-cells">C005
+— eTable 10 tracheostomy row switches percent-sign notation across
+period cells</a></li>
+<li><a
+href="#c006--etable-10-new-krt-row-switches-percent-sign-notation-across-period-cells"
+id="toc-c006--etable-10-new-krt-row-switches-percent-sign-notation-across-period-cells">C006
+— eTable 10 new-KRT row switches percent-sign notation across period
+cells</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#performance" id="toc-performance">Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token accounting and cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--jama-20259110">Quantitative
+Quality-Control Consistency Review — JAMA 2025.9110</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p><strong>All six quality-control candidates in this report are Pending
+Human Adjudication.</strong> This review records supplied-source
+reporting inconsistencies for human assessment; it assigns no validity
+decision, importance ranking, correction, or conclusion about the
+study.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>This Workflow 1.5.1 review completed source-linked quantitative
+consistency coverage of four supplied PDFs (115 PDF pages). It
+registered <strong>6 distinct candidates (C001–C006)</strong> after
+duplicate merging, direct-PDF evidence recheck, and independent two-pass
+statistical review. The candidates concern summary-statistic labels or
+table notation. They are reporting-quality questions, not findings that
+the trial conclusion is incorrect.</p>
+<p>Small preventable reporting defects can matter when numeric results
+are later copied into systematic reviews, meta-analyses, guidelines, or
+structured evidence databases. That downstream possibility is stated
+conditionally throughout: this review does not assert that any
+propagation, conclusion change, or harm occurred.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The direct-source package contains four PDFs and no Office, workbook,
+or CSV source. The source inventory and pre-review SHA-256 record are <a
+href="review_1_5_1/source_inventory.md">source_inventory.md</a> and <a
+href="review_1_5_1/source_hashes_before.sha256">source_hashes_before.sha256</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">PDF pages</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jama_summers_2025_oi_250040_1753124024.36498.pdf</code></td>
+<td style="text-align: right;">10</td>
+<td><code>a2ee3c43b8f4285d254fc612c70921aecdfc881230f3c70c580b0e8ba988ba4a</code></td>
+</tr>
+<tr>
+<td><code>joi250040supp1_prod_1753124024.37199.pdf</code></td>
+<td style="text-align: right;">40</td>
+<td><code>6745568ae794f5ec8828c9c873d4926fc84007a81a36a391b392cd43559b7521</code></td>
+</tr>
+<tr>
+<td><code>joi250040supp2_prod_1753124024.37799.pdf</code></td>
+<td style="text-align: right;">31</td>
+<td><code>2b3cba9e9c65ceb237a5a9b4de2ac7d5774ed74f9a4ae509ef30898572e62071</code></td>
+</tr>
+<tr>
+<td><code>joi250040supp3_prod_1753124024.38098.pdf</code></td>
+<td style="text-align: right;">34</td>
+<td><code>fc3711231839990ce5ce604ba1c154e85678df82e7cb9d9d46c2170bd5f94e9c</code></td>
+</tr>
+</tbody>
+</table>
+<p>Existing source-linked native text, normalized text, OCR, rendered
+pages, manifests, and evidence maps were reused only as locators and
+transcription aids. Their inventory, fitness assessment, and pre-review
+hashes are in <a
+href="review_1_5_1/evidence_asset_inventory.md">evidence_asset_inventory.md</a>
+and <a
+href="review_1_5_1/reused_artifact_hashes_before.sha256">reused_artifact_hashes_before.sha256</a>.
+Direct PDFs remained the authority for every candidate recheck.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<table>
+<thead>
+<tr>
+<th>Coverage measure</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direct sources</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>Total source units</td>
+<td style="text-align: right;">115 PDF pages</td>
+</tr>
+<tr>
+<td>Reusable-backed units</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr>
+<td>Fresh direct-source units</td>
+<td style="text-align: right;">73</td>
+</tr>
+<tr>
+<td>Mapped units</td>
+<td style="text-align: right;">115</td>
+</tr>
+</tbody>
+</table>
+<p>All direct-source rows are complete: main article 10/10 pages,
+protocol 40/40, SAP 31/31, and Results Supplement 34/34. Reusable and
+fresh-required units partition each direct-source page set. The
+page-level assignments and all stage artifacts are recorded in <a
+href="review_1_5_1/source_coverage.md">source_coverage.md</a> and <a
+href="review_1_5_1/coverage_manifest.md">coverage_manifest.md</a>.</p>
+<p>The review was limited to quantitative reporting consistency: numeric
+values, denominators/proportions/totals, inferential statistics,
+cross-document values, effect measures/labels/scales, and
+rate-versus-count relationships. It did not conduct a broad clinical,
+methodological, raw-data, misconduct, novelty, or literature review.
+Prospective protocol/SAP/PRO-SCAN and external-feasibility statements
+were not treated as final-result contradictions unless population, time,
+contrast, estimand, and analysis context matched.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The canonical numeric inventory contains <strong>N001–N068 (68
+distinct relationships; 80 provisional occurrences
+crosswalked)</strong>. The canonical statistical inventory contains
+<strong>S001–S036 (36 distinct relationships; 41 provisional occurrences
+crosswalked)</strong>. Together, 104 global relationships were checked
+in numeric and cross-source lanes. See <a
+href="review_1_5_1/relationships/numeric_relationship_inventory.md">numeric
+relationship inventory</a> and <a
+href="review_1_5_1/statistics/relationship_inventory.md">statistical
+relationship inventory</a>.</p>
+<p>Statistical pass 1 independently completed S001–S036 and emitted no
+local candidate; statistical pass 2 independently completed S001–S036,
+reviewed the complete cross-lane ledger and recheck facts, and supplied
+two new distinct eTable-10 notation candidates (C005–C006). Both passes
+are complete in <a
+href="review_1_5_1/checkers/statistical_pass_1.md">statistical pass
+1</a> and <a
+href="review_1_5_1/checkers/statistical_pass_2.md">statistical pass
+2</a>. The prior locator transcription question for the renal/RRT
+interaction was directly reconciled: the supplied Results Supplement
+pages print <code>P&lt;0.001</code> at both locations, so it is a
+corrected noncandidate. No candidate was created from a coherent
+display-zero P value.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+<th>Category</th>
+<th>Primary location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#c001">C001</a></td>
+<td>Invasive-ventilation descriptive summary labeled mean (SD) but
+displays two endpoints</td>
+<td>Measure, label, or scale inconsistency</td>
+<td><a
+href="../jama_summers_2025_oi_250040_1753124024.36498.pdf#page=7">Main
+PDF p. 7</a></td>
+</tr>
+<tr>
+<td><a href="#c002">C002</a></td>
+<td>One eTable 10 survival percentage uses a comma</td>
+<td>Measure, label, or scale inconsistency</td>
+<td><a
+href="../joi250040supp3_prod_1753124024.38098.pdf#page=18">Results
+Supplement PDF p. 18</a></td>
+</tr>
+<tr>
+<td><a href="#c003">C003</a></td>
+<td>Bayesian quantile row labeled mean (SD) despite median estimand</td>
+<td>Measure, label, or scale inconsistency</td>
+<td><a
+href="../jama_summers_2025_oi_250040_1753124024.36498.pdf#page=7">Main
+PDF p. 7</a></td>
+</tr>
+<tr>
+<td><a href="#c004">C004</a></td>
+<td>Discussion calls day-10 urea summaries means while Results reports
+medians (IQR)</td>
+<td>Cross-document numeric inconsistency</td>
+<td><a
+href="../jama_summers_2025_oi_250040_1753124024.36498.pdf#page=5">Main
+PDF pp. 5 and 8</a></td>
+</tr>
+<tr>
+<td><a href="#c005">C005</a></td>
+<td>eTable 10 tracheostomy row switches percent-sign notation</td>
+<td>Measure, label, or scale inconsistency</td>
+<td><a
+href="../joi250040supp3_prod_1753124024.38098.pdf#page=18">Results
+Supplement PDF p. 18</a></td>
+</tr>
+<tr>
+<td><a href="#c006">C006</a></td>
+<td>eTable 10 new-KRT row switches percent-sign notation</td>
+<td>Measure, label, or scale inconsistency</td>
+<td><a
+href="../joi250040supp3_prod_1753124024.38098.pdf#page=18">Results
+Supplement PDF p. 18</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--invasive-ventilation-descriptive-summary-is-labeled-mean-sd-but-displays-two-endpoints" class="candidate-card">C001
+— Invasive-ventilation descriptive summary is labeled mean (SD) but
+displays two endpoints</h2>
+<p><strong>Candidate statement:</strong> The invasive-ventilation Table
+2 row is labeled <code>mean (SD)</code> but each group display contains
+two endpoints.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_summers_2025_oi_250040_1753124024.36498.pdf#page=7">Main
+article — PDF p. 7</a>, Table 2,
+<code>Duration of invasive ventilation, mean (SD), h</code>; <a
+href="../jama_summers_2025_oi_250040_1753124024.36498.pdf#page=1">main
+article — PDF p. 1</a>; <a
+href="../joi250040supp3_prod_1753124024.38098.pdf#page=18">Results
+Supplement — PDF p. 18</a>, eTable 10.</p>
+<p><strong>Source evidence:</strong> Table 2 prints augmented protein
+<code>84.0 (35.0 to 178.9)</code> and usual protein
+<code>78.0 (33.2 to 161.0)</code>, while the row label says
+<code>mean (SD)</code>. It separately prints
+<code>Mean difference, 6.8 (−3.0 to 16.5)</code> hours. eTable 10
+describes comparable central-value/two-bound summaries as median
+(IQR).</p>
+<p><strong>Reported-versus-comparator:</strong> The printed
+<code>mean (SD)</code> label is compared with the two-endpoint
+parenthetical displays and the supplementary median (IQR) presentation
+convention.</p>
+<p><strong>Reasoning procedure:</strong> Compare the descriptive label
+with the number and form of values printed inside each group
+parenthesis; keep the model-based mean difference distinct from the
+group descriptive display.</p>
+<p><strong>Calculation:</strong> <code>35.0 &lt; 178.9</code> and
+<code>33.2 &lt; 161.0</code>; each parenthesis has two ordered
+endpoints, not one SD. No rounding rule applies.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>to</code> or an endpoint may be a production error in an intended
+mean/SD display; alternatively the label may be wrong and the values may
+be a median-plus-interval summary. The supplied package does not define
+the endpoints.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF-page review
+confirmed the label, both displays, and the separate mean-difference
+effect; <a href="review_1_5_1/verification/evidence_recheck.md">evidence
+recheck</a> records the missing definition without adjudication.</p>
+<p><strong>Quality-control relevance:</strong> The printed form can
+cause a data extractor to record an interval as an SD or misidentify the
+descriptive statistic for a duration outcome.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a systematic reviewer, meta-analyst, guideline developer, or data
+extractor could copy the wrong summary type or dispersion representation
+for invasive-ventilation duration; no propagation or conclusion change
+is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+descriptive statistic and interval/dispersion from the publication proof
+or author source, then determine whether the label or the displayed
+values should be corrected.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--etable-10-uses-a-comma-in-one-one-decimal-survival-percentage" class="candidate-card">C002
+— eTable 10 uses a comma in one one-decimal survival percentage</h2>
+<p><strong>Candidate statement:</strong> One eTable 10 day-90 survival
+percentage uses a comma-and-space where matched cells use a decimal
+point.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250040supp3_prod_1753124024.38098.pdf#page=18">Results
+Supplement — PDF p. 18</a>, eTable 10,
+<code>Alive at day 90 [n (%)]</code>, Period 2 usual protein (4 units,
+<code>n = 530</code>).</p>
+<p><strong>Source evidence:</strong> The cell prints
+<code>383 (72, 3%)</code>; neighboring matched cells include
+<code>323 (67.3%)</code>, <code>258 (77.0%)</code>,
+<code>229 (76.8%)</code>, and <code>408 (74.0%)</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> <code>72, 3%</code> is
+compared with the row's point-decimal convention and its printed
+count/denominator.</p>
+<p><strong>Reasoning procedure:</strong> Reproduce the one-decimal
+percentage from the supplied numerator and denominator, then compare its
+punctuation to matched cells in the same English table.</p>
+<p><strong>Calculation:</strong>
+<code>383 / 530 × 100 = 72.2641509…%</code>, which rounds to
+<code>72.3%</code> at one decimal (rounding interval 72.25% to
+&lt;72.35%). The question is punctuation, not a numerator/denominator
+mismatch.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A comma
+can be a decimal separator in some locales and preserve the intended
+numeric value, but its isolated use in this point-decimal table remains
+a rendering inconsistency.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct page inspection
+confirmed the comma, count, denominator, and surrounding point decimals;
+the recheck reproduced the arithmetic.</p>
+<p><strong>Quality-control relevance:</strong> The punctuation can
+impair consistent manual or automated extraction of a period-specific
+survival percentage.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could transcribe or parse this period-specific
+percentage inconsistently; no propagation or changed trial conclusion is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm whether the
+comma-and-space is intentional and, if not, standardize the cell to the
+table's point-decimal convention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--bayesian-quantile-row-is-labeled-mean-sd-despite-its-associated-median-estimand-and-two-endpoint-group-displays" class="candidate-card">C003
+— Bayesian quantile row is labeled mean (SD) despite its associated
+median estimand and two-endpoint group displays</h2>
+<p><strong>Candidate statement:</strong> The Bayesian quantile Table 2
+row is labeled <code>mean (SD)</code> despite a median-difference
+estimand and two-endpoint group displays.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_summers_2025_oi_250040_1753124024.36498.pdf#page=7">Main
+article — PDF p. 7</a>, Table 2; <a
+href="../joi250040supp3_prod_1753124024.38098.pdf#page=5">Results
+Supplement — PDF p. 5</a>, secondary analyses; <a
+href="../joi250040supp3_prod_1753124024.38098.pdf#page=27">Results
+Supplement — PDF p. 27</a>, eFigure 6.</p>
+<p><strong>Source evidence:</strong> The row prints
+<code>62.0 (0 to 77)</code> versus <code>64.0 (0 to 77)</code> under
+<code>mean (SD)</code> and reports
+<code>Median difference, −1.50 (−3.86 to 0.90)</code>. The supplement
+defines the Bayesian quantile coefficient as a difference in medians and
+repeats the median difference with a 95% credible interval.</p>
+<p><strong>Reported-versus-comparator:</strong> The Table 2
+<code>mean (SD)</code> group-summary label is compared with its own
+median-difference effect label, the final Bayesian method description,
+and the two-bound group displays.</p>
+<p><strong>Reasoning procedure:</strong> Match outcome, population,
+contrast, and Bayesian model across locations; test whether a one-SD
+descriptive form is actually printed.</p>
+<p><strong>Calculation:</strong> <code>0 &lt; 77</code> in each group
+parenthesis, so each contains two bounds rather than one SD. The printed
+estimand is <code>Median difference</code>; no supplied text explains an
+intentional separate mean/SD convention.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+label may have carried over from the preceding linear-model row.
+Separately calculated means/SDs might have been intended alongside a
+median estimand, but the source neither defines that convention nor
+explains the two endpoints.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct PDF review
+confirmed all labels, values, method wording, and eFigure result; no
+source identifies the intended group-summary definition.</p>
+<p><strong>Quality-control relevance:</strong> The label may lead
+extractors to misclassify the descriptive summary and analysis-scale
+context for the primary outcome.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+downstream evidence users could copy an incorrect summary type or
+analysis-scale description; no propagation or conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Identify the intended
+statistic and interval for the two group displays and confirm whether
+<code>mean (SD)</code> was intended or carried over.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--discussion-describes-the-matched-day-10-urea-summaries-as-means-while-results-reports-medians-iqr" class="candidate-card">C004
+— Discussion describes the matched day-10 urea summaries as means while
+Results reports medians (IQR)</h2>
+<p><strong>Candidate statement:</strong> The Discussion calls the
+matched day-10 blood-urea summaries means while Results reports medians
+(IQR).</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_summers_2025_oi_250040_1753124024.36498.pdf#page=5">Main
+article Results — PDF p. 5</a>, Biochemical Outcomes; <a
+href="../jama_summers_2025_oi_250040_1753124024.36498.pdf#page=8">main
+article Discussion — PDF p. 8</a>.</p>
+<p><strong>Source evidence:</strong> Results calls day-10 blood-urea
+values median (IQR): augmented protein <code>13.0 (8.2–18.8)</code>
+versus usual protein <code>10.6 (7.1–15.4)</code> mmol/L. Discussion
+says that
+<code>mean urea concentrations at day 10 were higher in the augmented protein group</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> The Discussion's
+<code>mean</code> label is compared with the Results' matched analyte,
+day, groups, direction, unit, and <code>median (IQR)</code>
+description.</p>
+<p><strong>Reasoning procedure:</strong> Match population, analyte, time
+point, contrast, direction, and unit, then compare the stated
+summary-statistic terms without reconstructing a mean from
+medians/IQRs.</p>
+<p><strong>Calculation:</strong> No calculation is appropriate: mean and
+median are distinct summary-statistic labels, and no matched day-10 mean
+values are supplied.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+<code>Mean</code> may be nontechnical prose, a copy-editing
+substitution, or a reference to unprinted group means. The supplied
+package does not report a distinct matched mean analysis.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct page review
+confirmed the Results label/values and the Discussion wording; the
+recheck found agreement in direction but no printed matched mean
+values.</p>
+<p><strong>Quality-control relevance:</strong> A reader or data
+extractor could report the wrong summary-statistic type for the
+biochemical result.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a downstream extractor could record means instead of the reported
+medians/IQRs for day-10 urea; no propagation or changed conclusion is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Determine whether the
+Discussion sentence refers to the printed median comparison or a
+distinct mean analysis; if distinct, identify its values and
+definition.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--etable-10-tracheostomy-row-switches-percent-sign-notation-across-period-cells" class="candidate-card">C005
+— eTable 10 tracheostomy row switches percent-sign notation across
+period cells</h2>
+<p><strong>Candidate statement:</strong> The eTable 10 tracheostomy row
+changes percent-sign notation halfway across matched period cells.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250040supp3_prod_1753124024.38098.pdf#page=18">Results
+Supplement — PDF p. 18</a>, eTable 10,
+<code>Tracheostomy in ICU [n (%)]</code>.</p>
+<p><strong>Source evidence:</strong> The first four cells print
+<code>27 (5.6)</code>, <code>36 (10.7)</code>, <code>29 (9.7)</code>,
+and <code>24 (4.5)</code> without <code>%</code>; the last four print
+<code>35 (6.4%)</code>, <code>38 (10.3%)</code>,
+<code>43 (12.2%)</code>, and <code>23 (4.8%)</code> with
+<code>%</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> All eight are percentage
+displays in one <code>[n (%)]</code> row, but the first four omit
+<code>%</code> and the last four include it.</p>
+<p><strong>Reasoning procedure:</strong> Use the row header and printed
+column denominators to establish the shared percentage field, reproduce
+the first-four values, and compare notation across cells.</p>
+<p><strong>Calculation:</strong> <code>27/480×100=5.625%→5.6%</code>;
+<code>36/335×100=10.746…%→10.7%</code>;
+<code>29/298×100=9.732…%→9.7%</code>;
+<code>24/530×100=4.528…%→4.5%</code>. These reconcile at one decimal
+(0.05 percentage-point rounding tolerance); the issue is notation, not
+arithmetic.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+<code>[n (%)]</code> header makes the unsigned entries understandable,
+but it does not explain the within-row switch to explicit signs.
+Intended typography is not stated.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct page inspection
+confirmed all eight cells, denominators, and notation split; the recheck
+reproduced the percentages and found no rate/count discrepancy.</p>
+<p><strong>Quality-control relevance:</strong> Mixed notation can
+produce inconsistent manual or automated parsing of period-specific
+tracheostomy percentages.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a systematic reviewer, meta-analyst, guideline developer, or data
+extractor could copy or parse the period-specific percentages
+inconsistently; no propagation or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm whether the switch
+was intentional and select one percent-sign convention for all eight
+tracheostomy cells.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--etable-10-new-krt-row-switches-percent-sign-notation-across-period-cells" class="candidate-card">C006
+— eTable 10 new-KRT row switches percent-sign notation across period
+cells</h2>
+<p><strong>Candidate statement:</strong> The eTable 10
+new-kidney-replacement-therapy row changes percent-sign notation halfway
+across matched period cells.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi250040supp3_prod_1753124024.38098.pdf#page=18">Results
+Supplement — PDF p. 18</a>, eTable 10,
+<code>New kidney replacement therapy commenced during index ICU admission after commencing trial enteral nutrition [n (%)]</code>.</p>
+<p><strong>Source evidence:</strong> The first four cells print
+<code>33 (6.9)</code>, <code>26 (7.8)</code>, <code>22 (7.4)</code>, and
+<code>35 (6.6)</code> without <code>%</code>; the last four print
+<code>38 (6.9%)</code>, <code>33 (9.0%)</code>, <code>29 (8.2%)</code>,
+and <code>33 (6.8%)</code> with <code>%</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> All eight are percentage
+displays within one <code>[n (%)]</code> row, but <code>%</code> is
+absent from the first four and present in the final four.</p>
+<p><strong>Reasoning procedure:</strong> Use the shared row header and
+printed denominators to identify the common percentage field, reproduce
+the unsigned values, then compare notation across the row.</p>
+<p><strong>Calculation:</strong> <code>33/480×100=6.875%→6.9%</code>;
+<code>26/335×100=7.761…%→7.8%</code>;
+<code>22/298×100=7.383…%→7.4%</code>;
+<code>35/530×100=6.604…%→6.6%</code>. All reconcile at one decimal (0.05
+percentage-point rounding tolerance); the issue is notation, not a
+rate/count discrepancy.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The row
+header makes unsigned values interpretable as percentages, but the
+source gives no reason why only the final four cells carry
+<code>%</code> or which convention was intended.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct page inspection
+confirmed every target cell, the denominator basis, and the percent-sign
+split; arithmetic reproduced the displayed values.</p>
+<p><strong>Quality-control relevance:</strong> The within-row notation
+change can create inconsistent extraction of period-specific KRT
+percentages.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a systematic reviewer, meta-analyst, guideline developer, or data
+extractor could copy or parse period-specific KRT percentages
+inconsistently; no propagation or conclusion change is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm whether the switch
+was intentional and select one percent-sign convention for all eight
+new-KRT cells.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If a candidate is confirmed, later evidence products may copy a
+descriptive-statistic label, a decimal rendering, or percent-sign
+convention exactly as printed. This is why minor-looking consistency
+questions are preserved for human review. The supplied package does not
+establish that any later product copied these values, that an effect
+estimate changed, or that a clinical or study conclusion changed.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The package lacks participant-level data, analysis datasets, fitted
+model objects, and complete inferential internals; model-based results
+therefore were not independently refitted. Corrected-GEE and
+cause-specific-Cox reports do not fully state the common test statistic,
+interval construction, variance-estimator application, and sidedness
+needed for decisive manual P/CI reconstruction. Bootstrap quantile and
+Bayesian credible intervals were not treated as normal-theory
+intervals.</p>
+<p>The prospective protocol, SAP, PRO-SCAN, and external-feasibility
+materials are not matched final-result comparators by default.
+Candidate-specific missing definitions remain: C001's two endpoints,
+C003's Bayesian-row group summaries, and C004's possible distinct day-10
+mean analysis are not defined in the supplied sources. C002 does not
+state whether the comma was intentional; C005–C006 do not state the
+intended percent-sign convention. Reused derivatives served only as
+locators; no production proof, author manuscript, or correction history
+is supplied. The complete limitation record is <a
+href="review_1_5_1/limitations.md">limitations.md</a>.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each C ID, inspect the cited direct PDF page(s), confirm the
+exact printed form and comparator, identify any author/proof evidence
+outside this supplied package if available to the human reviewer, record
+the five blank adjudication fields on the card, and preserve the
+original stable ID regardless of the adjudication outcome. This report
+does not assign severity, acceptance, rejection, correction, or final
+disposition.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>The full review state, page coverage, relationship inventories,
+checker outputs, candidate ledger, evidence recheck, and quality audit
+are preserved under <a href="review_1_5_1/">review_1_5_1</a>. Candidate
+source links point to supplied direct PDF pages; reusable derivatives
+are provenance aids only. Recomputed <a
+href="review_1_5_1/source_hashes_after.sha256">direct-source hashes</a>
+exactly match the baseline, and recomputed <a
+href="review_1_5_1/reused_artifact_hashes_after.sha256">reused-artifact
+hashes</a> exactly match their baseline; no supplied source or reused
+artifact changed during review.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Runtime agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Output artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td><code>COORDINATOR-CURRENT-SESSION</code></td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td><code>run_state.md</code></td>
+</tr>
+<tr>
+<td>reuse asset curator</td>
+<td><code>reuse_asset_curator</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>evidence_asset_inventory.md</code></td>
+</tr>
+<tr>
+<td>main quantitative mapper</td>
+<td><code>main_mapper</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>extraction/main_quantitative_evidence.md</code></td>
+</tr>
+<tr>
+<td>protocol mapper 1</td>
+<td><code>support_protocol_1</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_protocol_pp01-32.md</code></td>
+</tr>
+<tr>
+<td>protocol mapper 2</td>
+<td><code>support_protocol_2</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_protocol_pp33-40.md</code></td>
+</tr>
+<tr>
+<td>SAP mapper</td>
+<td><code>support_sap</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_sap_pp01-31.md</code></td>
+</tr>
+<tr>
+<td>Results Supplement mapper 1</td>
+<td><code>support_results_1</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_results_supp_pp01-32.md</code></td>
+</tr>
+<tr>
+<td>Results Supplement mapper 2</td>
+<td><code>support_results_2</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>parts/support_results_supp_pp33-34.md</code></td>
+</tr>
+<tr>
+<td>numeric consistency reviewer</td>
+<td><code>numeric_checker</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/numeric_consistency.md</code></td>
+</tr>
+<tr>
+<td>cross-source consistency reviewer</td>
+<td><code>cross_source_checker</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/cross_source_consistency.md</code></td>
+</tr>
+<tr>
+<td>statistical pass 1</td>
+<td><code>statistical_pass_1</code></td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_1.md</code></td>
+</tr>
+<tr>
+<td>evidence rechecker</td>
+<td><code>evidence_rechecker</code></td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>verification/evidence_recheck.md</code></td>
+</tr>
+<tr>
+<td>statistical pass 2</td>
+<td><code>statistical_pass_2</code></td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>checkers/statistical_pass_2.md</code></td>
+</tr>
+<tr>
+<td>evidence quality auditor</td>
+<td><code>quality_auditor</code></td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td><code>quality/evidence_quality_audit.md</code></td>
+</tr>
+<tr>
+<td>report generator</td>
+<td><code>report_generator</code></td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td><code>report_generation.md</code></td>
+</tr>
+</tbody>
+</table>
+<p>The authoritative execution manifest is <a
+href="review_1_5_1/agent_execution_manifest.md">agent_execution_manifest.md</a>.</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Four-PDF package with 115 total
+pages; 42 pages have source-matched reusable page-level extraction,
+while 73 pages require fresh direct-source mapping, including 71
+protocol/SAP pages whose embedded text is known to be garbled and may
+require CPU rendering/OCR; the package also contains dense tables and
+figures requiring cross-source and two-pass statistical review. Relative
+to the 102-page/81-fresh calibration run, total scope and visual
+complexity support a bounded 50-75 minute planning range.</li>
+<li><strong>Total source units:</strong> 115</li>
+<li><strong>Fresh-source units:</strong> 73</li>
+<li><strong>Target elapsed minutes:</strong> 50-75</li>
+<li><strong>Started UTC:</strong> 2026-09-03T03:51:44Z</li>
+<li><strong>Finished UTC:</strong> 2026-09-03T07:12:42Z</li>
+<li><strong>Observed elapsed minutes:</strong> 201.0</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> CPU-only rendering and direct
+visual mapping of 71 previously uncovered protocol/SAP pages with
+unusable encoded text; severe shared-host CPU and swap contention;
+lossless consolidation of 121 provisional relationships; required
+direct-source rechecks and owner-specific artifact/link repairs</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token accounting and cost</h3>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Input tokens</th>
+<th style="text-align: right;">Output tokens</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Token-only API-equivalent estimate
+(USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete __</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000000 known; complete __</td>
+</tr>
+</tbody>
+</table>
+<p>The runtime exposed no authoritative token counts for the coordinator
+or any manifested specialist response. Each of the 15 agents therefore
+has an explicit <code>UNAVAILABLE</code> ledger record; no token count
+was estimated from text. The displayed zero is the known subtotal only
+and is not a complete package token count or cost. See <a
+href="review_1_5_1/token_usage_ledger.csv">token_usage_ledger.csv</a>
+and <a
+href="review_1_5_1/token_usage_summary.md">token_usage_summary.md</a>.
+Cached input/cache-write counts are input subsets and reasoning is an
+output subset; none is added again to total tokens. Any cost is a
+token-only API-equivalent estimate under the dated price snapshot, not
+an invoice.</p>
+</body>
+</html>

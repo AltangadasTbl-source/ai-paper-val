@@ -1,0 +1,25 @@
+# Workflow 1.5.1 Run State
+
+- **Profile:** 1.5.1
+- **Status:** COMPLETE
+- **Target basis:** Three direct PDF sources totaling 134 pages, with usable reusable extraction expected for 23 pages and fresh direct-source mapping required for 111 pages; the package has one short main article, one long 109-page support document, and one 16-page support document, requiring parallel mapping plus two complete statistical passes.
+- **Total source units:** 134
+- **Fresh-source units:** 111
+- **Target elapsed minutes:** 50-75
+- **Started UTC:** 2026-09-03T03:46:35Z
+- **Finished UTC:** 2026-09-03T05:33:39Z
+- **Observed elapsed minutes:** 107.1
+- **Target status:** EXCEEDED_TARGET
+- **Exceedance causes:** DOC-002's embedded text extraction was substitution-garbled, requiring fresh rendering and full visual inspection of 109 pages; CPU Tesseract was nonresponsive; the first high-reasoning evidence recheck returned no durable artifact and the full 13-candidate recheck was repeated in a fresh specialist.
+- **Current stage:** COMPLETE
+- **Scientific coverage status:** COMPLETE — 134/134 direct-source pages mapped; 88 N and 41 S relationships checked
+- **Candidate ledger status:** COMPLETE — C001-C013, all Pending Human Adjudication
+- **Statistical pass 1:** COMPLETE — 41/41 S relationships
+- **Statistical pass 2:** COMPLETE — 41/41 S relationships, 13/13 ledger IDs, no appended candidate
+- **Evidence recheck:** COMPLETE — 13/13 IDs; direct locator repairs applied to the ledger
+- **Evidence quality audit:** COMPLETE — C001-C013 and all coverage rows; supportable locator/arithmetic/category repairs applied
+- **Markdown report:** COMPLETE — 13 candidate cards assembled; final local metadata insertion in progress
+- **Token accounting:** COMPLETE — INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE; 15 manifested agents have UNAVAILABLE rows and no counts were estimated
+- **HTML rendering:** COMPLETE — standalone HTML with embedded CSS and table of contents
+- **Validation:** PASS — review_validation.json
+- **Limitations:** The first evidence-recheck agent did not return an artifact after extended direct-source inspection and was interrupted; a fresh retry agent was spawned to complete the same full C001-C013 mechanical scope. DOC-002 CPU OCR was nonresponsive, so direct rendered-page inspection was used.

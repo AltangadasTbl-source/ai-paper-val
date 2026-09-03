@@ -1,0 +1,25 @@
+# Workflow 1.5.1 Run State
+
+- **Profile:** 1.5.1
+- **Package root:** jama.2025.7710
+- **Run status:** COMPLETE
+- **Target basis:** Four supplied PDFs contain 72 total pages; the package combines a main article with three heterogeneous support documents, has reusable extraction for only part of the source set, and is expected to require substantial fresh native/layout mapping plus several cross-document and statistical relationship waves.
+- **Total source units:** 72
+- **Fresh-source units:** 66
+- **Target elapsed minutes:** 30-45
+- **Started UTC:** 2026-09-03T03:50:35Z
+- **Finished UTC:** 2026-09-03T04:29:52Z
+- **Observed elapsed minutes:** 39.3
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Scientific coverage status:** COMPLETE — 72 of 72 direct-source pages mapped; 80 stable numeric/reporting and 53 stable statistical relationships registered
+- **Candidate ledger status:** COMPLETE — C001, C002, C003, C004 registered
+- **Statistical pass 1 status:** COMPLETE — S001 through S053
+- **Statistical pass 2 status:** COMPLETE — fresh distinct agent covered S001 through S053 and C001 through C004; no new candidates appended
+- **Evidence recheck status:** COMPLETE — C001 through C004 mechanically rechecked against exact supplied PDF pages
+- **Evidence-quality audit status:** COMPLETE — C001 through C004, 72 source units, 80 N relationships, 53 S relationships, and both statistical passes audited; seven correctable assembly/provenance groups identified and repaired before report generation
+- **Markdown report status:** COMPLETE — four candidate evidence cards assembled
+- **HTML render status:** COMPLETE — standalone HTML rendered once from finalized Markdown
+- **Validation status:** PASS — review_validation.json contains no errors
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE — all 11 manifested executions have UNAVAILABLE records because this runtime exposed no authoritative response-level counts; known total 0 and known token-only cost USD 0.000000, complete total and price unavailable
+- **Limitations:** Current DOC-001 hash differs from the identity recorded by its older derivatives, so all 11 DOC-001 pages require fresh direct-source mapping; DOC-002 and DOC-003 lack reusable page-level scientific extraction and require fresh mapping of all 55 pages.

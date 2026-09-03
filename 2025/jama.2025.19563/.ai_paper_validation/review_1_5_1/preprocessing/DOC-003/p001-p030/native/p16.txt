@@ -1,0 +1,49 @@
+)
+
+n.lmvpa.10toInf_bouts.2859 = numeric(),
+minutes.lmvpa.10toInf_bouts.2859 = numeric(),
+n.mvpa.10toInf_bouts.3941 = numeric(),
+minutes.mvpa.10toInf_bouts.3941 = numeric(),
+stringsAsFactors = FALSE
+
+pb <- txtProgressBar(min = 0, max = length(files), style = 3)
+for (j in 1:length(files)) {
+name <- files[j]
+name.full <- paste0(file_path, name)
+id <- substr(name, 1, 3)
+visit <- substr(name, 5, 6)
+site <- substr(name, 8, 11)
+datai <- read.csv(name.full)
+colnames(datai) <- c("timestamp", "serialnumber", "axis1", "axis2", "axis3", "steps", "vectormagnitude",
+"capsense")
+ac <- datai$vectormagnitude
+timestamp <- ymd_hms(datai$timestamp)
+ac_mid <- midnight_to_midnight(ac, timestamp)
+wnw <- get_wear_flag(ac_mid, nonwear_0s_minimum_window = 90)
+valid.long <- get_valid_day_flag(wnw, validday_nonwear_maximum_window = 840)
+ac_imp <- impute_missing_data(ac_mid, wnw, valid.long)
+bouts_2185 <- BoutsOfPA(ac, valid.long, timestamp, bouts_min = bouts_min, bouts_max =
+bouts_max)[, -c(1:3)]
+bouts_2859 <- BoutsOfPA(ac, valid.long, timestamp, bouts_min = bouts_min, bouts_max =
+bouts_max)[, -c(1:3)]
+bouts_3941 <- BoutsOfPA(ac, valid.long, timestamp, bouts_min = bouts_min, bouts_max =
+bouts_max)[, -c(1:3)]
+bouts <- data.frame(cbind(
+id, visit, site,
+bouts_2185$n.bouts_from10toInf_minutes,
+bouts_2185$time.spent.in.bouts_from10toInf_minutes,
+bouts_2859$n.bouts_from10toInf_minutes,
+bouts_2859$time.spent.in.bouts_from10toInf_minutes,
+bouts_3941$n.bouts_from10toInf_minutes,
+bouts_3941$time.spent.in.bouts_from10toInf_minutes
+))
+
+}
+
+out_bouts <- rbind(out_bouts, bouts)
+setTxtProgressBar(pb, j)
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining, AI
+training, and similar technologies.
+
+

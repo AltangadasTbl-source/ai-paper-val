@@ -1,0 +1,40 @@
+Physical Activity Data Processing
+Accelerometry Data Collection and Processing
+Physical activity data were collected from participants using ActiGraph accelerometry devices (GT9X or
+CPIW) worn on the wrist. Participants were instructed to wear the devices for seven consecutive days
+during each scheduled visit, with each 7-day collection representing a typical week within that month.
+This approach allowed for sampling of physical activity while accounting for secular trends such as
+weather and holidays. Data collection occurred at baseline and continued monthly for a total of 12 visits.
+The accelerometers recorded activity counts per minute, which were processed to identify moderate-tovigorous physical activity (MVPA) using Montoye’s cut point of 3941 counts per minute. This threshold
+was selected based on validated criteria for classifying MVPA in adults.6 Activity data were collected as
+raw timestamped files in CSV format and imported into R for processing.
+Data Preprocessing
+For each file, accelerometry data were extracted, and relevant columns were renamed for consistency.
+The timestamp data were parsed to accurately reflect the date and time of each observation. Data were
+segmented into daily epochs from midnight to midnight to ensure standardized processing. Only days
+with at least 10 hours of wear time were considered valid for subsequent analysis. Wear and non-wear
+periods were identified using a 90-minute window of consecutive zero counts as the criterion for nonwear detection.7 Valid wear days were determined by applying a threshold of at least 10 hours of wear
+time per day. Missing data within valid days were imputed using interpolation methods to ensure
+continuity in physical activity monitoring. Days without valid accelerometry were assigned zero minutes
+of MVPA to reflect the assumption that no moderate-to-vigorous activity was performed during those
+periods.
+MVPA Calculation
+Activity intensity was classified as MVPA if the vector magnitude of accelerometer counts per minute
+was equal to or greater than 3941. For each valid wear day, the total number of MVPA minutes was
+computed and averaged across valid days for each visit. Additionally, sustained bouts of MVPA lasting at
+least 10 consecutive minutes were identified using the same threshold of 3941 counts per minute. The
+number of these bouts and the total duration spent in them were calculated for each valid wear day. The R
+code that was used for this calculation is provided below.
+Aggregation of MVPA Across Visits
+To obtain the average MVPA minutes per week across the study period, the total MVPA minutes per
+week from all valid wear periods were summed and divided by the number of available wear periods
+(maximum of 11 post-baseline visits). This approach provided an average estimate of weekly MVPA
+throughout the 12-month follow-up period.
+Actigraphy Compliance
+If the participant did not wear their monitor for at least 5 of their 7 assigned days, they were considered
+noncompliant. In this case, the participant was assigned 0 minutes for physical activity for that week (See
+eTable18 for further details and rationale).
+© 2025 American Medical Association. All rights reserved, including those for text and data mining, AI
+training, and similar technologies.
+
+

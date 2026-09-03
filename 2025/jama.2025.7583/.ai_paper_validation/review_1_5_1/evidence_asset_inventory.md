@@ -1,0 +1,36 @@
+# Reusable Evidence-Asset Inventory
+
+All assets listed here pre-existed this workflow. They were read only and are hashed in `reused_artifact_hashes_before.sha256`. Fitness is assessed for reuse as a locator, transcription aid, page map, or visual corroboration; direct source remains authoritative.
+
+| Asset group or exact asset | Asset kind | Exact source coverage | Fitness | Reuse decision and gap consequence |
+|---|---|---|---|---|
+| .ai_paper_validation/preprocessing/DOC-001-MAIN/native_text/page-001.txt through page-009.txt | Native PDF text, 9 files | DOC-001-MAIN PDF pp. 1-9, one file per same-numbered page | USABLE | Covers all 9 DOC-001 units. |
+| .ai_paper_validation/preprocessing/DOC-001-MAIN/normalized_text/page-001.txt through page-009.txt | Normalized text, 9 files | DOC-001-MAIN PDF pp. 1-9, one file per same-numbered page | DUPLICATE | Retained as a locator only; native text supplies the reusable coverage. |
+| .ai_paper_validation/preprocessing/DOC-001-MAIN/page_images/page-004.png through page-007.png | Rendered page images, 4 files | DOC-001-MAIN PDF pp. 4-7 | USABLE | Visual corroboration for the table, figure, and flow pages; no coverage gap. |
+| .ai_paper_validation/preprocessing/DOC-001-MAIN/ocr_text/page-004.txt through page-007.txt | OCR text, 4 files | DOC-001-MAIN PDF pp. 4-7 | USABLE | Supplemental transcription aid for the rendered pages; native text remains primary reused coverage. |
+| .ai_paper_validation/preprocessing/DOC-001-MAIN/page_manifest.json | Page manifest | DOC-001-MAIN PDF pp. 1-9 | USABLE | Exact page-to-derivative map. |
+| .ai_paper_validation/preprocessing/DOC-001-MAIN/page_manifest.md | Page manifest | DOC-001-MAIN PDF pp. 1-9 | DUPLICATE | Human-readable duplicate of the JSON manifest. |
+| .ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/native_text/page-001.txt through page-015.txt | Native PDF text, 15 files | DOC-004-RESULTS-SUPP PDF pp. 1-15, one file per same-numbered page | USABLE | Covers all 15 DOC-004 units. |
+| .ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/normalized_text/page-001.txt through page-015.txt | Normalized text, 15 files | DOC-004-RESULTS-SUPP PDF pp. 1-15, one file per same-numbered page | DUPLICATE | Retained as a locator only; native text supplies the reusable coverage. |
+| .ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/page_images/page-008.png through page-015.png | Rendered page images, 8 files | DOC-004-RESULTS-SUPP PDF pp. 8-15 | USABLE | Visual corroboration for eFigures and eTables; no coverage gap. |
+| .ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/ocr_text/page-008.txt through page-015.txt | OCR text, 8 files | DOC-004-RESULTS-SUPP PDF pp. 8-15 | USABLE | Supplemental transcription aid for rendered pages; native text remains primary reused coverage. |
+| .ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/page_manifest.json | Page manifest | DOC-004-RESULTS-SUPP PDF pp. 1-15 | USABLE | Exact page-to-derivative map. |
+| .ai_paper_validation/preprocessing/DOC-004-RESULTS-SUPP/page_manifest.md | Page manifest | DOC-004-RESULTS-SUPP PDF pp. 1-15 | DUPLICATE | Human-readable duplicate of the JSON manifest. |
+| .ai_paper_validation/document_outputs/package_manifest.md | Package source map | DOC-001 pp. 1-9; DOC-002 pp. 1-63; DOC-003 pp. 1-23; DOC-004 pp. 1-15; DOC-005 pp. 1-9 | PARTIAL | Useful for identities and page totals, but its prior audit routing is stale for 1.5.1 and cannot cover a page scientifically. |
+| .ai_paper_validation/document_outputs/DOC-001-MAIN/inventory_record.md | Document record | DOC-001-MAIN PDF pp. 1-9 | USABLE | Identity/page-count support only. |
+| .ai_paper_validation/document_outputs/DOC-001-MAIN/preprocessing_record.md | Preprocessing record | DOC-001-MAIN PDF pp. 1-9 | USABLE | Confirms native text and visual/OCR page coverage. |
+| .ai_paper_validation/document_outputs/DOC-001-MAIN/main_text_extractor_evidence.md | Source-location evidence map | DOC-001-MAIN PDF pp. 1-9; results-focused locations are explicit | PARTIAL | Useful source locator; native page text provides complete page coverage. |
+| .ai_paper_validation/document_outputs/DOC-002-PROTOCOL/inventory_record.md | Document record | DOC-002-PROTOCOL PDF pp. 1-63 | PARTIAL | Establishes identity and 63-page count; no per-page reusable extraction. |
+| .ai_paper_validation/document_outputs/DOC-002-PROTOCOL/preprocessing_record.md | Preprocessing record | DOC-002-PROTOCOL PDF pp. 1-63 | STALE | Records prior non-audit routing; no reusable extraction. All 63 pages remain fresh-required. |
+| .ai_paper_validation/document_outputs/DOC-002-PROTOCOL/results_supplement_extractor_record.md | Document record | DOC-002-PROTOCOL PDF pp. 1-63 | STALE | Records no extraction under an obsolete scope; all 63 pages remain fresh-required. |
+| .ai_paper_validation/document_outputs/DOC-003-ADMIN/inventory_record.md | Document record | DOC-003-ADMIN PDF pp. 1-23 | PARTIAL | Establishes identity and 23-page count; no per-page reusable extraction. |
+| .ai_paper_validation/document_outputs/DOC-003-ADMIN/preprocessing_record.md | Preprocessing record | DOC-003-ADMIN PDF pp. 1-23 | STALE | Records prior non-audit routing; no reusable extraction. All 23 pages remain fresh-required. |
+| .ai_paper_validation/document_outputs/DOC-003-ADMIN/results_supplement_extractor_record.md | Document record | DOC-003-ADMIN PDF pp. 1-23 | STALE | Records no extraction under an obsolete scope; all 23 pages remain fresh-required. |
+| .ai_paper_validation/document_outputs/DOC-004-RESULTS-SUPP/inventory_record.md | Document record | DOC-004-RESULTS-SUPP PDF pp. 1-15 | USABLE | Identity/page-count support only. |
+| .ai_paper_validation/document_outputs/DOC-004-RESULTS-SUPP/preprocessing_record.md | Preprocessing record | DOC-004-RESULTS-SUPP PDF pp. 1-15 | USABLE | Confirms native text and visual/OCR page coverage. |
+| .ai_paper_validation/document_outputs/DOC-004-RESULTS-SUPP/results_supplement_evidence_map.md | Source-location evidence map | DOC-004-RESULTS-SUPP PDF pp. 1-15 | PARTIAL | Useful source locator; native page text provides complete page coverage. |
+| .ai_paper_validation/document_outputs/DOC-005-SAP/inventory_record.md | Document record | DOC-005-SAP PDF pp. 1-9 | PARTIAL | Establishes identity and 9-page count; no per-page reusable extraction. |
+| .ai_paper_validation/document_outputs/DOC-005-SAP/preprocessing_record.md | Preprocessing record | DOC-005-SAP PDF pp. 1-9 | STALE | Records prior non-audit routing; no reusable extraction. All 9 pages remain fresh-required. |
+| .ai_paper_validation/document_outputs/DOC-005-SAP/results_supplement_extractor_record.md | Document record | DOC-005-SAP PDF pp. 1-9 | STALE | Records no extraction under an obsolete scope; all 9 pages remain fresh-required. |
+
+Asset count: 92 hashed reusable assets: 24 native-text files, 24 normalized-text files, 12 OCR-text files, 12 rendered-page images, 4 page-manifest files, and 16 document/package records or source-location maps. No existing reusable layout-text extraction, table/workbook extraction, Office source, or CSV source was found. No asset was unreadable. The only source-unit gaps are DOC-002-PROTOCOL pp. 1-63, DOC-003-ADMIN pp. 1-23, and DOC-005-SAP pp. 1-9 (95 pages total).

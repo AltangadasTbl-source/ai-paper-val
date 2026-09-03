@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.5.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.5.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.5.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#quantitative-quality-control-consistency-review"
+id="toc-quantitative-quality-control-consistency-review">Quantitative
+Quality-Control Consistency Review</a>
+<ul>
+<li><a href="#pending-human-adjudication"
+id="toc-pending-human-adjudication">Pending Human Adjudication</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--conflicting-printed-p-values-for-matched-day-60-mortality-result"
+id="toc-c001--conflicting-printed-p-values-for-matched-day-60-mortality-result">C001
+— Conflicting printed P values for matched day-60 mortality
+result</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</a>
+<ul>
+<li><a href="#source-integrity" id="toc-source-integrity">Source
+Integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+Execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+Performance</a></li>
+<li><a href="#token-accounting-and-cost"
+id="toc-token-accounting-and-cost">Token Accounting and Cost</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="quantitative-quality-control-consistency-review">Quantitative
+Quality-Control Consistency Review</h1>
+<h2 id="pending-human-adjudication">Pending Human Adjudication</h2>
+<p>This report records source-grounded quantitative reporting
+consistency observations for human review. It does not determine
+validity, importance, correction, or any paper-level conclusion. Every
+candidate below is <strong>Pending Human Adjudication</strong>.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete source coverage and two corrected independent statistical
+passes identified <strong>1</strong> stable quantitative reporting
+quality-control candidate: <code>C001</code>. The observation concerns
+differing printed P values for a matched day-60 mortality result. The
+available package does not establish whether the values were
+intentionally produced by distinct analyses or whether either display
+requires correction. No severity rating, AI disposition, or
+conclusion-impact judgment is made.</p>
+<p>Small preventable reporting defects can matter to downstream evidence
+extraction. That is a bounded quality-control consideration only: this
+review does not assert that any defect propagated, changed a conclusion,
+or caused harm.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains six supplied direct-source PDFs
+(<code>DOC-001</code> through <code>DOC-006</code>) and no supplied
+Office workbook, word-processing, or CSV source. Direct PDFs were the
+evidentiary authority. Existing native text, rendered pages, document
+records, and evidence maps were used only as source-linked locators or
+transcription aids; direct-source confirmation controlled candidate
+evidence.</p>
+<p>The reusable-asset inventory identified 58 eligible pre-existing
+assets: 28 native-text files, 20 rendered-page files, 7 document
+records, 2 evidence maps, and 1 preprocessing record. Reusable page
+coverage was limited to all 10 pages of <code>DOC-001</code> and all 18
+pages of <code>DOC-004</code>; the remaining 166 PDF pages were mapped
+through fresh direct-source extraction. Baseline source hashes are
+recorded in <a
+href="review_1_5_1/source_hashes_before.sha256">source_hashes_before.sha256</a>,
+and baseline reused-asset hashes are recorded in <a
+href="review_1_5_1/reused_artifact_hashes_before.sha256">reused_artifact_hashes_before.sha256</a>.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review covered every stable PDF-page unit in every supplied
+direct source. It prioritized numeric, denominator/proportion/total,
+inferential-statistical, cross-document numeric, measure/label/scale,
+and rate-versus-count consistency. Analysis-unit or population matters
+were considered only when they could create a concrete reporting
+inconsistency.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Direct source</th>
+<th style="text-align: right;">Units</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh-required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_combes_2025_oi_250087_1766516490.94011.pdf#page=1">jama_combes_2025_oi_250087_1766516490.94011.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a
+href="../joi250087supp1_prod_1766516490.96011.pdf#page=1">joi250087supp1_prod_1766516490.96011.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">153</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">153</td>
+<td style="text-align: right;">153</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a
+href="../joi250087supp2_prod_1766516490.96511.pdf#page=1">joi250087supp2_prod_1766516490.96511.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td><a
+href="../joi250087supp3_prod_1766516490.97011.pdf#page=1">joi250087supp3_prod_1766516490.97011.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">18</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-005</td>
+<td><a
+href="../joi250087supp4_prod_1766516490.97511.pdf#page=1">joi250087supp4_prod_1766516490.97511.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-006</td>
+<td><a
+href="../joi250087supp5_prod_1766516490.97511.pdf#page=1">joi250087supp5_prod_1766516490.97511.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>—</td>
+<td style="text-align: right;"><strong>194</strong></td>
+<td style="text-align: right;"><strong>28</strong></td>
+<td style="text-align: right;"><strong>166</strong></td>
+<td style="text-align: right;"><strong>194</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Excluded from this bounded review were broad methodology,
+clinical-care, novelty, misconduct, and raw-data audits. A coherent
+finite-precision display-zero P value alone was not eligible for a
+candidate. No such display-zero issue generated a stable ID in this
+review.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The complete numeric inventory contains <code>N001</code> through
+<code>N052</code> (52/52), and the numeric checker records an explicit
+no-candidate outcome for each. Checks included displayed arithmetic,
+totals, denominators, percentages, available-case populations, units,
+labels, and repeated source occurrences.</p>
+<p>The complete inferential-statistical inventory contains
+<code>S001</code> through <code>S024</code> (24/24). Corrected
+independent statistical pass 1 and pass 2 each record explicit
+completion for every canonical statistical relationship. The corrected
+records preserve <code>S021</code> as the day-30/day-60 mortality-figure
+relationship, <code>S022</code> as the MACE-figure relationship,
+<code>S023</code> as the RMST display relationship, and
+<code>S024</code> as the supplementary subgroup source occurrence.
+<code>C001</code> is revisited through <code>S008</code> and
+<code>S021</code>; no second candidate was created.</p>
+<table>
+<thead>
+<tr>
+<th>Review lane</th>
+<th>Complete scope</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numeric consistency</td>
+<td>N001-N052 (52/52)</td>
+<td>Complete; C001 context retained without a duplicate candidate</td>
+</tr>
+<tr>
+<td>Statistical pass 1, corrected</td>
+<td>S001-S024 (24/24)</td>
+<td>Complete; C001 implication retained</td>
+</tr>
+<tr>
+<td>Cross-source consistency, corrected</td>
+<td>N001-N052 and S001-S024</td>
+<td>Complete; C001 retained</td>
+</tr>
+<tr>
+<td>Mechanical evidence recheck</td>
+<td>C001 (1/1)</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Statistical pass 2, corrected</td>
+<td>S001-S024 and C001</td>
+<td>Complete; no new candidate</td>
+</tr>
+<tr>
+<td>Final evidence-quality audit</td>
+<td>C001; coverage; execution</td>
+<td>PASS_READY</td>
+</tr>
+</tbody>
+</table>
+<p>Durable coverage details are available in <a
+href="review_1_5_1/coverage_manifest.md">coverage_manifest.md</a>, <a
+href="review_1_5_1/relationships/numeric_relationship_inventory.md">numeric
+relationship inventory</a>, <a
+href="review_1_5_1/statistics/relationship_inventory.md">statistical
+relationship inventory</a>, <a
+href="review_1_5_1/checkers/statistical_pass_1_repair.md">corrected
+statistical pass 1</a>, and <a
+href="review_1_5_1/checkers/statistical_pass_2_repair.md">corrected
+statistical pass 2</a>.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>Stable ID</th>
+<th>Candidate</th>
+<th>Category</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--conflicting-printed-p-values-for-matched-day-60-mortality-result">C001</a></td>
+<td>Conflicting printed P values for matched day-60 mortality
+result</td>
+<td>Cross-document numeric inconsistency</td>
+<td>Pending Human Adjudication</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--conflicting-printed-p-values-for-matched-day-60-mortality-result" class="candidate-card">C001
+— Conflicting printed P values for matched day-60 mortality result</h2>
+<p><strong>Candidate statement:</strong> The supplied main article
+prints <code>P = .78</code> for the matched day-60 mortality comparison,
+while the directly referenced supplementary eFigure 2 prints
+<code>p = 0.56, Log-rank</code> for the same day-60 endpoint, randomized
+groups, and terminal cumulative deaths. The package does not identify
+the analysis that produced <code>.78</code>, so whether these displays
+are intentionally distinct or constitute a reporting mismatch requires
+human adjudication.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_combes_2025_oi_250087_1766516490.94011.pdf#page=1">DOC-001
+— PDF p. 1</a> (abstract); <a
+href="../jama_combes_2025_oi_250087_1766516490.94011.pdf#page=3">DOC-001
+— PDF p. 3</a> (statistical methods); <a
+href="../jama_combes_2025_oi_250087_1766516490.94011.pdf#page=4">DOC-001
+— PDF p. 4</a> (Results and eFigure 2 cross-reference); <a
+href="../joi250087supp2_prod_1766516490.96511.pdf#page=7">DOC-003 — PDF
+p. 7</a> (planned mortality analysis); and <a
+href="../joi250087supp3_prod_1766516490.97011.pdf#page=11">DOC-004 — PDF
+p. 11</a> (Supplement 3 eFigure 2).</p>
+<p><strong>Source evidence:</strong> DOC-001 reports day-60 mortality as
+28/101 (27.7%) in the levosimendan group and 26/104 (25.0%) in the
+placebo group, with a 2.7 percentage-point risk difference (95% CI, -9.0
+to 15.3), RR 1.11 (95% CI, 0.70-1.75), and <code>P = .78</code>. The
+Results expressly directs the reader to eFigure 2. DOC-004 eFigure 2
+displays the same day-60 terminal cumulative deaths, 28 and 26, and
+labels its P value <code>p = 0.56, Log-rank</code>.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported prose P value:
+<code>.78</code> for the day-60 mortality result in DOC-001. Comparator:
+<code>.56</code>, expressly labelled <code>Log-rank</code>, for the
+matched day-60 mortality panel in DOC-004 eFigure 2. The matched counts,
+endpoint, time point, group labels, and treatment contrast align.</p>
+<p><strong>Reasoning procedure:</strong> Compare only the supplied
+matched result locations and their printed analysis labels. A P value
+can differ when it arises from a distinct defined analysis; therefore
+this card does not assume that the prose value is log-rank. If the two
+values are intended as the same day-60 mortality inferential result,
+they should not differ by ordinary display rounding.</p>
+<p><strong>Calculation:</strong> <code>28 / 101 = 0.2772</code>,
+rounding to 27.7%; <code>26 / 104 = 0.2500</code>, or 25.0%; and
+<code>27.72% - 25.00% = 2.72</code> percentage points, rounding to the
+printed 2.7. Thus the counts, denominators, percentages, and risk
+difference reconcile. The printed P-value difference is
+<code>.78 - .56 = .22</code>, which cannot be two rounded displays of
+one underlying P value. No P value was reconstructed from the RR
+confidence interval because a binary RR interval and a time-to-event
+log-rank test need not represent the same analysis.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> DOC-001
+describes categorical-outcome testing with chi-square or Fisher exact
+tests and censored outcome testing with log-rank tests, while DOC-004
+expressly labels <code>.56</code> as log-rank. Thus <code>.78</code>
+could represent an unnamed fixed-time categorical or another distinct
+analysis, rather than the figure's log-rank result. This is an inferred
+reconciliation possibility, not a definition printed with
+<code>.78</code>.</p>
+<p><strong>Mechanical evidence recheck:</strong> All cited locations and
+printed values were directly rechecked. The supplied package identifies
+the endpoint, time point, groups, denominators, counts, proportions,
+risk difference, RR, prose P value, figure P value, figure test label,
+and planned mortality/log-rank method. It does not identify the prose
+<code>.78</code> test/model, estimand, adjustment, analysis population,
+censoring rule, or complete event/risk-set data. Direct observation is
+separated from the possible distinct-analysis explanation in <a
+href="review_1_5_1/verification/evidence_recheck.md">evidence_recheck.md</a>.</p>
+<p><strong>Quality-control relevance:</strong> The same endpoint, time
+point, randomized groups, counts, and direct supplement reference have
+two different printed P values without a supplied definition that
+reconciles them. This is a candidate consistency issue for human review,
+not a determination that either value is incorrect.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+adjudication confirms a reporting mismatch, a systematic reviewer,
+meta-analyst, guideline developer, or data extractor could copy a
+different P value depending on whether the main prose or supplementary
+figure is used. This is a bounded possibility; this review does not
+claim that such propagation, conclusion change, or harm occurred.</p>
+<p><strong>Human verification steps:</strong> Identify the exact
+test/model, estimand, analysis population, adjustment, and
+time-to-event/censoring rule that generated <code>.78</code>; compare it
+with the labelled eFigure 2 log-rank analysis and the planned mortality
+analysis; then determine whether the two displays intentionally
+represent distinct analyses or whether one requires correction.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>Quantitative reporting consistency matters because source values may
+later be transcribed into evidence tables, systematic reviews,
+meta-analyses, guidelines, or other evidence products. For C001, the
+bounded concern is selection of different printed P values from two
+supplied locations if a human reviewer confirms they should represent
+the same analysis. This report makes no claim that any downstream reuse
+occurred or that the study conclusion changes.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<ul>
+<li>The package does not identify the test/model, estimand, adjustment,
+analysis population, or censoring rule behind prose <code>P=.78</code>
+for day-60 mortality.</li>
+<li>Individual death times, censoring times, and complete risk-set
+information needed to independently reproduce the eFigure 2 log-rank
+result are not supplied.</li>
+<li>Some model-derived intervals and curve coordinates cannot be
+independently regenerated from aggregate displays; checks were limited
+to supported arithmetic, ordering, direction, labels, precision, and
+matched-location comparisons.</li>
+<li>No reusable page-level extraction existed for DOC-002, DOC-003,
+DOC-005, or DOC-006. This was an evidence-asset limitation, not a
+scientific-coverage gap, because every page was freshly mapped.</li>
+</ul>
+<p>These limitations preserve the exact human question for C001 and do
+not leave a direct source unit or canonical numeric/statistical
+relationship unmapped. See <a
+href="review_1_5_1/limitations.md">limitations.md</a>.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ul>
+<li>Confirm that each cited PDF page and printed value has been reviewed
+against the supplied direct source.</li>
+<li>For C001, establish the exact analytical provenance of prose
+<code>.78</code>, including test/model, estimand, population,
+adjustment, and time-to-event/censoring handling.</li>
+<li>Compare that provenance with eFigure 2's labelled log-rank analysis
+and the prespecified mortality analysis.</li>
+<li>Decide whether the two P values intentionally represent distinct
+analyses or whether a correction is warranted.</li>
+<li>Complete the five blank human-adjudication fields in the candidate
+card. No AI validity, importance, or action determination is supplied
+here.</li>
+</ul>
+<h2
+id="reproducibility-source-integrity-agent-execution-performance-token-usage-and-cost-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, Performance, Token-Usage, and Cost
+Metadata</h2>
+<h3 id="source-integrity">Source Integrity</h3>
+<p>Six direct-source PDFs and 58 reused evidence assets were SHA-256
+hashed before review. The final evidence-quality audit recorded that all
+six direct-source hashes and all 58 reused-asset hashes matched their
+baseline records, with no source or reused asset changed. Source
+identity, page counts, and classification are recorded in <a
+href="review_1_5_1/source_inventory.md">source_inventory.md</a>;
+reused-asset fitness and coverage are recorded in <a
+href="review_1_5_1/evidence_asset_inventory.md">evidence_asset_inventory.md</a>.</p>
+<h3 id="agent-execution">Agent Execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>root/reuse_asset_curator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>evidence_asset_inventory.md</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>root/main_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>root/support_mapper</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>root/numeric_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>root/cross_source_reviewer</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistics_pass_1</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>root/evidence_rechecker</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistics_pass_2</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>root/quality_auditor</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1_repair</td>
+<td>root/statistics_pass_1_repair</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1_repair.md</td>
+</tr>
+<tr>
+<td>cross_source_repair</td>
+<td>root/cross_source_repair</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency_repair.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2_repair</td>
+<td>root/statistics_pass_2_repair</td>
+<td>gpt-5.6-terra</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2_repair.md</td>
+</tr>
+<tr>
+<td>quality_control_auditor_final</td>
+<td>root/quality_auditor_final</td>
+<td>gpt-5.6-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit_final.md</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>root/report_generator</td>
+<td>gpt-5.6-terra</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>report_generation_record.md</td>
+</tr>
+</tbody>
+</table>
+<p>The execution manifest is retained in <a
+href="review_1_5_1/agent_execution_manifest.md">agent_execution_manifest.md</a>.
+The two required original statistical passes were distinct fresh
+<code>gpt-5.6-terra</code> high-effort agents; corrective passes were
+also separately recorded.</p>
+<h3 id="reproducibility-performance">Reproducibility Performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Six supplied PDFs contain 194 pages,
+including one 153-page protocol/SAP-scale supplement, several table- and
+figure-bearing result supplements, and a 10-page main article. Existing
+page-level native text is visibly available for 28 pages and
+document-map assets may reduce fresh extraction, but the remaining page
+burden and expected cross-document/statistical relationship volume make
+this materially larger than the 102-page calibration package.</li>
+<li><strong>Total source units:</strong> 194</li>
+<li><strong>Fresh-source units:</strong> 166</li>
+<li><strong>Target elapsed minutes:</strong> 70-105</li>
+<li><strong>Started UTC:</strong> 2026-09-03T03:45:59Z</li>
+<li><strong>Finished UTC:</strong> 2026-09-03T04:58:46Z</li>
+<li><strong>Observed elapsed minutes:</strong> 72.8</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<h3 id="token-accounting-and-cost">Token Accounting and Cost</h3>
+<p>The accounting window runs from <code>Started UTC</code> through
+<code>Finished UTC</code> and includes the coordinator and every
+manifested specialist response. Counts must be authoritative runtime/API
+usage only; cached input and cache-write tokens are input subsets, and
+reasoning tokens are an output subset, not additional total tokens.
+Amounts are token-only API-equivalent estimates under the dated pricing
+snapshot, not invoices.</p>
+<ul>
+<li><strong>Token accounting status:</strong>
+INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</li>
+<li><strong>Total-token count status:</strong> INCOMPLETE</li>
+<li><strong>Total tokens:</strong> 0</li>
+<li><strong>Known token cost (USD):</strong> 0.000000</li>
+<li><strong>Estimated complete token cost (USD):</strong> __</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Responses</th>
+<th style="text-align: right;">Total tokens</th>
+<th style="text-align: right;">Known token cost (USD)</th>
+<th>Complete cost status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpt-5.6-sol</td>
+<td style="text-align: right;">4 unavailable agent records</td>
+<td style="text-align: right;">0 known</td>
+<td style="text-align: right;">0.000000</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>gpt-5.6-terra</td>
+<td style="text-align: right;">11 unavailable agent records</td>
+<td style="text-align: right;">0 known</td>
+<td style="text-align: right;">0.000000</td>
+<td>INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<p>Per-agent details and the deterministic rollups are retained in
+<code>review_1_5_1/token_usage_ledger.csv</code> and
+<code>review_1_5_1/token_usage_summary.md</code> after coordinator
+finalization.</p>
+</body>
+</html>

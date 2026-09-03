@@ -1,0 +1,25 @@
+# Workflow 1.5.1 Run State
+
+- **Profile:** 1.5.1
+- **Status:** COMPLETE
+- **Target basis:** Six supplied PDFs contain 194 pages, including one 153-page protocol/SAP-scale supplement, several table- and figure-bearing result supplements, and a 10-page main article. Existing page-level native text is visibly available for 28 pages and document-map assets may reduce fresh extraction, but the remaining page burden and expected cross-document/statistical relationship volume make this materially larger than the 102-page calibration package.
+- **Total source units:** 194
+- **Fresh-source units:** 166
+- **Target elapsed minutes:** 70-105
+- **Started UTC:** 2026-09-03T03:45:59Z
+- **Finished UTC:** 2026-09-03T04:58:46Z
+- **Observed elapsed minutes:** 72.8
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+- **Scientific coverage status:** MAPPING_COMPLETE_194_OF_194
+- **Candidate ledger status:** COMPLETE_1_CANDIDATE
+- **Statistical pass 1 status:** COMPLETE_24_OF_24
+- **Statistical pass 2 status:** COMPLETE_24_OF_24
+- **Evidence recheck status:** COMPLETE_C001
+- **Quality audit status:** COMPLETE_PASS_READY_AFTER_7_REPAIRS
+- **Markdown report status:** COMPLETE
+- **Token accounting status:** INCOMPLETE_RUNTIME_USAGE_UNAVAILABLE
+- **HTML render status:** COMPLETE
+- **Mechanical validation status:** PASS
+- **Runtime limitations:** Authoritative coordinator and specialist token counts are not exposed in the current orchestration interface; record UNAVAILABLE unless later runtime metadata is exposed.
+- **Recorded repair trigger:** The first evidence-quality audit found canonical statistical-ID drift for S021-S023 in both statistical passes and related cross-source attribution drift; fresh explicitly configured corrective reviewers are required. It also identified five mechanical/provenance repairs documented in quality/evidence_quality_audit.md.
