@@ -27,7 +27,7 @@ STATISTICAL_ROUTING_CATEGORIES = {
 }
 
 OUT_DIR = Path(__file__).resolve().parent
-ROOT = OUT_DIR.parents[1]
+ROOT = OUT_DIR.parents[2]
 SOURCE = ROOT / "meta_report" / "consistency_reclassification_2026-09-04" / "reclassified_candidates.json"
 
 
@@ -51,7 +51,7 @@ def repo_href(source_href: str) -> str:
         return source_href
     marker = "ai-paper-results/"
     if marker in source_href:
-        return "../../" + source_href.split(marker, 1)[1]
+        return "../../../" + source_href.split(marker, 1)[1]
     return source_href
 
 
@@ -98,13 +98,13 @@ def compact_row(row: dict[str, object]) -> dict[str, object]:
             {"label": link.get("label", "Source"), "href": repo_href(str(link.get("href", "")))}
             for link in row.get("sourceLinks", [])
         ],
-        "reportHref": "../../" + str(row.get("reportHref", report_path)).split("ai-paper-results/", 1)[-1],
+        "reportHref": "../../../" + str(row.get("reportHref", report_path)).split("ai-paper-results/", 1)[-1],
         "reportPath": report_path,
         "primary": row["primary"],
         "relations": row.get("relations", []),
         "rationale": row.get("rationale", ""),
         "evidencePaths": [
-            {"label": path, "href": "../../" + str(path)} for path in row.get("evidence_paths", [])
+            {"label": path, "href": "../../../" + str(path)} for path in row.get("evidence_paths", [])
         ],
         "ambiguity": row.get("ambiguity", ""),
         "duplicateOfCoding": row.get("duplicate_of", ""),

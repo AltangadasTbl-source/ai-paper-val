@@ -54,15 +54,14 @@ V1 snapshots are not accepted by this interface and are not migrated automatical
 
 ## Source links
 
-The v.2.0.1 files are stored two directory levels below the repository root. Their links are generated for this location and point back into the paper packages and validation records in this repository. If the HTML files are moved elsewhere, source links may need to be rebuilt.
+The archived v.2.0.1 files are stored three directory levels below the repository root. Their links are generated for this archived location and point back into the paper packages and validation records in this repository. If the HTML files are moved elsewhere, source links may need to be rebuilt.
 
 ## Rebuilding and validating
 
 From the repository root, run:
 
 ```bash
-python3 human_adjudication/human_adjudication_v_2_0_1/build_v_2_0_1.py
+python3 human_adjudication/previous/human_adjudication_v_2_0_1/build_v_2_0_1.py
 ```
 
 The builder verifies all 412 unique keys, expected per-year counts, document-relationship totals, referenced report paths, embedded JSON, and required v.2.0.1 markers before writing `VALIDATION.md`.
-
