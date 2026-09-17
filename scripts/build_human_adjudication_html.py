@@ -8,6 +8,7 @@ identification fields from the current package-level final report in each
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import re
@@ -18,6 +19,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "human_adjudication"
 YEARS = ("2018", "2019", "2024", "2025")
+# Deployed HTML files live in:
+#   ai-paper-val-results/human_adjunction_records/
+# The source year folders live in the sibling ai-paper-results/ directory.
+DEPLOYED_RESULTS_ROOT = "../../ai-paper-results"
 
 
 def output_for(year: str) -> Path:
@@ -104,7 +109,7 @@ def resolve_href(report: Path, target: str) -> str:
         relative = resolved.relative_to(ROOT)
     except ValueError:
         return target
-    href = "../" + relative.as_posix()
+    href = f"{DEPLOYED_RESULTS_ROOT}/{relative.as_posix()}"
     if separator:
         href += "#" + fragment
     return href
@@ -195,23 +200,26 @@ def parse_report(year: str, package: Path, report: Path) -> list[dict[str, objec
                 "sourceStatus": contextual_status(current_section, versioned),
                 "locations": clean_inline_markdown(location),
                 "sourceLinks": source_links(report, location),
-                "reportHref": "../" + report_target.relative_to(ROOT).as_posix(),
+                "reportHref": f"{DEPLOYED_RESULTS_ROOT}/{report_target.relative_to(ROOT).as_posix()}",
                 "reportPath": report.relative_to(ROOT).as_posix(),
             }
         )
     return candidates
 
 
-def collect() -> tuple[list[dict[str, object]], list[Path]]:
+def collect(years: tuple[str, ...] = YEARS) -> tuple[list[dict[str, object]], list[Path]]:
     candidates: list[dict[str, object]] = []
     reports: list[Path] = []
     packages: list[tuple[str, Path]] = []
-    for year in YEARS:
-        for package in sorted(path for path in (ROOT / year).iterdir() if path.is_dir()):
+    for year in years:
+        year_dir = ROOT / year
+        if not year_dir.is_dir():
+            raise FileNotFoundError(f"Year directory not found: {year_dir.relative_to(ROOT)}")
+        year_packages = sorted(path for path in year_dir.iterdir() if path.is_dir())
+        if not year_packages:
+            raise RuntimeError(f"No paper packages found in {year_dir.relative_to(ROOT)}")
+        for package in year_packages:
             packages.append((year, package))
-
-    if len(packages) != 45:
-        raise RuntimeError(f"Expected 45 paper packages, found {len(packages)}")
 
     for year, package in packages:
         report = select_report(package)
@@ -226,7 +234,7 @@ def collect() -> tuple[list[dict[str, object]], list[Path]]:
     if duplicates:
         raise RuntimeError(f"Duplicate combined candidate keys: {duplicates}")
 
-    candidates.sort(key=lambda item: (YEARS.index(str(item["year"])), str(item["package"]), int(item["number"])))
+    candidates.sort(key=lambda item: (years.index(str(item["year"])), str(item["package"]), int(item["number"])))
     return candidates, reports
 
 
@@ -379,7 +387,7 @@ HTML_TEMPLATE = r'''<!doctype html>
     <div id="empty" class="empty" hidden>No candidates match the current filters.</div>
   </main>
 
-  <footer class="page">Keys use <code>year / package / candidate ID</code>, because candidate numbering restarts in every paper. Source-report dispositions are context only; the joint decision is recorded independently.</footer>
+  <footer class="page">Keys use <code>year / package / candidate ID</code>, because candidate numbering restarts in every paper. Source-report dispositions are context only; the joint decision is recorded independently. Evidence links are relative to <code>../../ai-paper-results/</code>, for deployment from <code>ai-paper-val-results/human_adjunction_records/</code>.</footer>
 
   <div id="embedded-review-state" data-state="" hidden></div>
   <script id="candidate-data" type="application/json">__DATA_JSON__</script>
@@ -579,12 +587,27 @@ HTML_TEMPLATE = r'''<!doctype html>
 '''
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Build self-contained human-adjudication HTML for one or more years."
+    )
+    parser.add_argument(
+        "years",
+        nargs="*",
+        choices=YEARS,
+        default=list(YEARS),
+        help="Years to build (default: all available configured years).",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
-    candidates, reports = collect()
+    selected_years = tuple(parse_args().years)
+    candidates, reports = collect(selected_years)
     generated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    for year in YEARS:
+    for year in selected_years:
         year_candidates = [item for item in candidates if item["year"] == year]
         year_reports = [report for report in reports if report.relative_to(ROOT).parts[0] == year]
         digest = hashlib.sha256()
