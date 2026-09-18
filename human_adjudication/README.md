@@ -1,22 +1,18 @@
-# Human adjudication — XLSX workflow
+# Human adjudication — Markdown workflow
 
-当前版本为 [v.2.1.5.2](human_adjudication_v_2_1_5_2/USAGE.md)：**四份年度工作簿，每年一份，两轮均使用 新版 18 列布局**。基于 v.2.1.5.1 更新，Primary assessment 在初审阶段默认留空，复核交接后显示初审快照摘要，每篇论文一张 C_<paper> 表，自带说明、Codebook、候选和完整证据。XLSX 内全部为英文。
+当前版本为 [v.2.2.1](human_adjudication_v_2_2_1/README.md)，基于 v.2.1.5.3：**完全使用 Markdown，每篇论文一份文件，按年份分组**。共 45 篇论文、412 条候选；候选、来源、完整证据、AI 建议及关系均保留，未导入人工作答。
 
-| 年份 | 论文 | 候选 | 年度工作簿 |
-|---|---:|---:|---|
-| 2018 | 10 | 119 | [2018](human_adjudication_v_2_1_5_2/human_adjudication_v_2_1_5_2_2018.xlsx) |
-| 2019 | 10 | 71 | [2019](human_adjudication_v_2_1_5_2/human_adjudication_v_2_1_5_2_2019.xlsx) |
-| 2024 | 10 | 91 | [2024](human_adjudication_v_2_1_5_2/human_adjudication_v_2_1_5_2_2024.xlsx) |
-| 2025 | 15 | 131 | [2025](human_adjudication_v_2_1_5_2/human_adjudication_v_2_1_5_2_2025.xlsx) |
+| 年份 | 论文 | 候选 | 论文索引 |
+| --- | --- | --- | --- |
+| 2018 | 10 | 119 | [2018](human_adjudication_v_2_2_1/README.md#2018) |
+| 2019 | 10 | 71 | [2019](human_adjudication_v_2_2_1/README.md#2019) |
+| 2024 | 10 | 91 | [2024](human_adjudication_v_2_2_1/README.md#2024) |
+| 2025 | 15 | 131 | [2025](human_adjudication_v_2_2_1/README.md#2025) |
 
-模板从初审阶段开始，复核专用列暂时锁定。初审完成后，由管理者使用 prepare-checker 生成同布局的下一阶段工作副本；文件内保存初审快照、只读摘要和复核记录，Complete 重置为复核完成标记。初审备份保留，已有文件不覆盖。详细命令见 [USAGE.md](human_adjudication_v_2_1_5_2/USAGE.md)。
+每篇文件内含初审、复核／最终答案、讨论记录、候选证据、来源链接和论文计数。初审答案在交接后保留，复核人在最终列作答。状态检查与计数由人工完成；无需 Excel、脚本或额外导出步骤。
 
-四份模板合计 45 张论文表、412 条唯一候选；来源目录位于 resources 子目录。沿用 v.2.1.5.1 的 18 列布局和判断术语；本版将初审阶段的 Primary assessment 改为默认空白；两轮使用同一布局。[v.2.1.3](previous/human_adjudication_v_2_1_3/USAGE.md) 保留供参考。
+[使用与交接指南](human_adjudication_v_2_2_1/USAGE.md) · [Codebook](human_adjudication_v_2_2_1/CODEBOOK.md) · [设计与来源](human_adjudication_v_2_2_1/DESIGN.md) · [迁移检查](human_adjudication_v_2_2_1/VALIDATION.md)
 
-需要直接测试复核时，打开 [2019 TEST Checker ready](human_adjudication_v_2_1_5_2/examples/human_adjudication_v_2_1_5_2_2019_TEST_checker_ready.xlsx)。71 条模拟初审已完成，复核栏待填；[样例说明](human_adjudication_v_2_1_5_2/examples/README.md) 包含同意、分歧和改判测试步骤。
+P_R=45、P_P=50、S_C=65、S_W=252。协议和计划材料继续只作描述，不进入时间比较。所有历史版本及已有编辑保留于 previous；本版来源是 [v.2.1.5.3](previous/human_adjudication_v_2_1_5_3/USAGE.md)。后续 Excel 修复版 [v.2.1.5.4](previous/human_adjudication_v_2_1_5_4/USAGE.md) 也保留供历史参考。
 
-[设计说明](human_adjudication_v_2_1_5_2/DESIGN.md)、[验证记录](human_adjudication_v_2_1_5_2/VALIDATION.md) 随版本更新。
-
-Statistcal_or_numerical issue 替代 Statistical error。Report-internal or planning-material inconsistency 明确区分报告材料内部及计划材料之间的问题。该字段与 Protocol interpretation 均以 minor_presentation 和 non_inconsistency 吸收原 wording_only。Primary assessment 位于 M 列，Notes 位于 R 列。候选关系保持 P_R=45、P_P=50、S_C=65、S_W=252；协议和计划材料只作描述，不进入时间比较。旧版和已有编辑均保留，未导入旧版人工作答。
-
-Do not use any v_1_0_* build as a methodological reference, codebook source, migration input, or provenance baseline. The valid historical design lineage remains v.2.0.1 → v.2.0.2 → v.2.0.3 → v.2.0.4. New builds read the frozen XLSX catalog and do not depend on the HTML review application.
+Do not use any v_1_0_* build as a methodological reference, codebook source, migration input, or provenance baseline. The valid historical design lineage remains v.2.0.1 → v.2.0.2 → v.2.0.3 → v.2.0.4. v.2.2.1 uses the frozen v.2.1.5.3 catalog and does not depend on the HTML review application.
