@@ -1,0 +1,12 @@
+# Workflow 1.6.2 limitations and missing definitions
+
+All five supplied PDFs and all 119 physical pages were mapped. No source-access, missing-tool or scientific-coverage gap remains. Coverage of an administrative or reference page establishes inspection, without implying that it contains a quantitative result.
+
+The package does not contain participant-level records, executed statistical code, fitted model covariance/output, complete earlier SAP versions, contemporaneous prospective supersession documentation or the specific unreported analyses/components identified in the candidate cards. Documentary inconsistencies and package-limited absence can be reproduced from the supplied sources, while actual implementation, missing numerical outputs and the magnitude of any effect cannot be reconstructed. In particular, safety membership, readmission event/discharge timestamps, the basis of a possible global quality-of-life test, exact subgroup interval implementation, and the status of illustrative SAP commands remain bounded source questions. Absence in the supplied report union does not establish nonexecution or absence elsewhere.
+
+The original engine version for a subset of reusable support-source renders is not established in their retained provenance. Their source-page linkage and fitness were independently inspected, and fresh CPU Poppler confirmation renders were made where needed. This bounds derivative provenance; it does not leave a source unit unmapped. Complete current text was checked against direct source extraction.
+
+Eligible legacy metadata records combine extraction/location information with historical scientific summaries. Those summaries were incidentally exposed during metadata inspection and were excluded from discovery, coverage, candidate selection and classification reasoning. Only source identity and extraction/location metadata were reused. Historical candidate, checker, screening, verifier, critic, classification and final-report files were not scientific inputs. This exposure is retained transparently as a provenance limitation.
+
+The review applies the supplied Workflow 1.6.2 quantitative reporting scope. It does not audit raw data, general methodology, clinical decision making, novelty or misconduct, and it does not propose a preferred analysis. No external literature, sibling package or web source was used. Every stable candidate remains Pending Human Adjudication; reproduced evidence and inclusion-audit confirmation do not constitute human adjudication.
+

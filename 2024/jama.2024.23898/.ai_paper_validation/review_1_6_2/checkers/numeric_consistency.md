@@ -1,0 +1,75 @@
+# Numeric consistency review: main report shard
+
+Runtime agent ID: 01a129b6-9549-7683-b008-830f8e57970b. Role: numeric_consistency_reviewer, gpt-6.1-sol/medium, FRESH_SPAWN. Exact scope: DOC-001 REPORT physical PDF pp.1-10, stable N001-N110, every main flow box, baseline cell, primary/secondary/tertiary numeric display, Figure 2 risk/event relationship, all percentages, denominators, matched main-report quantities and effect-measure identity. Support-only numeric relationships are assigned to a distinct shard. Protocol comparisons and inferential/statistical claims are assigned to their specialist lanes; relevant N/S links remain explicit in the complete main inventory.
+
+Read QUALITY_CONTROL_SCOPE.md and workflow_1_6_2/review_contract.md completely. Evidence inputs were the current source inventory/tooling record, fresh main quantitative map and eligible source-linked extraction and page images. No prior findings, candidate sets, dispositions or reports supplied discovery inputs. Source confirmation: direct pdftotext -layout (Poppler 26.01.0) pp.1-8 and visual inspection of eligible source page images pp.3,4,6,7,8. No derivatives were produced and no source or reusable artifact was changed.
+
+Complete durable numeric record: [numeric relationship inventory](../relationships/numeric_relationship_inventory.md). Stable IDs N001-N110 retained without subdivision; all110 checked. All displayed descriptive means, SDs, medians, IQRs and sample counts checked for scale, sign, containment and compatible analysis population; inferential values remain cross-referenced to S001-S045.
+
+## Arithmetic and identity coverage
+
+Flow reconciles:1145−555=590;295+295=590;16+17=33;590−33=557;295−16=279;295−17=278;267+12=279;265+13=278;267+265=532. Both postrandomization reason lists and both treatment-nonreceipt reason lists sum to their displayed totals. Screening reason occurrences sum to664; the Figure 1 footnote expressly permits more than one reason, so this is not a555-person partition. All four questionnaire exclusion-reason partitions and completion-plus-exclusion totals reconcile with primary279/278; safety P279 explicitly includes one additional excluded drug recipient.
+
+Table 1 age, sex and operation partitions reconcile exactly to279/278. Pooled females122+127=249 and249/557=44.704%. Pooled age mean66.199 and SD10.846 are compatible with printed66(10.9) under the displayed-input intervals. Every participant numerator lies within its row-specific denominator. Eighty-eight displayed count/percentage pairs were recomputed: each recomputed half-unit input interval overlaps its printed percentage interval. This includes smoking, per protocol and PONV rows with explicit observed denominators. No count/percentage discrepancy survives the inclusion rule.
+
+Figure 2 decrements less inter-column recovery events give placebo censor counts[0,0,0,1,0,0,0] and lidocaine[0,1,0,0,0,1,1]; all are nonnegative. These events are between adjacent day columns, rather than same-column denominators. Curves rise monotonically. Recovery-event totals in Table 2 exceed72h successes and remain below their analysis populations; GI-2 event totals do not exceed GI-3 totals.
+
+Table 3 AE event counts75/65 exceed affected-person counts40/37; SAE counts4/9 equal affected-person counts4/9. Cumulative90d deaths2/3 do not fall below30d deaths1/2. Methods state surgical complications are outcome data rather than SAEs. No mismatch requires adding those independent event classes. The additional placebo safety participant and the unavailable discharge date are explicitly identified in footnotes; percentage consequences are within display precision.
+
+Dose identity:2%=20mg/mL;6mL/h×20mg/mL=120mg/h. Effect identities were checked against local prefixes and footnotes: HR follows Cox regression, LOS IRR follows negative-binomial regression, and signed continuous treatment effects follow the linear mixed time-by-treatment interaction. Adjusted effects were not required to equal crude differences or ratios. Numerical primary/PP results repeat exactly in their matching abstract/body/table locations. Statistical significance narrative, readmission-window and outcome-status relationships remain explicitly assigned to S041/S045 and the cross-source lane.
+
+## Findings
+
+No qualifying F-NUM finding in this disjoint main shard after complete review. This does not assess the independently assigned statistical or cross-source findings.
+
+## Excluded observations
+
+Each row is one apparent issue independently screened against the inclusion threshold; checks that simply reconcile are recorded above and in the inventory, rather than listed here.
+
+| Location | Observation | Reason code |
+|---|---|---|
+| REPORT DOC-001 [p.1 pooled age](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=1), [p.4 Table 1 age](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=4), N003,N025 | Nominal pooled SD10.8457 would round to10.8; rounding intervals of group SDs10.95-11.05 and10.65-10.75 permit pooled SD above10.85, overlapping printed10.9 interval10.85-10.95. Mean66.199 also overlaps integer66 interval65.5-66.5. Gap0. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT DOC-001 [p.6 Table 2 PONV day1](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=6), N050 |7/237×100=2.9536 vs printed2.9;input interval100×[6.5/237.5,7.5/236.5]=[2.7368,3.1712] overlaps[2.85,2.95]. Gap0. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT DOC-001 [p.3 Figure 1 safety and follow-up](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=3), N016,N018,N020 | Safety P279 versus questionnaire totals256+22=278 and246+32=278:footnote identifies the additional postrandomization exclusion;questionnaire follow-up refers to the main cohort. No primary-analysis size is left unclear. | CONTEXT_RESOLVES |
+| REPORT DOC-001 [p.8 Table 3 safety](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=8), N101,N103,N109 | P safety denominator279 in footnote vs278 heading changes37/denominator only from13.309% to13.262%,both compatible13.3;9/denominator3.237% versus3.226%,both compatible3.2. Half-unit intervals overlap;gap0. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT DOC-001 [p.8 Table 3 readmission and footnote c](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=8), N107,N109 |34/277×100=12.2744 vs12.2;input interval[100×33.5/277.5,100×34.5/276.5]=[12.0721,12.4774] overlaps[12.15,12.25]. Gap0. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT DOC-001 [p.8 discussion nonrecovery](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=8), [p.6 primary counts](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=6), N045,N110 |233/557=41.8312% vs40%;even treating233 as a single integer input gives[41.704,41.959] and printed[39.5,40.5],gap1.204/40=0.0301≤0.05;allowing both group recovery inputs only widens compatibility. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT DOC-001 [pp.6-7 Table 2 effect-column heading and footnote f](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=7), N053-N081,N098 | Shared relative-risk heading includes signed continuous effects;row labels and footnote f expressly identify linear mixed time-by-treatment effects. A field reader resolves the continuous-difference scale immediately;no evidence those numbers were computed as ratios. | TERMINOLOGY_OR_WORDING |
+| REPORT DOC-001 [p.6 Table 2 prolonged ileus](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=6), [p.7 footnotes](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=7), N049,N098 | IRR prefix on binary prolonged-ileus result1.13 appears beside relative-risk heading;fixed120h binary endpoint, counts and log-link footnote immediately identify risk scale. This naming observation provides no reproduced change in the displayed numerical quantity;model family is not inferred beyond the source. | TERMINOLOGY_OR_WORDING |
+| REPORT DOC-001 [p.6 Table 2 modeled contrasts](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=6), [p.7 footnotes c/f](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=7), N045,N046,N049,N054-N060,N064-N071,N073-N081 | Some adjusted differences differ from differences of displayed group means,including signed QoR day5/6/7 contrasts. Footnotes expressly give minimization-adjusted linear mixed time interactions;crude mean arithmetic cannot reproduce those models from summary cells. | MODEL_VERSUS_CRUDE |
+| REPORT DOC-001 [p.8 Figure 2 caption](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=8), [p.3 receipt counts](../../../jama_paterson_2024_oi_240139_1741633738.12862.pdf#page=3), N013,N016,N099 | Caption says patients who received treatment,whereas baseline risk table279/278 identifies primary randomized-included cohort rather than PP267/265. Immediate numeric table and analysis definitions identify the plotted groups;no result is assigned to a numerically indeterminate population. | TERMINOLOGY_OR_WORDING |
+
+## Completion and limitations
+
+NUMERIC_CHECK_COMPLETE for110/110 main numeric relationships;0 qualifying findings;10 excluded observations. Direct sources and reused assets preserved. No missing or unreadable assigned unit. Participant-level data and fitted model outputs were not supplied;model-derived effects are mapped and assigned to statistical specialists rather than reconstructed from crude summaries. Every source link ends in its truthful physical PDF page.
+# Numeric consistency checker: support shard
+
+Agent runtime ID: 01a129b6-b5e9-7d52-bfde-e8d7b31f3a04. Model: gpt-6.1-sol. Reasoning effort: medium. Start mode: FRESH_SPAWN. Scope contract and review contract read completely; tooling record confirms CPU and available direct Poppler tools.
+
+## Complete assigned scope
+
+Support-only numeric, count, denominator, intervention-dose and power-input arithmetic for DOC-002 PLAN pp.1–66; DOC-003 PLAN pp.1–40; DOC-004 REPORT pp.1–2; DOC-005 REPORT p.1. Stable relationships N111–N166 are documented in `relationships/parts/numeric_support_inventory.md`: 56 checked relationships. Every one of the 13 numeric subgroup rows and all five subgroup partitions was checked. Full source maps determine applicability for administrative, reference and signing pages. Main-only arithmetic and planned-versus-reported comparisons are disjoint assignments owned by other checkers. Statistical method and interval/P compatibility checks likewise belong to statistical checkers.
+
+The support canonical extraction is source-linked evidence, not an earlier scientific decision. Targeted native/layout source checks used direct CPU Poppler `pdftotext -f N -l N -layout SOURCE -`; DOC-002 pp.26,27,29,40,49,50,60 were reopened. DOC-004 p.2 source-linked reusable rendered image was opened visually, confirming all printed rows, n labels, forest positions and caption. Source and reused artifacts were preserved.
+
+## Findings
+
+No qualifying support numeric finding was emitted. Arithmetic for five dose-table rows, dose concentration/cap, equal allocation, absolute and relative power-input reductions, instrument ranges, Poisson mean/SD and printed recruitment-decision cutoffs reconciles. The subgroup sex, operation, age and ERAS partitions each sum to557. No arm-specific event numerator is supplied in the subgroup figure, so adjusted relative risks cannot be independently reconstructed from those n labels.
+
+## Excluded observations
+
+| Location | Observation | Reason code |
+|---|---|---|
+| REPORT [DOC-004 p.2](../../../joi240139supp3_prod_1741633738.18862.pdf#page=2), N157 | Intended-duration groups total271+261=532 whereas other binary partitions total557. Required half-unit propagation gives duration total[531,533] and operation/sex total[556,558], gap23;23/557=.041293<.05. Even unrounded25/557=.044883<.05. This apparent difference is below the mandated display-precision threshold; it is not a finding. | ROUNDING_OR_DISPLAY_PRECISION |
+| PLAN [DOC-002 p.60](../../../joi240139supp1_prod_1741633738.16362.pdf#page=60), N136 | Illustrative OBAS inputs1+4+0+0+0+1+(4−1) yield9 whereas example prints8. Applying mandated half-unit intervals to seven displayed inputs gives[5.5,12.5] (or[7,12.5] after restricting zero symptom scores to nonnegative values), overlapping printed8 interval[7.5,8.5];gap0,relative discrepancy0. Actual reported participant scores are not supplied in this example. | ROUNDING_OR_DISPLAY_PRECISION |
+| PLAN [DOC-002 p.27](../../../joi240139supp1_prod_1741633738.16362.pdf#page=27), N119 | 50kg dose-table rate prints3.75ml without '/hour'; column is infusion rate and adjacent rows use hourly units, while22.5/6=45/12=3.75. No printed numeric value differs. | NOTATION_OR_TYPOGRAPHY |
+| PLAN [DOC-003 p.32](../../../joi240139supp2_prod_1741633738.17362.pdf#page=32), N137 | PONV appendix prints '=5' versus dummy table≥5 and complete protocol instrument≥5; isolated symbol variation resolved by the full supplied scale and complementary<5/≥5 categories. No reported participant value conflicts. | NOTATION_OR_TYPOGRAPHY |
+| PLAN [DOC-003 p.18](../../../joi240139supp2_prod_1741633738.17362.pdf#page=18) and [p.31](../../../joi240139supp2_prod_1741633738.17362.pdf#page=31), N140 | Physiological POSSUM range12–88 may appear narrower than12×8=96, but source does not say every physiological variable permits score8. Item-specific attainable maxima are not supplied. Assuming all12 items have the largest category is unsupported. | CONDITIONAL_OR_UNREPORTED |
+| PLAN [DOC-002 p.49](../../../joi240139supp1_prod_1741633738.16362.pdf#page=49), N130 | Summing full-month exposures for two new sites each month6–11 would yield42centre-months rather than printed36. Exact within-month opening times are absent; midpoint activation gives2×(5.5+4.5+3.5+2.5+1.5+.5)=36. No source-supported activation date contradicts36. | CONDITIONAL_OR_UNREPORTED |
+| PLAN [DOC-002 p.49](../../../joi240139supp1_prod_1741633738.16362.pdf#page=49), N131 | Naive562/(12×20)=2.342 versus3.3 recruits per centre-month assumes all12sites accrue throughout20months, although text explicitly describes staged opening. The complete accrued centre-month denominator is not supplied as a fixed observed quantity. | CONDITIONAL_OR_UNREPORTED |
+
+## Limitations and scope handoff
+
+No scientific coverage gap remains in this shard. The absent arm-specific event counts, item-specific POSSUM score maxima, and within-month site activation dates are named inputs and prohibit unsupported conditional arithmetic. These are not omissions of source units. Inferential confidence convention, subgroup interaction testing, sample-size/power reproduction and planned-versus-reported comparison are retained for their assigned checker agents; this shard supplies their exact numeric source inputs without evaluating their findings.
+
+Counts: 56 relationships; 0 findings; 7 excluded observations; all 13 subgroup numeric rows and five partitions complete. Primary output: `checkers/parts/numeric_support.md`. Companion: `relationships/parts/numeric_support_inventory.md`.

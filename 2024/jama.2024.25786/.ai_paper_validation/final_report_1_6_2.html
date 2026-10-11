@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#traumox2-quantitative-reporting-quality-control-consistency-review--workflow-162"
+id="toc-traumox2-quantitative-reporting-quality-control-consistency-review--workflow-162">TRAUMOX2
+Quantitative Reporting Quality-Control Consistency Review — Workflow
+1.6.2</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#inclusion-screening-summary"
+id="toc-inclusion-screening-summary">Inclusion Screening
+Summary</a></li>
+<li><a href="#review-domain-summary"
+id="toc-review-domain-summary">Review-Domain Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--randomized-counts-carry-retained-or-analyzed-population-labels"
+id="toc-c001--randomized-counts-carry-retained-or-analyzed-population-labels">C001
+— Randomized counts carry retained or analyzed population
+labels</a></li>
+<li><a
+href="#c002--accrual-maximum-and-evaluable-target-use-unclear-populations"
+id="toc-c002--accrual-maximum-and-evaluable-target-use-unclear-populations">C002
+— Accrual maximum and evaluable target use unclear populations</a></li>
+<li><a
+href="#c003--prespecified-secondary-outcome-hierarchy-becomes-key-or-exploratory"
+id="toc-c003--prespecified-secondary-outcome-hierarchy-becomes-key-or-exploratory">C003
+— Prespecified secondary outcome hierarchy becomes key or
+exploratory</a></li>
+<li><a
+href="#c004--protocol-pneumonia-adjusted-primary-model-is-absent-from-reported-model-set"
+id="toc-c004--protocol-pneumonia-adjusted-primary-model-is-absent-from-reported-model-set">C004
+— Protocol pneumonia-adjusted primary model is absent from reported
+model set</a></li>
+<li><a
+href="#c005--planned-primary-outcome-hypoxemia-subgroup-is-not-reported"
+id="toc-c005--planned-primary-outcome-hypoxemia-subgroup-is-not-reported">C005
+— Planned primary-outcome hypoxemia subgroup is not reported</a></li>
+<li><a
+href="#c006--intubation-subgroup-changes-from-trauma-clock-to-randomization-status"
+id="toc-c006--intubation-subgroup-changes-from-trauma-clock-to-randomization-status">C006
+— Intubation subgroup changes from trauma clock to randomization
+status</a></li>
+<li><a
+href="#c007--planned-categorical-key-secondary-tests-are-replaced-by-logistic-models"
+id="toc-c007--planned-categorical-key-secondary-tests-are-replaced-by-logistic-models">C007
+— Planned categorical key-secondary tests are replaced by logistic
+models</a></li>
+<li><a
+href="#c008--ssi-risk-difference-interval-and-nominal-odds-ratio-tests-give-different-null-readings"
+id="toc-c008--ssi-risk-difference-interval-and-nominal-odds-ratio-tests-give-different-null-readings">C008
+— SSI risk-difference interval and nominal odds-ratio tests give
+different null readings</a></li>
+<li><a
+href="#c009--ssi-classification-criteria-differ-between-sap-and-results-supplement"
+id="toc-c009--ssi-classification-criteria-differ-between-sap-and-results-supplement">C009
+— SSI classification criteria differ between SAP and results
+supplement</a></li>
+<li><a
+href="#c010--icu-subgroup-membership-does-not-map-to-reported-icu-admission-counts"
+id="toc-c010--icu-subgroup-membership-does-not-map-to-reported-icu-admission-counts">C010
+— ICU subgroup membership does not map to reported ICU admission
+counts</a></li>
+<li><a
+href="#c011--liberal-ais-below-3-percentage-does-not-reconcile-across-displays-and-its-count-pair"
+id="toc-c011--liberal-ais-below-3-percentage-does-not-reconcile-across-displays-and-its-count-pair">C011
+— Liberal AIS below 3 percentage does not reconcile across displays and
+its count pair</a></li>
+<li><a
+href="#c012--bern-receiving-center-percentages-do-not-reconcile-with-printed-pairs"
+id="toc-c012--bern-receiving-center-percentages-do-not-reconcile-with-printed-pairs">C012
+— Bern receiving-center percentages do not reconcile with printed
+pairs</a></li>
+<li><a
+href="#c013--liberal-walk-in-percentage-differs-from-its-printed-count-pair"
+id="toc-c013--liberal-walk-in-percentage-differs-from-its-printed-count-pair">C013
+— Liberal walk-in percentage differs from its printed count
+pair</a></li>
+<li><a
+href="#c014--liberal-vascular-surgery-percentage-is-positive-beside-a-zero-numerator"
+id="toc-c014--liberal-vascular-surgery-percentage-is-positive-beside-a-zero-numerator">C014
+— Liberal vascular-surgery percentage is positive beside a zero
+numerator</a></li>
+<li><a
+href="#c015--exclusion-percentages-and-printed-denominators-describe-different-quantities"
+id="toc-c015--exclusion-percentages-and-printed-denominators-describe-different-quantities">C015
+— Exclusion percentages and printed denominators describe different
+quantities</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#source-integrity-and-tooling"
+id="toc-source-integrity-and-tooling">Source integrity and
+tooling</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="traumox2-quantitative-reporting-quality-control-consistency-review--workflow-162">TRAUMOX2
+Quantitative Reporting Quality-Control Consistency Review — Workflow
+1.6.2</h1>
+<blockquote>
+<p><strong>Pending Human Adjudication.</strong> Every candidate in this
+report remains Pending Human Adjudication. Reproduced evidence and
+confirmed inclusion describe quality-control records; they do not
+adjudicate the candidates or the paper.</p>
+</blockquote>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>This supplied-package quantitative reporting review identified
+<strong>15 stable candidates, C001–C015</strong>, after complete source
+mapping, independent inclusion screening, exact-source evidence recheck,
+two distinct statistical passes, and an inclusion and classification
+audit. Eight candidates concern statistical results and seven concern
+planned-versus-reported statistical design. All 15 have evidence state
+<code>reproduced</code> and inclusion audit <code>CONFIRMED</code>; none
+has inclusion audit <code>QUESTIONED</code>. Ten qualify through Route A
+and five through Route B.</p>
+<p>The reviewed package contains five PDFs and 144 pages. Reusable
+evidence supported 141 unique pages; fresh CPU visual mapping closed the
+three remaining protocol-figure pages. Every source has mapped units
+equal to total units. Review coverage includes 108 numeric relationship
+groups, 296 printed count/denominator/percentage cells, 92 statistical
+relationship groups in both passes, and 25 cross-source comparison
+groups. Independent screening evaluated 25 findings: 15 INCLUDE and 10
+SCREENED_OUT. The audit examined all 34 checker excluded-observation
+rows and identified no additional qualifying issue.</p>
+<p>Candidates concern population-count attribution, accrual-population
+definitions, outcome hierarchy and analysis specification, an unmatched
+planned subgroup, subgroup clocks, SSI event definitions and nominal
+uncertainty readings, ICU population mapping, and within-display
+count/percentage discrepancies. Their potential relevance is specific to
+how results and definitions could be extracted into evidence synthesis.
+The package does not establish downstream propagation or a changed
+paper-level conclusion.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>Document roles follow content. The bound protocol/SAP supplement is
+PLAN, including its prospective operational material; the
+completed-trial article and accompanying results and administrative
+documents are REPORT. Only supplied package evidence was used. Earlier
+candidate sets, dispositions, screening decisions and reports were
+preserved and were not scientific discovery inputs.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Actual supplied filename and source link</th>
+<th>Role</th>
+<th>Content</th>
+<th style="text-align: right;">PDF pages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=1">jama_arleth_2024_oi_240147_1738701765.27201.pdf</a></td>
+<td>REPORT</td>
+<td>Main TRAUMOX2 article</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=1">joi240147supp1_prod_1738701765.28701.pdf</a></td>
+<td>PLAN</td>
+<td>Original protocol v1.4 pp. 2–35; final protocol v1.8 pp. 36–77,
+including prospective DMSC charter pp. 68–73; change summary pp. 78–79;
+SAP v1.0 and supporting plan material pp. 80–103</td>
+<td style="text-align: right;">103</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=1">joi240147supp2_prod_1738701765.29201.pdf</a></td>
+<td>REPORT</td>
+<td>Results supplement: methods, figure, all 11 eTables and
+references</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td><a
+href="../joi240147supp3_prod_1738701765.30201.pdf#page=1">joi240147supp3_prod_1738701765.30201.pdf</a></td>
+<td>REPORT</td>
+<td>Collaborator list</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>DOC-005</td>
+<td><a
+href="../joi240147supp4_prod_1738701765.30701.pdf#page=1">joi240147supp4_prod_1738701765.30701.pdf</a></td>
+<td>REPORT</td>
+<td>Data-sharing statement</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>Five supplied PDFs</strong></td>
+<td></td>
+<td></td>
+<td style="text-align: right;"><strong>144</strong></td>
+</tr>
+</tbody>
+</table>
+<p>No Office, workbook or CSV direct source was supplied. The <a
+href="review_1_6_2/source_inventory.md">source inventory</a> records
+exact units, source roles and file sizes; <a
+href="review_1_6_2/source_hashes_before.sha256">source hashes</a> record
+all five identities.</p>
+<p>The <a href="review_1_6_2/evidence_asset_inventory.md">evidence-asset
+inventory</a> lists <strong>58 preserved reusable assets: 40 USABLE, 13
+PARTIAL and 5 DUPLICATE</strong>. These comprise native/layout text,
+rendered pages and crops, bounding-box location maps and source
+metadata. Their overlapping locations are not additive page coverage.
+All 58 were individually hashed in the <a
+href="review_1_6_2/reused_artifact_hashes_before.sha256">reused-asset
+hash record</a>. Legacy native extraction records pypdf without a
+version; historical image-engine and layout-command details are
+incompletely documented. Supplied source PDFs remain authoritative.
+Current fresh derivatives record Poppler 26.01.0 commands and CPU
+processing; broad OCR and Office conversion were unnecessary.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review covers counts and denominators, estimate and test logic,
+statistical method logic, and planned-versus-reported statistical design
+under the supplied scope. It includes abstract, Key Points, text,
+tables, figures, captions, footnotes, result supplements, original/final
+protocols, the amendment summary, SAP and prospective operational
+material. Administrative and bibliographic pages received explicit
+applicability assessment.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable-backed</th>
+<th style="text-align: right;">Fresh-required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td style="text-align: right;">103</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">103</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">26</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-005</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>144</strong></td>
+<td style="text-align: right;"><strong>141</strong></td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;"><strong>144</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Fresh-required PLAN pages <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=33">33</a>, <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=75">75</a> and <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=103">103</a> were
+directly rendered and visually mapped. Their embedded timelines and
+CONSORT figure were not covered by legacy native text. The <a
+href="review_1_6_2/source_coverage.md">final source coverage</a> and <a
+href="review_1_6_2/coverage_manifest.md">coverage manifest</a> document
+closure and disjoint assignments. No scientific source-coverage gap
+remains.</p>
+<p>This is quantitative reporting quality control. Broad clinical,
+study-design, novelty, misconduct and raw-data audits fall outside
+scope. Display-precision differences, display-zero P values alone,
+immediately resolvable wording, model-versus-crude comparisons without a
+source-specified crude estimator, unsupported conditional claims and
+peripheral comparisons fail inclusion unless an independent qualifying
+relationship is present. No alternative analysis is proposed. Repeated
+manifestations of one issue are consolidated with all affected locations
+retained.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<table>
+<thead>
+<tr>
+<th>Reviewed universe</th>
+<th>Complete coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numeric relationship groups</td>
+<td>108: 66 main-report groups N001–N066 and 42 support groups
+N201–N242</td>
+</tr>
+<tr>
+<td>Count/denominator/percentage cells</td>
+<td>296: 96 main-report and 200 support cells</td>
+</tr>
+<tr>
+<td>Statistical relationship groups</td>
+<td>92: S001–S092, each recorded PASS_1_COMPLETE and
+PASS_2_COMPLETE</td>
+</tr>
+<tr>
+<td>Cross-source comparison groups</td>
+<td>25 matched result and statistical-design comparisons</td>
+</tr>
+<tr>
+<td>Statistical pass 1</td>
+<td>Fresh task:/root/statistics_first; gpt-6.1-sol/high; five
+findings</td>
+</tr>
+<tr>
+<td>Statistical pass 2</td>
+<td>Distinct fresh task:/root/statistics_second; gpt-6.1-sol/high; zero
+new findings</td>
+</tr>
+<tr>
+<td>Excluded-observation audit</td>
+<td>33 prior checker rows revisited by pass 2, plus one pass-2 precision
+observation; all 34 audited</td>
+</tr>
+</tbody>
+</table>
+<p>Both statistical passes cover all 34 main inferential groups, 92
+supplementary printed estimate/interval sets including 66 printed P
+values, three dash-only myocardial-infarction model cells, eight main
+risk-difference contrasts, six subgroup interaction tests, and linked
+design, model, population, missingness, power, multiplicity, interim,
+stopping, outcome-status and subgroup specifications. They distinguish
+subgroup-specific inference from interaction tests and nominal inference
+from exploratory FDR decisions. Model-based estimates were not treated
+as crude ratios.</p>
+<p>The <a
+href="review_1_6_2/relationships/numeric_relationship_inventory.md">numeric
+inventory</a>, <a
+href="review_1_6_2/relationships/numeric_support_inventory.md">support
+numeric inventory</a>, <a
+href="review_1_6_2/statistics/relationship_inventory.md">statistical
+inventory</a>, <a
+href="review_1_6_2/checkers/statistical_pass_1.md">pass 1</a>, <a
+href="review_1_6_2/checkers/statistical_pass_2.md">pass 2</a> and <a
+href="review_1_6_2/checkers/cross_source_consistency.md">cross-source
+checker</a> retain the complete relationship records. Missing inputs
+constrain exact re-estimation of some model-based results, without
+leaving assigned relationships unreviewed. Pass 2 and the quality audit
+emitted no new findings; the conditional pass-2 inclusion-screen stage
+was therefore not triggered.</p>
+<h2 id="inclusion-screening-summary">Inclusion Screening Summary</h2>
+<p>Inclusion requires reproduced evidence and either an always-register
+Route A category or all Route B criteria: an in-focus relationship,
+unresolved immediate context, and relevance to a specific result's
+interpretation or extraction. Numeric comparisons apply conservative
+half-unit display intervals; remaining relative discrepancy at most 0.05
+is screened out. Route A interval-versus-test conflicts are not excluded
+by that relative-precision rule. Prospective SAP approval and precedence
+remain explicit context; they do not suppress reproduced always-register
+comparisons.</p>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Reason code</th>
+<th style="text-align: right;">Findings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCLUDE</td>
+<td>MEETS_THRESHOLD</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>DUPLICATE_OF_INCLUDED</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>CONTEXT_RESOLVES</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>CONDITIONAL_OR_UNREPORTED</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><strong>All decisions</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>25</strong></td>
+</tr>
+</tbody>
+</table>
+<p>All other screening reason codes have count zero: NOT_REPRODUCED,
+ROUNDING_OR_DISPLAY_PRECISION, NOTATION_OR_TYPOGRAPHY,
+TERMINOLOGY_OR_WORDING, MODEL_VERSUS_CRUDE, PERIPHERAL_COMPARISON and
+OUT_OF_FOCUS. Thus 15 included finding rows plus 10 screened-out finding
+rows reconcile to the single <a
+href="review_1_6_2/screening/inclusion_screen.md">screening table</a>.
+Checker emissions comprise eight numeric, 12 cross-source and five
+statistical-pass-1 findings. Duplicate rows preserve provenance and add
+no candidate. These screening-table counts are distinct from the 34
+self-screened excluded-observation rows audited separately.</p>
+<p>Ten stable candidates qualify through Route A and five through Route
+B. The <a href="review_1_6_2/quality/evidence_quality_audit.md">quality
+audit</a> reviewed all 25 screening decisions in both directions and all
+34 excluded observations. It confirmed 15 inclusions, questioned zero,
+and requested no new finding or screening amendment.</p>
+<h2 id="review-domain-summary">Review-Domain Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Review domain</th>
+<th>Definition</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>statistical_results</td>
+<td>Report-material counts, denominators, estimates, intervals, tests or
+statistical method logic</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td>report_internal_inconsistency</td>
+<td>Report-material conflict about the outcome, time point, analysis
+population or comparison belonging to a number</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>protocol_report</td>
+<td>Planned-versus-reported statistical design or analysis
+specification</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td>plan_material</td>
+<td>Plan-internal statistical design inconsistency relied on by the
+reported analysis</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>15</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Primary relationship type</th>
+<th>Definition</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P_R</td>
+<td>PLAN versus REPORT</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td>P_P</td>
+<td>Within PLAN material</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>S_C</td>
+<td>Between distinct REPORT documents</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>S_W</td>
+<td>Within one REPORT document</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>15</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Primary types use precedence P_R &gt; P_P &gt; S_C &gt; S_W. Each
+card also records every qualifying relationship; secondary relationships
+are not added to these mutually exclusive totals. A corroborating
+document alone does not create another relationship.</p>
+<table>
+<thead>
+<tr>
+<th>Evidence state</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reproduced</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr>
+<td>reproduced_after_transcription_correction</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>15</strong></td>
+</tr>
+</tbody>
+</table>
+<p>These counts reconcile to the <a
+href="review_1_6_2/candidate_ledger.md">ledger classification table</a>.
+The <a href="review_1_6_2/verification/evidence_recheck.md">exact-source
+recheck</a> and independent audit confirm the recorded source roles,
+precedence, domains and evidence states. Inclusion-audit totals are
+CONFIRMED 15 and QUESTIONED 0. All remain Pending Human
+Adjudication.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>Stable ID</th>
+<th>Review domain</th>
+<th>Relationship type</th>
+<th>Evidence state</th>
+<th>Inclusion audit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>statistical_results</td>
+<td>S_C</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>statistical_results</td>
+<td>S_C</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>statistical_results</td>
+<td>S_C</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C015</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<p>The complete cards below preserve every stable ID in source order.
+Every card has status Pending Human Adjudication.</p>
+<h2
+id="c001--randomized-counts-carry-retained-or-analyzed-population-labels" class="candidate-card">C001
+— Randomized counts carry retained or analyzed population labels</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The Abstract intervention
+counts 733/724 and Key Points total 1508 carry randomization
+descriptions, while the flow and population text distinguish 1979
+randomized, 983/994 allocated after two lost envelopes, 1508 completed
+and 1457 available for primary analysis.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main article
+Abstract and Key Points vs REPORT main article Figure 1 and Trial
+Population</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-001</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Both sides are REPORT
+content within the main article. The conflict concerns numeric
+population counts, so statistical_results and S_W apply; no PLAN content
+is a conflicting comparator.</p>
+<p><strong>Classification ambiguity:</strong> The document roles are
+clear. The intended population qualification of the short-section counts
+is unresolved.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=1">REPORT
+main PDF p. 1</a>; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=2">REPORT
+main PDF p. 2</a>; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=3">REPORT
+main PDF p. 3</a>; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=5">REPORT
+main PDF p. 5</a>.</p>
+<p><strong>Source evidence:</strong> The Abstract (p. 1) identifies
+restrictive n=733 and liberal n=724 as randomly assigned and separately
+states 1979 randomized and 1508 completed. Key Points (p. 2) describes
+1508 randomized adult trauma patients. Figure 1 (p. 3) identifies 1979
+randomized, two lost envelopes, 983/994 allocated, 750/758 receiving the
+strategies, and 733/724 in primary analysis. Trial Population (p. 5)
+repeats 1979 randomized, 1508 completed and 1457 primary-available.</p>
+<p><strong>Reported-versus-comparator:</strong> Randomization-associated
+short-section arm counts 733/724 versus allocation-stage counts 983/994;
+Key Points randomization-associated total 1508 versus total randomized
+1979. The primary-analysis denominators themselves agree across
+locations.</p>
+<p><strong>Reasoning procedure:</strong> Match each count to its printed
+population label and flow stage, then compare the differently attributed
+copies using half-unit display intervals. This compares sample-size
+attribution, rather than inferring a clinical or allocation-process
+consequence.</p>
+<p><strong>Calculation:</strong> For 733 versus 983, intervals [732.5,
+733.5] and [982.5, 983.5] have gap 249; 249/983=0.253306. For 724 versus
+994, intervals [723.5, 724.5] and [993.5, 994.5] have gap 269;
+269/994=0.270624. For 1508 versus 1979, intervals [1507.5, 1508.5] and
+[1978.5, 1979.5] have gap 470; 470/1979=0.237494. Each relative
+discrepancy exceeds 0.05.</p>
+<p><strong>Affected result or extracted value:</strong> Total and
+arm-level randomized sample sizes, distinct from completed and
+primary-analysis sample sizes.</p>
+<p><strong>Why context does not resolve it:</strong> The body permits
+reconstruction of the flow, but the Abstract and Key Points do not
+themselves qualify the randomization-associated counts as retained or
+analyzed participants. Their printed labels leave different
+randomized-size readings available to extraction.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+“Randomized” may describe membership in a retained randomized cohort,
+with the Abstract counts intentionally denoting analyzed participants
+and Key Points denoting completed participants. The body supports that
+possibility without expressly resolving the short-section population
+labels.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found all four registered main-article locations and visually confirmed
+both short-section readings. All three half-unit interval gaps remain
+above 0.05. No raw data are required; the missing definition is the
+intended population qualification. The auditor confirmed Route B
+inclusion and S_W/statistical_results classification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could record 733/724 or 1508 as randomized sample sizes
+rather than the allocation-stage arm counts or total 1979. This concerns
+population attribution; it does not establish a change in treatment
+efficacy or in the supplied primary-analysis denominators.</p>
+<h2
+id="c002--accrual-maximum-and-evaluable-target-use-unclear-populations" class="candidate-card">C002
+— Accrual maximum and evaluable target use unclear populations</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The protocols describe a
+maximum of 1600 participants and 1420 evaluable participants with 30-day
+follow-up, whereas the SAP and article describe 1420 including 3.5%
+dropout; the report separately gives 1979 randomized, 1508 completed and
+1457 primary-available without an explicit population mapping for the
+accrual rule.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P, S_W</p>
+<p><strong>Compared document roles:</strong> PLAN original and final
+protocol accrual rules vs PLAN SAP sample-size target and REPORT main
+article flow and sample-size statements</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-008</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Protocol-versus-report
+target/population comparisons establish P_R, protocol-versus-SAP target
+qualifications establish P_P, and the article’s two target descriptions
+establish S_W. P_R takes precedence over P_P and S_W, yielding
+protocol_report. Original/final protocols and SAP are PLAN by
+content.</p>
+<p><strong>Classification ambiguity:</strong> Roles and relationship
+precedence are clear. The counted population for the maximum and
+evaluable target, and the operational termination rule, remain
+unspecified; the SAP’s prospective approval and governance are supplied
+facts.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=3">REPORT
+main PDF p. 3</a>; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=5">REPORT
+main PDF p. 5</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=13">PLAN plan PDF
+p. 13</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=26">PLAN plan PDF
+p. 26</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=49">PLAN plan PDF
+p. 49</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=62">PLAN plan PDF
+p. 62</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=84">PLAN plan PDF
+p. 84</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=85">PLAN plan PDF
+p. 85</a>.</p>
+<p><strong>Source evidence:</strong> Original/final protocol synopses
+(pp. 13/49) and statistical sections (pp. 26/62) state inclusion up to
+1600 and a target of 710 per arm with 30-day follow-up, total 1420
+evaluable. SAP p. 85 states 710 per arm and 1420 including 3.5% dropout.
+Main p. 5 repeats the dropout-inclusive target and also says the trial
+was planned to end 30 days after inclusion of 1420 evaluable patients.
+Flow p. 3 and population p. 5 give 1979 randomized, 1508 completed and
+1457 primary-available. SAP p. 84 states prospective preparation,
+approval on 11 January 2023 and precedence for all primary and secondary
+analyses.</p>
+<p><strong>Reported-versus-comparator:</strong> Protocol “1420
+evaluable” and maximum 1600 versus SAP/report “1420 including 3.5%
+dropout,” together with reported randomized, completed and
+primary-available populations. The article itself contains both target
+qualifications.</p>
+<p><strong>Reasoning procedure:</strong> Compare the population meanings
+of the repeated plan and report targets. Use the randomized total only
+for a conditional numeric diagnostic; do not assume that randomized
+recruitment was the operational population counted against 1600.</p>
+<p><strong>Calculation:</strong> If 1600 refers to all randomized
+patients, [1599.5, 1600.5] versus [1978.5, 1979.5] gives gap 378 and
+relative discrepancy 378/1600=0.23625. This is conditional on that
+population interpretation. “1420 evaluable” and “1420 including dropout”
+are different qualifications, not two counts whose subtraction settles
+meaning. No realized stopping-boundary breach is established.</p>
+<p><strong>Affected result or extracted value:</strong> The
+recruitment/stopping target and the population definition attached to
+the primary-analysis sample of 1457.</p>
+<p><strong>Why context does not resolve it:</strong> Neither the maximum
+nor the evaluable/dropout-inclusive target is expressly mapped across
+randomized, retained and analyzed populations. The supplied SAP
+precedence identifies the governing analyses but does not supply that
+operational accrual-population mapping.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+maximum might apply to 1508 retained participants, or the approved SAP
+might intentionally refine the target population. These are
+source-grounded possibilities; neither is established as the realized
+recruitment-ending rule.</p>
+<p><strong>Mechanical evidence recheck:</strong> The rechecker found all
+four repeated protocol statements, the SAP approval and sample-size
+statements, and both report target/population locations. It reproduced
+the specification discrepancy and conditional gap. A counted-population
+definition, operational recruitment-ending rule and any further specific
+target amendment are missing; these prevent a compliance inference. The
+auditor confirmed P_R with P_P and S_W, reproduced evidence and Route B
+inclusion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could attach a different population or accrual
+rule to the sample-size target and the reported primary-analysis
+population. The candidate does not establish a realized stopping
+violation or predict any effect-size consequence.</p>
+<h2
+id="c003--prespecified-secondary-outcome-hierarchy-becomes-key-or-exploratory" class="candidate-card">C003
+— Prespecified secondary outcome hierarchy becomes key or
+exploratory</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The original and final
+protocols label a collection of outcomes secondary; the SAP and reports
+assign 30-day mortality and major respiratory complications
+key-secondary status and assign the other matched families
+exploratory-secondary status with Benjamini–Hochberg/FDR 5%
+interpretation.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> PLAN original and final
+protocol secondary outcomes vs PLAN SAP hierarchy and REPORT main
+article and results supplement outcome status</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-002</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> Protocols and SAP are PLAN
+by content, giving P_P for the hierarchy comparison.
+Protocol-versus-report status gives P_R, which takes precedence and
+places the candidate in protocol_report. The main article and results
+supplement agree, so no S relationship is added.</p>
+<p><strong>Classification ambiguity:</strong> Document roles and
+precedence are clear. The prospectively approved SAP may intentionally
+refine the protocol hierarchy; an itemized status-replacement
+explanation is not supplied.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=5">REPORT
+main PDF p. 5</a>; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=6">REPORT
+main PDF p. 6</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=13">PLAN plan PDF
+p. 13</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=23">PLAN plan PDF
+p. 23</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=24">PLAN plan PDF
+p. 24</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=49">PLAN plan PDF
+p. 49</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=59">PLAN plan PDF
+p. 59</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=60">PLAN plan PDF
+p. 60</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=80">PLAN plan PDF
+p. 80</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=84">PLAN plan PDF
+p. 84</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=85">PLAN plan PDF
+p. 85</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=86">PLAN plan PDF
+p. 86</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=88">PLAN plan PDF
+p. 88</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=89">PLAN plan PDF
+p. 89</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=92">PLAN plan PDF
+p. 92</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=100">PLAN plan
+PDF p. 100</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=101">PLAN plan
+PDF p. 101</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=10">REPORT
+results PDF p. 10</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=17">REPORT
+results PDF p. 17</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=18">REPORT
+results PDF p. 18</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=19">REPORT
+results PDF p. 19</a>.</p>
+<p><strong>Source evidence:</strong> Protocol secondary lists and
+collection context appear in original pp. 13, 23–24 and final pp. 49,
+59–60. SAP title, approval/timing, multiplicity, outcome/method headings
+and planned tables appear at pp. 80, 84–86, 88–89 and 100–101. They
+establish key/exploratory status and BH/FDR 5%. Main outcomes/statistics
+p. 5, Figure 2/narrative p. 6 and results eTables 4–6 pp. 17–19
+implement that hierarchy. Plan p. 92 and results p. 10 explicitly defer
+long-term follow-up. SAP p. 84 records prospective approval on 11
+January 2023 and all-analysis precedence.</p>
+<p><strong>Reported-versus-comparator:</strong> Thirty-day death and
+major respiratory complications: protocol secondary → SAP/report key
+secondary. Hospital stay, ICU stay, days alive outside ICU,
+mechanical-ventilation time, ventilator-free days, postdischarge
+pneumonia, intervention hypoxemia and SSI: protocol secondary →
+exploratory secondary. Protocol reintubation counts match the later
+exploratory intubation/reintubation registration family for status
+comparison only.</p>
+<p><strong>Reasoning procedure:</strong> Match outcome identities and
+collection windows before comparing their stated hierarchy. Consolidate
+the repeated status change as one pattern and preserve the exploratory
+multiplicity interpretation. Do not equate protocol reintubation counts
+with total intubations as identical events.</p>
+<p><strong>Calculation:</strong> This is a categorical status
+comparison; half-unit arithmetic and relative display precision are
+inapplicable. The matched families change hierarchy as listed.
+Six-/twelve-month EQ-5D-5L/GOSE and twelve-month mortality are expressly
+deferred contextual outcomes, rather than additional absent primary/key
+analyses.</p>
+<p><strong>Affected result or extracted value:</strong>
+Prespecified-versus-reported status of the named outcome families and
+their nominal-versus-FDR interpretation for extraction.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+always registers reproduced prespecified outcome-status changes.
+Prospective SAP approval and intentional refinement remain relevant
+explanations but do not remove that qualifying status comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The SAP
+approved on 11 January 2023 expressly governs analyses and may
+intentionally refine the protocol hierarchy. This supports a planned
+implementation explanation; the candidate does not imply an unapproved
+change or an unreported long-term key result.</p>
+<p><strong>Mechanical evidence recheck:</strong> The rechecker found
+every registered protocol, SAP, main and results location and reproduced
+the item-matched hierarchy pattern. All outcome identities, windows and
+multiplicity headings are available; the missing element is an itemized
+explanation linking protocol status to the later hierarchy. The auditor
+confirmed P_R/P_P, protocol_report and Route A category 5 inclusion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could classify these outcomes differently as prespecified
+secondary, key secondary or exploratory, and associate them with nominal
+or FDR interpretation. No exploratory discovery, overall conclusion
+change or subsequent evidence propagation is inferred.</p>
+<h2
+id="c004--protocol-pneumonia-adjusted-primary-model-is-absent-from-reported-model-set" class="candidate-card">C004
+— Protocol pneumonia-adjusted primary model is absent from reported
+model set</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> Both protocol versions specify
+a primary model adjusted for age, sex, centre, intubation at
+randomization and known pneumonia on admission under treatment; none of
+the described reported primary models contains the pneumonia covariate,
+and the report implements the SAP’s different adjustment set.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> PLAN original and final
+protocol primary covariate model vs PLAN SAP primary model and REPORT
+main article and results supplement primary models</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-003</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> The protocol-versus-SAP
+primary-model specification gives P_P and protocol-versus-report model
+implementation gives P_R. P_R takes precedence, yielding
+protocol_report. Both report documents implement the SAP and do not form
+a report/report conflict.</p>
+<p><strong>Classification ambiguity:</strong> Roles and precedence are
+clear. Prospective SAP approval may establish intentional replacement;
+an itemized replacement record or output from the originally specified
+model is not supplied.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=5">REPORT
+main PDF p. 5</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=26">PLAN plan PDF
+p. 26</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=62">PLAN plan PDF
+p. 62</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=78">PLAN plan PDF
+p. 78</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=79">PLAN plan PDF
+p. 79</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=80">PLAN plan PDF
+p. 80</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=84">PLAN plan PDF
+p. 84</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=88">PLAN plan PDF
+p. 88</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=89">PLAN plan PDF
+p. 89</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=11">REPORT
+results PDF p. 11</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=12">REPORT
+results PDF p. 12</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=17">REPORT
+results PDF p. 17</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=22">REPORT
+results PDF p. 22</a>.</p>
+<p><strong>Source evidence:</strong> Original/final protocol statistics
+pp. 26/62 list age, sex, centre, intubation at randomization and known
+pneumonia on admission under treatment. Change log pp. 78–79, SAP title
+p. 80, approval p. 84 and methods pp. 88–89 provide plan context and
+governance. Main p. 5 describes stratification-variable adjustment,
+additional age/sex/ISS/first-GCS adjustment, GEE site clustering and
+IPW. Results eMethods pp. 11–12 supply population/weighting context;
+eTable 4 p. 17 and per-protocol eTable 8 p. 22 show three model columns.
+SAP p. 84 explicitly records prospective approval and all-analysis
+precedence.</p>
+<p><strong>Reported-versus-comparator:</strong> Protocol primary
+covariates versus SAP/report strata-based primary adjustment, additional
+age/sex/ISS/GCS adjustment and smoking adjustment. Centre/intubation are
+retained, age/sex move to additional adjustment, and admission pneumonia
+under treatment appears in none of the described primary-model sets.</p>
+<p><strong>Reasoning procedure:</strong> Compare named covariates and
+every displayed primary-model column. Treat the omitted/replaced planned
+model as the Route A category 5 anchor. The independent categorical
+key-secondary method comparison is C007.</p>
+<p><strong>Calculation:</strong> Reported primary OR 1.01 (95% CI
+0.75–1.37), P=.94; additionally adjusted OR 0.98 (0.68–1.41);
+smoking-adjusted OR 1.05 (0.73–1.49) anchor the displayed outputs. These
+numbers do not supply the originally specified pneumonia-adjusted model.
+Categorical model-set comparison has no half-unit discrepancy
+calculation; no aggregate-data re-estimation or predicted effect of a
+covariate is asserted.</p>
+<p><strong>Affected result or extracted value:</strong> Which analysis
+specification and model output are extracted as the planned
+primary-outcome analysis.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+applies because the specifically planned primary covariate model is
+replaced/not reported. The supplied approved SAP may explain
+replacement, without removing this always-register comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+approved prospective SAP may intentionally supersede the original
+primary model; approval and precedence are explicit. This does not
+establish an unauthorized replacement. Screened missingness and
+population observations are not additional bases for this card.</p>
+<p><strong>Mechanical evidence recheck:</strong> The rechecker matched
+both protocol lists, SAP governance/method context and every registered
+main/results model location. The pneumonia-under-treatment covariate
+occurs in both protocols and none of the described reported primary
+sets. Participant-level covariates and model coefficients are absent,
+preventing numerical refitting but not specification comparison. The
+auditor confirmed reproduced evidence, P_R/P_P and Route A category 5
+inclusion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a review could record the SAP/report model as the original planned
+primary specification without capturing the protocol model replacement.
+The candidate does not predict the numerical effect of the omitted
+covariate or recommend a different model.</p>
+<h2
+id="c005--planned-primary-outcome-hypoxemia-subgroup-is-not-reported" class="candidate-card">C005
+— Planned primary-outcome hypoxemia subgroup is not reported</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> SAP p. 89 explicitly plans
+seven primary-outcome subgroup families, including intervention
+SpO2&lt;90%, while the complete reported subgroup methods and displays
+contain six and no primary-composite effect or interaction stratified by
+hypoxemia.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN SAP primary-outcome
+subgroup list vs REPORT main article subgroup methods and Figure 4 and
+REPORT results supplement complete eTable 7</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-006</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> The conflicting target is
+PLAN SAP versus REPORT main/results output, giving P_R and
+protocol_report. Earlier protocols corroborate prior subgroup presence;
+agreeing report displays add no S relationship and no separate
+plan-internal conflict.</p>
+<p><strong>Classification ambiguity:</strong> The roles are clear.
+Intentional removal, deferral or output outside the supplied package
+remains possible but is not documented in the supplied materials.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=5">REPORT
+main PDF p. 5</a>; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=8">REPORT
+main PDF p. 8</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=26">PLAN plan PDF
+p. 26</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=62">PLAN plan PDF
+p. 62</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=84">PLAN plan PDF
+p. 84</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=89">PLAN plan PDF
+p. 89</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=17">REPORT
+results PDF p. 17</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=18">REPORT
+results PDF p. 18</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=19">REPORT
+results PDF p. 19</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=20">REPORT
+results PDF p. 20</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=21">REPORT
+results PDF p. 21</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=22">REPORT
+results PDF p. 22</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=23">REPORT
+results PDF p. 23</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=24">REPORT
+results PDF p. 24</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=25">REPORT
+results PDF p. 25</a>.</p>
+<p><strong>Source evidence:</strong> Original/final subgroup paragraphs
+pp. 26/62, prospective SAP approval p. 84 and primary-subgroup bullets
+p. 89 establish plan context and the explicit seven-family target. Main
+methods p. 5, complete Figure 4 p. 8 and entire results eTable 7 pp.
+20–21 give six families: initial intubation, ICU, TBI, lung disease,
+inclusion site and ISS. Results tables pp. 17–19 and 22–25 contain no
+additional hypoxemia-stratified primary-composite effect/interaction.
+The full-source text search found no further primary hypoxemia subgroup
+output.</p>
+<p><strong>Reported-versus-comparator:</strong> Planned
+primary-composite subgroup analysis by intervention SpO2&lt;90% versus
+no matching effect/interaction in the complete supplied subgroup/result
+displays. Printed hypoxemia incidence 44/737 versus 28/737 is a
+different exploratory endpoint.</p>
+<p><strong>Reasoning procedure:</strong> Match all seven SAP
+primary-outcome subgroup families to complete report headings and
+results. Six have counterparts; intervention hypoxemia does not.
+Preserve the complete negative-search scope rather than inferring
+absence from a sampled table.</p>
+<p><strong>Calculation:</strong> Seven planned families versus six
+reported families, with intervention hypoxemia unmatched.
+Presence/absence of a specified primary analysis is not a rounded
+numeric comparison. The incidence counts 44/737 and 28/737 do not
+determine a hypoxemia-defined primary-composite treatment effect or
+interaction; no missing subgroup statistic is imputed.</p>
+<p><strong>Affected result or extracted value:</strong> Completeness and
+status of the planned primary-composite evidence stratified by
+intervention hypoxemia.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+applies to a planned primary analysis that is not reported. The
+exploratory hypoxemia incidence result targets a different contrast and
+does not supply the planned primary-outcome subgroup analysis.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+analysis may have been intentionally removed, deferred or reported
+outside the package. None of these dispositions is established by the
+supplied sources. The SAP’s prospective approval and explicit governing
+role are retained.</p>
+<p><strong>Mechanical evidence recheck:</strong> The rechecker found the
+SAP bullet, both protocol contexts, complete main Figure 4, all of
+eTable 7 and all registered other result-table pages, and confirmed that
+no matched primary hypoxemia output occurs. The hypoxemia/primary
+participant-level cross-tabulation and the planned subgroup’s output or
+documented disposition are absent; no effect can be reconstructed. The
+auditor confirmed Route A category 5, reproduced evidence and P_R
+classification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could regard the six displayed families as the complete
+planned primary subgroup evidence and overlook the unmatched SAP
+analysis. No subgroup OR, interaction, clinical consequence or preferred
+analysis is inferred.</p>
+<h2
+id="c006--intubation-subgroup-changes-from-trauma-clock-to-randomization-status" class="candidate-card">C006
+— Intubation subgroup changes from trauma clock to randomization
+status</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The protocols and governing SAP
+define the intubation subgroup within one hour after trauma, whereas
+Figure 4 and eTable 7 label it intubated at randomization, without an
+equivalence mapping between those clocks.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN protocol and SAP
+one-hour-after-trauma intubation subgroup vs REPORT main article Figure
+4 and REPORT results supplement eTable 7 intubation-at-randomization
+subgroup</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-007</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> PLAN protocols/SAP agree
+on a trauma-origin clock and REPORT main/results displays agree on the
+randomization-status label. Their conflict is P_R only, yielding
+protocol_report. This candidate is limited to the intubation clock.</p>
+<p><strong>Classification ambiguity:</strong> Roles are clear. The
+operational subgroup clock and any patient-level equivalence between the
+predicates are unknown; no realized membership change is
+established.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=5">REPORT
+main PDF p. 5</a>; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=8">REPORT
+main PDF p. 8</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=26">PLAN plan PDF
+p. 26</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=62">PLAN plan PDF
+p. 62</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=84">PLAN plan PDF
+p. 84</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=89">PLAN plan PDF
+p. 89</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=16">REPORT
+results PDF p. 16</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=20">REPORT
+results PDF p. 20</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=21">REPORT
+results PDF p. 21</a>.</p>
+<p><strong>Source evidence:</strong> Original protocol p. 26, final
+protocol p. 62 and SAP p. 89 specify initially intubated within one hour
+of accident/after trauma. SAP p. 84 gives prospective approval and
+precedence while retaining this trauma-clock criterion. Main p. 5 names
+initial intubation; Figure 4 p. 8 and results eTable 7 p. 20 explicitly
+say intubated at randomization. eTable 7 continuation p. 21 supplies no
+alternative clock. Results eTable 3 p. 16 gives trauma-to-randomization
+medians (IQR) of 54 (35–79) and 52 (33–78) minutes.</p>
+<p><strong>Reported-versus-comparator:</strong> Intubation within a
+fixed one-hour trauma-origin window versus intubation status at
+randomization. Reported “No”: 56/558 versus 50/543, OR 1.12 (0.75–1.67);
+“Yes”: 62/175 versus 71/181, OR 0.90 (0.57–1.41); Figure 4 interaction
+P=.48.</p>
+<p><strong>Reasoning procedure:</strong> Compare the membership
+predicates and attach the printed subgroup outputs to the report’s
+label. Use time summaries only to corroborate distinct clocks, without
+estimating patient-level discordance.</p>
+<p><strong>Calculation:</strong> Categorical clock definitions are not
+subject to the display-precision arithmetic rule. Randomization-time
+summaries 54 (35–79) and 52 (33–78) minutes do not identify intubation
+timing or a count changing subgroup membership. No cross-classification,
+participant reassignment count, recalculated OR or interaction is
+inferred.</p>
+<p><strong>Affected result or extracted value:</strong> The time-defined
+population to which the primary-outcome intubation subgroup ORs and
+interaction P=.48 belong.</p>
+<p><strong>Why context does not resolve it:</strong> Within one hour
+after trauma and status at randomization have no supplied equivalence
+mapping. The governing SAP retains the trauma-origin criterion, so its
+approval and precedence do not reconcile the report-versus-SAP clock
+difference.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Realized intubation status may coincide under both predicates for all
+participants, or the display may abbreviate the intended fixed trauma
+window. Neither explanation is established by the sources.</p>
+<p><strong>Mechanical evidence recheck:</strong> The rechecker found
+every registered protocol/SAP clock statement, main subgroup location,
+eTable 7 page and eTable 3 timing summary. It reproduced the definition
+discrepancy. Operational timing/window coding, participant-level
+cross-classification and any clock-specific amendment are absent,
+preventing a membership-difference count. The auditor confirmed Route B,
+reproduced evidence and P_R classification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could attribute the printed intubation subgroup estimates
+to a one-hour-after-trauma population when the reported label denotes
+randomization status, or vice versa. No actual participant reassignment,
+interaction change or overall efficacy change is established.</p>
+<h2
+id="c007--planned-categorical-key-secondary-tests-are-replaced-by-logistic-models" class="candidate-card">C007
+— Planned categorical key-secondary tests are replaced by logistic
+models</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The protocols assign Fisher’s
+exact/chi-square tests to categorical secondary data, including named
+30-day mortality and major respiratory complications; the SAP and
+reports instead supply logistic/GEE/IPW key-secondary analyses without
+output identified as those original categorical tests.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> PLAN protocol categorical
+secondary tests vs PLAN SAP key-secondary logistic models and REPORT
+main article and results supplement key-secondary analyses</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-012</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> Protocol-versus-SAP
+secondary-method assignments give P_P, and protocol-versus-report
+implementation gives P_R. P_R takes precedence, yielding
+protocol_report. The reports agree. This method rule is separate from
+C004’s primary covariates and C003’s outcome-status hierarchy.</p>
+<p><strong>Classification ambiguity:</strong> Roles and precedence are
+clear. The approved prospective SAP may intentionally replace the
+protocol tests; an itemized replacement explanation or original test
+outputs are not supplied.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=5">REPORT
+main PDF p. 5</a>; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=6">REPORT
+main PDF p. 6</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=23">PLAN plan PDF
+p. 23</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=26">PLAN plan PDF
+p. 26</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=59">PLAN plan PDF
+p. 59</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=62">PLAN plan PDF
+p. 62</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=78">PLAN plan PDF
+p. 78</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=79">PLAN plan PDF
+p. 79</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=80">PLAN plan PDF
+p. 80</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=84">PLAN plan PDF
+p. 84</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=88">PLAN plan PDF
+p. 88</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=89">PLAN plan PDF
+p. 89</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=17">REPORT
+results PDF p. 17</a>.</p>
+<p><strong>Source evidence:</strong> Original/final outcome lists pp.
+23/59 name 30-day death and major respiratory complications. Protocol
+methods pp. 26/62 assign Fisher’s exact/chi-square tests to categorical
+secondary data. Change log pp. 78–79, SAP title p. 80, approval p. 84
+and primary/key-secondary methods pp. 88–89 supply plan context and
+logistic/GEE/IPW assignment. Main methods p. 5, Figure 2/narrative p. 6
+and results eTable 4 p. 17 implement those model-based analyses. SAP p.
+84 explicitly records prospective approval and precedence for all
+primary and secondary analyses.</p>
+<p><strong>Reported-versus-comparator:</strong> Named planned
+categorical comparisons for the two secondary outcomes, now key
+secondary, versus three reported logistic/GEE/IPW model columns. No
+displayed output is identified as the original Fisher/chi-square
+comparison.</p>
+<p><strong>Reasoning procedure:</strong> Match each outcome and its
+categorical status before comparing method assignments. Keep this
+secondary-test rule independent of the primary covariate replacement.
+The protocol continuous competing-risk sentence is not a comparator for
+these binary outcomes.</p>
+<p><strong>Calculation:</strong> Death first/additional/smoking ORs:
+1.28 (0.85–1.92), P=.23; 1.37 (0.80–2.38), P=.25; 1.37 (0.80–2.33),
+P=.26. Respiratory ORs: 0.84 (0.59–1.19), P=.33; 0.84 (0.57–1.23),
+P=.38; 0.90 (0.61–1.32), P=.58. These identify model-based outputs, not
+original categorical-test outputs. Named method families are not
+reconciled by rounding. No crude or preferred P value is recomputed.</p>
+<p><strong>Affected result or extracted value:</strong> The
+prespecified-versus-reported statistical method attached to 30-day death
+and major respiratory-complication results.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+applies because named planned analyses of subsequently key outcomes are
+replaced/not supplied. Prospective SAP approval may explain intentional
+replacement without removing this always-register comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+prospectively approved governing SAP may supersede the generic protocol
+categorical tests. This explanation is supported by its explicit
+all-analysis precedence; no unapproved replacement is inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> The rechecker matched
+all registered outcome, protocol method, SAP context and report output
+locations and confirmed that none of the three model columns is labeled
+as the original categorical tests. Those original outputs or an itemized
+replacement explanation beyond the SAP are missing. Model covariance and
+weighting-level raw counts are unnecessary to reproduce the method
+comparison and are not supplied. The auditor confirmed P_R/P_P,
+reproduced evidence and Route A category 5 inclusion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could record logistic/GEE/IPW results as the protocol’s
+originally named categorical comparisons without documenting the method
+replacement. The card predicts no statistical or conclusion change and
+recommends no alternative analysis.</p>
+<h2
+id="c008--ssi-risk-difference-interval-and-nominal-odds-ratio-tests-give-different-null-readings" class="candidate-card">C008
+— SSI risk-difference interval and nominal odds-ratio tests give
+different null readings</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The printed SSI risk-difference
+95% interval includes zero, whereas the printed SSI odds-ratio intervals
+and additionally adjusted nominal P values exclude their corresponding
+null at .05. The report’s exploratory FDR no-discovery statement remains
+coherent.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C, S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main article Figure
+2 SSI risk-difference interval vs REPORT results supplement eTable 5 SSI
+odds-ratio intervals and tests</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-001</p>
+<p><strong>Qualifying route:</strong> Route A, category 1</p>
+<p><strong>Classification rationale:</strong> Main Figure 2 RD-versus-OR
+uncertainty gives S_W, and main RD-versus-results-supplement OR/test
+uncertainty gives S_C. S_C takes precedence, yielding
+statistical_results. SAP p. 86 corroborates inferential context and is
+not a conflicting PLAN comparator.</p>
+<p><strong>Classification ambiguity:</strong> Roles and precedence are
+clear. The RD estimand, construction and paired test are not defined;
+different analyses may account for the nominal readings.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=5">REPORT
+main PDF p. 5</a>; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=6">REPORT
+main PDF p. 6</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=86">PLAN plan PDF
+p. 86</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=18">REPORT
+results PDF p. 18</a>.</p>
+<p><strong>Source evidence:</strong> Main Figure 2 p. 6 reports SSI RD
+−3.04 percentage points (95% CI −6.87 to 0.79) and OR 0.50 (0.25–0.99).
+Results eTable 5 p. 18 reports first-model OR 0.50 (0.25–0.99), P=.05;
+additionally adjusted OR 0.49 (0.26–0.93), P=.03; and smoking-adjusted
+OR 0.51 (0.27–0.96), P=.04. Counts are 23/736 versus 32/724 in both
+displays. Main p. 5 and SAP p. 86 distinguish nominal 95%
+confidence/test context from exploratory BH/FDR 5%. The supplement
+footnote and main narrative state no exploratory multiplicity-adjusted
+discoveries.</p>
+<p><strong>Reported-versus-comparator:</strong> Null-inclusive RD
+interval versus null-excluding OR intervals and adjusted nominal
+P=.03/.04. This preserves different-model or different-analysis
+explanations and does not claim that the same variance procedure must
+underlie every output.</p>
+<p><strong>Reasoning procedure:</strong> Compare each printed interval
+with its own null and the adjusted P values with the nominal .05 level.
+Check display intervals to show the readings persist; preserve the FDR
+decision separately. Route A category 1 does not require a
+common-analysis assumption to register the supplied interval/test
+comparison.</p>
+<p><strong>Calculation:</strong> RD lower/upper half-unit intervals are
+[−6.875, −6.865] and [0.785, 0.795], so the RD interval spans zero. OR
+upper-limit intervals [0.985, 0.995], [0.925, 0.935] and [0.955, 0.965]
+remain below one. Adjusted P intervals [0.025, 0.035] and [0.035, 0.045]
+remain below .05. First P=.05 has interval [0.045, 0.055], straddling
+.05, and is unnecessary to reproduce this candidate. Relative-gap
+rounding exclusion does not apply to Route A category 1.</p>
+<p><strong>Affected result or extracted value:</strong> The nominal SSI
+uncertainty result and the test a data extractor associates with the RD
+versus the OR model outputs.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 1
+always registers reproduced interval-versus-test/null-reading conflicts.
+An attribution to different analyses is preserved as an alternative
+interpretation rather than an exclusion. FDR interpretation does not
+define the nominal RD’s construction or paired test.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Different estimands, modeled contrasts, variances or analysis sets could
+produce the different nominal readings. The OR is explicitly
+stratification-adjusted, whereas the RD method is undefined in the
+caption. The coherent FDR no-discovery conclusion concerns a separate
+multiplicity decision.</p>
+<p><strong>Mechanical evidence recheck:</strong> The rechecker visually
+confirmed the Figure 2 row and found the eTable 5 row, matching counts,
+adjustment labels, nominal P values and multiplicity statements. The
+readings persist under the allowed display intervals. RD estimand,
+standardization/weighting, confidence-interval construction and precise
+paired test are missing; these prevent a procedure-specific numerical
+reconstruction. The auditor confirmed Route A category 1, S_C/S_W and
+reproduced evidence.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy the null-inclusive SSI RD interval while
+attaching a nominal test belonging to a null-excluding OR analysis, or
+choose a different nominal uncertainty reading. No common-analysis
+identity, FDR discovery, overall conclusion change or actual downstream
+propagation is asserted.</p>
+<h2
+id="c009--ssi-classification-criteria-differ-between-sap-and-results-supplement" class="candidate-card">C009
+— SSI classification criteria differ between SAP and results
+supplement</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The SAP and results supplement
+specify different surgical-site-infection (SSI) classification pathways.
+The SAP requires positive microbiologic testing together with infection
+signs, whereas the report lists positive microbiologic testing as an
+independent pathway and adds deliberate opening by a surgeon together
+with signs. The shared 30-day window agrees.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN SAP
+surgical-site-infection outcome dictionary vs REPORT results supplement
+SSI operational criteria and linked REPORT outcome results</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-009</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> The conflicting locations
+are the PLAN SAP outcome dictionary and the REPORT results supplement
+operational definition, establishing P_R and protocol_report. The main
+article and results supplement agree on the linked SSI counts and serve
+as result anchors; they do not add a report-to-report relationship.</p>
+<p><strong>Classification ambiguity:</strong> Document roles are clear.
+Whether the reported elaboration operationalizes the same applied
+predicate or represents an expansion is not established by the supplied
+item-level information.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=6">REPORT
+main PDF p. 6</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=84">PLAN plan PDF
+p. 84</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=101">PLAN plan
+PDF p. 101</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=9">REPORT results
+PDF p. 9</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=18">REPORT
+results PDF p. 18</a>.</p>
+<p><strong>Source evidence:</strong> PLAN SAP p. 101, Table 4 SSI row,
+permits at least one of purulent drainage, positive microbiologic
+testing from the surgical site or wound AND signs of infection, or
+surgeon diagnosis. PLAN p. 84 establishes prospective SAP approval and
+precedence. REPORT results p. 9, section 3.3.2, permits at least one of
+drainage, positive microbiologic testing, deliberate opening by a
+surgeon AND signs, or surgeon diagnosis, and calls these further
+elaborations. REPORT results p. 18 and main Figure 2 p. 6 attach 23/736
+versus 32/724 and OR 0.50 (0.25–0.99) to SSI within 30 days.</p>
+<p><strong>Reported-versus-comparator:</strong> The positivity pathway
+is a conjunction in the SAP and an independent criterion in the report;
+the opening-plus-signs pathway is separately listed only in the report.
+Drainage, surgeon diagnosis, and the 30-day window agree.</p>
+<p><strong>Reasoning procedure:</strong> Compare each printed SSI
+pathway as a Boolean criterion, distinguishing OR across alternative
+pathways from AND within a pathway. Use the agreeing reported results to
+identify the outcome governed by those criteria. Do not infer
+patient-level reclassification from the written difference.</p>
+<p><strong>Calculation:</strong> If M denotes positive microbiology, S
+infection signs, O deliberate opening, D drainage, and G surgeon
+diagnosis, the printed SAP predicate is D OR (M AND S) OR G; the report
+predicate is D OR M OR (O AND S) OR G. M without S and O with S without
+another SAP criterion can satisfy the report predicate without
+satisfying the SAP predicate. These are logical possibilities, not
+observed patient assignments. Half-unit display intervals are
+inapplicable to the predicates; no realized count or effect difference
+is calculated.</p>
+<p><strong>Affected result or extracted value:</strong> The endpoint
+definition attached to SSI 23/736 versus 32/724 and OR 0.50
+(0.25–0.99).</p>
+<p><strong>Why context does not resolve it:</strong> Route B applies to
+a planned-versus-reported endpoint definition. The phrase “further
+elaborations” does not state that microbiology-positive cases required
+signs or that every opening-plus-signs case also satisfied a SAP
+pathway. The immediate context therefore does not establish which
+applied predicate generated the reported events.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+report may give a fuller operational description of a shortened SAP
+dictionary. That interpretation is source-grounded but does not
+establish equivalence of every pathway. Applied item-level criteria,
+microbiology/sign co-occurrence, and patient-level SSI classifications
+are unavailable, so no realized event reassignment is inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> The exact SAP and
+report locations were found and directly rechecked. The differing
+written pathways remained, while the 30-day window and result anchors
+agreed. The evidence rechecker assigned reproduced and the independent
+inclusion audit confirmed Route B. This endpoint-definition candidate is
+separate from the SSI interval/test candidate.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could attach a different operational SSI definition to
+the reported event counts and odds ratio. The package does not establish
+changed event counts, a changed estimate, or an effect on
+evidence-synthesis conclusions.</p>
+<h2
+id="c010--icu-subgroup-membership-does-not-map-to-reported-icu-admission-counts" class="candidate-card">C010
+— ICU subgroup membership does not map to reported ICU admission
+counts</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The reported ICU-admission
+outcome counts do not map to the primary-outcome ICU-admission subgroup
+denominators under a common membership definition, even allowing every
+unclassified participant to have been admitted. The subgroup label does
+not specify the admission window or eligibility distinction that would
+explain the populations.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C, S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results supplement
+ICU-admission outcome vs REPORT results supplement and main article
+primary ICU-admission subgroup populations</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-106</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> The ICU outcome and
+subgroup displays conflict within the REPORT results supplement (S_W)
+and across that supplement and the REPORT main article (S_C). S_C takes
+precedence. The SAP only corroborates the unqualified subgroup name and
+does not supply a conflicting PLAN rule, so P_R is not assigned.</p>
+<p><strong>Classification ambiguity:</strong> Document roles are clear.
+Whether the subgroup represents immediate ICU destination or another
+admission window or eligibility restriction is unresolved; no unprinted
+30-day ICU-admission window is assigned.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=4">REPORT
+main PDF p. 4</a>; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=5">REPORT
+main PDF p. 5</a>; <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=8">REPORT
+main PDF p. 8</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=9">REPORT results
+PDF p. 9</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=10">REPORT
+results PDF p. 10</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=18">REPORT
+results PDF p. 18</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=20">REPORT
+results PDF p. 20</a>; <a
+href="../joi240147supp1_prod_1738701765.28701.pdf#page=89">PLAN plan PDF
+p. 89</a>.</p>
+<p><strong>Source evidence:</strong> REPORT results eTable 5 p. 18
+prints restrictive ICU admission 374/738 (50.7%) and liberal 359/736
+(48.8%). Results eTable 7 p. 20 and main Figure 4 p. 8 print ICU No
+primary-event cells 42/458 versus 50/481, OR 0.98 (0.64–1.49), and Yes
+cells 74/271 versus 68/238, OR 0.96 (0.63–1.49). Main p. 5 gives
+allocation cohorts 750/758 and primary-available populations 733/724.
+Main p. 4 gives distinctly labeled immediate ICU destination 276/741
+versus 242/739. Results pp. 9–10 elaborate ICU day-counting without
+defining a distinct subgroup admission window; SAP p. 89 uses the
+unqualified ICU-admission subgroup name.</p>
+<p><strong>Reported-versus-comparator:</strong> The outcome records
+374/359 ICU admissions, whereas subgroup Yes denominators are 271/238
+and subgroup No denominators 458/481. The allocation universes are
+750/758. Immediate-destination counts are contextual comparators, not
+asserted equal copies of the subgroup denominators.</p>
+<p><strong>Reasoning procedure:</strong> Under the same ICU-membership
+definition within each allocation cohort, bound admissions among
+classified participants by known admissions plus classified total minus
+allocation total. This permits every unclassified participant to be an
+admission. Apply conservative half-unit intervals to all printed counts
+and compare the resulting minimum to the maximum printed Yes count.
+Treat a differing membership definition as an alternative rather than
+assuming a timing rule.</p>
+<p><strong>Calculation:</strong> Point lower bounds are
+374+271+458−750=353 restrictive and 359+238+481−758=320 liberal, versus
+Yes 271/238. With half-unit allowances, restrictive minimum is
+373.5+270.5+457.5−750.5=351, versus Yes upper 271.5; liberal minimum is
+358.5+237.5+480.5−758.5=318, versus upper 238.5. Both minimum gaps are
+79.5 participants. Relative gaps are 79.5/271=0.293358 and
+79.5/238=0.334034, both above 0.05. Missing classification alone
+therefore cannot reconcile identical membership within the full
+allocation universes.</p>
+<p><strong>Affected result or extracted value:</strong> The population
+and admission-window attribution attached to the primary-composite ICU
+Yes/No subgroup denominators and ORs, especially Yes OR 0.96 (0.63–1.49)
+and No OR 0.98 (0.64–1.49).</p>
+<p><strong>Why context does not resolve it:</strong> Route B applies to
+numeric population mapping for a primary subgroup. The unqualified
+ICU-admission label does not distinguish subgroup membership from the
+separately reported admission outcome. Immediate ICU destination offers
+a possible narrower definition but the report does not explicitly
+identify it as the subgroup rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+subgroup could use immediate destination after resuscitation while the
+outcome captures another admission definition; another timing or
+eligibility restriction could also explain the counts. The exact window,
+admission-to-subgroup linkage, and participant-level cross-tabulation
+are missing. No participant reassignment or alternative effect size is
+inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> The outcome counts and
+both duplicated subgroup displays were directly confirmed at their cited
+locations. The recheck reproduced the conservative common-set bounds
+allowing maximal missing classification and confirmed S_C plus S_W. The
+independent audit confirmed Route B and retained immediate-destination
+context without assigning an unsupported window. Duplicate finding
+F-XS-010 contributes the same context, not an additional candidate.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could attribute the printed primary subgroup ORs to a
+different ICU population or admission window. The package does not
+establish a changed subgroup membership count or effect estimate under a
+newly defined window.</p>
+<h2
+id="c011--liberal-ais-below-3-percentage-does-not-reconcile-across-displays-and-its-count-pair" class="candidate-card">C011
+— Liberal AIS below 3 percentage does not reconcile across displays and
+its count pair</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The results supplement prints
+liberal AIS below 3 as 48/473 (9.2%), while the main article prints the
+same count pair and subgroup as 48/473 (10.1%). The supplementary
+percentage also does not reconcile with its own count pair beyond
+display precision.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C, S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results supplement
+eTable 7 AIS below 3 percentage vs its REPORT count pair and REPORT main
+article Figure 4 counterpart</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-104</p>
+<p><strong>Qualifying route:</strong> Route A, category 3</p>
+<p><strong>Classification rationale:</strong> The supplementary
+count/percentage pairing gives S_W and the conflicting main/supplement
+percentage copies give S_C. Both documents are REPORT; S_C takes
+precedence and the numeric issue belongs to statistical_results.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_arleth_2024_oi_240147_1738701765.27201.pdf#page=8">REPORT
+main PDF p. 8</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=20">REPORT
+results PDF p. 20</a>; <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=21">REPORT
+results PDF p. 21</a>.</p>
+<p><strong>Source evidence:</strong> REPORT results eTable 7 p. 20
+visibly gives the liberal AIS below 3 primary-outcome subgroup cell as
+48/473 (9.2%). REPORT main Figure 4 p. 8 gives 48/473 (10.1%). Results
+p. 21 identifies selected head AIS codes but supplies no different
+percentage denominator.</p>
+<p><strong>Reported-versus-comparator:</strong> The numerator 48,
+denominator 473, and subgroup identity agree across displays; the
+adjacent percentages differ by 0.9 percentage points. The main cell
+reconciles with the count pair within display precision, while the
+supplementary cell does not.</p>
+<p><strong>Reasoning procedure:</strong> Recompute 100×48/473,
+permitting half-unit intervals for numerator, denominator, and
+one-decimal percentages. Separately compare the two percentage copies
+using their half-unit intervals. Retain both relationships within one
+candidate and do not infer exhaustive AIS classification from subgroup
+subtotals.</p>
+<p><strong>Calculation:</strong> The count-derived point is 10.147992%.
+Allowing numerator [47.5,48.5] and denominator [472.5,473.5] gives
+[10.031679,10.264550]%. The supplementary percentage interval
+[9.15,9.25]% leaves a gap 0.781679 percentage points; relative gap
+0.781679/9.2=0.0849651. The two printed percentage intervals
+[9.15,9.25]% and [10.05,10.15]% leave a gap 0.8; using the main
+reference 10.1 gives 0.0792079. Both exceed 0.05. The main percentage
+interval overlaps the count-derived interval.</p>
+<p><strong>Affected result or extracted value:</strong> The liberal AIS
+below 3 primary-outcome subgroup numerator, denominator, percentage, and
+descriptive event frequency copied from eTable 7 or Figure 4.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 3
+applies because the count, denominator, and percentage within the
+supplementary display do not reconcile beyond the 0.05 relative
+threshold. The cross-report percentage discrepancy independently remains
+beyond display precision.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Another
+denominator near 522 could produce a percentage near 9.2% for 48 events,
+but no replacement denominator is supplied for this cell. The
+conditional AIS partition deficit was separately screened and is not a
+qualifying basis here; complete AIS ascertainment or an effect
+attributable to unclassified patients is not inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both exact cells were
+directly and visually confirmed, including supplementary 9.2% and main
+10.1%. The rechecker reproduced both interval gaps and confirmed
+reproduced, S_C plus S_W, and statistical_results; the audit confirmed
+Route A, category 3. The footnote supplies no alternate denominator.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy different descriptive event percentages for
+the same subgroup count pair. The package does not demonstrate a changed
+modeled subgroup OR or a changed evidence-synthesis conclusion.</p>
+<h2
+id="c012--bern-receiving-center-percentages-do-not-reconcile-with-printed-pairs" class="candidate-card">C012
+— Bern receiving-center percentages do not reconcile with printed
+pairs</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> Both University Hospital Bern
+receiving-center cells in eTable 1 contain percentages that do not
+reconcile with their printed numerator/denominator pairs: restrictive
+50/750 (7.2%) and liberal 47/758 (6.7%).</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results supplement
+eTable 1 Bern count and denominator vs REPORT same-row percentage</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-101</p>
+<p><strong>Qualifying route:</strong> Route A, category 3</p>
+<p><strong>Classification rationale:</strong> Both compared quantities
+are within one REPORT table row. This is S_W and statistical_results.
+The two allocation cells are consolidated as one receiving-center row
+pattern; a within-display baseline count/percentage comparison is in
+focus.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=14">REPORT
+results PDF p. 14</a>.</p>
+<p><strong>Source evidence:</strong> REPORT results p. 14, eTable 1,
+Receiving trauma center, University Hospital Bern row, prints
+restrictive 50/750 (7.2%) and liberal 47/758 (6.7%). Column headers are
+N=750 and N=758, and receiving-center numerators sum to those allocation
+totals. The distinct earlier enrollment-location Bern row is 25/750
+(3.3%) and 26/758 (3.4%); it is not an affected occurrence.</p>
+<p><strong>Reported-versus-comparator:</strong> The restrictive count
+pair implies 6.666667% and the liberal pair 6.200528%, compared with
+printed 7.2% and 6.7%. Both arm cells remain discrepant after
+conservative display allowances.</p>
+<p><strong>Reasoning procedure:</strong> Confirm the receiving-center
+rather than enrollment-location row and both allocation columns.
+Recompute each percentage from its adjacent count pair, allowing
+half-unit intervals for integer counts and one-decimal percentages.
+Compare interval gaps with the printed percentage denominator for the
+relative threshold.</p>
+<p><strong>Calculation:</strong> Restrictive:
+100×[49.5/750.5,50.5/749.5]=[6.595603,6.737825]%, versus printed
+[7.15,7.25]%; gap 0.412175 percentage points and relative
+0.412175/7.2=0.0572465. Liberal:
+100×[46.5/758.5,47.5/757.5]=[6.130521,6.270627]%, versus [6.65,6.75]%;
+gap 0.379373 and relative 0.379373/6.7=0.0566228. Both exceed 0.05.</p>
+<p><strong>Affected result or extracted value:</strong> The restrictive
+and liberal arm-level receiving-center proportions for University
+Hospital Bern.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 3
+applies to both count/denominator/percentage pairs within eTable 1. This
+is not a peripheral comparison of baseline copies; both discrepancies
+exceed the display-precision threshold within the same row.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+undisclosed denominator or numerator, or a displaced component, could
+generate the percentages, but no row-specific alternative population is
+supplied. Intended replacement components and the production mechanism
+are unavailable. Other small receiving-center discrepancies are not
+added to this pattern.</p>
+<p><strong>Mechanical evidence recheck:</strong> The exact
+receiving-center row, both arm cells, column headers, and distinct
+enrollment row were directly confirmed. Both half-unit calculations
+retained relative gaps above 0.05. The evidence rechecker assigned
+reproduced and the audit confirmed the single two-cell Route A, category
+3 pattern.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could carry different arm-level receiving-center proportions
+depending on whether it copies the printed percentages or calculates
+from the printed counts. No primary-outcome or clinical consequence is
+established.</p>
+<h2
+id="c013--liberal-walk-in-percentage-differs-from-its-printed-count-pair" class="candidate-card">C013
+— Liberal walk-in percentage differs from its printed count pair</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The liberal Walk-in cell in
+eTable 2 prints 4/743 (5.3%); the percentage does not reconcile with the
+adjacent count pair beyond display precision.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results supplement
+eTable 2 liberal walk-in count pair vs REPORT adjacent percentage</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-102</p>
+<p><strong>Qualifying route:</strong> Route A, category 3</p>
+<p><strong>Classification rationale:</strong> The count pair and
+percentage appear in the same REPORT eTable 2 cell, establishing S_W and
+statistical_results. No cross-document comparator is required. The
+vascular-surgery cell is a separate candidate because a shared
+production cause is not established.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=15">REPORT
+results PDF p. 15</a>.</p>
+<p><strong>Source evidence:</strong> REPORT results p. 15, eTable 2,
+Type of transport to trauma center, Walk-in liberal cell, visibly prints
+4/743 (5.3%) under the no./total no. (%) heading. Liberal
+transport-category numerators sum to 743. The adjacent restrictive cell
+9/747 (1.2%) reconciles and is not an affected occurrence.</p>
+<p><strong>Reported-versus-comparator:</strong> The printed pair gives a
+point percentage 0.538358%, compared with 5.3% in the same cell.</p>
+<p><strong>Reasoning procedure:</strong> Read the liberal Walk-in cell
+and its count/percentage heading, then recompute 100×4/743 with
+half-unit allowances for both integer inputs and the one-decimal
+percentage. Compare the resulting interval with the displayed percentage
+interval.</p>
+<p><strong>Calculation:</strong> Numerator [3.5,4.5] and denominator
+[742.5,743.5] give 100×[3.5/743.5,4.5/742.5]=[0.470746,0.606061]%.
+Printed 5.3% gives [5.25,5.35]%. Gap 5.25−0.606061=4.643939 percentage
+points; relative gap 4.643939/5.3=0.876215, above 0.05.</p>
+<p><strong>Affected result or extracted value:</strong> The
+liberal-group walk-in transport count, denominator, and prevalence
+extracted from eTable 2.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 3
+applies: the count, denominator, and percentage in one cell do not
+reconcile beyond the prescribed threshold. The transport-category total
+supports the denominator without selecting a replacement percentage.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Decimal
+placement or a count or percentage belonging to another population or
+cell could explain the presentation. The source does not identify the
+intended replacement component or production mechanism. No alternate
+count is inferred from the percentage.</p>
+<p><strong>Mechanical evidence recheck:</strong> The exact liberal
+Walk-in cell and table heading were directly and visually confirmed. The
+recheck reproduced the interval gap, confirmed the liberal
+category-total context, and assigned reproduced. The inclusion audit
+confirmed Route A, category 3 without expanding to the adjacent
+restrictive cell.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a data extractor could copy substantially different walk-in transport
+prevalence depending on the component selected. No change to an effect
+estimate or study conclusion is established.</p>
+<h2
+id="c014--liberal-vascular-surgery-percentage-is-positive-beside-a-zero-numerator" class="candidate-card">C014
+— Liberal vascular-surgery percentage is positive beside a zero
+numerator</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The liberal vascular-surgery
+cell in eTable 2 prints a zero numerator, 0/747, beside a positive 1.1%.
+The count pair and percentage do not reconcile beyond display
+precision.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results supplement
+eTable 2 liberal vascular-surgery count pair vs REPORT adjacent
+percentage</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-103</p>
+<p><strong>Qualifying route:</strong> Route A, category 3</p>
+<p><strong>Classification rationale:</strong> The conflicting values are
+in one REPORT eTable 2 cell, establishing S_W and statistical_results.
+The walk-in candidate on the same page has no established common cause
+and is kept separate; no PLAN or cross-report relationship is
+introduced.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=15">REPORT
+results PDF p. 15</a>.</p>
+<p><strong>Source evidence:</strong> REPORT results p. 15, eTable 2,
+Surgery in trauma resuscitation room, Vascular surgery liberal cell,
+visibly reads 0/747 (1.1%) under the no./total no. (%) heading. Other
+liberal surgery rows use denominator 747. The restrictive counterpart is
+1/744 (0.1%) and reconciles; it is not an affected occurrence.</p>
+<p><strong>Reported-versus-comparator:</strong> The zero-numerator count
+pair gives point percentage 0%, whereas the adjacent percentage gives
+positive prevalence 1.1%.</p>
+<p><strong>Reasoning procedure:</strong> Confirm the exact liberal
+vascular-surgery cell. Allow a nonnegative half-unit interval for the
+zero numerator, half-unit allowance for the denominator, and the
+one-decimal percentage interval. Compare the largest feasible
+count-derived percentage with the smallest displayed percentage.</p>
+<p><strong>Calculation:</strong> Truncating the numerator interval at
+zero gives [0,0.5], with denominator [746.5,747.5]. The recomputed
+percentage interval is [0,100×0.5/746.5]=[0,0.066979]%, versus printed
+[1.05,1.15]%. Gap 1.05−0.066979=0.983021 percentage points; relative gap
+0.983021/1.1=0.893655, above 0.05.</p>
+<p><strong>Affected result or extracted value:</strong> Whether zero
+events or positive prevalence is extracted for liberal-group vascular
+surgery during trauma resuscitation, and the associated
+numerator/denominator/percentage cell.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 3
+applies to the within-display count/denominator/percentage discrepancy.
+Even the conservative positive half-unit upper bound for the zero
+numerator remains below the printed percentage interval.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+displaced numerator or percentage, or another population, could explain
+the presentation. The source provides no replacement component or
+production mechanism. No positive event count is reconstructed from
+1.1%.</p>
+<p><strong>Mechanical evidence recheck:</strong> The exact source cell
+and heading were directly and visually confirmed. The rechecker
+reproduced the nonnegative half-unit bound and relative gap, assigned
+reproduced, and distinguished the unaffected restrictive counterpart.
+The independent audit confirmed Route A, category 3.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could record either zero events or a positive prevalence
+for this descriptive surgery cell. No treatment effect or clinical
+safety conclusion is inferred.</p>
+<h2
+id="c015--exclusion-percentages-and-printed-denominators-describe-different-quantities" class="candidate-card">C015
+— Exclusion percentages and printed denominators describe different
+quantities</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> All four exclusion cells in
+eTable 10 pair allocation-cohort denominators with percentages that
+instead reproduce distributions across excluded participants: 55/750
+(45%), 67/758 (55%), 174/750 (51%), and 165/758 (49%). The paired
+quantities do not reconcile under the printed denominators.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results supplement
+eTable 10 exclusion count pairs vs REPORT adjacent distribution
+percentages</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-105</p>
+<p><strong>Qualifying route:</strong> Route A, category 3</p>
+<p><strong>Classification rationale:</strong> The four
+count/denominator/percentage comparisons are within one REPORT eTable
+10, giving S_W and statistical_results. Both exclusion rows and both
+allocation columns form one repeated denominator-convention pattern; all
+four affected cells are retained.</p>
+<p><strong>Classification ambiguity:</strong> Document role and
+relationship type are clear. The title supports distribution
+percentages, but an explicit convention distinguishing those percentages
+from the adjacent allocation denominators is missing.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi240147supp2_prod_1738701765.29201.pdf#page=24">REPORT
+results PDF p. 24</a>.</p>
+<p><strong>Source evidence:</strong> REPORT results p. 24, eTable 10,
+prints exclusion after randomization restrictive 55/750 (45%) and
+liberal 67/758 (55%), row N=130; secondary exclusion restrictive 174/750
+(51%) and liberal 165/758 (49%), row N=341. Allocation headers are
+N=750/N=758. The title describes a distribution among postrandomization
+excluded patients. The footnote states that two secondary-exclusion
+patients lack randomized intervention data, reconciling
+174+165+2=341.</p>
+<p><strong>Reported-versus-comparator:</strong> Each explicit slash pair
+describes a proportion of its allocation cohort, whereas the adjacent
+percentage matches a cross-arm distribution using 122 or 339 excluded
+participants with known allocation. These are different extracted
+quantities, even though the distribution interpretation is supported by
+the title.</p>
+<p><strong>Reasoning procedure:</strong> Compare all four adjacent pairs
+and percentages under their explicit denominators, permitting half-unit
+input and integer-percentage intervals. Then evaluate the
+title-supported distribution interpretation using cross-arm sums.
+Preserve the footnote context without adding screened subtotal
+comparisons to the qualifying basis.</p>
+<p><strong>Calculation:</strong> The half-unit comparisons are:</p>
+<table>
+<thead>
+<tr>
+<th>Affected cell</th>
+<th>Recomputed interval (%)</th>
+<th>Printed interval (%)</th>
+<th>Gap (percentage points)</th>
+<th>Relative gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>After randomization, restrictive 55/750 (45%)</td>
+<td>[7.261825,7.404937]</td>
+<td>[44.5,45.5]</td>
+<td>37.095063</td>
+<td>0.824335</td>
+</tr>
+<tr>
+<td>After randomization, liberal 67/758 (55%)</td>
+<td>[8.767304,8.910891]</td>
+<td>[54.5,55.5]</td>
+<td>45.589109</td>
+<td>0.828893</td>
+</tr>
+<tr>
+<td>Secondary, restrictive 174/750 (51%)</td>
+<td>[23.117921,23.282188]</td>
+<td>[50.5,51.5]</td>
+<td>27.217812</td>
+<td>0.533683</td>
+</tr>
+<tr>
+<td>Secondary, liberal 165/758 (49%)</td>
+<td>[21.687541,21.848185]</td>
+<td>[48.5,49.5]</td>
+<td>26.651815</td>
+<td>0.543915</td>
+</tr>
+</tbody>
+</table>
+<p>All relative gaps exceed 0.05. Alternative distribution calculations
+are 55/122=45.081967%, 67/122=54.918033%, 174/339=51.327434%, and
+165/339=48.672566%, each matching its integer percentage. The separate
+N=130 versus 122 comparison has sum interval [121,123] versus
+[129.5,130.5], giving gap 6.5/130=0.05 exactly; it remains screened out
+and is not an independent basis for this card.</p>
+<p><strong>Affected result or extracted value:</strong> The quantity
+extracted for both exclusion rows and both arms: allocation-group
+exclusion prevalence versus allocation distribution among excluded
+participants.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 3
+applies to all four same-display count/denominator/percentage pairs. The
+title supports an alternative quantity but does not state that the slash
+denominator and adjacent percentage use different denominators. The four
+pair discrepancies remain beyond display precision.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+counts may use allocation denominators while percentages intentionally
+describe the distribution of known allocations among excluded
+participants. The title and cross-arm sums support this interpretation.
+An explicit dual-denominator convention is missing; participant-level
+exclusion allocations are unavailable. The two missing secondary
+allocations are explanatory context, and no alternate excluded count or
+attrition mechanism is inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> All four cells,
+allocation headers, row totals, title, and missing-allocation footnote
+were directly confirmed. The rechecker reproduced all four half-unit
+gaps and the alternative 122/339 distribution calculations, assigning
+reproduced. The audit confirmed one repeated Route A, category 3 pattern
+and retained the N=130 versus 122 precision-boundary comparison as
+screened out.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction could confuse allocation-group exclusion prevalence with
+allocation distribution among excluded participants. The package does
+not establish a different attrition mechanism, revised primary-analysis
+estimate, or changed evidence-synthesis conclusion.</p>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>If confirmed, these candidates could affect which population size,
+proportion, endpoint predicate, subgroup clock, analysis specification,
+outcome status or nominal uncertainty result an extractor associates
+with a reported finding. A review or meta-analysis could copy a printed
+percentage rather than the quantity implied by its count pair, or attach
+an odds-ratio test to a risk-difference interval produced by another
+analysis. A guideline evidence table could preserve a different endpoint
+or prespecification description. These are conditional extraction
+pathways grounded in the card-specific affected values; no actual
+downstream reuse, propagation, synthesis change or clinical consequence
+is established.</p>
+<p>Extraction context includes the exact outcome and window, numerator
+and denominator population, effect measure and reference direction,
+model adjustment, nominal versus multiplicity interpretation, and the
+supplied prospective SAP governance. Aggregate population labels or
+written predicate differences do not establish participant-level
+reassignment. The candidates do not provide a numerical estimate of any
+paper-level conclusion impact.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>All 144 supplied PDF pages are mapped, and all three legacy
+extraction gaps are closed. The limitations concern available
+definitions, reconstruction inputs and historical derivative provenance.
+A standalone record is retained in <a
+href="review_1_6_2/limitations.md">limitations.md</a>.</p>
+<ul>
+<li>Exact test statistics, variance estimators, standard errors, model
+covariance, interaction covariance, participant-level weights and
+censoring times are not supplied. Approximate calculations remain
+diagnostics and cannot replace the reported analyses.</li>
+<li>Figure 2 does not specify the risk-difference estimand,
+standardization or weighting, confidence-interval construction, or exact
+pairing with odds-ratio models and tests. Distinct analysis explanations
+remain available for the SSI nominal readings; the coherent exploratory
+FDR no-discovery statement is preserved.</li>
+<li>Operational population mappings are absent for the accrual maximum,
+evaluable/dropout-inclusive target and short-section randomization
+counts. Subgroup admission windows and intubation-clock equivalence are
+not established. Aggregate numbers cannot supply participant-level
+population linkage.</li>
+<li>Applied SSI microbiology/sign/opening predicates and
+participant-level event classifications are unavailable. The written
+definition comparison does not establish any realized event
+reclassification. The supplied SAP approval on 11 January 2023,
+preparation before database export and all-analysis precedence are
+explicit context; later amendments beyond the package and itemized
+replacement explanations are not supplied.</li>
+<li>The planned hypoxemia subgroup's participant-level cross-tabulation
+and matching primary-composite output are unavailable. Its absence is
+bounded to complete supplied result material and is not extrapolated to
+unsupplied records.</li>
+<li>Legacy native-text and image assets lack complete historical
+engine-version and command metadata. Current source matching, individual
+hashes, recorded fresh extraction and exact-source rechecks mitigate
+transcription dependence without reconstructing undocumented historical
+processing.</li>
+<li>Unlabeled graphical readings are approximate. Medians and
+interquartile ranges cannot reconstruct pooled distributions, individual
+timings or mean contrasts. No raw-data, external literature or
+unsupplied-source audit was performed.</li>
+</ul>
+<h2
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h2>
+<h3 id="source-integrity-and-tooling">Source integrity and tooling</h3>
+<p>The audit's read-only integrity checks matched <strong>all five
+direct-source hashes and all 58 reused-asset hashes</strong> against
+their before records. These checks establish preservation through the
+audited scientific stages; the coordinator repeats both hash sets at
+closeout. Sources and legacy audit artifacts were preserved. Final
+closeout validation is recorded separately in
+review_1_6_2/review_validation.json.</p>
+<p>The <a href="review_1_6_2/routing_preflight.md">routing preflight</a>
+reports PASS, run model gpt-6.1-sol, run model source DEFAULT, Provider
+CURRENT_SESSION, execution mode INTERACTIVE_CLI, coordinator inference
+PASS and all ten named presets verified. The <a
+href="review_1_6_2/tooling_record.md">tooling record</a> records Linux,
+Compute device CPU, direct Poppler 26.01.0, Tesseract 5.5.0 and Pandoc
+3.7.0.2; all required direct tools were available. No fallback
+environment was created or used. Fresh visual rendering was CPU-based,
+targeted OCR was unnecessary, and no GPU was used.</p>
+<p>The canonical artifacts retain source maps, relationship inventories,
+single finding-decision table, stable ledger, exact-source evidence
+recheck, quality audit and complete coverage assignments. The two frozen
+report-card parts were merged in stable-ID order without shortening,
+with only relative source-link rebasing from their deeper directories to
+this report's location. Final timing, HTML rendering and mechanical
+validation are coordinator closeout operations.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<p>The <a href="review_1_6_2/agent_execution_manifest.md">execution
+manifest</a> records every actual runtime agent, including the
+coordinator, mandatory specialists and bounded shards/repair agents. All
+17 use the same exact run model; efforts follow role contracts. The two
+statistical passes have distinct fresh runtime IDs, as do screening,
+recheck and audit.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>task:/root</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>task:/root/asset_curator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>source_inventory.md</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>task:/root/main_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>task:/root/support_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper_historical_shard</td>
+<td>task:/root/plan_mapper_historical</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_plan_historical.md</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>task:/root/numeric_main</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer_support_shard</td>
+<td>task:/root/numeric_support</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_support_part.md</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>task:/root/cross_source</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>task:/root/statistics_first</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr>
+<td>inclusion_screener</td>
+<td>task:/root/inclusion_initial</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/inclusion_screen.md</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer_rule_repair</td>
+<td>task:/root/cross_source_rule_repair</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_rule_repair.md</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>task:/root/evidence_recheck</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>task:/root/statistics_second</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>task:/root/quality_auditor</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr>
+<td>report_card_generator_001_008</td>
+<td>task:/root/report_cards_001_008</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>report_parts/cards_001_008.md</td>
+</tr>
+<tr>
+<td>report_card_generator_009_015</td>
+<td>task:/root/report_cards_009_015</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>report_parts/cards_009_015.md</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>task:/root/report_generator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<p>The exact performance fields below are copied from the current run
+state. The coordinator fills the pending completion values immediately
+after complete Markdown assembly. Local HTML rendering and mechanical
+validation are outside the observed review window unless a later model
+repair extends it.</p>
+<ul>
+<li><strong>Target basis:</strong> Five native-text PDFs with 144 unique
+pages, 141 reusable-backed pages and three embedded protocol-figure
+pages needing fresh CPU visual mapping; one 103-page multi-version
+protocol/SAP bundle and a 26-page results supplement with 11 tables
+require cross-version and report-plan relationship mapping. Existing
+article/table renders and targeted layout text reduce preprocessing.
+Plan for parallel main/support mapping and checker waves, followed by
+independent screening, recheck, second statistical pass, audit and
+report waves; no Office conversion or broad OCR is expected.</li>
+<li><strong>Total source units:</strong> 144</li>
+<li><strong>Fresh-source units:</strong> 3</li>
+<li><strong>Target elapsed minutes:</strong> 35-55</li>
+<li><strong>Started UTC:</strong> 2026-10-11T06:38:05Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T07:46:51Z</li>
+<li><strong>Observed elapsed minutes:</strong> 68.77</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> Independent issue-branch
+separation required a fresh cross-source repair and screening
+reconciliation; exact-source rechecks of 15 candidates, the full
+92-relationship second statistical pass and the 34-exclusion quality
+audit took longer than planned; the 200,000-character report context
+bound required two complete card shards followed by separate lossless
+assembly; mechanical expansion of existing individual pass-1 records
+after the first validator run</li>
+</ul>
+<p>Coordinator closeout expanded the existing 92 individual pass-1
+inventory records into the checker artifact after the first validator
+requested explicit IDs rather than grouped ranges. Scientific
+observations, candidates, classifications and screened exclusions are
+unchanged. The finish timestamp includes this mechanical record repair;
+HTML was refreshed to carry the updated timing metadata.</p>
+</body>
+</html>

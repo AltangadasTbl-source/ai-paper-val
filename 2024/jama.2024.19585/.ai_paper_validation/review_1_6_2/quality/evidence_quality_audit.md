@@ -1,0 +1,173 @@
+# Workflow 1.6.2 Evidence Quality Audit
+
+Pending Human Adjudication. Fresh auditor runtime: 01a129cd-34db-7163-800a-23321bca57df; model gpt-6.1-sol; reasoning effort high; start mode FRESH_SPAWN. The complete QUALITY_CONTROL_SCOPE.md, review contract and report specification were read. This audit covers C001, C002, C003, C004, C005, C006 and C007; all 15 checker findings; all 18 initial checker exclusions; both statistical passes; all 112 numeric and 65 statistical families and their constituent coverage; all 80 direct-source units; the asset and source inventories; screening, recheck, classification, coverage and execution records.
+
+Inclusion audit counts: CONFIRMED 7; QUESTIONED 0. New audit findings: 0. Screening-decision repairs: 0. Classification changes: 0. Every stable ID remains present and Pending Human Adjudication. No count target, earlier candidate list, prior scientific disposition, external literature or other paper was used. Source-order registration and consolidation retain the provenance of every included finding. The seven-card audit is not a selection from a larger queue.
+
+## Complete coverage and evidence fitness
+
+| Source | Role by content | Total | Reusable | Fresh-required | Mapped | Closure |
+|---|---|---:|---:|---:|---:|---|
+| DOC-001 main article | REPORT | 11 | 11 | 0 | 11 | COMPLETE: 11+0=11=11 |
+| DOC-002 protocol/SAP bundle | PLAN | 46 | 42 | 4 | 46 | COMPLETE: 42+4=46=46 |
+| DOC-003 results supplement | REPORT | 23 | 23 | 0 | 23 | COMPLETE: 23+0=23=23 |
+| Package | Two REPORT documents and one PLAN bundle | 80 | 76 | 4 | 80 | COMPLETE: 76+4=80=80 |
+
+Main mapping covers every physical page 1–11, including all table cells, 60 stacked bars, captions, footnotes and explicit no-applicable reference/metadata content. Support mapping covers all 46 PLAN pages and 23 REPORT pages, including prospective blank tables, original/final versions, amendment history, all result-table constituents, complete forest plots and explicit no-applicable content. Main and support scopes are disjoint. No source is silently excluded because it is background, a cover, a reference page or graphical.
+
+The initial caption-only fitness assessment for DOC-002 physical pp. 17, 18, 29 and 30 was repaired by the coordinator: eight native/layout text assets changed from USABLE to PARTIAL; unique-page accounting changed to 76 reusable plus four fresh-required. The support mapper had already rendered all four pages directly with Poppler 26.01.0 on CPU and visually mapped their content. This auditor independently viewed all four current source-matched renders. They show the SSPedi instrument/score categories/recall and SPARK patient/family/professional landing-page examples, rather than observed trial results. The lower instrument screenshot is cropped in the original p. 29 source image itself. Fresh mapping closes the complete scientific scope despite the reusable derivative gap. Final asset fitness is 148 USABLE, 14 DUPLICATE and 9 PARTIAL across 171 preserved reusable assets.
+
+All 17 coverage-manifest rows contain exactly one plain relative artifact path. Every completed inventory, mapping, checking, screening, registration and recheck row resolves to its artifact. Candidate-stage scopes enumerate the exact seven IDs; both statistical-stage scopes enumerate all 65 S IDs. The quality row is the current stage and can be marked COMPLETE upon this handoff. Report generation is the next mandated stage and is prospectively PLANNED; its pending artifact is not a scientific source or relationship gap. No combined artifact paths or unresolved scope globs occur in coverage cells.
+
+The numeric inventory contains exactly 112 stable family rows, N001–N096 and N201–N216, with complete constituent coverage. It distinguishes ordinal 0–4 outcomes from severe 3/4 descriptive counts and model-based effects from crude recomputations. It explicitly checks the 270 eTable 10 numerator/denominator cells, retaining absent percentages for three 0/0 cells, rather than imputing them as 0%. Flow, subgroup partitions, missingness complements and encounter distributions reproduce. Open-ended encounter categories support compatibility checks, not invented unique event totals or SDs.
+
+The statistical inventory has exactly 65 family-completion rows, each with PASS_1_COMPLETE and PASS_2_COMPLETE. Families include both inferential columns of 25 main Table 2 rows, four Table 3 outcome rows with separately disclosed models, all nine power scenarios, all primary/baseline coefficients and references, all 15 severe binary effects, all 135 chart contrasts, all 12 encounter method/outcome entries, all six missing-data effects, and every 15-item/eight-domain forest-plot tuple. The explicit eTable 10 constituent matrix contains all 15 symptoms across three cohorts for each of three outcome families. Missing analytic definitions are recorded rather than supplied by an assumed convention.
+
+## Independent screening audit in both directions
+
+All 15 emitted finding IDs appear exactly once in the sole screening table, with decision INCLUDE, reason MEETS_THRESHOLD and one stable candidate assignment. Their checker counts are numeric 3, cross-source 5 and statistical pass 1 seven. There are no SCREENED_OUT emitted findings to reconsider. Statistical pass 2 emitted no new finding, so a second screener and appended-ID recheck were not activated. No candidate is based solely on a display-zero P value.
+
+| Stable ID | Included finding IDs | Independently audited qualifying route |
+|---|---|---|
+| C001 | F-NUM-003, F-ST1-001 | Route A, category 1; disclosed distinct analyses retained |
+| C002 | F-XS-002, F-ST1-005 | Route A, category 5; triggered primary sensitivity absent in supplied REPORT corpus |
+| C003 | F-XS-003, F-ST1-007 | Route A, category 5; definite week-4 symptom/chart core only |
+| C004 | F-XS-001, F-ST1-004 | Route A, category 5; Route B also supported for the explicit analysis/estimand change |
+| C005 | F-ST1-006 | Route B; source-grounded empty-arm method gap affects three finite effects |
+| C006 | F-NUM-002, F-XS-005, F-ST1-003 | Route A, category 1; possible unrounded significant P retained |
+| C007 | F-NUM-001, F-XS-004, F-ST1-002 | Route A, category 1; both sparse symptomatic-row occurrences retained |
+
+Every checker Excluded observations row was independently revisited against all five route A categories and route B, using the exact confirmed source content and semantic maps, in addition to checking the complete pass-2 reconsideration. E01-style names below are row locators, not new finding IDs. None qualifies for an F-QA registration.
+
+| Origin row | Excluded observation | Audit outcome and one reason code | Concrete threshold audit |
+|---|---|---|---|
+| NUM-E01 | Main p. 2 rejection 6.4% versus supplement p. 6 142/1350 | RETAIN; PERIPHERAL_COMPARISON | Beyond precision: printed interval [6.35,6.45]%; conservative recomputation [10.1107,10.9294]%; gap 3.6607 points, relative .5720. This cross-location implementation descriptor changes no primary/key-secondary result, analysis-population size or decision rule. It is not a reproduced substituted digit or a within-display count/denominator/percentage conflict. It must not be described as rounding. |
+| NUM-E02 | Generic eTable 10 Difference heading versus explicit OR methods | RETAIN; TERMINOLOGY_OR_WORDING | The heading does not explicitly assert an additive quantity; main/eMethods define ORs and ratio-scale values identify them. The actual PLAN/REPORT estimand change is retained separately in C004. |
+| NUM-E03 | Figure 2 caption 198/209 versus baseline 216/213 | RETAIN; PERIPHERAL_COMPARISON | Caption matches week-8 contributors; baseline uses a different time point. Bars give no exact segment numerals tied to a conflicting analysis count. No primary-result or analysis-population discrepancy is reproduced. |
+| NUM-E04 | Crude severe proportions versus modeled absolute effects | RETAIN; MODEL_VERSUS_CRUDE | eTable 8 explicitly estimates mixed-model effects. An unadjusted mixed model is not declared to be a crude marginal subtraction; no reproducing same-display method establishes a route A4 discrepancy. |
+| NUM-E05 | Binary severe-count OR versus ordinal symptom OR | RETAIN; MODEL_VERSUS_CRUDE | The source explicitly models all five 0–4 categories. The severe 3/4 count is a descriptive tail, not the fitted ordinal endpoint. |
+| XS-E01 | Average versus median stratification terminology | RETAIN; TERMINOLOGY_OR_WORDING | Named recorded allocation strata and eTable 6 median coefficient labels reconcile the referent; no changed recoding or conflicting numeric coefficient is supplied. |
+| XS-E02 | Final care/availability eligibility not repeated in main | RETAIN; CONDITIONAL_OR_UNREPORTED | No printed conflicting criterion or affected analysis-population count is established; absence of a repeated detail does not reproduce a design change. |
+| XS-E03 | Original sex interaction versus no final planned subgroups | RETAIN; CONTEXT_RESOLVES | The supplied amendment history connects final protocol to final SAP. The final specification and report agree; the superseded original version is not a missing final primary/key-secondary analysis. |
+| XS-E04 | Planned exploratory severe binary outcome versus post-hoc absolute contrast | RETAIN; TERMINOLOGY_OR_WORDING | The reported additional absolute estimand can be post-hoc without changing outcome status. No explicit contradictory primary/secondary/exploratory/safety status or unsupported claim of prespecification is printed. |
+| XS-E05 | Expanded MICE below the overall planned trigger | RETAIN; CONTEXT_RESOLVES | Overall 38/445=8.5393% is below 10%; 23/221=10.4072% explicitly motivates extra sensitivity. Both reported percentages have zero display gap. No replacement of an activated mandatory primary analysis is established. |
+| XS-E06 | Missing exploratory adoption/MOR/click/reach details | RETAIN; CONDITIONAL_OR_UNREPORTED | No conflicting printed result/status or claim that a substituted analysis was prespecified is supplied. Route A5's missing-analysis branch concerns primary/key-secondary analyses. |
+| XS-E07 | Broad robustness wording versus worst-case P=.09 | RETAIN; CONTEXT_RESOLVES | The displayed worst-case interval −4.3 to .3 and P=.09 agree, and the source explicitly calls its differential mechanism unrealistic. The prose does not assert universal significance across scenarios. |
+| XS-E08 | eTable 10 Difference heading | RETAIN; TERMINOLOGY_OR_WORDING | Explicit OR method context resolves the generic heading; there is no changed number, additive unit or reversed reference. C004 retains the independent final-plan change. |
+| ST1-E01 | Crude severe odds/rates versus ordinal or marginalized effects | RETAIN; MODEL_VERSUS_CRUDE | Different declared endpoints/models prevent treating these as the same estimand. C001 independently retains the actual supplied interval/test reading. |
+| ST1-E02 | Average/median model wording | RETAIN; TERMINOLOGY_OR_WORDING | No alternate recorded strata or altered coefficient is supplied. The exact allocation and model-result labels identify the same factors. |
+| ST1-E03 | Optional MICE predictor/dataset details | RETAIN; CONDITIONAL_OR_UNREPORTED | The unmet overall trigger and explicit arm-specific motivation distinguish this sensitivity. Missing within-arm/dataset details alone do not reproduce a conflicting implementation. |
+| ST1-E04 | Same substantive conclusions despite Bayesian ED interval crossing 1 | RETAIN; TERMINOLOGY_OR_WORDING | Posterior probability 95.2% is not a frequentist P. No Bayesian significance rule or interval construction is declared. A lower-tail probability .048 can exceed .025 while Pr(RR>1)=.952; this is a diagnostic possibility, not an attributed construction. |
+| ST1-E05 | Worst-case interval/P versus robustness wording | RETAIN; CONTEXT_RESOLVES | The interval/test agree, negative direction persists, and the deliberately unrealistic scenario is disclosed. No explicit all-scenario significance or stopping-rule assertion conflicts. |
+
+There are zero initial exclusions coded ROUNDING_OR_DISPLAY_PRECISION. Numeric precision nevertheless received direct attention: the peripheral rejection comparison exceeds .05 relative discrepancy and is retained only on the stated scope ground; 444 versus 400/.9 and 85% versus 85.2% have overlapping half-unit intervals; missingness percentages reconcile. No interval/P conflict was screened out on precision, wording, disclosed-model, missing-detail or peripheral grounds. The 18 exclusion counts reconcile as PERIPHERAL_COMPARISON 2, TERMINOLOGY_OR_WORDING 6, MODEL_VERSUS_CRUDE 3, CONDITIONAL_OR_UNREPORTED 3 and CONTEXT_RESOLVES 4.
+
+## Final classification handoff
+
+These are the exact ledger classification values to retain in the report, with Inclusion audit updated to CONFIRMED. Document roles are assigned by content, and corroborating-only material is not added as a relationship. No P_P relationship is established merely by documented plan-version revisions.
+
+| ID | Review domain | Relationship type | All relationships | Compared document roles | Evidence state | Inclusion audit | Finding IDs |
+|---|---|---|---|---|---|---|---|
+| C001 | statistical_results | S_W | S_W | REPORT DOC-001 Table 3 ED absolute CrI vs adjusted P value | reproduced | CONFIRMED | F-NUM-003, F-ST1-001 |
+| C002 | protocol_report | P_R | P_R | PLAN DOC-002 primary sensitivity specification vs REPORT DOC-001/DOC-003 primary sensitivity results | reproduced | CONFIRMED | F-XS-002, F-ST1-005 |
+| C003 | protocol_report | P_R | P_R | PLAN DOC-002 week-4 secondary comparisons vs REPORT DOC-001/DOC-003 secondary results | reproduced | CONFIRMED | F-XS-003, F-ST1-007 |
+| C004 | protocol_report | P_R | P_R | PLAN DOC-002 intervention effect/model/test specification vs REPORT DOC-001/DOC-003 intervention analyses | reproduced | CONFIRMED | F-XS-001, F-ST1-004 |
+| C005 | statistical_results | S_W | S_W | REPORT DOC-003 empty severe-mouth-sore cohort vs finite effects and stated logistic methods | reproduced | CONFIRMED | F-ST1-006 |
+| C006 | statistical_results | S_C | S_C, S_W | REPORT DOC-001 sadness significance statement/rule vs REPORT DOC-003 sadness interval/P value | reproduced | CONFIRMED | F-NUM-002, F-XS-005, F-ST1-003 |
+| C007 | statistical_results | S_C | S_C, S_W | REPORT DOC-001 neuropathy/hunger significance statements vs REPORT DOC-003 corresponding intervals/P values | reproduced | CONFIRMED | F-NUM-001, F-XS-004, F-ST1-002 |
+
+Domain totals: statistical_results 4; protocol_report 3; report_internal_inconsistency 0; plan_material 0. Primary relationship totals: S_W 2; S_C 2; P_R 3; P_P 0. Evidence-state totals: reproduced 7; reproduced_after_transcription_correction 0; not_reproduced 0. These are actual outcomes, not targets.
+
+## C001 — ED absolute-effect interval and separately adjusted test
+
+**Inclusion audit:** CONFIRMED. Reproduced; Route A, category 1 applies to the printed different null-value readings even though the source explicitly discloses separate analyses.
+
+**Evidence and calculation audit:** [DOC-001 p. 9 Table 3 and footnote b](../../../jama_dupuis_2024_oi_240111_1733431204.38761.pdf#page=9) prints absolute rate difference 3.38 per 100 patient-weeks, 95% CrI −.57 to 7.94, adjusted RR 1.72 (95% CI 1.03–2.87) and adjusted P=.04. The current direct text and source-matched image confirm column alignment. Zero remains inside the absolute interval under endpoint intervals [−.575,−.565] and [7.935,7.945]; [.035,.045] remains below the [main p. 4](../../../jama_dupuis_2024_oi_240111_1733431204.38761.pdf#page=4) strict threshold. RR CI/P agree internally. No relative-display metric is required for category 1.
+
+**Classification audit:** REPORT within one table gives S_W/statistical_results; evidence state reproduced is supported. The abstract/body and supplement corroborate the adjusted RR; they create no S_C or P_R. The disclosed treatment/site-only absolute marginalization and additionally strata-adjusted RR are essential alternatives, not role ambiguity.
+
+**Evidence-card completeness and impact:** All location, source/comparator, rule, available/missing input, alternative, observation/inference and human-question facts are present in the recheck. Preserve the credible/confidence distinction and do not assert that P tests the absolute effect or that the RR analysis fails to reconcile. Posterior construction/priors and an explicit absolute-effect inferential summary remain unavailable. Human question: which inference accompanies the absolute ED difference, and is P solely associated with the adjusted RR? Bounded reuse impact is a possible extraction pairing across disclosed models; no paper-level conclusion change is established. No supportable evidence-field omission or unmerged repeated occurrence was identified.
+
+## C002 — Triggered total-score ordinal sensitivity absent from supplied reports
+
+**Inclusion audit:** CONFIRMED. Reproduced; Route A, category 5 applies to an explicitly triggered planned primary sensitivity whose result is not supplied.
+
+**Evidence and logical audit:** [Final protocol p. 11](../../../joi240111supp1_prod_1733431204.57929.pdf#page=11) and [SAP p. 36](../../../joi240111supp1_prod_1733431204.57929.pdf#page=36) require transformation and ordinal sensitivities after substantial total-score residual non-normality. [REPORT eFigure 1 p. 18](../../../joi240111supp2_prod_1733431204.76024.pdf#page=18) explicitly confirms clear non-normality/right skew and gives square-root effect −.7 (−1.1,−.3), P=.003. The complete supplied REPORT inventory contains no total-score ordinal result; the 15 individual-item ordinal models concern different endpoints. Absence is checked over all 11 main and 23 supplement pages, not inferred from one selected display. Precision arithmetic is inapplicable.
+
+**Classification audit:** PLAN requirement versus REPORT inventory is P_R/protocol_report, reproduced. Matching final protocol/SAP and supplied amendment history are corroboration, not P_P. Multiple agreeing REPORT locations do not create an internal-report relationship.
+
+**Evidence-card completeness and impact:** The recheck supplies all required fields and bounds the absence to the supplied package. The ordinal model/output or a replacement explanation remains unavailable. Results could exist elsewhere or transformation could have been selected in place of the second analysis; no claim of non-performance follows. Human question: where is the planned total-score ordinal result or its replacement explanation? Potential reuse affects description of the primary −3.8 (−6.4,−1.2), P=.007 robustness set, without asserting a changed primary estimate or conclusion. No further repair is required.
+
+## C003 — Explicit week-4 symptom and chart comparative results not supplied
+
+**Inclusion audit:** CONFIRMED. Reproduced; Route A, category 5 applies to the definite planned week-4 individual-symptom and chart-analysis core for abstract-represented secondary families.
+
+**Evidence and logical audit:** [Final protocol p. 11](../../../joi240111supp1_prod_1733431204.57929.pdf#page=11), [p. 12](../../../joi240111supp1_prod_1733431204.57929.pdf#page=12), [SAP p. 36](../../../joi240111supp1_prod_1733431204.57929.pdf#page=36) and [p. 37](../../../joi240111supp1_prod_1733431204.57929.pdf#page=37) explicitly require week-4 and week-8 individual ordinal and documentation/any/specific-intervention comparisons. The supplied comparative displays are week 8; [eTable 9 p. 12](../../../joi240111supp2_prod_1733431204.76024.pdf#page=12) gives week-4 descriptive cells only. Fifteen ordinal analyses and 15 symptoms×three chart families×three cohorts=135 chart contrasts form the supported week-4 pattern. All source classes/cohorts are retained; the complete supplied-report search is documented. Descriptive severe counts do not supply ordinal 0–4 ORs. Precision is inapplicable.
+
+**Classification audit:** P_R/protocol_report, reproduced, with PLAN versus REPORT roles confirmed. Fatigue/QoL comparative timing remains the documented classification ambiguity: the collection schedule permits a broader reading, but the same-primary-method instruction can refer to the week-8 primary model. Do not present those additional week-4 omissions as established. No independent plan contradiction or report-report comparison is added.
+
+**Evidence-card completeness and impact:** All fields and repeated locations are present. Unavailable inputs are the week-4 inferential results/replacement explanation and clarified fatigue/QoL time-point intent. Human question retains both, while the registered core remains definite. Reuse impact is incomplete early-effect extraction, not a claim that unprinted analyses were unperformed or changed conclusions. The ledger/screener already incorporated the supported narrowing of the broader checker wording; retain it in the report.
+
+## C004 — Final intervention specification differs from reported logistic analyses
+
+**Inclusion audit:** CONFIRMED. Reproduced; Route A, category 5 applies to replaced planned key-secondary analyses. Route B is also supported: explicit model/estimand statements conflict, immediate context does not connect final PLAN to REPORT, and the named effect-scale extraction changes.
+
+**Evidence and logical audit:** [Final protocol p. 12](../../../joi240111supp1_prod_1733431204.57929.pdf#page=12) and [SAP p. 37](../../../joi240111supp1_prod_1733431204.57929.pdf#page=37) specify simple proportion differences ignoring clustering, Fisher exact P and Newcombe intervals. [Main p. 4](../../../jama_dupuis_2024_oi_240111_1733431204.38761.pdf#page=4), [eTable 10 pp. 13](../../../joi240111supp2_prod_1733431204.76024.pdf#page=13), [14](../../../joi240111supp2_prod_1733431204.76024.pdf#page=14), [15](../../../joi240111supp2_prod_1733431204.76024.pdf#page=15) and [eMethods p. 22](../../../joi240111supp2_prod_1733431204.76024.pdf#page=22) define mixed/fixed logistic ORs and logistic P. The 2×15×3=90 week-8 any/specific-intervention contrasts are all retained. The 45 documentation contrasts are outside this replacement because their final plan is logistic. Difference null 0 versus OR null 1 identifies distinct quantities, without crude-versus-model comparison; precision is inapplicable.
+
+**Classification audit:** P_R/protocol_report, reproduced. Disclosed original-to-final revisions are contextual, not P_P; consistent main/supplement descriptions create no additional S relationship. The generic Difference heading is resolved by explicit OR methods and is not a separate issue.
+
+**Evidence-card completeness and impact:** All fields and occurrences are present. A later unsupplied analytical choice or incomplete implementation description remains possible. Missing row fits and a supplied connection to the final specification are named. Human question: what generated each effect/interval/P and connects it to the final plan? Reuse impact is mischaracterizing the reported scale or its prespecification, without any assertion about compliance, a preferred analysis or a proven conclusion change.
+
+## C005 — Finite severe-mouth-sore effects with an empty intervention cohort
+
+**Inclusion audit:** CONFIRMED. Reproduced; Route B B1 statistical method logic, B2 the observed cohort has one treatment level and no added-information estimator is specified, B3 interpretation/extraction of three named finite ORs is affected.
+
+**Evidence and calculation audit:** [Documentation p. 13](../../../joi240111supp2_prod_1733431204.76024.pdf#page=13) prints 0/0 versus 2/8, OR2.6 (.04,170.4), P>.99; [any and specific intervention p. 14](../../../joi240111supp2_prod_1733431204.76024.pdf#page=14) each print 0/0 versus1/8, OR5.00 (.07,366.4), P>.99. Source images separately confirm all three severe-cohort columns. [Methods p. 22](../../../joi240111supp2_prod_1733431204.76024.pdf#page=22) describes ordinary mixed/fixed logistic models without an empty-arm estimator. Treatment has only one observed level in this cohort, so its observed between-group coefficient is unidentified under that stated ordinary fit. Diagnostic .5-cell calculations reproduce 2.6 and 5.0, with zero display gap, but establish neither the actual estimator nor its interval/test. Exact integer zero denominators are not rounded continuous inputs.
+
+**Classification audit:** S_W/statistical_results, reproduced; all conflicting display/method material is in the REPORT supplement. Corroborating main methods or plan content do not create another relationship.
+
+**Evidence-card completeness and impact:** All three pattern occurrences, inputs, alternatives, calculation boundaries and human question are retained. Continuity adjustment, penalization or prior information could generate finite quantities; no particular estimator is inferred or recommended. Human question: what estimator and added information produced the three effects/intervals/tests? Reuse impact is extraction without those assumptions. No interval/P conflict, magnitude discrepancy, clinical harm or conclusion change is claimed; no supportable omission remains.
+
+## C006 — Sadness interval and displayed P at the strict threshold
+
+**Inclusion audit:** CONFIRMED. Reproduced; Route A, category 1 applies to the printed interval/test boundary, independent of the display-precision screen.
+
+**Evidence and calculation audit:** [eTable 10 p. 13](../../../joi240111supp2_prod_1733431204.76024.pdf#page=13) prints 52/220 (23.6%) versus82/224 (36.6%), OR.51 (.26,.99), P=.05. [Main p. 4](../../../jama_dupuis_2024_oi_240111_1733431204.38761.pdf#page=4) specifies P<.05; [p. 5](../../../jama_dupuis_2024_oi_240111_1733431204.38761.pdf#page=5) gives matched counts/P and significant narrative. The upper-limit interval [.985,.995] stays below1; displayed equality .05 does not satisfy the strict rule. P rounding interval [.045,.055] permits an underlying significant value and must remain an alternative. Both printed percentages reproduce; no adjusted OR is tested against a crude ratio.
+
+**Classification audit:** The within-supplement CI/P pair gives S_W; the matched main significance rule/narrative versus supplemental combination gives S_C. S_C takes precedence, all relationships S_C, S_W; statistical_results and reproduced agree with the source facts. Unrounded P is an inferential alternative, not a document-role ambiguity.
+
+**Evidence-card completeness and impact:** Required fields are present. Human question concerns the unrounded/intended P expression and inferential reading; no claim of underlying nonsignificance is supported. Reuse impact is different significance readings from printed equality versus interval, without a demonstrated conclusion change. This boundary-display issue is distinct from C007's P values well below .05, so the stable IDs retain separate issues without duplicate pattern registration.
+
+## C007 — Two symptomatic-row intervals contain one with significant P values
+
+**Inclusion audit:** CONFIRMED. Reproduced; Route A, category 1 applies separately to both occurrences of the common sparse symptomatic-row pattern.
+
+**Evidence and calculation audit:** [eTable 10 p. 14](../../../joi240111supp2_prod_1733431204.76024.pdf#page=14) symptom-specific SSPedi≥1 neuropathy:6/57 (10.5%) versus0/70, OR17.8 (.98,323.1), P=.007; hunger:6/111 (5.4%) versus0/130, OR16.08 (.9,288.74), P=.009. [Main pp. 5](../../../jama_dupuis_2024_oi_240111_1733431204.38761.pdf#page=5) and [6](../../../jama_dupuis_2024_oi_240111_1733431204.38761.pdf#page=6) match counts and significance statements, with the [p. 4](../../../jama_dupuis_2024_oi_240111_1733431204.38761.pdf#page=4) threshold. Current source image confirms symptomatic columns rather than adjacent all-participant rows. Lower-CI intervals [.975,.985]/[.85,.95] stay below1 while upper bounds exceed1; P intervals [.0065,.0075]/[.0085,.0095] stay below.05. Count percentages reproduce. No assumed Wald or exact formula is needed.
+
+**Classification audit:** S_C takes precedence over S_W; both relationships are genuine matched REPORT comparisons. Domain statistical_results and evidence state reproduced agree with recheck. No PLAN comparator is conflicting, and no common production mechanism is established merely by recurrence.
+
+**Evidence-card completeness and impact:** Both occurrences, every source anchor, missing row-specific interval/test constructions, alternatives and human question are retained. Different sparse-data constructions/fits could explain different decisions but are not assigned. Human question asks which procedures generated both pairs and how their null readings should be interpreted. Reuse impact is copying significant P with null-containing CI without the unresolved procedure pairing, not established harm or a paper-level conclusion change. No unmerged repeated occurrence or missing supportable field remains.
+
+## Execution, integrity, wording and repair record
+
+The execution manifest now includes the coordinator once and ten distinct fresh mandatory specialists through this audit, each with one primary artifact. Model is gpt-6.1-sol throughout. Ordinary curator/mappers/numeric/cross-source stages use medium; both statistics passes, screener, rechecker and auditor use high. Pass 1 runtime 01a129b6-3a3f-7742-b588-3b9736635a69 and pass 2 runtime 01a129c7-e5ad-70f3-ad51-87e5ed913bb7 are distinct, fresh and distinct from every mapper. Inclusion screener 01a129bc-b625-7260-9a1e-c110b1a90be7 is fresh and distinct from every checker. The auditor is also new. All current rows meet the required pairs; routing_preflight.md is PASS with current-session provider, default exact run model, CLI mode, coordinator inference and all ten named presets. Report_generator remains the next fresh medium stage and must be added once when spawned. Its absence at the audit handoff is prospective, not a missing completed mandatory scientific stage.
+
+Mechanical checks found 295 existing local Markdown links across current run artifacts, all resolving, with all source PDF anchors ending in #page=N and within the physical 11/46/23-page bounds. Candidate-linked anchors were also checked by exact text/source-image content, so successful path resolution is not substituted for pagination truth. Hash verification with sha256sum -c confirms all three supplied sources and all 171 reusable assets unchanged. Final before/after hash manifests remain the coordinator's completion step. The tooling record shows available direct Poppler tools, CPU processing, no fallback environment and no OCR/Office need. This audit reused current source confirmations and produced no new scientific extraction or rendering derivative.
+
+The current generated scientific prose uses neutral quality-control vocabulary. A complete current-run Markdown word scan found only a quoted main-source sentence about emails being confused with junk mail, plus two source transcriptions of the established term standard error. Neither describes a candidate/value/authors' work using prohibited vocabulary. No stable candidate is ranked or given a scientific disposition, and every downstream-impact statement is conditional and tied to a named extracted value or analysis description.
+
+| Repair or handoff | Reason | Audit outcome / coordinator action |
+|---|---|---|
+| Four DOC-002 screenshot units and eight reusable text assets reclassified for coverage fitness | Source-matched caption text alone did not map embedded screenshot content | Existing coordinator repair is confirmed; 76+4=80 mapping and 148/14/9 fitness counts must remain in final metadata. No source/reused file changed. |
+| Main S031 diagnosis grouping aligned to exact source/eTable 6 | Semantic mapper shorthand separately named leukemia and lymphoma; exact fit uses their combined category | Existing statistical inventory repair is sufficient; retain three diagnosis groups and source precedence. No candidate classification changed. |
+| C003 definite core separated from fatigue/QoL timing possibility | Same-primary-method instruction does not uniquely establish extra week-4 fatigue/QoL models | Existing screen/ledger/recheck narrowing is confirmed; preserve the ambiguity in the report. No stable ID suppressed. |
+| Final asset fitness-definition wording | Introductory PARTIAL definition initially referred only to metadata, while eight partial caption-only text assets were explicitly recorded | Coordinator applied the clarification that PARTIAL also includes source-matched text omitting graphical page content; confirmed in the final artifact. No scientific issue or new finding. |
+| Cross-source checklist XS05 wording | Its generic matched wording could obscure the separately documented peripheral rejection-percentage discrepancy | Coordinator applied the clarification that adopted/adapted quantities match and rejection 6.4% versus142/1350 remains NUM-E01 PERIPHERAL_COMPARISON; confirmed in the final checklist. No additional finding. |
+| All seven ledger Inclusion audit fields | PENDING_AUDIT was appropriate before this stage | Coordinator must write CONFIRMED to the classification table and all seven cards, using the exact handoff values above. |
+| Report field identity and completed-stage records | Report generation follows the scientific audit | Fresh reporter must copy exact ledger fields; coordinator must mark quality/report coverage COMPLETE, append reporter manifest row, finalize performance/integrity/tooling and run the mechanical validator. No pre-generation field-identity claim is made. |
+
+## Limits and final audit scope
+
+No scientific source-unit or relationship coverage gap remains. Named unresolved definitions are the seven human questions, row-level fit/variance/interval/test information, Bayesian construction/priors, unsupplied week-4/ordinal outputs, raw participant/site data and power-simulation code/seed. Figure 2 has no exact printed segment percentages, and open-ended encounter bins do not identify unique raw event totals/SDs. These limitations are bounded and do not authorize candidate suppression or alternative-method invention. Searches establish absence only from the supplied corpus. Complete report-card identity and final HTML/validation are prospectively pending downstream generation.
+
+Covered IDs: C001, C002, C003, C004, C005, C006, C007. Inclusion audit: CONFIRMED 7; QUESTIONED 0. Screening repairs: 0. New audit findings: 0. Classification changes: 0. All source rows close; every current checker finding and exclusion has been independently audited; every stable ID has complete recheck and audit coverage.

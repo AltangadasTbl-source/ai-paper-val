@@ -1,0 +1,13 @@
+# Workflow 1.6.2 Limitations and Missing Definitions
+
+All four supplied PDFs and all 99 physical pages were inspected and mapped. There is no remaining scientific source-coverage gap. The package contains no standalone SAP, structured results workbook, CSV, or participant-level dataset; the review uses only the supplied evidence.
+
+- Unlabelled numerical coordinates in longitudinal graphs and the protocol power figure remain approximate visual locators. Every printed axis, legend, contributor count, table value, and relevant caption is mapped; pixel readings are not treated as exact model estimates.
+- Supplement figure pages 8-13 have partial native text and imperfect historical OCR. Complete retained page images were inspected, closing the scientific coverage of those units.
+- Exact historical extraction/rendering versions and OCR engine provenance are not recorded for every reused asset. Current direct-source hashes and byte-for-byte layout comparisons establish source continuity, and new CPU derivatives record their current engine.
+- Numerical covariance, some degrees of freedom, exact test distributions, model regeneration inputs, and complete power-simulation implementation are unavailable. Diagnostic calculations are labelled; missing inputs alone do not establish a candidate. The printed count-table tests can be checked against the supplied chi-squared/Fisher family without claiming the authors' exact software options.
+- Planned analyses absent from the supplied results and possible later amendments are described from the supplied documents only. No inference is made about whether an analysis was actually performed or about material outside this package.
+
+Review domains, relationship types, evidence states, and inclusion-audit facts prepare human review. Every registered candidate remains Pending Human Adjudication; the review provides no scientific disposition or final correction.
+
+The complete report retains the candidate-specific missing definitions for all fourteen stable IDs: paired point/interval scale, matched test convention, alternative pooled or categorical denominator, implemented response transformation, prospective remission window, dual outcome status, primary-model designation, supplied sensitivity correspondence, binary model/estimand mapping, cell-specific interval construction, CMH event-test correspondence, power-site parameter definition and historical enrollment snapshot/category. These definitions remain bounded by the supplied package; no replacement value or unsupplied amendment is inferred. Report assembly by fresh runtime root/report_generator, gpt-6.1-sol/medium, preserves all fourteen complete evidence cards and the full coverage/screening summaries.

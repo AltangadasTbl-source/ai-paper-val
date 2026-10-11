@@ -1,0 +1,83 @@
+# Independent inclusion screen
+
+Stage: initial. Runtime agent: /root/inclusion_screen_initial. Model: gpt-6.1-sol; reasoning effort: high; start mode: FRESH_SPAWN. QUALITY_CONTROL_SCOPE.md was read completely, and the complete inclusion-screen contract was read. All findings in this run's numeric, cross-source, and statistical-pass-1 artifacts were screened independently against current supplied source locations. No historical scientific conclusions or external evidence were used. Candidate assignment remains with the coordinator.
+
+The numeric checker emitted no findings; the cross-source checker emitted three; statistical pass 1 emitted five. Eight findings yield five distinct included issues and three duplicate exclusions. Counts describe the decisions and were not selection targets.
+
+| Finding ID | Source checker | Screening stage | Decision | Reason code | Candidate ID |
+|---|---|---|---|---|---|
+| F-XS-001 | cross_source_consistency_reviewer | initial | INCLUDE | MEETS_THRESHOLD | C003 |
+| F-XS-002 | cross_source_consistency_reviewer | initial | INCLUDE | MEETS_THRESHOLD | C001 |
+| F-XS-003 | cross_source_consistency_reviewer | initial | INCLUDE | MEETS_THRESHOLD | C004 |
+| F-ST1-001 | statistics_pass_1 | initial | INCLUDE | MEETS_THRESHOLD | C005 |
+| F-ST1-002 | statistics_pass_1 | initial | SCREENED_OUT | DUPLICATE_OF_INCLUDED | C001 |
+| F-ST1-003 | statistics_pass_1 | initial | SCREENED_OUT | DUPLICATE_OF_INCLUDED | C004 |
+| F-ST1-004 | statistics_pass_1 | initial | INCLUDE | MEETS_THRESHOLD | C002 |
+| F-ST1-005 | statistics_pass_1 | initial | SCREENED_OUT | DUPLICATE_OF_INCLUDED | C003 |
+
+## One-sentence decision justifications
+
+- **F-XS-001:** INCLUDE by Route B because the same quit-date intervention branch is described as six prequit weeks in the main REPORT but one week in the PLAN and results REPORT, the conservative half-unit interval gap is four weeks (relative discrepancy 4.00), and no immediate context identifies the delivered schedule needed to interpret or extract the intervention accompanying the primary seven-month abstinence result.
+- **F-XS-002:** INCLUDE by Route B because the PLAN affirmatively specifies baseline-confounder adjustment for the primary logistic analysis while the REPORT's model description and primary estimates do not identify that adjustment, leaving the adjustment identity of RR 1.35 and OR 1.57 unresolved for interpretation and extraction even though ordinary logistic regression could contain unreported covariates.
+- **F-XS-003:** INCLUDE by Route B because the PLAN states an outcome-association condition for moderator interaction analysis while the REPORT explicitly analyzes all baseline characteristics, and the supplied context does not connect that condition to the 25-test Holm family underlying the named no-significant-moderator conclusion.
+- **F-ST1-001:** INCLUDE by Route A, category 4, because the same-display log-symmetric construction reproduces the five comparator odds-ratio intervals but gives an upper-limit interval [2.436694352, 2.478678930] for the IPRW OR 1.92 and lower limit 1.50, separated from printed 2.24's interval [2.235, 2.245] by 0.191694352 (relative discrepancy 0.085577836), so the printed upper confidence limit merits registration with an asymmetric-construction alternative retained.
+- **F-ST1-002:** SCREENED_OUT as DUPLICATE_OF_INCLUDED because it is the same planned primary-adjustment attribution issue retained as F-XS-002, with its abstract location and statistical provenance merged into that issue.
+- **F-ST1-003:** SCREENED_OUT as DUPLICATE_OF_INCLUDED because it is the same planned moderator selection versus reported all-characteristic testing-family issue retained as F-XS-003, with every cited location and statistical provenance merged.
+- **F-ST1-004:** INCLUDE by Route B because the REPORT excludes waitlist from significance tests but attributes P=.02 and P=.11 to retention comparisons describing all three groups, leaving the actual test population and contrast for those named results unclear rather than presenting only a peripheral difference between contributor counts.
+- **F-ST1-005:** SCREENED_OUT as DUPLICATE_OF_INCLUDED because it repeats the same six-versus-one prequit-week issue retained as F-XS-001, with all cited locations and statistical provenance merged.
+
+## Independent source reread and retained issue groups
+
+The following groups retain every location from both the included and duplicate findings; supporting amendments and endpoint/result context are distinguished from substantive comparisons. Source roles were confirmed by content: the prospective protocol is PLAN, and the article and retrospective results supplement are REPORT. Group labels are handoff labels, not candidate IDs. Proposed source order follows the first affected REPORT occurrence, with the abstract occurrence retained for the primary estimate attribution issue.
+
+### Group ADJUSTMENT — F-XS-002, F-ST1-002
+
+Proposed domain: protocol_report. Primary relationship: P_R. All relationships: P_R. Focus: C/D. Independent qualifying route: Route B. This screen retains uncertainty in the identity of the reported primary analysis; it does not infer that covariates were absent or establish that the planned analysis was never performed.
+
+Exact source locations: PLAN [protocol p.5, Data Analysis Plan/Primary Analysis](../../../joi240078supp1_prod_1739900423.22574.pdf#page=5), with disclosed-amendment context [p.15](../../../joi240078supp1_prod_1739900423.22574.pdf#page=15); REPORT [article p.1, primary abstract result](../../../jama_graham_2024_oi_240078_1739900423.19074.pdf#page=1), [p.4, Statistical Methods](../../../jama_graham_2024_oi_240078_1739900423.19074.pdf#page=4), [p.5, Vaping Cessation](../../../jama_graham_2024_oi_240078_1739900423.19074.pdf#page=5), [p.6, Table 2](../../../jama_graham_2024_oi_240078_1739900423.19074.pdf#page=6), and REPORT [supplement p.14, eTable 5 Missing=Vaping row](../../../joi240078supp2_prod_1739900423.24574.pdf#page=14).
+
+The protocol says all estimates will be adjusted for baseline confounders of the intervention-outcome relationship. Main Methods identify ordinary logistic regression, original-assignment analysis, and missing=vaping, but no baseline-covariate formula or selection rule. The primary rows give RR 1.35 (1.17–1.57) and OR 1.57 (1.26–1.95); eTable 5 distinguishes Missing=Vaping, CCA, and IPRW but does not identify a baseline-confounder-adjusted primary estimate. This is an affirmative planned-model comparison, not a demand for an otherwise unpromised detail. Numerical precision does not adjudicate an analysis-attribution statement. Crude ratios matching the displayed points do not prove a treatment-only model and are not used as the reproduction rule. The alternate interpretations remain undisclosed adjustment, no confounders selected under an undisclosed rule, or a changed analysis specification. Human question: which model and covariates generated the printed primary effect and identify its connection to the planned adjustment?
+
+### Group RETENTION — F-ST1-004
+
+Proposed domain: statistical_results. Primary relationship: S_W. All relationships: S_W. Focus: C. Qualifying route: Route B.
+
+Exact source locations: REPORT [article p.2, waitlist discussion in Participants](../../../jama_graham_2024_oi_240078_1739900423.19074.pdf#page=2), [p.4, first Results paragraph](../../../jama_graham_2024_oi_240078_1739900423.19074.pdf#page=4), and corroborating counts in [p.6, participant-flow figure](../../../jama_graham_2024_oi_240078_1739900423.19074.pdf#page=6).
+
+The p.2 statement says the waitlist group was not included in sample-size calculations or tests of statistical significance. Page 4 describes assessment-only 636/744 and waitlist 152/178 versus intervention 609/759 at one month beside P=.02, and explicitly says no difference between groups at seven months while listing intervention 521/759, assessment-only 543/744 and waitlist 132/178 beside P=.11. The conflict concerns which population generated a named test result, rather than a difference between per-time-point contributor counts. These are within-REPORT analysis-population statements; the peripheral-comparison catalogue does not remove a statistical-method attribution issue. The source does not identify a two-arm contrast or a retention-only exemption from the waitlist exclusion. The checker three-arm Pearson calculations are diagnostics only; this screen does not identify the actual test from their numerical match or infer an interval/P-value conflict. Display precision is not applicable to group membership of a test. An exclusion statement limited to cessation tests or a separately defined two-arm contrast could resolve the issue if supplied. Human question: which groups and test generated each retention P value, and what scope was intended for waitlist exclusion?
+
+### Group DURATION — F-XS-001, F-ST1-005
+
+Proposed domain: protocol_report. Primary relationship: P_R. All relationships: P_R, S_C. Focus: D. Qualifying route: Route B.
+
+Exact source locations: REPORT [article p.3, Vaping Cessation Intervention](../../../jama_graham_2024_oi_240078_1739900423.19074.pdf#page=3), PLAN [protocol p.2, program description](../../../joi240078supp1_prod_1739900423.22574.pdf#page=2) and [p.4, intervention assignment referring to that description](../../../joi240078supp1_prod_1739900423.22574.pdf#page=4), and REPORT [supplement p.2, eAppendix A](../../../joi240078supp2_prod_1739900423.24574.pdf#page=2); disclosed-amendment context is PLAN [protocol p.15](../../../joi240078supp1_prod_1739900423.22574.pdf#page=15).
+
+Current source text and a current rendered main p.3 confirm that six weeks is a printed duration, not a reference marker. The source comparisons concern the same set-quit-date branch: main six weeks before/eight after; plan one week before/eight after; supplement one week preceding/eight afterward. The common four-week no-quit-date branch does not account for this difference. Allowing whole-week half-unit intervals gives main [5.5,6.5] and reference [0.5,1.5], a gap of 4 weeks and relative discrepancy 4/1=4.00. The corresponding nominal total windows are 14 and 9 weeks. No supplied amendment identifies a changed duration. The trial intervention's dose/duration is expressly within the eligible cross-document tier and changes extraction of the exposure associated with the primary RR 1.35. Human question: which prequit schedule was delivered and how does it correspond to the prospective and retrospective descriptions?
+
+### Group MODERATORS — F-XS-003, F-ST1-003
+
+Proposed domain: protocol_report. Primary relationship: P_R. All relationships: P_R. Focus: C/D. Qualifying route: Route B.
+
+Exact source locations: PLAN [protocol p.5, Primary Analysis](../../../joi240078supp1_prod_1739900423.22574.pdf#page=5) and [p.6, opening continuation](../../../joi240078supp1_prod_1739900423.22574.pdf#page=6), with disclosed-amendment context [p.15](../../../joi240078supp1_prod_1739900423.22574.pdf#page=15); REPORT [article p.4, Statistical Methods](../../../jama_graham_2024_oi_240078_1739900423.19074.pdf#page=4), [p.5, Moderator Results](../../../jama_graham_2024_oi_240078_1739900423.19074.pdf#page=5), and REPORT [supplement p.6, eAppendix D](../../../joi240078supp2_prod_1739900423.24574.pdf#page=6) and [p.15, eTable 6](../../../joi240078supp2_prod_1739900423.24574.pdf#page=15).
+
+The full p.5–6 continuation identifies potential moderators via selected treatment interactions and states that for all moderators found associated with the primary outcome, interactions will be examined after main effects. The report explicitly examines all Table 1 baseline characteristics, one moderator at a time with main effects and interaction, and bases the reported conclusion on a 25-variable Holm family. The minimum nominal .010 becomes adjusted .250; no Holm arithmetic discrepancy is alleged. The remaining comparison is the planned selection condition's connection to the reported family, not a preference for selecting fewer variables. An interpretation that all variables satisfied the planned condition or that the broad plan language permitted exploratory expansion remains possible but is not established by immediate context. Because it concerns a planned analysis selection rule and the primary-outcome moderator conclusion appearing in the abstract, it is not peripheral. Numerical precision is not applicable to the selection condition. Human question: was the association condition used, and which specification determined the reported testing family?
+
+### Group IPRW-INTERVAL — F-ST1-001
+
+Proposed domain: statistical_results. Primary relationship: S_W. All relationships: S_W. Focus: B/C. Qualifying route: Route A, category 4.
+
+Exact source locations: REPORT [supplement p.14, eTable 5, 30-day ppa IPRW odds-ratio cell and all five other odds-ratio cells](../../../joi240078supp2_prod_1739900423.24574.pdf#page=14), with the reported survey-weighted logistic method in REPORT [p.5, eAppendix C](../../../joi240078supp2_prod_1739900423.24574.pdf#page=5). Direct extraction and a current-source rendering confirm 1.92 (1.50, 2.24) in the OR column and P<.001 in the row.
+
+Independent half-unit calculation uses U=OR²/L for a log-symmetric interval. For the five comparator OR/lower/upper triples (1.98,1.55,2.52), (1.57,1.26,1.95), (2.65,1.90,3.70), (2.61,1.87,3.65), and (2.34,1.69,3.22), the computed upper intervals are respectively [2.508440514,2.550307443], [1.936146245,1.976593625], [3.672454068,3.719802111], [3.619213333,3.666608579], and [3.216651917,3.263516320]; each overlaps its printed upper limit's half-unit interval. For the IPRW 30-day row, OR [1.915,1.925] and lower [1.495,1.505] yield upper [2.436694352,2.478678930], versus printed [2.235,2.245]. The residual gap 0.191694352 divided by 2.24 is 0.085577836, above 0.05. This is a method supported by all other rows of the same display, including repeated-ppa IPRW, rather than an unsupported method assumption. An asymmetric or row-specific interval construction remains an alternative human-review interpretation; no such construction is supplied. Route A, category 4 makes this eligible even though the row belongs to a supplementary sensitivity analysis; the peripheral tier does not remove a reproduced within-display construction inconsistency. Both the printed interval and P<.001 indicate a positive significant association, so no significance reversal is asserted. Human question: which construction produced the printed upper limit 2.24 and how does it relate to the other five OR intervals?
+
+## Direct-source derivative provenance
+
+Direct pdftotext -layout, Poppler 26.01.0, reread all pages into three uniquely owned current-run files: ../preprocessing/inclusion_screen_initial/main_layout.txt (DOC-001 PDF pp.1–9); ../preprocessing/inclusion_screen_initial/protocol_layout.txt (DOC-002 PDF pp.1–15); and ../preprocessing/inclusion_screen_initial/supplement_layout.txt (DOC-003 PDF pp.1–16). Complete local pages surrounding each cited location were reread; these new derivatives are locators for the supplied PDFs, not reused historical assets.
+
+Direct pdftoppm, Poppler 26.01.0, CPU, rendered DOC-001 p.3 and DOC-003 p.14 at 120 dpi into ../preprocessing/inclusion_screen_initial/main_p3.png and ../preprocessing/inclusion_screen_initial/supplement_p14.png. Both current-source renderings were visually inspected. Commands were pdftoppm -f 3 -l 3 -singlefile -r 120 -png for the main source and pdftoppm -f 14 -l 14 -singlefile -r 120 -png for the supplement, with the corresponding output prefixes. No OCR, fallback tooling, or source modification was required. All supplied sources and reused assets remain preserved.
+
+## Counts, exclusions, and limitations
+
+Findings screened: 8 (numeric 0; cross-source 3; statistical pass 1: 5). Included issues: 5. INCLUDE rows: 5. SCREENED_OUT rows: 3, all DUPLICATE_OF_INCLUDED. Other exclusion reason-code counts: 0. Four groups qualify independently by Route B and one by Route A, category 4. No source-location or tool gap limits screening. The missing actual primary model formula, moderator-selection implementation, retention-test contrast, delivered prequit schedule, and row-specific interval construction remain named human questions; no raw-data reconstruction or preferred analysis is proposed.
+
+Coordinator registration: ADJUSTMENT=C001, RETENTION=C002, DURATION=C003, MODERATORS=C004, IPRW-INTERVAL=C005. Candidate-ID cells were filled after independent screening; all duplicate provenance and locations are preserved in the ledger. Source ordering follows the first affected REPORT location retained by the screen.
