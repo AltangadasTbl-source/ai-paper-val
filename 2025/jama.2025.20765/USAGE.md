@@ -1,20 +1,38 @@
-# Workflow 1.5.1 Usage
+# Workflow 1.6 Usage
 
-1. Confirm that the paper package contains reusable OCR, text, table, workbook, page, or document-map
-   assets. Use workflow 1.5.2 when those assets are absent or a source-first restart is required.
-2. Back up the package-root `AGENTS.md`. Leave an existing or read-only `.codex/` unchanged.
-3. Copy `AGENTS.md`, the common controls, and `workflow_1_5_1/` into the package root. The supplied
-   `.codex/` presets may be merged only when safe; they are not required by the validator. Do not move,
-   rename, or overwrite scientific records under `.ai_paper_validation/`.
-4. Start a fresh Codex session at the package root. Do not use `resume`.
-5. Send the complete `START_PROMPT.md` as the first request.
-6. Confirm these outputs:
+1. Configure the provider in user-level `~/.codex/config.toml`, export `OPENROUTER_API_KEY` in the
+   shell that will launch Codex, and review `OPENROUTER_SETUP.md`. Keep credentials out of the paper
+   package.
+2. Confirm that the paper package contains reusable OCR, text, table, workbook, page, or document-map
+   assets. Workflow 1.6 reuses those assets; it does not replace a source-first preprocessing run.
+3. Local tools: poppler (`pdfinfo`, `pdftotext`, `pdftoppm`), `tesseract`, and LibreOffice are used
+   when installed but are not required. When one is missing, the run creates a temporary Python
+   environment inside `.ai_paper_validation/review_1_6/tooling/`, installs pinned PyMuPDF and pypdf
+   (plus CPU OCR only if needed), uses the bundled fallback helper, and removes the environment at the
+   end. Nothing is installed into the global Python. This needs `python3` (3.9 or newer) and network
+   access for `pip`; see `OPENROUTER_SETUP.md` for enabling network access in the Codex sandbox, or
+   pre-create the environment yourself from the package root before starting Codex:
+   `python3 workflow_1_6/scripts/bootstrap_tooling.py create --ocr`.
+4. Back up the package-root `AGENTS.md` and any unrelated `.codex/` controls.
+5. Copy the current `AGENTS.md`, `OPENROUTER_SETUP.md`, common controls, `.codex/agents/` presets,
+   `.codex/rules/workflow-1-6.rules`, `.codex/config.toml`, and `workflow_1_6/` into the package root.
+   Add the nine `qc16-*` role presets while preserving unrelated `.codex` controls. Older `qc15-*`
+   presets may remain; workflow 1.6 uses only the `qc16_*` roles. Do not move, rename, or overwrite
+   scientific records under `.ai_paper_validation/`.
+6. From the package root run `codex --approve-for-me`. After the interactive session opens, send
+   `Read START_PROMPT.md completely and execute Workflow 1.6 now.` as the first request.
+7. Confirm that `.ai_paper_validation/review_1_6/routing_preflight.md` reports `PASS`, coordinator
+   `gpt-6.1-sol`/`high`, ordinary specialists `gpt-6.1-sol`/`medium`, statistical specialists
+   `gpt-6.1-sol`/`high`, recheck and audit specialists `gpt-6.1-sol`/`high`, `Coordinator inference:
+   PASS`, `Execution mode: INTERACTIVE_CLI`, and `Named agent presets: PASS` before scientific mapping.
+8. Confirm these outputs:
 
-   - `.ai_paper_validation/final_report_1_5_1.md`
-   - `.ai_paper_validation/final_report_1_5_1.html`
-   - `.ai_paper_validation/review_1_5_1/review_validation.json`
-   - `.ai_paper_validation/review_1_5_1/token_usage_summary.md`
-   - `.ai_paper_validation/review_1_5_1/token_usage_summary.json`
+   - `.ai_paper_validation/final_report_1_6.md`
+   - `.ai_paper_validation/final_report_1_6.html`
+   - `.ai_paper_validation/review_1_6/candidate_ledger.md` with its classification table
+   - `.ai_paper_validation/review_1_6/tooling_record.md` showing the tools used and, if a fallback
+     environment was created, `Fallback environment removed: YES`
+   - `.ai_paper_validation/review_1_6/review_validation.json` with status `PASS`
 
 The actual evidence determines the candidate count. The workflow must not create a count-limited
 review queue or a `DEFERRED_BY_REVIEW_CAP` route. Set a package-specific timing range from complete
@@ -22,7 +40,6 @@ source inventory, fresh-mapping burden, formats, and conversion/OCR needs. Do no
 page count alone; the prior 102-total-page package is a calibration example only. Timing is not a hard
 timeout.
 
-The token summary covers the coordinator and every manifested agent through the finalized review
-cutoff. It reports authoritative known usage by agent and model. Its USD amount is a token-only
-API-equivalent estimate under `workflow_1_5_1/token_pricing.toml`, not a subscription or vendor bill.
-Refresh that dated snapshot deliberately when a different pricing date is required.
+Each candidate's relationship type, review domain, evidence state, and suggested review disposition
+appear in the candidate ledger and on its report card. The review domain and suggested disposition
+can pre-fill the human review workbook; the human reviewer makes every final decision.

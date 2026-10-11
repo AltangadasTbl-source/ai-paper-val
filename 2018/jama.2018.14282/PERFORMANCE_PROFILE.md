@@ -1,6 +1,6 @@
-# Workflow 1.5 Performance Profile
+# Workflow 1.6 Performance Profile
 
-This document is normative for both workflow 1.5 profiles.
+This document is normative for workflow 1.6.
 
 ## Per-package planning target
 
@@ -25,28 +25,30 @@ A 35-50 minute target may be reasonable for a future package with comparable tot
 derivative burden, and review complexity. It is not a default for other packages and says nothing
 about the expected length of an SAP.
 
-Retain each clean workflow 1.5 observation as future calibration evidence. The target is not a hard
+Retain each clean workflow 1.6 observation as future calibration evidence. The target is not a hard
 timeout and never permits omitted sources, relationships, statistical pass 2, candidates, evidence
 rechecks, quality review, links, or report cards. Record bounded causes whenever the selected upper
 bound is exceeded.
 
 ## Reasoning-effort allocation
 
+Every role uses the single fixed model `gpt-6.1-sol`. Roles differ only in reasoning effort.
+
 | Role class | Model | Reasoning effort | Start requirement |
 |---|---|---|---|
-| Coordinator | `gpt-5.6-sol` | `high` | Current coordinator session |
-| Statistical consistency pass 1 | `gpt-5.6-terra` | `high` | New specialist agent |
-| Statistical consistency pass 2 | `gpt-5.6-terra` | `high` | Different new specialist agent |
-| All other Terra roles | `gpt-5.6-terra` | `medium` | New specialist when delegated |
-| Mechanical evidence recheck | `gpt-5.6-sol` | `high` | New specialist when delegated |
-| Final evidence-quality audit | `gpt-5.6-sol` | `high` | New specialist when delegated |
+| Coordinator | `gpt-6.1-sol` | `high` | Current coordinator session |
+| Statistical consistency pass 1 | `gpt-6.1-sol` | `high` | New specialist agent |
+| Statistical consistency pass 2 | `gpt-6.1-sol` | `high` | Different new specialist agent |
+| Mechanical evidence recheck and classification confirmation | `gpt-6.1-sol` | `high` | New specialist when delegated |
+| Final evidence-quality and classification audit | `gpt-6.1-sol` | `high` | New specialist when delegated |
+| All other specialist roles (asset curation, mapping, numeric and cross-source checks, report generation) | `gpt-6.1-sol` | `medium` | New specialist when delegated |
 
 Never ask an existing medium-effort agent through a follow-up message to act as a high-effort
-statistical reviewer. Spawn each statistical pass with explicit model `gpt-5.6-terra` and reasoning
+statistical reviewer. Spawn each statistical pass with explicit model `gpt-6.1-sol` and reasoning
 effort `high`. The two passes use distinct runtime agent IDs and read durable artifacts rather than
 shared chat context. Record both executions in `agent_execution_manifest.md`.
 
-Do not silently raise another Terra role above this table. A one-off escalation requires a concrete
+Do not silently raise a medium-effort role above this table. A one-off escalation requires a concrete
 failed check or unresolved relationship recorded in `run_state.md` and a new explicitly configured
 agent.
 
@@ -86,11 +88,9 @@ Copy all finalized fields into the report, render HTML once, and run the mechani
 rendering and validation are excluded from observed review duration so timing does not require a
 second report-generation wave.
 
-Use `Finished UTC` as the model-usage accounting cutoff. The token ledger includes every coordinator
-and specialist response inside the review window. The local token-cost calculation, HTML rendering,
-and mechanical validation do not consume model tokens and remain outside that window. If a validation
-repair requires a later model response, move `Finished UTC` forward and regenerate both timing and
-token summaries.
+Local HTML rendering and mechanical validation do not use the model and remain outside the review
+window. If a validation repair requires a later model response, move `Finished UTC` forward and update
+the timing fields in `run_state.md` and the report.
 
 Finish complete work even when elapsed time exceeds the selected upper bound. Never convert the
 planning target into sampling, early stopping, a candidate cap, or incomplete coverage.

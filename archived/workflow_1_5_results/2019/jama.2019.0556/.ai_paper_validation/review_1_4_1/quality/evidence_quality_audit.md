@@ -1,0 +1,90 @@
+# Final Evidence-Quality Audit
+
+All nine stable candidates remain **Pending Human Adjudication**. This audit conserves `C001` through `C009` in ledger order and does not delete, suppress, merge, renumber, or adjudicate an ID. The ledger, direct-page recheck, both checker lanes, and statistical pass 2 contain the same complete candidate set. Direct source links resolve to the named supplied PDFs and use truthful `#page=N` fragments.
+
+## C001 — Table 2 footnote duplicates the supplements-without-therapy label
+
+- **Evidence and links:** Direct DOC-001 [Table 2, PDF p. 6](<../../../jama_bot_2019_oi_190007.pdf#page=6>) visibly repeats `supplements without therapy`; footnote f on that page and [Results, PDF p. 7](<../../../jama_bot_2019_oi_190007.pdf#page=7>) print `22/256 (8.6%)` for supplements with therapy. [Figure 1, PDF p. 3](<../../../jama_bot_2019_oi_190007.pdf#page=3>) supports the two distinct 256-person supplement strata but does not itself print the 22-event count.
+- **Rule, category, and reproduction:** `Measure, label, or scale inconsistency` fits the mutually exclusive 2 x 2 cell-label rule. The recheck reproduces `32 + 22 = 54`, `256 + 256 = 512`, `32/256 = 12.5%`, `22/256 = 8.59375%`, and the therapy partitions `25 + 32 = 57` versus `26 + 22 = 48`.
+- **Observation, alternative, and missing evidence:** The duplicated phrase is direct observation; the intended `with therapy` replacement is inference. A label-only production defect is source-grounded because the counts, percentages, OR, CI, and P value cohere. The source table/proof and original cell labels are unavailable. The exact remaining question is whether footnote d's second `without therapy` should read `with therapy` and whether the label propagated downstream.
+- **Report constraint:** Attribute the two strata to Figure 1 and the 22/256 event comparator to Table 2 footnote f/Results; do not say Figure 1 prints 22/256.
+
+## C002 — Supplement-adherence cutoff changes from inclusive to strict wording
+
+- **Evidence and links:** DOC-001 [Methods, PDF p. 4](<../../../jama_bot_2019_oi_190007.pdf#page=4>) and DOC-004 [eAppendix 8, PDF p. 16](<../../../joi190007supp3_prod.pdf#page=16>) print `>=70%`; DOC-001 [Results, PDF p. 6](<../../../jama_bot_2019_oi_190007.pdf#page=6>) prints `more than 70%`. DOC-004 [eAppendix 12, PDF p. 22](<../../../joi190007supp3_prod.pdf#page=22>) separately prints an inclusive Omega-3 CACE rule.
+- **Rule, category, and reproduction:** `Measure, label, or scale inconsistency` fits because `x >= 70%` includes equality and `x > 70%` excludes it. The multinutrient pill-weight cells give `135 + 134 + 126 + 120 = 515` and `515/666 = 77.3%`, compatible with rounded 77%; the Omega-3 cells give `512/652 = 78.5%`.
+- **Observation, alternative, and missing evidence:** The operator/wording difference and printed aggregates are direct; the operational cutoff, selected component, and consequence for equality cases are unresolved. Informal narrative use of `more than` for the inclusive rule is a source-grounded alternative. Missing are observations exactly at 70%, granular adherence data, the analysis-code/data-dictionary rule, the selected component, and unrounded inputs. The exact remaining question is which cutoff and component produced the reported numerator and whether equality cases were included.
+- **Report constraint:** Treat eAppendix 12 as Omega-3-specific corroborating threshold evidence, not proof that the main-text 77% used that component, and do not claim a numerical consequence.
+
+## C003 — eAppendix 8 footnote markers point to unrelated adherence rows
+
+- **Evidence and links:** DOC-004 [eAppendix 8, PDF p. 16](<../../../joi190007supp3_prod.pdf#page=16>) directly shows four `*` markers on adherence rows, a single-star Morisky-average note, no visible marker on the Morisky row, and a double-star kappa note with no visible `**` target.
+- **Rule, category, and reproduction:** `Measure, label, or scale inconsistency` fits the row-to-footnote cross-reference rule. The logical count is four visible `*` row markers associated with an apparently unrelated note, zero visible `**` row targets, and zero visible marker on the Morisky row; no arithmetic is applicable.
+- **Observation, alternative, and missing evidence:** Marker placement and note text are direct; a production shift and any intended reassignment are inferred. Shifted/lost markers are source-grounded alternatives, not corrections. Missing are the editable table, production proof/author corrections, and intended marker map. The exact remaining question is which rows were intended to carry the Morisky and kappa notes.
+
+## C004 — eAppendix 10 prints a literal P value of zero
+
+- **Evidence and links:** DOC-004 [eAppendix 10B, PDF p. 19](<../../../joi190007supp3_prod.pdf#page=19>) directly prints baseline GAD-7 `B = 0.464`, 95% CI `0.409 to 0.52`, and `p = 0`.
+- **Rule, category, and reproduction:** `Statistical reporting inconsistency` fits as a reporting-display candidate. Using rounded endpoints only, `SE ~= (0.520 - 0.409)/(2 x 1.96) = 0.0283` and `z ~= 16.4`; this non-authoritative Wald diagnostic is consistent with a very small tail probability but cannot reproduce the source analysis.
+- **Observation, alternative, and missing evidence:** Literal `0`, B, and CI are direct; underflow/fixed-precision export and any replacement are inferred. Fixed-precision rendering is a bounded alternative. Missing are unrounded B/CI/P, SE or statistic, degrees of freedom, exact test/distribution, interval method, covariance estimator, software/export precision, and display convention. The exact remaining question is the unrounded P value and governing display convention, and whether the printed zero should be thresholded or otherwise qualified.
+- **Report constraint:** Do not assert categorically that the underlying probability cannot equal zero or prescribe `P < .001`; state the exact display fact, the compatible positive interval, and the unavailable convention/unrounded result.
+
+## C005 — Main-article sample-size total conflicts with four stated cell counts
+
+- **Evidence and links:** DOC-001 [Sample Size, PDF p. 4](<../../../jama_bot_2019_oi_190007.pdf#page=4>) directly prints `392 participants (196 in each of the 4 possible intervention combinations)` and then `250 participants per intervention combination` after 22% attrition.
+- **Rule, category, and reproduction:** `Numeric or arithmetic inconsistency` fits the total-equals-sum-of-mutually-exclusive-cells rule. `4 x 196 = 784`, not 392; `392/196 = 2`; and `4 x 250 = 1000` makes the later four-cell total coherent.
+- **Observation, alternative, and missing evidence:** The numerals and parenthetical are direct; which unit or phrase was intended is inferred. In a 2 x 2 design, 392 could be one two-cell marginal level (`196 + 196`), but that is not what the sentence says. Missing are the power-calculation output/formula, the unit attached to 196/392, and the production manuscript. The exact remaining question is what unit the power calculation used and which printed quantity or phrase requires clarification.
+
+## C006 — Protocol calls a 30% versus 15% contrast a 25% difference
+
+- **Evidence and links:** DOC-002 [Sample size calculation, PDF p. 16](<../../../joi190007supp1_prod.pdf#page=16>) directly prints `a difference of 25%`, followed by expected incidences of 30% in control and 15% in intervention.
+- **Rule, category, and reproduction:** `Numeric or arithmetic inconsistency` fits the ordinary displayed contrast rules. The absolute difference is `30% - 15% = 15 percentage points`, relative reduction is `(30% - 15%)/30% = 50%`, and risk ratio is `15%/30% = 0.50`; none equals 25%.
+- **Observation, alternative, and missing evidence:** All three percentages are direct; a typo or unstated metric is inference. An unstated power parameter or drafting carryover is a source-grounded alternative. Missing are the definition of `25%`, original calculation parameterization/output, and amendment/draft history. The exact remaining question is what quantity `difference of 25%` denotes and what inputs generated the protocol calculation.
+- **Mapping confirmation:** P-N006 now faithfully transcribes that the protocol states a `difference of 25%` and separately records the printed 30% and 15% incidences; it no longer converts the source wording into a 25-percentage-point contrast.
+
+## C007 — Protocol and publication state different sample-size assumptions
+
+- **Evidence and links:** DOC-002 [PDF pp. 16-17](<../../../joi190007supp1_prod.pdf#page=16>) prints 30% versus 15%, 180 per group, alpha .05, power .90, 20% dropout, and 250 per arm. DOC-001 [PDF p. 4](<../../../jama_bot_2019_oi_190007.pdf#page=4>) prints 30% versus 20%, a 33% reduction, 196 per combination, alpha .05, power .90, 22% attrition, and 250 per combination.
+- **Rule, category, and reproduction:** `Cross-document numeric inconsistency` fits because both are enrollment-planning passages for the same one-year factorial trial and should agree or disclose a revision. Protocol: `30% - 15% = 15` percentage points and 50% relative reduction. Publication: `30% - 20% = 10` percentage points and 33.3% relative reduction, matching its 33%. Attrition differs by 2 points, yet both targets imply `4 x 250 = 1000`.
+- **Observation, alternative, and missing evidence:** The different assumptions and common target are direct/derived; whether the change was legitimate is inference. Different planning stages or a protocol amendment are source-grounded alternatives. Missing are original calculation files, dated amendments/change history, analysis-plan provenance, and identification of the assumptions that governed enrollment. The exact remaining question is which assumptions governed final enrollment and where a dated amendment or recalculation is documented.
+
+## C008 — Protocol uses incompatible DSM editions for the primary endpoint
+
+- **Evidence and links:** DOC-002 [endpoint summary, PDF p. 8](<../../../joi190007supp1_prod.pdf#page=8>) prints DSM-IV/MINI and baseline, 3-, 6-, and 12-month assessment; [outcome methods, PDF p. 28](<../../../joi190007supp1_prod.pdf#page=28>) prints DSM-5/MINI V5.01 for the same endpoint/schedule. DOC-001 [Primary Outcome, PDF p. 4](<../../../jama_bot_2019_oi_190007.pdf#page=4>) prints Fourth Edition/MINI 5.0.
+- **Rule, category, and reproduction:** `Measure, label, or scale inconsistency` fits: one endpoint should use one diagnostic-edition label or explain a transition. The logical comparison is direct: `DSM-IV` and `DSM-5` differ while endpoint, MINI family, and schedule match; no arithmetic applies.
+- **Observation, alternative, and missing evidence:** The labels are direct; which is erroneous and whether classification changed are inferred. An unrevised section or label-only difference is source-grounded. Missing are administered forms/modules, scoring algorithm, operative case-definition manual, site training/data dictionary, amendment history, and classification-impact evidence. The exact remaining question is which edition governed assessment and whether the label reflected an operational difference.
+
+## C009 — Analysis-plan significance threshold lacks a comparison operator
+
+- **Evidence and links:** DOC-003 [analysis plan, PDF p. 3](<../../../joi190007supp2_prod.pdf#page=3>) directly prints `the 2-sided significance threshold will be set at p 0.05` with no operator. [PDF p. 5](<../../../joi190007supp2_prod.pdf#page=5>) separately prints a local interaction rule `p<0.05`.
+- **Rule, category, and reproduction:** `Statistical reporting inconsistency` fits because a threshold needs a comparison relation. The operator-free p. 3 syntax cannot classify 0.049, 0.050, or 0.051; under the p. 5 local rule, only 0.049 meets `p<0.05`. The latter is a comparator, not a correction of p. 3.
+- **Observation, alternative, and missing evidence:** The missing operator and local `<` are direct; glyph loss and the intended global convention are inferred. Production loss is source-grounded because `<` renders elsewhere. Missing are the editable plan, conversion history, a global equality rule, and confirmation that p. 5 applies globally. The exact remaining question is whether the intended rule was `P<.05`, `P<=.05`, or another convention.
+
+## Coverage-row audit
+
+| Manifest row | Scope and conservation finding | Required action |
+|---|---|---|
+| `source_inventory` / `source-001` | Five supplied PDFs and all 102 pages are enumerated; the five-entry source hash baseline supports the row. | Recompute source hashes at finalization. |
+| `evidence_assets` / `assets-001` | All 72 eligible reuse artifacts are inventoried and hashed (48 usable, 16 partial, 6 stale, 2 duplicate). The documented 81-page gap is a **reusable-derivative gap**, not a remaining scientific-coverage gap. | Preserve fitness caveats and recompute all reuse hashes at finalization. |
+| `main_evidence_mapping` / `main-001` | DOC-001 pp. 1-11 are completely mapped as 36 numeric/reporting and 16 statistical relationships. The former N005 omission is now registered as C005. | No scientific-scope repair remains. |
+| `support_evidence_mapping` / `support-001` | DOC-004 pp. 1-2 and 16-23 are completely mapped from reusable assets as 31 numeric and 24 statistical relationships; this is a truthful narrow shard. | Retain its reuse-gap disclosure, read together with support-002/003. |
+| `support_evidence_mapping` / `support-002` | DOC-002 pp. 1-60 were directly mapped page-completely as 11 numeric/design and 6 statistical relationships. P-N006 now faithfully separates the printed `difference of 25%` from the 30% and 15% incidences. | No scientific-scope or transcription repair remains. |
+| `support_evidence_mapping` / `support-003` | DOC-003 pp. 1-5, DOC-004 pp. 3-15 and 24-25, and DOC-005 p. 1 were directly mapped as 17 numeric/reporting and 8 statistical relationships. These 21 pages and support-002's 60 pages repair every page of the former 81-page scientific gap. | No scientific-scope repair remains. |
+| `numeric_checks` / `numeric-001` | N001-N095 are consecutive and all 95 have checker records. Six numeric-lane observations are conserved as C001, C002, and C005-C008. | No relationship or candidate omission found. |
+| `statistics_pass_1` / `statistics-001` | S001-S054 are consecutive and all 54 have pass-1 records; C004 and C009 are the statistical observations carried to the ledger. | No relationship or candidate omission found. |
+| `cross_source_checks` / `cross-001` | Eighteen matched or explicitly no-applicable families cover all four mapping artifacts and five PDFs; its observations are conserved in C001-C003 and C005-C008. | No cross-source omission found within the registered relationships. |
+| `candidate_registration` / `ledger-001` | The union of checker candidate observations is exactly C001-C009. Genuine cross-lane duplicates were merged before stable IDs; C005-C009 were appended without changing C001-C004. | Preserve this exact ID set and order downstream. |
+| `evidence_recheck` / `recheck-001` | Exactly C001-C009 appear, each with all nine mandated fact fields and direct rendered-page confirmation. Locations, printed source/comparator, rule, reproduction, missing inputs, alternative, observation/inference split, and human question are present. | Preserve bounded wording constraints from this audit. |
+| `statistics_pass_2` / `statistics-002` | All S001-S054, C001-C009, and all recheck facts are covered. S049 explicitly carries C009; no additional statistical candidate was emitted. | No statistical-scope repair remains. |
+| `evidence_quality` / `quality-001` | This artifact audits exactly C001-C009 and every manifest row after the repair wave; both previously required source-artifact wording repairs are confirmed complete. | The manifest row may be marked complete. |
+| `report_generation` / `report-001` | The exact nine-ID set and complete provenance/coverage/limitations/integrity/timing scope remain assigned. | Assemble with the bounded candidate wording constraints, then finalize hashes/timing, render HTML, and validate. |
+
+## Coverage repair, conservation, and final repair confirmation
+
+The disjoint page union is complete: main-001 covers 11 pages; support-001 covers 10 pages; support-002 covers 60 pages; and support-003 covers 21 pages, totaling all `11 + 10 + 60 + 21 = 102` source pages with no overlap between support shards. The four mapping artifacts contribute `36 + 31 + 11 + 17 = 95` numeric/reporting relationships and `16 + 24 + 6 + 8 = 54` statistical relationships. Thus support-002/003 repair the former 81-page scientific-discovery gap. The reusable derivatives for those pages remain absent, which is an asset limitation only.
+
+Candidate conservation also passes: the ledger, evidence recheck, statistical pass 2, manifest, and this audit each contain exactly C001-C009 in order. Every candidate has direct evidence sufficient for its bounded quality-control question, an applicable category/rule, a reproduced arithmetic or logical comparison, named unavailable inputs, a source-grounded alternative, separated direct observation and inference, and an exact remaining human question. No additional supportable candidate omission was found.
+
+The two previously required source-artifact repairs are complete. `limitations.md` now distinguishes the absent reusable derivatives from the direct mapping of all 81 formerly uncovered pages and retains the genuine missing-data, unrounded-output, test-definition, OCR, and asset limitations. P-N006 now faithfully transcribes `difference of 25%`, leaving the arithmetic comparison to C006.
+
+No unresolved quality-audit repair remains. Report assembly must still observe the bounded C001, C002, and C004 attribution/interpretation constraints stated above; these are reporting safeguards, not incomplete evidence or source-artifact repairs. Final scientific coverage, relationship coverage, candidate conservation, direct-evidence sufficiency, link truthfulness, and observation/inference separation pass this audit.

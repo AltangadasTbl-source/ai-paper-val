@@ -1,6 +1,6 @@
-# Workflow 1.5 Quantitative Quality-Control Scope
+# Workflow 1.6 Quantitative Quality-Control Scope
 
-This document is normative for both workflow 1.5 profiles.
+This document is normative for workflow 1.6.
 
 ## Review objective
 
@@ -74,6 +74,77 @@ inconsistency beyond display precision, such as a conflicting P value for the sa
 interval or statistic incompatible under the stated same test, or prose that explicitly interprets
 zero as an absolute probability. Frame any candidate around that independent contradiction, not
 around the `P = 0` notation.
+
+## Document-role classification
+
+Every stable candidate receives a document-role classification in addition to its primary category.
+The classification records which kinds of supplied documents are in conflict. It describes the
+comparison; it is not a validity, severity, or protocol-violation judgment.
+
+### Document roles
+
+Assign each compared location one role by content, never by file name or supplement number:
+
+- `REPORT`: the main article, or a non-plan results supplement (eTables, eFigures, eAppendix results,
+  structured result files);
+- `PLAN`: a protocol, statistical analysis plan, protocol amendment or plan version, a prospective
+  operational document such as a manual of procedures, and historical or background data presented
+  inside protocol/SAP material.
+
+A protocol/SAP bundle that is physically supplied as a supplement is still `PLAN`. Internal
+inconsistencies inside one bound plan bundle remain plan-internal even if the bundle contains several
+historical plan versions.
+
+### Relationship types
+
+Use exactly one of these four primary relationship types:
+
+| Code | Meaning |
+|---|---|
+| `P_R` | A discrepancy between `REPORT` content (main article or results supplement) and `PLAN` content (protocol/SAP). Includes endpoint, population, analysis, prespecification, or framing mismatches. It does not imply a proven protocol violation. |
+| `P_P` | A discrepancy solely within `PLAN` material: inside a protocol or SAP, between plan documents or versions, between protocol/SAP and another prospective operational document, or within historical/background data presented in plan material. |
+| `S_C` | A discrepancy between two different `REPORT` documents: main article versus a non-plan supplement, or two different non-plan supplements. |
+| `S_W` | A discrepancy within one `REPORT` document: within the main article, or within one non-plan supplement (arithmetic, statistical, label, scale, or definition mismatch). |
+
+Record every substantive discrepancy relationship the candidate involves in `All relationships`.
+When a candidate genuinely involves more than one relationship, choose the primary type by precedence
+`P_R` > `P_P` > `S_C` > `S_W`. A document that only corroborates one side of a mismatch is not a
+discrepancy relationship: a protocol that merely confirms the intended value of an internal report
+mismatch does not make that candidate `P_R`. Do not classify from the primary category or from
+protocol keywords alone. Record any uncertain role assignment, mixed comparison, or possible disclosed
+amendment in `Classification ambiguity`.
+
+### Review domain
+
+Derive the review domain mechanically from the relationship type and the primary category:
+
+| Relationship type | Primary category | Review domain |
+|---|---|---|
+| `P_R` | any | `protocol_report` |
+| `P_P` | any | `plan_material` |
+| `S_C` or `S_W` | `Numeric or arithmetic inconsistency`, `Denominator, proportion, or total inconsistency`, `Statistical reporting inconsistency`, `Analysis-unit or population inconsistency`, or `Rate-versus-count inconsistency` | `statistical_results` |
+| `S_C` or `S_W` | `Measure, label, or scale inconsistency` or `Cross-document numeric inconsistency` | `report_internal_inconsistency` |
+
+### Evidence state
+
+The mechanical evidence recheck assigns exactly one evidence state:
+
+| Evidence state | Use when |
+|---|---|
+| `recorded_candidate` | The recheck finds the cited values or statements and reproduces the registered mismatch, or the mismatch remains as registered pending a named missing definition. |
+| `not_reproduced` | The direct-source recheck explicitly disproves the registered mismatch: the cited values, once read correctly, reconcile under the stated rule. |
+| `repaired_residual` | An original transcription or location is disproven, but the corrected source values leave a different, conditional question. |
+| `record_input_error` | The registered comparison rests on a misread or misassigned input or an unsupported alignment assumption, and whether a residual discrepancy exists cannot be settled from the package. |
+
+A `not_reproduced` candidate keeps its stable ID and card. Evidence state is an evidence-record
+distinction, not a scientific validity judgment.
+
+### Suggested review disposition
+
+Derive the suggested review disposition mechanically from the evidence state: `not_reproduced` →
+`exclude`; `record_input_error` → `discuss`; `recorded_candidate` or `repaired_residual` → `retain`.
+This field only pre-fills the human review workbook. It is not an AI adjudication; every candidate
+remains `Pending Human Adjudication`, and the human reviewer decides the disposition.
 
 There is no expected candidate count. Zero is valid after complete coverage. One is valid. More than
 10 is valid. Continue until all assigned source and relationship units have been checked.
