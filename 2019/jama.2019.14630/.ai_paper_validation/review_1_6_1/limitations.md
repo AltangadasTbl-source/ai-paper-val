@@ -1,0 +1,29 @@
+# Workflow 1.6.1 Limitations and Missing Definitions
+
+Status: COMPLETE for the supplied scientific evidence scope. All 149 pages of the five direct-source PDFs were newly mapped, and all 259 numeric and 276 statistical relationships were reviewed; both statistical passes are complete. Scientific coverage gaps: None. Tooling limitations: None. No fallback environment was needed or created.
+
+No stable candidates were identified after complete mapping, independent screening of all three initial checker findings, the empty-set mechanical evidence recheck, both statistical passes, and the independent quality audit. The limits below describe absent supplied definitions and reconstruction inputs; they are not candidate evidence cards.
+
+## Follow-up attendance versus outcome availability
+
+The main [abstract, PDF p. 1](<../../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=1>) prints the 6583 follow-up/analysis count. The [flow diagram, PDF p. 3](<../../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=3>), [analysis methods, PDF p. 4](<../../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=4>), and [Table 2, PDF p. 5](<../../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=5>) distinguish the baseline-eligible analysis population from instrument-specific observed and imputed follow-up information. A matched visit-attendance count and a definition equating follow-up completion with availability of every dietary measure are not supplied. Outcome missingness therefore cannot establish nonattendance or an alternative visit-completion count. F-NUM-001 was independently screened out as CONDITIONAL_OR_UNREPORTED.
+
+## Report-specific SAP applicability and versions
+
+The [SAP, PDF p. 9](<../../joi190106supp2_prod_1635377898.49605.pdf#page=9>) expressly schedules year-one weight and waist; these schedules were acknowledged in screening and audit. The [SAP ancillary interval rule, PDF p. 12](<../../joi190106supp2_prod_1635377898.49605.pdf#page=12>) expressly includes waist in its clinical secondary-outcome family. The [SAP, PDF p. 26](<../../joi190106supp2_prod_1635377898.49605.pdf#page=26>) specifies completer-first analysis priority and missing-outcome imputation for participants lost for two years or longer.
+
+The [report's methods, PDF p. 4](<../../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=4>) define a baseline-nutrition-restricted exploratory population, and [eTable 9, PDF p. 23](<../../joi190106supp3_prod_1635377898.49725.pdf#page=23>) separately labels multiple-imputation and completer estimates. The package does not establish that these selected-cohort analyses implement or replace the scheduled clinical-main weight analysis or the SAP's full waist multiplicity family. The [SAP version record, PDF p. 2](<../../joi190106supp2_prod_1635377898.49605.pdf#page=2>) names November 2018 version 1 and July 2019 version 2, but substantive version-1 text and a revision/application roster are absent. No report-specific SAP connects these rules to the March 2019 report database. Chronology and exploratory labeling alone establish neither applicability nor inapplicability. F-ST1-001 and F-ST1-002 were independently screened out as CONDITIONAL_OR_UNREPORTED.
+
+## Exact test, interval, and multiple-imputation reconstruction
+
+The [main analysis description, PDF p. 4](<../../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=4>) and [results-supplement methods, PDF p. 24](<../../joi190106supp3_prod_1635377898.49725.pdf#page=24>) provide general mixed-model, imputation, two-sided-test, and interval context. They do not supply every cell-specific test identity/statistic, degrees of freedom, covariance or variance estimator, confidence-interval construction, and multiple-imputation pooling detail. Exact interval/P compatibility and adjusted interval endpoints cannot be universally reconstructed from printed summaries. Model-based contrasts need not equal crude subtraction of rounded means. Diagnostic approximations were kept separate from source-established tests, and absent inputs did not prevent full relationship review.
+
+## Power and figure inputs
+
+The plan's power material, including [protocol PDF pp. 52–54](<../../joi190106supp1_prod_1635377898.47058.pdf#page=52>) and [SAP PDF pp. 7–8](<../../joi190106supp2_prod_1635377898.49605.pdf#page=7>), does not supply every calculation formula and design input required for exact independent reproduction. Report figures do not provide every underlying count, denominator, or construction input; [results-supplement eFigures, PDF pp. 25–27](<../../joi190106supp3_prod_1635377898.49725.pdf#page=25>) remain source-linked visual evidence. No precise replacement value was inferred from plot geometry, and unsupported assumptions were retained as limitations.
+
+## Supplied-data and derivative boundary
+
+No participant-level raw data, supplied workbook/CSV result file, or report-specific SAP is present. The retrospective [data-sharing statement, PDF p. 1](<../../joi190106supp4_prod_1635377898.50723.pdf#page=1>) was mapped as REPORT content; it is not participant-level data. Some retained derivative engine metadata is undocumented. Complete whole-document layouts nevertheless matched current direct-source extraction, and source-page confirmation was performed where needed. These provenance limits did not create a scientific coverage gap. The [asset inventory](evidence_asset_inventory.md), [coverage ledger](source_coverage.md), [screening log](screening/inclusion_screen.md), and [quality audit](quality/evidence_quality_audit.md) retain the evidence and decisions.
+
+The review used only supplied package evidence and local CPU tools. No external evidence filled absent definitions. Post-assembly integrity is recorded in source_hashes_after.sha256 and reused_artifact_hashes_after.sha256; exact timing is retained in run_state.md, and the final mechanical completion status is recorded in review_validation.json.

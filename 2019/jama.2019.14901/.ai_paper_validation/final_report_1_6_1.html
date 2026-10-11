@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--high-wean-trial"
+id="toc-quantitative-quality-control-consistency-review--high-wean-trial">Quantitative
+Quality-Control Consistency Review — HIGH-WEAN Trial</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#inclusion-screening-summary"
+id="toc-inclusion-screening-summary">Inclusion Screening
+Summary</a></li>
+<li><a href="#review-domain-summary"
+id="toc-review-domain-summary">Review-Domain Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--day-7-respiratory-failure-absolute-difference-differs-within-the-main-report"
+id="toc-c001--day-7-respiratory-failure-absolute-difference-differs-within-the-main-report">C001
+— Day-7 respiratory-failure absolute difference differs within the main
+report</a></li>
+<li><a
+href="#c002--severe-acidosis-threshold-differs-between-plan-and-reported-reintubation-rule"
+id="toc-c002--severe-acidosis-threshold-differs-between-plan-and-reported-reintubation-rule">C002
+— Severe-acidosis threshold differs between plan and reported
+reintubation rule</a></li>
+<li><a
+href="#c003--icu-mortality-comparison-is-planned-as-log-rank-and-reported-as-chi-square"
+id="toc-c003--icu-mortality-comparison-is-planned-as-log-rank-and-reported-as-chi-square">C003
+— ICU mortality comparison is planned as log-rank and reported as
+chi-square</a></li>
+<li><a
+href="#c004--prespecified-disease-and-weaning-test-primary-subgroup-results-are-absent"
+id="toc-c004--prespecified-disease-and-weaning-test-primary-subgroup-results-are-absent">C004
+— Prespecified disease and weaning-test primary subgroup results are
+absent</a></li>
+<li><a
+href="#c005--nonhypercapnic-day-90-mortality-absolute-difference-does-not-reconcile"
+id="toc-c005--nonhypercapnic-day-90-mortality-absolute-difference-does-not-reconcile">C005
+— Nonhypercapnic day-90 mortality absolute difference does not
+reconcile</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#complete-agent-execution"
+id="toc-complete-agent-execution">Complete agent execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--high-wean-trial">Quantitative
+Quality-Control Consistency Review — HIGH-WEAN Trial</h1>
+<p><strong>Pending Human Adjudication</strong></p>
+<p>This Workflow 1.6.1 review prepares candidate reporting issues for
+human assessment. Evidence states and inclusion audits describe the
+review record; they do not adjudicate the candidates or the paper. Every
+human adjudication field remains <code>__</code>.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete review of four supplied PDFs, covering all 69 pages,
+produced <strong>five stable candidates: C001–C005</strong>. Two concern
+reported absolute treatment differences; three concern prospective
+versus reported endpoint or analysis specifications. All five were
+reproduced by an independent exact-source recheck and received a
+CONFIRMED inclusion audit. All remain Pending Human Adjudication.</p>
+<p>Twelve checker findings received independent inclusion decisions: ten
+INCLUDE records consolidate into five distinct issues, and two findings
+were screened out. A separate audit reviewed all 71 checker
+excluded-observation records. Both fresh statistical passes covered all
+49 statistical relationship groups; the numeric inventory covers all 118
+numeric groups. Candidate selection applied the supplied inclusion
+threshold without a count target.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The supplied package concerns high-flow nasal oxygen alone versus
+high-flow nasal oxygen alternating with noninvasive ventilation after
+extubation. In the cards, control denotes the former and intervention
+the latter. The analyzed populations are 302 and 339 respectively unless
+a subgroup is specified. Document roles follow content.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Actual source filename and scope</th>
+<th>Role</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_thille_2019_oi_190108.pdf#page=1">jama_thille_2019_oi_190108.pdf
+— pp.1–11</a></td>
+<td>REPORT</td>
+<td>Main randomized trial article and appended material</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a href="../joi190108supp1_prod.pdf#page=1" target="_blank" rel="noopener">joi190108supp1_prod.pdf
+— pp.1–48</a></td>
+<td>PLAN</td>
+<td>Prospective protocol, version 4, 17 October 2017, with
+appendices</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a href="../joi190108supp2_prod.pdf#page=1" target="_blank" rel="noopener">joi190108supp2_prod.pdf
+— pp.1–9</a></td>
+<td>REPORT</td>
+<td>eTables 1–5 and survival eFigure</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td><a href="../joi190108supp3_prod.pdf#page=1" target="_blank" rel="noopener">joi190108supp3_prod.pdf
+— p.1</a></td>
+<td>REPORT</td>
+<td>Administrative data-sharing statement</td>
+</tr>
+</tbody>
+</table>
+<p>The curator inventoried and hashed 128 reusable native/layout text,
+OCR, rendered-page, map and provenance assets. They served as source
+locators and transcription aids. Existing native text matches current
+source extraction after whitespace normalization on all 69 pages,
+including the partial protocol p.42 extraction. Partial historical maps
+did not restrict this review. Earlier candidate selections,
+classifications and reports were preserved and were not discovery
+inputs. The supplied sources were the only scientific evidence; no
+external literature was used.</p>
+<p>Detailed provenance is in <a
+href="review_1_6_1/source_inventory.md">Source inventory</a> and <a
+href="review_1_6_1/evidence_asset_inventory.md">Evidence-asset
+inventory</a>. Source PDFs, rather than their derivatives, control the
+candidate evidence.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review covered counts and denominators, estimate and test logic,
+statistical method logic, and planned versus reported statistical
+design. It did not perform a raw-data, broad clinical, methodology,
+novelty or misconduct audit, or propose a preferred analysis.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Unit type</th>
+<th style="text-align: right;">Total</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh-required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">48</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;"><strong>69</strong></td>
+<td style="text-align: right;"><strong>68</strong></td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td style="text-align: right;"><strong>69</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>All supplied pages were mapped, including administrative,
+bibliography and ethical material with no applicable current-trial
+numeric relationship. Protocol p.42 lacked usable full-form reusable
+extraction. Fresh Poppler rendering, complete visual transcription and
+targeted Tesseract CPU OCR closed that unit. Partial OCR did not control
+its inequality transcription. Historical missing OCR on main pp.5–8 was
+covered by substantial layout text and readable images. There is no
+scientific source-coverage gap.</p>
+<p>The inclusion threshold requires reproduced source evidence,
+focus-area eligibility, an issue not resolved at once by immediate
+context for a statistically literate reader, and plausible relevance to
+a named result's interpretation or extraction. Rounding/display
+precision, immediately resolved terminology or typography, explicitly
+modeled-versus-crude comparisons, conditional observations, peripheral
+comparisons and out-of-focus observations were screened out. Missing
+definitions were recorded rather than filled from convention. See <a
+href="review_1_6_1/source_coverage.md">Complete source coverage</a> and
+<a href="review_1_6_1/coverage_manifest.md">Coverage manifest</a>.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<table>
+<thead>
+<tr>
+<th>Inventory or review stage</th>
+<th>Completed scope</th>
+<th style="text-align: right;">Findings</th>
+<th style="text-align: right;">Checker excluded observations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numeric inventory/check</td>
+<td>N001–N118: 118/118 groups</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr>
+<td>Cross-source review</td>
+<td>Complete matched report/plan relationships and report
+comparisons</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr>
+<td>Statistical pass 1</td>
+<td>S001–S049: 49/49 PASS_1_COMPLETE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td>Statistical pass 2</td>
+<td>S001–S049: 49/49 PASS_2_COMPLETE, after ledger/screen/recheck</td>
+<td style="text-align: right;">0 new</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr>
+<td><strong>Total checker records</strong></td>
+<td>Complete assigned evidence</td>
+<td style="text-align: right;"><strong>12 findings</strong></td>
+<td style="text-align: right;"><strong>71 excluded
+observations</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Grouped records include every attached table row and cell, rather
+than sampled examples: all 31 eTable 1 contrasts, 71 printed eTable 2 P
+contrasts, 26 subgroup outcome rows, 30 center rows and survival
+risk-table cells. Main and support maps crosswalk 97+21 numeric groups
+and 32+17 statistical groups to the complete inventories. Both passes
+cover every registered statistical relationship. Exact tests or
+estimators unavailable from the package remain bounded reconstruction
+limitations.</p>
+<p>Statistical pass 1 and pass 2 used distinct fresh gpt-6.1-sol/high
+runtimes. Pass 2 produced no new findings; a second inclusion screen was
+therefore unnecessary. See <a
+href="review_1_6_1/relationships/numeric_relationship_inventory.md">Numeric
+relationships</a>, <a
+href="review_1_6_1/statistics/relationship_inventory.md">Statistical
+relationships</a>, <a
+href="review_1_6_1/checkers/statistical_pass_1.md">Pass 1</a> and <a
+href="review_1_6_1/checkers/statistical_pass_2.md">Pass 2</a>.</p>
+<h2 id="inclusion-screening-summary">Inclusion Screening Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Reason code</th>
+<th style="text-align: right;">Finding records</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCLUDE</td>
+<td>MEETS_THRESHOLD</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>ROUNDING_OR_DISPLAY_PRECISION</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>CONDITIONAL_OR_UNREPORTED</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>All decisions</td>
+<td style="text-align: right;"><strong>12</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The ten included records consolidate by issue into C001 (three
+findings), C002 (two), C003 (one), C004 (two) and C005 (two). All other
+screened-out reason codes have zero finding records. F-XS-002's
+main/supplement P-value comparison was screened out under half-unit
+display precision. F-XS-004's purported omitted randomized-treatment Cox
+effect depended on a mapping not established by the supplied plan. The P
+subpart of included F-ST1-001 was also excluded within that finding and
+does not create another finding record or candidate relationship.</p>
+<p>These twelve independently screened findings are distinct from the 71
+checker self-excluded observations, all of which were audited in both
+directions. The final auditor identified no additional qualifying issue
+or screening reversal. Display-zero P values alone do not qualify. The
+reconciled decisions and provenance are in <a
+href="review_1_6_1/screening/inclusion_screen.md">Inclusion
+screen</a>.</p>
+<h2 id="review-domain-summary">Review-Domain Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Review domain</th>
+<th>Definition</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>statistical_results</td>
+<td>Counts, estimates, intervals, tests or statistical method logic
+within REPORT material</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>report_internal_inconsistency</td>
+<td>Conflicting REPORT attribution of a numeric result to outcome, time,
+population or comparison</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>protocol_report</td>
+<td>Prospective PLAN versus REPORT statistical design or analysis
+element</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>plan_material</td>
+<td>Statistical design inconsistency solely within PLAN material</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>5</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Relationship type</th>
+<th>Meaning</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P_R</td>
+<td>REPORT versus PLAN</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>P_P</td>
+<td>PLAN versus PLAN</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>S_C</td>
+<td>Two different REPORT documents</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>S_W</td>
+<td>Within one REPORT document</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>5</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Evidence state</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reproduced</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>reproduced_after_transcription_correction</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>5</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Inclusion audits are CONFIRMED=5 and QUESTIONED=0. Relationships obey
+P_R &gt; P_P &gt; S_C &gt; S_W precedence; corroborating context does
+not add a conflicting relationship. These classifications pre-fill human
+review and do not constitute adjudication.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate reporting issue</th>
+<th>Review domain</th>
+<th>Relationship type</th>
+<th>Evidence state</th>
+<th>Inclusion audit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="#c001--day-7-respiratory-failure-absolute-difference-differs-within-the-main-report">C001</a></td>
+<td>Repeated day-7 respiratory-failure absolute difference</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td><a
+href="#c002--severe-acidosis-threshold-differs-between-plan-and-reported-reintubation-rule">C002</a></td>
+<td>Severe-acidosis endpoint-rule threshold</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td><a
+href="#c003--icu-mortality-comparison-is-planned-as-log-rank-and-reported-as-chi-square">C003</a></td>
+<td>Planned/reported ICU mortality comparison</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td><a
+href="#c004--prespecified-disease-and-weaning-test-primary-subgroup-results-are-absent">C004</a></td>
+<td>Two planned primary subgroup factor families</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td><a
+href="#c005--nonhypercapnic-day-90-mortality-absolute-difference-does-not-reconcile">C005</a></td>
+<td>Subgroup mortality absolute-difference quantity</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--day-7-respiratory-failure-absolute-difference-differs-within-the-main-report" class="candidate-card">C001
+— Day-7 respiratory-failure absolute difference differs within the main
+report</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The same overall day-7
+respiratory-failure contrast is reported as −8.7 percentage points in
+the abstract/narrative and −8.5 in Table 2.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main abstract and
+narrative vs REPORT main Table 2</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-001, F-XS-001, F-ST1-001</p>
+<p><strong>Classification rationale:</strong> The conflicting effects
+are within one REPORT. Supplementary counts merely corroborate the
+endpoint; the P-value subpart was independently screened out and adds no
+S_C relationship.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> Affected occurrences: <a
+href="../jama_thille_2019_oi_190108.pdf#page=1">jama_thille_2019_oi_190108.pdf
+— p.1 abstract Results</a>, <a
+href="../jama_thille_2019_oi_190108.pdf#page=6">p.6 Secondary
+Outcomes</a> and <a href="../jama_thille_2019_oi_190108.pdf#page=8" target="_blank" rel="noopener">p.8
+Table 2 respiratory-failure row/headings</a>. Method context: <a
+href="../jama_thille_2019_oi_190108.pdf#page=4">main p.4</a>. Count
+corroboration: <a
+href="../joi190108supp2_prod.pdf#page=2">joi190108supp2_prod.pdf — p.2
+eTable 1</a>, <a href="../joi190108supp2_prod.pdf#page=6" target="_blank" rel="noopener">p.6 eTable
+3</a> and <a href="../joi190108supp2_prod.pdf#page=7" target="_blank" rel="noopener">p.7 eTable
+4</a>.</p>
+<p><strong>Source evidence:</strong> Abstract and narrative give
+intervention 21% versus control 29%, difference −8.7 (95% CI −15.2 to
+−1.8), P=.01. Table 2 gives 70/339 versus 88/302, difference −8.5 with
+the same interval and P value. Supplementary stratum counts sum to those
+table events and denominators.</p>
+<p><strong>Reported-versus-comparator:</strong> Matched reported effect
+−8.7 in two prose locations versus −8.5 in the same article's table.
+This candidate concerns the risk difference only.</p>
+<p><strong>Reasoning procedure:</strong> Match endpoint, population,
+day, arm direction and interval across all three locations; compare the
+two printed effect intervals under half-unit display precision. Use the
+event-fraction calculation as corroboration without assuming a separate
+modeled estimate must be crude.</p>
+<p><strong>Calculation:</strong> 100 × (70/339 − 88/302) = −8.4901052961
+percentage points. The printed-effect intervals [−8.75, −8.65] and
+[−8.55, −8.45] are disjoint. Supplementary events are 14+56=70 and
+24+64=88; denominators are 63+276=339 and 48+254=302.</p>
+<p><strong>Affected result or extracted value:</strong> Overall day-7
+postextubation respiratory-failure absolute treatment difference, an
+abstract-reported key secondary result.</p>
+<p><strong>Why context does not resolve it:</strong> Both effects are
+unqualified and identify the same endpoint, day, population and
+interval. No distinct estimator or denominator explains the repeated
+narrative effect. Counts support the table arithmetic but do not
+identify how the narrative value was generated.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unlabelled narrative calculation or reporting transcription could
+explain the difference; the package establishes neither. An explicitly
+distinct modeled estimate, if documented, would require its own
+interpretation.</p>
+<p><strong>Mechanical evidence recheck:</strong> The independent
+rechecker confirmed all three printed effects using direct PDF layout
+text and source-derived images; no location or transcription correction
+was required. Its reproduced state concerns the disjoint repeated-effect
+values, with supplementary content serving as corroboration. The
+independent audit confirmed this bounded scope.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could copy −8.7 from the abstract or −8.5 from the table as the overall
+absolute effect. This identifies a possible extraction choice; no
+propagation or trial-conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Compare all three affected
+occurrences and establish the intended estimator, denominator and source
+calculation for each. Keep the independently screened P-value comparison
+outside this candidate.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--severe-acidosis-threshold-differs-between-plan-and-reported-reintubation-rule" class="candidate-card">C002
+— Severe-acidosis threshold differs between plan and reported
+reintubation rule</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The acidosis component of the
+two-component severe respiratory-failure rule uses pH&lt;7.35 in the
+plan and pH&lt;7.25 in the report, each with PaCO2&gt;45 mm Hg.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN protocol
+severe-reintubation definition vs REPORT main Outcomes definition</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-003, F-ST1-005</p>
+<p><strong>Classification rationale:</strong> A prospective PLAN
+operational decision rule is compared with a REPORT definition
+underlying the primary reintubation endpoint.</p>
+<p><strong>Classification ambiguity:</strong> No role ambiguity; no
+separate applicable amendment is supplied.</p>
+<p><strong>Exact source locations:</strong> Core comparison: <a
+href="../joi190108supp1_prod.pdf#page=30">joi190108supp1_prod.pdf — p.30
+section 5.4 start</a>, <a href="../joi190108supp1_prod.pdf#page=31" target="_blank" rel="noopener">p.31
+severe-rule continuation</a> and <a
+href="../jama_thille_2019_oi_190108.pdf#page=4">jama_thille_2019_oi_190108.pdf
+— p.4 Outcomes</a>. Affected endpoint context: <a
+href="../jama_thille_2019_oi_190108.pdf#page=8">main p.8 Table 2 primary
+row</a>. Corroborating criterion counts: <a
+href="../joi190108supp2_prod.pdf#page=2">joi190108supp2_prod.pdf — p.2
+eTable 1</a>.</p>
+<p><strong>Source evidence:</strong> Both severe respiratory-failure
+definitions require at least two qualifying components. The
+corresponding acidosis item is pH&lt;7.35 with PaCO2&gt;45 in the plan
+and pH&lt;7.25 with PaCO2&gt;45 in the report. The separately defined
+secondary respiratory-failure rule uses pH&lt;7.35 in both sources.
+Primary day-7 reintubation is 40/339 versus 55/302; supplementary
+severe-acidosis counts are 9 versus 12.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported severe-rule
+pH&lt;7.25 versus planned severe-rule pH&lt;7.35, within the same
+two-component operational criterion.</p>
+<p><strong>Reasoning procedure:</strong> Read the protocol rule across
+its page break; distinguish severe reintubation from the separate
+secondary respiratory-failure definition; compare corresponding pH
+conditions while retaining the common PaCO2 requirement and other
+indications.</p>
+<p><strong>Calculation:</strong> With PaCO2&gt;45, pH in [7.25, 7.35)
+satisfies the planned acidosis component but not the reported one.
+Exactly one other qualifying component, absent an independently
+sufficient indication, can distinguish the stated rule eligibility. This
+is a logical illustration, not an observed participant reclassification.
+Even permissive two-decimal rounding bands [7.345, 7.355] versus [7.245,
+7.255] are disjoint.</p>
+<p><strong>Affected result or extracted value:</strong> Operational
+criterion underpinning primary day-7 reintubation (40/339 versus
+55/302), and the endpoint definition copied with that result.</p>
+<p><strong>Why context does not resolve it:</strong> The severe cutoffs
+are explicit and differ from the separately identifiable secondary rule.
+Neither the immediate text nor the supplied criterion counts identify an
+applicable amendment or the cutoff implemented.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A later
+applicable amendment/SAP or a reporting transcription could explain the
+discrepancy. The supplied package establishes neither; criterion counts
+alone cannot quantify participants affected by either definition.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct source text and
+images confirmed the planned severe-rule cutoff across pp.30–31 and the
+reported cutoff on p.4. Corresponding content roles and P_R
+classification were confirmed without transcription correction. The
+final independent audit confirmed inclusion.</p>
+<p><strong>Potential downstream evidence impact:</strong> A reviewer
+could characterize the primary endpoint using either acidosis threshold,
+affecting the extracted decision-rule description or endpoint
+comparability. Actual event-count changes and clinical consequences are
+not established.</p>
+<p><strong>Human verification steps:</strong> Establish which dated
+operational cutoff governed primary reintubation decisions, and inspect
+any applicable amendment, SAP or reporting explanation.
+Participant-level simultaneous criteria would be required to assess
+actual recategorization; no preferred cutoff is proposed.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c003--icu-mortality-comparison-is-planned-as-log-rank-and-reported-as-chi-square" class="candidate-card">C003
+— ICU mortality comparison is planned as log-rank and reported as
+chi-square</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The plan expressly includes ICU
+mortality in treatment-group Kaplan–Meier/log-rank comparisons, whereas
+the report assigns the abstract-reported ICU mortality result to
+chi-square and provides no separately identified ICU log-rank
+result.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN protocol ICU mortality
+treatment-comparison specification vs REPORT main ICU mortality methods
+and result</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-003</p>
+<p><strong>Classification rationale:</strong> Explicit PLAN and REPORT
+statistical specifications for the same key secondary outcome are
+compared; coherent distinct tests do not establish an explanation of the
+change.</p>
+<p><strong>Classification ambiguity:</strong> No role ambiguity; no
+separate applicable SAP or amendment is supplied.</p>
+<p><strong>Exact source locations:</strong> Core comparison: <a
+href="../joi190108supp1_prod.pdf#page=34">joi190108supp1_prod.pdf — p.34
+section 6.3</a> and <a
+href="../jama_thille_2019_oi_190108.pdf#page=4">jama_thille_2019_oi_190108.pdf
+— p.4 Statistical Analysis</a>. Matched result: <a
+href="../jama_thille_2019_oi_190108.pdf#page=1">main p.1 abstract</a>
+and <a href="../jama_thille_2019_oi_190108.pdf#page=8" target="_blank" rel="noopener">p.8 Table 2 ICU
+mortality row</a>. Distinct day-90 context: <a
+href="../joi190108supp2_prod.pdf#page=9">joi190108supp2_prod.pdf — p.9
+survival eFigure</a>. Full main pp.1–11 and results pp.1–9 were assessed
+for ICU output availability, including <a
+href="../joi190108supp2_prod.pdf#page=1">results p.1 contents</a>.</p>
+<p><strong>Source evidence:</strong> The plan unconditionally lists ICU,
+hospital, day-28 and day-90 mortality in Kaplan–Meier/log-rank treatment
+comparisons. The report specifies chi-square for ICU/hospital mortality
+and reports ICU deaths 21/339 versus 26/302, difference −2.4 (95% CI
+−6.7 to 1.7), P=.25. Its separately labeled overall day-90 survival
+figure has log-rank P=.37.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported ICU mortality
+chi-square comparison versus the explicit planned ICU mortality log-rank
+comparison. The day-90 figure concerns another endpoint/window and does
+not supply the ICU output.</p>
+<p><strong>Reasoning procedure:</strong> Match the unconditional
+prospective treatment-comparison sentence to the abstract-reported ICU
+outcome and its method. Inspect the complete supplied report inventory
+for a separately identified ICU survival comparison. Distinguish the
+subsequent conditional Cox passage from this commitment.</p>
+<p><strong>Calculation:</strong> Categorical specification comparison:
+planned ICU log-rank versus reported ICU chi-square. As context only,
+100 × (21/339 − 26/302) = −2.4145812577 points, compatible with printed
+−2.4. Final death counts cannot reconstruct a log-rank statistic or P
+value without individual event and censoring times.</p>
+<p><strong>Affected result or extracted value:</strong> Analysis
+identity of the key-secondary ICU mortality P=.25 and availability of
+its specified log-rank comparison.</p>
+<p><strong>Why context does not resolve it:</strong> Distinct internally
+coherent tests do not explain the prospective versus reported ICU
+specification difference. The day-90 figure is expressly a different
+result; no applicable change explanation or ICU log-rank output is
+supplied.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+applicable later SAP may have amended the ICU comparison, or a retained
+ICU analysis may exist outside the supplied reporting. Neither
+possibility is established. Conditional Cox omissions do not enlarge
+this candidate.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact plan p.34 and
+report p.4 statements were confirmed; direct reading of all report pages
+and the source-derived day-90 figure confirmed the outcome distinction
+and supplied-output limitation. Roles, P_R classification and reproduced
+state required no correction. The independent audit confirmed the
+unconditional-only scope.</p>
+<p><strong>Potential downstream evidence impact:</strong> Evidence
+extraction could identify the ICU P=.25 as the prespecified mortality
+comparison without recording the method difference, or treat the day-90
+curve as its output. The package does not establish changed mortality
+conclusions or any downstream use.</p>
+<p><strong>Human verification steps:</strong> Check the applicable ICU
+mortality analysis specification and locate its planned log-rank output
+or an amendment/reporting explanation. Recover event/censoring inputs
+only if numerical reconstruction is required; no alternative P value or
+preferred test is proposed.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--prespecified-disease-and-weaning-test-primary-subgroup-results-are-absent" class="candidate-card">C004
+— Prespecified disease and weaning-test primary subgroup results are
+absent</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The plan commits to
+primary-outcome subgroup analyses by underlying cardiac/respiratory
+disease and weaning-test type, but the complete supplied subgroup
+results cover PaCO2 only.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN protocol
+primary-subgroup commitments vs REPORT supplied subgroup analysis
+set</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-005, F-ST1-004</p>
+<p><strong>Classification rationale:</strong> Two factors within the
+same repeated planned primary-analysis reporting pattern form one
+candidate. PLAN commitments are compared with REPORT analysis
+availability.</p>
+<p><strong>Classification ambiguity:</strong> No role ambiguity; a
+separate applicable SAP or amendment is not supplied.</p>
+<p><strong>Exact source locations:</strong> Commitment: <a
+href="../joi190108supp1_prod.pdf#page=34">joi190108supp1_prod.pdf — p.34
+section 6.4</a>. Report methods/output: <a
+href="../jama_thille_2019_oi_190108.pdf#page=4">jama_thille_2019_oi_190108.pdf
+— p.4 subgroup methods</a>, <a
+href="../jama_thille_2019_oi_190108.pdf#page=7">p.7 subgroup
+results</a>, <a href="../jama_thille_2019_oi_190108.pdf#page=8" target="_blank" rel="noopener">p.8
+Figure 3</a>, <a
+href="../joi190108supp2_prod.pdf#page=1">joi190108supp2_prod.pdf — p.1
+contents</a>, <a href="../joi190108supp2_prod.pdf#page=6" target="_blank" rel="noopener">p.6 eTable
+3</a> and <a href="../joi190108supp2_prod.pdf#page=7" target="_blank" rel="noopener">p.7 eTable 4</a>.
+Baseline corroboration: <a
+href="../jama_thille_2019_oi_190108.pdf#page=5">main p.5</a>, <a
+href="../jama_thille_2019_oi_190108.pdf#page=6">main p.6 continued Table
+1</a>, <a href="../joi190108supp2_prod.pdf#page=3" target="_blank" rel="noopener">results p.3</a>, <a
+href="../joi190108supp2_prod.pdf#page=4">p.4</a> and <a
+href="../joi190108supp2_prod.pdf#page=5">p.5</a>. Complete main
+pp.1–11/results pp.1–9 were assessed for both absent families.</p>
+<p><strong>Source evidence:</strong> The protocol specifies
+main/secondary outcome subgroup analyses for underlying
+cardiac/respiratory disease and for T-piece versus minimum
+pressure-support weaning test, in addition to PaCO2. The supplied
+primary subgroup methods/results concern PaCO2: interaction P=.25, with
+primary differences −12.9 and −5.0. Disease/weaning baseline descriptors
+and disease covariate adjustment provide no matching subgroup treatment
+effects.</p>
+<p><strong>Reported-versus-comparator:</strong> Prospective primary
+subgroup set includes PaCO2, disease and weaning-test families; the
+supplied primary subgroup output set includes PaCO2 only.</p>
+<p><strong>Reasoning procedure:</strong> Identify explicit
+primary-outcome subgroup commitments, inventory all supplied subgroup
+methods/tables/figures, and distinguish descriptive factor counts and
+overall covariate adjustment from subgroup outcome contrasts.
+Consolidate the two absent factor families as one reporting pattern.</p>
+<p><strong>Calculation:</strong> Set-membership comparison: the disease
+and weaning-test primary subgroup families are present in the plan and
+absent from the supplied outcome-output set. Rounding of existing PaCO2
+estimates cannot create outputs for the two other families. Their
+numeric treatment effects or interactions cannot be recovered from
+baseline totals alone.</p>
+<p><strong>Affected result or extracted value:</strong> Completeness and
+prespecified interpretation of primary day-7 reintubation subgroup
+evidence by disease and weaning-test mode.</p>
+<p><strong>Why context does not resolve it:</strong> Explicit
+commitments to primary subgroup analyses have no corresponding supplied
+results or change explanation. Neither baseline factor rows nor overall
+disease adjustment identifies the intended subgroup effects or their
+availability.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+applicable SAP may have changed the subgroup set, or results may exist
+outside the supplied package. Neither is established. The exact disease
+partition—separate or combined cardiac/respiratory groups—is not fully
+specified by the supplied commitment. No subgroup heterogeneity or
+performed/unperformed analysis status is inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact protocol p.34 and
+the entire main/results inventory were read directly and cross-checked
+against complete maps. Both factor families' supplied-output absence was
+confirmed without transcription correction. The independent audit
+retained one P_R candidate limited to the primary-outcome
+commitment.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could treat the PaCO2 analysis as the full prespecified primary subgroup
+set or lack the intended disease/weaning contrasts. This describes
+possible completeness and labeling consequences; no selective-analysis
+cause or downstream conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Establish whether both
+primary subgroup families were retained in the applicable SAP, clarify
+the intended disease partition, and locate their results or a reporting
+explanation. Keep non-key secondary subgroup omissions outside this
+candidate.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--nonhypercapnic-day-90-mortality-absolute-difference-does-not-reconcile" class="candidate-card">C005
+— Nonhypercapnic day-90 mortality absolute difference does not
+reconcile</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> eTable 4 prints a mortality
+absolute difference of −3.8 percentage points with counts 54/254 and
+50/276, whose stated proportion contrast is −3.14390049 points. The
+exact absolute-difference estimator is not identified; the reproduced
+issue is the quantity mapping to the displayed event fractions.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results supplement
+eTable 4 counts and headings vs REPORT same-table absolute-difference
+entry</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-002, F-ST1-002</p>
+<p><strong>Classification rationale:</strong> The quantity-identity
+discrepancy is within one REPORT table. It is not a peripheral
+cross-location subgroup comparison, and no adjusted day-90 mortality
+estimator is identified.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> Core: <a
+href="../joi190108supp2_prod.pdf#page=7">joi190108supp2_prod.pdf — p.7
+eTable 4 population headings and mortality-at-day-90 row</a>. Local
+corroboration: <a href="../joi190108supp2_prod.pdf#page=7" target="_blank" rel="noopener">same p.7
+day-7 reintubation and hospital-mortality rows</a>. Method context: <a
+href="../jama_thille_2019_oi_190108.pdf#page=4">jama_thille_2019_oi_190108.pdf
+— p.4 Statistical Analysis</a>.</p>
+<p><strong>Source evidence:</strong> Nonhypercapnic control n=254 has 54
+deaths (21%); intervention n=276 has 50 (18%). The row prints absolute
+difference −3.8 (95% CI −9.9 to 3.6), P=.3626. Neighboring binary rows
+follow intervention-minus-control event proportions. The main adjusted
+logistic specifications concern primary reintubation; a distinct
+adjusted nonhypercapnic day-90 mortality difference is not locally
+identified.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed absolute
+difference −3.8 versus the displayed-fraction intervention-minus-control
+contrast −3.1439004907 percentage points. The source does not explicitly
+name the absolute-difference estimator, so this comparison does not
+establish that every possible modeled estimate must equal the crude
+fraction difference.</p>
+<p><strong>Reasoning procedure:</strong> Match subgroup, arm headings,
+denominators and mortality time point; identify the table's local
+binary-difference convention; compute the displayed event-proportion
+difference and apply exact and conservatively permissive half-unit input
+bounds. Retain estimator identity as a human question.</p>
+<p><strong>Calculation:</strong> Exact printed fractions give 100 ×
+(50/276 − 54/254) = −3.1439004907 points. Printed −3.8 permits [−3.85,
+−3.75]. Even allowing continuous half-unit bands for all four integers
+gives a minimum 100 × (49.5/276.5 − 54.5/253.5) = −3.5966629930 and
+maximum 100 × (50.5/275.5 − 53.5/254.5) = −2.6913024720; that entire
+range is disjoint from the printed-effect band. Coarse percentages alone
+are less informative than the supplied counts. Neighboring day-7 and
+hospital-mortality fractions give −5.0353760128 and 1.3123359580,
+rounding to printed −5.0 and 1.3. No CI-symmetry or P-value
+incompatibility claim is used.</p>
+<p><strong>Affected result or extracted value:</strong> Nonhypercapnic
+day-90 mortality absolute effect extracted from eTable 4.</p>
+<p><strong>Why context does not resolve it:</strong> Counts/headings and
+the unqualified difference column yield distinct quantities beyond
+display precision, while no alternate population, denominator or
+estimator identifies how −3.8 was generated. The overall day-90 survival
+analysis is not linked to this subgroup effect entry.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+unlabelled adjusted or survival-based estimator, alternative
+denominator, or reporting transcription could explain the difference if
+documented. No explanation is established. If a distinct modeled
+estimator is established, the human can reconsider the
+displayed-fraction mapping; no numerical replacement or preferred method
+is prescribed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct source p.7
+confirmed all headings, counts and the printed −3.8; exact and
+conservative half-unit arithmetic reproduced non-reconciliation. Roles
+and S_W classification required no correction. The reproduced state
+records the displayed-quantity comparison, not proof of an undisclosed
+estimator's identity. The independent audit confirmed this limitation
+explicitly.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could copy −3.8 as a proportion-based absolute effect or recompute
+approximately −3.14 from the printed fractions, yielding distinct
+extracted quantities. No changed nonsignificance conclusion or actual
+evidence-synthesis consequence is established.</p>
+<p><strong>Human verification steps:</strong> Establish the estimator,
+population, denominators and any adjustment/censoring underlying −3.8,
+then document its relationship to the displayed 54/254 and 50/276.
+Obtain exact CI/test settings if needed for further reconstruction.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>A systematic review, meta-analysis, guideline or structured evidence
+table may copy effect estimates, endpoint definitions, statistical-test
+identities and prespecified-analysis labels from different package
+locations. If a candidate is confirmed by human adjudication,
+documenting the intended quantity and its provenance can make those
+extraction choices explicit. These cards identify possible reuse
+implications for named results. They do not establish that any candidate
+propagated, changed a conclusion or caused harm. Reported trial
+conclusions remain separate from extraction questions.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>All supplied scientific source units were covered and all registered
+source locations were confirmed. The package does not supply the
+separately referenced applicable SAP or a reconciling amendment, raw
+participant data, full individual event/censoring times, exact
+confidence-interval algorithms, row-specific continuous estimators or
+model covariance/variance settings. One-hour contributor counts and some
+forced-covariate specifications are also unavailable. Diagnostic
+calculations were not substituted for unreported exact analyses.</p>
+<p>Candidate-specific missing information comprises the narrative
+respiratory-failure estimator (C001), dated operational severe-acidosis
+rule and participant criteria (C002), ICU time-to-event output and its
+applicable specification (C003), disease/weaning primary subgroup
+outputs and disease partition (C004), and the nonhypercapnic day-90
+absolute-difference estimator/population/denominator mapping (C005).
+These gaps limit causal explanation or numerical reconstruction, rather
+than supplied-source coverage.</p>
+<p>Legacy rendered-page engine versions are incompletely recorded.
+Historical OCR gaps have usable companion text/images, and partial fresh
+protocol p.42 OCR was supplemented by complete visual mapping. No
+required direct-tool limitation remains. Absence from supplied reporting
+does not establish absence of performed work. See <a
+href="review_1_6_1/limitations.md">Limitations record</a>.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each stable ID, inspect every exact-source occurrence,
+distinguish the core comparison from corroborating context, verify the
+named calculation or prospective commitment, and establish any
+applicable estimator, operational rule, SAP or amendment. Assess whether
+the unresolved quantity bears on interpretation or extraction under the
+stated scope. Record the human decisions only in Validity, Importance,
+Action, Initials and Notes; these fields currently contain
+<code>__</code> for all five cards. No candidate is pre-adjudicated by a
+reproduced evidence state or a CONFIRMED inclusion audit.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h2>
+<p>The durable records are <a
+href="review_1_6_1/candidate_ledger.md">Candidate ledger</a>, <a
+href="review_1_6_1/verification/evidence_recheck.md">Mechanical
+recheck</a>, <a
+href="review_1_6_1/quality/evidence_quality_audit.md">Evidence-quality
+audit</a>, <a
+href="review_1_6_1/quality/coverage_integrity_audit.md">Coverage/provenance
+audit</a>, <a href="review_1_6_1/routing_preflight.md">Routing
+preflight</a>, <a href="review_1_6_1/tooling_record.md">Tooling
+record</a> and <a
+href="review_1_6_1/agent_execution_manifest.md">Execution manifest</a>.
+All five stable IDs occur in the ledger, recheck, inclusion audit and
+this report.</p>
+<p>Routing preflight records PASS, coordinator gpt-6.1-sol/high,
+ordinary specialists medium, statistical/screening/recheck/audit
+specialists high, all ten named presets verified, Coordinator inference:
+PASS, execution mode INTERACTIVE_CLI and Provider: CURRENT_SESSION. No
+provider credentials or configuration changes are part of the evidence
+package.</p>
+<p>Direct local CPU tools include Poppler 26.01.0, Tesseract 5.5.0 and
+Pandoc 3.7.0.2. No fallback environment was needed or created.
+Twenty-five current-run derivatives are individually recorded with
+producing stage/source/engine: support mapping 3, cross-source review 8,
+statistical pass 1 six, mechanical recheck 8. Sources and reused assets
+were preserved. The completed independent integrity audit confirmed 4/4
+source and 128/128 reused-artifact hashes unchanged against their before
+manifests. Final coordinator recomputation confirmed that all after
+hashes match their before manifests.</p>
+<p>The standalone HTML is rendered from finalized Markdown with embedded
+CSS and a table of contents. The mechanical completion result is
+recorded at <code>review_1_6_1/review_validation.json</code>.</p>
+<h3 id="complete-agent-execution">Complete agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>01a128da-3b69-7bb0-9554-2128186ea149</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>01a128da-f857-7961-9e0d-1495d8ad392c</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>source_inventory.md</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>01a128dc-ff7f-7141-8b09-40baa2432582</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>01a128dd-1b8f-7d40-98dd-4089fca540b7</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>01a128e0-6129-7883-87fc-83aefc195357</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>01a128e0-7bc2-7152-a260-a42c4a4fcd31</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>01a128e0-9c6c-75b0-bd7b-a4d7840873d2</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr>
+<td>inclusion_screener</td>
+<td>01a128e8-3ee6-74b0-9150-548d0b31afea</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/inclusion_screen.md</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>01a128ec-690f-7e03-a5dc-029f8535c3c2</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>01a128f0-78bd-77c1-be66-4735054846bc</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr>
+<td>quality_control_coverage_auditor</td>
+<td>01a128f4-fe55-7b90-9ca7-0485ea5d80b0</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/coverage_integrity_audit.md</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>01a128f5-2ac8-7143-95a3-8ab7bc6b3e85</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>01a128f9-2907-7943-8fb5-26efdedbd5f0</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<p>All 13 actual runtimes are recorded once: the coordinator, eleven
+mandatory fresh specialist stages and one additional disjoint
+coverage/provenance audit shard. The two final audit scopes were split
+by the documented context bound; the mandatory auditor integrated the
+sibling's durable result. Every specialist retains its configured fixed
+model/effort and starts FRESH_SPAWN; no earlier agent was promoted to
+another mandatory stage.</p>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Four PDFs contain 69 pages, including
+an 11-page report, 48-page protocol, 9-page results supplement, and
+1-page administrative statement. Reusable text covers 68 pages; one
+image-only protocol appendix needs rendering and visual mapping. No
+Office conversion, full-document OCR, or fallback setup is needed. Eight
+sequential review waves with parallel mapping and three concurrent
+checkers determine the 25-40 minute planning range.</li>
+<li><strong>Total source units:</strong> 69</li>
+<li><strong>Fresh-source units:</strong> 1</li>
+<li><strong>Target elapsed minutes:</strong> 25-40</li>
+<li><strong>Started UTC:</strong> 2026-10-11T02:46:34Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T03:24:47Z</li>
+<li><strong>Observed elapsed minutes:</strong> 38.217</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<p>These exact performance fields were finalized immediately after
+complete Markdown assembly. Local HTML rendering and mechanical
+validation are excluded from review duration. The planning target did
+not constrain source coverage, relationship review, screening or the
+stable candidate set.</p>
+</body>
+</html>

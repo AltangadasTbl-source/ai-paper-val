@@ -1,0 +1,44 @@
+# Numeric consistency review: supplement shard A
+
+Status: COMPLETE. Scope: REPORT DOC-004 pages 2-15, 25-26, 28-29 and REPORT DOC-005 page 1, 19 assigned source units. DOC-004 eTables 1-5 and eFigures 1-2 are fully checked; page 8, affiliations and data sharing are explicitly no-applicable. Matching main-paper values were used only as comparators. No other supplement table or figure is part of this assignment.
+
+Inventory: N201-N280, 80 complete relationship families, with every 183 table row retained, every 24 score-figure bar and every 14 dietary-proportion bar checked. Findings emitted: 0. Excluded observations: 10 consolidated observations. There is no target finding count.
+
+The full scope, review contract and settings were read. Every potential observation was screened against reproduction, focus, immediate contextual resolution and effect on result interpretation or extraction. The scope's peripheral-comparison rule was applied before candidate inclusion. Sources and reused assets were preserved; no old finding/report conclusions, external sources, custom Python or GPU were used.
+
+## Count, denominator and identity checks
+
+The multiple-imputation food analysis arm counts 3272/3311 sum to 6583 and agree with DOC-001 participant-flow exclusions. General completers are 2862/2883 at six months and 2833/2943 at twelve months: the main flow gives 3272-410=2862, 3311-428=2883, 3272-439=2833 and 3311-368=2943. Every applicable repeated header in eTables 3-5 agrees. The starred er-MedDiet analysis uses its expressly printed separate counts 3030/3090 and 2971/3095. These are within the main arm totals and do not purport to be food-frequency questionnaire completer counts.
+
+All change estimates and reported limits were checked for ordering, containment and I-minus-C direction. All contrast labels refer to mean changes, with the mixed-effect model specified. No displayed current-trial OR/RR/HR/rate is mislabeled as a mean difference. Baselines remain mean/SD or median/IQR as printed; obvious local label slips are screened below. Unlabelled graphical coordinates and confidence limits were never treated as exact tabular inputs.
+
+Printed participant counts are exact integers. Every rounded continuous input retains a half-unit interval: integers plus or minus 0.5 and one decimal plus or minus 0.05. Output values retain their own interval. Thus a difference based on displayed integer means has an admissible span of plus or minus 1 around the central subtraction; a one-decimal subtraction has plus or minus 0.1. Compatibility with the displayed output interval screens a discrepancy out. These checks do not substitute crude arithmetic for the mixed model.
+
+The MCID rationale is internally coherent: log(.75)=-.287682, displayed -.2877; exp(-.2877/2)=.866018, displayed .87; relative reduction .133982, displayed 13%. Hazard ratios .90/.94 correspond to 10%/6% reductions. Historical rationale quantities are distinguished from current-trial event estimates.
+
+Matched food narrative values in DOC-001 pages 6-8 agree with eTable 2 for refined grains, pastries, red meat, vegetables, fruit and nuts, including all cited intervals and signs. Population-matched completer summaries need not equal multiple-imputation summaries; no numerical diagnosis was based on treating them as identical analyses.
+
+## Findings
+
+No observation in this assigned scope met all four inclusion criteria after self-screening.
+
+## Excluded observations
+
+| Location | Observation | Reason code |
+|---|---|---|
+| REPORT [DOC-004 p. 3 eTable 2](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=3), continuing pp. 5 and 7 | Both p. 3 arm headings say intervention. The 3272/3311 counts, paired comparison, and correctly named continuation headers immediately establish intervention/control attribution. | NOTATION_OR_TYPOGRAPHY |
+| REPORT [DOC-004 p. 7 eTable 2 red wine](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=7), compared with p. 13 completer baseline | Intervention baseline prints 33 (0,29), so its median exceeds Q3 even with integer half-unit intervals: minimum32.5 exceeds maximum29.5. The comparison concerns a descriptive baseline and does not alter a primary/key-secondary result, an analysis population or a decision rule. No replacement median is inferred. | PERIPHERAL_COMPARISON |
+| REPORT [DOC-004 p. 10 eTable 4 olive oil](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=10), table footnotes pp. 11-13 | Local baseline label says mean(SD) but supplies 350(175,350) for both arms. Three-value quartile notation, all surrounding baseline rows and the global median(IQR) footnote make the intended descriptive reading immediate. | NOTATION_OR_TYPOGRAPHY |
+| REPORT [DOC-004 pp. 3-15 modeled table rows](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=3) | One-unit/one-decimal subtraction differences reconcile with retained half-unit intervals. Examples: nuts120-72=48 versus49; whole grains277-61=216 versus215; MUFA:SFA.6-.4=.2 versus.3. The relevant difference/input/output intervals overlap. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT [DOC-004 p. 9 eTable 3](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=9) and [p. 10 starred footnote](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=10) | General completer counts differ from er-MedDiet counts. The starred row explicitly points to its own larger score-specific contributor counts; the two instruments do not share an asserted denominator. | CONTEXT_RESOLVES |
+| REPORT [DOC-004 p. 9 eTable 3](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=9), [pp. 14-15 eTable 5](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=14), versus REPORT [DOC-001 p. 5 Table 2](../../../../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=5) and p. 7 Table 3 | Completer and multiple-imputation arm changes differ. The tables name different analysis populations/missingness procedures; direct equality is not a source-stated requirement. | CONTEXT_RESOLVES |
+| REPORT [DOC-004 p. 25 eFigure 1](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=25), p. 9 eTable 3, versus REPORT [DOC-001 p. 5 Table 2](../../../../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=5) | Score bar heights are visually closer to completer-based baseline-plus-change summaries than the main multiple-imputation follow-up scores. Figure population/model and exact plotted means are not printed, so equality with the main analysis would require an unsupported matching assumption. | CONDITIONAL_OR_UNREPORTED |
+| REPORT [DOC-004 p. 26 eFigure 2](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=26), all seven pairs; REPORT [DOC-001 p. 8 favorable-dietary-change narrative](../../../../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=8) | Visually reproduced label/height pattern: purple/gray labels versus approximate heights are fat34/32 versus32/34, MUFA72/77 versus77/72, MUFA:SFA79/86 versus86/79, fruit58/63 versus63/58, vegetables56/64 versus64/56, meat60/62 versus62/60, sugary dessert59/58 versus68/60. All labels, bars, CI marks and P annotations are retained without selecting an exact replacement. These exploratory proportion-display comparisons do not change a primary/key-secondary result, analysis-population size or planned rule; the narrative prints no conflicting exact percentages. | PERIPHERAL_COMPARISON |
+| REPORT [DOC-004 p. 26 eFigure 2](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=26) | Recomputing proportion P values or exact event numerators from table sample sizes requires an unreported figure denominator and test specification. The figure does not establish either. | CONDITIONAL_OR_UNREPORTED |
+| REPORT [DOC-004 pp. 14-15 eTable 5 baselines](../../../../joi190106supp3_prod_1635377898.49725.pdf#page=14) versus REPORT [DOC-001 pp. 7-8 Table 3 baselines](../../../../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=7) | Descriptive baseline SD and cholesterol differences across sensitivity and main tables do not change the primary/key-secondary result, analysis-population size or decision rule. Populations differ explicitly. | PERIPHERAL_COMPARISON |
+
+## Limitations and provenance
+
+No scientific coverage gap remains in this assignment. eFigures 1-2 do not label exact bar coordinates, interval limits or contributing sample sizes; graphical heights above are approximate visual readings and not exact extracted estimates. P-test-specific reconstruction requires definitions not supplied on these figures. Existing page-image engine versions are unrecorded; current source-matched native text and directly inspected retained page images supply the relevant evidence. No fresh preprocessing was needed.
+
+Artifacts: `relationships/parts/numeric_support_a.md` and `checkers/parts/numeric_support_a.md`.

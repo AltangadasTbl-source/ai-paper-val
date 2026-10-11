@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--workflow-161"
+id="toc-quantitative-quality-control-consistency-review--workflow-161">Quantitative
+Quality-Control Consistency Review — Workflow 1.6.1</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#inclusion-screening-summary"
+id="toc-inclusion-screening-summary">Inclusion Screening Summary</a>
+<ul>
+<li><a href="#checker-exclusion-catalogues-and-independent-audit"
+id="toc-checker-exclusion-catalogues-and-independent-audit">Checker
+exclusion catalogues and independent audit</a></li>
+</ul></li>
+<li><a href="#review-domain-summary"
+id="toc-review-domain-summary">Review-Domain Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#source-integrity-and-tooling"
+id="toc-source-integrity-and-tooling">Source integrity and
+tooling</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--workflow-161">Quantitative
+Quality-Control Consistency Review — Workflow 1.6.1</h1>
+<p><strong>Pending Human Adjudication</strong></p>
+<p>This report supports human review of quantitative reporting in the
+supplied paper package. Its classifications, coverage records, and
+inclusion screening are quality-control records, not a paper-level
+adjudication.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>No stable candidates were identified. Scope: all five supplied PDFs,
+comprising 88 physical pages, reviewed for counts and denominators,
+estimate and test logic, statistical method logic, and
+planned-versus-reported statistical design. All 88 pages were mapped,
+using 85 reusable-backed units and fresh direct visual mapping of three
+protocol pages.</p>
+<p>The completed review covers 107 numeric relationships, 116
+statistical relationships in two distinct fresh statistical passes, and
+36 cross-source comparison groups. The four checkers emitted zero formal
+findings. The independent screening log contains zero INCLUDE decisions
+and zero SCREENED_OUT finding decisions. The quality audit reconsidered
+all 81 checker exclusion entries and identified no observation meeting
+the inclusion threshold. These entries overlap across checker lanes and
+are not 81 distinct reporting issues.</p>
+<p>The stable ledger, evidence recheck, quality audit, candidate index,
+and report evidence-card set are identical and empty. No candidate
+classification or evidence state is assigned. The result is bounded by
+the supplied evidence and the missing definitions listed below; it does
+not establish that every unreported analysis detail can be
+reconstructed.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains the main article by Brenner and colleagues and
+four supplements. Source roles follow their content. The prospective
+protocol and SAP are PLAN; the article, results supplement, and
+retrospective availability statement are REPORT.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Actual supplied filename and source link</th>
+<th>Document role</th>
+<th>Content</th>
+<th style="text-align: right;">Physical PDF pages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_brenner_2019_oi_190039.pdf#page=1">jama_brenner_2019_oi_190039.pdf</a></td>
+<td>REPORT</td>
+<td>Main original investigation, participant flow, and Tables 1–3</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a
+href="../joi190039supp1_prod.pdf#page=1">joi190039supp1_prod.pdf</a></td>
+<td>PLAN</td>
+<td>Clinical study protocol version 1.5, dated 24 July 2015</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a
+href="../joi190039supp2_prod.pdf#page=1">joi190039supp2_prod.pdf</a></td>
+<td>PLAN</td>
+<td>Statistical analysis plan, including explicit analysis changes</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td><a
+href="../joi190039supp3_prod.pdf#page=1">joi190039supp3_prod.pdf</a></td>
+<td>REPORT</td>
+<td>Eligibility material and observed-results eTables</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td>DOC-005</td>
+<td><a
+href="../joi190039supp4_prod.pdf#page=1">joi190039supp4_prod.pdf</a></td>
+<td>REPORT</td>
+<td>Retrospective availability statement</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>No Office document, workbook, CSV, structured result file, or
+individual raw dataset is supplied. External publications and code
+pointers were not retrieved. Only local supplied-package evidence was
+used.</p>
+<p>The <a href="review_1_6_1/source_inventory.md">source inventory</a>
+records SHA-256 identities and complete physical-page scopes. The <a
+href="review_1_6_1/evidence_asset_inventory.md">evidence-asset
+inventory</a> records 107 reused extraction, image, and provenance
+assets: 58 USABLE, 44 PARTIAL, and 5 DUPLICATE after fitness
+reassessment. Asset counts are distinct from source-page counts;
+overlapping derivatives add no source units. Canonical native/layout
+text was compared with the current source. OCR, page images, maps, and
+metadata served as locators and transcription aids, while direct sources
+retained authority. Historical candidates, dispositions, and reports
+were preserved and did not define discovery.</p>
+<p>Fresh CPU Poppler renders closed the protocol text-fitness gaps on <a
+href="../joi190039supp1_prod.pdf#page=16">PDF p.16</a>, <a
+href="../joi190039supp1_prod.pdf#page=20">p.20</a>, and <a
+href="../joi190039supp1_prod.pdf#page=49">p.49</a>. A targeted direct
+render also confirmed results-supplement <a
+href="../joi190039supp3_prod.pdf#page=7">PDF p.7</a>, whose reusable
+full-page images already supplied coverage; this confirmation adds no
+fresh-required unique unit. Native hidden numerals and visibly
+minus-only women's PPV cells remain explicitly distinguished in the
+evidence records.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th style="text-align: right;">Total source units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Mapped units</th>
+<th>Coverage status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">7</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">62</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">8</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-005</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>88</strong></td>
+<td style="text-align: right;"><strong>85</strong></td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;"><strong>88</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The unit is one physical PDF page. Every source partitions into
+reusable and fresh-required units, and every mapped count equals its
+total. Covers, references, contacts, signatures, administrative
+appendices, and availability material have explicit mapped records even
+where no current result relationship applies. Protocol physical
+pagination differs from printed pagination after its repeated signature
+page; evidence links consistently use physical PDF pages.</p>
+<p>The <a href="review_1_6_1/coverage_manifest.md">coverage manifest</a>
+assigns disjoint main, protocol, and remaining-support mapping scopes,
+followed by complete checking, screening, recheck, audit, and reporting
+stages. The <a
+href="review_1_6_1/extraction/main_quantitative_evidence.md">main
+evidence map</a> and <a
+href="review_1_6_1/extraction/support_quantitative_evidence.md">support
+evidence map</a> preserve all mapped content and both support parts. No
+scientific coverage gap remains.</p>
+<p>The review applied the four-part inclusion threshold: a
+source-reproduced inconsistency, within the quantitative focus,
+unresolved by immediate context for a statistically literate field
+reader, and plausibly relevant to interpretation of a named result or
+extraction of a value. Display precision was assessed using half-unit
+intervals. Sample counts, participant counts, events, analysis
+populations, scheduled days, and actual days were matched before
+comparisons. Model estimates were not treated as crude count ratios
+without a supplied basis.</p>
+<p>Excluded scope includes broad clinical or design critique, raw-data
+auditing, preferred-analysis proposals, novelty and misconduct
+assessment, and peripheral comparisons without a primary/key-secondary
+result, analysis-population, or planned-decision consequence. Rounding,
+readily resolved notation or wording, conditional observations, and
+absent details alone do not qualify.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<table>
+<thead>
+<tr>
+<th>Review lane</th>
+<th>Completed scope</th>
+<th>Completion record</th>
+<th style="text-align: right;">Formal findings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numeric consistency</td>
+<td>N001–N107; all 107 numeric relationship groups</td>
+<td><a
+href="review_1_6_1/relationships/numeric_relationship_inventory.md">Numeric
+inventory</a> and <a
+href="review_1_6_1/checkers/numeric_consistency.md">numeric
+checker</a></td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Cross-source consistency</td>
+<td>XS01–XS36; all 36 matched comparison groups</td>
+<td><a
+href="review_1_6_1/checkers/cross_source_consistency.md">Cross-source
+checker</a></td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Statistical pass 1</td>
+<td>S001–S116; every relationship explicitly PASS_1_COMPLETE</td>
+<td><a href="review_1_6_1/checkers/statistical_pass_1.md">Pass
+1</a></td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Statistical pass 2</td>
+<td>S001–S116; every relationship explicitly PASS_2_COMPLETE</td>
+<td><a href="review_1_6_1/checkers/statistical_pass_2.md">Pass
+2</a></td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>The <a
+href="review_1_6_1/statistics/relationship_inventory.md">statistical
+inventory</a> retains both pass records for every S ID. Its 116
+relationship records contain 108 inferential result/test endpoints and
+44 method/design records: 36 paired supplementary records retain 72
+endpoint subcells alongside 36 individual main-table endpoints. The
+inferential total consists of 90 effect-difference intervals and 18 site
+SD/P endpoints. Grouping did not omit an outcome, sex, assay, or cutoff
+subcell.</p>
+<p>Numeric review reconciled participant-flow branches, all 27
+diagnostic matrices, diagnostic proportions and differences,
+sample-category partitions, subgroup additions, and full versus
+nonmissing denominators. The independent audit reproduced 270 diagnostic
+point comparisons, 72 All=Men+Women count-cell comparisons, 20
+valid-sample partitions, 40 Any-row column totals, and 32 baseline
+percentages.</p>
+<p>Both statistical passes checked ordered interval endpoints, point
+containment, direction, significance decisions, analysis definitions,
+and applicable design rules. The quality audit independently reproduced
+all 90 Agresti-Caffo difference intervals; all 180 displayed limits
+reconcile within their 0.05-percentage-point display intervals. Exact
+individual outcome P algorithms and site-test reference laws were not
+inferred. Power calculations were explicitly diagnostic approximations
+where the exact implementation was unspecified.</p>
+<p>Matched primary results agree between the <a
+href="../jama_brenner_2019_oi_190039.pdf#page=1">abstract, PDF p.1</a>
+and <a href="../jama_brenner_2019_oi_190039.pdf#page=5" target="_blank" rel="noopener">Table 2, PDF
+p.5</a>: sensitivity differences of 9.8 percentage points (95% CI −3.1
+to 22.2; P=.14) and 6.0 points (−5.7 to 17.5; P=.32). The reported
+nonsignificant primary conclusion agrees with both intervals.
+Scheduled-day intention-to-screen, exact-day per-protocol,
+combined-sample, pooled, subgroup, and interaction hypotheses were kept
+distinct.</p>
+<p>The <a href="../joi190039supp2_prod.pdf#page=9" target="_blank" rel="noopener">SAP, PDF p.9, section
+7</a> explicitly changes the primary analysis set and
+missing-collection-date treatment. The <a
+href="../joi190039supp2_prod.pdf#page=4">SAP, PDF p.4 footnote</a>
+renumbers medication day 1 as day 0, preserving the elapsed two-day
+primary window. These supplied context statements resolve earlier
+wording without creating a candidate. Planned design targets and
+realized enrollment were also distinguished.</p>
+<p>Two different fresh high-effort agents performed statistical passes 1
+and 2. Pass 2 read the complete ledger, independent screen, and
+mechanical recheck, emitted no new finding, and required no second
+finding-screening stage. The <a
+href="review_1_6_1/quality/evidence_quality_audit.md">canonical quality
+audit</a> and its three durable parts completed independent coverage and
+inclusion review without changing a supplied scientific result.</p>
+<h2 id="inclusion-screening-summary">Inclusion Screening Summary</h2>
+<p>The counts below reconcile to the single formal table in the <a
+href="review_1_6_1/screening/inclusion_screen.md">independent inclusion
+screening log</a>. Inclusion requires all four threshold criteria stated
+above; there is no expected candidate count.</p>
+<table>
+<thead>
+<tr>
+<th>Formal finding/decision measure</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Findings submitted for independent screening</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>INCLUDE decisions, reason MEETS_THRESHOLD</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SCREENED_OUT finding decisions</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Total formal screening decisions</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Included distinct issues / stable candidates</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Additional pass-2 findings</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Additional quality-audit findings</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>SCREENED_OUT reason code</th>
+<th style="text-align: right;">Formal screening decisions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NOT_REPRODUCED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>ROUNDING_OR_DISPLAY_PRECISION</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>NOTATION_OR_TYPOGRAPHY</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>TERMINOLOGY_OR_WORDING</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>MODEL_VERSUS_CRUDE</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>CONTEXT_RESOLVES</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>CONDITIONAL_OR_UNREPORTED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>PERIPHERAL_COMPARISON</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>OUT_OF_FOCUS</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>DUPLICATE_OF_INCLUDED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="checker-exclusion-catalogues-and-independent-audit">Checker
+exclusion catalogues and independent audit</h3>
+<p>The checker self-screens recorded excluded observations without
+formal finding IDs. Their 81 entries are separate from the empty formal
+screening table. The initial three catalogues contain 58 entries;
+statistical pass 2 adds 23. Independent quality auditing reconsidered
+every entry in both inclusion directions and identified zero eligible
+observations.</p>
+<table>
+<thead>
+<tr>
+<th>Checker catalogue</th>
+<th style="text-align: right;">Exclusion entries audited</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numeric</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td>Cross-source</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr>
+<td>Statistical pass 1</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr>
+<td>Statistical pass 2</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>81</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Reason code</th>
+<th style="text-align: right;">Checker exclusion entries, across all
+four lanes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NOT_REPRODUCED</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>ROUNDING_OR_DISPLAY_PRECISION</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>NOTATION_OR_TYPOGRAPHY</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td>TERMINOLOGY_OR_WORDING</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>MODEL_VERSUS_CRUDE</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>CONTEXT_RESOLVES</td>
+<td style="text-align: right;">29</td>
+</tr>
+<tr>
+<td>CONDITIONAL_OR_UNREPORTED</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr>
+<td>PERIPHERAL_COMPARISON</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td>OUT_OF_FOCUS</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>DUPLICATE_OF_INCLUDED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>81</strong></td>
+</tr>
+</tbody>
+</table>
+<p>These totals retain cross-lane repetition as checker provenance; they
+do not count distinct issues or screened-out formal findings. The
+quality audit records five current-run accounting/provenance
+refinements: explicit numeric coverage enumeration, nonmissing
+indication totals, one exclusion-code refinement, bounded site-model
+family/link wording, and full-page image provenance. They changed
+neither a supplied scientific value nor a formal screening decision, and
+created no stable candidate.</p>
+<h2 id="review-domain-summary">Review-Domain Summary</h2>
+<p>The following counts reconcile independently to the stable candidate
+count of zero. Definitions describe the framework; no classification is
+assigned to a nonexistent candidate.</p>
+<table>
+<thead>
+<tr>
+<th>Review domain</th>
+<th>Definition</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>statistical_results</td>
+<td>Counts, estimates, intervals, tests, or statistical method logic in
+REPORT material</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>report_internal_inconsistency</td>
+<td>Conflicting result attribution within or between REPORT materials
+that leaves the applicable outcome, time, population, or comparison
+unclear</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>protocol_report</td>
+<td>A statistical design or analysis inconsistency between PLAN and
+REPORT material</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>plan_material</td>
+<td>A statistical design inconsistency solely within PLAN material on
+which the reported analysis relies</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Relationship type</th>
+<th>Definition</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P_R</td>
+<td>REPORT versus PLAN inconsistency</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>P_P</td>
+<td>Inconsistency solely within PLAN material</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>S_C</td>
+<td>Inconsistency between different REPORT documents</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>S_W</td>
+<td>Inconsistency within one REPORT document</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Evidence state</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>reproduced_after_transcription_correction</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Inclusion-audit counts are CONFIRMED 0 and QUESTIONED 0. The <a
+href="review_1_6_1/candidate_ledger.md">ledger classification table</a>
+has its required header and no data rows. Candidate-specific role
+comparisons, relationship precedence, rationale, ambiguity, and evidence
+states have no applicable unit.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<p>No stable candidates were identified. Scope: the complete five-PDF
+package and all mapped quantitative, statistical, and cross-source
+relationships following both statistical passes and the independent
+quality audit.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Review domain</th>
+<th>Relationship type</th>
+<th>Evidence state</th>
+<th>Inclusion audit</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p>The index is intentionally empty and matches the stable ledger. No
+candidate ID is omitted.</p>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<p>No stable candidates were identified. Scope: all 88 supplied physical
+pages, 107 numeric relationships, 116 statistical relationships with
+both passes complete, and 36 cross-source groups, including the
+independently audited checker exclusions.</p>
+<p>There are no applicable evidence cards or candidate-specific
+adjudication fields. No excluded observation is presented as a card. The
+<a href="review_1_6_1/verification/evidence_recheck.md">mechanical
+evidence recheck</a> confirms the empty stable set; the subsequent
+quality audit and this report preserve that set.</p>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>Evidence extraction should retain each result's analysis population,
+assay, cutoff, scheduled or actual collection day, comparison direction,
+and units. Diagnostic samples, unique participants, events, and fitted
+model SDs are different quantities. Difference intervals should retain
+their reported construction rather than be replaced with an assumed test
+inversion or a subtraction of rounded displayed percentages.</p>
+<p>No candidate-specific downstream extraction consequence was
+identified under the inclusion threshold. This report does not claim
+that propagation, a synthesis conclusion change, or harm occurred. The
+maps and exact-source links provide traceability for future
+systematic-review, meta-analysis, guideline, or data-extraction
+work.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>The <a href="review_1_6_1/limitations.md">complete limitations
+record</a> bounds stronger reconstruction without leaving a scientific
+coverage gap. The supplied package lacks individual raw data and
+executable analysis inputs; exact individual outcome P algorithms and
+unprinted group intervals; individual interaction coefficient/P
+mappings; site likelihood statistics, reference law, fixed-effects
+covariance, and exact family/link; exact power-test/correction
+implementation and sex-specific affected allocations; numerical
+missingness outputs and treatment-decision boundaries; participant-level
+duplicate records; complete exploratory outputs; midpoint recruitment
+counts and a numerical serious-reaction stopping boundary; an evaluated
+safety denominator; and a numerical assay conversion factor.</p>
+<p>These named absences do not establish a reporting issue on their own.
+Direct native and rendered content were distinguished where needed, and
+the three protocol extraction-fitness gaps were closed through fresh
+full-page visual inspection. The supplied evidence supports complete
+reporting-quality coverage while limiting claims of exact reconstruction
+beyond the stated methods and inputs. This review does not adjudicate
+overall study validity or perform a broad methodology audit.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ol type="1">
+<li>Confirm that the five supplied sources and 88 physical pages
+constitute the intended package scope.</li>
+<li>Review the formal zero-finding screening reconciliation and
+distinguish it from the 81 overlapping checker exclusion entries.</li>
+<li>Inspect the bounded reconstruction limits and source-native/render
+distinctions before extracting a result.</li>
+<li>Retain endpoint, population, timing, assay, cutoff, contrast, and
+unit definitions when reusing evidence.</li>
+<li>If human review identifies an additional reporting issue, document
+its exact supplied-source comparison and apply all four inclusion
+criteria. There is no existing candidate-specific adjudication to
+complete.</li>
+</ol>
+<p>Every registered candidate would remain Pending Human Adjudication,
+with validity, importance, action, initials, and notes left as the exact
+blank placeholder <code>__</code>. No substantive human field is
+prefilled in this empty candidate set.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h2>
+<h3 id="source-integrity-and-tooling">Source integrity and tooling</h3>
+<p>The <a href="review_1_6_1/source_hashes_before.sha256">direct-source
+hash baseline</a> covers all five PDFs, and the <a
+href="review_1_6_1/reused_artifact_hashes_before.sha256">reused-artifact
+hash baseline</a> covers all 107 reused assets. At the completed
+quality-audit snapshot, direct SHA-256 checks matched every baseline
+hash. Final post-assembly hash reconciliation, HTML rendering, cleanup
+confirmation, and mechanical validation are coordinator completion
+gates; no final validator status is inferred from the scientific
+audit.</p>
+<p>The <a href="review_1_6_1/tooling_record.md">tooling record</a>
+reports Linux with direct pdfinfo, pdftotext, pdftoppm, pdftocairo,
+tesseract, libreoffice, and pandoc available. Source inspection and
+fresh page rendering used CPU Poppler; no new OCR, global installation,
+or GPU operation was required. Fallback environment: NOT_NEEDED;
+fallback packages/capabilities: None; fallback environment removed:
+NOT_CREATED. Historical renderer uncertainty and partial OCR fitness are
+recorded in asset provenance.</p>
+<p>The <a href="review_1_6_1/routing_preflight.md">routing preflight</a>
+records PASS, INTERACTIVE_CLI, Provider CURRENT_SESSION, Coordinator
+inference PASS, coordinator gpt-6.1-sol/high, and all ten named
+specialist presets verified at their required model/effort pairs. Every
+actual runtime appears once in the manifest below.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>01a128d8-ef89-7251-8e09-114b0845654c</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>root/asset_curator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>source_inventory.md</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>root/main_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>root/protocol_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper_other_shard</td>
+<td>root/other_support_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/parts/support_other.md</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>root/numeric_checker</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>root/cross_source_checker</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistics_pass_1</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr>
+<td>inclusion_screener</td>
+<td>root/inclusion_screener</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/inclusion_screen.md</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>root/evidence_rechecker</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistics_pass_2</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr>
+<td>quality_control_auditor_mapping_numeric_shard</td>
+<td>root/audit_mapping_numeric</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/parts/mapping_numeric_audit.md</td>
+</tr>
+<tr>
+<td>quality_control_auditor_cross_source_shard</td>
+<td>root/audit_cross_screening</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/parts/cross_source_screening_audit.md</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>root/quality_auditor</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>root/report_generator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<p>This table reproduces the complete current <a
+href="review_1_6_1/agent_execution_manifest.md">agent execution
+manifest</a>: 15 distinct runtimes, including the coordinator, all
+mandatory specialist stages, an additional support mapper, and two audit
+shards. Artifact cells are plain paths relative to review_1_6_1; full
+report links appear in the relevant sections. Statistical passes use
+different fresh high-effort runtimes. No second screener was applicable
+because pass 2 emitted no finding.</p>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Five all-native PDFs contain 88
+unique pages, with reusable layout text covering 85 pages and three
+protocol pages requiring targeted direct visual mapping. No Office
+conversion or new OCR is expected; direct CPU renders resolve the three
+text-fitness gaps. Main text has 66427 characters and support text has
+217588 characters, requiring one main and two bounded support mapper
+scopes. Diagnostic-result tables, participant flow, protocol/SAP
+comparisons, two distinct statistical passes, screening, recheck, audit,
+and report generation require the full mandatory agent waves. A
+package-specific 25-40 minute target reflects low preprocessing burden
+and substantive plan/report relationship coverage.</li>
+<li><strong>Total source units:</strong> 88</li>
+<li><strong>Fresh-source units:</strong> 3</li>
+<li><strong>Target elapsed minutes:</strong> 25-40</li>
+<li><strong>Started UTC:</strong> 2026-10-11T02:44:53Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T03:23:19Z</li>
+<li><strong>Observed elapsed minutes:</strong> 38.433</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<p>The exact field labels and current values above are copied from <a
+href="review_1_6_1/run_state.md">run_state.md</a>. The coordinator
+finalizes Finished UTC, Observed elapsed minutes, Target status, and
+bounded Exceedance causes immediately after complete Markdown assembly,
+then synchronizes these fields before rendering and validation. Pending
+values do not claim a completed timing or validation gate. Local HTML
+rendering and mechanical validation lie outside the observed review
+duration; any later model-assisted repair requires updated timing. The
+planning target did not cap sources, relationships, findings, or
+candidates.</p>
+</body>
+</html>

@@ -1,0 +1,977 @@
+# Main-paper quantitative evidence map
+
+Source DOC-001: `jama_rathinam_2019_oi_190092.pdf`; content role **REPORT**. Assigned and completed scope: PDF pages 1–10, printed pages 936–945. All 10 pages reusable-backed; 0 fresh-required; 10 mapped; no scientific coverage gap. This artifact records evidence and relationships only and assigns no candidate judgments.
+
+Read inputs: QUALITY_CONTROL_SCOPE.md, workflow_1_6_1/review_contract.md, current source_coverage.md, evidence_asset_inventory.md, and tooling_record.md. Eligible locators: `.ai_paper_validation/preprocessing/JAMA2019-12618-MAIN/native_text/page-001.txt` through `page-010.txt`, historical pdftotext layout, exact historical version unrecorded. Curator confirmed byte identity to current direct Poppler pdftotext 26.01.0 page extraction. No new OCR, image, or extraction derivative was needed. Full page transcriptions below retain every displayed table row, label, caption, footnote marker, axis tick and narrative statement; these remain locators, with direct PDF authoritative for later recheck. No old conclusions were consulted.
+
+## Page coverage
+
+| PDF page | Printed page | Exact source | Covered units | Mode | Status |
+|---|---:|---|---|---|---|
+| 1 | 936 | [DOC-001 p.1](../../../jama_rathinam_2019_oi_190092.pdf#page=1) | Entire abstract: enrollment, allocation, intervention, endpoint, primary/subgroup effects, safety, conclusion | Reusable text | COMPLETE |
+| 2 | 937 | [DOC-001 p.2](../../../jama_rathinam_2019_oi_190092.pdf#page=2) | Key Points; background; design; eligibility; randomization; visits; masking; outcome measurement; intervention doses | Reusable text | COMPLETE |
+| 3 | 938 | [DOC-001 p.3](../../../jama_rathinam_2019_oi_190092.pdf#page=3) | Figure 1 all patient/eye branches and footnote; steroid treatment; success/failure definition; secondary endpoint continuation | Reusable text | COMPLETE |
+| 4 | 939 | [DOC-001 p.4](../../../jama_rathinam_2019_oi_190092.pdf#page=4) | All statistical methods, sample-size assumptions, outcome hierarchy, baseline/result narrative, primary and noninferiority results | Reusable text | COMPLETE |
+| 5 | 940 | [DOC-001 p.5](../../../jama_rathinam_2019_oi_190092.pdf#page=5) | Every Table 1 patient/eye row and footnote; anatomic subgroup narrative | Reusable text | COMPLETE |
+| 6 | 941 | [DOC-001 p.6](../../../jama_rathinam_2019_oi_190092.pdf#page=6) | Every Table 2 row and footnote; visual/macular effects; injections; adherence/dose reductions; location interactions | Reusable text | COMPLETE |
+| 7 | 942 | [DOC-001 p.7](../../../jama_rathinam_2019_oi_190092.pdf#page=7) | Every Figure 2 model, count, interval, direction and footnote; imputation; 12-month outcomes; safety; discussion claims | Reusable text | COMPLETE |
+| 8 | 943 | [DOC-001 p.8](../../../jama_rathinam_2019_oi_190092.pdf#page=8) | Every Table 3 event row/threshold/count/percentage and footnote; current/pilot/prior intervention context | Reusable text | COMPLETE |
+| 9 | 944 | [DOC-001 p.9](../../../jama_rathinam_2019_oi_190092.pdf#page=9) | Statistical interpretation, composite endpoint, masking through 12 months, power limitation, final conclusion; article information inspected | Reusable text | COMPLETE |
+| 10 | 945 | [DOC-001 p.10](../../../jama_rathinam_2019_oi_190092.pdf#page=10) | Monitoring statement, data-sharing pointer, bibliography and investigator continuation inspected; no additional trial-result quantitative unit | Reusable text | COMPLETE |
+
+No rates, person-time quantities, reported test statistics, or numerical standard errors occur for trial results. No-applicable units: author affiliations/disclosures/funding/investigator rosters and bibliographic numbering/pages/DOIs on pp.9–10 have no additional result relationship; bibliographic title dose ≥15 mg on p.10 is contextual external-study title only and retained in transcription.
+
+## Numeric/reporting relationship inventory (25 bundles)
+
+Local mapper IDs M-N001 through M-N025 are provisional locators; package-wide N IDs are assigned centrally by the checker stage.
+
+Pairs throughout are methotrexate / mycophenolate unless specified. Every percentage uses the printed definition/population rather than an inferred alternate denominator. Table row bundles are exhaustive enumerated row sets, not samples. Individual source values reside in the full transcriptions following this inventory.
+
+| ID | Source locations (all REPORT) | Reconstructed quantitative relationship, population, time, units and narrative matches |
+|---|---|---|
+| M-N001 | p.1 Design/Results; p.2 Key Points/design; p.3 Figure 1; p.4 Results | Screening 265; excluded 49 = 31 unwilling + 11 unable monthly visits + 6 unwilling alcohol abstention + 1 pregnancy planning; randomized 216 = 107/109. Nine centers in five named countries. Abstract dates Aug 22 2013–Aug 16 2017; follow-up Aug 20 2018. Narrative enrollment Aug 2013–Aug 2017, completion Aug 2018. Overall median age 38 y; women 135 (62.5%); baseline table sex and age distributions are matching source categories. |
+| M-N002 | p.3 Figure 1; p.4 Results | Baseline eyes: 407 uveitic = 206/201; 6 phthisis unevaluable and 19 without uveitis excluded from eyes. Allocated treatment received 107/108; footnote one mycophenolate contraindication after randomization. Randomization is patient level; bilateral uveitic eyes included in eye analyses. |
+| M-N003 | p.1 Results; p.3 Figure 1; p.4 Results; p.7 missingness narrative | Primary available 194 (89.8%) = 96/98 patients; analyzed eyes 185/181. Methotrexate 9 lost (1 death;18 eyes) +2 missed (3 eyes); mycophenolate 10 lost (19 eyes)+1 missed (1 eye). Total missing 22/216 (10.2%); p.7 11 (50.0%) missing in each arm. Preserve distinction between lost and missed labels and p.4 combined wording. |
+| M-N004 | p.3 Figure 1 | After 6-month analysis, methotrexate branch losses:9 unwilling switch (17 eyes),3 unsafe (6),2 withdrew (4),2 lost (4); mycophenolate:11 unwilling switch (15),2 unsafe (3),2 withdrew (3). At 12 months 60 continued methotrexate (118 eyes),20 switched to mycophenolate (36),29 switched to methotrexate (57),54 continued mycophenolate (103). |
+| M-N005 | p.1 Intervention; pp.2–3 Treatment; p.8 discussion | First 2 weeks oral methotrexate 15 mg weekly vs mycophenolate 500 mg twice daily; maintenance methotrexate25 mg weekly vs mycophenolate1.5 g twice daily (3 g/day). Dose reductions discretionary for symptoms/adverse events. Context: prior series methotrexate ≤15 mg; pilot methotrexate25 mg weekly/mycophenolate2 g daily; discussion possible subcutaneous25 mg. |
+| M-N006 | pp.1–3 design/outcomes | Eligibility age≥16 y, active noninfectious intermediate/posterior/panuveitis in ≥1 eye. Visit baseline,2 weeks,every4 weeks to6 months; another6 months continued/switch dependent on primary status; measurement personnel masked through12 months, coordinators/patients unmasked. Visual acuity ETDRS/tumbling E logMAR at4 m. Macular edema thresholds ≥315 μm Spectralis, ≥300 μm Cirrus. |
+| M-N007 | pp.1,3 Outcomes/Treatment; p.4 methods; p.6 Table2 | Six-month success patient-level in both eyes (one if other baseline unevaluable): anterior chamber cells≤0.5+, vitreous haze≤0.5+, no active retinal/choroidal lesions; prednisone≤7.5 mg/day and topical prednisolone acetate1%≤2 drops/day; no failure for safety/intolerability. Initial prednisone min(1 mg/kg,60 mg/day), goal7.5 mg at6 months; topical≤2 drops by6 months; injections for edema permitted first90 days. Same success criteria at12 months. |
+| M-N008 | p.5 Table1 age/sex/ethnicity/race and footnotes; p.1 Results | Table1 patient denominators107/109. Age median(IQR)36(26–50)/41(31–51)y; women75(70.1)/60(55.0), men32(29.9)/49(45.0), Hispanic5(4.7)/7(6.4). Race rows Indian subcontinent70/69,White25/22,Asian5/6,Middle Eastern5/5,Black3/6,Native American2/1,Pacific Islander1/3 with all printed percentages below. Seven patients reported >1 racial heritage; race categories are not exclusive. |
+| M-N009 | p.5 Table1 diagnosis | Diagnosis counts: VKH49/44,undifferentiated22/20,retinal vasculitis8/13,sarcoidosis7/8,sympathetic ophthalmia3/8,Behçet5/3,pars planitis2/5,birdshot3/3,other8/5. Preserve every count/percentage in full table; patient denominators107/109. |
+| M-N010 | p.5 Table1 clinical history; p.4 baseline narrative | Bilateral99(92.5)/92(84.4); duration median(IQR)135(20–550)/122(21–783)d. Anatomic history panuveitis60/61,posterior24/25,anterior+intermediate15/14,intermediate8/9; narrative total intermediate46(21.3%),posterior/panu170(78.7%). Location assessed from all available records. |
+| M-N011 | p.5 Table1 steroid/prior therapy; p.4 baseline narrative | Maximum prednisone-equivalent past180 d median(IQR)50(40–60)/50(40–75)mg; baseline50(40–60)/50(40–60)mg, narrative0.9 mg/kg. Past steroids included oral/subcutaneous/IV converted to prednisone equivalents. Prior immunosuppression8(7.5)/7(6.4), total15(6.9%), attempted >12 months earlier. |
+| M-N012 | p.5 Table1 eye inflammation | Eye denominators206/201. Anterior chamber evaluable205(99.5)/201(100.0); grade0:84/87,0.5+:53/47,1+:46/47,≥2+:22/20. Anterior vitreous evaluable202(98.1)/200(99.5); grade0:34/33,0.5+:40/48,1+:52/51,≥2+:76/68. Vitreous haze evaluable202(98.1)/200(99.5); grade0:85/97,0.5+:30/34,1+:50/30,≥2+:37/39. Full table retains respective category percentages and measurement denominators. |
+| M-N013 | p.5 Table1 eye lesion/edema/vision | Active retinal/choroidal lesions125/202(61.9)/119/200(59.5); macular edema42(20.4)/55(27.3); central subfield thickness median(IQR)359.0(331.5–449.5)/342.0(316.0–398.5)μm among macular edema; exclusion VKH with retinal detachment; logMAR0.28(0.03–0.52)/0.30(0.08–0.60) among uveitic eyes, best corrected. |
+| M-N014 | pp.1,2,4 Results; p.6 Table2; p.7 Figure2 | Six-month primary successes64/96(66.7) vs56/98(57.1), total120; failures32(33) vs42(43), total74. Figure2 rounds primary67%/57%. Key Points same66.7/57.1; linked statistical relationship M-S007. |
+| M-N015 | p.6 Table2 failure reasons; p.3 definitions | Among failures efficacy26/32(81)/38/42(90),intolerability3/32(9)/2/42(5),safety3/32(9)/2/42(5). Efficacy fails control/steroid requirements or early persistent worsening; intolerability unable/unwilling due adverse effects; safety abnormal labs serious threshold. Printed superscripts/footnote associations retained exactly below. |
+| M-N016 | pp.1,5–6 subgroup narrative; p.6 Table2 | Intermediate (including anterior+intermediate) successes6/18(33.3)/14/22(63.6); posterior/panu58/78(74.4)/42/76(55.3). Subgroup analyzed counts18+78=96 and22+76=98; linked M-S009–M-S011. Baseline subgroup counts23/23 and84/86 are separate populations. |
+| M-N017 | pp.3,6–7 12-month follow-up/table/narrative | Six-month successes120;114 continued:48/60(80% or80.0)/40/54(74% or74.1)successes at12 months. Narrative prednisone discontinued50.0%/55.0%. Table2 continued category refers original allocation; linked M-S012. |
+| M-N018 | pp.3,6–7 switch follow-up/table/narrative | Of68 eligible failures without serious laboratory event,49 switched. Originally methotrexate20/32(62.5%)switched to mycophenolate; originally mycophenolate29/42(69.0%)switched to methotrexate. At12 months current methotrexate20/29(69%)success vs current mycophenolate7/20(35%); Table2 switch columns reflect received new antimetabolite, supported by footnote text and narrative; linked M-S013. |
+| M-N019 | p.6 Table2 adherence and narrative; p.7 Figure2 | Mean(SD) expected doses missed4.6(1.0)% weekly methotrexate vs4.3(0.5)% daily mycophenolate; counted missed/expected throughout enrollment. Adherence sensitivity threshold<20% missed; Figure2 denominators90/94,total184, successes61/54. Dose reduction21(19.6)/15(13.8); linked M-S015/M-S017. |
+| M-N020 | p.6 eye outcomes/narrative/Table2 | Analyzed eye headers185/181; change logMAR median(IQR)−0.10(−0.32–0.00)/−0.12(−0.31–0.00), decreasing means improved acuity. Narrative median gain1.0(0.0–3.2)/1.2(0.0–3.1)lines. Macular thickness reduction median(IQR)[No.]−26.00(−89.00–5.00)[42]/−14.00(−80.00–3.25)[55]μm; edema eyes excluding VKH serous retinal detachment. Linked M-S014. |
+| M-N021 | p.6 injection narrative | Per-protocol edema steroid injection first90 d:7 patients(7 eyes)/5(5). Deviating injection>90 d:4 patients(7 eyes)/4(4). Statistical comparisons specified Fisher exact in methods; no P for injection comparison printed in main article. |
+| M-N022 | p.7 Figure2 and location/imputation narrative | India42/60(70)/41/59(69),n119; non-India22/36(61 or61.1)/15/39(38 or38.5),n75. Imputed primary66/107(61.7)/59/109(54.1). All Figure2 axes0.1,1,10; left favors mycophenolate,right methotrexate. Linked M-S016–M-S019. |
+| M-N023 | p.8 Table3 ocular/lab events; pp.1,7 safety narrative | Event counts are patients with≥1event; headers107/109, footnote one mycophenolate never received drug. Ocular nonserious:hypertension>24mmHg10/13,hemorrhage3/3,glaucoma suspect/confirmed2/2,pressure<5mmHg without structural damage0/1,cataract surgery indicated5/2,decreased vision9/19,eye pain9/4. Serious ocular glaucoma0/1,retinal detachment1/0. Nonserious lab ALT/AST14/8,hemoglobin2/3,leukocyte3/1,creatinine1/0; serious ALT/AST3/2. Full percentages/thresholds below. Narrative14(13.0)/8(7.4)nonserious liver abnormalities;14 serious events total with5drug-related,3(2.8)/2(1.9),all drug-related liver abnormalities. |
+| M-N024 | p.8 Table3 systemic events; p.7 safety narrative | Nonserious systemic:fatigue62/59,headache55/45,mood33/26,hair6/2,nausea42/30,weakness32/26,numbness25/18,diarrhea25/24,dyspnea21/22,vomiting26/24,allergic14/11,fever11/18,heart4/2,infection25/27,other65/63. Serious systemic:death1/0,diarrhea0/1,disability1/0,hospitalization2/2,infection0/1,vomiting1/0,other3/1. Full percentages below; categories need not be mutually exclusive. Narrative fatigue57.9/54.6%,headache51.4/41.7%; other serious events footnote stroke/finger injury/lower-limb pain methotrexate, extreme flank pain mycophenolate. |
+| M-N025 | p.8 Table3 thresholds/footnotes; p.10 monitoring statement | Nonserious ALT/AST2–5×ULN<28d;Hb>6.5 to<9g/dL<28d;WBC>1000 and<2500/μL<28d;creatinine>1.5 to<2mg/dL<28d. Serious ALT/AST>5×ULN or2–5×ULN≥28d. Fever<39°C for12h; creatinine conversionμmol/L=mg/dL×88.4. eTable1 referenced for seriousness criteria. Independent monitoring committee monitored efficacy,safety,performance; no numeric interim rule printed here. |
+
+## Inferential/statistical relationship inventory (23 bundles)
+
+Local mapper IDs M-S001 through M-S023 are provisional locators; package-wide S IDs are assigned centrally by the statistical checker stage.
+
+| ID | Source locations (all REPORT) | Analysis/result relationship and exact inputs or labels |
+|---|---|---|
+| M-S001 | p.2 Randomization | Patient-level 1:1 randomization; permuted blocks of 4 and 6; stratified by site; concealed until enrollment. R 2.12 generated sequence; REDCap delivered assignment. Links randomization to site models, permutation, and plan comparisons. |
+| M-S002 | p.4 Statistical Analyses | Sample size 216; 80% power; success 40% methotrexate / 60% mycophenolate; approximately 20 percentage-point clinically meaningful superiority difference favoring mycophenolate; 10% loss; two-tailed alpha .05. No calculation formula printed here. |
+| M-S003 | p.4 methods; p.6 Table 2 footnote; p.7 Figure 2 footnote | Primary patient-level mixed-effects logistic regression: treatment fixed effect, site random effect; OR and 95% CI from regression; equivalent absolute RD and 95% CI also reported; mycophenolate reference. No numerical standard error or test statistic printed. |
+| M-S004 | p.4 methods; pp.3–4 flow/results; p.7 missingness | Primary analyzed by randomized arm if 6-month visit or early failure; missing primary visits excluded; multiple imputation sensitivity. Observed 194 versus randomized 216. Same logistic model at 12 months and for anatomical/location secondary comparisons. |
+| M-S005 | p.4 methods/results | Prespecified methotrexate noninferiority to mycophenolate at 6 months: absolute RD margin 10%, two-sided significance .05; primary RD lower 95% bound −5.3% excludes noninferiority margin; authors state evidence of noninferiority. Margin based on investigator consensus, said likely to exclude placebo effect. |
+| M-S006 | p.4 methods | Two-sided significance P<.05; permutation CIs and permuted P values for primary based on randomized treatment assignment; R version 3.51. Secondary findings exploratory because of potential type I error from multiple comparisons. No main-paper numerical multiplicity adjustment or interim stopping rule. |
+| M-S007 | p.1 Abstract; p.4 primary; p.6 Table 2; p.7 Figure 2; p.2 Key Points; pp.7,9 conclusion | Six-month 64/96 versus 56/98; RD 9.5% (95% CI −5.3 to 21.8), OR 1.50 (0.81–2.81), P=.20. Nonsignificant difference; conclusion mycophenolate did not result in superior control. Contrast methotrexate versus reference mycophenolate. |
+| M-S008 | p.6 Table 2 failure reason rows | Failure-category distribution efficacy/intolerability/safety 26/3/3 among 32 versus 38/2/2 among 42; printed P=.55 spanning category rows. Table/method context retained without assigning an unprinted detailed category-test specification. |
+| M-S009 | p.1 Abstract; pp.5–6 narrative; p.6 Table 2 | Intermediate subgroup 6/18 versus 14/22; RD −30.3% (95% CI −51.6 to 1.1), OR 0.29 (0.08–1.05), P=.07; not significant. Prespecified primary logistic model for subtype analysis. |
+| M-S010 | p.1 Abstract; pp.4–5 narrative; p.6 Table 2 | Posterior/panuveitis 58/78 versus 42/76; RD 19.1% (95% CI 3.6–30.6), OR 2.35 (1.16–4.90), P=.02; greater success with methotrexate. Same patient-level primary logistic model; discussion calls secondary findings exploratory. |
+| M-S011 | p.1 Abstract; p.5 narrative; p.6 Table 2 footnote | Treatment × anatomical subtype interaction P=.004; hypothesized and prespecified distinction intermediate versus posterior/panuveitis; linked subgroup effects M-S009 and M-S010. |
+| M-S012 | p.6 Table 2; p.7 continued 12-month narrative; p.4 methods | Continued-randomized subgroup 48/60 versus 40/54; RD 5.9% (95% CI −12.2 to 17.0), OR 1.40 (0.57–3.56), P=.47. Same logistic model at 12 months; restricted to 6-month successes who continued and were followed up. |
+| M-S013 | p.6 Table 2; p.7 switch 12-month narrative; p.4 methods | Switch subgroup 20/29 receiving methotrexate versus 7/20 receiving mycophenolate; RD 34.2% (95% CI 6.6–52.6), OR 4.17 (1.32–13.16), P=.02; narrative rounded OR 4.2 (1.3–13.2). New drug differs from original allocation. Authors describe greater/superior control among patients switching to methotrexate. |
+| M-S014 | p.4 eye methods; p.6 Table 2/narrative | Eye-level visual/macular change: linear regression clustering on patient; Table 2 footnote says P values from linear mixed-effects model. Visual difference 0.2 lines greater with mycophenolate (95% CI 1.7 lines less to 2.0 greater), P=.83; macular difference 2.4 μm greater with methotrexate (95% CI −78.0 to 82.8), P=.95. Uveitic eyes only, both bilateral eyes included; macular edema restriction in Table 2. Displayed medians are distinct from modeled differences. |
+| M-S015 | p.4 adherence methods; p.6 Table 2/narrative | Missed doses compared with Welch t test: mean (SD) 4.6 (1.0)% versus 4.3 (0.5)%, P=.87; missed/expected throughout enrollment. Dose reduction compared with Fisher exact: 21/107 versus 15/109, P=.27; same named test specified for protocol deviations. |
+| M-S016 | p.7 Figure 2 model 2; p.6 location sensitivity; p.4 prespecification | India-only primary model n=119; 42/60 versus 41/59; OR 1.02 (0.44–2.37), P=.93. Figure footnote: primary model restricted to India sites. |
+| M-S017 | p.7 Figure 2 model 4; p.6 adherence sensitivity | Per-protocol primary model n=184, restricted to <20% medication doses missed: 61/90 versus 54/94; OR 1.56 (0.84–2.96), P=.17; authors say result not substantially changed. |
+| M-S018 | p.7 Figure 2 model 3/narrative | Non-India primary model n=75; 22/36 versus 15/39; OR 2.51 (0.89–7.08), P=.08. Narrative RD 22.7% (95% CI −2.6 to 43.1), rounded OR 2.5 (0.9–7.1). Same contrast as primary. |
+| M-S019 | p.7 multiple-imputation narrative; p.4 methods | Imputed primary 66 (61.7%) versus 59 (54.1%); RD 7.6% (95% CI −5.9 to 19.1), OR 1.4 (0.8–2.4), P=.27; authors describe similar result to prespecified complete-outcome analysis. No further imputation detail assumed. |
+| M-S020 | p.6 location interaction narrative; p.7 Figure 2 footnote | India × treatment P=.15; country × treatment P=.45 (US/Mexico combined); all location interaction tests nonsignificant. Preplanned sensitivity analyses for heterogeneity across site/country; eTable 7 pointer. |
+| M-S021 | p.4 secondary outcome enumeration; pp.3–4 definition | Prespecified reported secondary: 6-month success by subtype/site/country, 12-month success continued/switched, visual acuity, central subfield thickness. Prespecified not reported here: time to control, sustained success, VKH success, SF-36/NEI-VFQ-25/IND-VFQ quality of life, specific inflammation changes (anterior chamber cells, vitreous haze, retinal/choroidal lesions, vasculitis). Retained for plan/report matching without diagnosing omission. |
+| M-S022 | pp.1,7–8 adverse events; p.4 methods | Frequencies/proportions of patients experiencing nonserious/serious ocular/laboratory/systemic events calculated per group; masked medical monitor assesses drug-related serious events. No adverse-event inferential P value printed here. Current follow-up 6 months; 12-month events in eTables 8 and 9. |
+| M-S023 | pp.7–9 discussion/conclusions/limitations | Primary nonsuperiority claim; secondary subtype analyses exploratory and hypothesis-generating. Posterior/panuveitis favors methotrexate; intermediate favors mycophenolate without significant difference. Twelve-month switch methotrexate superiority claim. Insufficient power to compare uveitis diagnoses; most enrolled in India, but authors say these results did not drive primary outcome. Measurement personnel masked through 12 months. Claims linked to M-S007, M-S009, M-S010, M-S011, M-S012, M-S013, M-S016, M-S018, M-S020. |
+
+## Full source-linked page transcriptions
+
+The following blocks preserve complete eligible source-matched layout text, including every numeric cell and footnote. Typography and superscripts are not silently normalized. The structured inventory above supplies population/model/contrast matches; subsequent reviewers must use the direct PDF for decisive cited locations.
+
+### DOC-001 PDF page 1
+
+[Direct source](../../../jama_rathinam_2019_oi_190092.pdf#page=1)
+
+```text
+                Research
+
+
+              JAMA | Original Investigation
+
+              Effect of Corticosteroid-Sparing Treatment
+              With Mycophenolate Mofetil vs Methotrexate
+              on Inflammation in Patients With Uveitis
+              A Randomized Clinical Trial
+              S. R. Rathinam, MD, PhD; John A. Gonzales, MD; Radhika Thundikandy, MD; Anuradha Kanakath, MD; S. Bala Murugan, MD; R. Vedhanayaki, MD;
+              Lyndell L. Lim, MBBS, DMedSci; Eric B. Suhler, MD, MPH; Hassan A. Al-Dhibi, MD; Thuy Doan, MD, PhD; Jeremy D. Keenan, MD, MPH; Maya M. Rao, MPH;
+              Caleb D. Ebert, MPH; Hieu H. Nguyen, MS; Eric Kim, MA; Travis C. Porco, PhD, MPH; Nisha R. Acharya, MD, MS; for the FAST Research Group
+
+
+                                                                                                                                  Visual Abstract
+                 IMPORTANCE Methotrexate and mycophenolate mofetil are commonly used                                              Supplemental content
+                 immunomodulatory therapies for achieving corticosteroid-sparing control of noninfectious
+                 uveitis, but there is uncertainty about which drug is more effective.                                            CME Quiz at
+                                                                                                                                  jamanetwork.com/learning
+                                                                                                                                  and CME Questions page 976
+                 OBJECTIVE To compare the effect of methotrexate and mycophenolate for achieving
+                 corticosteroid-sparing control of noninfectious intermediate uveitis, posterior uveitis,
+                 and panuveitis.
+
+                 DESIGN, SETTING, AND PARTICIPANTS The First-line Antimetabolites as Steroid-sparing
+                 Treatment (FAST) uveitis trial screened 265 adults with noninfectious uveitis requiring
+                 corticosteroid-sparing immunosuppressive therapy from 9 referral eye centers in India, the
+                 United States, Australia, Saudi Arabia, and Mexico between August 22, 2013, and August 16,
+                 2017. Follow-up ended on August 20, 2018.
+
+                 INTERVENTIONS Patients were randomized to receive oral methotrexate, 25 mg weekly
+                 (n = 107), or oral mycophenolate mofetil, 3 g daily (n = 109).
+
+                 MAIN OUTCOMES AND MEASURES The primary outcome was treatment success at 6 months,
+                 which was defined as having control of inflammation in both eyes, no more than 7.5 mg
+                 prednisone daily and less than or equal to 2 drops of prednisolone acetate 1%, and no
+                 treatment failure due to safety or intolerability. Patients underwent follow-up to 12 months
+                 while receiving the same treatment or switched to the other antimetabolite, depending on
+                 their 6-month outcome.
+
+                 RESULTS Among 216 patients who were randomized (median age, 38 years; 135 (62.5%)
+                 women), 194 (89.8%) completed follow-up through 6 months. Treatment success occurred in
+                 64 (66.7%) patients in the methotrexate group vs 56 (57.1%) in the mycophenolate group
+                 (difference, 9.5% [95% CI, −5.3% to 21.8%]; odds ratio [OR], 1.50 [95% CI, 0.81 to 2.81]; P = .20).
+                 Among patients with posterior uveitis or panuveitis, treatment success was achieved in 58
+                 (74.4%) in the methotrexate group vs 42 (55.3%) in the mycophenolate group (difference, 19.1%
+                 [95% CI, 3.6% to 30.6%]; OR, 2.35 [95% CI, 1.16 to 4.90]; P = .02); whereas among patients with
+                 intermediate uveitis treatment success occurred in 6 (33.3%) in the methotrexate group vs 14
+                 (63.6%) in the mycophenolate group (difference, −30.3% [95% CI, −51.6% to 1.1%]; OR, 0.29
+                 [95% CI, 0.08 to 1.05]; P = .07; P for interaction = .004). Elevated liver enzymes were the most
+                 common nonserious laboratory adverse event, occurring in 14 patients (13.0%) in the
+                                                                                                                             Author Affiliations: Author
+                 methotrexate group and 8 patients (7.4%) in the mycophenolate group.
+                                                                                                                             affiliations are listed at the end of this
+                                                                                                                             article.
+                 CONCLUSIONS AND RELEVANCE Among adults with noninfectious uveitis, the use of
+                                                                                                                             Group Information: FAST Research
+                 mycophenolate mofetil compared with methotrexate as first-line corticosteroid-sparing                       Group investigators are listed at the
+                 treatment did not result in superior control of inflammation. Further research is needed to                 end of this article.
+                 determine if either drug is more effective based on the anatomical subtype of uveitis.                      Corresponding Author: Nisha R.
+                                                                                                                             Acharya, MD, MS; F.I. Proctor
+                 TRIAL REGISTRATION ClinicalTrials.gov Identifier: NCT01829295                                               Foundation, University of California,
+                                                                                                                             San Francisco, 513 Parnassus Ave,
+                                                                                                                             M-S309, San Francisco, CA 94143
+                 JAMA. 2019;322(10):936-945. doi:10.1001/jama.2019.12618                                                     (Nisha.Acharya@ucsf.edu).
+
+
+        936                                                                                                                                 (Reprinted) jama.com
+
+                                                     © 2019 American Medical Association. All rights reserved.
+Downloaded from jamanetwork.com by University of Arizona Health Sciences Library user on 07/30/2026
+
+```
+
+### DOC-001 PDF page 2
+
+[Direct source](../../../jama_rathinam_2019_oi_190092.pdf#page=2)
+
+```text
+              Corticosteroid-Sparing Treatment With Mycophenolate Mofetil vs Methotrexate in Patients With Uveitis                        Original Investigation Research
+
+
+
+
+              U
+                       veitis, a group of diseases characterized by sight-
+                       threatening intraocular inflammation, is the fifth most                     Key Points
+                       common cause of severe vision loss in high-income na-
+                                                                                                   Question Is methotrexate or mycophenolate mofetil more
+              tions and was estimated to be responsible for 10% to 15% of                          effective as first-line immunosuppressive treatment for patients
+              all blindness cases in the United States in epidemiology stud-                       with noninfectious intermediate uveitis, posterior uveitis,
+              ies conducted in the 1990s.1,2 Uveitis can be associated with a                      or panuveitis requiring corticosteroid-sparing therapy?
+              systemic disease or be eye limited and affects people of all ages,
+                                                                                                   Findings In this randomized clinical trial of 216 patients with
+              which may lead to greater years of vision loss than other age-                       active noninfectious intermediate uveitis, posterior uveitis, and
+              related diseases.3                                                                   panuveitis, 66.7% of patients in the methotrexate group achieved
+                   The standard first-line treatment for noninfectious uveitis                     corticosteroid-sparing control of inflammation compared with
+              is corticosteroids (topical, systemic, injections, and implants).                    57.1% in the mycophenolate group, a difference that was not
+              However, corticosteroid therapy has local and systemic ad-                           statistically significant.
+              verse effects making its long-term use undesirable.4 Timely man-                     Meaning Mycophenolate mofetil was not more effective than
+              agement of uveitis is critical to prevent permanent vision loss,                     methotrexate in treating noninfectious uveitis.
+              and multidisciplinary collaboration is often required given the
+              need for corticosteroid-sparing immunosuppression.
+                   The antimetabolites methotrexate and mycophenolate                          cal software R (R Project for Statistical Computing, version 2.12).
+              mofetil are commonly used as initial corticosteroid-sparing treat-               After investigators confirmed eligibility, the study coordina-
+              ments for uveitis before progressing to biologic therapies, which                tor obtained the treatment assignment through the online Re-
+              are more expensive and have risks for serious adverse effects.5-7                search Electronic Data Capture (REDCap) system.15
+              Noncomparative retrospective case series generally suggest that
+              mycophenolate mofetil may be more effective and tolerable for                    Study Timeline, Masking, and Assessments
+              patients with uveitis, but there is a lack of evidence comparing                 All patients completed study visits at baseline, 2 weeks, and ev-
+              the effectiveness of these treatments.5,8-12                                     ery 4 weeks up to 6 months. Scheduling of study visits was based
+                   The primary objective of this study was to compare the rela-                on the enrollment date. The primary outcome was measured
+              tive effectiveness of methotrexate and mycophenolate mofetil                     at 6 months (Figure 1). Patients with treatment success contin-
+              for achieving corticosteroid-sparing control of noninfectious                    ued taking their randomized medication for another 6 months.
+              intermediate uveitis, posterior uveitis, and panuveitis.                         If treatment failed, patients switched to the other antimetabo-
+                                                                                               lite plus 6-month follow-up. Personnel responsible for out-
+                                                                                               come measurements (ophthalmologists, visual acuity examin-
+                                                                                               ers, and optical coherence tomography operators) were masked,
+              Methods                                                                          including after switching medications. Study coordinators and
+              Study Design and Eligibility                                                     patients were not masked to the medication assignment.
+              The First-line Antimetabolites as Steroid-sparing Treatment                           Ophthalmologists, masked to patients’ assigned treat-
+              (FAST) uveitis trial was a National Eye Institute–supported mul-                 ment group, measured anterior chamber cells according to
+              ticenter, randomized, parallel, observer-masked clinical trial at                the Standardization of Uveitis Nomenclature (SUN) guide-
+              9 referral eye care centers in India, the United States, Australia,              lines. Vitreous haze was assessed by the standardized
+              Saudi Arabia, and Mexico. To be eligible for the trial, patients had             National Eye Institute scoring system. Retinal and choroidal
+              to be 16 years of age or older, have active noninfectious interme-               lesions were assessed by clinical examination and imaging
+              diate uveitis, posterior uveitis, or panuveitis in at least 1 eye, and           studies. Visual acuity examiners (also masked to patients’
+              have a justification for starting corticosteroid-sparing therapy (see            treatment group) measured best spectacle-corrected visual
+              eBox in Supplement 1 for complete eligibility criteria). Institu-                acuity using an ETDRS letter or tumbling “E” logarithm of the
+              tional review board approval was obtained at all centers. All pa-                minimum angle of resolution chart at 4 m. Macular thickness
+              tients provided written informed consent. Race and ethnicity                     was assessed using optical coherence tomography. Macular
+              were self-reported by patients based on fixed categories to com-                 edema thresholds were greater than or equal to 315 μm for
+              ply with National Institutes of Health and US Food and Drug Ad-                  Spectralis (Heidelberg Engineering) and greater than or equal
+              ministration guidelines.13,14 All research procedures adhered to                 to 300 μm for Cirrus (Carl Zeiss Meditec).
+              the tenets of the Declaration of Helsinki. The study was moni-
+              tored by an independent data and safety monitoring committee.                    Treatment
+              The trial protocol and statistical analysis plan are available on-               The University of California San Francisco pharmacy pro-
+              line (Supplement 2 and Supplement 3).                                            vided study drugs for all sites. Patients were randomized and
+                                                                                               started treatment with an initial dose for 2 weeks to ensure tol-
+              Randomization                                                                    erability (15 mg weekly oral methotrexate or 500 mg twice daily
+              Patients were randomized (1:1 allocation ratio) to methotrex-                    oral mycophenolate mofetil). The dose was increased to a main-
+              ate or mycophenolate mofetil using permutated blocks of                          tenance level for the remainder of the trial: 25 mg weekly for
+              size 4 and 6 and stratified by study site, and allocation was                    the oral methotrexate group and 1.5 g twice daily for the oral
+              concealed until after enrollment. The principal statistician                     mycophenolate mofetil group. If patients experienced intol-
+              generated the random allocation sequence using the statisti-                     erable symptoms or adverse events, dose of the trial drug was
+
+              jama.com                                                                                   (Reprinted) JAMA September 10, 2019 Volume 322, Number 10          937
+
+                                                        © 2019 American Medical Association. All rights reserved.
+Downloaded from jamanetwork.com by University of Arizona Health Sciences Library user on 07/30/2026
+
+```
+
+### DOC-001 PDF page 3
+
+[Direct source](../../../jama_rathinam_2019_oi_190092.pdf#page=3)
+
+```text
+              Research Original Investigation                                      Corticosteroid-Sparing Treatment With Mycophenolate Mofetil vs Methotrexate in Patients With Uveitis
+
+
+
+
+              Figure 1. Patient Flow From Screening to 12-Month Analysis
+
+                                                                                        265 Patients assessed for eligibility
+
+
+                                                                                                                   49 Excluded
+                                                                                                                      31 Unwilling to participate
+                                                                                                                      11 Unable to attend monthly visits
+                                                                                                                       6 Unwilling to abstain from alcohol
+                                                                                                                       1 Planning pregnancy
+
+
+
+                                                                                           216 Patients randomized
+                                                                                               (407 eyes with uveitis)
+
+
+
+                                     107 Randomized to receive methotrexate                                                     109 Randomized to receive mycophenolate mofetil
+                                         107 Received allocated intervention                                                        108 Received allocated intervention
+                                             (206 eyes with uveitis)                                                                    (201 eyes with uveitis)a
+
+
+                                                6-Month follow-up                                                                              6-Month follow-up
+                                    9 Lost to follow-up prior to 6-month visit                                                     10 Lost to follow-up prior to 6-month visit
+                                      (1 death) (18 eyes with uveitis)                                                                (19 eyes with uveitis)
+                                    2 Missed 6-month visit (3 eyes with uveitis)                                                    1 Missed 6-month visit (1 eye with uveitis)
+
+                                           6-Month primary analysis                                                                       6-Month primary analysis
+                                        96 Included in the primary analysis                                                            98 Included in the primary analysis
+                                           (185 eyes with uveitis)                                                                        (181 eyes with uveitis)
+
+
+                                                12-Month follow-up                                                                            12-Month follow-up
+                                 9 Unwilling to switch to mycophenolate mofetil                                                 11 Unwilling to switch to methotrexate
+                                   (17 eyes with uveitis)                                                                          (15 eyes with uveitis)
+                                 3 Not eligible to continue in study due to safety                                               2 Not eligible to continue in study due
+                                   reasons (6 eyes with uveitis)                                                                   to safety reasons (3 eyes with uveitis)
+                                 2 Withdrew from the study (4 eyes with uveitis)                                                 2 Withdrew from the study (3 eyes with uveitis)
+                                 2 Lost prior to 12-month visit (4 eyes with uveitis)
+
+
+
+
+                     12-Month secondary analysis                  12-Month secondary analysis                    12-Month secondary analysis                   12-Month secondary analysis
+                    60 Continued methotrexate and                20 Switched to mycophenolate                   29 Switched to methotrexate and               54 Continued mycophenolate and
+                       were included in the 12-month                mofetil and were included in                   were included in the 12-month                 were included in the 12-month
+                       secondary analysis (118 eyes                 the 12-month secondary                         secondary analysis (57 eyes                   secondary analysis (103 eyes
+                       with uveitis)                                analysis (36 eyes with uveitis)                with uveitis)                                 with uveitis)
+
+
+              a
+                  One patient did not receive mycophenolate mofetil due to a medical contraindication discovered postrandomization.
+
+
+              reduced (see eTable 3 in Supplement 1 for dosing informa-                                     mation in both eyes (or single eye if other eye was unevaluable
+              tion) at the discretion of the investigator; masking of study per-                            at baseline) at the month 6 visit, defined by the following:
+              sonnel ascertaining outcomes was preserved. Monthly calen-                                         (1) less than or equal to 0.5+ anterior chamber cells by
+              dars were provided to patients to record any missed doses.                                    SUN criteria,16 less than or equal to 0.5+ vitreous haze clinical
+              Patients were prescribed oral prednisone (1 mg/kg or 60 mg                                    grading using the NEI scale,16 and no active retinal or choroi-
+              daily [whichever was less]) at enrollment and tapered accord-                                 dal lesions; and (2) no more than 7.5 mg of oral prednisone
+              ing to SUN guidelines, with a goal of tapering and holding at                                 daily and less than or equal to 2 drops of prednisolone
+              7.5 mg daily prednisone at month 6.16 Following the primary                                   acetate 1% (or equivalent) per day; and (3) no declaration of
+              end point, prednisone could be tapered off. If needed, pa-                                    treatment failure due to intolerability or safety concerns.
+              tients took topical corticosteroids but were instructed to ta-                                     Treatment failure due to efficacy was declared if either cri-
+              per to 2 drops or less per day of prednisolone acetate 1% or                                  terion 1 or 2 (listed in the previous paragraph) was not met at
+              equivalent by month 6. Periocular and intravitreal corticoste-                                6 months or declared earlier if a patient had persistent wors-
+              roid injections could be administered within the first 90 days                                ening inflammation. Treatment failure could be declared due
+              after randomization for macular edema if investigators deemed                                 to safety (eg, if a patient had an abnormal laboratory result
+              additional treatment was needed; other injections were con-                                   meeting the serious adverse event threshold) or intolerability
+              sidered protocol deviations.                                                                  (eg, if a patient was unable or unwilling to continue medica-
+                                                                                                            tion due to adverse effects) at 6 months. The same definition
+              Outcomes                                                                                      of treatment success was applied to 12-month outcomes.
+              The primary outcome was treatment success at the patient level,                                    Prespecified secondary outcomes included treatment suc-
+              defined by achieving corticosteroid-sparing control of inflam-                                cess at 6 months by anatomical subtype of uveitis, by enrollment
+
+        938   JAMA September 10, 2019 Volume 322, Number 10 (Reprinted)                                                                                                                jama.com
+
+                                                               © 2019 American Medical Association. All rights reserved.
+Downloaded from jamanetwork.com by University of Arizona Health Sciences Library user on 07/30/2026
+
+```
+
+### DOC-001 PDF page 4
+
+[Direct source](../../../jama_rathinam_2019_oi_190092.pdf#page=4)
+
+```text
+              Corticosteroid-Sparing Treatment With Mycophenolate Mofetil vs Methotrexate in Patients With Uveitis                    Original Investigation Research
+
+
+
+              site or country, treatment success at 12 months in patients who                  uveitic eyes at enrollment were included in eye-level analy-
+              continued their randomized antimetabolite and patients who                       ses. Patients with bilateral uveitis had both eyes included.
+              switched to the other antimetabolite, visual acuity, and central                     The frequency and proportion of patients experiencing non-
+              subfield macular thickness at 6 months. Additional secondary                     serious and serious ocular, laboratory, and systemic adverse
+              outcomes not reported in this article were time to control of in-                events were calculated for each group. Dose reductions and pro-
+              flammation; sustained treatment success; treatment success in                    tocol deviations were compared between treatment groups
+              the Vogt-Koyanagi-Harada subgroup; quality of life by the 36-Item                using a Fisher exact test. Missed doses were compared by group
+              Short Form Survey (SF-36), the National Eye Institute Visual Func-               using a Welch t test. Statistical significance was declared at
+              tion Questionnaire (NEI-VFQ-25), and the Indian Vision Func-                     2-sided P value of less than .05. Permutation CIs were calcu-
+              tion Questionnaire (IND-VFQ); and changes in specific manifes-                   lated for the primary outcome with permuted P values based
+              tations of uveitis, such as anterior chamber cell inflammation,                  on the randomized treatment assignment. Data were analyzed
+              vitreous haze, retinal or choroidal lesions, and vasculitis.                     using R version 3.51 (R Project for Statistical Computing).
+
+              Statistical Analyses
+              Enrollment of 216 patients was estimated to provide 80% power
+              to detect a clinically meaningful absolute difference of approxi-
+                                                                                               Results
+              mately 20% in treatment success between the methotrexate                         Two hundred sixteen patients were randomized between August
+              group (40%) and the mycophenolate mofetil group (60%), as-                       2013 and August 2017 (107 patients to the methotrexate group
+              suming 10% loss to follow-up and a 2-tailed α of 0.05. This risk                 and 109 patients to the mycophenolate mofetil group). Six eyes
+              difference in favor of mycophenolate mofetil was supported by                    were unevaluable due to phthisis and 19 eyes had no history of
+              retrospective studies.9,11,17 The prespecified primary outcome                   uveitis, leaving 206 uveitic eyes in the methotrexate group and
+              analysis was a mixed-effects logistic regression to estimate the                 201 uveitic eyes in the mycophenolate mofetil group. Patient
+              association between treatment group as the fixed effect and                      follow-up was completed in August 2018, and 194 patients (96
+              treatment success at 6 months. Site was included as a random                     in the methotrexate group and 98 in the mycophenolate mofetil
+              effect. This outcome was evaluated at the patient level. Odds                    group) had complete information for the primary outcome
+              ratios (ORs) and their 95% CIs were calculated from the regres-                  (Figure 1); 22 patients (10.2%) were lost to follow-up.
+              sion. Equivalent absolute risk differences and 95% CIs are also                       Table 1 shows the baseline demographic and clinical char-
+              reported. All patients with a 6-month visit or who were de-                      acteristics for both groups. Most patients had bilateral uveitis
+              clared as having early treatment failure were analyzed accord-                   (92.5% in the methotrexate group and 84.4% in the mycophe-
+              ing to their randomization group. Patients missing a primary out-                nolate mofetil group). Forty-six patients (21.3%) had interme-
+              come visit were not included in the primary analysis. As a                       diate uveitis only or anterior uveitis and intermediate uveitis,
+              sensitivity analysis, multiple imputation was used to infer miss-                and 170 patients (78.7%) had posterior uveitis or panuveitis. In
+              ing primary outcome data. The same logistic model used in the                    the 180 days prior to enrollment, the highest oral prednisone
+              primary outcome analysis was applied at 12 months. A nonin-                      (or equivalent) dose administered was a median 50 mg (inter-
+              feriority analysis with a 2-sided significance level of .05 was pre-             quartile range [IQR], 40-60 mg) in the methotrexate group and
+              specified to evaluate whether methotrexate is noninferior to my-                 50 mg (IQR, 40-75 mg) in the mycophenolate mofetil group. The
+              cophenolate mofetil for achieving treatment success at 6                         initial corticosteroid dose at enrollment for each group was a
+              months, with an absolute margin in risk difference of 10%. The                   median of 50 mg (0.9 mg/kg [IQR, 40-60 mg]). Fifteen pa-
+              noninferiority margin of 10% was based on investigator con-                      tients (6.9%) had previously attempted immunosuppressive
+              sensus and would likely exclude the effect of placebo                            therapy more than 12 months prior to enrollment.
+              (Supplement 3).18 Sensitivity analyses were preplanned to ex-
+              amine for heterogeneity in treatment effect across site and coun-                Six-Month Primary Outcome Analysis
+              try. Because of the potential type I error due to multiple com-                  At the 6-month primary end point, 120 patients met the defi-
+              parisons, findings for analyses of secondary end points should                   nition of treatment success (Table 2). In the primary analysis,
+              be interpreted as exploratory.                                                   treatment success was achieved in 64 patients in the metho-
+                    Retrospective studies and clinical trials have demon-                      trexate group vs 56 patients in the mycophenolate mofetil
+              strated posterior uveitis and panuveitis to be a more severe and                 group (66.7% vs 57.1%; difference, 9.5% [95% CI, −5.3% to
+              complicated uveitis subtype to treat.19-21 We hypothesized that                  21.8%]; odds ratio [OR], 1.50 [95% CI, 0.81 to 2.81]; P = .20).
+              there may be a difference in treatment effect by anatomical uve-                 Reasons for treatment failure are listed in Table 2.
+              itis subtype and thus, prespecified a subgroup analysis (inter-
+              mediate uveitis vs posterior uveitis and panuveitis) of treat-                   Prespecified 6-Month Secondary Outcomes
+              ment success. The primary outcome logistic regression was                        For the noninferiority analysis, the lower bound of the 95% CI
+              used for this subanalysis.                                                       of the risk difference derived from the primary analysis was
+                    Other secondary outcomes were also examined using the                      −5.3% and excluded the prespecified 10% noninferiority mar-
+              primary outcome logistic regression model. Eye-level out-                        gin. This provides evidence of methotrexate noninferiority with
+              comes, including change in visual acuity and central subfield                    respect to mycophenolate mofetil.
+              macular thickness, were compared between treatment groups                             Treatment success in patients with posterior uveitis and
+              with a linear regression model clustering on patient. Only                       panuveitis was greater in the methotrexate group vs in the
+
+              jama.com                                                                                   (Reprinted) JAMA September 10, 2019 Volume 322, Number 10      939
+
+                                                        © 2019 American Medical Association. All rights reserved.
+Downloaded from jamanetwork.com by University of Arizona Health Sciences Library user on 07/30/2026
+
+```
+
+### DOC-001 PDF page 5
+
+[Direct source](../../../jama_rathinam_2019_oi_190092.pdf#page=5)
+
+```text
+              Research Original Investigation                         Corticosteroid-Sparing Treatment With Mycophenolate Mofetil vs Methotrexate in Patients With Uveitis
+
+
+
+
+              Table 1. Baseline Characteristics of Patients by Treatment Assignment
+                                                                          Methotrexate                    Mycophenolate Mofetil
+               Patient-Level Characteristicsa                             (n = 107)                       (n = 109)
+               Age, median (IQR), y                                       36 (26-50)                      41 (31-51)
+               Female sex                                                 75 (70.1)                       60 (55.0)
+               Male sex                                                   32 (29.9)                       49 (45.0)
+               Hispanic ethnicity                                         5 (4.7)                         7 (6.4)
+               Raceb
+                 Indian subcontinent                                      70 (65.4)                       69 (63.3)
+                 White                                                    25 (23.4)                       22 (20.2)
+                 Asian                                                    5 (4.7)                         6 (5.5)
+                 Middle Eastern                                           5 (4.7)                         5 (4.6)
+                 Black                                                    3 (2.8)                         6 (5.5)
+                 Native American                                          2 (1.9)                         1 (0.9)
+                 Pacific Islander                                         1 (0.9)                         3 (2.8)
+               Uveitis diagnosis
+                 Vogt-Koyanagi-Harada disease                             49 (45.8)                       44 (40.4)
+                 Undifferentiated                                         22 (20.6)                       20 (18.3)
+                 Retinal vasculitis                                       8 (7.5)                         13 (11.9)
+                 Sarcoidosis                                              7 (6.5)                         8 (7.3)
+                 Sympathetic ophthalmia                                   3 (2.8)                         8 (7.3)
+                 Behçet disease                                           5 (4.7)                         3 (2.8)
+                 Pars planitis                                            2 (1.9)                         5 (4.6)
+                 Birdshot chorioretinopathy                               3 (2.8)                         3 (2.8)
+                  Other                                                   8 (7.5)                         5 (4.6)
+               Bilateral uveitis                                          99 (92.5)                       92 (84.4)
+               Duration of uveitis, median (IQR), d                       135 (20-550)                    122 (21-783)
+               Anatomic location, based on entire uveitis historyc
+                  Panuveitis                                              60 (56.1)                       61 (56.0)
+                  Posterior uveitis                                       24 (22.4)                       25 (22.9)
+                  Anterior uveitis and intermediate uveitis               15 (14.0)                       14 (12.8)
+                  Intermediate uveitis                                    8 (7.5)                         9 (8.3)
+               Systemic corticosteroid use
+                  Maximum dose of oral prednisone
+                                                                          50 (40-60)                      50 (40-75)
+                  or equivalent in past 180 days, median (IQR), mgd
+                  Oral prednisone at baseline, median (IQR), mg           50 (40-60)                      50 (40-60)
+               Prior treatment with immunosuppressive therapy             8 (7.5)                         7 (6.4)
+                                                                          Methotrexate                    Mycophenolate Mofetil
+               Eye-Level Characteristics
+                                                                          (n = 206 eyes)                  (n = 201 eyes)
+               Inflammation at baseline                                                                                              Abbreviations: IQR, interquartile
+                                                                                                                                     range; logMAR, logarithm of the
+                 Anterior chamber cells                                   205 (99.5)                      201 (100.0)
+                                                                                                                                     minimum angle of resolution.
+                   0                                                      84 (41.0)                       87 (43.3)                  a
+                                                                                                                                         Values are reported as No. (%)
+                   0.5+                                                   53 (25.9)                       47 (23.4)
+                                                                                                                                         unless otherwise indicated.
+                   1+                                                     46 (22.4)                       47 (23.4)                  b
+                                                                                                                                         Seven patients listed being of more
+                   ≥2+                                                    22 (10.7)                       20 (10.0)
+                                                                                                                                         than 1 racial heritage.
+                 Anterior vitreous cells                                  202 (98.1)                      200 (99.5)                 c
+                                                                                                                                         Anatomic location was assessed
+                   0                                                      34 (16.8)                       33 (16.5)                      given all medical records available.
+                   0.5+                                                   40 (19.8)                       48 (24.0)                  d
+                                                                                                                                         Corticosteroids in the past 180 days
+                   1+                                                     52 (25.7)                       51 (25.5)                      included oral, subcutaneous, and
+                   ≥2+                                                    76 (37.6)                       68 (34.0)                      intravenous, and were adjusted to
+                 Vitreous haze                                            202 (98.1)                      200 (99.5)                     equivalent calculations of oral
+                    0                                                     85 (42.1)                       97 (48.5)                      prednisone.
+                                                                                                                                     e
+                    0.5+                                                  30 (14.9)                       34 (17.0)                      Macular edema excluded patients
+                    1+                                                    50 (24.8)                       30 (15.0)                      with Vogt-Koyanagi-Harada disease
+                                                                                                                                         who had a serious retinal
+                    ≥2+                                                   37 (18.3)                       39 (19.5)
+                                                                                                                                         detachment.
+               Active retinal or choroidal lesions, n/N (%)               125/202 (61.9)                  119/200 (59.5)             f
+                                                                                                                                         Characteristic was reported in
+               Macular edemae                                             42 (20.4)                       55 (27.3)
+                                                                                                                                         patients with macular edema.
+               Central subfield thickness, median (IQR), μmf              359.0 (331.5-449.5)             342.0 (316.0-398.5)        g
+                                                                                                                                         Indicates best-corrected visual
+               LogMAR visual acuity, median (IQR)g                        0.28 (0.03-0.52)                0.30 (0.08-0.60)
+                                                                                                                                         acuity of uveitic eyes only.
+
+
+              mycophenolate mofetil group (74.4% vs 55.3%; difference, 19.1%                 ment success was not significantly different between groups in
+              [95% CI, 3.6% to 30.6%]; OR, 2.35 [95% CI, 1.16 to 4.90]; P = .02;             patients with intermediate uveitis (33.3% in the methotrexate
+              anatomical subtype and treatment interaction, P = .004). Treat-                group vs 63.6% in the mycophenolate mofetil group; difference,
+
+        940   JAMA September 10, 2019 Volume 322, Number 10 (Reprinted)                                                                                             jama.com
+
+                                                          © 2019 American Medical Association. All rights reserved.
+Downloaded from jamanetwork.com by University of Arizona Health Sciences Library user on 07/30/2026
+
+```
+
+### DOC-001 PDF page 6
+
+[Direct source](../../../jama_rathinam_2019_oi_190092.pdf#page=6)
+
+```text
+              Corticosteroid-Sparing Treatment With Mycophenolate Mofetil vs Methotrexate in Patients With Uveitis                                    Original Investigation Research
+
+
+
+
+              Table 2. Six-Month Results From a Randomized Clinical Trial Comparing Methotrexate and Mycophenolate Mofetil for Noninfectious Uveitis
+                                                                                                                       Absolute Risk Difference OR Estimate
+                                                                          Methotrexate           Mycophenolate Mofetil for Treatment Success, for Treatment Success
+                                                                                                         a
+                  Patient-Level Characteristics                           (n = 96)               (n = 98)              % (95% CI)               (95% CI)b           P Value
+                  Primary Analysis
+                  Treatment success, No. (%)c                             64 (66.7)              56 (57.1)                   9.5 (−5.3 to 21.8)        1.50 (0.81 to 2.81)     .20
+                  Treatment failure, No. (%)                              32 (33)                42 (43)
+                  Secondary Analyses
+                  Reason for treatment failure, no./No. (%)
+                    Efficacyc                                             26/32 (81)             38/42 (90)
+                    Intolerabilityd                                       3/32 (9)               2/42 (5)                                                                      .55
+                    Safetye                                               3/32 (9)               2/42 (5)
+                  Treatment success by anatomical location, no./No. (%)
+                    Anterior uveitis and intermediate uveitis/
+                                                                          6/18 (33.3)            14/22 (63.6)                −30.3 (−51.6 to 1.1)      0.29 (0.08 to 1.05)     .07f
+                    intermediate uveitis only
+                    Posterior uveitis/panuveitis                          58/78 (74.4)           42/76 (55.3)                19.1 (3.6 to 30.6)        2.35 (1.16 to 4.90)     .02f
+                  Treatment success at 12 mo, no./No. (%)
+                    Continued on randomized antimetaboliteg               48/60 (80)             40/54 (74)                  5.9 (−12.2 to 17.0)       1.40 (0.57 to 3.56)     .47
+                    Switched to other antimetaboliteh                     20/29 (69)             7/20 (35)                   34.2 (6.6 to 52.6)        4.17 (1.32 to 13.16)    .02
+                  Missed doses, mean (SD), %i                             4.6 (1.0)              4.3 (0.5)                                                                     .87
+                                                                          Methotrexate           Mycophenolate Mofetil
+                  Eye-Level Characteristics                                                                                                                                    P Valuek
+                                                                          (n = 185 eyes)         (n = 181 eyes)
+                  Change in logMAR visual acuity, median (IQR)l           −0.10 (−0.32 to 0.00) −0.12 (−0.31 to 0.00)                                                          .83
+                  Reduction in central macular thickness,                 −26.00                −14.00
+                                                                                                                                                                               .95
+                  median (IQR) [No.], μmm                                 (−89.00 to 5.00) [42] (−80.00 to 3.25) [55]
+                                                                                                     g
+              Abbreviations: IQR, interquartile range; logMAR, logarithm of the minimum                  Interaction between anatomical subtype and treatment group was significant
+              angle of resolution; OR, odds ratio.                                                       (P = .004).
+              a                                                                                      h
+                  Mycophenolate mofetil is the reference group.                                          Of patients who achieved treatment success at 6 months, 60 patients originally
+              b
+                  Logistic regression with treatment group as a fixed effect and study site              randomized to methotrexate and 54 patients originally randomized to
+                  as a prespecified random effect.                                                       mycophenolate mofetil continued on same antimetabolite through 12 months.
+                                                                                                     i
+              c
+                  Treatment success was defined by achieving corticosteroid-sparing control              Ofpatientswhohadtreatmentfailureat6months,29patientsoriginallyrandomized
+                  of inflammation in both eyes at the month 6 visit.                                     to mycophenolate mofetil switched to methotrexate, and 20 patients originally
+              d
+                                                                                                         randomized to methotrexate switched to mycophenolate mofetil.
+                  Treatment failure due to efficacy was defined by not achieving the treatment
+                                                                                                     j
+                  success definition at month 6 or could be declared earlier if patient had              Indicates the number of missed doses over total expected doses throughout
+                  persistent worsening inflammation.                                                     a patient’s enrollment in the trial.
+                                                                                                     k
+              e
+                  Treatment failure due to intolerability was declared if a patient was unable           P values computed from a linear mixed-effects model.
+                                                                                                     l
+                  or unwilling to continue medication due to adverse effects.                            Decrease indicates gain in visual acuity.
+              f                                                                                      m
+                  Treatment failure due to safety was declared if a patient had an abnormal              Indicates eyes with macular edema excluding patients who had a serous
+                  laboratory result that met the serious adverse event threshold.                        retinal detachment in the setting of Vogt-Koyanagi-Harada disease.
+
+
+              −30.3% [95% CI, −51.6% to 1.1%]; OR, 0.29 [95% CI, 0.08 to 1.05];                      mycophenolate mofetil group received a corticosteroid injec-
+              P = .07).                                                                              tion that was considered a protocol deviation (>90 days post-
+                   There was no significant difference in the change in vi-                          randomization).
+              sual acuity between treatment groups (0.2 lines greater in the                             The mean (SD) proportion of expected doses missed was
+              mycophenolate mofetil group [95% CI, 1.7 lines less to 2.0 lines                       4.6% (1.0%) for patients receiving weekly methotrexate and
+              greater]; P = .83). There was also no significant difference in                        4.3% (0.5%) for patients receiving daily mycophenolate mofetil
+              the change in central subfield macular thickness between treat-                        (P = .87). A sensitivity analysis of the primary model that in-
+              ment groups at 6 months (2.4 μm greater in the methotrexate                            cluded only patients who missed less than 20% of their doses
+              group [95% CI, −78.0 μm to 82.8 μm]; P = .95). Best spectacle-                         did not substantially change the result. Twenty-one (19.6%)
+              corrected visual acuity improved by a median of 1.0 line in the                        patients in the methotrexate group and 15 (13.8%) patients in
+              methotrexate group (IQR, 0.0 to 3.2 lines), and by a median                            the mycophenolate mofetil group reduced their study medi-
+              of 1.2 lines in the mycophenolate mofetil group (IQR, 0.0 to                           cation (P = .27), mostly due to intolerability.
+              3.1 lines; Table 2). The central subfield macular thickness de-
+              creased by a median of 26 μm in the methotrexate group (IQR,                           Subgroup and Sensitivity Analyses of 6-Month Outcomes
+              −89 to 5) and 14 μm in the mycophenolate mofetil group (IQR,                           In sensitivity analyses of the primary outcome assessing the
+              −80 to 3.25). Seven patients (7 eyes) in the methotrexate group                        effect of clinic location, interaction tests in all models were
+              and 5 patients (5 eyes) in the mycophenolate mofetil group were                        found not to be statistically significant, indicating a lack of evi-
+              treated per protocol for macular edema with a corticosteroid                           dence of heterogeneity (India and treatment group, P = .15;
+              injection within 90 days of randomization. Four patients (7                            country [United States and Mexico combined] and treatment
+              eyes) in the methotrexate group and 4 patients (4 eyes) in the                         group, P = .45; eTable 7 in Supplement 1). Treatment success
+
+              jama.com                                                                                            (Reprinted) JAMA September 10, 2019 Volume 322, Number 10               941
+
+                                                                 © 2019 American Medical Association. All rights reserved.
+Downloaded from jamanetwork.com by University of Arizona Health Sciences Library user on 07/30/2026
+
+```
+
+### DOC-001 PDF page 7
+
+[Direct source](../../../jama_rathinam_2019_oi_190092.pdf#page=7)
+
+```text
+              Research Original Investigation                                  Corticosteroid-Sparing Treatment With Mycophenolate Mofetil vs Methotrexate in Patients With Uveitis
+
+
+
+
+              Figure 2. Six-Month Primary Outcome and Sensitivity Analyses of the Primary Outcome
+
+                                                                                                     Odds Ratio
+                                                                  No./Total No. of Patients (%)
+                                                                                                     of Treatment                    Favors       Favors
+                             Model     Analysis                   Methotrexate      Mycophenolate    Success (95% CI)         Mycophenolate       Methotrexate        P Value
+                             1a        Primary analysis           64/96 (67)        56/98 (57)       1.50 (0.81-2.81)                                                 .20
+                             2b        Sites in Indiac            42/60 (70)        41/59 (69)       1.02 (0.44-2.37)                                                 .93
+                             3d        Sites not in Indiac        22/36 (61)        15/39 (38)       2.51 (0.89-7.08)                                                 .08
+                             4e        Per protocol               61/90 (68)        54/94 (57)       1.56 (0.84-2.96)                                                 .17
+
+
+                                                                                                                        0.1                   1                  10
+                                                                                                                                 Odds Ratio of Treatment
+                                                                                                                                    Success (95% CI)
+
+              a                                                                                      c
+                  Primary model is a logistic regression with treatment group as a fixed effect        Treatment group and Indian site interaction term was not significant (P =.15).
+                  and study site as a prespecified random effect (n = 194).                          d
+                                                                                                       Primary model with patients from sites not in India only (n = 75).
+              b                                                                                      e
+                  Primary model with patients from sites in India only (n = 119).                      Primarymodelwithpatientswhomissedlessthan20%ofstudymedication(n = 184).
+
+
+
+
+              was achieved in 22 patients in the methotrexate group vs 15                            tients [57.9%] and 55 patients [51.4%]) in the methotrexate
+              patients in the mycophenolate mofetil group outside of India                           group and also in the mycophenolate mofetil group (59 pa-
+              (61.1% vs 38.5%; difference, 22.7% [95% CI, −2.6% to 43.1%];                           tients [54.6%] and 45 patients [41.7%]). Fourteen serious ad-
+              OR, 2.5 [95% CI, 0.9 to 7.1]; P = .08; Figure 2).                                      verse events occurred through the primary outcome with 5
+                   A total of 22 of 216 patients (10.2%) missed the 6-month                          deemed drug-related by the masked medical monitor: 3 (2.8%)
+              primary outcome visit, 11 patients (50.0%) in the methotrex-                           in the methotrexate group and 2 (1.9%) in the mycophenolate
+              ate group and 11 patients (50.0%) in the mycophenolate mofetil                         mofetil group. All drug-related serious adverse events were el-
+              group. Sensitivity analysis of the primary outcome using mul-                          evated liver function tests. Twelve-month adverse events are
+              tiple imputation showed a similar result as the prespecified                           reported in eTables 8 and 9 in Supplement 1.
+              analysis with treatment success achieved in 66 patients (61.7%)
+              in the methotrexate group vs 59 patients (54.1%) in the my-
+              cophenolate mofetil group (difference, 7.6% [95% CI, −5.9%
+              to 19.1%]; OR, 1.4 [95% CI, 0.8 to 2.4]; P = .27).
+                                                                                                     Discussion
+                                                                                                     Among adults with noninfectious uveitis, the use of myco-
+              Prespecified 12-Month Outcomes                                                         phenolate mofetil compared with methotrexate as first-line cor-
+              Of the 120 patients who were declared a 6-month treatment suc-                         ticosteroid-sparing treatment did not result in superior con-
+              cess, 114 were followed up for an additional 6 months. Forty-                          trol of inflammation.
+              eight of 60 (80.0%) patients in the methotrexate group and 40                               Exploratory hypothesis-generating secondary analyses as-
+              of 54 (74.1%) patients in the mycophenolate mofetil group re-                          sessed treatment success by anatomical subgroup of uveitis and
+              mained a treatment success at 12 months, with the majority                             at 12 months. Methotrexate was found to be more effective in
+              (50.0% for methotrexate and 55.0% for mycophenolate mofetil)                           patients with posterior uveitis or panuveitis—the most severe
+              discontinuing prednisone. Forty-nine of the 68 eligible pa-                            type of uveitis and the largest subgroup in this trial. Although
+              tients in whom treatment failed in the first 6 months and who                          the results favored mycophenolate mofetil, no significant dif-
+              did not have a serious laboratory adverse event switched to the                        ference was found in treatment success with the less-severe sub-
+              other antimetabolite: 20 of the 32 (62.5%) patients originally ran-                    group, intermediate uveitis. Ultimately, treatment success by
+              domized to methotrexate and 29 of the 42 (69.0%) originally                            anatomical location needs to be explored further. In both treat-
+              randomized to mycophenolate mofetil. There was greater treat-                          ment groups, most patients who achieved treatment success at
+              ment success at 12 months in the methotrexate group (69.0%)                            6 months remained a success through 12 months. Treatment
+              in patients for whom mycophenolate mofetil had previously                              success in the 12-month analysis of patients switching treat-
+              failed vs patients in the mycophenolate mofetil group (35.0%)                          ment after not achieving control was superior in patients switch-
+              in whom methotrexate had failed (difference, 34.2% [95% CI,                            ing to methotrexate after mycophenolate mofetil.
+              6.6% to 52.6%]; OR, 4.2 [95% CI, 1.3 to 13.2]; P = .02).                                    Overall, treatment failures due to intolerability and safety
+                                                                                                     were low. Abnormalities in liver function tests were more com-
+              Adverse Events                                                                         mon with methotrexate treatment as expected.
+              Table 3 shows the frequency and proportion of patients expe-                                Although the biologic adalimumab is US Food and Drug Ad-
+              riencing nonserious or serious ocular, laboratory, and sys-                            ministration–approved for uveitis, antimetabolites are still com-
+              temic adverse events in each treatment group at 6 months.                              monly used as initial corticosteroid-sparing therapy because
+              Nonserious liver function test abnormalities occurred more fre-                        of their lower costs and fewer associated risks. Retrospective
+              quently in patients receiving methotrexate (14 [13.0%]) vs my-                         noncomparative case series suggest that mycophenolate
+              cophenolate mofetil (8 [7.4%]). Fatigue and headache were the                          mofetil may be more effective than methotrexate as a corti-
+              most common nonserious systemic adverse events (62 pa-                                 costeroid-sparing therapy for uveitis, but the heterogeneity in
+
+        942   JAMA September 10, 2019 Volume 322, Number 10 (Reprinted)                                                                                                         jama.com
+
+                                                              © 2019 American Medical Association. All rights reserved.
+Downloaded from jamanetwork.com by University of Arizona Health Sciences Library user on 07/30/2026
+
+```
+
+### DOC-001 PDF page 8
+
+[Direct source](../../../jama_rathinam_2019_oi_190092.pdf#page=8)
+
+```text
+              Corticosteroid-Sparing Treatment With Mycophenolate Mofetil vs Methotrexate in Patients With Uveitis                           Original Investigation Research
+
+
+
+
+              Table 3. Six-Month Adverse Events From a Randomized Clinical Trial Comparing Methotrexate
+              and Mycophenolate Mofetil for Noninfectious Uveitis
+
+                                                                                     No. (%) of Patients Reporting ≥1 Adverse Event
+                                                                                     Methotrexate          Mycophenolate Mofetil
+                             a
+               Event Type                                                            (n = 107)             (n = 109)b
+               Nonserious ocular
+                 Ocular hypertension >24 mm Hg                                       10 (9.3)             13 (12.0)
+                 Peripheral and/or central vitreous hemorrhage                       3 (2.8)              3 (2.8)
+                 Suspect or confirmed glaucoma diagnosis                             2 (1.9)              2 (1.9)
+                 Intraocular pressure <5 mm Hg without structural damage             0                    1 (0.9)
+                 Visually significant cataract, surgery indicated                    5 (4.7)              2 (1.9)
+                 Decrease in vision or defective vision (self-reported)              9 (8.4)              19 (17.6)
+                 Eye pain (self-reported)                                            9 (8.4)              4 (3.7)
+               Serious ocular
+                 Glaucoma                                                            0                    1 (0.9)
+                 Retinal detachment                                                  1 (0.9)              0
+               Nonserious laboratory
+                 Elevated ALT or AST (2 to 5 times upper limit of normal <28 d)      14 (13.0)            8 (7.4)
+                 Low hemoglobin (>6.5 to <9 g/dL lasting <28 d)                      2 (1.9)              3 (2.8)
+                 Low leukocyte count (>1000 and <2500/μL lasting <28 d)              3 (2.8)              1 (0.9)
+                 Elevated creatinine (>1.5 to <2 mg/dL lasting <28 d)                1 (0.9)              0
+               Serious laboratory
+                 Extremely elevated ALT or AST (>5 times the upper limit of normal
+                                                                                     3 (2.8)              2 (1.9)
+                 or 2 to 5 times the upper limit of normal ≥28 d)c
+               Nonserious systemic
+                 Fatigue                                                             62 (57.9)            59 (54.6)
+                 Headache                                                            55 (51.4)            45 (41.7)
+                 Mood changes (self-reported, not requiring therapy)                 33 (30.8)            26 (24.1)
+                 Hair loss                                                           6 (5.6)              2 (1.9)
+                 Nausea                                                              42 (39.3)            30 (27.8)
+                 Muscle weakness, no decrease in function                            32 (29.9)            26 (24.1)                   Abbreviations: ALT, alanine
+                                                                                                                                      aminotransferase; AST, aspartate
+                 Numbness or tingling                                                25 (23.4)            18 (16.7)
+                                                                                                                                      aminotransferase.
+                 Diarrhea                                                            25 (23.4)            24 (22.2)
+                                                                                                                                      SI conversion: for creatinine to
+                 Dyspnea                                                             21 (19.6)            22 (20.4)                   μmol/L, multiply by 88.4.
+                 Vomiting                                                            26 (24.3)            24 (22.2)                   a
+                                                                                                                                          Criteria for defining serious and
+                 Allergic reaction                                                   14 (13.1)            11 (10.2)                       nonserious adverse events are
+                 Fever <39°C for 12 h                                                11 (10.3)            18 (16.7)                       included in eTable 1 in Supplement 1.
+                                                                                                                                      b
+                 Mild congestive heart failure or arrhythmia not requiring therapy   4 (3.7)              2 (1.9)                         One patient in the mycophenolate
+                                                                                                                                          mofetil group never received
+                 Systemic infection                                                  25 (23.4)            27 (25.0)
+                                                                                                                                          mycophenolate mofetil due to
+                 Other systemic (no treatment required)                              65 (60.7)            63 (58.3)                       medical contraindication discovered
+               Serious systemic                                                                                                           postrandomization.
+                                                                                                                                      c
+                 Death                                                               1 (0.9)              0                               All drug-related serious adverse
+                                                                                                                                          events were due to extremely
+                 Diarrhea                                                            0                    1 (0.9)
+                                                                                                                                          elevated ALT, AST, or both in some
+                 Disability or permanent damage                                      1 (0.9)              0                               patients.
+                 Hospitalization                                                     2 (1.9)              2 (1.9)                     d
+                                                                                                                                          Indicates stroke, injury to finger, and
+                 Serious systemic infection                                          0                    1 (0.9)                         lower limb pain within the
+                 Vomiting                                                            1 (0.9)              0                               methotrexate group and extreme
+                                                                                                                                          flank pain within the
+                 Other serious eventd                                                3 (2.8)              1 (0.9)
+                                                                                                                                          mycophenolate mofetil group.
+
+
+              definitions of treatment success, patient populations, and                         methotrexate and mycophenolate mofetil were compared.
+              medication dosing in these reports make it difficult to com-                       Even with these high doses, few patients’ treatment failed due
+              pare the effectiveness of methotrexate and mycophenolate                           to intolerability. The higher dose of methotrexate used in this
+              mofetil.5,11,12,17,21-26 Additionally, low doses of methotrexate                   trial compared with previous retrospective studies on uveitis
+              (≤15 mg) were routinely used in these previous case series.5,19,20                 may have contributed to the finding that mycophenolate
+              A pilot trial, conducted as a precursor to this trial, with 25 mg                  mofetil was not superior. It is possible that using 25 mg of
+              of weekly oral methotrexate but a lower dose of daily myco-                        methotrexate subcutaneously may result in even greater uve-
+              phenolate mofetil (2 g daily) found consistent results to the cur-                 itis control given the increased bioavailability with subcuta-
+              rent finding. In this trial, the standard maximum doses for                        neous administration.27
+
+              jama.com                                                                                     (Reprinted) JAMA September 10, 2019 Volume 322, Number 10                943
+
+                                                            © 2019 American Medical Association. All rights reserved.
+Downloaded from jamanetwork.com by University of Arizona Health Sciences Library user on 07/30/2026
+
+```
+
+### DOC-001 PDF page 9
+
+[Direct source](../../../jama_rathinam_2019_oi_190092.pdf#page=9)
+
+```text
+              Research Original Investigation                             Corticosteroid-Sparing Treatment With Mycophenolate Mofetil vs Methotrexate in Patients With Uveitis
+
+
+
+                   In rheumatology, disease-specific treatment guidelines ex-                       Limitations
+              ist. For example, methotrexate is the preferred initial treat-                        This study has several limitations. First, patients were not masked
+              ment for rheumatoid arthritis and mycophenolate mofetil for                           to their medication. However, study personnel responsible for
+              lupus nephritis.28-30 Comparative trials are important to evalu-                      measuring outcomes were masked through 12 months, includ-
+              ate the relative efficacy of available treatment options, and this                    ing when patients switched medication. The masking of grad-
+              has been lacking for uveitis. The findings of this trial have im-                     ers, along with using highly reproducible grading scales, mitigated
+              plications for clinical practice because they provide scientific                      the limitation of subjective inflammation grading for the defi-
+              justification that mycophenolate mofetil is not more effective                        nition of treatment success.31 Second, patients with a heteroge-
+              than methotrexate as a corticosteroid-sparing immunosuppres-                          neous group of uveitis etiologies were included to facilitate en-
+              sive therapy for uveitis. Patients with posterior uveitis and panu-                   rollment. A difference in treatment effect between intermediate
+              veitis have more vision complications than other types of uve-                        uveitis vs posterior uveitis and panuveitis was found, but there
+              itis and often have chronic inflammation requiring long-term                          was not sufficient statistical power to compare between uveitis
+              immunosuppressive therapy.20,21 Methotrexate may be an ef-                            diagnoses. Third, most patients were enrolled in India, but those
+              fective, reasonable, first-line choice for these patients.                            results did not drive the primary outcome.
+                   The strengths of this study include its randomized design,
+              a large and geographically diverse patient population that in-
+              creases generalizability, standardized treatment, and the mask-
+              ing of graders to reduce bias. The definition of treatment suc-
+                                                                                                    Conclusions
+              cess in this trial was a clinically relevant composite outcome of                     Among adults with noninfectious uveitis, the use of mycophe-
+              assessing inflammation in all parts of both eyes and incorpo-                         nolate mofetil compared with methotrexate as first-line
+              rating tolerability and safety. Many uveitis trials have focused                      corticosteroid-sparing treatment did not result in superior con-
+              on only 1 aspect of inflammation, yet in clinical practice, treat-                    trol of inflammation. Further research is needed to determine
+              ment is not adequate if it does not control inflammation in all                       if either drug is more effective based on the anatomical subtype
+              parts of the eye and corticosteroids cannot be tapered.                               of uveitis.
+
+
+              ARTICLE INFORMATION                                     Thundikandy, Kanakath, Bala Murugan, Lim, Suhler,           Role of Funder/Sponsor: The National Institutes of
+              Accepted for Publication: August 2, 2019.               Al-Dhibi, Doan, Keenan, Ebert, Nguyen, Kim, Acharya.        Health (NIH) did not have any direct role in the
+                                                                      Statisticalanalysis:Gonzales,Ebert,Nguyen,Kim,Porco.        design and conduct of the study; collection,
+              Author Affiliations: Uvea Services, Aravind Eye         Obtained funding: Acharya.                                  management, analysis, and interpretation of the
+              Hospitals and Postgraduate Institute of                 Administrative, technical, or material support: Gonzales,   data; preparation of the manuscript; and decision
+              Ophthalmology, Madurai, India (Rathinam,                Kanakath, Bala Murugan, Vedhanayaki, Lim, Suhler,           to submit the manuscript for publication. The data
+              Thundikandy, Vedhanayaki); F. I. Proctor                Al-Dhibi, Keenan, Rao, Ebert, Nguyen, Acharya.              and safety monitoring committee, appointed by the
+              Foundation, University of California, San Francisco     Supervision: Rathinam, Bala Murugan, Suhler,                NIH, reviewed and approved submitting this
+              (Gonzales, Doan, Keenan, Rao, Ebert, Nguyen, Kim,       Al-Dhibi, Acharya.                                          manuscript for publication.
+              Porco, Acharya); Department of Ophthalmology,
+              University of California, San Francisco (Gonzales,      Conflict of Interest Disclosures: Dr Rathinam               Group Information for the FAST Research Group:
+              Doan, Keenan, Porco, Acharya); Uvea Services,           reports receipt of grants from Aravind Eye Hospital         Aravind Eye Hospital, Madurai, India: S. R. Rathinam,
+              Aravind Eye Hospitals and Postgraduate Institute of     during the conduct of the study. Dr Lim reports             MD, PhD (director); Radhika Thundikandy, MD; R.
+              Ophthalmology, Coimbatore, India (Kanakath);            receipt of grants from the National Eye Institute (NEI)     Vedhanayaki, MD; A. L. Sivarama Subramanian, MPT;
+              Uvea Services, Aravind Eye Hospitals and                during the conduct of the study; personal fees from         G. Jeyakohila, DONA; Gracy Evangelin, BA; A. M.
+              Postgraduate Institute of Ophthalmology,                Allergan, Novartis, and Novotech; and grants and            Azhagupandi, HSC; C. V. Praba, HSC; S. Bharati, BSc;
+              Pondicherry, India (Murugan); Centre for Eye            personal fees from AbbVie and Bayer outside the             P. Gomathi, SSC; N. J. Nirmaladevi, HSC; Mohammed
+              Research Australia, Royal Victorian Eye and Ear         submitted work. Dr Al-Dhibi reports receipt of              Siddiq; B. Vijayakumar; S. R. Devi. Aravind Eye
+              Hospital, East Melbourne, Australia (Lim); Casey        personal fees from AbbVie, Allergan, and Novartis           Hospital, Coimbatore, India: Anuradha Kanakath, MD
+              Eye Institute, Portland, Oregon (Suhler); Oregon        (consultancies) outside the submitted work. Dr Porco        (director); V. R. Saravanan, MD; Upendra Babu, MD;
+              Health and Science University, Portland (Suhler);       reports receipt of grants from NEI during the conduct       R. Srija, MSc; S. Dhanalakshmi, BA; R. R. Sakthimari,
+              OHSU-PSU School of Public Health, and VA                of the study. Dr Acharya reports receipt of grants          COT; P. S. Keerthana, COT; A. M. Mallika, COT; C.
+              Portland Health Care System, Portland, Oregon           from NEI during the conduct of the study and                Vasanthi, COT; P. B. Mariselvi, COT; P. Pandeeswari; S.
+              (Suhler); Division of Vitreoretinal Surgery and         personal fees from Santen and AbbVie (consultancies         M. Sudarvanitha, COT; S. Prema, COT. Aravind Eye
+              Uveitis, King Khaled Eye Specialist Hospital, Riyadh,   for advisory board participation) outside the               Hospital, Pondicherry, India: S. Bala Murugan, MD
+              Kingdom of Saudi Arabia (Al-Dhibi); Department of       submitted work. Dr Suhler reports receipt of personal       (director); Prabu Baskaran, MD; V. G.
+              Epidemiology and Biostatistics, University of           fees from AbbVie, Clearside, EyeGate, EyePoint,             Madanagopalan, MD; K. Chokkahalli; K. Nagesha, MD;
+              California, San Francisco (Porco, Acharya).             Gilead, Santen, and Eyevensys and grants from               R. Thilagavathi, MCom, E. S. Chitra, COT; S. M.
+                                                                      AbbVie, Aldeyra, Clearside, EyeGate, EyePoint,              Krishnakumari, COT; P. Irudhaya Raj, COT; S.
+              Author Contributions: Dr Porco and Mr Kim had           Genentech, and Gilead. Drs Gonzales, Doan, and              Saravanan, BA; Grace Mary, COT; K. Nagarasi, COT;
+              full access to all of the data in the study and take    Keenan report receipt of grant funding from the NEI.        Kiruba Gnansi, COT. Asociación Para Evitar la Ceguera,
+              responsibility for the integrity of the data and the    No other disclosures were reported.                         Mexico City, Mexico: Lourdes Arellanes-Garcia, MD
+              accuracy of the data analysis.                                                                                      (director); Luz Elena Concha del Rio, MD; Rashel
+              Concept and design: Gonzales, Kanakath, Suhler,         Funding/Support: This study was supported by
+                                                                      NEI cooperative agreement U10 EY021125                      Cheja Kalb, MD; Nancy Fernández, MD; Yoko Burgoa,
+              Al-Dhibi, Acharya.                                                                                                  BS; Hilda Hernández; Roberto Fabela Cuello, OD;
+              Acquisition, analysis, or interpretation of data: All   (to Dr Acharya, primary investigator). The
+                                                                      University of California San Francisco pharmacy             Lorenzo Agustín, OD; Martínez Garcia; Ricardo
+              authors.                                                                                                            Montoya Rodríguez; Maria del Carmen Preciado, PhD;
+              Drafting of the manuscript: Gonzales, Kanakath,         provided study drugs for all sites. The Department
+                                                                      of Ophthalmology at UCSF is supported by an                 Andrea Arreola, MD. King Khaled Eye Specialist
+              Bala Murugan, Vedhanayaki, Al-Dhibi, Rao, Ebert,                                                                    Hospital, Riyadh, Saudi Arabia: Hassan A. Al-Dhibi,
+              Nguyen, Porco, Acharya.                                 unrestricted grant from the Research to Prevent
+                                                                      Blindness Foundation, a core grant (EY06190) from           MD (director); Donald Stone, MD; Mohammed
+              Critical revision of the manuscript for important                                                                   Al-Shamrani, MD; Sara Al-Nuwaysir, BSc;
+              intellectual content: Rathinam, Gonzales,               the NEI, and That Man May See Foundation.
+                                                                                                                                  Abdulrahman Al-Hommadi, BBA; Abdullah
+
+
+        944   JAMA September 10, 2019 Volume 322, Number 10 (Reprinted)                                                                                                       jama.com
+
+                                                             © 2019 American Medical Association. All rights reserved.
+Downloaded from jamanetwork.com by University of Arizona Health Sciences Library user on 07/30/2026
+
+```
+
+### DOC-001 PDF page 10
+
+[Direct source](../../../jama_rathinam_2019_oi_190092.pdf#page=10)
+
+```text
+              Corticosteroid-Sparing Treatment With Mycophenolate Mofetil vs Methotrexate in Patients With Uveitis                                     Original Investigation Research
+
+
+
+              Al-Omran, BSc; Saleh Al-Nasser, BSc; Gahram               Ophthalmology. 2008;115(10):1826-1832. doi:10.              Rates and Proportions. 3rd ed. Hoboken, NJ: John
+              Al-Zahrani, BSc; Eman Mashan, BSc; Mizher                 1016/j.ophtha.2008.04.026                                   Wiley & Sons; 2003.
+              Al-Ghamdi, BSc; Ayshah Al-Tuwejri, BSc.                   6. Jaffe GJ, Dick AD, Brézin AP, et al. Adalimumab          19. Rathinam SR, Babu M, Thundikandy R, et al.
+              Northwestern University, Chicago, Illinois: Debra A.      in patients with active noninfectious uveitis. N Engl       A randomized clinical trial comparing methotrexate
+              Goldstein, MD (director); Anna Liza Castro-Malek,         J Med. 2016;375(10):932-943. doi:10.1056/                   and mycophenolate mofetil for noninfectious
+              MS; Gemma Dela Rosa, COT; Marriner Skelly, BA, BS.        NEJMoa1509852                                               uveitis. Ophthalmology. 2014;121(10):1863-1870.
+              Oregon Health and Science University, Portland: Eric                                                                  doi:10.1016/j.ophtha.2014.04.023
+              Suhler, MD, MPH (director); James Rosenbaum, MD;          7. Dick AD, Rosenbaum JT, Al-Dhibi HA, et al;
+              Phoebe Lin, MD, PhD; Sherveen Salek, MD; Kristin          Fundamentals of Care for Uveitis International              20. Kempen JH, Van Natta ML, Altaweel MM, et al;
+              Biggee, MD; Amde Shifera, MD, PhD; Laura Kopplin,         Consensus Group. Guidance on noncorticosteroid              Multicenter Uveitis Steroid Treatment (MUST) Trial
+              MD, PhD; George Mount, MD; Tracy Giles, BS; Susan         systemic immunomodulatory therapy in                        Research Group. Factors predicting visual acuity
+              Nolte; Ann Lundquist, BA, CCRP; Teresa Liesegang,         noninfectious uveitis: Fundamentals Of Care for             outcome in intermediate, posterior, and panuveitis:
+              COT; Albert Romo; Chris Howell, BA; Scott Pickell, BS;    Uveitis (FOCUS) initiative. Ophthalmology. 2018;125         the Multicenter Uveitis Steroid Treatment (MUST)
+              Peter Steinkemp, MS; Dawn Ryan, CRA; Jordan Barth,        (5):757-773. doi:10.1016/j.ophtha.2017.11.017               trial. Am J Ophthalmol. 2015;160(6):1133-1141.e9.
+              AAS; Jocelyn Hui, BS; Chiedozie Ukachukwu, BS.            8. Teoh SC, Hogan AC, Dick AD, Lee RWJ.                     doi:10.1016/j.ajo.2015.09.017
+              Royal Victorian Eye and Ear Hospital, East Melbourne,     Mycophenolate mofetil for the treatment of uveitis.         21. Jabs DA. Immunosuppression for the uveitides.
+              Australia: Lyndell Lim, MD (director); Richard Stawell,   Am J Ophthalmol. 2008;146(5):752-760, 760.e1-               Ophthalmology. 2018;125(2):193-202. doi:10.1016/j.
+              MD; Robyn Troutbeck, MD; Cecilia Ling, MD; Xavier         760.e3. doi:10.1016/j.ajo.2008.03.004                       ophtha.2017.08.007
+              Fagan, MD; Julian Bosco, MD; Timothy Godfrey, MD;         9. Thorne JE, Jabs DA, Qazi FA, Nguyen QD,                  22. Foeldvari I, Wierk A. Methotrexate is an
+              Tanya Pejnovic, BAppSc; Carly D’Sylva, MPH; Sutha         Kempen JH, Dunn JP. Mycophenolate mofetil                   effective treatment for chronic uveitis associated
+              Sanmugasundram, BSc; Tina-Marie van Tonder; Maria         therapy for inflammatory eye disease.                       with juvenile idiopathic arthritis. J Rheumatol.
+              Kolic, BOOS. University of California, San Francisco:     Ophthalmology. 2005;112(8):1472-1477. doi:10.1016/          2005;32(2):362-365.
+              Nisha Acharya, MD, MS (director); John Gonzales,          j.ophtha.2005.02.020
+              MD; Thuy Doan, MD, PhD; Sarah Lopez, OD; Maya                                                                         23. Bom S, Zamiri P, Lightman S. Use of
+              Rao, MPH; Erica Browne, MS; Betty Hom, BS; Mary           10. Baltatzis S, Tufail F, Yu EN, Vredeveld CM,             methotrexate in the management of
+              Lew, COT; Salena Lee, OD. The remaining                   Foster CS. Mycophenolate mofetil as an                      sight-threatening uveitis. Ocul Immunol Inflamm.
+              acknowledgements list indviduals at FAST Research         immunomodulatory agent in the treatment of                  2001;9(1):35-40. doi:10.1076/ocii.9.1.35.3983
+              Group Resource Centers. Coordinating Center,              chronic ocular inflammatory disorders.                      24. Dev S, McCallum RM, Jaffe GJ. Methotrexate
+              University of California, San Francisco, CA: Nisha        Ophthalmology. 2003;110(5):1061-1065. doi:10.1016/          treatment for sarcoid-associated panuveitis.
+              Acharya, MD, MS; Travis Porco, PhD, MPH; Thomas           S0161-6420(03)00092-7                                       Ophthalmology. 1999;106(1):111-118. doi:10.1016/
+              Lietman, MD; Jeremy Keenan, MD, MPH; Eric Kim,            11. Gangaputra S, Newcomb CW, Liesegang TL,                 S0161-6420(99)90011-8
+              MA; Hieu Nguyen, MS; Caleb Ebert, MPH; former             et al; Systemic Immunosuppressive Therapy for Eye           25. Holz FG, Krastel H, Breitbart A, Schwarz-Eywill
+              members: Maya Rao, MPH; Elyse Berlinberg, BS; Erica       Diseases Cohort Study. Methotrexate for ocular              M, Pezzutto A, Völcker HE. Low-dose methotrexate
+              Browne, MS; Andrew Hirst, MS; Rachel Weinrib, MPH.        inflammatory diseases. Ophthalmology. 2009;116              treatment in noninfectious uveitis resistant to
+              Data and Safety Monitoring Committee Voting               (11):2188-98.e1. doi:10.1016/j.ophtha.2009.04.020           corticosteroids. Ger J Ophthalmol. 1992;1(3-4):142-
+              Members: Maureen G. Maguire, PhD (chair); William         12. Sobrin L, Christen W, Foster CS. Mycophenolate          144.
+              E. Barlow, PhD; Steven Yeh, MD; Albert T. Vitale, MD;     mofetil after methotrexate failure or intolerance in
+              Jaqueline J. Glover, PhD; Narsing A. Rao, MD; former                                                                  26. Shah SS, Lowder CY, Schmitt MA, Wilke WS,
+                                                                        the treatment of scleritis and uveitis. Ophthalmology.      Kosmorsky GS, Meisler DM. Low-dose
+              member: Debra A. Goldstein, MD. NEI Program               2008;115(8):1416-1421, 1421.e1. doi:10.1016/j.ophtha.
+              Office: Donald F. Everett, MA. University of South                                                                    methotrexate therapy for ocular inflammatory
+                                                                        2007.12.011                                                 disease. Ophthalmology. 1992;99(9):1419-1423.
+              Florida Fundus Photograph and OCT Reading Center,
+              Tampa, Florida: Peter R. Pavan, MD (director); JoAnn      13. National Institutes of Health. NIH policy and           doi:10.1016/S0161-6420(92)31790-7
+              Leto; former director: Brian Madow, MD.                   guidelines on the inclusion of women and                    27. Schiff MH, Jaffe JS, Freundlich B.
+                                                                        minorities as subjects in clinical research. https://       Head-to-head, randomised, crossover study of oral
+              Additional Information: The data and safety               grants.nih.gov/policy/inclusion/women-and-
+              monitoring committee monitored efficacy, safety,                                                                      versus subcutaneous methotrexate in patients with
+                                                                        minorities/guidelines.htm. Accessed June 24, 2019.          rheumatoid arthritis: drug-exposure limitations of
+              and overall study performance throughout the trial.
+                                                                        14. US Food and Drug Administration (FDA).                  oral methotrexate at doses ⱖ15 mg may be
+              Data Sharing Statement: See Supplement 4.                 Collection of race and ethnicity data in clinical trials.   overcome with subcutaneous administration. Ann
+                                                                        https://www.fda.gov/regulatory-information/                 Rheum Dis. 2014;73(8):1549-1551. doi:10.1136/
+              REFERENCES                                                search-fda-guidance-documents/collection-race-              annrheumdis-2014-205228
+              1. Gritz DC, Wong IG. Incidence and prevalence of         and-ethnicity-data-clinical-trials?source=                  28. Dooley MA, Jayne D, Ginzler EM, et al; ALMS
+              uveitis in Northern California; the Northern              govdelivery&utm_medium=email&utm_source=                    Group. Mycophenolate versus azathioprine as
+              California Epidemiology of Uveitis Study.                 govdelivery. Published 2016. Accessed June 24, 2019.        maintenance therapy for lupus nephritis. N Engl J
+              Ophthalmology. 2004;111(3):491-500. doi:10.1016/j.        15. Harris PA, Taylor R, Thielke R, Payne J, Gonzalez       Med. 2011;365(20):1886-1895. doi:10.1056/
+              ophtha.2003.06.014                                        N, Conde JG. Research electronic data capture               NEJMoa1014460
+              2. Suttorp-Schulten MS, Rothova A. The possible           (REDCap)—a metadata-driven methodology and                  29. Smolen JS, Landewé R, Bijlsma J, et al. EULAR
+              impact of uveitis in blindness: a literature survey. Br   workflow process for providing translational                recommendations for the management of
+              J Ophthalmol. 1996;80(9):844-848. doi:10.1136/            research informatics support. J Biomed Inform.              rheumatoid arthritis with synthetic and biological
+              bjo.80.9.844                                              2009;42(2):377-381. doi:10.1016/j.jbi.2008.08.010           disease-modifying antirheumatic drugs: 2016
+              3. Rosenbaum JT, Dick AD. The eyes have it:               16. Jabs DA, Nussenblatt RB, Rosenbaum JT;                  update. Ann Rheum Dis. 2017;76(6):960-977. doi:
+              a rheumatologist’s view of uveitis. Arthritis             Standardization of Uveitis Nomenclature (SUN)               10.1136/annrheumdis-2016-210715
+              Rheumatol. 2018;70(10):1533-1543. doi:10.1002/art.        Working Group. Standardization of uveitis                   30. Singh JA, Saag KG, Bridges SL Jr, et al;
+              40568                                                     nomenclature for reporting clinical data: results of        American College of Rheumatology. 2015 American
+              4. Jabs DA, Rosenbaum JT, Foster CS, et al.               the first international workshop. Am J Ophthalmol.          College of Rheumatology guideline for the
+              Guidelines for the use of immunosuppressive drugs         2005;140(3):509-516. doi:10.1016/j.ajo.2005.03.057          treatment of rheumatoid arthritis. Arthritis Care Res
+              in patients with ocular inflammatory disorders:           17. Daniel E, Thorne JE, Newcomb CW, et al.                 (Hoboken). 2016;68(1):1-25. doi:10.1002/acr.22783
+              recommendations of an expert panel. Am J                  Mycophenolate mofetil for ocular inflammation. Am           31. Kempen JH, Ganesh SK, Sangwan VS, Rathinam
+              Ophthalmol. 2000;130(4):492-513. doi:10.1016/             J Ophthalmol. 2010;149(3):423-32.e1, 2. doi:10.             SR. Interobserver agreement in grading activity and
+              S0002-9394(00)00659-0                                     1016/j.ajo.2009.09.026                                      site of inflammation in eyes of patients with uveitis.
+              5. Galor A, Jabs DA, Leder HA, et al. Comparison of       18. Fleiss JL, Levin B, Paik MC. 6.9 Standard errors        Am J Ophthalmol. 2008;146(6):813-8.e1. doi:10.
+              antimetabolite drugs as corticosteroid-sparing            for measures of association. In: Balding DJ, Cressie        1016/j.ajo.2008.06.004
+              therapy for noninfectious ocular inflammation.            NAC, Fisher NI, et al, eds. Statistical Methods for
+
+
+
+              jama.com                                                                                            (Reprinted) JAMA September 10, 2019 Volume 322, Number 10                  945
+
+                                                             © 2019 American Medical Association. All rights reserved.
+Downloaded from jamanetwork.com by University of Arizona Health Sciences Library user on 07/30/2026
+
+```

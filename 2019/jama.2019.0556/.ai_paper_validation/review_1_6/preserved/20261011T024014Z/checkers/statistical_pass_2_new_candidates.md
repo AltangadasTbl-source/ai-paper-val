@@ -1,0 +1,28 @@
+# Workflow 1.6 Statistical Pass 2 — New Candidate Discovery
+
+Fresh runtime: /root/statistics_pass2; qc16_statistical_consistency_reviewer; gpt-6.1-sol/high; FRESH_SPAWN; current inherited provider retained. The stable statistical inventory remains S001–S140. This new descriptive measure-association observation is in N175/U055 and affects interpretation of the adherence context used by S053, S054, S126 and S127. It does not create a new inferential S relationship. Stable C IDs are assigned only by the coordinator. Pending Human Adjudication.
+
+## P2-01 — Adherence-row asterisks point to a Morisky-score footnote
+
+- Proposed primary category: Measure, label, or scale inconsistency.
+- Compared locations and document roles: REPORT [joi190007supp3_prod.pdf, physical p16, eAppendix8 four supplement adherence rows](../../../joi190007supp3_prod.pdf#page=16), versus REPORT [the same page, single-asterisk footnote and separate Morisky row](../../../joi190007supp3_prod.pdf#page=16). Proposed relationship type S_W; all relationships S_W; derived review domain report_internal_inconsistency. No PLAN comparator is needed.
+- Printed row labels and values, in placebo/no F-BA; placebo/F-BA; supplements/no F-BA; supplements/F-BA column order:
+  - “Multinutrient adherence ≥70% from pill weight*”: N666; 135(76.7%),134(78.8%),126(75.0%),120(78.9%).
+  - “Multinutrient adherence ≥70% from self-report*”: N855; 164(77.7%),165(74.3%),155(73.8%),151(71.2%).
+  - “Omega adherence ≥70% from pill weight*”: N652; 133(76.9%),133(81.1%),126(76.8%),120(79.5%).
+  - “Omega adherence ≥70% from self-report *”: N855; 163(77.3%),164(73.9%),156(74.3%),152(71.7%).
+  - The separate “Morisky score (average), median (IQR)” row has no single-asterisk marker: N856; 1(0.50–1.50),1(0.50–1.75),1(0.50–1.50),1(0.50–1.75).
+- Literal single-asterisk footnote: “*average Morisky score over the four follow-up moments. Calculated when at least 1 follow-up value was available”.
+- Rule and direct observation: The printed single-asterisk marker associates a row with its single-asterisk explanatory footnote. Here it is attached to four rows explicitly naming pill-weight or self-report adherence above an inclusive percentage threshold, while the footnote explicitly defines an average Morisky score and its available-follow-up aggregation. The separate Morisky row lacks that marker. This is an observable measure/footnote association question. No identity between Morisky score and ≥70% adherence, no count discrepancy, and no implementation or wrong-analysis claim is inferred.
+- Calculation: No arithmetic is necessary to observe the marker/measure association; the different printed row N values are evidence of the table's explicit separate quantities, not proof that their populations must match.
+- Exact missing definition: Whether the asterisk was intended to mark the Morisky row alone, whether the aggregation/availability condition was intended to apply more broadly, and whether any supplied but unprinted mapping connects the Morisky score with these pill-weight/self-report rows.
+- Alternative source-grounded interpretations: A displaced marker or copied footnote could explain the association. The second sentence might describe a broader available-follow-up aggregation rule, but its first sentence names Morisky specifically; the package does not establish such a broader interpretation. No corrected marker placement is prescribed.
+- Human question: Which rows does the single-asterisk footnote describe, and what aggregation/availability rule applies to each of the four ≥70% adherence rows and the Morisky score row?
+- Source confirmation: Visually inspected source-matched reusable PyMuPDF 180-dpi derivative `.ai_paper_validation/document_outputs/DOC-004/rendered_pages/page_016.png`; all four markers, the unstarred Morisky row, their N/cells and the single-asterisk text are legible. The supplied PDF page remains authority; the coordinator must commission the required fresh mechanical recheck for an appended stable ID. No new extraction/OCR was necessary.
+- Distinctness from C020: C020 compares product assignments of .73/.70 kappas in prose and the double-asterisk footnote. P2-01 compares the four single-asterisk row markers with the single-asterisk Morisky definition. The printed inputs, comparator and consistency rule differ, so the records are not genuine duplicates.
+- Bounded quality-control relevance: A data extractor could attach a Morisky aggregation/availability definition to count/percentage adherence rows, or leave the Morisky median row's aggregation unlinked. Actual downstream use or conclusion impact is not asserted.
+- Classification ambiguity: Intended scope of the asterisk and aggregation rule; document roles and within-document relationship are explicit. No evidence state or suggested disposition is assigned before the new mechanical recheck. No severity or final adjudication is assigned.
+
+Discovery status at full pass-2 review: one new qualifying candidate, P2-01; no additional inferential relationship and no display-zero candidate.
+
+Final handoff refinement: the coordinator assigned stable C021 to P2-01. A separate fresh gpt-6.1-sol/high runtime /root/recheck_append_001 completed source confirmation and assigned recorded_candidate, REPORT/REPORT, S_W/allS_W, Measure, label, or scale inconsistency, report_internal_inconsistency and mechanically suggested retain. Its complete recheck facts were read and incorporated into pass2. The original discovery wording above is retained as discovery-stage provenance; the final source-grounded human question is unchanged. No new S ID was required. Final statistical scope remains140 relationships, all complete in both passes.
