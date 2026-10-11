@@ -1,0 +1,2270 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-reporting-quality-control-review--amaterasu-trial-workflow-16"
+id="toc-quantitative-reporting-quality-control-review--amaterasu-trial-workflow-16">Quantitative
+Reporting Quality-Control Review — AMATERASU Trial, Workflow
+1.6</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#document-role-classification-summary"
+id="toc-document-role-classification-summary">Document-Role
+Classification Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a>
+<ul>
+<li><a href="#c001--vitamin-d-middle-baseline-count-and-percentage"
+id="toc-c001--vitamin-d-middle-baseline-count-and-percentage">C001 —
+Vitamin D middle-baseline count and percentage</a></li>
+<li><a href="#c002--placebo-apai-gt-count-and-percentage"
+id="toc-c002--placebo-apai-gt-count-and-percentage">C002 — Placebo ApaI
+GT count and percentage</a></li>
+<li><a href="#c003--table-2-hazard-ratio-direction-footnote"
+id="toc-c003--table-2-hazard-ratio-direction-footnote">C003 — Table 2
+hazard-ratio direction footnote</a></li>
+<li><a href="#c004--figure-3c-risk-rows-and-caption-absence-claim"
+id="toc-c004--figure-3c-risk-rows-and-caption-absence-claim">C004 —
+Figure 3C risk rows and caption absence claim</a></li>
+<li><a href="#c005--pooled-stage-ii-narrative-percentage"
+id="toc-c005--pooled-stage-ii-narrative-percentage">C005 — Pooled stage
+II narrative percentage</a></li>
+<li><a href="#c006--postoperative-timing-window-and-reported-iqr"
+id="toc-c006--postoperative-timing-window-and-reported-iqr">C006 —
+Postoperative timing window and reported IQR</a></li>
+<li><a href="#c007--initial-plan-daily-dose-versus-capsule-strength"
+id="toc-c007--initial-plan-daily-dose-versus-capsule-strength">C007 —
+Initial-plan daily dose versus capsule strength</a></li>
+<li><a href="#c008--plan-rfs-eventcensor-conjunction"
+id="toc-c008--plan-rfs-eventcensor-conjunction">C008 — PLAN RFS
+event/censor conjunction</a></li>
+<li><a href="#c009--final-plan-high-baseline-inequality"
+id="toc-c009--final-plan-high-baseline-inequality">C009 — Final-plan
+high-baseline inequality</a></li>
+<li><a href="#c010--plan-age-90-eligibility-boundary"
+id="toc-c010--plan-age-90-eligibility-boundary">C010 — PLAN age-90
+eligibility boundary</a></li>
+<li><a href="#c011--final-plan-de-novo-cancer-endpoint-label"
+id="toc-c011--final-plan-de-novo-cancer-endpoint-label">C011 —
+Final-plan de novo cancer endpoint label</a></li>
+<li><a
+href="#c012--initial-n400-versus-amendment-history-of-blank-sample-size"
+id="toc-c012--initial-n400-versus-amendment-history-of-blank-sample-size">C012
+— Initial n=400 versus amendment history of blank sample size</a></li>
+<li><a href="#c013--dbp1-tg-placebo-count-across-report-documents"
+id="toc-c013--dbp1-tg-placebo-count-across-report-documents">C013 — DBP1
+TG placebo count across REPORT documents</a></li>
+<li><a href="#c014--cdk2-versus-cdx2cdx2-effect-labels"
+id="toc-c014--cdk2-versus-cdx2cdx2-effect-labels">C014 — CDK2 versus
+CDX2/Cdx2 effect labels</a></li>
+<li><a href="#c015--age65-labeled-older-than-median-66"
+id="toc-c015--age65-labeled-older-than-median-66">C015 — Age&gt;65
+labeled older than median 66</a></li>
+</ul></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#source-integrity-and-local-tooling"
+id="toc-source-integrity-and-local-tooling">Source integrity and local
+tooling</a></li>
+<li><a href="#routing-and-validation-provenance"
+id="toc-routing-and-validation-provenance">Routing and validation
+provenance</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-reporting-quality-control-review--amaterasu-trial-workflow-16">Quantitative
+Reporting Quality-Control Review — AMATERASU Trial, Workflow 1.6</h1>
+<p><strong>Pending Human Adjudication — all 15 candidates.</strong> This
+report records source-grounded consistency questions. Evidence states
+and suggested review dispositions are mechanical pre-fills for human
+review. The five human adjudication fields remain blank in every
+card.</p>
+<h1 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h1>
+<p>Complete review of four supplied PDFs, covering all 96 physical
+pages, produced <strong>15 stable quality-control candidates,
+C001–C015</strong>. Every candidate received exact-source evidence
+recheck and independent classification audit. Discovery restarted from
+supplied sources and eligible extraction assets; previous candidate
+selections and reports did not define the scope.</p>
+<p>The candidates concern three percentage/denominator comparisons, four
+numerical or arithmetic comparisons, six measure or label comparisons,
+one concrete age-boundary population definition, and one matched count
+across report documents. Six comparisons are within the main report, six
+are internal to the supplied plan bundle, and three compare the main
+report with its results supplement. No candidate currently has a
+substantive REPORT-versus-PLAN discrepancy relationship.</p>
+<p>Several comparisons remain conditional on missing definitions. In
+particular, an intentional sum-to-100 percentage policy can reproduce
+the stage distribution in C005, usual postoperative scheduling can
+explain C006, and common analysis-population identity must be
+established for C013. Their retained IDs document the human questions;
+they do not imply that corrections are necessarily required.</p>
+<p>Small preventable reporting defects can matter when counts,
+percentages, subgroup labels or endpoint definitions are copied into
+systematic reviews and other evidence products. This package review
+establishes neither actual propagation nor a change in the paper's
+conclusions or serious harm. Both complete statistical passes found no
+additional distinct candidate after the cross-lane ledger and
+direct-source recheck were considered.</p>
+<h1 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h1>
+<p>The package is <code>2019/jama.2019.2210</code>. Physical PDF page
+numbers are used throughout, independently of printed journal
+pagination. Content determines document role.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied filename</th>
+<th>Role</th>
+<th>Content</th>
+<th style="text-align: right;">Physical pages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td>jama_urashima_2019_oi_190023.pdf</td>
+<td>REPORT</td>
+<td>Published trial article, including Methods, results, tables, figures
+and references</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td>joi190023supp1_prod.pdf</td>
+<td>PLAN</td>
+<td>Initial and final protocol/SAP, operational appendices and
+amendments</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td>joi190023supp2_prod.pdf</td>
+<td>REPORT</td>
+<td>Non-plan eTables, eFigures and subgroup results</td>
+<td style="text-align: right;">41</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td>joi190023supp3_prod.pdf</td>
+<td>REPORT</td>
+<td>Retrospective data-sharing statement</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="review_1_6/source_inventory.md">source inventory</a>
+identifies all direct sources. The <a
+href="review_1_6/evidence_asset_inventory.md">evidence-asset
+inventory</a> records 289 preserved existing assets: 99 native/layout
+page texts, 49 normalized page texts, four combined normalized texts, 90
+rendered images, 19 OCR texts, 19 OCR metadata records, four document
+records, two native extraction manifests and three preprocessing/backend
+manifests. Fitness counts are 116 USABLE, 147 DUPLICATE, 25 PARTIAL and
+one STALE. Derivative overlap is counted once per source page.</p>
+<p>Preferred reusable text covered main pp. 1–8 and results pp. 1–41; an
+alternate native text supplied main p. 9. Historical exclusions and
+absolute paths were assessed as metadata, not adopted as review scope.
+Main p. 9 actually contains article information and references and was
+fully mapped. All 45 PLAN pages and the one sharing page lacked usable
+reusable extraction and received fresh direct native/layout
+extraction.</p>
+<p>Reusable OCR and text were locators and transcription aids. The
+supplied source page remained final authority for candidate facts.
+Original preferred derivative engine versions are unspecified; alternate
+native extraction identifies PyMuPDF without a version, and historical
+OCR metadata identifies a CPU engine. New operations use recorded direct
+Poppler 26.01.0 tools. The rechecker confirmed candidate values against
+direct layout extraction and source-matched visual pages; no new blanket
+OCR, Office conversion, fallback environment, external literature or GPU
+was needed.</p>
+<h1 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h1>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Unit type</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Mapped units</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">45</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">41</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">96</td>
+<td>COMPLETE</td>
+</tr>
+</tbody>
+</table>
+<p>For every direct source, reusable plus fresh-required units equals
+total units and mapped units equals total units. The <a
+href="review_1_6/source_coverage.md">source-coverage ledger</a> and <a
+href="review_1_6/coverage_manifest.md">coverage manifest</a> retain
+exact page and stage assignments. Bibliographic, administrative and
+blank-form pages were inspected and explicitly mapped when no applicable
+scientific numerical relationship existed. No scientific source-unit gap
+remains.</p>
+<p>Review prioritized numerical arithmetic,
+denominators/proportions/totals, inferential reporting, matched
+numerical results, effect measures/labels/scales, and rate-versus-count
+distinctions. Population issues were considered only when they created a
+concrete numerical or interpretive inconsistency. A broad methodology,
+clinical, novelty, misconduct or raw-data audit was outside scope. No
+external publication was consulted to assess supplied historical
+claims.</p>
+<p>Coherent display-zero P values alone are excluded by
+<code>DISPLAY_ZERO_NOT_CANDIDATE</code>. Neither complete statistical
+pass found such an annotation in its assigned sources, and no stable
+candidate is based on a displayed zero P value. Missing inferential
+definitions alone, equal rounded imputation results, crossed
+cumulative-hazard curves and ordinary rounded percentage totals did not
+generate candidates.</p>
+<h1 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h1>
+<p>The <a
+href="review_1_6/extraction/main_quantitative_evidence.md">main evidence
+map</a> reconstructs 134 main bundles, M001–M134. The <a
+href="review_1_6/extraction/support_quantitative_evidence.md">support
+map</a> reconstructs 86 support bundles, B001–B086, and all 87 support
+page keys U001–U087. Full page parts preserve the <a
+href="review_1_6/extraction/support_plan_pages.md">PLAN</a>, <a
+href="review_1_6/extraction/support_results_pages.md">results</a> and <a
+href="review_1_6/extraction/support_data_sharing.md">sharing</a>
+content.</p>
+<table>
+<thead>
+<tr>
+<th>Review lane</th>
+<th>Complete registered scope</th>
+<th>Durable evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numeric consistency</td>
+<td>220 bundles, N001–N220; all components within each bundle</td>
+<td><a
+href="review_1_6/relationships/numeric_relationship_inventory.md">Numeric
+inventory</a>, <a
+href="review_1_6/checkers/numeric_consistency.md">checker</a></td>
+</tr>
+<tr>
+<td>Cross-source consistency</td>
+<td>67 matched groups, X01–X67, across all four sources</td>
+<td><a
+href="review_1_6/checkers/cross_source_consistency.md">Cross-source
+checker</a></td>
+</tr>
+<tr>
+<td>Statistical pass 1</td>
+<td>148 relationships: S001–S082 and S101–S166</td>
+<td><a
+href="review_1_6/statistics/relationship_inventory.md">Relationship
+inventory</a>, <a href="review_1_6/checkers/statistical_pass_1.md">pass
+1</a></td>
+</tr>
+<tr>
+<td>Statistical pass 2</td>
+<td>The same complete 148 relationships, after ledger and recheck</td>
+<td><a href="review_1_6/checkers/statistical_pass_2.md">Pass 2</a></td>
+</tr>
+<tr>
+<td>Exact-source recheck</td>
+<td>Every C001–C015</td>
+<td><a href="review_1_6/verification/evidence_recheck.md">Individual
+rechecks</a></td>
+</tr>
+<tr>
+<td>Independent quality/classification audit</td>
+<td>Every candidate, coverage row and registered statistical
+relationship</td>
+<td><a href="review_1_6/quality/evidence_quality_audit.md">Quality
+audit</a></td>
+</tr>
+</tbody>
+</table>
+<p>Every statistical row explicitly records PASS_1_COMPLETE and
+PASS_2_COMPLETE. The unused S083–S100 namespace separates disjoint
+source parts; it is not missing coverage. Each pass comprises 82 primary
+and 66 subgroup relationships, including 35 subgroup effects and 31
+interaction annotations with nonestimable placeholders retained. All
+four statistical contribution agents are fresh, distinct, high-effort
+specialists.</p>
+<p>Checks addressed arithmetic and denominator identity; positive
+ordered intervals and point-estimate containment; treatment/outcome
+direction; matching population, time, contrast, model and precision;
+risk-array anchors; repeated values; label/scale identity; and
+cross-lane/recheck implications. Hazard ratios, subdistribution hazard
+ratios, cumulative hazards, cumulative incidence, survival estimates,
+at-risk counts and event proportions were distinguished. Five-year
+survival estimates were not substituted with complements of
+full-follow-up raw event proportions.</p>
+<p>The sources supply general Cox, 95% interval and two-sided reporting
+conventions, but omit row-specific P-test choice, interval construction,
+covariance/variance and many interaction contrasts. Exact CI/P
+equivalence was therefore not imposed. Ordered intervals and qualitative
+null screens were checked without replacing the published analysis.
+Paired rank-test P values were not reconstructed from marginal medians,
+and equal rounded complete-case/imputed results were not treated as
+proof of copying. Both pass-2 contributions completed their entire
+scopes and emitted zero additional distinct candidates.</p>
+<h1 id="document-role-classification-summary">Document-Role
+Classification Summary</h1>
+<p>Relationships are assigned by the content of the conflicting
+locations: P_R means REPORT versus PLAN; P_P means solely within PLAN
+material; S_C means between different REPORT documents; S_W means within
+one REPORT document. A source that only corroborates one side does not
+create an additional discrepancy relationship. Where multiple genuine
+relationships exist, precedence is P_R &gt; P_P &gt; S_C &gt; S_W.</p>
+<table>
+<thead>
+<tr>
+<th>Relationship type</th>
+<th>Meaning</th>
+<th style="text-align: right;">Candidate count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P_R</td>
+<td>REPORT-versus-PLAN discrepancy</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>P_P</td>
+<td>PLAN-internal discrepancy</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td>S_C</td>
+<td>Between different REPORT documents</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>S_W</td>
+<td>Within one REPORT document</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>All stable IDs</td>
+<td style="text-align: right;">15</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Mechanically derived review domain</th>
+<th style="text-align: right;">Candidate count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protocol_report</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>plan_material</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td>statistical_results</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>report_internal_inconsistency</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">15</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Evidence state</th>
+<th style="text-align: right;">Candidate count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>recorded_candidate</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr>
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>repaired_residual</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>record_input_error</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">15</td>
+</tr>
+</tbody>
+</table>
+<p>All fifteen mechanically derive suggested review disposition
+<code>retain</code>; <code>exclude</code> and <code>discuss</code> each
+have zero. This is a pre-fill, not an adjudication.
+<code>recorded_candidate</code> includes a confirmed printed comparison
+that remains conditional on a named missing definition. It does not mean
+that a human reviewer has established an error.</p>
+<p>Primary-category counts are numerical/arithmetic four;
+denominator/proportion/total three; measure/label/scale six;
+analysis-unit/population one; cross-document numerical one;
+statistical-reporting zero; and rate-versus-count zero, totaling
+fifteen. C014 is S_C: PLAN CDX2 material corroborates the main REPORT
+identity and does not add P_R.</p>
+<h1 id="candidate-index">Candidate Index</h1>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate</th>
+<th>Category</th>
+<th>Relationship type</th>
+<th>Review domain</th>
+<th>Evidence state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Baseline vitamin D 142 (58)</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>ApaI GT 61 (40)</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>HR direction footnote</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_W</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Figure 3C displayed risk rows</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Pooled stage II 26%</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Timing window versus IQR</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Initial daily dose</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>RFS AND/OR definition</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>Omitted high-group inequality</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>Age-90 eligibility boundary</td>
+<td>Analysis-unit or population inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>De novo cancer endpoint status</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Initial target chronology</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>DBP1 TG 57 versus 59</td>
+<td>Cross-document numeric inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>CDK2 versus CDX2/Cdx2</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C015</td>
+<td>Older-than-median age label</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+</tbody>
+</table>
+<h1 id="candidate-evidence-cards">Candidate Evidence Cards</h1>
+<h2 id="c001--vitamin-d-middle-baseline-count-and-percentage" class="candidate-card">C001 —
+Vitamin D middle-baseline count and percentage</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The vitamin D middle-baseline
+cell prints 142 (58), whereas the displayed measured-category counts
+imply 57.2581% under a common denominator and conventional
+nearest-integer rounding. The denominator and rounding policy require
+confirmation.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main article
+baseline vitamin D cells vs REPORT main article subgroup totals and
+missingness</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> All conflicting values are
+observed participant summaries in the same published REPORT. No
+conflicting PLAN or second REPORT is needed.</p>
+<p><strong>Classification ambiguity:</strong> None in document role or
+relationship. The common cell denominator and nearest-rounding rule are
+conditional definitions.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_urashima_2019_oi_190023.pdf#page=5">jama_urashima_2019_oi_190023.pdf
+— p. 5, Table 1 baseline 25(OH)D rows and rounding footnote</a>; <a
+href="../jama_urashima_2019_oi_190023.pdf#page=4">p. 4, pooled baseline
+strata</a>; <a href="../jama_urashima_2019_oi_190023.pdf#page=6" target="_blank" rel="noopener">p. 6,
+missing baseline values</a>.</p>
+<p><strong>Source evidence:</strong> Vitamin D low 102 (41), middle 142
+(58), high 4 (1.6); randomized arm n=251. Placebo counts are 71, 90 and
+1. Pooled strata are 173, 232 and 5; seven baseline values are missing
+overall. The table permits percentage totals differing from 100 because
+of rounding.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed middle
+percentage 58% versus 142/248 × 100 = 57.2581% for the complete
+displayed vitamin D categories. This concerns an individual cell, not a
+rounded column total.</p>
+<p><strong>Reasoning procedure:</strong> Sum mutually exclusive measured
+categories, reconcile overall measured totals with missingness, and
+compare the cell's derived proportion with its printed precision. Keep
+the measured denominator distinct from randomized n=251.</p>
+<p><strong>Calculation:</strong> 102+142+4=248; 71+90+1=162;
+248+162=410=417−7. The difference from 58 is 0.7419 percentage point,
+exceeding a 0.5-point nearest-integer tolerance. Using 251 gives
+56.5737%. Excluding the high category gives 142/244=58.1967%, but
+102/244=41.8033% would conventionally round to 42 rather than the
+accompanying 41.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+cell-specific denominator, unconventional rounding policy or
+count/percentage transcription could explain the display. The generic
+rounding footnote does not establish the exact algorithm. The package
+does not select an explanation.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct layout and
+visual recheck confirmed that the cell prints 58, the counts and
+missingness match, and the conditional calculation reproduces. The exact
+denominator/rounding definition is unavailable. Provenance: NM-01; N022
+and N051–N053; <a
+href="review_1_6/verification/evidence_recheck.md">individual
+recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> A baseline subgroup
+percentage and its apparent measured denominator need a reproducible
+reporting rule.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+this cell could be copied into a baseline-composition evidence table
+with an inconsistent percentage or denominator. No actual copying or
+outcome impact is established.</p>
+<p><strong>Human verification steps:</strong> Inspect the three Table 1
+cells and missingness locations; obtain the percentage denominator and
+rounding algorithm; determine whether all baseline categories use the
+same measured population. The unresolved question is which rule produced
+142 (58).</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c002--placebo-apai-gt-count-and-percentage" class="candidate-card">C002 — Placebo ApaI
+GT count and percentage</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> ApaI GT placebo 61 (40) differs
+from conventional nearest-integer rounding of the displayed
+measured-genotype proportion, although uniform truncation can reproduce
+the full row.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main article placebo
+ApaI genotype counts vs REPORT main article ApaI percentage</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The counts, percentages
+and rounding footnote are within one REPORT table.</p>
+<p><strong>Classification ambiguity:</strong> None in roles or
+relationships. The denominator and rounding convention are
+unresolved.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_urashima_2019_oi_190023.pdf#page=5">jama_urashima_2019_oi_190023.pdf
+— p. 5, Table 1 ApaI placebo rows and footnote a</a>.</p>
+<p><strong>Source evidence:</strong> Placebo GG 69 (46), GT 61 (40), TT
+20 (13), with randomized placebo header n=166. The footnote attributes
+possible percentage-total differences to rounding.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed GT 40% versus
+61/150 × 100 = 40.6667%, which conventionally rounds to 41%.</p>
+<p><strong>Reasoning procedure:</strong> Derive a measured denominator
+from the mutually exclusive genotype counts and test individual
+displayed precision. Do not treat the printed percentage total of 99% as
+an independent inconsistency.</p>
+<p><strong>Calculation:</strong> 69+61+20=150. The GT difference is
+0.6667 percentage point, greater than 0.5. Other proportions are
+46.0000% and 13.3333%. Using randomized n=166 gives 36.7470%, not
+40%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Uniform
+integer truncation produces exactly 46, 40 and 13, and the generic
+rounding footnote does not explicitly exclude it. Different cell
+denominators or a count/percentage transcription also remain
+possible.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct and visual
+inspection confirmed GT 61 (40) and the neighboring counts; the
+nearest-rounding comparison reproduced conditionally. Denominator and
+precise percentage policy remain missing. Provenance: NM-02; N064–N066;
+<a href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> Percentage extraction
+should preserve the row's actual population and rounding convention.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy an inconsistent genotype percentage or assume an
+inappropriate denominator. The reported treatment effect is not shown to
+change.</p>
+<p><strong>Human verification steps:</strong> Confirm denominator 150 or
+identify the intended alternative; obtain the row's truncation/rounding
+policy; check which count or percentage definition accounts for GT 61
+(40).</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c003--table-2-hazard-ratio-direction-footnote" class="candidate-card">C003 — Table 2
+hazard-ratio direction footnote</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> Table 2 links HR values greater
+than 1 with decreased outcome probability, while the article interprets
+the same adverse-outcome treatment contrast's HR 0.44 as lower relapse
+incidence with vitamin D.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main article Table 2
+direction footnote vs REPORT main article relapse interpretation</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The common direction
+footnote and explicit adverse-endpoint interpretation conflict within
+the published REPORT.</p>
+<p><strong>Classification ambiguity:</strong> None. A hypothetical
+reciprocal reference is an interpretive alternative, not a different
+document relationship.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_urashima_2019_oi_190023.pdf#page=7">jama_urashima_2019_oi_190023.pdf
+— p. 7, Table 2 footnote a and adverse-outcome rows</a>; <a
+href="../jama_urashima_2019_oi_190023.pdf#page=6">p. 6, competing-risk
+narrative</a>; <a href="../jama_urashima_2019_oi_190023.pdf#page=3" target="_blank" rel="noopener">p.
+3, treatment/model definitions</a>.</p>
+<p><strong>Source evidence:</strong> The footnote states that HR values
+greater than 1 indicate vitamin D associated with decreased probability
+of the outcome. Table outcomes are relapse, cancer-specific death and
+noncancer death. Middle-baseline relapse subdistribution HR is 0.44 (95%
+CI 0.21–0.89), P=.02; the narrative explicitly calls its cumulative
+relapse incidence lower with vitamin D than placebo. Total relapse HR is
+0.75 (0.48–1.17), P=.21.</p>
+<p><strong>Reported-versus-comparator:</strong> Greater-than-1/decreased
+direction in the footnote versus below-1/lower adverse-outcome direction
+in the matched narrative.</p>
+<p><strong>Reasoning procedure:</strong> Retain the source's
+vitamin-D-versus-placebo contrast and adverse endpoint; compare the
+direction label independently of inference. An HR is not equated
+numerically with an event-probability ratio.</p>
+<p><strong>Calculation:</strong> 0.44&lt;1 accompanies lower relapse
+incidence. For a hazard numerator/reference ratio, below 1 identifies
+the lower numerator hazard; the footnote assigns the decreased direction
+to the opposite inequality.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+reciprocal reference or favorable survival endpoint could explain the
+footnote in isolation, but neither is assigned to these adverse-event
+rows and the narrative specifies the treatment direction. A reversed
+inequality or carried-over footnote is a possible explanation only.</p>
+<p><strong>Mechanical evidence recheck:</strong> The source footnote,
+effect triplet, treatment definitions and lower-incidence interpretation
+were found and confirmed visually/directly. No estimate correction or
+exact P-test reconstruction follows from this direction comparison.
+Provenance: NM-03, XC01, ST1-A; N104; S003, S010, S011, S013–S015 and
+S017–S019; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> A common effect-direction
+label should agree with the treatment reference and endpoint
+interpretation.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reader or evidence extractor could attach the opposite direction to
+the listed treatment effects. No reversed synthesis or changed
+conclusion is established.</p>
+<p><strong>Human verification steps:</strong> Confirm original model
+coding and treatment reference; determine the intended inequality in
+footnote a; align its wording with the explicit 0.44 lower-relapse
+interpretation without assuming that any numerical estimate is
+erroneous.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c004--figure-3c-risk-rows-and-caption-absence-claim" class="candidate-card">C004 —
+Figure 3C risk rows and caption absence claim</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> Figure 3C displays two at-risk
+number sequences, while its caption states that panel C numbers at risk
+are not given because of weighting.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main article Figure
+3C risk rows vs REPORT main article Figure 3 caption</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Numeric presence and the
+panel-specific absence statement are within the same REPORT
+figure/caption.</p>
+<p><strong>Classification ambiguity:</strong> None in roles. The
+intended raw-versus-effective weighted risk quantity is unspecified.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_urashima_2019_oi_190023.pdf#page=7">jama_urashima_2019_oi_190023.pdf
+— p. 7, Figure 3C and Figure 3 caption</a>.</p>
+<p><strong>Source evidence:</strong> Panel C is death among baseline
+20–40 ng/mL participants, with HR 0.60 (0.28–1.30), P=.20. At years 0–6,
+placebo values are 90/88/70/51/34/22/11 and vitamin D values are
+142/139/115/88/61/41/20. The caption says panel C numbers at risk are
+not given because of weighting.</p>
+<p><strong>Reported-versus-comparator:</strong> Fourteen labeled risk
+values are present versus the caption's statement of their absence.</p>
+<p><strong>Reasoning procedure:</strong> Establish panel identity from
+endpoint, baseline group and effect annotation; compare the specific
+caption with the two displayed sequences. Do not infer weighting status
+from integer formatting.</p>
+<p><strong>Calculation:</strong> Two rows × seven time points = 14
+displayed values, rather than zero. No rounding tolerance is involved in
+presence-versus-absence.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+caption may refer to another panel/version or to weighted effective
+numbers while raw counts are shown. The source provides no explicit
+distinction and no original weighting specification.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct extraction and
+visual inspection confirmed the correct panel, all fourteen integers and
+the caption. Their raw/effective meaning remains unavailable.
+Provenance: NM-04, XC02, ST1-B; N114/N116 and S007; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> Figure captions should
+identify the quantities actually displayed so that risk populations and
+model descriptions can be extracted consistently.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reader could omit displayed risk rows or incorrectly describe their
+weighting status. No erroneous HR or survival calculation is
+inferred.</p>
+<p><strong>Human verification steps:</strong> Inspect panel C and the
+caption together; obtain the figure's weighting and at-risk definitions;
+determine whether the caption refers to raw counts, effective counts,
+another panel or a prior figure version.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c005--pooled-stage-ii-narrative-percentage" class="candidate-card">C005 — Pooled stage
+II narrative percentage</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> Narrative stage II 26% differs
+from independent nearest-integer rounding of 111/417, but an intentional
+sum-to-100 largest-remainder allocation reproduces the complete printed
+44%/26%/30% distribution.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main article stage
+II narrative vs REPORT main article Table 1 stage counts</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The stage summary and its
+count comparator are within one REPORT document.</p>
+<p><strong>Classification ambiguity:</strong> None in classification.
+The exact narrative percentage policy remains unresolved and can
+reconcile the printed distribution.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_urashima_2019_oi_190023.pdf#page=4">jama_urashima_2019_oi_190023.pdf
+— p. 4, Study Population stage percentages</a>; <a
+href="../jama_urashima_2019_oi_190023.pdf#page=5">p. 5, Table 1 stage
+counts</a>.</p>
+<p><strong>Source evidence:</strong> Narrative stages I/II/III are
+44%/26%/30%. Table vitamin D/placebo counts are I 115/67, II 63/48, III
+73/51; arm totals are 251/166.</p>
+<p><strong>Reported-versus-comparator:</strong> Stage II 26% versus
+111/417 × 100 = 26.6187%, independently nearest-rounded to 27%. The
+whole printed percentage distribution is also considered.</p>
+<p><strong>Reasoning procedure:</strong> Pool matching stage counts,
+verify exhaustive total, test independent nearest rounding, then examine
+whether the complete distribution uses an adjusted sum-to-100 policy.
+Keep the reporting-rule question separate from disease-stage count
+accuracy.</p>
+<p><strong>Calculation:</strong> I=182, II=111, III=124; total 417.
+Exact proportions are 43.6451%, 26.6187%, 29.7362%. Independent rounding
+gives 44/27/30, sum 101. Printed 44/26/30 sums 100. Floors 43/26/29 sum
+98; allocating two remaining percentage points to the largest fractional
+remainders, III (.7362) and I (.6451), yields exactly 44/26/30. The
+independent stage II difference is 0.6187 point, exceeding 0.5 only
+under that specified independent-rounding rule.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+intentional largest-remainder or other sum-to-100 adjustment fully
+explains the displayed distribution without changing a count. A
+different narrative population, stage definition, selective truncation
+or transcription could also be considered, but none is documented. The
+stage mix is not established to be erroneous.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both locations and all
+six counts were visually/directly confirmed. The conditional
+nearest-rounding comparison reproduced; the audit independently
+demonstrated the largest-remainder explanation. Provenance: NM-05;
+N020/N045–N047; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> The policy that links
+stage counts to narrative percentages should be reproducible, especially
+when independent cell rounding and total-constrained rounding
+differ.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could copy stage proportions or apply an incompatible percentage
+convention. No altered stage-adjusted model, count or conclusion is
+inferred.</p>
+<p><strong>Human verification steps:</strong> Confirm the shared
+417-person stage population; determine whether the narrative
+intentionally uses a sum-to-100 policy; document that policy before
+judging the 26% cell or suggesting any change.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c006--postoperative-timing-window-and-reported-iqr" class="candidate-card">C006 —
+Postoperative timing window and reported IQR</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The described 2–4-week
+postoperative initiation window does not bound the reported IQR of 13–44
+days if it is a strict realized range; surrounding usual-schedule
+language offers an important alternative interpretation.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main article Methods
+postoperative timing vs REPORT main article Results timing IQR</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The published Methods
+timing statement is REPORT content, compared with participant Results in
+that same REPORT.</p>
+<p><strong>Classification ambiguity:</strong> None in roles; whether the
+phrase is a realized range or intended/usual schedule is unresolved.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_urashima_2019_oi_190023.pdf#page=2">jama_urashima_2019_oi_190023.pdf
+— p. 2, Trial Design</a>; <a
+href="../jama_urashima_2019_oi_190023.pdf#page=4">p. 4, Study Population
+timing</a>.</p>
+<p><strong>Source evidence:</strong> Patients were randomized and
+started supplementation at their first outpatient visit between 2 and 4
+weeks after operation. Preceding text says patients are usually
+discharged 5–14 days after operation and visit 1–2 weeks later if no
+major complications. Results give median 23.5 days, IQR 13–44, for
+randomization and medication initiation after operation.</p>
+<p><strong>Reported-versus-comparator:</strong> A conditional strict
+range of 14–28 days versus first/third quartiles 13 and 44 days for the
+described timing distribution.</p>
+<p><strong>Reasoning procedure:</strong> Convert weeks to days and apply
+the requirement that quartiles lie inside a distribution's realized
+bounds only if the Methods phrase actually specifies those bounds. Read
+the full scheduling context before interpreting the range.</p>
+<p><strong>Calculation:</strong> 2×7=14; 4×7=28. Q1 is one day below 14;
+Q3 is sixteen days above 28. Whole-day rounding does not bridge the
+upper difference. These calculations do not establish a strict
+scheduling requirement.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+explicit usually/no-major-complications context supports an expected
+schedule with variable recovery and clinical visits rather than a
+universal observed range. Different timing definitions or an editorial
+range summary also require clarification. Actual visit dates and the
+intended window definition are absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both timing statements,
+shared operative anchor and usual-discharge/visit context were confirmed
+directly. The logical comparison reproduces only under a strict
+realized-range interpretation. Provenance: NM-06; N003/N019; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> A schedule description
+should be distinguishable from an empirical timing range when
+quantitative trial characteristics are summarized.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could describe all participants as initiating within 14–28 days without
+the qualification supported by the observed IQR. No eligibility
+violation, adherence problem, survival-origin shift or outcome effect is
+established.</p>
+<p><strong>Human verification steps:</strong> Confirm whether 2–4 weeks
+denotes a usual schedule or a strict realized range; match timing
+anchors; consult actual dates only if necessary to clarify the intended
+description. Preserve the source's usual context in any evidence
+summary.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c007--initial-plan-daily-dose-versus-capsule-strength" class="candidate-card">C007 —
+Initial-plan daily dose versus capsule strength</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> Within the supplied
+initial-plan material, 1200 IU/day and two 600-IU capsules conflict with
+a preparation strength of 1000 IU/capsule plus two capsules/day.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN initial protocol
+daily-dose specification vs PLAN initial protocol capsule strength</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Both conflicting
+specifications are within the bound PLAN's initial version. The
+disclosed later final/report dose is context, not a conflicting REPORT
+comparator.</p>
+<p><strong>Classification ambiguity:</strong> Historical translation or
+retrospective consolidation could have retained later-strength wording
+in the initial version. This does not add P_R.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190023supp1_prod.pdf#page=9">joi190023supp1_prod.pdf — p. 9,
+initial intervention</a>; <a href="../joi190023supp1_prod.pdf#page=4" target="_blank" rel="noopener">p.
+4, two capsules/day</a>; <a href="../joi190023supp1_prod.pdf#page=12" target="_blank" rel="noopener">p.
+12, preparation strength</a>. Repeated1200 statements: <a
+href="../joi190023supp1_prod.pdf#page=3">p. 3</a>, <a
+href="../joi190023supp1_prod.pdf#page=7">p. 7</a>, <a
+href="../joi190023supp1_prod.pdf#page=8">p. 8</a>. Amendment context: <a
+href="../joi190023supp1_prod.pdf#page=45">p. 45</a>.</p>
+<p><strong>Source evidence:</strong> Initial intervention is 1200 IU/day
+as two 600-IU capsules. Initial preparation text supplies 1000
+IU/capsule and another clause gives two per day. The amendment
+explicitly discloses 1200→2000 IU before trial initiation.</p>
+<p><strong>Reported-versus-comparator:</strong> Initial stated1200
+versus strength/count-derived 2000 IU/day within the supplied initial
+version.</p>
+<p><strong>Reasoning procedure:</strong> Match the historical version
+and calculate daily dose from capsule number and capsule strength. Keep
+the disclosed initial-to-final change separate from this
+internal-version comparison.</p>
+<p><strong>Calculation:</strong> 2×600=1200; 2×1000=2000; difference 800
+IU/day. These are exact integer specifications, not rounded observed
+exposures.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+initial version may have incorporated later preparation wording during
+translation or consolidation. The p.45 amendment explains the
+final/report 2000 dose; the package does not establish which wording
+belonged to the original archived initial version.</p>
+<p><strong>Mechanical evidence recheck:</strong> Dose, strength, capsule
+number, version locations and amendment were confirmed from the direct
+PLAN. The within-version arithmetic reproduced; actual dispensed
+exposure is not established. Provenance: NS-A, XC05; N136/N137; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> Historical intervention
+specifications should internally reconcile capsule strength, number and
+daily amount.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could record conflicting historical planned doses or incorrectly infer
+an undisclosed report/plan change. No actual dosing error or protocol
+violation is claimed.</p>
+<p><strong>Human verification steps:</strong> Compare the original
+archived initial version with the supplied translation; determine which
+capsule strength belongs to that date; retain the explicitly disclosed
+pretrial dose change when describing the final intervention.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c008--plan-rfs-eventcensor-conjunction" class="candidate-card">C008 — PLAN RFS
+event/censor conjunction</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> PLAN RFS definitions require no
+relapse AND survival for the non-event state, whereas the supplied
+censor instructions use relapse-free OR alive.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN initial and final RFS
+endpoint definitions vs PLAN initial and final censor instructions</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> All conflicting
+endpoint/censor clauses are PLAN content in initial and final versions
+of one bound bundle. Main REPORT endpoint language only corroborates one
+side.</p>
+<p><strong>Classification ambiguity:</strong> None in relationships.
+Editorial or translation use of OR may differ from implemented event
+coding.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190023supp1_prod.pdf#page=9">joi190023supp1_prod.pdf — p. 9,
+initial primary outcome</a>; <a
+href="../joi190023supp1_prod.pdf#page=25">p. 25, final primary
+outcome</a>; <a href="../joi190023supp1_prod.pdf#page=13" target="_blank" rel="noopener">p. 13, initial
+censor instruction</a>; <a href="../joi190023supp1_prod.pdf#page=29" target="_blank" rel="noopener">p.
+29, final censor instruction</a>.</p>
+<p><strong>Source evidence:</strong> RFS is time to earliest relapse or
+all-cause death; the outcome definition's non-event censor state is no
+relapse AND alive. Reporting clauses instead describe relapse-free OR
+alive.</p>
+<p><strong>Reported-versus-comparator:</strong> AND versus OR for the
+same named non-event/censor definition, repeated in both supplied plan
+versions.</p>
+<p><strong>Reasoning procedure:</strong> Define R as relapse-free and A
+as alive. Compare conjunctions for each truth-value combination against
+the earliest-relapse-or-death event definition; separate printed
+instructions from actual implementation.</p>
+<p><strong>Calculation:</strong> R AND A differs from R OR A for
+(R=false,A=true) and (R=true,A=false). Literal OR includes an alive
+relapsed person and a dead relapse-free person in the stated non-event
+category. The rules agree when both values are equal.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> OR may
+be informal editorial or translation wording with intended AND. The
+package supplies no event/censor records or implementation code to
+determine actual coding.</p>
+<p><strong>Mechanical evidence recheck:</strong> All four locations,
+exact conjunctions and earliest-event meaning were confirmed. The
+logical difference reproduces; implemented miscensoring is not inferred.
+Provenance: NS-C, XC06, ST1-C; N149/S049; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> Endpoint and censor
+labels determine what a quantitative survival outcome means and should
+use a consistent logical rule.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence table could copy a different RFS non-event definition. No
+changed survival estimate or actual miscensoring is established.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended
+conjunction in both archived versions; compare the actual event/censor
+specification if available; clarify the supplied wording without
+inferring implementation from the translation alone.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c009--final-plan-high-baseline-inequality" class="candidate-card">C009 — Final-plan
+high-baseline inequality</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The final PLAN design prints
+high(40 ng/mL) without an inequality, while its subgroup-analysis
+definition explicitly gives high &gt;40 ng/mL.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN final high-baseline
+subgroup design label vs PLAN final subgroup-analysis boundary</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The discrepant repeated
+threshold labels are both final PLAN content. REPORT high &gt;40
+corroborates the explicit analysis definition only.</p>
+<p><strong>Classification ambiguity:</strong> None in role or
+relationship. The meaning of the omitted inequality is unresolved.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190023supp1_prod.pdf#page=23">joi190023supp1_prod.pdf — p.
+23, final design baseline categories</a>; <a
+href="../joi190023supp1_prod.pdf#page=31">p. 31, final subgroup
+analysis</a>.</p>
+<p><strong>Source evidence:</strong> Design low &lt;20, middle ≥20 to
+≤40, high(40 ng/mL), with no symbol before 40 in the high label.
+Analysis explicitly supplies high &gt;40.</p>
+<p><strong>Reported-versus-comparator:</strong> Omitted high-category
+relation to 40 versus the explicit strict greater-than 40
+definition.</p>
+<p><strong>Reasoning procedure:</strong> Inspect the source glyph rather
+than silently normalizing extraction, then compare repeated numerical
+category definitions. Treat any equality reading as hypothetical
+only.</p>
+<p><strong>Calculation:</strong> If high(40) were interpreted as high
+=40, exactly 40 would overlap inclusive middle and above 40 membership
+would remain unspecified. No equals sign is actually printed, and no
+implemented high =40 grouping is shown.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+High(40) may be shorthand for above a40 threshold or an editing
+omission. The p.31 definition supplies an intended-looking boundary but
+does not explain the design label's missing inequality.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct text and visual
+image confirmed the missing glyph and explicit&gt;40 comparator; the
+audit independently re-inspected the source-matched design image. The
+direct observation is the omitted definition, not participant
+reassignment. Provenance: NS-D, XC07, ST1-D; N153/S051; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> Repeated numerical
+stratum labels should be explicit enough to preserve disjoint threshold
+definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could transcribe an ambiguous high-category cutoff. No changed subgroup
+count or treatment estimate is inferred.</p>
+<p><strong>Human verification steps:</strong> Confirm the intended high
+boundary and original design symbol; determine whether&gt;40 was
+intended throughout; consult subgroup coding only if needed, without
+assuming equality was implemented.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c010--plan-age-90-eligibility-boundary" class="candidate-card">C010 — PLAN age-90
+eligibility boundary</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> PLAN age 30–90 wording and a
+prospective registration form's30≤age&lt;90 differ at exactly 90 if the
+prose range is inclusive.</p>
+<p><strong>Category:</strong> Analysis-unit or population
+inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN eligibility age range
+vs PLAN registration-form upper age boundary</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Eligibility clauses and
+the prospective registration form are PLAN by content. This secondary
+category qualifies through a concrete numerical population boundary,
+rather than a general design concern.</p>
+<p><strong>Classification ambiguity:</strong> The prose range's
+inclusivity and exact-versus-completed-age convention are unresolved.
+REPORT range/quartile wording is corroborative context only.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190023supp1_prod.pdf#page=9">joi190023supp1_prod.pdf — p. 9,
+initial inclusion</a>; <a href="../joi190023supp1_prod.pdf#page=24" target="_blank" rel="noopener">p.
+24, final inclusion</a>; <a href="../joi190023supp1_prod.pdf#page=38" target="_blank" rel="noopener">p.
+38, registration form</a>.</p>
+<p><strong>Source evidence:</strong> Initial and final text give age
+30–90 years; the form gives30≤age&lt;90. Main reported age range and
+the74–90 quartile endpoint do not establish any individual's age or
+inclusion.</p>
+<p><strong>Reported-versus-comparator:</strong> A conditionally
+inclusive upper endpoint90 versus a strictly exclusive upper endpoint90
+in the form.</p>
+<p><strong>Reasoning procedure:</strong> Compare the membership of the
+exact boundary value under the two numerical definitions. Do not infer
+enrollment of a90-year-old from an aggregate quartile range.</p>
+<p><strong>Calculation:</strong> Under inclusive range semantics,90
+belongs to[30,90] and does not belong to[30,90). This is one
+boundary-value membership difference; affected participant counts are
+unavailable.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Approximate prose, completed-age versus exact-age convention, or
+independently updated form wording may reconcile intent. The approved
+version and age policy are not supplied sufficiently to settle this.</p>
+<p><strong>Mechanical evidence recheck:</strong> All three locations and
+the strict upper glyph were confirmed directly/visually, with
+independent audit image confirmation. The membership comparison remains
+conditional on range semantics. Provenance: NS-E, XC08; N156; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> Numerical eligibility
+labels should communicate a consistent upper boundary for the described
+study population.</p>
+<p><strong>Potential downstream evidence impact:</strong> A review could
+copy inclusive or exclusive age 90 eligibility inconsistently. No
+participant is declared ineligible and no count or inference change is
+established.</p>
+<p><strong>Human verification steps:</strong> Confirm the approved
+numerical upper boundary, form version and age convention; determine
+whether the prose means inclusive 90 or an approximate range; examine
+individual ages only if an actual membership question remains.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c011--final-plan-de-novo-cancer-endpoint-label" class="candidate-card">C011 —
+Final-plan de novo cancer endpoint label</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The final PLAN synopsis
+describes de novo cancer as an adverse event rather than an outcome,
+while its outcome clause and amendment classify it as tertiary.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN final de novo cancer
+synopsis vs PLAN final tertiary-outcome clause and amendment</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> All conflicting
+endpoint-status definitions are PLAN content. Main safety counts provide
+quantitative context, not a conflicting prospective label.</p>
+<p><strong>Classification ambiguity:</strong> Simultaneous safety and
+tertiary roles can coexist; the explicit not-an-outcome wording and
+amendment separation create the bounded question.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190023supp1_prod.pdf#page=19">joi190023supp1_prod.pdf — p.
+19, final synopsis</a>; <a href="../joi190023supp1_prod.pdf#page=25" target="_blank" rel="noopener">p.
+25, tertiary outcome</a>; <a
+href="../joi190023supp1_prod.pdf#page=45">p. 45, approved change</a>.
+Quantitative context: <a
+href="../jama_urashima_2019_oi_190023.pdf#page=8">jama_urashima_2019_oi_190023.pdf
+— p. 8, Table 3</a>.</p>
+<p><strong>Source evidence:</strong> The final synopsis includes cancer
+arising after supplementation as an adverse event, not an outcome. The
+final outcome section defines de novo cancer in organs other than the
+primary as tertiary. The amendment separates it from secondary/safety
+and inserts it as tertiary. Main Table 3 counts are 15/8 for
+adherent-until-censoring participants and 16/9 for all randomized
+participants, vitamin D/placebo.</p>
+<p><strong>Reported-versus-comparator:</strong> Not-an-outcome status
+versus tertiary-outcome status for the matched de novo event/site/time
+definition in the final plan.</p>
+<p><strong>Reasoning procedure:</strong> Match event identity and
+final-version context before comparing labels; distinguish conflicting
+wording from the possible legitimate dual classification of an
+event.</p>
+<p><strong>Calculation:</strong> No numerical effect calculation is
+needed. The same named event is excluded from outcome status in one
+final clause and included as tertiary in another. The15/8 and 16/9
+counts use different declared adherence populations and are not
+themselves this mismatch.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A stale
+synopsis, intended not-primary/secondary wording or dual safety/tertiary
+classification could explain the text. Compilation history and exact
+intended final label are missing.</p>
+<p><strong>Mechanical evidence recheck:</strong> All final clauses,
+amendment and context counts were confirmed. The retained label question
+does not establish missed events or erroneous counts. Provenance: NS-F,
+XC09; N151; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> Endpoint status
+determines how quantitatively reported events are described and
+categorized in an evidence table.</p>
+<p><strong>Potential downstream evidence impact:</strong> A reviewer
+could classify the same reported counts as a tertiary efficacy outcome
+or solely a safety event without knowing the intended final designation.
+No estimate or conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Confirm the final approved
+endpoint designation and synopsis compilation; clarify whether
+not-an-outcome meant not-primary/secondary or a broader exclusion;
+preserve the declared analysis populations for any counts extracted.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--initial-n400-versus-amendment-history-of-blank-sample-size" class="candidate-card">C012
+— Initial n=400 versus amendment history of blank sample size</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The supplied initially dated
+PLAN synopsis contains target 400, while its amendment history says the
+sample size was blank at that initial date and fixed to 400 later.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN initial sample-size
+synopsis vs PLAN amendment history for that initial date</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Initial-version target and
+retrospective amendment chronology are both PLAN material in the bound
+bundle. Achieved trial enrollment is not a comparator.</p>
+<p><strong>Classification ambiguity:</strong> Blank may refer
+specifically to the calculation section, or the initial synopsis may
+have been retrospectively completed. Original version compilation is
+unresolved.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190023supp1_prod.pdf#page=2">joi190023supp1_prod.pdf — p. 2,
+initial date2008.12.25</a>; <a
+href="../joi190023supp1_prod.pdf#page=3">p. 3, participant target</a>;
+<a href="../joi190023supp1_prod.pdf#page=14" target="_blank" rel="noopener">p. 14, blank calculation
+headings</a>; <a href="../joi190023supp1_prod.pdf#page=45" target="_blank" rel="noopener">p. 45,
+sample-size amendment history</a>.</p>
+<p><strong>Source evidence:</strong> The initial synopsis gives total
+400, vitamin D 240 and placebo 160. Amendment text says sample size was
+blank at 2008.12.25 and fixed 400 at 2009.10.8. Detailed
+sample-size/calculation headings on p.14 are blank.</p>
+<p><strong>Reported-versus-comparator:</strong> Explicit presence of
+target 400 in the supplied initial synopsis versus the history's
+assertion of absence at its date, conditional on what blank denotes.</p>
+<p><strong>Reasoning procedure:</strong> Align the initial date with the
+amendment account and distinguish a target number from a detailed
+calculation. Blank headings alone are not the candidate.</p>
+<p><strong>Calculation:</strong> 240+160=400. That numerical target is
+present in the initially dated synopsis; its absence is described
+retrospectively. Achieved 417 is a different population/time quantity
+and does not enter this comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+amendment may mean only the calculation section was blank, or the
+initial synopsis may have been updated during translation/consolidation.
+The package lacks the archived dated version needed to resolve
+chronology.</p>
+<p><strong>Mechanical evidence recheck:</strong> Date, target,
+allocation, empty headings and amendment wording were confirmed from
+direct source. The presence/absence question remains conditional on
+section/version meaning. Provenance: NS-B, XC10; N142; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> A planned target and its
+change chronology should have a stable, traceable numerical
+description.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could record an inconsistent original target or sample-size change date.
+No actual power deficit, enrollment error or protocol violation is
+inferred.</p>
+<p><strong>Human verification steps:</strong> Inspect the archived
+2008.12.25 version; establish whether blank refers to the target or only
+its calculation; identify retrospective synopsis updates before
+describing the change history.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c013--dbp1-tg-placebo-count-across-report-documents" class="candidate-card">C013 — DBP1
+TG placebo count across REPORT documents</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> Main Table 1 DBP1 TG placebo
+count 57 differs from the corresponding supplemental year-zero risk
+count 59; whether both displays use the same population must first be
+established.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C</p>
+<p><strong>Compared document roles:</strong> REPORT main article DBP1 TG
+placebo baseline count vs REPORT results supplement year-zero risk
+count</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The baseline table and
+non-plan results figure are different REPORT documents. This is a
+conditional matched-count comparison, not a PLAN discrepancy.</p>
+<p><strong>Classification ambiguity:</strong> Roles and relationship are
+clear; common genotype availability and model-population identity are
+unreported.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_urashima_2019_oi_190023.pdf#page=5">jama_urashima_2019_oi_190023.pdf
+— p. 5, Table 1 DBP1 TG</a>; <a
+href="../joi190023supp2_prod.pdf#page=23">joi190023supp2_prod.pdf — p.
+23, eFigure 3Q DBP1 TG</a>.</p>
+<p><strong>Source evidence:</strong> Main vitamin D 87 (38), placebo 57
+(39). Supplemental risks at 0/2/4/6 years: placebo 59/43/21/6; vitamin D
+87/63/37/9. Effect HR 1.00 (0.44–2.24), P=.99; interaction P=.49.
+Neighboring placebo DBP1 TT82 and GG 9 agree with their matching
+panels.</p>
+<p><strong>Reported-versus-comparator:</strong> Main placebo TG57 versus
+supplemental year-zero TG59, with vitamin D 87 matching across
+displays.</p>
+<p><strong>Reasoning procedure:</strong> Match marker, genotype,
+treatment arm and baseline/year-zero anchor; compare counts only
+conditionally on a shared genotype/model population. Establish
+printed-count correctness and population definitions before asking about
+individual membership.</p>
+<p><strong>Calculation:</strong> 59−57=2. Placebo genotype sums are
+82+57+9=148 in the main table and 82+59+9=150 in the supplement; the
+total difference restates the same TG-cell comparison and is not another
+stable candidate.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+table/plot count transcription may involve no actual additional
+participants. Different genotype availability or model analysis sets
+could also account for the pair. The package lacks a population
+crosswalk and explicit genotype-model fitting sets.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct visual/native
+confirmation established 57 and 59, matching vitamin D 87 and the panel
+identity. Common-population alignment remains conditional. No HR, CI, P
+or interaction error is inferred. Provenance: XC03, SG-B; N071/N197,
+S117/S152; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> A subgroup sample size
+attached to an effect should match its baseline definition or explicitly
+identify a different analysis set.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could attach 57 or59 to the same subgroup estimate without the intended
+population definition. No estimate correction, bias or conclusion change
+is established.</p>
+<p><strong>Human verification steps:</strong> First confirm the correct
+printed counts and whether both displays refer to the same DBP1 TG
+placebo population; identify any different genotype/model exclusions.
+Only if the difference reflects actual membership should a participant
+crosswalk identify the two records. The primary question is which count
+or analysis-set definition explains 57 versus 59.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c014--cdk2-versus-cdx2cdx2-effect-labels" class="candidate-card">C014 — CDK2 versus
+CDX2/Cdx2 effect labels</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> Three supplemental effects are
+labeled CDK2 GG/GA/AA, while their six matching baseline population
+anchors are labeled Cdx2 in the main table and CDX2 rs11568820 in main
+Methods.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C</p>
+<p><strong>Compared document roles:</strong> REPORT main article
+CDX2/Cdx2 identity vs REPORT results supplement CDK2 subgroup labels;
+PLAN corroboration only</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The independent
+conflicting identities are main REPORT CDX2/Cdx2 and results REPORT
+CDK2. PLAN methods/PCR corroborate the main identity; corroboration does
+not create a discrepancy relationship or invoke P_R precedence.</p>
+<p><strong>Classification ambiguity:</strong> Numeric-support NS-G
+previously framed a direct PLAN-versus-REPORT comparison as P_R.
+Exact-source recheck and audit supersede that framing with S_C because
+the PLAN confirms one side of the same REPORT mismatch. No substantive
+mixed discrepancy remains.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_urashima_2019_oi_190023.pdf#page=3">jama_urashima_2019_oi_190023.pdf
+— p. 3, CDX2 rs11568820 Methods</a>; <a
+href="../jama_urashima_2019_oi_190023.pdf#page=5">p. 5, Cdx2
+GG/GA/AA</a>; <a
+href="../joi190023supp2_prod.pdf#page=13">joi190023supp2_prod.pdf — p.
+13, eFigure 3G</a>, <a href="../joi190023supp2_prod.pdf#page=14" target="_blank" rel="noopener">p. 14,
+eFigure 3H</a>, <a href="../joi190023supp2_prod.pdf#page=15" target="_blank" rel="noopener">p. 15,
+eFigure 3I</a>. PLAN corroboration: <a
+href="../joi190023supp1_prod.pdf#page=12">joi190023supp1_prod.pdf — p.
+12</a>, <a href="../joi190023supp1_prod.pdf#page=27" target="_blank" rel="noopener">p. 27</a>, <a
+href="../joi190023supp1_prod.pdf#page=36">p. 36</a>.</p>
+<p><strong>Source evidence:</strong> Main vitamin D/placebo pairs are GG
+89/49, GA 103/77, AA 38/24. Supplemental CDK2 labels have those
+identical year-zero pairs. GG HR 0.69 (0.34–1.38), P=.29, interaction
+.64; GA HR 0.72 (0.39–1.32), P=.28, interaction .63; AA HR 1.82
+(0.48–6.88), P=.38, interaction .19. PLAN text prints CDX2/Cdx2.</p>
+<p><strong>Reported-versus-comparator:</strong> Repeated CDK2 effect
+labels versus CDX2/Cdx2 identity in the matched main genotype
+populations.</p>
+<p><strong>Reasoning procedure:</strong> Align all three genotype
+levels, both arms and year-zero anchors; then compare marker strings and
+the supplied rs identifier. Retain every distinct effect annotation
+while recording one repeated marker-identity rule.</p>
+<p><strong>Calculation:</strong> Six of six arm/genotype counts
+match:89=89,49=49,103=103,77=77,38=38,24=24. The discrepant letter is K
+versus X, not capitalization. No numerical HR recalculation follows from
+the identity comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+repeated label transcription or a genuinely different marker with
+coincidentally identical populations could explain the figures. The
+package does not provide the original SNP-variable-to-figure mapping;
+external nomenclature was not consulted.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct glyph/image
+inspection confirmed CDK2 in all three panels and CDX2/Cdx2 in the main
+and corroborating PLAN locations, with all six matched counts.
+Classification was confirmed S_C, with the earlier P_R framing
+explicitly resolved. Provenance: NS-G, XC04, SG-A;
+N061–N063/N155/N187–N189/N220; S107–S109/S142–S144; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> Effect estimates should
+remain attached to a consistent marker identity across report
+documents.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a genetic subgroup review could attribute the three effects to a
+different marker. No effect estimate is shown to be numerically wrong
+and no downstream attribution error is known to have occurred.</p>
+<p><strong>Human verification steps:</strong> Obtain the original
+SNP-variable/rs-to-figure mapping; confirm which marker generated GG, GA
+and AA effects; inspect all three labels together and retain their
+separate effect estimates and interaction annotations.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c015--age65-labeled-older-than-median-66" class="candidate-card">C015 — Age&gt;65
+labeled older than median 66</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> A supplemental age &gt;65
+subgroup is described as older than the median, while the main report
+gives overall median 66. Strictly older-than 66 and integer age &gt;65
+are different definitions if 66 is the relevant exact median.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C</p>
+<p><strong>Compared document roles:</strong> REPORT main article overall
+age median vs REPORT results supplement older-than-median subgroup
+label</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Overall median and
+supplemental subgroup wording appear in different REPORT documents. This
+is a median-relative label question rather than a PLAN eligibility
+comparison.</p>
+<p><strong>Classification ambiguity:</strong> The exact median
+precision, analysis-specific median and strict-versus-at-or-above
+meaning are unresolved; the fixed cutoff itself is explicitly
+printed.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi190023supp2_prod.pdf#page=31">joi190023supp2_prod.pdf — p.
+31, eFigure 5B caption and risks</a>; <a
+href="../jama_urashima_2019_oi_190023.pdf#page=4">jama_urashima_2019_oi_190023.pdf
+— p. 4, overall median age</a>; <a
+href="../jama_urashima_2019_oi_190023.pdf#page=5">p. 5, Table 1 age
+quartiles</a>. Context: <a
+href="../joi190023supp2_prod.pdf#page=30">joi190023supp2_prod.pdf — p.
+30, age ≤65 panel</a>.</p>
+<p><strong>Source evidence:</strong> Caption older than median (&gt;65
+years), placebo 75/vitamin D 145 at year zero; HR 0.63 (0.37–1.05),
+P=.07, interaction .48. Main overall median age 66. Table age 66–73 and
+74–90 counts are vitamin D 63/82 and placebo 48/27. The companion≤65
+younger-than-median wording is contextual and need not itself conflict
+with median 66.</p>
+<p><strong>Reported-versus-comparator:</strong> Older-than-median
+description for&gt;65 versus reported median 66; the cutoff's counts
+match the main table.</p>
+<p><strong>Reasoning procedure:</strong> Separate numerical cutoff and
+effect from its median-relative description. Compare strict inequalities
+only conditionally on the relevant exact median and integer-age
+convention; reconcile counts with the displayed age quartiles.</p>
+<p><strong>Calculation:</strong> Vitamin D 63+82=145; placebo 48+27=75,
+matching the figure. Integer age &gt;65 includes 66, whereas strict age
+&gt;66 excludes 66. The number of participants exactly 66 and any
+alternative effect estimate are not supplied.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+At-or-above median wording may have been intended; an unrounded or
+analysis-specific median or approximate language could explain the
+phrase. Age precision and intended strictness remain missing. No HR
+error or incorrect fixed cutoff is established.</p>
+<p><strong>Mechanical evidence recheck:</strong> Caption, overall
+median, quartile counts and effect annotation were directly confirmed.
+The label comparison remains conditional on median precision/semantics.
+Provenance: XC11, SG-C; S124/S125/S158; <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>.</p>
+<p><strong>Quality-control relevance:</strong> An age subgroup's fixed
+threshold and its median-relative interpretation should communicate the
+same population definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> A review could
+copy the effect as strictly above-median age when the printed cutoff
+includes the reported median under integer-age semantics. No participant
+reassignment, alternate HR or conclusion change is inferred.</p>
+<p><strong>Human verification steps:</strong> Confirm the relevant
+unrounded median and age convention; determine whether older means
+strictly above or at/above median; preserve the actual &gt;65 cutoff and
+145/75 population anchors when describing HR 0.63.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h1 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h1>
+<p>If a human reviewer confirms a reporting defect, its bounded
+relevance lies in the particular value or definition that could be
+reused: baseline percentages, genotype sample sizes, effect direction,
+marker attribution, numerical subgroup boundaries, timing summaries,
+endpoint status or historical planned dose/target. Such details can
+enter extraction tables, systematic reviews, meta-analyses or guidelines
+even when a primary paper's conclusion remains unchanged.</p>
+<p>This report does not establish that any candidate propagated,
+affected a synthesis or changed a clinical decision. Plan-internal
+historical discrepancies require version context. Conditional rounding
+and scheduling questions should be resolved using their source-grounded
+alternatives before a correction is considered. Counts, effect measures
+and analysis populations must be kept distinct during extraction.</p>
+<h1 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h1>
+<p>The <a href="review_1_6/limitations.md">complete limitations
+record</a> distinguishes interpretation limits from source-unit
+coverage, which is complete.</p>
+<ul>
+<li>No raw participant observations, event/censor records, original
+model code or unrounded analysis output is supplied. Printed comparisons
+cannot establish implemented miscensoring, actual boundary membership or
+changed estimates.</li>
+<li>Row-specific coefficient P tests, CI construction,
+variance/covariance, fitting/tie options and many interaction
+contrasts/statistics are absent. Exact CI/P identities were not assumed
+from convention.</li>
+<li>The article specifies 50 imputation repetitions, but pooled subgroup
+membership, covariance/variance and unrounded fits are unavailable.
+Equal rounded results do not establish copying. DBP1 genotype/model
+population alignment remains conditional.</li>
+<li>Paired ranks, ties, tested sample sizes and exact/asymptotic
+rank-test conventions are absent. Marginal medians and quartiles cannot
+reproduce signed-rank/Mann–Whitney P values or a median of individual
+change ratios.</li>
+<li>Exact annual boxplot statistics, whisker rules, annual denominators
+and numerical curve coordinates are not printed. All figures were
+mapped, but approximate coordinates were not promoted into exact
+arithmetic evidence.</li>
+<li>Percentage denominators/rounding algorithms, historical plan
+compilation, original weighting, intended-versus-realized schedule,
+age-boundary conventions, median precision and original SNP/figure
+mapping remain named candidate-specific questions.</li>
+<li>Historical derivative versions and absolute roots are incompletely
+documented. Current source hashes, physical pages, fresh extraction
+engines and exact-source confirmations anchor this run. Imperfect
+blank-form Unicode did not prevent reading its numerical
+definitions.</li>
+<li>The user authorized the current openai provider. This provider-only
+override leaves fixed models, reasoning efforts and fresh-agent
+requirements intact. The unchanged stock validator hardcodes openrouter;
+its result is retained separately, and only that exact provider-field
+error may be waived in the disclosed provider-aware result. Interactive
+CLI metadata is captured; exact shell launch flags are not independently
+preserved.</li>
+</ul>
+<p>No source-unit omission remains hidden behind these limitations.
+Interpretation gaps do not authorize deleting a stable candidate or
+filling human adjudication fields.</p>
+<h1 id="human-adjudication-checklist">Human Adjudication Checklist</h1>
+<p>For every C001–C015, review the exact PDF locations and both compared
+statements; confirm common population, date, endpoint, contrast and
+numerical convention; distinguish source observation from inferred
+explanation; consider the card's alternatives; and resolve the named
+missing definition using an original record where necessary. Record the
+human decision in the five blank fields rather than treating
+<code>recorded_candidate</code> or <code>retain</code> as an
+adjudication.</p>
+<p>Percentage questions require a documented reporting policy;
+historical PLAN questions require original version context; subgroup
+counts require matching analysis populations; direction and identity
+labels require model/variable reference confirmation. Candidate-specific
+evidence does not itself establish paper-level impact. All fifteen IDs
+remain traceable regardless of the eventual human decision.</p>
+<h1
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h1>
+<h2 id="source-integrity-and-local-tooling">Source integrity and local
+tooling</h2>
+<p>Initial SHA-256 records cover <a
+href="review_1_6/source_hashes_before.sha256">all four direct
+sources</a> and <a
+href="review_1_6/reused_artifact_hashes_before.sha256">all 289 reused
+assets</a>. The exact-source rechecker, statistical pass 2 and auditor
+independently confirmed the preserved source identities; the audit also
+checked all reused-asset and workflow-control hashes. The coordinator's
+<a href="review_1_6/integrity_check.md">final integrity check</a>
+confirms identical <a
+href="review_1_6/source_hashes_after.sha256">source after-hashes</a> and
+<a href="review_1_6/reused_artifact_hashes_after.sha256">reused-asset
+after-hashes</a>. No supplied source, reusable derivative or earlier
+audit artifact was modified by this review.</p>
+<p>The <a href="review_1_6/tooling_record.md">tooling record</a>
+documents Linux and available direct pdfinfo, pdftotext, pdftoppm,
+pdftocairo, Tesseract, LibreOffice and Pandoc. Recorded versions include
+Poppler 26.01.0, Tesseract 5.5.0 CPU and Pandoc 3.7.0.2. Fresh
+native/layout extraction closed all 46 uncovered pages, producing 92
+page derivatives. Candidate recheck used targeted current-source
+rendering and source-matched existing images. Fallback environment
+NOT_NEEDED, packages None, capabilities None, removal NOT_CREATED. No
+global installation, GPU or external network source was used.</p>
+<h2 id="routing-and-validation-provenance">Routing and validation
+provenance</h2>
+<p>The <a href="review_1_6/routing_preflight.md">routing preflight</a>
+records PASS for the fixed role matrix, all nine named presets,
+successful coordinator inference and interactive CLI execution. Actual
+provider is openai under the explicit user instruction to use the
+current provider. The <a
+href="review_1_6/authorized_provider_override.md">authorized override
+record</a> discloses that difference from the unchanged workflow's
+openrouter setting. The workflow-required launch command is recorded
+with the separate limitation that actual shell flags are not
+independently captured.</p>
+<p>Final mechanical checks are recorded in <a
+href="review_1_6/review_validation.json">review_validation.json</a>,
+with the unchanged stock-validator result retained in <a
+href="review_1_6/review_validation_stock.json">review_validation_stock.json</a>.
+The coordinator finalizes timing and hashes, renders HTML, and executes
+validation after complete Markdown assembly; these linked records
+provide the completion status. The authorized wrapper may remove only
+the exact provider-field error when runtime provider, preflight and
+explicit authorization agree; every other validator error remains
+operative. An authorized provider-aware PASS must not be described as an
+unmodified stock-validator PASS.</p>
+<h2 id="agent-execution">Agent execution</h2>
+<p>The <a href="review_1_6/agent_execution_manifest.md">execution
+manifest</a> records every actual agent exactly once, including the
+current coordinator. All specialists are fresh spawns using gpt-6.1-sol;
+ordinary roles use medium effort and statistical/recheck/audit roles use
+high effort. Optional shards preserve their role contracts and do not
+substitute for mandatory stages.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Runtime agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>01a1285e-f91a-72f0-948c-939d2c0abf5e</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>01a12863-2648-7f93-810c-dab43d6aa39d</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>01a12865-6081-79f1-b75e-7630d977e2a1</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>01a12865-82e1-73f0-9079-eba0a604c91d</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>01a12868-d20d-7603-b09d-5a1375e78ae9</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>01a12869-2b05-7b33-8375-ced02e4b8999</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>01a12869-5568-7b03-ad14-728b9a27f354</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>numeric_support_shard</td>
+<td>01a12869-0016-7623-8936-bbcb5dbab14a</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>statistics_pass_1_subgroups_shard</td>
+<td>01a1286a-1a24-7f92-8ff0-5dbc424e0a2b</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>01a12871-ca61-7202-ac02-70750e754741</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>01a12879-149b-7932-b43b-ecb0574c8c9d</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>statistics_pass_2_subgroups_shard</td>
+<td>01a12879-3236-7643-9db8-9feeafeb4227</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>01a1287e-9d22-7262-ab75-67bc0bbc91b9</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>01a12884-74cc-7691-841a-20c995829672</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+</tr>
+</tbody>
+</table>
+<p>The two primary statistical IDs and both subgroup IDs are distinct.
+Each pass's canonical artifact preserves all disjoint parts. Report
+generation owns this complete Markdown; the manifest's mandated primary
+path <code>limitations.md</code> records the report-stage companion
+artifact. The coordinator renders standalone HTML after Markdown
+assembly.</p>
+<h2 id="reproducibility-performance">Reproducibility performance</h2>
+<ul>
+<li><strong>Target basis:</strong> Four native-text PDFs with 96
+physical pages; 50 pages have reusable native/layout text, with
+overlapping normalized/OCR assets and 45 unique rendered source pages.
+Fresh mapping is required for 45 protocol/SAP pages spanning
+initial/final plans, appendices and amendments, plus one administrative
+data-sharing page. No Office conversion or blanket OCR is expected. The
+article, extensive subgroup figures, report/plan comparisons, two fresh
+statistical passes, evidence recheck, audit and report require
+sequential specialist waves after parallel mapping and checks. Reuse
+reduces preprocessing while plan-version and figure relationships retain
+substantive review burden.</li>
+<li><strong>Total source units:</strong> 96</li>
+<li><strong>Fresh-source units:</strong> 46</li>
+<li><strong>Target elapsed minutes:</strong> 35-55</li>
+<li><strong>Started UTC:</strong> 2026-10-11T00:35:42Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T01:20:56Z</li>
+<li><strong>Observed elapsed minutes:</strong> 45.23</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<p>The coordinator fills these final performance values immediately
+after complete Markdown assembly and copies them identically from <a
+href="review_1_6/run_state.md">run_state.md</a>. Local HTML rendering
+and mechanical validation are outside the measured review duration;
+later model-based repairs advance the recorded finish time.</p>
+</body>
+</html>

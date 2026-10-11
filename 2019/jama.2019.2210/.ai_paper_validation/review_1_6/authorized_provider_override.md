@@ -1,0 +1,5 @@
+# User-Authorized Provider Override
+
+The user instructed: "use the current provider". Active runtime metadata in `routing_runtime_evidence.json` establishes provider `openai`. This overrides only the workflow's `openrouter` provider value for the present run. Fixed model IDs, reasoning efforts, fresh-agent stages, coverage, source integrity, candidate preservation, scientific scope, report completeness, and evidence checks remain unchanged.
+
+The supplied `workflow_1_6/scripts/validate_review.py` is preserved unchanged. Its unmodified result will be saved as `review_validation_stock.json`. A shell wrapper reruns that supplied validator and removes only its exact error `Routing preflight must record Provider: openrouter.` when runtime evidence and the preflight both record the authorized actual provider. It preserves all other errors, adds the override as a warning and structured metadata, and reports PASS only when no other errors remain. The canonical `review_validation.json` is therefore validation under the user-authorized provider policy; it is not represented as an unmodified stock-validator PASS.

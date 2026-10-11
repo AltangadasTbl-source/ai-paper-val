@@ -1,0 +1,2342 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--stop-pd-ii-paper-package"
+id="toc-quantitative-quality-control-consistency-review--stop-pd-ii-paper-package">Quantitative
+Quality-Control Consistency Review — STOP-PD II Paper Package</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#document-role-classification-summary"
+id="toc-document-role-classification-summary">Document-Role
+Classification Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a>
+<ul>
+<li><a
+href="#c001--hyperlipidemia-percentages-do-not-reconcile-with-arm-denominators"
+id="toc-c001--hyperlipidemia-percentages-do-not-reconcile-with-arm-denominators">C001
+— Hyperlipidemia percentages do not reconcile with arm
+denominators</a></li>
+<li><a
+href="#c002--placebo-living-arrangement-rows-account-for-60-of-62-participants"
+id="toc-c002--placebo-living-arrangement-rows-account-for-60-of-62-participants">C002
+— Placebo living-arrangement rows account for 60 of 62
+participants</a></li>
+<li><a
+href="#c003--dkefs-color-word-row-carries-a-barnes-scale-footnote"
+id="toc-c003--dkefs-color-word-row-carries-a-barnes-scale-footnote">C003
+— DKEFS color-word row carries a Barnes scale footnote</a></li>
+<li><a
+href="#c004--uku-criterion-includes-score-4-outside-its-stated-range"
+id="toc-c004--uku-criterion-includes-score-4-outside-its-stated-range">C004
+— UKU criterion includes score 4 outside its stated range</a></li>
+<li><a
+href="#c005--hba1c-model-coefficient-uses-mgdl-while-the-outcome-is-percent"
+id="toc-c005--hba1c-model-coefficient-uses-mgdl-while-the-outcome-is-percent">C005
+— HbA1c model coefficient uses mg/dL while the outcome is
+percent</a></li>
+<li><a href="#c006--eleven-of-34-hospitalizations-is-printed-as-323"
+id="toc-c006--eleven-of-34-hospitalizations-is-printed-as-323">C006 —
+Eleven of 34 hospitalizations is printed as 32.3%</a></li>
+<li><a
+href="#c007--total-cholesterol-unadjusted-risk-difference-does-not-match-counts"
+id="toc-c007--total-cholesterol-unadjusted-risk-difference-does-not-match-counts">C007
+— Total-cholesterol unadjusted risk difference does not match
+counts</a></li>
+<li><a
+href="#c008--ldl-unadjusted-risk-difference-does-not-match-counts"
+id="toc-c008--ldl-unadjusted-risk-difference-does-not-match-counts">C008
+— LDL unadjusted risk difference does not match counts</a></li>
+<li><a
+href="#c009--weekly-sas-points-label-and-plotted-trajectories-require-an-estimand-mapping"
+id="toc-c009--weekly-sas-points-label-and-plotted-trajectories-require-an-estimand-mapping">C009
+— Weekly SAS points label and plotted trajectories require an estimand
+mapping</a></li>
+<li><a href="#c010--protocol-acute-recruitment-is-82-versus-98-per-site"
+id="toc-c010--protocol-acute-recruitment-is-82-versus-98-per-site">C010
+— Protocol acute recruitment is 82 versus 98 per site</a></li>
+<li><a
+href="#c011--protocol-mmse-threshold-heading-and-paragraph-name-different-phases"
+id="toc-c011--protocol-mmse-threshold-heading-and-paragraph-name-different-phases">C011
+— Protocol MMSE threshold heading and paragraph name different
+phases</a></li>
+<li><a
+href="#c012--historical-35-changes-denominator-between-protocol-passages"
+id="toc-c012--historical-35-changes-denominator-between-protocol-passages">C012
+— Historical 35% changes denominator between protocol passages</a></li>
+<li><a
+href="#c013--historical-week6-completers-differ-between-race-and-ethnicity-partitions"
+id="toc-c013--historical-week6-completers-differ-between-race-and-ethnicity-partitions">C013
+— Historical Week6 completers differ between race and ethnicity
+partitions</a></li>
+<li><a
+href="#c014--protocol-exposure-range-omits-the-permitted-extended-path"
+id="toc-c014--protocol-exposure-range-omits-the-permitted-extended-path">C014
+— Protocol exposure range omits the permitted extended path</a></li>
+<li><a
+href="#c015--report-hdrs-relapse-threshold-omits-the-plans-five-point-qualifier"
+id="toc-c015--report-hdrs-relapse-threshold-omits-the-plans-five-point-qualifier">C015
+— Report HDRS relapse threshold omits the plan's five-point
+qualifier</a></li>
+<li><a href="#registration-completion"
+id="toc-registration-completion">Registration completion</a></li>
+</ul></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#source-integrity-and-durable-artifacts"
+id="toc-source-integrity-and-durable-artifacts">Source integrity and
+durable artifacts</a></li>
+<li><a href="#routing-tools-and-validation-basis"
+id="toc-routing-tools-and-validation-basis">Routing, tools and
+validation basis</a></li>
+<li><a href="#actual-agent-execution"
+id="toc-actual-agent-execution">Actual agent execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--stop-pd-ii-paper-package">Quantitative
+Quality-Control Consistency Review — STOP-PD II Paper Package</h1>
+<p><strong>Pending Human Adjudication — all 15 stable
+candidates.</strong> Evidence states and suggested review dispositions
+describe mechanical review records. Human reviewers decide validity,
+importance and action; all adjudication fields remain blank.</p>
+<h1 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h1>
+<p>Workflow 1.6 reviewed all <strong>63 physical PDF pages across four
+supplied sources</strong> and registered <strong>15 distinct
+quality-control candidates</strong>. Fourteen have the evidence state
+<code>recorded_candidate</code>, including conditional observations
+awaiting named definitions. One, C009, has
+<code>record_input_error</code>: its initial graphical comparison
+assumes a model-to-plot estimand alignment that the package does not
+establish. C009 remains fully documented for human discussion.</p>
+<p>The observations concern printed percentages and totals, scale
+footnotes and units, prospective targets and durations, historical
+denominator framing, and a report-versus-plan numerical endpoint
+definition. The report does not establish incorrect trial conclusions.
+Small preventable reporting defects can matter when numbers or
+definitions are copied into downstream evidence extraction, but actual
+propagation, conclusion change and harm are not demonstrated here.</p>
+<p>Discovery restarted from supplied evidence without a finding limit.
+All assigned stable IDs are preserved. Separate total-cholesterol and
+LDL outcomes remain C007 and C008 even though their displayed inputs
+coincide. Current-run extraction and calculation repairs are documented
+separately in the quality audit and do not become paper candidates.</p>
+<h1 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h1>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied source and truthful first-page link</th>
+<th>Content role</th>
+<th style="text-align: right;">Physical pages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_flint_2019_oi_190079.pdf#page=1">jama_flint_2019_oi_190079.pdf</a></td>
+<td>REPORT: main article</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a
+href="../joi190079supp1_prod.pdf#page=1">joi190079supp1_prod.pdf</a></td>
+<td>PLAN: protocol, data analytic plan and pharmacotherapy appendix;
+historical data retain PLAN role</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a
+href="../joi190079supp2_prod.pdf#page=1">joi190079supp2_prod.pdf</a></td>
+<td>REPORT: cover and nine results eFigures</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td><a
+href="../joi190079supp3_prod.pdf#page=1">joi190079supp3_prod.pdf</a></td>
+<td>PLAN: prospective data-access conditions; administrative role
+ambiguity retained</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>Two REPORT sources contain 20 pages; two PLAN sources contain 43
+pages. No Office, workbook, CSV, participant-level dataset or additional
+direct source is supplied. Full inventories are <a
+href="review_1_6/source_inventory.md">source inventory</a> and <a
+href="review_1_6/evidence_asset_inventory.md">evidence assets</a>.</p>
+<p>The eligible reused inventory contains 187 immutable assets: 143
+USABLE and 44 PARTIAL. Partial figure text is complemented by
+source-matched rendered images, so the union covers every source page.
+Legacy native/rendered evidence originated from PyMuPDF, with historical
+versions unavailable; existing OCR originated from rapidocr-cuda and was
+reused only as text. Current review did not invoke a GPU. Protocol and
+administrative native/layout text were source-matched using Poppler
+26.01.0. Extraction-only maps supplied locations, without importing old
+candidate selection, classifications, checker decisions or reports.</p>
+<p>Every registered source observation was subsequently checked against
+its exact supplied PDF page. The fresh evidence rechecker extracted 24
+distinct pages and visually inspected seven fresh renders. Text and OCR
+remained transcription aids; PDF content was final authority. <a
+href="review_1_6/verification/evidence_recheck.md">Evidence recheck</a>
+records commands and page-specific facts.</p>
+<h1 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h1>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Newly mapped units</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">42</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">63</td>
+<td>COMPLETE</td>
+</tr>
+</tbody>
+</table>
+<p>Reusable plus fresh-required units equals total for each source;
+mapped equals total. Zero fresh-required units refers to initial
+extraction availability, not absence of new scientific mapping or
+direct-source confirmation. Covers, references, historical plan results
+and administrative pages were inspected and explicitly mapped, including
+units with no applicable quantitative result. <a
+href="review_1_6/source_coverage.md">Source coverage</a> and <a
+href="review_1_6/coverage_manifest.md">coverage manifest</a> preserve
+disjoint assignments and one artifact path per row.</p>
+<p>The scope prioritizes arithmetic, denominators, inferential
+reporting, cross-document numeric matching, measure labels and scales,
+and rate-versus-count consistency. Population and analysis-unit
+questions qualify only when connected to a concrete printed quantitative
+relationship. Broad methodology, clinical judgment, novelty, misconduct,
+raw-data auditing and external literature were excluded. Missing model
+details alone did not create candidates. Coherent finite-precision
+display-zero P values are excluded under
+<code>DISPLAY_ZERO_NOT_CANDIDATE</code>; no supplied display-zero result
+generated a card.</p>
+<h1 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h1>
+<p>The main mapper reconstructed 113 grouped quantitative match records
+plus definitions and 37 displayed inferential relationships. Support
+mappers covered all 53 remaining source pages, including prospective
+quantities, historical results and all nine result figures. The numeric
+checker processed 400 individually registered relationships N001–N400 in
+four disjoint origin shards of 96, 83, 105 and 116 records. Cross-source
+checking matched 70 families X001–X070. These lane counts overlap and
+must not be summed as a count of unique scientific relationships.</p>
+<p>Both statistical passes independently covered all
+<strong>108</strong> registered relationships S001–S108: 37 main
+displayed inferential results, 25 historical/background results, nine
+graphical relationships, 12 power scenarios and 25 model or
+interpretation relationships. Pass 1 and pass 2 used different fresh
+high-effort agents. Pass 2 read the full cross-lane ledger and
+exact-source recheck facts; it emitted no genuinely new candidate
+requiring appended registration.</p>
+<p>Checks included interval ordering and containment, positive ratio
+scales, direction and reference groups, matched repetitions, compatible
+labelled statistic-to-tail calculations, power-table bounds and matched
+scenario directions, and graphical unit/time/model correspondence.
+Holm-adjusted P values were distinguished from nominal tails
+reconstructed from marginal intervals. Model slopes were distinguished
+from raw changes and endpoint secants; historical and prospective
+populations remained separate. No unsupported covariance, degrees of
+freedom, link function, exact CI construction or simulation model was
+imposed.</p>
+<p>Durable records: <a
+href="review_1_6/extraction/main_quantitative_evidence.md">main map</a>,
+<a href="review_1_6/extraction/support_quantitative_evidence.md">support
+map</a>, <a
+href="review_1_6/relationships/numeric_relationship_inventory.md">numeric
+inventory</a>, <a
+href="review_1_6/checkers/numeric_consistency.md">numeric checks</a>, <a
+href="review_1_6/checkers/cross_source_consistency.md">cross-source
+checks</a>, <a
+href="review_1_6/statistics/relationship_inventory.md">statistical
+inventory</a>, <a href="review_1_6/checkers/statistical_pass_1.md">pass
+1</a>, <a href="review_1_6/checkers/statistical_pass_2.md">pass 2</a>,
+and <a href="review_1_6/quality/evidence_quality_audit.md">complete
+quality audit</a>.</p>
+<h1 id="document-role-classification-summary">Document-Role
+Classification Summary</h1>
+<p>Content determines document role. REPORT presents study results; PLAN
+includes prospective operational material and historical/background
+results inside a plan. Primary relationship precedence is
+<code>P_R</code> &gt; <code>P_P</code> &gt; <code>S_C</code> &gt;
+<code>S_W</code>. Corroboration alone does not create an additional
+discrepancy relationship.</p>
+<table>
+<thead>
+<tr>
+<th>Primary relationship</th>
+<th>Definition</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S_W</td>
+<td>Within one REPORT document</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td>S_C</td>
+<td>Between separate REPORT documents</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>P_P</td>
+<td>Solely within PLAN material or plan versions</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>P_R</td>
+<td>REPORT versus PLAN; does not establish a protocol violation</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td style="text-align: right;">15</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Derived review domain</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>statistical_results</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>report_internal_inconsistency</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>plan_material</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>protocol_report</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">15</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Evidence state</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>recorded_candidate</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td>record_input_error</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>repaired_residual</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">15</td>
+</tr>
+</tbody>
+</table>
+<p>Suggested review dispositions are mechanical pre-fills:
+<code>recorded_candidate</code> and <code>repaired_residual</code> map
+to <code>retain</code>; <code>record_input_error</code> maps to
+<code>discuss</code>; <code>not_reproduced</code> maps to
+<code>exclude</code>. This ledger therefore has 14 retain and one
+discuss pre-fill, totaling 15. None is a human adjudication. C005 has
+both S_C and S_W, with S_C taking precedence. C004's PLAN and C011's
+REPORT only corroborate one side. C009's model description supports
+interpretation and adds no separate S_W discrepancy.</p>
+<h1 id="candidate-index">Candidate Index</h1>
+<table>
+<thead>
+<tr>
+<th>Stable ID</th>
+<th>Category</th>
+<th>Relationship type</th>
+<th>Review domain</th>
+<th>Evidence state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_W</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_W</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>record_input_error</td>
+</tr>
+<tr>
+<td>C010</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C011</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C012</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C013</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C014</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr>
+<td>C015</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_R</td>
+<td>protocol_report</td>
+<td>recorded_candidate</td>
+</tr>
+</tbody>
+</table>
+<h1 id="candidate-evidence-cards">Candidate Evidence Cards</h1>
+<p>Classification strings below reproduce the <a
+href="review_1_6/candidate_ledger.md">stable ledger</a> exactly. Each
+calculation is a diagnostic comparison under its stated rule, not a
+prescribed final correction.</p>
+<h2
+id="c001--hyperlipidemia-percentages-do-not-reconcile-with-arm-denominators" class="candidate-card">C001
+— Hyperlipidemia percentages do not reconcile with arm denominators</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The hyperlipidemia percentages
+do not reproduce the printed arm denominators.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Table1 arm
+headers vs hyperlipidemia cells</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> One REPORT table; S_W;
+denominator category derives statistical_results.</p>
+<p><strong>Classification ambiguity:</strong> Unprinted row denominator
+or arm assignment.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=5">Main PDF p.5, Table
+1</a>, REPORT column headers and hyperlipidemia row.</p>
+<p><strong>Source evidence:</strong> Olanzapine n=64, hyperlipidemia 18
+(29.0%); placebo n=62, 19 (29.7%). No row-specific n or denominator
+footnote is supplied.</p>
+<p><strong>Reported-versus-comparator:</strong> The hyperlipidemia
+percentages do not reproduce the printed arm denominators. The specific
+printed inputs and comparator are reproduced above; the numerical or
+label comparison follows below.</p>
+<p><strong>Reasoning procedure:</strong> Printed counts, percentages and
+headers conflict under the stated column denominators. Opposite
+denominators reproduce the numbers diagnostically, without establishing
+a production mechanism.</p>
+<p><strong>Calculation:</strong> 100×18/64=28.125%→28.1%;
+100×19/62=30.645161%→30.6%. Printed percentages lie outside the ±0.05
+percentage-point nearest-rounding tolerance. Using opposite denominators
+yields 18/62→29.0% and 19/64→29.7%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+reduced olanzapine denominator 62 could explain one cell; placebo 29.7%
+with count 19 would require about 64, exceeding its n 62. Determine
+intended counts, arm placement and denominators. No correction is
+assigned.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C001 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+baseline hyperlipidemia prevalence, its arm assignment or denominator
+supports accurate, reproducible extraction. The question concerns the
+printed record and its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of baseline
+hyperlipidemia prevalence, its arm assignment or denominator into a
+systematic review or evidence table. No actual propagation, clinical
+harm or conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: A reduced olanzapine
+denominator 62 could explain one cell; placebo 29.7% with count 19 would
+require about 64, exceeding its n 62. Determine intended counts, arm
+placement and denominators. No correction is assigned. Record the human
+decision without treating the mechanical pre-fill as an
+adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c002--placebo-living-arrangement-rows-account-for-60-of-62-participants" class="candidate-card">C002
+— Placebo living-arrangement rows account for 60 of 62 participants</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The three displayed placebo
+living-arrangement counts total 60 under a header of 62; interpretation
+depends on exhaustiveness and missingness.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Table1 placebo
+header vs living-arrangement categories</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Internal REPORT
+total/missingness comparison; S_W; statistical_results.</p>
+<p><strong>Classification ambiguity:</strong> Whether categories were
+intended as exhaustive.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=5">Main PDF p.5, Table
+1</a>, REPORT placebo header and living-arrangement block.</p>
+<p><strong>Source evidence:</strong> Placebo n 62; with others 49
+(79.0%), alone 10 (16.1%), senior residence 1 (1.6%). No other/missing
+category or reduced n is printed. Olanzapine 46+17+1=64 is a
+corroborating control.</p>
+<p><strong>Reported-versus-comparator:</strong> The three displayed
+placebo living-arrangement counts total 60 under a header of 62;
+interpretation depends on exhaustiveness and missingness. The specific
+printed inputs and comparator are reproduced above; the numerical or
+label comparison follows below.</p>
+<p><strong>Reasoning procedure:</strong> The listed category counts do
+not cover the header population. A complete partition is conditional
+because exhaustiveness and missingness are not explicitly defined.</p>
+<p><strong>Calculation:</strong> 49+10+1=60; deficit 62−60=2; displayed
+percentages sum 96.7%. Two participants are 3.225806% of 62. Individual
+percentages use 62 correctly; displayed rounding cannot remove the
+integer deficit.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Are the
+two participants missing/unlisted, was a count misprinted, and is 62 the
+intended percentage denominator? An intentionally incomplete category
+block could explain it, but needs a stated missingness definition.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C002 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+baseline living-arrangement distribution and missingness supports
+accurate, reproducible extraction. The question concerns the printed
+record and its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of baseline
+living-arrangement distribution and missingness into a systematic review
+or evidence table. No actual propagation, clinical harm or conclusion
+change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Are the two participants
+missing/unlisted, was a count misprinted, and is 62 the intended
+percentage denominator? An intentionally incomplete category block could
+explain it, but needs a stated missingness definition. Record the human
+decision without treating the mechanical pre-fill as an
+adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c003--dkefs-color-word-row-carries-a-barnes-scale-footnote" class="candidate-card">C003
+— DKEFS color-word row carries a Barnes scale footnote</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The DKEFS color-word row is
+attached to a footnote describing a different construct and range.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Table2 DKEFS
+row marker vs scale footnotes</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> One REPORT table; S_W;
+measure category derives report_internal_inconsistency.</p>
+<p><strong>Classification ambiguity:</strong> Intended marker
+placement.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=6">Main PDF p.6, Table
+2</a>, REPORT DKEFS color-word row and footnotes h/i.</p>
+<p><strong>Source evidence:</strong> DKEFS color-word condition 3 means
+8.6 (2.9) and 7.6 (2.8), superscript i. Footnote i names Barnes global
+akathisia range 0–5, higher worse. Footnote h defines both DKEFS tasks,
+scaled 1–19, higher better. The Barnes row lacks i.</p>
+<p><strong>Reported-versus-comparator:</strong> The DKEFS color-word row
+is attached to a footnote describing a different construct and range.
+The specific printed inputs and comparator are reproduced above; the
+numerical or label comparison follows below.</p>
+<p><strong>Reasoning procedure:</strong> A printed marker-to-measure
+conflict, not proof the cognitive values are incorrect. A displaced
+marker is a possible explanation.</p>
+<p><strong>Calculation:</strong> A row's measure/range must match its
+attached footnote. Means 8.6 and 7.6 exceed attached maximum 5 by 3.6
+and 2.6; rounding cannot explain it. Both are inside DKEFS1–19.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Does h
+cover both DKEFS tasks, and is i intended for Barnes? Inspect original
+superscripts and intended scale associations.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C003 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the cognitive measure, its score range or direction supports accurate,
+reproducible extraction. The question concerns the printed record and
+its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the
+cognitive measure, its score range or direction into a systematic review
+or evidence table. No actual propagation, clinical harm or conclusion
+change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Does h cover both DKEFS tasks,
+and is i intended for Barnes? Inspect original superscripts and intended
+scale associations. Record the human decision without treating the
+mechanical pre-fill as an adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c004--uku-criterion-includes-score-4-outside-its-stated-range" class="candidate-card">C004
+— UKU criterion includes score 4 outside its stated range</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The UKU operational criterion
+includes score 4 although the same paragraph defines an item range
+ending at 3.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main UKU item range
+vs adverse-effect criterion</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Main range versus main
+rule is the discrepancy, S_W; corroborating PLAN does not create P_R.
+Domain report_internal_inconsistency.</p>
+<p><strong>Classification ambiguity:</strong> Unprinted recoding.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_flint_2019_oi_190079.pdf#page=4">Main PDF p.4,
+tolerability paragraph</a>, REPORT item range and operational rule. <a
+href="../joi190079supp1_prod.pdf#page=15">Protocol PDF p.15</a> is PLAN
+corroboration only.</p>
+<p><strong>Source evidence:</strong> UKU range 0–3 on each of 48 items;
+adverse effect requires a 2-point increase or a score 3 or 4 with an
+increase from baseline. The plan names score 3.</p>
+<p><strong>Reported-versus-comparator:</strong> The UKU operational
+criterion includes score 4 although the same paragraph defines an item
+range ending at 3. The specific printed inputs and comparator are
+reproduced above; the numerical or label comparison follows below.</p>
+<p><strong>Reasoning procedure:</strong> Internal scale/rule
+inconsistency. The extra unattainable branch may be operationally
+redundant, so adverse-event counts are not asserted wrong.</p>
+<p><strong>Calculation:</strong> Under declared integer codes {0, 1, 2,
+3}, criterion 4 exceeds maximum 3 by 1. No disclosed recoding supplies
+4.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Was
+there recoding to 1–4, surplus wording, or a different intended
+criterion? Confirm implemented codes and threshold.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C004 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the adverse-effect coding rule supports accurate, reproducible
+extraction. The question concerns the printed record and its stated
+definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the
+adverse-effect coding rule into a systematic review or evidence table.
+No actual propagation, clinical harm or conclusion change is
+established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Was there recoding to 1–4,
+surplus wording, or a different intended criterion? Confirm implemented
+codes and threshold. Record the human decision without treating the
+mechanical pre-fill as an adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c005--hba1c-model-coefficient-uses-mgdl-while-the-outcome-is-percent" class="candidate-card">C005
+— HbA1c model coefficient uses mg/dL while the outcome is percent</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The HbA1c daily coefficient is
+labeled mg/dL, while its named outcome is labeled percent in the main
+table and result figure.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C, S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main HbA1c
+coefficient vs main Table4 and REPORT results eFigure8 units</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Substantive within-main
+S_W and main-to-results-report S_C unit comparisons; S_C precedence;
+report_internal_inconsistency.</p>
+<p><strong>Classification ambiguity:</strong> Unprinted
+transformation.</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../jama_flint_2019_oi_190079.pdf#page=1">Main PDF p.1
+abstract</a>, <a href="../jama_flint_2019_oi_190079.pdf#page=7" target="_blank" rel="noopener">p.7
+secondary outcomes</a>, <a
+href="../jama_flint_2019_oi_190079.pdf#page=8">p.8 Table 4</a>; REPORT
+<a href="../joi190079supp2_prod.pdf#page=9" target="_blank" rel="noopener">Results supplement p.9,
+eFigure 8</a>.</p>
+<p><strong>Source evidence:</strong> Daily HbA1c coefficient−0.0002
+mg/dL, 95%CI−0.0021 to 0.0016, adjusted P=.99 in narrative; abstract
+repeats mg/dL. Table 4 labels HbA1c, % and figure axis HbA1c(%),
+baseline around 5.9.</p>
+<p><strong>Reported-versus-comparator:</strong> The HbA1c daily
+coefficient is labeled mg/dL, while its named outcome is labeled percent
+in the main table and result figure. The specific printed inputs and
+comparator are reproduced above; the numerical or label comparison
+follows below.</p>
+<p><strong>Reasoning procedure:</strong> Exact printed units conflict;
+the response transformation, if any, is not supplied. Figure slopes are
+optional diagnostic corroboration only.</p>
+<p><strong>Calculation:</strong> A slope for a percentage response
+retains percentage-point/time units absent a stated response conversion;
+mass concentration mg/dL is a different dimension. No numeric conversion
+is prescribed. Matching raw means to model coefficients is unnecessary
+for this printed-unit comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Was a
+separate concentration-transformed response modeled, or what unit was
+intended for the daily estimate and CI? Raw change and model slope are
+different estimands but that alone does not explain a response-unit
+change.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C005 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the HbA1c daily coefficient and its outcome unit supports accurate,
+reproducible extraction. The question concerns the printed record and
+its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the HbA1c
+daily coefficient and its outcome unit into a systematic review or
+evidence table. No actual propagation, clinical harm or conclusion
+change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Was a separate
+concentration-transformed response modeled, or what unit was intended
+for the daily estimate and CI? Raw change and model slope are different
+estimands but that alone does not explain a response-unit change. Record
+the human decision without treating the mechanical pre-fill as an
+adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c006--eleven-of-34-hospitalizations-is-printed-as-323" class="candidate-card">C006 —
+Eleven of 34 hospitalizations is printed as 32.3%</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The explicit fraction 11 of 34
+does not produce 32.3% under nearest one-decimal rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main hospitalization
+count fraction vs printed percentage</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> S_W within REPORT;
+denominator category derives statistical_results.</p>
+<p><strong>Classification ambiguity:</strong> Unstated display
+convention.</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../jama_flint_2019_oi_190079.pdf#page=8">Main PDF p.8, opening
+tolerability continuation</a>; <a
+href="../jama_flint_2019_oi_190079.pdf#page=7">p.7 Table 3</a>
+corroborates numerator 11.</p>
+<p><strong>Source evidence:</strong> Placebo 11 (32.3%) of 34 required
+psychiatric hospitalization because of relapse; adjacent olanzapine 6
+(46.2%) of 13.</p>
+<p><strong>Reported-versus-comparator:</strong> The explicit fraction 11
+of 34 does not produce 32.3% under nearest one-decimal rounding. The
+specific printed inputs and comparator are reproduced above; the
+numerical or label comparison follows below.</p>
+<p><strong>Reasoning procedure:</strong> Explicit count fraction and
+percent differ under nearest rounding. Truncation could yield 32.3 but
+is not stated and differs from the adjacent display convention.</p>
+<p><strong>Calculation:</strong> 100×11/34=32.352941%→32.4% under
+nearest one-decimal rounding. Printed 32.3 differs 0.052941 percentage
+point, beyond±0.05. 6/13=46.153846%→46.2%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Determine whether truncation was intentional or which printed
+count/percent should reconcile. No clinical consequence is inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C006 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the hospitalization proportion among participants who relapsed supports
+accurate, reproducible extraction. The question concerns the printed
+record and its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the
+hospitalization proportion among participants who relapsed into a
+systematic review or evidence table. No actual propagation, clinical
+harm or conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Determine whether truncation
+was intentional or which printed count/percent should reconcile. No
+clinical consequence is inferred. Record the human decision without
+treating the mechanical pre-fill as an adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c007--total-cholesterol-unadjusted-risk-difference-does-not-match-counts" class="candidate-card">C007
+— Total-cholesterol unadjusted risk difference does not match
+counts</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The independently labeled
+total-cholesterol unadjusted difference does not reproduce its displayed
+counts under nearest rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Table5
+total-cholesterol counts vs unadjusted difference</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> One REPORT table, S_W;
+statistical_results.</p>
+<p><strong>Classification ambiguity:</strong> Unprinted
+estimator/display rule. This remains distinct from LDL C008 because the
+outcome identity differs.</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../jama_flint_2019_oi_190079.pdf#page=9">Main PDF p.9, Table 5
+total-cholesterol row</a>, arm headers and unadjusted-difference
+label.</p>
+<p><strong>Source evidence:</strong> Olanzapine 9 (14.1%)/64, placebo 6
+(9.7%)/62; absolute unadjusted difference 4.3 percentage points, 95%CI−8
+to 17.2. Qualifying threshold 240 mg/dL and above baseline.</p>
+<p><strong>Reported-versus-comparator:</strong> The independently
+labeled total-cholesterol unadjusted difference does not reproduce its
+displayed counts under nearest rounding. The specific printed inputs and
+comparator are reproduced above; the numerical or label comparison
+follows below.</p>
+<p><strong>Reasoning procedure:</strong> Arithmetic from explicit
+unadjusted counts differs from printed point estimate; the separate CI
+is ordered and contains the estimate.</p>
+<p><strong>Calculation:</strong> 100×(9/64−6/62)=4.385080645 percentage
+points→4.4. Printed 4.3 lies 0.085080645 point away, beyond±0.05;
+printed 14.1−9.7=4.4. No CI method is assumed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Was
+there deliberate truncation, a different denominator or a different
+estimator despite the unadjusted label? Identify the
+denominator/rounding rule used for this outcome.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C007 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the total-cholesterol incidence risk difference supports accurate,
+reproducible extraction. The question concerns the printed record and
+its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the
+total-cholesterol incidence risk difference into a systematic review or
+evidence table. No actual propagation, clinical harm or conclusion
+change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Was there deliberate
+truncation, a different denominator or a different estimator despite the
+unadjusted label? Identify the denominator/rounding rule used for this
+outcome. Record the human decision without treating the mechanical
+pre-fill as an adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c008--ldl-unadjusted-risk-difference-does-not-match-counts" class="candidate-card">C008
+— LDL unadjusted risk difference does not match counts</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The independently labeled LDL
+unadjusted difference does not reproduce its displayed counts under
+nearest rounding.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Table5 LDL
+counts vs unadjusted difference</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Internal REPORT
+arithmetic, S_W; statistical_results.</p>
+<p><strong>Classification ambiguity:</strong> Unprinted
+estimator/display rule. Shared numerical inputs do not erase the
+different LDL result identity.</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../jama_flint_2019_oi_190079.pdf#page=9">Main PDF p.9, Table 5 LDL
+row</a>, arm headers and unadjusted-difference label.</p>
+<p><strong>Source evidence:</strong> Olanzapine 9 (14.1%)/64, placebo 6
+(9.7%)/62; difference 4.3 percentage points, 95%CI−8 to 17.2; LDL
+threshold 160 mg/dL and above baseline.</p>
+<p><strong>Reported-versus-comparator:</strong> The independently
+labeled LDL unadjusted difference does not reproduce its displayed
+counts under nearest rounding. The specific printed inputs and
+comparator are reproduced above; the numerical or label comparison
+follows below.</p>
+<p><strong>Reasoning procedure:</strong> This separately extractable LDL
+point estimate fails the same explicit count-difference rule; no
+participant identity or CI convention is inferred.</p>
+<p><strong>Calculation:</strong> 100×(9/64−6/62)=4.385080645 percentage
+points→4.4, outside 4.3±0.05. Printed group percentages subtract to 4.4.
+Identical counts with cholesterol are plausible and not an independent
+duplication candidate.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Which
+LDL-specific denominators, estimator and rounding rule produced 4.3
+under the printed unadjusted heading?</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C008 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the separately labeled LDL incidence risk difference supports accurate,
+reproducible extraction. The question concerns the printed record and
+its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the
+separately labeled LDL incidence risk difference into a systematic
+review or evidence table. No actual propagation, clinical harm or
+conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Which LDL-specific
+denominators, estimator and rounding rule produced 4.3 under the printed
+unadjusted heading? Record the human decision without treating the
+mechanical pre-fill as an adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c009--weekly-sas-points-label-and-plotted-trajectories-require-an-estimand-mapping" class="candidate-card">C009
+— Weekly SAS points label and plotted trajectories require an estimand
+mapping</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The initial comparison of a
+weekly SAS coefficient with an approximate graphical secant assumes an
+unsupported estimand alignment. A residual reporting discrepancy cannot
+be settled from the supplied definitions.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C</p>
+<p><strong>Compared document roles:</strong> REPORT main weekly SAS
+points label vs REPORT results eFigure9 score trajectories</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> record_input_error</p>
+<p><strong>Suggested review disposition:</strong> discuss</p>
+<p><strong>Classification rationale:</strong> Main label versus separate
+REPORT result figure is S_C; main model wording only supports
+interpretation and adds no independently established S_W. Domain
+report_internal_inconsistency.</p>
+<p><strong>Classification ambiguity:</strong> Approximate figure and
+unprinted link/estimand mapping.</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../jama_flint_2019_oi_190079.pdf#page=7">Main PDF p.7,
+extrapyramidal result</a>; REPORT <a
+href="../joi190079supp2_prod.pdf#page=10">Results supplement p.10,
+eFigure 9</a>. <a href="../jama_flint_2019_oi_190079.pdf#page=4" target="_blank" rel="noopener">Main
+PDF p.4, Poisson model</a> continuing on <a
+href="../jama_flint_2019_oi_190079.pdf#page=5">p.5</a> is a model
+locator/supporting definition, not an independent conflicting
+coefficient.</p>
+<p><strong>Source evidence:</strong> Weekly SAS change contrast 0.022
+points, 95%CI0.009–0.036, adjustedP=.009; figure Week 0–36, SAS Total
+Score. Approximate means O.56→.73, P.685→.40. Model Poisson with
+overdispersion; link/back-transformation unprinted.</p>
+<p><strong>Reported-versus-comparator:</strong> The initial comparison
+of a weekly SAS coefficient with an approximate graphical secant assumes
+an unsupported estimand alignment. A residual reporting discrepancy
+cannot be settled from the supplied definitions. The specific printed
+inputs and comparator are reproduced above; the numerical or label
+comparison follows below.</p>
+<p><strong>Reasoning procedure:</strong> Exact points label and axes
+versus approximate graphical diagnostic. Direct-source recheck cannot
+establish identical estimand and additive interpretation; the registered
+numerical comparison therefore has evidence state record_input_error and
+suggested review disposition discuss. A residual label discrepancy
+cannot be settled from supplied definitions. No significance or clinical
+conclusion is recomputed.</p>
+<p><strong>Calculation:</strong> Conditional additive-score diagnostic:
+[(0.73−0.56)−(0.40−0.685)]/36=.012639 points/week; ±.02 for each
+endpoint permits about.010417–.014861, separate from printed rounding
+interval.0215–.0225. Constant additive.022 over 36 weeks yields.792
+points versus approximate plotted difference-of-changes.455. Log
+diagnostic [ln(.73/.56)−ln(.40/.685)]/36≈.0223/week; it is not proof of
+a supplied link.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Is.022
+a link-scale coefficient, a marginal derivative at a particular time, or
+another transformed contrast? Obtain exact plotted means/link/reference
+population to reconcile the points label. Do not infer a log link merely
+from Poisson convention.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh recheck found
+the coefficient, figure and model wording, but did not establish
+equality between an additive endpoint secant and the reported model
+estimand. This supersedes earlier lane wording suggesting an established
+mismatch. No log link, wrong coefficient, incorrect significance or
+proven residual unit defect is inferred. See the corresponding C009
+record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the scale and estimand assigned to the SAS coefficient supports
+accurate, reproducible extraction. The question concerns the printed
+record and its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the scale
+and estimand assigned to the SAS coefficient into a systematic review or
+evidence table. No actual propagation, clinical harm or conclusion
+change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Is.022 a link-scale
+coefficient, a marginal derivative at a particular time, or another
+transformed contrast? Obtain exact plotted means/link/reference
+population to reconcile the points label. Do not infer a log link merely
+from Poisson convention. Record the human decision without treating the
+mechanical pre-fill as an adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c010--protocol-acute-recruitment-is-82-versus-98-per-site" class="candidate-card">C010
+— Protocol acute recruitment is 82 versus 98 per site</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The plan prints 82 acute
+recruits per site in one passage and 98 per site in its target
+table.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN recruitment paragraph
+vs PLAN Table4 and overall target</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> All discrepancies within
+one PLAN bundle, P_P; plan_material.</p>
+<p><strong>Classification ambiguity:</strong> Possible embedded target
+revision without version boundary.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190079supp1_prod.pdf#page=21">Protocol PDF p.21, lines
+995–997</a>; <a href="../joi190079supp1_prod.pdf#page=17" target="_blank" rel="noopener">p.17 Table
+4</a>; <a href="../joi190079supp1_prod.pdf#page=7" target="_blank" rel="noopener">p.7 overview/Figure
+1</a>, with p.8 corroborating recruitment target.</p>
+<p><strong>Source evidence:</strong> Four sites each 82 patients; Table
+4 each 98 acute recruits and 44 randomized; overall 392 acute and 176
+randomized.</p>
+<p><strong>Reported-versus-comparator:</strong> The plan prints 82 acute
+recruits per site in one passage and 98 per site in its target table.
+The specific printed inputs and comparator are reproduced above; the
+numerical or label comparison follows below.</p>
+<p><strong>Reasoning procedure:</strong> Two printed prospective acute
+targets conflict if the recruitment population is identical. No
+comparison to actual 269/126 recruitment is made.</p>
+<p><strong>Calculation:</strong> 4×98=392; 4×82=328; difference 64 total
+or 16/site. Acute and randomized targets are not interchanged.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Is 82 a
+version-specific target or subgroup? Locate a supplied
+amendment/population qualifier that reconciles 82 with 98/392, if
+present.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C010 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the prospective acute recruitment target supports accurate, reproducible
+extraction. The question concerns the printed record and its stated
+definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the
+prospective acute recruitment target into a systematic review or
+evidence table. No actual propagation, clinical harm or conclusion
+change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Is 82 a version-specific target
+or subgroup? Locate a supplied amendment/population qualifier that
+reconciles 82 with 98/392, if present. Record the human decision without
+treating the mechanical pre-fill as an adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c011--protocol-mmse-threshold-heading-and-paragraph-name-different-phases" class="candidate-card">C011
+— Protocol MMSE threshold heading and paragraph name different
+phases</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The plan attaches the MMSE
+threshold of 24 to different phase-entry labels.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN MMSE threshold heading
+vs PLAN operational phase labels</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN heading versus PLAN
+operational paragraph, P_P; plan_material. Main report agrees with the
+operational paragraph and is corroboration, not a P_R discrepancy.</p>
+<p><strong>Classification ambiguity:</strong> Heading shorthand or an
+unprinted second gate.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190079supp1_prod.pdf#page=9">Protocol PDF p.9, line 438 and
+lines 439–444</a>, continuing line 445 on <a
+href="../joi190079supp1_prod.pdf#page=10">p.10</a>; <a
+href="../joi190079supp1_prod.pdf#page=7">p.7 operational threshold</a>;
+<a href="../joi190079supp1_prod.pdf#page=11" target="_blank" rel="noopener">p.11 Table 1 footnoteH</a>
+corroborates assessment time.</p>
+<p><strong>Source evidence:</strong> Heading MMSE≥24 to enter
+Stabilization; paragraph MMSE&lt;24 at end Stabilization excludes RCT,
+with case exceptions. Overview assigns≥24 to RCT entry. Standard
+Stabilization is 8 weeks.</p>
+<p><strong>Reported-versus-comparator:</strong> The plan attaches the
+MMSE threshold of 24 to different phase-entry labels. The specific
+printed inputs and comparator are reproduced above; the numerical or
+label comparison follows below.</p>
+<p><strong>Reasoning procedure:</strong> The printed cutoff value is the
+same, but its phase label changes from entry into Stabilization in the
+heading to entry into the RCT after Stabilization in the operational
+paragraph. No score or observed eligibility count is inferred
+incorrect.</p>
+<p><strong>Calculation:</strong> Same numeric gate has different
+entry-phase labels; Stabilization entry and RCT entry are ordinarily 8
+weeks apart. This is a concrete threshold label comparison, not an
+asserted difference in scores, eligibility counts or study-design
+quality.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Is the
+cutoff for Stabilization entry, RCT entry or two separate gates? Which
+operational definition reconciles heading, paragraph and scheduled
+end-Stabilization MMSE?</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C011 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the phase-specific MMSE eligibility cutoff supports accurate,
+reproducible extraction. The question concerns the printed record and
+its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the
+phase-specific MMSE eligibility cutoff into a systematic review or
+evidence table. No actual propagation, clinical harm or conclusion
+change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Is the cutoff for Stabilization
+entry, RCT entry or two separate gates? Which operational definition
+reconciles heading, paragraph and scheduled end-Stabilization MMSE?
+Record the human decision without treating the mechanical pre-fill as an
+adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c012--historical-35-changes-denominator-between-protocol-passages" class="candidate-card">C012
+— Historical 35% changes denominator between protocol passages</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> Two plan passages attach the
+historical 35% value to different denominator identities.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN historical 35%
+fraction-of-relapses wording vs PLAN participant-risk framing</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Historical/background
+content in one PLAN remains PLAN, P_P; plan_material.</p>
+<p><strong>Classification ambiguity:</strong> Historical denominator or
+second distinct estimate unprinted.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190079supp1_prod.pdf#page=4">Protocol PDF p.4, lines
+175–177</a>; <a href="../joi190079supp1_prod.pdf#page=15" target="_blank" rel="noopener">p.15, lines
+728–732</a>.</p>
+<p><strong>Source evidence:</strong> Historical Aronson account says
+approximately 35% of relapses occurred following antipsychotic
+discontinuation; power framing assumes 35% participant relapse after
+discontinuation and calls it the same reported rate from that study. The
+planned 35%−15%=20 point contrast itself reconciles.</p>
+<p><strong>Reported-versus-comparator:</strong> Two plan passages attach
+the historical 35% value to different denominator identities. The
+specific printed inputs and comparator are reproduced above; the
+numerical or label comparison follows below.</p>
+<p><strong>Reasoning procedure:</strong> Printed denominator/framing
+difference, with symbolic diagnostic. The package does not provide the
+underlying historical study's full data.</p>
+<p><strong>Calculation:</strong> With D=relapses following
+discontinuation, R=all relapses and E=discontinuers at risk, the first
+wording is D/R≈.35 and the latter participant-risk identity is D/E≈.35.
+Different denominators cannot be treated as the same measure without a
+supplied mapping. No R/D/E counts are given and no historical risk is
+reconstructed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Did the
+historical study report both quantities, did the first passage compress
+its denominator, or do R and E have an explicit identity? Clarify what
+35% represents in the supplied protocol account; no external literature
+is used.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C012 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the historical relapse quantity used to explain a power assumption
+supports accurate, reproducible extraction. The question concerns the
+printed record and its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the
+historical relapse quantity used to explain a power assumption into a
+systematic review or evidence table. No actual propagation, clinical
+harm or conclusion change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Did the historical study report
+both quantities, did the first passage compress its denominator, or do R
+and E have an explicit identity? Clarify what 35% represents in the
+supplied protocol account; no external literature is used. Record the
+human decision without treating the mechanical pre-fill as an
+adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c013--historical-week6-completers-differ-between-race-and-ethnicity-partitions" class="candidate-card">C013
+— Historical Week6 completers differ between race and ethnicity
+partitions</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The historical Week 6
+percentages imply different integer completion totals across two
+apparently matched population partitions.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN historical Table5 race
+vs ethnicity Week6 completion partitions</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Same historical table
+within PLAN, P_P; plan_material.</p>
+<p><strong>Classification ambiguity:</strong> Unprinted alternative
+denominators or unmatched completion classification.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190079supp1_prod.pdf#page=29">Protocol PDF p.29, Table
+5</a>, historical STOP-PD randomized n and Week 6 completion
+columns.</p>
+<p><strong>Source evidence:</strong> Race Asian 12/75.0%, Black
+29/75.9%, White 218/74.8%; ethnicity Hispanic 30/80.0%, non-Hispanic
+229/73.8%. Both denominator partitions sum 259. Historical, not current
+continuation-trial results.</p>
+<p><strong>Reported-versus-comparator:</strong> The historical Week 6
+percentages imply different integer completion totals across two
+apparently matched population partitions. The specific printed inputs
+and comparator are reproduced above; the numerical or label comparison
+follows below.</p>
+<p><strong>Reasoning procedure:</strong> Denominators, percentages and
+common endpoint are printed; inferred integer numerators and totals are
+explicitly derived. Exhaustive/mutually exclusive matching of the two
+axes is supported by their totals, but raw flags are not supplied.</p>
+<p><strong>Calculation:</strong> Nearest one-decimal intervals permit
+unique integer completers 9, 22, 163 versus 24, 169; sums 194 versus
+193. Row count interval width.001 n≤.229 admits at most one integer.
+Difference 1/259=.386100 percentage point. Week 12 counts 6+15+121 and
+16+126 both sum 142.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Do both
+axes partition identical participants and use the printed n as
+completion denominator? Obtain raw completer counts and any
+missingness/definition difference; no single row is declared
+incorrect.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C013 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the historical Week 6 completion total supports accurate, reproducible
+extraction. The question concerns the printed record and its stated
+definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the
+historical Week 6 completion total into a systematic review or evidence
+table. No actual propagation, clinical harm or conclusion change is
+established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Do both axes partition
+identical participants and use the printed n as completion denominator?
+Obtain raw completer counts and any missingness/definition difference;
+no single row is declared incorrect. Record the human decision without
+treating the mechanical pre-fill as an adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c014--protocol-exposure-range-omits-the-permitted-extended-path" class="candidate-card">C014
+— Protocol exposure range omits the permitted extended path</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The printed maximum pre-RCT
+sertraline duration does not explicitly accommodate the conditionally
+permitted extended pathway.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN pre-RCT exposure range
+vs PLAN phase durations and allowed extension</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> All compared prospective
+statements within PLAN, P_P; plan_material.</p>
+<p><strong>Classification ambiguity:</strong> Ordinary-course summary
+versus exception-inclusive range and medication clock.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190079supp1_prod.pdf#page=41">Protocol PDF p.41, lines
+2069–2070</a>; <a href="../joi190079supp1_prod.pdf#page=10" target="_blank" rel="noopener">p.10 Table
+1</a>; <a href="../joi190079supp1_prod.pdf#page=11" target="_blank" rel="noopener">p.11
+footnotesA/D</a>; <a href="../joi190079supp1_prod.pdf#page=7" target="_blank" rel="noopener">p.7 lines
+326–332</a>; <a href="../joi190079supp1_prod.pdf#page=40" target="_blank" rel="noopener">p.40
+stabilization dosing</a>. Pp.13–14 and 25 corroborate ordinary
+duration/continuation.</p>
+<p><strong>Source evidence:</strong> Minimum 10/max 20 weeks sertraline
+beforeRCT; acute 4–12 weeks after starting study medication; ordinary
+stabilization 8 weeks on treatment; p.7 allows two additional weekly
+stabilization visits for near-remitters not yet meeting final
+criteria.</p>
+<p><strong>Reported-versus-comparator:</strong> The printed maximum
+pre-RCT sertraline duration does not explicitly accommodate the
+conditionally permitted extended pathway. The specific printed inputs
+and comparator are reproduced above; the numerical or label comparison
+follows below.</p>
+<p><strong>Reasoning procedure:</strong> Printed range, components and
+extension versus conditional arithmetic, not actual exposure data or a
+protocol violation.</p>
+<p><strong>Calculation:</strong> Ordinary sequential course 4–12+8=12–20
+weeks. If the explicitly permitted extension follows 12 acute weeks with
+continuous sertraline, 12+8+2=22 weeks, exceeding printed max 20 by 2.
+Minimum 10 could be a conservative lower bound compatible with≥12, so
+that component is weaker and conditional.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Does
+p.41 summarize only the ordinary course, excluding authorized extension,
+or use another medication clock? Where is the qualification stated? Is
+10 a loose lower bound or a permitted 2-week acute course? Confirm
+continuous exposure along the extended path.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C014 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the permitted pre-randomization medication timeline supports accurate,
+reproducible extraction. The question concerns the printed record and
+its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the
+permitted pre-randomization medication timeline into a systematic review
+or evidence table. No actual propagation, clinical harm or conclusion
+change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Does p.41 summarize only the
+ordinary course, excluding authorized extension, or use another
+medication clock? Where is the qualification stated? Is 10 a loose lower
+bound or a permitted 2-week acute course? Confirm continuous exposure
+along the extended path. Record the human decision without treating the
+mechanical pre-fill as an adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c015--report-hdrs-relapse-threshold-omits-the-plans-five-point-qualifier" class="candidate-card">C015
+— Report HDRS relapse threshold omits the plan's five-point
+qualifier</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The report’s HDRS relapse
+threshold omits the plan’s numerical five-point-rise qualifier; applied
+patient rules are unknown.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> REPORT relapse HDRS
+threshold vs PLAN threshold and five-point-rise qualifier</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> REPORT numeric endpoint
+label versus PLAN criterion, P_R; protocol_report.</p>
+<p><strong>Classification ambiguity:</strong> Summary wording versus
+operative amended/full rule.</p>
+<h2 id="registration-completion">Registration completion</h2>
+<p>All fifteen distinct discovered candidates have stable IDs. All are
+Pending Human Adjudication. The completed fresh recheck preserved every
+ID, confirmed content-based roles and primary/all relationships, and
+assigned exactly one allowed evidence state to each. Suggested review
+disposition is derived mechanically, never an AI adjudication. All
+ledger source links are truthful physical PDF locators. Missing
+definitions are candidate-specific limitations rather than
+source-coverage gaps.</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../jama_flint_2019_oi_190079.pdf#page=4">Main PDF p.4, primary
+outcome</a>; PLAN <a href="../joi190079supp1_prod.pdf#page=12" target="_blank" rel="noopener">Protocol
+PDF p.12, lines 556–557</a>. <a
+href="../jama_flint_2019_oi_190079.pdf#page=6">Main PDF p.6</a> supplies
+13/64 and 34/62 relapse results whose endpoint is defined, not differing
+counts.</p>
+<p><strong>Source evidence:</strong> Report relapse requires≥1 listed
+criterion, including 17-itemHDRS≥18. Plan adds mean absolute increase 5
+points on at leastone visit relative toRCT entry. Near-remission
+baseline may beHDRS11–15.</p>
+<p><strong>Reported-versus-comparator:</strong> The report’s HDRS
+relapse threshold omits the plan’s numerical five-point-rise qualifier;
+applied patient rules are unknown. The specific printed inputs and
+comparator are reproduced above; the numerical or label comparison
+follows below.</p>
+<p><strong>Reasoning procedure:</strong> Exact numeric endpoint
+definitions differ; whether applied rules or observed 13/34 counts
+differ cannot be established from supplied aggregate data.</p>
+<p><strong>Calculation:</strong> Score≥18 alone differs from score≥18
+plus rise≥5 for baseline 14–15. Illustrative 15→18 rises 3 and meets the
+report's printed threshold but not the plan qualifier; this is an
+example, not an observed participant. At baseline≤13, ≥18 entails≥5
+rise.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Was the
+report compressed while the full plan rule was applied, was an amendment
+disclosed, or did the operative rule change? Determine the actual rule
+and whether any person met≥18 without≥5 rise and without another relapse
+criterion. No violation or conclusion change is asserted.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found the cited source locations, matched the printed inputs and
+comparator, and independently reproduced the comparison under the stated
+rule. The named missing definitions remain unresolved; the quality audit
+confirmed the evidence record and classification. See the corresponding
+C015 record in <a href="review_1_6/verification/evidence_recheck.md">the
+direct-source recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<p><strong>Quality-control relevance:</strong> Consistent reporting of
+the numerical relapse endpoint definition supports accurate,
+reproducible extraction. The question concerns the printed record and
+its stated definitions.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence extractor could copy an inconsistent version of the
+numerical relapse endpoint definition into a systematic review or
+evidence table. No actual propagation, clinical harm or conclusion
+change is established.</p>
+<p><strong>Human verification steps:</strong> Reopen each linked
+physical PDF page and compare the original headers, row labels,
+footnotes and definitions. Reproduce the calculation under its explicit
+assumptions, then resolve this question: Was the report compressed while
+the full plan rule was applied, was an amendment disclosed, or did the
+operative rule change? Determine the actual rule and whether any person
+met≥18 without≥5 rise and without another relapse criterion. No
+violation or conclusion change is asserted. Record the human decision
+without treating the mechanical pre-fill as an adjudication.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h1 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h1>
+<p>Reported values and definitions can pass from articles into
+extraction forms, systematic reviews, meta-analyses, guidelines and
+later publications. Small preventable defects can therefore be worth
+checking even when they do not change a paper’s conclusions. Here the
+bounded possibilities are copying a percentage, point estimate,
+denominator, score range, unit, prospective target or endpoint
+definition without its necessary qualification.</p>
+<p>The package provides no evidence that these observations have
+propagated or caused harm. C009 particularly requires resolution of the
+comparison’s unsupported alignment before a residual reporting issue can
+be established. PLAN-internal historical or prospective observations
+must not be represented as mistakes in the current randomized trial’s
+observed results.</p>
+<h1 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h1>
+<p>All source units were mapped; there is no unresolved
+scientific-coverage gap. Remaining limits concern the definitions needed
+to interpret or reconstruct particular relationships:</p>
+<ul>
+<li>Table-specific denominators, category exhaustiveness and
+missingness; intended superscript associations and implemented score
+coding; intended HbA1c response transformation and coefficient
+unit.</li>
+<li>Display rounding or truncation and the exact unadjusted estimator
+behind Table 5 point estimates. Missing interval algorithms do not
+support a separate CI claim.</li>
+<li>Exact SAS figure coordinates, link function, coefficient scale,
+marginal or conditional interpretation, reference population and
+back-transformation. Its additive graphical secant is not supplied as
+the coefficient estimand.</li>
+<li>Plan version or target population for recruitment; the phase at
+which MMSE 24 applies; underlying historical relapse denominators;
+historical completion numerators, partition identity and
+percentage-denominator definitions.</li>
+<li>Medication-exposure clock, extension applicability and whether the
+20-week maximum summarizes the ordinary course. A 10-week lower bound
+alone can be conservative; no actual 22-week exposure is
+documented.</li>
+<li>The operative relapse rule and any amendment or compressed
+reporting. Hypothetical baseline-score examples distinguish definitions,
+but patient-level event adjudications and other relapse branches are
+unavailable.</li>
+</ul>
+<p>Statistical reconstruction also lacks exact Cox test/CI construction,
+mixed-model covariance and degrees of freedom, full multiplicity-family
+mapping, paired subset definitions, pattern-mixture weights and
+power-simulation generators. Historical t-test sidedness, dispersion
+definitions, effective sample sizes and variance estimators are not
+fully specified. Main testing is explicitly two-sided. Conventional
+Welch or Wald diagnostics cannot replace missing supplied definitions;
+crude-risk NNT is not automatically the reported HR-based NNT. Band
+overlap is not an interaction test, and plotted means are
+approximate.</p>
+<p>Historical extraction/render engine versions are partly unavailable;
+not every prose page has a reusable render. Direct source coverage
+nevertheless closes every page. Administrative DOC-004 has a bounded
+PLAN-versus-disclosure role ambiguity and enters no candidate. No
+external literature, raw data or unpublished model output was obtained.
+Full limitations and each candidate-specific human question are
+preserved in <a href="review_1_6/limitations.md">limitations</a>.</p>
+<h1 id="human-adjudication-checklist">Human Adjudication Checklist</h1>
+<p>For each permanent ID, inspect original sources, confirm the
+population/time/outcome and denominator or scale identity, reproduce
+only the applicable source-grounded rule, and resolve its named
+alternatives. C009 needs an estimand mapping before its initial
+diagnostic comparison can support a residual question. Distinguish
+source-printed numbers from inferred integer counts, graphical readings
+and illustrative eligibility examples.</p>
+<p>Review document roles and relationship precedence, then decide
+validity, importance and action independently of the suggested pre-fill.
+Enter initials and notes in the five blank fields, retaining every
+stable ID and the supporting record. Any correction or author query is
+for human decision; this report assigns none.</p>
+<h1
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h1>
+<h2 id="source-integrity-and-durable-artifacts">Source integrity and
+durable artifacts</h2>
+<p>SHA-256 baselines were recorded before content inspection. The audit
+confirmed all four source hashes and all 187 reused hashes unchanged.
+The coordinator performs the final before/after comparison following
+report assembly. Full source identities:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>SHA-256 baseline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jama_flint_2019_oi_190079.pdf</td>
+<td>f3480ac424a06c1a7747c03a4e9523b1b391ed918562f402c84ad516f85cf05f</td>
+</tr>
+<tr>
+<td>joi190079supp1_prod.pdf</td>
+<td>68aaf0377b631a63a25438ed4d101acb8f19a75ce9c5a9243ab5d75718a06b8f</td>
+</tr>
+<tr>
+<td>joi190079supp2_prod.pdf</td>
+<td>648b40127a28c8b919ee94918cd879a6cd8001810a4d5db61394d6fa0bae6d53</td>
+</tr>
+<tr>
+<td>joi190079supp3_prod.pdf</td>
+<td>d335f3d8b8ca330abc569a368e62e561f588309d621b89a9af1dd64ab6c7e199</td>
+</tr>
+</tbody>
+</table>
+<p>Full checksum records: <a
+href="review_1_6/source_hashes_before.sha256">source before</a>, <a
+href="review_1_6/source_hashes_after.sha256">source after</a>, <a
+href="review_1_6/reused_artifact_hashes_before.sha256">reused assets
+before</a> and <a
+href="review_1_6/reused_artifact_hashes_after.sha256">reused assets
+after</a>. Reused evidence was immutable. New derivative engines,
+commands and sources are recorded in the asset inventory.
+Editorial/transcription repairs to current-run maps, locators and
+diagnostics are documented in the quality audit, without altering
+supplied sources or permanent candidates.</p>
+<h2 id="routing-tools-and-validation-basis">Routing, tools and
+validation basis</h2>
+<p>The actual provider is <strong>openai</strong>, expressly authorized
+by the user in place of the configured <strong>openrouter</strong>
+provider. All fixed <code>gpt-6.1-sol</code> model and effort
+requirements were retained. <a
+href="review_1_6/routing_preflight.md">Routing preflight</a> passes the
+user-amended provider requirement, with coordinator inference confirmed
+and all nine named presets checked. Runtime provenance supports
+<code>INTERACTIVE_CLI</code>; <code>codex --approve-for-me</code> is the
+required launch-command field, not independently observed command-line
+arguments.</p>
+<p>The original bundled validator remains unchanged. Its result in <a
+href="review_1_6/validation/original_review_validation.json">original
+validation</a> applies the original provider contract. <a
+href="review_1_6/review_validation.json">Canonical validation</a>
+applies the sole user-authorized provider exception through a run-local
+copy changing only the expected provider string to openai. All other
+checks remain identical. Readers can inspect both actual local outputs;
+the original provider requirement is not represented as satisfied. <a
+href="review_1_6/validation/provider_exception.md">Provider-exception
+documentation</a> records the sole diff and helper hashes.</p>
+<p>Direct local tools were available: Poppler 26.01.0 for PDF
+information/text/rendering, Tesseract 5.5.0, LibreOffice and Pandoc
+3.7.0.2. No fallback environment was needed or created; no global
+packages were installed. The coordinator renders standalone HTML with
+embedded CSS and a table of contents, records tooling completion, and
+runs final local validation. See <a
+href="review_1_6/tooling_record.md">tooling record</a>.</p>
+<h2 id="actual-agent-execution">Actual agent execution</h2>
+<p>All 15 actual agents appear below: coordinator, ten mandatory
+specialist stages and four extra disjoint mapping/numeric shards. Each
+specialist stage used a fresh distinct runtime. Both statistical agents,
+the rechecker and auditor used high effort; other specialists used
+medium effort. The coordinator used high effort.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>01a12860-cec4-7f22-bd5d-22a027867aab</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>01a12862-ddad-7a52-8190-b8730a1cfe2e</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>source_inventory.md</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>01a12865-5284-7fd3-8b3b-5e3162260ca4</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>01a12865-7761-7463-94e9-82162135e72a</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_plan_second_shard</td>
+<td>01a12865-9452-7e81-82ac-345be361fa05</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/parts/support_plan_second.md</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>01a1286a-6645-7930-8d1b-45686ffab070</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr>
+<td>numeric_report_last_shard</td>
+<td>01a1286a-814f-7b12-a00b-e90ab6064dbe</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/numeric_report_last.md</td>
+</tr>
+<tr>
+<td>numeric_plan_first_shard</td>
+<td>01a1286a-9bc9-7b92-a717-2777aa292dbf</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/numeric_plan_first.md</td>
+</tr>
+<tr>
+<td>numeric_plan_last_shard</td>
+<td>01a1286a-b71f-73c2-90f9-22d2fd35e362</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/numeric_plan_last.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>01a1286a-d824-7281-a62a-c73b450e930c</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>01a1286a-f59b-7f01-8800-04b775b11953</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>01a12872-9b72-7460-86ab-0229340c9851</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>01a12878-d12a-7d81-a8cf-041b2a0b54f7</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>01a1287d-2993-7d60-a161-d4cc0ebd7edd</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>01a12881-d989-7242-8223-53733c47a31a</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reproducibility-performance">Reproducibility performance</h2>
+<p>Timing fields below are copied from <a
+href="review_1_6/run_state.md">run state</a>. The coordinator finalizes
+the finish time immediately after complete Markdown assembly. Local HTML
+rendering and validation are excluded; any later model-based repair
+advances the recorded finish time.</p>
+<ul>
+<li><strong>Target basis:</strong> Four PDFs contain 63 pages: 10
+article pages, 42 protocol/data analytic and pharmacotherapy-plan pages,
+10 results-supplement pages including nine vector plots, and one
+operational data-sharing page. All 63 pages have usable reusable
+evidence; zero pages require fresh extraction. The review still requires
+new complete mapping of article tables, historical and prospective plan
+quantities, and graphical results, with parallel main/support mapping,
+three parallel checking lanes, distinct two-pass statistical review,
+exact-source recheck, quality audit, and report generation. Allow 30-45
+minutes for these agent waves and targeted visual confirmation; this
+target is based on reusable coverage and relationship complexity as well
+as source-unit count.</li>
+<li><strong>Total source units:</strong> 63</li>
+<li><strong>Fresh-source units:</strong> 0</li>
+<li><strong>Target elapsed minutes:</strong> 30-45</li>
+<li><strong>Started UTC:</strong> 2026-10-11T00:35:03Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T01:14:01Z</li>
+<li><strong>Observed elapsed minutes:</strong> 38.967</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+</body>
+</html>

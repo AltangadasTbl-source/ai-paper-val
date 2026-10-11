@@ -1,0 +1,7 @@
+cat(R.version.string, '\n')
+t_bound <- 0.20/sqrt((1.05^2+0.55^2)/2)
+cat('C050 conservative t bound:', format(t_bound,digits=12), '\n')
+cat('C050 conservative df=1 two-sided P bound:', format(2*pt(-t_bound,df=1),digits=12), '\n')
+cat('C057 Fisher 21/107 versus 15/109:', format(fisher.test(matrix(c(21,86,15,94),nrow=2,byrow=TRUE))$p.value,digits=12),'\n')
+cat('C057 Fisher 21/107 versus 15/108:', format(fisher.test(matrix(c(21,86,15,93),nrow=2,byrow=TRUE))$p.value,digits=12),'\n')
+for(p0 in c(.17,.25)) cat('C052 source-formula power p1=.42 p0=',p0,' n1=58 n0=38:',format(pnorm(abs(.42-p0)/sqrt(p0*(1-p0)/38+.42*(1-.42)/58)-qnorm(.975)),digits=12),'\n')

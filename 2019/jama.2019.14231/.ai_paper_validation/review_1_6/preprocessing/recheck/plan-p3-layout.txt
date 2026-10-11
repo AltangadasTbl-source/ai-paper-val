@@ -1,0 +1,57 @@
+                                                                                                            3
+
+                         b) Randomly assign each patient a single date from the collection of index
+                              dates. This will serve as the assigned date for non-surgical patients.
+                         c) Exclude patients meeting any of the following at the assigned date:
+                                   • Last follow-up on or before the assigned date
+                                   • Already dead or died within 30 days after the assigned date
+                                               • Serves as a proxy for potential terminally-ill patients
+                                   • Does not have T2DM (HbA1c < 6.5% and not on diabetes
+                                        medication)
+                                   • Age < 18 or Age > 80 years
+                                   • BMI < 30
+                                               • The closest measurement prior will be used. If none are
+                                                 available, the closest measurement in absolute time will
+                                                 be used.
+                                   • History of liver, heart or lung transplant
+                                   • ED admission within 5 days prior
+                                   • Active cancer/GI cancer diagnosis code within one (1) year prior
+                                   • History of severe heart failure
+                                               • Any ejection fraction <20% prior
+       The patients identified in (1) and (2) will form the final study cohort in which subsequent
+       analysis will be performed. The algorithm described in (2) will be replicated 5 times for a
+       sensitivity analysis to assess the variability of baseline characteristics of the non-surgical patients
+       at the assigned date, as well as overall model effect estimates and prediction accuracy (See blow,
+       Sensitivity Analyses). At this point, the index date and assigned date will collectively be referred
+       to as the index date.
+
+               (3) Matching Process
+               Each non-surgical patient will be matched with a propensity-score (‘logit’ link) to five (5)
+               surgical patients based on the index date, age at index date, BMI at index date
+               (categorized as 30-35, 35-40, 40+), gender, insulin use, location (Ohio versus Florida),
+               diabetes complications (composite of coronary artery disease, heart failure,
+               cerebrovascular disease, peripheral vascular disease, neuropathy, nephropathy, or being
+               on dialysis) with the MatchIt package in R.1
+
+II.   Identifying patients with T2DM
+      A T2DM prevalence cohort has been previously created using the modified Kho algorithm2 and
+      with the following specifications:
+
+                    Based upon ICD9/10 codes, patients with type 1 diabetes mellitus (T1DM) and
+                    T2DM were identified. Codes for ketoacidosis were classified as T1DM code.
+
+                    The algorithm was used to calculate the earliest date when a patient record contained
+                    any of the following combinations:
+                             • T2DM code in the EHR & T2DM medication
+                             • T2DM code in the EHR & abnormal glucose*
+                             • T2DM medication & abnormal glucose*
+                             • T2DM code reordered twice in the EHR & outpatient insulin
+                             • Insulin preceded by T2DM medication
+                    *Abnormal glucose: Random glucose >200 mg/dL or fasting glucose >125 mg/dl.
+                    The earliest date that any of the five (5) conditions above were met was documented
+                    as the date in which the patient first met the criteria for T2DM in the Cleveland
+                    Clinic system.
+
+      This cohort contains approximately N = 287438 patients whose T2DM dates range from 1/1/1998
+      through 12/31/2017.
+

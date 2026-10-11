@@ -1,0 +1,3 @@
+# Runtime metadata capture method
+
+Each actual UUID in agent_execution_manifest.md has a selected session_meta copy and the last available turn_context model/effort record captured from its local CLI session log. Capture excludes provider credentials and conversation content. Full-history spawned logs begin with inherited parent turn contexts; those first entries are not the specialist's own routing. The last context reflects the executing specialist's required preset. Actual source metadata identifies the parent UUID, role, CLI and openai provider. Mandatory stages each have distinct runtime UUIDs. Final capture is repeated after the final specialist finishes.
