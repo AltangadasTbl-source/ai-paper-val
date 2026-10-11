@@ -1,0 +1,168 @@
+[runtime]
+platform = "local-cpu"
+supported_platforms = ["linux", "darwin", "win32"]
+autonomous = true
+agent_first = true
+ask_before_execution = false
+
+[parallel]
+enabled = true
+max_specialists = 6
+specialist_return_max_lines = 8
+
+[context]
+max_normalized_text_chars_per_shard = 200000
+max_rendered_pages_per_shard = 32
+max_relationships_per_shard = 120
+max_candidates_per_recheck_shard = 60
+
+[performance]
+target_policy = "package-specific-after-inventory"
+reference_total_source_units = 102
+reference_fresh_source_units = 81
+reference_observed_minutes = 49.4
+reference_comparable_target_minutes = "35-50"
+reference_is_universal_default = false
+hard_timeout = false
+specialist_default_reasoning_effort = "medium"
+specialist_high_reasoning_roles = [
+  "qc162_statistical_consistency_reviewer",
+  "qc162_inclusion_screener",
+  "qc162_evidence_rechecker",
+  "qc162_quality_control_auditor",
+]
+statistical_pass_agents = "fresh-distinct"
+avoid_redundant_agent_waves = true
+timing_artifact = ".ai_paper_validation/review_1_6_2/run_state.md"
+agent_execution_artifact = ".ai_paper_validation/review_1_6_2/agent_execution_manifest.md"
+
+[model_routing]
+provider = "current-session"
+provider_preflight_value = "CURRENT_SESSION"
+provider_configuration_scope = "none"
+coordinator_model = "gpt-6.1-sol"
+coordinator_reasoning_effort = "high"
+ordinary_specialist_model = "gpt-6.1-sol"
+ordinary_specialist_reasoning_effort = "medium"
+statistical_specialist_model = "gpt-6.1-sol"
+statistical_specialist_reasoning_effort = "high"
+screening_recheck_audit_specialist_model = "gpt-6.1-sol"
+screening_recheck_audit_specialist_reasoning_effort = "high"
+single_model_for_all_roles = true
+default_run_model = "gpt-6.1-sol"
+run_model_selection = "default gpt-6.1-sol; if unavailable or another model is wanted, the user names an exact model ID"
+run_model_preflight_fields = ["Run model", "Run model source"]
+startup_command = "codex --approve-for-me"
+authentication = "user-level-config"
+named_agent_preset_count = 10
+mandatory_specialist_stages = 11
+ignore_base_user_config = false
+coordinator_inference_required = true
+enforcement = "project-model-plus-custom-agent-presets"
+preflight_artifact = ".ai_paper_validation/review_1_6_2/routing_preflight.md"
+coordinator_model_source = "project-config"
+named_subagent_model_source = "custom-agent-preset"
+named_agent_presets_required = true
+fallback_requires_explicit_model_override = true
+forbid_dynamic_model_alias = true
+mandatory_stages_require_fresh_distinct_agents = true
+
+[review]
+candidate_limit = "none"
+report_all_candidates = true
+ai_adjudication = false
+tone = "quality-control"
+primary_focus = "counts-denominators; estimate-test-logic; statistical-method-logic; planned-vs-reported-statistical-design"
+expected_candidate_count = "none"
+severity_grading = false
+suggested_disposition = false
+forbidden_issue_words = ["error", "mistake", "defect", "erroneous", "wrong", "incorrect"]
+allowed_statistical_terms = ["standard error", "type I error", "type II error", "measurement error", "sampling error", "error bar"]
+exclude_display_zero_p_value_only = true
+p_zero_candidate_requires_independent_contradiction = true
+
+[screening]
+required = true
+screener = "qc162_inclusion_screener"
+artifact = ".ai_paper_validation/review_1_6_2/screening/inclusion_screen.md"
+checkers_self_screen = true
+inclusion_criteria = ["reproduced", "in-focus", "not-resolved-by-immediate-context", "bears-on-interpretation-or-extraction"]
+screened_out_reason_codes = ["NOT_REPRODUCED", "ROUNDING_OR_DISPLAY_PRECISION", "NOTATION_OR_TYPOGRAPHY", "TERMINOLOGY_OR_WORDING", "MODEL_VERSUS_CRUDE", "CONTEXT_RESOLVES", "CONDITIONAL_OR_UNREPORTED", "PERIPHERAL_COMPARISON", "OUT_OF_FOCUS", "DUPLICATE_OF_INCLUDED"]
+doubt_rule = "screen-out for wording, terminology, or symbols; register for printed numbers, intervals, P values, counts, or planned-versus-reported elements"
+display_precision_rule = "half-unit-interval-arithmetic, then relative discrepancy above 0.05 qualifies"
+always_register = ["interval-versus-P-or-test", "printed-value-slip-changing-reading", "counts-within-one-display", "result-not-reproduced-by-reproducing-method", "planned-versus-reported-outcomes-and-analyses"]
+repeated_pattern = "one-candidate-with-all-locations"
+cross_document_rule = "tiered; peripheral comparisons screened out unless they change a primary or key secondary result, an analysis-population size, or a planned decision rule"
+pass_2_findings_screened_by = "fresh-distinct-inclusion-screener"
+
+[classification]
+required = true
+document_roles = ["REPORT", "PLAN"]
+relationship_types = ["P_R", "P_P", "S_C", "S_W"]
+relationship_precedence = ["P_R", "P_P", "S_C", "S_W"]
+other_type_allowed = false
+role_assignment_basis = "content-not-file-name"
+assigned_at = "candidate_registration"
+confirmed_by = "qc162_evidence_rechecker"
+audited_by = "qc162_quality_control_auditor"
+review_domains = ["statistical_results", "report_internal_inconsistency", "protocol_report", "plan_material"]
+review_domain_is_category = true
+review_domain_rule = "P_R=protocol_report; P_P=plan_material; S_C/S_W=statistical_results or report_internal_inconsistency by content"
+evidence_states = ["reproduced", "reproduced_after_transcription_correction", "not_reproduced"]
+inclusion_audit_values = ["CONFIRMED", "QUESTIONED"]
+ledger_table_required = true
+
+[evidence]
+reuse_existing_extractions = true
+restart_candidate_discovery = true
+legacy_candidate_outputs_are_discovery_boundaries = false
+full_source_gap_check = true
+uncovered_source_units_must_be_fresh_mapped = true
+source_coverage_status_required = "COMPLETE"
+
+[ocr]
+mode = "cpu-default"
+allow_gpu = "only-on-explicit-user-request"
+notify_user_of_compute_device = true
+reuse_existing_first = true
+new_ocr_scope = "uncovered-units-and-targeted-confirmation"
+preferred_backend = "tesseract-cpu"
+fallback_backend = "rapidocr-onnxruntime-cpu-in-temporary-environment"
+missing_backend = "record-and-continue"
+
+[tooling]
+probe_command = "python3 workflow_1_6_2/scripts/pdf_tools.py probe"
+record_artifact = ".ai_paper_validation/review_1_6_2/tooling_record.md"
+prefer_direct_tools = true
+fallback_environment = ".ai_paper_validation/review_1_6_2/tooling/venv"
+fallback_environment_scope = "package-local-temporary"
+global_python_installs_allowed = false
+fallback_bootstrap = "python3 workflow_1_6_2/scripts/bootstrap_tooling.py create"
+fallback_ocr_bootstrap = "python3 workflow_1_6_2/scripts/bootstrap_tooling.py create --ocr"
+fallback_helper = "workflow_1_6_2/scripts/pdf_tools.py"
+fallback_packages = ["pymupdf==1.26.4", "pypdf==5.9.0"]
+fallback_ocr_packages = ["rapidocr-onnxruntime==1.3.24"]
+pin_substitution_recorded = true
+remove_after_run = true
+install_failure = "record-INSTALL_FAILED-and-continue-with-reusable-assets"
+missing_tool_never_permits_omitted_units = true
+
+[validation]
+package_root_codex_required = false
+human_adjudication_in_report = false
+coverage_artifacts_per_row = 1
+
+[python]
+role = "auxiliary-only"
+allowed_scripts = ["extract_office_source.py", "bootstrap_tooling.py", "pdf_tools.py", "render_report.py", "validate_review.py"]
+
+[tools]
+pandoc = "pandoc"
+pdfinfo = "pdfinfo"
+pdftotext = "pdftotext"
+pdftoppm = "pdftoppm"
+pdftocairo = "pdftocairo"
+tesseract = "tesseract"
+libreoffice = "libreoffice"
+sha256sum = "sha256sum"
+sha256_fallback = "python3 workflow_1_6_2/scripts/pdf_tools.py sha256"

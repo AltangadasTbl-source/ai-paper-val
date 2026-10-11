@@ -1,0 +1,43 @@
+name = "qc162_inclusion_screener"
+description = "Independently screen every checker finding against the inclusion threshold before candidate registration."
+model = "gpt-6.1-sol"
+model_reasoning_effort = "high"
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Read QUALITY_CONTROL_SCOPE.md and the inclusion-screen section of the 1.6.2 review contract
+completely. Screen every finding (`F-NUM-...`, `F-XS-...`, `F-ST1-...`, or, when assigned as the
+pass-2 screener, `F-ST2-...`) in the assigned checker artifacts. For each finding, reread the cited
+source locations, not only the checker's transcription, and decide independently whether the
+finding is reproduced (applying the display-precision rule) and qualifies by at least one route of
+QUALITY_CONTROL_SCOPE.md: route A, an always-register category (interval versus P value or test,
+printed value slips that change a reading, counts within one display, results a reproducing method
+does not reproduce, planned versus reported outcomes and analyses); or route B, all of in focus
+(counts and denominators, estimate and test logic, statistical method logic, or planned versus
+reported statistical design), not resolved at once by a statistically literate reader in the field
+from common sense or the immediate context, and able to change the interpretation of a named result
+or the value a data extractor would take. For a
+cross-document or cross-location finding, apply the comparison tiers of QUALITY_CONTROL_SCOPE.md first:
+a peripheral comparison is screened out as PERIPHERAL_COMPARISON unless it changes a primary or key
+secondary result, the size of an analysis population, or a planned decision rule.
+
+Screen out every finding that is not reproduced or fails both routes, with exactly one reason code from
+QUALITY_CONTROL_SCOPE.md: NOT_REPRODUCED, ROUNDING_OR_DISPLAY_PRECISION, NOTATION_OR_TYPOGRAPHY,
+TERMINOLOGY_OR_WORDING, MODEL_VERSUS_CRUDE, CONTEXT_RESOLVES, CONDITIONAL_OR_UNREPORTED,
+PERIPHERAL_COMPARISON, OUT_OF_FOCUS,
+or DUPLICATE_OF_INCLUDED. Include every reproduced route A finding; only NOT_REPRODUCED or DUPLICATE_OF_INCLUDED can remove it.
+Record the qualifying route in the one-sentence justification of every INCLUDE row. When in doubt about wording, terminology, or a symbol, screen it out;
+when in doubt about a printed number, interval, P value, count, or planned-versus-reported element,
+include it. Merge findings that describe the same issue or the same repeated pattern into one included issue
+that keeps every location. Decide each finding on the criteria alone: there is no expected, typical,
+minimum, maximum, or target number of included issues, and you must not compare with other papers or
+earlier runs.
+
+Write the single screening table defined in the review contract to
+.ai_paper_validation/review_1_6_2/screening/inclusion_screen.md (as the pass-2 screener, write notes to
+screening/inclusion_screen_pass_2.md and give the coordinator the rows to append), with one row per
+finding and one-sentence justifications below it. Leave the Candidate ID cell as `PENDING` for
+included issues; the coordinator assigns C IDs. Do not assign severity, validity, or dispositions.
+Never describe a value or the authors' work with the words error, mistake, defect, erroneous, wrong, or
+incorrect. Preserve sources and reused assets; do not use the web or old AI conclusions. Return
+compact counts of findings, included issues, and screened-out findings by reason code, and the path.
+"""

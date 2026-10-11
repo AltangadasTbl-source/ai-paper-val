@@ -1,6 +1,6 @@
-# Workflow 1.6.1 Quantitative Quality-Control Scope
+# Workflow 1.6.2 Quantitative Quality-Control Scope
 
-This document is normative for workflow 1.6.1.
+This document is normative for workflow 1.6.2.
 
 ## Review objective
 
@@ -75,6 +75,8 @@ secondary.
 
 Comparisons that can meet the inclusion threshold:
 
+- any value in the abstract or Key Points that differs from its counterpart in the body beyond the
+  display-precision rule (relative discrepancy above 0.05);
 - a primary or key secondary outcome result (effect estimate, interval, P value, event count,
   denominator, or outcome distribution) that differs beyond display precision between locations or
   documents, or whose direction or reference group conflicts;
@@ -84,15 +86,19 @@ Comparisons that can meet the inclusion threshold:
   over 24 weeks) when the values do not show which applies;
 - report versus protocol or SAP: the analysis specification (model, covariates, priors, imputation,
   matching, prespecified subgroup or sensitivity analyses, analysis population), the endpoint
-  definition, threshold, window, or hierarchy, or the dose or duration of the randomized intervention;
+  definition, threshold, window, or hierarchy, the status of a prespecified outcome (primary,
+  secondary, tertiary, exploratory, or safety) or the components of a composite, or the dose or
+  duration of the randomized intervention;
 - within plan material: sample size or power inputs, the primary endpoint, the primary analysis, a
   margin, or a decision rule stated inconsistently.
 
 Comparisons screened out as `PERIPHERAL_COMPARISON`, unless the difference changes a primary or key
 secondary result, the size of an analysis population, or a planned decision rule:
 
-- descriptive baseline characteristics (means, standard deviations, counts, percentages) that differ
-  between the main baseline table and a supplementary table;
+- copies of the same descriptive baseline characteristic (mean, standard deviation, count,
+  percentage) that differ between the main baseline table and a supplementary table (a count,
+  percentage, and denominator that do not reconcile within one display are focus area A, not a
+  peripheral comparison);
 - observation or contributor counts at individual time points, or values in secondary or exploratory
   displays;
 - footnotes, cross-references, table or figure pointers, and panel or heading labels;
@@ -103,22 +109,99 @@ secondary result, the size of an analysis population, or a planned decision rule
 
 ## Inclusion threshold
 
-Register a candidate only when all of the following hold:
+A finding becomes a candidate when it is **reproduced** and it qualifies by **at least one of two
+routes**:
 
-1. **Reproduced.** The cited values or statements are read correctly from the exact supplied source
-   location, and the inconsistency remains under the stated arithmetic, statistical, or logical rule.
-2. **In focus.** It falls under focus area A, B, C, or D, fits one of the four review domains, and
-   is not a peripheral comparison as defined above.
-3. **Not resolved by context.** A statistically literate reader in the relevant clinical field could
-   not identify the intended value or meaning at once from common sense or the immediate context (the
-   same sentence, paragraph, table, figure, or caption).
-4. **Bears on interpretation or extraction.** It could plausibly change how a specific reported
-   result is interpreted, or which value a data extractor would take for a systematic review or
-   meta-analysis. Name that result or value.
+```text
+candidate = reproduced AND (route A: always-register category OR route B: criteria B1, B2 and B3)
+```
+
+Reproduction is always required. The two routes are alternatives: a finding in an always-register
+category does not also have to satisfy route B, and a finding outside those categories qualifies
+through route B.
+
+### Reproduced (required)
+
+The cited values or statements are read correctly from the exact supplied source location, and the
+inconsistency remains under the stated arithmetic, statistical, or logical rule. For numeric
+comparisons, the display-precision rule below decides whether a difference is reproduced or is
+rounding.
+
+### Display-precision rule
+
+For a printed number compared with a value recomputed from other printed numbers, form the recomputed
+interval by allowing each displayed input its half-unit rounding interval, and allow the printed number
+its own half-unit interval. The discrepancy is the gap between the two intervals (zero when they
+overlap); for two printed copies of the same quantity, it is the gap between their half-unit intervals.
+The relative discrepancy is the discrepancy divided by the absolute printed value (or by the reference
+copy for two printed copies).
+
+- Discrepancy zero, or relative discrepancy at most 0.05: rounding, screened out as
+  `ROUNDING_OR_DISPLAY_PRECISION`.
+- Relative discrepancy greater than 0.05, or any discrepancy greater than zero when the printed value
+  is zero: reproduced.
+- The rule does not apply to route A category 1 (interval versus P value or test), which is never
+  rounding.
+
+Record the recomputed interval and the relative discrepancy in the finding.
+
+### Route A: always-register categories
+
+A reproduced finding in one of these categories is registered. No screened-out reason code other than
+`NOT_REPRODUCED` and `DUPLICATE_OF_INCLUDED` applies to it; in particular it is never screened out as
+`ROUNDING_OR_DISPLAY_PRECISION` (category 1), `NOTATION_OR_TYPOGRAPHY`, `TERMINOLOGY_OR_WORDING`,
+`CONTEXT_RESOLVES`, `CONDITIONAL_OR_UNREPORTED`, `PERIPHERAL_COMPARISON`, `MODEL_VERSUS_CRUDE`, or
+`OUT_OF_FOCUS`.
+
+1. **Interval versus P value or test.** An interval that excludes the null value while the P value or
+   stated test is nonsignificant at the stated level, or the reverse; a P value or test statistic that
+   cannot belong to the printed estimate and interval; a point estimate outside its interval. Use the
+   stated confidence and significance levels, or 95% and .05 when the paper states none. If the paper
+   attributes the P value and the interval to different analyses, record that as an alternative
+   interpretation in the card; it does not remove the candidate.
+2. **Printed value slips that change a reading.** A missing or reversed sign, transposed or
+   substituted digit, or misplaced decimal in an estimate, interval limit, count, or percentage, and a
+   direction or reference-group statement that reverses the printed values (for example an HR above 1
+   described as a decrease), when the printed reading changes significance, direction, or magnitude
+   (relative discrepancy above 0.05). That the intended value can be reconstructed from other numbers
+   does not make the printed value trivial: a reader or data extractor may take the printed value.
+3. **Counts within one display.** A count, denominator, and percentage in one table, figure, or
+   paragraph, including baseline tables, that do not reconcile with a relative discrepancy above 0.05.
+4. **Printed results that a reproducing method does not reproduce.** A printed estimate or interval
+   that, with a relative discrepancy above 0.05, does not reproduce under a method that does reproduce
+   the other rows of the same display. The unstated method becomes the human question; it does not
+   make the candidate conditional.
+5. **Planned versus reported outcomes and analyses.** A prespecified outcome whose status (primary,
+   secondary, tertiary, exploratory, or safety) or composite definition changes; an analysis described
+   as prespecified that the supplied plan does not contain; a planned primary or key secondary
+   analysis that is not reported. Treat structurally identical observations in one package the same
+   way.
+
+### Route B: general criteria (all three required)
+
+- **B1. In focus.** It falls under focus area A, B, C, or D, fits one of the four review domains, and
+  is not a peripheral comparison as defined above.
+- **B2. Not resolved by context.** A statistically literate reader in the relevant clinical field
+  could not identify the intended value or meaning at once from common sense or the immediate context
+  (the same sentence, paragraph, table, figure, or caption).
+- **B3. Bears on interpretation or extraction.** It could plausibly change how a specific reported
+  result is interpreted, or which value a data extractor would take for a systematic review or
+  meta-analysis. Name that result or value.
+
+### Common rules
+
+Do not discard an observable printed mismatch because its production mechanism or inferential
+convention is unknown; record the missing definition as the human question. Do not create a candidate
+merely because a model detail is unreported when no printed value or statement conflicts.
+
+When in doubt about wording, terminology, or a symbol, screen it out. When in doubt about a printed
+number, interval, P value, count, or planned-versus-reported element, register it; the human reviewer
+decides.
 
 The threshold is an inclusion criterion, not a severity grade. Do not rank, grade, or label
-candidates as major or minor. A finding that fails any criterion is screened out with one reason code
-below; it is recorded in the screening log and does not receive a `C` ID.
+candidates as major or minor. A finding that is not reproduced, or that fails both routes, is screened
+out with one reason code below; it is recorded in the screening log and does not receive a `C` ID. A
+finding records which route qualified it (`Route A, category N` or `Route B`).
 
 ## Screened-out observations
 
@@ -128,18 +211,15 @@ following descriptions, even when it is real:
 | Reason code | Observations screened out |
 |---|---|
 | `NOT_REPRODUCED` | The cited values, read correctly, reconcile; or the apparent inconsistency arose from the reviewing agent's own transcription, page assignment, or alignment of non-matching results. |
-| `ROUNDING_OR_DISPLAY_PRECISION` | Differences within display precision: a recomputed percentage, difference, ratio, or mean that matches when each displayed input is allowed its half-unit rounding interval; percentages that sum to slightly more or less than 100 because each was rounded; different numbers of decimal places for the same value; a very small P value displayed as `P = 0`, `P = .000`, or equivalent. |
-| `NOTATION_OR_TYPOGRAPHY` | A missing, duplicated, or substituted symbol or character whose intended reading is obvious (for example `P 0.05` or `P = .05` where `P < .05` is evidently meant from the interval or text), a misplaced or missing unit or percent sign where the values make the unit obvious, dash or minus glyphs, spacing, duplicated words, axis tick or caption formatting, and any other typographic slip. |
+| `ROUNDING_OR_DISPLAY_PRECISION` | Differences the display-precision rule treats as rounding (relative discrepancy at most 0.05); percentages that sum to slightly more or less than 100 because each was rounded; different numbers of decimal places for the same value; a very small P value displayed as `P = 0`, `P = .000`, or equivalent. |
+| `NOTATION_OR_TYPOGRAPHY` | A missing, duplicated, or substituted symbol whose intended reading is obvious and does not change any printed number (for example `P 0.05` or `P = .05` where `P < .05` is evidently meant from the interval or text), a misplaced or missing unit or percent sign where the values make the unit obvious, dash glyphs, spacing, duplicated words, and axis tick or caption formatting. A slip in a printed number is not notation (see route A, category 2). |
 | `TERMINOLOGY_OR_WORDING` | Inconsistent names or descriptions of groups, populations, outcomes, scales, instruments, procedures, or definitions across the text that a reader in the field resolves at once (for example "patients" and "participants", two names for the same analysis set, or an abbreviated and an expanded outcome name), unless they make it impossible to tell which reported number applies. |
 | `MODEL_VERSUS_CRUDE` | An adjusted, modeled, stratified, or otherwise model-based estimate that differs from a crude ratio or difference recomputed from printed counts, unless the source states that the estimate is crude or unadjusted. |
 | `CONTEXT_RESOLVES` | Any other observation whose intended value or meaning is identifiable at once from common sense or the immediate context and that cannot change the interpretation of any result or the value a data extractor would take. |
-| `CONDITIONAL_OR_UNREPORTED` | An observation that holds only under an assumption the package does not establish, or that consists only of a detail the paper does not report. |
+| `CONDITIONAL_OR_UNREPORTED` | An observation that consists only of a detail the paper does not report, with no printed value or statement in conflict, or that depends on assuming a method that the same display does not support. |
 | `PERIPHERAL_COMPARISON` | A cross-document or cross-location difference of a kind listed as peripheral in the section above, when it does not change a primary or key secondary result, the size of an analysis population, or a planned decision rule. |
 | `OUT_OF_FOCUS` | Differences outside focus areas A to D (for example staff roles or procedural descriptions), general design or clinical critique, and preferences for a different analysis. |
 | `DUPLICATE_OF_INCLUDED` | The same issue as a finding already included, including another occurrence of an included pattern. |
-
-When in doubt whether a reader in the field would resolve an observation at once, screen it out under
-`CONTEXT_RESOLVES` or `TERMINOLOGY_OR_WORDING` rather than registering it.
 
 ## One candidate per issue
 

@@ -1,6 +1,6 @@
-# Workflow 1.6.1 Performance Profile
+# Workflow 1.6.2 Performance Profile
 
-This document is normative for workflow 1.6.1.
+This document is normative for workflow 1.6.2.
 
 ## Per-package planning target
 
@@ -25,14 +25,15 @@ A 35-50 minute target may be reasonable for a future package with comparable tot
 derivative burden, and review complexity. It is not a default for other packages and says nothing
 about the expected length of an SAP.
 
-Retain each clean workflow 1.6.1 observation as future calibration evidence. The target is not a hard
+Retain each clean workflow 1.6.2 observation as future calibration evidence. The target is not a hard
 timeout and never permits omitted sources, relationships, statistical pass 2, screening decisions, candidates,
 evidence rechecks, quality review, links, or report cards. Record bounded causes whenever the selected upper
 bound is exceeded.
 
 ## Reasoning-effort allocation
 
-Every role uses the single fixed model `gpt-6.1-sol`. Roles differ only in reasoning effort.
+Every role uses one run model, by default `gpt-6.1-sol` (see "Run model selection" in AGENTS.md).
+Roles differ only in reasoning effort.
 
 | Role class | Model | Reasoning effort | Start requirement |
 |---|---|---|---|
