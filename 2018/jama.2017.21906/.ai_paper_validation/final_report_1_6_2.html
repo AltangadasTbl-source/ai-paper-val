@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#acs-quik-quantitative-reporting-quality-control-consistency-review--workflow-162"
+id="toc-acs-quik-quantitative-reporting-quality-control-consistency-review--workflow-162">ACS
+QUIK Quantitative Reporting Quality-Control Consistency Review —
+Workflow 1.6.2</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#inclusion-screening-summary"
+id="toc-inclusion-screening-summary">Inclusion Screening
+Summary</a></li>
+<li><a href="#review-domain-summary"
+id="toc-review-domain-summary">Review-Domain Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--planned-statin-component-versus-reported-medication-composite"
+id="toc-c001--planned-statin-component-versus-reported-medication-composite">C001
+— Planned statin component versus reported medication composite</a></li>
+<li><a
+href="#c002--planned-expanded-mace-objective-versus-reported-post-hoc-status"
+id="toc-c002--planned-expanded-mace-objective-versus-reported-post-hoc-status">C002
+— Planned expanded-MACE objective versus reported post-hoc
+status</a></li>
+<li><a
+href="#c003--planned-primary-mace-subgroups-versus-reported-prespecified-set"
+id="toc-c003--planned-primary-mace-subgroups-versus-reported-prespecified-set">C003
+— Planned primary-MACE subgroups versus reported prespecified
+set</a></li>
+<li><a
+href="#c004--distinct-adjusted-time-contrasts-lack-an-estimand-mapping"
+id="toc-c004--distinct-adjusted-time-contrasts-lack-an-estimand-mapping">C004
+— Distinct adjusted time contrasts lack an estimand mapping</a></li>
+<li><a
+href="#c005--opposing-directional-readings-of-the-hospital-residual-display"
+id="toc-c005--opposing-directional-readings-of-the-hospital-residual-display">C005
+— Opposing directional readings of the hospital residual
+display</a></li>
+<li><a
+href="#c006--ldl-interval-versus-the-same-display-reproducing-calculation"
+id="toc-c006--ldl-interval-versus-the-same-display-reproducing-calculation">C006
+— LDL interval versus the same-display reproducing calculation</a></li>
+<li><a
+href="#c007--planned-complete-case-primary-mace-sensitivity-result-is-not-identified"
+id="toc-c007--planned-complete-case-primary-mace-sensitivity-result-is-not-identified">C007
+— Planned complete-case primary-MACE sensitivity result is not
+identified</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="acs-quik-quantitative-reporting-quality-control-consistency-review--workflow-162">ACS
+QUIK Quantitative Reporting Quality-Control Consistency Review —
+Workflow 1.6.2</h1>
+<p><strong>Pending Human Adjudication</strong></p>
+<p>This report records candidate reporting issues for later human
+adjudication. Evidence states and inclusion-audit results describe the
+review record; they do not decide a candidate's final disposition.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete quantitative quality control of the supplied ACS QUIK
+package identified <strong>7 stable candidates</strong>, supported by 10
+independently screened findings. Four concern planned versus reported
+outcomes or analyses; three concern the interpretation or reproduction
+of reported statistical results. Every candidate has evidence state
+reproduced and inclusion audit CONFIRMED, and every candidate remains
+Pending Human Adjudication.</p>
+<p>All 80 physical PDF pages across four sources were mapped, comprising
+69 reusable-backed pages and 11 fresh-required pages. The review
+reconstructed 30 numeric relationships and 163 statistical
+relationships. Both independent statistical passes completed all 163
+relationships. The numeric lane checked 228 count/percentage pairs and
+20 participant-flow blocks without registering a numeric finding.
+Recheck and audit retained source-grounded alternatives and missing
+definitions rather than treating an unprovided generating procedure as
+established.</p>
+<p>The seven issues concern the medication composite's statin component,
+expanded-MACE status and identity, the primary-MACE subgroup
+specification, the mapping of two adjusted time-effect columns, residual
+direction, the LDL confidence interval in a follow-up descriptive table,
+and identification of a planned complete-case primary-MACE sensitivity
+analysis. Potential extraction implications are conditional on
+subsequent adjudication; this review does not establish downstream
+propagation or a change to trial conclusions.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains four supplied PDFs and no direct Office
+document, workbook or CSV source. Source IDs and physical PDF pages are
+stable locators. Document roles follow content, including the mixed
+operational/results supplement.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source ID</th>
+<th>Supplied source and page locator</th>
+<th>Content-based role</th>
+<th style="text-align: right;">Physical pages</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td><a
+href="../jama_huffman_2018_oi_170166.pdf#page=1">jama_huffman_2018_oi_170166.pdf
+— p.1</a></td>
+<td>REPORT, pp.1–12: main trial article</td>
+<td style="text-align: right;">12</td>
+<td>11311a6bb5c7a4be734ed60776b308f525ad101671ccc8d34bab18735aaca5f5</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td><a href="../joi170166supp1_prod.pdf#page=1" target="_blank" rel="noopener">joi170166supp1_prod.pdf
+— p.1</a></td>
+<td>PLAN, pp.1–32: protocol, version 22 September 2014</td>
+<td style="text-align: right;">32</td>
+<td>0e13bdfc6e5e3c8b86e187f54f0a3d7d0217fc0614be9fbdbbb7839dbab9004a</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td><a href="../joi170166supp2_prod.pdf#page=1" target="_blank" rel="noopener">joi170166supp2_prod.pdf
+— p.1</a></td>
+<td>PLAN, pp.1–9: SAP, revised 17 June 2015</td>
+<td style="text-align: right;">9</td>
+<td>d49019c3cf6ee0766fb319f254f27f87751a73bfec66c34d38bae16a956bb1c6</td>
+</tr>
+<tr class="even">
+<td>DOC-004</td>
+<td><a href="../joi170166supp3_prod.pdf#page=1" target="_blank" rel="noopener">joi170166supp3_prod.pdf
+— p.1</a></td>
+<td>REPORT index p.1; PLAN operational toolkit pp.2–16; REPORT
+eTables/eFigures pp.17–27</td>
+<td style="text-align: right;">27</td>
+<td>511f4a907e4c48d920f1c6b89d444fe76c7c91e11bbae84cdee834fa0393f3ec</td>
+</tr>
+</tbody>
+</table>
+<p>The curator inventoried and hashed 82 preserved evidence assets: 67
+USABLE and 15 PARTIAL, with zero STALE, DUPLICATE or UNREADABLE assets.
+These comprise native/layout text, PDF information, page images, OCR
+text and its provenance records. Overlapping derivatives were counted as
+assets, not additional source pages. Historical OCR for the scanned
+toolkit used recorded rapidocr engines, including a historical GPU
+record; this review used CPU processing and no GPU OCR. Current
+native-text correspondence, source hashes and page-image fitness checks
+determined reuse eligibility. Old review conclusions were not scientific
+discovery inputs.</p>
+<p>The main layout gaps on pp.4 and 8 were covered by matching native
+text and images; the protocol's embedded schedule on p.14 had a reusable
+image. Toolkit pp.3–16 had source-matched OCR and images despite minimal
+native text. Results-supplement pp.17–27 received fresh current-source
+image mapping because earlier and current renders differed in bytes.
+Direct source pages remain the authority for all candidate comparisons.
+See the <a href="review_1_6_2/source_inventory.md">source inventory</a>,
+<a href="review_1_6_2/evidence_asset_inventory.md">evidence-asset
+inventory</a>, <a href="review_1_6_2/source_hashes_before.sha256">source
+hash baseline</a>, and <a
+href="review_1_6_2/reused_artifact_hashes_before.sha256">reused-asset
+hash baseline</a>.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The scope comprises counts and denominators; estimate, interval and
+test logic; source-grounded statistical-method logic; and planned versus
+reported statistical design. Every direct-source page was assigned and
+mapped. Reuse accelerated extraction without limiting discovery.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Mapped units</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001, main article</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">12</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-002, protocol</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">32</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>DOC-003, SAP</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-004, operational/results supplement</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">27</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>80</strong></td>
+<td style="text-align: right;"><strong>69</strong></td>
+<td style="text-align: right;"><strong>11</strong></td>
+<td style="text-align: right;"><strong>80</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The main map covers 12 pages. Disjoint support maps cover 57
+plan/index/toolkit pages and 11 result pages, totaling all 68 support
+pages. The <a href="review_1_6_2/source_coverage.md">source-coverage
+ledger</a> and <a href="review_1_6_2/coverage_manifest.md">coverage
+manifest</a> document the full assignments and artifact paths.</p>
+<p>The review excludes broad clinical, study-design, novelty, misconduct
+and raw-data judgments and does not propose a preferred analysis.
+Peripheral descriptive copies, administrative details and operational
+examples are considered under the supplied scope's narrower comparison
+rule. Obvious notation or terminology, model-based estimates compared
+with crude recomputations, unsupported conditional assumptions, and
+discrepancies at most 5% after half-unit display-precision intervals do
+not independently qualify. Exact unprinted graph values, model internals
+and patient-level quantities were not manufactured.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The <a
+href="review_1_6_2/relationships/numeric_relationship_inventory.md">numeric
+inventory</a> contains 30 relationships: 13 main and 17 support
+relationships. It retains count, total, numerator/denominator,
+percentage, baseline, flow and graphical relationships. The <a
+href="review_1_6_2/statistics/relationship_inventory.md">statistical
+inventory</a> contains 163 relationships: 92 main and 71 support
+relationships. Grouped table relationships preserve every displayed cell
+and model, and graphical relationships retain all panels, axes,
+contrasts and available confidence-interval information.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Completed scope</th>
+<th>Findings or outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numeric consistency review</td>
+<td>All 30 numeric relationships and numeric fields of all 163
+statistical relationships; 228 count/percentage pairs; 20 flow
+blocks</td>
+<td>0 findings; 12 excluded-observation rows</td>
+</tr>
+<tr class="even">
+<td>Cross-source consistency review</td>
+<td>Matched results and protected plan/report comparisons across all
+four sources</td>
+<td>3 findings; 11 excluded-observation rows</td>
+</tr>
+<tr class="odd">
+<td>Statistical pass 1</td>
+<td>All 163 statistical relationships; fresh main/support agents;
+explicit PASS_1_COMPLETE records</td>
+<td>6 findings; 9 main and 13 support excluded-observation rows</td>
+</tr>
+<tr class="even">
+<td>Statistical pass 2</td>
+<td>All 163 statistical relationships; different fresh main/support
+agents; explicit PASS_2_COMPLETE records; all 45 initial excluded
+observations revisited</td>
+<td>1 additional finding, F-ST2-501; separately screened and rechecked
+as C007</td>
+</tr>
+<tr class="odd">
+<td>Independent quality-control audit</td>
+<td>All 80 pages, 30 numeric and 163 statistical relationships; every
+candidate, screening decision, classification and excluded
+observation</td>
+<td>7 CONFIRMED; 0 QUESTIONED; 0 new findings or classification
+changes</td>
+</tr>
+</tbody>
+</table>
+<p>The passes checked containment, endpoint order, null/direction
+agreement, supplied estimate/test compatibility, statistical-method
+logic, matched-result identity, decision rules, and
+planned-versus-reported analyses. Diagnostic calculations were kept
+separate from established producing methods. Complete records are in <a
+href="review_1_6_2/checkers/numeric_consistency.md">numeric review</a>,
+<a href="review_1_6_2/checkers/cross_source_consistency.md">cross-source
+review</a>, <a
+href="review_1_6_2/checkers/statistical_pass_1.md">statistical pass
+1</a>, <a href="review_1_6_2/checkers/statistical_pass_2.md">statistical
+pass 2</a>, and the <a
+href="review_1_6_2/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<h2 id="inclusion-screening-summary">Inclusion Screening Summary</h2>
+<p>A finding qualifies only when reproduced and meeting either an
+always-register Route A category or all three Route B criteria: in
+focus, not immediately resolved by context, and plausibly relevant to a
+specific result's interpretation or extraction. Display-precision
+comparisons allow each input and printed output its half-unit interval;
+a surviving relative discrepancy above 0.05 qualifies. The
+interval-versus-P/test category is not treated as rounding.</p>
+<p>The <a href="review_1_6_2/screening/inclusion_screen.md">canonical
+screening log</a> contains 10 rows, each with exactly one decision. The
+initial screen included 9 findings, consolidated into 6 issues. A
+different fresh pass-2 screener included 1 additional finding, appended
+as C007. Three pairs of independent checker findings refer to C001, C002
+and C003 respectively. Consolidation retained every affected
+location.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Screening stage</th>
+<th style="text-align: right;">Findings screened</th>
+<th style="text-align: right;">INCLUDE</th>
+<th style="text-align: right;">SCREENED_OUT</th>
+<th style="text-align: right;">Distinct newly registered issues</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Initial</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td>Pass 2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td>Audit additions</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: right;"><strong>7</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Decision</th>
+<th>Reason code</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>INCLUDE</td>
+<td>MEETS_THRESHOLD</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>NOT_REPRODUCED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>ROUNDING_OR_DISPLAY_PRECISION</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>NOTATION_OR_TYPOGRAPHY</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>TERMINOLOGY_OR_WORDING</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>MODEL_VERSUS_CRUDE</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>CONTEXT_RESOLVES</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>CONDITIONAL_OR_UNREPORTED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>PERIPHERAL_COMPARISON</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>OUT_OF_FOCUS</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>DUPLICATE_OF_INCLUDED</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>Checker self-screening tables contained 45 initial observations
+without finding IDs: 12 numeric, 11 cross-source, 9 main-statistical and
+13 support-statistical. Those are not formal screened findings and do
+not inflate the 10-row screening denominator. Their initial reason-code
+counts were 9 display-precision, 3 model-versus-crude, 11 terminology, 5
+notation, 10 conditional/unreported, 4 peripheral, 2 out-of-focus and 1
+context-resolves. Pass 2 and audit retained 43 as exclusions, recognized
+one as already represented by C005, and promoted one concrete
+planned-primary-sensitivity observation to F-ST2-501/C007. All 45
+received reassessment, including checks for always-register categories.
+No screened-out observation receives a candidate card.</p>
+<h2 id="review-domain-summary">Review-Domain Summary</h2>
+<p>The four domains distinguish statistical-result logic,
+report-internal result attribution, plan/report statistical design, and
+plan-internal statistical design. Domains and relationship types
+describe the evidence comparison and are not adjudications. P_R compares
+PLAN with REPORT; P_P is within PLAN; S_C crosses REPORT documents; S_W
+is within one REPORT document. Primary-type precedence is P_R &gt; P_P
+&gt; S_C &gt; S_W, and corroboration alone adds no conflicting
+relationship.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Review domain</th>
+<th>Definition</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>statistical_results</td>
+<td>Counts, estimates, intervals, tests or statistical methods in REPORT
+materials</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td>report_internal_inconsistency</td>
+<td>REPORT conflict about the outcome, time, population or comparison to
+which a result belongs</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>protocol_report</td>
+<td>Planned versus reported statistical-design or analysis element</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td>plan_material</td>
+<td>Inconsistent statistical-design element solely within PLAN
+material</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>7</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Primary relationship type</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P_R</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td>P_P</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>S_C</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>S_W</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>7</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Every candidate's all-relationships field contains only its primary
+type; therefore the relationship-membership totals are also P_R 4, P_P
+0, S_C 0 and S_W 3.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Evidence state</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>reproduced</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td>reproduced_after_transcription_correction</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>7</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Inclusion audit: CONFIRMED 7; QUESTIONED 0. Qualifying routes: Route
+A category 5, four candidates; Route A category 2, one; Route A category
+4, one; Route B, one. Each summary reconciles to the seven stable
+IDs.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Stable ID</th>
+<th>Candidate reporting issue</th>
+<th>Review domain</th>
+<th>Relationship type</th>
+<th>Evidence state</th>
+<th>Inclusion audit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a
+href="#c001--planned-statin-component-versus-reported-medication-composite">C001</a></td>
+<td>In-hospital medication composite omits the planned statin
+component</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a
+href="#c002--planned-expanded-mace-objective-versus-reported-post-hoc-status">C002</a></td>
+<td>Expanded-MACE prospective status and reported identity</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td><a
+href="#c003--planned-primary-mace-subgroups-versus-reported-prespecified-set">C003</a></td>
+<td>Primary-MACE subgroup specification</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a
+href="#c004--distinct-adjusted-time-contrasts-lack-an-estimand-mapping">C004</a></td>
+<td>Adjusted time-effect columns lack distinct mapping</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td><a
+href="#c005--opposing-directional-readings-of-the-hospital-residual-display">C005</a></td>
+<td>Residual definition and caption assign opposing direction</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a
+href="#c006--ldl-interval-versus-the-same-display-reproducing-calculation">C006</a></td>
+<td>LDL interval differs from a same-display reproducing
+calculation</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td><a
+href="#c007--planned-complete-case-primary-mace-sensitivity-result-is-not-identified">C007</a></td>
+<td>Planned complete-case primary-MACE sensitivity lacks identified
+counterpart</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--planned-statin-component-versus-reported-medication-composite" class="candidate-card">C001
+— Planned statin component versus reported medication composite</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The supplied SAP defines
+optimal in-hospital medication using five components including statin,
+while the report's associated composite and results use four components
+and expressly disclose that the predefined in-hospital statin data were
+not collected.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN SAP p.5 vs REPORT main
+pp.3,7 and results supplement pp.21,22</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-001, F-ST1-502</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> The substantive comparison
+is a prospective PLAN component list versus REPORT endpoint definitions.
+The REPORT occurrences agree with one another and add no S_C or S_W; no
+plan-internal conflict adds P_P. P_R maps to protocol_report.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi170166supp2_prod.pdf#page=5">joi170166supp2_prod.pdf — p.5,
+§6.1.2, lines 1149–1151</a>; REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=3">jama_huffman_2018_oi_170166.pdf
+— p.3, Outcomes</a>; REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=7">jama_huffman_2018_oi_170166.pdf
+— p.7, Table 3 medication row and footnote c</a>; REPORT <a
+href="../joi170166supp3_prod.pdf#page=21">joi170166supp3_prod.pdf —
+p.21, eTable 5 medication row and footnote c</a>; REPORT <a
+href="../joi170166supp3_prod.pdf#page=22">joi170166supp3_prod.pdf —
+p.22, eTable 6 medication row and footnote b</a>.</p>
+<p><strong>Source evidence:</strong> SAP lists aspirin, ADP receptor
+antagonist, heparin, statin and beta blocker. Main Outcomes lists
+aspirin, ADP antagonist, anticoagulant and β-blocker and discloses
+statin noncollection. Table 3 and both sensitivity displays omit statin.
+The discharge-medication composite is a separate endpoint and retains
+statin; it is not substituted for this comparison.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported four-component
+optimal in-hospital use is control 3122 (31.7%) versus intervention 3878
+(35.8%). Its primary adjusted difference is 6.00 percentage points (95%
+CI 3.90–8.11), OR 1.45 (1.28–1.64); cluster-adjusted difference 8.61
+(6.98–10.23), OR 1.70 (1.57–1.85). eTable 5 ORs are GRACE 2.19
+(1.83–2.62), transfer 1.47 (1.29–1.66), insurance 1.45 (1.28–1.64), and
+prehospital aspirin 1.47 (1.30–1.66); eTable 6 OR is 0.87 (0.70–1.07).
+The comparator is the planned five-component conjunction, not a
+reconstructed numerical treatment effect.</p>
+<p><strong>Reasoning procedure:</strong> Match the in-hospital endpoint
+across definitions and result rows, distinguish it from discharge
+medication, and compare component membership. Treat
+heparin/anticoagulant wording separately; the registered issue is statin
+membership.</p>
+<p><strong>Calculation:</strong> Planned set has five components; every
+reported set has four and excludes statin. This is categorical:
+half-unit numerical intervals and relative discrepancy are inapplicable.
+The associated four-component results cannot reconstruct a
+five-component count or effect from the supplied aggregates.</p>
+<p><strong>Affected result or extracted value:</strong> Definition,
+eligibility and interpretation of the optimal in-hospital medication
+composite and all listed treatment-effect and sensitivity results.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+covers a changed prespecified composite definition. Disclosure of
+noncollection establishes the component change; it does not supply a
+prospectively revised definition or a five-component result.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+intentional disclosed adaptation to noncollection may explain the
+four-component result, or a later approved amendment may establish it.
+No dated amendment, statin observations, five-component outcome count or
+five-component eligibility set is supplied. Any eligibility consequence
+remains unestablished.</p>
+<p><strong>Mechanical evidence recheck:</strong> The fresh rechecker
+found and visually reread every listed source location, matched all
+printed components and numerical rows, and reproduced the component-set
+comparison. No transcription or location amendment was needed.
+PLAN/REPORT roles, P_R and protocol_report were confirmed; the
+independent audit confirmed inclusion. Direct observations are the lists
+and disclosure; amendment timing and patient-level consequences remain
+alternatives. See <a
+href="review_1_6_2/verification/evidence_recheck.md#c001--statin-component-absent-from-the-reported-in-hospital-composite">combined
+recheck, C001</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy the four-component medication effect while
+interpreting it as the supplied SAP's five-component endpoint.
+Definition and eligibility clarification could distinguish these
+results; no downstream use or conclusion change is established.</p>
+<h2
+id="c002--planned-expanded-mace-objective-versus-reported-post-hoc-status" class="candidate-card">C002
+— Planned expanded-MACE objective versus reported post-hoc status</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The protocol and SAP
+prospectively name expanded MACE as a secondary objective, whereas the
+specifically expanded result in the report is repeatedly described as
+post hoc. Its equivalence to the planned expanded endpoint remains
+undefined.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN protocol p.9 and SAP
+pp.2,3 vs REPORT main pp.3,8,9 and results supplement pp.1,23</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-003, F-ST1-503</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> Both prospective PLAN
+documents agree about the named secondary objective, and REPORT
+locations agree about the reported expansion. The substantive
+status/identity comparison crosses PLAN and REPORT, giving P_R and
+protocol_report; corroboration adds no P_P, S_C or S_W.</p>
+<p><strong>Classification ambiguity:</strong> The prospective
+expanded-MACE component set is not supplied, leaving equivalence to the
+reported seven-component outcome unresolved; document roles and the
+PLAN/REPORT relationship are clear.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi170166supp1_prod.pdf#page=9">joi170166supp1_prod.pdf — p.9,
+§2.2.3, lines 259–263</a>; PLAN <a
+href="../joi170166supp2_prod.pdf#page=2">joi170166supp2_prod.pdf — p.2,
+§2.1.2, lines 1071–1072</a>; PLAN <a
+href="../joi170166supp2_prod.pdf#page=3">joi170166supp2_prod.pdf — p.3,
+continuation, lines 1073–1074</a>; REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=3">jama_huffman_2018_oi_170166.pdf
+— p.3, Outcomes and Statistical Analysis</a>; REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=8">jama_huffman_2018_oi_170166.pdf
+— p.8, Secondary and Post Hoc Analyses</a>; REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=9">jama_huffman_2018_oi_170166.pdf
+— p.9, result continuation and Discussion</a>; REPORT <a
+href="../joi170166supp3_prod.pdf#page=1">joi170166supp3_prod.pdf — p.1,
+eTable 7 index entry</a>; REPORT <a
+href="../joi170166supp3_prod.pdf#page=23">joi170166supp3_prod.pdf —
+p.23, eTable 7 title, expanded row and footnotes</a>.</p>
+<p><strong>Source evidence:</strong> Both plans list in-hospital and
+30-day expanded MACE under secondary objectives without enumerating the
+additional components. The report calls the expansion adding incident
+in-hospital heart failure, cardiogenic shock and cardiac arrest post hoc
+in methods, results and discussion; the supplement titles the display
+exploratory.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported expanded MACE
+is control 919 (9.1%) versus intervention 795 (7.0%). Cluster-adjusted
+difference is −0.86 percentage points (95% CI −1.72 to −0.01), OR 0.89
+(0.80–1.00); primary adjusted difference −1.34 (−2.72 to 0.04), OR 0.84
+(0.70–1.00). These specifically defined reported results are compared
+with the prospectively named secondary expanded-MACE objective and its
+status.</p>
+<p><strong>Reasoning procedure:</strong> Read the prospective objective
+with its page-spanning SAP continuation, then match the expanded report
+components, repeated explicit post-hoc statements and eTable 7.
+Distinguish a specific post-hoc characterization from general
+exploratory caution due to unadjusted multiplicity.</p>
+<p><strong>Calculation:</strong> Planned status is secondary; the
+specifically reported expansion is post hoc. Component identity cannot
+be calculated because the prospective added-component list is absent.
+This categorical comparison has no half-unit interval or relative
+discrepancy. No P value is inferred from an OR limit printed as
+1.00.</p>
+<p><strong>Affected result or extracted value:</strong> Prospective
+versus post-hoc status and endpoint identity attached to the
+expanded-MACE counts, adjusted differences and ORs listed above.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+covers changed prespecified outcome status or composite definition. The
+explicit post-hoc statements establish the status contrast, while the
+unnamed prospective expansion prevents resolving whether these are the
+same endpoint.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+planned broad expansion could be distinct from the later
+heart-failure/shock/arrest expansion, or the reported seven-component
+outcome could implement the planned objective. The prospective
+expansion's exact components, analysis specification and any later dated
+amendment are missing. Neither alternative is adopted as
+established.</p>
+<p><strong>Mechanical evidence recheck:</strong> All eight cited
+locations were found and source-confirmed, including both SAP pages and
+every reported value. The comparison was reproduced without
+transcription adjustment; roles and P_R/protocol_report classification
+were confirmed. The independent audit retained the component-identity
+uncertainty and confirmed inclusion. See <a
+href="review_1_6_2/verification/evidence_recheck.md#c002--planned-secondary-expanded-mace-versus-reported-post-hoc-expansion">combined
+recheck, C002</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a review could attach a prospective-secondary or post-hoc status to a
+different expanded endpoint, or combine results under an insufficiently
+matched composite definition. The issue concerns identity and extraction
+status; no clinical-conclusion reversal is established.</p>
+<h2
+id="c003--planned-primary-mace-subgroups-versus-reported-prespecified-set" class="candidate-card">C003
+— Planned primary-MACE subgroups versus reported prespecified set</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The reported primary-MACE
+subgroup set labeled prespecified changes the planned age partition,
+adds hospital type without a located supplied prospective specification,
+and does not identify the planned toolkit-use primary-outcome subgroup
+result.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN SAP pp.5,7 vs REPORT
+main pp.3,9,10</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-002, F-ST1-504</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> The prospective SAP
+subgroup specification is PLAN; the reported methods, Figure 3 and
+discussion are REPORT. Their substantive difference gives P_R and
+protocol_report. Agreeing reported prespecified claims and supporting
+SAP context add no other relationship.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi170166supp2_prod.pdf#page=5">joi170166supp2_prod.pdf — p.5,
+§6.1.3, lines 1156–1165</a>; PLAN <a
+href="../joi170166supp2_prod.pdf#page=7">joi170166supp2_prod.pdf — p.7,
+§7.5.2, lines 1243–1254</a>; REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=3">jama_huffman_2018_oi_170166.pdf
+— p.3, Statistical Analysis and separate process-evaluation
+statement</a>; REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=9">jama_huffman_2018_oi_170166.pdf
+— p.9, Figure 3 age/hospital-type rows, title and narrative</a>; REPORT
+<a
+href="../jama_huffman_2018_oi_170166.pdf#page=10">jama_huffman_2018_oi_170166.pdf
+— p.10, opening Discussion</a>.</p>
+<p><strong>Source evidence:</strong> SAP's a priori primary-endpoint
+subgroups are hospital size, toolkit-component use, age &lt;65/&gt;65,
+sex and STEMI/NSTEMI. The report labels age &lt;50/50–69/≥70 and
+government/nonprofit/private hospital-type analyses prespecified. Its
+complete 14-row display has no toolkit-use row. Complete supplied-plan
+searches located no specification for those revised age groups or
+hospital type; complete supplied-report searches located no primary-MACE
+toolkit-use result.</p>
+<p><strong>Reported-versus-comparator:</strong> The comparison is the
+printed prespecified subgroup set against the supplied prospective list.
+The six affected Figure 3 rows retain the following source results, with
+intervention then control counts and percentage-point adjusted
+differences:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Subgroup</th>
+<th>Intervention events/total (%)</th>
+<th>Control events/total (%)</th>
+<th>Adjusted difference (95% CI)</th>
+<th>Adjusted OR (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Age &lt;50</td>
+<td>58/2079 (2.8)</td>
+<td>68/2045 (3.3)</td>
+<td>1.42 (−0.71 to 3.54)</td>
+<td>1.53 (0.83–2.79)</td>
+</tr>
+<tr class="even">
+<td>Age 50–69</td>
+<td>297/6606 (4.5)</td>
+<td>326/5863 (5.6)</td>
+<td>−0.57 (−2.02 to 0.88)</td>
+<td>0.89 (0.67–1.19)</td>
+</tr>
+<tr class="odd">
+<td>Age ≥70</td>
+<td>247/2623 (9.4)</td>
+<td>251/2158 (11.6)</td>
+<td>−0.23 (−3.32 to 2.85)</td>
+<td>0.98 (0.71–1.35)</td>
+</tr>
+<tr class="even">
+<td>Government, 9 hospitals</td>
+<td>158/3036 (5.2)</td>
+<td>275/4097 (6.7)</td>
+<td>−0.55 (−2.56 to 1.47)</td>
+<td>0.90 (0.61–1.33)</td>
+</tr>
+<tr class="odd">
+<td>Nonprofit, 12 hospitals</td>
+<td>186/2964 (6.3)</td>
+<td>193/2785 (6.9)</td>
+<td>−0.62 (−3.43 to 2.20)</td>
+<td>0.91 (0.59–1.40)</td>
+</tr>
+<tr class="even">
+<td>Private, 42 hospitals</td>
+<td>258/5308 (4.9)</td>
+<td>177/3184 (5.6)</td>
+<td>0.89 (−1.19 to 2.97)</td>
+<td>1.16 (0.82–1.64)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reasoning procedure:</strong> Match the primary endpoint and
+subgroup-analysis purpose, compare the prospective and reported
+partitions, and inspect every repeated prespecified claim. Treat the
+revised age bands, added hospital type and unreported toolkit-use
+analysis as one related specification pattern. Hospital size and type
+are distinct characteristics; the age-65 equality boundary is not
+separately registered.</p>
+<p><strong>Calculation:</strong> The prospective two-band age partition
+and reported three-band partition differ categorically; hospital type is
+added, and toolkit-use analysis has no located reported counterpart.
+Display-precision intervals are inapplicable. Published subgroup counts
+reconcile to the full arm totals; adjusted effects are not equated with
+crude ratios.</p>
+<p><strong>Affected result or extracted value:</strong> Prespecification
+and grouping of the primary-MACE age/hospital-type heterogeneity
+results, and availability of planned age-at-65 and toolkit-use
+primary-outcome analyses.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+covers analyses described as prespecified but absent from the supplied
+plan and planned primary analyses without identified reported results. A
+separate process-evaluation promise does not identify the planned
+primary-MACE toolkit-use analysis.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A later
+dated specification may have revised age groups, added hospital type and
+replaced or deferred toolkit analysis. The promised separate process
+evaluation may address implementation, but its content is not supplied.
+The relevant amendment/specification and primary-MACE toolkit-use result
+or documented mapping are missing.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every listed page,
+prospective item, reported claim and all six quantitative rows were
+visually matched; complete supplied-document searches supported the
+bounded absence statements. The categorical comparison was reproduced
+with no transcription adjustment. P_R/protocol_report was confirmed, and
+independent audit confirmed inclusion. See <a
+href="review_1_6_2/verification/evidence_recheck.md#c003--reported-prespecified-primary-mace-subgroup-set-differs-from-the-supplied-plan">combined
+recheck, C003</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could attribute prespecified status to the displayed groups
+or assume availability of a planned subgroup analysis without a supplied
+counterpart. Clarification could improve subgroup definition and status
+extraction; no effect on the overall trial conclusion is
+established.</p>
+<h2
+id="c004--distinct-adjusted-time-contrasts-lack-an-estimand-mapping" class="candidate-card">C004
+— Distinct adjusted time contrasts lack an estimand mapping</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> Table 2 prints two materially
+distinct adjusted effects for each of two time outcomes under shared
+method context, without separately mapping the columns to their
+estimands, models or contributing populations.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Table 2 p.6
+effect columns and method context p.3</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-001</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Both adjusted-effect
+columns and their method context are REPORT content within one main
+article, giving S_W. The issue concerns estimates and statistical-method
+mapping, so the domain is statistical_results. A general prospective
+model description is not an additional conflicting comparator.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=6">jama_huffman_2018_oi_170166.pdf
+— p.6, Table 2 title, door-to-balloon and door-to-needle rows, both
+adjusted headings and footnotes b/c</a>; REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=3">jama_huffman_2018_oi_170166.pdf
+— p.3, Statistical Analysis</a>.</p>
+<p><strong>Source evidence:</strong> Both headings cite footnote b,
+describing intervention-versus-control effects and
+intervention-minus-control marginal effects from mixed logistic/quantile
+models with hospital and time adjustment. Footnote c identifies β
+coefficients but does not separately define the Difference column's time
+estimand. Main methods provide no row-specific mapping. Row units are
+minutes; the readily resolved percent-sign heading is separate from this
+candidate.</p>
+<p><strong>Reported-versus-comparator:</strong> For door-to-balloon
+time, control median is 65 (IQR 53–105), n=4022, and intervention median
+77 (55–118), n=3639; Difference is 6.18 (95% CI −4.78 to 17.14), β is
+13.00 (3.64–22.36). For door-to-needle time, control median is 44
+(30–67), n=1455, and intervention median 45 (27–75), n=1433; Difference
+is 0.40 (−5.23 to 6.03), β is 5.00 (−5.20 to 15.20). The comparators are
+the two adjusted columns and their common description, not crude median
+differences.</p>
+<p><strong>Reasoning procedure:</strong> Identify the same row,
+adjustment context, model-family statement and column footnotes;
+establish that the numbers differ beyond display precision; determine
+whether the source maps each to a distinct analysis. Legitimate distinct
+estimands need not be equal, but their interpretation for extraction
+requires a supplied distinction. No P value or test is printed, so this
+is not a CI-versus-P/test conflict.</p>
+<p><strong>Calculation:</strong> Door-to-balloon point intervals
+[6.175,6.185] and [12.995,13.005] have gap 6.810, relative gap
+6.810/6.18=1.10194175. Door-to-needle intervals [0.395,0.405] and
+[4.995,5.005] have gap 4.590, relative gap 4.590/0.40=11.475. Both
+exceed 0.05. Endpoint half-unit intervals remain:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Row/column</th>
+<th>Lower-limit interval</th>
+<th>Upper-limit interval</th>
+<th>Null inclusion throughout rounding intervals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Door-to-balloon Difference</td>
+<td>[−4.785,−4.775]</td>
+<td>[17.135,17.145]</td>
+<td>Includes 0</td>
+</tr>
+<tr class="even">
+<td>Door-to-balloon β</td>
+<td>[3.635,3.645]</td>
+<td>[22.355,22.365]</td>
+<td>Excludes 0</td>
+</tr>
+<tr class="odd">
+<td>Door-to-needle Difference</td>
+<td>[−5.235,−5.225]</td>
+<td>[6.025,6.035]</td>
+<td>Includes 0</td>
+</tr>
+<tr class="even">
+<td>Door-to-needle β</td>
+<td>[−5.205,−5.195]</td>
+<td>[15.195,15.205]</td>
+<td>Includes 0</td>
+</tr>
+</tbody>
+</table>
+<p>All points remain inside their own ordered intervals. These
+calculations establish distinct published summaries, without imposing
+equal estimands or inferring covariance or degrees of freedom.</p>
+<p><strong>Affected result or extracted value:</strong> Which adjusted
+time contrast to extract, its magnitude and interval; for
+door-to-balloon, whether that extracted interval includes zero.</p>
+<p><strong>Why context does not resolve it:</strong> Route B1 is met by
+in-focus estimate/method logic. B2 is met because the shared footnote
+and β label do not map the distinct adjusted time estimands; minutes
+resolve units but not analyses. B3 is met because choosing a column
+changes the extracted effect and door-to-balloon null inclusion. The
+source does not identify the intended distinction at once.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Difference may represent a marginal time effect and β a conditional
+quantile coefficient; distinct quantiles, transformations, adjustment
+models or populations could also produce legitimate distinct summaries.
+The exact row/column estimand, quantile, scale, model, marginalization
+procedure and population are not supplied. No alternative is presumed to
+be the producing analysis.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both pages, all row
+values, headings and footnotes were visually found and matched. The
+precision gaps and endpoint null inclusion reproduced without
+transcription amendment; S_W/statistical_results was confirmed.
+Independent audit confirmed Route B inclusion and preserved the absence
+of a printed test. See <a
+href="review_1_6_2/verification/evidence_recheck.md#c004--distinct-adjusted-time-contrasts-lack-an-estimand-mapping">combined
+recheck, C004</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could select different adjusted time effects or attach a
+column's interval interpretation to an insufficiently defined contrast.
+Clarifying each producing analysis could make those two outcome
+extractions distinguishable; no trial-wide conclusion change is
+established.</p>
+<h2
+id="c005--opposing-directional-readings-of-the-hospital-residual-display" class="candidate-card">C005
+— Opposing directional readings of the hospital residual display</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The index defines the named
+eFigure 1A residual as Expected minus Observed, while its signed plot
+and caption associate positive departures with higher hospital MACE and
+negative departures with lower MACE relative to the mean.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results supplement
+p.1 index vs same REPORT p.24 eFigure 1A caption</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-505</p>
+<p><strong>Qualifying route:</strong> Route A, category 2</p>
+<p><strong>Classification rationale:</strong> The index defines a
+reported result and the figure presents that result in the same REPORT
+supplement, giving S_W/statistical_results. The main article
+corroborates the caption's reading and adds no S_C relationship. The
+label changes quantitative direction, rather than merely locating a
+figure.</p>
+<p><strong>Classification ambiguity:</strong> Document roles and
+relationship are clear; the exact residual reference, formula and scale
+are undefined, leaving a bounded interpretive ambiguity.</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../joi170166supp3_prod.pdf#page=1">joi170166supp3_prod.pdf — p.1,
+eFigure 1A index entry</a>; REPORT <a
+href="../joi170166supp3_prod.pdf#page=24">joi170166supp3_prod.pdf —
+p.24, eFigure 1A signed axis, points and complete caption</a>.
+Supporting REPORT context: <a
+href="../jama_huffman_2018_oi_170166.pdf#page=9">jama_huffman_2018_oi_170166.pdf
+— p.9, site heterogeneity narrative</a>.</p>
+<p><strong>Source evidence:</strong> Index wording assigns
+Expected–Observed to the residual of 30-day MACE by hospital. The graph
+has clearly negative left-side and positive right-side values, axis
+ticks −3, −2, −1, 0, 1, 2 and a hospital-rank x-axis. Caption describes
+modeled hospital departures from mean MACE, residual zero as reference,
+left lower/right higher than mean, and intervals excluding zero as
+differing from mean at 5%. Main p.9 describes site event rate relative
+to the trial mean.</p>
+<p><strong>Reported-versus-comparator:</strong> The index subtraction
+order and caption sign-to-hospital-rate interpretation give opposing
+readings under a common expected/reference quantity and scale. Exact
+individual hospital coefficients, expected/observed pairs and confidence
+limits are not printed.</p>
+<p><strong>Reasoning procedure:</strong> Match the exact named
+primary-outcome figure, read its signed axis and caption, and apply the
+index's literal subtraction order. Assess the protected
+quantity-changing-label comparison before treating an index entry as
+peripheral. Separate the observed printed definitions from the
+assumption that expected equals the caption's mean on the same
+scale.</p>
+<p><strong>Calculation:</strong> For r=E−O, O&gt;E gives r&lt;0 and
+O<E gives r>0. The caption associates positive r with above-mean MACE
+and negative r with below-mean MACE. This is a logical direction
+comparison; no pixel-derived decimal hospital estimate is used.
+Half-unit intervals and a relative magnitude discrepancy cannot be
+formed truthfully without exact printed ordinates or paired values.</p>
+<p><strong>Affected result or extracted value:</strong> Whether
+positive/negative hospital residuals indicate MACE above/below the
+expected/reference rate, including interpretation of hospital intervals
+excluding zero. The trial-wide intervention OR is not reversed by this
+observation.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 2
+covers quantity-defining direction/reference statements reversing a
+displayed reading. Choosing the caption does not reconcile the competing
+index definition; this is more than a pointer or interchangeable
+wording.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+plotted result could be a hospital random effect or predicted departure
+on a model scale, while the index describes a distinct
+expected-minus-observed residual. Expected could differ from the
+trial-mean reference. The caption's mixed-logistic predicted-rate
+context supports these alternatives, but no exact formula, subtraction
+order, reference definition, probability/log-odds scale or
+hospital-specific values is supplied to distinguish them.</p>
+<p><strong>Mechanical evidence recheck:</strong> The source-confirmed
+index, caption and graph signs reproduce the competing directional
+descriptions; main p.9 corroborates one side. No hospital ID, value or
+event count was digitized, and no transcription adjustment was required.
+S_W/statistical_results was confirmed. Audit recognized the initial
+cross-source excluded observation as already represented by this
+candidate and confirmed inclusion. See <a
+href="review_1_6_2/verification/evidence_recheck.md#c005--opposing-directional-readings-of-the-named-hospital-residual-display">combined
+recheck, C005</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor or reader could interpret the same hospital departure as
+above or below its reference according to the chosen printed definition.
+Formula/reference clarification could support direction extraction from
+this plot; no change to the overall intervention effect or downstream
+decision is established.</p>
+<h2
+id="c006--ldl-interval-versus-the-same-display-reproducing-calculation" class="candidate-card">C006
+— LDL interval versus the same-display reproducing calculation</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The LDL confidence limits in
+eTable 1 do not reproduce, beyond display precision, under a pooled
+mean-difference calculation that reproduces the five other same-display
+mean/SD rows. LDL-specific contributor counts and its actual interval
+procedure are not supplied.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results supplement
+p.17 eTable 1 LDL row vs same-display mean/SD rows</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-501</p>
+<p><strong>Qualifying route:</strong> Route A, category 4</p>
+<p><strong>Classification rationale:</strong> The substantive numbers
+and comparator rows are in the same REPORT table, giving
+S_W/statistical_results. This is a within-display reproducing-method
+check, rather than a peripheral cross-document baseline-copy comparison
+or adjusted-versus-crude treatment-effect comparison.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../joi170166supp3_prod.pdf#page=17">joi170166supp3_prod.pdf —
+p.17, eTable 1 complete/missing follow-up headers, LDL row, age, weight,
+systolic-pressure, heart-rate and hemoglobin rows</a>.</p>
+<p><strong>Source evidence:</strong> Table headers give complete
+follow-up n=21,079 and missing follow-up n=295. LDL means/SDs are 122.4
+(40.8) and 131.4 (46.0) mg/dL, with missing-minus-complete difference
+9.0 and 95% CI 3.2–14.8. Actual LDL assay contributors and the CI
+procedure are absent. These groups are follow-up groups, not randomized
+arms.</p>
+<p><strong>Reported-versus-comparator:</strong> The printed LDL interval
+is compared with the explicitly stated same-display calculation below.
+Its five supporting mean/SD rows are preserved:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Characteristic</th>
+<th>Complete mean (SD)</th>
+<th>Missing mean (SD)</th>
+<th>Printed difference (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Age, years</td>
+<td>60.6 (12.1)</td>
+<td>60.0 (11.6)</td>
+<td>−0.6 (−2.0 to 0.8)</td>
+</tr>
+<tr class="even">
+<td>Weight, kg</td>
+<td>63.5 (9.7)</td>
+<td>62.6 (9.3)</td>
+<td>−0.9 (−2.0 to 0.2)</td>
+</tr>
+<tr class="odd">
+<td>Systolic pressure, mmHg</td>
+<td>138.5 (28.9)</td>
+<td>138.9 (32.5)</td>
+<td>0.4 (−2.9 to 3.7)</td>
+</tr>
+<tr class="even">
+<td>Heart rate, bpm</td>
+<td>79.9 (18.9)</td>
+<td>82.9 (19.1)</td>
+<td>3.0 (0.8 to 5.2)</td>
+</tr>
+<tr class="odd">
+<td>Hemoglobin, source label mg/dl</td>
+<td>13.2 (2.0)</td>
+<td>13.2 (2.1)</td>
+<td>0.0 (−0.3 to 0.2)</td>
+</tr>
+<tr class="even">
+<td>LDL, mg/dl</td>
+<td>122.4 (40.8)</td>
+<td>131.4 (46.0)</td>
+<td>9.0 (3.2 to 14.8)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reasoning procedure:</strong> Use the printed
+complete/missing group totals provisionally, set
+d=meanMissing−meanComplete, and evaluate pooled variance
+v=((nC−1)sC²+(nM−1)sM²)/(nC+nM−2), standard error SE=√[v(1/nC+1/nM)],
+endpoints d±1.96SE. This normal-approximation calculation is a
+diagnostic supported by reproduction of the other same-display rows, not
+a claim about the actual LDL-generating method or a preferred analysis.
+Then allow all displayed inputs and limits their half-unit rounding
+intervals.</p>
+<p><strong>Calculation:</strong> At printed LDL inputs, d=9.0,
+SE=2.3964893360, endpoints 4.3028809014–13.6971190986. The point
+difference reconciles: input difference range [8.90,9.10] overlaps
+printed 9.0's [8.95,9.05]. Means and SDs take ±0.05, while group headers
+conservatively take ±0.5: nC∈[21078.5,21079.5], nM∈[294.5,295.5]; LDL
+mean/SD intervals are [122.35,122.45], [40.75,40.85], [131.35,131.45],
+[45.95,46.05]. The recheck evaluated all 64 six-input corners;
+monotonicity of d and SE on these ranges supports their endpoint bounds.
+Fractional count intervals are conservative rather than asserted patient
+counts.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Characteristic</th>
+<th>Endpoints at printed inputs</th>
+<th>Full lower-limit range</th>
+<th>Full upper-limit range</th>
+<th>Printed lower-limit interval</th>
+<th>Printed upper-limit interval</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Age</td>
+<td>−1.98965319, 0.78965319</td>
+<td>[−2.09656791,−1.88275104]</td>
+<td>[0.68275104,0.89656791]</td>
+<td>[−2.05,−1.95]</td>
+<td>[0.75,0.85]</td>
+</tr>
+<tr class="even">
+<td>Weight</td>
+<td>−2.01402075, 0.21402075</td>
+<td>[−2.12070452,−1.90734897]</td>
+<td>[0.10734897,0.32070452]</td>
+<td>[−2.05,−1.95]</td>
+<td>[0.15,0.25]</td>
+</tr>
+<tr class="odd">
+<td>Systolic pressure</td>
+<td>−2.92697797, 3.72697797</td>
+<td>[−3.03550242,−2.81847022]</td>
+<td>[3.61847022,3.83550242]</td>
+<td>[−2.95,−2.85]</td>
+<td>[3.65,3.75]</td>
+</tr>
+<tr class="even">
+<td>Heart rate</td>
+<td>0.82785750, 5.17214250</td>
+<td>[0.72028958,0.93541117]</td>
+<td>[5.06458883,5.27971042]</td>
+<td>[0.75,0.85]</td>
+<td>[5.15,5.25]</td>
+</tr>
+<tr class="odd">
+<td>Hemoglobin</td>
+<td>−0.22998469, 0.22998469</td>
+<td>[−0.33592720,−0.12405228]</td>
+<td>[0.12405228,0.33592720]</td>
+<td>[−0.35,−0.25]</td>
+<td>[0.15,0.25]</td>
+</tr>
+<tr class="even">
+<td>LDL</td>
+<td>4.30288090, 13.69711910</td>
+<td>[4.19321414,4.41252805]</td>
+<td>[13.58747195,13.80678586]</td>
+<td>[3.15,3.25]</td>
+<td>[14.75,14.85]</td>
+</tr>
+</tbody>
+</table>
+<p>Age, weight, systolic pressure and heart-rate endpoints reproduce at
+printed inputs. Hemoglobin permits a jointly feasible mean difference
+−0.05 within its displayed means and point interval, giving endpoints
+approximately −0.27998469 and 0.17998469 that match both printed-limit
+intervals. All five comparator rows have zero gap after precision. LDL's
+closest lower gap is 4.1932141427−3.25=0.9432141427, relative
+discrepancy 0.9432141427/3.2=0.2947544196. Its upper gap is
+14.75−13.8067858573=0.9432141427, relative discrepancy
+0.9432141427/14.8=0.0637306853. Both exceed 0.05; restricting counts to
+exact integers does not bridge these conservative gaps.</p>
+<p><strong>Affected result or extracted value:</strong> The baseline LDL
+missing-minus-complete 95% CI of 3.2–14.8 mg/dL. The point estimate,
+interval containment and endpoint order reconcile.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 4
+covers a printed result not reproduced beyond display precision by a
+method reproducing other rows of the same display. The unprovided
+producing counts/method remain the substantive missing definition rather
+than making this a conditional method preference.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Fewer
+LDL assay contributors than the group headers could widen the interval;
+a distinct interval procedure, variance estimator or degrees of freedom
+could also account for it. The table supplies no variable-specific assay
+counts or generating procedure, and does not say that every participant
+contributed LDL. The displayed Ns are reproduction inputs, not
+established assay Ns. No replacement interval is proposed.</p>
+<p><strong>Mechanical evidence recheck:</strong> The full table, all six
+mean/SD rows and printed limits were visually matched. Independent
+calculation reproduced the five comparator rows and conservative LDL
+precision gaps without a transcription amendment.
+S_W/statistical_results was confirmed; audit independently repeated the
+interval calculation and confirmed inclusion. See <a
+href="review_1_6_2/verification/evidence_recheck.md#c006--ldl-interval-differs-from-the-same-display-reproducing-calculation">combined
+recheck, C006</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy the LDL follow-up-group interval without its
+necessary contributor-count or interval-method context. Clarification
+could support descriptive interval extraction; this does not establish
+an effect on trial treatment-effect conclusions.</p>
+<h2
+id="c007--planned-complete-case-primary-mace-sensitivity-result-is-not-identified" class="candidate-card">C007
+— Planned complete-case primary-MACE sensitivity result is not
+identified</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The SAP explicitly prescribes a
+complete-case sensitivity analysis for missing primary-outcome data, but
+the supplied REPORT materials do not identify its primary 30-day MACE
+result or map an existing reported analysis to it. Whether it was
+performed is not established by this reporting comparison.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN SAP pp.6,7 vs REPORT
+main pp.3,6,7 and results supplement pp.17,21,22,23</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST2-501</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> The comparison is the
+prospective PLAN complete-case primary-outcome specification versus the
+identifiable REPORT analyses. Multiple REPORT documents jointly
+establish that side without conflicting with one another, adding no S_C
+or S_W; SAP context adds no P_P. P_R therefore gives
+protocol_report.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi170166supp2_prod.pdf#page=6">joi170166supp2_prod.pdf — p.6,
+§7.1 lines 1190–1198 and §7.2 lines 1205–1210</a>; PLAN <a
+href="../joi170166supp2_prod.pdf#page=7">joi170166supp2_prod.pdf — p.7,
+§7.5 lines 1229–1238</a>; REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=3">jama_huffman_2018_oi_170166.pdf
+— p.3, Outcomes and Statistical Analysis</a>; REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=6">jama_huffman_2018_oi_170166.pdf
+— p.6, follow-up paragraph</a>; REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=7">jama_huffman_2018_oi_170166.pdf
+— p.7, Table 3 primary row, footnote a and Primary Analysis</a>; REPORT
+<a href="../joi170166supp3_prod.pdf#page=17" target="_blank" rel="noopener">joi170166supp3_prod.pdf —
+p.17, eTable 1</a>; REPORT <a
+href="../joi170166supp3_prod.pdf#page=21">joi170166supp3_prod.pdf —
+p.21, eTable 5 primary row and analysis labels</a>; REPORT <a
+href="../joi170166supp3_prod.pdf#page=22">joi170166supp3_prod.pdf —
+p.22, eTable 6 primary row and analysis labels</a>; REPORT <a
+href="../joi170166supp3_prod.pdf#page=23">joi170166supp3_prod.pdf —
+p.23, eTable 7 title, rows and footnotes</a>. Additional supporting
+context: REPORT <a
+href="../jama_huffman_2018_oi_170166.pdf#page=4">jama_huffman_2018_oi_170166.pdf
+— p.4, Figure 1 caption</a>.</p>
+<p><strong>Source evidence:</strong> SAP §7.1 applies missing-data
+methods to primary/secondary endpoints; §7.2 explicitly names
+complete-case and multiple-imputation sensitivity analyses. SAP p.7
+identifies primary 30-day MACE and the hospital/time mixed-logistic
+model. The report describes intention-to-treat results, missing
+follow-up, multiple imputation and hypothetical missing-event scenarios,
+without identifying a complete-case primary-MACE result. Figure 1 says
+lost-follow-up participants were included in analysis, but does not
+specify missing-outcome coding or populations for individual models.</p>
+<p><strong>Reported-versus-comparator:</strong> Primary MACE is control
+645 (6.4%) versus intervention 602 (5.3%), with arm headers 10,066 and
+11,308. Primary OR is 0.98 (95% CI 0.80–1.21), difference −0.09
+percentage points (−1.32 to 1.14). Main p.7 reports similar results
+after multiple imputation and a broader range of plausible
+hypothetical-scenario results. eTable 1 describes complete/missing
+follow-up (21,079/295), not a treatment effect. eTable 5 labels four
+covariate sensitivities, primary ORs 1.06 (0.77–1.44), 0.98 (0.80–1.21),
+0.97 (0.79–1.20), 0.99 (0.80–1.22). eTable 6 labels an exposure-time
+interaction, OR 1.14 (0.76–1.70). eTable 7 labels an expanded composite,
+OR 0.84 (0.70–1.00), difference −1.34 (−2.72 to 0.04). None names or
+supplies a definition mapping its result to the planned complete-case
+primary sensitivity.</p>
+<p><strong>Reasoning procedure:</strong> Link the SAP's missing-data
+provision to the primary endpoint, then inspect all supplied REPORT text
+and every results display for a matching result-to-method identity.
+Complete main and results-supplement searches considered
+complete-case/available-case/observed-case, case deletion, missing,
+imputation, sensitivity, hypothetical and lost-follow-up language. The
+supplement's REPORT index and pp.17–27 were source-inspected; its
+operational PLAN pp.2–16 cannot identify a completed trial sensitivity
+result. Absence is bounded to this supplied package.</p>
+<p><strong>Calculation:</strong> The categorical method set in the SAP
+is {complete-case, multiple imputation}; report sensitivity text names
+imputation and hypothetical event scenarios without a complete-case
+designation or mapping. No complete-case numerical estimate exists for a
+half-unit or relative-discrepancy comparison. Contextual integer
+identities reconcile: 215+80=295 missing outcomes; 21,079+295=21,374;
+10,066+11,308=21,374. These identities do not identify arm-specific
+complete-case denominators, outcome availability, model inclusion or a
+complete-case effect; none is reconstructed.</p>
+<p><strong>Affected result or extracted value:</strong> Availability,
+identity and contributing population of the planned complete-case
+sensitivity for the primary 30-day MACE intervention effect, alongside
+the printed primary OR and difference.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+covers a planned primary or key-secondary analysis without an identified
+reported counterpart. Intention-to-treat wording, full-cohort headers,
+baseline follow-up summaries and similar-imputation language do not
+establish the planned complete-case result-to-method mapping.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+primary model may already implement complete-case analysis while
+descriptive cohort statements retain the full cohort; an unspecified
+hypothetical scenario may implement it; or the analysis may have been
+replaced or deferred. Missing definitions are the designated result,
+completeness rule, contributing population, primary-model
+missing-outcome coding, hypothetical-scenario definitions, mapping to an
+existing result, and any documentation of replacement/deferral. None of
+these alternatives is established, and the reporting observation does
+not assert that the analysis was unperformed or that its estimate would
+differ.</p>
+<p><strong>Mechanical evidence recheck:</strong> A different fresh
+appended rechecker visually reread all nine registered pages and the
+additional flow caption, matched source statements and quantitative
+context, and independently searched complete supplied REPORT text. The
+missing result/mapping comparison reproduced with no transcription
+amendment; P_R/protocol_report was retained. The audit confirmed the
+specific Route A category 5 issue while retaining general unreported
+implementation details as exclusions. See <a
+href="review_1_6_2/verification/evidence_recheck_appended.md">appended
+recheck</a> and the lossless <a
+href="review_1_6_2/verification/evidence_recheck.md">combined
+recheck</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could omit a planned primary missing-data sensitivity or
+attribute an existing estimate to complete-case analysis without a
+supplied mapping. Identifying its result/population could support
+assessment of sensitivity evidence; no numerical shift, conclusion
+change or downstream decision is established.</p>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>Quantitative extraction connects a reported number with an outcome
+definition, population, time, model, scale, direction and prospective
+status. If a candidate is confirmed, the associated ambiguity or
+discrepancy could affect which number is copied or which meaning is
+attached to it in a systematic review, meta-analysis, guideline evidence
+table or other synthesis. The cards identify the specific bounded
+extraction implication rather than assuming an evidence-chain
+consequence has occurred.</p>
+<p>The package establishes neither actual downstream copying nor a
+change to a synthesis, guideline or trial conclusion. The medication,
+expanded-MACE and subgroup issues concern endpoint/analysis definitions
+and status; the time/residual issues concern quantity mapping and
+direction; the LDL issue concerns a descriptive interval; and the
+complete-case issue concerns identifiable sensitivity evidence. These
+distinct implications should remain connected to their source
+definitions and alternatives.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>Every direct-source page and registered relationship was covered.
+Remaining limitations concern the supplied evidence's granularity and
+definitions rather than scientific coverage. The <a
+href="review_1_6_2/limitations.md">limitations artifact</a> records
+these in full.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Candidate or scope</th>
+<th>Missing definition or bounded limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>C001</td>
+<td>Dated medication-composite amendment, statin observations,
+five-component eligibility set, counts and result are absent.</td>
+</tr>
+<tr class="even">
+<td>C002</td>
+<td>Prospective expanded-MACE component identity, analysis specification
+and any later amendment are absent.</td>
+</tr>
+<tr class="odd">
+<td>C003</td>
+<td>Dated specification for revised age groups/hospital type and
+toolkit-use primary-MACE result or replacement/deferral mapping are
+absent.</td>
+</tr>
+<tr class="even">
+<td>C004</td>
+<td>Column-specific time estimand, quantile, scale, model,
+adjustment/marginalization and population mapping are absent.</td>
+</tr>
+<tr class="odd">
+<td>C005</td>
+<td>Residual formula, subtraction order, expected-versus-mean reference,
+scale and exact hospital values are absent.</td>
+</tr>
+<tr class="even">
+<td>C006</td>
+<td>LDL assay contributor counts, row-specific missingness and
+generating interval/variance/degree-of-freedom procedure are
+absent.</td>
+</tr>
+<tr class="odd">
+<td>C007</td>
+<td>Complete-case primary result, completeness/inclusion rule,
+contributing population, missing-outcome coding and mapping to primary
+or hypothetical-scenario results are absent.</td>
+</tr>
+<tr class="even">
+<td>Graphs</td>
+<td>Exact hospital identifiers, rates, endpoints, events and
+denominators are unprinted; visual checks did not create decimal values
+from pixels.</td>
+</tr>
+<tr class="odd">
+<td>Other reproduction</td>
+<td>Exact restricted medication/smoker denominators, anticipated
+cluster-period power inputs and unreported model internals constrain
+reconstruction without independently establishing a candidate.</td>
+</tr>
+<tr class="even">
+<td>Tooling</td>
+<td>Direct OCR and Office conversion were unavailable; all sources are
+PDFs and source-matched OCR/native text plus CPU visual inspection
+covered every page. No new OCR, Office conversion or fallback
+installation was needed.</td>
+</tr>
+</tbody>
+</table>
+<p>The review used only supplied package evidence. It did not inspect
+external publications, code or raw data; unsupplied amendments and
+separate process-evaluation reports cannot resolve a candidate here.
+Diagnostic calculations retain their stated assumptions and do not
+identify an unprovided producing analysis. Reproduction and CONFIRMED
+inclusion remain distinct from final human adjudication.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>The <a href="review_1_6_2/routing_preflight.md">routing preflight</a>
+records PASS, run model gpt-6.1-sol with DEFAULT source,
+INTERACTIVE_CLI, CURRENT_SESSION provider and verified ten named role
+presets. All specialists were fresh distinct runtimes; high-effort
+statistical passes used separate main/support runtime pairs. Every
+actual runtime, including coordinator and this report generator, is
+recorded once below and in the <a
+href="review_1_6_2/agent_execution_manifest.md">execution
+manifest</a>.</p>
+<p>Direct local tooling used file, pdfinfo, pdftotext and
+pdftoppm/pdftocairo with Poppler 25.03.0, SHA-256 tools, and supplied
+source-matched reusable OCR. Current extraction and rendering ran on
+CPU; historical derivative engine/device metadata remains separately
+recorded in the <a
+href="review_1_6_2/evidence_asset_inventory.md">evidence-asset
+inventory</a>. No temporary fallback environment was created. The <a
+href="review_1_6_2/tooling_record.md">tooling record</a> documents
+available tools and coverage of missing capabilities.</p>
+<p>Final after-review SHA-256 recomputation matches all four source
+baselines and all 82 reused-asset baselines byte for byte. The <a
+href="review_1_6_2/source_hashes_after.sha256">source after-hash
+record</a> and <a
+href="review_1_6_2/reused_artifact_hashes_after.sha256">reused-asset
+after-hash record</a> preserve the comparisons. The standalone HTML uses
+embedded CSS and a table of contents. No fallback environment was
+created; final cleanup confirmation is recorded in the tooling record.
+The mechanical validator outcome is recorded in <a
+href="review_1_6_2/review_validation.json">review_validation.json</a>.</p>
+<p>Durable evidence maps are the <a
+href="review_1_6_2/extraction/main_quantitative_evidence.md">main
+map</a>, <a
+href="review_1_6_2/extraction/support_quantitative_evidence.md">canonical
+support map</a>, and its disjoint <a
+href="review_1_6_2/extraction/support_plan_evidence.md">plan part</a>
+and <a
+href="review_1_6_2/extraction/support_results_evidence.md">results
+part</a>. Stable candidate provenance and classifications are in the <a
+href="review_1_6_2/candidate_ledger.md">ledger</a>, <a
+href="review_1_6_2/screening/inclusion_screen.md">screening log</a>, <a
+href="review_1_6_2/verification/evidence_recheck.md">combined
+recheck</a>, and <a
+href="review_1_6_2/quality/evidence_quality_audit.md">quality audit</a>.
+Every source-PDF evidence link uses an actual filename and physical page
+anchor.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Primary durable artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>coordinator</td>
+<td>task:/root</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr class="even">
+<td>reuse_asset_curator</td>
+<td>task:/root/reuse_curator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>source_inventory.md</td>
+</tr>
+<tr class="odd">
+<td>main_quantitative_mapper</td>
+<td>task:/root/main_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr class="even">
+<td>support_quantitative_mapper</td>
+<td>task:/root/support_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr class="odd">
+<td>numeric_consistency_reviewer</td>
+<td>task:/root/numeric_checker</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr class="even">
+<td>cross_source_consistency_reviewer</td>
+<td>task:/root/cross_checker</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_1</td>
+<td>task:/root/stat1_main</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr class="even">
+<td>statistics_pass_1_support_shard</td>
+<td>task:/root/stat1_support</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_pass_1_support.md</td>
+</tr>
+<tr class="odd">
+<td>inclusion_screener</td>
+<td>task:/root/initial_screener</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/inclusion_screen.md</td>
+</tr>
+<tr class="even">
+<td>evidence_rechecker</td>
+<td>task:/root/evidence_recheck</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_2</td>
+<td>task:/root/stat2_main</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr class="even">
+<td>statistics_pass_2_support_shard</td>
+<td>task:/root/stat2_support</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_pass_2_support.md</td>
+</tr>
+<tr class="odd">
+<td>inclusion_screener_pass_2</td>
+<td>task:/root/pass2_screener</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/inclusion_screen_pass_2.md</td>
+</tr>
+<tr class="even">
+<td>evidence_rechecker_appended</td>
+<td>task:/root/appended_recheck</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck_appended.md</td>
+</tr>
+<tr class="odd">
+<td>quality_control_auditor</td>
+<td>task:/root/quality_auditor</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr class="even">
+<td>report_generator</td>
+<td>task:/root/report_generator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<p>Artifact paths in this table are relative to review_1_6_2/. The API
+exposes canonical runtime task names; task: identifies that transport
+namespace. All 16 returned canonical names are distinct, with exactly
+one row per actual runtime. The main/support statistical shards are
+disjoint and jointly complete at each pass. Model and reasoning-effort
+values are copied from the execution manifest.</p>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Four PDF sources with 80 pages, 69
+reusable-backed and 11 requiring fresh visual mapping after
+current-source fitness checks, no Office conversion or new OCR expected;
+mixed plan and result content plus numerous main and supplementary
+tables require parallel mapping, concurrent checks, two independent
+statistical passes, screening, recheck, audit and report waves. Native
+plus reusable OCR input fits two mapping lanes.</li>
+<li><strong>Total source units:</strong> 80</li>
+<li><strong>Fresh-source units:</strong> 11</li>
+<li><strong>Target elapsed minutes:</strong> 30-45</li>
+<li><strong>Started UTC:</strong> 2026-10-11T06:39:56Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T07:51:20Z</li>
+<li><strong>Observed elapsed minutes:</strong> 71.40</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> Pass 2 identified an additional
+planned primary-outcome sensitivity analysis without an identified
+reported counterpart, requiring a different fresh inclusion screen and
+appended evidence recheck; complete fresh audit and report stages
+followed without reducing source or relationship coverage.</li>
+</ul>
+<p>These exact finalized performance fields match the <a
+href="review_1_6_2/run_state.md">run state</a>. Finished UTC was
+recorded immediately after complete Markdown assembly. Local rendering
+and mechanical validation are outside that observed review window; any
+model-based repair after that time requires updated timing.</p>
+</body>
+</html>

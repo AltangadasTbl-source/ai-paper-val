@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-reporting-quality-control-consistency-review--workflow-162"
+id="toc-quantitative-reporting-quality-control-consistency-review--workflow-162">Quantitative
+Reporting Quality-Control Consistency Review — Workflow 1.6.2</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#inclusion-screening-summary"
+id="toc-inclusion-screening-summary">Inclusion Screening
+Summary</a></li>
+<li><a href="#review-domain-summary"
+id="toc-review-domain-summary">Review-Domain Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a href="#c001--protocolized-temperature-management-window"
+id="toc-c001--protocolized-temperature-management-window">C001 —
+Protocolized temperature-management window</a></li>
+<li><a href="#c002--signed-primary-risk-difference"
+id="toc-c002--signed-primary-risk-difference">C002 — Signed primary risk
+difference</a></li>
+<li><a href="#c003--cooling-duration-anchor-and-late-cooling-minimum"
+id="toc-c003--cooling-duration-anchor-and-late-cooling-minimum">C003 —
+Cooling-duration anchor and late-cooling minimum</a></li>
+<li><a href="#c004--routine-rewarming-rate"
+id="toc-c004--routine-rewarming-rate">C004 — Routine rewarming
+rate</a></li>
+<li><a href="#c005--primary-analysis-population-definition"
+id="toc-c005--primary-analysis-population-definition">C005 — Primary
+analysis-population definition</a></li>
+<li><a href="#c006--planned-binary-primary-odds-ratio-not-supplied"
+id="toc-c006--planned-binary-primary-odds-ratio-not-supplied">C006 —
+Planned binary primary odds ratio not supplied</a></li>
+<li><a href="#c007--survival-analysis-window"
+id="toc-c007--survival-analysis-window">C007 — Survival analysis
+window</a></li>
+<li><a href="#c008--cooling-time-equal-proportions-test"
+id="toc-c008--cooling-time-equal-proportions-test">C008 — Cooling-time
+equal-proportions test</a></li>
+<li><a href="#c009--final-significance-rule-specification"
+id="toc-c009--final-significance-rule-specification">C009 — Final
+significance-rule specification</a></li>
+<li><a href="#c010--bleeding-rr-ci-and-p-attribution-pattern"
+id="toc-c010--bleeding-rr-ci-and-p-attribution-pattern">C010 — Bleeding
+RR, CI and P attribution pattern</a></li>
+<li><a href="#c011--interim-normal-boundary-and-p-threshold"
+id="toc-c011--interim-normal-boundary-and-p-threshold">C011 — Interim
+normal boundary and P threshold</a></li>
+<li><a href="#c012--july-2016-cumulative-primary-outcome-y-series"
+id="toc-c012--july-2016-cumulative-primary-outcome-y-series">C012 — July
+2016 cumulative primary-outcome Y series</a></li>
+<li><a href="#c013--as-treated-ct-count-and-percentage-ordering"
+id="toc-c013--as-treated-ct-count-and-percentage-ordering">C013 —
+As-treated CT count and percentage ordering</a></li>
+<li><a href="#c014--adjusted-odds-ratio-interval-token"
+id="toc-c014--adjusted-odds-ratio-interval-token">C014 — Adjusted
+odds-ratio interval token</a></li>
+<li><a href="#c015--planned-adjusted-key-secondary-sensitivity-analyses"
+id="toc-c015--planned-adjusted-key-secondary-sensitivity-analyses">C015
+— Planned adjusted key-secondary sensitivity analyses</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a
+href="#candidate-specific-missing-definitions-and-bounded-evidence-qualifications"
+id="toc-candidate-specific-missing-definitions-and-bounded-evidence-qualifications">Candidate-specific
+missing definitions and bounded evidence qualifications</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-reporting-quality-control-consistency-review--workflow-162">Quantitative
+Reporting Quality-Control Consistency Review — Workflow 1.6.2</h1>
+<p><strong>Pending Human Adjudication.</strong> Every stable candidate
+remains pending. Evidence states and inclusion-audit records describe
+the supplied-source review; they do not determine human
+adjudication.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete review of four supplied PDFs identified 15 stable candidate
+reporting issues, C001–C015. Fourteen have reproduced evidence and
+confirmed inclusion; C008 has not_reproduced evidence and QUESTIONED
+inclusion after the mandatory display-precision recheck. Its stable ID
+and historical registration remain visible. Seven candidates concern
+statistical results, seven concern planned versus reported statistical
+design, and one concerns plan-internal statistical design.</p>
+<p>All 229 physical PDF pages were scientifically mapped. Numeric review
+covered 159 relationships; two distinct fresh statistical passes each
+covered all 369 statistical relationships. Independent screening
+recorded 28 findings: 15 INCLUDE and 13 SCREENED_OUT decisions. The
+complete candidate set follows below without selection by count.
+Potential relevance is confined to interpretation and evidence
+extraction from the supplied materials; no downstream propagation or
+conclusion change is established.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains the POLAR randomized-trial article and three
+supplied supplements. Direct sources are authoritative; source-linked
+extraction and page images served as locators and transcription aids.
+Fresh discovery used complete current-run maps rather than previous
+candidate decisions. SHA-256 identities and the reusable-asset inventory
+are recorded in <a
+href="review_1_6_2/source_hashes_before.sha256">source hashes</a>, <a
+href="review_1_6_2/reused_artifact_hashes_before.sha256">reused-artifact
+hashes</a> and the <a
+href="review_1_6_2/evidence_asset_inventory.md">asset inventory</a>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source ID</th>
+<th>Actual supplied filename</th>
+<th>Content role</th>
+<th style="text-align: right;">Physical PDF pages</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td>jama_cooper_2018_oi_180132.pdf</td>
+<td>REPORT: trial article</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td>joi180132supp1_prod.pdf</td>
+<td>Overall PLAN: original/final protocols, amendments, SAP updates and
+monitoring material</td>
+<td style="text-align: right;">194</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td>joi180132supp2_prod.pdf</td>
+<td>REPORT: supplementary results</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td>DOC-004</td>
+<td>joi180132supp3_prod.pdf</td>
+<td>REPORT: retrospective publication data-sharing statement</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>Within DOC-002, observed DSMB result displays on physical pp.189–194
+are REPORT content for location-specific classification; prospective
+stopping rules remain PLAN. Content determines roles. External
+protocol/SAP/charter pointer pages were covered as supplied; their
+linked documents were not fetched.</p>
+<p>The 305 preserved reusable assets comprise eight whole-document
+native/layout files, 229 rendered pages, 50 metadata/text locators and
+18 page-specific derivatives. Native text matched the current four PDFs;
+layout text matched three, with a vertical-axis placement difference in
+the article layout handled by source precedence. Reusable images cover
+all 30 plan pages without usable body text. Historical
+extraction/rendering engine versions are unspecified; current direct
+confirmation used Poppler 25.03.0 on CPU. Asset overlap does not
+increase unique page coverage.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review covers counts and denominators, estimate/test logic,
+statistical method logic, and planned versus reported statistical design
+under the supplied <a href="../QUALITY_CONTROL_SCOPE.md">quality-control
+scope</a>. Complete source-unit mapping includes cover, administrative,
+pointer, reference, scanned, table and figure pages. Reuse avoided
+unnecessary preprocessing and did not replace fresh scientific
+mapping.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source ID</th>
+<th>Source path</th>
+<th>Unit type</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Mapped units</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td>jama_cooper_2018_oi_180132.pdf</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td>joi180132supp1_prod.pdf</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">194</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td>joi180132supp2_prod.pdf</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-004</td>
+<td>joi180132supp3_prod.pdf</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td>COMPLETE</td>
+</tr>
+</tbody>
+</table>
+<p>No Office or CSV direct sources were supplied. No unresolved
+source-unit mapping gap remains. Boundaries exclude raw-data audit,
+broad clinical or methodological appraisal, novelty assessment and
+preferred-analysis recommendations. Display-zero P values alone,
+display-precision differences, immediately resolvable wording,
+model-versus-crude comparisons and peripheral comparisons were screened
+according to the normative scope.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The <a
+href="review_1_6_2/relationships/numeric_relationship_inventory.md">numeric
+inventory</a> contains 159 relationships across all mapped report and
+plan materials. The <a
+href="review_1_6_2/statistics/relationship_inventory.md">statistical
+inventory</a> contains 369 unique relationships: 95 main-report, 107
+supplementary-report, 82 plan, and 85 observed-monitoring relationships.
+Every statistical relationship has explicit PASS_1_COMPLETE and
+PASS_2_COMPLETE records.</p>
+<p>Pass 1 and pass 2 used different fresh gpt-6.1-sol/high agents, with
+disjoint context-bounded shards. Pass 2 reviewed the complete ledger,
+source rechecks and screening facts, and revisited all 59 checker
+excluded observations against always-register categories and the
+display-precision rule. It emitted one new included issue, C015. The
+subsequent independent quality audit covered all candidates, screening
+decisions, excluded observations, classification fields, source-unit
+coverage and execution records. Its two duplicate-provenance findings
+did not add stable candidates. Complete assignments and durable parts
+are retained in the <a href="review_1_6_2/coverage_manifest.md">coverage
+manifest</a>.</p>
+<h2 id="inclusion-screening-summary">Inclusion Screening Summary</h2>
+<p>Registration requires reproduction and either an always-register
+Route A category or all Route B criteria: in focus, unresolved by
+immediate context, and bearing on a named result's interpretation or
+extraction. Display-precision comparisons use half-unit input and output
+intervals, followed by the relative-discrepancy threshold. Assigned IDs
+remain visible when later recheck questions reproduction.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Decision</th>
+<th>Reason code</th>
+<th style="text-align: right;">Findings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>INCLUDE</td>
+<td>MEETS_THRESHOLD</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>DUPLICATE_OF_INCLUDED</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>ROUNDING_OR_DISPLAY_PRECISION</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>CONDITIONAL_OR_UNREPORTED</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>TERMINOLOGY_OR_WORDING</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td>All decisions</td>
+<td style="text-align: right;"><strong>28</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Initial screening covered 25 findings, with 14 INCLUDE and 11
+SCREENED_OUT decisions. Pass-2 screening added one INCLUDE decision.
+Audit added two SCREENED_OUT/DUPLICATE_OF_INCLUDED findings. Thus 15 +
+13 = 28, and all 15 INCLUDE rows map to the 15 stable IDs. Other
+screened-out reason codes have zero rows. Duplicate rows preserve
+provenance and locations without separate cards. The <a
+href="review_1_6_2/screening/inclusion_screen.md">single screening
+log</a> preserves C008's historical INCLUDE; the current card separately
+reports its reconciled evidence and questioned inclusion.</p>
+<h2 id="review-domain-summary">Review-Domain Summary</h2>
+<p>Domains describe reporting relationships: statistical_results covers
+numerical and statistical logic in report material;
+report_internal_inconsistency covers conflicting attribution of reported
+numbers to outcomes, times or populations; protocol_report covers
+report-versus-plan statistical design; plan_material covers
+plan-internal statistical design. Relationship precedence is P_R &gt;
+P_P &gt; S_C &gt; S_W when more than one conflict is present.
+Corroboration alone adds no relationship.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Review domain</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>statistical_results</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td>report_internal_inconsistency</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>protocol_report</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td>plan_material</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>15</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Primary relationship type</th>
+<th>Meaning</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P_R</td>
+<td>REPORT versus PLAN</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td>P_P</td>
+<td>PLAN versus PLAN</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td>S_C</td>
+<td>Between REPORT documents</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td>S_W</td>
+<td>Within one REPORT document</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>15</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Evidence state</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>reproduced</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="even">
+<td>reproduced_after_transcription_correction</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>not_reproduced</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>15</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The inclusion audit records 14 CONFIRMED and 1 QUESTIONED candidate.
+These records and evidence states are copied from the current ledger and
+do not replace human adjudication.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Review domain</th>
+<th>Relationship type</th>
+<th>Evidence state</th>
+<th>Inclusion audit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>C001</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td>C002</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td>C003</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td>C004</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td>C005</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td>C006</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td>C007</td>
+<td>statistical_results</td>
+<td>S_C</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td>C008</td>
+<td>statistical_results</td>
+<td>S_C</td>
+<td>not_reproduced</td>
+<td>QUESTIONED</td>
+</tr>
+<tr class="odd">
+<td>C009</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td>C010</td>
+<td>statistical_results</td>
+<td>S_C</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td>C011</td>
+<td>plan_material</td>
+<td>P_P</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td>C012</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td>C013</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td>C014</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td>C015</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2 id="c001--protocolized-temperature-management-window" class="candidate-card">C001 —
+Protocolized temperature-management window</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The reported seven-day
+temperature-management window does not identify how it relates to
+final-plan 96-hour device/pyrexia instructions and contemporaneous
+seven-day instructions.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 pp.1,3 vs
+PLAN DOC-002 pp.77,89,101; PLAN final V9 sections compared</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-202</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Confirmed. P_R takes
+precedence over the independent P_P component. These are intervention
+specifications in protocol material, and observed/published intervention
+descriptions in report material.</p>
+<p><strong>Classification ambiguity:</strong> The p.77 seven-day time
+origin and post-96-hour ordinary-care definition remain unspecified;
+role assignments are clear.</p>
+<p><strong>Exact source locations:</strong> Yes, at every registered
+location: REPORT <a
+href="../jama_cooper_2018_oi_180132.pdf#page=1">DOC-001 p.1,
+Interventions</a> and <a
+href="../jama_cooper_2018_oi_180132.pdf#page=3">p.3, Rewarming and
+Normothermia</a>; PLAN <a
+href="../joi180132supp1_prod.pdf#page=77">DOC-002 p.77, §12.11</a>, <a
+href="../joi180132supp1_prod.pdf#page=89">p.89, Appendix A events
+table</a>, and <a href="../joi180132supp1_prod.pdf#page=101" target="_blank" rel="noopener">p.101,
+Appendix F infection/pyrexia instructions</a>.</p>
+<p><strong>Source evidence:</strong> Yes. Abstract: temperature managed
+in both groups for seven days. Main p.3: after reaching 37°C,
+normothermic management using automated wraps if required for up to
+seven days postrandomization.</p>
+<p><strong>Reported-versus-comparator:</strong> Yes. Final V9 p.77:
+postrewarming normothermia with pads up to a maximum seven days or
+earlier ICU discharge; this sentence does not explicitly give the time
+origin. Control pyrexia prevention is up to 96 hours postrandomization,
+then unit protocol. Events table p.89 marks standard-care
+temperature-control device continuation through Day 7. Appendix p.101
+gives normothermic pads for 96 hours postrandomization, then ward
+protocol, and pyrexia prevention in all patients up to 96 hours
+postrandomization, then unit protocol. These are distinct
+contemporaneous sections, rather than only historical versions.</p>
+<p><strong>Reasoning procedure:</strong> Yes. Focus D and Route B
+concern the assigned intervention/comparator duration. REPORT seven-day
+specification differs from PLAN 96-hour specification; PLAN
+event/detailed-section seven-day specifications differ from PLAN
+Appendix F 96-hour specification.</p>
+<p><strong>Calculation:</strong> Seven days = 168 hours. Conservatively
+allowing seven displayed days [6.5,7.5] gives [156,180] hours; 96 hours
+gives [95.5,96.5]. Gap 59.5 hours; relative discrepancy 59.5/96 =
+0.61979. This is a comparison of specifications, not a claim about
+actual patient exposure. The seven-day hypothermia maximum itself
+reconciles and is context.</p>
+<p><strong>Affected result or extracted value:</strong> Assigned
+temperature-management/device-use duration for each randomized arm
+attached to the primary six-month favorable-GOSE comparison.</p>
+<p><strong>Why context does not resolve it:</strong> Optional pads,
+earlier ICU discharge and subsequent ward care do not define whether
+seven days and 96 hours describe the same arm-specific assigned
+management window. The final protocol retains both schedules without an
+explicit hierarchy.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Seven
+days may describe the full management window, with compulsory protocol
+measures ending at 96 hours and later measures supplied by routine care;
+pads are explicitly optional when required, and ICU discharge can
+shorten use. This does not define a common arm-specific device maximum
+across the compared statements.</p>
+<p><strong>Mechanical evidence recheck:</strong> All listed source
+locations were found and the source/comparator readings matched. The
+direct PDFs retain seven-day and 96-hour specifications in the
+registered report and contemporaneous final-plan sections, separated
+beyond display precision. Necessary inputs: Yes for the textual/duration
+comparison. <strong>Exact missing inputs or definitions:</strong> Which
+section governed arm-specific device use, the seven-day time origin on
+p.77, and whether routine ward/unit management after 96 hours was
+intended to constitute the same assigned seven-day intervention. Actual
+device-use records are unavailable. Direct observation and inference:
+The competing printed schedules and events-table ticks are direct
+observations. A retained appendix from an earlier practice or a
+distinction between active device management and ordinary care is an
+unestablished explanation. No adherence consequence is inferred. See the
+complete durable <a
+href="review_1_6_2/verification/evidence_recheck.md">C001 source
+recheck</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could record different assigned temperature-management
+durations for the randomized arms. Actual device exposure, adherence and
+outcome consequences are not established.</p>
+<p>Checker provenance: Included finding F-ST1-202; duplicate findings
+F-XS-007. All duplicate source locations are retained in the
+consolidated source evidence below. The classification-table Finding IDs
+field records INCLUDE rows only; duplicate provenance is separately
+preserved.</p>
+<h2 id="c002--signed-primary-risk-difference" class="candidate-card">C002 — Signed primary risk
+difference</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The abstract prints a positive
+primary risk difference of 0.4%, while the body and Table 2 print −0.4
+percentage points for the same outcome, counts and confidence
+interval.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 abstract p.1
+vs body p.5 and Table2 p.7</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-001</p>
+<p><strong>Qualifying route:</strong> Route A, category 2</p>
+<p><strong>Classification rationale:</strong> Confirmed. Every
+conflicting copy is in one published report; this concerns a signed
+estimate, so statistical_results applies.</p>
+<p><strong>Classification ambiguity:</strong> None.</p>
+<p><strong>Exact source locations:</strong> Yes: REPORT <a
+href="../jama_cooper_2018_oi_180132.pdf#page=1">DOC-001 p.1, abstract
+Results</a>, <a href="../jama_cooper_2018_oi_180132.pdf#page=5" target="_blank" rel="noopener">p.5,
+Primary Outcome</a>, and <a
+href="../jama_cooper_2018_oi_180132.pdf#page=7">p.7, Table 2 primary
+row</a>.</p>
+<p><strong>Source evidence:</strong> Yes. Abstract prints risk
+difference 0.4%, CI −9.4% to 8.7%, RR 0.99, P=.94, with favorable counts
+117 and 111.</p>
+<p><strong>Reported-versus-comparator:</strong> Yes. Body and Table 2
+print −0.4 percentage points, identical interval −9.4 to8.7, with counts
+117/240 and 111/226.</p>
+<p><strong>Reasoning procedure:</strong> Yes: focus B, Route A category
+2, opposite signed readings of the same primary absolute effect.</p>
+<p><strong>Calculation:</strong> H−N = 100(117/240−111/226) =
+−0.36504425 percentage points. Positive0.4 interval [0.35,0.45] versus
+negative −0.4 interval [−0.45,−0.35] leaves gap 0.70; relative
+discrepancy 0.70/0.4=1.75. Count-derived intervals are unnecessary to
+establish the separated printed copies.</p>
+<p><strong>Affected result or extracted value:</strong> Signed primary
+absolute risk difference for favorable six-month GOSE, hypothermia
+versus normothermia.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 2
+applies to opposite printed signs changing the extracted effect
+direction; reconstructing a sign from counts does not remove the
+candidate.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Reverse
+contrast or absolute magnitude could account for positive 0.4. The
+unchanged asymmetric CI and RR below1 accompany the original H-versus-N
+contrast and do not define such a switch.</p>
+<p><strong>Mechanical evidence recheck:</strong> All listed source
+locations were found and the source/comparator readings matched. Fresh
+source renders show positive 0.4 in the abstract and negative −0.4 in
+both other copies, beyond precision. Necessary inputs: Yes.
+<strong>Exact missing inputs or definitions:</strong> Whether the
+abstract uses unsigned magnitude or an explicitly different contrast;
+neither is stated. Direct observation and inference: Three source signs,
+counts and intervals are direct observations. The origin of the sign
+difference is not established; no significance change is claimed. See
+the complete durable <a
+href="review_1_6_2/verification/evidence_recheck.md">C002 source
+recheck</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy the positive abstract estimate or the negative
+body/table estimate as the signed primary effect. No significance or
+paper-level conclusion change is established.</p>
+<p>Checker provenance: Included finding F-NUM-001; duplicate findings
+F-ST1-001, F-XS-001. All duplicate source locations are retained in the
+consolidated source evidence below. The classification-table Finding IDs
+field records INCLUDE rows only; duplicate provenance is separately
+preserved.</p>
+<h2 id="c003--cooling-duration-anchor-and-late-cooling-minimum" class="candidate-card">C003 —
+Cooling-duration anchor and late-cooling minimum</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The final protocol and report
+give different cooling-duration anchors, with further 72 hours after
+target attainment versus 72 hours after randomization and a conditional
+48-hour late-cooling minimum.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 pp.3–4 vs
+PLAN DOC-002 pp.69,77,97,99; PLAN final V9 sections compared</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-201</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Confirmed.
+Report-versus-plan and independent final-plan specification differences
+coexist, so P_R precedes P_P.</p>
+<p><strong>Classification ambiguity:</strong> Ideal-versus-operative
+wording and the conditional48-hour exception require interpretation;
+roles remain clear.</p>
+<p><strong>Exact source locations:</strong> Yes: REPORT <a
+href="../jama_cooper_2018_oi_180132.pdf#page=3">DOC-001 p.3,
+Maintenance/Rewarming</a>, <a
+href="../jama_cooper_2018_oi_180132.pdf#page=4">p.4, target-attainment
+results</a>; PLAN <a href="../joi180132supp1_prod.pdf#page=69" target="_blank" rel="noopener">DOC-002
+p.69, §6.5</a>, <a href="../joi180132supp1_prod.pdf#page=77" target="_blank" rel="noopener">p.77,
+§12.11</a>, <a href="../joi180132supp1_prod.pdf#page=97" target="_blank" rel="noopener">p.97,
+§26.3.1</a>, and <a href="../joi180132supp1_prod.pdf#page=99" target="_blank" rel="noopener">p.99,
+rewarming flowchart and late-start note</a>.</p>
+<p><strong>Source evidence:</strong> Yes. Report maintains hypothermia
+for at least72 hours after randomization and assesses rewarming at 72
+hours after randomization; maximum is seven days. Target attainment
+results show only 186 patients reached33°C and report injury-to33°C
+median10.1 hours; these are context, not individual duration
+arithmetic.</p>
+<p><strong>Reported-versus-comparator:</strong> Yes. Final synopsis p.69
+reaches33°C then maintains for a further72 hours. Detailed p.77
+assesses72 hours after randomization. Appendix p.97 says ideally72 hours
+after severe head injury. Flowchart p.99 uses72 hours postrandomization
+and requires at least48 hours of actual cooling before considering
+rewarming if cooling commenced late.</p>
+<p><strong>Reasoning procedure:</strong> Yes. Focus D, Route B:
+duration/time-origin specification for the randomized intervention. The
+synopsis's further72-hour target-temperature period differs from the
+detailed randomization-based rule plus late-start48-hour minimum. The
+latter minimum is conditional, so it is not asserted to apply to every
+patient.</p>
+<p><strong>Calculation:</strong> Nominal minima72 and 48 hours give
+intervals [71.5,72.5] and [47.5,48.5], gap 23 hours and relative
+23/72=0.31944. Time origins differ logically even when the numeral72
+matches. If target attainment occurs after randomization, attainment+72
+and randomization+72 do not identify the same endpoint; source-level
+medians are not subtracted to estimate any individual's duration.</p>
+<p><strong>Affected result or extracted value:</strong> Assigned cooling
+dose, minimum duration and time origin for the primary favorable-GOSE
+comparison.</p>
+<p><strong>Why context does not resolve it:</strong> The final synopsis
+and operative flowchart do not specify how ideal target-temperature
+exposure, the randomization anchor and the conditional late-cooling rule
+are reconciled.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+synopsis may give an ideal target-temperature dose while the operational
+flowchart supplies clinically conditional implementation. That is
+possible, but it leaves the dose/time-origin extracted from the ordinary
+assigned intervention unspecified across final V9 and report.</p>
+<p><strong>Mechanical evidence recheck:</strong> All listed source
+locations were found and the source/comparator readings matched. The
+final synopsis explicitly specifies a further72 hours after target
+attainment, while report/detailed plan and late-start flowchart
+explicitly use the other anchors/minimum. Necessary inputs: Yes for
+specifications. <strong>Exact missing inputs or definitions:</strong>
+Governing time origin, definition of actual cooling for the48-hour
+condition, and hierarchy among synopsis, detailed protocol and appendix.
+Patient-level target attainment, exceptions and exposure are
+unavailable. Direct observation and inference: Printed anchors,72-hour
+phrases and 48-hour note are direct. Actual shortening of individual
+cooling or its clinical consequences is not established. See the
+complete durable <a
+href="review_1_6_2/verification/evidence_recheck.md">C003 source
+recheck</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could characterize the intervention using different
+cooling-duration anchors or minima. Individual exposure and neurological
+consequences are not established.</p>
+<p>Checker provenance: Included finding F-ST1-201; duplicate findings
+F-XS-006. All duplicate source locations are retained in the
+consolidated source evidence below. The classification-table Finding IDs
+field records INCLUDE rows only; duplicate provenance is separately
+preserved.</p>
+<h2 id="c004--routine-rewarming-rate" class="candidate-card">C004 — Routine rewarming rate</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The report describes a routine
+rewarming target up to 0.25°C/h, while the final plan recommends an
+aim/maximum of approximately 0.17°C/h; the relationship between the
+ordinary specifications remains unclear.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 p.3 vs PLAN
+DOC-002 pp.77,99,100; PLAN p.21 historical context</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-203</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Confirmed. This concerns
+an intervention specification. The superseded0.25 historical plan does
+not add P_P.</p>
+<p><strong>Classification ambiguity:</strong> Recommended aim versus
+broad reported ceiling is explicitly retained; no rigid ban or actual
+rate violation is inferred.</p>
+<p><strong>Exact source locations:</strong> Yes: REPORT <a
+href="../jama_cooper_2018_oi_180132.pdf#page=3">DOC-001 p.3,
+Rewarming</a>; PLAN <a href="../joi180132supp1_prod.pdf#page=77" target="_blank" rel="noopener">DOC-002
+p.77, §12.11</a>, <a href="../joi180132supp1_prod.pdf#page=99" target="_blank" rel="noopener">p.99,
+flowchart rate aim</a>, <a
+href="../joi180132supp1_prod.pdf#page=100">p.100, management and special
+considerations</a>. Historical <a
+href="../joi180132supp1_prod.pdf#page=21">PLAN p.21, V1 §12.11</a> was
+also found and read.</p>
+<p><strong>Source evidence:</strong> Yes. The report gives gradual
+controlled rewarming at a target rate up to0.25°C/h.</p>
+<p><strong>Reported-versus-comparator:</strong> Yes. Final p.77 gives
+gradual rewarming0.17°C/h, with a recommended maximum0.5°C every three
+hours. Flowchart p.99 says the rate aim is0.17°C/h. Management p.100
+repeats0.17 and 0.5°C every three hours and permits faster rates in
+urgent situations under the intensivist. Historical p.21 gives0.25°C/h;
+that is disclosed version context, not an independent contemporaneous
+plan conflict.</p>
+<p><strong>Reasoning procedure:</strong> Yes, Route B and focus D, as a
+comparison of reported routine specification with final-plan recommended
+routine specification. It is not a comparison of actual patient rates
+and not a claim that a recommendation legally prohibits every higher
+rate.</p>
+<p><strong>Calculation:</strong> Intervals [0.165,0.175] and
+[0.245,0.255] have gap 0.070; relative 0.070/0.17=0.41176. The
+displayed0.5°C/3h rule is consistent with approximately0.1667°C/h and
+confirms the0.17 recommendation.</p>
+<p><strong>Affected result or extracted value:</strong> Routine assigned
+rewarming target/maximum used to characterize the randomized cooling
+intervention.</p>
+<p><strong>Why context does not resolve it:</strong> The immediate
+context does not specify whether the broader report ceiling represents a
+revised routine aim or contains the final-plan recommended aim.
+Emergency exceptions do not define the ordinary target.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+routine rate0.17 satisfies the report's broader up-to0.25 ceiling. The
+recommendation may remain operative within that ceiling, so actual
+adherence could reconcile. The registered issue is the different
+descriptions of the routine maximum/aim; emergency exceptions are
+expressly disclosed and do not identify a new routine aim.</p>
+<p><strong>Mechanical evidence recheck:</strong> All listed source
+locations were found and the source/comparator readings matched. Direct
+sources confirm the reported up-to0.25 routine target and final-plan0.17
+recommended aim/maximum descriptions, with separated numeric
+specification intervals. Necessary inputs: Yes for routine
+target/recommendation comparison. <strong>Exact missing inputs or
+definitions:</strong> Whether0.25 is merely a broad outer ceiling
+containing the recommended0.17 aim, whether a later operative update
+changed that aim, and the implemented routine-rate specification. Actual
+temperature traces cannot be inferred from these descriptions. Direct
+observation and inference: The rate phrases, recommendation and urgent
+exceptions are direct. An actual protocol departure or mechanism for the
+differing report statement is not established. See the complete durable
+<a href="review_1_6_2/verification/evidence_recheck.md">C004 source
+recheck</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could record 0.25°C/h or approximately 0.17°C/h as the
+routine specification. Actual patient rates and adherence cannot be
+inferred.</p>
+<p>Checker provenance: Included finding F-ST1-203; duplicate findings
+None. All duplicate source locations are retained in the consolidated
+source evidence below. The classification-table Finding IDs field
+records INCLUDE rows only; duplicate provenance is separately
+preserved.</p>
+<p>Audit finding F-QA-102 is SCREENED_OUT/DUPLICATE_OF_INCLUDED
+provenance, not an additional included Finding ID.</p>
+<h2 id="c005--primary-analysis-population-definition" class="candidate-card">C005 — Primary
+analysis-population definition</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The primary analysis-population
+definition differs between the report and final plan regarding the joint
+class of patients who were ineligible and never received the
+intervention.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 pp.3–4 and
+DOC-003 pp.12,17 vs PLAN DOC-002 pp.84,174–175</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-204</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Confirmed. This is a
+planned-versus-reported primary analysis definition; the report
+sensitivity populations are contextual, not a separate S_C
+inconsistency.</p>
+<p><strong>Classification ambiguity:</strong> Realized equality of the
+two primary sets is unresolved; roles are clear.</p>
+<p><strong>Exact source locations:</strong> Yes: REPORT <a
+href="../jama_cooper_2018_oi_180132.pdf#page=3">DOC-001 p.3, a-priori
+analyses definition</a>, <a
+href="../jama_cooper_2018_oi_180132.pdf#page=4">p.4, Figure1 and
+evaluable population</a>, <a
+href="../joi180132supp2_prod.pdf#page=12">DOC-003 p.12, per-protocol
+definition</a>, <a href="../joi180132supp2_prod.pdf#page=17" target="_blank" rel="noopener">p.17,
+as-treated definition</a>; PLAN <a
+href="../joi180132supp1_prod.pdf#page=84">DOC-002 p.84, §15.2</a>, <a
+href="../joi180132supp1_prod.pdf#page=174">p.174, V8 modified-ITT
+amendment</a>, and <a href="../joi180132supp1_prod.pdf#page=175" target="_blank" rel="noopener">p.175,
+amendment continuation</a>.</p>
+<p><strong>Source evidence:</strong> Yes. All a-priori analyses use
+randomized assignment excluding consent withdrawals unless otherwise
+indicated. Report p.4 removes6+5=11 withdrawals from511, leaving500;
+primary outcome available for 240 and 226. Supplement defines broader
+eligibility and compliance exclusions for sensitivity populations.</p>
+<p><strong>Reported-versus-comparator:</strong> Yes. Final §15.2
+excludes consent withdrawals and those not fulfilling inclusion criteria
+and never receiving the intervention. The V8 amendment specifically
+describes addition of modified intention-to-treat analysis to
+accommodate this joint class; p.175 continues its rationale, rather than
+supplying membership counts.</p>
+<p><strong>Reasoning procedure:</strong> Yes, focus D and Route B:
+differing primary-population membership specification. The conjunctive
+criterion requires both ineligibility and never receiving intervention;
+it must not be replaced by an exclusion of every ineligible patient.</p>
+<p><strong>Calculation:</strong> 511−(6+5)=500, and 240+226=466,
+reconcile. There is no reproduced numerical population-count difference;
+a precision discrepancy is zero for these count identities. The
+reproduced comparison is logical set definition: REPORT randomized minus
+consent withdrawals versus PLAN that set minus the joint exclusion
+class. The latter may be empty.</p>
+<p><strong>Affected result or extracted value:</strong> Primary
+analysis-set definition underlying favorable outcomes 117/240 versus
+111/226.</p>
+<p><strong>Why context does not resolve it:</strong> The report does not
+state whether the planned joint exclusion was applied or had no members.
+Sensitivity-population definitions do not establish primary-set
+membership.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+joint class could contain nobody in the primary dataset; alternatively a
+later SAP may define implementation. Report sensitivity exclusions do
+not establish whether the same joint exclusion operated in the primary
+analysis.</p>
+<p><strong>Mechanical evidence recheck:</strong> All listed source
+locations were found and the source/comparator readings matched.
+Final-plan joint exclusion and report consent-only definition remain
+different as printed; no count mismatch is asserted. Necessary inputs:
+Yes to compare definitions; no to calculate a changed population.
+<strong>Exact missing inputs or definitions:</strong> Patient-level
+membership of the joint class, which primary analyses applied the
+modified definition, and any operative SAP explanation underlying
+'unless otherwise indicated.' Direct observation and inference:
+Differing explicit set definitions and printed500/466 totals are direct.
+Different realized membership, patient exclusions and any effect
+on117/240 versus 111/226 are unestablished. See the complete durable <a
+href="review_1_6_2/verification/evidence_recheck.md">C005 source
+recheck</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could use different descriptions of the primary analysis
+set. A changed realized denominator or effect estimate is not
+established.</p>
+<p>Checker provenance: Included finding F-ST1-204; duplicate findings
+F-XS-005. All duplicate source locations are retained in the
+consolidated source evidence below. The classification-table Finding IDs
+field records INCLUDE rows only; duplicate provenance is separately
+preserved.</p>
+<h2 id="c006--planned-binary-primary-odds-ratio-not-supplied" class="candidate-card">C006 —
+Planned binary primary odds ratio not supplied</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The supplied final plan
+promises a binary primary GOSE odds ratio and 95% confidence interval
+that are absent from the matched supplied report outputs.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 p.84 vs REPORT
+DOC-001 pp.1,3,5,7 and DOC-003 pp.1–24</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-004</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> Confirmed. It is
+planned-versus-reported primary output presence; no report-to-report
+conflict is asserted.</p>
+<p><strong>Classification ambiguity:</strong> External SAP amendments
+are not supplied.</p>
+<p><strong>Exact source locations:</strong> Yes: PLAN <a
+href="../joi180132supp1_prod.pdf#page=84">DOC-002 p.84, §15.2</a>;
+REPORT <a href="../jama_cooper_2018_oi_180132.pdf#page=1" target="_blank" rel="noopener">DOC-001 p.1,
+abstract primary results</a>, <a
+href="../jama_cooper_2018_oi_180132.pdf#page=3">p.3, primary statistical
+method</a>, <a href="../jama_cooper_2018_oi_180132.pdf#page=5" target="_blank" rel="noopener">p.5,
+primary and ordinal outcomes</a>, <a
+href="../jama_cooper_2018_oi_180132.pdf#page=7">p.7, Table2</a>, and <a
+href="../joi180132supp2_prod.pdf#page=22">DOC-003 p.22, post-hoc OR
+results</a>. Full source-native search/read covered DOC-003 physical
+pages1–24: <a href="../joi180132supp2_prod.pdf#page=1" target="_blank" rel="noopener">1</a>, <a
+href="../joi180132supp2_prod.pdf#page=2">2</a>, <a
+href="../joi180132supp2_prod.pdf#page=3">3</a>, <a
+href="../joi180132supp2_prod.pdf#page=4">4</a>, <a
+href="../joi180132supp2_prod.pdf#page=5">5</a>, <a
+href="../joi180132supp2_prod.pdf#page=6">6</a>, <a
+href="../joi180132supp2_prod.pdf#page=7">7</a>, <a
+href="../joi180132supp2_prod.pdf#page=8">8</a>, <a
+href="../joi180132supp2_prod.pdf#page=9">9</a>, <a
+href="../joi180132supp2_prod.pdf#page=10">10</a>, <a
+href="../joi180132supp2_prod.pdf#page=11">11</a>, <a
+href="../joi180132supp2_prod.pdf#page=12">12</a>, <a
+href="../joi180132supp2_prod.pdf#page=13">13</a>, <a
+href="../joi180132supp2_prod.pdf#page=14">14</a>, <a
+href="../joi180132supp2_prod.pdf#page=15">15</a>, <a
+href="../joi180132supp2_prod.pdf#page=16">16</a>, <a
+href="../joi180132supp2_prod.pdf#page=17">17</a>, <a
+href="../joi180132supp2_prod.pdf#page=18">18</a>, <a
+href="../joi180132supp2_prod.pdf#page=19">19</a>, <a
+href="../joi180132supp2_prod.pdf#page=20">20</a>, <a
+href="../joi180132supp2_prod.pdf#page=21">21</a>, <a
+href="../joi180132supp2_prod.pdf#page=22">22</a>, <a
+href="../joi180132supp2_prod.pdf#page=23">23</a>, <a
+href="../joi180132supp2_prod.pdf#page=24">24</a>. <a
+href="../joi180132supp3_prod.pdf#page=1">DOC-004 p.1</a> supplies
+data-sharing statements, not such an output.</p>
+<p><strong>Source evidence:</strong> Yes. Final §15.2 promises an
+unadjusted RR and 95% CI, RD and 95% CI, and OR and 95% CI for
+midpoint-dichotomized primary GOSE.</p>
+<p><strong>Reported-versus-comparator:</strong> Yes. Main primary binary
+results give RR/RD, while OR 0.97(0.71–1.34), P=.88 is explicitly for
+ordinal GOSE. The supplement's OR 0.91(0.59–1.41) and adjusted0.95
+result are explicitly post-hoc adequate-cooling58/124 versus 111/226;
+they do not match primary117/240 versus 111/226. Per-protocol,
+as-treated and missingness outputs are labeled RR, and their populations
+differ. No matched primary binary OR/CI is supplied.</p>
+<p><strong>Reasoning procedure:</strong> Yes, focus D and Route A
+category 5: an explicitly promised primary analysis output is absent
+from matched supplied reports.</p>
+<p><strong>Calculation:</strong> This is an output-presence and
+result-identity comparison; numeric rounding cannot turn an ordinal OR
+or adequate-cooling OR into the planned primary binary output. The crude
+odds-ratio identity would use117/(240−117) divided by111/(226−111), but
+recomputing it cannot substitute for a reported planned OR/CI and is not
+used as a numeric discrepancy.</p>
+<p><strong>Affected result or extracted value:</strong> Availability of
+the planned primary midpoint-dichotomized GOSE OR and 95% CI for 117/240
+versus 111/226.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+concerns an explicitly planned primary output absent from matched
+supplied reporting. Ordinal and post hoc subset ORs have different
+outcomes/populations and do not provide that output.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+published RR/RD may have been selected as the primary reporting format
+by an external/later SAP. That document is not supplied, and the
+distinct reported ORs do not resolve the matched-output absence.</p>
+<p><strong>Mechanical evidence recheck:</strong> All listed source
+locations were found and the source/comparator readings matched. Direct
+primary-report renders and complete supplementary output search confirm
+only unmatched ordinal/subset ORs, while the final plan explicitly
+promises the matched binary primary OR/CI. Necessary inputs: Yes to
+identify the planned output and distinguish all supplied OR results.
+<strong>Exact missing inputs or definitions:</strong> The primary binary
+OR/CI output or a supplied operative amendment withdrawing that planned
+output. External SAP references supply pointers only and were not
+accessed. Direct observation and inference: The promise, report
+effect-measure labels and absent matched output are direct
+supplied-source observations. A reason for omission or undocumented
+amendment is not inferred. See the complete durable <a
+href="review_1_6_2/verification/evidence_recheck.md">C006 source
+recheck</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+evidence extraction could identify a planned primary OR/CI as
+unavailable in the supplied reports or associate an unmatched OR with
+that planned output. No replacement estimate is proposed.</p>
+<p>Checker provenance: Included finding F-XS-004; duplicate findings
+None. All duplicate source locations are retained in the consolidated
+source evidence below. The classification-table Finding IDs field
+records INCLUDE rows only; duplicate provenance is separately
+preserved.</p>
+<h2 id="c007--survival-analysis-window" class="candidate-card">C007 — Survival analysis
+window</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The survival method states
+six-month censoring, while the corresponding supplementary curve retains
+positive risk sets at 200 and 250 days.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 pp.2,4–5 vs
+REPORT DOC-003 p.5</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-003</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Confirmed. The comparison
+concerns a survival method and corresponding results in two reports;
+contextual main-page copies do not add an independent S_W conflict.</p>
+<p><strong>Classification ambiguity:</strong> Whether corresponding Cox
+and Kaplan–Meier windows truly coincide is unresolved.</p>
+<p><strong>Exact source locations:</strong> Yes: REPORT <a
+href="../jama_cooper_2018_oi_180132.pdf#page=2">DOC-001 p.2, Data
+Collection</a>, <a href="../jama_cooper_2018_oi_180132.pdf#page=4" target="_blank" rel="noopener">p.4,
+Statistical Analysis survival method</a>, <a
+href="../joi180132supp2_prod.pdf#page=5">DOC-003 p.5, eFigure2 plot,
+risk table and caption</a>. The repeated HR result was also confirmed at
+<a href="../jama_cooper_2018_oi_180132.pdf#page=5" target="_blank" rel="noopener">DOC-001 p.5,
+Secondary Outcomes</a>.</p>
+<p><strong>Source evidence:</strong> Yes. Follow-up is to death or six
+months after randomization; Cox analysis is described as censored at six
+months or last-known-contact, with corresponding Kaplan–Meier
+curves/log-rank test.</p>
+<p><strong>Reported-versus-comparator:</strong> Yes. Figure2's time axis
+is survival days; at 200 days risk sets are91/88 and at 250days23/17,
+with later censor ticks. Caption describes probability/risk of death at
+six months and HR 1.13(0.76–1.69), P=.54; plot log-rank P=.5349. These P
+values are compatible as differently labeled tests/display precision and
+are not an additional issue.</p>
+<p><strong>Reasoning procedure:</strong> Yes, focus C and Route B: the
+named survival result's censoring window is compared with its
+corresponding plotted risk process.</p>
+<p><strong>Calculation:</strong> Even a conservative upper bound of186
+days for six calendar months is below200 days. Universal administrative
+censoring by that bound implies zero at-risk subjects at 200/250 days.
+Half-unit risk-count intervals at 200 days [90.5,91.5] and [87.5,88.5],
+and at 250 days [22.5,23.5] and [16.5,17.5], remain positive. Their gaps
+from zero exceed precision; for printed23 the minimum relative
+discrepancy is22.5/23=0.97826. Exact survival records are not required
+to establish this literal-window mismatch.</p>
+<p><strong>Affected result or extracted value:</strong>
+Observation/censoring horizon associated with mortality HR 1.13 (95% CI
+0.76–1.69), P = .54.</p>
+<p><strong>Why context does not resolve it:</strong> The method and
+caption do not identify different Cox and Kaplan–Meier windows or an
+extended assessment allowance; therefore the horizon of the named HR is
+not identifiable from immediate context.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Six-month assessment may allow delayed contact, or Cox and Kaplan–Meier
+presentations may use different windows. The stated corresponding-curve
+method and caption do not specify either distinction.</p>
+<p><strong>Mechanical evidence recheck:</strong> All listed source
+locations were found and the source/comparator readings matched.
+Direct-source eFigure2 retains positive risk sets beyond any literal
+six-calendar-month cutoff while the main method states such a cutoff.
+Necessary inputs: Yes for rule-versus-plot comparison. <strong>Exact
+missing inputs or definitions:</strong> Actual administrative cutoff,
+definition of six-month assessment window, event/censor times, and
+whether Cox and plot used identical datasets/windows. Direct observation
+and inference: Printed censor rule, caption and positive risk sets are
+direct. A changed HR or significance conclusion is not inferred. See the
+complete durable <a
+href="review_1_6_2/verification/evidence_recheck.md">C007 source
+recheck</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could attach a six-month or longer observation horizon to
+the reported survival result. No revised HR or significance assessment
+is established.</p>
+<p>Checker provenance: Included finding F-ST1-003; duplicate findings
+None. All duplicate source locations are retained in the consolidated
+source evidence below. The classification-table Finding IDs field
+records INCLUDE rows only; duplicate provenance is separately
+preserved.</p>
+<h2 id="c008--cooling-time-equal-proportions-test" class="candidate-card">C008 — Cooling-time
+equal-proportions test</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The registered count-to-P
+comparison for cooling-time categories is retained as a candidate
+reporting issue with not_reproduced evidence: permitted half-unit inputs
+reconcile with P = .09.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C, S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 pp.4–5 vs
+REPORT DOC-003 p.11; REPORT DOC-003 same-display counts and P</p>
+<p><strong>Evidence state:</strong> not_reproduced</p>
+<p><strong>Inclusion audit:</strong> QUESTIONED</p>
+<p>The audit questions inclusion because half-unit inputs reproduce the
+printed .09 and no matched global estimate/interval/test establishes
+Route A category 1.</p>
+<p><strong>Finding IDs:</strong> F-ST1-004</p>
+<p><strong>Qualifying route:</strong> Route A, category 1</p>
+<p>This is the historical registration route; the current recheck and
+audit do not establish its reproduction or category-1 linkage.</p>
+<p><strong>Classification rationale:</strong> Relationship/domain fields
+describe the registered comparisons and are retained. Evidence state
+records their precision reconciliation; stable identity is
+unchanged.</p>
+<p><strong>Classification ambiguity:</strong> The global table P's exact
+implementation is not identified; the claimed category 1 interval/test
+linkage is absent.</p>
+<p><strong>Exact source locations:</strong> Yes: REPORT <a
+href="../jama_cooper_2018_oi_180132.pdf#page=4">DOC-001 p.4, favorable
+outcome versus time-to33°C method</a>, <a
+href="../jama_cooper_2018_oi_180132.pdf#page=5">p.5, Additional Outcomes
+nonsignificance statement</a>, <a
+href="../joi180132supp2_prod.pdf#page=11">DOC-003 p.11, eTable7 four
+categories and P value</a>.</p>
+<p><strong>Source evidence:</strong> Yes. Main states an unadjusted
+chi-square test for equal proportions in cooled patients and
+nonsignificant results. Table labels four
+categories1–7h,8–13h,&gt;13h,Never; totals 49,67,59,65; favorable counts
+18,28,32,39; P=.09. Individual percentages36.7,41.8,54.2,60.0 have
+marginal95% CIs 22.8–50.7,29.6–53.9,41.2–67.3,47.8–72.2.</p>
+<p><strong>Reported-versus-comparator:</strong> Confirmed four-category
+totals 49, 67, 59, 65 and favorable counts 18, 28, 32, 39 versus printed
+P = .09. The main method names an equal-proportions chi-square test; the
+individual CIs are marginal proportion intervals.</p>
+<p><strong>Reasoning procedure:</strong> The count-based P recomputation
+is applicable, but the registered Route A category 1 exemption is not
+established. Its definition concerns a printed estimate/interval versus
+P/test conflict, a P/test unable to belong to a printed
+estimate/interval, or point-estimate containment. Here the printed
+intervals are marginal proportion intervals, not a global contrast CI;
+they overlap a common proportion, and there is no printed global test
+statistic or global effect interval contradicting P=.09. Recomputed
+exact-count significance alone is not such a printed interval/P
+conflict. The mandatory display rule therefore applies to this
+recomputation.</p>
+<p><strong>Calculation:</strong> Pool 117/240. Pearson statistic sum
+over groups of (a_i−n_i<em>117/240)^2/[n_i</em>(117/240)*(123/240)]
+=8.133762156, df 3; P=.04332664. Restricting to the three
+reaching-target categories gives3.658952, df 2, P=.16050, also a
+different exact-count result. Allowing every displayed count/denominator
+its required half-unit range, admissible numerators(18.5,28.5,31.5,38.5)
+with totals(48.5,66.5,59.5,65.5) give chi-square6.162765031, df 3,
+P=.10395436. Along the continuous path from printed centers to these
+permitted endpoints, the recomputed P interval includes
+[.04332664,.10395436], hence overlaps the printed [.085,.095] range.
+Gap0; relative discrepancy 0. This is an interval-arithmetic feasibility
+check, not a claim that fractional participants were observed. Printed
+percentages are outputs of the same display, not additional count inputs
+to this stated-count recomputation.</p>
+<p><strong>Affected result or extracted value:</strong> Association-test
+attribution for favorable primary GOSE across the four cooling-time
+categories; the registered numerical inconsistency does not survive the
+required precision check.</p>
+<p><strong>Why context does not resolve it:</strong> The historical
+Route A, category 1 justification is disputed: no printed matched global
+estimate/interval/test statistic establishes that category, and the
+count-to-P comparison reconciles under the prescribed half-unit rule.
+There is no current reproduced inconsistency to support that route.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+different subset or categorical implementation may generate.09; the main
+method and table do not distinguish it. The reported marginal CIs and
+nonsignificance statement reconcile with.09. No marginal-CI/global-test
+conflict is reproduced.</p>
+<p><strong>Mechanical evidence recheck:</strong> All listed source
+locations were found and the source/comparator readings matched. The
+recomputed P range overlaps [.085,.095], and no printed global
+estimate/CI or test statistic establishes a Route A category 1
+exception. Thus the numerical comparison reconciles under the required
+display rule despite the exact-count diagnostic difference. Necessary
+inputs: Yes for the prescribed precision check. <strong>Exact missing
+inputs or definitions:</strong> Exact test implementation/group
+inclusion that generated.09 is absent, but no missing definition is
+needed to establish the mandatory interval overlap. Direct observation
+and inference: The exact-count diagnostic difference is observed
+computationally; the reported count-to-P inconsistency does not survive
+the normative half-unit rule. A different analysis or production
+mechanism is not established. See the complete durable <a
+href="review_1_6_2/verification/evidence_recheck.md">C008 source
+recheck</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> The retained
+card records a questioned historical comparison and its precision
+reconciliation. It does not support copying an alternative P value or
+assuming a changed significance conclusion; exact test attribution
+remains unspecified.</p>
+<p>Checker provenance: Included finding F-ST1-004; duplicate findings
+None. All duplicate source locations are retained in the consolidated
+source evidence below. The classification-table Finding IDs field
+records INCLUDE rows only; duplicate provenance is separately
+preserved.</p>
+<h2 id="c009--final-significance-rule-specification" class="candidate-card">C009 — Final
+significance-rule specification</h2>
+<p>Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The report's all-analysis .05
+rule and final protocol's explicitly substituted .0459 final boundary do
+not specify the same decision region.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 p.4 vs PLAN
+DOC-002 p.84; PLAN p.188 earlier-version context</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-003</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Completed-report methods
+versus prospective final V9 methods supplies P_R alone. The earlier
+two-look charter is historical context, not a simultaneous P_P
+conflict.</p>
+<p><strong>Classification ambiguity:</strong> Nominal .05 reporting and
+operational .0459 testing may coexist, but the supplied report does not
+establish this distinction.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cooper_2018_oi_180132.pdf#page=4">jama_cooper_2018_oi_180132.pdf
+— PDF p. 4, REPORT significance paragraph p.4</a>; <a
+href="../joi180132supp1_prod.pdf#page=84">joi180132supp1_prod.pdf — PDF
+p. 84, PLAN final §15.1.3 p.84</a>; <a
+href="../joi180132supp1_prod.pdf#page=188">joi180132supp1_prod.pdf — PDF
+p. 188, earlier charter p.188</a>.</p>
+<p><strong>Source evidence:</strong> Report says two-sided P &lt; .05
+for all analyses. Final plan says final ±1.996 SD/P = .0459 rather than
+±1.96 SD/P = .05 after expanded interim monitoring. The earlier charter
+gives |Z| ≥ 1.975/P = .048 and alpha .05 for the original two-look
+design.</p>
+<p><strong>Reported-versus-comparator:</strong> All-analysis .05 versus
+explicitly replaced final .0459 rule; earlier charter retained as
+history.</p>
+<p><strong>Reasoning procedure:</strong> Compare explicit decision
+specifications, separating fixed critical regions from rounded copies
+and operational consequences from observed results.</p>
+<p><strong>Calculation:</strong> Copy intervals [.04585,.04595] and
+[.045,.055] overlap: gap 0, relative 0. They cannot establish a copy
+discrepancy. A hypothetical exact P = .048 meets P &lt; .05 but not P
+&lt; .0459; it illustrates the different specified regions only. Actual
+primary P = .94 meets neither.</p>
+<p><strong>Affected result or extracted value:</strong> Final
+primary-test alpha and its relation to expanded interim monitoring.</p>
+<p><strong>Why context does not resolve it:</strong> The report does not
+explain whether .05 is nominal reporting accompanied by the adjusted
+final decision boundary.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Nominal
+.05 reporting may coexist with operational .0459 testing; the earlier
+charter may be superseded by final V9's additional monitoring.</p>
+<p><strong>Mechanical evidence recheck:</strong> Source text, physical
+pages, roles and fixed-rule comparison confirmed. P_R/domain/reproduced
+agree with recheck. Actual operational rule and unsupplied SAP
+clarification remain missing. Remaining human question: which final rule
+applied, and was nominal reporting distinguished from adjusted
+decisions?</p>
+<p><strong>Potential downstream evidence impact:</strong> A methods
+extractor could copy .05 or .0459 as final alpha. No observed
+significance reversal or downstream conclusion change is
+established.</p>
+<h2 id="c010--bleeding-rr-ci-and-p-attribution-pattern" class="candidate-card">C010 — Bleeding
+RR, CI and P attribution pattern</h2>
+<p>Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> Main-table bleeding RR/CI/P
+tuples reproduce the opposite outcome's counts, while the supplement
+assigns the P values to the other outcomes.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C, S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 Table2 p.7
+vs REPORT DOC-003 eTable6 p.10; REPORT DOC-001 same-display
+counts/intervals</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-002</p>
+<p><strong>Qualifying route:</strong> Route A, category 4</p>
+<p><strong>Classification rationale:</strong> Two distinct REPORT
+documents supply S_C; main-table counts versus intervals supply S_W. S_C
+precedes S_W. Estimates, intervals and tests require statistical_results
+despite the attribution component.</p>
+<p><strong>Classification ambiguity:</strong> Separate undisclosed
+analyses remain possible; document roles are clear.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_cooper_2018_oi_180132.pdf#page=3">jama_cooper_2018_oi_180132.pdf
+— PDF p. 3, unadjusted method p.3</a>; <a
+href="../jama_cooper_2018_oi_180132.pdf#page=7">jama_cooper_2018_oi_180132.pdf
+— PDF p. 7, Table2 both bleeding rows p.7</a>; <a
+href="../joi180132supp2_prod.pdf#page=10">joi180132supp2_prod.pdf — PDF
+p. 10, eTable6 both bleeding rows p.10</a>; corroborating <a
+href="../jama_cooper_2018_oi_180132.pdf#page=1">jama_cooper_2018_oi_180132.pdf
+— PDF p. 1, abstract p.1</a> and <a
+href="../jama_cooper_2018_oi_180132.pdf#page=5">jama_cooper_2018_oi_180132.pdf
+— PDF p. 5, narrative p.5</a>.</p>
+<p><strong>Source evidence:</strong> Intracranial 47/260 versus 37/240
+prints RR 1.23 (.43–3.5), P = .70; extracranial 8/260 versus 6/240
+prints RR 1.17 (.79–1.74), P = .43. eTable 6 repeats counts but gives
+intracranial .43/extracranial .70. Main RD columns reproduce own
+rows.</p>
+<p><strong>Reported-versus-comparator:</strong> Main RR/CI/P tuples
+versus own-row count-based calculation and supplementary P
+assignment.</p>
+<p><strong>Reasoning procedure:</strong> RR=(a/n)/(c/m);
+SE(logRR)=sqrt(1/a−1/n+1/c−1/m); limits=RR×exp(±1.95996398454×SE). Check
+stated Pearson equal-proportion diagnostic, neighboring rows and
+half-unit input corners. Consolidate both rows once.</p>
+<p><strong>Calculation:</strong> Intracranial RR 1.17255717, CI
+[.79118130,1.73776899], P = .42666956; extracranial RR 1.23076923, CI
+[.43334502,3.49558164], P = .69603919. Primary, mortality and infection
+rows reproduce their printed intervals. Half-unit intracranial
+lower-limit bounds [.76973897,.81321980] versus printed [.425,.435]
+leave .33473897/.43=.77846; extracranial bounds [.37662053,.49716491]
+versus [.785,.795] leave .28783509/.79=.36435. P-copy intervals
+[.695,.705]/[.425,.435] leave .260/.70=.371429 or .260/.43=.604651.
+Point-RR differences alone are within precision.</p>
+<p><strong>Affected result or extracted value:</strong> Outcome-specific
+bleeding confidence limits and P values.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 4:
+the same reproducing method yields different own-row intervals;
+immediate reconstruction does not remove the printed values.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Separate analyses could explain the displays, but the supplied methods
+do not assign them to these rows or explain exact opposite-row
+reproduction.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both tables' labels,
+counts and tuples confirmed visually and in fresh text; bounds
+reproduced independently. Classification and reproduced state agree.
+Missing definition: any separate analysis and row mapping. Remaining
+human question: which RR/CI/P belongs to each outcome, and were separate
+analyses used?</p>
+<p><strong>Potential downstream evidence impact:</strong> Extraction
+could associate the wide/narrow interval or .70/.43 with the other
+bleeding outcome. Both displayed P values exceed .05; no
+trial-conclusion change is asserted.</p>
+<h2 id="c011--interim-normal-boundary-and-p-threshold" class="candidate-card">C011 — Interim
+normal boundary and P threshold</h2>
+<p>Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> A fixed normal |Z| ≥ 3
+monitoring rule is paired with approximate P &lt; .001, leaving the
+operative threshold unclear.</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 p.188 internal
+normal boundary/P threshold; PLAN pp.84,152 method/version context</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-205</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Prospective charter
+instructions are PLAN; comparison within that content supplies
+P_P/plan_material. Final sidedness and the earlier amendment are
+context, not REPORT relationships or an additional simultaneous version
+conflict.</p>
+<p><strong>Classification ambiguity:</strong> Approximate P may be
+shorthand; the intended tail convention and operative rule hierarchy
+remain unspecified.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180132supp1_prod.pdf#page=188">joi180132supp1_prod.pdf — PDF
+p. 188, charter boundary paragraph p.188</a>; <a
+href="../joi180132supp1_prod.pdf#page=84">joi180132supp1_prod.pdf — PDF
+p. 84, final 3SD/two-sided convention p.84</a>; <a
+href="../joi180132supp1_prod.pdf#page=152">joi180132supp1_prod.pdf — PDF
+p. 152, historical amendment p.152</a>.</p>
+<p><strong>Source evidence:</strong> Conventional
+three-standard-deviation |Z_k| ≥ 3 boundary, normal approximation to
+discrete binomial proportions, approximate P &lt; .001. Final V9 uses
+two-sided tests unless specified. Earlier .005 language is version
+context.</p>
+<p><strong>Reported-versus-comparator:</strong> Charter's fixed 3
+boundary versus literal .001 critical region; not an observed
+statistic/P pair.</p>
+<p><strong>Reasoning procedure:</strong> Independently integrate the
+normal tail under the explicitly named approximation; examine both tail
+conventions and retain approximate wording.</p>
+<p><strong>Calculation:</strong> At 3, one-sided P = .00134989803163 and
+two-sided P = .00269979606326. Literal two-sided .001 corresponds |Z|
+&gt; 3.290527; one-sided corresponds Z &gt; 3.090232. Some larger Z
+values satisfy both descriptions, but the boundaries differ. A fixed
+rule 3 is not a rounded observed statistic varying over [2.5,3.5].
+Numeric-copy interval arithmetic is not applicable to this explicit
+decision-rule comparison. If approximate P is descriptive shorthand, it
+remains an alternative rather than an observed conflict.</p>
+<p><strong>Affected result or extracted value:</strong> Interim stopping
+specification for primary GOSE/mortality.</p>
+<p><strong>Why context does not resolve it:</strong> The source names a
+normal approximation but does not specify whether 3 SD or literal P &lt;
+.001 controls operational decisions.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> 3 SD
+may govern with P shorthand; a discrete calibration may exist, but no
+replacement boundary is supplied. Earlier .005 may be superseded.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact source and
+scanned amendment confirmed; normal tails independently reproduced.
+P_P/domain/reproduced agree with recheck; route narrowed to B. Missing
+operational interpretation remains bounded. Remaining human question:
+which threshold, tail convention and meaning of approximate applied?</p>
+<p><strong>Potential downstream evidence impact:</strong> A methods
+extractor could record 3 SD or a literal .001 rule. No observed
+crossing, stopping consequence or treatment identity is inferred.</p>
+<h2 id="c012--july-2016-cumulative-primary-outcome-y-series" class="candidate-card">C012 — July
+2016 cumulative primary-outcome Y series</h2>
+<p>Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The favorable-GOSE cumulative Y
+curve does not reproduce favorable block-count sums that reproduce X in
+the same display.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT observed interim
+DOC-002 p.192 block table vs cumulative chart; REPORT DOC-002 p.191
+corroborates</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-301</p>
+<p><strong>Qualifying route:</strong> Route A, category 4</p>
+<p><strong>Classification rationale:</strong> Both compared displays
+contain observed outcomes in one supplied PDF, hence
+S_W/statistical_results. Prospective rules are not a conflicting
+comparator; p.191 only corroborates totals.</p>
+<p><strong>Classification ambiguity:</strong> Structured chart
+coordinates are unavailable; mixed favorable/unfavorable plotting is a
+possible explanation.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180132supp1_prod.pdf#page=192">joi180132supp1_prod.pdf — PDF
+p. 192, favorable block table and cumulative chart p.192</a>; <a
+href="../joi180132supp1_prod.pdf#page=191">joi180132supp1_prod.pdf — PDF
+p. 191, July2016 GOSE totals p.191</a>.</p>
+<p><strong>Source evidence:</strong> Both titles say favorable GOSE 5–8.
+Y favorable block numerators 7,2,11,5,8,6,3,5,6,5,2,4,3,6. Second
+cumulative Y point lies near 12 above 10;7+2=9. Page 191 prints
+favorable Y 73/unfavorable Y 80.</p>
+<p><strong>Reported-versus-comparator:</strong> Favorable block-count
+sum versus same-title blue cumulative curve; graphical readings are
+distinguished from exact printed numerators.</p>
+<p><strong>Reasoning procedure:</strong> Sum numerators, reproduce X,
+compare an early point with widened graphical uncertainty, and avoid
+using the accumulated endpoint as the precision anchor.</p>
+<p><strong>Calculation:</strong> Y favorable cumulative
+7,9,20,25,33,39,42,47,53,58,60,64,67,73. X
+10,18,20,27,36,41,50,57,62,66,69,78,81,86 reproduces orange X. Y
+denominator complements sum 6,12,17,22,24,30,35,42,50,57,64,69,77,80,
+compatible with approximate blue readings. Second favorable sum interval
+[8,10] versus graphical [11,13] leaves gap ≥ 1, conservative relative ≥
+1/13=.076923. Central denominator 12 gives .083333, not the lower bound.
+Endpoint 73/near 80 is corroboration only because fourteen half-unit
+inputs can overlap.</p>
+<p><strong>Affected result or extracted value:</strong> Cumulative
+favorable primary-GOSE Y count/curve in the July 2016 monitoring
+report.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 4:
+one cumulative method reproduces X while Y differs under the same
+favorable title. Reconstructed complements do not remove the graph.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Y may
+intentionally plot unfavorable counts while X plots favorable, but
+titles/legend do not define that mixture. Exact graph data are
+absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Source images at
+110/220 dpi confirm titles, pairs and early blue point; conservative
+bounds reproduce. Recheck's REPORT/S_W/statistical_results/reproduced
+agrees. Arm identity and exact structured series are unavailable.
+Remaining human question: which outcome and structured series does Y
+represent?</p>
+<p><strong>Potential downstream evidence impact:</strong> Extraction
+could copy a graph-derived cumulative count instead of favorable
+numerator sums or misidentify Y coding. No DSMB reliance or stopping
+consequence is asserted.</p>
+<h2 id="c013--as-treated-ct-count-and-percentage-ordering" class="candidate-card">C013 —
+As-treated CT count and percentage ordering</h2>
+<p>Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> Two normothermia CT category
+cells do not reconcile with No.(%) and n = 196.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-003 eTable10
+p.18 internal heading/denominator and Marshall V/VI cells</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-101</p>
+<p><strong>Qualifying route:</strong> Route A, category 3</p>
+<p><strong>Classification rationale:</strong> Heading and cells in one
+results table give REPORT/S_W/statistical_results; no conflicting plan
+or separate report is involved.</p>
+<p><strong>Classification ambiguity:</strong> Intended pair ordering
+remains unspecified.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180132supp2_prod.pdf#page=18">joi180132supp2_prod.pdf — PDF
+p. 18, eTable10 normothermia CT V/VI cells and headings p.18</a>.</p>
+<p><strong>Source evidence:</strong> n = 196, No.(%); V 34.7 (68), VI 1
+(2); other categories 3 (1.5),108 (55.1),15 (7.7) use count-first
+order.</p>
+<p><strong>Reported-versus-comparator:</strong> Literal count-first cell
+readings versus percentage arithmetic and category sum.</p>
+<p><strong>Reasoning procedure:</strong> Compute 100×count/denominator
+with half-unit inputs and sum category-count intervals; consolidate both
+cells.</p>
+<p><strong>Calculation:</strong> V implies [17.633588,17.774936]% versus
+[67.5,68.5], gap 49.725064/68=.731251. VI implies [.254453,.767263]%
+versus [1.5,2.5], gap .732737/2=.366368. Literal count sum 161.7
+interval [159.65,163.75] versus denominator [195.5,196.5] leaves
+31.75/196=.161990. Reversed counts 68/2 and percentages 34.7/1 reconcile
+the category sum 196; this is an alternative only.</p>
+<p><strong>Affected result or extracted value:</strong> As-treated
+normothermia Marshall V/VI counts and proportions.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 3
+always registers a reproduced within-display
+count/denominator/percentage discrepancy even when a likely intended
+reading is apparent.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Both
+cells may use percentage(count) despite the shared count-first heading;
+no category-specific denominator or presentation exception is
+stated.</p>
+<p><strong>Mechanical evidence recheck:</strong> Visual page and fresh
+text confirm both cells/denominator; independent arithmetic reproduces
+all gaps. S_W/domain/reproduced agree. Remaining human question: which
+counts/proportions should be taken under the shared heading?</p>
+<p><strong>Potential downstream evidence impact:</strong> Extraction
+could take literal pairs or reversed readings. No primary-effect or
+shared-test consequence is inferred without intended values.</p>
+<h2 id="c014--adjusted-odds-ratio-interval-token" class="candidate-card">C014 — Adjusted
+odds-ratio interval token</h2>
+<p>Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The adjusted OR interval prints
+275 between the lower limit and 1.64.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-003 p.22
+adjusted OR and printed confidence-interval tokens</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-102</p>
+<p><strong>Qualifying route:</strong> Route A, category 2</p>
+<p><strong>Classification rationale:</strong> One completed
+supplementary results statement gives S_W/statistical_results; the prior
+unadjusted OR is a different analysis, not a comparator.</p>
+<p><strong>Classification ambiguity:</strong> The intended role of 275
+is unspecified.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180132supp2_prod.pdf#page=22">joi180132supp2_prod.pdf — PDF
+p. 22, post hoc adjusted OR statement p.22</a>.</p>
+<p><strong>Source evidence:</strong> Adjusted OR 0.95 (0.55-275 1.64), P
+= .84, after time-to-randomization adjustment. Prior unadjusted OR 0.91
+(.59–1.41), P = .68 is distinct.</p>
+<p><strong>Reported-versus-comparator:</strong> Undefined 275 and 1.64
+both follow the lower-limit hyphen in a result presented as 95% CI.</p>
+<p><strong>Reasoning procedure:</strong> Confirm source numeral and
+quantify possible upper-limit magnitudes without reconstructing the
+unavailable adjusted model or inferring the token's origin.</p>
+<p><strong>Calculation:</strong> [274.5,275.5] versus [1.635,1.645]
+gives gap 272.855/1.64=166.375. Both .55–275 and .55–1.64 contain
+.95/null 1; no significance reversal is asserted.</p>
+<p><strong>Affected result or extracted value:</strong> Upper 95%
+confidence limit of the adjusted favorable-outcome OR.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 2
+covers a numerical slip changing magnitude; reconstructing the likely
+two-limit reading does not remove 275.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> 275 may
+be an additional insertion and the limits may be .55/1.64; another
+annotation is possible but undefined locally.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct-source image and
+fresh layout confirm 275 itself; alternative-limit arithmetic
+reproduces. Classification/state agree. Adjusted output remains
+unavailable. Remaining human question: intended upper limit and meaning
+of 275?</p>
+<p><strong>Potential downstream evidence impact:</strong> Extraction
+could take upper limit 275 or 1.64. No fitted-model reconstruction,
+significance conflict or observed downstream use is established.</p>
+<h2 id="c015--planned-adjusted-key-secondary-sensitivity-analyses" class="candidate-card">C015
+— Planned adjusted key-secondary sensitivity analyses</h2>
+<p>Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> Planned covariate-adjusted
+sensitivity analyses have no matched pneumonia or intracranial-bleeding
+outputs in the supplied reports.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002
+pp.84–85,183–184,187 vs REPORT DOC-001 pp.1,3–7 and DOC-003 pp.1–24;
+DOC-004 p.1 absence scope</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST2-201</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> Prospective analysis
+promise versus completed-report absence gives P_R/protocol_report. Other
+reports corroborate absence; the update supplies context rather than a
+separate P_P conflict.</p>
+<p><strong>Classification ambiguity:</strong> Full external SAP is
+unsupplied; no supplied withdrawal of these adjusted outputs is
+identified.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi180132supp1_prod.pdf#page=84">joi180132supp1_prod.pdf — PDF
+p. 84, binary models p.84</a>, <a
+href="../joi180132supp1_prod.pdf#page=85">joi180132supp1_prod.pdf — PDF
+p. 85, adjusted primary/secondary promise p.85</a>, <a
+href="../joi180132supp1_prod.pdf#page=183">joi180132supp1_prod.pdf — PDF
+p. 183, update p.183</a>, <a
+href="../joi180132supp1_prod.pdf#page=184">joi180132supp1_prod.pdf — PDF
+p. 184, adjustment footnotes p.184</a>, <a
+href="../joi180132supp1_prod.pdf#page=187">joi180132supp1_prod.pdf — PDF
+p. 187, aligned update p.187</a>, <a
+href="../joi180132supp1_prod.pdf#page=181">joi180132supp1_prod.pdf — PDF
+p. 181, SAP pointer p.181</a>. REPORT <a
+href="../jama_cooper_2018_oi_180132.pdf#page=1">jama_cooper_2018_oi_180132.pdf
+— PDF p. 1, abstract p.1</a>, <a
+href="../jama_cooper_2018_oi_180132.pdf#page=3">jama_cooper_2018_oi_180132.pdf
+— PDF p. 3, outcomes/methods p.3</a>, <a
+href="../jama_cooper_2018_oi_180132.pdf#page=4">jama_cooper_2018_oi_180132.pdf
+— PDF p. 4, continuation p.4</a>, <a
+href="../jama_cooper_2018_oi_180132.pdf#page=5">jama_cooper_2018_oi_180132.pdf
+— PDF p. 5, results p.5</a>, <a
+href="../jama_cooper_2018_oi_180132.pdf#page=6">jama_cooper_2018_oi_180132.pdf
+— PDF p. 6, unadjusted sensitivity pneumonia p.6</a>, <a
+href="../jama_cooper_2018_oi_180132.pdf#page=7">jama_cooper_2018_oi_180132.pdf
+— PDF p. 7, Table2 p.7</a>; <a
+href="../joi180132supp2_prod.pdf#page=10">joi180132supp2_prod.pdf — PDF
+p. 10, eTable6 p.10</a>, <a
+href="../joi180132supp2_prod.pdf#page=14">joi180132supp2_prod.pdf — PDF
+p. 14, eTable9 p.14</a>, <a
+href="../joi180132supp2_prod.pdf#page=19">joi180132supp2_prod.pdf — PDF
+p. 19, eTable11 p.19</a>, GOSE outputs <a
+href="../joi180132supp2_prod.pdf#page=16">joi180132supp2_prod.pdf — PDF
+p. 16, p.16</a>, <a
+href="../joi180132supp2_prod.pdf#page=20">joi180132supp2_prod.pdf — PDF
+p. 20, p.20</a>, <a
+href="../joi180132supp2_prod.pdf#page=21">joi180132supp2_prod.pdf — PDF
+p. 21, p.21</a>, <a
+href="../joi180132supp2_prod.pdf#page=22">joi180132supp2_prod.pdf — PDF
+p. 22, p.22</a>. Absence scope: all DOC-001 physical pp.1–10, DOC-003
+pp.1–24 and <a
+href="../joi180132supp3_prod.pdf#page=1">joi180132supp3_prod.pdf — PDF
+p. 1, DOC-004 p.1</a>.</p>
+<p><strong>Source evidence:</strong> Plan promises regression
+sensitivities of primary/secondary outcomes adjusted for prespecified
+baseline covariates plus any imbalanced covariates. Abstract reports
+pneumonia 55.0%/51.3% and intracranial bleeding 18.1%/15.4%. Adjusted
+labels accompany GOSE, not these adverse-event rows; main p.6 explicitly
+calls subset pneumonia unadjusted. Updates limit covariates for subset
+analyses but do not expressly withdraw the final promise.</p>
+<p><strong>Reported-versus-comparator:</strong> Explicit planned
+adjusted key-secondary sensitivities versus absent matched output, with
+ordinary unadjusted rows and distinct adjusted GOSE output present.</p>
+<p><strong>Reasoning procedure:</strong> Independently read all supplied
+final REPORT pages, match outcome/population/adjustment, confirm promise
+and abstract status, and distinguish absent output from unsupported
+fitted-model inference. Consolidate both outcomes under one
+specification.</p>
+<p><strong>Calculation:</strong> Logical comparison: explicit
+adjusted-secondary promise + named abstract secondary outcomes + no
+matched supplied adjusted output. Numeric intervals/relative discrepancy
+are not applicable. No adjusted effect is recomputed or inferred from
+counts.</p>
+<p><strong>Affected result or extracted value:</strong> Availability and
+planned-versus-reported status of adjusted
+pneumonia/intracranial-bleeding sensitivities.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 5:
+planned key-secondary analysis is not reported. Exploratory
+interpretation for multiplicity does not withdraw outcome status or
+adjustment promise.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Unsupplied SAP could narrow the promise or outputs may exist elsewhere;
+neither provides supplied-source withdrawal/output. PP/as-treated
+execution is a distinct specification.</p>
+<p><strong>Mechanical evidence recheck:</strong> Full report/supplement
+layout, contents and all sensitivity/post hoc outputs independently
+read; exact plan/update images and adjusted-label placement confirmed.
+Appended recheck reproduces P_R/domain/state. Missing external SAP and
+adjusted outputs/covariates remain bounded. Remaining human question:
+where are these outputs, or which supplied amendment withdrew/narrowed
+the promise?</p>
+<p><strong>Potential downstream evidence impact:</strong> Extraction
+could record adjusted sensitivities unavailable or confuse unadjusted
+outputs with promised adjusted results. No change to estimates or
+clinical conclusions is asserted.</p>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>A data extractor may select a signed estimate, interval,
+count/percentage pairing, analysis population, observation horizon or
+assigned intervention specification from the abstract, a table, a figure
+or a protocol. If a reproduced candidate is confirmed, these choices
+could affect how that particular value or specification is entered into
+a systematic review, meta-analysis or guideline evidence table. A
+missing planned output could also affect the recorded availability of a
+prespecified analysis. The report identifies those possible pathways
+without asserting that a value was propagated, a conclusion changed or
+harm occurred. C008's reconciled precision comparison supports no
+alternative numerical extraction.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<ul>
+<li>All four supplied PDFs and all 229 physical pages have complete
+scientific maps. There is no unresolved source-unit coverage gap.</li>
+<li>The plan bundle supplies original and final protocols, amendment
+scans, SAP-update scans and their correction, and DSMC charter material
+and monitoring reports. Some pages are pointers to external published
+protocol/SAP/charter documents rather than the full linked text. Only
+the supplied pages and embedded material were reviewed; external
+documents were not fetched or presumed.</li>
+<li>Historical versions of the extraction and rendering engines are not
+recorded for the reused evidence. Native text was matched to the current
+sources for all four PDFs, layout text for three, and a scan-page render
+matched directly. The article layout has a vertical-axis placement
+difference on one page; visual source evidence governs
+interpretation.</li>
+<li>Thirty plan pages have no usable body text in the native extraction.
+These pages were visually inspected through reusable page images.
+Tesseract and LibreOffice were unavailable; no Office sources or
+unresolved OCR-dependent units remain.</li>
+<li>Some plotted box summaries, category shares, and interval bars are
+graphical without exact printed coordinates. The maps preserve the
+complete visible displays and identify approximate graphical readings;
+they do not invent exact values.</li>
+<li>This review uses supplied publication material. It does not examine
+raw participant data or perform a broader methodological, clinical, or
+study-design audit. Missing numerical definitions needed for individual
+comparisons are recorded with those relationships and evidence
+cards.</li>
+</ul>
+<h2
+id="candidate-specific-missing-definitions-and-bounded-evidence-qualifications">Candidate-specific
+missing definitions and bounded evidence qualifications</h2>
+<ul>
+<li>Intervention specifications: the governing hierarchy of the final
+protocol's synopsis, detailed instructions and appendices; the seven-day
+time origin; the relationship between post-96-hour ordinary care and
+assigned device management; the conditional late-cooling exposure
+definition; and whether the reported 0.25°C/h ceiling contained or
+replaced the final-plan recommended 0.17°C/h aim. Patient-level device
+use, temperature traces and adherence are unavailable.</li>
+<li>Primary population and output: membership of the
+ineligible-and-never-intervention joint class and the operative primary
+analysis-set implementation are unavailable. The promised primary binary
+OR/CI and matched adjusted pneumonia/intracranial-bleeding sensitivity
+outputs are absent from the supplied report inventory. Unprovided
+external SAP contents or later outputs cannot be presumed.</li>
+<li>Survival and inferential attribution: actual administrative cutoffs,
+event/censor records, equality of Cox and Kaplan–Meier windows, exact
+cooling-time group/test implementation, and separate bleeding-row
+analysis/tuple assignments are unavailable.</li>
+<li>Monitoring and graphical definitions: the operative final
+significance rule, tail convention and hierarchy of approximate P and
+fixed normal boundary; structured cumulative graph coordinates and
+blinded-arm identity; and the outcome series represented by the
+cumulative Y curve remain unspecified. Graph-based comparison preserves
+conservative visual bounds.</li>
+<li>Printed cell and interval definitions: the intended pair ordering of
+the two normothermia CT cells and the role of the additional 275 token
+in the adjusted OR interval are not specified in the immediate display.
+The adjusted model output is not supplied.</li>
+<li>C008 remains a stable candidate with not_reproduced evidence and
+QUESTIONED inclusion. Its exact-center Pearson calculation is a
+diagnostic; feasible half-unit inputs overlap the printed P interval,
+and no matched global estimate/interval/test statistic establishes the
+historical Route A category 1 exception. Keeping its ID does not
+establish a reproduced inconsistency.</li>
+</ul>
+<p>All 229 supplied source units are mapped. These limits concern
+interpretation, numerical definitions and unprovided material; none is
+an unresolved scientific source-unit coverage gap. Potential extraction
+relevance is conditional and does not establish propagation, a changed
+conclusion or harm.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h2>
+<p>The review used only supplied package evidence and local tools. The
+<a href="review_1_6_2/routing_preflight.md">routing preflight</a>
+records PASS, run model gpt-6.1-sol, source DEFAULT, CURRENT_SESSION
+provider, INTERACTIVE_CLI execution, coordinator high effort and all ten
+named presets verified. Every actual agent is listed below with its
+runtime ID, model, effort, start mode and primary artifact relative to
+review_1_6_2. Mandatory stages and context-bounded shards used distinct
+fresh runtimes.</p>
+<p>Direct tool probe: pdfinfo, pdftotext, pdftoppm, pdftocairo and
+pandoc available; Tesseract and LibreOffice absent. Compute device: CPU.
+No fallback environment, OCR or Office conversion was required; fallback
+environment status NOT_NEEDED and removal status NOT_CREATED.
+Source-linked image inspection closed all text gaps. Current derivatives
+and engines are documented in the <a
+href="review_1_6_2/tooling_record.md">tooling record</a> and stage
+artifacts.</p>
+<p>All four direct-source hashes and all 305 reusable-asset hashes match
+their before-and-after records. The <a
+href="review_1_6_2/source_hashes_after.sha256">source after hashes</a>
+and <a
+href="review_1_6_2/reused_artifact_hashes_after.sha256">reused-asset
+after hashes</a> preserve this confirmation. The accompanying standalone
+HTML is rendered locally; the <a
+href="review_1_6_2/review_validation.json">mechanical validation
+record</a> records the final completion gate. Supplied evidence and
+prior audit artifacts remain preserved.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>coordinator</td>
+<td>01a129af-70e5-7f72-80a0-6613a01bbb24</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr class="even">
+<td>reuse_asset_curator</td>
+<td>01a129b0-f753-7063-bd19-d468d23f6caf</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>source_inventory.md</td>
+</tr>
+<tr class="odd">
+<td>main_quantitative_mapper</td>
+<td>01a129b4-045d-7910-b98e-2eeafcaa15c0</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr class="even">
+<td>support_plan_mapper_a</td>
+<td>01a129b4-3f17-7c51-9f95-75431d8b2433</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_plan_a.md</td>
+</tr>
+<tr class="odd">
+<td>support_plan_mapper_b</td>
+<td>01a129b4-6407-7290-94af-d95244e7d3bc</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_plan_b.md</td>
+</tr>
+<tr class="even">
+<td>support_plan_mapper_c</td>
+<td>01a129b4-83d9-7a20-a3fa-5232fa737f12</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_plan_c.md</td>
+</tr>
+<tr class="odd">
+<td>support_plan_mapper_d</td>
+<td>01a129b4-a84d-7ea2-a4e0-6654dc94857b</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_plan_d.md</td>
+</tr>
+<tr class="even">
+<td>support_quantitative_mapper</td>
+<td>01a129b4-c709-70b1-9d71-591188a0a35a</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr class="odd">
+<td>numeric_consistency_reviewer</td>
+<td>01a129ba-7aa6-77c0-9fab-ab97751545fe</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr class="even">
+<td>numeric_consistency_reviewer_support</td>
+<td>01a129ba-a075-7e40-8815-b16cd5e4d1ad</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/numeric_support.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_1</td>
+<td>01a129ba-d0ae-7972-ad30-ec98db09c65f</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr class="even">
+<td>statistics_pass_1_support</td>
+<td>01a129ba-f6dd-7cd3-ac0d-591be72882c8</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_support_pass_1.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_1_plan</td>
+<td>01a129bb-2346-7d93-89e3-266a9f7a3f14</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_plan_pass_1.md</td>
+</tr>
+<tr class="even">
+<td>cross_source_consistency_reviewer</td>
+<td>01a129bb-6a63-7c90-8382-58982d46908a</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_1_monitoring</td>
+<td>01a129be-d2f9-73e3-94d5-a2df0a75cd43</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_monitoring_pass_1.md</td>
+</tr>
+<tr class="even">
+<td>inclusion_screener</td>
+<td>01a129c4-9c36-7e01-be3f-8b97966c8822</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/inclusion_screen.md</td>
+</tr>
+<tr class="odd">
+<td>evidence_rechecker</td>
+<td>01a129cf-7c7a-7882-8c5f-12ba5ca391b4</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr class="even">
+<td>statistics_pass_2</td>
+<td>01a129d9-0afb-7071-a4ab-bc2c2e152fc2</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_2_support</td>
+<td>01a129d9-3869-7ef2-bdca-396e4635945a</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_report_support_pass_2.md</td>
+</tr>
+<tr class="even">
+<td>statistics_pass_2_plan</td>
+<td>01a129d9-67a8-73b1-896f-eabbacc1a39a</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_plan_pass_2.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_2_monitoring</td>
+<td>01a129d9-9035-77c3-b829-b5118f5f2bd9</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_monitoring_pass_2.md</td>
+</tr>
+<tr class="even">
+<td>inclusion_screener_pass_2</td>
+<td>01a129e1-b558-7331-b786-a24a51c7f784</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/inclusion_screen_pass_2.md</td>
+</tr>
+<tr class="odd">
+<td>evidence_rechecker_pass_2</td>
+<td>01a129e4-f611-7510-9c03-ccbe60dedc0d</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck_appended.md</td>
+</tr>
+<tr class="even">
+<td>quality_control_auditor</td>
+<td>01a129e9-8c39-7691-945e-b490f062019c</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr class="odd">
+<td>quality_control_auditor_support</td>
+<td>01a129ea-c9cd-7963-af96-35c47b46ef8d</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/parts/audit_support.md</td>
+</tr>
+<tr class="even">
+<td>report_generator</td>
+<td>01a129f7-1283-7ce3-8e08-59d0c5a16f05</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+<tr class="odd">
+<td>report_generator_support</td>
+<td>01a129f7-5ba3-7ea0-b777-3fb3752dbc06</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>report_parts/support.md</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Four PDF sources with 229 physical
+pages; all pages have reusable extraction or rendered images, with 27
+textless and three header-only plan pages requiring visual mapping. Main
+article and 24-page results supplement require table/figure
+reconstruction; the 194-page multi-version plan includes amendments,
+scanned SAP updates and DSMC decisions. Disjoint mapping shards keep
+text under 200000 characters and visual inputs under 32 pages;
+subsequent parallel numeric/cross-source/statistical checks and
+sequential inclusion, recheck, fresh statistical pass 2, audit and
+reporting waves determine the planning range. No Office conversion is
+needed.</li>
+<li><strong>Total source units:</strong> 229</li>
+<li><strong>Fresh-source units:</strong> 0</li>
+<li><strong>Target elapsed minutes:</strong> 40-65</li>
+<li><strong>Started UTC:</strong> 2026-10-11T06:39:51Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T08:02:16Z</li>
+<li><strong>Observed elapsed minutes:</strong> 82.42</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> The fresh second statistical
+pass identified F-ST2-201, requiring separate independent inclusion
+screening and exact-source recheck. Audit inputs expanded to 222627
+characters, requiring two disjoint fresh audit shards, 72
+excluded-observation reviews and two duplicate-provenance repairs.
+Complete report cards also required parallel context-bounded generation;
+coverage and stable IDs were preserved.</li>
+</ul>
+<p>Review timing was finalized by the coordinator immediately after
+complete Markdown assembly; local HTML rendering and mechanical
+validation are outside the recorded review duration. The
+package-specific planning target never limits source coverage or
+candidate count.</p>
+</body>
+</html>

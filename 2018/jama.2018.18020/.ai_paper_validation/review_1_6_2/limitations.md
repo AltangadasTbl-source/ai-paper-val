@@ -1,0 +1,13 @@
+# Workflow 1.6.2 Limitations and Missing Definitions
+
+All four PDFs and all 83 pages were mapped. No scientific source unit or candidate location remains inaccessible or unreadable. Derivative limitations were closed through source-linked page images and targeted exact-source CPU confirmation.
+
+The supplied package does not include participant raw data. Outcome-specific available-case/paired counts, observation memberships, weights and degrees of freedom are not fully supplied; 27 participants and 31 treatment sets cannot identify every row’s analysis sample. Diagnostic t reconstructions and nominal aggregation comparisons are not raw-data reruns. C022’s n=16/11 effect-footnote labels do not establish actual baseline denominators. Its hypothetical 14/5 and 11/4 examples demonstrate mathematical availability alternatives, rather than observed patient subsets.
+
+Other missing definitions include the exact period-interval algorithm, tested variable/coding for Other medication, linked estimate/interval/P analyses, INQoL transformation, row-specific contrast orientation, unrounded P values, withdrawal outcome/consent records, actual elicited priors and observed robustness outputs, treatment-by-pair/order output, amendment history, implemented measurement definitions and operative DSMB/interim hierarchy. Supplied-source alternatives remain explicit in each card. No preferred analysis or final correction is assigned.
+
+C003 is retained for the concrete Bayesian-versus-dependent-t analysis comparison; secondary outcome labels persist and exploratory interpretation does not establish formal reassignment. C011 supports a 24-row direction pattern with three documented exceptions, rather than a universal 27-row reversal. C017 retains a compatible underlying P near .0475 that can round to .05; its scope basis is the printed strict-threshold relationship, without a claim of latent incompatibility.
+
+Historical extraction/rendering engine versions are unavailable. Current exact-source confirmation uses direct Poppler 25.03.0 on the CPU. Tesseract and Office conversion are unavailable; no Office source exists, and native text plus complete image coverage closes PDF content. No OCR/GPU/fallback installation is needed. Source and reused-asset after-hash comparison confirms preservation. Final timing is recorded in run_state.md; HTML rendering and mechanical validation use the supplied local helpers after Markdown assembly.
+
+All 22 stable candidates remain Pending Human Adjudication. Reproduction and CONFIRMED inclusion audit do not establish clinical impact, raw-data conclusions or downstream propagation.
