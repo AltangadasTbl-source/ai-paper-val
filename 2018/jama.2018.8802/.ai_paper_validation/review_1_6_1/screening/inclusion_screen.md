@@ -1,0 +1,51 @@
+# Independent initial inclusion screen — Workflow 1.6.1
+
+Scope: all findings in `checkers/numeric_consistency.md` (none), `checkers/cross_source_consistency.md` (F-XS-001), and `checkers/statistical_pass_1.md` (F-ST1-001 and the appended independent design-shard finding F-ST1-101). Three findings were screened independently against the exact supplied source locations after complete reading of QUALITY_CONTROL_SCOPE.md and the 1.6.1 review contract, including its inclusion-screen section. No historical conclusions, external sources, or desired finding count were used.
+
+| Finding ID | Source checker | Screening stage | Decision | Reason code | Candidate ID |
+|---|---|---|---|---|---|
+| F-XS-001 | cross_source_consistency_reviewer | initial | INCLUDE | MEETS_THRESHOLD | C001 |
+| F-ST1-001 | statistics_pass_1 | initial | SCREENED_OUT | DUPLICATE_OF_INCLUDED | C001 |
+| F-ST1-101 | statistics_pass_1 | initial | SCREENED_OUT | DUPLICATE_OF_INCLUDED | C001 |
+
+F-XS-001: the directly confirmed pooled-opportunity definition in the PLAN and the supplement's expressly identified randomized-phase definition differs from the main REPORT's patient-average primary endpoint, survives the immediate opportunity-model context, and can change how the primary composite 88.2% versus 84.8% is interpreted or defined for extraction.
+
+F-ST1-001: this independently reproduced finding concerns the same two aggregation rules and primary composite result as F-XS-001, so it is consolidated into issue grouping COMPOSITE_WEIGHTING with every cited location and its statistical-pass-1 provenance preserved.
+
+F-ST1-101: this independent design-shard finding concerns the same primary endpoint aggregation contrast as F-XS-001, so it is consolidated into issue grouping COMPOSITE_WEIGHTING with every cited location and its statistical-pass-1 design-shard provenance preserved.
+
+After the independent screen, the coordinator registered COMPOSITE_WEIGHTING as C001 and assigned that shared ID to all three rows. The two duplicate decisions concern consolidation only: their reproduced source facts remain part of the included issue's evidence and provenance.
+
+## Consolidated issue grouping: COMPOSITE_WEIGHTING
+
+Representative finding: F-XS-001. Consolidated findings: F-ST1-001 and F-ST1-101. Proposed review domain: `protocol_report`; primary relationship: `P_R`; all relationships: `P_R, S_C`. These are screening recommendations for later registration and direct-source recheck. Main article and results supplement are REPORT by their results content; the prospective protocol and its statistical analysis plan are PLAN by content. No plan-internal discrepancy is asserted. Analysis paragraphs corroborate the separate opportunity-based odds model rather than adding conflicting relationships.
+
+Complete location union, including all occurrences named by the three checkers:
+
+- REPORT [main article PDF p. 1, abstract Results](../../../jama_wang_2018_oi_180070.pdf#page=1): primary composite 88.2% versus 84.8%; absolute difference 3.54% (95% CI 0.68%–6.40%), P=.02.
+- REPORT [main article PDF p. 2, Key Points](../../../jama_wang_2018_oi_180070.pdf#page=2): the same primary composite percentages and significant composite improvement.
+- REPORT [main article PDF p. 3, Outcomes, final primary-outcome paragraph](../../../jama_wang_2018_oi_180070.pdf#page=3): fulfilled eligible measures divided by the measures for which a given patient was eligible, calculated for each patient and then averaged.
+- REPORT [main article PDF p. 4, Data Analysis](../../../jama_wang_2018_oi_180070.pdf#page=4): GEE accounting for within-hospital correlation; each care opportunity contributes a binary met/not-met observation; intervention effects expressed as population-average odds ratios. The separate adjustment paragraph attaches patient/hospital covariates to multivariable results.
+- REPORT [main article PDF p. 5, primary adherence Results](../../../jama_wang_2018_oi_180070.pdf#page=5): 88.2% versus 84.8%; adjusted absolute difference 3.54% (0.68%–6.40%), P=.02; adjusted ORPA 1.39 (1.12–1.72), P=.003.
+- REPORT [main article PDF p. 7, Table 2 composite row and all nine individual-measure rows](../../../jama_wang_2018_oi_180070.pdf#page=7): composite mean (SD) 88.2 (15.1) versus 84.8 (18.2); adjusted difference 3.5 (0.7–6.4), P=.02; ORPA 1.39 (1.12–1.72), P=.003; the nine performed/eligible counts used for the independent pooled check below.
+- PLAN [protocol PDF p. 16, lines 216–220](../../../joi180070supp1_prod.pdf#page=16): composite defined as the total interventions performed among eligible patients divided by the total possible interventions among eligible patients.
+- PLAN [protocol PDF p. 18, lines 266–274](../../../joi180070supp1_prod.pdf#page=18) and [p. 19, lines 275–279](../../../joi180070supp1_prod.pdf#page=19): correlation-aware modeling; quantitative mean differences and qualitative population-average odds ratios distinguished; each eligible care opportunity contributes a binary observation for composite odds analysis.
+- REPORT [results supplement PDF p. 2, eAppendix endpoint-definition paragraph](../../../joi180070supp2_prod.pdf#page=2): the baseline survey used the same endpoint definition as the randomized phase, followed immediately by the pooled total-interventions/total-possible-interventions composite definition. Baseline percentages 80.2% and 79.5% are context, not a compared randomized result.
+
+## Independent four-criterion assessment
+
+**Reproduced.** Exact direct-source text and visual confirmation establish the different aggregation statements. With performed opportunities a_i and eligible opportunities b_i, the main definition is U=(1/n)Σ(a_i/b_i), whereas the PLAN/supplement definition is W=Σa_i/Σb_i; W weights patient fractions by b_i and U weights patients equally. Eligibility denominators are measure-specific in Table 2. Independently summing all nine Table 2 counts gives performed/eligible totals 10699/12064 for intervention and 9930/11688 for control, so the pooled percentages are 88.6853448% and 84.9589322%. These round to 88.7% and 85.0%, outside the displayed patient-mean intervals 88.15%–88.25% and 84.75%–84.85%. Printed integer counts determine these pooled totals. This establishes a numerical distinction between the descriptive quantities in this trial, while the patient-level mean cannot be reconstructed without participant records. Rounding of the adjusted effect is not the basis of inclusion.
+
+**In focus and comparison tier.** This is a primary endpoint definition/weighting comparison between PLAN and REPORT (focus D), with the same primary endpoint definition also contrasted between two REPORT documents. It is eligible under the primary-result and planned-endpoint comparison tiers. The supplement's endpoint-definition assertion expressly applies to the randomized phase, so the comparison is not limited to peripheral baseline descriptive percentages. Its review domain follows P_R precedence: protocol_report.
+
+**Not resolved at once by immediate context.** The main REPORT clearly describes the patient-average descriptive score, and the PLAN/supplement clearly describe the pooled opportunity fraction. The source text does not disclose an endpoint-definition amendment or explicitly identify the pooled wording as shorthand for averaging individual patient fractions. The supplement's same-randomized-endpoint statement prevents assuming that pooled weighting was only a baseline-survey convention. Main p. 4 and PLAN pp. 18–19 clearly describe a separate opportunity-level modeled ORPA, which can coexist coherently with a patient-average descriptive score; that coexistence does not reconcile the competing primary endpoint definitions. Therefore the issue cannot be screened out merely because a crude ratio and a modeled OR differ. No adjusted difference, OR, or HR is required to equal a crude calculation.
+
+**Bears on named interpretation/extraction.** The primary composite 88.2% versus 84.8%, and its correspondence to the planned co-primary endpoint, has a different weighting interpretation depending on whether patients or care opportunities receive equal weight. A data extractor choosing a patient-average adherence score versus a pooled opportunity adherence proportion would record different endpoint definitions and potentially different descriptive values. The supplied package does not establish a changed significance decision or a numerical alternative for the adjusted absolute difference; neither is asserted here.
+
+Source-grounded alternatives are that the main REPORT used a patient-average descriptive endpoint while the plan described pooled weighting, or that the PLAN/supplement's aggregate wording was intended to summarize patient averaging. The supplied text does not choose between those alternatives. The remaining human question is which aggregation was planned and used for the randomized composite, and how that definition relates to the accompanying adjusted absolute-difference analysis. No preferred analysis or correction is proposed.
+
+## Method, counts, and limitations
+
+Exact PDF locations were freshly reread through direct installed Poppler `pdftotext -layout` 25.03.0: main pp. 1–5 and 7; PLAN pp. 16 and 18–19; results supplement p. 2. Key definition wording was additionally inspected visually in existing source-page images `preprocessing/st1-main-p3.png`, `preprocessing/st1-plan-p16.png`, and the source-matched reusable image `.ai_paper_validation/review_1_5_2/preprocessing/rendered_pages/DOC-003-page-002-full.png`. The fresh direct-source text agrees with those images. No new extraction or OCR derivative was created, and sources and reusable artifacts were preserved. Arithmetic was independently recalculated from the nine Table 2 integer pairs without Python or assumed model details.
+
+Findings screened: 3. Distinct included issues: 1. INCLUDE rows: 1. SCREENED_OUT rows: 2, both DUPLICATE_OF_INCLUDED; other reason-code counts: 0. No location assigned to this screening scope remains unread. Participant-level fractions and an explicit statement mapping the adjusted absolute difference to the competing descriptive aggregation rules are not supplied; these constrain further reconstruction rather than create a scientific coverage gap.

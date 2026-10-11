@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6.1 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6.1 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6.1 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#acs-quik-quantitative-reporting-quality-control-consistency-review--workflow-161"
+id="toc-acs-quik-quantitative-reporting-quality-control-consistency-review--workflow-161">ACS
+QUIK: Quantitative Reporting Quality-Control Consistency Review —
+Workflow 1.6.1</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#inclusion-screening-summary"
+id="toc-inclusion-screening-summary">Inclusion Screening
+Summary</a></li>
+<li><a href="#review-domain-summary"
+id="toc-review-domain-summary">Review-Domain Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a href="#c001--identification-of-the-adjusted-time-effect-outputs"
+id="toc-c001--identification-of-the-adjusted-time-effect-outputs">C001 —
+Identification of the adjusted time-effect outputs</a></li>
+<li><a href="#c002--planned-and-reported-age-subgroup-specification"
+id="toc-c002--planned-and-reported-age-subgroup-specification">C002 —
+Planned and reported age-subgroup specification</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#reproducibility-and-source-integrity"
+id="toc-reproducibility-and-source-integrity">Reproducibility and source
+integrity</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="acs-quik-quantitative-reporting-quality-control-consistency-review--workflow-161">ACS
+QUIK: Quantitative Reporting Quality-Control Consistency Review —
+Workflow 1.6.1</h1>
+<p><strong>Pending Human Adjudication.</strong> This report presents
+candidate reporting issues for human review. Evidence states and
+inclusion-audit records describe the review process; the five human
+adjudication fields remain blank for each candidate.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete review of the supplied four-PDF package identified <strong>2
+stable candidates</strong>, C001 and C002. C001 concerns the
+identification of two adjusted time-effect outputs in Table 2; C002
+concerns the relationship between the supplied SAP age-subgroup
+specification and the reported primary-endpoint age analyses. Both
+candidates were source-reproduced and their inclusion was independently
+confirmed. Neither record adjudicates validity or establishes a change
+in the overall trial conclusion.</p>
+<p>All <strong>80 physical PDF pages</strong> were mapped: 79 using
+reusable evidence assets and one requiring fresh direct rendering. The
+review covered 298 numeric relationships, 324 statistical relationships
+in each of two fresh passes, and 120 cross-source comparison
+relationships. Three emitted findings received independent screening:
+two INCLUDE decisions and one SCREENED_OUT decision for a duplicate of
+C002. All 117 checker exclusion rows were separately audited; no
+additional candidate arose from that audit.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains the main ACS QUIK article, its protocol, its
+SAP, and a mixed operational-toolkit/results supplement. Roles follow
+the content of each location. The toolkit's sample reports and
+prospective forms are PLAN material rather than completed trial
+observations.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source ID</th>
+<th>Actual source filename</th>
+<th>Role by content</th>
+<th style="text-align: right;">Physical PDF pages</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td>jama_huffman_2018_oi_170166.pdf</td>
+<td>REPORT</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td>joi170166supp1_prod.pdf</td>
+<td>PLAN: protocol dated 22 September 2014</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td>joi170166supp2_prod.pdf</td>
+<td>PLAN: SAP dated 17 June 2015</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td>DOC-004</td>
+<td>joi170166supp3_prod.pdf</td>
+<td>REPORT p. 1 and pp. 17–27; PLAN pp. 2–16</td>
+<td style="text-align: right;">27</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>Four supplied PDFs</td>
+<td>Location-specific roles retained</td>
+<td style="text-align: right;">80</td>
+</tr>
+</tbody>
+</table>
+<p>The review reused <strong>77 source-linked assets</strong>:
+native/layout text, rendered pages, OCR and its source/page metadata,
+and extraction/document-location notes. Current curation confirmed
+source matching and recorded usable or partial coverage. Text and OCR
+served as locators and transcription aids; cited source pages and
+source-matched images provided final candidate evidence. Historical
+extraction versions are not asserted where metadata does not supply
+them. Older candidate selections, screening decisions and conclusions
+did not define discovery scope.</p>
+<p>Full provenance is recorded in the <a
+href="review_1_6_1/source_inventory.md">source inventory</a>, <a
+href="review_1_6_1/evidence_asset_inventory.md">evidence-asset
+inventory</a>, <a href="review_1_6_1/source_hashes_before.sha256">source
+hash record</a>, and <a
+href="review_1_6_1/reused_artifact_hashes_before.sha256">reused-asset
+hash record</a>. Read-only integrity checks recorded by the quality
+audit matched all four sources and all 77 reused assets; final closure
+checks are performed by the coordinator after Markdown assembly.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review addressed counts and denominators; estimate, interval and
+test logic; statistical-method identification; and
+planned-versus-reported statistical design. Every direct source unit was
+inspected and mapped, including administrative pages, blank forms and
+references with no additional applicable trial-result relationship.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Mapped units</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">12</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">32</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-004</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">27</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">80</td>
+<td>COMPLETE</td>
+</tr>
+</tbody>
+</table>
+<p>The embedded Time and Events diagram on <a
+href="../joi170166supp1_prod.pdf#page=14">joi170166supp1_prod.pdf —
+physical p. 14</a> was absent from reusable text. Fresh CPU rendering
+and visual mapping closed that gap. Fourteen scanned toolkit pages were
+covered by source-matched existing OCR and paired images. Rotated flow
+and graphical displays were inspected visually. The <a
+href="review_1_6_1/source_coverage.md">source-coverage ledger</a> and <a
+href="review_1_6_1/coverage_manifest.md">coverage manifest</a> retain
+every source and shard assignment.</p>
+<p>Rounding and display precision, immediately resolvable notation or
+wording, modeled-versus-crude comparisons, conditional or unreported
+details, peripheral comparisons and observations outside the
+quantitative scope were screened out under the supplied scope rules. A
+repeated qualifying pattern is one candidate with all affected
+locations. The review does not assess raw data, analysis code, broad
+clinical or design choices, novelty or misconduct, and does not select a
+preferred analysis.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Review scope</th>
+<th style="text-align: right;">Relationships</th>
+<th>Completion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numeric: main A</td>
+<td style="text-align: right;">100</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>Numeric: main B</td>
+<td style="text-align: right;">89</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>Numeric: support</td>
+<td style="text-align: right;">109</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>Numeric total</td>
+<td style="text-align: right;">298</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>Statistical: main A and PLAN</td>
+<td style="text-align: right;">112</td>
+<td>PASS_1_COMPLETE and PASS_2_COMPLETE</td>
+</tr>
+<tr class="even">
+<td>Statistical: main graphical relationships</td>
+<td style="text-align: right;">60</td>
+<td>PASS_1_COMPLETE and PASS_2_COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>Statistical: support baseline, graph and methods</td>
+<td style="text-align: right;">83</td>
+<td>PASS_1_COMPLETE and PASS_2_COMPLETE</td>
+</tr>
+<tr class="even">
+<td>Statistical: support outcome tuples and methods</td>
+<td style="text-align: right;">69</td>
+<td>PASS_1_COMPLETE and PASS_2_COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>Statistical total</td>
+<td style="text-align: right;">324</td>
+<td>Both passes complete for every relationship</td>
+</tr>
+<tr class="even">
+<td>Cross-source matched comparisons</td>
+<td style="text-align: right;">120</td>
+<td>COMPLETE</td>
+</tr>
+</tbody>
+</table>
+<p>The canonical <a
+href="review_1_6_1/relationships/numeric_relationship_inventory.md">numeric
+inventory</a> and <a
+href="review_1_6_1/statistics/relationship_inventory.md">statistical
+inventory</a> preserve individual relationships. Both statistical passes
+used distinct fresh high-effort agents and disjoint context-bounded
+shards. Pass 2 reconsidered the complete inventory after registration,
+independent screening and mechanical recheck, and emitted no new
+finding. The support scope includes 34 arm-marginal intervals added when
+checking identified that the initial tuple summary counted only
+differences; all received both passes. Approximate graphical readings
+remain approximate.</p>
+<p>Checks addressed count accounting and display intervals, estimate
+containment and endpoint order, direction and reference scales, matched
+analysis populations and quantities, supplied model specifications, and
+prospective analysis and decision rules. Exact estimate/CI/P
+compatibility was limited wherever the package does not identify the
+common test construction, variance estimator or other necessary input.
+No assumed model output, test or graphical coordinate replaced a
+supplied result.</p>
+<h2 id="inclusion-screening-summary">Inclusion Screening Summary</h2>
+<p>A finding qualifies only when reproduced from supplied sources,
+within the quantitative focus, unresolved by immediate context for a
+statistically literate reader, and relevant to a named result's
+interpretation or extraction. Independent screening covered all
+<strong>3 emitted findings</strong> in the single <a
+href="review_1_6_1/screening/inclusion_screen.md">screening log</a>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Decision</th>
+<th>Reason code</th>
+<th style="text-align: right;">Findings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>INCLUDE</td>
+<td>MEETS_THRESHOLD</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>DUPLICATE_OF_INCLUDED</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>NOT_REPRODUCED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>ROUNDING_OR_DISPLAY_PRECISION</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>NOTATION_OR_TYPOGRAPHY</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>TERMINOLOGY_OR_WORDING</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>MODEL_VERSUS_CRUDE</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>CONTEXT_RESOLVES</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>CONDITIONAL_OR_UNREPORTED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td>PERIPHERAL_COMPARISON</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>SCREENED_OUT</td>
+<td>OUT_OF_FOCUS</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>All screening decisions</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table>
+<p>F-ST1-001 maps to C001 and F-XS-001 maps to C002. F-ST1-002 is
+SCREENED_OUT/DUPLICATE_OF_INCLUDED, retains its connection to C002 and
+contributes its contextual location and provenance. It has no separate
+card. Numeric review emitted zero findings, cross-source review one,
+statistical pass 1 two, and pass 2 zero. A second inclusion-screen stage
+was therefore not applicable. The audit retained all decisions, with no
+audit-stage new finding or screening reversal.</p>
+<p>Checker exclusions are a separate audit count, not additional rows in
+the emitted-finding screening log: numeric 28, cross-source 18,
+statistical pass 1 34 and statistical pass 2 37, totaling 117. Every row
+was audited against the inclusion threshold; none was promoted to a new
+candidate.</p>
+<h2 id="review-domain-summary">Review-Domain Summary</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Review domain</th>
+<th>Definition</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>statistical_results</td>
+<td>Counts, estimates, intervals, tests or statistical-method logic in
+REPORT material</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td>report_internal_inconsistency</td>
+<td>Conflicting REPORT attribution of a number to an outcome, time
+point, analysis set or comparison</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>protocol_report</td>
+<td>REPORT versus PLAN statistical-design or analysis specification</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td>plan_material</td>
+<td>PLAN-internal statistical-design inconsistency relied upon by the
+reported analysis</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>Stable ledger candidates</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Relationship type</th>
+<th>Meaning</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S_W</td>
+<td>Within one REPORT document</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td>S_C</td>
+<td>Between REPORT documents</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>P_R</td>
+<td>REPORT versus PLAN</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td>P_P</td>
+<td>Within PLAN material</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>Primary relationship types</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Evidence state</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>reproduced</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td>reproduced_after_transcription_correction</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+<p>The inclusion audit records CONFIRMED for 2 candidates and QUESTIONED
+for 0. All relationships in each candidate are its sole primary
+relationship, so precedence is unambiguous. These classifications
+prefill human review and are not human adjudications.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Stable ID</th>
+<th>Candidate</th>
+<th>Review domain</th>
+<th>Relationship type</th>
+<th>Evidence state</th>
+<th>Inclusion audit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#C001">C001</a></td>
+<td>Identification of adjusted time-effect outputs</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a href="#C002">C002</a></td>
+<td>Planned and reported age-subgroup specification</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2 id="c001--identification-of-the-adjusted-time-effect-outputs" class="candidate-card">C001 —
+Identification of the adjusted time-effect outputs</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> Table 2 gives two adjusted
+time-effect outputs for each of door-to-balloon and door-to-needle time,
+without identifying the separate analysis targets that produced its
+difference and beta-coefficient columns.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main article Table 2
+time rows and footnotes vs REPORT main article Statistical Analysis</p>
+<p><strong>Finding IDs:</strong> F-ST1-001</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited and
+contextual page was found and source-confirmed; printed inputs,
+half-unit display bounds and the method-identification comparison were
+reproduced without a transcription or classification change. See <a
+href="review_1_6_1/verification/evidence_recheck.md">complete recheck
+facts</a>.</p>
+<p><strong>Checker provenance:</strong> Fresh statistical pass 1
+main/PLAN shard; independently included by root/screen_initial.</p>
+<p><strong>Classification rationale:</strong> All conflicting
+method/output descriptions are in the main REPORT. The issue concerns
+statistical-method identification and the quantity extracted. No PLAN
+location is a conflicting comparator.</p>
+<p><strong>Classification ambiguity:</strong> The two outputs may
+intentionally target distinct conditional, marginal, transformed, or
+otherwise defined quantities; the supplied descriptions do not identify
+the mapping. No equality of those quantities is assumed.</p>
+<p><strong>Exact source locations:</strong> All main locations are
+REPORT in jama_huffman_2018_oi_170166.pdf: <a
+href="../jama_huffman_2018_oi_170166.pdf#page=6">physical p. 6, Table 2
+door-to-balloon row</a>; <a
+href="../jama_huffman_2018_oi_170166.pdf#page=6">physical p. 6, Table 2
+door-to-needle row</a>; <a
+href="../jama_huffman_2018_oi_170166.pdf#page=6">physical p. 6, Table 2
+title and both effect headers</a>; <a
+href="../jama_huffman_2018_oi_170166.pdf#page=6">physical p. 6, Table 2
+footnotes a/b/c</a>; and <a
+href="../jama_huffman_2018_oi_170166.pdf#page=3">physical p. 3,
+Statistical Analysis</a>. Context is <a
+href="../jama_huffman_2018_oi_170166.pdf#page=6">physical p. 6,
+paragraph below Table 2</a> and <a
+href="../jama_huffman_2018_oi_170166.pdf#page=7">physical p. 7, process
+narrative</a>. Physical pp. 3, 6 and 7 are printed pp. 569, 572 and
+573.</p>
+<p><strong>Source evidence:</strong> Door-to-balloon medians are control
+65 (53–105) min, n=4022, and intervention 77 (55–118) min, n=3639.
+Difference: 6.18 (95% CI −4.78 to 17.14); beta coefficient: 13.00
+(3.64–22.36). Door-to-needle medians are 44 (30–67) min, n=1455, and 45
+(27–75) min, n=1433. Difference: 0.40 (−5.23 to 6.03); beta coefficient:
+5.00 (−5.20–15.20). Both outputs cite the common footnote describing
+marginal effects and mixed-effects logistic or quantile regression with
+clustering and temporal trends; footnote c identifies beta
+coefficients.</p>
+<p><strong>Reported-versus-comparator:</strong> Two distinct effect
+columns share an adjustment description without a separate time-result
+model/target mapping. Their distinct values are an observation; neither
+is asserted to fail arithmetic or its own interval rule.</p>
+<p><strong>Footnote precision:</strong> Both effect headers cite
+footnote b, but its grammatical subject is the ORs and beta
+coefficients. It names marginal-effects differences and mixed-effects
+logistic or quantile regression; it does not separately identify the
+time Difference column's target. Inclusion does not assume that a
+conditional coefficient must equal a marginal contrast.</p>
+<p><strong>Reasoning procedure:</strong> Identify the outcome, units,
+population, contrast, model labels and both reported outputs. Apply
+display-precision bounds and distinguish a source-grounded
+method-identification gap from the immediately resolvable percent
+header. Do not compare modeled effects with crude median differences as
+an identity test.</p>
+<p><strong>Calculation:</strong> Balloon point bounds [6.175,6.185] and
+[12.995,13.005] are disjoint; point difference 6.82. Needle bounds
+[0.395,0.405] and [4.995,5.005] are disjoint; point difference 4.60.
+Balloon's first CI spans zero, while beta lower-bound display interval
+[3.635,3.645] excludes zero. These calculations establish different
+outputs and inferential readings, without asserting they must be
+equal.</p>
+<p><strong>Affected result or extracted value:</strong> The adjusted
+intervention time effects, especially balloon 6.18 (−4.78,17.14) versus
+13.00 (3.64,22.36), and the analysis quantity to which each belongs.</p>
+<p><strong>Why context does not resolve it:</strong> The column names
+identify two outputs but the common method text does not map their
+models, quantiles, standardization targets or reference populations. The
+minute units are readily identifiable; the adjusted quantity to extract
+remains unclear.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+intentionally distinct marginal time contrast and conditional quantile
+coefficient, or different transformed/model targets, could explain the
+two columns. The package does not establish which explanation applies.
+Missing definitions: column-specific model, target, quantile/scale,
+reference population, and interval construction.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could select a different adjusted time estimate and interval, including
+a different zero-inclusion reading, if the analysis target is not
+clarified. No downstream propagation or paper-level conclusion change is
+asserted.</p>
+<p><strong>Human verification steps:</strong> Read the two rows and
+footnotes together with the statistical methods, identify the model and
+estimand for each column, and establish which adjusted time quantity
+each reported estimate represents.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c002--planned-and-reported-age-subgroup-specification" class="candidate-card">C002 —
+Planned and reported age-subgroup specification</h2>
+<p><strong>Status:</strong> Pending Human Adjudication</p>
+<p><strong>Candidate statement:</strong> The supplied SAP specifies an
+age split at 65 for the primary-endpoint subgroup analysis, while the
+report calls age groups split at 50 and 70 prespecified.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN SAP section 7.5.2 vs
+REPORT main article Methods and Figure 3 age subgroups</p>
+<p><strong>Finding IDs:</strong> F-XS-001</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Mechanical evidence recheck:</strong> All PLAN and REPORT
+locations, including contextual main p. 2, were found and visually
+source-confirmed. Cutoffs, effect rows and arm/event sums reproduce; no
+transcription or classification change was needed. See <a
+href="review_1_6_1/verification/evidence_recheck.md">complete recheck
+facts</a>.</p>
+<p><strong>Checker provenance:</strong> F-XS-001 from the fresh
+cross-source checker and F-ST1-002 from the independent statistical
+checker describe one issue. The screen includes F-XS-001 and links the
+duplicate F-ST1-002 to C002. All locations from both findings are
+retained.</p>
+<p><strong>Classification rationale:</strong> Prospective SAP content is
+PLAN; the main results are REPORT. Their age analysis specifications
+differ. Consistent report repetitions and the SAP-referencing statement
+are context, not additional S_W relationships.</p>
+<p><strong>Classification ambiguity:</strong> A later prospective
+amendment may not be supplied. This limits attribution of the
+specification change, not the observed printed comparison.</p>
+<p><strong>Exact source locations:</strong> PLAN
+joi170166supp2_prod.pdf: <a
+href="../joi170166supp2_prod.pdf#page=7">physical p. 7, section 7.5.2,
+lines 1243–1254, especially line 1251</a>, with adjacent
+primary-analysis context in <a
+href="../joi170166supp2_prod.pdf#page=7">physical p. 7, section 7.5,
+lines 1229–1238</a>. REPORT jama_huffman_2018_oi_170166.pdf: <a
+href="../jama_huffman_2018_oi_170166.pdf#page=3">physical p. 3,
+Statistical Analysis subgroup sentence</a>; <a
+href="../jama_huffman_2018_oi_170166.pdf#page=9">physical p. 9, Figure 3
+title and age &lt;50 row</a>; <a
+href="../jama_huffman_2018_oi_170166.pdf#page=9">physical p. 9, age
+50–69 row</a>; <a
+href="../jama_huffman_2018_oi_170166.pdf#page=9">physical p. 9, age ≥70
+row</a>; and <a
+href="../jama_huffman_2018_oi_170166.pdf#page=9">physical p. 9, adjacent
+subgroup paragraph</a>. Contextual REPORT locations are <a
+href="../jama_huffman_2018_oi_170166.pdf#page=2">physical p. 2, Study
+Design SAP reference</a> and <a
+href="../jama_huffman_2018_oi_170166.pdf#page=7">physical p. 7, Table 3
+aggregate MACE counts</a>. Main physical pp. 2, 3, 7 and 9 are printed
+pp. 568, 569, 573 and 575.</p>
+<p><strong>Source evidence:</strong> SAP a priori age groups: &lt;65 and
+&gt;65 years. Reported prespecified groups: &lt;50, 50–69 and ≥70 years.
+Respective adjusted MACE ORs: 1.53 (0.83–2.79), 0.89 (0.67–1.19), 0.98
+(0.71–1.35); adjusted differences: 1.42% (−0.71 to 3.54), −0.57% (−2.02
+to 0.88), −0.23% (−3.32 to 2.85). Intervention event/denominators:
+58/2079, 297/6606, 247/2623; control: 68/2045, 326/5863, 251/2158.</p>
+<p><strong>Reported-versus-comparator:</strong> The three reported
+categories cannot be matched to the SAP's two planned categories by
+variable name alone. The report confirms prespecification without
+identifying a revised specification in those locations.</p>
+<p><strong>Reasoning procedure:</strong> Match primary 30-day MACE,
+analysis population, model and age subgroup family. Compare group
+membership boundaries, not the preferred clinical cutoff. Preserve the
+possibility of a later amendment without assuming one exists.</p>
+<p><strong>Calculation:</strong> Intervention denominators
+2079+6606+2623=11308 and events 58+297+247=602; control denominators
+2045+5863+2158=10066 and events 68+326+251=645. The reported middle age
+group crosses 65, so no merging of the displayed categories recovers the
+planned split. Uncertainty about age exactly 65 and numeric display
+precision do not reconcile cutoffs at 50 and 70. Adjusted ORs/RDs cannot
+be remapped by averaging the displayed effects.</p>
+<p><strong>Affected result or extracted value:</strong> The three
+age-specific adjusted primary MACE effects and their interpretation as
+prespecified analyses, compared with effects for the planned split at
+65.</p>
+<p><strong>Why context does not resolve it:</strong> The displayed age
+groups are clear, but neither the adjacent report statements nor the
+supplied SAP explains how those groups relate to the a priori split.
+Different category membership is not a field-specific synonym.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+additional prospective amendment could define the reported groups; an
+additional analysis may have been displayed; or the planned split may
+have been performed separately. The supplied evidence does not identify
+which applies.</p>
+<p><strong>Potential downstream evidence impact:</strong> A reviewer
+could extract the three reported age effects as the planned age-specific
+effects even though they do not represent the SAP split. No conclusion
+change or downstream propagation is asserted.</p>
+<p><strong>Human verification steps:</strong> Confirm the boundaries and
+all age effects directly, identify any later prospective specification,
+and establish how the reported analysis relates to the SAP age
+split.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>Data extraction depends on identifying the outcome, population,
+analysis target, model, contrast, units and prospective status that
+belong to a reported value. If a candidate is confirmed by human review,
+an unresolved distinction could affect which estimate and interval are
+copied or how a subgroup analysis is described in evidence synthesis.
+These are possible extraction consequences. The supplied package does
+not establish downstream propagation, a changed overall conclusion or
+harm.</p>
+<p>For C001, the relevant link is between an adjusted time estimate and
+its target definition; for C002, it is between the reported age-specific
+MACE effects and their prospective specification. Human clarification
+should precede treating either pair of distinct quantities or category
+schemes as interchangeable.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>All source pages and registered relationships are covered. Remaining
+limits concern definitions and unprinted inputs, as recorded in <a
+href="review_1_6_1/limitations.md">limitations.md</a>.</p>
+<p>The figures lack exact printed coordinates for every point and
+interval, so graphical checks establish visible order, containment,
+direction and labels without inventing exact coordinates or counts. The
+package does not fully supply CI/test construction, variance/covariance
+estimators, degrees of freedom, row-specific model contributor counts,
+missing-outcome coding, imputation details or the full stepped-wedge
+power implementation. Their absence limits exact reconstruction and does
+not independently establish another reporting issue.</p>
+<p>C001 needs a column-specific model and estimand, relevant quantile or
+scale, standardization/reference population and interval construction to
+identify the two adjusted time outputs. C002 needs a dated prospective
+specification or disclosed amendment linking the reported age categories
+to the supplied SAP, including whether the planned split was
+additionally performed or replaced. A later specification may exist
+outside the supplied package; its absence here does not establish that
+none existed. The convention for exactly age 65 does not reconcile the
+observed category schemes.</p>
+<p>CPU OCR and Office conversion were unavailable locally. Existing
+source-matched OCR and visual inspection completed the scanned-page
+scope; the package contains no direct Office source. No unresolved
+scientific inspection gap remains. Review is restricted to supplied
+package evidence and does not reconstruct unrecorded runtime actions or
+downstream use.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<ol type="1">
+<li>Read every cited source page, including all affected rows and
+immediate footnotes or paragraphs.</li>
+<li>Confirm the source role, analysis population, endpoint, time point,
+contrast, quantity and precision relevant to each card.</li>
+<li>For C001, identify the target and model for each adjusted time
+output without imposing equality between distinct conditional and
+marginal quantities.</li>
+<li>For C002, identify the dated prospective age specification and
+establish its relationship to the displayed MACE subgroup analyses.</li>
+<li>Consider the source-grounded alternatives and missing definitions,
+then fill Validity, Importance, Action, Initials and Notes independently
+for each candidate.</li>
+</ol>
+<p>Both cards remain <strong>Pending Human Adjudication</strong> until a
+human completes that review.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h2>
+<h3 id="reproducibility-and-source-integrity">Reproducibility and source
+integrity</h3>
+<p>Workflow controls are the supplied <a
+href="../QUALITY_CONTROL_SCOPE.md">scope</a>, <a
+href="../workflow_1_6_1/review_contract.md">review contract</a>, <a
+href="../workflow_1_6_1/report_spec.md">report specification</a>, <a
+href="../PERFORMANCE_PROFILE.md">performance profile</a> and <a
+href="../workflow_1_6_1/settings.toml">settings</a>. Current scientific
+artifacts are linked in the preceding sections; the complete <a
+href="review_1_6_1/verification/evidence_recheck.md">mechanical
+recheck</a> and <a
+href="review_1_6_1/quality/evidence_quality_audit.md">quality audit</a>
+preserve the evidence facts and independent threshold audit for C001 and
+C002.</p>
+<p>Direct-source SHA-256 values are:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Actual filename</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jama_huffman_2018_oi_170166.pdf</td>
+<td>11311a6bb5c7a4be734ed60776b308f525ad101671ccc8d34bab18735aaca5f5</td>
+</tr>
+<tr class="even">
+<td>joi170166supp1_prod.pdf</td>
+<td>0e13bdfc6e5e3c8b86e187f54f0a3d7d0217fc0614be9fbdbbb7839dbab9004a</td>
+</tr>
+<tr class="odd">
+<td>joi170166supp2_prod.pdf</td>
+<td>d49019c3cf6ee0766fb319f254f27f87751a73bfec66c34d38bae16a956bb1c6</td>
+</tr>
+<tr class="even">
+<td>joi170166supp3_prod.pdf</td>
+<td>511f4a907e4c48d920f1c6b89d444fe76c7c91e11bbae84cdee834fa0393f3ec</td>
+</tr>
+</tbody>
+</table>
+<p>The audit's read-only source and reused-asset hash comparisons all
+matched. The coordinator recomputes both sets at closure and performs
+local rendering and validation after timing finalization; this assembly
+does not claim those later checks have already completed.</p>
+<p>The <a href="review_1_6_1/tooling_record.md">tooling record</a>
+records Linux, direct pdfinfo/pdftotext/pdftoppm/pdftocairo availability
+and missing tesseract/libreoffice. Poppler PDF information, text and
+rendering tools were version 25.03.0; Pandoc was 3.1.11.1. Fresh
+protocol-diagram rendering used 150 dpi; targeted source-confirmation
+renders used 120 dpi. Existing images retain their historical engine
+metadata. No fallback environment was needed or created, and no new OCR
+or GPU operation was used.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<p>Routing preflight records PASS, coordinator inference PASS, execution
+mode INTERACTIVE_CLI, Provider CURRENT_SESSION and verification of all
+ten fixed role presets. Every actual runtime agent, including the
+coordinator, continuation shards and this report generator, appears
+below with the exact fixed model and effort. The coordinator used
+CURRENT_SESSION; every specialist used FRESH_SPAWN. The statistical
+passes have distinct agent identities. No conditional pass-2 screener
+was needed because pass 2 emitted no finding. Primary artifact paths are
+relative to review_1_6_1/; the full durable assignment record is the <a
+href="review_1_6_1/agent_execution_manifest.md">execution
+manifest</a>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr class="even">
+<td>reuse_asset_curator</td>
+<td>root/curator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>source_inventory.md</td>
+</tr>
+<tr class="odd">
+<td>main_quantitative_mapper</td>
+<td>root/main_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr class="even">
+<td>support_quantitative_mapper</td>
+<td>root/support_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr class="odd">
+<td>numeric_consistency_reviewer</td>
+<td>root/numeric_main_a</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr class="even">
+<td>numeric_continuation_main_b</td>
+<td>root/numeric_main_b</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/numeric_main_b.md</td>
+</tr>
+<tr class="odd">
+<td>numeric_continuation_support</td>
+<td>root/numeric_support</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/numeric_support.md</td>
+</tr>
+<tr class="even">
+<td>cross_source_consistency_reviewer</td>
+<td>root/cross_source</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_1</td>
+<td>root/statistics_1_main_a</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr class="even">
+<td>statistics_pass_1_support</td>
+<td>root/statistics_1_support</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_support.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_1_main_b</td>
+<td>root/statistics_1_main_b</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_main_b.md</td>
+</tr>
+<tr class="even">
+<td>statistics_pass_1_support_outcomes</td>
+<td>root/statistics_1_outcomes</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_support_outcomes.md</td>
+</tr>
+<tr class="odd">
+<td>inclusion_screener</td>
+<td>root/screen_initial</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/inclusion_screen.md</td>
+</tr>
+<tr class="even">
+<td>evidence_rechecker</td>
+<td>root/recheck_initial</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_2</td>
+<td>root/statistics_2_main_a</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr class="even">
+<td>statistics_pass_2_main_b</td>
+<td>root/statistics_2_main_b</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_main_b_pass_2.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_2_support</td>
+<td>root/statistics_2_support</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_support_pass_2.md</td>
+</tr>
+<tr class="even">
+<td>statistics_pass_2_support_outcomes</td>
+<td>root/statistics_2_outcomes</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_support_outcomes_pass_2.md</td>
+</tr>
+<tr class="odd">
+<td>quality_control_auditor</td>
+<td>root/audit_candidates</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr class="even">
+<td>quality_coverage_provenance_auditor</td>
+<td>root/audit_coverage</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/parts/coverage_provenance_audit.md</td>
+</tr>
+<tr class="odd">
+<td>report_generator</td>
+<td>root/report_generator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Four PDF sources contain 80 unique
+pages, all initially backed by reusable extraction or images, with one
+embedded protocol diagram subsequently requiring fresh rendering and no
+Office conversion. Fourteen scanned toolkit pages use existing
+source-matched OCR and images, and complex flow/figure pages require
+visual reading. Complete discovery and statistical relationships are
+rebuilt through parallel main/support mapping and checker waves,
+followed by independent screening, recheck, a second statistical pass,
+audit, and report generation; the required sequential agent waves remain
+the principal latency burden.</li>
+<li><strong>Total source units:</strong> 80</li>
+<li><strong>Fresh-source units:</strong> 1</li>
+<li><strong>Target elapsed minutes:</strong> 22-35</li>
+<li><strong>Started UTC:</strong> 2026-10-11T02:52:35Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T03:29:13Z</li>
+<li><strong>Observed elapsed minutes:</strong> 36.63</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> Additional context-bounded
+numeric, statistical and audit shards for complete scope; 34
+supplementary arm-marginal intervals added during completeness checking;
+sequential independent screening, recheck, second-pass and audit
+stages</li>
+</ul>
+<p>The package-specific planning target reflects reusable evidence, one
+fresh diagram, scanned and graphical content, the complete relationship
+volume and required sequential review waves. Timing is finalized by the
+coordinator immediately after complete Markdown assembly. Local HTML
+rendering and mechanical validation remain outside the observed review
+duration; any later model-assisted repair requires updated finish and
+performance fields.</p>
+</body>
+</html>

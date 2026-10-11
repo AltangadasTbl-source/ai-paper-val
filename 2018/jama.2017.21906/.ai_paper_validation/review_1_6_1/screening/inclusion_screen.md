@@ -1,0 +1,49 @@
+# Independent inclusion screen — initial stage
+
+Fresh screener: `/root/screen_initial`, `gpt-6.1-sol` / `high`. Read `QUALITY_CONTROL_SCOPE.md` and the complete 1.6.1 review contract, including the inclusion-screen section; checked the current source, coverage, evidence-asset and tooling records and the relevant current source-linked mapping entries. Canonical checker heading sets were checked: numeric consistency has no emitted finding; cross-source consistency has F-XS-001; statistical pass 1 has F-ST1-001 and F-ST1-002. The decisions below cover all three emitted findings. No previous-run conclusions, web sources, GPU tools or Python scientific review were used.
+
+| Finding ID | Source checker | Screening stage | Decision | Reason code | Candidate ID |
+|---|---|---|---|---|---|
+| F-XS-001 | cross_source_consistency_reviewer | initial | INCLUDE | MEETS_THRESHOLD | C002 |
+| F-ST1-001 | statistics_pass_1 | initial | INCLUDE | MEETS_THRESHOLD | C001 |
+| F-ST1-002 | statistics_pass_1 | initial | SCREENED_OUT | DUPLICATE_OF_INCLUDED | C002 |
+
+F-XS-001: The directly confirmed SAP age boundary at 65 differs from the reported 50/70 boundaries for the primary-endpoint subgroup estimates, and the adjacent prespecification statements do not identify their relationship, affecting extraction and interpretation of those age-specific MACE effects.
+
+F-ST1-001: The directly confirmed time-outcome rows give two substantively different adjusted effects under a shared method footnote without identifying their separate targets, leaving the door-to-balloon treatment effect and its zero-exclusion reading unresolved for extraction beyond the readily identifiable minute units.
+
+F-ST1-002: This finding reproduces the same age-subgroup specification issue as included F-XS-001, so its additional contextual location and all finding provenance are merged into that issue rather than registered separately.
+
+## Source confirmation and independent threshold reasoning
+
+### Time-outcome effect mapping — F-ST1-001
+
+Directly read REPORT [main physical p. 6, Table 2, both time rows, effect headers and footnotes b/c](../../../jama_huffman_2018_oi_170166.pdf#page=6) and REPORT [main physical p. 3, Statistical Analysis](../../../jama_huffman_2018_oi_170166.pdf#page=3); also read the immediately following REPORT [p. 7 narrative](../../../jama_huffman_2018_oi_170166.pdf#page=7) as contextual confirmation. Table 2 was visually checked against the source-matched reusable render; direct selected-page layout extraction confirmed alignment. Door-to-balloon control/intervention medians are 65 (53–105), n=4022, and 77 (55–118), n=3639; its difference is 6.18 (−4.78 to 17.14) and beta coefficient is 13.00 (3.64–22.36). Door-to-needle medians are 44 (30–67), n=1455, and 45 (27–75), n=1433; its difference is 0.40 (−5.23 to 6.03) and beta coefficient is 5.00 (−5.20 to 15.20). Both difference and coefficient columns cite footnote b, which describes intervention-versus-control marginal-effects differences from mixed-effects logistic or quantile regression with clustering and temporal trends; footnote c identifies beta coefficients but does not define a separate target for the time difference column.
+
+Reproduction does not assume equality between a coefficient and a marginal effect or select a preferred model. The printed balloon point intervals [6.175, 6.185] and [12.995, 13.005] are disjoint; the needle intervals [0.395, 0.405] and [4.995, 5.005] are disjoint. Balloon difference CI includes zero, while the beta CI has lower endpoint 3.64, whose display interval [3.635, 3.645] excludes zero. These calculations establish substantive distinct outputs, not that either output fails its own arithmetic or interval rule.
+
+The issue meets focus C because the shared source description does not identify which target/model produced each adjusted time contrast. The comparison tier permits a quantity-changing label or statistical-method identification issue; this is not a matched-value difference in a peripheral secondary display. Its scope is the identity of the reported adjusted quantities, with the two time rows forming one repeated pattern. The percent sign alone is immediately resolved from the minute row units and does not support inclusion. Distinct column headings establish that two outputs were printed but do not resolve the missing target mapping; extracting the balloon 6.18 interval or the 13.00 interval as the adjusted time effect gives a different zero-exclusion reading. This is more than an absent technical detail required only to reproduce a model: the supplied text leaves the quantity to extract unidentified. Possible distinct conditional/marginal or transformed targets remain alternatives, not established explanations. No numerical correction or preferred analysis is proposed.
+
+Retain both time rows, both column headers, the common title, footnotes b/c, and p. 3 Statistical Analysis. Roles are REPORT throughout; the proposed relationship remains within-report S_W, with statistical_results as the source-grounded domain for coordinator classification. No separate issue is warranted for the second time row or percent header.
+
+### Age-subgroup specification — F-XS-001 with merged F-ST1-002
+
+Directly read PLAN [SAP physical p. 7, section 7.5.2, lines 1243–1254](../../../joi170166supp2_prod.pdf#page=7), REPORT [main physical p. 3, Statistical Analysis subgroup sentence](../../../jama_huffman_2018_oi_170166.pdf#page=3), and REPORT [main physical p. 9, Figure 3 title, all three age rows, and adjacent subgroup paragraph](../../../jama_huffman_2018_oi_170166.pdf#page=9). Also directly read REPORT [main physical p. 2, Study Design statement identifying the supplied SAP](../../../jama_huffman_2018_oi_170166.pdf#page=2), the additional contextual location in F-ST1-002. Every cited location was visually inspected using source-matched reused or current renders and confirmed by direct selected-page layout extraction.
+
+The SAP identifies a priori age analyses as <65 and >65 years. The report calls participant-age subgroups prespecified and Figure 3 displays <50, 50–69 and ≥70 years. The three adjusted ORs are 1.53 (0.83–2.79), 0.89 (0.67–1.19), and 0.98 (0.71–1.35); adjusted differences are 1.42% (−0.71 to 3.54), −0.57% (−2.02 to 0.88), and −0.23% (−3.32 to 2.85). Intervention counts are 58/2079, 297/6606 and 247/2623; control counts are 68/2045, 326/5863 and 251/2158. Denominators sum to 11308 and 10066, and events sum to 602 and 645, matching the primary MACE population and events.
+
+The planned partition at 65 cannot be recovered by merging the reported categories because 50–69 crosses 65; uncertainty about exactly age 65 in the SAP does not reconcile boundaries at 50 and 70. This is an explicit primary-endpoint analysis-specification comparison under focus D, rather than a peripheral subgroup count comparison. Immediate report context confirms the displayed groups but does not explain their relationship to the supplied a priori specification. The affected results are the three age-specific adjusted 30-day MACE effects and their reported prespecified status; they cannot stand in for effects split at 65. A later prospective amendment or an additional age analysis could explain the difference, but neither is established in the supplied locations; the finding rests on the printed specifications, not an assertion that no amendment ever existed.
+
+Retain the full union of both checkers' locations: SAP p. 7 section 7.5.2; main p. 3 subgroup Methods; main p. 9 Figure 3 title/age rows/adjacent paragraph; main p. 2 Study Design as context. Roles in conflict are PLAN SAP versus REPORT main; proposed P_R and protocol_report remain appropriate for coordinator classification. The mutually consistent report occurrences do not add a separate S_W relationship, and the p. 2 statement is corroborating context. Preserve both finding IDs and checker provenance in the merged issue; the duplicate row's PENDING cell points to the same pending age issue as F-XS-001.
+
+## Registration handoff and source order
+
+Two distinct included issues have coordinator-assigned stable IDs C001 and C002. In main-result source order, the Table 2 time-outcome mapping pattern at p. 6 precedes the Figure 3 age-subgroup specification at p. 9. F-ST1-001 represents the time pattern; F-XS-001 represents the age issue, with F-ST1-002 preserved as duplicate provenance and its p. 2 contextual location retained. Initial PENDING cells were filled by the coordinator: F-ST1-001 maps to C001; F-XS-001 and duplicate F-ST1-002 map to C002.
+
+## Inspection engines, derivatives and limitations
+
+Direct engine: Poppler 25.03.0 `pdftotext -layout`, selected main pp. 2, 3, 6, 7, 9 and SAP p. 7, read to standard output without creating text derivatives. Visual authority: source-hash-matched reusable `.ai_paper_validation/review_1_5_2/preprocessing/rendered_pages/DOC-001-06.png` and `DOC-001-09.png`; current `.ai_paper_validation/review_1_6_1/preprocessing/xs-sap7.png`, direct pdftoppm 25.03.0 at 120 dpi; fresh main pp. 2/3 renders generated by this screener with `pdftoppm -f N -l N -r 120 -singlefile -png jama_huffman_2018_oi_170166.pdf .ai_paper_validation/review_1_6_1/preprocessing/screen-initial-mainN`.
+
+New derivatives: `preprocessing/screen-initial-main2.png` and `preprocessing/screen-initial-main3.png`, each generated from the exact supplied main PDF by direct CPU pdftoppm 25.03.0. No source or reused asset was modified. No cited-source inspection gap remains. The mapping of time-effect targets and any later age-analysis specification are the unresolved source definitions already described, not additional findings or assigned dispositions.
+
+Counts: 3 findings screened; 2 distinct included issues; 2 INCLUDE rows; 1 SCREENED_OUT row, reason DUPLICATE_OF_INCLUDED; all other screened-out reason-code counts are zero.

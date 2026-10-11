@@ -1,0 +1,18 @@
+# Workflow 1.6.1 Direct Source Inventory
+
+The inventory is confined to this paper package. Every supplied PDF, DOC, DOCX, XLS, XLSX, and CSV file was sought recursively, excluding workflow controls, version-control internals and derived audit assets. Four direct PDFs were found; no supplied Office or CSV source was found. PDF units are physical file pages, indexed from 1, including front matter and administrative pages.
+
+| Source ID | Source path | Document role | Content basis | Unit type | Total units | SHA-256 |
+|---|---|---|---|---|---:|---|
+| DOC-001 | jama_stunnenberg_2018_oi_180136.pdf | REPORT | Main JAMA original investigation reporting completed aggregated N-of-1 trials of mexiletine; physical PDF pages 1-10. | PDF_PAGE | 10 | 4cfcd14bc825f4bd96a4f072dffc4c9a38f316c68d8bb778226bd7c521e9919f |
+| DOC-002 | joi180136supp1_prod.pdf | PLAN | Prospective study protocol mexiletine201011, June 2011 version 2, with planned design, treatment, sample-size and statistical procedures; physical PDF pages 1-55. Background and references do not create a REPORT/PLAN bundle. | PDF_PAGE | 55 | 79ba649c5d57a953b46ee5a550cf6f9ba17f784864bc486b75f50cb96292622f |
+| DOC-003 | joi180136supp2_prod.pdf | REPORT | Non-plan results supplement with eTables 1-4, eFigures 1-3 and eMethods 1-4. Criteria/design content is reproduced for reporting context; it is not a supplied prospective protocol/SAP bundle. Physical PDF pages 1-17. | PDF_PAGE | 17 | 9a88d1fbef0b8fab112d6b22f53591444c9a73e66b0e69a7de292f9716e3a208 |
+| DOC-004 | joi180136supp3_prod.pdf | REPORT | Retrospective data-sharing statement linked to the completed article; physical PDF page 1, not a prospective analysis plan. | PDF_PAGE | 1 | 86b09282d61f560447283d78f9aeacee958ee531282e336e1c9114618d2d48db |
+
+Total scope is 83 physical PDF pages: 28 REPORT pages and 55 PLAN pages. No source is a bound mixed REPORT/PLAN bundle. Role assignments are based on content; copied protocol material in a retrospective results supplement remains reporting content unless a downstream exact-location review establishes a distinct prospective component.
+
+Source identity was established with direct pdfinfo 25.03.0, source hashes from sha256sum, current-source native-text comparisons against the reusable extracts, and title/content inspection. All four pdfinfo records exactly match current outputs, including file size, modification metadata, page count, PDF version and page geometry. Every native text extract exactly matches current pdftotext output. All four PDFs are unencrypted, accessible and contain readable text.
+
+The existing DOC-001, DOC-002, DOC-003 and DOC-004 extraction families map to the four source rows in order. Their text page boundaries are form-feed separators: the first nonempty record is PDF page 1 and record N is PDF page N; a trailing empty record is not a source unit. Rendered page file names record physical PDF page numbers, with two-digit suffixes for DOC-001 through DOC-003 and suffix 1 for DOC-004. This freshly established source-location map is documented in evidence_asset_inventory.md. No source file or reused artifact was modified.
+
+Commands and engines: recursive package-local file inventory with find and rg; pdfinfo SOURCE using Poppler 25.03.0; sha256sum -- SOURCE; pdftotext SOURCE - and pdftotext -layout SOURCE - streamed to cmp against each existing text asset; pdfinfo SOURCE streamed to cmp against each existing metadata asset; file on every PNG. Only assigned inventory and hash files were created. No scientific candidate discovery or legacy scientific output inspection was performed.
