@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--workflow-162"
+id="toc-quantitative-quality-control-consistency-review--workflow-162">Quantitative
+Quality-Control Consistency Review — Workflow 1.6.2</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#inclusion-screening-summary"
+id="toc-inclusion-screening-summary">Inclusion Screening
+Summary</a></li>
+<li><a href="#review-domain-summary"
+id="toc-review-domain-summary">Review-Domain Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--primary-relapse-score-component-differs-from-the-plan"
+id="toc-c001--primary-relapse-score-component-differs-from-the-plan">C001
+— Primary relapse score component differs from the plan</a></li>
+<li><a
+href="#c002--four-prespecified-key-secondary-counterparts-are-absent"
+id="toc-c002--four-prespecified-key-secondary-counterparts-are-absent">C002
+— Four prespecified key secondary counterparts are absent</a></li>
+<li><a
+href="#c003--adverse-event-baseline-differs-between-plan-and-report"
+id="toc-c003--adverse-event-baseline-differs-between-plan-and-report">C003
+— Adverse-event baseline differs between plan and report</a></li>
+<li><a
+href="#c004--safety-treatment-classification-differs-from-the-plan"
+id="toc-c004--safety-treatment-classification-differs-from-the-plan">C004
+— Safety treatment classification differs from the plan</a></li>
+<li><a
+href="#c005--planned-metabolic-observation-exclusion-is-placed-in-sensitivity-analysis"
+id="toc-c005--planned-metabolic-observation-exclusion-is-placed-in-sensitivity-analysis">C005
+— Planned metabolic observation exclusion is placed in sensitivity
+analysis</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--workflow-162">Quantitative
+Quality-Control Consistency Review — Workflow 1.6.2</h1>
+<p><strong>Pending Human Adjudication.</strong> Every candidate below is
+a candidate reporting issue. Evidence states and inclusion-audit records
+describe the review evidence; they are not human adjudications.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete review of the supplied STOP-PD II package identified
+<strong>5 stable candidates</strong>, C001, C002, C003, C004 and C005.
+All five concern printed comparisons between prospective plan material
+and reporting material and belong to <code>protocol_report</code>. Their
+evidence states are <code>reproduced</code>; their inclusion audits are
+<code>CONFIRMED</code>. Two qualify through Route A, category 5, and
+three through Route B.</p>
+<p>The candidates concern a primary-relapse score condition, four absent
+prespecified key-secondary counterparts consolidated as one pattern,
+adverse-event baseline eligibility, safety treatment classification, and
+placement of a planned metabolic observation exclusion. The package
+establishes these reporting comparisons but does not establish changed
+participant classifications, numerical estimates, or conclusions. All 63
+supplied pages, 127 numeric relationships and 70 statistical
+relationships were covered. Both distinct statistical passes covered
+every registered statistical relationship.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>Document roles follow content. The main article and non-plan
+supplements are REPORT; the protocol/analytic-plan/pharmacotherapy
+bundle is PLAN.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Actual supplied filename and opening page</th>
+<th>Role</th>
+<th style="text-align: right;">PDF pages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_flint_2019_oi_190079.pdf#page=1">jama_flint_2019_oi_190079.pdf</a></td>
+<td>REPORT</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a
+href="../joi190079supp1_prod.pdf#page=1">joi190079supp1_prod.pdf</a></td>
+<td>PLAN</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a
+href="../joi190079supp2_prod.pdf#page=1">joi190079supp2_prod.pdf</a></td>
+<td>REPORT</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td><a
+href="../joi190079supp3_prod.pdf#page=1">joi190079supp3_prod.pdf</a></td>
+<td>REPORT</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Four direct sources</td>
+<td></td>
+<td style="text-align: right;">63</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="review_1_6_2/source_inventory.md">source inventory</a>
+and <a href="review_1_6_2/evidence_asset_inventory.md">evidence asset
+inventory</a> document 194 hashed reusable assets: 171 USABLE, 22
+PARTIAL and 1 DUPLICATE. No STALE or UNREADABLE asset was recorded.
+Partial plot text is paired with usable full-page images; duplicate
+derivatives do not increase unique-page coverage. Assets include source
+identities, page maps, native/layout text, normalized text, OCR and
+rendered pages. No supplied Office, workbook or CSV source was
+found.</p>
+<p>Historical PyMuPDF and rapidocr_onnxruntime/rapidocr-cuda provenance
+is retained as historical metadata. This run used direct Poppler
+text/layout extraction and targeted CPU page rendering, with no new OCR.
+Historical GPU provenance does not describe processing in this run.
+Derivatives were locators and transcription aids; the evidence rechecker
+visually read exact source-derived pages. Discovery and classification
+were rebuilt from supplied-source evidence, without using legacy
+candidate or adjudication conclusions as discovery inputs.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review covers counts and denominators; estimate, interval and
+test logic; source-grounded statistical method logic; and planned versus
+reported statistical design. It is quantitative reporting quality
+control. The <a href="review_1_6_2/source_coverage.md">source coverage
+record</a> closes every direct-source partition:</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Mapped units</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">42</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td>COMPLETE</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">63</td>
+<td>COMPLETE</td>
+</tr>
+</tbody>
+</table>
+<p>Zero fresh-required units means that usable source-matched extraction
+already covered every page. Fresh scientific mapping still covered every
+page. The main map covers abstract, Key Points, narrative, five tables,
+two figures, captions, footnotes and end matter. Support mapping covers
+the entire plan and appendix, all nine supplementary plots and the
+administrative data-sharing page. Bibliography and administrative units
+have explicit applicability records. Missing reusable page images were
+supplemented by usable text and targeted current source renders where
+visual confirmation was needed; no scientific source-unit gap
+remains.</p>
+<p>The review excludes broad methodology, clinical, novelty, misconduct
+and raw-data audits and does not propose a preferred analysis.
+Context-resolved wording and notation, model-based versus crude
+comparisons, display precision, conditional unreported details,
+peripheral cross-document comparisons and out-of-focus observations were
+handled under the stated inclusion scope. No candidate was selected by a
+count target. Complete assignments and durable outputs are recorded in
+the <a href="review_1_6_2/coverage_manifest.md">coverage
+manifest</a>.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th style="text-align: right;">Numeric relationships</th>
+<th style="text-align: right;">Statistical relationships</th>
+<th>Completion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main article</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">39</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Plan core</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">18</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Plan appendix</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">4</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Nine supplementary plots</td>
+<td style="text-align: right;">Cross-referenced to main outcomes</td>
+<td style="text-align: right;">9</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">127</td>
+<td style="text-align: right;">70</td>
+<td>Complete</td>
+</tr>
+</tbody>
+</table>
+<p>The <a
+href="review_1_6_2/relationships/numeric_relationship_inventory.md">numeric
+inventory</a> and <a
+href="review_1_6_2/statistics/relationship_inventory.md">statistical
+inventory</a> retain complete source relationships. Allocated ID-block
+gaps are preserved assignment boundaries. Table 4 paired-change rows and
+all four Table 5 contrasts are explicitly covered rather than replaced
+by marginal-mean or crude reconstructions.</p>
+<p>Fresh, distinct gpt-6.1-sol/high agents
+<code>root/statistics_pass_one</code> and
+<code>root/statistics_pass_two</code> each covered all 70 statistical
+relationships. Every inventory row records <code>PASS_1_COMPLETE</code>
+and <code>PASS_2_COMPLETE</code>. Pass 2 also reread all five
+candidates, 13 screening decisions, recheck facts and all 37 checker
+exclusions. It emitted no new finding. The independent audit found no
+additional finding or screening reversal. Exact fitted-model
+reconstruction remained bounded by the missing inputs listed below;
+diagnostic calculations did not replace the reported analyses.</p>
+<h2 id="inclusion-screening-summary">Inclusion Screening Summary</h2>
+<p>A candidate requires reproduction and either an always-register Route
+A category or all three Route B criteria: in focus, not resolved by
+immediate context, and bearing on interpretation or extraction of a
+named result. For applicable numeric comparisons, half-unit rounding
+intervals and the relative-discrepancy threshold of 0.05 govern
+reproduction; interval-versus-test conflicts are always registered when
+reproduced.</p>
+<p>The <a href="review_1_6_2/screening/inclusion_screen.md">independent
+screening log</a> contains <strong>13 finding decisions: 10 INCLUDE and
+3 SCREENED_OUT</strong>. The 10 included finding rows consolidate into
+<strong>5 stable issues</strong>. They retain every included finding
+ID.</p>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Reason code</th>
+<th style="text-align: right;">Finding rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCLUDE</td>
+<td>MEETS_THRESHOLD</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>PERIPHERAL_COMPARISON</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>NOT_REPRODUCED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>ROUNDING_OR_DISPLAY_PRECISION</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>NOTATION_OR_TYPOGRAPHY</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>TERMINOLOGY_OR_WORDING</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>MODEL_VERSUS_CRUDE</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>CONTEXT_RESOLVES</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>CONDITIONAL_OR_UNREPORTED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>OUT_OF_FOCUS</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>DUPLICATE_OF_INCLUDED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td style="text-align: right;">13</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Checker</th>
+<th style="text-align: right;">Findings screened</th>
+<th style="text-align: right;">INCLUDE</th>
+<th style="text-align: right;">SCREENED_OUT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numeric consistency</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>Cross-source consistency</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Statistical pass 1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table>
+<p>The peripheral decisions concern recruitment projections, historical
+relapse-denominator wording, and H3 open-label age-by-weight
+nonreporting. H3 is outside the article's Aims 1–2, is not in the
+abstract and is not designated key secondary; it is excluded from C002.
+These are finding-level screening decisions. Separately, the checkers
+self-screened <strong>37 excluded-observation rows</strong>: 13 numeric,
+9 cross-source and 15 statistical. Pass 2 and audit revisited all 37
+without new findings or reversals. These rows are not added to the
+denominator of 13 screened findings. No additional pass-2 screen was
+applicable because pass 2 emitted no finding.</p>
+<h2 id="review-domain-summary">Review-Domain Summary</h2>
+<p><code>statistical_results</code> covers report counts, estimates,
+intervals, tests and statistical methods.
+<code>report_internal_inconsistency</code> covers conflicting
+attribution of reported numbers to outcomes, times, populations or
+comparisons. <code>protocol_report</code> covers a statistical design or
+analysis comparison between PLAN and REPORT. <code>plan_material</code>
+covers inconsistent statistical design elements solely within PLAN
+material. These are review categories, not adjudications.</p>
+<table>
+<thead>
+<tr>
+<th>Review domain</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>statistical_results</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>report_internal_inconsistency</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>protocol_report</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>plan_material</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Relationship type</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P_R</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>P_P</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>S_C</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>S_W</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Evidence state</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reproduced</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>reproduced_after_transcription_correction</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+<p>Inclusion audits are CONFIRMED for 5 and QUESTIONED for 0. Qualifying
+routes are Route A, category 5 for 2 and Route B for 3. Each summary
+reconciles to the complete five-candidate set.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate reporting issue</th>
+<th>Review domain</th>
+<th>Relationship type</th>
+<th>Evidence state</th>
+<th>Inclusion audit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Additional primary-relapse score condition</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Four absent prespecified counterparts</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Adverse-event baseline eligibility</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Safety treatment classification</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Principal versus sensitivity observation rule</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2
+id="c001--primary-relapse-score-component-differs-from-the-plan" class="candidate-card">C001 —
+Primary relapse score component differs from the plan</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The report lists HDRS ≥18 as a
+sufficient primary-relapse score component, whereas the plan also
+requires a 5-point increase relative to RCT entry.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> REPORT main p.4 primary
+relapse criteria vs PLAN protocol p.12 relapse definition</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-001, F-ST1-001</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> The prospective primary
+endpoint definition is compared directly with the reported
+sufficient-condition list. P_R is the only conflicting relationship and
+determines protocol_report. Agreeing report result copies are affected
+outputs and do not add another relationship.</p>
+<p><strong>Classification ambiguity:</strong> None as to document roles;
+operational abbreviation or an unprovided amendment remains
+possible.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190079supp1_prod.pdf#page=12">joi190079supp1_prod.pdf — PDF
+p.12, §3.9.8, lines 553–568</a>; REPORT <a
+href="../jama_flint_2019_oi_190079.pdf#page=4">jama_flint_2019_oi_190079.pdf
+— PDF p.4, Primary Outcome: Relapse</a>. Affected outputs and context:
+<a href="../jama_flint_2019_oi_190079.pdf#page=1" target="_blank" rel="noopener">main PDF p.1,
+abstract</a>, <a href="../jama_flint_2019_oi_190079.pdf#page=6" target="_blank" rel="noopener">main PDF
+p.6, primary results</a> and <a
+href="../jama_flint_2019_oi_190079.pdf#page=7">main PDF p.7, Table 3 and
+footnotes</a>.</p>
+<p><strong>Source evidence:</strong> The PLAN score route requires
+17-item HAM-D ≥18 and a mean absolute increase of 5 points on at least
+one visit relative to RCT entry. REPORT p.4 requires at least one listed
+relapse criterion and lists 17-item HDRS 18 or higher without that
+conjunction. HAM-D/HDRS refers to the same instrument in this context.
+The psychiatric-hospitalization causes reconcile through Table 3's
+footnote; the SADS confirmation is operational context and does not
+support an additional candidate.</p>
+<p><strong>Reported-versus-comparator:</strong> REPORT score threshold
+alone versus PLAN score threshold plus the additional increase
+condition. The issue is the printed score component, not disagreement
+among the reported event-count or HR copies.</p>
+<p><strong>Reasoning procedure:</strong> Match phase, instrument and
+primary composite; compare the sufficient conditions; distinguish the
+disputed score route from the other composite routes. Retain the
+source's additional conjunction without assuming its averaging
+convention or changing any observed event classification.</p>
+<p><strong>Calculation:</strong> Hypothetical diagnostic illustration
+only: RCT-entry score 15 followed by 18 gives 18−15=3, which meets the
+printed report threshold but not the plan's additional 5-point increase.
+Another composite route could still establish relapse. This is not an
+observed participant. Display-precision intervals and relative
+discrepancy are not applicable to the presence of an exact decision-rule
+conjunction.</p>
+<p><strong>Affected result or extracted value:</strong> The
+primary-relapse composite underlying 13/64 versus 34/62 events and
+adjusted HR 0.25 (95% CI 0.13–0.48).</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+covers a changed printed primary composite definition, including when an
+unchanged operational rule may have been abbreviated.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+report may abbreviate an unchanged operational rule, or an unprovided
+amendment may have changed the score component. The supplied package
+establishes neither explanation.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every cited location
+and both printed definitions were found and visually matched. The
+conjunction comparison reproduced after source confirmation of ≥18.
+Hospitalization causes were reconciled, with no registration
+transcription or classification correction. Operational classification
+instructions, endpoint amendments, participant entry/follow-up scores
+and component-specific relapse assignments are unavailable; the phrase
+mean absolute increase is not further operationalized. The reproduced
+evidence concerns printed specifications, not actual event
+reclassification.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy a score-only relapse definition for the reported
+counts and HR rather than the planned conjunctive definition. The
+supplied package does not establish altered counts, HR, or
+conclusions.</p>
+<h2
+id="c002--four-prespecified-key-secondary-counterparts-are-absent" class="candidate-card">C002
+— Four prespecified key secondary counterparts are absent</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The supplied reporting record
+has no counterpart for the planned HOMA glycemic measure, separate BMI
+alternative analysis, depression-related-weight-loss analysis or
+Intent-to-Attend treatment-effect comparison associated with the
+reported key secondary weight/metabolic outcomes.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> REPORT main/supplement key
+secondary analysis record vs PLAN protocol pp.10,14,16
+specifications</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-002, F-XS-004, F-ST1-002,
+F-ST1-006</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> Explicit prospective
+specifications are compared with the complete supplied REPORT record.
+P_R is the only conflict. The report documents agree on result scope;
+PLAN p.14 corroborates the identity of insulin resistance without
+creating a plan-internal conflict or expanding the issue to exploratory
+aims.</p>
+<p><strong>Classification ambiguity:</strong> Scope is limited to Aims
+1–2 and their reported key secondary outcomes. Unprovided outcome
+results, scope decisions or amendments could explain the bounded
+absence.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190079supp1_prod.pdf#page=10">joi190079supp1_prod.pdf — PDF
+p.10, lines 473–488</a>, <a
+href="../joi190079supp1_prod.pdf#page=14">PLAN PDF p.14, analysis
+context</a> and <a href="../joi190079supp1_prod.pdf#page=16" target="_blank" rel="noopener">PLAN PDF
+p.16, Strategies for Attrition, lines 769–772</a>. The complete supplied
+REPORT absence-check union is listed page by page below; every linked
+page was inspected in the mechanical recheck.</p>
+<table>
+<thead>
+<tr>
+<th>REPORT source page</th>
+<th>Content and comparison purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="../jama_flint_2019_oi_190079.pdf#page=1">jama_flint_2019_oi_190079.pdf
+— PDF p.1</a></td>
+<td>Abstract and eight headline secondary effects</td>
+</tr>
+<tr>
+<td><a href="../jama_flint_2019_oi_190079.pdf#page=2" target="_blank" rel="noopener">main PDF
+p.2</a></td>
+<td>Key Points and explicit Aims 1–2 scope</td>
+</tr>
+<tr>
+<td><a href="../jama_flint_2019_oi_190079.pdf#page=3" target="_blank" rel="noopener">main PDF
+p.3</a></td>
+<td>Participant flow and methods</td>
+</tr>
+<tr>
+<td><a href="../jama_flint_2019_oi_190079.pdf#page=4" target="_blank" rel="noopener">main PDF
+p.4</a></td>
+<td>Outcome collection and model definitions</td>
+</tr>
+<tr>
+<td><a href="../jama_flint_2019_oi_190079.pdf#page=5" target="_blank" rel="noopener">main PDF
+p.5</a></td>
+<td>Premorbid-weight description and missingness/sensitivity
+methods</td>
+</tr>
+<tr>
+<td><a href="../jama_flint_2019_oi_190079.pdf#page=6" target="_blank" rel="noopener">main PDF
+p.6</a></td>
+<td>Primary results and safety/multiplicity context</td>
+</tr>
+<tr>
+<td><a href="../jama_flint_2019_oi_190079.pdf#page=7" target="_blank" rel="noopener">main PDF
+p.7</a></td>
+<td>Secondary effects and tolerability results</td>
+</tr>
+<tr>
+<td><a href="../jama_flint_2019_oi_190079.pdf#page=8" target="_blank" rel="noopener">main PDF
+p.8</a></td>
+<td>Table 4 and discussion</td>
+</tr>
+<tr>
+<td><a href="../jama_flint_2019_oi_190079.pdf#page=9" target="_blank" rel="noopener">main PDF
+p.9</a></td>
+<td>Table 5, limitations and conclusion</td>
+</tr>
+<tr>
+<td><a href="../jama_flint_2019_oi_190079.pdf#page=10" target="_blank" rel="noopener">main PDF
+p.10</a></td>
+<td>End matter and references</td>
+</tr>
+<tr>
+<td><a href="../joi190079supp2_prod.pdf#page=1" target="_blank" rel="noopener">joi190079supp2_prod.pdf
+— PDF p.1</a></td>
+<td>Complete eFigure index</td>
+</tr>
+<tr>
+<td><a href="../joi190079supp2_prod.pdf#page=2" target="_blank" rel="noopener">results supplement PDF
+p.2</a></td>
+<td>Weight model means</td>
+</tr>
+<tr>
+<td><a href="../joi190079supp2_prod.pdf#page=3" target="_blank" rel="noopener">results supplement PDF
+p.3</a></td>
+<td>Waist model means</td>
+</tr>
+<tr>
+<td><a href="../joi190079supp2_prod.pdf#page=4" target="_blank" rel="noopener">results supplement PDF
+p.4</a></td>
+<td>Total-cholesterol model means</td>
+</tr>
+<tr>
+<td><a href="../joi190079supp2_prod.pdf#page=5" target="_blank" rel="noopener">results supplement PDF
+p.5</a></td>
+<td>LDL model means</td>
+</tr>
+<tr>
+<td><a href="../joi190079supp2_prod.pdf#page=6" target="_blank" rel="noopener">results supplement PDF
+p.6</a></td>
+<td>HDL model means</td>
+</tr>
+<tr>
+<td><a href="../joi190079supp2_prod.pdf#page=7" target="_blank" rel="noopener">results supplement PDF
+p.7</a></td>
+<td>Triglyceride pattern-mixture means</td>
+</tr>
+<tr>
+<td><a href="../joi190079supp2_prod.pdf#page=8" target="_blank" rel="noopener">results supplement PDF
+p.8</a></td>
+<td>Glucose model means</td>
+</tr>
+<tr>
+<td><a href="../joi190079supp2_prod.pdf#page=9" target="_blank" rel="noopener">results supplement PDF
+p.9</a></td>
+<td>HbA1c model means</td>
+</tr>
+<tr>
+<td><a href="../joi190079supp2_prod.pdf#page=10" target="_blank" rel="noopener">results supplement PDF
+p.10</a></td>
+<td>Simpson-Angus model means</td>
+</tr>
+<tr>
+<td><a href="../joi190079supp3_prod.pdf#page=1" target="_blank" rel="noopener">joi190079supp3_prod.pdf
+— PDF p.1</a></td>
+<td>Administrative data-sharing statement</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Source evidence:</strong> PLAN p.10 designates HOMA as the
+primary glycemic-function measure, separately specifies BMI and waist as
+alternative analyses, and specifies a secondary weight-change analysis
+accounting for depression-related weight loss. PLAN p.16 specifies
+treatment-effect comparison with Intent-to-Attend models. The complete
+21-page REPORT union contains related glucose/HbA1c, waist,
+premorbid-weight and pattern-mixture material but no counterpart for
+these four named measures or analyses.</p>
+<p><strong>Reported-versus-comparator:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Planned counterpart</th>
+<th>Related supplied report material</th>
+<th>Distinction remaining</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary glycemic HOMA measure</td>
+<td>Glucose and HbA1c results</td>
+<td>Neither is identified as HOMA/insulin resistance</td>
+</tr>
+<tr>
+<td>Separate BMI alternative model</td>
+<td>Weight and waist models</td>
+<td>Waist does not supply the separately specified BMI model</td>
+</tr>
+<tr>
+<td>Depression-related-weight-loss analysis</td>
+<td>Descriptive premorbid weight and premorbid-reference adverse weight
+thresholds</td>
+<td>These uses do not identify the specified longitudinal analysis or
+result</td>
+</tr>
+<tr>
+<td>Intent-to-Attend treatment-effect comparison</td>
+<td>Pattern-mixture investigations and triglyceride averaging</td>
+<td>The other named attrition approach is not identified</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reasoning procedure:</strong> Match each explicit PLAN
+specification to the reported Aims 1–2 outcomes; inspect the entire
+supplied REPORT union for a corresponding model/result; distinguish
+related measures and procedures from the named counterparts. Consolidate
+the repeated absence-of-counterpart pattern while retaining all four
+members. Keyword searches were locators; complete page inspection
+supplies the absence evidence.</p>
+<p><strong>Calculation:</strong> Four explicit planned counterparts
+versus zero matching counterparts in the complete supplied REPORT
+record. This is a logical presence/absence comparison, not a coefficient
+reconstruction. No rounding interval, numerical gap or relative
+discrepancy is defined for an absent outcome/model result.</p>
+<p><strong>Affected result or extracted value:</strong> The prespecified
+glycemic safety record and supporting analyses of abstract weight 0.13
+lb/day, waist 0.009 in/day and the metabolic treatment-by-time
+effects.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+covers planned primary or key secondary analyses not reported. The
+additional age/genetic aims and non-key H3 hypothesis are excluded from
+this candidate.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+counterparts may have been performed and reported elsewhere, deferred,
+unavailable or modified by an unprovided amendment. The report
+explicitly limits its aims, but no supplied location accounts for these
+four Aims 1–2 counterparts. Absence from this package does not establish
+nonperformance.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every planned
+specification and all 21 supplied REPORT pages were directly inspected,
+including every plot title and the data-sharing statement. Each of the
+four absence comparisons reproduced independently; all related reported
+procedures were found and distinguished. No registration transcription
+or classification correction was needed. Missing inputs include the four
+outputs, amendments or scope explanations, and participant
+insulin/height/weight-loss/Intent-to-Attend data and model outputs. No
+missing coefficient or numerical consequence was inferred.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could treat the available glucose/HbA1c and
+weight/metabolic results as the complete prespecified record without
+identifying these missing counterparts. The review does not establish
+whether those analyses were performed elsewhere or whether their results
+would change any conclusion.</p>
+<h2
+id="c003--adverse-event-baseline-differs-between-plan-and-report" class="candidate-card">C003 —
+Adverse-event baseline differs between plan and report</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The plan restricts
+phase-specific adverse-event incidence to participants not meeting the
+specified criteria at acute-phase baseline, while the report defines UKU
+increases and incident akathisia using randomized-phase baseline
+conditions.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> REPORT main pp.4,7
+adverse-event criteria/results vs PLAN protocol p.15 safety baseline</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-005</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> The comparison concerns a
+prospective safety-event eligibility rule and the reported event
+definition/results, so P_R determines protocol_report. Phase
+descriptions merely corroborate the distinct epochs and add no
+report-internal conflict.</p>
+<p><strong>Classification ambiguity:</strong> None as to roles; actual
+eligibility implementation and any effect on individual counts are
+unavailable.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190079supp1_prod.pdf#page=15">joi190079supp1_prod.pdf — PDF
+p.15, Non-Metabolic Safety Data, lines 705–717</a>; REPORT <a
+href="../jama_flint_2019_oi_190079.pdf#page=4">jama_flint_2019_oi_190079.pdf
+— PDF p.4, Other Measures of Tolerability</a> and <a
+href="../jama_flint_2019_oi_190079.pdf#page=7">main PDF p.7,
+adverse-effect/akathisia results</a>. Phase context: <a
+href="../jama_flint_2019_oi_190079.pdf#page=2">main PDF p.2</a> and <a
+href="../jama_flint_2019_oi_190079.pdf#page=3">main PDF p.3</a>.</p>
+<p><strong>Source evidence:</strong> The PLAN explicitly excludes
+participants meeting the adverse-event criteria at acute-phase baseline
+from phase-specific incidence eligibility. The REPORT explicitly
+identifies RCT-baseline conditions for UKU increase and incident Barnes
+akathisia. Acute entry precedes up to 12 weeks of acute treatment and 8
+weeks of stabilization; RCT baseline follows these phases. The PLAN's
+generic UKU phrase from baseline does not independently identify an
+epoch and is not the comparison anchor. The score-4 wording supplies no
+separate issue.</p>
+<p><strong>Reported-versus-comparator:</strong> Explicit RCT-baseline
+reported conditions versus explicit acute-baseline planned incidence
+eligibility. The comparison does not assert a cross-arm percentage
+discrepancy.</p>
+<p><strong>Reasoning procedure:</strong> Match the planned safety
+incidence restriction with the report's UKU and Barnes definitions;
+identify the named epochs from trial-phase descriptions; retain the
+eligibility/reference distinction without assuming an epoch for generic
+baseline wording.</p>
+<p><strong>Calculation:</strong> A person can meet or cease to meet a
+criterion between acute entry and RCT entry; therefore absence of a
+criterion at these two epochs defines potentially different incidence
+eligibility. This is a logical possibility, not an observed
+reassignment. Participant trajectories and operational denominators are
+unavailable. Display-precision intervals cannot resolve a definition
+difference; no candidate numerical gap or relative discrepancy is
+defined.</p>
+<p><strong>Affected result or extracted value:</strong> UKU
+sleepiness/sedation 7.8%/3.2%, orthostatic dizziness 7.8%/3.2%,
+nausea/vomiting 3.1%/8.1%, and incident akathisia 4.7%/4.8%, for
+olanzapine/placebo respectively.</p>
+<p><strong>Why context does not resolve it:</strong> Focus D applies to
+the event/reference-population definition. Immediate context supplies no
+reconciliation of explicit acute-baseline eligibility with explicit
+RCT-baseline conditions. The named percentages could be interpreted as
+incidence in different eligible populations.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+report may intentionally describe randomized-phase emergent events, or
+an unprovided amendment may change the prospective rule. No preferred
+reference epoch is proposed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every location, both
+definite baseline statements and the affected incidence results were
+found and visually matched. UKU and akathisia were separately rechecked,
+and the logical epoch comparison reproduced without
+transcription/classification correction. Missing inputs are acute-entry,
+RCT-entry and follow-up UKU/Barnes observations, acute-baseline
+exclusions, operational denominators and safety-endpoint amendments. The
+recheck establishes printed definitions, not changed participant
+eligibility or counts.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could attach the printed percentages to an acute-baseline
+incident-event population or an RCT-baseline population. The supplied
+record does not quantify any actual difference between those populations
+or results.</p>
+<h2
+id="c004--safety-treatment-classification-differs-from-the-plan" class="candidate-card">C004 —
+Safety treatment classification differs from the plan</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> Planned safety models classify
+participants by medication taken during protocolized treatment, while
+explicit supplementary model-result titles identify randomized-group
+safety contrasts.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> REPORT main/supplement
+randomized safety groups vs PLAN protocol pp.14,16 medications-taken
+classification</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-005</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> A prospective safety
+treatment-group rule is compared with REPORT model-result group
+definitions/presentation. P_R determines protocol_report. The agreeing
+PLAN passages and corroborating main/supplement presentation do not
+create P_P or S_C conflicts.</p>
+<p><strong>Classification ambiguity:</strong> Actual operational
+treatment coding remains unspecified.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190079supp1_prod.pdf#page=14">joi190079supp1_prod.pdf — PDF
+p.14, H2</a> and <a href="../joi190079supp1_prod.pdf#page=16" target="_blank" rel="noopener">PLAN PDF
+p.16, attrition/classification</a>; REPORT <a
+href="../jama_flint_2019_oi_190079.pdf#page=3">jama_flint_2019_oi_190079.pdf
+— PDF p.3, Figure 1</a>, <a
+href="../jama_flint_2019_oi_190079.pdf#page=4">main PDF p.4, Statistical
+Analyses</a>, <a href="../jama_flint_2019_oi_190079.pdf#page=7" target="_blank" rel="noopener">main PDF
+p.7, secondary effects</a> and <a
+href="../jama_flint_2019_oi_190079.pdf#page=8">main PDF p.8, Table
+4</a>. Every affected randomized-group model title is linked
+separately:</p>
+<table>
+<thead>
+<tr>
+<th>Model result</th>
+<th>Exact REPORT plot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weight</td>
+<td><a href="../joi190079supp2_prod.pdf#page=2" target="_blank" rel="noopener">joi190079supp2_prod.pdf
+— PDF p.2, eFigure 1</a></td>
+</tr>
+<tr>
+<td>Waist</td>
+<td><a href="../joi190079supp2_prod.pdf#page=3" target="_blank" rel="noopener">results supplement PDF
+p.3, eFigure 2</a></td>
+</tr>
+<tr>
+<td>Total cholesterol</td>
+<td><a href="../joi190079supp2_prod.pdf#page=4" target="_blank" rel="noopener">results supplement PDF
+p.4, eFigure 3</a></td>
+</tr>
+<tr>
+<td>LDL cholesterol</td>
+<td><a href="../joi190079supp2_prod.pdf#page=5" target="_blank" rel="noopener">results supplement PDF
+p.5, eFigure 4</a></td>
+</tr>
+<tr>
+<td>HDL cholesterol</td>
+<td><a href="../joi190079supp2_prod.pdf#page=6" target="_blank" rel="noopener">results supplement PDF
+p.6, eFigure 5</a></td>
+</tr>
+<tr>
+<td>Triglycerides</td>
+<td><a href="../joi190079supp2_prod.pdf#page=7" target="_blank" rel="noopener">results supplement PDF
+p.7, eFigure 6</a></td>
+</tr>
+<tr>
+<td>Glucose</td>
+<td><a href="../joi190079supp2_prod.pdf#page=8" target="_blank" rel="noopener">results supplement PDF
+p.8, eFigure 7</a></td>
+</tr>
+<tr>
+<td>HbA1c</td>
+<td><a href="../joi190079supp2_prod.pdf#page=9" target="_blank" rel="noopener">results supplement PDF
+p.9, eFigure 8</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Source evidence:</strong> Both PLAN passages specify safety
+classification based on medications taken during protocolized treatment,
+separately from primary H1 ITT. All eight supplementary model-result
+titles explicitly name randomized groups. REPORT p.4 includes all
+randomized participants, and Figure 1 documents departures from assigned
+treatment. All-randomized inclusion and Table 4 descriptive arm totals
+alone do not establish the model coding; the explicit model-result
+titles anchor the comparison.</p>
+<p><strong>Reported-versus-comparator:</strong> Randomized-group model
+means/contrasts versus medication-taken prospective classification. The
+supplied record does not identify a coding algorithm that reconciles
+them.</p>
+<p><strong>Reasoning procedure:</strong> Separate inclusion of
+participants from coding of treatment; compare explicit model-result
+group definitions with the planned classification rule; use Figure 1
+only to establish that assignment and treatment exposure need not
+coincide. Do not impose fixed or time-varying grouping or infer which
+participants would be reclassified.</p>
+<p><strong>Calculation:</strong> Figure 1 reconciles exactly: 59+5=64
+and 60+2=62; 3+2=5 and 1+1=2. These are contextual treatment-departure
+counts, not disputed counts. No assumption is made that all seven
+departures would be recoded or that they coincide with another
+sensitivity set. Display precision does not reconcile categorical group
+rules; no numerical discrepancy in model estimates is calculated.</p>
+<p><strong>Affected result or extracted value:</strong> The treatment
+contrast generating the eight headline anthropometric/metabolic
+interaction effects and plotted means, including weight 0.13 lb/day,
+waist 0.009 in/day and total cholesterol 0.29 mg/dL/day.</p>
+<p><strong>Why context does not resolve it:</strong> Focus D covers the
+safety group/contrast specification. The printed rules differ in a
+package with treatment departures, and immediate context supplies no
+treatment-coding rule. An extractor cannot determine whether the named
+effects represent randomized assignment or medication-taken
+classification from the supplied presentation alone.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Randomized labels may describe presentation while medications-taken
+coding was otherwise operationalized; later observations may have been
+excluded so analyzed exposures remained aligned; or randomized
+assignment may have been intentionally adopted. The supplied record does
+not distinguish these explanations.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both prospective
+passages, all four main pages and all eight model-title pages were found
+and directly read. The grouping comparison reproduced without
+transcription/classification correction. Missing inputs include the
+medication-taken algorithm, medication-change timing, retained
+observations, fixed/time-varying coding, post-discontinuation/switch
+handling, actual design matrix and amendments. Reproduction concerns
+printed specifications/presentation, not proven coding or a coefficient
+change.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could classify the eight safety effects as assignment-based
+or exposure-based contrasts. No actual reclassification, numerical
+impact or conclusion change is demonstrated.</p>
+<h2
+id="c005--planned-metabolic-observation-exclusion-is-placed-in-sensitivity-analysis" class="candidate-card">C005
+— Planned metabolic observation exclusion is placed in sensitivity
+analysis</h2>
+<p><strong>Pending Human Adjudication.</strong></p>
+<p><strong>Candidate statement:</strong> The plan places exclusion of
+post-hyperlipidemia-treatment observations within the H2 mixed model,
+while the report describes the corresponding operation within post hoc
+sensitivity analysis compared with all-participant analyses.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> REPORT main pp.5,7
+metabolic sensitivity analysis vs PLAN protocol p.14 principal
+observation rule</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-003, F-ST1-004</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> The prospective
+principal-model observation rule is compared with reported sensitivity
+methods/results. P_R determines protocol_report. The reported
+counterpart exists, so this is an analysis-role comparison rather than
+the absent-counterpart pattern in C002. Agreeing headline outputs add no
+S_W conflict.</p>
+<p><strong>Classification ambiguity:</strong> It is unspecified whether
+post hoc describes the entire exclusion operation or only its extension
+to hypoglycemic agents.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190079supp1_prod.pdf#page=14">joi190079supp1_prod.pdf — PDF
+p.14, H2, lines 673–679</a>; REPORT <a
+href="../jama_flint_2019_oi_190079.pdf#page=1">jama_flint_2019_oi_190079.pdf
+— PDF p.1, abstract secondary effects</a>, <a
+href="../jama_flint_2019_oi_190079.pdf#page=5">main PDF p.5, final
+Statistical Analyses paragraph</a> and <a
+href="../jama_flint_2019_oi_190079.pdf#page=7">main PDF p.7,
+secondary/drug-change results</a>.</p>
+<p><strong>Source evidence:</strong> PLAN H2 states that pertinent later
+metabolic data will be excluded from the mixed model after
+hyperlipidemia treatment starts/changes, while collection continues for
+safety reporting. REPORT p.5 describes exclusion after statin or
+hypoglycemic starts/changes as post hoc sensitivity. REPORT p.7 calls
+those results qualitatively similar to analyses including all
+participants. The hypoglycemic extension is not asserted to have been
+planned.</p>
+<p><strong>Reported-versus-comparator:</strong> PLAN placement within
+the prospective H2 model versus REPORT placement within post hoc
+sensitivity. All participants does not establish that all later
+observations were included: earlier observations could retain
+participants even when later observations are excluded.</p>
+<p><strong>Reasoning procedure:</strong> Compare the analysis role of
+the stated exclusion; distinguish participant inclusion from observation
+retention and the planned hyperlipidemia rule from the additional
+hypoglycemic extension. Do not infer the principal model's observation
+set from qualitative similarity.</p>
+<p><strong>Calculation:</strong> Drug-change counts reconcile: 6+6=12
+statin changes and 2+1=3 hypoglycemic-agent changes. These are context,
+not a numerical discrepancy. Separate principal/sensitivity coefficients
+and observation sets are unavailable; no coefficient difference,
+rounding interval or relative discrepancy can be calculated for the
+candidate.</p>
+<p><strong>Affected result or extracted value:</strong> The
+observation-selection rule and prespecification role underlying the
+headline cholesterol/triglyceride treatment-by-time effects, including
+total cholesterol 0.29 (95% CI 0.13–0.45) mg/dL/day and triglyceride
+−0.153 (95% CI −0.306–0.004) mg/dL/day.</p>
+<p><strong>Why context does not resolve it:</strong> Focus D covers the
+principal-model observation specification. Qualitative similarity does
+not identify which observation rule generated the principal coefficients
+or explain the printed principal-versus-sensitivity placement. This can
+affect extraction of the analysis role even without demonstrated
+numerical differences.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+principal model may retain the planned statin exclusion and post hoc may
+refer only to the hypoglycemic extension, with all participants
+represented by earlier observations. Alternatively, an unprovided
+amendment may move the entire operation to sensitivity analysis. The
+supplied wording does not distinguish these possibilities.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every location and both
+placement statements were found and directly matched; the analysis-role
+comparison reproduced without transcription/classification correction.
+Missing inputs are the principal observation rule, removed
+outcome-specific measurements, separate model outputs, the intended
+breadth of post hoc and amendments. The recheck does not establish
+inclusion of all later observations or numerical impact.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could attribute the headline lipid effects to a different
+observation-selection rule or describe a planned principal operation as
+post hoc sensitivity. No actual change in coefficients or conclusions is
+established.</p>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>Evidence extraction commonly records endpoint definitions,
+incident-event populations, treatment contrasts, principal versus
+sensitivity analyses and the availability of prespecified outcomes
+alongside numerical effects. If a candidate is confirmed, its reporting
+ambiguity could affect one of those extracted fields. A review or
+synthesis could also reuse a printed effect with a definition or
+analysis role that the supplied record does not reconcile. These are
+potential uses of the reported evidence, not observations of actual
+propagation, changed conclusions or harm. This review supplies no
+substitute estimates or preferred analyses.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>Complete coverage means that every supplied unit and registered
+relationship was reviewed; it does not mean that all underlying analyses
+can be independently recreated. The <a
+href="review_1_6_2/limitations.md">limitations record</a> names these
+bounded reconstruction limits:</p>
+<ul>
+<li>Operational endpoint instructions, the averaging convention for the
+additional relapse-score rise, endpoint/safety amendments and
+participant component-specific relapse assignments are unavailable.</li>
+<li>The four C002 counterparts and their amendment/scope explanations
+are absent from this supplied reporting record. Participant insulin,
+height, depression-related-weight-loss and Intent-to-Attend data/model
+outputs are not supplied. Their absence does not establish that analyses
+were not performed elsewhere.</li>
+<li>Participant UKU/Barnes trajectories, acute-baseline eligibility
+exclusions and operational incidence denominators are unavailable,
+preventing event-count reconstruction under competing baseline
+definitions.</li>
+<li>Safety treatment-coding algorithms, medication/exposure timing,
+post-switch/discontinuation observation handling and fitted design
+matrices are unavailable. Randomized inclusion does not establish actual
+group coding.</li>
+<li>Principal versus sensitivity observation sets, outcome-specific
+drug-change exclusions and separate coefficients are unavailable.
+Inclusion of all participants does not establish inclusion of all
+measurements.</li>
+<li>Exact plot coordinates, numerical curves and shaded-band definitions
+are not supplied. Visual direction/label checks do not recreate exact
+estimates or contrast variances.</li>
+<li>Raw paired participant data, some Table 4 baseline contributor
+cells, survival event/censor times and fitted outputs are unavailable.
+Marginal summaries do not reconstruct paired changes or exact survival
+tests.</li>
+<li>Mixed/Poisson covariance matrices, test degrees of freedom,
+link/back-transformation details, exact contrasts and pattern-mixture
+weights are not supplied. Diagnostic approximations remain distinct from
+fitted-model reproduction.</li>
+<li>Full survival-power and repeated-measure simulation generators,
+replication counts and covariance inputs are not supplied. Diagnostic
+power checks cannot recreate the complete simulations.</li>
+</ul>
+<p>No scientific source-unit coverage gap or missing-tool limitation
+remains. Undisclosed amendments and outputs outside this package are not
+inferred. The evidence supports printed comparisons and bounded
+supplied-record absence, not actual implementation changes,
+nonperformance or paper-level conclusion effects.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h2>
+<p>The run used only this package's supplied sources and local evidence.
+Routing preflight is PASS; run model is gpt-6.1-sol, run model source
+DEFAULT, execution mode INTERACTIVE_CLI, Provider CURRENT_SESSION and
+Coordinator inference PASS. All ten named presets were checked against
+their required model/effort pairs. Rendering/text processing used the
+CPU; direct pdfinfo, pdftotext, pdftoppm, pdftocairo, tesseract,
+libreoffice and pandoc were available. Fallback environment NOT_NEEDED;
+removal NOT_CREATED. No web or external literature was used.</p>
+<p>The <a href="review_1_6_2/source_hashes_before.sha256">before-source
+hashes</a> cover all four sources; <a
+href="review_1_6_2/reused_artifact_hashes_before.sha256">before-reuse
+hashes</a> cover all 194 reused assets. The coverage auditor
+independently checked both sets without a mismatch. Final after-hash
+records, standalone HTML rendering and mechanical validation are
+coordinator completion steps after Markdown assembly. Supplied sources
+and reused artifacts remained read-only in report generation.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<p>The <a href="review_1_6_2/agent_execution_manifest.md">execution
+manifest</a> records every actual agent, including optional bounded
+shards and this report generator. All specialists below started as
+FRESH_SPAWN; the coordinator uses CURRENT_SESSION. Distinct runtime IDs
+identify the two mandatory statistical passes and each other mandatory
+stage.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Runtime agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>root/asset_curation</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>root/main_mapping</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>root/support_mapping</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper_shard_2</td>
+<td>root/support_appendix_mapping</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>root/numeric_main_review</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer_support_shard</td>
+<td>root/numeric_support_review</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>root/cross_source_review</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/statistics_pass_one</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>inclusion_screener</td>
+<td>root/initial_inclusion_screen</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>root/evidence_recheck</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/statistics_pass_two</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>root/quality_inclusion_audit</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>quality_control_auditor_coverage_shard</td>
+<td>root/quality_coverage_audit</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>root/report_generation</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Four native-text PDFs contain 63
+unique pages: a 10-page main article with several tables and a
+participant-flow figure, a 42-page protocol/analysis/pharmacotherapy
+bundle, a 10-page results supplement with nine plotted outcomes, and one
+administrative page. All 63 pages have source-matched reusable evidence,
+including images for the nine result plots; no Office conversion or
+fresh OCR is initially required. The target allows parallel main/support
+mapping, three checker lanes, independent screening, exact-source
+recheck, a distinct second statistical pass, audit and report
+generation; plot inspection and plan/report matching drive effort beyond
+page count.</li>
+<li><strong>Total source units:</strong> 63</li>
+<li><strong>Fresh-source units:</strong> 0</li>
+<li><strong>Target elapsed minutes:</strong> 25-40</li>
+<li><strong>Started UTC:</strong> 2026-10-11T04:55:38Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T05:41:06Z</li>
+<li><strong>Observed elapsed minutes:</strong> 45.47</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> Exact-source recheck and
+evidence-card assembly across 26 visually inspected pages;
+context-bounded two-agent audit of all coverage and 37 excluded
+observations; sequential mandatory evidence, statistical, audit and
+report handoffs</li>
+</ul>
+<p>Timing fields await coordinator finalization immediately after
+complete Markdown assembly. Local rendering and mechanical validation
+are outside the review window; a later model-assisted repair requires
+updated timing. The planning range does not limit source coverage,
+relationships or candidate cards.</p>
+</body>
+</html>

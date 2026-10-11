@@ -1,0 +1,1302 @@
+# Complete Support Quantitative Evidence Map
+
+Scope: DOC-002 joi190103supp1_prod.pdf PDF pages 1–20 (REPORT), and DOC-003 joi190103supp2_prod.pdf PDF pages 1–7 (PLAN). Mapper runtime root/support_mapper; gpt-6.1-sol/medium; fresh mapping. All 27 pages are reusable-backed and mapped completely. No scientific conclusion or candidate selection from a previous review was used. This record extracts supplied evidence without candidate diagnosis.
+
+Evidence engines: source-matched reusable Poppler native/layout text; exact page PNG visual inspection for DOC-002 pages 8, 11, 16, and 18, original render version unrecorded. CPU device. One new direct Poppler pdftoppm 26.01.0 render confirmed definition typography on DOC-002 p2: command `pdftoppm -f 2 -l 2 -singlefile -r 110 -png joi190103supp1_prod.pdf .ai_paper_validation/review_1_6_2/preprocessing/support_mapper-doc002-p002`; output `.ai_paper_validation/review_1_6_2/preprocessing/support_mapper-doc002-p002.png`. No new OCR, workbook extraction, or fallback was needed. Raw text below is a transcription aid; the linked supplied PDF page remains the authority. No workbook, CSV, or Office source exists, so cached values and formulas are not applicable.
+
+## Page closure and support relationship keys
+
+Keys below are support mapping keys; the complete package N/S identifiers are assigned by the checkers. Each table row and inferential tuple is fully retained in the page transcriptions below.
+
+| Document/page | Key and exact mapped unit | Quantitative closure |
+|---|---|---|
+| DOC-002/1 | SUP-CONTENTS | All 12 eTables, four eFigures, and three sensitivity sections indexed; no additional results |
+| DOC-002/2 | SUP-T01 | Every diagnosis/procedure row; nephropathy threshold and interval definition; bold primary-diagnosis convention |
+| DOC-002/3 | SUP-T02A | Every adverse-event diagnosis and intervention row; logical combinations and surgery subcategories |
+| DOC-002/4 | SUP-T02B | Every continuing surgical procedure row; code-source footnote; no additional event estimates |
+| DOC-002/5 | SUP-T03 | 12 drug classes, paired counts/percentages, group denominators 2287/11435 |
+| DOC-002/6 | SUP-T04 | Eight outcome rows, two rates and difference/95% CI; five death-composite rate pairs; bootstrap definition |
+| DOC-002/7 | SUP-T05 | Eight outcomes × three times × two groups = 48 cumulative incidence/95% CI tuples |
+| DOC-002/8 | SUP-F01 | 16 subgroup HR/95% CI tuples and eight interaction P values; model replacement definition |
+| DOC-002/9 | SUP-T06 | Eight HR/95% CI/P/PH-test tuples |
+| DOC-002/10 | SUP-T07 | Eight outcomes × three times = 24 time-varying HR/95% CI tuples; spline method |
+| DOC-002/11 | SUP-F02 | Two panels × four curves; all labels/axes, graphical directions, shaded bands |
+| DOC-002/12 | SUP-T08 | 13 rows × four times = 52 estimate/98.8% CI/P tuples, all units and method footnotes |
+| DOC-002/13 | SUP-T09 | Six variables × five times = 30 rows, each with four observation/patient counts |
+| DOC-002/14 | SUP-T10 | Five times × two medication denominators = ten counts |
+| DOC-002/15 | SUP-T11 | Six interventions × four times = 24 incidence/95% CI tuples; Kaplan–Meier and exclusion footnotes |
+| DOC-002/16 | SUP-F03 | Four nutritional panels × two curves; labels, axes, graphical directions, interpretation caption |
+| DOC-002/17 | SUP-SENS-A | Five date draws × three matching ratios = 15 datasets; all eight outcomes; significance totals |
+| DOC-002/18 | SUP-F04 | Eight panels × five iterations × three ratios = 120 plotted HR/95% CI relationships |
+| DOC-002/19 | SUP-SENS-B/C | 24 repeated time-varying tuples; E-value definition, primary example and sensitivity interpretation |
+| DOC-002/20 | SUP-T12 | Eight E-value estimate/limit pairs; 40 known-factor HR/95% CI tuples and contrast labels |
+| DOC-003/1 | PLAN-CONTENTS | Original protocol and amendment index; no result estimates |
+| DOC-003/2 | PLAN-DERIVATION-A | Objective, source cutoff, every surgical entry/exclusion item, first-surgery index definition |
+| DOC-003/3 | PLAN-DERIVATION-B | Every comparator exclusion, assignment, replication and matching specification; T2DM algorithm |
+| DOC-003/4 | PLAN-ENDPOINTS-A | Six individual definitions and first-event primary/secondary composite definitions |
+| DOC-003/5 | PLAN-ENDPOINTS-B/COVARIATES | Risk-set exclusions and every collected demographic/history/lab/medication variable |
+| DOC-003/6 | PLAN-ANALYSIS/SENSITIVITY | Rate/Cox/PH/MI definitions, alpha and CI, secondary multiplicity, all 15-dataset and time-varying analyses; references no extra estimates |
+| DOC-003/7 | PLAN-AMENDMENT | Every adverse-event and nutritional addition; E-values for eight endpoints and closest-null limits |
+
+## Definitions and matching main-paper keys
+
+REPORT contrasts throughout: metabolic surgery versus matched nonsurgical/usual care. SUP-T04 differences use nonsurgical minus surgical rates; SUP-T06/T07 and subgroup/sensitivity HRs use surgery relative to nonsurgical. Incidence tables provide group-specific risks, not crude event-count ratios. Primary composite, secondary composite, mortality, heart failure, coronary artery disease, cerebrovascular disease, nephropathy and atrial fibrillation form the eight shared outcome keys. Match SUP-T04/T05/T06 to main primary and secondary results and main outcome plots; SUP-F01 to main subgroup narrative; SUP-T08/F02/F03/T09/T10 to main longitudinal weight/HbA1c/medication/nutritional descriptions; SUP-T11/T02 to main surgery adverse events; SUP-SENS-A/B/C/T12 to main sensitivity results. Match all PLAN definitions and analyses to main Methods, not to administrative filename labels.
+
+SUP-T01 nephropathy: at least two eGFR measurements <60 mL/min, separated by ≥90 days, with no intervening ≥60; MDRD approximation. Its bold-text footnote means a primary diagnosis is required where bolded. Direct p2 visual confirmation finds bold standalone CAD ICD9 411.X, bold 414.X in the `411.X AND 414.X` pair (the paired 411.X is regular), and GI-cancer ICD9 531.X, 532.X, 533.X. Other code entries are regular. SUP-T02 acute renal failure requires a diagnostic code combined with hemodialysis procedure; transfusion is extracted from the Cleveland Clinic blood datamart. All diagnostic and procedure code lists are retained below as operational outcome/intervention definitions, not arithmetic quantities.
+
+SUP-T04 rates are per 100 patient-years at eight years, with parenthetical death-plus-individual-outcome rates. Difference CIs use 1000 bootstrap samples. SUP-T05 has group-specific percent cumulative incidence at years 2/5/8. SUP-T06 PH P values test the proportional-hazards assumption, distinct from treatment P values. SUP-T07 uses the fully adjusted model with treatment replaced by a restricted cubic spline of observed follow-up time interacted with treatment, assessed at years 2/5/8, repeated on p19.
+
+SUP-T08 title specifies average change from baseline in surgery versus nonsurgery. Continuous metabolic/nutritional comparisons use a four-knot spline interacted with treatment. Medications use two-sample proportions tests at each time. All intervals are 98.8% Bonferroni-corrected, and stars are printed beside selected P values without an explicit star legend on this page. The table does not provide group-specific changes or a displayed algebraic contrast definition beyond the title/method. SUP-T09 counts observations and distinct patients with measurements after each time point; those are separate quantities, not per-visit sample sizes. SUP-T10 provides medication proportion denominators at years 0/1/2/5/8. SUP-T11 uses Kaplan–Meier cumulative incidence; abdominal surgery excludes abdominal wall hernia repair and cholecystectomy.
+
+SUP-SENS-A reruns fully adjusted Cox models for eight endpoints in each of 15 datasets (five index draws, ratios 1:1/1:5/1:10). All 15 significant for primary, secondary, death, heart failure and nephropathy; cerebrovascular disease significant in 13, coronary disease 12, atrial fibrillation 11. Manuscript results come from one 1:5 dataset.
+
+SUP-SENS-C defines the E-value on the risk-ratio scale as the minimum joint treatment/outcome association of an unmeasured confounder, conditional on measured covariates, sufficient to explain the association. Primary HR .61 (.55,.69) has E-values 2.15 and 1.92; text also calls this outcome “5-component MACE.” No algebraic HR-to-RR transformation or E-value formula is printed. Retain HR/CI, E-value pair and factor contrasts jointly in SUP-T12 for checking; do not silently infer a formula.
+
+## Figure evidence from visual inspection
+
+### SUP-F01 — exact subgroup tuples
+
+Source: [DOC-002 PDF p8](../../../joi190103supp1_prod.pdf#page=8). Fully adjusted Cox models, primary composite, surgery/usual care. Original covariate individually replaced by dichotomous subgroup plus interaction with treatment. Age and eGFR thresholds use medians. Interaction P values test heterogeneity, not the individual subgroup HRs.
+
+| Variable | First level HR (95% CI) | Second level HR (95% CI) | Interaction P |
+|---|---|---|---|
+| Gender | Male .58 (.49,.69) | Female .64 (.56,.74) | .35 |
+| Age, years | <54 .57 (.47,.68) | ≥54 .57 (.50,.66) | .93 |
+| BMI, kg/m² | <40 .62 (.49,.78) | ≥40 .61 (.54,.69) | .90 |
+| HbA1c, % | <7 .62 (.52,.74) | ≥7 .60 (.52,.70) | .80 |
+| eGFR, ml/min | <91 .61 (.54,.70) | ≥91 .62 (.51,.75) | .94 |
+| Insulin | No .63 (.55,.73) | Yes .59 (.50,.70) | .53 |
+| Sulfonylureas | No .63 (.55,.72) | Yes .60 (.49,.74) | .72 |
+| Lipid-lowering medications | No .61 (.52,.73) | Yes .62 (.53,.71) | .98 |
+
+Forest axis printed .4, 1.0, 1.2, null vertical line 1; below 1 “Decreased Risk,” above 1 “Increased Risk.” Caption says results consistent across key subgroups.
+
+### SUP-F02 — four-year longitudinal curves
+
+Source: [DOC-002 PDF p11](../../../joi190103supp1_prod.pdf#page=11). Two panels: HbA1c (%) and percent (%) on non-insulin diabetes medication. Both x axes time since index date years 0,1,2,3,4. Treatment legend Surgery coral, No surgery teal; BMI <35 solid, ≥35 dashed. HbA1c printed y ticks 6.0,6.5,7.0,7.5; medication ticks 40,60,80,100. All four curves and shaded bands inspected. Surgery HbA1c curves rapidly decline then partially recover; nonsurgery curves remain around 7.5–7.6. Surgery medication curves decline rapidly; no-surgery curves remain around 80%. No point labels, exact curve values, P values, band confidence level or curve method are printed on this figure. Approximate graphical readings are not extracted as exact numeric estimates.
+
+### SUP-F03 — eight-year nutritional curves
+
+Source: [DOC-002 PDF p16](../../../joi190103supp1_prod.pdf#page=16). Four panels: albumin g/dL (ticks 3.4,3.6,3.8); vitamin D 25 ug/L (ticks 30,35); hemoglobin g/dL (10.5,11.0,11.5,12.0); protein g/dL (6.4,6.6,6.8,7.0). Shared x ticks 0,2,4,6,8 years. Surgery coral solid, no surgery teal dashed, shaded bands. All eight trajectories inspected. Albumin surgery curve generally above nonsurgery before the final fall; hemoglobin curves cross several times and surgery falls at year 8; protein surgery is lower throughout; vitamin D surgery initially rises above nonsurgery, crosses below near years 4–5, then returns above and converges. Caption describes modest nutritional deficiencies and routine supplementation as possible explanation of early vitamin D increase, directs to eTable 8 for estimates. No exact curve point values, P values or band confidence definition printed.
+
+### SUP-F04 — 120 graphical sensitivity relationships
+
+Source: [DOC-002 PDF p18](../../../joi190103supp1_prod.pdf#page=18). Eight panels in reading order: Primary, Secondary, All-cause mortality, Coronary artery disease, Cerebrovascular disease, Heart failure, Nephropathy, Afib. Each displays all five index-date sampling iterations, x ticks 1–5, and three HR point/95% CI series: 1:1 coral circles, 5:1 green triangles, 10:1 blue squares. Legend orientation is retained literally; narrative writes 1:5/1:10. Shared y axis hazard ratio (95% CI) ticks 0,.2,.4,.6,.8,1.0,1.2. All 120 plotted estimate/interval relationships inspected. All point estimates are below 1. Primary/secondary/death/heart-failure/nephropathy intervals below 1 across every series/iteration. Coronary disease 1:1 intervals reach/cross 1 at iterations 2/3/4; cerebrovascular 1:1 at 2/4; atrial fibrillation 1:1 at 1/2/5 and 10:1 at 5. These are graphical comparisons, not numerical endpoint transcriptions. Exact interval endpoints and point labels are not printed; numerical sensitivity significance totals are supplied on p17. No plot digitization or unsupported precise values introduced.
+
+## Protocol original and amendment item map
+
+Original dated January 6, 2019, DOC-003 pp2–6. Objective retrospective matched-cohort association; source Cleveland Clinic EHR through 12/31/2018. No randomized allocation, sample-size/power target, stopping, noninferiority or equivalence rule printed.
+
+PLAN-DERIVATION-A surgical inclusion: specified CPT/ICD/HCPCS list and chart confirmation; T2DM HbA1c >6.4% or diabetes medication; age 18–80; BMI ≥30 kg/m² closest prior measurement, missing excludes; surgery through 12/31/2017; Ohio named facilities or Weston Florida. Exclude liver/heart/lung transplant, ED within five prior days, active cancer/GI cancer within preceding year, upper GI cancer/peptic ulcer procedural/diagnosis codes during surgical hospitalization, severe heart failure any prior ejection fraction <20%. First qualifying surgery date is index.
+
+PLAN-DERIVATION-B comparator: remove included and subsequently excluded surgical patients; randomly assign one surgical index date; exclude last follow-up on/before date, dead or death within 30 days, no T2DM HbA1c <6.5% and no medication, age <18 or >80, BMI <30 (closest prior, otherwise closest absolute-time measurement), transplant, ED within five days, active cancer/GI cancer within year, severe HF prior EF <20%. Repeat assignment algorithm five times, assessing baseline variability, model effects and prediction accuracy. Matching sentence literally says each nonsurgical patient matched to five surgical patients using propensity score/logit, MatchIt; covariates index date, age, BMI 30–35/35–40/40+, gender, insulin, Ohio/Florida, complications composite CAD/HF/cerebrovascular/peripheral vascular/neuropathy/nephropathy/dialysis. This map preserves the printed orientation without interpreting it.
+
+T2DM modified Kho algorithm: type 1 and type 2 codes, ketoacidosis classified type 1; earliest of T2DM code+medication, code+abnormal glucose, medication+abnormal glucose, repeated T2DM code twice+outpatient insulin, or insulin preceded by T2DM medication. Random glucose >200 mg/dL or fasting >125 mg/dL. Approximately 287438 patients, T2DM dates 1/1/1998–12/31/2017.
+
+PLAN-ENDPOINTS-A/B: follow from index for death (EHR and Social Security/state indices), CAD (MI and other defined codes), cerebrovascular (ischemic stroke and other codes), HF, nephropathy two eGFR <60 ≥90 days apart no intervening ≥60 via MDRD creatinine, AF codes. Primary composite first occurrence of six, excluding baseline-history conditions from follow-up composite. Secondary composite first occurrence death/MI/ischemic stroke, same baseline omission. Individual outcome risk sets exclude history of that outcome; nephropathy additionally excludes baseline eGFR <60 and dialysis history. Codes retained in raw pages below.
+
+PLAN-COVARIATES: demographics date of birth/gender/race/zip-code income/weight/BMI/insurance/smoking/location; history hypertension/dyslipidemia/CAD/cerebrovascular/HF/nephropathy/neuropathy/peripheral arterial disease/AF/COPD/dialysis; labs HbA1c/creatinine/eGFR/systolic-diastolic BP/LDL/HDL/triglycerides/UACR; medication insulin/noninsulin/ACE-I-ARB/other antihypertensive/statin-or-other-lipid/aspirin/warfarin. Dates collected where applicable, UMLS mapping.
+
+PLAN-ANALYSIS: cause-specific event rates/100 patient-years, cumulative incidence and fully adjusted Cox-PH for each outcome, all baseline variables for confounding; treatment PH test weighted residuals (Grambsch/Therneau). Per-outcome multiple imputation MICE five datasets; numeric predictive mean matching, binary logistic, categorical polytomous logistic; Rubin pooling of estimate/contrast standard errors. Percent weight loss and HbA1c over time compared between treatments. Alpha .05, 95% CI where applicable; no secondary multiple-comparison adjustment, secondary analyses exploratory; R3.5.0. Sensitivity five index draws × ratios 1:1/1:5/1:10 =15, all analyses each, reported one 1:5 dataset; time-varying HRs 2/5/8 years. No E-value formula or nutritional method in original.
+
+PLAN-AMENDMENT dated August 2, 2019: early adverse events <90 days, late nutritional/endoscopic/radiologic/surgical interventions to last follow-up as adverse-event proxies, hemoglobin/protein/albumin/vitamin D. E-value analysis added, minimum joint associations on risk-ratio scale conditional on measured covariates, all eight composite/individual endpoints, HR estimate and 95% CI limit closest null. Disclosed additions explicitly motivated by journal review comments. References have no additional numerical result definitions.
+
+## Complete page transcription register
+
+All rows, footnotes, labels, units and protocol wording follow. Form-feed-delimited combined text is split into exact PDF pages. Text-only output omits graphical curves, which are completely mapped above. No fresh-required unit remained uncovered.
+
+### DOC-002 PDF page 1 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=1)
+
+```text
+                                                   Supplementary Online Content 1
+
+
+Aminian A, Zajichek A, Arterburn DE, et al. Association of metabolic surgery with major adverse cardiovascular outcomes in patients
+with type 2 diabetes and obesity. JAMA. doi:10.1001/jama.2019.14231
+
+
+eTable 1. Diagnosis and Procedure Codes………………………………………………........................................................................2
+eTable 2. Diagnosis and Intervention Codes for Adverse Events of Metabolic Surgery…………………………………………………………….3
+eTable 3. Class of Diabetes Medications at the Index Date.…………………………………………..……………………………………...................5
+eTable 4. Cause-Specific Event Rates (%) per 100 Patient-Years of Follow-up at 8 Years, for Each Study Outcome
+Stratified by Surgical and Non-surgical Patients.……………………………………………..…………………………………...................................6
+eTable 5 Cumulative Incidence Estimates (%) and 95% Confidence Intervals at 2, 5, and 8 Years After the
+Index Date for Each Study Outcome Stratified by Surgical and Non-surgical Patients……………………………………………..……………….7
+eFigure 1. Association of Metabolic Surgery Compared With Usual Care for the Primary Composite Endpoint in
+Key Subgroups in the Fully-Adjusted Cox Models……………………………………….…….…………………………………...................................8
+eTable 6 Hazard Ratios (95% CIs) and P Values From Cox Models Comparing the Relative Instantaneous Risk of
+Each Outcome for Surgical Vs. Non-surgical Patients………………………………………………………………………………................................9
+eTable 7. Time-Varying Hazard Ratios and 95% CIs at 2, 5, and 8 Years After the Index Date Comparing Surgical
+and Non-surgical Patients From a Fully-Adjusted Cox Model for Each Outcome………………………………………………………………………..10
+eFigure 2. Mean Trend Curve of HbA1c (%) and Proportions of Patients Taking Non-insulin Diabetes Drugs Over
+Four Years of Follow-up Categorized by the Treatment Group (Metabolic Surgery Vs. Usual Care) and the
+BMI (≥35 vs. <35 kg/m2) at the Index Date……………………………………………………………………………………………………………………………….11
+eTable 8. Average Change in Metabolic and Nutritional Variables From Baseline and in Proportions of Patients Taking
+Diabetes and Cardiovascular Medications (%) at 1, 2, 5, and 8 Years of Follow-up in Surgical vs. Non-surgical
+Patients………………………………………………………………………………............................................................................................12
+eTable 9. Total Number of Observations and Number of Distinct Patients With Available Measurements After Each
+Time-Point Following the Index Date for Metabolic and Nutritional Values by Treatment………………………………………………………….13
+eTable 10. Sample Size for Computing Proportions of Patients Taking Diabetes and Cardiovascular Drugs Over Time
+at 0, 1, 2, 5, and 8 Years After the Index Date by Treatment Group………..……………………………………………………………………..........14
+eTable 11. Cumulative Incidence Estimates (%) and 95% CIs for Interventions at 1, 2, 5, and 8 Years After Metabolic
+Surgery…………..………………………………………………………………….............................................................................................15
+eFigure 3. Mean Trend Curve of Nutritional Variables of Interest Over Eight Years of Follow-Up in the Surgical
+and Non-surgical Patients………………………………………………………………………………....................................................................16
+Sensitivity Analyses………………………………………………………………......................................................................................17
+         Matching and Index Date Sampling...……………………………………………………………………………………………………………………..17
+         eFigure 4. Hazard Ratios and 95% Confidence Intervals for Metabolic Surgery Versus No Surgery From
+         Fully-Adjusted Cox Models for Each Outcome for Five (5) Iterations of Index Date Random Sampling and
+         Three (3) Different Matching Ratios (Total of 15 Datasets)...……………………………………………………………………………………….18
+         Time-Varying Hazard Ratios………...………………………......….………………………………………………………………………………………..19
+         E-Value…...………………………………………………………………….………………………………………………………………………………………………….19
+         eTable 12. E-Value for the Effect of Metabolic Surgery on Each Outcome (and its Upper Limit of 95% CI) in
+         Fully-Adjusted Cox Models….…………………………………………………...…………….…….........................................................20
+
+
+This supplementary material as been provided by the authors to give readers additional information about their work.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 2 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=2)
+
+```text
+                                                                                                                  2
+
+
+eTable 1. Diagnosis and Procedure Codes
+ Atrial fibrillation                      ICD9: 427.31
+                                          ICD10: i48.0, i48.1, i48.2, i48.91
+                                          CPT: 93650, 93653, 93656, 93657
+ Bariatric surgery                        CPT-4: 43633, 43634, 43770, 43775, 43644, 43645, 43659, 43842,
+                                          43843, 43844, 43845, 43846, 43847
+                                          ICD9: 44.31, 43.82, 44.95, 43.89, 44.38, 44.39, 44.68
+                                          HCPCS: S2082, S2085
+ Cancer                                   ICD9: 140.XX-172.XX, 174.XX-209.XX
+                                          ICD10: C00.XX-C43.XX, C45.XX-C96.XX, D03.XX, D3A.XX, D45.XX
+ Cerebrovascular event                    ICD9 (diagnoses): 433.X1, 434.X1, 436.0, 430.X, 431.X
+                                          ICD9 (procedure): 38.12, 0.61, 0.63
+                                          CPT-4: 37215, 37216, 0075T, 0076T, 35301, 37205, 37206
+ COPD                                     ICD9: 491.0, 491.1, 491.2X, 491.8, 491.9, 492.0, 492.8, 496
+ Coronary artery disease                  ICD9 (diagnoses): 410.X, 411.X, 411.X AND 414.X
+                                          ICD9 (procedure): 36.01, 36.02, 36.03, 36.05, 36.06, 36.07, 36.10,
+                                          36.11, 36.12, 36.13, 36.14, 36.15, 36.16, 36.17, 36.19, 36.31, 36.32,
+                                          36.33, 36.64
+                                          CPT-4: 92982, 92984, 92995, 92996, 92980, 92981, 33510, 33511,
+                                          33512, 33513, 33514, 33516, 33517, 33518, 33519, 33521, 33522,
+                                          33523, 33530, 33533, 33534, 33535, 33536, 93539, 93540
+ Diabetic neuropathy                      ICD9: 250.6, 357.2
+ Dyslipidemia                             ICD9: 272.0, 272.1, 272.2, 272.3, 272.4
+ GI Cancer                                ICD9: 150.X, 151.X, 152.X, 157.X, 199.X, 531.X, 532.X, 533.X
+ Heart failure                            ICD9: 428.0, 428.1, 428.20, 428.21, 428.22, 428.23, 428.30, 428.31,
+                                          428.32, 428.33, 428.40, 428.41, 428.42, 428.43, 428.9
+ Hypertension                             ICD9: 401.X, 402.X, 403.X, 404.X, 405.X
+ Ischemic stroke                          ICD-9: 433.X1, 434.X1
+                                          ICD-10: i63.X and i63.XX and i63.XXX
+ Liver, lung, heart transplant            ICD9: V42.1, V42.6, V42.7, V42.83, V42.84
+ Myocardial infarction                    ICD-9: 410.X, 410.XX
+                                          ICD-10: i21.X and i21.XX, i22.X and i22.XX, i23.X and i23.XX
+ Nephropathy                              >= two (2) measures of eGFR less than 60 mL/min separated by at
+                                          least 90 days without any intervening values >= 60 mL/min. The
+                                          eGFR is approximated using MDRD equation.
+ Peripheral arterial disease              ICD9: 440.20, 440.21, 440.22, 440.23, 440.24, 440.29, 440.31,
+                                          440.32, 443.81, 443.89, 443.9, 447.1, 249.7, 250.7
+ *Bolded text indicates it must be a primary diagnosis
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 3 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=3)
+
+```text
+                                                                                                         3
+
+eTable 2. Diagnosis and Intervention Codes for Adverse Events of Metabolic Surgery*
+ Diagnosis Codes
+                               Diagnostic code 518.51, 518.81, 997.39. Or, procedure code for
+ Acute pulmonary
+                               intubation (96.04), tracheostomy (31.1, 31.29), or mechanical
+ complications
+                               ventilation (31.74, 93.7, 93.9, 96.7, 96.71, 96.72).
+                               Diagnostic code for acute renal failure (584.9, 586, 997.5, V56.0,
+ Acute renal failure requiring
+                               V56.1) when combined with a procedure code for hemodialysis (38.95,
+ dialysis
+                               39.95, 54.98).
+                               Diagnostic codes for deep vein thrombosis (451.2, 451.81, 451.83,
+                               451.84, 451.89, 451.9, 453.4, 453.40, 453.41, 453.42, 453.8, 671.30 to
+ Venous thromboembolism        671.35, 671.40, 671.42, 671.43, 671.90 to 671.94).
+ (deep vein thrombosis and     Diagnostic codes for pulmonary embolism (415.1, 416.2, 453.1, 453.2,
+ pulmonary embolism)           453.9, 639.6, 673.2).
+                               Procedure code for pulmonary embolism (36013, 36014, 36015,
+                               37191).
+                               Extracted from Cleveland Clinic blood datamart with appropriate
+ Transfusion
+                               identification codes
+ Intervention and Procedure Codes
+ Total parenteral nutrition    ICD-9 procedure code 99.15
+                               43200-04, 43215-28, 43232-36, 43239, 43243, 43245-51, 43255-58,
+ Endoscopic intervention       43450, 43453, 43456, 43458, 44360, 44361, 44376.
+                               42.21-42.29, 44.22, 44.43, 45.11-45.14
+                               36000, 36556, 36558, 36561, 36563, 36565, 36566, 36569, 36571-
+ Interventional radiology
+                               36590
+ Cholecystectomy               47490, 47562-47564, 47600-47610
+                               44050, 49560-49572, 49585-49590, 49650-49659, 49900, 43659,
+ Repair of abdominal wall
+                               S2075, S2077
+ hernia
+                               53.1x-53.8x
+                               Diagnostic laparoscopy (ICD-9 54.21) and exploratory laparotomy
+                               (54.11)
+
+                               Lysis of adhesions: ICD-9 54.51, 54.59
+
+                               Repair of internal hernia: ICD-9 53.9
+
+                               RYGB, AGB, sleeve and VGB:
+                               ICD-9: 43.82, 43.89, 44.31, 44.38, 44.39, 44.68, 44.95
+                               CPT-4: 43633, 43644, 43645, 43770, 43773, 43775, 43776, 43842,
+                               43843, 43844, 43846, 43847, 43848, 43888, S2082, S2085
+
+                               Duodenal switch: ICD-9: 43.7, 45.51, 45.91
+ Abdominal surgical
+ procedure                     Revision GJ: CPT-4: 43860,43865
+
+                               Additional revisional bariatric procedures:
+                               ICD-9: 44.0 to 44.03, 44.89, 45.28, 45.29, 45.51, 46.01 to 46.03, 46.2,
+                               46.64, 54.5,
+                               54.75, 54.95
+                               CPT-4: 43610, 44850
+
+
+
+
+                               Percutaneous/laparoscopic:
+                               ICD-9: 39.41, 39.98, 46.71, 46.73, 46.75, 46.94, 50.61, 54.0, 54.12,
+                               54.19, 54.20, 54.22-.29, 54.91, 54.92
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 4 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=4)
+
+```text
+                                                                                                                                   4
+
+                                        CPT-4: 43653, 44180, 44186, 44200,44202, 44203, 44238, 49000,
+                                        49002, 49010, 49020, 49021, 49040, 49041, 49060, 49061, 49320,
+                                        49322, 49323, 49329
+
+                                        Abscess: CPT-4: 49020,49406
+
+                                        Reoperation ulcers: CPT-4: 43840, 44180, 44602, 49905
+
+                                        PEG tube/revision NOS/VGB: CPT-4: 43750, 43760, 43761, 43848,
+                                        43860, 44373
+
+                                        Other procedures:
+                                        ICD-9: 42.81, 42.84, 42.9, 42.92, 43.0, 43.11, 43.19, 43.42, 43.5, 43.7,
+                                        43.99, 44.13, 44.29, 44.49, 44.5, 44.62, 44.63, 44.99, 45.02, 45.19,
+                                        45.61, 45.62, 45.91, 46.39, 46.62, 46.71, 46.73, 46.75, 46.79, 46.81,
+                                        46.82, 46.85, 46.93, 46.99
+                                        CPT-4: 10022, 10030, 10160, 43300, 43305, 43310, 43312, 43500,
+                                        43631, 43752,
+                                        43832, 43840, 43845, 43850, 43870, 43880, 43999, 44005, 44021,
+                                        44055,
+                                        44120, 44121, 44125, 44130, 44500, 44602, 44620, 44799, 48000,
+                                        49080, 49407, 49440, 49441, 49446, 49451, 49460, 49999
+
+ * ICD-9 and CPT-4 diagnosis and procedure codes were adapted and modified from:
+           •   Li RA, Liu L, Arterburn D, et al. Five-year Longitudinal Cohort Study of Reinterventions After Sleeve Gastrectomy
+               and Roux-en-Y Gastric Bypass. Ann Surg. 2019 Jun 7. doi:10.1097/SLA.0000000000003401.
+           • Flum D, Belle S, King W, et al. Longitudinal Assessment of Bariatric Surgery (LABS) Consortium. Perioperative
+               safety in the Longitudinal Assessment of bariatric Surgery. N Engl J Med. 2009;361:445-54.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 5 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=5)
+
+```text
+                                                                           5
+
+eTable 3. Class of Diabetes Medications at the Index Date
+    Diabetes Medications        Metabolic Surgery    Matched Nonsurgical
+                                     (N=2287)              (N=11435)
+ Alpha-glucosidase Inhibitors         6 (0.3%)              26 (0.2%)
+ Amylin Analog                        7 (0.3%)              27 (0.2%)
+ Biguanides                       1530 (67.9%)           7606 (66.5%)
+ Bile Acid Sequestrants               8 (0.3%)              55 (0.5%)
+ Dopamine Receptor Agonists           3 (0.1%)              14 (0.1%)
+ DPP-4 Inhibitors                   214 (9.4%)           1202 (10.5%)
+ GLP-1 Receptor Agonists           270 (11.8%)             841 (7.4%)
+ Insulins                          776 (33.9%)           3806 (33.3%)
+ Meglitinides                        20 (0.9%)              79 (0.7%)
+ Sulfonylureas                     509 (22.3%)           3404 (29.8%)
+ SGLT2 Inhibitors                    43 (1.9%)             143 (1.3%)
+ Thiazolidinediones                286 (12.5%)            1083 (9.5%)
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 6 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=6)
+
+```text
+                                                                                                                 6
+
+eTable 4. Cause-Specific Event Rates (%) per 100 Patient-Years of Follow-up at 8 Years, for Each Study
+utcome Stratified by Surgical and Non-surgical Patients
+                                            Rate per 100                  Difference in event rate per
+                                           patient-yearsa                      100 patient-years
+                                      Surgical    Nonsurgical            Estimate    95% Confidence
+                                       Group          Group                              Intervalb
+ Primary composite                      4.51            7.45               2.94         (2.42, 3.48)
+ Secondary composite                    2.11            3.64               1.53         (1.18, 1.87)
+ All-cause mortality                    1.19            2.22               1.03         (0.76, 1.29)
+ Heart failure                       0.92 (1.84)     2.49 (3.7)            1.57         (1.32, 1.82)
+ Coronary artery disease             1.03 (1.98)    1.55 (3.36)            0.52         (0.29, 0.77)
+ Cerebrovascular disease             0.45 (1.55)    0.73 (2.74)            0.28         (0.12, 0.43)
+ Nephropathy                         0.89 (1.77)    2.07 (3.47)            1.18         (0.93, 1.42)
+ Atrial fibrillation                 1.14 (2.16)    1.77 (3.42)            0.63         (0.36, 0.88)
+ a
+  The composite rates of death with each individual outcome are also shown in parentheses.
+ b
+  95% bootstrap CI’s (1000 samples) for the difference in 8-year event rate per 100 patient-years (nonsurgical
+ control group – metabolic surgery) for each outcome and treatment group.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 7 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=7)
+
+```text
+                                                                                                       7
+
+eTable 5. Cumulative Incidence Estimates (%) and 95% Confidence Intervals at 2, 5, and 8 Years After
+the Index Date for Each Study Outcome Stratified by Surgical and Non-surgical Patients
+                  Cumulative incidence estimates (%) and 95% confidence intervals
+                               Year 2                   Year 5                   Year 8
+                     Surgical Nonsurgical      Surgical    Nonsurgical  Surgical    Nonsurgical
+                      Group         Group       Group         Group      Group         Group
+ Primary                7.6           12.2       17.7          30.4       30.8          47.7
+ composite           (6.4,8.8)    (11.5,12.8) (15.6,19.7)   (29.4,31.5) (27.6,34)    (46.1,49.2)
+
+ Secondary                3.3         5.5           8.8         15.5           17           27.6
+ composite             (2.5,4.1)   (5.1,6.0)    (7.2,10.4)   (14.7,16.4)   (14.3,19.7)   (26.2,29.0)
+
+ All-cause                1.8         3.2          4.9          10.1           10           17.8
+ mortality             (1.2,2.4)   (2.8,3.5)    (3.7,6.1)    (9.4,10.8)    (7.8,12.2)    (16.6,19.0)
+
+ Heart failure            1.5         4.2          3.8          10.4           6.8          18.9
+                       (1.0,2.1)   (3.8,4.6)    (2.6,4.9)    (9.7,11.2)     (4.9,8.6)    (17.6,20.2)
+
+ Coronary artery          1.7         2.9          4.2           6.8           7.9          11.6
+ disease               (1.1,2.3)   (2.6,3.3)    (3.1,5.3)     (6.2,7.4)     (5.9,9.8)    (10.5,12.6)
+
+ Cerebrovascular          0.7         1.3          2.2           3.1           4.1           5.6
+ disease               (0.3,1.1)   (1.1,1.5)    (1.4,3.0)     (2.7,3.5)     (2.7,5.5)     (4.9,6.3)
+
+ Nephropathy              1.4         2.3          3.9           8.8           6.1          16.3
+                       (0.8,2.0)   (2.0,2.7)    (2.8,5.1)     (8.0,9.5)     (4.4,7.8)    (15.0,17.6)
+
+ Atrial fibrillation      2.3         2.7          4.8           7.6           7.9          13.6
+                       (1.6,3.1)   (2.4,3.0)    (3.6,6.0)     (7.0,8.2)     (6.1,9.7)    (12.5,14.7)
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 8 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=8)
+
+```text
+                                                                                                                                      8
+
+
+
+     eFigure 1. Association of Metabolic Surgery Compared With Usual Care for the Primary
+            Composite Endpoint in Key Subgroups in the Fully-Adjusted Cox Models
+
+
+
+
+Adjusted hazard ratios were obtained after individually removing the original variable from the fully-adjusted Cox model and
+replacing it with the dichotomous sub-group variable as well as its interaction with the treatment variable. For example, the continuous
+BMI covariate was replaced by the dichotomous version and it’s interaction with the treatment. P-values for the interaction between
+each variable and the surgical indicator from the fully-adjusted model are also displayed. Age and eGFR were categorized based on
+their median values. The figure would indicate that the results were consistent across key subgroups.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 9 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=9)
+
+```text
+                                                                                         9
+
+
+
+eTable 6. Hazard Ratio’s (95% CIs) and P Values From Cox Models Comparing the Relative
+Instantaneous Risk of Each Outcome for Surgical Vs. Non-surgical Patients
+ Outcome                          HR (95% CI)            P-value      PH P-value*
+ Primary composite                0.61 (0.55, 0.69)      <0.001       0.89
+ Secondary composite              0.62 (0.53, 0.72)      <0.001       0.76
+ All-cause mortality              0.59 (0.48, 0.72)      <0.001       0.63
+ Heart failure                    0.38 (0.30, 0.49)      <0.001       0.65
+ Coronary artery disease          0.69 (0.54, 0.87)      0.002        0.24
+ Cerebrovascular disease          0.67 (0.48, 0.94)      0.02         0.10
+ Nephropathy                      0.40 (0.31, 0.52)      <0.001       0.46
+ Atrial fibrillation              0.78 (0.62, 0.97)      0.03         0.04
+ * P-values testing the proportion-hazards assumption for each outcome.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 10 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=10)
+
+```text
+                                                                                                                                                        10
+
+eTable 7. Time-Varying Hazard Ratios and 95% CIs at 2, 5, and 8 Years After the Index Date
+Comparing Surgical and Non-surgical Patients From a Fully-Adjusted Cox Model for Each
+Outcome
+                                                  Years since index date
+ Outcome                                   2                 5                 8
+ Primary                           0.57 (0.49, 0.65) 0.78 (0.66, 0.93) 0.79 (0.64, 0.97)
+ Secondary                         0.51 (0.42, 0.63) 0.82 (0.65, 1.04) 0.73 (0.56, 0.95)
+ All-cause mortality               0.43 (0.33, 0.57) 0.69 (0.50, 0.95) 0.80 (0.56, 1.15)
+ Heart failure                     0.31 (0.23, 0.41) 0.40 (0.31, 0.53) 0.52 (0.35, 0.79)
+ Coronary artery disease           0.52 (0.38, 0.69) 1.03 (0.71, 1.51) 0.99 (0.64, 1.51)
+ Cerebrovascular disease           0.68 (0.45, 1.04) 1.29 (0.77, 2.15) 0.60 (0.28, 1.25)
+ Nephropathy                       0.41 (0.30, 0.58) 0.40 (0.26, 0.61) 0.46 (0.30, 0.70)
+ Atrial fibrillation               0.68 (0.52, 0.89) 0.88 (0.62, 1.25) 0.65 (0.42, 1.00)
+The treatment term in the fully-adjusted Cox models above were replaced with a restricted cubic-spline on the observed follow-up time interacted with
+the treatment group.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 11 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=11)
+
+```text
+                                                                                       11
+
+ eFigure 2. Mean Trend Curve of HbA1c (%) and Proportions of Patients Taking Non-insulin
+Diabetes Drugs Over Four Years of Follow-up Categorized by the Treatment Group (Metabolic
+         Surgery Vs. Usual Care) and the BMI (≥35 vs. <35 kg/m2) at the Index Date
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 12 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=12)
+
+```text
+                                                                                                                                                                                 12
+
+
+eTable 8. Average Change in Metabolic and Nutritional Variables From Baseline and in Proportions of Patients Taking
+Diabetes and Cardiovascular Medications (%) at 1, 2, 5, and 8 Years of Follow-up in Surgical vs. Non-surgical Patients
+                                                                                             Time since index date (years)
+                                                              1                                2                             5                                   8
+ Category      Variable                           Estimate (98.8%         P-       Estimate (98.8%       P-      Estimate (98.8%            P-       Estimate (98.8%         P-
+                                                        CI)              value           CI)           value            CI)                value           CI)              value
+ Metabolic
+               Weight (lbs.)                      -56.6 (-57.1, -56.1)   <0.001*   -73.7 (-74.4, -73.0)   <0.001*   -45.2 (-45.9, -44.6)   <0.001*   -44.8 (-45.5, -44.1)   <0.001*
+               Weight (kg)                        -25.7 (-25.9, -25.4)   <0.001*   -33.4 (-33.7, -33.1)   <0.001*   -20.5 (-20.8, -20.2)   <0.001*   -20.3 (-20.6, -20.0)   <0.001*
+               HbA1c (%)                            -1.5 (-1.6, -1.4)    <0.001*     -1.6 (-1.7, -1.5)    <0.001*     -1.0 (-1.1, -0.9)    <0.001*     -1.1 (-1.2, -1.0)    <0.001*
+ Nutritional
+               Protein (g/dL)                        -0.5 (-0.6, -0.5)  <0.001*      -0.5 (-0.5, -0.5)   <0.001*       -0.3 (-0.3, -0.3)  <0.001*      -0.3 (-0. 3, -0.3)  <0.001*
+               Albumin (g/dL)                        -0.3 (-0.3, -0.3)  <0.001*      -0.2 (-0.2, -0.1)   <0.001*       -0.1 (-0.1, -0.1)  <0.001*       -0.2 (-0.2, -0.1)  <0.001*
+               Hemoglobin (g/dL)                     -0.6 (-0.6, -0.5)  <0.001*      -0.4 (-0.4, -0.3)   <0.001*         -0.1 (-0.2, 0)   <0.001*       -0.2 (-0.2, -0.1)  <0.001*
+               Vitamin D 25 (ug/L)                     6.4 (5.0, 7.7)   <0.001*       4.1 (2.6, 5.7)     <0.001*        -0.9 (-2.7, 0.9)   0.19          -1.4 (-4.4, 1.7)   0.27
+ Medications (%)
+               Non-insulin diabetes medications     -50 (-52.9, -47.1)  <0.001* -51.5 (-54.6, -48.3) <0.001* -47.4 (-51.9, -42.9) <0.001* -37.9 (-45.3, -30.6) <0.001*
+               Insulin                              -8.3 (-11.1, -5.4)  <0.001*     -9.1 (-12.3, -5.9)   <0.001*      -9.1 (-13.7, -4.6)  <0.001*      -8.1 (-15.5, -0.7)  0.008*
+               Renin-Angiotensin system             -25 (-28.1, -21.9)  <0.001* -26.6 (-30.1, -23.1) <0.001* -27.5 (-32.3, -22.7) <0.001*             -26.4 (-34, -18.8)   <0.001*
+               inhibitors
+               Other antihypertensive                 -2.7 (-5.6, 0.3)    0.02       -3.4 (-6.7, -0.2)    0.007*      -7.7 (-12.1, -3.2)  <0.001*     -10.6 (-17.6, -3.7)  <0.001*
+               medications
+               Lipid-lowering medications          -16.7 (-19.8, -13.5) <0.001* -21.1 (-24.5, -17.6) <0.001* -26.4 (-31.1, -21.7) <0.001* -28.3 (-35.8, -20.8) <0.001*
+               Aspirin                             -24.5 (-27.1, -21.9) <0.001* -24.4 (-27.4, -21.4) <0.001* -25.9 (-30.2, -21.6) <0.001*                 -27 (-34, -20)   <0.001*
+A four-knot spline interacted with treatment was used for comparing mean changes in metabolic and nutritional variables, and two-sample proportions test was used for medication
+data at each time point.
+98.8% (Bonferroni-corrected) confidence intervals are displayed with each estimate.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 13 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=13)
+
+```text
+                                                                                              13
+
+
+
+
+eTable 9. Total Number of Observations and Number of Distinct Patients With Available
+Measurements After Each Time-Point Following the Index Date for Metabolic and
+Nutritional Values by Treatment
+                                       Metabolic Surgery               Nonsurgical Group
+   Variable       Time since         Total no.     No. distinct      Total no.     No. distinct
+                  index date       observations      patients      observations      patients
+                    (years)
+ HbA1c                 0                9291                1716      54614            8076
+                       1                6413                1290      44208            7172
+                       2                4784                 970      34713            6087
+                       5                1970                 494      13192            2917
+                       8                 630                 187       3196             851
+ Weight                0               61646                2278     263913           10718
+                       1               42497                1790     218461            9733
+                       2               33071                1434     174631            8436
+                       5               14586                 790      69110            4244
+                       8                5034                 351      17359            1318
+ Albumin               0               19778                1969      94023            8871
+                       1               13629                1516      77739            7971
+                       2               10547                1207      62365            6845
+                       5                4605                 640      24881            3395
+                       8                1730                 265       6416            1035
+ Hemoglobin            0               30043                2279     127046            8802
+                       1               18137                1525     105555            7907
+                       2               14201                1213      84975            6768
+                       5                6382                 649      34037            3382
+                       8                2293                 271       8626            1031
+ Protein               0               18628                1965      83880            8824
+                       1               12682                1511      68872            7922
+                       2                9782                1203      54884            6785
+                       5                4156                 639      21598            3345
+                       8                1541                 262       5651            1013
+ Vitamin D             0                5360                1409      11438            3660
+ (25)                  1                3696                1103       9469            3208
+                       2                2583                 800       7513            2693
+                       5                1038                 373       2942            1241
+                       8                 350                 138        771             358
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 14 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=14)
+
+```text
+                                                                                    14
+
+
+
+
+eTable 10. Sample Size for Computing Proportions of Patients Taking Diabetes and
+Cardiovascular Drugs Over Time at 0, 1, 2, 5, and 8 Years After the Index Date by
+Treatment Group
+     Time since index      Metabolic        Nonsurgical
+       date (years)        Surgery            Group
+ 0                           2287             11433
+ 1                           1820             10309
+ 2                           1444              8762
+ 5                            784              4235
+ 8                            348              1219
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 15 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=15)
+
+```text
+                                                                                                                                15
+
+
+
+
+eTable 11. Cumulative Incidence Estimates (%) and 95% CIs for Interventions at 1, 2, 5, and 8 Years After
+Metabolic Surgery
+                                                                        Years since metabolic surgery
+ Intervention                                            1                    2                 5                    8
+ Total parenteral nutrition                         1.5 (1, 2.1)        1.8 (1.2, 2.4)    2.1 (1.5, 2.8)       2.9 (1.9, 3.9)
+ Endoscopy                                       23.9 (22.1, 25.7)     30.1 (28, 32.1)  44.2 (41.6, 46.8)      52 (48.7, 55)
+ Interventional radiology                          2.6 (1.9, 3.2)       3.3 (2.5, 4.1)    6.8 (5.4, 8.1)     10.4 (8.3, 12.4)
+ Abdominal surgical procedure*                     5.9 (4.9, 6.9)       8.1 (6.9, 9.3)  12.1 (10.4, 13.7)   13.8 (11.8, 15.7)
+ Repair of abdominal wall hernia                   2.8 (2.1, 3.6)       5.7 (4.6, 6.8)   8.7 (7.3, 10.2)      11.1 (9.1, 13)
+ Cholecystectomy                                   1.4 (0.9, 1.9)       3.5 (2.6, 4.3)    6.5 (5.2, 7.8)      9.7 (7.7, 11.7)
+ Cumulative incidence estimates (%) by the Kaplan-Meier method.
+ *Not including repair of abdominal wall hernia and cholecystectomy.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 16 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=16)
+
+```text
+                                                                                                               16
+
+
+eFigure 3. Mean Trend Curve of Nutritional Variables of Interest Over Eight Years
+             of Follow-Up in the Surgical and Non-surgical Patients
+
+
+
+
+       Although nutritional deficiencies have been described after metabolic surgery, longitudinal comparisons in
+       this cohort of patients showed only modest nutritional deficiencies after metabolic surgery compared with
+       nonsurgical patients who had usual care (eTable 8 for estimates).
+
+       Routine administration of vitamins and supplements after surgery may explain the observed increase in
+       vitamin D level in surgical patients in the first few years following metabolic surgery.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 17 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=17)
+
+```text
+                                                                                                                    17
+
+
+SENSITIVITY ANALYSES
+   A. Matching and index date sampling
+      It was of interest to assess the sensitivity of the hazard ratio estimates from the fully-adjusted Cox models
+      to two (2) components of the process used in obtaining non-surgical controls:
+
+
+                –     Random-sampling of index dates
+                –     Matching ratio
+
+       The surgical index dates were randomly assigned to non-surgical controls five (5) times, and the matching
+       ratio was tested at 1:1, 1:5, and 1:10, thus creating 15 datasets. The full-adjusted Cox models were run on
+       each dataset (for all outcomes) and the hazard ratios and 95% confidence intervals for the treatment
+       variable were obtained for each. The eFigure 4 displays the sampled index date iteration on the x-axis, the
+       hazard ratio estimate on the y-axis, and individual curves for each matching ratio, for each outcome.
+
+
+       As expected, the most amount of variation across the index date sampling datasets comes from a lower
+       matching ratio (1:1) but stabilizes as the matching ratio gets larger. Overall, the differences in hazard ratios
+       comparing the risk of 8 endpoints in surgical patients versus nonsurgical patients appear to be negligible in
+       absolute terms in 15 datasets, and the estimates reported in the manuscript from a single dataset (with 1:5
+       matching) would be reasonable.
+
+       In the examined 15 datasets, HRs for primary and secondary composite endpoints, all-cause mortality, heart
+       failure, and nephropathy were consistently significant. The HRs comparing the risk of incident
+       cerebrovascular disease, coronary artery disease, and atrial fibrillation in surgical patients versus
+       nonsurgical patients were significant in 13, 12, and 11 datasets, respectively.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 18 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=18)
+
+```text
+                                                                             18
+
+
+  eFigure 4. Hazard Ratios and 95% Confidence Intervals for Metabolic Surgery
+ Versus No Surgery From Fully-Adjusted Cox Models for Each Outcome for Five
+ (5) Iterations of Index Date Random Sampling and Three (3) Different Matching
+                            Ratios (Total of 15 Datasets)
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 19 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=19)
+
+```text
+                                                                                                                    19
+
+
+   B. Time-varying hazard ratios
+      It was of interest to assess estimates of time-varying hazard ratios for surgical vs. non-surgical patients at 2,
+      5, and 8 years following the index date. The treatment term in the fully-adjusted Cox models above were
+      replaced with a restricted cubic-spline on the observed follow-up time interacted with the treatment group.
+      eTable 4 displays adjusted hazard ratios and 95% confidence intervals at 2, 5, and 8 years after the index
+      date.
+
+
+eTable 7. Time-Varying Hazard Ratios and 95% CIs at 2, 5, and 8 Years After the Index
+Date Comparing Surgical and Non-surgical Patients From a Fully-Adjusted Cox Model for
+Each Outcome
+                                              Years since index date
+ Outcome                               2                 5                 8
+ Primary                       0.57 (0.49, 0.65) 0.78 (0.66, 0.93) 0.79 (0.64, 0.97)
+ Secondary                     0.51 (0.42, 0.63) 0.82 (0.65, 1.04) 0.73 (0.56, 0.95)
+ All-cause mortality           0.43 (0.33, 0.57) 0.69 (0.50, 0.95) 0.80 (0.56, 1.15)
+ Heart failure                 0.31 (0.23, 0.41) 0.40 (0.31, 0.53) 0.52 (0.35, 0.79)
+ Coronary artery disease       0.52 (0.38, 0.69) 1.03 (0.71, 1.51) 0.99 (0.64, 1.51)
+ Cerebrovascular disease       0.68 (0.45, 1.04) 1.29 (0.77, 2.15) 0.60 (0.28, 1.25)
+ Nephropathy                   0.41 (0.30, 0.58) 0.40 (0.26, 0.61) 0.46 (0.30, 0.70)
+ Atrial fibrillation           0.68 (0.52, 0.89) 0.88 (0.62, 1.25) 0.65 (0.42, 1.00)
+
+
+
+   C. E-Value
+   As described by VanderWeele and Ding, the E-value (expressed on the risk ratio scale) represents the minimum
+   strength of association that an unmeasured confounder would need to demonstrate for both the treatment and
+   outcome, conditional on the measured covariates, to fully explain away a specific treatment–outcome
+   association. A small E-value implies little unmeasured confounding would be needed to explain away an effect
+   estimate. It was of interest to estimate the E-values (both for the HR estimates, and for their upper limit of 95%
+   CI) of the 8 major study endpoints (eTable 12).
+   In the current study, the observed association of metabolic surgery on the primary outcome was HR of 0.61
+   [95% CI 0.55 to 0.69]. Based on the calculated E-value for the primary end-point, the observed HR of 0.61
+   could be explained away by an unmeasured confounder that was associated with both the treatment and the
+   outcome by a risk ratio of 2.15-fold each, above and beyond the measured confounders, but weaker
+   confounding could not do so; the confidence interval of HR could be moved to include the null by an
+   unmeasured confounder that was associated with both the treatment and the outcome by a risk ratio of 1.92-fold
+   each, above and beyond the measured confounders, but weaker confounding could not do so.
+   In other words, the calculated E-value of 2.15 would mean that residual confounding could explain the observed
+   association if there exists an unmeasured covariate having a relative risk association at least as large as 2.15
+   with both 5-component MACE and with metabolic surgery. Hazard ratios were calculated for 4 well known risk
+   factors associated with the study endpoints (smoking, hypertension, dyslipidemia and insulin use) (eTable 12).
+   E-values well above the HR’s for these known risk factors would suggest there is an unmeasured or unknown
+   confounder that has a substantially greater effect on the endpoint than well-established cardiovascular risk
+   factors, which is unlikely.
+   Examining the E-values for all secondary study endpoints and comparing with the HR estimates of known
+   cardiovascular risk factors for these endpoints (eTable 12) indicates it would be highly unlikely that an
+   unmeasured confounder exists that could explain away the favorable association between metabolic surgery and
+   study endpoints.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-002 PDF page 20 — REPORT
+
+[Exact supplied page](../../../joi190103supp1_prod.pdf#page=20)
+
+```text
+                                                                                                                             20
+
+
+
+eTable 12. E-Value for the Effect of Metabolic Surgery on Each Outcome (and its Upper
+Limit of 95% CI) in Fully-Adjusted Cox Models
+      Outcome            E-value for HR         E-value for             Variable                Level                HR (95% CI)*
+                            estimate           upper limit of
+                                                  95% CI
+ Primary                       2.15                1.92             Smoking status       Current vs. Never        1.25 (1.13, 1.39)
+ composite                                                                               Quit vs. Never           1.13 (1.05, 1.21)
+                                                                    Hypertension         Yes vs. No               1.05 (0.95, 1.16)
+                                                                    Dyslipidemia         No vs. Yes               1.06 (0.98, 1.16)
+                                                                    Insulin Use          Yes vs. No               1.33 (1.23, 1.43)
+ Secondary                     2.62                  2.11           Smoking status       Current vs. Never        1.37 (1.19, 1.58)
+ composite                                                                               Quit vs. Never           1.14 (1.03, 1.26)
+                                                                    Hypertension         No vs. Yes               1.04 (0.91, 1.19)
+                                                                    Dyslipidemia         No vs. Yes               1.14 (1.02, 1.29)
+                                                                    Insulin Use          Yes vs. No               1.43 (1.3, 1.58)
+ All-cause                     2.81                  2.13           Smoking status       Current vs. Never        1.51 (1.25, 1.82)
+ mortality                                                                               Quit vs. Never           1.12 (0.98, 1.27)
+                                                                    Hypertension         No vs. Yes               1.14 (0.97, 1.35)
+                                                                    Dyslipidemia         No vs. Yes               1.3 (1.12, 1.5)
+                                                                    Insulin Use          Yes vs. No               1.73 (1.53, 1.97)
+ Heart Failure                 4.69                  3.52           Smoking status       Current vs. Never        1.32 (1.09, 1.6)
+                                                                                         Quit vs. Never           1.23 (1.07, 1.41)
+                                                                    Hypertension         Yes vs. No               1.11 (0.93, 1.33)
+                                                                    Dyslipidemia         No vs. Yes               1.27 (1.09, 1.48)
+                                                                    Insulin Use          Yes vs. No               1.47 (1.29, 1.67)
+ Coronary artery               2.27                  1.55           Smoking status       Current vs. Never        1.51 (1.2, 1.89)
+ disease                                                                                 Quit vs. Never           1.29 (1.1, 1.51)
+                                                                    Hypertension         No vs. Yes               1.04 (0.83, 1.29)
+                                                                    Dyslipidemia         Yes vs. No               1.16 (0.96, 1.41)
+                                                                    Insulin Use          Yes vs. No               1.14 (0.97, 1.34)
+ Cerebrovascular               2.35                  1.31           Smoking status       Current vs. Never        1.33 (0.95, 1.86)
+ disease                                                                                 Quit vs. Never           1.3 (1.04, 1.62)
+                                                                    Hypertension         Yes vs. No               1.44 (1.04, 1.98)
+                                                                    Dyslipidemia         No vs. Yes               1.08 (0.83, 1.4)
+                                                                    Insulin Use          Yes vs. No               1.17 (0.94, 1.47)
+ Nephropathy                   4.46                  3.29           Smoking status       Never vs. Current        1.23 (0.96, 1.58)
+                                                                                         Quit vs. Never           1.03 (0.88, 1.19)
+                                                                    Hypertension         Yes vs. No               1.36 (1.09, 1.69)
+                                                                    Dyslipidemia         No vs. Yes               1.17 (0.97, 1.4)
+                                                                    Insulin Use          Yes vs. No               1.29 (1.11, 1.5)
+ Atrial Fibrillation            1.9                  1.21           Smoking status       Current vs. Never        1.07 (0.85, 1.35)
+                                                                                         Quit vs. Never           1.16 (1, 1.34)
+                                                                    Hypertension         Yes vs. No               1.1 (0.9, 1.35)
+                                                                    Dyslipidemia         No vs. Yes               1.27 (1.07, 1.51)
+                                                                    Insulin Use          Yes vs. No               1.06 (0.91, 1.22)
+* HR's (95% CI's) for known cardiovascular risk factors for each outcome are shown for comparison of magnitude.
+
+
+
+
+© 2019 American Medical Association. All rights reserved.
+
+```
+
+### DOC-003 PDF page 1 — PLAN
+
+[Exact supplied page](../../../joi190103supp2_prod.pdf#page=1)
+
+```text
+                              Supplementary Online Content 2
+
+
+Aminian A, Zajichek A, Arterburn DE, et al. Association of metabolic surgery with major
+adverse cardiovascular outcomes in patients with type 2 diabetes and obesity. JAMA.
+doi:10.1001/jama.2019.14231
+
+
+Original Study Protocol …..…………………………………….………………………..2
+Amendment to Study Protocol ……………………………….………………………….7
+
+```
+
+### DOC-003 PDF page 2 — PLAN
+
+[Exact supplied page](../../../joi190103supp2_prod.pdf#page=2)
+
+```text
+                                                                                                                  2
+
+
+                                       STUDY PROTOCOL
+                                         (January 6, 2019)
+•   Objective
+    To assess the association of bariatric and metabolic surgery in patients with type 2 diabetes mellitus
+    (T2DM) with various individual and composite cardiovascular outcomes in a matched-cohort analysis
+
+•   Data source
+    The data source for all analysis will be Cleveland Clinic’s Electronic Health Record (EHR) through
+    12/31/2018.
+
+•   Study protocol
+    I.      Cohort derivation
+            All patients at the Cleveland Clinic who have (or had) T2DM will be considered for study entry.
+            This will serve as the base cohort, though all patients initially considered may not be included in
+            the final statistical analysis (see II. for description of the algorithm for identifying T2DM).
+            Starting with the base cohort, the final study cohort will be derived in two (2) phases:
+
+                      (1) Identifying bariatric surgeries
+                          All patients in the base cohort receiving bariatric surgery who meet the following
+                          specifications at the time of surgery will be included:
+                               a) Any of the following codes for bariatric procedures:
+                                        • CPT: 43633, 43634, 43770, 43775, 43644, 43645, 43659, 43842,
+                                             43843, 43844, 43845, 43846, 43847
+                                        • ICD: 44.31, 43.82, 44.95, 43.89, 44.38, 44.39, 44.68
+                                        • HCPCS: S2082, S2085
+                                        (Chart review will be performed to verify the bariatric and metabolic
+                                        procedures)
+                               b) Has T2DM (HbA1c > 6.4% or on diabetes medication)
+                               c) Age between 18-80 years
+                               d) BMI ≥ 30 kg/m2
+                                        • The closest BMI measurement prior will be used. If no
+                                             measurements are available, the patient will be excluded.
+                               e) Occurred through 12/31/2017
+                               f) Surgery at one (1) of the following Cleveland Clinic locations
+                                        • Ohio (Main Campus, Fairview, Hillcrest, Akron), or Florida
+                                             (Weston) facilities
+                          After inclusion, patients who meet any of the following at the time of surgery will be
+                          excluded:
+                               a) History of liver, heart or lung transplant
+                               b) Emergency department admission within five (5) days prior
+                               c) Active cancer/GI cancer diagnosis code within one (1) year prior
+                               d) Surgical procedures/diagnoses codes for upper GI cancer and/or peptic ulcer
+                                   disease during the hospitalization for bariatric surgery
+                               e) History of severe heart failure
+                                        • Any ejection fraction <20% prior
+                           The date of the first bariatric surgery meeting inclusion/exclusion will be identified
+                           for each patient and serve as the index date.
+
+                      (2) Identifying non-surgical comparators
+                          Based on the index dates derived in (1), similar patients who did not receive bariatric
+                          surgery will be obtained for comparison. Starting with the base cohort, the following
+                          algorithm will be implemented
+                              a) Remove patients identified in (1)
+                                        • Patients who met inclusion but were subsequently excluded will
+                                            also be removed
+
+```
+
+### DOC-003 PDF page 3 — PLAN
+
+[Exact supplied page](../../../joi190103supp2_prod.pdf#page=3)
+
+```text
+                                                                                                            3
+
+                         b) Randomly assign each patient a single date from the collection of index
+                              dates. This will serve as the assigned date for non-surgical patients.
+                         c) Exclude patients meeting any of the following at the assigned date:
+                                   • Last follow-up on or before the assigned date
+                                   • Already dead or died within 30 days after the assigned date
+                                               • Serves as a proxy for potential terminally-ill patients
+                                   • Does not have T2DM (HbA1c < 6.5% and not on diabetes
+                                        medication)
+                                   • Age < 18 or Age > 80 years
+                                   • BMI < 30
+                                               • The closest measurement prior will be used. If none are
+                                                 available, the closest measurement in absolute time will
+                                                 be used.
+                                   • History of liver, heart or lung transplant
+                                   • ED admission within 5 days prior
+                                   • Active cancer/GI cancer diagnosis code within one (1) year prior
+                                   • History of severe heart failure
+                                               • Any ejection fraction <20% prior
+       The patients identified in (1) and (2) will form the final study cohort in which subsequent
+       analysis will be performed. The algorithm described in (2) will be replicated 5 times for a
+       sensitivity analysis to assess the variability of baseline characteristics of the non-surgical patients
+       at the assigned date, as well as overall model effect estimates and prediction accuracy (See blow,
+       Sensitivity Analyses). At this point, the index date and assigned date will collectively be referred
+       to as the index date.
+
+               (3) Matching Process
+               Each non-surgical patient will be matched with a propensity-score (‘logit’ link) to five (5)
+               surgical patients based on the index date, age at index date, BMI at index date
+               (categorized as 30-35, 35-40, 40+), gender, insulin use, location (Ohio versus Florida),
+               diabetes complications (composite of coronary artery disease, heart failure,
+               cerebrovascular disease, peripheral vascular disease, neuropathy, nephropathy, or being
+               on dialysis) with the MatchIt package in R.1
+
+II.   Identifying patients with T2DM
+      A T2DM prevalence cohort has been previously created using the modified Kho algorithm2 and
+      with the following specifications:
+
+                    Based upon ICD9/10 codes, patients with type 1 diabetes mellitus (T1DM) and
+                    T2DM were identified. Codes for ketoacidosis were classified as T1DM code.
+
+                    The algorithm was used to calculate the earliest date when a patient record contained
+                    any of the following combinations:
+                             • T2DM code in the EHR & T2DM medication
+                             • T2DM code in the EHR & abnormal glucose*
+                             • T2DM medication & abnormal glucose*
+                             • T2DM code reordered twice in the EHR & outpatient insulin
+                             • Insulin preceded by T2DM medication
+                    *Abnormal glucose: Random glucose >200 mg/dL or fasting glucose >125 mg/dl.
+                    The earliest date that any of the five (5) conditions above were met was documented
+                    as the date in which the patient first met the criteria for T2DM in the Cleveland
+                    Clinic system.
+
+      This cohort contains approximately N = 287438 patients whose T2DM dates range from 1/1/1998
+      through 12/31/2017.
+
+```
+
+### DOC-003 PDF page 4 — PLAN
+
+[Exact supplied page](../../../joi190103supp2_prod.pdf#page=4)
+
+```text
+                                                                                                              4
+
+III.   Outcomes
+       Patients will be followed starting at the index date for 6 outcomes as follows (see eTable 1 for
+       diagnosis codes/definitions):
+
+       1.    All-cause mortality
+                –     If deaths are unknown (i.e. not entered into Cleveland Clinic’s EHR), the Social
+                      Security and State Death Indices will be searched.
+
+       2.    Coronary artery disease
+               –     Myocardial infarction
+                        •     ICD9: 410.X, 410.XX
+                        •     ICD10: i21.X and i21.XX, i22.X and i22.XX, i23.X and i23.XX
+               –     Other
+                        •     ICD9: 411.X, 411.X AND 414.X, 36.01, 36.02, 36.03, 36.05, 36.06,
+                              36.07, 36.10, 36.11, 36.12, 36.13, 36.14, 36.15, 36.16, 36.17, 36.19, 36.31,
+                              36.32, 36.33, 36.64
+                        •     CPT: 92982, 92984, 92995, 92996, 92980, 92981, 33510, 33511, 33512,
+                              33513, 33514, 33516, 33517, 33518, 33519, 33521, 33522, 33523, 33530,
+                              33533, 33534, 33535, 33536, 93539, 93540
+
+       3.    Cerebrovascular disease
+               –     Ischemic stroke
+                        •     ICD9: 433.X1, 434.X1
+                        •     ICD10: i63.X and i63.XX and i63.XXX
+               –     Other
+                        •     ICD9: 436.0, 430.X, 431.X, 38.12, 0.61, 0.63
+                        •     CPT: 37215, 37216, 0075T, 0076T, 35301, 37205, 37206
+
+
+       4.    Heart failure
+                         •     ICD9: 428.0, 428.1, 428.20, 428.21, 428.22, 428.23, 428.30, 428.31,
+                               428.32, 428.33, 428.40, 428.41, 428.42, 428.43, 428.9
+
+       5.    Nephropathy
+                       •       Two (2) measures of eGFR < 60 separated by at least 90 days with no
+                               intervening values >= 60
+                         •     eGFR will be computed using the Modification of Diet in Renal Disease
+                               (MDRD) Study equation with creatinine levels
+
+       6.    Atrial fibrillation
+                           •     ICD9: 427.31
+                           •     ICD10: i48.0, i48.2, i48.91
+                           •     CPT: 93650, 93653, 93656, 93657
+
+       Primary endpoint
+       The primary outcome will consist of the composite of 1-6, recording the first occurrence after the
+       index date as the event date. The conditions/events in which a patient had in their history at
+       baseline will be omitted from the composite definition in follow-up.
+
+       Secondary endpoints
+       The secondary composite outcome will consist of the composite of (1) all-cause mortality, (2)
+       myocardial infarction, and (3) ischemic stroke, recording the first occurrence after the index date
+       as the event date. The conditions/events in which a patient had in their history at baseline will be
+       omitted from the composite definition in follow-up.
+
+```
+
+### DOC-003 PDF page 5 — PLAN
+
+[Exact supplied page](../../../joi190103supp2_prod.pdf#page=5)
+
+```text
+                                                                                                          5
+
+      Each of 1-6 will also assessed individually. For each outcome, any patient with a history of that
+      outcome at the index date will be eliminated from the risk set. For nephropathy, patients with a
+      baseline eGFR < 60 and patients with history of dialysis will also be excluded.
+
+IV.   Data elements
+      The following data elements will be extracted from the EHR for each patient in the base cohort
+      and used for analysis. Collected variables will be mapped to the Unified Medical Language
+      System (UMLS) identifiers.3 (Note: Specific diagnosis, visit, encounter, procedure, prescription,
+      and lab dates will be collected with each data element, where applicable, to track changes over
+      time)
+
+          •    Demographics
+                       • Date of birth
+                       • Gender
+                       • Race
+                       • Median zip code income
+                       • Weight
+                       • BMI
+                       • Insurance
+                       • Smoking status
+                       • Location
+          •    Medical history
+                       • Hypertension
+                       • Dyslipidemia
+                       • Coronary artery disease
+                       • Cerebrovascular events
+                       • Heart failure
+                       • Nephropathy
+                       • Diabetic neuropathy
+                       • Peripheral arterial disease
+                       • Atrial fibrillation
+                       • COPD
+                       • Being on dialysis
+          •    Labs
+                       • HbA1c
+                       • Creatinine
+                       • eGFR
+                       • Systolic/diastolic BP
+                       • LDL
+                       • HDL
+                       • Triglyceride levels
+                       • Urine albumin: creatinine ratio (UACR)
+          •    Medication
+                       • Insulin
+                       • Non-insulin diabetes medication
+                       • ACE-I/ARB
+                       • Other antihypertensive medication
+                       • Statin (or other cholesterol-lowering medication)
+                       • Aspirin
+                       • Warfarin
+
+```
+
+### DOC-003 PDF page 6 — PLAN
+
+[Exact supplied page](../../../joi190103supp2_prod.pdf#page=6)
+
+```text
+                                                                                                           6
+
+V.     Statistical analysis
+       Cause-specific event rates per 100 patient-years of follow-up starting from the index date will be
+       estimated for each outcome within each study group. Cumulative incidence estimates and hazard
+       ratios (HRs) from a fully-adjusted Cox-PH model will be obtained for each outcome. All baseline
+       variables will be included to adjust for potential confounding. The proportional-hazards
+       assumptions for the treatment variable will be tested based on weighted residuals as proposed by
+       Grambsch and Therneau.4
+
+       Within each outcome dataset, missing values will be multiply-imputed with Multiple Imputation
+       by Chained equations to create 5 imputed datasets. Predictive mean matching, logistic regression,
+       and polytomous logistic regression will be used for numeric, binary, and categorical variables,
+       respectively. Imputation-corrected standard errors of model estimates and contrasts will be
+       obtained by Rubin’s formula.5,6
+
+       The percent (%) of weight loss and HbA1c values will also be evaluated over time and compared
+       among the surgical and non-surgical groups.
+
+       A significance level of 0.05 will be considered statistically significant, and 95% CIs will be
+       reported where applicable. Adjustment for multiple comparisons of secondary endpoints is not
+       performed and analyses will be considered as exploratory. All analysis will be done in the R
+       statistical programming language (version 3.5.0).7
+
+VI.    Sensitivity analyses
+       Sensitivity of the HR estimates from the fully-adjusted Cox models to two components of the
+       process used in obtaining non-surgical controls will be assessed: random-sampling of index dates,
+       and matching ratio. The sampling of index dates for non-surgical patients will be repeated five (5)
+       times, and matching ratios of 1:1, 1:5, and 1:10 will be used in each resulting dataset. All analyses
+       will be performed on all 15 datasets to assess sensitivity, though results are reported from one (1)
+       dataset using 1:5 matching.
+
+       Furthermore, time-varying HRs for surgical versus non-surgical patients at 2, 5, and 8 years
+       following the index date will be estimated. The details of sensitivity analyses and results have
+       been mentioned below.
+
+VII.   References
+       [1] Ho DE, Imai K, King G, Stuart EA. MatchIt: Nonparametric Preprocessing for Parametric
+       Causal Inference. Journal of Statistical Software. 2011;42(8): 1 - 28.
+
+       [2] Kho AN, Hayes MG, Rasmussen-Torvik L, et al. Use of diverse electronic medical record
+       systems to identify genetic risk for type 2 diabetes within a genome-wide association study. J Am
+       Med Inform Assoc. 2012;19(2):212-8.
+
+       [3] Milinovich A, Kattan MW. Extracting and utilizing electronic health data from Epic for
+       research. Ann Transl Med. 2018;6(3):42.
+
+       [4] Grambsch PM, Therneau TM. Proportional hazards tests and diagnostics based on weighted
+       residuals. Biometrika. 1994;81(3): 515-526.
+
+       [5] van Buuren S, Groothuis-Oudshoorn K. mice: Multivariate Imputation by Chained Equations
+       in R. Journal of Statistical Software 2011; 45(3): 1 - 67.
+
+       [6] Frank E Harrell Jr (2018). rms: Regression Modeling Strategies. R package version 5.1-2.
+       https://CRAN.R-project.org/package=rms
+
+       [7] R Core Team (2018). R: A language and environment for statistical computing. R Foundation
+       for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+
+```
+
+### DOC-003 PDF page 7 — PLAN
+
+[Exact supplied page](../../../joi190103supp2_prod.pdf#page=7)
+
+```text
+                                                                                                                     7
+
+
+                               AMENDMENT TO STUDY PROTOCOL
+                                      (August 2, 2019)
+    In order to address the comments raised during the journal pee-review process, the following parts will be added
+    to the study protocol.
+
+•   Adverse Events of Metabolic Surgery
+    Early (<90 days after surgery) and late adverse events (need for nutritional, endoscopic, radiologic, and surgical
+    interventions until last follow-up to serve as proxy to adverse events) after metabolic surgery will be collected
+    and reported (see eTable 2 for diagnosis and intervention codes/definitions). Nutritional variables of interests
+    are hemoglobin, serum protein, albumin, and vitamin D levels.
+
+•   E-value for Sensitivity Analysis
+    Additional sensitivity analysis to assess the potential effects of unmeasured confounders will be added to the
+    study by the E-value methodology. The E-value is the minimum strength of association, on the risk ratio scale,
+    that an unmeasured confounder would need to have with both the treatment and outcome, conditional on the
+    measured covariates, to fully explain away a specific treatment–outcome association.1-3
+    For all 8 composite and individual study endpoints, the E-value will be calculated and interpreted for the HR
+    estimates and for their limit of 95% CI closest to the null.
+
+•   References
+    [1] VanderWeele TJ, Ding P. Sensitivity Analysis in Observational Research: Introducing the E-Value. Ann
+    Intern Med. 2017;167(4):268-274.
+
+    [2] Haneuse S, VanderWeele TJ, Arterburn D. Using the E-Value to Assess the Potential Effect of Unmeasured
+    Confounding in Observational Studies. JAMA. 2019;321(6):602-603.
+
+    [3] https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/
+
+```

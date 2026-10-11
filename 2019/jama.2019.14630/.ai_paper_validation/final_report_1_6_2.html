@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--predimed-plus-interim-report"
+id="toc-quantitative-quality-control-consistency-review--predimed-plus-interim-report">Quantitative
+Quality-Control Consistency Review — PREDIMED-Plus Interim Report</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#inclusion-screening-summary"
+id="toc-inclusion-screening-summary">Inclusion Screening
+Summary</a></li>
+<li><a href="#review-domain-summary"
+id="toc-review-domain-summary">Review-Domain Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a href="#c001--outcome-hierarchy-in-the-interim-report"
+id="toc-c001--outcome-hierarchy-in-the-interim-report">C001 — Outcome
+hierarchy in the interim report</a></li>
+<li><a
+href="#c002--baseline-nutritional-filtering-and-the-weight-analysis-set"
+id="toc-c002--baseline-nutritional-filtering-and-the-weight-analysis-set">C002
+— Baseline nutritional filtering and the weight analysis set</a></li>
+<li><a href="#c003--principal-and-sensitivity-analysis-ordering"
+id="toc-c003--principal-and-sensitivity-analysis-ordering">C003 —
+Principal and sensitivity analysis ordering</a></li>
+<li><a href="#c004--imputation-specification"
+id="toc-c004--imputation-specification">C004 — Imputation
+specification</a></li>
+<li><a
+href="#c005--additional-planned-primary-weight-analyses-not-reported"
+id="toc-c005--additional-planned-primary-weight-analyses-not-reported">C005
+— Additional planned primary-weight analyses not reported</a></li>
+<li><a href="#c006--ancillary-multiplicity-intervals-for-y1-waist"
+id="toc-c006--ancillary-multiplicity-intervals-for-y1-waist">C006 —
+Ancillary multiplicity intervals for Y1 waist</a></li>
+<li><a href="#c007--repeated-alcohol-interval-versus-p-conflict"
+id="toc-c007--repeated-alcohol-interval-versus-p-conflict">C007 —
+Repeated alcohol interval-versus-P conflict</a></li>
+<li><a href="#c008--red-wine-median-and-upper-quartile"
+id="toc-c008--red-wine-median-and-upper-quartile">C008 — Red-wine median
+and upper quartile</a></li>
+<li><a
+href="#c009--efigure2-labels-versus-bars-and-confidence-intervals"
+id="toc-c009--efigure2-labels-versus-bars-and-confidence-intervals">C009
+— eFigure2 labels versus bars and confidence intervals</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#source-integrity-and-reproducible-evidence-trail"
+id="toc-source-integrity-and-reproducible-evidence-trail">Source
+integrity and reproducible evidence trail</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--predimed-plus-interim-report">Quantitative
+Quality-Control Consistency Review — PREDIMED-Plus Interim Report</h1>
+<p><strong>Pending Human Adjudication</strong></p>
+<p>This report prepares candidate reporting issues for human
+adjudication. Evidence reproduction and inclusion audit describe the
+review record; they do not adjudicate a candidate or establish a
+correction.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Workflow 1.6.2 reviewed all 149 pages of five supplied PDFs and
+registered nine stable candidates, C001 through C009. Six concern
+planned versus reported statistical design or analysis, and three
+concern numerical or inferential consistency within reported displays.
+All nine have evidence state <code>reproduced</code> and inclusion audit
+<code>CONFIRMED</code>; all remain Pending Human Adjudication.</p>
+<p>Independent screening considered 19 findings: 16 INCLUDE provenance
+records consolidated into nine distinct issues, and three SCREENED_OUT
+records. A finding recovered during statistical pass 2 extends C005's
+planned-analysis availability pattern. Its subgroup-to-outcome/time
+applicability remains explicitly unresolved. No candidate count governed
+discovery, screening or completion.</p>
+<p>The reported issues concern outcome hierarchy, the weight-analysis
+population, analysis priority, imputation specifications, availability
+of planned additional weight analyses, ancillary waist intervals,
+alcohol interval/P compatibility, a red-wine median/quartile ordering,
+and eFigure2 label/graphic association. The cards retain the supplied
+interim-publication context and other source-grounded alternatives. They
+make no claim that treatment conclusions changed or that an issue
+propagated into evidence synthesis.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains one main article, a trial protocol, a
+statistical analysis plan (SAP), a results supplement and an ancillary
+data-sharing statement. Document roles were determined from content.
+Protocol and SAP remain PLAN documents despite their supplement
+filenames; results and data-sharing material are REPORT documents.</p>
+<table>
+<thead>
+<tr>
+<th>Source ID</th>
+<th>Supplied source and role</th>
+<th style="text-align: right;">Total pages</th>
+<th style="text-align: right;">Reusable-backed</th>
+<th style="text-align: right;">Fresh-required extraction</th>
+<th style="text-align: right;">Mapped</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOC-001</td>
+<td><a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=1">jama_saynorea_2019_oi_190106_1635377898.43062.pdf
+— main article, REPORT</a></td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td>DOC-002</td>
+<td><a
+href="../joi190106supp1_prod_1635377898.47058.pdf#page=1">joi190106supp1_prod_1635377898.47058.pdf
+— protocol, PLAN</a></td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">75</td>
+</tr>
+<tr>
+<td>DOC-003</td>
+<td><a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=1">joi190106supp2_prod_1635377898.49605.pdf
+— SAP, PLAN</a></td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr>
+<td>DOC-004</td>
+<td><a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=1">joi190106supp3_prod_1635377898.49725.pdf
+— results supplement, REPORT</a></td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">29</td>
+</tr>
+<tr>
+<td>DOC-005</td>
+<td><a
+href="../joi190106supp4_prod_1635377898.50723.pdf#page=1">joi190106supp4_prod_1635377898.50723.pdf
+— data sharing, REPORT</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Five supplied PDFs</td>
+<td style="text-align: right;">149</td>
+<td style="text-align: right;">149</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">149</td>
+</tr>
+</tbody>
+</table>
+<p>The curator inventoried and hashed 132 reusable evidence assets: 65
+USABLE, 44 DUPLICATE and 23 PARTIAL. Five source-complete native layout
+assets were compared byte-for-byte with direct Poppler extraction and
+matched their supplied PDFs. Partial metadata and mixed legacy maps did
+not determine scientific coverage or supply prior candidate conclusions.
+Whole-source layouts covered older page-derivative gaps, including main
+pp.12–14 and results pp.28–29. Source-linked figures and fresh targeted
+renders supported graphical confirmation.</p>
+<p>Fresh specialists rebuilt scientific maps across every source page.
+Zero fresh-required extraction pages means usable extraction already
+covered all pages; it does not mean scientific mapping was reused. No
+prior candidate set, screening decision, disposition or final report
+supplied discovery. The <a
+href="review_1_6_2/source_inventory.md">source inventory</a>, <a
+href="review_1_6_2/evidence_asset_inventory.md">evidence-asset
+inventory</a> and <a href="review_1_6_2/source_coverage.md">source
+coverage</a> retain the full provenance.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review focused on counts and denominators; estimate, interval and
+test logic; statistical method logic; and planned versus reported
+statistical design. Every source row has reusable plus fresh-required
+units equal to its total, mapped units equal to total, and status
+COMPLETE. All 149 pages were covered, including covers, sparse
+continuations, references, affiliations and copyright-only pages. There
+is no scientific source-coverage gap.</p>
+<p>The review used only supplied package evidence. It did not perform a
+broad clinical, novelty, misconduct, raw-data or preferred-method audit.
+Comparisons were matched by outcome, time, population and model before
+consistency checks. Peripheral baseline copies and administrative
+details were screened unless they changed a primary/key secondary
+result, analysis-population size or decision rule. Model-based estimates
+were not required to equal crude subtractions. Display-precision
+discrepancies at most 0.05, notation or immediately resolved wording,
+and unsupported conditional observations were excluded under the
+specified codes. Printed interval-versus-P/test conflicts remain
+always-register observations under Route A, category 1.</p>
+<p>The <a href="review_1_6_2/coverage_manifest.md">coverage manifest</a>
+identifies disjoint scopes and durable stage artifacts. Complete
+current-run <a
+href="review_1_6_2/extraction/main_quantitative_evidence.md">main
+mapping</a> and <a
+href="review_1_6_2/extraction/support_quantitative_evidence.md">support
+mapping</a> preserve result-relevant relationships across all supplied
+material.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The numerical inventory closes 192 distinct relationship groups: 76
+main/protocol groups and 116 support groups, including the N541
+graphical extension. The <a
+href="review_1_6_2/relationships/numeric_relationship_inventory.md">numerical
+relationship inventory</a> records the complete count, denominator,
+descriptive-value and display associations.</p>
+<p>The <a
+href="review_1_6_2/statistics/relationship_inventory.md">statistical
+relationship inventory</a> closes 306 distinct groups with both
+PASS_1_COMPLETE and PASS_2_COMPLETE. Each pass used three disjoint
+scopes of 92, 104 and 110 groups. Six distinct fresh high-effort
+statistical agents covered the identical union across the two waves. The
+second wave began after the complete ledger, independent screening and
+exact-source recheck were available; it revisited every original checker
+exclusion against Route A and the display-precision rule.</p>
+<p>Support inferential coverage includes 211 table groups and three
+figure groups. Grouping retains every printed arm/contrast interval:
+eTable9's eleven grouped rows include 22 MI/completer contrasts; the
+figures include all four eFigure1 score panels, all seven eFigure2
+categories, and all twelve eFigure3 nutrient rows at both times. The <a
+href="review_1_6_2/checkers/statistical_pass_1.md">first-pass record</a>
+and <a href="review_1_6_2/checkers/statistical_pass_2.md">second-pass
+record</a> retain their source-linked reasoning. Canonical inventory
+rows combine both completed pass records without removing original shard
+provenance.</p>
+<h2 id="inclusion-screening-summary">Inclusion Screening Summary</h2>
+<p>A reproduced finding qualifies through either an always-register
+Route A category or all three Route B criteria: in focus, not resolved
+at once by immediate context, and bearing on interpretation or
+extraction of a named result. Repeated occurrences of the same issue
+form one candidate with every affected location retained. The <a
+href="review_1_6_2/screening/inclusion_screen.md">canonical screening
+log</a> contains one decision for each of 19 findings.</p>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Reason code</th>
+<th style="text-align: right;">Finding records</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INCLUDE</td>
+<td>MEETS_THRESHOLD</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>NOT_REPRODUCED</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>SCREENED_OUT</td>
+<td>TERMINOLOGY_OR_WORDING</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>All independently screened findings</td>
+<td style="text-align: right;">19</td>
+</tr>
+</tbody>
+</table>
+<p>Initial screening included 15 of 18 findings. Fresh pass-2 screening
+included one additional finding, F-ST2-001, as provenance for C005; it
+did not add a stable ID. The 16 INCLUDE rows consolidate into nine
+candidates. The two NOT_REPRODUCED findings compared nutritional-record
+completeness with an independently undefined attendance quantity. The
+TERMINOLOGY_OR_WORDING finding relied on an unsupported pooled-arm
+reading of “overall” in power prose. Screened-out findings receive no
+evidence cards.</p>
+<p>The independent audit reviewed screening in both directions and all
+original checker excluded-observation rows, including the already
+recovered subgroup observation. It requested no additional finding or
+screening change. All nine inclusion audits are CONFIRMED; this is an
+inclusion-threshold record, and every candidate remains Pending Human
+Adjudication.</p>
+<h2 id="review-domain-summary">Review-Domain Summary</h2>
+<p><code>statistical_results</code> covers numerical, estimate/test and
+method logic within REPORT material.
+<code>report_internal_inconsistency</code> covers unresolved REPORT
+attribution of a result to outcome, time, population or comparison.
+<code>protocol_report</code> covers statistical design/analysis
+differences between PLAN and REPORT. <code>plan_material</code> covers
+relevant inconsistencies solely within PLAN material.</p>
+<table>
+<thead>
+<tr>
+<th>Review domain</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protocol_report</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td>statistical_results</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>report_internal_inconsistency</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>plan_material</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">9</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Primary relationship type</th>
+<th>Meaning</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P_R</td>
+<td>PLAN versus REPORT</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td>P_P</td>
+<td>Within PLAN material</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>S_C</td>
+<td>Between different REPORT documents</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>S_W</td>
+<td>Within a REPORT document</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>One primary type per candidate</td>
+<td style="text-align: right;">9</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Evidence state</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reproduced</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr>
+<td>reproduced_after_transcription_correction</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align: right;">9</td>
+</tr>
+</tbody>
+</table>
+<p>Corroborating locations create no additional conflict relationship.
+The repeated alcohol pattern is S_W because each CI/P comparison is
+internal to its display; it does not assert matching effects across
+distinct populations. C004 is P_R only because nutritional and
+risk-factor imputation descriptions are not established as the same
+REPORT analysis. Relationship precedence is P_R &gt; P_P &gt; S_C &gt;
+S_W.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Candidate reporting issue</th>
+<th>Review domain</th>
+<th>Relationship type</th>
+<th>Evidence state</th>
+<th>Inclusion audit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Outcome hierarchy in the interim report</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Baseline nutritional filtering and the weight analysis set</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Principal and sensitivity analysis ordering</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C004</td>
+<td>Imputation specification</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C005</td>
+<td>Additional planned primary-weight analyses not reported</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C006</td>
+<td>Ancillary multiplicity intervals for Y1 waist</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C007</td>
+<td>Repeated alcohol interval-versus-P conflict</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C008</td>
+<td>Red-wine median and upper quartile</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>C009</td>
+<td>eFigure2 labels versus bars and confidence intervals</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<h2 id="c001--outcome-hierarchy-in-the-interim-report" class="candidate-card">C001 — Outcome
+hierarchy in the interim report</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The supplied plans identify
+weight as primary and diet/nutrients/risk markers as intermediate
+outcomes, whereas the interim report identifies Y1 er-MedDiet adherence
+as primary and weight and the other reported markers as
+secondary/exploratory.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN protocol/SAP hierarchy
+vs REPORT main interim outcome hierarchy</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-002, F-ST1-002</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> Prospective protocol/SAP
+statuses are PLAN content and the observed interim publication's
+statuses are REPORT content. Their direct comparison establishes P_R and
+protocol_report. The plans corroborate one another; REPORT copies
+corroborate the interim hierarchy and add no separate relationship.</p>
+<p><strong>Classification ambiguity:</strong> A prospective
+interim-specific hierarchy or amendment linking publication and
+parent-trial status is not supplied. Document roles are unambiguous.</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=1">main
+p.1 abstract</a>, <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=2">p.2
+interim scope</a>, <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=3">p.3
+Outcomes</a>, <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=4">p.4
+secondary/exploratory status</a>; PLAN <a
+href="../joi190106supp1_prod_1635377898.47058.pdf#page=13">protocol p.13
+objectives</a>, <a
+href="../joi190106supp1_prod_1635377898.47058.pdf#page=31">p.31 weight
+outcome</a>, <a
+href="../joi190106supp1_prod_1635377898.47058.pdf#page=38">p.38
+intermediate markers</a>, <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=5">SAP p.5
+objectives</a>, <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=9">p.9 weight/Y1
+schedule</a> and <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=10">p.10
+diet/nutrient/marker schedule</a>.</p>
+<p><strong>Source evidence:</strong> Protocol and SAP identify
+cardiovascular disease and weight as primary. SAP schedules weight at
+M6, Y1 and Y6 and identifies diet, nutrients, blood pressure and lipids
+as intermediate. Main p.3 explicitly identifies baseline-to-12-month
+er-MedDiet change as the primary endpoint for this interim analysis;
+main p.4 identifies the other reported outcomes as secondary and all
+secondary analyses as exploratory.</p>
+<p><strong>Reported-versus-comparator:</strong> REPORT interim primary
+er-MedDiet and secondary weight versus PLAN intermediate dietary
+measures and primary weight. No absence of uncompleted long-term
+cardiovascular results is asserted.</p>
+<p><strong>Reasoning procedure:</strong> Match each named outcome and
+scheduled Y1 time, then compare the explicitly assigned outcome status.
+Separate the printed interim-publication qualification from the
+parent-trial hierarchy.</p>
+<p><strong>Calculation:</strong> Not applicable: this is a categorical
+status comparison, with no numeric display-precision discrepancy.</p>
+<p><strong>Affected result or extracted value:</strong>
+Prespecification/status coding for er-MedDiet difference 2.2 (95% CI
+2.1–2.4), weight difference −2.9 kg (−3.2 to −2.6), and the reported
+nutrient/risk outcomes.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+registers a reproduced change in a prespecified outcome's status. The
+openly interim scope is retained as an alternative rather than removing
+that status comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+publication-specific exploratory hierarchy can coexist with the
+parent-trial hierarchy. The supplied package does not provide the
+prospective interim specification connecting them. No numerical effect
+change is inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every listed page and
+status was found and matched against exact-source text. The comparison
+and document roles were reproduced without transcription correction. The
+<a href="review_1_6_2/verification/evidence_recheck.md">complete
+recheck</a> and <a
+href="review_1_6_2/quality/evidence_quality_audit.md">inclusion
+audit</a> retain the unresolved prospective-scope definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could code these results as primary, secondary or intermediate using
+different prospective versus publication statuses. This identifies a
+possible coding consequence, without claiming that downstream recoding
+or conclusion change occurred.</p>
+<h2
+id="c002--baseline-nutritional-filtering-and-the-weight-analysis-set" class="candidate-card">C002
+— Baseline nutritional filtering and the weight analysis set</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The report applies a baseline
+FFQ/energy restriction to the cohort used for Y1 weight as well as
+dietary analyses, while the supplied plans do not identify that
+nutritional restriction as a primary-weight membership rule.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN protocol/SAP ITT
+membership vs REPORT main/results weight cohort</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-003</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Prospective protocol/SAP
+population language is compared with the reported membership definition
+and linked weight cohort. This is P_R and protocol_report. Main and
+eTable9 counts agree and provide corroboration, not S_C.</p>
+<p><strong>Classification ambiguity:</strong> A prospective
+interim-specific cohort exception is not supplied. ITT terminology alone
+is not treated as prohibiting every exclusion.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190106supp1_prod_1635377898.47058.pdf#page=52">protocol p.52
+lines1636–1639</a> and <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=13">SAP p.13
+lines304–308</a>; REPORT <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=3">main
+p.3 Figure1</a>, <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=4">p.4
+cohort restriction</a> and <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=23">results p.23
+eTable9 weight</a>.</p>
+<p><strong>Source evidence:</strong> Protocol states an
+intention-to-treat basis. SAP retains randomly assigned groups and
+permits full-data and MI approaches. Main excludes 53 missing baseline
+FFQs and 238 baseline energy outliers from 6874 randomized participants.
+Figure1 shows I3406/C3468 randomized, energy exclusions I106/C132, FFQ
+exclusions I28/C25, and analysis members I3272/C3311. eTable9's MI
+weight result uses I3272/C3311.</p>
+<p><strong>Reported-versus-comparator:</strong> The reported 6583-member
+nutritional cohort also supplies the weight estimate; the prospective
+weight framework contains no identified baseline
+nutritional-plausibility membership rule.</p>
+<p><strong>Reasoning procedure:</strong> Trace randomized-to-included
+membership and exclusion reasons, confirm the same population in the
+weight row, and compare that positive restriction with the supplied
+primary-weight population specification. Keep membership specification
+distinct from count arithmetic and attendance.</p>
+<p><strong>Calculation:</strong> 3406−106−28=3272; 3468−132−25=3311;
+6874−53−238=6583; 3272+3311=6583. Generous aggregate half-unit
+allowances yield recomputed [6581.5,6584.5], overlapping printed
+[6582.5,6583.5]: gap 0 and relative discrepancy 0. The candidate does
+not rest on an arithmetic discrepancy.</p>
+<p><strong>Affected result or extracted value:</strong> The 6583-person
+population definition accompanying the Y1 MI weight difference −2.9 kg
+(95% CI −3.2 to −2.6).</p>
+<p><strong>Why context does not resolve it:</strong> The report
+identifies its restricted cohort, but immediate context does not
+establish the prospective weight-membership rule linking this dietary
+filter to the scheduled primary-weight framework. The unresolved rule
+can affect extraction of the named analysis population.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> An
+intentionally defined nutritional-publication cohort may govern all
+interim outcomes. The SAP full-data option can allow complete-case
+analysis without itself specifying energy filtering of weight
+participants. Weight availability among the 291 excluded participants is
+not supplied and is not inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> All five locations,
+counts, reasons and the weight-population linkage were source-matched.
+Arithmetic reconciles; the positive reported restriction versus supplied
+membership specification reproduces the registered issue. No population
+size, effect change or prospective approval history is inferred.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could record 6583 as a nutrition-restricted weight population or
+interpret the result under a broader randomized-population
+specification. The candidate concerns that population annotation,
+without asserting a changed treatment estimate.</p>
+<h2 id="c003--principal-and-sensitivity-analysis-ordering" class="candidate-card">C003 —
+Principal and sensitivity analysis ordering</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The SAP assigns completer
+analyses as main and MI as sensitivity, whereas the report assigns MI as
+principal and completers as post hoc sensitivity.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN SAP completer/MI
+priority vs REPORT main/results principal/sensitivity priority</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-004, F-ST1-003</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> An explicit PLAN analysis
+priority is compared with REPORT priority and corroborating results
+headings. P_R and protocol_report apply. General SAP permission for both
+approaches is not a separate P_P conflict, and matching REPORT headings
+do not add S_C.</p>
+<p><strong>Classification ambiguity:</strong> A prospective priority
+applicable specifically to the interim publication, including any
+amendment, is not supplied.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=13">SAP p.13
+population alternatives</a> and <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=26">p.26
+lines776–779</a>; REPORT <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=4">main
+p.4 Statistical Analysis</a>, <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=5">p.5
+Table2 MI header</a>, <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=9">results p.9
+completer sensitivity title</a> and <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=23">p.23 eTable9
+weight columns</a>.</p>
+<p><strong>Source evidence:</strong> SAP p.13 permits both full-data and
+MI approaches; p.26 explicitly makes completers the main analyses and MI
+sensitivity. Main p.4 explicitly makes MI principal, with complete
+follow-up and baseline replacement as post hoc sensitivity. Table2's
+principal dietary display is MI; the completer supplement is titled
+sensitivity analysis. Weight MI is −2.9 (−3.2 to −2.6), I3272/C3311;
+completers are −3.1 (−3.4 to −2.7), I2840/C2946.</p>
+<p><strong>Reported-versus-comparator:</strong> REPORT
+principal=MI/sensitivity=completers versus PLAN
+main=completers/sensitivity=MI.</p>
+<p><strong>Reasoning procedure:</strong> Match the positive priority
+statements and display headings, retaining separate populations and
+missing-data strategies. General availability of both analyses does not
+resolve their assigned priority.</p>
+<p><strong>Calculation:</strong> Not applicable to categorical priority.
+The −2.9 and −3.1 kg effects belong to distinct analyses and are not
+compared as numerical copies requiring agreement.</p>
+<p><strong>Affected result or extracted value:</strong> Selection and
+annotation of the principal dietary and Y1 weight estimates,
+particularly the MI −2.9 versus completer −3.1 kg weight analyses.</p>
+<p><strong>Why context does not resolve it:</strong> Both analyses are
+available, but no supplied prospective interim rule reconciles the
+explicitly reversed main/sensitivity priority. The intended principal
+analysis for evidence extraction cannot be established from general
+permission alone.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+interim report may deliberately use a publication-specific priority
+while preserving the parent trial's future ordering. No analysis
+preference or amended priority is inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> All six locations and
+explicit priority statements were found and matched. Their categorical
+reversal reproduces the issue; the distinct weight populations and
+interval values were preserved without transcription correction.</p>
+<p><strong>Potential downstream evidence impact:</strong> A reviewer
+could select different supplied weight estimates when coding the
+prespecified principal analysis. This states a possible extraction
+choice and does not assert that either analysis is preferable or that
+downstream conclusions changed.</p>
+<h2 id="c004--imputation-specification" class="candidate-card">C004 — Imputation
+specification</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Positive prospective and
+reported imputation specifications differ in imputation count, method
+description, predictor set and target missingness, without a supplied
+outcome-specific interim specification connecting them.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN SAP imputation
+specification vs REPORT main/results imputation specifications</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-005, F-ST1-004</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> PLAN SAP specifications
+are compared with REPORT main and risk-factor specifications,
+establishing P_R and protocol_report. Main's nutritional-analysis
+context and eTable9's risk-factor context do not establish conflicting
+descriptions of the same analysis; S_C is therefore not assigned. P_R
+alone determines the domain and precedence.</p>
+<p><strong>Classification ambiguity:</strong> Outcome-specific engine
+scope, the SAP ≥2-year-loss target and applicability of any interim
+amendment are unresolved. Baseline weight can coincide with baseline
+outcome for weight and is not independently asserted as a differing
+weight predictor.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=26">SAP p.26
+lines788–794</a>; REPORT <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=4">main
+p.4 complete imputation paragraph</a> and <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=24">results p.24
+eTable9 imputation footnote</a>.</p>
+<p><strong>Source evidence:</strong> SAP specifies chained equations and
+20 imputations per missing measurement for missing outcomes among
+participants lost for at least two years. Its predictors are sex, age,
+smoking, leisure-time physical activity, baseline BMI, baseline weight,
+diabetes, hypertension, hypercholesterolemia, family
+coronary-heart-disease history, group, second household member and
+education. Main specifies iterative MCMC and eight imputations for
+follow-up values, excluding baseline imputation, using sex, age,
+smoking, education, BMI, physical activity, group, energy intake and
+baseline value of the imputed variable. The risk-factor footnote
+specifies chained equations with the reported nine-category predictor
+set; it does not print an imputation count.</p>
+<p><strong>Reported-versus-comparator:</strong> REPORT main
+eight/MCMC/follow-up specification versus PLAN
+twenty/chained-equation/≥2-year-loss specification; PLAN predictor set
+also differs from the risk-factor footnote's stated set. The
+risk-specific count is not supplied.</p>
+<p><strong>Reasoning procedure:</strong> Compare printed counts and the
+complete positive method/predictor/missingness statements, retaining
+outcome-specific context. Do not merge distinct nutritional and risk
+analyses into an unsupported common computational procedure.</p>
+<p><strong>Calculation:</strong> PLAN 20 allows [19.5,20.5] and REPORT 8
+allows [7.5,8.5]. Minimum gap is 19.5−8.5=11; relative gap 11/20=0.55,
+exceeding 0.05. Method labels, predictor sets and missingness targets
+are categorical differences and require no rounding calculation.</p>
+<p><strong>Affected result or extracted value:</strong> Analysis
+specifications attached to er-MedDiet 2.2 (95% CI 2.1–2.4), reported MI
+dietary/nutrient effects and weight −2.9 kg (−3.2 to −2.6).</p>
+<p><strong>Why context does not resolve it:</strong> The specifications
+are positively stated, but immediate context does not identify the
+prospective rule governing each interim outcome or explain the
+20-versus-eight count and predictor differences. These affect extraction
+of the analysis accompanying the named estimates.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Nutritional and risk-factor outcomes may use separate imputation
+engines; the SAP ≥2-year-loss paragraph may govern a later or narrower
+missing-outcome setting. Predictor lists may overlap for particular
+outcomes. Neither possibility identifies a supplied interim-specific
+count or complete application rule.</p>
+<p><strong>Mechanical evidence recheck:</strong> All three complete
+locations, predictor lists, printed counts and missingness statements
+were directly matched. The 0.55 minimum relative gap and positive
+specification comparison reproduce the issue without transcription
+correction. Risk-factor count, pooling/code details and exact
+outcome/visit scope remain unavailable; a unified computational cause or
+changed effect is not inferred.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could attach different imputation counts, predictors or missingness
+handling to the reported estimates. The candidate identifies that
+methodological annotation question without asserting that the estimates
+themselves would change under another specification.</p>
+<h2
+id="c005--additional-planned-primary-weight-analyses-not-reported" class="candidate-card">C005
+— Additional planned primary-weight analyses not reported</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The SAP explicitly promises
+additional covariate adjustment for weight models, but no separately
+identified corresponding result accompanies the scheduled Y1 weight
+analysis in the supplied report. Positive household-exclusion and
+eight-factor subgroup promises add reporting-availability questions
+whose applicability to interim Y1 weight remains unresolved.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN protocol/SAP
+additional primary-weight analyses vs REPORT main/results supplied
+analysis coverage</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-006, F-ST2-001</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Classification rationale:</strong> Prospective protocol/SAP
+analysis promises are PLAN content and supplied observed analyses are
+REPORT content, establishing P_R and protocol_report. Mutually
+corroborating report displays and ancillary sharing material add no
+S_C/S_W. No inconsistency solely between plans is asserted. P_R is the
+only supported relationship and highest precedence.</p>
+<p><strong>Classification ambiguity:</strong> The weight-specific
+additional-adjustment promise independently supports the candidate.
+Household exclusion lies between robust-clustering and Cox-specific
+discussion, so its outcome scope is unresolved. The subgroup paragraph
+identifies no outcome, time or interim-deferral rule; its application to
+Y1 weight is an explicit unresolved inference, not an unambiguous
+interim-weight mandate.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190106supp1_prod_1635377898.47058.pdf#page=52">protocol p.52
+lines1661–1664 household exclusion</a>, <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=5">SAP p.5
+primary weight</a>, <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=9">p.9
+primary-weight/Y1 key</a>, <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=25">p.25
+lines724–728 weight methods and764–765 additional adjustment</a>, <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=26">p.26
+lines766–767 adjustment continuation and781–785 complete subgroup
+paragraph</a>. REPORT <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=4">main
+p.4 analysis listing</a>, <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=8">p.8
+risk reporting</a>, <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=9">p.9
+Figure 3</a>, <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=10">p.10
+Figure 4</a>, <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=1">results p.1
+contents</a>, <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=23">p.23 eTable9
+weight</a>, <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=24">p.24 complete
+model/imputation footnotes</a>, and corroborating <a
+href="../joi190106supp4_prod_1635377898.50723.pdf#page=1">data-sharing
+p.1</a>.</p>
+<p><strong>Source evidence:</strong> SAP schedules Y1 primary weight and
+explicitly specifies additional weight-model adjustment for recruitment
+center, sex, age, education, smoking, baseline hypertension,
+dyslipidemia, diabetes, family coronary-heart-disease history and
+physical activity. Protocol positively promises sensitivity analysis
+excluding second household members. SAP's unqualified subgroup paragraph
+positively lists eight factors. Their complete source/comparator
+associations are retained below.</p>
+<table>
+<thead>
+<tr>
+<th>Planned subgroup factor</th>
+<th>SAP p.26 specification</th>
+<th>Supplied REPORT observation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sex</td>
+<td>Line782, by sex</td>
+<td>Baseline counts and imputation predictors, without sex-specific
+weight outputs.</td>
+</tr>
+<tr>
+<td>Age</td>
+<td>Line782, median age cut-off</td>
+<td>Age descriptions/predictors, without cut-point-defined weight
+outputs.</td>
+</tr>
+<tr>
+<td>Education</td>
+<td>Lines782–783, two categories</td>
+<td>Baseline education/predictors, without two-category weight
+outputs.</td>
+</tr>
+<tr>
+<td>Baseline diabetes</td>
+<td>Line783</td>
+<td>Contextual diabetes material, without diabetes-specific weight
+outputs.</td>
+</tr>
+<tr>
+<td>Metabolic-syndrome criteria</td>
+<td>Line783, three versus at least four</td>
+<td>Eligibility/population definitions, without criteria-count-specific
+weight outputs.</td>
+</tr>
+<tr>
+<td>Smoking</td>
+<td>Line784</td>
+<td>Baseline smoking/predictors, without smoking-specific weight
+outputs.</td>
+</tr>
+<tr>
+<td>BMI</td>
+<td>Line784, obese versus nonobese</td>
+<td>Arm-based BMI changes/predictors, without obese/nonobese weight
+subgroup outputs.</td>
+</tr>
+<tr>
+<td>Baseline er-MedDiet adherence</td>
+<td>Lines784–785, baseline score</td>
+<td>Arm/time adherence summaries, without baseline-score-defined weight
+outputs.</td>
+</tr>
+</tbody>
+</table>
+<p>Main lists principal MI, completer and baseline-replacement
+sensitivity analyses and site/participant/family random intercepts.
+eTable9 supplies weight MI −2.9 kg (95% CI −3.2 to −2.6), I3272/C3311,
+and completers −3.1 kg (−3.4 to −2.7), I2840/C2946. Figures 3–4 organize
+results by outcome, arm and time, without the eight subgroup partitions.
+Figure 4's weight percentages 40.6 (38.7–42.5) versus 12.2 (11.0–13.5),
+P&lt;.001, are availability locators, not challenged values. Results
+contents enumerate eTables 1–9/eFigures 1–3; complete displays
+corroborate their scope. The sharing statement supplies no additional
+analysis output or statistical plan.</p>
+<p><strong>Reported-versus-comparator:</strong> Positive weight-specific
+additional-adjustment planning versus no separately identified adjusted
+Y1 weight result in the supplied REPORT package. Household-excluded and
+eight-factor subgroup outputs are also absent there, while their
+outcome/time applicability remains qualified.</p>
+<p><strong>Reasoning procedure:</strong> Match primary-weight/Y1
+scheduling with the explicit weight-method promise, then inspect the
+complete supplied analysis inventory. Core and extension rechecks read
+complete main 14/results 29/sharing 1 text streams, every relevant
+display type, and fresh Figures 3–4 renders. Searches for adjustment,
+household, subgroup, interaction, heterogeneity and stratification were
+checked against all page/display records; absence is not inferred from
+contents or a single term alone. Distinguish imputation predictors from
+outcome-model adjustment, household random factors from member
+exclusion, and baseline descriptive factors from subgroup outcome
+analyses.</p>
+<p><strong>Calculation:</strong> Not applicable to
+analysis-specification and supplied-report availability. No numerical
+output for an absent analysis, subgroup effect, denominator or test is
+calculated or inferred.</p>
+<p><strong>Affected result or extracted value:</strong> Completeness and
+prespecification annotation of the scheduled Y1 primary-weight analysis,
+including the additional adjusted result and conditional applicability
+of household-excluded/eight-factor subgroup outputs.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 5
+applies to a positively planned primary analysis absent from supplied
+reporting. The explicitly weight-specific additional-adjustment
+component supports that comparison independently. The normative
+planned-element doubt rule retains the subgroup availability question
+with its outcome/time limitation.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+extra analyses may belong to a later comprehensive weight publication or
+the parent-trial reporting horizon. The subgroup paragraph may govern
+final cardiovascular outcomes; neighboring methods cover both
+cardiovascular and weight analyses, and no supplied sentence explicitly
+restricts or defers the promise. Household exclusion may be confined to
+surrounding survival-analysis discussion. Main openly describes
+preliminary reporting and treats weight as secondary. These alternatives
+limit the applicability claim, without identifying extra outputs in the
+supplied package.</p>
+<p><strong>Mechanical evidence recheck:</strong> Core pages and the
+added complete subgroup paragraph/reporting-availability locations were
+directly matched. Fresh extension recheck covers 11 unique pages and the
+complete 44-page REPORT bound, with every eight-factor occurrence
+preserved. It confirms the positive promise, absent corresponding
+supplied outputs and absent explicit subgroup outcome/time pairing. All
+roles and P_R classification remain reproduced without transcription
+correction. Nonperformance, selective reporting, changed effects and
+effect modification are not inferred. The <a
+href="review_1_6_2/verification/pass_2_extension_C005.md">durable
+extension record</a> retains full commands,17 derivative identities and
+scope limits alongside the <a
+href="review_1_6_2/verification/evidence_recheck.md">canonical
+recheck</a>.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could code the supplied weight result as the complete planned analysis
+set or annotate additional analyses as unavailable. The candidate
+identifies that availability/prespecification distinction and its
+conditional subgroup/household scope, without assuming omitted analyses
+would alter any result.</p>
+<h2 id="c006--ancillary-multiplicity-intervals-for-y1-waist" class="candidate-card">C006 —
+Ancillary multiplicity intervals for Y1 waist</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The SAP promises nominal and
+ancillary Bonferroni confidence intervals for a 27-comparison secondary
+family explicitly including waist, while the report adopts no additional
+adjustment and supplies only nominal intervals for the scheduled Y1
+waist result.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN SAP ancillary waist
+multiplicity intervals vs REPORT main/results unadjusted framework</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-XS-007, F-ST1-005</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> The PLAN ancillary
+interval rule is compared with the REPORT inferential framework and
+named waist outputs. P_R and protocol_report apply. Matching
+main/results nominal outputs are corroboration and create no S_C.</p>
+<p><strong>Classification ambiguity:</strong> Timing of ancillary
+reporting under the interim publication's scope is unresolved; no
+supplied prospective interim exception is identified.</p>
+<p><strong>Exact source locations:</strong> PLAN <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=9">SAP p.9 Y1
+secondary waist</a> and <a
+href="../joi190106supp2_prod_1635377898.49605.pdf#page=12">p.12
+lines282–291/27-comparison footnote</a>; REPORT <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=4">main
+p.4 exploratory/no-adjustment rule</a>, <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=8">p.8
+waist result</a> and <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=23">results p.23
+eTable9 waist</a>.</p>
+<p><strong>Source evidence:</strong> SAP schedules waist at M6/Y1/Y6 and
+specifies both nominal 95% and ancillary Bonferroni 1−α/m intervals,
+m=27, with waist expressly named in the footnote. It emphasizes nominal
+reporting while positively adding ancillary adjusted intervals. Main
+makes all secondary analyses exploratory without additional multiplicity
+adjustment. Y1 waist MI is −3.3 cm (95% CI −3.6 to −2.9), and completers
+are −3.3 (−3.7 to −3.0); only nominal forms are supplied.</p>
+<p><strong>Reported-versus-comparator:</strong> Explicit unadjusted
+exploratory REPORT framework versus PLAN nominal-plus-ancillary interval
+specification for the named waist outcome.</p>
+<p><strong>Reasoning procedure:</strong> Match Y1 waist with its planned
+time and named secondary family; compare the positively stated interval
+rule with supplied interval types. Do not extend this 27-comparison
+family to intermediate dietary/nutrient outcomes without a source
+key.</p>
+<p><strong>Calculation:</strong> 1−0.05/27=0.998148148148, or99.8148148%
+ancillary confidence. This reproduces the planned confidence level only.
+The categorical rule comparison needs no rounding check; adjusted
+endpoints cannot be computed from the supplied
+covariance/degrees-of-freedom information.</p>
+<p><strong>Affected result or extracted value:</strong> Interval-type
+and multiplicity annotation for the Y1 waist difference −3.3 cm and its
+reported nominal uncertainty.</p>
+<p><strong>Why context does not resolve it:</strong> The report states a
+different exploratory approach but supplies no prospective timing
+exception connecting it with the positively planned ancillary interval.
+A reader cannot determine the applicable planned interval specification
+for this named Y1 result from nominal-first wording alone.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Ancillary adjustment may be reserved for later comprehensive
+secondary-outcome reporting. The supplied plan's emphasis on nominal
+intervals coexists with its promise to add adjusted forms; the package
+does not identify an interim-specific exception.</p>
+<p><strong>Mechanical evidence recheck:</strong> Every specified page,
+complete secondary-family footnote and reported interval was matched.
+The planned confidence-level arithmetic and categorical comparison
+reproduce the issue without transcription correction. No adjusted
+endpoint, significance change or preferred analysis is inferred.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could record the supplied nominal interval as the planned uncertainty
+specification or note that an ancillary interval is unavailable. No
+effect on downstream significance or conclusions is claimed.</p>
+<h2 id="c007--repeated-alcohol-interval-versus-p-conflict" class="candidate-card">C007 —
+Repeated alcohol interval-versus-P conflict</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Four printed alcohol-energy
+contrasts have 95% intervals containing zero while their adjacent P
+values are below the stated two-sided 00.05 significance level.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main alcohol CI vs
+adjacent P; REPORT results alcohol CI vs adjacent P in each display</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-ST1-001, F-ST1-201</p>
+<p><strong>Qualifying route:</strong> Route A, category 1</p>
+<p><strong>Classification rationale:</strong> Each interval/P comparison
+is internal to a REPORT display, so statistical_results and S_W apply.
+Repetition across main and results PDFs consolidates the same internal
+pattern; no equality between different population-specific estimates is
+asserted, so S_C is not added.</p>
+<p><strong>Classification ambiguity:</strong> None about document role
+or relationship. Interval/test and pooling construction remains
+unresolved.</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=7">main
+p.7 Table3 alcohol M6 and M12</a>, contextual <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=4">main
+p.4 two-sided/P&lt;.05 rule</a> and <a
+href="../jama_saynorea_2019_oi_190106_1635377898.43062.pdf#page=8">p.8
+Table3 footnote b</a>; REPORT <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=15">results p.15
+eTable5 alcohol M6 and footnote</a> and <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=22">p.22 eTable8
+alcohol M6 and footnote</a>.</p>
+<p><strong>Source evidence:</strong> All affected contrasts are mean
+changes in alcohol percentage of energy; the paper states two-sided
+testing and significance at P&lt;.05. Mixed-effect model context and
+site/couple random factors are retained. The four occurrences are:</p>
+<table>
+<thead>
+<tr>
+<th>Display and time</th>
+<th>Printed effect (95% CI)</th>
+<th>Adjacent P</th>
+<th>Population</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main Table3, M6</td>
+<td>−0.2 (−0.4 to 0)</td>
+<td>.01</td>
+<td>MI I3272/C3311</td>
+</tr>
+<tr>
+<td>Main Table3, M12</td>
+<td>−0.2 (−0.4 to 0.1)</td>
+<td>.01</td>
+<td>MI I3272/C3311</td>
+</tr>
+<tr>
+<td>Results eTable5, M6</td>
+<td>−0.2 (−0.4 to 0)</td>
+<td>.02</td>
+<td>Completers I2862/C2883</td>
+</tr>
+<tr>
+<td>Results eTable8, M6</td>
+<td>−0.2 (−0.3 to 0)</td>
+<td>.02</td>
+<td>Baseline replacement I3272/C3311</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reported-versus-comparator:</strong> Within each row, printed
+95% null containment versus an adjacent P below 0.05. No matching-value
+comparison between these distinct analysis populations is made.</p>
+<p><strong>Reasoning procedure:</strong> Read aligned
+estimate/interval/P cells and their method/level context, compare zero
+containment with the stated significance rule, and retain every affected
+occurrence as one pattern. Supplementary M12 alcohol intervals exclude
+zero and are not additional affected rows. All four point estimates are
+inside their own ordered intervals.</p>
+<p><strong>Calculation:</strong> Each printed interval contains 0; each
+printed P=.01 or.02 is below .05. For documentation, −0.4 allows
+[−0.45,−0.35], −0.3 allows [−0.35,−0.25], −0.2 allows [−0.25,−0.15], and
+0.1 allows [0.05,0.15]. The main M12 positive upper limit remains
+positive. A printed zero in one-decimal rows can hide an unrounded limit
+in [−0.05,0.05]. P=.01 allows [.005,.015] and P=.02 allows [.015,.025],
+both wholly below .05. Route A category 1 has no rounding exemption; no
+diagnostic Wald P or replacement interval is computed.</p>
+<p><strong>Affected result or extracted value:</strong> The four named
+alcohol-energy change contrasts and their uncertainty/significance
+classifications.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 1
+registers the printed interval-versus-P/test conflict. Rounded zero
+endpoints or different interval/test procedures remain alternatives
+without removing the candidate.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Some
+zero upper limits may represent negative unrounded bounds. CIs and P
+values may use distinct procedures or MI pooling conventions. The main
+M12 positive 0.1 upper limit also needs reconciliation. Exact unrounded
+limits, test statistics, degrees of freedom, covariance and pooling
+definitions are not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Direct text and fresh
+source renders matched all four aligned rows and their method footnotes.
+Null containment/P classification was reproduced for each occurrence
+without transcription correction; populations were retained separately.
+Production mechanism and unrounded values remain unknown.</p>
+<p><strong>Potential downstream evidence impact:</strong> A data
+extractor could copy both the interval and P value and assign
+incompatible significance readings to the same named contrast. The issue
+is limited to these alcohol rows and does not establish a changed
+primary dietary effect or downstream conclusion.</p>
+<h2 id="c008--red-wine-median-and-upper-quartile" class="candidate-card">C008 — Red-wine median
+and upper quartile</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> The intervention baseline
+red-wine cell prints a median 33 with upper quartile 29, which does not
+satisfy the ordering of a median and quartiles from one distribution
+after display-precision allowances.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results eTable2
+red-wine median vs upper quartile within one row</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-101</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Classification rationale:</strong> Median and upper quartile
+are REPORT values within one eTable2 cell. S_W and statistical_results
+apply. Other baseline copies are peripheral comparators and are not used
+as relationships or to select a replacement value.</p>
+<p><strong>Classification ambiguity:</strong> None about document role
+or relationship. Intended descriptive values or a different underlying
+distribution remain unavailable.</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=7">results p.7
+eTable2, Red wine intervention baseline median(IQR), header and
+footnote</a>.</p>
+<p><strong>Source evidence:</strong> Exact-source text and render both
+show 33 (0,29) g/week. Row and footnote identify baseline data as
+median(IQR). The compared values are the printed intervention median 33
+and its own Q3 = 29; control4 (0,29) is coherent but does not identify
+an intervention replacement.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed median 33 versus
+printed upper quartile 29 from the same named distributional
+summary.</p>
+<p><strong>Reasoning procedure:</strong> Apply Q1≤median≤Q3 using
+complete half-unit allowances for all three integers. Keep the direct
+within-cell ordering comparison distinct from cross-document baseline
+differences.</p>
+<p><strong>Calculation:</strong> Median allows [32.5,33.5], Q1 allows
+[−0.5,0.5], and Q3 allows [28.5,29.5]. The compatible median range is at
+most [−0.5,29.5], or [0,29.5] for nonnegative intake. Minimum gap is
+32.5−29.5=3; relative discrepancy 3/33=0.090909&gt;0.05. No allowed
+combination reconciles the ordering.</p>
+<p><strong>Affected result or extracted value:</strong> The intervention
+baseline red-wine median and interquartile limits in g/week.</p>
+<p><strong>Why context does not resolve it:</strong> The same row and
+footnote identify the statistic, but neither identifies an intended
+median/Q3 replacement or a distinct distribution explaining the triple.
+The minimum gap exceeds the display-precision threshold, and the
+unresolved statistic is directly extractable.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+median or quartile could have been substituted, or descriptive
+computations could have been mixed. Those are possible mechanisms only;
+the source does not choose an intended value. No replacement is inferred
+from the control cell or other baseline displays.</p>
+<p><strong>Mechanical evidence recheck:</strong> The exact cell, unit,
+group, time and statistic definition were matched visually and in direct
+text. The ordering and 0.090909 relative gap reproduce the issue without
+transcription correction. Raw data are unnecessary to establish this
+printed ordering comparison; intended values remain unavailable.</p>
+<p><strong>Potential downstream evidence impact:</strong> An extractor
+could record33 as the baseline median and29 as its upper quartile,
+producing an unresolved distributional summary. No treatment-effect
+change or downstream conclusion is inferred.</p>
+<h2 id="c009--efigure2-labels-versus-bars-and-confidence-intervals" class="candidate-card">C009
+— eFigure2 labels versus bars and confidence intervals</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Several percentages printed
+inside eFigure2 bars lie outside their same-colored bars' own 95%
+intervals. The seven categories also show a repeated label/graphic
+association discrepancy, including dessert magnitude that a global arm
+swap cannot reconcile.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results eFigure2
+printed arm labels vs bars/95% intervals/legend within one figure</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Finding IDs:</strong> F-NUM-102, F-ST1-202</p>
+<p><strong>Qualifying route:</strong> Route A, category 1</p>
+<p><strong>Classification rationale:</strong> All compared labels, bars,
+confidence intervals, axis, legend and caption are within one REPORT
+figure. S_W and statistical_results apply. Arm-specific intervals are
+not treated as between-arm contrast intervals; no external or PLAN
+comparator is required.</p>
+<p><strong>Classification ambiguity:</strong> None about document role
+or relationship. Exact label/bar numerical provenance and any alternate
+statistic/population remain unavailable.</p>
+<p><strong>Exact source locations:</strong> REPORT <a
+href="../joi190106supp3_prod_1635377898.49725.pdf#page=26">results p.26
+eFigure2, all seven pairs with printed labels, colored bars, 95%
+intervals, axis, legend, P annotations and 12-month caption</a>.</p>
+<p><strong>Source evidence:</strong> Purple identifies Intervention and
+gray Control. The vertical axis identifies participant percentages with
+95%CI, and title/caption identify 12months. The directly read
+associations are:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Printed I/C,%</th>
+<th>Approximate visible I/C bar tops,%</th>
+<th>Printed P</th>
+<th>Within-display observation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decreased fat</td>
+<td>34/32</td>
+<td>32/34</td>
+<td>.14</td>
+<td>Label/bar ordering reverses; retained pattern occurrence only.</td>
+</tr>
+<tr>
+<td>Increased MUFA</td>
+<td>72/77</td>
+<td>77/72</td>
+<td>&lt;.001</td>
+<td>Both labels outside own intervals; ordering reverses.</td>
+</tr>
+<tr>
+<td>Increased MUFA:SFA</td>
+<td>79/86</td>
+<td>86/79</td>
+<td>&lt;.001</td>
+<td>Both labels outside own intervals; ordering reverses.</td>
+</tr>
+<tr>
+<td>Increased fruit</td>
+<td>58/63</td>
+<td>63/58</td>
+<td>&lt;.001</td>
+<td>Both labels outside own intervals; ordering reverses.</td>
+</tr>
+<tr>
+<td>Increased vegetables</td>
+<td>56/64</td>
+<td>64/56</td>
+<td>&lt;.001</td>
+<td>Both labels outside own intervals; ordering reverses.</td>
+</tr>
+<tr>
+<td>Decreased meat</td>
+<td>60/62</td>
+<td>62/60</td>
+<td>.08</td>
+<td>Label/bar ordering reverses; retained pattern occurrence only.</td>
+</tr>
+<tr>
+<td>Decreased sugary dessert</td>
+<td>59/58</td>
+<td>about 68/60</td>
+<td>&lt;.001</td>
+<td>Intervention 59 lies below own interval; swapping labels does not
+explain magnitude.</td>
+</tr>
+</tbody>
+</table>
+<p>Approximate tops are visual readings, not source-table numerical
+estimates. MUFA, ratio, fruit, vegetables and dessert intervention
+labels are outside their own intervals; control MUFA, ratio, fruit and
+vegetable labels likewise are outside theirs. Fat/meat are retained as
+affected locations of the same association pattern rather than
+independently precision-qualified findings.</p>
+<p><strong>Reported-versus-comparator:</strong> Within each category,
+printed arm-associated percentage versus its same-colored bar and own
+95% interval under the single supplied legend. A global arm swap
+explains approximate first-six ordering but cannot explain dessert 59/58
+versus about 68/60.</p>
+<p><strong>Reasoning procedure:</strong> Visually match every label to
+its colored arm, common scale, bar and confidence limits. Distinguish
+directly visible point/own-interval containment from approximate bar-top
+arithmetic. Consolidate all affected pairs into one repeated association
+issue, with fat/meat's weaker independent precision claim explicitly
+bounded.</p>
+<p><strong>Calculation:</strong> Route A category 1 point/own-interval
+conflict has no rounding exemption. Independent numerical corroboration
+uses conservative visual bounds and printed ±0.5 allowances:</p>
+<table>
+<thead>
+<tr>
+<th>Category/arm</th>
+<th>Conservative visible bar-top bound,%</th>
+<th>Printed-label interval,%</th>
+<th style="text-align: right;">Minimum gap</th>
+<th style="text-align: right;">Relative gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MUFA:SFA intervention</td>
+<td>[85,87]</td>
+<td>[78.5,79.5]</td>
+<td style="text-align: right;">5.5</td>
+<td style="text-align: right;">5.5/79=0.06962</td>
+</tr>
+<tr>
+<td>MUFA:SFA control</td>
+<td>[78,80]</td>
+<td>[85.5,86.5]</td>
+<td style="text-align: right;">5.5</td>
+<td style="text-align: right;">5.5/86=0.06395</td>
+</tr>
+<tr>
+<td>Fruit intervention</td>
+<td>[62,64]</td>
+<td>[57.5,58.5]</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">3.5/58=0.06034</td>
+</tr>
+<tr>
+<td>Fruit control</td>
+<td>[57,59]</td>
+<td>[62.5,63.5]</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">3.5/63=0.05556</td>
+</tr>
+<tr>
+<td>Vegetables intervention</td>
+<td>[63,65]</td>
+<td>[55.5,56.5]</td>
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">6.5/56=0.11607</td>
+</tr>
+<tr>
+<td>Vegetables control</td>
+<td>[55,57]</td>
+<td>[63.5,64.5]</td>
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">6.5/64=0.10156</td>
+</tr>
+<tr>
+<td>Dessert intervention</td>
+<td>[65,71], deliberately broad</td>
+<td>[58.5,59.5]</td>
+<td style="text-align: right;">5.5</td>
+<td style="text-align: right;">5.5/59=0.09322</td>
+</tr>
+</tbody>
+</table>
+<p>All corroborative relative gaps exceed 0.05 after visual and printed
+allowances. These bounds are not exact 95% endpoints. MUFA's
+own-interval observation does not require a separate bar-top threshold;
+fat and meat are not claimed independently to exceed it. No P value,
+denominator or exact replacement percentage is reconstructed, and no
+group-comparison P is inferred from individual-arm interval overlap.</p>
+<p><strong>Affected result or extracted value:</strong> The seven
+arm-specific 12-month dietary-change percentages and their directional
+reading, especially dessert magnitude.</p>
+<p><strong>Why context does not resolve it:</strong> Route A, category 1
+applies where a printed point percentage lies outside its own plotted
+interval. The repeated direction/magnitude comparison additionally
+satisfies Route B: one arm legend and time are given, but no mapping
+reconciles every category.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+label/bar/population or legend association might differ, but the figure
+supplies no second mapping or population. Neither swapping all arm
+assignments nor swapping first-six labels explains dessert. Exact
+numerical bar/CI data, arm denominators, label provenance and any
+alternative statistic are not supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> A fresh exact-source
+render was opened and all seven pairs, annotations and confidence
+indications were read. Same-color point/own-interval conflicts and the
+conservative numerical gaps reproduce the issue without transcription
+correction. Direct observations are separated from visual approximations
+and possible label-swapping mechanisms. Printed P values were preserved
+without treating&lt;.001 as a displayed-zero P.</p>
+<p><strong>Potential downstream evidence impact:</strong> A reviewer
+could extract either the printed arm labels or graphically implied
+percentages and obtain different directional/magnitude summaries. No
+exact replacement, significance recalculation or downstream conclusion
+change is asserted.</p>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>Quantitative evidence extraction carries population definitions,
+outcome status, analysis priority, missing-data procedures, uncertainty
+and arm attribution alongside point estimates. If a candidate is
+confirmed during later human adjudication, different readings of those
+fields could affect an extraction sheet, evidence table or synthesis
+input. The report identifies the particular field in each card; it does
+not establish that any issue has propagated into a systematic review,
+meta-analysis or guideline.</p>
+<p>Plan/report differences can reflect interim-specific reporting or
+later planned outputs. Numerical display conflicts can have several
+production or inferential explanations. These alternatives remain part
+of the supplied evidence record. No replacement value, preferred
+analysis or assessment of trial validity is assigned.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>All direct-source units are mapped, and every cited candidate
+location was exactly rechecked. Missing definitions limit interpretation
+or reconstruction of specific analyses; they do not represent
+uninspected source units.</p>
+<ul>
+<li>Prospective interim-specific hierarchy, membership, priority and
+reporting/deferral specifications or amendments are not supplied.</li>
+<li>C004's outcome/visit application, risk-factor imputation count and
+implementation/pooling details are incomplete. The SAP ≥2-year-loss
+target may apply to a different reporting horizon.</li>
+<li>C005's explicitly weight-specific adjustment promise is
+distinguishable from unresolved household-exclusion outcome scope and
+subgroup-to-outcome/time pairing. Exact subgroup cut-offs, outputs and
+any prospective interim deferral are not supplied. Reporting absence is
+bounded to these 44 REPORT pages, not to other publications or
+unpublished work.</li>
+<li>The planned ancillary waist interval's numerical endpoints cannot be
+reconstructed without covariance/degrees-of-freedom information; only
+its stated confidence level is computed.</li>
+<li>Alcohol unrounded intervals, test statistics, covariance, degrees of
+freedom and interval/P pooling construction are not supplied. Rounded
+zero limits and distinct inferential constructions remain
+alternatives.</li>
+<li>The intended red-wine median/quartiles and eFigure2 numerical
+bar/interval data, denominators and label provenance are unavailable.
+Figure-derived tops and bounds remain visual approximations.</li>
+<li>eFigure3 does not supply an inferential whisker definition; this
+absence was screened rather than converted into a candidate. It does not
+limit page coverage.</li>
+</ul>
+<p>Only package evidence was used. No participant-level reanalysis,
+external publication search or amendment search was performed. Complete
+bounded limitations are retained in <a
+href="review_1_6_2/limitations.md">limitations.md</a>.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h2>
+<h3 id="source-integrity-and-reproducible-evidence-trail">Source
+integrity and reproducible evidence trail</h3>
+<p>The curator recorded SHA-256 for all five sources and 132 reused
+artifacts before scientific work. The independent audit reproduced 5/5
+source and 132/132 reused-asset integrity checks, with no changed file.
+Completion recomputation uses the same inventories; sources and reused
+evidence assets remain unchanged. See <a
+href="review_1_6_2/source_hashes_before.sha256">source hashes before</a>
+and <a
+href="review_1_6_2/reused_artifact_hashes_before.sha256">reused-artifact
+hashes before</a>. New derivatives are separate current-run artifacts
+and do not replace supplied or reused files.</p>
+<p><a href="review_1_6_2/routing_preflight.md">Routing preflight</a>
+records PASS, exact run model gpt-6.1-sol from DEFAULT, coordinator
+high, ordinary specialists medium and statistical/screen/recheck/audit
+specialists high. All ten named presets were verified. Execution mode is
+INTERACTIVE_CLI, Provider CURRENT_SESSION and Coordinator inference
+PASS. No provider credential or selection was added to the package
+configuration.</p>
+<p>Processing used CPU and direct local tools. Poppler
+pdftotext/pdftoppm 26.01.0 produced exact-page layouts and targeted
+images. Tool probe found all required direct capabilities; no OCR, GPU
+or fallback installation was needed, and fallback environment status is
+NOT_NEEDED/NOT_CREATED. <a href="review_1_6_2/tooling_record.md">Tooling
+record</a> and the evidence-asset/recheck provenance identify engines,
+pages, commands and derivative paths. The core recheck produced 25 text
+files and five images; the fresh C005 extension produced 17 additional
+derivatives with 11 exact-page texts, three full REPORT streams and
+three renders.</p>
+<p>Scientific classification is documented in the <a
+href="review_1_6_2/candidate_ledger.md">candidate ledger</a>, <a
+href="review_1_6_2/verification/evidence_recheck.md">mechanical
+recheck</a> and <a
+href="review_1_6_2/quality/evidence_quality_audit.md">quality audit</a>.
+The ledger, recheck, audit and report contain the identical nine stable
+IDs. Canonical row-merging and relative-link repairs preserved original
+scientific part artifacts and changed no source value or candidate
+scope.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<p>All actual agents, including the coordinator and optional disjoint
+shards, are listed below. The twenty specialist runtime IDs are distinct
+fresh spawns. Every role uses the exact run model; reasoning effort
+follows the fixed role contract. Statistical pass 2, pass 2 screening,
+extension recheck and audit did not repurpose previous agents.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coordinator</td>
+<td>COORDINATOR-CURRENT-SESSION</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr>
+<td>reuse_asset_curator</td>
+<td>root/curator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>source_inventory.md</td>
+</tr>
+<tr>
+<td>main_quantitative_mapper</td>
+<td>root/main_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper</td>
+<td>root/support_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr>
+<td>support_quantitative_mapper_protocol_shard</td>
+<td>root/protocol_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_protocol.md</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer</td>
+<td>root/numeric_main</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr>
+<td>numeric_consistency_reviewer_support_shard</td>
+<td>root/numeric_support</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/numeric_support.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1</td>
+<td>root/stat1_main</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1_support_a_shard</td>
+<td>root/stat1_support_a</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_pass_1_support_a.md</td>
+</tr>
+<tr>
+<td>statistics_pass_1_support_b_shard</td>
+<td>root/stat1_support_b</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_pass_1_support_b.md</td>
+</tr>
+<tr>
+<td>cross_source_consistency_reviewer</td>
+<td>root/cross_checker</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr>
+<td>inclusion_screener</td>
+<td>root/inclusion_initial</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/inclusion_screen.md</td>
+</tr>
+<tr>
+<td>evidence_rechecker</td>
+<td>root/evidence_recheck</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2</td>
+<td>root/stat2_main</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2_support_a_shard</td>
+<td>root/stat2_support_a</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_pass_2_support_a.md</td>
+</tr>
+<tr>
+<td>statistics_pass_2_support_b_shard</td>
+<td>root/stat2_support_b</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_pass_2_support_b.md</td>
+</tr>
+<tr>
+<td>inclusion_screener_pass_2</td>
+<td>root/inclusion_pass2</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/inclusion_screen_pass_2.md</td>
+</tr>
+<tr>
+<td>quality_control_auditor_statistical_shard</td>
+<td>root/audit_statistics</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/parts/statistical_results.md</td>
+</tr>
+<tr>
+<td>evidence_rechecker_pass_2_extension</td>
+<td>root/recheck_pass2_extension</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/pass_2_extension_C005.md</td>
+</tr>
+<tr>
+<td>quality_control_auditor</td>
+<td>root/audit_main</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr>
+<td>report_generator</td>
+<td>root/report_generator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="review_1_6_2/agent_execution_manifest.md">execution
+manifest</a> gives one primary artifact per runtime ID; the coverage
+manifest records additional shard artifacts separately. Runtime names
+omit the leading slash in the durable table and identify the
+corresponding current-session collaboration tasks.</p>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Five direct PDFs contain 149 pages,
+with 149 pages covered by source-identical reusable native layout and 0
+fresh-required extraction pages. The 75-page protocol and 30-page SAP
+require full new scientific mapping and planned-versus-reported
+comparisons; report materials contain repeated dense dietary tables and
+figures requiring visual checks. No Office conversion or broad OCR is
+needed. Allow bounded disjoint support-mapping shards, parallel initial
+checkers, and the required sequential screening, recheck, second
+statistical pass, audit, and report stages.</li>
+<li><strong>Total source units:</strong> 149</li>
+<li><strong>Fresh-source units:</strong> 0</li>
+<li><strong>Target elapsed minutes:</strong> 30-45</li>
+<li><strong>Started UTC:</strong> 2026-10-11T04:55:43Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T05:49:45Z</li>
+<li><strong>Observed elapsed minutes:</strong> 54.03</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> The recovered subgroup finding
+required another fresh inclusion screen and exact-source extension
+recheck before audit closure; disjoint audit scopes required a
+sequential durable handoff; mechanical statistical-inventory,
+coverage-table and manifest merges required bounded repairs; complete
+nine-card report assembly and a final neutral-wording validation repair
+followed these mandatory stages.</li>
+</ul>
+<p>The target is a planning range rather than a finding or coverage cap.
+The coordinator captures the finish time immediately after complete
+Markdown assembly and copies the finalized fields above from
+run_state.md. Local HTML rendering and mechanical validation are outside
+the observed review duration. Bounded exceedance causes, when
+applicable, identify the recovered subgroup finding's required extra
+screen/recheck, context-bounded sequential audit handoff and mechanical
+inventory/manifest/coverage merge repairs. No coverage or candidate was
+omitted to meet the range.</p>
+</body>
+</html>

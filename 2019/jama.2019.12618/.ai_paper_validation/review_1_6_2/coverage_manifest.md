@@ -1,0 +1,44 @@
+# Workflow 1.6.2 Coverage Manifest
+
+Created before scientific mapping. Source scopes are disjoint and together cover every supplied page. Reusable coverage is a preprocessing optimization; all units require fresh scientific mapping. One plain relative artifact path appears in every row. Pending relationship and candidate scopes will be expanded to explicit IDs after registration.
+
+| Stage | Shard ID | Exact scope | Artifact | Status |
+|---|---|---|---|---|
+| source_inventory | sources-001 | DOC-001 pp. 1-10; DOC-002 pp. 1-16; DOC-003 pp. 1-153; DOC-004 pp. 1-83; DOC-005 p. 1 | source_inventory.md | COMPLETE |
+| evidence_assets | assets-001 | All 143 source-linked reusable artifacts and every coverage gap | evidence_asset_inventory.md | COMPLETE |
+| main_evidence_mapping | main-001 | DOC-001 pp. 1-10 | extraction/main_quantitative_evidence.md | COMPLETE |
+| support_evidence_mapping | results-001 | DOC-002 pp. 1-16; DOC-005 p. 1 | extraction/parts/support_results.md | COMPLETE |
+| support_evidence_mapping | protocol-001 | DOC-003 pp. 1-32 | extraction/parts/protocol_001_032.md | COMPLETE |
+| support_evidence_mapping | protocol-002 | DOC-003 pp. 33-64 | extraction/parts/protocol_033_064.md | COMPLETE |
+| support_evidence_mapping | protocol-003 | DOC-003 pp. 65-96 | extraction/parts/protocol_065_096.md | COMPLETE |
+| support_evidence_mapping | protocol-004 | DOC-003 pp. 97-128 | extraction/parts/protocol_097_128.md | COMPLETE |
+| support_evidence_mapping | protocol-005 | DOC-003 pp. 129-153 | extraction/parts/protocol_129_153.md | COMPLETE |
+| support_evidence_mapping | sap-001 | DOC-004 pp. 1-32 | extraction/parts/sap_001_032.md | COMPLETE |
+| support_evidence_mapping | sap-002 | DOC-004 pp. 33-64 | extraction/parts/sap_033_064.md | COMPLETE |
+| support_evidence_mapping | sap-003 | DOC-004 pp. 65-74 and 76-83 reusable-backed; p.75 fresh exact-page formula mapping | extraction/parts/sap_065_083.md | COMPLETE |
+| support_evidence_mapping | support-merged | All nine disjoint support parts, lossless canonical merge | extraction/support_quantitative_evidence.md | COMPLETE |
+| numeric_checks | numeric-001 | All 228 REPORT numeric relationships N001 through N228 | relationships/numeric_relationship_inventory.md | COMPLETE |
+| numeric_checks | numeric-002 | All REPORT counts, denominators, totals, flow and effect-measure checks | checkers/numeric_consistency.md | COMPLETE |
+| statistics_pass_1 | stats-001 | S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050, S051, S052, S053, S054, S055, S056, S057, S058, S059, S060, S061, S062, S063, S064, S065, S066, S067, S068, S069, S070, S071, S072, S073, S074, S075, S076, S077, S078, S079, S080, S081, S082, S083, S084, S085, S086, S087, S101, S102, S103, S104, S105, S106, S107, S108, S109, S110, S111, S112, S113, S114, S115, S116, S117, S118, S119, S120, S121, S122, S123, S124, S125, S126, S127, S128, S129, S130 | checkers/statistical_pass_1.md | COMPLETE |
+| statistics_pass_1 | stats-inventory | S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050, S051, S052, S053, S054, S055, S056, S057, S058, S059, S060, S061, S062, S063, S064, S065, S066, S067, S068, S069, S070, S071, S072, S073, S074, S075, S076, S077, S078, S079, S080, S081, S082, S083, S084, S085, S086, S087, S101, S102, S103, S104, S105, S106, S107, S108, S109, S110, S111, S112, S113, S114, S115, S116, S117, S118, S119, S120, S121, S122, S123, S124, S125, S126, S127, S128, S129, S130 | statistics/relationship_inventory.md | COMPLETE |
+| statistics_pass_1 | stats-protocol | S101, S102, S103, S104, S105, S106, S107, S108, S109, S110, S111, S112, S113, S114, S115, S116, S117, S118, S119, S120, S121, S122, S123, S124, S125, S126, S127, S128, S129, S130 | checkers/parts/statistical_pass_1_protocol.md | COMPLETE |
+| statistics_pass_1 | stats-protocol-inventory | S101, S102, S103, S104, S105, S106, S107, S108, S109, S110, S111, S112, S113, S114, S115, S116, S117, S118, S119, S120, S121, S122, S123, S124, S125, S126, S127, S128, S129, S130 | statistics/parts/protocol_relationship_inventory.md | COMPLETE |
+| cross_source_checks | cross-001 | All matched report/plan analysis specifications and report/report primary/key-secondary results | checkers/cross_source_consistency.md | COMPLETE |
+| cross_source_checks | cross-outcomes | Outcome status/composite/definitions, intervention doses/duration, and plan-only protocol measurement/endpoint rules | checkers/parts/cross_source_outcomes.md | COMPLETE |
+| inclusion_screening | screen-001 | F-NUM-001, F-XS-001, F-XS-002, F-XS-003, F-XS-004, F-XS-101, F-ST1-001, F-ST1-002, F-ST1-003 | screening/inclusion_screen.md | COMPLETE |
+| inclusion_screening | screen-pass-002 | F-ST2-101 | screening/parts/inclusion_screen_pass_2.md | COMPLETE |
+| candidate_registration | candidates-001 | C001, C002, C003, C004, C005, C006, C007, C008, C009 | candidate_ledger.md | COMPLETE |
+| candidate_registration | candidates-appended | C010 | candidate_ledger.md | COMPLETE |
+| evidence_recheck | recheck-001 | C001, C002, C003, C004, C005, C006, C007, C008, C009 | verification/evidence_recheck.md | COMPLETE |
+| evidence_recheck | recheck-appended | C010 | verification/parts/evidence_recheck_appended.md | COMPLETE |
+| evidence_recheck | recheck-image-001 | C002; DOC-003 physical p.80; CPU Poppler 26.01.0 direct source confirmation | preprocessing/evidence_recheck/protocol_p080.png | COMPLETE |
+| statistics_pass_2 | stats-002 | S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050, S051, S052, S053, S054, S055, S056, S057, S058, S059, S060, S061, S062, S063, S064, S065, S066, S067, S068, S069, S070, S071, S072, S073, S074, S075, S076, S077, S078, S079, S080, S081, S082, S083, S084, S085, S086, S087, S101, S102, S103, S104, S105, S106, S107, S108, S109, S110, S111, S112, S113, S114, S115, S116, S117, S118, S119, S120, S121, S122, S123, S124, S125, S126, S127, S128, S129, S130 | checkers/statistical_pass_2.md | COMPLETE |
+| statistics_pass_2 | stats-protocol-002 | S101, S102, S103, S104, S105, S106, S107, S108, S109, S110, S111, S112, S113, S114, S115, S116, S117, S118, S119, S120, S121, S122, S123, S124, S125, S126, S127, S128, S129, S130 | checkers/parts/statistical_pass_2_protocol.md | COMPLETE |
+| statistics_pass_2 | stats-core-status | S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050, S051, S052, S053, S054, S055, S056, S057, S058, S059, S060, S061, S062, S063, S064, S065, S066, S067, S068, S069, S070, S071, S072, S073, S074, S075, S076, S077, S078, S079, S080, S081, S082, S083, S084, S085, S086, S087 | statistics/parts/core_pass_2_status.md | COMPLETE |
+| statistics_pass_2 | stats-protocol-status | S101, S102, S103, S104, S105, S106, S107, S108, S109, S110, S111, S112, S113, S114, S115, S116, S117, S118, S119, S120, S121, S122, S123, S124, S125, S126, S127, S128, S129, S130 | statistics/parts/protocol_pass_2_status.md | COMPLETE |
+| evidence_quality | quality-001 | C001, C002, C003, C004, C005, C006, C007, C008, C009, C010; complete classification, every screening decision and coverage row; substantive C001-C004 and C010 | quality/evidence_quality_audit.md | COMPLETE |
+| evidence_quality | quality-numeric | C005, C006, C007, C008, C009; all 43 checker exclusions; all 117 statistical relationship status records | quality/parts/evidence_quality_numeric.md | COMPLETE |
+| evidence_quality | runtime-routing | All 26 actual runtime IDs; metadata-only model/effort parity | runtime_routing_confirmation.md | COMPLETE |
+| evidence_quality | local-evidence-links | All 2424 current-run mapped PDF evidence links; local target and physical page bounds | local_evidence_link_check.md | COMPLETE |
+| report_generation | report-001 | C001, C002, C003, C004, C005, C006, C007, C008, C009, C010 | ../final_report_1_6_2.md | COMPLETE |
+| report_generation | report-limitations | C001, C002, C003, C004, C005, C006, C007, C008, C009, C010; complete scope and missing definitions | limitations.md | COMPLETE |

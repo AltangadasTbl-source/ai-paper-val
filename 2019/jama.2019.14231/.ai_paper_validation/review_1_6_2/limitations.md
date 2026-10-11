@@ -1,0 +1,20 @@
+# Limitations and Missing Definitions
+
+All 39 supplied PDF pages were mapped; there is no scientific source-coverage gap and no cited source location is unavailable. Native/layout text is usable on every page. Some reusable page images lack an engine version; later source-matched text assets close older extraction-manifest gaps. Exact PDF pages remained the authority and targeted CPU visual confirmation covered typography and alignment.
+
+The publication describes a retrospective matched-cohort study. Review followed its supplied design rather than assuming randomized-trial elements. No raw participant data, executable analysis code, final design matrix, calculation script, bootstrap draws, imputation variance/degrees of freedom or spline covariance is supplied. Their absence constrains numerical reconstruction and mechanism assessment; it is not by itself a registered reporting issue.
+
+Every sensitivity comparison, longitudinal curve and labeled result was mapped. Graphical sensitivity endpoints and trajectory coordinates are not exactly printed, so assessments remain at source resolution without manufactured point values. Exact medication numerators and event person-times are absent. Model estimates and crude event fractions are distinct quantities.
+
+| Candidate | Bounded missing definition or source-grounded alternative |
+|---|---|
+| C001 | Intended original surgical:nonsurgical matching orientation or a dated revision. Original group orientation may be transposed wording; report counts clearly establish the performed 1:5 allocation. |
+| C002 | Point-estimate definition, unrounded group risks and analysis populations used for the five absolute-risk differences. Bootstrap mean or standardization might explain the column, but is not specified; confidence limits cannot be reconstructed by subtracting marginal intervals. |
+| C003 | Absolute-risk test and intended inference target of the lower-incidence wording. The table explicitly distinguishes bootstrap 8-year risk intervals from adjusted Cox hazard P values; different analyses can yield different decisions. |
+| C004 | Original dated incorporated eTable 1 and precedence relative to the inline coronary list. The original incorporation could already supply primary-diagnosis predicates; no implemented restriction, all-position eligibility, event-count effect or temporal change is established. |
+| C005 | Original dated incorporated eTable 1 and precedence relative to the inline AF list. It could already contain i48.1; no implemented code expansion, event-count effect or date of change is established. |
+| C006 | Analysis-family boundary and membership, exact confidence level/family size, prospective or amended longitudinal correction rule, and whether P values are adjusted. An unadjusted vascular-only family and separate corrected time-point family may reconcile the descriptions; four comparisons producing 98.75% is diagnostic only. All 52 reported intervals were covered. |
+| C007 | Unrounded year-5 hemoglobin confidence limits, precise mean-change contrast, test target/statistic, degrees of freedom and covariance. A negative upper limit could round to zero, or the P could test a different spline target; printed interval/test comparison is retained under route A1. |
+| C008 | Actual E-value formula/software setting, HR-to-risk-ratio conversion and inputs, incidence/time-horizon assumptions, thresholds and primary-specific settings. A distinct intentional primary conversion could explain the pair; the comparator is supported by all 14 nonprimary entries, not imposed as a universal algorithm. |
+
+All eight candidates remain Pending Human Adjudication. Reproduction and CONFIRMED inclusion audit do not establish a production mechanism or final correction. No preferred analysis, raw-data audit, external evidence or claim of changed conclusions or downstream harm is supplied. The source and reused-asset integrity baselines were independently checked by the quality auditor; the coordinator performs final recomputation and mechanical completion gates.

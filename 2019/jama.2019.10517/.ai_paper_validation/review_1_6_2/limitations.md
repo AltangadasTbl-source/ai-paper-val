@@ -1,0 +1,24 @@
+# Workflow 1.6.2 Limitations and Report Assembly Record
+
+Report assembly completed for C001, C002, C003, C004 and C005 in `.ai_paper_validation/final_report_1_6_2.md`. All five complete cards include the mandatory evidence and exact ledger classification fields. Every candidate remains Pending Human Adjudication. This artifact is the report-generation coverage handoff; it does not alter inputs, classification or screening decisions.
+
+## Coverage and tooling
+
+All four supplied PDFs and all 63 pages were mapped: 63 reusable-backed units, zero fresh-required units, 63 mapped units. Every registered numeric relationship (127) and statistical relationship (70) was reviewed; both distinct statistical passes covered all 70 S IDs. No scientific source-unit or required-tool gap remains. Sparse plot text is supported by source-matched images. Missing reusable images elsewhere were closed by usable text and targeted exact-source CPU page rendering. No new OCR, Office conversion or fallback environment was required. Historical derivative engines remain provenance limitations where unspecified; supplied sources retain authority.
+
+## Bounded missing evidence and reconstruction limits
+
+1. C001: operational relapse classification instructions, any endpoint amendment, participant entry/follow-up scores and component-specific relapse assignments are unavailable. The averaging convention for mean absolute increase is not further operationalized. Reproduction concerns the printed extra 5-point conjunction; hospitalization causes reconcile and the SADS qualification remains context. No actual event or HR change is established.
+2. C002: HOMA, separate BMI, depression-related-weight-loss and Intent-to-Attend analysis counterparts are absent from the complete supplied 21-page REPORT record. The four outputs, scope/deferment explanations and amendments are unavailable. Participant insulin/height/weight-loss/Intent-to-Attend data and corresponding model outputs are not supplied. Absence is bounded to this package and does not establish nonperformance. Additional age/genetic aims and H3 are outside this candidate's key-secondary scope.
+3. C003: acute-entry, RCT-entry and follow-up UKU/Barnes observations, acute-baseline-positive exclusions, operational denominators and any safety-endpoint amendment are unavailable. Generic PLAN from baseline does not establish an epoch; the explicit acute-baseline eligibility statement is the anchor. No changed eligibility or event count can be reconstructed.
+4. C004: medication-taken grouping algorithm, medication-change timing, fixed/time-varying group coding, retained post-discontinuation/switch observations, design matrix and amended specification are unavailable. Explicit randomized-group model titles anchor the reporting comparison. All-randomized inclusion and descriptive arm totals alone do not establish coding. No individual reclassification or coefficient change is inferred.
+5. C005: principal-model observation selection, outcome-specific measurements removed after drug changes, separate principal/sensitivity outputs, breadth of the post hoc label and amendments are unavailable. All participants does not imply all observations. A retained principal statin rule with a post hoc hypoglycemic extension remains a source-grounded alternative. No numerical impact is established.
+6. Exact plot coordinates, numerical curve values and shaded-band definitions are not supplied. Visual plot checks cannot reconstruct exact model estimates or contrast variances.
+7. Raw paired participant data, some Table 4 baseline contributor cells, survival event/censor times and fitted-model outputs are unavailable. Marginal summaries do not reconstruct paired changes, exact log-rank statistics or fitted Cox tests.
+8. Mixed/Poisson model covariance matrices, degrees of freedom, link/back-transformation details, exact contrasts and pattern-mixture weights are unavailable. Diagnostic calculations do not replace reported analyses.
+9. Full simulation event-time/censor-time generators, replication counts and mixed-model covariance/slope inputs are unavailable. Power diagnostics establish only bounded compatibility with printed inputs and ordering, not exact simulation reproduction.
+10. Unprovided amendments or results outside the supplied package cannot be assessed. No preferred method, actual propagation, numerical consequence, conclusion change or harm is asserted.
+
+## Completion dependencies
+
+The coordinator finalizes the nine exact performance fields immediately after Markdown assembly, closes report-generation coverage, creates final after-hash manifests, renders standalone HTML and performs the final validator. This report generator does not render HTML. All five source comparisons have reproduced evidence states and CONFIRMED inclusion audits; human adjudication is recorded later outside these report cards.

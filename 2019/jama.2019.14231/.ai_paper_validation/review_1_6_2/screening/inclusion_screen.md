@@ -1,0 +1,89 @@
+# Independent Inclusion Screen — Initial Stage
+
+Fresh agent: `/root/initial_screener`; `qc162_inclusion_screener`; run model `gpt-6.1-sol`; reasoning effort `high`; start mode `FRESH_SPAWN`. Scope: all 10 findings in `checkers/numeric_consistency.md`, `checkers/cross_source_consistency.md`, and `checkers/statistical_pass_1.md`. QUALITY_CONTROL_SCOPE.md and the complete 1.6.2 review contract were read. Decisions use supplied evidence only, without old scientific conclusions, external sources, or a candidate-count target.
+
+The cited PDF locations were independently reread using fresh direct Poppler layout extraction from all three supplied PDFs; source-page renders independently confirm the Table 2 numbers, eTable 8 numbers, eTable 12 numbers, endpoint codes and diagnosis-position formatting, and matching statement. All cited comparator and method locations were reread, including the original protocol's incorporation reference to eTable 1 and the amendment. The two duplicate findings retain every source location and checker provenance in their included issue. The coordinator assigned stable source-order IDs after screening; duplicate rows share their included anchor’s ID.
+
+| Finding ID | Source checker | Screening stage | Decision | Reason code | Candidate ID |
+|---|---|---|---|---|---|
+| F-NUM-001 | numeric_consistency_reviewer | initial | INCLUDE | MEETS_THRESHOLD | C002 |
+| F-XS-001 | cross_source_consistency_reviewer | initial | INCLUDE | MEETS_THRESHOLD | C001 |
+| F-XS-002 | cross_source_consistency_reviewer | initial | INCLUDE | MEETS_THRESHOLD | C005 |
+| F-XS-003 | cross_source_consistency_reviewer | initial | INCLUDE | MEETS_THRESHOLD | C004 |
+| F-ST1-001 | statistics_pass_1 | initial | SCREENED_OUT | DUPLICATE_OF_INCLUDED | C002 |
+| F-ST1-002 | statistics_pass_1 | initial | INCLUDE | MEETS_THRESHOLD | C003 |
+| F-ST1-003 | statistics_pass_1 | initial | INCLUDE | MEETS_THRESHOLD | C007 |
+| F-ST1-004 | statistics_pass_1 | initial | INCLUDE | MEETS_THRESHOLD | C008 |
+| F-ST1-005 | statistics_pass_1 | initial | INCLUDE | MEETS_THRESHOLD | C006 |
+| F-ST1-006 | statistics_pass_1 | initial | SCREENED_OUT | DUPLICATE_OF_INCLUDED | C001 |
+
+## One-sentence justifications
+
+- **F-NUM-001 — Route A, category 4:** The five individual-outcome absolute risk differences in main Table 2 do not reproduce the displayed control-minus-surgery risk subtraction that reproduces the other three rows, with remaining relative discrepancies above 0.05 after half-unit display allowance.
+- **F-XS-001 — Route B:** The original plan explicitly describes five surgical patients per nonsurgical patient whereas the reported primary cohort uses five nonsurgical patients per surgical patient, leaving a primary matching-design comparison unresolved and bearing on interpretation of the matched population underlying HR 0.61 (0.55–0.69).
+- **F-XS-002 — Route A, category 5:** The reported AF ICD10 criterion adds `i48.1` to the original protocol's enumerated primary-component code list, and the protocol's reference to eTable 1 does not establish a dated reconciled definition that removes the printed operational criterion discrepancy.
+- **F-XS-003 — Route A, category 5:** The reported coronary-component rule imposes primary-diagnosis status on standalone `411.X` and paired `414.X`, while the original protocol's inline criteria state neither condition, with its eTable 1 incorporation reference retained as a possible fuller-definition interpretation rather than proof that the dated criteria reconcile.
+- **F-ST1-001:** This reproduces the same five-row absolute-risk-difference pattern as included F-NUM-001 and is consolidated with that issue, retaining its statistical checker provenance and all cited locations.
+- **F-ST1-002 — Route A, category 1:** Main Table 2 prints a cerebrovascular 95% absolute-risk-difference interval of −0.03 to 3.4 containing zero alongside a significant treatment P value of .02, retaining the explicitly different bootstrap-risk versus adjusted-hazard analyses as an alternative interpretation required by the scope.
+- **F-ST1-003 — Route A, category 1:** The year-5 hemoglobin 98.8% interval in eTable 8 is −0.2 to 0 while P < .001, producing the printed interval/test conflict at its stated confidence level even though an unrounded negative upper limit remains possible.
+- **F-ST1-004 — Route A, category 4:** The primary E-value pair 2.15/1.92 does not reproduce the transformation supported by all 14 nonprimary entries of the same display, with remaining relative gaps 0.223225 and 0.160666 after display allowance and no stated primary-specific construction.
+- **F-ST1-005 — Route B:** The plan's unadjusted secondary-analysis rule and 95% interval statement differ from eTable 8's explicit Bonferroni-corrected 98.8% intervals, leaving the relevant longitudinal analysis family and planned rule unclear in a way that changes interpretation and extraction of the weight/HbA1c and related longitudinal contrasts.
+- **F-ST1-006:** This reproduces the same primary matching-allocation comparison as included F-XS-001 and is consolidated with that issue, retaining its statistical checker provenance and all cited locations.
+
+## Consolidated issue registration handoff
+
+These are eight independent included issues, without stable candidate IDs. The coordinator determines source-order registration. Duplicate rows must receive the same eventual ID as their included anchor. Proposed document relationships and domains below are source-grounded routing information for registration; mechanical recheck will confirm them.
+
+### F-NUM-001 with F-ST1-001: Five individual-outcome absolute risk differences
+
+Compared content: REPORT [main Table 2 p7](../../../jama_aminian_2019_oi_190103.pdf#page=7), all five affected rows, risk columns, absolute 8-year risk-difference column and footnote a; REPORT [main statistical methods p4](../../../jama_aminian_2019_oi_190103.pdf#page=4). REPORT [eTable 5 p7](../../../joi190103supp1_prod.pdf#page=7) corroborates the group risks and is not an additional conflicting relationship. Proposed `S_W`, `statistical_results`.
+
+Independently confirmed surgery/control/printed-difference triples are heart failure 6.8/18.9/12.9, coronary disease 7.9/11.6/4.2, cerebrovascular disease 4.1/5.6/1.8, nephropathy 6.1/16.3/11.1, and AF 7.9/13.6/6.5. Recomputed half-unit difference intervals are respectively [12.00,12.20], [3.60,3.80], [1.40,1.60], [10.10,10.30], and [5.60,5.80]; printed intervals are [12.85,12.95], [4.15,4.25], [1.75,1.85], [11.05,11.15], and [6.45,6.55]. Remaining relative discrepancies are 0.0503876, 0.0833333, 0.0833333, 0.0675676, and 0.1000000. Primary, secondary composite and mortality rows reproduce subtraction in the same display. Footnote a defines the orientation; p4 describes bootstrap confidence intervals, without specifying a different point construction for these five rows. An unstated bootstrap mean or other construction remains a human question; no adjustment-versus-crude comparison is made and no interval is reconstructed from marginal confidence limits.
+
+### F-XS-001 with F-ST1-006: Primary matching allocation
+
+Compared content: PLAN [original protocol p3, Matching Process](../../../joi190103supp2_prod.pdf#page=3) and [p6, sensitivity ratios](../../../joi190103supp2_prod.pdf#page=6), against REPORT [main abstract p1](../../../jama_aminian_2019_oi_190103.pdf#page=1), [Figure 1 and matching caption p3](../../../jama_aminian_2019_oi_190103.pdf#page=3), and [statistical methods p4](../../../jama_aminian_2019_oi_190103.pdf#page=4); PLAN [amendment p7](../../../joi190103supp2_prod.pdf#page=7) supplies no matching revision. Proposed `P_R`, `protocol_report`.
+
+The original explicit matching sentence describes each nonsurgical patient matched to five surgical patients; the report explicitly describes each surgical patient matched to five nonsurgical patients and reports 2287/11435 patients. This categorical allocation cannot be reconciled by rounding. B1: it concerns the primary matching specification, a permitted plan–report comparison. B2: the report makes implementation clear but does not establish whether the original planned allocation was transposed in wording or changed; the plan's 1:5 sensitivity shorthand omits group orientation. B3: it bears on the matching design and population behind primary HR 0.61 (0.55–0.69). The difference is not registered solely as inconsistent terminology.
+
+### F-XS-002: AF code criterion
+
+Compared content: PLAN [original protocol p4, AF and primary endpoint](../../../joi190103supp2_prod.pdf#page=4) and [amendment p7](../../../joi190103supp2_prod.pdf#page=7), against REPORT [eTable 1 p2](../../../joi190103supp1_prod.pdf#page=2), [main endpoint definition p2](../../../jama_aminian_2019_oi_190103.pdf#page=2), and [Table 2 p7](../../../jama_aminian_2019_oi_190103.pdf#page=7). Proposed `P_R`, `protocol_report`.
+
+Direct source text and renders confirm PLAN ICD10 `i48.0, i48.2, i48.91` versus REPORT `i48.0, i48.1, i48.2, i48.91`; ICD9 and CPT entries agree. AF contributes to the planned six-component primary endpoint and individual AF result HR 0.78 (0.62–0.97). The protocol opening expressly says to see eTable 1 for diagnosis codes/definitions: this supports a possible incorporated fuller definition, but the supplied package provides no separately dated original table or override reconciling its explicit AF list. Retain that interpretation prominently in the card; do not infer an event-count impact, a temporal mechanism, or an adjudication. The observable code criterion difference qualifies under route A5, with the scope's planned-versus-reported doubt rule applied.
+
+### F-XS-003: Coronary diagnosis-position criteria
+
+Compared content: PLAN [original protocol p4, coronary Other criteria, opening eTable 1 reference and primary endpoint](../../../joi190103supp2_prod.pdf#page=4) and [amendment p7](../../../joi190103supp2_prod.pdf#page=7), against REPORT [eTable 1 p2, coronary row and bold-text footnote](../../../joi190103supp1_prod.pdf#page=2), [main coronary endpoint definition p2](../../../jama_aminian_2019_oi_190103.pdf#page=2), and [Table 2 p7](../../../jama_aminian_2019_oi_190103.pdf#page=7). Proposed `P_R`, `protocol_report`.
+
+Visual source confirmation shows standalone `411.X` bold, paired `411.X` regular, and paired `414.X` bold; the report footnote makes bold codes require primary-diagnosis status. The protocol inline criteria give the same code identities without those positional conditions. This comparison is about operational component eligibility, not a formatting preference, and bears on coronary HR 0.69 (0.54–0.87) and the primary composite definition. The protocol's explicit eTable 1 reference can incorporate fuller criteria and is the strongest alternative interpretation; however, no supplied original dated table or amendment identifies whether these restrictions were present originally or subsequently elaborated. Registration preserves the printed criterion discrepancy and this incorporation ambiguity together, without asserting that all diagnosis positions were actually used or that event totals changed.
+
+### F-ST1-002: Cerebrovascular interval and treatment test
+
+Compared content: REPORT [main Table 2 p7, cerebrovascular row and footnotes a/b](../../../jama_aminian_2019_oi_190103.pdf#page=7), [methods p4](../../../jama_aminian_2019_oi_190103.pdf#page=4), and [lower-incidence narrative p6](../../../jama_aminian_2019_oi_190103.pdf#page=6); the narrative begins on p4 and continues on p6. Corroborating HR/CI/P copies are REPORT [Figure 3D p8](../../../jama_aminian_2019_oi_190103.pdf#page=8) and [eTable 6 p9](../../../joi190103supp1_prod.pdf#page=9). Proposed `S_W`, `statistical_results`; corroboration does not add `S_C`.
+
+Printed ARD 1.8 (95% CI −0.03 to 3.4) includes zero while HR 0.67 (0.48–0.94), P=.02 is significant at .05. The HR tuple itself reconciles. Footnotes explicitly distinguish the bootstrap 8-year absolute-risk analysis from the adjusted Cox instantaneous-hazard analysis: this can explain different decisions, and must appear in the evidence card, but route A1 expressly retains this interval/test comparison. Its negative lower endpoint remains negative under half-unit allowance; the category is exempt from the rounding screen. No assertion that these estimands must be equal is made.
+
+### F-ST1-003: Year-5 hemoglobin interval and P value
+
+Compared content: REPORT [eTable 8 p12, hemoglobin year 5, heading and both footnotes](../../../joi190103supp1_prod.pdf#page=12), and [main methods p4](../../../jama_aminian_2019_oi_190103.pdf#page=4). Proposed `S_W`, `statistical_results`.
+
+Source print is −0.1 g/dL (98.8% CI −0.2 to 0), P<.001. The interval includes zero at its printed confidence level, while P<.001 rejects at alpha .012 (or .0125 for a rounded 98.75% level). Other printed hemoglobin times exclude zero. A rounded negative unprinted endpoint or a different spline test target might reconcile the underlying analysis; neither removes the printed route A1 comparison. No standard error, covariance or exact test statistic is supplied, and no approximation replaces the reported inference.
+
+### F-ST1-004: Primary E-value construction
+
+Compared content: REPORT [eTable 12 p20, primary pair and all seven comparator pairs](../../../joi190103supp1_prod.pdf#page=20), [E-value definition and primary interpretation p19](../../../joi190103supp1_prod.pdf#page=19), [eTable 6 p9, corresponding HRs/upper limits](../../../joi190103supp1_prod.pdf#page=9), and [main Table 2 p7](../../../jama_aminian_2019_oi_190103.pdf#page=7). REPORT [main p9](../../../jama_aminian_2019_oi_190103.pdf#page=9) supplies the robustness interpretation. PLAN amendment merely corroborates the E-value addition and is not a conflicting relationship. Proposed `S_W`, `statistical_results`.
+
+Using source-confirmed HR/upper-limit pairs, the within-display comparator E(h)=1/h+sqrt((1/h)(1/h−1)) reproduces every nonprimary point and limit entry within half-unit display intervals. Independent arithmetic gives primary point interval [2.6349328,2.6917194] from HR [0.605,0.615], versus printed E interval [2.145,2.155], and primary limit interval [2.2334792,2.2791950] from upper HR [0.685,0.695], versus [1.915,1.925]. The remaining gaps divided by printed 2.15 and 1.92 are 0.2232246 and 0.1606663. The source defines E-values on the risk-ratio scale but supplies no transformation formula or primary-specific construction. A distinct intentional HR-to-risk transformation, possibly related to cumulative risk, is a retained human interpretation, rather than grounds to exclude a route A4 same-display mismatch. The comparator was checked against supplied rows, without external literature.
+
+### F-ST1-005: Planned multiplicity and longitudinal confidence intervals
+
+Compared content: PLAN [original protocol p6, statistical analysis including weight/HbA1c paragraph and following inference rule](../../../joi190103supp2_prod.pdf#page=6) and [amendment p7](../../../joi190103supp2_prod.pdf#page=7), against REPORT [eTable 8 p12, all 52 entries, confidence heading and Bonferroni footnote](../../../joi190103supp1_prod.pdf#page=12) and [main methods p4](../../../jama_aminian_2019_oi_190103.pdf#page=4). Proposed `P_R`, `protocol_report`.
+
+The original plan prospectively names weight/HbA1c comparisons and then states .05 significance, 95% CIs where applicable and no multiple-comparison adjustment for secondary endpoints. The report explicitly uses 98.8% Bonferroni-corrected intervals in this display; the amendment adds nutritional variables without clarifying the inference family. B1: a planned multiplicity/confidence rule qualifies in focus D and the comparison-tier decision-rule exception, although the outcomes are ancillary. B2: an intended cardiovascular-only scope of the unadjusted plan rule is possible, but neither its longitudinal paragraph nor the amendment explicitly specifies a separate corrected family. B3: the distinction changes which confidence interval accompanies an extracted longitudinal contrast and its null-exclusion interpretation, illustrated by year-1 other-antihypertensive −2.7 (−5.6,0.3), P=.02; that pair itself reconciles at the corrected level and is not an additional interval/test finding. The correction is disclosed, and no concealed change or preferred analysis is asserted.
+
+## Confirmation derivatives and limits
+
+Engine: direct Poppler `pdftotext` and `pdftoppm` 26.01.0; compute device CPU; no OCR, fallback environment, web, or Python extraction used. Fresh confirmation derivatives are in `screening/confirmation/`: `screener-main-layout.txt` (DOC-001 pp1–12), `screener-results-layout.txt` (DOC-002 pp1–20), `screener-plan-layout.txt` (DOC-003 pp1–7), and source-page images `screener-main-p007.png`, `screener-results-p002.png`, `screener-results-p012.png`, `screener-results-p020.png`, `screener-plan-p003.png`, `screener-plan-p004.png`. Text commands used `pdftotext -layout SOURCE OUTPUT`; image commands used selected `-f N -l N -singlefile -png` with `-scale-to 1800`, except eTable 8 at 2200 for legibility. Sources and reused assets were preserved.
+
+All 10 assigned findings were independently screened. Eight included issues; two screened-out rows, both `DUPLICATE_OF_INCLUDED`; all other screened-out reason-code counts are zero. No scientific-location gap remains in this screening scope. Missing raw/event-level data, exact bootstrap or spline outputs, original dated incorporated table version, and transformation/multiplicity definitions constrain mechanism assessment; they do not replace the independent printed-source observations. Stable candidate IDs were assigned after this screen; evidence states and inclusion audit follow in independent stages. Human adjudication remains pending.
