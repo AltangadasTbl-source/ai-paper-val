@@ -1,66 +1,64 @@
-Apply workflow 1.6 to this paper package now. Perform the complete quantitative quality-control
-review without any candidate-count limit, while reusing all usable existing OCR, native text, layout
-text, table/workbook extraction, rendered pages, and document maps. Do not read an old candidate set,
-review queue, verifier/critic disposition, endetail section, classification record, or final report as
-a scientific input or candidate source. Treat reuse only as an optimization: freshly inspect and map
-every supplied-source unit that lacks usable reusable extraction.
+Apply workflow 1.6.1 to this paper package now. Perform the complete quantitative quality-control
+review, while reusing all usable existing OCR, native text, layout text, table/workbook extraction,
+rendered pages, and document maps. Do not read an old candidate set, review queue, screening log,
+verifier/critic disposition, endetail section, classification record, or final report as a scientific
+input or candidate source. Treat reuse only as an optimization: freshly inspect and map every
+supplied-source unit that lacks usable reusable extraction.
 
-This interactive session must run as `gpt-6.1-sol`/`high`. Before scientific work, verify all nine
-named presets against the fixed 1.6 model matrix and write `routing_preflight.md` with
-`Coordinator inference: PASS`, `Named agent presets: PASS`, and `Execution mode: INTERACTIVE_CLI`.
-Every role uses `gpt-6.1-sol`. Use `medium` reasoning for ordinary specialist roles, distinct fresh
-`gpt-6.1-sol`/`high` agents for statistical passes 1 and 2, and `gpt-6.1-sol`/`high` for mechanical
-evidence recheck with classification confirmation and for the final evidence-quality and
-classification audit. Do not use `~openai/gpt-latest` or another moving alias.
+This interactive session must run as `gpt-6.1-sol`/`high`. Before scientific work, verify all ten
+named presets against the fixed 1.6.1 model matrix and write `routing_preflight.md` with
+`Coordinator inference: PASS`, `Named agent presets: PASS`, `Execution mode: INTERACTIVE_CLI`, and
+`Provider: CURRENT_SESSION`. Use the provider of this session; do not configure or change a provider. Every role uses `gpt-6.1-sol`. Use `medium` reasoning for
+ordinary specialist roles, distinct fresh `gpt-6.1-sol`/`high` agents for statistical passes 1 and 2,
+and `gpt-6.1-sol`/`high` for the inclusion screen, the mechanical evidence recheck, and the final
+evidence-quality audit. Do not use `~openai/gpt-latest` or another moving alias.
 
 Use a fresh, distinct runtime agent for every mandatory specialist stage. Prefer the configured named
 role. If a named role is unavailable, spawn a fresh default agent with the complete role contract and
 the exact model and reasoning effort required for that role. Never omit the model override on a
 fallback, reuse one agent for two mandatory stages, or use follow-up to change its model or effort.
 
-Before source inventory, probe local tools with `workflow_1_6/scripts/pdf_tools.py probe`. If PDF
+Before source inventory, probe local tools with `workflow_1_6_1/scripts/pdf_tools.py probe`. If PDF
 information, text, or rendering tools are missing, create the temporary package-local fallback
-environment with `workflow_1_6/scripts/bootstrap_tooling.py create` (add `--ocr` only when OCR may be
-needed and tesseract is absent), use the bundled fallback helper only for missing capabilities, record
-everything in `tooling_record.md`, and remove the environment before final validation. Never install
-into the global Python environment.
+environment with `workflow_1_6_1/scripts/bootstrap_tooling.py create` (add `--ocr` only when OCR may
+be needed and tesseract is absent), use the bundled fallback helper only for missing capabilities,
+record everything in `tooling_record.md`, and remove the environment before final validation. Never
+install into the global Python environment.
 
 Follow AGENTS.md from inventory through a passing validator result. Use the agent-first workflow and
 durable artifact handoffs. Keep Python auxiliary: use direct local PDF, hashing, rendering, Office,
-and CPU OCR tools whenever applicable, and use only the optional Office extractor, HTML renderer, and
-validator Python helpers supplied by this workflow.
+and CPU OCR tools whenever applicable, and use only the optional Office extractor, tooling helpers,
+HTML renderer, and validator Python helpers supplied by this workflow.
 
 Set a package-specific latency target after inventory using total units, fresh-mapping burden, source
-formats, OCR/conversion needs, and expected review waves. Do not assume a fixed SAP or package length.
-Treat the earlier 102-total-page, 81-fresh-page run only as calibration for comparable workloads, not
-as a universal 35–50 minute default. Spawn distinct new `gpt-6.1-sol`/`high` agents for statistical
-passes 1 and 2, record them in `agent_execution_manifest.md`, and never use follow-up to change an
-agent's contract. Treat timing as a planning goal, never as permission to sample evidence, stop early,
-cap candidates, or omit cards.
+formats, OCR/conversion needs, and expected review waves. Treat timing as a planning goal, never as
+permission to sample evidence, stop early, or omit cards. Record every actual runtime agent in
+`agent_execution_manifest.md`.
 
-Record every actual runtime agent in `agent_execution_manifest.md`, including the coordinator,
-mappers, checkers, report generator, repairs, and both statistical agents.
+Focus the review on four areas defined in `QUALITY_CONTROL_SCOPE.md`: counts and denominators,
+estimate and test logic, statistical method logic, and planned versus reported statistical design.
+Register a candidate only when it is reproduced, in focus, not resolved at once by a statistically
+literate reader in the field from common sense or the immediate context, and able to change the
+interpretation of a named result or the value a data extractor would take. Screen out rounding and
+display-precision differences (including `P = 0` and similar display zeros), notation and typographic
+slips such as a missing `<` in a P value, terminology and wording differences across the text,
+model-based estimates compared with crude ratios, conditional observations, and peripheral
+cross-document comparisons (baseline descriptive values between the main and supplementary baseline
+tables, per-time-point counts, footnote pointers, numbers of sites, recruitment calendars, and other
+plan-internal details) unless they change a primary or key secondary result, the size of an analysis
+population, or a planned decision rule. When in doubt, screen out. Register one candidate per issue, listing every location of a
+repeated pattern. There is no expected, typical, minimum, maximum, or target number of candidates;
+decide each finding on the criteria alone, and zero is a valid result.
 
-Focus the review on numeric, arithmetic, denominator/proportion/total, statistical-reporting,
-cross-document numeric, effect-measure/label/scale, and rate-versus-count consistency. Retain
-analysis-unit or population issues only when they create a concrete reported numeric or statistical
-inconsistency. Report the actual number of candidates, including zero or more than 10, and include
-every stable candidate in both the Markdown and standalone HTML reports.
+Assign every candidate one of the four review domains (`statistical_results`,
+`report_internal_inconsistency`, `protocol_report`, `plan_material`), its document roles, and one
+relationship type (`P_R`, `P_P`, `S_C`, or `S_W`) with precedence `P_R` > `P_P` > `S_C` > `S_W`. These
+fields pre-fill human review; they are not adjudications.
 
-Classify every stable candidate under `QUALITY_CONTROL_SCOPE.md`: assign document roles by content,
-one primary relationship type (`P_R`, `P_P`, `S_C`, or `S_W`) with precedence `P_R` > `P_P` > `S_C` >
-`S_W`, all relationships, the derived review domain, the evidence state from the mechanical recheck,
-and the derived suggested review disposition. These fields pre-fill human review; they are not
-adjudications.
-
-Do not treat a coherent very small P value displayed as `P = 0`, `p = 0.000`, or equivalent as a
-candidate. Record it as `DISPLAY_ZERO_NOT_CANDIDATE` when needed for coverage. Assign a candidate only
-for an independent supplied-source contradiction, and describe that contradiction rather than the
-display-zero shorthand.
-
-Use professional English throughout. Frame the work as publication quality control and prevention of
-avoidable defects entering downstream evidence synthesis, not as an effort to expose severe errors.
+Write every prompt, generated artifact, log, and report in professional English only. Call each item a candidate or reporting issue and describe it as
+an inconsistency, a discrepancy, or a result that does not reconcile; never describe a candidate, a
+value, or the authors' work with the words error, mistake, defect, erroneous, wrong, or incorrect.
 Preserve every source and legacy artifact, use truthful relative source links, mark all candidates
 Pending Human Adjudication, use exact `__` placeholders for all five human adjudication fields, place
-only one artifact path in each coverage-manifest row, and finish only when
-`review_validation.json` reports `PASS`. Validation must not require a writable root `.codex`.
+only one artifact path in each coverage-manifest row, and finish only when `review_validation.json`
+reports `PASS`. Validation must not require a writable root `.codex`.

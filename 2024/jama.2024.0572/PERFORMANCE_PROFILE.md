@@ -1,6 +1,6 @@
-# Workflow 1.6 Performance Profile
+# Workflow 1.6.1 Performance Profile
 
-This document is normative for workflow 1.6.
+This document is normative for workflow 1.6.1.
 
 ## Per-package planning target
 
@@ -25,9 +25,9 @@ A 35-50 minute target may be reasonable for a future package with comparable tot
 derivative burden, and review complexity. It is not a default for other packages and says nothing
 about the expected length of an SAP.
 
-Retain each clean workflow 1.6 observation as future calibration evidence. The target is not a hard
-timeout and never permits omitted sources, relationships, statistical pass 2, candidates, evidence
-rechecks, quality review, links, or report cards. Record bounded causes whenever the selected upper
+Retain each clean workflow 1.6.1 observation as future calibration evidence. The target is not a hard
+timeout and never permits omitted sources, relationships, statistical pass 2, screening decisions, candidates,
+evidence rechecks, quality review, links, or report cards. Record bounded causes whenever the selected upper
 bound is exceeded.
 
 ## Reasoning-effort allocation
@@ -39,6 +39,7 @@ Every role uses the single fixed model `gpt-6.1-sol`. Roles differ only in reaso
 | Coordinator | `gpt-6.1-sol` | `high` | Current coordinator session |
 | Statistical consistency pass 1 | `gpt-6.1-sol` | `high` | New specialist agent |
 | Statistical consistency pass 2 | `gpt-6.1-sol` | `high` | Different new specialist agent |
+| Inclusion screen (initial, and pass 2 when pass 2 emits findings) | `gpt-6.1-sol` | `high` | New specialist agent for each screen |
 | Mechanical evidence recheck and classification confirmation | `gpt-6.1-sol` | `high` | New specialist when delegated |
 | Final evidence-quality and classification audit | `gpt-6.1-sol` | `high` | New specialist when delegated |
 | All other specialist roles (asset curation, mapping, numeric and cross-source checks, report generation) | `gpt-6.1-sol` | `medium` | New specialist when delegated |
@@ -61,9 +62,11 @@ agent.
    finding count.
 5. Do not repeat OCR, Office conversion, extraction, a calculation, or a source-page confirmation when
    a current source-matched artifact already records it.
-6. Generate report-card shards only when the candidate threshold is exceeded. Otherwise generate the
+6. Run one inclusion screen after all three checkers finish, and a second screen only for findings
+   from statistical pass 2.
+7. Generate report-card shards only when one report call would exceed its context bound. Otherwise generate the
    complete report in one call and render HTML once after Markdown stabilizes.
-7. Return compact agent statuses; complete evidence remains in artifacts rather than chat transcripts.
+8. Return compact agent statuses; complete evidence remains in artifacts rather than chat transcripts.
 
 ## Timing record
 
