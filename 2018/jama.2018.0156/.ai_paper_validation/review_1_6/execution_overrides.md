@@ -1,0 +1,9 @@
+# User-Requested Execution Overrides and Runtime Compatibility
+
+The user explicitly requested the current provider even where Workflow 1.6 names OpenRouter. The active provider and authentication configuration were not changed. Routing preflight records `Provider: current session provider` instead of asserting an unobserved provider name. No credentials were read, copied or stored.
+
+The user also requested any needed Python environment under a temporary folder. All sources are PDFs and direct tools, reusable OCR, and visual page inspection suffice, so no environment or package installation was needed.
+
+The bundled validator expects the literal provider `openrouter` and rejects collaboration runtime handles beginning with `/`, although the active collaboration API returns canonical runtime handles such as `/root/main_mapper`. A preserved, run-local copy at `validate_review.py` makes exactly two compatibility changes: the expected provider literal becomes `current session provider`, and the runtime-identifier pattern accepts a leading slash. All scientific coverage, classifications, model/effort, fresh-stage separation, source integrity, timing, report-card, evidence-link and HTML checks remain unchanged. The exact diff and SHA-256 records are stored in `validator_override.diff` and `validator_provenance.sha256`. The bundled validator and all workflow controls are unchanged.
+
+The package configuration pins the coordinator to gpt-6.1-sol/high. Named agent presets and tool declarations pin specialists to the required model/effort matrix. The responding current session and fresh specialist responses provide inference evidence; no independent provider telemetry or launch-process attestation is available in the collaboration API. The preflight's execution-mode/launch-command fields state the required interactive contract, with this observation boundary stated explicitly rather than invoking another launcher.

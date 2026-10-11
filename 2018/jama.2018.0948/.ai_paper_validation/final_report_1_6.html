@@ -1,0 +1,3770 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-reporting-quality-control-consistency-review--epoch-trial-workflow-16"
+id="toc-quantitative-reporting-quality-control-consistency-review--epoch-trial-workflow-16">Quantitative
+Reporting Quality-Control Consistency Review — EPOCH Trial, Workflow
+1.6</a></li>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#document-role-classification-summary"
+id="toc-document-role-classification-summary">Document-Role
+Classification Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a>
+<ul>
+<li><a href="#c001--main-figure-group-encoding"
+id="toc-c001--main-figure-group-encoding">C001 — Main figure group
+encoding</a></li>
+<li><a href="#c002--supplemental-figure-group-encoding"
+id="toc-c002--supplemental-figure-group-encoding">C002 — Supplemental
+figure group encoding</a></li>
+<li><a href="#c003--main-figure-horizontal-period-label"
+id="toc-c003--main-figure-horizontal-period-label">C003 — Main figure
+horizontal-period label</a></li>
+<li><a href="#c004--usual-care-baseline-patient-day-minimum"
+id="toc-c004--usual-care-baseline-patient-day-minimum">C004 — Usual-care
+baseline patient-day minimum</a></li>
+<li><a href="#c005--usual-care-intervention-discharge-maximum"
+id="toc-c005--usual-care-intervention-discharge-maximum">C005 —
+Usual-care intervention discharge maximum</a></li>
+<li><a
+href="#c006--anticipated-bed-inputs-and-unsupported-common-basis-assumption"
+id="toc-c006--anticipated-bed-inputs-and-unsupported-common-basis-assumption">C006
+— Anticipated bed inputs and unsupported common-basis
+assumption</a></li>
+<li><a href="#c007--mortality-absolute-reduction-scale"
+id="toc-c007--mortality-absolute-reduction-scale">C007 — Mortality
+absolute-reduction scale</a></li>
+<li><a href="#c008--cardiac-arrest-intensity-codes"
+id="toc-c008--cardiac-arrest-intensity-codes">C008 — Cardiac-arrest
+intensity codes</a></li>
+<li><a href="#c009--preventability-threshold-boundary"
+id="toc-c009--preventability-threshold-boundary">C009 — Preventability
+threshold boundary</a></li>
+<li><a href="#c010--annual-versus-two-year-historical-admissions"
+id="toc-c010--annual-versus-two-year-historical-admissions">C010 —
+Annual versus two-year historical admissions</a></li>
+<li><a href="#c011--fluid-resuscitation-threshold"
+id="toc-c011--fluid-resuscitation-threshold">C011 — Fluid-resuscitation
+threshold</a></li>
+<li><a href="#c012--circulatory-component-conjunction"
+id="toc-c012--circulatory-component-conjunction">C012 — Circulatory
+component conjunction</a></li>
+<li><a href="#c013--icu-rate-wording-versus-patient-duration-summaries"
+id="toc-c013--icu-rate-wording-versus-patient-duration-summaries">C013 —
+ICU rate wording versus patient duration summaries</a></li>
+<li><a href="#c014--icu-readmission-denominator"
+id="toc-c014--icu-readmission-denominator">C014 — ICU-readmission
+denominator</a></li>
+<li><a href="#c015--predicted-mortality-patientdischarge-label"
+id="toc-c015--predicted-mortality-patientdischarge-label">C015 —
+Predicted-mortality patient/discharge label</a></li>
+<li><a href="#c016--icu-readmission-poisson-versus-logistic-label"
+id="toc-c016--icu-readmission-poisson-versus-logistic-label">C016 —
+ICU-readmission Poisson versus logistic label</a></li>
+<li><a href="#c017--hospital-readmission-poisson-versus-logistic-label"
+id="toc-c017--hospital-readmission-poisson-versus-logistic-label">C017 —
+Hospital-readmission Poisson versus logistic label</a></li>
+<li><a href="#c018--historical-icu-admission-percentage"
+id="toc-c018--historical-icu-admission-percentage">C018 — Historical
+ICU-admission percentage</a></li>
+<li><a href="#c019--historical-admissions-per-hospital-discharges"
+id="toc-c019--historical-admissions-per-hospital-discharges">C019 —
+Historical admissions per hospital discharges</a></li>
+<li><a href="#c020--stat-call-absolute-reduction-arithmetic"
+id="toc-c020--stat-call-absolute-reduction-arithmetic">C020 — Stat-call
+absolute reduction arithmetic</a></li>
+<li><a href="#c021--code-blue-nested-denominator-wording"
+id="toc-c021--code-blue-nested-denominator-wording">C021 — Code-blue
+nested denominator wording</a></li>
+<li><a href="#c022--identity-poisson-coefficient-exposure-scale"
+id="toc-c022--identity-poisson-coefficient-exposure-scale">C022 —
+Identity-Poisson coefficient exposure scale</a></li>
+<li><a href="#c023--pim-upper-example-display-probability"
+id="toc-c023--pim-upper-example-display-probability">C023 — PIM
+upper-example display probability</a></li>
+<li><a
+href="#c024--overnight-icu-categories-and-unsupported-exhaustiveness"
+id="toc-c024--overnight-icu-categories-and-unsupported-exhaustiveness">C024
+— Overnight ICU categories and unsupported exhaustiveness</a></li>
+<li><a href="#c025--continuous-outcomes-shell-heading"
+id="toc-c025--continuous-outcomes-shell-heading">C025 —
+Continuous-outcomes shell heading</a></li>
+<li><a href="#c026--historical-auc-endpoint-scale"
+id="toc-c026--historical-auc-endpoint-scale">C026 — Historical AUC
+endpoint scale</a></li>
+<li><a
+href="#c027--generic-adjusted-label-versus-baseline-unadjusted-scde-difference"
+id="toc-c027--generic-adjusted-label-versus-baseline-unadjusted-scde-difference">C027
+— Generic adjusted label versus baseline-unadjusted SCDE
+difference</a></li>
+<li><a
+href="#c028--generic-adjusted-label-versus-baseline-unadjusted-physician-call-difference"
+id="toc-c028--generic-adjusted-label-versus-baseline-unadjusted-physician-call-difference">C028
+— Generic adjusted label versus baseline-unadjusted physician-call
+difference</a></li>
+<li><a
+href="#c029--icu-readmission-elapsed-hours-label-versus-calendar-day-cutoff"
+id="toc-c029--icu-readmission-elapsed-hours-label-versus-calendar-day-cutoff">C029
+— ICU-readmission elapsed-hours label versus calendar-day
+cutoff</a></li>
+<li><a
+href="#c030--hospital-readmission-elapsed-hours-label-versus-calendar-day-cutoff"
+id="toc-c030--hospital-readmission-elapsed-hours-label-versus-calendar-day-cutoff">C030
+— Hospital-readmission elapsed-hours label versus calendar-day
+cutoff</a></li>
+</ul></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#agent-execution-and-routing-provenance"
+id="toc-agent-execution-and-routing-provenance">Agent execution and
+routing provenance</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-reporting-quality-control-consistency-review--epoch-trial-workflow-16">Quantitative
+Reporting Quality-Control Consistency Review — EPOCH Trial, Workflow
+1.6</h1>
+<p><strong>Pending Human Adjudication — all 30 stable
+candidates.</strong> Evidence states describe the review record.
+Suggested review dispositions mechanically pre-fill human review; they
+do not determine validity, importance, action, or a final
+correction.</p>
+<h1 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h1>
+<p>The complete supplied package was reviewed for reproducible numeric,
+denominator, statistical, cross-document, measure-label, scale, and
+rate-versus-count consistency. The stable ledger contains <strong>30
+candidates</strong>: 25 <code>recorded_candidate</code> and five
+<code>record_input_error</code> records. All 30 receive complete
+evidence cards below. The five input-error records explicitly correct
+unsupported initial comparison assumptions and retain their unresolved
+human questions.</p>
+<p>Several observations concern small numeric or labeling details;
+others depend on an unresolved display convention, operational
+definition, or planned-versus-reported specification. Small preventable
+reporting defects can matter for downstream evidence extraction if
+confirmed. This package does not establish that an observation
+propagated, changed a conclusion, or caused serious harm. No candidate
+determines the paper’s scientific validity.</p>
+<p>The direct-source recheck and final audit control the factual
+comparisons. In particular, C016 excludes an absent protocol
+ICU-readmission logit comparator; C006, C010, C024, C027, and C028 do
+not establish the numeric or semantic contradictions assumed at
+discovery. C029/C030 distinguish literal elapsed hours from a calendar
+rule while prominently retaining the protocol’s explicit support for
+intentional shorthand.</p>
+<h1 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h1>
+<p>The reviewed article is <em>Effect of a Pediatric Early Warning
+System on All-Cause Mortality in Hospitalized Pediatric Patients: The
+EPOCH Randomized Clinical Trial</em>. The package contains four
+unencrypted PDFs and no supplied Office, workbook, CSV, raw-data, or
+executed-model source. Roles are assigned by document content.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source ID</th>
+<th>Actual supplied file</th>
+<th>Role</th>
+<th style="text-align: right;">Physical PDF pages</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td><a
+href="../jama_parshuram_2018_oi_180015.pdf#page=1">jama_parshuram_2018_oi_180015.pdf</a></td>
+<td>REPORT — main article</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td><a
+href="../joi180015supp1_prod.pdf#page=1">joi180015supp1_prod.pdf</a></td>
+<td>PLAN — protocol, operational appendices, and historical
+background</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td><a
+href="../joi180015supp2_prod.pdf#page=1">joi180015supp2_prod.pdf</a></td>
+<td>PLAN — statistical analysis plan</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td>DOC-004</td>
+<td><a
+href="../joi180015supp3_prod.pdf#page=1">joi180015supp3_prod.pdf</a></td>
+<td>REPORT — results supplement, definitions, figures, tables, and power
+comparisons</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>Four PDFs; two REPORT and two PLAN documents</td>
+<td>25 REPORT pages; 44 PLAN pages</td>
+<td style="text-align: right;">69</td>
+</tr>
+</tbody>
+</table>
+<p>The curator identified 66 eligible existing assets: eight
+native/layout text files, 53 rendered pages, four PDF information
+records, and one stale structural page-status manifest. The 65 reused
+assets were hashed before review. The stale manifest’s former
+tooling/coverage claims were not used scientifically. Historical
+producing engines are partly unrecorded. Current source identity, page
+boundaries, direct layout text, and targeted visual rechecks establish
+locator fitness; the supplied PDFs remain final evidence authority.
+Partial graph-text ordering on results pages 2/4 was handled with
+complementary images. No old candidate set, classification, verifier,
+critic, review queue, or final report defined discovery scope.</p>
+<p>Durable provenance: <a href="review_1_6/source_inventory.md">source
+inventory</a>, <a href="review_1_6/evidence_asset_inventory.md">asset
+inventory</a>, <a href="review_1_6/source_hashes_before.sha256">source
+hashes before review</a>, and <a
+href="review_1_6/reused_artifact_hashes_before.sha256">reused-asset
+hashes before review</a>.</p>
+<h1 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h1>
+<p>Every physical source page was freshly mapped scientifically,
+including references, historical plan material, and administrative pages
+with no applicable quantitative result. Reusable extraction reduced
+preprocessing, not reasoning or coverage. No source page required
+extraction-gap mapping; targeted fresh direct-source confirmation was
+nevertheless performed for candidate recheck.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Mapped units</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">37</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">7</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-004</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">14</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>Total PDF_PAGE units</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">69</td>
+<td>COMPLETE</td>
+</tr>
+</tbody>
+</table>
+<p>Every row partitions total units into reusable and fresh-required
+units and has mapped units equal to total. The <a
+href="review_1_6/source_coverage.md">source coverage ledger</a>, <a
+href="review_1_6/coverage_manifest.md">coverage manifest</a>, <a
+href="review_1_6/extraction/main_quantitative_evidence.md">main evidence
+map</a>, and <a
+href="review_1_6/extraction/support_quantitative_evidence.md">support
+evidence map</a> provide the complete assignments and durable outcomes.
+There is no scientific source-coverage gap.</p>
+<p>The review prioritizes concrete quantitative reporting consistency.
+Analysis-unit and population issues qualify only through a reported
+number, denominator, statistic, label, or interpretation. Broad
+methodological quality, study design, clinical judgment, novelty,
+misconduct, and raw-data auditing are outside scope. Only supplied local
+evidence was used; no web or external literature was consulted. Coherent
+display-zero P values alone are excluded
+(<code>DISPLAY_ZERO_NOT_CANDIDATE</code>); neither display precision nor
+a reconstructed tiny positive probability establishes a
+contradiction.</p>
+<h1 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h1>
+<p>The canonical inventories contain <strong>154 numeric/reporting
+relationships (N001–N154)</strong> and <strong>112 statistical or
+inferential-definition relationships (S001–S112)</strong>. Coverage
+includes all hospital-table rows and descriptive cell families; counts,
+totals, percentages and extrema; intervals, P values, model/adjustment
+labels and effect measures; repeated narrative/table/figure results;
+definitions, populations, exposure units, and prospective/historical
+plan quantities. Support mapper keys are explicitly bound to canonical
+relationship IDs.</p>
+<p>Fresh distinct statistical agents <code>root/stats1</code> and
+<code>root/stats2</code>, each <code>gpt-6.1-sol</code> /
+<code>high</code>, reviewed all 112 statistical relationships. Every
+relationship has <code>PASS_1_COMPLETE</code> and
+<code>PASS_2_COMPLETE</code> records. Pass 2 considered the complete
+initial stable ledger and exact-source recheck and added the two
+different endpoint-window comparisons now C029/C030; a separate fresh
+appended-ID rechecker confirmed them. The main and support mapping lanes
+were distinct and disjoint; numeric, cross-source, and first statistical
+checking were independently performed. The final fresh auditor covered
+all 30 IDs, classifications, source pages, and N/S relationships.</p>
+<p>Checks included arithmetic and rounding, numerator/denominator
+identity, interval containment and order, direction, matched-result
+agreement, response/measure units, exposure scale, rate/count
+distinctions, and model-specific interpretation. Statistical
+compatibility was assessed only where the package supplied compatible
+tests, sidedness, models, variance or adjustment definitions. Ratios and
+identity-link differences remain separate fits; crude arm arithmetic is
+not substituted for adjusted estimators. Unrounded covariance, test
+outputs, patient records, and unspecified Bayesian conventions were not
+reconstructed.</p>
+<p>Records: <a
+href="review_1_6/relationships/numeric_relationship_inventory.md">numeric
+inventory</a>, <a
+href="review_1_6/statistics/relationship_inventory.md">statistical
+inventory</a>, <a
+href="review_1_6/checkers/numeric_consistency.md">numeric checker</a>,
+<a href="review_1_6/checkers/cross_source_consistency.md">cross-source
+checker</a>, <a
+href="review_1_6/checkers/statistical_pass_1.md">statistical pass 1</a>,
+<a href="review_1_6/checkers/statistical_pass_2.md">statistical pass
+2</a>, <a
+href="review_1_6/verification/evidence_recheck.md">exact-source
+recheck</a>, and <a
+href="review_1_6/quality/evidence_quality_audit.md">final
+evidence-quality audit</a>.</p>
+<h1 id="document-role-classification-summary">Document-Role
+Classification Summary</h1>
+<p><code>S_W</code> compares locations within one REPORT;
+<code>S_C</code> compares two different REPORT documents;
+<code>P_R</code> compares PLAN and REPORT content; <code>P_P</code>
+compares PLAN content internally or across plans. Historical results
+inside a protocol remain PLAN. A corroborating document creates no extra
+discrepancy relationship. Primary precedence is <code>P_R</code> &gt;
+<code>P_P</code> &gt; <code>S_C</code> &gt; <code>S_W</code>. Review
+domains and suggested dispositions follow the mechanical rules in
+QUALITY_CONTROL_SCOPE.md.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Primary relationship type</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S_W</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td>S_C</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td>P_R</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td>P_P</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td style="text-align: right;">30</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Review domain</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>report_internal_inconsistency</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td>protocol_report</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td>plan_material</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td>statistical_results</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td style="text-align: right;">30</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Evidence state</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>recorded_candidate</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td>record_input_error</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>repaired_residual</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td style="text-align: right;">30</td>
+</tr>
+</tbody>
+</table>
+<p>Each count table independently reconciles to the 30 stable IDs.
+Mechanical suggestions are <code>retain</code> for 25 and
+<code>discuss</code> for five; none receives <code>exclude</code>. These
+are human-review pre-fills only. Every record remains Pending Human
+Adjudication. The five <code>record_input_error</code> IDs are C006,
+C010, C024, C027, and C028. Exact final classification values come from
+the <a href="review_1_6/candidate_ledger.md">stable ledger</a>, as
+confirmed by recheck and audit.</p>
+<h1 id="candidate-index">Candidate Index</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Stable ID</th>
+<th>Primary category</th>
+<th>Relationship type</th>
+<th>Review domain</th>
+<th>Evidence state</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>C001</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_W</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C002</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_W</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td>C003</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C004</td>
+<td>Cross-document numeric inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td>C005</td>
+<td>Cross-document numeric inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C006</td>
+<td>Cross-document numeric inconsistency</td>
+<td>P_R</td>
+<td>protocol_report</td>
+<td>record_input_error</td>
+</tr>
+<tr class="odd">
+<td>C007</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C008</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td>C009</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C010</td>
+<td>Rate-versus-count inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>record_input_error</td>
+</tr>
+<tr class="odd">
+<td>C011</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C012</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_R</td>
+<td>protocol_report</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td>C013</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C014</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>P_R</td>
+<td>protocol_report</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td>C015</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_R</td>
+<td>protocol_report</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C016</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_R</td>
+<td>protocol_report</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td>C017</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_R</td>
+<td>protocol_report</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C018</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td>C019</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C020</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td>C021</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C022</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td>C023</td>
+<td>Numeric or arithmetic inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C024</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>record_input_error</td>
+</tr>
+<tr class="odd">
+<td>C025</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C026</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td>C027</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_W</td>
+<td>report_internal_inconsistency</td>
+<td>record_input_error</td>
+</tr>
+<tr class="even">
+<td>C028</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_W</td>
+<td>report_internal_inconsistency</td>
+<td>record_input_error</td>
+</tr>
+<tr class="odd">
+<td>C029</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td>C030</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_C</td>
+<td>report_internal_inconsistency</td>
+<td>recorded_candidate</td>
+</tr>
+</tbody>
+</table>
+<h1 id="candidate-evidence-cards">Candidate Evidence Cards</h1>
+<p>Every card below is Pending Human Adjudication. Recheck facts
+supersede any corrected discovery assertion preserved in the ledger. The
+source evidence is directly printed or visual; calculation and inferred
+explanations are explicitly separated.</p>
+<h2 id="c001--main-figure-group-encoding" class="candidate-card">C001 — Main figure group
+encoding</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The main mortality figure gives
+opposite group-to-line assignments in its legend and caption.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Figure 2 legend
+versus caption</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> REPORT versus REPORT
+within main article; S_W only; category Measure, label, or scale
+inconsistency; report_internal_inconsistency. Results table is
+corroboration, not an additional discrepancy relationship. No
+classification ambiguity.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=8">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 8; main Figure 2 legend and caption, p8</a>; visual inspection
+of fresh render.</p>
+<p><strong>Source evidence:</strong> Legend assigns BedsidePEWS to
+blue-gray circles/solid line and usual care to orange circles/dashed
+line.</p>
+<p><strong>Reported-versus-comparator:</strong> Caption assigns
+intervention hospitals to the dashed orange line and usual care to the
+solid blue line; slopes 0.57 and 0.53 are printed.</p>
+<p><strong>Reasoning procedure:</strong> Yes. A single figure's
+group-to-line encoding must agree between legend and explanatory
+caption. Reversed printed/visual encodings are direct. A production
+transposition is inferred.</p>
+<p><strong>Calculation:</strong> The two group-to-color/style mappings
+are reversed. The plot's rightmost blue-gray point near (6.03,0.8) also
+matches intervention hospital C in <a
+href="../joi180015supp3_prod.pdf#page=9">joi180015supp3_prod.pdf — PDF
+p. 9; results eTable 2, p9</a>.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Caption
+descriptors may be transposed, or legend/plot descriptors may be
+transposed. Hospital letters/table coordinates support the plotted group
+encoding but do not prescribe a correction. Missing inputs/definitions:
+Which encoding the authors intended for group-specific slopes;
+underlying fitted-line output if slope attribution is to be
+resolved.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for the
+encoding comparison. Exact fitted model outputs are unavailable and
+unnecessary to establish the reversed descriptions. Evidence-record
+determination: recorded_candidate, determined by directly observed
+reversed encodings. The suggested review disposition is solely a
+mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a reversed group-to-line assignment or slope attribution. It warrants
+the precise human question below within the quantitative reporting
+scope; unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a reversed group-to-line
+assignment or slope attribution. No propagation, effect-estimate change,
+conclusion change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Which group-to-line assignment and slope attribution are
+intended?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c002--supplemental-figure-group-encoding" class="candidate-card">C002 — Supplemental
+figure group encoding</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The supplemental mortality
+figure gives opposite group-to-color and line-style assignments in its
+legend and caption.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results eFigure 1
+legend versus caption</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Both discrepant locations
+are REPORT content in the same results supplement; S_W only; Measure,
+label, or scale inconsistency; report_internal_inconsistency. eTable 2
+only corroborates group identity. No ambiguity.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp3_prod.pdf#page=2">joi180015supp3_prod.pdf — PDF
+p. 2; results eFigure 1, p2</a> visually rendered and <a
+href="../joi180015supp3_prod.pdf#page=3">joi180015supp3_prod.pdf — PDF
+p. 3; caption, p3</a>.</p>
+<p><strong>Source evidence:</strong> Legend usual care is salmon/red
+dotted; BedsidePEWS is turquoise dashed. H and C are turquoise; U is
+salmon.</p>
+<p><strong>Reported-versus-comparator:</strong> Caption identifies A–J
+as BedsidePEWS and K–U as usual care, but says intervention
+salmon/dotted and usual care blue/dashed.</p>
+<p><strong>Reasoning procedure:</strong> Yes, identity of
+group/color/style for the same quantitative graph. Source-rendered group
+encodings and caption words are direct; a transposition mechanism is
+inferred.</p>
+<p><strong>Calculation:</strong> H (2.47,5.21) and U (2.77,3.13) match
+<a href="../joi180015supp3_prod.pdf#page=9" target="_blank" rel="noopener">joi180015supp3_prod.pdf —
+PDF p. 9; eTable 2, p9</a> and their plotted colors; caption
+colors/styles reverse both legend groups.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Caption
+rather than plotted group encoding may be transposed; this does not
+identify a final correction. Missing inputs/definitions: Author-intended
+figure descriptors and fitted plotting code, if the mechanism is to be
+determined.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+direct encoding comparison and point confirmation. Evidence-record
+determination: recorded_candidate, determined by directly reversed group
+descriptors. The suggested review disposition is solely a mechanical
+pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a reversed supplemental group-to-line assignment. It warrants the
+precise human question below within the quantitative reporting scope;
+unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a reversed supplemental
+group-to-line assignment. No propagation, effect-estimate change,
+conclusion change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Which color/style wording is intended for each fitted group
+line?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c003--main-figure-horizontal-period-label" class="candidate-card">C003 — Main figure
+horizontal-period label</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The main mortality figure’s
+literal horizontal-axis period label differs from its caption,
+supplemental axis, and corroborating hospital coordinate.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C, S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Figure 2 axis
+versus caption and REPORT results eFigure 1/eTable 2</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Main axis/caption produce
+S_W; main versus distinct REPORT results supplement produces S_C.
+Primary S_C by precedence; All relationships S_C, S_W; Measure, label,
+or scale inconsistency; report_internal_inconsistency. No role
+ambiguity.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=8">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 8; main Figure 2, p8</a>, <a
+href="../joi180015supp3_prod.pdf#page=2">joi180015supp3_prod.pdf — PDF
+p. 2; results eFigure 1, p2</a>, and <a
+href="../joi180015supp3_prod.pdf#page=9">joi180015supp3_prod.pdf — PDF
+p. 9; eTable 2 hospital C, p9</a>.</p>
+<p><strong>Source evidence:</strong> Main x-axis says deaths per 1000
+discharges during baseline <strong>and intervention</strong> periods;
+its caption says coordinates are baseline and intervention rates.</p>
+<p><strong>Reported-versus-comparator:</strong> Supplement x-axis says
+baseline period. C has baseline 4/663 (6.03), intervention 1/1250 (0.8),
+total discharges 1913.</p>
+<p><strong>Reasoning procedure:</strong> Yes: a plotted baseline rate
+and a combined-period rate have different denominators/time definitions.
+Axis words, table counts, and point position are direct; an extra axis
+phrase is an inferred production explanation.</p>
+<p><strong>Calculation:</strong> 4000/663=6.03318; 5000/1913=2.61370.
+Both fresh-rendered plots put C near x=6.03,y=0.8, not x=2.61.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+axis may be a loose description of the two-dimensional display; the
+caption and supplemental baseline axis define the actual horizontal
+quantity. Missing inputs/definitions: Whether the main horizontal label
+intends a combined rate or simply inadvertently names both displayed
+periods.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+rates and visual discrimination; exact plotting coordinates not supplied
+as structured data, but the difference is far larger than graphical
+resolution. Evidence-record determination: recorded_candidate,
+determined by incompatible literal horizontal time label and directly
+corroborated baseline coordinates. The suggested review disposition is
+solely a mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a different horizontal time basis for mortality rates. It warrants the
+precise human question below within the quantitative reporting scope;
+unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a different horizontal
+time basis for mortality rates. No propagation, effect-estimate change,
+conclusion change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: What exact time basis should the main x-axis communicate?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c004--usual-care-baseline-patient-day-minimum" class="candidate-card">C004 — Usual-care
+baseline patient-day minimum</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The usual-care baseline
+patient-day minimum is 6665 in the flow figure and 6655 in the hospital
+table.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C</p>
+<p><strong>Compared document roles:</strong> REPORT main Figure 1 versus
+REPORT results eTable 3</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> REPORT main versus REPORT
+results supplement; S_C only; Cross-document numeric inconsistency;
+report_internal_inconsistency; no ambiguity.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=3">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 3; main Figure 1 baseline box, p3</a> and <a
+href="../joi180015supp3_prod.pdf#page=11">joi180015supp3_prod.pdf — PDF
+p. 11; results eTable 3, p11</a>.</p>
+<p><strong>Source evidence:</strong> Main usual-care baseline range
+6665–31575; total 162497.</p>
+<p><strong>Reported-versus-comparator:</strong> Table baseline K–U
+values 10164,6655,8941,8917,11705,12126,13335,16077,14304,28698,31575; L
+is 6655.</p>
+<p><strong>Reasoning procedure:</strong> Yes, integer minimum among the
+same eleven usual-care hospitals/period. Values and minimum/sum
+arithmetic are direct/reproducible; transcription mechanism is
+inferred.</p>
+<p><strong>Calculation:</strong> Minimum=6655; sum=162497; printed flow
+minimum differs by 10. Matching total, maximum, group, and phase support
+alignment.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> One
+hospital row or flow extremum may contain a transcription difference; a
+distinct 10-day definition is not disclosed. Missing inputs/definitions:
+Which original count or extremum is intended; no missing input prevents
+the printed comparison.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes, all
+eleven counts and total. Evidence-record determination:
+recorded_candidate, determined by reproduced 10-day extremum mismatch
+with matching cohort totals. The suggested review disposition is solely
+a mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a different site-level patient-day minimum. It warrants the precise
+human question below within the quantitative reporting scope; unresolved
+conventions and unsupported inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a different site-level
+patient-day minimum. No propagation, effect-estimate change, conclusion
+change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Which baseline minimum is intended, and do the two sources
+intentionally use different hospital-day definitions?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c005--usual-care-intervention-discharge-maximum" class="candidate-card">C005 —
+Usual-care intervention discharge maximum</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The usual-care intervention
+discharge maximum is 29956 in the flow figure and 26956 in the hospital
+table.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C</p>
+<p><strong>Compared document roles:</strong> REPORT main Figure 1 versus
+REPORT results eTable 2</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> REPORT main versus REPORT
+results supplement; S_C only; Cross-document numeric inconsistency;
+report_internal_inconsistency; no ambiguity.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=3">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 3; main Figure 1 intervention/analysis boxes, p3</a> and <a
+href="../joi180015supp3_prod.pdf#page=9">joi180015supp3_prod.pdf — PDF
+p. 9; results eTable 2, p9</a>.</p>
+<p><strong>Source evidence:</strong> Main twice gives range 3672–29956
+and total 94366.</p>
+<p><strong>Reported-versus-comparator:</strong> Table K–U intervention
+discharges 7285,5642,3811,3672,4638,5471,6440,7327,5886,26956,17238.</p>
+<p><strong>Reasoning procedure:</strong> Yes, maximum among the same
+eleven hospitals/phase. Source values and extremum calculation are
+observed/reproduced; a typographic cause is inferred.</p>
+<p><strong>Calculation:</strong> Maximum=26956; sum=94366; flow maximum
+exceeds table maximum by 3000. Minimum also agrees at 3672.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Flow
+extremum or T row may be transcribed differently; matching total/minimum
+strongly supports the registered alignment. Missing inputs/definitions:
+Intended source discharge maximum, if either printed count is to be
+changed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes, all
+site counts, group total, and period definition. Evidence-record
+determination: recorded_candidate, determined by exact 3000-discharge
+maximum disagreement. The suggested review disposition is solely a
+mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a different site-level discharge maximum. It warrants the precise human
+question below within the quantitative reporting scope; unresolved
+conventions and unsupported inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a different site-level
+discharge maximum. No propagation, effect-estimate change, conclusion
+change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Which intervention maximum is intended, and does Figure 1
+deliberately use a different site dataset?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c006--anticipated-bed-inputs-and-unsupported-common-basis-assumption" class="candidate-card">C006
+— Anticipated bed inputs and unsupported common-basis assumption</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The anticipated bed total and
+participating-site bed count have different supported input bases; the
+initially assumed common census basis is not established.</p>
+<p><strong>Category:</strong> Cross-document numeric inconsistency</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> REPORT results anticipated
+power inputs versus PLAN protocol participating-site data</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Evidence state:</strong> record_input_error</p>
+<p><strong>Suggested review disposition:</strong> discuss</p>
+<p><strong>Classification rationale:</strong> REPORT results versus PLAN
+protocol by content; residual comparison P_R only; Cross-document
+numeric inconsistency; protocol_report. Ambiguity is common basis, not
+roles. The appendix corroborates a supported power basis and creates no
+separate P_P discrepancy.</p>
+<p><strong>Classification ambiguity:</strong> The common bed-census
+basis is unsupported; source-supported power and participating-site
+inputs differ in purpose.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp3_prod.pdf#page=14">joi180015supp3_prod.pdf — PDF
+p. 14; results eTable 5, p14</a>, <a
+href="../joi180015supp1_prod.pdf#page=14">joi180015supp1_prod.pdf — PDF
+p. 14; protocol sample-size section, p14</a>, and <a
+href="../joi180015supp1_prod.pdf#page=29">joi180015supp1_prod.pdf — PDF
+p. 29; power appendix, p29</a>.</p>
+<p><strong>Source evidence:</strong> Results anticipated 20
+hospitals/2397 ward beds, 99389 discharges/397556 days; caption
+explicitly tabulates power assumptions including constant cluster
+size.</p>
+<p><strong>Reported-versus-comparator:</strong> Protocol p14 presents
+the 21 participating sites’ available data as 2322 beds, with the same
+99389 admissions and 397556 patient-days. Appendix sets n=20 and average
+bed size 119.85.</p>
+<p><strong>Reasoning procedure:</strong> Conditional only. Equality
+would apply if the bed rows represented the same participating-site
+census, but the report explicitly frames its column as power
+assumptions. Printed counts and exact power product are
+direct/reproduced; equating their bed basis is an unsupported registered
+assumption.</p>
+<p><strong>Calculation:</strong> 2397−2322=75; 20×119.85=2397 exactly.
+These are different numbers with a supplied alternative basis, not a
+reproduced common-basis bed discrepancy.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> 2397 is
+the constant-cluster power total derived directly from the protocol
+appendix, while 2322 is the available participating-site count. Shared
+admissions/day inputs do not make every row a census. Missing
+inputs/definitions: Whether the report's anticipated bed row is an
+actual census or constant-cluster power input; source mapping of each
+anticipated row.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for both
+printed numbers and power-derived 2397; no for establishing identical
+bed-population/basis. Evidence-record determination: record_input_error,
+determined by unsupported bed-row alignment and exact source-supported
+alternative power total. Whether any residual labeling discrepancy
+exists remains unsettled. The suggested review disposition is solely a
+mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a power-input bed total treated incorrectly as an observed site census.
+It warrants the precise human question below within the quantitative
+reporting scope; unresolved conventions and unsupported inputs limit
+what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a power-input bed total
+treated incorrectly as an observed site census. No propagation,
+effect-estimate change, conclusion change, or serious harm is
+established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Does the anticipated bed row intend the constant-cluster power
+total, and should its basis be explicitly distinguished from the
+available-site census?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c007--mortality-absolute-reduction-scale" class="candidate-card">C007 — Mortality
+absolute-reduction scale</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The mortality power appendix’s
+0.9% absolute reduction differs by a factor of ten from the same plan’s
+0.09% and 0.9-per-1000 summaries.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN protocol appendix
+versus sample-size summary</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> All conflicting locations
+PLAN; P_P only; Measure, label, or scale inconsistency; plan_material.
+<a
+href="../jama_parshuram_2018_oi_180015.pdf#page=4">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 4; Main p4</a> supports 0.9/1000 only and adds no discrepancy
+relationship.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp1_prod.pdf#page=29">joi180015supp1_prod.pdf — PDF
+p. 29; protocol p29 appendix</a>, <a
+href="../joi180015supp1_prod.pdf#page=14">joi180015supp1_prod.pdf — PDF
+p. 14; p14 sample size</a>, and <a
+href="../joi180015supp1_prod.pdf#page=1">joi180015supp1_prod.pdf — PDF
+p. 1; p1 summary</a>.</p>
+<p><strong>Source evidence:</strong> Appendix says 18% relative
+reduction corresponds to absolute risk reduction 0.9%; baseline
+5.1/1000; more precise RRR 0.178 also printed.</p>
+<p><strong>Reported-versus-comparator:</strong> p14 says 18% relative
+and absolute 0.09%; p1 says 0.9 deaths/1000.</p>
+<p><strong>Reasoning procedure:</strong> Yes, matched mortality power
+scenario and percent/per-thousand conversion. Printed percentage
+disagreement and conversion are direct/reproduced; a decimal
+transcription is inferred.</p>
+<p><strong>Calculation:</strong> 5.1×0.18=0.918 deaths/1000=0.0918%;
+0.9/1000=0.09%; 0.9%=9/1000. RRR0.178 gives0.9078/1000 and does not
+rescue the percentage.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Decimal/unit transcription or another baseline; no alternative baseline
+matching this 18% scenario is supplied. Missing inputs/definitions:
+Whether an unreported alternative scenario generated the appendix
+percentage.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+arithmetic and unit comparison; no original power execution needed.
+Evidence-record determination: recorded_candidate, determined by tenfold
+percentage scale difference. The suggested review disposition is solely
+a mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a tenfold different planned absolute-effect percentage. It warrants the
+precise human question below within the quantitative reporting scope;
+unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a tenfold different
+planned absolute-effect percentage. No propagation, effect-estimate
+change, conclusion change, or serious harm is established by this
+record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Which absolute percentage belongs to this mortality power
+scenario?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c008--cardiac-arrest-intensity-codes" class="candidate-card">C008 — Cardiac-arrest
+intensity codes</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The protocol’s cardiac-arrest
+intensity codes differ between the endpoint definition/scale and
+abstraction-table legend.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN protocol intensity
+definition/Table 5 versus Table 6 legend</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN throughout; P_P only;
+Measure, label, or scale inconsistency; plan_material. No role
+ambiguity; alternate-scale ambiguity remains named.</p>
+<p><strong>Classification ambiguity:</strong> An undisclosed earlier
+scale version could explain the legend; no such version is supplied.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp1_prod.pdf#page=11">joi180015supp1_prod.pdf — PDF
+p. 11; protocol p11 clinical definition</a>, <a
+href="../joi180015supp1_prod.pdf#page=24">joi180015supp1_prod.pdf — PDF
+p. 24; Table 5 p24</a>, and <a
+href="../joi180015supp1_prod.pdf#page=27">joi180015supp1_prod.pdf — PDF
+p. 27; Table 6 legend p27</a>.</p>
+<p><strong>Source evidence:</strong> Definition rates cardiac arrests 6
+or 7 on the Children's Resuscitation Intensity Scale.</p>
+<p><strong>Reported-versus-comparator:</strong> Table 6 legend names
+cardiac arrest scale rating 4 or 5. Table 5 assigns 4 to circulatory
+support, 5 to respiratory/circulatory support, 6 to chest
+compressions/ECMO, 7 to death.</p>
+<p><strong>Reasoning procedure:</strong> Yes, discrete codes on the same
+named endpoint intensity scale. Codes/definitions are direct; a stale
+legend is inferred.</p>
+<p><strong>Calculation:</strong> {4,5} differs from {6,7}; their
+treatment definitions are visibly different. No rounding applies.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A stale
+legend or alternate unlabelled scale may explain it; no such scale is
+supplied in the bound plan. Missing inputs/definitions: Whether Table 6
+refers to an undisclosed prior intensity scale; the actual review-form
+code version.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for code
+mapping. Event-level coding is unavailable and not needed for the
+printed comparison. Evidence-record determination: recorded_candidate,
+determined by inconsistent endpoint-to-code assignment. The suggested
+review disposition is solely a mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a different cardiac-arrest endpoint code set. It warrants the precise
+human question below within the quantitative reporting scope; unresolved
+conventions and unsupported inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a different
+cardiac-arrest endpoint code set. No propagation, effect-estimate
+change, conclusion change, or serious harm is established by this
+record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Which intensity codes were intended to trigger the Table 6
+cardiac-arrest abstraction?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c009--preventability-threshold-boundary" class="candidate-card">C009 — Preventability
+threshold boundary</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The protocol’s strict
+preventability threshold excludes rating 4 while its enumeration and
+table legend include it.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN protocol strict
+threshold versus enumeration/Table 7</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN/PLAN, P_P only;
+Measure, label, or scale inconsistency; plan_material. <a
+href="../joi180015supp3_prod.pdf#page=6">joi180015supp3_prod.pdf — PDF
+p. 6; Results p6</a> and <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=7">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 7; main p7</a> corroborate inclusion of 4 and do not create
+extra P_R discrepancy relationships.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp1_prod.pdf#page=11">joi180015supp1_prod.pdf — PDF
+p. 11; protocol p11</a> and <a
+href="../joi180015supp1_prod.pdf#page=28">joi180015supp1_prod.pdf — PDF
+p. 28; Table 7 p28</a>.</p>
+<p><strong>Source evidence:</strong> p11 says consensus rating “at
+&gt;4.”</p>
+<p><strong>Reported-versus-comparator:</strong> The immediately
+following sentence expressly includes ratings 4,5,6; Table 7 legend says
+a rating of 4 or more.</p>
+<p><strong>Reasoning procedure:</strong> Yes, membership at integer
+boundary 4 on the same six-point scale. Conflicting membership
+definitions are direct; possible typographic cause is inferred.</p>
+<p><strong>Calculation:</strong> &gt;4 selects {5,6}; 4 or more selects
+{4,5,6}. Rating 4 fails the first and satisfies the second.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> A
+strict-symbol typo rather than a different analysis threshold; no
+correction assigned. Missing inputs/definitions: Applied operational
+cutoff and number of events rated 4; neither is inferred from 21/27 or
+29/32.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+boundary comparison; no event ratings to quantify its consequences.
+Evidence-record determination: recorded_candidate, determined by
+reproduced boundary contradiction. The suggested review disposition is
+solely a mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a different preventability boundary. It warrants the precise human
+question below within the quantitative reporting scope; unresolved
+conventions and unsupported inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a different
+preventability boundary. No propagation, effect-estimate change,
+conclusion change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Was rating 4 included in the applied preventability
+dichotomy?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c010--annual-versus-two-year-historical-admissions" class="candidate-card">C010 —
+Annual versus two-year historical admissions</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The annual and two-year
+historical counts cannot be treated as the same cohort without the
+missing reference-period definition.</p>
+<p><strong>Category:</strong> Rate-versus-count inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN protocol annual input
+versus historical two-year dataset</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> record_input_error</p>
+<p><strong>Suggested review disposition:</strong> discuss</p>
+<p><strong>Classification rationale:</strong> Historical material
+remains PLAN by content; P_P only; Rate-versus-count inconsistency;
+plan_material. Ambiguity is matching historical periods, not source
+roles.</p>
+<p><strong>Classification ambiguity:</strong> The historical reference
+periods and cohort identity are not established.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp1_prod.pdf#page=14">joi180015supp1_prod.pdf — PDF
+p. 14; protocol p14</a> and <a
+href="../joi180015supp1_prod.pdf#page=30">joi180015supp1_prod.pdf — PDF
+p. 30; historical appendix p30</a>.</p>
+<p><strong>Source evidence:</strong> p14 describes 1052 urgent ICU
+admissions/year from four Ontario pediatric hospitals, without
+identifying a year or dataset period.</p>
+<p><strong>Reported-versus-comparator:</strong> p30 explicitly describes
+1052 admissions in two years following 31 January 2007 from the four
+largest Ontario pediatric referral hospitals, alongside 55963 discharges
+and 150 code-blue events.</p>
+<p><strong>Reasoning procedure:</strong> Only if the counts represent
+the same historical cohort. Count/year and two-year count cannot
+otherwise be equated solely by numerical identity. Printed
+periods/counts are direct. Registering a same-cohort annualization
+contradiction assumes an alignment not established by the supplied
+text.</p>
+<p><strong>Calculation:</strong> For the p30 cohort, 1052/2=526/year;
+labeling that aggregate 1052/year would double annualization. The
+calculation is conditional; it does not establish p14's cohort
+identity.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+same four centers could supply another annual series or estimate of
+1052; p14 does not give the dates that would exclude this. Missing
+inputs/definitions: The reference period/source dataset for p14 and
+whether it is the p30 2007–2008 aggregate.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+p30's annualized count; no definitive identification of p14's historical
+series/year. Evidence-record determination: record_input_error,
+determined by unsupported historical-series alignment. Exact dates of
+p14 remain missing, so a residual discrepancy cannot be settled. The
+suggested review disposition is solely a mechanical pre-fill for human
+review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+an unsupported historical annual frequency. It warrants the precise
+human question below within the quantitative reporting scope; unresolved
+conventions and unsupported inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy an unsupported historical
+annual frequency. No propagation, effect-estimate change, conclusion
+change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Are both occurrences 1052 drawn from the same two-year
+dataset, or is p14 a separate annual cohort/estimate?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c011--fluid-resuscitation-threshold" class="candidate-card">C011 — Fluid-resuscitation
+threshold</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The main SCDE definition
+includes exactly 60 mL/kg while the results supplement’s strict
+threshold excludes that boundary.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C</p>
+<p><strong>Compared document roles:</strong> REPORT main SCDE threshold
+versus REPORT results definition</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> REPORT main versus REPORT
+results supplement; S_C only; Measure, label, or scale inconsistency;
+report_internal_inconsistency. <a
+href="../joi180015supp1_prod.pdf#page=24">joi180015supp1_prod.pdf — PDF
+p. 24; Protocol Table 5 p24</a> only corroborates the strict boundary
+and adds no P_R relationship.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=4">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 4; main Study Outcomes p4</a> and <a
+href="../joi180015supp3_prod.pdf#page=6">joi180015supp3_prod.pdf — PDF
+p. 6; results eTable 1 p6</a>.</p>
+<p><strong>Source evidence:</strong> Main lists fluid boluses of 60
+mL/kg or greater within the 12 hours before ICU admission.</p>
+<p><strong>Reported-versus-comparator:</strong> Results definition gives
+&gt;60 mL/kg in the 12 hours before transfer.</p>
+<p><strong>Reasoning procedure:</strong> Yes, strict versus inclusive
+numerical threshold for the matched SCDE component. Printed threshold
+difference is direct; changes in SCDE event totals are not
+established.</p>
+<p><strong>Calculation:</strong> Exactly 60 mL/kg with no other
+qualifying component satisfies ≥60 but fails &gt;60.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Threshold wording/symbol may be inexact, or measurement tolerance may
+govern classification. Neither resolves printed inclusion/exclusion.
+Missing inputs/definitions: Operational fluid threshold/tolerance and
+counts of events exactly 60 without another qualifying component.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+threshold logic; boundary-patient data are absent. Evidence-record
+determination: recorded_candidate, determined by reproduced boundary
+membership difference. The suggested review disposition is solely a
+mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a different fluid-volume boundary for SCDE. It warrants the precise
+human question below within the quantitative reporting scope; unresolved
+conventions and unsupported inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a different fluid-volume
+boundary for SCDE. No propagation, effect-estimate change, conclusion
+change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Which threshold governed event classification at exactly 60
+mL/kg?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c012--circulatory-component-conjunction" class="candidate-card">C012 — Circulatory
+component conjunction</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The protocol’s circulatory
+component requires fluids and vasoactive support, while the report
+definitions allow either component.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN protocol circulatory
+conjunction versus REPORT main/results disjunction</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN versus REPORT
+main/results; P_R only; Measure, label, or scale inconsistency;
+protocol_report. Main and results agree on disjunction, so no additional
+S_C. No role ambiguity.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp1_prod.pdf#page=24">joi180015supp1_prod.pdf — PDF
+p. 24; protocol Table 5 p24</a>, <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=4">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 4; main p4</a>, and <a
+href="../joi180015supp3_prod.pdf#page=6">joi180015supp3_prod.pdf — PDF
+p. 6; results eTable 1 p6</a>.</p>
+<p><strong>Source evidence:</strong> Protocol level 4 requires &gt;60
+mL/kg fluid and administration of inotrope/vasopressor; it is SCDE
+Yes.</p>
+<p><strong>Reported-versus-comparator:</strong> Results says &gt;60
+fluid and/or inotrope/vasopressor; main composite of one or more
+components separately lists vasoactive medication or qualifying fluid
+boluses.</p>
+<p><strong>Reasoning procedure:</strong> Yes, AND versus OR for the
+matched circulatory component, independent of C011's numerical boundary.
+Different Boolean definitions are direct; amendment mechanism and count
+effect are unestablished.</p>
+<p><strong>Calculation:</strong> Fluid-only or vasoactive-only without
+another component satisfies report disjunction and fails protocol
+conjunction.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Definition amended or plan conjunction imprecise; no supplied amendment
+resolves which explanation applies. Missing inputs/definitions: Final
+operational conjunction, a documented change if any, and affected
+treatment combinations.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+logical comparison, no event-level treatment patterns or amendment
+history. Evidence-record determination: recorded_candidate, determined
+by reproduced logical membership difference. The suggested review
+disposition is solely a mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a different logical circulatory component definition. It warrants the
+precise human question below within the quantitative reporting scope;
+unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a different logical
+circulatory component definition. No propagation, effect-estimate
+change, conclusion change, or serious harm is established by this
+record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Which circulatory rule was applied, and does the textual
+difference reflect an amendment or description error?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c013--icu-rate-wording-versus-patient-duration-summaries" class="candidate-card">C013 —
+ICU rate wording versus patient duration summaries</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The literal blanket ICU rate
+wording has a different dimension from the explicitly per-patient
+duration summaries; its intended scope remains undefined.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C, S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main ICU-rate
+wording versus main patient narrative and REPORT results patient
+summaries</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> REPORT main/internal
+patient narrative produces S_W; main versus REPORT results supplement
+produces S_C; primary S_C; All relationships S_C, S_W; Measure, label,
+or scale inconsistency; report_internal_inconsistency. <a
+href="../joi180015supp2_prod.pdf#page=7">joi180015supp2_prod.pdf — PDF
+p. 7; SAP p7</a> corroborates per-patient aggregation only and adds no
+P_R. Scope ambiguity recorded.</p>
+<p><strong>Classification ambiguity:</strong> The scope of the blanket
+ICU rate statement is unqualified; selected event outcomes may have been
+intended.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=4">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 4; main Data Analyses p4</a>, <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=6">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 6; main patient narrative p6</a>, <a
+href="../joi180015supp3_prod.pdf#page=12">joi180015supp3_prod.pdf — PDF
+p. 12; results eTable 4 p12</a>, and <a
+href="../joi180015supp3_prod.pdf#page=13">joi180015supp3_prod.pdf — PDF
+p. 13; footnotes p13</a>.</p>
+<p><strong>Source evidence:</strong> Main says patient outcomes are
+expressed per 1000 patient-days in ICU (ICU outcomes).</p>
+<p><strong>Reported-versus-comparator:</strong> eTable 4 is expressly
+per-patient; 686/967 patients, total-LOS means 9.4/9 days,
+ventilator-free means 23.9/24 days, MV means 4.1/3.7 days; footnotes
+define per-patient totals/means and continuous mean differences. Main p6
+explicitly describes 1653 patients remaining in ICU for 15212 days.</p>
+<p><strong>Reasoning procedure:</strong> Yes, the literal blanket rate
+denominator has dimensions different from day totals/means per patient.
+Its intended scope is conditional. General denominator statement and
+patient-summary dimensions are direct; an intended scope restriction is
+inferred.</p>
+<p><strong>Calculation:</strong> Mean duration=sum of patient
+durations/number of patients, measured in days; it is not events per
+1000 ICU patient-days. The table's Gaussian mean differences
+1.28,0.26,0.69 are dimensionally day differences.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Main
+statement may apply only to selected event outcomes, with patient
+resource summaries exempt; that scope is not explicitly qualified
+locally. Missing inputs/definitions: Which subset of ICU outcomes the
+main per-1000-day statement intends to describe.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+outcome dimensions and patient summary definitions; raw patient
+durations are unnecessary for this label comparison. Evidence-record
+determination: recorded_candidate, determined by literal
+denominator/dimension mismatch pending named scope definition. The
+suggested review disposition is solely a mechanical pre-fill for human
+review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a patient-duration mean labeled as a patient-day event rate. It warrants
+the precise human question below within the quantitative reporting
+scope; unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a patient-duration mean
+labeled as a patient-day event rate. No propagation, effect-estimate
+change, conclusion change, or serious harm is established by this
+record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Precisely which ICU outcomes should carry the per-1000-ICU-day
+label, and which are patient duration means?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c014--icu-readmission-denominator" class="candidate-card">C014 — ICU-readmission
+denominator</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The protocol specifies hospital
+discharges for ICU readmission, whereas the SAP and report specify ICU
+discharges.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> PLAN protocol
+hospital-discharge denominator versus PLAN SAP and REPORT main
+ICU-discharge denominator</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN protocol versus
+REPORT main establishes P_R; PLAN protocol versus PLAN SAP is
+independently conflicting P_P. Primary P_R; All relationships P_R, P_P;
+Denominator, proportion, or total inconsistency; protocol_report. Roles
+confirmed; no extra S_W.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp1_prod.pdf#page=12">joi180015supp1_prod.pdf — PDF
+p. 12; protocol p12</a>, <a
+href="../joi180015supp2_prod.pdf#page=5">joi180015supp2_prod.pdf — PDF
+p. 5; SAP shell p5</a>, and <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=7">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 7; main Table 3 p7</a>, visually checked.</p>
+<p><strong>Source evidence:</strong> Protocol says PICU mortality and
+unplanned re-admission (hospital,PICU) per thousand hospital
+discharges.</p>
+<p><strong>Reported-versus-comparator:</strong> SAP ICU-readmission row
+denominator PatientDischargesICU. Main ICU readmission &lt;48h:
+94(28.40)/108(21.25), rates per 1000 ICU discharges in footnote h;
+hospital discharges 50173/94366.</p>
+<p><strong>Reasoning procedure:</strong> Yes, explicit
+hospital-discharge versus ICU-discharge units for the same
+ICU-readmission endpoint. Opposing denominator labels are direct;
+historical change mechanism is inferred.</p>
+<p><strong>Calculation:</strong> Hospital denominators would give
+94000/50173=1.87352 and108000/94366=1.14448, rather than28.40 and21.25.
+No hospital-to-ICU denominator substitution is justified.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Later
+SAP revises an overgeneralized protocol statement; the report and SAP
+agree. This is not evidence of a protocol violation. Missing
+inputs/definitions: Documented final denominator revision and any
+populations excluded from the stated ICU-discharge denominator.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+printed unit contrast and diagnostic hospital rates; unrounded ICU-rate
+reconstruction is not needed. Evidence-record determination:
+recorded_candidate, determined by directly different endpoint
+denominator definitions. The suggested review disposition is solely a
+mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a hospital rather than ICU discharge denominator. It warrants the
+precise human question below within the quantitative reporting scope;
+unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a hospital rather than
+ICU discharge denominator. No propagation, effect-estimate change,
+conclusion change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: What original/final ICU-readmission denominator was intended,
+and is its change documented?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c015--predicted-mortality-patientdischarge-label" class="candidate-card">C015 —
+Predicted-mortality patient/discharge label</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The SAP’s predicted-mortality
+discharge label differs from its patient aggregation and the results
+supplement’s patient percentages.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> PLAN SAP discharge label
+versus its patient aggregation and REPORT results patient
+denominator</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN SAP internally
+conflicts (P_P); PLAN SAP discharge label versus REPORT results patient
+definition conflicts (P_R). Primary P_R; All relationships P_R, P_P;
+Measure, label, or scale inconsistency; protocol_report.
+Repeat-admission handling limits exact rate reconstruction, not role
+assignment.</p>
+<p><strong>Classification ambiguity:</strong> The intended discharge
+subset and patient-versus-admission aggregation require
+clarification.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp2_prod.pdf#page=7">joi180015supp2_prod.pdf — PDF
+p. 7; SAP ICU analysis p7</a>, <a
+href="../joi180015supp3_prod.pdf#page=12">joi180015supp3_prod.pdf — PDF
+p. 12; results eTable 4 p12</a>, <a
+href="../joi180015supp3_prod.pdf#page=13">joi180015supp3_prod.pdf — PDF
+p. 13; prediction footnote p13</a>, and <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=7">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 7; main admission-event row p7</a>.</p>
+<p><strong>Source evidence:</strong> SAP label “PIM II Prediction
+Mortality (/1000 urgent ICU discharges)” accompanies average probability
+across admissions and an explicit one-record-per-patient analysis.</p>
+<p><strong>Reported-versus-comparator:</strong> Results footnote sums
+each patient's inverse-logit and presents predicted numbers rounded to
+integer, percentages of total patients. Table post
+predicted38(5.5%)/44(4.6%), with686/967 patients. Main urgent admission
+events828/1178.</p>
+<p><strong>Reasoning procedure:</strong> Yes: averaging within patient
+then across patients defines a patient probability, not a
+per-urgent-ICU-discharge rate when patients may have multiple
+admissions. Percent versus per1000 conversion alone cannot change the
+population unit. Opposing denominator labels and patient aggregation are
+direct; the printed-count ratios are diagnostics because the prediction
+counts are rounded. No inferential mean difference is reconstructed.</p>
+<p><strong>Calculation:</strong> Rounded-count
+diagnostics38/686×100=5.53936% and44/967×100=4.55016%, compatible with
+printed patient percentages. Admission-event
+diagnostics38/828×1000=45.89372 and44/1178×1000=37.35144 differ from
+approximately55/46 per1000 patients; these event counts are not asserted
+to equal every eligible urgent discharge count.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> SAP row
+may retain an admission/discharge label while its implemented
+aggregation and report use patient predictions; an undisclosed separate
+discharge quantity may exist. Missing inputs/definitions: Intended SAP
+row denominator, final unrounded predicted sums, and urgent-discharge
+population if a separate discharge analysis was intended.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+denominator definitions and dimensional comparison; no underlying
+probability sums or precise urgent-discharge subset. Evidence-record
+determination: recorded_candidate, determined by source-defined patient
+aggregation opposing the discharge row label. The suggested review
+disposition is solely a mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a patient prediction labeled as a discharge-based rate. It warrants the
+precise human question below within the quantitative reporting scope;
+unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a patient prediction
+labeled as a discharge-based rate. No propagation, effect-estimate
+change, conclusion change, or serious harm is established by this
+record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Is this outcome a patient probability/percentage, or was a
+distinct discharge-based prediction intended in the SAP label?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c016--icu-readmission-poisson-versus-logistic-label" class="candidate-card">C016 —
+ICU-readmission Poisson versus logistic label</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The SAP ICU-readmission shell
+names Poisson, whereas the report names logistic regression and an odds
+ratio; the alleged protocol ICU-logit comparator is absent and
+excluded.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN SAP ICU-readmission
+Poisson shell versus REPORT main logistic OR</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN SAP versus REPORT
+main; primary P_R; All relationships <strong>P_R only</strong>; Measure,
+label, or scale inconsistency; protocol_report. Correction: remove P_P
+because the registered protocol ICU-readmission logit statement is
+absent. Preserve that assertion in historical discovery provenance,
+explicitly removed from the final comparison; no stable ID is deleted.
+Roles themselves are confirmed.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp2_prod.pdf#page=5">joi180015supp2_prod.pdf — PDF
+p. 5; SAP shell p5</a>, <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=7">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 7; main Table 3/footnote d p7</a>, and <a
+href="../joi180015supp1_prod.pdf#page=16">joi180015supp1_prod.pdf — PDF
+p. 16; protocol analysis p16</a>.</p>
+<p><strong>Source evidence:</strong> SAP Unplanned ICU Readmissions uses
+ICU-discharge denominators and “Poisson.” SAP pp1–3 define binomial
+logit versus Poisson log-rate model families.</p>
+<p><strong>Reported-versus-comparator:</strong> Main ICU
+readmission&lt;48h gives OR1.11(0.77–1.61), P=.58; footnote d explicitly
+names logistic regression. The registered claim that protocol p16
+specifies an identical logit model for ICU readmission is <strong>not
+matched</strong>: that list does not contain ICU readmission.</p>
+<p><strong>Reasoning procedure:</strong> Yes to the SAP/report named
+model/measure identity. No to a nonexistent protocol ICU-readmission
+model comparator. Model names and OR are direct; production-model change
+or shell obsolescence is inferred. The unsupported protocol comparison
+is a discovered registration input error within provenance, while the
+independent SAP/report mismatch remains.</p>
+<p><strong>Calculation:</strong> Poisson shell label and logistic OR
+label differ for the matched ICU-readmission endpoint. A Poisson
+log-rate model produces a rate-ratio scale and a logistic model an
+odds-ratio scale; no aggregate-count conversion is performed.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Shell
+uses Poisson generically despite the SAP's separate binomial section, or
+the final model was revised. The protocol cannot corroborate this row's
+logit specification because its list omits ICU readmission. Missing
+inputs/definitions: Whether the SAP shell is generic/outdated, a
+distinct intended analysis, or a subsequently revised model
+specification.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+SAP/report printed labels and source-defined family distinctions. Final
+production code, outputs, and explicit shell-row link are absent.
+Evidence-record determination: recorded_candidate, determined by
+surviving direct SAP/report model-label comparison after removal of
+unsupported corroboration. The suggested review disposition is solely a
+mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a different planned ICU-readmission model family or effect-measure
+interpretation. It warrants the precise human question below within the
+quantitative reporting scope; unresolved conventions and unsupported
+inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a different planned
+ICU-readmission model family or effect-measure interpretation. No
+propagation, effect-estimate change, conclusion change, or serious harm
+is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Which model specification generated the reported
+ICU-readmission OR, and how should the SAP Poisson shell row be
+interpreted?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c017--hospital-readmission-poisson-versus-logistic-label" class="candidate-card">C017 —
+Hospital-readmission Poisson versus logistic label</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The SAP hospital-readmission
+shell names Poisson, whereas the protocol names logit and the report
+names logistic regression and an odds ratio.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> PLAN SAP
+hospital-readmission Poisson shell versus PLAN protocol logit and REPORT
+main logistic OR</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> P_R between PLAN SAP and
+REPORT main; P_P between PLAN SAP and PLAN protocol independently
+conflicting labels. Primary P_R; All relationships P_R, P_P; Measure,
+label, or scale inconsistency; protocol_report. P_P retained because its
+exact hospital-readmission comparison exists, unlike C016. The protocol
+also corroborates the report; corroboration alone was not used to add
+P_P.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp2_prod.pdf#page=5">joi180015supp2_prod.pdf — PDF
+p. 5; SAP shell p5</a>, <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=7">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 7; main Table 3/footnote d p7</a>, and <a
+href="../joi180015supp1_prod.pdf#page=16">joi180015supp1_prod.pdf — PDF
+p. 16; protocol p16</a>.</p>
+<p><strong>Source evidence:</strong> SAP Unplanned Hospital Readmission
+uses hospital-discharge denominators and Poisson.</p>
+<p><strong>Reported-versus-comparator:</strong> Main hospital
+readmission&lt;48h gives OR0.93(0.61–1.41), P=.74 and
+logistic-regression footnote. Protocol explicitly lists unplanned
+hospital re-admission within48h among outcomes analyzed with an
+identical logit model.</p>
+<p><strong>Reasoning procedure:</strong> Yes, same endpoint/discharge
+denominator with differing named model families and measure labels.
+Model labels are direct; shell revision mechanism inferred.</p>
+<p><strong>Calculation:</strong> Poisson shell versus report logistic OR
+and separately versus protocol logit are two independently checkable
+label comparisons. No OR-to-rate-ratio conversion attempted.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Generic/stale shell table or changed final specification; other SAP
+binomial pages and original protocol support logistic, but do not
+identify the production history. Missing inputs/definitions: Whether
+shell Poisson label denotes a separate planned analysis, a generic
+placeholder, or a revision.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for both
+comparisons; final execution code and explicit shell-row link absent.
+Evidence-record determination: recorded_candidate, determined by
+reproducible same-endpoint model-label differences. The suggested review
+disposition is solely a mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a different planned hospital-readmission model family or effect-measure
+interpretation. It warrants the precise human question below within the
+quantitative reporting scope; unresolved conventions and unsupported
+inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a different planned
+hospital-readmission model family or effect-measure interpretation. No
+propagation, effect-estimate change, conclusion change, or serious harm
+is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: How should the planned shell Poisson row be reconciled with
+the protocol logit specification and reported logistic OR?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c018--historical-icu-admission-percentage" class="candidate-card">C018 — Historical
+ICU-admission percentage</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The historical 14.5% does not
+follow ordinary nearest rounding of the displayed 1052/7300 fraction;
+exact denominator and formatting definitions remain missing.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN historical
+numerator/ICU discharge denominator versus percentage</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN historical material
+throughout; P_P only; Denominator, proportion, or total inconsistency;
+plan_material. No report relationship. Exactness ambiguity named.</p>
+<p><strong>Classification ambiguity:</strong> Exactness of the displayed
+historical denominator and its rounding rule are not stated.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp1_prod.pdf#page=30">joi180015supp1_prod.pdf — PDF
+p. 30; protocol historical table p30</a>.</p>
+<p><strong>Source evidence:</strong> Unplanned PICU admits1052; PICU
+discharges7300.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed14.5% per PICU
+discharges.</p>
+<p><strong>Reasoning procedure:</strong> Yes, table's directly
+identified numerator/denominator percentage; rounding comparison is
+conditional on displayed counts being the exact inputs. Counts and
+percentage are direct; arithmetic is reproduced; different denominator
+production is inferred.</p>
+<p><strong>Calculation:</strong> 100×1052/7300=14.4109589%, which rounds
+to14.4% to one decimal;14.5% differs by0.0890411 percentage points,
+exceeding ordinary nearest-rounding tolerance0.05.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Historical denominator may be rounded or subset-adjusted. For
+numerator1052, a14.5%-rounded result would require denominator
+approximately7230–7280, rather than exact7300. Missing
+inputs/definitions: Whether7300 is exact, a different eligible
+ICU-discharge denominator, and historical percentage rounding rule.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+displayed arithmetic. It is not stated whether7300 is a rounded
+historical aggregate. Evidence-record determination: recorded_candidate,
+determined by nonreconciliation of directly labeled printed inputs under
+ordinary nearest rounding, pending named historical-input definition.
+The suggested review disposition is solely a mechanical pre-fill for
+human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+an incompatible historical fraction/percentage pairing. It warrants the
+precise human question below within the quantitative reporting scope;
+unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy an incompatible
+historical fraction/percentage pairing. No propagation, effect-estimate
+change, conclusion change, or serious harm is established by this
+record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Which exact denominator and rounding rule produced14.5%?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c019--historical-admissions-per-hospital-discharges" class="candidate-card">C019 —
+Historical admissions per hospital discharges</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The historical rate of 18 per
+1000 differs from nearest-integer rounding of 1052/55963 × 1000,
+although intentional truncation would yield 18.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN historical
+numerator/hospital discharge denominator versus rate</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN historical material,
+P_P only; Denominator, proportion, or total inconsistency;
+plan_material. Conditional formatting ambiguity remains named.</p>
+<p><strong>Classification ambiguity:</strong> Nearest rounding versus
+truncation and exact eligible historical inputs are not specified.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp1_prod.pdf#page=30">joi180015supp1_prod.pdf — PDF
+p. 30; protocol historical table/narrative p30</a>.</p>
+<p><strong>Source evidence:</strong> 1052 unplanned PICU admissions;
+table Hospital Admissions55963 and narrative explicitly55963 Hospital
+Discharges for the two-year period.</p>
+<p><strong>Reported-versus-comparator:</strong> 18 per1000 Hospital
+Discharges.</p>
+<p><strong>Reasoning procedure:</strong> Yes for table/narrative
+same-period count/denominator; integer-rate rounding convention remains
+unspecified. Counts/rate are direct; nearest-rounding calculation is
+diagnostic, not an asserted source formatting policy.</p>
+<p><strong>Calculation:</strong> 1000 × 1052 / 55963 =
+18.79813448171113. Nearest-integer rounding gives 19, not the printed
+18; the difference 0.79813448171113 exceeds the 0.5 nearest-rounding
+tolerance. Intentional integer truncation gives 18 exactly. The package
+does not specify a common rate-formatting policy.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Truncating18.798 to an integer gives18 exactly. Other table rates can
+round ordinarily (150/55963×1000=2.68 shown3), so one consistent
+truncation rule is not established. Missing inputs/definitions:
+Intentional truncation versus nearest rounding, or an alternative
+eligible discharge denominator.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+displayed fraction; no percentage/rate formatting policy.
+Evidence-record determination: recorded_candidate, determined by
+registered conditional nearest-rounding discrepancy reproduced with
+explicit truncation alternative. The suggested review disposition is
+solely a mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+an ambiguously formatted historical per-1000-discharge rate. It warrants
+the precise human question below within the quantitative reporting
+scope; unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy an ambiguously formatted
+historical per-1000-discharge rate. No propagation, effect-estimate
+change, conclusion change, or serious harm is established by this
+record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Was18 deliberately truncated, or does its source
+numerator/denominator differ from the displayed two-year counts?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c020--stat-call-absolute-reduction-arithmetic" class="candidate-card">C020 — Stat-call
+absolute reduction arithmetic</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The stat-call baseline rate and
+relative reduction do not reproduce the printed absolute reduction
+within their displayed rounding precision.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN stat-call
+baseline/relative reduction versus absolute reduction</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN internal; P_P only;
+Numeric or arithmetic inconsistency; plan_material; no role
+ambiguity.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp1_prod.pdf#page=30">joi180015supp1_prod.pdf — PDF
+p. 30; protocol p30 Stat Calls paragraph</a>.</p>
+<p><strong>Source evidence:</strong> Baseline8.13 stat calls/1000
+patient-days; relative reduction0.181; Poisson regression named.</p>
+<p><strong>Reported-versus-comparator:</strong> Absolute reduction1.45
+calls/1000 patient-days in the same paragraph.</p>
+<p><strong>Reasoning procedure:</strong> Yes, absolute
+reduction=baseline rate×relative reduction for the same endpoint and
+rate scale. Three printed inputs and multiplication are
+direct/reproduced; a power-scenario mismatch is inferred.</p>
+<p><strong>Calculation:</strong> 8.13×0.181=1.47153. Printed-precision
+intervals8.125–8.135 and0.1805–0.1815 yield
+products1.4665625–1.4765025;1.45's nearest-rounding interval1.445–1.455
+does not overlap.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Absolute reduction may refer to another scenario; required relative
+reduction1.45/8.13≈0.17835 differs from0.181 beyond its printed rounding
+precision. Missing inputs/definitions: Any alternate unprinted
+baseline/power scenario or conversion used for1.45.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+arithmetic; original power outputs not supplied and not reconstructed.
+Evidence-record determination: recorded_candidate, determined by
+reproduced product disagreement beyond printed rounding tolerance. The
+suggested review disposition is solely a mechanical pre-fill for human
+review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+incompatible stat-call power-scenario inputs. It warrants the precise
+human question below within the quantitative reporting scope; unresolved
+conventions and unsupported inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy incompatible stat-call
+power-scenario inputs. No propagation, effect-estimate change,
+conclusion change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Do all three printed quantities use the same baseline and
+scenario, and what explains the nonoverlapping arithmetic?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c021--code-blue-nested-denominator-wording" class="candidate-card">C021 — Code-blue
+nested denominator wording</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The code-blue
+absolute-reduction phrase contains two per-thousand unit cues; one
+denominator gives coherent arithmetic and two give a different
+scale.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN code-blue rate
+reduction versus nested printed unit</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN internal, P_P only;
+Measure, label, or scale inconsistency; plan_material. Unit-phrase
+interpretation ambiguity explicitly preserved.</p>
+<p><strong>Classification ambiguity:</strong> The second per-thousand
+cue may be redundant unit wording rather than an additional divisor.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp1_prod.pdf#page=30">joi180015supp1_prod.pdf — PDF
+p. 30; protocol p30 Code Blue paragraph</a>.</p>
+<p><strong>Source evidence:</strong> Baseline0.75/1000 patient-days and
+relative reduction0.41.</p>
+<p><strong>Reported-versus-comparator:</strong> Absolute reduction
+“0.3/1000 events per thousand patient days.”</p>
+<p><strong>Reasoning procedure:</strong> Yes for dimensional unit
+wording; numerical0.3 alone is coherent. Both unit cues are direct;
+applying an additional divisor is a literal dimensional reading, not
+evidence the analysts actually used that divisor.</p>
+<p><strong>Calculation:</strong> 0.75×0.41=0.3075 events/1000days, which
+rounds0.3. Reading both printed divisors literally gives0.0003
+events/1000days, a further factor1000.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Conventional redundant unit phrasing may intend one per-thousand
+denominator; then the numeric reduction is coherent. Missing
+inputs/definitions: Whether /1000 is an intentionally redundant unit cue
+rather than an additional division.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+arithmetic/unit reading; no need for power recalculation.
+Evidence-record determination: recorded_candidate, determined by the
+reproduced nested-unit labeling question; no erroneous power
+implementation is inferred. The suggested review disposition is solely a
+mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+an extra per-thousand divisor during conversion. It warrants the precise
+human question below within the quantitative reporting scope; unresolved
+conventions and unsupported inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy an extra per-thousand
+divisor during conversion. No propagation, effect-estimate change,
+conclusion change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: What single event/person-time unit is intended by this
+phrase?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c022--identity-poisson-coefficient-exposure-scale" class="candidate-card">C022 —
+Identity-Poisson coefficient exposure scale</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The SAP identity-Poisson
+exposure columns put intercept and treatment coefficients on different
+scales, requiring a defined conversion before a common per-1000-day
+interpretation.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN SAP exposure columns
+versus coefficient scale description</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN SAP code versus PLAN
+SAP explanatory comments; P_P only; Measure, label, or scale
+inconsistency; plan_material. Generic coefficient-unit ambiguity remains
+named; no additional report discrepancy asserted.</p>
+<p><strong>Classification ambiguity:</strong> The generic
+rate-difference comment does not state coefficient units or post-fit
+conversion.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp2_prod.pdf#page=3">joi180015supp2_prod.pdf — PDF
+p. 3; SAP code/comments p3 lines114–131</a>.</p>
+<p><strong>Source evidence:</strong> Comment names Nlin coefficient
+usual-care intercept and NlinG coefficient rate difference. Code defines
+Nlin=N/1000; GNlin=N×(Group==BedsidePEWS); BNlin=N×Baseline; model
+x~Nlin+GNlin+BNlin−1 with Poisson identity.</p>
+<p><strong>Reported-versus-comparator:</strong> Exposure columns scale
+intercept by N/1000 but treatment by N. NlinG/GNlin name reversal and
+EPOCH$$BNlin syntax are printed but are not registered as independent
+syntax candidates.</p>
+<p><strong>Reasoning procedure:</strong> Yes as a symbolic dimensional
+check. Any interpretation of intercept and difference on one per1000-day
+rate scale requires a conversion because the printed columns scale them
+differently. Unequal exposure scalings and exact conversion factor are
+direct/reproduced. Treating the comment as an already-per1000 rate
+difference is conditional, and no fitted reported number is alleged to
+have the wrong scale.</p>
+<p><strong>Calculation:</strong> Let coefficients be α,β,γ: expected
+x=Nα/1000+NIβ+NBγ. Dividing by N/1000 gives rate
+per1000days=α+1000Iβ+1000Bγ. The treatment coefficient β is per-day
+difference, requiring1000β for per1000days; α is per1000days.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+comment may intend β in per-day units and a later1000 conversion, or
+draft code may differ from implementation. The source does not
+explicitly state that every coefficient is already per1000days. Missing
+inputs/definitions: Unit intended by the generic “rate difference”
+comment and any production column scaling/coefficient rescaling.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+exact symbolic column scaling; actual fitted coefficients, run code, and
+post-fit conversions unavailable. Evidence-record determination:
+recorded_candidate, determined by reproduced unequal coefficient scales
+with the registered conditional reporting-scale question pending the
+named conversion definition. The suggested review disposition is solely
+a mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a coefficient interpreted on the wrong exposure scale. It warrants the
+precise human question below within the quantitative reporting scope;
+unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a coefficient interpreted
+on the wrong exposure scale. No propagation, effect-estimate change,
+conclusion change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: What units govern the Nlin/GNlin coefficients, and was the
+treatment coefficient multiplied by1000 before reporting per1000-day
+differences?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c023--pim-upper-example-display-probability" class="candidate-card">C023 — PIM
+upper-example display probability</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The upper PIM example’s 99.9%
+differs from ordinary nearest-decimal display of the supplied
+inverse-logit formula, while truncation or a cap could explain it.</p>
+<p><strong>Category:</strong> Numeric or arithmetic inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT results PIM example
+versus supplied inverse-logit formula</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> REPORT within one results
+supplement; S_W only; Numeric or arithmetic inconsistency;
+statistical_results. Display-policy ambiguity explicitly preserved.</p>
+<p><strong>Classification ambiguity:</strong> The example-percentage
+truncation or upper-cap policy is not supplied.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp3_prod.pdf#page=7">joi180015supp3_prod.pdf — PDF
+p. 7; results eTable 1 p7</a> and <a
+href="../joi180015supp3_prod.pdf#page=13">joi180015supp3_prod.pdf — PDF
+p. 13; eTable 4 footnotes b/c p13</a>.</p>
+<p><strong>Source evidence:</strong> PIM score+9.7778 gives printed
+predicted mortality99.9%; PaO2=40 and BE=−35. The minus sign on p13
+wraps at the line end; p7 also explicitly reads−35, so no sign
+discrepancy exists.</p>
+<p><strong>Reported-versus-comparator:</strong> Footnote b supplies
+inverse-logit1/(1+exp(−PIM)); minimum−8.4137 is shown as0.02%.</p>
+<p><strong>Reasoning procedure:</strong> Yes for formula/example
+consistency; nearest-decimal display rule is a conditional diagnostic
+because the source only expressly specifies nearest-integer rounding for
+predicted counts, not the upper example percentage. Score, formula, and
+printed percentage are direct; nearest rounding is a conditional
+diagnostic, and a display cap is a possible explanation.</p>
+<p><strong>Calculation:</strong> 100/(1+exp(−9.7778))=99.9943306823%.
+Nearest0.1 percentage point is100.0%, not99.9%; difference0.0943307
+exceeds0.05. Lower example gives approximately0.02218%, coherent
+at0.02%. Score±0.00005 has negligible impact on the upper
+diagnostic.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Truncation to one decimal or a99.9% cap yields the printed value and
+avoids display100%; neither policy is stated. No interpretation of100%
+as actual certainty is imposed. Missing inputs/definitions: Percentage
+truncation/capping rule, especially whether99.9% is an intentional upper
+display cap.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+score/formula; full scoring coefficients are unnecessary because the
+given score is the input. Evidence-record determination:
+recorded_candidate, determined by reproduced registered conditional
+formula/nearest-rounding discrepancy pending the named display rule. The
+suggested review disposition is solely a mechanical pre-fill for human
+review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a differently transformed example probability. It warrants the precise
+human question below within the quantitative reporting scope; unresolved
+conventions and unsupported inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a differently transformed
+example probability. No propagation, effect-estimate change, conclusion
+change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Is99.9% an intentional truncation/cap, or should the example
+follow another documented percentage display rule?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c024--overnight-icu-categories-and-unsupported-exhaustiveness" class="candidate-card">C024
+— Overnight ICU categories and unsupported exhaustiveness</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The displayed overnight ICU
+categories cover eight of ten hospitals, but their exhaustiveness and
+universal overnight presence are not established; the initial sum-to-ten
+premise is unsupported.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main hospital total
+versus overnight ICU category counts</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> record_input_error</p>
+<p><strong>Suggested review disposition:</strong> discuss</p>
+<p><strong>Classification rationale:</strong> REPORT within main Table
+1; S_W only; Denominator, proportion, or total inconsistency;
+statistical_results. Registered residual classification preserved;
+ambiguity is exhaustiveness, not roles.</p>
+<p><strong>Classification ambiguity:</strong> Exhaustiveness of the
+displayed overnight ICU categories and universal in-house presence are
+unsupported.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=5">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 5; main Table 1 p5</a>.</p>
+<p><strong>Source evidence:</strong> BedsidePEWS10 hospitals; most
+senior ICU physician in-house overnight: staff2(20%), fellow5(50%),
+resident1(10%).</p>
+<p><strong>Reported-versus-comparator:</strong> Usual-care
+counts1+3+7=11. Eligibility footnote says all had pediatric ICU staff;
+continuous-in-house wording in footnote d is attached to the
+<strong>ward</strong> physician row, not a claim that each ICU has an
+in-house overnight physician.</p>
+<p><strong>Reasoning procedure:</strong> Sum-to10 is conditional on
+exhaustive overnight ICU categories and every hospital having an
+in-house overnight ICU physician. Neither is stated by the source.
+Displayed categories cover8/10 directly. Treating this as an
+exhaustive-category contradiction is an unsupported registration
+assumption; no staffing defect is inferred.</p>
+<p><strong>Calculation:</strong> 2+5+1=8;20+50+10=80%. The two-hospital
+residual is reproduced as coverage of displayed categories, but not as
+an established denominator contradiction. Individual percentages
+correctly use10.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Two
+hospitals may have no ICU physician in-house overnight, another
+category, or missing information. Having ICU staff physicians generally
+does not require in-house overnight presence. Missing
+inputs/definitions: Whether all hospitals had a most-senior in-house
+overnight ICU physician; categories for absence, other staffing, or
+missing data.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+displayed counts/percentages; no category exhaustiveness or
+missing/no-in-house status for two hospitals. Evidence-record
+determination: record_input_error, determined by unsupported
+category-exhaustiveness/presence assumption. The residual
+reporting-completeness question cannot be settled from this table. The
+suggested review disposition is solely a mechanical pre-fill for human
+review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+an unsupported exhaustive staffing-category total. It warrants the
+precise human question below within the quantitative reporting scope;
+unresolved conventions and unsupported inputs limit what can be
+concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy an unsupported exhaustive
+staffing-category total. No propagation, effect-estimate change,
+conclusion change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: What overnight ICU presence/category or missing-data status
+describes the remaining two hospitals, and was the displayed list
+intended to be exhaustive?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c025--continuous-outcomes-shell-heading" class="candidate-card">C025 —
+Continuous-outcomes shell heading</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The SAP’s Continuous outcomes
+shell heading accompanies count/rate rows and Poisson models; it may
+instead describe derived hospital summaries.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN SAP Continuous
+outcomes heading versus count/rate rows and taxonomy</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN internal; P_P only;
+Measure, label, or scale inconsistency; plan_material. Heading-semantics
+ambiguity retained.</p>
+<p><strong>Classification ambiguity:</strong> The heading may describe
+derived hospital rate summaries rather than modeled response
+distributions.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp2_prod.pdf#page=5">joi180015supp2_prod.pdf — PDF
+p. 5; SAP Shell Tables p5</a>, <a
+href="../joi180015supp2_prod.pdf#page=1">joi180015supp2_prod.pdf — PDF
+p. 1; binary/count taxonomy p1</a>, <a
+href="../joi180015supp2_prod.pdf#page=2">joi180015supp2_prod.pdf — PDF
+p. 2; Poisson count definition p2</a>, and <a
+href="../joi180015supp2_prod.pdf#page=3">joi180015supp2_prod.pdf — PDF
+p. 3; Gaussian individual outcomes pp3–4</a>.</p>
+<p><strong>Source evidence:</strong> Shell heading Continuous outcomes
+precedes resuscitation calls, stat calls, urgent ICU consultations,
+urgent ICU admissions, ICU readmissions, and hospital readmission.</p>
+<p><strong>Reported-versus-comparator:</strong> All six rows show
+count/denominator expressions and Poisson; earlier SAP distinguishes
+count from binary outcomes and separately labels individual continuous
+outcomes with Gaussian models.</p>
+<p><strong>Reasoning procedure:</strong> Yes as a
+response-type/quantity-label check; interpretation of the heading as
+referring to continuous derived rates rather than modeled counts remains
+conditional. Heading, row formulas, and Poisson labels are direct; an
+inherited/unqualified heading is a possible explanation.</p>
+<p><strong>Calculation:</strong> Discrete event numerators modeled by
+Poisson are count responses; dividing by patient-days yields rate
+summaries and by discharge counts yields proportions. These summaries
+differ from the explicitly described patient Gaussian continuous
+outcomes.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Hospital rates may be treated as continuous summaries, so the heading
+could describe summaries instead of response distributions. It does not
+establish incorrect estimates. Missing inputs/definitions: Whether
+Continuous means hospital rate-summary variables rather than modeled
+outcome responses.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+printed heading, numerators/denominators, and source model taxonomy; no
+heading-author intent. Evidence-record determination:
+recorded_candidate, determined by the registered conditional
+heading/model-taxonomy difference reproduced with its alternative
+interpretation. The suggested review disposition is solely a mechanical
+pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a different modeled response type. It warrants the precise human
+question below within the quantitative reporting scope; unresolved
+conventions and unsupported inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a different modeled
+response type. No propagation, effect-estimate change, conclusion
+change, or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Does the heading identify derived hospital rate summaries or
+actual modeled response types, and what type description should readers
+extract?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="c026--historical-auc-endpoint-scale" class="candidate-card">C026 — Historical AUC
+endpoint scale</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The historical AUC range prints
+0.83–86, creating an extraction-scale question; an abbreviated decimal
+suffix could coherently mean 0.86.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN historical AUC
+endpoint versus AUC scale labeling</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Historical/background data
+inside PLAN; P_P only; Measure, label, or scale inconsistency;
+plan_material. Endpoint shorthand ambiguity retained.</p>
+<p><strong>Classification ambiguity:</strong> The upper endpoint may use
+compressed decimal-suffix notation.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180015supp1_prod.pdf#page=6">joi180015supp1_prod.pdf — PDF
+p. 6; protocol p6 systematic-review paragraph</a>, with
+probability-scale comparison supplied by <a
+href="../joi180015supp1_prod.pdf#page=1">joi180015supp1_prod.pdf — PDF
+p. 1; protocol p1 AUC labels</a>.</p>
+<p><strong>Source evidence:</strong> Printed “AUCROC 0.83-86” for adult
+scores distinguishing ICU from high-dependency patients.</p>
+<p><strong>Reported-versus-comparator:</strong> Same plan uses
+AUCROC0.91 and0.87; conventional area/probability scale is
+bounded0–1.</p>
+<p><strong>Reasoning procedure:</strong> Yes for explicit AUC endpoint
+scale, subject to abbreviated-range notation rather than literal86.
+Literal printed string is direct; the intended expanded endpoint is
+inferred, not assigned as a correction.</p>
+<p><strong>Calculation:</strong> Literal86 exceeds upper probability
+bound1 by85. Reading86 as the abbreviated suffix of0.86 gives a
+coherent0.83–0.86 range.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Compressed decimal suffix notation may intentionally mean0.86. This is a
+printed extraction/scale ambiguity, not evidence that the historical AUC
+computation was86. Missing inputs/definitions: Intended upper endpoint
+and whether abbreviated-decimal range notation is intentional.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+exact printed string and scale diagnostic. The cited historical review
+is not supplied and was not consulted. Evidence-record determination:
+recorded_candidate, determined by reproduced explicit-scale ambiguity in
+the registered AUC range. The suggested review disposition is solely a
+mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+a literal out-of-scale AUC endpoint. It warrants the precise human
+question below within the quantitative reporting scope; unresolved
+conventions and unsupported inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy a literal out-of-scale
+AUC endpoint. No propagation, effect-estimate change, conclusion change,
+or serious harm is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Should86 be interpreted as an intentionally abbreviated0.86
+endpoint, or does another scale convention apply?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c027--generic-adjusted-label-versus-baseline-unadjusted-scde-difference" class="candidate-card">C027
+— Generic adjusted label versus baseline-unadjusted SCDE difference</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The SCDE difference and
+interval agree across locations; generic adjusted wording does not
+establish baseline adjustment and may refer to hospital clustering.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main generic
+adjusted label versus baseline-unadjusted SCDE footnote</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> record_input_error</p>
+<p><strong>Suggested review disposition:</strong> discuss</p>
+<p><strong>Classification rationale:</strong> REPORT within main
+article; S_W only; Measure, label, or scale inconsistency;
+report_internal_inconsistency. Roles confirmed; residual relationship
+retained with explicit semantic ambiguity.</p>
+<p><strong>Classification ambiguity:</strong> Generic adjusted may mean
+hospital clustering rather than baseline covariates.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=1">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 1; main abstract p1</a>, <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=6">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 6; SCDE narrative p6</a>, <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=7">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 7; Table 3 footnote a p7</a>, and <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=5">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 5; GEE fallback explanation p5</a>.</p>
+<p><strong>Source evidence:</strong> Abstract/narrative says adjusted
+between-group rate difference−0.34(−0.73,0.05)/1000 patient-days.
+Narrative separately explicitly calls the0.77 rate ratio
+baseline-adjusted.</p>
+<p><strong>Reported-versus-comparator:</strong> Table 3 footnote a says
+the SCDE difference model was not adjusted for baseline values. Main
+p4–5 states models account for hospital clustering; <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=6">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 6; Table 2 footnote c p6</a> explicitly uses “adjusted for
+clustering by hospital.”</p>
+<p><strong>Reasoning procedure:</strong> No categorical contradiction
+follows unless generic adjusted is defined as baseline-adjusted.
+Baseline-unadjusted GEE can still account for hospital clustering; the
+source uses adjustment language for clustering elsewhere. Different
+specificity of the words is direct. Treating generic adjusted as
+necessarily baseline-adjusted is the unsupported registered semantic
+assumption.</p>
+<p><strong>Calculation:</strong> Estimate and CI are identical at all
+compared locations, so numerical alignment holds. Logical equivalence
+“adjusted = adjusted for baseline” is not supplied. The footnote
+excludes baseline, not cluster accounting; separate rate-ratio P=.03 is
+not assigned to the identity-link difference.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Adjusted refers to cluster accounting, while baseline-adjusted is
+reserved for the ratio; the article's own Table 2 phrasing supports this
+distinction. No contradiction in the printed−0.34/CI is reproduced.
+Missing inputs/definitions: Which adjustment dimension the
+abstract/narrative's generic word denotes; final output identifying
+variance/clustering and covariates if terminology is to be resolved.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+same-result words, footnote, and clustering framework; no local
+definition of generic adjusted in this SCDE sentence. Evidence-record
+determination: record_input_error, determined by unsupported equivalence
+of generic adjustment and baseline adjustment. A residual terminology
+question cannot be settled without the local definition; this is not a
+proven baseline-label contradiction. The suggested review disposition is
+solely a mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+an unsupported baseline-adjustment status for the SCDE difference. It
+warrants the precise human question below within the quantitative
+reporting scope; unresolved conventions and unsupported inputs limit
+what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy an unsupported
+baseline-adjustment status for the SCDE difference. No propagation,
+effect-estimate change, conclusion change, or serious harm is
+established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Does adjusted for the−0.34 difference mean hospital
+clustering, and should it be explicitly qualified to prevent
+baseline-adjustment misclassification?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c028--generic-adjusted-label-versus-baseline-unadjusted-physician-call-difference" class="candidate-card">C028
+— Generic adjusted label versus baseline-unadjusted physician-call
+difference</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The physician-call difference
+and interval agree across locations; generic adjusted wording does not
+establish baseline adjustment and may refer to hospital clustering.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main generic
+adjusted label versus baseline-unadjusted physician-call footnote</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> record_input_error</p>
+<p><strong>Suggested review disposition:</strong> discuss</p>
+<p><strong>Classification rationale:</strong> REPORT internal; S_W only;
+Measure, label, or scale inconsistency; report_internal_inconsistency.
+No role correction; semantic ambiguity explicit.</p>
+<p><strong>Classification ambiguity:</strong> Generic adjusted may mean
+hospital clustering rather than baseline covariates.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=8">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 8; main Other Outcomes p8</a>, <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=7">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 7; Table 3 footnote a p7</a>, and <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=5">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 5; GEE fallback p5</a>.</p>
+<p><strong>Source evidence:</strong> Narrative says adjusted
+between-group rate difference3.10(−1.92,8.11)/1000 patient-days;
+separate adjusted rate ratio1.17(0.73,1.88), P=.52.</p>
+<p><strong>Reported-versus-comparator:</strong> Table 3 footnote a says
+immediate-call-for-physician difference model was not adjusted for
+baseline. GEE framework accounts for center clustering; <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=6">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 6; Table 2 footnote c p6</a> explicitly describes adjustment
+for clustering by hospital.</p>
+<p><strong>Reasoning procedure:</strong> No categorical contradiction
+without defining generic adjusted as baseline-adjusted. Cluster
+accounting does not imply baseline covariate inclusion, and baseline
+removal does not imply clustering removal. Words and same-result
+identity are direct. Inferring baseline adjustment solely from generic
+adjusted is an unsupported semantic alignment.</p>
+<p><strong>Calculation:</strong> Difference/CI match exactly between
+narrative and table. No numerator, estimate, or CI mismatch exists. The
+baseline-unadjusted GEE difference can coexist with an
+adjusted-for-clustering description; separate ratio/P value not
+conflated with the difference.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Adjusted denotes cluster accounting; article uses that sense elsewhere.
+Alternatively the narrative may intend an imprecise blanket baseline
+label, but source does not determine which interpretation. Missing
+inputs/definitions: Meaning of generic adjusted for this identity-link
+difference, including what clustering/variance accounting persisted
+after baseline removal.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. Yes for
+textual/result alignment and framework; no explicit local adjustment
+definition in the physician-call narrative. Evidence-record
+determination: record_input_error, determined by unsupported
+generic-adjusted/baseline-adjusted equivalence, with residual
+terminology unresolved. The suggested review disposition is solely a
+mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+an unsupported baseline-adjustment status for the physician-call
+difference. It warrants the precise human question below within the
+quantitative reporting scope; unresolved conventions and unsupported
+inputs limit what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy an unsupported
+baseline-adjustment status for the physician-call difference. No
+propagation, effect-estimate change, conclusion change, or serious harm
+is established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: Which adjustment does the3.10 narrative label denote, and
+should the text distinguish clustering from baseline covariates?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c029--icu-readmission-elapsed-hours-label-versus-calendar-day-cutoff" class="candidate-card">C029
+— ICU-readmission elapsed-hours label versus calendar-day cutoff</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The literal ICU-readmission
+&lt;48-hour label and third-following-midnight definition have different
+temporal membership; the protocol explicitly supports an intentional
+calendar shorthand.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C</p>
+<p><strong>Compared document roles:</strong> REPORT main ICU-readmission
+hours label versus REPORT results calendar cutoff</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Confirmed primary S_C; all
+relationships S_C. The discrepancy is the time-window label versus
+operational definition across two different REPORT documents. The PLAN
+location corroborates and explains the calendar convention and adds no
+separate discrepancy relationship. Precedence P_R &gt; P_P &gt; S_C &gt;
+S_W therefore does not change S_C. Category is Measure, label, or scale
+inconsistency; derived review domain is report_internal_inconsistency.
+Classification ambiguity: None for roles or relationship; intended label
+meaning remains the named human question.</p>
+<p><strong>Classification ambiguity:</strong> None for document roles or
+relationship. The intended hours shorthand and implemented time window
+remain unresolved.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=7">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 7; Main article, physical PDF p. 7, Table 3 ICU readmission
+row</a>; <a
+href="../joi180015supp3_prod.pdf#page=6">joi180015supp3_prod.pdf — PDF
+p. 6; results supplement, physical PDF p. 6, eTable 1 Unplanned ICU
+Readmission row</a>; and <a
+href="../joi180015supp1_prod.pdf#page=12">joi180015supp1_prod.pdf — PDF
+p. 12; protocol, physical PDF p. 12, outcome 4</a>. All three were
+inspected as fresh direct-source page images and layout text.</p>
+<p><strong>Source evidence:</strong> Main Table 3 prints “ICU
+readmission &lt;48 h” with footnote h. The intervention-period
+BedsidePEWS and usual-care event counts are 94 and 108, their rates are
+28.40 and 21.25, adjusted between-group rate difference is 4.95 (−1.62
+to 11.52), adjusted ratio is OR, 1.11 (0.77 to 1.61), and P value is
+.58. Footnote h states that rates are expressed per 1000 discharges from
+the ICU. These numbers identify the row; this candidate does not assert
+a numerical disagreement in them.</p>
+<p><strong>Reported-versus-comparator:</strong> Results eTable 1 prints
+“Re-admission before midnight of the second full calendar day after ICU
+discharge. Thus, re-admission occurred before the 3rd midnight following
+ICU discharge.” Protocol outcome 4 prints “Unplanned PICU readmission
+within 48 hours of PICU discharge” and expressly operationalizes that
+wording as before midnight of the second complete day following
+discharge, alternatively before the third midnight. The protocol
+therefore supplies an explicit source-grounded reason that hours wording
+may be an operational shorthand.</p>
+<p><strong>Reasoning procedure:</strong> Yes for the endpoint
+time-window label. A literal strict elapsed interval &lt;48 hours and a
+calendar cutoff before the third following midnight are different
+membership rules. The ICU readmission outcome name aligns the main row
+with the supplement definition; the source does not require a
+statistical-model assumption for this comparison. Applying the same
+unplanned, otherwise eligible constructed readmission to both rules
+isolates the time condition. Direct observations are the main label,
+supplement definition, protocol operationalization, printed row values
+and rate footnote. The 70-hour membership difference is reproduced
+logical reasoning. Intentional shorthand and the rule actually applied
+to 94/108 events are possible explanations or unknown facts, not direct
+observations. No trial participant is asserted to have the constructed
+timing.</p>
+<p><strong>Calculation:</strong> Yes. On a constructed ordinary calendar
+week without a clock change, discharge Monday 01:00 and unplanned ICU
+readmission Wednesday 23:00 yield 24 + 24 + 22 = 70 elapsed hours. The
+first following midnight is Tuesday 00:00, the second Wednesday 00:00,
+and the third Thursday 00:00. Wednesday 23:00 is before Thursday 00:00
+and is after 48 elapsed hours, so it satisfies the calendar condition
+and fails &lt;48 hours. For this discharge, the third midnight is 71
+hours after discharge. On ordinary 24-hour days, that cutoff varies
+approximately from 48 to 72 elapsed hours with discharge time. This is a
+constructed logical counterexample, not a trial event or a
+reanalysis.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+protocol itself names “within 48 hours” and immediately declares the
+third-midnight operational rule. This supports an intentional
+abbreviated endpoint name rather than an actual difference in event
+classification. The result supplement could be documenting that same
+convention while Table 3 compresses it to “&lt;48 h.” The protocol
+explanation does not make literal &lt;48 elapsed hours identical to the
+calendar rule; it supplies a possible intended meaning. No event or
+effect change is inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. The exact
+label, full calendar definition, outcome identity, and temporal rule are
+available and sufficient to reproduce the label membership difference.
+Missing for an actual count or estimate comparison are patient
+discharge/readmission timestamps, event-level eligibility and
+unplanned-status classifications, final case-report/analysis
+implementation of the cutoff, and an explicit report-side definition of
+whether “&lt;48 h” denotes literal elapsed time or the protocol's
+calendar shorthand. Without those inputs, neither affected events nor a
+revised count, rate, OR, confidence interval, or P value can be
+calculated. Evidence-record determination: recorded_candidate. The
+direct source confirms both cited statements and reproduces the
+registered literal-hours versus calendar-cutoff membership difference.
+The exact implemented endpoint and intended hours shorthand remain
+missing definitions as registered. No source transcription or alignment
+was disproven; the strong protocol shorthand alternative limits
+interpretation without settling the report-side label question. The
+suggested review disposition is solely a mechanical pre-fill for human
+review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+an elapsed-hours rather than calendar-day ICU-readmission endpoint. It
+warrants the precise human question below within the quantitative
+reporting scope; unresolved conventions and unsupported inputs limit
+what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy an elapsed-hours rather
+than calendar-day ICU-readmission endpoint. No propagation,
+effect-estimate change, conclusion change, or serious harm is
+established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: For the ICU-readmission result with intervention-period events
+94/108, was the implemented endpoint literal elapsed &lt;48 hours or the
+before-third-midnight calendar operationalization, and should the
+report's “&lt;48 h” label be interpreted as shorthand for that calendar
+rule?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2
+id="c030--hospital-readmission-elapsed-hours-label-versus-calendar-day-cutoff" class="candidate-card">C030
+— Hospital-readmission elapsed-hours label versus calendar-day
+cutoff</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The literal
+hospital-readmission &lt;48-hour label and third-following-midnight
+definition have different temporal membership; the protocol explicitly
+supports an intentional calendar shorthand.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C</p>
+<p><strong>Compared document roles:</strong> REPORT main
+hospital-readmission hours label versus REPORT results calendar
+cutoff</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Confirmed primary S_C; all
+relationships S_C. The substantive comparison is a REPORT label against
+a different REPORT's calendar definition. PLAN protocol outcome 3
+corroborates the calendar convention and supports shorthand; it is not
+an additional discrepancy relationship. Precedence P_R &gt; P_P &gt; S_C
+&gt; S_W leaves S_C. Category is Measure, label, or scale inconsistency;
+derived review domain is report_internal_inconsistency. Classification
+ambiguity: None for document roles or relationship; intended label
+meaning remains the exact human question.</p>
+<p><strong>Classification ambiguity:</strong> None for document roles or
+relationship. The intended hours shorthand and implemented time window
+remain unresolved.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_parshuram_2018_oi_180015.pdf#page=7">jama_parshuram_2018_oi_180015.pdf
+— PDF p. 7; Main article, physical PDF p. 7, Table 3 hospital
+readmission row</a>; <a
+href="../joi180015supp3_prod.pdf#page=6">joi180015supp3_prod.pdf — PDF
+p. 6; results supplement, physical PDF p. 6, eTable 1 Unplanned Hospital
+Readmission row</a>; and <a
+href="../joi180015supp1_prod.pdf#page=12">joi180015supp1_prod.pdf — PDF
+p. 12; protocol, physical PDF p. 12, outcome 3</a>. All three were
+inspected as fresh direct-source page images and layout text.</p>
+<p><strong>Source evidence:</strong> Main Table 3 prints “Hospital
+readmission &lt;48 h” with footnote c. The intervention-period
+BedsidePEWS and usual-care event counts are 170 and 387, their rates are
+3.39 and 4.10, adjusted between-group rate difference is −0.71 (−4.92 to
+3.49), adjusted ratio is OR, 0.93 (0.61 to 1.41), and P value is .74.
+Footnote c states that rates are expressed per 1000 patient discharges
+from the hospital. These values identify the row; no numerical
+inferential disagreement is asserted by this candidate.</p>
+<p><strong>Reported-versus-comparator:</strong> Results eTable 1 prints
+“Re-admission to any inpatient area in the hospital before midnight of
+the second day full calendar day after discharge. Thus, re-admission
+occurred before the 3rd midnight following hospital discharge.” The
+awkward “second day full calendar day” word order is present visually
+and was not silently normalized. Protocol outcome 3 names “Unplanned
+re-admission to hospital within 48 hours of hospital discharge,” then
+states that the outcome will be operationalized before midnight of the
+second day of discharge and expressly before the third midnight
+following discharge. The explicit third-midnight sentence is the
+corroborating temporal comparator; the protocol wording is not used to
+infer another event boundary.</p>
+<p><strong>Reasoning procedure:</strong> Yes for the endpoint
+time-window label. A strict &lt;48-hour elapsed-time condition and
+before-third-midnight calendar condition do not have identical
+membership. Hospital readmission in the main row aligns with the
+supplement's hospital readmission definition. A constructed otherwise
+eligible unplanned return to an inpatient hospital area can satisfy all
+non-time conditions for both rules, leaving only the temporal membership
+comparison. Directly observed are the exact main label, supplement
+wording including its unusual word order, protocol operationalization,
+counts, rates, estimates and footnote c. The constructed 70-hour
+membership comparison is derived logic. Intentional shorthand, actual
+implementation, and whether any trial event lies between the two cutoffs
+remain inferred possibilities or unknown. No patient is attributed the
+constructed timestamps.</p>
+<p><strong>Calculation:</strong> Yes. In a constructed ordinary calendar
+week without a clock change, hospital discharge Monday 01:00 and
+unplanned hospital readmission Wednesday 23:00 give 24 + 24 + 22 = 70
+elapsed hours. Following midnights are Tuesday 00:00, Wednesday 00:00,
+and Thursday 00:00. Wednesday 23:00 is before the third midnight
+Thursday 00:00 and fails the &lt;48-hour test. The third-midnight cutoff
+is 71 hours after this discharge; on ordinary 24-hour days it is
+approximately 48–72 hours after discharge depending on discharge time.
+This reproduces a definition-level counterexample without claiming any
+actual event count difference.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+protocol explicitly treats “within 48 hours” as a name to be
+operationalized by the third following midnight. The Table 3 hours label
+may be an abbreviated name for that same outcome and the supplement may
+describe the implemented operational convention. This is stronger
+support for shorthand than a merely hypothetical explanation. It does
+not establish that the literal elapsed-hours reading and calendar
+membership are equal, and no change to an actual event or effect
+estimate follows from the supplied comparison.</p>
+<p><strong>Mechanical evidence recheck:</strong> Cited locations and
+printed source/comparator statements were directly checked. The main
+label, supplement calendar cutoff, matching outcome identity, and
+protocol operationalization suffice for the logical rule comparison.
+Missing for implementation and numerical consequences are patient
+discharge/readmission timestamps, eligibility and unplanned-event
+classifications, final case-report/analysis cutoff implementation, and
+an explicit report-side definition resolving literal elapsed &lt;48
+hours versus calendar shorthand. These missing inputs prevent
+identifying affected events or calculating changes to 170/387 counts,
+rates, differences, ORs, intervals, or P values. Evidence-record
+determination: recorded_candidate. Fresh direct-source reading confirms
+the registered label and operational definition, including the
+supplement's awkward wording, and reproduces the literal-hours/calendar
+membership difference. The implementation and label meaning remain the
+registered unresolved definitions. No transcription or source alignment
+is disproven. Protocol-supported shorthand is an alternative
+interpretation, not proof that the literal label denotes the same
+elapsed-time set. The suggested review disposition is solely a
+mechanical pre-fill for human review.</p>
+<p><strong>Quality-control relevance:</strong> This comparison concerns
+an elapsed-hours rather than calendar-day hospital-readmission endpoint.
+It warrants the precise human question below within the quantitative
+reporting scope; unresolved conventions and unsupported inputs limit
+what can be concluded.</p>
+<p><strong>Potential downstream evidence impact:</strong> If human
+review confirms a preventable reporting defect, a data extractor,
+systematic review, or meta-analysis could copy an elapsed-hours rather
+than calendar-day hospital-readmission endpoint. No propagation,
+effect-estimate change, conclusion change, or serious harm is
+established by this record.</p>
+<p><strong>Human verification steps:</strong> Open each linked physical
+source page; match the outcome, population, period, model and units
+before applying the stated rule. Reproduce the calculation or logical
+comparison, examine the source-grounded alternative, and obtain the
+named missing definitions or implementation evidence. Exact remaining
+question: For the hospital-readmission result with intervention-period
+events 170/387, did event classification use literal elapsed &lt;48
+hours or the before-third-midnight calendar rule, and what quantitative
+time window should a data extractor take from the “&lt;48 h” label?</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h1 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h1>
+<p>If confirmed, even small preventable transcription, boundary, label,
+or unit defects can be copied into a systematic-review extraction sheet,
+meta-analysis, guideline evidence table, or later publication. The cards
+name the specific quantity or definition at risk of being copied. This
+is a conditional possibility. The package provides no evidence that
+copying occurred, that an estimate changed downstream, or that the
+trial’s conclusion changed.</p>
+<p>An extraction decision should preserve distinctions between
+historical PLAN quantities and trial REPORT results, counts and rates,
+patient and discharge denominators, model families and effect scales,
+clustering and baseline adjustment, and elapsed-hour versus operational
+calendar windows. Input-error records particularly require clarification
+of the assumed comparison basis before treating them as reporting
+defects. Human resolution of a shorthand or formatting policy may settle
+a card without establishing a numeric error.</p>
+<h1 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h1>
+<p>The review is limited to the four supplied aggregate PDFs. No
+patient-level raw records, executed production models, plotting code,
+exact unrounded prediction sums, covariance/test outputs, or complete
+operational revision history is supplied. Per-card questions name
+missing definitions: figure encodings and axis scope; intended extrema;
+power versus census bed basis; historical cohort periods, exact
+denominators and rounding; endpoint boundaries and conjunction; scope of
+ICU rate wording; final denominator/model history;
+patient-versus-discharge prediction aggregation; coefficient rescaling;
+PIM cap/truncation; overnight category exhaustiveness; shell-heading
+meaning; AUC shorthand; adjustment dimension; and implemented
+readmission cutoff/timestamps.</p>
+<p>The five input-error records correct unsupported same-basis,
+same-cohort, exhaustive-category, or generic-to-baseline assumptions.
+Conditional arithmetic does not establish those assumptions.
+Nearest-rounding diagnostics in C018/C019/C023 are bounded by absent
+exact-input or display-policy definitions. C021/C022/C025/C026 retain
+plausible unit, coefficient, summary-type, or decimal shorthand
+interpretations. C029/C030 are constructed temporal comparisons on
+ordinary 24-hour days without clock changes, supported by a strong
+protocol shorthand alternative; neither actual patient events nor
+changed counts or model effects can be inferred.</p>
+<p>Historical derivative engines are partly unrecorded. OCR and Office
+conversion are unavailable, but no supplied unit needed either: all 69
+pages were completely mapped using usable text or images and exact
+candidate source confirmation. The configured coordinator model and
+interactive launch are distinguished from unavailable independent
+runtime/launch attestation. The explicit current-provider instruction
+differs from the original validator’s literal provider requirement.
+These provenance limits create no scientific coverage gap. Full
+limitations are recorded in <a
+href="review_1_6/limitations.md">limitations.md</a>.</p>
+<h1 id="human-adjudication-checklist">Human Adjudication Checklist</h1>
+<ol type="1">
+<li>Verify each candidate’s source page, printed value, comparator,
+population, time period, model, scale, and denominator.</li>
+<li>Reproduce only the supplied rule or the explicitly conditional
+diagnostic; consider alternatives and missing definitions before drawing
+a conclusion.</li>
+<li>Obtain implementation/version evidence where the printed comparison
+alone cannot identify intended meaning or numerical consequences.</li>
+<li>Decide whether the observation is a reporting defect and whether a
+correction or clarification is appropriate; record the reviewer’s
+assessment, importance, action, initials, and notes in the blank card
+fields.</li>
+<li>Treat suggested dispositions as mechanical starting values, resolve
+every stable ID, and retain a documented reason for the human
+decision.</li>
+<li>Keep any confirmed reporting correction separate from claims about
+trial conclusions or downstream consequences, which require their own
+evidence.</li>
+</ol>
+<h1
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h1>
+<p>The source hashes were recorded before scientific work. Both hash
+sets were recomputed after Markdown assembly: all four direct sources
+and 65 reused assets are unchanged, and the before/after hash files are
+byte-identical. Recomputed records: <a
+href="review_1_6/source_hashes_after.sha256">source hashes after
+review</a> and <a
+href="review_1_6/reused_artifact_hashes_after.sha256">reused-asset
+hashes after review</a>. Local integrity logs, tooling cleanup status,
+and the final machine-readable validation records preserve the
+completion evidence. HTML rendering and validation follow final Markdown
+assembly.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source file</th>
+<th>SHA-256 before review</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jama_parshuram_2018_oi_180015.pdf</td>
+<td>92c3a3edd598a1073e39f8d0733352b3aea3bec30731b9ef0326e68f2e6088ba</td>
+</tr>
+<tr class="even">
+<td>joi180015supp1_prod.pdf</td>
+<td>67409a1493b032cb49b26a4444e37eabeb2a432d2d0b5576914baac310490306</td>
+</tr>
+<tr class="odd">
+<td>joi180015supp2_prod.pdf</td>
+<td>6dab9fdc7fa6ca0da2031d5a483a58ba8ad9a3b0c6c4e7c45eb17708535465a4</td>
+</tr>
+<tr class="even">
+<td>joi180015supp3_prod.pdf</td>
+<td>3b58616d0af25610fe9e4bab11ac42c7e38dae588e3d965ec306b8e5b55d1eb3</td>
+</tr>
+</tbody>
+</table>
+<p>Direct tools: Poppler <code>pdfinfo</code>, <code>pdftotext</code>,
+<code>pdftoppm</code>, and <code>pdftocairo</code> 25.03.0, local
+SHA-256 tools, and Pandoc 3.1.11.1; CPU only. Targeted fresh layout and
+page-image derivative commands, pages, resolution, and engines are
+recorded in the <a href="review_1_6/tooling_record.md">tooling
+record</a>, <a href="review_1_6/evidence_asset_inventory.md">asset
+inventory</a>, and <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a>. No
+fallback environment or package installation was needed; fallback state
+is NOT_NEEDED and removal state NOT_CREATED.</p>
+<h2 id="agent-execution-and-routing-provenance">Agent execution and
+routing provenance</h2>
+<p>The <a href="review_1_6/agent_execution_manifest.md">execution
+manifest</a> records every actual agent, including the coordinator and
+report generator, once. Identifiers omit the leading slash solely for
+the validator’s alphanumeric-first grammar; prepending <code>/</code>
+restores the exact canonical runtime task path returned by the
+collaboration tool. Opaque runtime UUIDs are not exposed. The
+coordinator row is its package-configured <code>gpt-6.1-sol</code> /
+<code>high</code> contract, not independently attested runtime model
+identity. Named specialist pairs are tool-defined. All mandatory
+specialist stages used distinct fresh agents; the appended recheck is an
+additional fresh agent.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>coordinator</td>
+<td>root</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr class="even">
+<td>reuse_asset_curator</td>
+<td>root/curator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>source_inventory.md</td>
+</tr>
+<tr class="odd">
+<td>main_quantitative_mapper</td>
+<td>root/main_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr class="even">
+<td>support_quantitative_mapper</td>
+<td>root/support_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr class="odd">
+<td>numeric_consistency_reviewer</td>
+<td>root/numeric</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr class="even">
+<td>cross_source_consistency_reviewer</td>
+<td>root/cross</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_1</td>
+<td>root/stats1</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr class="even">
+<td>evidence_rechecker</td>
+<td>root/recheck</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_2</td>
+<td>root/stats2</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr class="even">
+<td>evidence_rechecker_append</td>
+<td>root/recheck_append</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/parts/evidence_recheck_append.md</td>
+</tr>
+<tr class="odd">
+<td>quality_control_auditor</td>
+<td>root/audit</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr class="even">
+<td>report_generator</td>
+<td>root/report</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<p><a href="review_1_6/routing_preflight.md">Routing preflight</a>
+records PASS, successful coordinator and specialist inference, and all
+nine named presets. It discloses that independent coordinator
+runtime-model and interactive-launch attestation are unavailable.
+Provider follows the user’s explicit current-session override. No
+credentials or provider configuration were changed.</p>
+<p>The <a href="review_1_6/provider_override.md">provider override
+record</a> documents a copy of the supplied validator whose sole
+adaptation is the expected provider literal. The original helper remains
+unchanged. Both machine-readable outcomes are preserved: <a
+href="review_1_6/review_validation_original_provider_contract.json">original
+provider-contract result</a> and <a
+href="review_1_6/review_validation.json">current-provider-compatible
+validation result</a>. The original provider literal is openrouter; the
+user-authorized preflight instead records current-session-provider. All
+scientific, evidence, coverage, classification, and integrity checks are
+identical. A provider-compatible PASS is distinct from an unqualified
+PASS of the original provider contract and must be read with the
+disclosed runtime-attestation limitations.</p>
+<h2 id="reproducibility-performance">Reproducibility performance</h2>
+<p>The following exact performance fields match <a
+href="review_1_6/run_state.md">run_state.md</a>, finalized immediately
+after complete Markdown assembly. Elapsed time covers inventory, full
+mapping, checking, both statistical passes, all recheck waves, audit,
+and complete evidence-card assembly. Final source-integrity
+recomputation is complete; HTML rendering, cleanup, and validation
+follow final Markdown assembly. The target is a planning range, never a
+coverage or candidate boundary.</p>
+<ul>
+<li><strong>Target basis:</strong> Four unencrypted PDFs with 69
+physical pages; complete reusable native/layout text plus 53 existing
+rendered pages remove bulk preprocessing. Scope includes 37 protocol
+pages, a seven-page SAP, two results figures and several
+hospital/patient tables requiring visual checks; two disjoint mapping
+lanes, three concurrent checkers, both statistical passes, full recheck,
+audit, and report generation remain mandatory. This target reflects
+reusable coverage and relationship complexity, not page count
+alone.</li>
+<li><strong>Total source units:</strong> 69</li>
+<li><strong>Fresh-source units:</strong> 0</li>
+<li><strong>Target elapsed minutes:</strong> 25-40</li>
+<li><strong>Started UTC:</strong> 2026-10-11T00:43:40Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T01:26:39Z</li>
+<li><strong>Observed elapsed minutes:</strong> 42.98</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> Additional pass-2 discovery
+required a distinct fresh two-ID exact-source recheck wave on three
+pages and propagation through the full 30-ID audit/report. Complete
+112-relationship two-pass coverage and full 30-card assembly took longer
+than the reuse-based planning estimate; no coverage or candidate was
+omitted.</li>
+</ul>
+</body>
+</html>

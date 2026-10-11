@@ -1,0 +1,11 @@
+# Current-provider override
+
+The user explicitly requested: “Use the current provider by default even if it says to use openrouter.” No credentials, provider configuration, package controls, or original helper are changed.
+
+The supplied validator expects the literal provider `openrouter`, independently of all evidence, integrity, classification, coverage, and agent checks. A copy of that supplied auxiliary validator is stored in this review directory as `validate_review_current_provider.py`; its sole change is the expected provider label from `openrouter` to `current-session-provider`. `provider_override.patch` records that exact one-line delta. The original supplied helper remains unchanged (SHA-256: 14f69039abc17511265ab9e647fb9d432cc46fafc228fdd0b7b3902fe6ddc695).
+
+At completion run the original helper, preserve its result as `review_validation_original_provider_contract.json`, then run the copied helper to produce `review_validation.json`. The copied helper performs every original scientific, artifact, provenance, and integrity check. This is an explicit user-instruction override to a stale provider-only assumption, not scientific orchestration, extraction, OCR, candidate selection, classification, or a relaxed evidence criterion. Both outcomes must be reported truthfully.
+
+The current tool surface supplies canonical agent runtime paths, which are recorded reversibly in the execution manifest (the leading slash is omitted solely for the validator identifier grammar). Independent coordinator runtime model and launch-command attestation are not exposed; configured contract and successful coordinator inference are distinguished in routing_preflight.md.
+
+Final outcomes: the original supplied validator reports FAIL with exactly one error, Routing preflight must record Provider: openrouter. That result is preserved in review_validation_original_provider_contract.json. The sole-provider-literal adapted copy reports PASS with zero errors and warnings in review_validation.json. Both report30 candidates,112 statistical relationships,69 mapped source units,12 actual agents, unchanged source integrity and complete classifications. Original supplied helper SHA-256 remains14f69039abc17511265ab9e647fb9d432cc46fafc228fdd0b7b3902fe6ddc695.

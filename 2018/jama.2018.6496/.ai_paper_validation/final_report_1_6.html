@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-quality-control-consistency-review--jama-20186496"
+id="toc-quantitative-quality-control-consistency-review--jama-20186496">Quantitative
+Quality-Control Consistency Review — JAMA 2018.6496</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#document-role-classification-summary"
+id="toc-document-role-classification-summary">Document-Role
+Classification Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--respiratory-indication-percentages-use-a-different-denominator"
+id="toc-c001--respiratory-indication-percentages-use-a-different-denominator">C001
+— Respiratory-indication percentages use a different
+denominator</a></li>
+<li><a href="#c002--other-medical-percentages-change-the-denominator"
+id="toc-c002--other-medical-percentages-change-the-denominator">C002 —
+Other-medical percentages change the denominator</a></li>
+<li><a href="#c003--final-operator-counts-exceed-the-bougie-arm-total"
+id="toc-c003--final-operator-counts-exceed-the-bougie-arm-total">C003 —
+Final-operator counts exceed the bougie arm total</a></li>
+<li><a
+href="#c004--duration-confidence-limits-are-printed-in-descending-order"
+id="toc-c004--duration-confidence-limits-are-printed-in-descending-order">C004
+— Duration confidence limits are printed in descending order</a></li>
+<li><a
+href="#c005--historical-rescue-percentage-differs-from-direct-rounding"
+id="toc-c005--historical-rescue-percentage-differs-from-direct-rounding">C005
+— Historical rescue percentage differs from direct rounding</a></li>
+<li><a
+href="#c006--planned-duration-and-reported-duration-use-different-stop-events"
+id="toc-c006--planned-duration-and-reported-duration-use-different-stop-events">C006
+— Planned duration and reported duration use different stop
+events</a></li>
+<li><a
+href="#c007--primary-missing-data-instruction-names-a-secondary-composite"
+id="toc-c007--primary-missing-data-instruction-names-a-secondary-composite">C007
+— Primary missing-data instruction names a secondary composite</a></li>
+<li><a href="#c008--resistance-percentage-changes-its-named-population"
+id="toc-c008--resistance-percentage-changes-its-named-population">C008 —
+Resistance percentage changes its named population</a></li>
+<li><a href="#c009--hypoxemia-window-has-a-different-end-anchor"
+id="toc-c009--hypoxemia-window-has-a-different-end-anchor">C009 —
+Hypoxemia window has a different end anchor</a></li>
+<li><a
+href="#c010--initial-oxygen-missingness-does-not-reproduce-its-denominators"
+id="toc-c010--initial-oxygen-missingness-does-not-reproduce-its-denominators">C010
+— Initial oxygen missingness does not reproduce its
+denominators</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a>
+<ul>
+<li><a href="#six-diagnostic-p-value-comparison-limits"
+id="toc-six-diagnostic-p-value-comparison-limits">Six diagnostic P-value
+comparison limits</a></li>
+<li><a href="#execution-context-limitation"
+id="toc-execution-context-limitation">Execution-context
+limitation</a></li>
+</ul></li>
+<li><a href="#human-adjudication-checklist"
+id="toc-human-adjudication-checklist">Human Adjudication
+Checklist</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#canonical-review-artifacts"
+id="toc-canonical-review-artifacts">Canonical review artifacts</a></li>
+<li><a href="#source-integrity-and-tooling"
+id="toc-source-integrity-and-tooling">Source integrity and
+tooling</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-quality-control-consistency-review--jama-20186496">Quantitative
+Quality-Control Consistency Review — JAMA 2018.6496</h1>
+<p><strong>Pending Human Adjudication</strong></p>
+<p>This report records reporting-consistency candidates for human
+review. Evidence states describe mechanical source checks; suggested
+review dispositions are mechanical pre-fills. Every candidate remains
+Pending Human Adjudication.</p>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete review of the three supplied PDFs, comprising 49 physical
+pages, produced <strong>10 stable candidates, C001–C010</strong>. Nine
+have evidence state <code>recorded_candidate</code>; C008 has
+<code>record_input_error</code> because its proposed numerical
+comparison depended on an unsupported alignment of numerator and
+population. All ten receive full evidence cards.</p>
+<p>The candidates concern two baseline percentage bases, a
+final-operator category total, a descending confidence interval, a
+historical percentage's direct rounding, duration and hypoxemia endpoint
+definitions, a primary missing-data endpoint label, a repeated
+resistance-result population label, and initial oxygen available-case
+denominators. Alternatives and missing definitions are stated
+individually. No numerical consequences are established for the
+endpoint-definition candidates.</p>
+<p>Small preventable numeric or labeling defects can matter when
+evidence is extracted into systematic reviews, meta-analyses, guidelines
+or later publications. This review does not establish downstream
+propagation, conclusion change or serious harm.</p>
+<p>Scientific source and relationship coverage is complete. Strict
+workflow validation has an execution-context limitation: the user's
+current-provider instruction and unavailable original-launch attestation
+conflict with four hard-coded routing literals in the unmodified
+validator. This report does not claim unconditional validator PASS; see
+the final <a href="review_1_6/review_validation.json">validation
+record</a> after coordinator finalization.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The package contains three scientific sources and no supplied Office,
+workbook or CSV files. Page numbers below are physical PDF pages,
+including covers. Roles follow content.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source ID</th>
+<th>Actual supplied file</th>
+<th style="text-align: right;">Pages</th>
+<th>Content role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td><a
+href="../jama_driver_2018_oi_180054.pdf#page=1">jama_driver_2018_oi_180054.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">11</td>
+<td>REPORT main article</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td><a href="../joi180054supp1_prod.pdf#page=1" target="_blank" rel="noopener">joi180054supp1_prod.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">25</td>
+<td>PLAN protocol, including historical background</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td><a href="../joi180054supp2_prod.pdf#page=1" target="_blank" rel="noopener">joi180054supp2_prod.pdf
+— PDF p. 1</a></td>
+<td style="text-align: right;">13</td>
+<td>Results pp.1–6 are REPORT, with quoted prospective rules classified
+by content; blank operational form pp.7–13 is PLAN</td>
+</tr>
+</tbody>
+</table>
+<p>A prospective-rule quotation in the interim appendix is PLAN content
+even within a REPORT results appendix. An operational form is PLAN,
+irrespective of supplement filename.</p>
+<p>The curator reused <strong>47 preprocessing assets</strong> from
+<code>review_1_5_2/preprocessing/</code>: six whole-document
+native/layout text files and 41 PNG page renders. These overlap and
+cover 49 unique source pages; file counts are not source-unit counts.
+Old candidates, classifications, decisions and reports were not
+scientific inputs. Native files and the two support layout files match
+current direct Poppler extraction byte-for-byte. Main layout has a
+nonsemantic blank-line-position difference in the Figure 2 axis label.
+Text is readable and source-matched on every page.</p>
+<p>Historical extraction/render engine metadata is UNKNOWN.
+Current-source agreement establishes fitness, not a historical engine
+attribution. The eight missing legacy PNGs are DOC-001 p.11 and DOC-002
+pp.1–4,23–25; usable text covers each. Result-relevant graphical
+material was visually inspected during mapping, including the form's
+grade labels absent from text. The rechecker freshly rendered and
+visually inspected all 16 unique cited candidate pages using Poppler
+25.03.0 at 125 dpi, with fresh layout text as a locator.</p>
+<p>Complete provenance and page-level derivative paths are in the <a
+href="review_1_6/source_inventory.md">source inventory</a>, <a
+href="review_1_6/evidence_asset_inventory.md">evidence asset
+inventory</a>, <a
+href="review_1_6/reused_artifact_hashes_before.sha256">reuse hash
+baseline</a> and <a
+href="review_1_6/verification/evidence_recheck.md">direct-source
+recheck</a>. Supplied PDFs remain the evidence authority.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>Every physical source page received fresh scientific mapping,
+including covers, reference pages, prospective instructions and blank
+forms. Reusing extraction did not reuse candidate selection.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source ID</th>
+<th>Unit type</th>
+<th style="text-align: right;">Total</th>
+<th style="text-align: right;">Reusable</th>
+<th style="text-align: right;">Fresh-required</th>
+<th style="text-align: right;">Mapped</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">25</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">13</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>PDF_PAGE</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">49</td>
+<td>COMPLETE</td>
+</tr>
+</tbody>
+</table>
+<p>Main and support assignments are disjoint and jointly exhaustive.
+Zero fresh-required pages means usable reusable extraction existed for
+every unit; targeted source rendering and fresh scientific review still
+occurred. The <a href="review_1_6/source_coverage.md">source coverage
+ledger</a> and <a href="review_1_6/coverage_manifest.md">coverage
+manifest</a> document each assignment and artifact.</p>
+<p>The review prioritizes arithmetic, totals, denominators, proportions,
+inferential-statistical reporting, matched-source repetition, measure
+labels, scales and rate/count identity. Population or analysis-unit
+issues qualify through a concrete quantitative or label comparison.
+General methodology, study design, clinical interpretation, novelty,
+misconduct and raw-data audits are excluded. Only supplied package
+evidence was used; no external literature or web search was used.</p>
+<p>Coherent display-zero P values alone are excluded under
+<code>DISPLAY_ZERO_NOT_CANDIDATE</code>. No source display-zero P was
+identified; P&lt;.001 is a bound, and ICC&lt;.001 is not a P value. None
+of the ten candidates is based on display precision alone.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>The maps reconstruct 124 main and 67 support evidence groups. Main
+mapping includes all 94 table rows (27+34+17+6+10) and 30 narrative,
+definition, flow or figure groups. Support mapping covers protocol
+numerical background and plans, all six clustered eTable rows, both
+eFigures, interim analysis and every form question Q1–Q27.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Review lane</th>
+<th>Complete scope</th>
+<th>Durable record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numeric consistency</td>
+<td>191 relationships N001–N191, checked in disjoint groups of 100 and
+91</td>
+<td><a
+href="review_1_6/relationships/numeric_relationship_inventory.md">Numeric
+inventory</a>; <a
+href="review_1_6/checkers/numeric_consistency.md">numeric
+checker</a></td>
+</tr>
+<tr class="even">
+<td>Cross-source consistency</td>
+<td>67 matched comparison groups, with population/time/contrast/model
+identity checked</td>
+<td><a
+href="review_1_6/checkers/cross_source_consistency.md">Cross-source
+checker</a></td>
+</tr>
+<tr class="odd">
+<td>Statistical pass 1</td>
+<td>All 93 S relationships, each PASS_1_COMPLETE</td>
+<td><a href="review_1_6/checkers/statistical_pass_1.md">Pass 1</a></td>
+</tr>
+<tr class="even">
+<td>Statistical pass 2</td>
+<td>All 93 S relationships, complete ten-ID ledger and all recheck
+facts, each PASS_2_COMPLETE; zero new candidates</td>
+<td><a href="review_1_6/checkers/statistical_pass_2.md">Pass 2</a></td>
+</tr>
+<tr class="odd">
+<td>Direct-source recheck</td>
+<td>C001, C002, C003, C004, C005, C006, C007, C008, C009, C010</td>
+<td><a href="review_1_6/verification/evidence_recheck.md">Evidence
+recheck</a></td>
+</tr>
+<tr class="even">
+<td>Independent quality audit</td>
+<td>All 49 pages, 191 N groups, 93 S groups and ten stable IDs</td>
+<td><a href="review_1_6/quality/evidence_quality_audit.md">Canonical
+quality audit</a></td>
+</tr>
+</tbody>
+</table>
+<p>The <a
+href="review_1_6/statistics/relationship_inventory.md">statistical
+inventory</a> records both completed passes for every relationship.
+Fresh agents <code>task:/root/statistics_one</code> and
+<code>task:/root/statistics_two</code> executed the separate passes at
+gpt-6.1-sol/high. The pass-1 artifact's historical PASS_2_PENDING
+snapshot is superseded by the complete second-pass artifact and current
+inventory.</p>
+<p>All 66 inferential table rows are covered: 34 main Table 2, 17 main
+Table 3, nine main Table 5 and six clustered eTable 1 rows. Checks cover
+group and difference intervals, P values, interactions, estimates,
+signs, natural scales, available cases, repeated values and model
+identity. Additional groups cover Cox hazard ratios, distinct log-rank
+tests, figures and risk arrays, ICC bounds, power, interim rules,
+endpoint definitions and reported analysis labels.</p>
+<p>Disclosed clustered analyses are distinct from unclustered results.
+Hodges–Lehmann estimates need not equal marginal median subtraction;
+IQR/SD are not confidence intervals; interaction tests are distinct
+hypotheses from subgroup contrasts. Kaplan–Meier success curves and
+hazard ratios are not crude success proportions or person-time rates.
+Six P-value diagnostic differences remain explicitly documented as
+limitations because the selected reconstruction methods are not
+source-established author analyses.</p>
+<h2 id="document-role-classification-summary">Document-Role
+Classification Summary</h2>
+<p><code>P_R</code> compares PLAN with REPORT content; <code>P_P</code>
+is solely within PLAN content; <code>S_C</code> compares two different
+REPORT documents; <code>S_W</code> is within one REPORT document.
+Substantive mixed relationships would use precedence P_R &gt; P_P &gt;
+S_C &gt; S_W. A corroborating document does not add a discrepancy
+relationship.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Relationship type</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P_R</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td>P_P</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td>S_C</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>S_W</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Review domain</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>protocol_report</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td>plan_material</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td>statistical_results</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td>report_internal_inconsistency</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Evidence state</th>
+<th style="text-align: right;">Stable candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>recorded_candidate</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>repaired_residual</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>record_input_error</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+<p>Mechanically derived suggested dispositions are <code>retain</code>
+for nine and <code>discuss</code> for one; <code>exclude</code> is zero.
+These are human-review pre-fills, not adjudications. Final
+classification values below are copied exactly from the <a
+href="review_1_6/candidate_ledger.md">ledger classification table</a>.
+C006 is P_R only after the form heading was distinguished from a
+stopwatch instruction; C008 preserves its ID and records the unsupported
+pooled/arm alignment.</p>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Candidate</th>
+<th>Category</th>
+<th>Relationship type</th>
+<th>Review domain</th>
+<th>Evidence state</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#c001">C001</a></td>
+<td>Respiratory-indication percentages use a different denominator</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td><a href="#c002">C002</a></td>
+<td>Other-medical percentages change the denominator</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td><a href="#c003">C003</a></td>
+<td>Final-operator counts exceed the bougie arm total</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td><a href="#c004">C004</a></td>
+<td>Duration confidence limits are printed in descending order</td>
+<td>Statistical reporting inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td><a href="#c005">C005</a></td>
+<td>Historical rescue percentage differs from direct rounding</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td><a href="#c006">C006</a></td>
+<td>Planned duration and reported duration use different stop
+events</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_R</td>
+<td>protocol_report</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="odd">
+<td><a href="#c007">C007</a></td>
+<td>Primary missing-data instruction names a secondary composite</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_P</td>
+<td>plan_material</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td><a href="#c008">C008</a></td>
+<td>Resistance percentage changes its named population</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>S_W</td>
+<td>report_internal_inconsistency</td>
+<td>record_input_error</td>
+</tr>
+<tr class="odd">
+<td><a href="#c009">C009</a></td>
+<td>Hypoxemia window has a different end anchor</td>
+<td>Measure, label, or scale inconsistency</td>
+<td>P_R</td>
+<td>protocol_report</td>
+<td>recorded_candidate</td>
+</tr>
+<tr class="even">
+<td><a href="#c010">C010</a></td>
+<td>Initial oxygen missingness does not reproduce its denominators</td>
+<td>Denominator, proportion, or total inconsistency</td>
+<td>S_W</td>
+<td>statistical_results</td>
+<td>recorded_candidate</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<p><a id="c001"></a></p>
+<h2
+id="c001--respiratory-indication-percentages-use-a-different-denominator" class="candidate-card">C001
+— Respiratory-indication percentages use a different denominator</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> Table 1 respiratory-indication
+percentages do not reproduce the displayed arm denominators;
+medical-subset denominators reproduce them but are not consistently
+distinguished.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Table 1
+respiratory-indication row vs REPORT main Table 1 headers and sibling
+rows</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The conflicting row,
+headers and sibling rows are REPORT content within the main article. No
+PLAN comparator is in conflict.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_driver_2018_oi_180054.pdf#page=5">jama_driver_2018_oi_180054.pdf
+— PDF p. 5</a>, Table 1 asthma/COPD/heart failure/pneumonia row, No. (%)
+headers, Medical parent and altered-mental-status sibling rows; all
+REPORT.</p>
+<p><strong>Source evidence:</strong> Respiratory row 16 (5) and 23 (7);
+arm n=381 and 376; Medical counts 318 and 315. Altered mental status 185
+(49) and 173 (46) matches whole-arm bases.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed 5%/7% versus
+header-based rounded 4%/6%; medical-subset rounded 5%/7% is an
+alternative denominator interpretation.</p>
+<p><strong>Reasoning procedure:</strong> Compare exact
+numerator/denominator fractions with whole-percent displays using a ±0.5
+percentage-point rounding allowance. Then evaluate the printed Medical
+parent as an alternative base. Printed values are direct observations;
+the denominator used in production is inferred. Checker provenance:
+NUM-A01; N044 with N039–N043 corroboration; independent numeric-main
+checker.</p>
+<p><strong>Calculation:</strong> 100×16/381=4.199475%→4%;
+100×23/376=6.117021%→6%. Alternative 100×16/318=5.031447%→5%;
+100×23/315=7.301587%→7%. Both header-based deviations exceed 0.5
+percentage point.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Medical-subset percentages could be intended. Adjacent
+altered-mental-status percentages use whole-arm bases, so a row-specific
+convention needs clarification. Counts are not established as wrong.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact page, row,
+headers and comparators found and visually confirmed. Arithmetic
+reproduced; missing definition is the respiratory-row denominator. The
+unresolved header/subset alignment supports recorded_candidate.
+Independent audit agrees.</p>
+<p><strong>Quality-control relevance:</strong> A baseline proportion
+needs a stated population base to be reproducibly extracted.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could attach these subgroup percentages to the
+randomized-arm population. No downstream copying or conclusion change is
+established.</p>
+<p><strong>Human verification steps:</strong> Inspect Table 1 and
+confirm whether each respiratory percentage uses all randomized patients
+or only patients with medical indications; identify the intended
+denominator and corresponding row/header label.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<p><a id="c002"></a></p>
+<h2 id="c002--other-medical-percentages-change-the-denominator" class="candidate-card">C002 —
+Other-medical percentages change the denominator</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> Table 1 Other-medical
+percentages reproduce the Medical subset, while the common arm headers
+and some sibling rows use whole-arm bases.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Table 1
+other-medical row vs REPORT main Table 1 headers and sibling rows</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Both sides are REPORT
+content in the same main-article table. This is a distinct numerator row
+from C001, even if the percentage convention has a shared
+explanation.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_driver_2018_oi_180054.pdf#page=5">jama_driver_2018_oi_180054.pdf
+— PDF p. 5</a>, Table 1 Medical—Other row, headers, Medical totals and
+sibling rows; all REPORT.</p>
+<p><strong>Source evidence:</strong> Other-medical row 44 (14) and 41
+(13); headers n=381/376; Medical totals 318/315. Medical subrow sums are
+318 and 315.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed 14%/13% versus
+whole-arm rounded 12%/11%; Medical-subset rounded 14%/13% reproduces the
+display.</p>
+<p><strong>Reasoning procedure:</strong> Apply whole-percent tolerance
+to both printed numerator/base pairs. Check the Medical parent and count
+sums before interpreting the issue as a proportion-base question. The
+production denominator is inferred from arithmetic. Checker provenance:
+NUM-A02; N045 with N039/N040/N046–N048 corroboration; independent
+numeric-main checker.</p>
+<p><strong>Calculation:</strong> 100×44/381=11.548556%→12%;
+100×41/376=10.904255%→11%. Alternative 100×44/318=13.836478%→14%;
+100×41/315=13.015873%→13%. Whole-arm deviations exceed ±0.5 percentage
+point; subrow counts add correctly.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The row
+could intentionally report Medical-subset percentages; that convention
+is not consistently stated or applied across sibling rows. No count
+change is established.</p>
+<p><strong>Mechanical evidence recheck:</strong> All source/comparator
+entries and count sums visually confirmed; calculation reproduced.
+Intended Other-row basis remains missing. recorded_candidate is retained
+and the independent audit agrees.</p>
+<p><strong>Quality-control relevance:</strong> A shared table header
+should allow readers to identify which population each percentage
+describes.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a baseline data extractor could record these two Other proportions on
+the wrong population base. Actual propagation is unknown.</p>
+<p><strong>Human verification steps:</strong> Confirm whether 14% and
+13% are Medical-subset proportions, and identify the row/header
+convention intended for these and adjacent subrows.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<p><a id="c003"></a></p>
+<h2 id="c003--final-operator-counts-exceed-the-bougie-arm-total" class="candidate-card">C003 —
+Final-operator counts exceed the bougie arm total</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The three bougie
+operator-category counts total 383 against n=381 under the footnote
+defining the final intubating physician.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Table 2
+operator rows vs REPORT main Table 2 header and final-physician
+footnote</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The conflicting counts,
+arm total and final-physician footnote are REPORT content within the
+main article. The PLAN form only corroborates category meanings and adds
+no P_R relationship.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_driver_2018_oi_180054.pdf#page=6">jama_driver_2018_oi_180054.pdf
+— PDF p. 6</a>, Table 2 Operator rows, headers and footnote f, REPORT.
+<a href="../joi180054supp2_prod.pdf#page=7" target="_blank" rel="noopener">joi180054supp2_prod.pdf —
+PDF p. 7</a>, operational form Q2, PLAN corroboration only.</p>
+<p><strong>Source evidence:</strong> Bougie senior resident/fellow 318,
+junior resident 57 and faculty 8; arm n=381. Comparator counts 334, 37
+and 5; n=376. Footnote f specifies the final intubating physician and
+four physician changes per arm; form Q2 asks for one training level.</p>
+<p><strong>Reported-versus-comparator:</strong> 383 listed
+bougie-category entries versus 381 patients; comparator categories total
+376 against 376 patients.</p>
+<p><strong>Reasoning procedure:</strong> Under one final physician per
+patient, mutually exclusive category totals cannot exceed the number of
+patients. Sum printed integers with zero rounding tolerance. Unknown
+episode-count or overlap rules cannot be assumed. Checker provenance:
+NUM-A03 and CROSS07; N076/N077/N078/N029 and X053; genuine duplicate
+comparisons merged before stable IDs.</p>
+<p><strong>Calculation:</strong> 318+57+8=383; 383−381=2. Comparator
+334+37+5=376. Four physician changes do not explain extra final-only
+categories, and rounded percentages cannot alter the integer total.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Rows
+may count operator episodes or mix initial/final physicians, or a
+printed input may differ from the intended count. These mechanisms are
+unestablished; no particular row is selected for change.</p>
+<p><strong>Mechanical evidence recheck:</strong> Exact counts, totals,
+footnote and corroborating form confirmed visually. Integer sum
+reproduced and final-only rule applicable. Case-level counts or
+overlap/episode definitions are absent. recorded_candidate and S_W were
+independently audited.</p>
+<p><strong>Quality-control relevance:</strong> The stated counted unit
+must reconcile category totals with the denominator.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy an inconsistent distribution of operator
+training levels. No altered treatment estimate is established.</p>
+<p><strong>Human verification steps:</strong> Confirm the counted unit
+and category exclusivity, then reconcile the three bougie rows with 381
+patients under footnote f using the original final-operator records.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<p><a id="c004"></a></p>
+<h2
+id="c004--duration-confidence-limits-are-printed-in-descending-order" class="candidate-card">C004
+— Duration confidence limits are printed in descending order</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The all-patient
+duration-difference confidence interval is printed as 4 to −1 in a 95%
+CI column.</p>
+<p><strong>Category:</strong> Statistical reporting inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Table 3
+all-patient duration interval vs REPORT main interval header and
+methods</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The mismatch is within the
+main REPORT between its interval and its header/range convention. The
+separate REPORT supplement corroborates plausible endpoint order under a
+disclosed different clustered analysis, adding no S_C discrepancy.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_driver_2018_oi_180054.pdf#page=7">jama_driver_2018_oi_180054.pdf
+— PDF p. 7</a>, Table 3 all-patient duration row and Difference (95% CI)
+header; <a
+href="../jama_driver_2018_oi_180054.pdf#page=4">jama_driver_2018_oi_180054.pdf
+— PDF p. 4</a>, statistical methods, REPORT. <a
+href="../joi180054supp2_prod.pdf#page=2">joi180054supp2_prod.pdf — PDF
+p. 2</a>, eTable 1, and <a
+href="../joi180054supp2_prod.pdf#page=3">joi180054supp2_prod.pdf — PDF
+p. 3</a>, clustering note, REPORT corroboration/context.</p>
+<p><strong>Source evidence:</strong> Main medians 38/36 seconds;
+difference 1 (4 to −1), P=.24. Methods identify Hodges–Lehmann
+differences. Clustered supplement prints 1 (−1 to 4) seconds, P=.95 and
+discloses recalculated inferential columns.</p>
+<p><strong>Reported-versus-comparator:</strong> First interval endpoint
+4 exceeds second −1, contrary to the lower-to-upper ordering used in
+other ranges. The clustered P value is a distinct analysis.</p>
+<p><strong>Reasoning procedure:</strong> Compare endpoint order
+directly, independently of the unknown variance/test implementation.
+Check estimate containment only diagnostically. Do not equate a
+Hodges–Lehmann estimate with subtraction of marginal medians. Checker
+provenance: NUM-A04, CROSS01 and STAT-A01; S040, N097 and X005/X064;
+identical interval/order comparisons merged.</p>
+<p><strong>Calculation:</strong> 4&gt;−1. Sorting diagnostically gives
+[−1,4], containing 1; this does not determine the intended original
+limits. 38−36=2 need not equal the Hodges–Lehmann estimate 1.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+endpoints may have been transposed. The clustered supplement supports
+that possibility but cannot determine the main unclustered output. P=.24
+versus .95 is not a matched-analysis contradiction.</p>
+<p><strong>Mechanical evidence recheck:</strong> Main printed endpoints,
+CI heading, methods and clustered-analysis context confirmed visually.
+Endpoint-order comparison reproduced. Original unclustered output
+remains unavailable for identifying intended limits; recorded_candidate
+is supported.</p>
+<p><strong>Quality-control relevance:</strong> A lower/upper interval
+field requires an unambiguous endpoint sequence.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction software could retain reversed lower and upper
+confidence-limit fields. No effect-estimate or conclusion change is
+demonstrated.</p>
+<p><strong>Human verification steps:</strong> Inspect the original
+unclustered Hodges–Lehmann output, confirm lower and upper limits and
+determine whether the printed sequence was intended.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<p><a id="c005"></a></p>
+<h2
+id="c005--historical-rescue-percentage-differs-from-direct-rounding" class="candidate-card">C005
+— Historical rescue percentage differs from direct rounding</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> Protocol historical background
+gives 70 out of 88 as 79.6%, whereas the directly rounded fraction is
+79.5% at one decimal.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN protocol historical
+rescue counts vs PLAN same sentence percentage</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> Counts and percentage
+occur in the same historical-background sentence inside the PLAN
+protocol. This is P_P plan material, with no conflicting trial REPORT
+result.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180054supp1_prod.pdf#page=7">joi180054supp1_prod.pdf — PDF
+p. 7</a>, lines 198–199, with lines 196–203 as context; PLAN historical
+background.</p>
+<p><strong>Source evidence:</strong> Historical rescue background states
+70 out of 88 (79.6%); nearby 20 out of 26 (76.9%) is coherent at one
+decimal.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed 79.6% versus
+exact 79.5454545% and its direct one-decimal display 79.5%.</p>
+<p><strong>Reasoning procedure:</strong> Divide the printed counts and
+compare with the displayed one-decimal rounding interval. Qualify this
+rule as direct rounding; quoted historical precision or double rounding
+is not ruled out. Checker provenance: NUM-B01; N134/U010; independent
+support numeric checker.</p>
+<p><strong>Calculation:</strong> 100×70/88=79.5454545%. The 79.6%
+rounding interval [79.55,79.65) excludes the fraction by 0.0045455
+percentage point. Printed-minus-exact is 0.0545455 point, above the 0.05
+allowance. 100×20/26=76.9230769%→76.9%.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+protocol may preserve an externally quoted value or intermediate double
+rounding (79.545…→79.55→79.6). External articles were not accessed;
+supplied rounding provenance is absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Same-sentence counts,
+percentage and historical context confirmed visually; direct arithmetic
+reproduced. The unreported rounding/citation convention remains a human
+question. recorded_candidate and P_P were independently audited.</p>
+<p><strong>Quality-control relevance:</strong> Even a small display
+difference should retain a reproducible rounding basis for historical
+evidence extraction.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a reader could copy 79.6% as directly derived from 70/88. No dependence
+of this trial's conclusion on that difference is established.</p>
+<p><strong>Human verification steps:</strong> Determine whether 79.6%
+was intended as a directly rounded ratio, an intermediate-rounded figure
+or a preserved historical quotation, using the supplied sentence as the
+starting point.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<p><a id="c006"></a></p>
+<h2
+id="c006--planned-duration-and-reported-duration-use-different-stop-events" class="candidate-card">C006
+— Planned duration and reported duration use different stop events</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The planned first-attempt
+time-to-intubation measure ends at tracheal cuff inflation; the reported
+planned-secondary duration ends at blade removal.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN protocol duration
+endpoint vs REPORT main and results-supplement duration endpoint</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The discrepancy compares a
+PLAN protocol endpoint with agreeing REPORT definitions in the article
+and results supplement. The PLAN form heading defines an attempt, rather
+than the same stopwatch endpoint, so no independent P_P relationship is
+established. Agreeing REPORT locations add no S_C.</p>
+<p><strong>Classification ambiguity:</strong> Potentially
+distinct/amended secondary endpoint, without a supplied amendment
+resolving alignment.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180054supp1_prod.pdf#page=9">joi180054supp1_prod.pdf — PDF
+p. 9</a>, lines 315–317, and <a
+href="../joi180054supp1_prod.pdf#page=10">joi180054supp1_prod.pdf — PDF
+p. 10</a>, lines 346–347, PLAN. <a
+href="../jama_driver_2018_oi_180054.pdf#page=3">jama_driver_2018_oi_180054.pdf
+— PDF p. 3</a>, Trial Outcomes and Measurements; <a
+href="../jama_driver_2018_oi_180054.pdf#page=7">jama_driver_2018_oi_180054.pdf
+— PDF p. 7</a>, Table 3 duration rows/footnote c; <a
+href="../joi180054supp2_prod.pdf#page=2">joi180054supp2_prod.pdf — PDF
+p. 2</a>, duration rows, and <a
+href="../joi180054supp2_prod.pdf#page=3">joi180054supp2_prod.pdf — PDF
+p. 3</a>, dagger note, REPORT. <a
+href="../joi180054supp2_prod.pdf#page=10">joi180054supp2_prod.pdf — PDF
+p. 10</a>, attempt-definition heading preceding Q13, PLAN corroboration;
+Q13 itself is a device question.</p>
+<p><strong>Source evidence:</strong> Protocol time to intubation, first
+attempt only, runs from beginning of attempt to inflation of the ETT
+cuff in the trachea and is recorded with a stopwatch. Report duration
+runs from blade insertion to blade removal. Table 3 labels it a planned
+secondary outcome and prints 39/40 seconds for difficult airways and
+38/36 seconds for all patients.</p>
+<p><strong>Reported-versus-comparator:</strong> PLAN cuff-inflation stop
+versus REPORT blade-removal stop for the named duration measure. The
+form attempt boundary does not independently specify the secondary
+stopwatch outcome.</p>
+<p><strong>Reasoning procedure:</strong> Compare endpoint identity and
+its planned-secondary label. Distinguish the named measure from the
+operational attempt definition. Different named events require a
+supplied equivalence, amendment or distinct-endpoint explanation; actual
+numerical divergence is not established. Checker provenance: NUM-B02,
+CROSS03 and STAT-A02; N140/N173/N184, X016 and S087; same
+duration-definition comparison merged.</p>
+<p><strong>Calculation:</strong> T_PLAN=t(cuff inflation)−t(attempt
+beginning); T_REPORT=t(blade removal)−t(blade insertion). If start
+events coincide, the difference is t(blade removal)−t(cuff inflation),
+which cannot be calculated from supplied aggregate summaries. No paired
+timestamps are available.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+reported measure could be distinct or deliberately amended; stop events
+might coincide operationally. The form may define attempt boundaries
+separately from successful-intubation stopwatch timing. No supplied
+amendment resolves the label alignment.</p>
+<p><strong>Mechanical evidence recheck:</strong> Both explicit
+definitions and planned-secondary label confirmed visually. Form locator
+clarified to the heading before Q13. Recheck corrects the provisional
+statistical P_P suggestion: final All relationships is P_R only. Missing
+paired timestamps, endpoint mapping and actual stopwatch instruction
+limit numerical interpretation; recorded_candidate is retained.</p>
+<p><strong>Quality-control relevance:</strong> Time outcomes require
+endpoint definitions before summaries or time models can be compared or
+combined.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a time-outcome extractor could combine seconds measured to different
+stop events under the same endpoint label. Changed durations, protocol
+violation and conclusion change are not demonstrated.</p>
+<p><strong>Human verification steps:</strong> Confirm which stop event
+generated the 39/40- and 38/36-second summaries and time analyses,
+including unsuccessful attempts, and identify any endpoint amendment or
+distinct-measure explanation.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<p><a id="c007"></a></p>
+<h2
+id="c007--primary-missing-data-instruction-names-a-secondary-composite" class="candidate-card">C007
+— Primary missing-data instruction names a secondary composite</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The protocol's primary
+missing-data clause instructs recovery of first-pass success without
+hypoxemia, while its primary definition is first-pass success alone.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN protocol primary
+definition vs PLAN protocol primary missing-data endpoint wording</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The conflicting primary,
+secondary and missing-data definitions are all PLAN protocol content.
+Main REPORT primary wording is corroboration and adds no P_R
+discrepancy.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180054supp1_prod.pdf#page=8">joi180054supp1_prod.pdf — PDF
+p. 8</a>, §2.1 lines 280–282; <a
+href="../joi180054supp1_prod.pdf#page=9">joi180054supp1_prod.pdf — PDF
+p. 9</a>, primary/secondary definitions, lines 284–295 and 304–312; <a
+href="../joi180054supp1_prod.pdf#page=20">joi180054supp1_prod.pdf — PDF
+p. 20</a>, §8.6.1 lines 719–720 continued at <a
+href="../joi180054supp1_prod.pdf#page=21">joi180054supp1_prod.pdf — PDF
+p. 21</a>, lines 721–722; all PLAN. <a
+href="../jama_driver_2018_oi_180054.pdf#page=3">jama_driver_2018_oi_180054.pdf
+— PDF p. 3</a>, primary wording, REPORT corroboration only.</p>
+<p><strong>Source evidence:</strong> Primary outcome: first-pass
+success. Secondary composite: first-pass success without hypoxemia.
+Paragraph beginning 'For the primary outcome' continues with video
+recovery to determine first-pass success without hypoxemia.</p>
+<p><strong>Reported-versus-comparator:</strong> Primary endpoint A
+versus missing-primary recovery label A∩B, where B is absence of
+hypoxemia.</p>
+<p><strong>Reasoning procedure:</strong> Compare endpoint names using
+the separately supplied definitions. A logical counterexample
+establishes different labels without establishing that any affected
+missing patient occurred. Checker provenance: NUM-B03, CROSS04 and
+STAT-A04; N136/N161, X024 and S089; identical endpoint-label comparisons
+merged.</p>
+<p><strong>Calculation:</strong> A successful first-attempt patient with
+hypoxemia satisfies A but not A∩B. Therefore A and A∩B are distinct
+endpoint definitions. No branch-use or affected-case count can be
+calculated from supplied material.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Secondary wording may have been copied into this clause; video review
+may have recovered both components independently while retaining primary
+A; the missing-data branch may have been unused.</p>
+<p><strong>Mechanical evidence recheck:</strong> Definitions and the
+two-page missing-primary instruction confirmed visually; logical
+comparison reproduced. Actual retrieval instruction, branch usage and
+coding logs are absent. P_P and recorded_candidate were confirmed and
+independently audited.</p>
+<p><strong>Quality-control relevance:</strong> The intended endpoint for
+a missing-data instruction must be distinguishable from a separately
+defined composite.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+a plan extractor could attach a no-hypoxemia condition to the primary
+endpoint. No altered primary count or trial result is established.</p>
+<p><strong>Human verification steps:</strong> Determine whether the
+primary clause intended to recover first-pass success alone or the
+composite, and confirm what endpoint was coded if the video-recovery
+branch was used.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<p><a id="c008"></a></p>
+<h2 id="c008--resistance-percentage-changes-its-named-population" class="candidate-card">C008 —
+Resistance percentage changes its named population</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The discussion repeats a 7%
+resistance result under a bougie-group label, while the results describe
+all actual bougie use. An actual arm-specific numeric mismatch is not
+established.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main pooled
+bougie-use resistance result vs REPORT main discussion population
+label</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Evidence state:</strong> record_input_error</p>
+<p><strong>Suggested review disposition:</strong> discuss</p>
+<p><strong>Classification rationale:</strong> Both passages and group
+sizes are REPORT content within the main article, so the registered
+label comparison remains S_W. record_input_error records the unsupported
+alignment of pooled numerator 31 with randomized-arm denominator 381; it
+does not establish whether a residual label discrepancy exists.</p>
+<p><strong>Classification ambiguity:</strong> Identity of the repeated
+result and intended population label.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_driver_2018_oi_180054.pdf#page=5">jama_driver_2018_oi_180054.pdf
+— PDF p. 5</a>, Other Outcomes; <a
+href="../jama_driver_2018_oi_180054.pdf#page=7">jama_driver_2018_oi_180054.pdf
+— PDF p. 7</a>, continuation below Table 3; <a
+href="../jama_driver_2018_oi_180054.pdf#page=9">jama_driver_2018_oi_180054.pdf
+— PDF p. 9</a>, discussion; <a
+href="../jama_driver_2018_oi_180054.pdf#page=4">jama_driver_2018_oi_180054.pdf
+— PDF p. 4</a>, randomized group sizes; all REPORT.</p>
+<p><strong>Source evidence:</strong> Bougie use at any stage: 444
+patients; resistance: 31 (7%), remedied in all but one. Discussion
+repeats 7% and the all-but-one remedy but refers to intubations in the
+bougie group. Randomized bougie arm n=381; its resistance numerator is
+not supplied.</p>
+<p><strong>Reported-versus-comparator:</strong> Pooled 31/444 reproduces
+7%. Assigning the same 31 to 381 would yield 8%, but that assignment is
+unsupported and is not attributed to the authors' actual analysis.</p>
+<p><strong>Reasoning procedure:</strong> First establish population and
+numerator identity before comparing percentages. Repeated
+percentage/remedy wording suggests a shared result but does not prove
+it. Separate direct printed wording from conditional numerator
+reassignment. Checker provenance: CROSS02; X039 and N020 corroborating
+numeric scan. Numeric checker explicitly recognized the absent
+arm-specific numerator and did not emit a count candidate.</p>
+<p><strong>Calculation:</strong> 100×31/444=6.981982%→7%. Conditional
+100×31/381=8.136483%→8%; this is unsupported conditional arithmetic, not
+a proven arm percentage. Possible arm counts 25–28 among 381 also round
+to 7%; they are not inferred actual counts.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Bougie
+group could informally mean all 444 actual bougie-use patients, or the
+discussion could describe a separately calculated randomized-arm
+proportion. The package does not settle the intended group or result
+identity.</p>
+<p><strong>Mechanical evidence recheck:</strong> Printed passages and
+arm total confirmed visually. Matched-result identity and the arm
+numerator are unavailable, so applicability is conditional only. The
+unsupported input alignment determines record_input_error and the
+mechanically derived discuss pre-fill. Independent audit preserves the
+stable ID and does not establish a numerical discrepancy.</p>
+<p><strong>Quality-control relevance:</strong> A repeated percentage
+needs an identifiable population before it can be reliably assigned to
+an analysis group.</p>
+<p><strong>Potential downstream evidence impact:</strong> If
+clarification establishes a label inconsistency, an extractor could
+attach a pooled proportion to the wrong population. Current evidence
+does not establish an arm event count or downstream error.</p>
+<p><strong>Human verification steps:</strong> Confirm whether
+discussion's bougie group means actual bougie-use patients or randomized
+assignment, and whether 7% repeats 31/444 or uses a separate
+arm-specific numerator and denominator.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<p><a id="c009"></a></p>
+<h2 id="c009--hypoxemia-window-has-a-different-end-anchor" class="candidate-card">C009 —
+Hypoxemia window has a different end anchor</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> The planned hypoxemia
+observation window ends one minute after cuff inflation; REPORT
+definitions end one minute after first-attempt completion, whose
+duration ends at blade removal.</p>
+<p><strong>Category:</strong> Measure, label, or scale inconsistency</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN protocol hypoxemia
+observation window vs REPORT main and results-supplement observation
+window</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> PLAN protocol definitions
+are compared with agreeing REPORT definitions in the article and results
+supplement. This is P_R only: REPORT repetition corroborates and creates
+no S_C; PLAN definitions do not conflict internally.</p>
+<p><strong>Classification ambiguity:</strong> Possible operational
+equivalence or amendment without paired timestamps or explicit supplied
+clarification.</p>
+<p><strong>Exact source locations:</strong> <a
+href="../joi180054supp1_prod.pdf#page=9">joi180054supp1_prod.pdf — PDF
+p. 9</a>, lines 304–312, and <a
+href="../joi180054supp1_prod.pdf#page=10">joi180054supp1_prod.pdf — PDF
+p. 10</a>, lines 340–354, PLAN. <a
+href="../jama_driver_2018_oi_180054.pdf#page=3">jama_driver_2018_oi_180054.pdf
+— PDF p. 3</a>, Measurements and Trial Outcomes; <a
+href="../jama_driver_2018_oi_180054.pdf#page=7">jama_driver_2018_oi_180054.pdf
+— PDF p. 7</a>, Table 3 footnotes b/c; <a
+href="../jama_driver_2018_oi_180054.pdf#page=9">jama_driver_2018_oi_180054.pdf
+— PDF p. 9</a>, Table 5 hypoxemia row/footnote b; <a
+href="../joi180054supp2_prod.pdf#page=3">joi180054supp2_prod.pdf — PDF
+p. 3</a>, asterisk/dagger notes, REPORT.</p>
+<p><strong>Source evidence:</strong> PLAN hypoxemia threshold is
+saturation &lt;90%, or &gt;10% drop if starting below 90%, through one
+minute after ETT cuff inflation. REPORT uses the same threshold but the
+window runs during or within one minute after completion of the attempt;
+reported attempt duration ends at blade removal. Reported hypoxemia
+fractions are 47/371 and 50/364; composites 156/191 versus 123/177 and
+317/371 versus 282/366.</p>
+<p><strong>Reported-versus-comparator:</strong> PLAN
+cuff-inflation-plus-one-minute anchor versus REPORT
+attempt-completion-plus-one-minute anchor. Matching saturation
+thresholds do not establish matching observation windows.</p>
+<p><strong>Reasoning procedure:</strong> Compare the explicitly named
+time anchors separately from the saturation threshold. Keep event
+fractions as context; without timestamps and saturation trajectories,
+different printed definitions cannot be converted into changed event
+counts. Checker provenance: NUM-B04, CROSS05 and STAT-A03;
+N139/N143/N172, X017 and S088; same window rule merged, distinct from
+C006 continuous duration.</p>
+<p><strong>Calculation:</strong> End_PLAN=t(cuff inflation)+60 s;
+End_REPORT=t(first-attempt completion)+60 s. The report defines attempt
+duration by blade removal. Window offset and affected events cannot be
+calculated from aggregate fractions.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Cuff
+inflation and blade removal may coincide; observation may have been
+deliberately amended to attempt completion; completion might have an
+incompletely stated operational meaning. None of these is resolved by
+supplied data.</p>
+<p><strong>Mechanical evidence recheck:</strong> Thresholds, window
+definitions and reported fractions confirmed visually. Named-anchor
+comparison reproduced. Paired timestamps, saturation trajectories,
+failed-attempt/rescue rule and any explicit amendment/equivalence are
+missing. recorded_candidate and P_R were independently audited.</p>
+<p><strong>Quality-control relevance:</strong> An event proportion's
+ascertainment window forms part of its definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could attach a different observation window to reported
+hypoxemia/composite risks. Changed events, direction, magnitude and
+conclusion impact are not established.</p>
+<p><strong>Human verification steps:</strong> Confirm whether reported
+fractions used cuff inflation or first-attempt completion/blade removal
+as the end anchor, especially for failures and rescues, and identify any
+amendment or equivalence definition.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<p><a id="c010"></a></p>
+<h2
+id="c010--initial-oxygen-missingness-does-not-reproduce-its-denominators" class="candidate-card">C010
+— Initial oxygen missingness does not reproduce its denominators</h2>
+<p><strong>Pending Human Adjudication</strong></p>
+<p><strong>Candidate statement:</strong> Table 1 initial oxygen
+threshold denominators do not equal arm totals minus the oxygen
+missingness assigned in footnote b, unless additional threshold
+exclusions apply.</p>
+<p><strong>Category:</strong> Denominator, proportion, or total
+inconsistency</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT main Table 1 initial
+oxygen denominators vs REPORT same table missingness footnote</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Evidence state:</strong> recorded_candidate</p>
+<p><strong>Suggested review disposition:</strong> retain</p>
+<p><strong>Classification rationale:</strong> The conflicting rows,
+headers and missingness footnote are REPORT content in one main-article
+table. Later start-of-attempt oxygen measurements have a different time
+point and are not conflicting comparators.</p>
+<p><strong>Classification ambiguity:</strong> None</p>
+<p><strong>Exact source locations:</strong> <a
+href="../jama_driver_2018_oi_180054.pdf#page=5">jama_driver_2018_oi_180054.pdf
+— PDF p. 5</a>, Table 1 initial oxygen median/threshold rows, headers
+and footnote b; all REPORT.</p>
+<p><strong>Source evidence:</strong> Arm n=381/376. Initial saturation
+&lt;90%: 44/352 (13), 40/344 (12); &lt;80%: 21/352 (6), 11/344 (3).
+Footnote b assigns oxygen missingness 43, split 19/24, using
+respectively. Heart-rate missingness is separately 61, split 29/32.</p>
+<p><strong>Reported-versus-comparator:</strong> Footnote-derived
+available counts 362/352 versus threshold denominators 352/344; printed
+denominators imply missingness 61 rather than 43.</p>
+<p><strong>Reasoning procedure:</strong> Under one initial oxygen
+measure, compute available cases as arm n minus missing values. Evaluate
+the possibility of additional threshold exclusions explicitly; do not
+infer a replacement from another vital sign or a later time point.
+Checker provenance: CROSS06; X048 and N028/N037/N038; two threshold rows
+share the same available-base comparison.</p>
+<p><strong>Calculation:</strong> 381−19=362; 376−24=352. Printed bases
+imply 381−352=29 and 376−344=32 missing, total 61; 61−43=18. Differences
+in available counts are 10 and 8. 19+24=43 is coherent, and displayed
+fractions correctly round using their printed bases.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Median
+and thresholds could use different availability rules with extra
+exclusions. Equality of implied threshold missingness to heart-rate
+missingness suggests a possible transcription mechanism, but does not
+establish it. No extra exclusion rule is supplied.</p>
+<p><strong>Mechanical evidence recheck:</strong> Rows, footnote's
+respectively assignment and initial-timepoint definition confirmed
+visually. Available-case arithmetic reproduced; additional
+threshold-only rules and median-contributing counts are unavailable.
+Same-measure applicability is conditional; unresolved alignment supports
+recorded_candidate.</p>
+<p><strong>Quality-control relevance:</strong> Available-case
+denominators should reconcile with the corresponding missingness
+definition.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could retain incompatible missing and available totals for
+the same initial saturation measure. No corrected denominator or
+treatment effect is established.</p>
+<p><strong>Human verification steps:</strong> Confirm whether initial
+saturation median and thresholds use the same eligible readings, and
+identify the missingness or threshold-exclusion rule reconciling arm
+totals, missing 19/24 and bases 352/344.</p>
+<p><strong>Human adjudication fields:</strong></p>
+<ul>
+<li><strong>Validity:</strong> __</li>
+<li><strong>Importance:</strong> __</li>
+<li><strong>Action:</strong> __</li>
+<li><strong>Initials:</strong> __</li>
+<li><strong>Notes:</strong> __</li>
+</ul>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>A downstream evidence product depends on accurate numerators,
+denominators, units, endpoint definitions and uncertainty fields. If a
+candidate is confirmed, even a small preventable reporting defect could
+be copied during structured extraction or synthesis. Relevant fields
+here include baseline proportions, operator categories, confidence
+limits, background percentages, time endpoints, event windows,
+missing-data labels, population labels and available-case totals.</p>
+<p>These are bounded possibilities. The supplied evidence establishes no
+actual propagation, altered conclusion or serious harm.
+Endpoint-definition differences do not quantify changed seconds or
+events. An unsupported input alignment such as C008 requires population
+clarification before any arm-specific quantity can be attributed to the
+article.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>All 49 source units and every registered relationship were covered.
+Remaining limits concern unavailable definitions, event-level inputs and
+execution context rather than omitted scientific source units. The
+complete maintained record is <a
+href="review_1_6/limitations.md">limitations.md</a>.</p>
+<p>Only the three supplied PDFs are scientific evidence; raw data and
+external publications were outside scope. Historical extraction/render
+engines are UNKNOWN. Eight missing legacy PNGs are derivative gaps
+closed for scientific purposes by usable source-matched text and
+available direct rendering. OCR and Office conversion tools are absent;
+all sources are readable text-bearing PDFs, so no installation or
+fallback environment was needed. DOC-003 combines results with a
+prospective operational form, requiring content-based roles.</p>
+<p>Exact chi-square implementation/continuity correction, analytic
+count-table definitions, binary interval formulas, interaction
+link/contrast/variance, continuous observations and rank/tie
+corrections, cluster sizes/covariance/algorithm, and Cox event
+times/test output are unavailable. Source-defined broad test classes do
+not establish all inferential constructions or test/interval inversion.
+No exact difficult-subgroup interim calculation can be reconstructed
+from the supplied interim summary.</p>
+<p>Candidate-specific missing inputs include paired
+cuff-inflation/blade-removal timestamps and endpoint amendments
+(C006/C009), saturation trajectories and failed/rescue-attempt window
+rules (C009), primary missing-data retrieval/implementation logs (C007),
+an arm-specific resistance numerator and matched-result identity (C008),
+additional initial-saturation exclusion rules (C010), final-operator
+episode records (C003), and historical rounding provenance (C005).
+Intended row denominator conventions remain unresolved for C001/C002;
+original unclustered confidence limits are needed for C004.</p>
+<h3 id="six-diagnostic-p-value-comparison-limits">Six diagnostic P-value
+comparison limits</h3>
+<p>Both statistical passes retain these differences. Pearson and Yates
+values are <strong>DIAGNOSTIC_APPROXIMATION</strong>, independently
+recalculated from printed counts, with normal-tail approximation error
+about 1.5×10^-7. They are not identified author test outputs. The broad
+chi-square methods are stated on <a
+href="../jama_driver_2018_oi_180054.pdf#page=4">jama_driver_2018_oi_180054.pdf
+— PDF p. 4</a>; exact implementation, statistic and analytic table are
+unavailable.</p>
+<table>
+<thead>
+<tr class="header">
+<th>S ID / result</th>
+<th>Source location (REPORT)</th>
+<th>Printed inputs; P</th>
+<th>Pearson diagnostic</th>
+<th>Yates diagnostic</th>
+<th>Exact human question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S007 etomidate</td>
+<td><a
+href="../jama_driver_2018_oi_180054.pdf#page=6">jama_driver_2018_oi_180054.pdf
+— PDF p. 6</a>, Table 2</td>
+<td>332/381 vs 333/376; .54</td>
+<td>.548618 → .55</td>
+<td>.625129 → .63</td>
+<td>Which precise chi-square implementation, statistic and analytic
+count table generated .54?</td>
+</tr>
+<tr class="even">
+<td>S029 grade 2 view</td>
+<td><a
+href="../jama_driver_2018_oi_180054.pdf#page=6">jama_driver_2018_oi_180054.pdf
+— PDF p. 6</a>, Table 2</td>
+<td>74/373 vs 62/359; .39</td>
+<td>.371672 → .37</td>
+<td>.424697 → .42</td>
+<td>Which exact implementation, statistic and analytic count table
+generated grade-2 .39?</td>
+</tr>
+<tr class="odd">
+<td>S054 pneumothorax</td>
+<td><a
+href="../jama_driver_2018_oi_180054.pdf#page=9">jama_driver_2018_oi_180054.pdf
+— PDF p. 9</a>, Table 5</td>
+<td>9/381 vs 9/376; .99</td>
+<td>.977373 → .98</td>
+<td>1.000000 → 1.00</td>
+<td>Which exact implementation, statistic and analytic count table
+generated .99?</td>
+</tr>
+<tr class="even">
+<td>S021 faculty operator</td>
+<td><a
+href="../jama_driver_2018_oi_180054.pdf#page=6">jama_driver_2018_oi_180054.pdf
+— PDF p. 6</a>, Table 2</td>
+<td>8/381 vs 5/376; .42</td>
+<td>.414910 → .41</td>
+<td>.592294 → .59</td>
+<td>Which analytic row inputs and exact test generated .42, given
+unresolved final-operator counts in C003? Do not change a count to force
+agreement.</td>
+</tr>
+<tr class="odd">
+<td>S034 no device</td>
+<td><a
+href="../jama_driver_2018_oi_180054.pdf#page=6">jama_driver_2018_oi_180054.pdf
+— PDF p. 6</a>, Table 2</td>
+<td>5/381 vs 6/376; .75</td>
+<td>.744575 → .74</td>
+<td>.982394 → .98</td>
+<td>Which implementation, statistic and analytic count table generated
+.75?</td>
+</tr>
+<tr class="even">
+<td>S052 any complication</td>
+<td><a
+href="../jama_driver_2018_oi_180054.pdf#page=9">jama_driver_2018_oi_180054.pdf
+— PDF p. 9</a>, Table 5</td>
+<td>66/381 vs 63/376; .83</td>
+<td>.835511 → .84</td>
+<td>.911640 → .91</td>
+<td>Which implementation, statistic and analytic count table generated
+.83?</td>
+</tr>
+</tbody>
+</table>
+<p>These checks remain human questions rather than stable candidates
+because no supplied-source-compatible contradiction is established under
+the exact author analysis. They do not establish the printed P values as
+correct, and no unexplained difference is silently attributed to
+rounding. All six remain in the durable inventory and completed
+second-pass record.</p>
+<p>S025 illustrates the implementation boundary: 218/377 versus 182/372
+has printed P=.02, Pearson diagnostic .014630 and Yates diagnostic
+.017877, with Yates reproducing the printed precision. S049 grade-4
+success (3/3 versus 2/5), difference 60 (17–100), P=.09 has Pearson
+diagnostic .089686; the source does not establish inferential inversion
+between its difference interval and chi-square test. Neither yields a
+separate candidate. Clustered duration inference cannot be reconstructed
+from median/IQR or identical rounded interval endpoints alone.</p>
+<h3 id="execution-context-limitation">Execution-context limitation</h3>
+<p>The user explicitly requested the current provider even where
+workflow controls name OpenRouter. That instruction was honored. The
+original session launch command and coordinator runtime model cannot be
+independently attested through the available interface. The configured
+coordinator contract and all nine exposed named presets match
+gpt-6.1-sol and their required efforts.</p>
+<p>The truthful <a href="review_1_6/routing_preflight.md">routing
+preflight</a> records PASS_WITH_USER_OVERRIDE, CURRENT_SESSION_PROVIDER
+and CURRENT_INTERACTIVE_SESSION, and does not fabricate the original
+launch. The unmodified validator requires Status PASS, Provider
+openrouter, Execution mode INTERACTIVE_CLI and Launch command codex
+--approve-for-me. These four strict execution-context requirements
+cannot pass under the current record. Scientific coverage completion is
+separately supported; the actual <a
+href="review_1_6/review_validation.json">validation JSON</a> is produced
+after coordinator rendering and final checks. No unconditional strict
+PASS is asserted.</p>
+<h2 id="human-adjudication-checklist">Human Adjudication Checklist</h2>
+<p>For each stable ID, inspect the linked physical source page, verify
+numerator/denominator or endpoint identity, reproduce the stated
+arithmetic/logical rule and resolve the named alternative or missing
+definition. Preserve differences between direct printed observations and
+conditional diagnostics.</p>
+<p>Record the human decisions only in the five blank fields on that
+card. Determine validity, importance and any action, then add initials
+and notes. All ten candidates remain Pending Human Adjudication until
+that human review occurs. Mechanical evidence states and suggested
+dispositions do not supply those decisions.</p>
+<p>Before using a candidate in evidence extraction, confirm its
+population, time point, estimator, analysis adjustment and unit. For
+C008, establish the actual numerator/population identity before
+interpreting a numeric mismatch. For C006/C009, do not infer changed
+times or events without the missing source inputs. No final correction
+is assigned by this report.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h2>
+<h3 id="canonical-review-artifacts">Canonical review artifacts</h3>
+<p>The complete current review is reconstructible from the <a
+href="review_1_6/source_inventory.md">source inventory</a>, <a
+href="review_1_6/evidence_asset_inventory.md">asset inventory</a>, <a
+href="review_1_6/source_coverage.md">source coverage</a>, <a
+href="review_1_6/coverage_manifest.md">coverage manifest</a>, <a
+href="review_1_6/extraction/main_quantitative_evidence.md">main map</a>,
+<a href="review_1_6/extraction/support_quantitative_evidence.md">support
+map</a>, <a
+href="review_1_6/relationships/numeric_relationship_inventory.md">numeric
+inventory</a>, <a
+href="review_1_6/statistics/relationship_inventory.md">statistical
+inventory</a>, <a
+href="review_1_6/checkers/numeric_consistency.md">numeric review</a>, <a
+href="review_1_6/checkers/cross_source_consistency.md">cross-source
+review</a>, <a
+href="review_1_6/checkers/statistical_pass_1.md">statistical pass 1</a>,
+<a href="review_1_6/checkers/statistical_pass_2.md">statistical pass
+2</a>, <a href="review_1_6/candidate_ledger.md">candidate ledger</a>, <a
+href="review_1_6/verification/evidence_recheck.md">recheck</a> and <a
+href="review_1_6/quality/evidence_quality_audit.md">independent
+audit</a>. All ten stable IDs are represented here without a count-based
+omission.</p>
+<h3 id="source-integrity-and-tooling">Source integrity and tooling</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Source file</th>
+<th>Baseline SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jama_driver_2018_oi_180054.pdf</td>
+<td><code>684db2edf58f16d1d24e8ddb6a463429b027450314c923e06700acdd0167e7d2</code></td>
+</tr>
+<tr class="even">
+<td>joi180054supp1_prod.pdf</td>
+<td><code>38c1822278c238d2e9f217cd626c307b9d7ad8152f93f3281a03f58990e6108c</code></td>
+</tr>
+<tr class="odd">
+<td>joi180054supp2_prod.pdf</td>
+<td><code>b8b7e9731b69407ff10ffc262eb42477965333e3697461e848d8fe50e13b4b31</code></td>
+</tr>
+</tbody>
+</table>
+<p>The independent coverage audit checked all three source hashes and
+all 47 reused-asset hashes against their before snapshots with no
+differences. The coordinator recomputes final after snapshots during
+finalization. Baselines: <a
+href="review_1_6/source_hashes_before.sha256">source hashes</a> and <a
+href="review_1_6/reused_artifact_hashes_before.sha256">reused
+hashes</a>. Final snapshots: <a
+href="review_1_6/source_hashes_after.sha256">source hashes after</a> and
+<a href="review_1_6/reused_artifact_hashes_after.sha256">reused hashes
+after</a>. Supplied sources and all pre-existing audit assets were
+preserved.</p>
+<p>The local CPU tooling record reports Linux, direct
+pdfinfo/pdftotext/pdftoppm/pdftocairo available (Poppler 25.03.0),
+Pandoc 3.1.11.1, GNU sha256sum 9.7 and Python 3.13.5 for allowed
+auxiliary helpers. Tesseract and LibreOffice are unavailable. Fallback
+environment: NOT_NEEDED; packages/capabilities: None; environment
+removed: NOT_CREATED. No global installation, OCR or GPU operation was
+needed. The user's temporary-folder environment preference remains
+applicable if future installation becomes necessary. Complete probe and
+derivative engines appear in <a
+href="review_1_6/tooling_record.md">tooling_record.md</a>.</p>
+<h3 id="agent-execution">Agent execution</h3>
+<p>All actual agents, including the coordinator and two optional bounded
+support shards, appear below. Mandatory specialist stages used fresh,
+distinct spawns. Runtime identifiers use <code>task:</code> plus the
+exact canonical task name exposed by the collaboration tool; opaque
+numerical runtime IDs are not exposed. The model column records the
+package coordinator contract and the tool-defined named specialist
+presets. Independent runtime coordinator-model attestation is
+unavailable; current-provider authorization is preserved.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>coordinator</td>
+<td>task:/root</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr class="even">
+<td>reuse_asset_curator</td>
+<td>task:/root/asset_curator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>source_inventory.md</td>
+</tr>
+<tr class="odd">
+<td>main_quantitative_mapper</td>
+<td>task:/root/main_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr class="even">
+<td>support_quantitative_mapper</td>
+<td>task:/root/support_mapper</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr class="odd">
+<td>numeric_consistency_reviewer</td>
+<td>task:/root/numeric_main</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr class="even">
+<td>numeric_consistency_support_shard</td>
+<td>task:/root/numeric_support</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/numeric_support.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_1</td>
+<td>task:/root/statistics_one</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr class="even">
+<td>cross_source_consistency_reviewer</td>
+<td>task:/root/cross_checker</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr class="odd">
+<td>evidence_rechecker</td>
+<td>task:/root/rechecker</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr class="even">
+<td>statistics_pass_2</td>
+<td>task:/root/statistics_two</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr class="odd">
+<td>coverage_quality_support</td>
+<td>task:/root/coverage_auditor</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/parts/coverage_audit.md</td>
+</tr>
+<tr class="even">
+<td>quality_control_auditor</td>
+<td>task:/root/final_auditor</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr class="odd">
+<td>report_generator</td>
+<td>task:/root/report_generator</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<p>Artifact paths in the table are relative to <code>review_1_6/</code>.
+The report generator additionally owns this complete Markdown report.
+The <a href="review_1_6/agent_execution_manifest.md">execution
+manifest</a> is the authoritative roster. Both statistical passes used
+distinct fresh gpt-6.1-sol/high agents; mapping, numeric, cross-source
+and report roles used medium effort; recheck and quality audit used high
+effort.</p>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Three PDFs with 49 pages, all covered
+by usable reusable native/layout text and 41 rendered pages; 0
+fresh-required pages; mixed PLAN and REPORT supplemental content,
+numerical tables and figures, no Office conversion or OCR expected, ten
+mandatory specialist stages in sequential and parallel waves, two
+independent statistical passes, and direct-source rechecks.</li>
+<li><strong>Total source units:</strong> 49</li>
+<li><strong>Fresh-source units:</strong> 0</li>
+<li><strong>Target elapsed minutes:</strong> 25-40</li>
+<li><strong>Started UTC:</strong> 2026-10-11T00:43:54Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T01:18:05Z</li>
+<li><strong>Observed elapsed minutes:</strong> 34.18</li>
+<li><strong>Target status:</strong> MET_TARGET</li>
+<li><strong>Exceedance causes:</strong> None</li>
+</ul>
+<p>These exact field values are copied from <a
+href="review_1_6/run_state.md">run_state.md</a>. The coordinator fills
+Finished UTC, observed elapsed time and target status immediately after
+complete Markdown assembly, and updates bounded exceedance causes if
+needed. The target considers reuse fitness, mixed PLAN/REPORT content,
+numerical tables/figures, agent waves and direct rechecks rather than
+page count alone. Local HTML rendering and mechanical validation are
+outside the scientific review timing window; later model-based repair
+requires updated finish and timing values.</p>
+</body>
+</html>

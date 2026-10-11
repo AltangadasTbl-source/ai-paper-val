@@ -1,0 +1,1195 @@
+# Quantitative Quality-Control Consistency Review — Workflow 1.6
+
+**Pending Human Adjudication**
+
+Every candidate in this report requires human review. Evidence states record what the mechanical source recheck established; suggested review dispositions are mechanical pre-fills and do not decide validity, importance, or corrective action.
+
+## Executive Quality-Control Summary
+
+The complete supplied package contains three PDFs and 44 physical pages. All 44 pages were mapped afresh using source-linked reusable evidence, with no scientific coverage gap. Review covered 138 numeric relationship groups, 73 cross-source groups, and 104 statistical relationships in each of two distinct fresh statistical passes. Nineteen stable candidates, C001–C019, are reported in full. Seventeen have evidence state `recorded_candidate`; C007 and C012 have `record_input_error` because their registered comparisons depend on unsupported alignment assumptions. All 19 remain Pending Human Adjudication.
+
+The candidates concern displayed fractions and percentages, primary-analysis labels, outcome and figure definitions, cross-document baseline summaries, composite aggregation wording, and mortality inference. Several observations are conditional on a named missing definition. In particular, patient totals do not establish NIHSS observation counts, different adjusted estimands need not have identical significance, and a confidence interval and P value are not assumed to use the same inferential construction. No corrected result or paper-level conclusion is assigned.
+
+Small preventable reporting defects can matter for downstream evidence extraction. If human review confirms a candidate, a data extractor could otherwise copy a conflicting count, percentage, endpoint definition, time origin, measure label, or inferential summary. This report does not establish that propagation, conclusion change, or serious harm occurred.
+
+The routing record reports successful fixed-model execution under the user's explicit current-provider override. The preserved bundled validator hardcodes OpenRouter. That known configuration conflict is disclosed separately from completed scientific coverage; this report does not claim that the unmodified validator reports PASS. The coordinator finalized timing and confirmed post-assembly integrity; the standalone HTML and mechanical validation records accompany this report.
+
+## Package and Reused-Evidence Provenance
+
+Document roles follow content rather than supplement numbering. Physical PDF pagination is used throughout.
+
+| Source ID | Actual supplied filename | Role | Content | Physical pages |
+|---|---|---|---|---:|
+| DOC-001 | [jama_wang_2018_oi_180070.pdf](../jama_wang_2018_oi_180070.pdf#page=1) | REPORT | Main GOLDEN BRIDGE-AIS trial article, methods and reported results | 10 |
+| DOC-002 | [joi180070supp1_prod.pdf](../joi180070supp1_prod.pdf#page=1) | PLAN | Prospective protocol dated 2014/4/17, including the statistical analysis plan and historical/background material | 25 |
+| DOC-003 | [joi180070supp2_prod.pdf](../joi180070supp2_prod.pdf#page=1) | REPORT | Retrospective baseline-survey eAppendix, measure specifications, and reported eTables | 9 |
+
+Sixty-five existing preprocessing assets were reused: three native texts, three layout texts, three coordinate TSV files, 52 page images, three PDF metadata records, and one extraction-status/page map. They cover all 44 unique source pages without counting overlapping derivatives as additional units. Native text was byte-identical to fresh current-source Poppler output. Historical extraction/render engines are not independently established; old method claims were not adopted as fact. Main-page layout differences concern the rotated incidence-axis labels on PDF p. 8 and are resolved by visual inspection. Duplicate images and partial historical metadata were treated as provenance aids.
+
+Candidate discovery began from the complete reconstructed evidence maps; earlier candidate selections, classifications, dispositions, and reports were not scientific inputs. The current direct-source rechecker generated and visually inspected 16 source-page layouts and 16 page images using direct Poppler 25.03.0. These are new confirmation derivatives, not additional source units or reused assets. Exact source PDFs govern every candidate, rather than an OCR transcription.
+
+Provenance is recorded in the [source inventory](review_1_6/source_inventory.md), [evidence-asset inventory](review_1_6/evidence_asset_inventory.md), [source hashes](review_1_6/source_hashes_before.sha256), and [reused-artifact hashes](review_1_6/reused_artifact_hashes_before.sha256). The current [mechanical evidence recheck](review_1_6/verification/evidence_recheck.md) documents the exact page confirmations and engines. Prior audit artifacts and supplied inputs were preserved.
+
+## Scope, Complete Coverage, and Exclusions
+
+| Source ID | Unit type | Total units | Reusable units | Fresh-required units | Mapped units | Status |
+|---|---|---:|---:|---:|---:|---|
+| DOC-001 | PDF_PAGE | 10 | 10 | 0 | 10 | COMPLETE |
+| DOC-002 | PDF_PAGE | 25 | 25 | 0 | 25 | COMPLETE |
+| DOC-003 | PDF_PAGE | 9 | 9 | 0 | 9 | COMPLETE |
+| Total | PDF_PAGE | 44 | 44 | 0 | 44 | COMPLETE |
+
+Reusable plus fresh-required units equal total units for every source. All mapped counts equal total counts. Zero fresh-required units means reusable extraction covered every page; it does not mean the scientific review reused old conclusions. The main and support specialists reconstructed disjoint complete scopes. Covers, diagrams, administrative content, and references received explicit page-completion records. Sparse legacy images on main p. 10 and PLAN pp. 22–25 are derivative limitations closed by complete usable source text. There are no supplied Office, workbook, or CSV sources.
+
+The scope prioritizes arithmetic, denominators and totals, inferential reporting, cross-document numeric matching, measure/label/scale consistency, and rate-versus-count distinctions. Population and analysis-unit questions qualify only when they affect a concrete displayed number, denominator, label, or interpretation. Broad methodology, clinical significance, novelty, misconduct, raw-data reconstruction, and external-literature review are outside scope. No web evidence was used.
+
+Coherent display-zero P values alone are excluded and tracked, when relevant, as `DISPLAY_ZERO_NOT_CANDIDATE`. None occurs in the mapped results, and no candidate relies on that notation. Rounded interval endpoints and P values at a displayed threshold are not independently treated as contradictions. Missing model details alone do not create a candidate. Crude proportions need not equal adjusted absolute differences or hazard ratios; primary and sensitivity analyses with stated different populations are not forced to agree.
+
+Complete source and stage assignments are available in [source coverage](review_1_6/source_coverage.md) and the [coverage manifest](review_1_6/coverage_manifest.md).
+
+## Quantitative and Statistical Relationship Coverage
+
+| Review lane | Complete registered scope | Completed review |
+|---|---|---|
+| Main numeric | N001–N070: 70 groups | Counts, totals, fractions, summaries, labels, flow/risk arrays, and repetitions |
+| Support numeric | N501–N568: 68 groups | All PLAN/results pages; 58 displayed fractions recalculated, with four percentage discrepancies |
+| Numeric union | 138 groups | Disjoint main/support parts merged without loss |
+| Cross-source | X01–X73: 73 groups | Populations, phases, outcomes, times, estimands, definitions, and repeated results matched before comparison |
+| Statistical pass 1 | S001–S104: 104 relationships | Every record has PASS_1_COMPLETE; fresh root/statistics_one, gpt-6.1-sol/high |
+| Statistical pass 2 | S001–S104: 104 relationships | Every record has PASS_2_COMPLETE; different fresh root/statistics_two, gpt-6.1-sol/high |
+| Direct-source recheck and quality audit | C001–C019: 19 candidates | Each stable ID separately rechecked and audited with document-role classification |
+
+The two statistical passes cover all registered relationships, including nonsignificant results. They check endpoint order, estimate containment, sign/direction, effect scale, matching repetitions, and compatibility with P values, tests, standard errors, or test statistics to the extent supplied definitions permit. No numerical standard error or test statistic is supplied. Exact inferential reconstructions were not substituted for absent variance, degrees-of-freedom, confidence-interval, or test algorithms.
+
+There were 105 provisional inferential groups; two genuine sensitivity repetitions were consolidated and one explicit plotted-quantity relationship added, yielding 104 stable relationships. The first checker wave emitted 25 observations, with six genuine duplicate observations merged before stable candidate IDs, leaving 19. Statistical pass 2 revisited all 19 ledger/recheck records and found no new qualifying candidate. Distinct comparators remain distinct: C007/C016, C010/C013, C018/C019, and the four separate eTable 4 arithmetic cells.
+
+Durable records are the [main map](review_1_6/extraction/main_quantitative_evidence.md), [support map](review_1_6/extraction/support_quantitative_evidence.md), [numeric inventory](review_1_6/relationships/numeric_relationship_inventory.md), [numeric checks](review_1_6/checkers/numeric_consistency.md), [cross-source checks](review_1_6/checkers/cross_source_consistency.md), [statistical inventory](review_1_6/statistics/relationship_inventory.md), [pass 1](review_1_6/checkers/statistical_pass_1.md), and [pass 2](review_1_6/checkers/statistical_pass_2.md). The [final quality audit](review_1_6/quality/evidence_quality_audit.md) confirms complete upstream coverage and the final classification rules.
+
+## Document-Role Classification Summary
+
+`P_R` compares REPORT with PLAN content; it does not establish a protocol violation. `P_P` compares content solely within PLAN material. `S_C` compares two different REPORT documents. `S_W` compares locations within one REPORT document. For mixed candidates, substantive discrepancy relationships follow precedence `P_R` > `P_P` > `S_C` > `S_W`; a location that merely corroborates one side adds no discrepancy relationship.
+
+| Primary relationship type | Candidate count |
+|---|---:|
+| P_R | 2 |
+| P_P | 1 |
+| S_C | 3 |
+| S_W | 13 |
+| Total | 19 |
+
+| Mechanically derived review domain | Candidate count |
+|---|---:|
+| statistical_results | 11 |
+| report_internal_inconsistency | 5 |
+| protocol_report | 2 |
+| plan_material | 1 |
+| Total | 19 |
+
+| Evidence state | Candidate count |
+|---|---:|
+| recorded_candidate | 17 |
+| record_input_error | 2 |
+| not_reproduced | 0 |
+| repaired_residual | 0 |
+| Total | 19 |
+
+The mechanically suggested review dispositions are `retain` for 17 and `discuss` for two (`exclude` for zero). These values pre-fill human review only. All classifications below are copied from the finalized [ledger classification table](review_1_6/candidate_ledger.md). Evidence state is not an adjudication; all stable IDs are retained in this report.
+
+## Candidate Index
+
+| ID | Category | Relationship type | Review domain | Evidence state |
+|---|---|---|---|---|
+| C001 | Denominator, proportion, or total inconsistency | S_W | statistical_results | recorded_candidate |
+| C002 | Denominator, proportion, or total inconsistency | S_W | statistical_results | recorded_candidate |
+| C003 | Denominator, proportion, or total inconsistency | S_W | statistical_results | recorded_candidate |
+| C004 | Measure, label, or scale inconsistency | S_W | report_internal_inconsistency | recorded_candidate |
+| C005 | Measure, label, or scale inconsistency | S_W | report_internal_inconsistency | recorded_candidate |
+| C006 | Measure, label, or scale inconsistency | S_W | report_internal_inconsistency | recorded_candidate |
+| C007 | Numeric or arithmetic inconsistency | S_W | statistical_results | record_input_error |
+| C008 | Denominator, proportion, or total inconsistency | S_W | statistical_results | recorded_candidate |
+| C009 | Denominator, proportion, or total inconsistency | S_W | statistical_results | recorded_candidate |
+| C010 | Denominator, proportion, or total inconsistency | S_W | statistical_results | recorded_candidate |
+| C011 | Denominator, proportion, or total inconsistency | S_W | statistical_results | recorded_candidate |
+| C012 | Numeric or arithmetic inconsistency | P_P | plan_material | record_input_error |
+| C013 | Measure, label, or scale inconsistency | P_R | protocol_report | recorded_candidate |
+| C014 | Denominator, proportion, or total inconsistency | S_C | statistical_results | recorded_candidate |
+| C015 | Cross-document numeric inconsistency | S_C | report_internal_inconsistency | recorded_candidate |
+| C016 | Cross-document numeric inconsistency | S_C | report_internal_inconsistency | recorded_candidate |
+| C017 | Measure, label, or scale inconsistency | P_R | protocol_report | recorded_candidate |
+| C018 | Statistical reporting inconsistency | S_W | statistical_results | recorded_candidate |
+| C019 | Statistical reporting inconsistency | S_W | statistical_results | recorded_candidate |
+
+## Candidate Evidence Cards
+
+Each card is Pending Human Adjudication. The reported values and source-grounded alternatives below preserve the final ledger, direct-source recheck, and quality-audit facts. A calculated comparator is a diagnostic under its stated rule, not an assigned correction. All five human fields are intentionally blank.
+
+## C001 — Primary-analysis population labels give different totals
+
+Pending Human Adjudication.
+
+**Candidate statement:** Figure 1 labels 2003 intervention and 1977 control patients as included in primary analysis, totaling 3980, while Results and Table 2 identify 4800. The labels require population clarification; actual exclusion from primary fits is not established.
+
+**Category:** Denominator, proportion, or total inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT main Results/Table2 vs REPORT main Figure1
+
+**Review domain:** statistical_results
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** All conflicting primary-analysis labels are REPORT content within the main article: S_W only. PLAN intention-to-treat content corroborates rather than conflicts, so adds no P_R relationship.
+
+**Classification ambiguity:** The figure may intend follow-up completers rather than the full primary-analysis population.
+
+**Exact source locations:** [Main p4, Results and Data Analysis](../jama_wang_2018_oi_180070.pdf#page=4), [main p5, Figure 1 bottom boxes and preceding follow-up boxes](../jama_wang_2018_oi_180070.pdf#page=5), and [main p7, Table 2 all-or-none row](../jama_wang_2018_oi_180070.pdf#page=7), confirmed in fresh source renders.
+
+**Source evidence:** Source transcription: Yes. Results says 4800 enrolled and included in primary analysis; Data Analysis states intention-to-treat for all outcomes. Comparator transcription: Yes. Figure 1 labels 2003 and 1977 patients included in primary analysis, with preceding 397 and 423 lost to 12-month follow-up. Table 2 shows denominators 2400 and 2400.
+
+**Reported-versus-comparator:** Figure 1 labels 2003 intervention and 1977 control patients as included in primary analysis, totaling 3980, while Results and Table 2 identify 4800. The labels require population clarification; actual exclusion from primary fits is not established. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes for labels referring to the same primary-analysis population; exact integer totals should match. A different follow-up-specific analysis would require a population distinction. Direct observation and diagnostic inference: Conflicting printed totals/labels are direct; describing a diagram-label production error is inferred. No assertion that 820 were omitted from co-primary analyses follows.
+
+**Calculation:** 2003 + 1977 = 3980; 4800 − 3980 = 820; 397 + 423 = 820. Table 2 denominator total is 4800.
+
+**Alternative source-grounded interpretations:** Main p4 explicitly identifies 2003/1977 as 12-month completers. Figure 1 may have applied a primary-analysis label to these follow-up counts.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. All printed counts and labels are available for the observed conflict; actual analysis membership is unavailable. Missing inputs or definitions: Figure-box population definition and outcome-specific analysis membership, especially whether the bottom counts label follow-up completion. State-determining fact: recorded_candidate. Determining fact: the exact primary-analysis wording accompanies 3980 in Figure 1 and 4800 in Results/Table 2; the source also supports the explicitly preserved follow-up explanation. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** Primary-analysis denominator labels should distinguish the full trial cohort from outcome-specific follow-up populations. No actual 820-patient omission from primary analyses is inferred. Registration provenance: NUM-MAIN-01 and F-A; N001/N003/N014/N067, X04/X49. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, an extractor could copy 3980 as a primary-analysis denominator instead of distinguishing it from the reported 4800. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: What population do Figure 1's bottom patient boxes intend, and which patients entered each primary analysis?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C002 — Intervention CAD percentage and displayed count/total differ
+
+Pending Human Adjudication.
+
+**Candidate statement:** Table 1 pairs intervention CAD/previous MI count 311 with 13.05% under an arm total of 2400; the displayed fraction implies 12.958333% under the stated count/percentage convention.
+
+**Category:** Denominator, proportion, or total inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT main Table1 CAD count/total vs REPORT same-table percentage
+
+**Review domain:** statistical_results
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** Count, percentage, and arm total are REPORT content in the same main Table 1: S_W only.
+
+**Classification ambiguity:** An unstated CAD-specific denominator or weighting convention could explain the percentage.
+
+**Exact source locations:** [Main p6, Table 1 Intervention Patients total and CAD/previous myocardial infarction row](../jama_wang_2018_oi_180070.pdf#page=6), fresh source image inspected.
+
+**Source evidence:** Source transcription: intervention total 2400 and CAD/previous MI count 311. Comparator transcription: accompanying percentage 13.05, confirmed visually with two decimal places.
+
+**Reported-versus-comparator:** Table 1 pairs intervention CAD/previous MI count 311 with 13.05% under an arm total of 2400; the displayed fraction implies 12.958333% under the stated count/percentage convention. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes under Table 1's No. (%) and displayed arm-total convention; a row-specific denominator would change the calculation but is not stated. Direct observation and diagnostic inference: 311, 2400, and 13.05 are direct; their division is derived. A denominator or transcription explanation is inferred.
+
+**Calculation:** 100 × 311/2400 = 12.958333%; nearest two decimals 12.96. Printed-minus-computed difference 0.091667 percentage point exceeds ±0.005-point two-decimal rounding tolerance.
+
+**Alternative source-grounded interpretations:** A row-specific denominator or a transcribed numerator/percentage could explain the printed cell; the table gives no choice among them.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. All displayed arithmetic inputs are present; a possible alternative row denominator is not. Missing inputs or definitions: Any CAD-specific missingness/denominator or weighting convention. Main p4 general imputation does not identify such a denominator. State-determining fact: recorded_candidate. Determining fact: visual source confirmation and reproduced fraction show a difference beyond displayed rounding under the table's stated format. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** A baseline CAD count/percentage pair should reconcile under its stated denominator and display precision. Registration provenance: NUM-MAIN-02; N031. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, a systematic-review baseline table could copy a mismatched CAD prevalence/count pair. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Which numerator and denominator generated 13.05%, and does this CAD cell use the displayed intervention total of 2400?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C003 — Control EMS percentage and count/total differ
+
+Pending Human Adjudication.
+
+**Candidate statement:** Table 1 pairs control EMS transport count 236 with 9.9% under an arm total of 2400; the fraction implies 9.833333%, which rounds to 9.8% at one decimal.
+
+**Category:** Denominator, proportion, or total inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT main Table1 EMS count/total vs REPORT same-table percentage
+
+**Review domain:** statistical_results
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** Count, percentage, and arm total are REPORT content in the same main Table 1: S_W only.
+
+**Classification ambiguity:** An unstated EMS-specific missingness denominator or percentage convention could explain the cell.
+
+**Exact source locations:** [Main p6, Table 1 Control Patients total and Transported to ED by EMS row](../jama_wang_2018_oi_180070.pdf#page=6), fresh source image inspected.
+
+**Source evidence:** Source transcription: 236 control EMS patients and control total 2400. Comparator transcription: 9.9 in the same cell. The adjacent onset-to-arrival row has 238 (9.9) and was kept separate.
+
+**Reported-versus-comparator:** Table 1 pairs control EMS transport count 236 with 9.9% under an arm total of 2400; the fraction implies 9.833333%, which rounds to 9.8% at one decimal. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes under the table's No. (%) and displayed arm-total convention; no EMS-specific denominator is printed. Direct observation and diagnostic inference: The cell, header, and total are direct; arithmetic is derived; denominator/transcription mechanisms are inferred.
+
+**Calculation:** 100 × 236/2400 = 9.833333%, nearest one decimal 9.8. Difference from 9.9 is 0.066667 percentage point, exceeding ±0.05-point tolerance.
+
+**Alternative source-grounded interpretations:** A smaller row-specific denominator could yield 9.9; the neighboring row's 238 is another characteristic and cannot replace 236 without source authority.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Displayed arithmetic inputs are available; variable-specific observation count is not separately provided. Missing inputs or definitions: Any EMS-specific missingness denominator or nonstandard percentage construction. State-determining fact: recorded_candidate. Determining fact: the source confirms 236 rather than 238, and the registered same-table percentage difference is reproduced. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** A baseline EMS count/percentage pair should reconcile under its stated denominator and precision. The adjacent 238 (9.9) describes a different variable and cannot replace 236. Registration provenance: NUM-MAIN-03; N035. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, a data extractor could copy a mismatched control EMS count and percentage. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Does EMS use a row-specific denominator, and which printed input or percentage convention explains 236 (9.9) among 2400?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C004 — Unqualified all-nine outcome label differs from eligible-measure definition
+
+Pending Human Adjudication.
+
+**Candidate statement:** The Key Points describe adherence to all nine measures without the patient-specific eligibility qualification used in Outcomes. A literal all-nine receipt interpretation differs from the eligible-measure endpoint; shorthand remains a supported interpretation.
+
+**Category:** Measure, label, or scale inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT main Key Points vs REPORT main Outcomes/Table2
+
+**Review domain:** report_internal_inconsistency
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** The unqualified summary and qualified endpoint definition are REPORT content within the main article: S_W only. PLAN eligibility is corroborating context.
+
+**Classification ambiguity:** All nine may abbreviate the nine-measure bundle with patient-specific eligibility.
+
+**Exact source locations:** [Main p2, Key Points Findings](../jama_wang_2018_oi_180070.pdf#page=2), [main p3, Outcomes](../jama_wang_2018_oi_180070.pdf#page=3), and [main p7, Table 2 all-or-none and rtPA rows](../jama_wang_2018_oi_180070.pdf#page=7), all visually inspected.
+
+**Source evidence:** Source transcription: Key Points says adherence to all 9 performance measures. Comparator transcription: Outcomes defines all performance measures for which the patient was eligible. Table 2 gives all-or-none 1290/2400 and 1147/2400, versus rtPA receipt 46/212 and 23/204.
+
+**Reported-versus-comparator:** The Key Points describe adherence to all nine measures without the patient-specific eligibility qualification used in Outcomes. A literal all-nine receipt interpretation differs from the eligible-measure endpoint; shorthand remains a supported interpretation. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes as a conditional literal label check: receiving all nine entails receiving rtPA. The eligible-measure definition does not entail this for ineligible patients. Direct observation and diagnostic inference: Omission of the eligibility qualification is direct; a literal all-nine impossibility is a diagnostic interpretation, not evidence that the actual analysis used that interpretation.
+
+**Calculation:** Literal all-nine recipient counts cannot exceed 46/23; 1290 − 46 = 1244 and 1147 − 23 = 1124. The actual eligible all-or-none definition permits the larger counts.
+
+**Alternative source-grounded interpretations:** Outcomes and the Table 2 title explicitly describe eligible measures/patients; Key Points may abbreviate that already stated definition.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Label, eligibility definition, and counts are available; no patient-level receipt record is needed for this logical distinction. Missing inputs or definitions: Whether Key Points intentionally uses all nine as shorthand for the nine-measure bundle with patient-specific eligibility. State-determining fact: recorded_candidate. Determining fact: the printed qualification differs and its registered literal interpretation diagnostic is reproduced; actual eligibility-based computation is not contradicted. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** An endpoint label should retain eligibility qualifications needed to interpret its numerator. The diagnostic does not show the actual analysis used literal all-nine receipt. Registration provenance: NUM-MAIN-04; N008/N009/N040/N041. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, an evidence summary could encode the endpoint as receipt of all nine measures rather than all patient-eligible measures. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Is the Key Points phrase intended as eligible-bundle shorthand, and should its patient-specific eligibility qualification be explicit?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C005 — Matched clinical results use discharge and onset time origins
+
+Pending Human Adjudication.
+
+**Candidate statement:** The Clinical Events narrative labels the matched 3-, 6-, and 12-month outcomes as after discharge, whereas Outcomes, Table 3, and Figure 2 use symptom onset. The implemented time origin requires clarification.
+
+**Category:** Measure, label, or scale inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT main Clinical Events vs REPORT main Outcomes/Table3/Figure2
+
+**Review domain:** report_internal_inconsistency
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** The discharge/onset discrepancy is within one REPORT, the main article: S_W only. PLAN onset wording corroborates without adding P_R.
+
+**Classification ambiguity:** After discharge may describe follow-up contact rather than the outcome horizon.
+
+**Exact source locations:** [Main p5, Clinical Events opening and linked estimates](../jama_wang_2018_oi_180070.pdf#page=5), [main p3, Outcomes](../jama_wang_2018_oi_180070.pdf#page=3), [main p8, Table 3 footnote b and Figure 2 axes/caption](../jama_wang_2018_oi_180070.pdf#page=8), and [main p6, stay row](../jama_wang_2018_oi_180070.pdf#page=6), visually confirmed.
+
+**Source evidence:** Source transcription: p5 says clinical outcomes at 3, 6, and 12 months after discharge and repeats Table 3 vascular/disability results. Comparator transcription: p3 says after initial symptom onset; Table 3 disability footnote says after stroke onset; Figure 2 axes/caption say days after stroke symptom onset. Stay medians are 13/12 days by arm.
+
+**Reported-versus-comparator:** The Clinical Events narrative labels the matched 3-, 6-, and 12-month outcomes as after discharge, whereas Outcomes, Table 3, and Figure 2 use symptom onset. The implemented time origin requires clarification. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes for reference-time labels of the matched outcomes; discharge and onset are distinct time origins. Direct observation and diagnostic inference: Time-label difference is direct; its cause and actual implemented clock are inferred/unknown.
+
+**Calculation:** Time since discharge = time since onset − onset-to-discharge interval. The matched 12-month vascular figures 9.1%/11.8% and HR 0.72 support result alignment; no fixed time shift can be calculated from stay medians.
+
+**Alternative source-grounded interpretations:** Methods, Table 3 footnote, and Figure 2 consistently support onset; the p5 phrase could be narrative shorthand or a wording error.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Both reference-time labels and matching reported results are available; patient-specific onset/discharge/assessment dates are absent. Missing inputs or definitions: Which origin defined actual assessment windows and event times; whether p5 uses discharge merely as informal follow-up-contact language. State-determining fact: recorded_candidate. Determining fact: fresh direct source pages preserve the discharge-versus-onset labels for demonstrably matched results. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** Follow-up labels should identify the clock used for matched clinical results. Stay medians do not establish a fixed outcome-time correction. Registration provenance: NUM-MAIN-05 and F-H; N010/N050–N059/N062/N064, X64. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, a review could assign the wrong time origin when grouping follow-up outcomes. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Which clock generated these matched clinical outcomes and risk sets, and how should the after-discharge wording be understood?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C006 — Cumulative-incidence plots called HR curves
+
+Pending Human Adjudication.
+
+**Candidate statement:** The Discussion calls the plotted quantities HR curves, whereas Figure 2 labels the arm-specific ordinate Cumulative Incidence and separately annotates scalar hazard ratios.
+
+**Category:** Measure, label, or scale inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT main Discussion vs REPORT main Figure2 axis
+
+**Review domain:** report_internal_inconsistency
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** Discussion terminology and the figure ordinate are REPORT content in the same main article: S_W only.
+
+**Classification ambiguity:** HR curves may be informal shorthand for incidence curves accompanied by an HR analysis.
+
+**Exact source locations:** [Main p7, Discussion right column](../jama_wang_2018_oi_180070.pdf#page=7) and [main p8, Figure 2A/B axes and annotations](../jama_wang_2018_oi_180070.pdf#page=8), source images inspected.
+
+**Source evidence:** Source transcription: Discussion says HR curves of new clinical vascular events separated in the first 30 days. Comparator transcription: both plots' ordinate is Cumulative Incidence with 0, .05, .10, .15 ticks and separate group curves; scalar annotations are HR 0.72 (0.60–0.87), P < .001 for vascular events and HR 0.86 (0.68–1.09), P = .21 for death.
+
+**Reported-versus-comparator:** The Discussion calls the plotted quantities HR curves, whereas Figure 2 labels the arm-specific ordinate Cumulative Incidence and separately annotates scalar hazard ratios. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes: cumulative-incidence probability and a comparative hazard ratio are different measures. Direct observation and diagnostic inference: Axis/prose naming difference is direct; reader confusion or informal terminology as its cause is inferred.
+
+**Calculation:** The ordinate labels identify the drawn quantities; the scalar HR annotations do not turn arm-specific incidence curves into HR curves. No HR reconstruction is warranted.
+
+**Alternative source-grounded interpretations:** Each displayed incidence plot does carry an HR annotation, allowing informal reference to an HR analysis.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Curve names, axes, and annotations are sufficient; individual time-to-event data are unnecessary for this naming comparison. Missing inputs or definitions: Whether HR curves was intended as informal shorthand for survival/event curves accompanied by an HR. State-determining fact: recorded_candidate. Determining fact: visual source confirmation reproduces the registered quantity-label difference without questioning the scalar HR values. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** A figure-measure name should agree with the plotted ordinate. The scalar HR values and early-separation qualitative observation are not recalculated or challenged. Registration provenance: NUM-MAIN-06, F-I, and STAT-C; N062/N064/N066, X71, S104. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, a figure summary could name cumulative incidence as a hazard ratio curve. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Which plotted quantity did HR curves intend, and should its name agree explicitly with the cumulative-incidence ordinate?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C007 — NIHSS imputation median differs from displayed group medians
+
+Pending Human Adjudication.
+
+**Candidate statement:** The replacement NIHSS median 3 and displayed group medians 4 were registered as a comparison, but their shared reference population is unsupported. This retained ID has record_input_error; a pooled-median contradiction is not demonstrated.
+
+**Category:** Numeric or arithmetic inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT main NIHSS imputation paragraph vs REPORT main Table1 medians
+
+**Review domain:** statistical_results
+
+**Evidence state:** record_input_error
+
+**Suggested review disposition:** discuss
+
+**Classification rationale:** The registered imputation-versus-summary comparison is wholly within the main REPORT: S_W. Its unsupported population alignment changes the evidence state, not the document relationship.
+
+**Classification ambiguity:** The imputation reference population, score snapshot, and quantile convention are unspecified; aligning median 3 with a displayed cohort is unsupported.
+
+**Exact source locations:** [Main p4, Data Analysis missingness paragraph](../jama_wang_2018_oi_180070.pdf#page=4) and [main p6, Table 1 NIHSS row and patient totals](../jama_wang_2018_oi_180070.pdf#page=6), visually inspected.
+
+**Source evidence:** Source transcription: one missing NIHSS score was replaced by the median value of 3; medians were used for missing continuous variables. Comparator transcription: baseline-survey n = 801 median 4 (2–8), intervention/control n = 2400 each median 4 (2–6).
+
+**Reported-versus-comparator:** The replacement NIHSS median 3 and displayed group medians 4 were registered as a comparison, but their shared reference population is unsupported. This retained ID has record_input_error; a pooled-median contradiction is not demonstrated. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Conditional only. Median insertion preserves the reference median if the inserted value is that reference distribution's median. The source does not identify the imputation reference distribution as pooled trial patients or any displayed group. Direct observation and diagnostic inference: Different displayed numbers are direct. Treating 3 as the pooled trial median is an inference that the source does not establish; a particular local or external implementation is also unconfirmed.
+
+**Calculation:** Appending 3 to an odd observed reference sample with median 3 preserves median 3. If both 2400-patient arm medians conventionally equal 4, the full pooled median cannot be exactly 3; at most 2400 scores can be ≤3, so its two middle values cannot both be 3. This conditional diagnostic is reproducible but its required common-reference premise is unestablished.
+
+**Alternative source-grounded interpretations:** The trial is clustered by hospital, and p4 does not name the imputation population. A local/subgroup reference or a different data stage could have median 3 while Table 1 groups have displayed median 4.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Printed replacement and displayed group medians are available. The necessary reference population and score inputs connecting them are not available. Missing inputs or definitions: Hospital-, subgroup-, arm-, pooled-, or other reference population; data snapshot; quantile convention; pre/post-imputation descriptive input counts. State-determining fact: record_input_error. Determining fact: direct source content never assigns median 3 to a displayed Table 1 population; the registered mismatch depends on an unsupported shared-reference alignment, and existence of a residual numeric discrepancy cannot be settled. This is not a disproven transcription and does not remove the ID. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** Replacement inputs and cohort summaries require a supported common reference before a median-consistency claim. Here that alignment is absent, so the registered numeric contradiction is not established. Registration provenance: NUM-MAIN-07; N013/N034. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If a residual issue is subsequently established, an extractor could confuse an imputation reference median with the full cohort median. The present unsupported alignment does not establish that residual. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: What reference population/data stage supplied the replacement median 3, and was it the same score set used for Table 1's group medians?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C008 — Sensitivity control discharge-antithrombotic fraction and percentage differ
+
+Pending Human Adjudication.
+
+**Candidate statement:** Results eTable 4 pairs control discharge antithrombotics 2141/2400 with 89.3%; the displayed raw fraction gives 89.208333%, rounding to 89.2%.
+
+**Category:** Denominator, proportion, or total inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT results supplement eTable4 control antithrombotic fraction vs REPORT same-cell percentage
+
+**Review domain:** statistical_results
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** The raw fraction and accompanying percentage are REPORT content in one cell of the same results supplement: S_W only. Adjusted-effect columns are distinct quantities, and no PLAN comparator is part of this arithmetic candidate.
+
+**Classification ambiguity:** The raw-percentage generation convention is not supplied; a different input or undisclosed weighting remains possible.
+
+**Exact source locations:** [Results supplement p8, eTable 4 discharge Antithrombotics Control No./Total (%) cell](../joi180070supp2_prod.pdf#page=8), visually inspected.
+
+**Source evidence:** Source transcription: integer fraction 2141/2400. Comparator transcription: same-cell percentage 89.3.
+
+**Reported-versus-comparator:** Results eTable 4 pairs control discharge antithrombotics 2141/2400 with 89.3%; the displayed raw fraction gives 89.208333%, rounding to 89.2%. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes: the percentage in a No./Total (%) cell should equal its displayed integer fraction within one-decimal rounding; adjusted effects are separate columns. Direct observation and diagnostic inference: All printed inputs are direct; division is derived; any production explanation is inferred.
+
+**Calculation:** 100 × 2141/2400 = 89.208333%, rounding to 89.2. Difference 0.091667 percentage point exceeds ±0.05.
+
+**Alternative source-grounded interpretations:** Undisclosed percentage construction or a transcribed cell could explain the difference. Adjusted effect columns cannot explain a raw fraction's percentage without an additional stated rule.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Complete displayed numerator, denominator, percentage, and column header are present. Missing inputs or definitions: Any separate raw-percentage weighting/denominator convention or underlying cell-production record; none is printed. State-determining fact: recorded_candidate. Determining fact: current source image and independent calculation reproduce the registered difference beyond one-decimal rounding. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** The displayed raw No./Total (%) cell should reconcile under its own fraction and precision. Effect adjustment is a separate column and does not by itself explain a raw-percentage discrepancy. No incorrect adjusted-effect input is established. Registration provenance: NUMSUP-01; N564. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, an evidence extractor could copy this sensitivity raw adherence percentage alongside a fraction that implies a different displayed percentage. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Does this percentage use 2141 of 2400, and which input or convention explains the printed 89.3?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C009 — Sensitivity control AF-anticoagulation fraction and percentage differ
+
+Pending Human Adjudication.
+
+**Candidate statement:** Results eTable 4 pairs control AF anticoagulation 39/174 with 22.5%; the displayed raw fraction gives 22.413793%, rounding to 22.4%.
+
+**Category:** Denominator, proportion, or total inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT results supplement eTable4 control anticoagulation fraction vs REPORT same-cell percentage
+
+**Review domain:** statistical_results
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** The raw fraction and accompanying percentage are REPORT content in one cell of the same results supplement: S_W only. Adjusted-effect columns are distinct quantities, and no PLAN comparator is part of this arithmetic candidate.
+
+**Classification ambiguity:** The raw-percentage generation convention is not supplied; a different input or undisclosed weighting remains possible.
+
+**Exact source locations:** [Results supplement p8, eTable 4 Anticoagulation for Atrial Fibrillation Control cell](../joi180070supp2_prod.pdf#page=8), visually inspected.
+
+**Source evidence:** Source transcription: 39/174 under No./Total (%). Comparator transcription: accompanying 22.5.
+
+**Reported-versus-comparator:** Results eTable 4 pairs control AF anticoagulation 39/174 with 22.5%; the displayed raw fraction gives 22.413793%, rounding to 22.4%. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes: same-cell raw percentage versus exact displayed fraction with ±0.05-point one-decimal tolerance. Direct observation and diagnostic inference: Fraction and percentage are direct; arithmetic is derived; mechanism is inferred.
+
+**Calculation:** 100 × 39/174 = 22.413793%, rounding to 22.4. Difference 0.086207 percentage point exceeds tolerance.
+
+**Alternative source-grounded interpretations:** A different raw input or undisclosed construction could produce 22.5; effect adjustment is not a stated alternative percentage definition.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. All displayed arithmetic inputs and raw/effect column distinctions are present. Missing inputs or definitions: Any different percentage denominator or weighting convention; underlying source cell inputs are not supplied. State-determining fact: recorded_candidate. Determining fact: visually confirmed exact inputs do not reconcile under displayed percentage precision. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** The displayed raw No./Total (%) cell should reconcile under its own fraction and precision. Effect adjustment is a separate column and does not by itself explain a raw-percentage discrepancy. No incorrect adjusted-effect input is established. Registration provenance: NUMSUP-02; N565. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, an evidence extractor could copy this sensitivity raw adherence percentage alongside a fraction that implies a different displayed percentage. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Which denominator/count or percentage convention generated 22.5 for the displayed 39/174 cell?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C010 — Sensitivity control lipid-lowering fraction and percentage differ
+
+Pending Human Adjudication.
+
+**Candidate statement:** Results eTable 4 pairs control lipid-lowering treatment 1439/1586 with 90.8%; the displayed raw fraction gives 90.731400%, rounding to 90.7%. This comparator is separate from the eligibility-label issue in C013.
+
+**Category:** Denominator, proportion, or total inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT results supplement eTable4 control lipid-lowering fraction vs REPORT same-cell percentage
+
+**Review domain:** statistical_results
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** The raw fraction and accompanying percentage are REPORT content in one cell of the same results supplement: S_W only. Adjusted-effect columns are distinct quantities, and no PLAN comparator is part of this arithmetic candidate.
+
+**Classification ambiguity:** The raw-percentage generation convention is not supplied; a different input or undisclosed weighting remains possible.
+
+**Exact source locations:** [Results supplement p8, eTable 4 Lipid-lowering Control No./Total (%) cell](../joi180070supp2_prod.pdf#page=8), visually inspected.
+
+**Source evidence:** Source transcription: 1439/1586. Comparator transcription: same-cell 90.8.
+
+**Reported-versus-comparator:** Results eTable 4 pairs control lipid-lowering treatment 1439/1586 with 90.8%; the displayed raw fraction gives 90.731400%, rounding to 90.7%. This comparator is separate from the eligibility-label issue in C013. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes: exact displayed fraction and one-decimal raw percentage convention, independently of eligibility-label C013. Direct observation and diagnostic inference: Cell values are direct; division is derived; possible production mechanisms are inferred.
+
+**Calculation:** 100 × 1439/1586 = 90.731400%, rounding to 90.7. Difference 0.068600 percentage point exceeds ±0.05.
+
+**Alternative source-grounded interpretations:** An undisclosed denominator/weighting or cell transcription may explain the difference; none can be selected from the package.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. All displayed inputs are present; actual raw-percentage implementation is absent. Missing inputs or definitions: Any weighting or alternate numerator/denominator used to generate this percentage. State-determining fact: recorded_candidate. Determining fact: direct image confirms the fraction and 90.8, with reproduced rounding discrepancy. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** The displayed raw No./Total (%) cell should reconcile under its own fraction and precision. Effect adjustment is a separate column and does not by itself explain a raw-percentage discrepancy. No incorrect adjusted-effect input is established. Registration provenance: NUMSUP-03; N566. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, an evidence extractor could copy this sensitivity raw adherence percentage alongside a fraction that implies a different displayed percentage. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Does 1439/1586 determine this raw percentage, and which convention or input explains 90.8?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C011 — Sensitivity control antidiabetic fraction and percentage differ
+
+Pending Human Adjudication.
+
+**Candidate statement:** Results eTable 4 pairs control antidiabetic medication 557/688 with 81.1%; the displayed raw fraction gives 80.959302%, rounding to 81.0%.
+
+**Category:** Denominator, proportion, or total inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT results supplement eTable4 control antidiabetic fraction vs REPORT same-cell percentage
+
+**Review domain:** statistical_results
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** The raw fraction and accompanying percentage are REPORT content in one cell of the same results supplement: S_W only. Adjusted-effect columns are distinct quantities, and no PLAN comparator is part of this arithmetic candidate.
+
+**Classification ambiguity:** The raw-percentage generation convention is not supplied; a different input or undisclosed weighting remains possible.
+
+**Exact source locations:** [Results supplement p8, eTable 4 Antidiabetic Medication Control No./Total (%) cell](../joi180070supp2_prod.pdf#page=8), visually inspected.
+
+**Source evidence:** Source transcription: 557/688. Comparator transcription: accompanying percentage 81.1.
+
+**Reported-versus-comparator:** Results eTable 4 pairs control antidiabetic medication 557/688 with 81.1%; the displayed raw fraction gives 80.959302%, rounding to 81.0%. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes: raw integer fraction versus one-decimal percentage with ±0.05-point rounding tolerance. Direct observation and diagnostic inference: Inputs are direct, arithmetic derived, and any error mechanism inferred.
+
+**Calculation:** 100 × 557/688 = 80.959302%, rounding to 81.0. Difference 0.140698 percentage point exceeds tolerance.
+
+**Alternative source-grounded interpretations:** Transcription or undisclosed percentage construction may explain it. Adjusted effects are distinct and do not change the printed raw-fraction identity.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Displayed numerator, denominator, percentage and column format are complete. Missing inputs or definitions: Any weighting or alternative raw fraction underlying 81.1. State-determining fact: recorded_candidate. Determining fact: fresh visual confirmation and calculation reproduce the difference beyond printed precision. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** The displayed raw No./Total (%) cell should reconcile under its own fraction and precision. Effect adjustment is a separate column and does not by itself explain a raw-percentage discrepancy. No incorrect adjusted-effect input is established. Registration provenance: NUMSUP-04; N568. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, an evidence extractor could copy this sensitivity raw adherence percentage alongside a fraction that implies a different displayed percentage. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Which raw inputs or percentage convention explains 81.1 beside 557/688?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C012 — PLAN example names seven measures while the PLAN specifies nine
+
+Pending Human Adjudication.
+
+**Candidate statement:** The PLAN example refers to seven measures while its actual inventory lists nine, but the example is explicitly hypothetical and its own arithmetic is coherent. Treating both numbers as the actual trial inventory is unsupported; the retained ID has record_input_error.
+
+**Category:** Numeric or arithmetic inconsistency
+
+**Relationship type:** P_P
+
+**All relationships:** P_P
+
+**Compared document roles:** PLAN protocol opportunity example vs PLAN protocol measure list
+
+**Review domain:** plan_material
+
+**Evidence state:** record_input_error
+
+**Suggested review disposition:** discuss
+
+**Classification rationale:** Both substantive locations are prospective PLAN content in one bound protocol/SAP: P_P only. The parallel main hypothetical example merely corroborates and adds no P_R relationship.
+
+**Classification ambiguity:** The explicitly hypothetical seven-measure universe is not established as the actual trial inventory.
+
+**Exact source locations:** [PLAN p19, lines 276–279](../joi180070supp1_prod.pdf#page=19) and [PLAN p13 Table 2 acute list](../joi180070supp1_prod.pdf#page=13)/[p14 discharge continuation](../joi180070supp1_prod.pdf#page=14), all visually inspected.
+
+**Source evidence:** Source transcription: the sentence begins For example, if and describes eligibility for 5 of the 7 performance measures, receiving 3 and contributing 5 observations: 3 outcome ones and 2 zeros. Comparator transcription: actual predefined list contains 4 acute measures plus 5 discharge measures, total 9.
+
+**Reported-versus-comparator:** The PLAN example refers to seven measures while its actual inventory lists nine, but the example is explicitly hypothetical and its own arithmetic is coherent. Treating both numbers as the actual trial inventory is unsupported; the retained ID has record_input_error. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Not established for a shared inventory. Seven differs from nine, but an expressly hypothetical model example need not assert the actual trial's total universe. Its own observation arithmetic is coherent. Direct observation and diagnostic inference: The numbers and hypothetical phrasing are direct. Treating seven as an actual trial-inventory assertion is an unsupported inference.
+
+**Calculation:** 4 + 5 = 9; 7 ≠ 9 if they denote the same inventory; 3 + 2 = 5 and 5 ≤ 7 are coherent within the example. Direct content does not supply the required inventory identity.
+
+**Alternative source-grounded interpretations:** Explicit For example, if wording introduces an illustration of opportunity-level coding rather than an independent trial-total statement. [Main p4](../jama_wang_2018_oi_180070.pdf#page=4) repeats the same illustrative structure, which corroborates the example rather than creates a discrepancy relationship.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. All printed example/list inputs are available; the connection between their universes is not established. Missing inputs or definitions: Whether 7 intentionally denotes a hypothetical/subset universe or was intended to describe the trial's nine-measure bundle. State-determining fact: record_input_error. Determining fact: the source explicitly frames the seven-measure passage as a hypothetical example; registering seven versus nine as a shared trial total rests on unsupported inventory alignment, and intent/residual discrepancy cannot be settled from the package. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** An illustrative analysis example should not be extracted as the actual trial measure inventory without support. The seven-versus-nine registration rests on that unsupported alignment and does not establish seven-measure implementation. Registration provenance: NUMSUP-05; N520/N512. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If clarification establishes a residual wording issue, a plan extractor could mistake a hypothetical seven-measure illustration for the actual nine-measure specification. That interpretation is currently unsupported. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Was the example's seven intended as a hypothetical/subset count or as the actual trial inventory, and is any clarifying wording warranted?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C013 — Lipid-measure threshold/eligible-set labels differ across supplied definitions
+
+Pending Human Adjudication.
+
+**Candidate statement:** REPORT lipid-measure wording uses more than 100 or >100 mg/dL, whereas PLAN and detailed results specifications use ≥100 mg/dL, previous treatment, or undocumented LDL. The literal eligible-set labels differ; a patient-count or implementation change is not established.
+
+**Category:** Measure, label, or scale inconsistency
+
+**Relationship type:** P_R
+
+**All relationships:** P_R, S_C, S_W
+
+**Compared document roles:** REPORT main/results-supplement LDL labels vs PLAN protocol definition and REPORT results-supplement definition
+
+**Review domain:** protocol_report
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** PLAN prospective eligibility is substantively compared with REPORT threshold wording (P_R); main versus detailed results specification gives S_C; results table title versus its own detailed specification gives S_W. P_R takes precedence over S_C and S_W. No independent PLAN-internal mismatch adds P_P.
+
+**Classification ambiguity:** Titles may abbreviate the full eligibility rule. The main text explicitly refers to detailed eTable 1; boundary-case counts and actual algorithm are unavailable.
+
+**Exact source locations:** [Main p3 Outcomes](../jama_wang_2018_oi_180070.pdf#page=3), [main p7 Table 2 lipid row](../jama_wang_2018_oi_180070.pdf#page=7), [results supplement p8 eTable 4 lipid row](../joi180070supp2_prod.pdf#page=8), [results supplement p3 eTable 1 LDL definition](../joi180070supp2_prod.pdf#page=3), and [PLAN p15 Table 3 LDL definition](../joi180070supp1_prod.pdf#page=15), visually inspected.
+
+**Source evidence:** Source transcription: main Outcomes more than 100 mg/dL or undocumented LDL; main/results-table lipid titles LDL >100 mg/dL. Primary fractions 1415/1481 and 1439/1547; sensitivity fractions 1415/1517 and 1439/1586. Comparator transcription: results eTable 1 and PLAN Table 3 specify LDL ≥100 mg/dL, previous lipid-lowering treatment, or LDL not documented.
+
+**Reported-versus-comparator:** REPORT lipid-measure wording uses more than 100 or >100 mg/dL, whereas PLAN and detailed results specifications use ≥100 mg/dL, previous treatment, or undocumented LDL. The literal eligible-set labels differ; a patient-count or implementation change is not established. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes for literal threshold/eligible-set identity; > excludes exactly 100 whereas ≥ includes it. Prior treatment and undocumented LDL also exceed the abbreviated table-title conditions. Direct observation and diagnostic inference: Different printed predicates/criteria are direct. A change in actual eligible counts or analytic implementation is not established.
+
+**Calculation:** At LDL = 100, the predicates >100 and ≥100 yield different eligibility; the additional prior-treatment condition can include a patient below the threshold. Primary-versus-sensitivity denominator increases 36/39 do not identify boundary-case counts and are not a separate arithmetic conflict.
+
+**Alternative source-grounded interpretations:** Main Outcomes explicitly refers readers to detailed eTable 1 specifications, supporting the possibility that table titles summarize the broader rule.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. All definition/label texts and displayed denominators are available; patient-level LDL/prior-treatment/contraindication data are absent. Missing inputs or definitions: Implemented eligibility algorithm, counts at exactly 100, treatment-before-admission handling, and whether titles abbreviate the full definition. State-determining fact: recorded_candidate. Determining fact: exact ≥ and > signs and additional eligibility criteria are directly confirmed; the label/definition difference persists with unknown implementation impact. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** Eligibility labels and detailed definitions should permit consistent threshold/subgroup extraction. Exactly-100, prior-treatment, and undocumented-LDL patient counts are unavailable; the wording does not prove a denominator change or protocol violation. Registration provenance: NUMSUP-06 and F-E; N566/N536, X42. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, an evidence product could code a different LDL threshold or eligible subgroup from an abbreviated label. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Which eligible-set algorithm generated each primary/sensitivity denominator, and are the >100 titles intended as shorthand for the fuller ≥100/prior-treatment/undocumented rule?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C014 — Baseline survey total differs from per-cluster statement
+
+Pending Human Adjudication.
+
+**Candidate statement:** The main baseline table reports 801 patients across 40 hospitals, while the results eAppendix says 20 patients per cluster. If that sentence denotes an exact achieved count, it implies 800; a nominal target remains a supported alternative.
+
+**Category:** Denominator, proportion, or total inconsistency
+
+**Relationship type:** S_C
+
+**All relationships:** S_C
+
+**Compared document roles:** REPORT main baseline-survey total vs REPORT results-supplement per-cluster recruitment
+
+**Review domain:** statistical_results
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** Main baseline counts and the retrospective results eAppendix are different REPORT documents: S_C. The eAppendix reports an already conducted survey and is REPORT despite describing prospective recruitment.
+
+**Classification ambiguity:** Twenty patients per cluster may be a target or refer to a different finalized snapshot, rather than an exact achieved count.
+
+**Exact source locations:** [Main p6, Table 1 baseline Hospitals/Patients rows](../jama_wang_2018_oi_180070.pdf#page=6) and [results supplement p2, eAppendix opening](../joi180070supp2_prod.pdf#page=2), visually inspected.
+
+**Source evidence:** Source transcription: baseline 40 hospitals and 801 patients. Comparator transcription: supplement says 20 patients per cluster were prospectively included in this baseline phase.
+
+**Reported-versus-comparator:** The main baseline table reports 801 patients across 40 hospitals, while the results eAppendix says 20 patients per cluster. If that sentence denotes an exact achieved count, it implies 800; a nominal target remains a supported alternative. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes if 20 denotes an exact per-cluster achieved count for the same reported baseline survey; it would not apply as exact arithmetic to a nominal target. Direct observation and diagnostic inference: Printed counts/statement are direct; interpreting 20 as an exact achieved count is conditional; over-recruitment is an inferred explanation.
+
+**Calculation:** 40 × 20 = 800; 801 − 800 = 1, exact integer tolerance zero.
+
+**Alternative source-grounded interpretations:** Recruitment may have exceeded a nominal target in one cluster; no cluster-level record is supplied to establish this.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Hospital total, patient total, and per-cluster statement are available; per-cluster counts are not. Missing inputs or definitions: Whether 20 is achieved count or intended target, and the finalized baseline enrollment count for each hospital. State-determining fact: recorded_candidate. Determining fact: source reports an achieved-sounding 20 per cluster and a total 801 in the matched baseline phase, preserving the registered exact-count conditional question. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** A baseline survey sample-size description should distinguish targets from achieved counts. No attrition or trial-effect change is inferred. Registration provenance: F-B; X07. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, a baseline survey summary could copy an inconsistent total or assume equal achieved cluster sizes. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Was 20 patients per cluster an exact achieved count or a target, and what cluster counts produced the reported 801?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C015 — Dyslipidemia totals differ across the same full cohort's partitions
+
+Pending Human Adjudication.
+
+**Candidate statement:** Dyslipidemia counts sum to 596 in the main randomized-arm partitions and 347 in the results mRS-availability partitions, both totaling 4800 patients. The difference is 249 if the characteristic definition and dataset snapshot match.
+
+**Category:** Cross-document numeric inconsistency
+
+**Relationship type:** S_C
+
+**All relationships:** S_C
+
+**Compared document roles:** REPORT main Table1 dyslipidemia counts vs REPORT results-supplement eTable2 counts
+
+**Review domain:** report_internal_inconsistency
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** The matched characteristic totals appear in two different REPORT documents, the main article and results supplement: S_C only.
+
+**Classification ambiguity:** A different dyslipidemia definition, missingness rule, recoding, or snapshot is possible but undocumented.
+
+**Exact source locations:** [Main p6, Table 1 Dyslipidemia and patient totals](../jama_wang_2018_oi_180070.pdf#page=6) and [results supplement p5, eTable 2 Dyslipidemia and partition-denominator cells](../joi180070supp2_prod.pdf#page=5), visually inspected. [Main p4 Results](../jama_wang_2018_oi_180070.pdf#page=4) identifies the eTable 2 baseline characteristics as those with/without one-year mRS.
+
+**Source evidence:** Source transcription: main intervention 305/2400 (12.7) and control 291/2400 (12.1). Comparator transcription: eTable 2 with mRS 285/3949 (7.2%) and loss to mRS 62/851 (7.3%).
+
+**Reported-versus-comparator:** Dyslipidemia counts sum to 596 in the main randomized-arm partitions and 347 in the results mRS-availability partitions, both totaling 4800 patients. The difference is 249 if the characteristic definition and dataset snapshot match. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes for the same baseline characteristic, dataset snapshot, and exhaustive cohort partitions; partitioning should not change its total count. Direct observation and diagnostic inference: Counts and repeated characteristic names are direct; partition sums are derived; common-definition identity is source-supported but cannot be proved at record level.
+
+**Calculation:** 2400 + 2400 = 4800 and 3949 + 851 = 4800; 305 + 291 = 596 versus 285 + 62 = 347; difference 249. Corroborating shared totals include men 3043, prior ischemic stroke 1388, diabetes 1086, hypertension 3090, CAD 609, AF 245, and smoking 2116 in both partitions.
+
+**Alternative source-grounded interpretations:** An undocumented variable recoding or snapshot could explain the difference, although seven other displayed characteristic totals corroborate common-cohort alignment.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Matched row names, all counts, complete partition totals, and article cross-reference are available. Patient-level recoding/data-version details are unavailable. Missing inputs or definitions: Any different dyslipidemia criterion, records, missingness treatment, or data snapshot between the two tables. State-determining fact: recorded_candidate. Determining fact: direct-source counts reproduce a 249-person discrepancy across exhaustive same-sized partitions with independent source support for cohort alignment. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** A fixed baseline characteristic should have partition-invariant totals when records and definitions match. Other reconciled characteristics support cohort alignment without proving record-level identity. Registration provenance: F-C; X23, N030/N542. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, a systematic-review baseline table could extract conflicting full-cohort dyslipidemia counts or prevalence descriptions. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Which dyslipidemia definition/data snapshot generated each table, and how should the 596 and 347 full-cohort totals be reconciled?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C016 — NIHSS medians differ across exhaustive cohort partitions
+
+Pending Human Adjudication.
+
+**Candidate statement:** Admission NIHSS medians are 4/4 across main trial arms and 3/3 across results availability groups. An identical full 4800-score set with conventional medians yields a one-rank incompatibility, but score-specific counts, imputation stages, and quantile conventions are unknown; one omitted score can bridge that bound.
+
+**Category:** Cross-document numeric inconsistency
+
+**Relationship type:** S_C
+
+**All relationships:** S_C
+
+**Compared document roles:** REPORT main Table1 NIHSS arm medians vs REPORT results-supplement eTable2 availability medians
+
+**Review domain:** report_internal_inconsistency
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** The compared median pairs are in two different REPORT documents: S_C only. Main imputation context adds no discrepancy relationship; C007 is a separate registered comparison.
+
+**Classification ambiguity:** Patient totals are not NIHSS observation counts. One omitted score, imputation stage, or quantile convention can affect the one-rank diagnostic.
+
+**Exact source locations:** [Main p6, Table 1 NIHSS at admission and arm totals](../jama_wang_2018_oi_180070.pdf#page=6), [results supplement p5, eTable 2 NIHSS at admission and group denominator cells](../joi180070supp2_prod.pdf#page=5), and contextual [main p4 missing-score paragraph/Results eTable 2 reference](../jama_wang_2018_oi_180070.pdf#page=4), visually inspected.
+
+**Source evidence:** Source transcription: two arm patient groups n = 2400 each have median 4, IQR 2–6. Comparator transcription: mRS availability groups displayed through denominators 3949 and 851 both have NIHSS median 3, IQR 2–6. The score range 0–42 is printed.
+
+**Reported-versus-comparator:** Admission NIHSS medians are 4/4 across main trial arms and 3/3 across results availability groups. An identical full 4800-score set with conventional medians yields a one-rank incompatibility, but score-specific counts, imputation stages, and quantile conventions are unknown; one omitted score can bridge that bound. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Conditional order-statistic check for the identical 4800 integer NIHSS inputs under a common conventional quantile and imputation/data stage. Patient totals alone do not establish each NIHSS median's actual observation count. Direct observation and diagnostic inference: The same named admission-NIHSS row prints medians 4/4 versus 3/3 directly. The incompatibility is derived only under stated score-count/quantile conditions; a particular missingness mechanism is not established.
+
+**Calculation:** If each 2400-score conventional median is exactly 4, at most 1200 scores per arm can be ≤3, hence at most 2400 pooled. This bound also holds if an integer display 4 rounds a conventional half-integer median 3.5. If each odd availability group uses all 3949/851 scores and has median 3, at least (3949 + 1)/2 = 1975 and (851 + 1)/2 = 426 scores are ≤3, totaling at least 2401. These bounds cannot both hold for the same full score set. This is a conditional diagnostic, not reconstruction of a corrected median.
+
+**Alternative source-grounded interpretations:** Main p4 explicitly reports one missing NIHSS score and replacement by 3. Different omission/imputation stages or observation counts can affect the rank diagnostic even when patient cohort totals match; that passage does not prove both tables used identical score inputs.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Printed medians, IQRs, patient/group totals, score scale, and cross-reference are available. Actual NIHSS observation counts by each partition, quantile details, and score/imputation snapshots are not available. Missing inputs or definitions: NIHSS-specific n in all four groups; which group contains the one missing score; whether medians use pre- or post-imputation values; rounding/quantile convention; whether score sets are identical. One omitted score can change an odd group's required ≤3 bound by one and bridge this strictly one-observation contradiction. Thus the patient totals cannot be silently promoted to score counts. State-determining fact: recorded_candidate. Determining fact: both matched-source median pairs are printed as registered and the registered conditional diagnostic is reproduced, pending explicitly named score-count/quantile definitions. The record does not elevate the diagnostic to an unconditional contradiction. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** Matched baseline summaries require compatible observation counts and quantile conventions. The one-rank diagnostic is conditional, can be bridged by one omitted NIHSS observation, and establishes no incorrect P value or corrected median. Registration provenance: F-D; X27, N034/N546, S061. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If aligned score inputs are confirmed, a review could copy conflicting admission-NIHSS baseline summaries. Unknown score counts prevent an unconditional incompatibility claim. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: What NIHSS-specific counts and imputation/quantile/data stages produced each table's medians, and do all four summaries partition the same 4800 scores?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C017 — Composite descriptions imply different aggregation weights
+
+Pending Human Adjudication.
+
+**Candidate statement:** The main descriptive composite explicitly averages patient-specific eligible ratios; PLAN and results eAppendix wording conditionally suggests totals pooled across eligible opportunities. Those weights generally differ, but an implicit patient-level intermediate step could reconcile the wording.
+
+**Category:** Measure, label, or scale inconsistency
+
+**Relationship type:** P_R
+
+**All relationships:** P_R, S_C
+
+**Compared document roles:** REPORT main composite aggregation vs PLAN protocol aggregation and REPORT results-supplement aggregation
+
+**Review domain:** protocol_report
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** Main patient-average wording is compared substantively with prospective PLAN aggregate wording (P_R) and retrospective results eAppendix wording (S_C). P_R takes precedence. PLAN/eAppendix agreement adds no P_P. Opportunity-level GEE is separate inferential context and adds no S_W.
+
+**Classification ambiguity:** Aggregate wording may omit a per-patient intermediate step. Actual patient/opportunity/hospital weights are not supplied.
+
+**Exact source locations:** [Main p3, Outcomes composite definition](../jama_wang_2018_oi_180070.pdf#page=3), [main p7, Table 2 composite mean (SD)](../jama_wang_2018_oi_180070.pdf#page=7), [PLAN p16, lines 216–219](../joi180070supp1_prod.pdf#page=16), and [results supplement p2, eAppendix formula and same-endpoint statement](../joi180070supp2_prod.pdf#page=2), visually inspected. [Main p4 opportunity-level analysis](../jama_wang_2018_oi_180070.pdf#page=4) was checked as distinct context.
+
+**Source evidence:** Source transcription: main says the composite was calculated for each patient and then averaged; Table 2 mean (SD) is 88.2 (15.1) and 84.8 (18.2). Comparator transcription: PLAN and reported eAppendix say total interventions performed among eligible patients divided by total possible interventions among eligible patients. The eAppendix explicitly claims the same endpoint definition as the randomized phase and reports baseline 80.2%/79.5%.
+
+**Reported-versus-comparator:** The main descriptive composite explicitly averages patient-specific eligible ratios; PLAN and results eAppendix wording conditionally suggests totals pooled across eligible opportunities. Those weights generally differ, but an implicit patient-level intermediate step could reconcile the wording. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes as a conditional aggregation-definition comparison. Averaging patient ratios and pooling opportunities are generally different weighting rules when patients have different eligibility totals. Direct observation and diagnostic inference: Different definition wording is direct; translating the aggregate wording into a pooled ratio is explicitly conditional; no incorrect descriptive percentage is established.
+
+**Calculation:** Patient mean is (1/n)Σ(m_i/e_i); pooled ratio is Σm_i/Σe_i = Σ{e_i/Σe_j}(m_i/e_i). Their weights differ unless eligible totals are constant or special cancellations occur. Actual numerical differences cannot be calculated from supplied summaries.
+
+**Alternative source-grounded interpretations:** Aggregate wording may omit an implicit per-patient intermediate step. Main p4's opportunity-level GEE/OR analysis is a separate inferential estimand and does not disprove or redefine the descriptive mean (SD).
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Both wording/formula constructions are available. Patient-level m_i/e_i, cluster aggregation details, and implementation are absent. Missing inputs or definitions: Whether totals among eligible patients denotes pooled opportunities or patient-specific totals subsequently averaged; weighting across patients/hospitals and definition used in each phase. State-determining fact: recorded_candidate. Determining fact: direct source wording reproduces the registered conditional weighting difference; missing individual inputs preclude quantifying any actual percentage effect. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** A descriptive composite should identify its patient/opportunity/hospital weights. The opportunity-level GEE estimand is separate and can coexist with a patient-average descriptive mean. No actual composite percentage difference can be calculated. Registration provenance: F-F; X46, N009/N515/N526. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, a data extractor could encode the wrong descriptive composite weighting rule or estimand. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: What patient/opportunity/hospital weighting produced each descriptive composite summary, and does the aggregate wording intend the same patient-average construction?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C018 — Mortality prose and in-hospital AD P value have different significance interpretations
+
+Pending Human Adjudication.
+
+**Candidate statement:** The unqualified mortality nonsignificance sentence differs from in-hospital adjusted absolute-difference P = .009 under the stated .05 threshold if it covers every displayed estimand. Its Figure 2B citation supports an HR-only reading, for which the paired HR P = .14 is coherent.
+
+**Category:** Statistical reporting inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT main mortality prose vs REPORT main Table3 in-hospital AD P value
+
+**Review domain:** statistical_results
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** Mortality prose and the paired AD P value are REPORT content in the same main article: S_W only. HR inference is an alternative prose scope, not a replacement AD comparator.
+
+**Classification ambiguity:** The prose may summarize HR tests exclusively; its Figure 2B citation supports that reading.
+
+**Exact source locations:** [Main p5, Clinical Events final mortality sentence](../jama_wang_2018_oi_180070.pdf#page=5), [main p8, Table 3 in-hospital death and Figure 2B](../jama_wang_2018_oi_180070.pdf#page=8), and [main p4, statistical significance convention](../jama_wang_2018_oi_180070.pdf#page=4), visually inspected.
+
+**Source evidence:** Source transcription: no significant difference in total mortality rates in the hospital and at 3, 6, and 12 months, citing Figure 2B. Comparator transcription: in-hospital Table 3 adjusted absolute-difference P = .009, alongside HR P = .14. Main p4 specifies P less than .05 and two-sided tests. Figure 2B carries 12-month HR P = .21.
+
+**Reported-versus-comparator:** The unqualified mortality nonsignificance sentence differs from in-hospital adjusted absolute-difference P = .009 under the stated .05 threshold if it covers every displayed estimand. Its Figure 2B citation supports an HR-only reading, for which the paired HR P = .14 is coherent. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Yes if the unqualified mortality sentence covers both displayed effect columns. AD .009 is below the stated threshold; HR .14 is above it. Different estimands/tests need not have identical significance. Direct observation and diagnostic inference: Sentence and P values are direct. Calling it a blanket interpretation is a conditional reading; attributing a wrong test or transcription is unconfirmed.
+
+**Calculation:** .009 < .05; .14 > .05. AD significant-by-declared-threshold conflicts with a literal blanket reading; an HR-only reading coheres with the paired HR and Figure 2B. No CI inversion is needed for this separate prose comparison.
+
+**Alternative source-grounded interpretations:** The sentence's explicit Figure 2B citation and HR analyses in Data Analysis support an HR-focused summary. This alternative does not change the observed unqualified wording.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Printed sentence, AD/HR P values, column assignment, threshold, and figure citation are present. Intended prose scope is not explicitly stated. Missing inputs or definitions: Whether total mortality sentence summarizes HR/time-to-event tests exclusively or every displayed AD result; whether the AD P value is correctly printed. State-determining fact: recorded_candidate. Determining fact: visually confirmed AD .009 and unqualified mortality nonsignificance sentence reproduce the registered conditional scope mismatch; an HR-specific interpretation remains source-grounded. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** A significance sentence should identify the estimand it summarizes. Distinct AD and HR tests can differ, and an HR-only reading is supported by the supplied figure citation. Registration provenance: F-G and STAT-B; X62, S035/S036. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If confirmed, an evidence summary could attach blanket nonsignificance to a different mortality estimand than the reported AD test. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Which mortality estimand/test does the sentence summarize, and how should its scope relate to in-hospital AD P = .009?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## C019 — In-hospital death CI and paired P value show different inferential signals
+
+Pending Human Adjudication.
+
+**Candidate statement:** In-hospital adjusted absolute difference −0.7 percentage point has 95% CI −1.1 to positive +0.2 and paired AD P = .009. The interval includes zero and P is below .05; incompatibility is conditional on the identical two-sided test producing the interval by inversion, which is not established.
+
+**Category:** Statistical reporting inconsistency
+
+**Relationship type:** S_W
+
+**All relationships:** S_W
+
+**Compared document roles:** REPORT main Table3 in-hospital AD confidence interval vs REPORT same-row AD P value
+
+**Review domain:** statistical_results
+
+**Evidence state:** recorded_candidate
+
+**Suggested review disposition:** retain
+
+**Classification rationale:** The paired AD interval and AD P value are REPORT content in one main Table 3 row: S_W only. The separate HR column is contextual.
+
+**Classification ambiguity:** Shared interval/test inversion and original-scale symmetry are unestablished; asymmetric or differently constructed inference may explain the signals.
+
+**Exact source locations:** [Main p8, Table 3 Death/In hospital AD/CI/AD P columns and footnote a](../jama_wang_2018_oi_180070.pdf#page=8), with [main p4, analysis and inferential conventions](../jama_wang_2018_oi_180070.pdf#page=4), visually inspected.
+
+**Source evidence:** Source transcription: death 11/2400 versus 23/2400; adjusted AD −0.7 percentage point, 95% CI −1.1 to positive 0.2. Source image confirms the positive upper endpoint. Comparator transcription: the P value directly adjacent to the AD column is .009. Separate HR is 0.96 (0.90–1.02), P = .14 and was not used as the AD comparator. Main p4 supplies 95% CIs, two-sided tests, and significance threshold P < .05.
+
+**Reported-versus-comparator:** In-hospital adjusted absolute difference −0.7 percentage point has 95% CI −1.1 to positive +0.2 and paired AD P = .009. The interval includes zero and P is below .05; incompatibility is conditional on the identical two-sided test producing the interval by inversion, which is not established. The exact printed inputs appear above; the derived comparison and its applicability are specified below.
+
+**Reasoning procedure:** Conditional: a 95% CI obtained by inversion of the identical two-sided α = .05 test should exclude zero when that test's P = .009. The package does not establish shared test/CI construction. Original-scale symmetry is only an additional diagnostic condition, not a supplied method. Direct observation and diagnostic inference: Positive upper endpoint and small paired P are direct. CI/P incompatibility assumes common inversion; interval asymmetry is a reproduced diagnostic; any wrong cell or algorithm explanation is inferred.
+
+**Calculation:** −1.1 < 0 < +0.2 while .009 < .05. CI midpoint (−1.1 + 0.2)/2 = −0.45 differs from estimate −0.7 by 0.25. For nearest-tenth rounding, midpoint is bounded approximately [−0.50, −0.40], while estimate lies [−0.75, −0.65]; these cannot be a symmetric original-scale interval around the estimate. No Wald SE, corrected endpoint, or reconstructed P was asserted.
+
+**Alternative source-grounded interpretations:** A non-inverted/asymmetric CI or different inferential construction could break the usual CI/P equivalence. General methods/adjustment footnotes do not resolve it. A transcription is also possible but is not established by the source.
+
+**Mechanical evidence recheck:** Direct-source locations were found and visually inspected; source and comparator transcriptions matched. The comparison/calculation was reproduced to the conditional extent stated in Reasoning procedure. Displayed estimate, endpoints, confidence level, adjacent P value, sidedness, significance convention, and covariate-adjustment labels are available. The inputs needed to establish a common CI/test identity are absent. Missing inputs or definitions: AD model/link/estimand, confidence-interval algorithm and scale, test statistic/null construction, variance estimator and cluster handling, degrees of freedom, unrounded values, and whether CI and P derive from the same fitted contrast and test inversion. State-determining fact: recorded_candidate. Determining fact: direct source image reproduces the registered CI-includes-zero/paired-P-below-threshold signals. The mismatch remains a conditional inferential question pending the named construction definitions; source content does not supply an unconditional equivalence or a correction. The rechecker confirmed document roles and relationship classifications without a code change, and the fresh quality auditor reviewed this complete card scope. These facts describe evidence, not an adjudication.
+
+**Quality-control relevance:** Paired uncertainty and test metadata should identify compatible constructions. The positive +0.2 endpoint and AD P = .009 are directly confirmed; common inversion and symmetry remain conditional. No Wald reconstruction, corrected endpoint, replacement P value, or conclusion change is supplied. Registration provenance: STAT-A; S035, with S036 as HR context only. The source record does not select a corrected input or establish a production mechanism.
+
+**Potential downstream evidence impact:** If a common construction is confirmed, an extractor could copy uncertainty and significance metadata that give different null-exclusion signals for the same AD contrast. No propagation, conclusion change, or serious harm is established.
+
+**Human verification steps:** Open the linked physical source pages and confirm the named rows, columns, labels, and reported precision. Apply the stated rule only after establishing its population, definition, and construction assumptions; obtain the missing inputs named in the recheck. Exact remaining question: Which AD fit, CI algorithm, test, variance/cluster convention, degrees of freedom, and unrounded values produced −0.7 (−1.1 to +0.2), P = .009, and were CI and P intended as the same inferential construction?
+
+**Human adjudication fields:**
+
+- **Validity:** __
+- **Importance:** __
+- **Action:** __
+- **Initials:** __
+- **Notes:** __
+
+## Downstream Evidence-Chain Considerations
+
+Quantitative quality control can improve the clarity and consistency of information available for later extraction. A small percentage, denominator, threshold, outcome label, time origin, or inferential-metadata defect may be preventable even when it does not change a study's conclusions. If human adjudication confirms a candidate, the relevant quantity or definition should be reconciled before it is reused in a systematic review, meta-analysis, guideline, or other evidence product.
+
+The report identifies bounded possibilities, not documented downstream events. It establishes neither propagation into a particular evidence product nor conclusion change or serious harm. Conditional comparisons should retain their conditions when exported. In particular, the `record_input_error` records must carry their unsupported alignment facts, rather than being converted into established contradictions. Any confirmed correction requires source authority and a human decision; computed comparators here are diagnostic only.
+
+## Limitations and Missing Definitions
+
+The review uses only the supplied package and does not audit raw data. All physical source pages and registered relationships are covered. The following limits concern interpretation, implementation, or provenance rather than an omitted scientific unit:
+
+- Actual outcome-analysis membership, variable-specific denominators, percentage weighting, cell-production records, finalized per-hospital survey recruitment, and alternative data snapshots are unavailable. These prevent choosing a corrected count or percentage from the printed mismatch alone.
+- C007 lacks a supported common reference between the imputation median and displayed group summaries. C012's seven-measure passage is expressly hypothetical, so its actual-inventory alignment is unsupported. Both stable IDs remain `record_input_error` with the mechanical pre-fill `discuss`.
+- C016 requires NIHSS-specific observation counts, quantile and rounding rules, and common pre/post-imputation score inputs. Patient totals do not establish score counts. The main source reports one missing NIHSS observation; omitting one score can bridge this one-rank diagnostic. No corrected median or baseline test is inferred.
+- Counts at exactly 100 mg/dL, prior-treatment eligibility, undocumented LDL, and the implemented eligible-set algorithm are absent. C013's label predicates cannot be translated into a proven patient-count or protocol-implementation change.
+- Individual eligible and completed opportunities and patient/hospital aggregation weights are absent. C017's pooled interpretation remains conditional; an omitted patient-level intermediate step could reconcile wording. Descriptive composite means and opportunity-level GEE estimates are separate quantities.
+- Mortality prose may summarize HR/time-to-event inference, supported by its Figure 2B citation. An AD comparison should not be assigned the HR P value. The intended scope remains the C018 human question.
+- The AD model/link/estimand, CI algorithm and scale, test/null construction, shared fit, variance and cluster convention, degrees of freedom, and unrounded values are insufficiently specified. C019's usual interval/test equivalence and original-scale symmetry diagnostics remain conditional. Other broad GEE, Cox, mixed-model, categorical, rank-test, and power descriptions likewise do not uniquely specify reconstruction inputs.
+- Baseline survey per-measure denominators and test, the sample-size formula and effect-scale details, and whether Figure 2 annotation P values come from log-rank or Cox inference are absent. No separately printed conflicting log-rank result exists. These missing definitions alone were not registered as candidates.
+- Historical extraction/render-engine provenance is unconfirmed. Current native byte identity and fresh direct-source candidate page inspection establish usable source linkage. Missing legacy images for main p. 10 and PLAN pp. 22–25 do not leave coverage gaps.
+- OCR and Office conversion are unavailable; all supplied PDFs have usable text, direct CPU rendering is available, and there are no Office sources. No OCR or fallback environment was required.
+- The user authorized the current session provider in place of the workflow's OpenRouter default. The preserved unmodified validator hardcodes OpenRouter, creating a known configuration conflict. It is not resolved by renaming the actual provider or claiming validator PASS. Final validation results are retained in the companion validation record.
+
+The durable [limitations record](review_1_6/limitations.md) preserves these boundaries and the authorized configuration exception.
+
+## Human Adjudication Checklist
+
+For each of the 19 stable IDs, the reviewer should inspect the linked PDF pages, confirm the intended population/phase/time/estimand, and check the calculation or identity only under the stated applicable rule. Resolve named missing definitions before treating a conditional comparison as a demonstrated contradiction. Consider the source-grounded alternatives, including shorthand labels, row-specific denominators, different snapshots, HR-only prose scope, hypothetical examples, and nonidentical inferential constructions.
+
+Record the human decision in each card's five blank fields and identify the supporting source or clarification in the notes. The mechanical `retain` and `discuss` values do not replace that decision. Keep the ID and evidence-state history when documenting an explanation or correction. Distinguish a corrected reporting quantity from any separately established analysis or conclusion effect.
+
+## Reproducibility, Source-Integrity, Agent-Execution, and Performance Metadata
+
+### Source integrity and reproducibility
+
+The initial direct-source SHA-256 values are:
+
+| Source | SHA-256 |
+|---|---|
+| jama_wang_2018_oi_180070.pdf | f921847452d4f5ab012a3eaaa58f25542a73c2f06a858974efc443be4af70fb9 |
+| joi180070supp1_prod.pdf | 5faf07d9e18fb1b9dcc415818622846fb502b410d67255be7ab28aca5e52d138 |
+| joi180070supp2_prod.pdf | 78ebed75675211c520c6eae88b8a1963c9b1f00dc66b2b6ff324d957a1e39645 |
+
+The fresh quality auditor checked both before-hash inventories with direct `sha256sum --quiet -c`; both matched at audit. Post-assembly recomputation of all direct-source and all 65 reused-artifact hashes exactly matched the initial inventories; both after-hash inventories are retained. No supplied source or reused derivative was modified in producing this report.
+
+Scientific artifacts are retained under `review_1_6/`, including inventories, disjoint complete maps, numeric and cross-source checks, both statistical passes, the stable ledger, source recheck, quality audit, coverage manifest, and limitations. PDF evidence links use actual filenames and physical page fragments. The direct CPU tools are Poppler 25.03.0; SHA-256 uses the installed direct tool. Python 3.13.5 is restricted to bundled auxiliary tooling, report rendering, and validation. Pandoc 3.1.11.1 is available for the coordinator's standalone HTML render. No web, GPU, global installation, or temporary fallback environment was used.
+
+The [tooling record](review_1_6/tooling_record.md) records `Fallback environment: NOT_NEEDED`, `Fallback packages: None`, `Fallback capabilities used: None`, and `Fallback environment removed: NOT_CREATED`. Standalone HTML rendering and mechanical validation are coordinator steps after Markdown assembly, with results retained in the companion records. The [routing preflight](review_1_6/routing_preflight.md) records the fixed model matrix, all nine named presets, successful coordinator/specialist inference, interactive execution contract, and the actual current-provider override. The original validator's OpenRouter-specific expectation remains a disclosed configuration conflict.
+
+### Agent execution
+
+Every actual agent, including the coordinator and the optional numeric support shard, appears exactly once below. All mandatory specialist stages use fresh distinct runtime IDs. The two statistical agents are different fresh gpt-6.1-sol/high executions. The manifest lists each role's primary durable artifact; complete artifact assignments are in the coverage manifest.
+
+| Stage | Agent ID | Model | Reasoning effort | Start mode | Artifact |
+|---|---|---|---|---|---|
+| coordinator | COORDINATOR-CURRENT-SESSION | gpt-6.1-sol | high | CURRENT_SESSION | run_state.md |
+| reuse_asset_curator | root/curator | gpt-6.1-sol | medium | FRESH_SPAWN | source_inventory.md |
+| main_quantitative_mapper | root/main_mapper | gpt-6.1-sol | medium | FRESH_SPAWN | extraction/main_quantitative_evidence.md |
+| support_quantitative_mapper | root/support_mapper | gpt-6.1-sol | medium | FRESH_SPAWN | extraction/support_quantitative_evidence.md |
+| numeric_consistency_reviewer | root/numeric_main | gpt-6.1-sol | medium | FRESH_SPAWN | checkers/numeric_consistency.md |
+| numeric_support_shard | root/numeric_support | gpt-6.1-sol | medium | FRESH_SPAWN | checkers/parts/numeric_support_consistency.md |
+| cross_source_consistency_reviewer | root/cross_checker | gpt-6.1-sol | medium | FRESH_SPAWN | checkers/cross_source_consistency.md |
+| statistics_pass_1 | root/statistics_one | gpt-6.1-sol | high | FRESH_SPAWN | checkers/statistical_pass_1.md |
+| evidence_rechecker | root/rechecker | gpt-6.1-sol | high | FRESH_SPAWN | verification/evidence_recheck.md |
+| statistics_pass_2 | root/statistics_two | gpt-6.1-sol | high | FRESH_SPAWN | checkers/statistical_pass_2.md |
+| quality_control_auditor | root/quality_auditor | gpt-6.1-sol | high | FRESH_SPAWN | quality/evidence_quality_audit.md |
+| report_generator | root/report_generator | gpt-6.1-sol | medium | FRESH_SPAWN | limitations.md |
+
+### Reproducibility performance
+
+The following exact performance fields were finalized from the run state immediately after complete Markdown assembly and the final mathematical-notation link repair. Local rendering and mechanical validation are outside that review window; a later model-based repair requires updated timing.
+
+- **Target basis:** Three unencrypted PDFs with 44 unique source pages; all 44 pages have source-matched reusable native text, with complete coordinate/layout aids and 52 existing page images. No Office conversion, workbook alignment, or new OCR is required. Dense main tables, longitudinal supplementary tables, and a 25-page protocol/SAP require complete numeric/cross-document mapping and two independent statistical waves, followed by direct evidence recheck, quality audit, and report generation. A 25–40 minute target accounts for this complete reusable scope and mandatory review waves rather than page count alone.
+- **Total source units:** 44
+- **Fresh-source units:** 0
+- **Target elapsed minutes:** 25-40
+- **Started UTC:** 2026-10-11T00:44:03Z
+- **Finished UTC:** 2026-10-11T01:18:28Z
+- **Observed elapsed minutes:** 34.42
+- **Target status:** MET_TARGET
+- **Exceedance causes:** None
+
+The preserved [mechanical validation result](review_1_6/review_validation.json) and [authorized current-provider exception](review_1_6/validation_exception.md) provide the final completion record. The configuration exception does not authorize a false OpenRouter identity or a false strict-validator PASS claim.

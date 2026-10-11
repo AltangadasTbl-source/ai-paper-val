@@ -1,0 +1,25 @@
+# Workflow 1.6 Run State
+
+- **Target basis:** Four PDFs and 80 unique physical pages; 79 units have usable reusable text or source-bound images, one protocol graphic requires fresh visual mapping. The mixed protocol/SAP/results/toolkit package includes 14 scanned OCR-image units and dense main/supplement tables, requiring complete numeric, cross-source, two statistical, recheck, audit, and report stages across dependent agent waves; no fresh OCR or Office conversion is needed.
+- **Total source units:** 80
+- **Fresh-source units:** 1
+- **Target elapsed minutes:** 25-40
+- **Started UTC:** 2026-10-11T00:43:38Z
+- **Finished UTC:** 2026-10-11T01:25:13Z
+- **Observed elapsed minutes:** 41.58
+- **Target status:** EXCEEDED_TARGET
+- **Exceedance causes:** Additional disjoint statistical and coverage-audit shards were required by the 200000-character and 120-relationship context bounds; source-raster corrections were propagated through the complete ledger and second pass; all 28 complete evidence cards required full report assembly. No coverage or candidate was omitted to meet the target.
+
+Current status: COMPLETE. All 80 source units are mapped, all 100 numeric and 161 statistical relationship groups are covered, both fresh statistical passes and all audits are complete, and every one of the 28 stable IDs appears in the ledger, recheck, quality audit, and standalone Markdown/HTML reports. Final source/reused hashes are unchanged. The user-override-aware validator reports PASS with no errors or warnings. Current provider retained by explicit user instruction. Earlier progress entries preserve chronological history.
+
+Progress: fresh main and support mappers report full page reading; protocol p. 14 rendered with direct Poppler; scanned toolkit numeric content visually inspected using reusable images. Evidence-map artifacts await completion before independent checker stages.
+
+Complete source mapping closed at 80/80 units. Numeric and cross-source reviewers are fresh distinct medium-effort named agents. Statistical pass 1 is split into disjoint main and support scopes because combined relationship volume exceeds the 120-record context bound; both shard agents are fresh high-effort named specialists. This split does not limit findings or omit any interval cell. Main uses stable S001 onward; support uses S201 onward.
+
+Independent discovery complete: 100 numeric relationships and 161 statistical relationship groups (80 main plus 81 support) checked in pass 1. Four checker artifacts emitted 49 local observations (17 numeric, 20 cross-source, 10 main statistical, 2 support statistical). Genuine duplicates were merged before registration, and two shared-header observations were cross-referenced to their distinct row questions. The stable ledger has 28 candidates; no stable ID will be removed. Direct-source mechanical recheck is assigned to a fresh high-effort named agent for all 28 IDs.
+
+Mechanical recheck progress: direct PDF text and fresh Figure 1 raster show cohort 2 step 5 lost-follow-up count 28, not registered locator input 8. The corrected lost total is 295 (170 control plus 125 intervention), matching main prose and eTable 1; C017 will remain with not_reproduced evidence state. C018/C019 same-estimand assumptions are being assessed as record_input_error; their stable IDs remain. Canonical source corrections will be propagated with explicit provenance after the complete recheck.
+
+Mechanical recheck complete: 25 recorded_candidate, C017 not_reproduced, C018/C019 record_input_error, zero repaired_residual; all document roles/types/domains confirmed. Ledger updated with mechanically derived retain/exclude/discuss pre-fills, all Pending Human Adjudication. Statistical pass 2 uses three distinct fresh high-effort named agents: main S001-S040, main S041-S080, support S201-S281. The second main split is required by the 200000-character input bound because full main inventory plus complete cross-lane ledger and recheck facts exceeds it. Every shard reads all 28 complete candidate facts; the handoff excludes only derivative-command provenance and repeated summary, not scientific evidence. All 161 relationship groups remain assigned.
+
+Mechanical closeout UTC: 2026-10-11T01:26:05Z. Standalone HTML rendered once using Pandoc with embedded CSS and a table of contents. The fallback removal helper returned an empty removed list because no environment was created. Before/after cmp equality confirmed all four sources and 78 reused artifacts. All 16 actual runtimes appear once in the execution manifest; all mandatory specialist stages have distinct fresh IDs and required model/effort. Final review_validation.json is PASS; the preserved unmodified review_validation_original.json has exactly two routing-string errors (provider and launch command), with every scientific, coverage, integrity, classification and artifact check passing. validation_override.md and validator_override.diff document the two-string adaptation. No supplied source, reused asset or pre-existing audit artifact was changed.

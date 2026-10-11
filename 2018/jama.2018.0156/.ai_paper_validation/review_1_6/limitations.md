@@ -1,0 +1,18 @@
+# Workflow 1.6 Limitations and Missing Definitions
+
+All 146 supplied PDF pages are mapped. There is no scientific source-unit gap. These limitations concern reproducibility and interpretation of supplied reporting, rather than omitted review.
+
+- Percentage display rules, intermediate precision, truncation and staged rounding are not stated. Several near-boundary candidates are conditional on single nearest rounding. Row-specific nonmissing denominators and secondary point-estimator definitions are not always supplied.
+- Exact confidence-interval, variance, test inversion, adjustment and sidedness conventions are not uniformly recoverable. Diagnostic reconstructions do not replace the reported analysis; unfamiliar interval widths or P values alone do not establish a contradiction.
+- Post-hoc regrouping membership, additional exclusions and favorable-outcome coding are unavailable. Rescue-intubation and ITT regrouping sets are not established as nested. C016 records an unsupported input alignment, not nine proven additional rescue cases.
+- CRF collection can differ from assessment or entry. C021 and C023 record unsupported same-operation timing alignment. Assessment, entry and retrieval times require separate definitions.
+- Historical percentage numerators, denominator subsets, horizons, adjustment and rounding are incompletely specified. No external historical study or literature was consulted.
+- Final organizational mappings, site-number schemes and effective roster history are unavailable. Actual enrolling centers, authorized sites and fixed historical protocol-body counts need distinct definitions.
+- Approximate recruitment rates, active months and minimum versus exact targets are not fully distinguished. Collective scale-purpose wording, IDS category versus stored-score coding, and NI sign/boundary notation intent remain human questions.
+- C031's primary point arithmetic reconciles after correcting a primary/secondary input mix-up. It has no residual source arithmetic mismatch. All stable IDs remain available for human adjudication.
+- Historical OCR may contain recognition errors, and some legacy rendering engines are unrecorded. Derivatives were used as locators; exact-source visual rechecks supply final printed-value authority. DOC-002 p134 lacked a reusable derivative and was freshly rendered and visually confirmed to have an empty body with header/footer.
+- Direct Tesseract and Office conversion are unavailable. There are no Office or CSV sources; reused OCR, direct PDF text/rendering and visual inspection close all applicable source units. No fallback environment, installation or GPU operation was needed.
+- Model/effort pairs are recorded from package controls and named presets. Independent provider/model telemetry and independent launch-process attestation are unavailable. The current provider was retained under the user's override.
+- The unchanged bundled validator has provider-literal and leading-slash runtime-ID compatibility limitations. A preserved run-local copy changes only those two parsing expectations, with the exact diff and hashes retained. Scientific coverage, classification, evidence-link, timing and report checks remain intact. Completion status is recorded in review_validation.json; the bundled and compatibility validator results must be distinguished.
+
+The report is quantitative reporting quality control. Small preventable reporting defects can matter for downstream evidence extraction if confirmed. No actual propagation, changed paper conclusion, serious harm, raw-data defect or protocol violation is established by this review.
