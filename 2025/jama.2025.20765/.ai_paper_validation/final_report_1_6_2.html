@@ -1,0 +1,3441 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Quantitative Quality-Control Review 1.6.2 — Pending Human Adjudication</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526079;
+  --line: #d9e0ea;
+  --paper: #ffffff;
+  --wash: #f4f7fb;
+  --accent: #1f5f99;
+  --accent-soft: #e8f2fb;
+  --warning: #8a4b08;
+  --warning-soft: #fff3dc;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+h1, h2, h3 { line-height: 1.25; color: #10243c; }
+h1 { border-bottom: 3px solid var(--accent); padding-bottom: .55rem; }
+h2 { margin-top: 2.4rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+h2.candidate-card {
+  margin-top: 3rem;
+  padding: .85rem 1rem;
+  border: 1px solid #b8cce0;
+  border-left: .45rem solid var(--accent);
+  border-radius: .35rem;
+  background: var(--accent-soft);
+}
+a { color: #075fa8; text-underline-offset: .18em; }
+a[href*=".pdf#page="]::after { content: " ↗"; font-size: .8em; }
+nav#TOC {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background: var(--wash);
+}
+nav#TOC::before { content: "Contents"; display: block; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+th, td { border: 1px solid var(--line); padding: .55rem .65rem; text-align: left; vertical-align: top; }
+th { background: #edf2f8; }
+tr:nth-child(even) td { background: #fafbfd; }
+blockquote {
+  margin: 1rem 0;
+  padding: .7rem 1rem;
+  border-left: .3rem solid #9eacbc;
+  background: var(--wash);
+  color: #344257;
+}
+code { background: #eef2f6; padding: .08rem .25rem; border-radius: .2rem; }
+pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: .4rem; }
+.pending-human-adjudication {
+  padding: .8rem 1rem;
+  border: 1px solid #e6b86d;
+  border-left: .45rem solid var(--warning);
+  border-radius: .35rem;
+  background: var(--warning-soft);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  body { padding: 1rem; }
+  table { display: block; overflow-x: auto; }
+}
+@media print {
+  body { max-width: none; padding: 0; font-size: 10.5pt; }
+  nav#TOC { break-after: page; }
+  h2.candidate-card { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+
+</style>
+</head>
+<body>
+<p class="pending-human-adjudication">Pending Human Adjudication: workflow 1.6.2 is a quantitative quality-control review. It reports every candidate found under the completed scope and does not assign AI validity, severity, acceptance, rejection, or correction decisions.</p>
+<header id="title-block-header">
+<h1 class="title">Quantitative Quality-Control Review 1.6.2 — Pending
+Human Adjudication</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#quantitative-reporting-quality-control-consistency-review--workflow-162"
+id="toc-quantitative-reporting-quality-control-consistency-review--workflow-162">Quantitative
+Reporting Quality-Control Consistency Review — Workflow 1.6.2</a>
+<ul>
+<li><a href="#executive-quality-control-summary"
+id="toc-executive-quality-control-summary">Executive Quality-Control
+Summary</a></li>
+<li><a href="#package-and-reused-evidence-provenance"
+id="toc-package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</a></li>
+<li><a href="#scope-complete-coverage-and-exclusions"
+id="toc-scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</a></li>
+<li><a href="#quantitative-and-statistical-relationship-coverage"
+id="toc-quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</a></li>
+<li><a href="#inclusion-screening-summary"
+id="toc-inclusion-screening-summary">Inclusion Screening
+Summary</a></li>
+<li><a href="#review-domain-summary"
+id="toc-review-domain-summary">Review-Domain Summary</a></li>
+<li><a href="#candidate-index" id="toc-candidate-index">Candidate
+Index</a></li>
+<li><a href="#candidate-evidence-cards"
+id="toc-candidate-evidence-cards">Candidate Evidence Cards</a></li>
+<li><a
+href="#c001--protocol-sms-totals-and-frequency-schedules-do-not-reconcile"
+id="toc-c001--protocol-sms-totals-and-frequency-schedules-do-not-reconcile">C001
+— Protocol SMS totals and frequency schedules do not reconcile</a></li>
+<li><a
+href="#c002--operational-eligibility-criteria-differ-from-the-plan-list"
+id="toc-c002--operational-eligibility-criteria-differ-from-the-plan-list">C002
+— Operational eligibility criteria differ from the plan list</a></li>
+<li><a
+href="#c003--prospective-quit-date-and-reminder-calendar-differ-from-the-report"
+id="toc-c003--prospective-quit-date-and-reminder-calendar-differ-from-the-report">C003
+— Prospective quit-date and reminder calendar differ from the
+report</a></li>
+<li><a
+href="#c004--primary-cotinine-verification-lacks-a-planned-to-reported-criterion-crosswalk"
+id="toc-c004--primary-cotinine-verification-lacks-a-planned-to-reported-criterion-crosswalk">C004
+— Primary cotinine verification lacks a planned-to-reported criterion
+crosswalk</a></li>
+<li><a
+href="#c005--primary-model-changes-from-protocol-poissonlog-link-to-sapreport-logistic"
+id="toc-c005--primary-model-changes-from-protocol-poissonlog-link-to-sapreport-logistic">C005
+— Primary model changes from protocol Poisson/log link to SAP/report
+logistic</a></li>
+<li><a
+href="#c006--risk-ratio-derivation-from-stated-logistic-analysis-is-unclear"
+id="toc-c006--risk-ratio-derivation-from-stated-logistic-analysis-is-unclear">C006
+— Risk-ratio derivation from stated logistic analysis is
+unclear</a></li>
+<li><a
+href="#c007--planned-tobacco-use-form-adjustment-has-no-reported-primary-counterpart"
+id="toc-c007--planned-tobacco-use-form-adjustment-has-no-reported-primary-counterpart">C007
+— Planned tobacco-use-form adjustment has no reported primary
+counterpart</a></li>
+<li><a
+href="#c008--co6-sensitivity-results-appear-under-a-primary-outcome-status-label"
+id="toc-c008--co6-sensitivity-results-appear-under-a-primary-outcome-status-label">C008
+— CO&lt;6 sensitivity results appear under a primary-outcome status
+label</a></li>
+<li><a
+href="#c009--primary-missing-outcome-handling-differs-between-protocol-and-sapreport"
+id="toc-c009--primary-missing-outcome-handling-differs-between-protocol-and-sapreport">C009
+— Primary missing-outcome handling differs between protocol and
+SAP/report</a></li>
+<li><a
+href="#c010--prespecified-gender-specific-primary-analyses-are-not-reported"
+id="toc-c010--prespecified-gender-specific-primary-analyses-are-not-reported">C010
+— Prespecified gender-specific primary analyses are not
+reported</a></li>
+<li><a href="#c011--current-primary-data-attrition-assumptions-differ"
+id="toc-c011--current-primary-data-attrition-assumptions-differ">C011 —
+Current primary-data attrition assumptions differ</a></li>
+<li><a
+href="#c012--all-cause-mortality-percentage-is-attributed-to-tb-specific-mortality"
+id="toc-c012--all-cause-mortality-percentage-is-attributed-to-tb-specific-mortality">C012
+— All-cause mortality percentage is attributed to TB-specific
+mortality</a></li>
+<li><a
+href="#c013--adverse-event-narrative-reverses-two-any-symptom-arm-directions"
+id="toc-c013--adverse-event-narrative-reverses-two-any-symptom-arm-directions">C013
+— Adverse-event narrative reverses two any-symptom arm
+directions</a></li>
+<li><a
+href="#c014--fourteen-interval-rows-do-not-reproduce-a-rule-fitting-other-display-rows"
+id="toc-c014--fourteen-interval-rows-do-not-reproduce-a-rule-fitting-other-display-rows">C014
+— Fourteen interval rows do not reproduce a rule fitting other display
+rows</a>
+<ul>
+<li><a href="#detailed-interval-reconstruction-for-c014"
+id="toc-detailed-interval-reconstruction-for-c014">Detailed interval
+reconstruction for C014</a></li>
+</ul></li>
+<li><a
+href="#c015--latest-protocol-and-sap-prescribe-different-failure-windows"
+id="toc-c015--latest-protocol-and-sap-prescribe-different-failure-windows">C015
+— Latest protocol and SAP prescribe different failure windows</a></li>
+<li><a
+href="#c016--current-phase-3-power-statements-retain-different-cluster-allocations"
+id="toc-c016--current-phase-3-power-statements-retain-different-cluster-allocations">C016
+— Current Phase 3 power statements retain different cluster
+allocations</a></li>
+<li><a
+href="#c017--two-cause-of-death-percentages-do-not-reconcile-within-etable-4"
+id="toc-c017--two-cause-of-death-percentages-do-not-reconcile-within-etable-4">C017
+— Two cause-of-death percentages do not reconcile within eTable
+4</a></li>
+<li><a
+href="#c018--site-2008-death-count-and-percentage-do-not-reproduce-the-table-denominator"
+id="toc-c018--site-2008-death-count-and-percentage-do-not-reproduce-the-table-denominator">C018
+— Site 2008 death count and percentage do not reproduce the table
+denominator</a></li>
+<li><a
+href="#c019--treatment-failure-absolute-difference-has-the-opposite-signed-contrast"
+id="toc-c019--treatment-failure-absolute-difference-has-the-opposite-signed-contrast">C019
+— Treatment-failure absolute difference has the opposite signed
+contrast</a></li>
+<li><a href="#downstream-evidence-chain-considerations"
+id="toc-downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</a></li>
+<li><a href="#limitations-and-missing-definitions"
+id="toc-limitations-and-missing-definitions">Limitations and Missing
+Definitions</a></li>
+<li><a
+href="#reproducibility-source-integrity-agent-execution-and-performance-metadata"
+id="toc-reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</a>
+<ul>
+<li><a href="#direct-source-sha-256-baseline"
+id="toc-direct-source-sha-256-baseline">Direct-source SHA-256
+baseline</a></li>
+<li><a href="#agent-execution" id="toc-agent-execution">Agent
+execution</a></li>
+<li><a href="#reproducibility-performance"
+id="toc-reproducibility-performance">Reproducibility
+performance</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="quantitative-reporting-quality-control-consistency-review--workflow-162">Quantitative
+Reporting Quality-Control Consistency Review — Workflow 1.6.2</h1>
+<blockquote>
+<p><strong>Pending Human Adjudication.</strong> All 19 candidates remain
+Pending Human Adjudication. Evidence states, review domains and
+inclusion audits describe the review record; they are not human
+adjudications.</p>
+</blockquote>
+<h2 id="executive-quality-control-summary">Executive Quality-Control
+Summary</h2>
+<p>Complete fresh review of all 134 supplied PDF pages produced
+<strong>19 stable candidates</strong>, consolidating 29 included
+findings from 30 independently screened findings. The audit confirmed
+inclusion for 18 candidates and questioned inclusion for C008, whose
+full source-based reason is retained. Exact-source rechecks recorded 18
+candidates as <code>reproduced</code> and C008 as
+<code>reproduced_after_transcription_correction</code>.</p>
+<p>Candidates concern printed counts and percentages, effect-measure
+derivation, uncertainty intervals, outcome attribution, and
+planned-versus-reported endpoint, intervention and analysis
+specifications. Repeated occurrences are preserved within one candidate
+card per issue. The cards identify bounded relevance for evidence
+extraction and retain source-grounded alternatives and missing
+definitions; no propagation, paper-level conclusion change or harm is
+established.</p>
+<h2 id="package-and-reused-evidence-provenance">Package and
+Reused-Evidence Provenance</h2>
+<p>The supplied package contains exactly three direct PDFs. Document
+roles follow content: the trial article and results supplement are
+REPORT; the protocol/SAP/amendment/prospective SMS bundle is PLAN. No
+supplied Office, workbook or CSV source is present.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source ID</th>
+<th>Actual source filename</th>
+<th>Role</th>
+<th style="text-align: right;">PDF pages</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td>jama_zahid_2025_oi_250093_1768590553.08463.pdf</td>
+<td>REPORT</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td>joi250093supp1_prod_1768590553.08963.pdf</td>
+<td>PLAN</td>
+<td style="text-align: right;">109</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td>joi250093supp2_prod_1768590553.09463.pdf</td>
+<td>REPORT</td>
+<td style="text-align: right;">16</td>
+</tr>
+</tbody>
+</table>
+<p>The curator inventoried and hashed 386 reusable extraction, image and
+metadata artifacts. Article native/normalized text and layout,
+results-supplement text/images, and all 109 PLAN rendered page locators
+supported the new mapping. PLAN native/layout text is garbled; its
+twelve empty OCR files and seven partial nonempty OCR files were treated
+as limited aids. All PLAN pages received visual mapping. Historical
+extraction engine versions are not consistently documented. Reused
+images/text are locators and transcription aids, while the exact
+supplied PDF pages remain authoritative.</p>
+<p>Current provenance is recorded in the <a
+href="review_1_6_2/source_inventory.md">source inventory</a>, <a
+href="review_1_6_2/evidence_asset_inventory.md">evidence-asset
+inventory</a>, <a href="review_1_6_2/source_hashes_before.sha256">source
+hash baseline</a> and <a
+href="review_1_6_2/reused_artifact_hashes_before.sha256">reused-asset
+hash baseline</a>. Earlier scientific selections and dispositions were
+preserved and excluded from discovery inputs.</p>
+<h2 id="scope-complete-coverage-and-exclusions">Scope, Complete
+Coverage, and Exclusions</h2>
+<p>The review covers counts/denominators, estimate/test logic,
+statistical method logic, and planned-versus-reported statistical design
+under <a
+href="../QUALITY_CONTROL_SCOPE.md">QUALITY_CONTROL_SCOPE.md</a>. Every
+PDF page is a stable unit, including front matter, administrative
+material and unreported-phase context.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th style="text-align: right;">Total units</th>
+<th style="text-align: right;">Reusable units</th>
+<th style="text-align: right;">Fresh-required units</th>
+<th style="text-align: right;">Freshly mapped units</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOC-001</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td>DOC-002</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">109</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="odd">
+<td>DOC-003</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">16</td>
+<td>COMPLETE</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>134</strong></td>
+<td style="text-align: right;"><strong>134</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: right;"><strong>134</strong></td>
+<td><strong>COMPLETE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Reusable and fresh-required extraction counts partition the unique
+source units. Zero fresh-required units means usable locators existed
+for every page; it does not mean earlier scientific mapping was adopted.
+Fresh main/support mapping covered all 134 units. The <a
+href="review_1_6_2/source_coverage.md">source coverage ledger</a> and <a
+href="review_1_6_2/coverage_manifest.md">coverage manifest</a> record
+closure and disjoint assignments.</p>
+<p>The scope excludes broad methodology, clinical merit, novelty,
+misconduct, raw-data review and preferences for another analysis.
+Peripheral comparisons, context-resolved wording, model-versus-crude
+comparisons, unsupported conditional observations and display-precision
+differences were screened under the stated rules. No coverage or
+candidate-count target governed inclusion.</p>
+<h2 id="quantitative-and-statistical-relationship-coverage">Quantitative
+and Statistical Relationship Coverage</h2>
+<p>Fresh maps enumerate <strong>212 numeric relationships</strong>,
+<strong>114 statistical relationships</strong> and <strong>90
+cross-source relationships</strong>. Numeric records N001–N119 and
+N201–N293 are COMPLETE. Statistical records S001–S114 each have both
+<code>PASS_1_COMPLETE</code> and <code>PASS_2_COMPLETE</code> records.
+The two statistical stages used fresh, distinct high-effort agents, with
+disjoint evidence shards and complete merged coverage.</p>
+<p>Pass 1 examined count/denominator, containment, direction,
+estimate/test, effect-measure, method and planned-design logic. Pass 2
+revisited every statistical relationship, all 19 stable candidates, the
+screening decisions and exact-source recheck facts. It independently
+revisited all <strong>45 actual initial checker excluded-observation
+rows</strong> and added one new excluded precision observation
+concerning main CO&lt;6 per-protocol 39/318 and printed 11.9%. Its
+relative percentage gap is 0.011589, and its RD gap is 0.001913; these
+are within the 0.05 rule. Pass 2 produced no new findings, so no second
+independent finding-screen stage was applicable.</p>
+<p>The audit reconciled duplicate observation crosswalks to existing
+C006/C004 rather than adding issues. It also recorded the governing
+monthly-mean sum 174.29 from the supplied inputs, while preserving the
+earlier 174.19 handoff; half-unit intervals still overlap the printed
+total and the precision exclusion remains unchanged. These are process
+reconciliations, not additional candidates.</p>
+<p>Complete relationship evidence is in the <a
+href="review_1_6_2/relationships/numeric_relationship_inventory.md">numeric
+inventory</a>, <a
+href="review_1_6_2/statistics/relationship_inventory.md">statistical
+inventory</a>, <a
+href="review_1_6_2/checkers/statistical_pass_1.md">statistical pass
+1</a>, <a href="review_1_6_2/checkers/statistical_pass_2.md">statistical
+pass 2</a>, <a
+href="review_1_6_2/checkers/cross_source_consistency.md">cross-source
+check</a> and <a
+href="review_1_6_2/quality/evidence_quality_audit.md">quality
+audit</a>.</p>
+<h2 id="inclusion-screening-summary">Inclusion Screening Summary</h2>
+<p>Inclusion requires reproduction and either an always-register Route A
+category or all Route B criteria: in focus, unresolved by immediate
+context, and bearing on interpretation or extraction. Numeric
+comparisons allow each displayed input/output its half-unit interval; a
+remaining relative gap at most 0.05 is display precision.
+Interval-versus-P/test conflicts are exempt from that rounding rule. A
+display-zero P value alone does not qualify.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Screening decision</th>
+<th style="text-align: right;">Findings</th>
+<th>Reason code</th>
+<th style="text-align: right;">Stable candidate groups</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>INCLUDE</td>
+<td style="text-align: right;">29</td>
+<td>MEETS_THRESHOLD</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td>SCREENED_OUT</td>
+<td style="text-align: right;">1</td>
+<td>CONDITIONAL_OR_UNREPORTED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>19</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Screened-out reason code</th>
+<th style="text-align: right;">Findings in independent screening
+log</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NOT_REPRODUCED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>ROUNDING_OR_DISPLAY_PRECISION</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>NOTATION_OR_TYPOGRAPHY</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>TERMINOLOGY_OR_WORDING</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>MODEL_VERSUS_CRUDE</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>CONTEXT_RESOLVES</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>CONDITIONAL_OR_UNREPORTED</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td>PERIPHERAL_COMPARISON</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>OUT_OF_FOCUS</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>DUPLICATE_OF_INCLUDED</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td><strong>Total SCREENED_OUT</strong></td>
+<td style="text-align: right;"><strong>1</strong></td>
+</tr>
+</tbody>
+</table>
+<p>F-ST1-007 was screened out because country-stratified
+computer-generated lists can implement volume-and-country minimization;
+an omitted implementation detail does not establish a printed
+incompatible algorithm or result. Multiple INCLUDE findings consolidated
+into one issue retain all 29 finding memberships. The 45 checker
+exclusions and one pass-2 precision exclusion are separate observation
+records, not additional findings in the screening-log denominator. The
+audit created no new findings and changed no initial screening
+decisions. C008’s questioned inclusion audit remains visible without
+suppressing its stable ID. Counts reconcile to the <a
+href="review_1_6_2/screening/inclusion_screen.md">independent inclusion
+screen</a>.</p>
+<h2 id="review-domain-summary">Review-Domain Summary</h2>
+<p><code>statistical_results</code> covers result counts, estimates,
+intervals, tests and method logic;
+<code>report_internal_inconsistency</code> covers conflicting result
+attribution within report materials; <code>protocol_report</code> covers
+REPORT versus PLAN statistical design/analysis specifications;
+<code>plan_material</code> covers relevant conflicts solely inside PLAN
+material.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Review domain</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>statistical_results</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td>report_internal_inconsistency</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td>protocol_report</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td>plan_material</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>19</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Primary relationship type</th>
+<th>Definition</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P_R</td>
+<td>REPORT versus PLAN</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td>P_P</td>
+<td>PLAN versus PLAN</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td>S_C</td>
+<td>Different REPORT documents</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td>S_W</td>
+<td>Within one REPORT document</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>19</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Mixed relationships use precedence P_R &gt; P_P &gt; S_C &gt; S_W.
+Corroborating documents do not create conflicting relationships. Every
+card preserves its complete relationship list and compared-role string
+from the current ledger.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Evidence state</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>reproduced</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td>reproduced_after_transcription_correction</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td>not_reproduced</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>19</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Inclusion audit</th>
+<th style="text-align: right;">Candidates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CONFIRMED</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td>QUESTIONED</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>19</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-index">Candidate Index</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Stable ID</th>
+<th>Candidate</th>
+<th>Review domain</th>
+<th>Relationship type</th>
+<th>Evidence state</th>
+<th>Inclusion audit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#c001">C001</a></td>
+<td>Protocol SMS totals and frequency schedules do not reconcile</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a href="#c002">C002</a></td>
+<td>Operational eligibility criteria differ from the plan list</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td><a href="#c003">C003</a></td>
+<td>Prospective quit-date and reminder calendar differ from the
+report</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a href="#c004">C004</a></td>
+<td>Primary cotinine verification lacks a planned-to-reported criterion
+crosswalk</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td><a href="#c005">C005</a></td>
+<td>Primary model changes from protocol Poisson/log link to SAP/report
+logistic</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a href="#c006">C006</a></td>
+<td>Risk-ratio derivation from stated logistic analysis is unclear</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td><a href="#c007">C007</a></td>
+<td>Planned tobacco-use-form adjustment has no reported primary
+counterpart</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a href="#c008">C008</a></td>
+<td>CO&lt;6 sensitivity results appear under a primary-outcome status
+label</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced_after_transcription_correction</td>
+<td>QUESTIONED</td>
+</tr>
+<tr class="odd">
+<td><a href="#c009">C009</a></td>
+<td>Primary missing-outcome handling differs between protocol and
+SAP/report</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a href="#c010">C010</a></td>
+<td>Prespecified gender-specific primary analyses are not reported</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td><a href="#c011">C011</a></td>
+<td>Current primary-data attrition assumptions differ</td>
+<td>protocol_report</td>
+<td>P_R</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a href="#c012">C012</a></td>
+<td>All-cause mortality percentage is attributed to TB-specific
+mortality</td>
+<td>report_internal_inconsistency</td>
+<td>S_C</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td><a href="#c013">C013</a></td>
+<td>Adverse-event narrative reverses two any-symptom arm directions</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a href="#c014">C014</a></td>
+<td>Fourteen interval rows do not reproduce a rule fitting other display
+rows</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td><a href="#c015">C015</a></td>
+<td>Latest protocol and SAP prescribe different failure windows</td>
+<td>plan_material</td>
+<td>P_P</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a href="#c016">C016</a></td>
+<td>Current Phase3 power statements retain different cluster
+allocations</td>
+<td>plan_material</td>
+<td>P_P</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td><a href="#c017">C017</a></td>
+<td>Two cause-of-death percentages do not reconcile within eTable4</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="even">
+<td><a href="#c018">C018</a></td>
+<td>Site 2008 death count and percentage do not reproduce the table
+denominator</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+<tr class="odd">
+<td><a href="#c019">C019</a></td>
+<td>Treatment-failure absolute difference has the opposite signed
+contrast</td>
+<td>statistical_results</td>
+<td>S_W</td>
+<td>reproduced</td>
+<td>CONFIRMED</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-evidence-cards">Candidate Evidence Cards</h2>
+<p>The following cards contain every stable ID in source order. All
+remain Pending Human Adjudication. Exact source links use the actual
+package filenames and PDF page numbers.</p>
+<h2
+id="c001--protocol-sms-totals-and-frequency-schedules-do-not-reconcile" class="candidate-card">C001
+— Protocol SMS totals and frequency schedules do not reconcile</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Protocol SMS totals and
+frequency schedules do not reconcile.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 protocol
+pp.16,53 and SAP p.80 vs REPORT DOC-001 pp.1,3</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route B. B1: the randomized intervention's planned message dose/duration
+is an expressly permitted planned-versus-reported element. B2: each
+protocol paragraph pairs a per-participant total with a frequency
+schedule that cannot produce it even under widened half-unit allowances;
+pilot-refinement permission does not name the governing revised
+schedule. B3: the extractable intervention schedule attached to the
+primary six-month abstinence RR 3.0 is unresolved. The issue is bounded
+to printed intervention specifications.</p>
+<p><strong>Finding IDs:</strong> F-NUM-104, F-XS-005</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=1">DOC-001
+— PDF p. 1</a>, abstract intervention; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+— PDF p. 3</a>, Trial Intervention; REPORT.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=16">DOC-002 — PDF
+p. 16</a>, lines386–390, earlier-component dose paragraph; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=53">DOC-002 — PDF
+p. 53</a>, lines1526–1530, later-component dose paragraph; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=77">DOC-002 — PDF
+p. 77</a>, change note; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=80">DOC-002 — PDF
+p. 80</a>, lines2532–2536, SAP dose; PLAN.</li>
+</ul>
+<p><strong>Source evidence:</strong> The earlier-component paragraph
+says each participant receives 178 SMS over six months: first two months
+4–5/day, next two months 2–3/day, final two months 1–2/week. The
+later-component paragraph says 134 SMS: first two months 4–5/day, next
+two months 1–2/day, final two months 1/week. SAP says 134 over six
+months, 3–4/day in month 1, 1/day in month 2, then 1/month for months
+3–6. The report says 100 in month 1, 30 in month 2, and four further
+messages, one monthly during months 3â6: 134 total.</p>
+<p><strong>Reported-versus-comparator:</strong> Protocol totals 178/134
+and daily/weekly segments versus SAP/report 134 and a two-month
+daily/four-month monthly schedule.</p>
+<p><strong>Reasoning procedure:</strong> Enumerate each transmission
+segment, calculate conservative minima and widened half-unit schedule
+enclosures, then compare the reported and prospective phase-specific
+schedules.</p>
+<p><strong>Calculation:</strong> Nominal conservative 28-day-month
+minima are 344 and 288, respectively. Allow every two-month duration
+[1.5,2.5] months, every frequency endpoint ±0.5, and calendar months
+28–31 days: earlier enclosure [213,725.178572], later [171,636.607143];
+totals178±0.5 and 134±0.5 yield gaps34.5/178=.193820 and
+36.5/134=.272388. For month 2, later-protocol lower 4/day±.5 and
+report1/day±.5 yield gap 2/day, relative 2.0. The categorical
+duration/frequency schedules also differ. The amendment between 178 and
+134 totals is context, not an independent finding.</p>
+<p><strong>Affected result or extracted value:</strong> Planned
+per-participant intervention dose and the delivered schedule attached to
+the primary abstinence RR 3.0[2.0,4.9].</p>
+<p><strong>Why context does not resolve it:</strong> The same protocol
+paragraphs state per-participant receipts and transmission schedules;
+immediate pilot-refinement permission does not identify which
+quantitative schedule governs or reconcile the internal totals. This is
+intervention dose in the permitted cross-comparison tier, not general
+intervention critique.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Totals
+could denote unique templates/branches rather than actual transmissions,
+or the protocol could retain a preliminary schedule. SAP/report could
+implement a pilot-refined schedule. The affected paragraphs do not
+define those substitutions. Actual delivery logs and a schedule revision
+crosswalk are absent.</p>
+<p>Missing definition to resolve: What per-participant totals and
+phase-specific transmission schedules governed Phase 3, and how do the
+protocol's178/134 totals and printed daily/weekly segments map to the
+SAP/report's134-message schedule?</p>
+<p><strong>Classification rationale:</strong> Prospective protocol and
+SAP content are PLAN; implemented intervention descriptions are REPORT.
+Internal protocol schedule/total contrasts and protocol–SAP contrast
+give P_P; protocol–report gives P_R, which has precedence. Agreeing
+report abstract/SAP passages corroborate the implemented side and do not
+create S_C.</p>
+<p><strong>Classification ambiguity:</strong> Unique templates or
+branching might differ from per-person transmissions; pilot refinement
+is expressly possible. Actual transmissions and the applied schedule
+revision are absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Every cited location was found. REPORT <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=1">DOC-001
+p.1</a> states daily messages for two months, then monthly for four; <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">p.3</a>
+specifies 134 unique messages: 100 in month 1, 30 in month 2, four
+thereafter. PLAN <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=16">DOC-002
+p.16</a>, lines386–390, prints each participant receiving 178 over six
+months, first two months 4–5/day, next two 2–3/day, final two 1–2/week.
+PLAN <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=53">p.53</a>,
+lines1526–1530, prints 134, first two months 4–5/day, next two 1–2/day,
+last two 1/week. PLAN SAP <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=80">p.80</a>,
+lines2532–2536, prints 134: month1 3–4/day, month2 1/day, final four
+months 1/month. PLAN <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=77">p.77</a>
+change note was found; it lists sample-size, outcome and operational
+changes but does not supply a schedule crosswalk. Adjacent pp.16,53,80
+permit pilot refinement.</p>
+<p>Inputs available; exact missing inputs: All printed totals, phase
+lengths and frequencies are available. Actual per-person transmission
+logs, whether counts denote unique templates rather than transmissions,
+and the implemented pilot-revision crosswalk are absent.</p>
+<p>Determining recheck fact: Both within-paragraph totals remain below
+conservative rounded schedule minima, and the month 2 protocol/report
+schedules remain separated.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+intervention dose/frequency metadata attached to the primary abstinence
+effect could differ in an evidence-extraction table.</p>
+<h2
+id="c002--operational-eligibility-criteria-differ-from-the-plan-list" class="candidate-card">C002
+— Operational eligibility criteria differ from the plan list</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Operational eligibility
+criteria differ from the plan list.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 pp.11,49 vs
+REPORT DOC-001 pp.2,4 and DOC-003 p.3</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route B. B1: the explicitly planned recent-stop/reduction exception and
+the reported operational reader exclusion bear on the primary analysis
+population. B2: phone access is not an immediate equivalent of an
+available SMS reader, and the finite plan lists do not map the exception
+to the≥25-day condition. B3: eligibility definitions attached to the
+1080-participant primary trial can be copied differently. No changed
+participant count is inferred.</p>
+<p><strong>Finding IDs:</strong> F-XS-008</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=2">DOC-001
+— PDF p. 2</a>, eligibility paragraph; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=4">DOC-001
+— PDF p. 4</a>, Figure1 exclusions; REPORT.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=11">DOC-002 — PDF
+p. 11</a>, lines235–255 complete participant lists; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=49">DOC-002 — PDF
+p. 49</a>, lines1375–1395 complete participant lists; PLAN.</li>
+<li><a href="../joi250093supp2_prod_1768590553.09463.pdf#page=3" target="_blank" rel="noopener">DOC-003
+— PDF p. 3</a>, eTable1 smoking and SMS-reader reasons; REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> Both plan lists permit daily
+smoking or stopping/reducing below daily since TB diagnosis and require
+personal mobile access; neither lists ≥25 smoking days or a
+patient/household SMS reader. Main report requires≥25 days in the last
+month. Figure1/eTable 1 include236 excluded for inability to read with
+no household reader; eTable 1 gives7069 not meeting the recent-smoking
+rule.</p>
+<p><strong>Reported-versus-comparator:</strong> Planned
+daily-smoking/recent-reduction exception and personal phone access
+versus reported ≥25-day smoking and patient/household SMS-reader
+conditions.</p>
+<p><strong>Reasoning procedure:</strong> Match every item in both
+complete planned eligibility lists to the operational report and
+exclusion display; retain overlapping exclusion reasons without deriving
+unique participant deficits.</p>
+<p><strong>Calculation:</strong> Match each finite eligibility-list
+item. Diagnosis, age, consent, quit willingness and mobile access match;
+the explicit recent-reduction exception and reader criterion do not have
+matched counterparts. Reasons overlap, so236 is a reason count rather
+than an inferred additional unique exclusion deficit; no adjusted
+population-size arithmetic is asserted.</p>
+<p><strong>Affected result or extracted value:</strong> Selection rules
+for 1080 randomized participants and the population to which the primary
+abstinence estimate applies.</p>
+<p><strong>Why context does not resolve it:</strong> These are actual
+operational selection rules with a printed exclusion reason, not
+interchangeable wording for daily smoking/phone ownership. The plan
+exception can permit patients failing the report's recent-smoking
+requirement.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Some
+recent reducers may meet25 days; a later operational amendment might
+introduce the reader rule. The amount of participant overlap and any
+amendment are absent.</p>
+<p>Missing definition to resolve: Were recent-stop/reduction smokers
+eligible as planned, and where were the≥25-day and patient/household
+SMS-reader criteria prespecified or amended?</p>
+<p><strong>Classification rationale:</strong> Planned prospective
+eligibility versus actual selection gives P_R/protocol_report. Report
+and results supplement agree on the exclusion and are corroborating
+locations, not an S_C conflict.</p>
+<p><strong>Classification ambiguity:</strong> Some recently reduced
+smokers could meet25days; a later operational amendment could govern.
+Criterion overlap and amendment provenance are missing.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Every cited location was found. PLAN <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=11">DOC-002
+p.11</a>, lines235–255, and <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=49">p.49</a>,
+lines1375–1395, contain complete participant lists: daily smoking OR
+stopping/reducing below daily only since diagnosis, and personal-mobile
+access; neither lists a ≥25-day or SMS-reader criterion. REPORT <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=2">DOC-001
+p.2</a> defines daily smoking as at least one puff on ≥25 days in the
+last month. <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=4">p.4</a>
+Figure1 prints236 unable to read with nobody at home able to read SMS;
+REPORT <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=3">DOC-003
+p.3</a> eTable1 prints the corresponding236 and7069 not smoking at
+least25 days in the past month.</p>
+<p>Inputs available; exact missing inputs: Printed criteria and reason
+counts are available. Individual criterion overlap, the number uniquely
+excluded by each changed rule, and any implementing amendment are
+absent.</p>
+<p>Determining recheck fact: The complete planned lists retain the
+recent-stop/reduction exception and lack the reported recent-smoking and
+SMS-reader criteria.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+the eligibility and population-definition metadata accompanying the
+primary trial effect could differ; no change in the randomized count is
+established.</p>
+<h2
+id="c003--prospective-quit-date-and-reminder-calendar-differ-from-the-report" class="candidate-card">C003
+— Prospective quit-date and reminder calendar differ from the
+report</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Prospective quit-date and
+reminder calendar differ from the report.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 SMS log
+pp.101,103,104,109 vs REPORT DOC-001 p.3</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route B. B1: quit date defines the primary continuous-abstinence start,
+and the dated reminders define the randomized intervention calendar. B2:
+Q(−8), the ordinal8th-day wording and 5 days after enrollment are not
+mapped by the supplied clock definitions or immediate report
+description. B3: the extractable endpoint-start/intervention timing
+differs. Participant-level implementation and outcome reclassification
+are not inferred.</p>
+<p><strong>Finding IDs:</strong> F-XS-006</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+— PDF p. 3</a>, Trial Outcomes and Trial Intervention; REPORT.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=101">DOC-002 —
+PDF p. 101</a>, enrollment Q(−8)/Tx(+1), message6 and footnotes;
+PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=103">DOC-002 —
+PDF p. 103</a>, Q(−1)/Tx(+8) and quit transition; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=104">DOC-002 —
+PDF p. 104</a>, quit-date ordinal label and messages39–44; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=109">DOC-002 —
+PDF p. 109</a>, messages129–134 and follow-up phase; PLAN.</li>
+</ul>
+<p><strong>Source evidence:</strong> Report sets quit date5 days after
+enrollment and sends4 messages,1/month during months 3–6. Log pairs
+enrollment withQ(−8)/Tx(+1), Q(−1)/Tx(+8) with a tomorrow-quit
+instruction, and quit date with “8th day since joining mTB-Tobacco”;
+message6 atQ(−7) says7 days from today. Final daily messages
+endQ(+41)/Tx(+50). Reminder132
+isQ(+52)/Tx(+61),133Q(+112)/Tx(+121),134Q(+180)/Tx(+189), with texts
+naming treatmentmonths2,4,6.</p>
+<p><strong>Reported-versus-comparator:</strong> Prospective
+Q(−8)/ordinal eighth-day quit anchor and dated reminders versus reported
+five days after enrollment and monthly reminders in months 3–6.</p>
+<p><strong>Reasoning procedure:</strong> Read the Q/Tx footnotes and all
+dated quit/reminder anchors; compare elapsed-day and inclusive ordinal
+alternatives against the report schedule.</p>
+<p><strong>Calculation:</strong> For the direct Q(−8) versus 5-day
+anchors, rounded ranges[7.5,8.5] and[4.5,5.5] yield gap 2/5=.40.
+Inclusive ordinal-day reading could yield7elapsed days; [6.5,7.5]
+versus[4.5,5.5] yields gap 1/5=.20. Three versus four reminders alone
+has touching count intervals and does not qualify independently. The
+different dated calendar and primary-start anchors remain the basis.</p>
+<p><strong>Affected result or extracted value:</strong> Start of the
+primary continuous-abstinence assessment and intervention reminder
+timing/duration.</p>
+<p><strong>Why context does not resolve it:</strong> Neither the dated
+prospective log nor report maps joining, enrollment and treatment clocks
+to the other schedule or identifies an implemented revision; the primary
+endpoint is defined since quit date.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The log
+may be preliminary and refined after piloting; enrollment and treatment
+dates may differ; ordinal day numbering may count enrollment as day1.
+The report's actual delivered-log revision and clock crosswalk are
+absent.</p>
+<p>Missing definition to resolve: How do the report's5 days after
+enrollment and the log'sQ(−8)/“8th day since joining” quit anchors map,
+and which reminder-calendar revision was delivered?</p>
+<p><strong>Classification rationale:</strong> A prospective operational
+message log is PLAN by content; actual reported endpoint/intervention
+timing is REPORT. This is P_R/protocol_report. No plan-only clock
+contrast is registered separately.</p>
+<p><strong>Classification ambiguity:</strong> Joining, enrollment,
+quit-date and treatment clocks require a supplied crosswalk; ordinal
+counting and pilot refinement are alternative explanations.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Every cited location was found. REPORT <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+p.3</a> sets quitdate5 days after enrollment and four reminders,
+one/month in months3–6. PLAN prospective <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=101">DOC-002
+p.101</a> labels enrollment Q(−8)/Tx(+1); footnotes define Q as days to
+quitdate and Tx(+1) as first treatment day; message6 atQ(−7) says seven
+days from today. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=103">p.103</a>
+labels Q(−1)/Tx(+8) and message38 quitting tomorrow. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=104">p.104</a>
+labels QUIT DATE the8th day since joining; messages39–44 are quit-day
+messages. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=109">p.109</a>
+ends daily messages129–131 atQ(+41)/Tx(+50), then
+reminder132Q(+52)/Tx(+61),133Q(+112)/Tx(+121),134Q(+180)/Tx(+189),
+naming treatmentmonths2,4,6.</p>
+<p>Inputs available; exact missing inputs: Log timing labels, footnote
+definitions and report schedule are available. Delivered-log revision,
+enrollment/joining/treatment clock crosswalk and operational quit-date
+choice are absent.</p>
+<p>Determining recheck fact: The footnoted Q(−8) enrollment anchor and
+ordinal label cannot be matched to the reported5-day anchor by ordinary
+half-unit precision; no explicit clock crosswalk is printed.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy a different continuous-abstinence start or
+intervention reminder calendar.</p>
+<h2
+id="c004--primary-cotinine-verification-lacks-a-planned-to-reported-criterion-crosswalk" class="candidate-card">C004
+— Primary cotinine verification lacks a planned-to-reported criterion
+crosswalk</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Primary cotinine verification
+lacks a planned-to-reported criterion crosswalk.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 pp.8,47,84 vs
+REPORT DOC-001 p.3</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route B. B1: this compares explicit planned and implemented primary
+biochemical endpoint decision specifications. B2: the named graded
+NicAlert level &lt;3 rule and binary-negative AllTest rule do not supply
+a common concentration definition; assay names do not establish
+equivalence. B3: the verification criterion attached to primary
+abstinence among concomitant smokeless-tobacco users cannot be extracted
+as a single supplied numeric criterion. This is not a demonstrated
+concentration change or changed event count.</p>
+<p><strong>Finding IDs:</strong> F-XS-007</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+— PDF p. 3</a>, Trial Outcomes cotinine verification; REPORT.</li>
+<li><a href="../joi250093supp1_prod_1768590553.08963.pdf#page=8" target="_blank" rel="noopener">DOC-002
+— PDF p. 8</a>, lines158–161 primary endpoint; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=47">DOC-002 — PDF
+p. 47</a>, lines1298–1301 primary endpoint; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=84">DOC-002 — PDF
+p. 84</a>, lines2661–2665 SAP primary endpoint; PLAN.</li>
+</ul>
+<p><strong>Source evidence:</strong> Protocol names Accutest NicAlert
+strips on a 0–6scale and level &lt;3, described as 100–200 ng/mL, as
+abstinence. SAP repeats the graded level &lt;3criterion. Report names a
+Hangzhou AllTest rapid-test cassette and defines a negative result as
+verification of abstinence for concomitant smokeless-tobacco use.</p>
+<p><strong>Reported-versus-comparator:</strong> Planned NicAlert graded
+level &lt;3 criterion versus reported negative AllTest cassette
+criterion; concentration equivalence is undefined.</p>
+<p><strong>Reasoning procedure:</strong> Match the named assay, scale
+and abstinence decision criterion; identify the absent concentration
+crosswalk without inferring assay nonequivalence.</p>
+<p><strong>Calculation:</strong> Match the explicit primary
+classification procedure and decision criterion: graded level &lt;3 on a
+specified strip versus a binary negative result on a named different
+cassette. Numerical threshold equivalence cannot be computed because the
+cassette negative-result concentration is absent. No numerical threshold
+discrepancy or participant reclassification is asserted.</p>
+<p><strong>Affected result or extracted value:</strong> Biochemical
+primary-abstinence classification among baseline concomitant
+smokeless-tobacco users.</p>
+<p><strong>Why context does not resolve it:</strong> The supplied
+sources specify different decision outputs and named assays for the same
+primary classification, with no mapping; a reader cannot identify the
+operative concentration criterion from immediate report text. This is an
+endpoint specification comparison within focusD, not a critique of assay
+choice.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+cassette negative cutoff may implement exactly the planned graded
+threshold, or an amended criterion may have been used. Those are
+source-bounded alternatives; equivalence is not inferable from assay
+names. The assay crosswalk is absent.</p>
+<p>Missing definition to resolve: What concentration criterion defined a
+negative AllTest cassette result, and how did it implement the planned
+NicAlertlevel &lt;3primary criterion?</p>
+<p><strong>Classification rationale:</strong> Protocol/SAP endpoint
+rules are PLAN; the implemented endpoint procedure is REPORT. All
+relationships are P_R, hence protocol_report. Agreement among plan
+passages introduces no P_P.</p>
+<p><strong>Classification ambiguity:</strong> Equivalent classifications
+by the two assays remain possible. The cutoff crosswalk and applicable
+assay amendment are absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Every cited location was found. PLAN <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=8">DOC-002
+p.8</a>, lines158–161, and <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=47">p.47</a>,
+lines1298–1301, name Accutest NicAlert strips, graded0–6, level&lt;3,
+described as100–200ng/mL. PLAN SAP <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=84">p.84</a>,
+lines2661–2665, repeats graded0–6 andlevel&lt;3. REPORT <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+p.3</a> names Hangzhou AllTest rapid-test cassette; a negative result
+verifies abstinence for concomitant baseline smokeless-tobacco use.</p>
+<p>Inputs available; exact missing inputs: Named procedures and decision
+outputs are available; cassette concentration cutoff, grade-to-binary
+mapping and any assay amendment are absent.</p>
+<p>Determining recheck fact: The report uses a differently named
+assay/output without stating how its negative result implements the
+planned graded criterion.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+primary biochemical-verification metadata could specify a different or
+incompletely defined decision criterion; no event-count effect is
+established.</p>
+<h2
+id="c005--primary-model-changes-from-protocol-poissonlog-link-to-sapreport-logistic" class="candidate-card">C005
+— Primary model changes from protocol Poisson/log link to SAP/report
+logistic</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Primary model changes from
+protocol Poisson/log link to SAP/report logistic.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 protocol
+pp.28,66 vs PLAN DOC-002 SAP pp.91,92 and REPORT DOC-001 p.3</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route A, category5: the planned Poisson/log-link primary analysis has no
+supplied reported counterpart, and SAP/report name logistic analysis for
+that categorical primary endpoint. SAP/report agreement or a possible
+superseding plan is an alternative explanation, not removal of this
+always-register planned-analysis comparison.</p>
+<p><strong>Finding IDs:</strong> F-XS-001, F-ST1-003</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+— PDF p. 3</a>, Statistical Analysis; REPORT.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=28">DOC-002 — PDF
+p. 28</a>, lines759–764 statistical-analysis paragraph; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=66">DOC-002 — PDF
+p. 66</a>, lines2011–2016 statistical-analysis paragraph; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=77">DOC-002 — PDF
+p. 77</a>, change note; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=91">DOC-002 — PDF
+p. 91</a>, lines2884–2889 primary model; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=92">DOC-002 — PDF
+p. 92</a>, lines2919–2926 adjusted model; PLAN.</li>
+</ul>
+<p><strong>Source evidence:</strong> Both protocol statistical-analysis
+paragraphs specify generalized linear mixed models with log link and
+underlying Poisson distribution, cluster random intercept,
+crude/adjustedRRs and 95% CIs. SAP specifies mixed-effects logistic
+regression with site random effect andRR; report specifies logistic
+regression within the mixed-effects framework for categorical
+outcomes.</p>
+<p><strong>Reported-versus-comparator:</strong> Protocol
+Poisson/log-link primary model versus SAP/report logistic model for the
+same categorical endpoint.</p>
+<p><strong>Reasoning procedure:</strong> Match the primary endpoint
+across named model families/links and inspect the supplied amendment
+context for a replacement mapping.</p>
+<p><strong>Calculation:</strong> Compare explicitly named families/links
+for the same primary six-month binary abstinence analysis: log(p)=η
+versus logit(p)=η are distinct model specifications. No
+display-precision rule applies to categorical model-family statements.
+The supplied change note identifies other amendments but gives no
+model-replacement mapping.</p>
+<p><strong>Affected result or extracted value:</strong> Primary ITTRR
+3.0[2.0,4.9], adjustedRR3.2[2.2,5.2], and their
+analysis-prespecification provenance.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category5
+registers a planned primary analysis replaced/notreported; SAP/report
+agreement does not remove the protocol's planned model or document its
+replacement.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> SAP may
+supersede the protocol; a separate Poisson analysis may exist; the
+report's family wording may describe another computation. Model code,
+hierarchy and replacement disclosure are absent.</p>
+<p>Missing definition to resolve: Which family/link generated the
+reported primary RRs/CIs, and where is the protocol Poisson/log-link
+replacement or distinct-analysis mapping documented?</p>
+<p><strong>Classification rationale:</strong> Protocol–SAP gives P_P;
+protocol–report gives P_R. P_R takes precedence, giving protocol_report.
+A physical supplement containing the plan remains PLAN.</p>
+<p><strong>Classification ambiguity:</strong> Final plan hierarchy,
+actual fitted family/link and whether a separate Poisson analysis exists
+remain unknown.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Every cited location was found. PLAN <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=28">DOC-002
+p.28</a>, lines759–764, and <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=66">p.66</a>,
+lines2011–2016, state generalized linear mixed models, log link,
+underlying Poisson distribution, cluster random intercept and
+crude/adjustedRRs with95%CIs. PLAN SAP <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=91">p.91</a>,
+lines2884–2889, states mixed-effects logistic regression for the primary
+result, site random effect andRR; <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=92">p.92</a>,
+lines2919–2926, also names logistic. REPORT <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+p.3</a> states logistic regression within the mixed-effects framework
+for categorical outcomes. PLAN <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=77">DOC-002
+p.77</a> change note gives other amendments but no model
+replacement.</p>
+<p>Inputs available; exact missing inputs: Model-family text,
+random-effect statements and primary-analysis attribution are available.
+Final fitted code, protocol/SAP hierarchy, model replacement disclosure
+and result-to-model mapping are absent.</p>
+<p>Determining recheck fact: Both protocol model paragraphs retain
+Poisson/log-link while SAP/report print logistic for the primary
+categorical analysis.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extracted primary model-family and prespecification metadata could
+differ. An alternative treatment-effect estimate is not calculated.</p>
+<h2
+id="c006--risk-ratio-derivation-from-stated-logistic-analysis-is-unclear" class="candidate-card">C006
+— Risk-ratio derivation from stated logistic analysis is unclear</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Risk-ratio derivation from
+stated logistic analysis is unclear.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 p.3 method
+vs REPORT DOC-001 p.6 RR labels; REPORT DOC-003 pp.11,13,14 affected
+displays</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route B. B1: a source-grounded model-to-effect-measure chain is
+statistical method logic. B2: logistic regression plus anRR label alone
+does not identify the required prediction/conversion or different fitted
+link, and immediate methods/table notes do not state one. B3: the
+conditional or marginal risk estimand attached to primaryRR3.0/3.2 and
+its uncertainty is unresolved. This is not a demonstration that a
+coefficient odds ratio was numerically printed as a risk ratio.</p>
+<p><strong>Finding IDs:</strong> F-ST1-002</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+— PDF p. 3</a>, Statistical Analysis categorical model; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">DOC-001
+— PDF p. 6</a>, Table2 RR columns and notea; REPORT.</li>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=11">DOC-003 — PDF
+p. 11</a>, eTable7 relative-risk row; REPORT.</li>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=13">DOC-003 — PDF
+p. 13</a>, eTable9 RR columns; REPORT.</li>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=14">DOC-003 — PDF
+p. 14</a>, eTable9 notee; REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> The report states mixed-effects
+logistic regression for categorical outcomes. Table 2 labels primary 3.0
+[2.0,4.9] and adjusted 3.2 [2.2,5.2] as RR; eTables 7/9 repeat RR
+labels.</p>
+<p><strong>Reported-versus-comparator:</strong> Reported logistic
+mixed-effects model versus RR output labels without an identified
+prediction/conversion step.</p>
+<p><strong>Reasoning procedure:</strong> Trace the stated categorical
+model to the named effect measure; distinguish coefficient odds ratios
+from risk quantities requiring another operation, without assuming which
+computation occurred.</p>
+<p><strong>Calculation:</strong> For logit(p)=η, exponentiating a
+treatment coefficient produces an OR. An RR requires prediction,
+standardization, conversion, or a different fitted link. No step is
+named between the stated logistic model and these risk-based estimates;
+no OR-to-RR numerical identity or crude-ratio discrepancy is
+asserted.</p>
+<p><strong>Affected result or extracted value:</strong> The risk-based
+estimand and uncertainty attached to primary RR 3.0/3.2 and other
+displayed RRs.</p>
+<p><strong>Why context does not resolve it:</strong> A needed
+estimand-producing step is absent from the stated
+model-to-effect-measure chain, leaving marginal versus conditional risk
+quantities unidentified from immediate methods and notes.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Standardized predicted risks may produce the RRs; a log-link model may
+have been fitted; logistic wording may describe a separate analysis.
+Model code, averaging distribution, conversion rule and row-specific
+mapping are absent.</p>
+<p>Missing definition to resolve: What prediction, standardization,
+conversion or fitted-link rule produced the printed RRs and CIs from the
+stated logistic mixed-effects analysis?</p>
+<p><strong>Classification rationale:</strong> Main method-to-label
+comparison is inside one REPORT, giving S_W/statistical_results.
+Supplementary risk labels repeat affected output conventions; they do
+not conflict with main risk labels and therefore do not create S_C. A
+corroborating SAP is not a relationship.</p>
+<p><strong>Classification ambiguity:</strong> A legitimate
+predicted-risk derivation, another fitted link or separate analysis is
+possible. Conditional versus marginal estimand andCI construction are
+missing definitions.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Every cited location was found. REPORT <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+p.3</a> names mixed-effects logistic regression for categorical
+outcomes. REPORT <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">p.6</a>
+Table2 prints primaryRR3.0[2.0,4.9], adjustedRR3.2[2.2,5.2], and RR
+labels for remaining fitted categorical rows; notea names mixed-effects
+models forRR. REPORT <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=11">DOC-003
+p.11</a> eTable7 ends with a relative-risk95%CI row; <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=13">p.13</a>
+eTable9 prints crude/adjustedRR columns including
+primary2.9[1.8,6.4]/3.1[1.9,6.5]; <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=14">p.14</a>
+notee names mixed-effectsRR models, without a risk-conversion rule.</p>
+<p>Inputs available; exact missing inputs: Model-family statement, risk
+labels and printed results are available. Fitted link per result,
+transformation/prediction formula, averaging distribution, conditional
+versus marginal estimand and correspondingCI procedure are absent.</p>
+<p>Determining recheck fact: The logistic statement and RR result labels
+are present, but no operation connecting them is stated in the cited
+methods/notes.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could attach a different conditional or marginal risk
+estimand and uncertainty interpretation to the printed RRs.</p>
+<h2
+id="c007--planned-tobacco-use-form-adjustment-has-no-reported-primary-counterpart" class="candidate-card">C007
+— Planned tobacco-use-form adjustment has no reported primary
+counterpart</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Planned tobacco-use-form
+adjustment has no reported primary counterpart.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 SAP p.92 vs
+REPORT DOC-001 pp.3,4,6 and DOC-003 p.14</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route A, category5: the explicitly planned tobacco-use-form term in the
+fully adjusted primary model has no counterpart in repeated finite
+reported adjustment lists or a separately supplied planned-model result.
+Possible omission from the description is an alternative, not evidence
+that the planned result was supplied.</p>
+<p><strong>Finding IDs:</strong> F-XS-003, F-ST1-005</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+— PDF p. 3</a>, finite post hoc fixed-effect list; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=4">DOC-001
+— PDF p. 4</a>, Primary Outcome adjusted analysis; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">DOC-001
+— PDF p. 6</a>, Table2 notea; REPORT.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=92">DOC-002 — PDF
+p. 92</a>, lines2919–2926 fully adjusted models; PLAN.</li>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=14">DOC-003 — PDF
+p. 14</a>, eTable9 notee; REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> SAP fully adjusted models include
+sociodemographic variables alongside tobacco use form and other baseline
+characteristics. The report and Table 2/eTable 9 notes repeatedly give
+the finite post hoc set age, sex, education, occupation, smoking
+duration; tobacco form is absent. Primary adjusted RR is 3.2 [2.2,5.2]
+and death-excluded adjusted RR 3.1 [1.9,6.5].</p>
+<p><strong>Reported-versus-comparator:</strong> Planned tobacco-use-form
+adjustment versus the repeated finite five-term reported post hoc
+adjustment list.</p>
+<p><strong>Reasoning procedure:</strong> Match the explicitly planned
+primary covariate to every finite reported adjustment list and seek a
+separately reported planned-model result.</p>
+<p><strong>Calculation:</strong> Item-match the explicitly planned
+tobacco-form term to the finite reported list. No term or result for
+that prespecified fully adjusted primary model is supplied; precision is
+inapplicable to covariate inclusion.</p>
+<p><strong>Affected result or extracted value:</strong> Adjusted primary
+and sensitivity RRs and whether they represent the planned fully
+adjusted analysis.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 5
+applies to a planned primary analysis replaced or not reported; post hoc
+selection does not supply the planned model's result.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Tobacco
+form may have been fitted but omitted from repeated descriptions,
+dropped intentionally or merged into another variable. The fitted list
+and planned-model result are absent.</p>
+<p>Missing definition to resolve: Was tobacco use form included, and
+where is the planned fully adjusted primary result or its documented
+replacement?</p>
+<p><strong>Classification rationale:</strong> Prospective SAP adjustment
+rule versus reported model descriptions gives P_R/protocol_report.
+Agreement among reported lists is corroboration, without S_C/S_W
+conflict.</p>
+<p><strong>Classification ambiguity:</strong> The term might be fitted
+but omitted in prose, aliased, intentionally removed or amended. Actual
+model formula, term mapping and planned-model result are absent.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Every cited location was found. PLAN <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=92">DOC-002
+p.92</a>, lines2919–2926, specifies fully adjusted models controlled for
+sociodemographic variables alongside tobacco-use form and other baseline
+characteristics. REPORT <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+p.3</a> gives post hoc fixed effects age, sex, education, occupation and
+smoking duration. REPORT <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=4">p.4</a>
+adjusted-primary paragraph repeats those five andRR3.2[2.2,5.2]; <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">p.6</a>
+Table2 notea gives the same five. REPORT <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=14">DOC-003
+p.14</a> eTable9 notee repeats those five for death-excluded adjusted
+results. All four affected reported descriptions were matched.</p>
+<p>Inputs available; exact missing inputs: Planned covariate and
+reported lists are available. Actual model matrix/formula, any alias for
+tobacco form, the planned-model result and documented replacement are
+absent.</p>
+<p>Determining recheck fact: Tobacco-use form is expressly planned yet
+lacks a counterpart in every cited reported primary/adjusted-model
+list.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+adjustment-set and planned-versus-post-hoc provenance attached to
+primary/sensitivity RRs could differ.</p>
+<h2
+id="c008--co6-sensitivity-results-appear-under-a-primary-outcome-status-label" class="candidate-card">C008
+— CO&lt;6 sensitivity results appear under a primary-outcome status
+label</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> CO&lt;6 sensitivity results
+appear under a primary-outcome status label.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, S_C, S_W</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 p.84 primary
+definition vs REPORT DOC-001 p.6 and DOC-003 p.13 primary blocks; REPORT
+DOC-001 p.3 sensitivity statement</p>
+<p><strong>Evidence state:</strong>
+reproduced_after_transcription_correction</p>
+<p><strong>Inclusion audit:</strong> QUESTIONED The printed headings and
+threshold descriptions reproduce, but an actual change of outcome status
+under Route A, category 5 is not established. Main methods explicitly
+call CO&lt;6 a post hoc sensitivity performed for the primary outcome;
+eTable 9 explicitly identifies its entire display as post-hoc
+sensitivity. Grouping sensitivities of the primary construct under a
+primary-outcome block can reconcile the cited locations at once. The
+cited sources do not state that CO&lt;6 became a prespecified primary
+endpoint. Thus the Route A5 premise depends on interpreting a block
+heading as formal endpoint hierarchy, and Route B2 is not established by
+these immediate contexts. This is an inclusion audit question, not a
+change to the original INCLUDE decision or the stable candidate's
+status.</p>
+<p><strong>Finding IDs:</strong> F-ST1-008</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+— PDF p. 3</a>, primaryCO&lt;10 and posthocCO&lt;6 sensitivity;
+REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">DOC-001
+— PDF p. 6</a>, Table2 Primary outcome block, both CO&lt;6 ITT and PP
+rows; REPORT.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=84">DOC-002 — PDF
+p. 84</a>, lines2653–2669 primary endpoint; PLAN.</li>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=13">DOC-003 — PDF
+p. 13</a>, eTable9 Primary outcomes CO&lt;6row; REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> SAP defines primary verification as
+CO&lt;10 ppm. Main p.3 explicitly calls CO&lt;6 post hoc sensitivity.
+Main p.6 nevertheless places both CO&lt;6 rows in Primary outcome:
+ITT264/720 vs38/360, RR 3.7[2.4,5.8], adjusted 3.9[2.4,6.9]; PP264/667
+vs39/318 (printed usual-care percentage 11.9%), RR 3.6[2.14,6.87],
+adjusted 3.8[2.3,7.7]. eTable 9, titled Post-hoc sensitivity analysis
+after excluding deaths, also places CO&lt;6 under Primary
+outcomes:264/695 vs38/333, RR 3.6[2.4,5.4], adjusted 3.8[2.4,6.2]. The
+status convention remains an explicit alternative; promotion to a
+prespecified endpoint is not inferred.</p>
+<p><strong>Reported-versus-comparator:</strong> Planned CO&lt;10 primary
+definition and explicitly post hoc CO&lt;6 sensitivity versus
+primary-outcome block placement of all three CO&lt;6 rows.</p>
+<p><strong>Reasoning procedure:</strong> Read the planned threshold,
+methods sensitivity statement, both main rows and the entire
+supplementary title/block; distinguish endpoint hierarchy from display
+grouping.</p>
+<p><strong>Calculation:</strong> Compare categorical outcome status for
+the same biochemical threshold. The primary-status block contains an
+alternative post hoc threshold alongside the prespecified primary
+threshold; numeric rounding does not apply.</p>
+<p><strong>Affected result or extracted value:</strong> Outcome-status
+extraction accompanying both main CO&lt;6 ITT and PP rows and the
+supplementary excluding-deaths CO&lt;6 row.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 5
+applies to a reproduced planned-outcome status difference; the post hoc
+table title supplies a possible display convention without removing its
+printed Primary outcomes block.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+block may organize analyses of the primary construct, including
+sensitivities, rather than declare additional primary endpoints. That
+convention is not explicitly distinguished.</p>
+<p>Missing definition to resolve: Do all three CO&lt;6 rows retain post
+hoc sensitivity status despite placement in primary blocks, and what
+outcome-status metadata accompanies their estimates?</p>
+<p><strong>Classification rationale:</strong> Roles follow content:
+prospective SAP is PLAN, trial tables/methods are REPORT. The registered
+status comparison generates P_R, S_C and S_W, with P_R taking precedence
+and protocol_report following that type. Preserve these registered
+fields while carrying the ambiguity below; the underlying formal-status
+interpretation is not independently confirmed by this audit. The
+recheck's p.6 location correction and addition of S_W are supported, so
+its evidence state remains
+reproduced_after_transcription_correction.</p>
+<p><strong>Classification ambiguity:</strong> If primary blocks merely
+group analyses of the primary construct, the plan corroborates the
+CO&lt;10 endpoint rather than providing a conflicting status statement.
+P_R and the cross-report status comparison therefore depend on the same
+unestablished formal-hierarchy reading. No hierarchy promotion,
+prespecification claim, or implemented threshold change is inferred.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: All four cited locations were found. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=84">DOC-002
+p.84</a>, lines2654–2660, defines the primary endpoint as six-month
+continuous abstinence verified by CO&lt;10 ppm. <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+p.3</a> explicitly identifies CO&lt;6 ppm as a post hoc sensitivity of
+the primary outcome. <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">DOC-001
+p.6</a>, Table2, places both CO&lt;6 rows in the Primary outcome block:
+ITT 264/720 versus38/360, RR3.7 [2.4,5.8]; PP264/667 versus39/318, RR3.6
+[2.14,6.87]. <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=13">DOC-003
+p.13</a>, eTable9, is explicitly titled Post-hoc sensitivity analysis
+(intention to treat) after excluding deaths, but its Primary outcomes
+block also contains CO&lt;6:264/695 versus38/333, crudeRR3.6 [2.4,5.4],
+adjustedRR3.8 [2.4,6.2]. Every affected CO&lt;6 row at the cited
+displays was confirmed.</p>
+<p>Necessary inputs available; missing definitions: Threshold
+definitions, table titles, and block headings are available. The missing
+input is the intended status convention of the primary blocks: formal
+endpoint hierarchy versus grouping all analyses of the primary
+construct.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+the outcome-status metadata accompanying CO&lt;6 sensitivity estimates
+could differ. The questioned audit and explicit sensitivity context
+constrain this possibility.</p>
+<h2
+id="c009--primary-missing-outcome-handling-differs-between-protocol-and-sapreport" class="candidate-card">C009
+— Primary missing-outcome handling differs between protocol and
+SAP/report</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Primary missing-outcome
+handling differs between protocol and SAP/report.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 protocol
+pp.28,66 vs PLAN DOC-002 SAP p.91 and REPORT DOC-001 pp.3,4</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route B. B1: missing-outcome handling for the primary ITT is focus D.
+B2: the separately headed protocol outcomes paragraph says MAR, while
+SAP/report assign missing primary outcomes nonabstinent status, without
+an outcome-specific mapping or replacement hierarchy. Adjacent economic
+text is a plausible restriction but does not expressly restrict the
+paragraph. B3: the missingness assumptions attached to primary ITT
+300/720 versus 55/360 and RR 3.0 [2.0,4.9] could differ in extraction or
+interpretation. The observation is a printed specification contrast, not
+merely an absent imputation detail.</p>
+<p><strong>Finding IDs:</strong> F-XS-002, F-ST1-004</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+— PDF p. 3</a>, missing-primary-outcome paragraph; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=4">DOC-001
+— PDF p. 4</a>, Figure1 attrition and analysis totals; REPORT.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=28">DOC-002 — PDF
+p. 28</a>, lines759–764 separately headed Statistical analysis;
+PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=66">DOC-002 — PDF
+p. 66</a>, lines2012–2016 separately headed Statistical analysis;
+PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=91">DOC-002 — PDF
+p. 91</a>, lines2890–2892 ITT and Russell Standard; PLAN.</li>
+</ul>
+<p><strong>Source evidence:</strong> Protocol says outcomes primarily
+analyzed in a missing-at-random architecture. SAP regards
+dropout/incomplete data as continuing smokers. Report treats missing
+primary outcomes as negative/not abstinent: 53/720 and 42/360, total 95,
+are missing; primary ITT retains 720/360 and complete-case sensitivity
+discards missing.</p>
+<p><strong>Reported-versus-comparator:</strong> Protocol
+missing-at-random architecture versus SAP/report deterministic
+missing-as-smoking primary classification.</p>
+<p><strong>Reasoning procedure:</strong> Read the separately headed
+protocol analysis paragraphs, SAP primary ITT rule and report
+missing-outcome handling; retain economic adjacency as an alternative
+restriction.</p>
+<p><strong>Calculation:</strong> MAR is a stated missingness
+architecture; assigning all missing primary outcomes nonabstinent is a
+deterministic classification. No supplied passage maps them to a
+combined or separately identified primary analysis. No bias or
+alternative efficacy result is calculated.</p>
+<p><strong>Affected result or extracted value:</strong> Missing-outcome
+assumptions attached to ITT 300/720 versus 55/360 and RR 3.0
+[2.0,4.9].</p>
+<p><strong>Why context does not resolve it:</strong> The MAR paragraph
+has its own Statistical analysis heading; adjacency to economic
+imputation does not restrict it explicitly to costs/QALYs/covariates.
+Complete-case sensitivity is separately stated.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> MAR may
+concern another imputation/covariate/economic model, or SAP may
+supersede the protocol. Neither restriction nor replacement mapping is
+supplied.</p>
+<p>Missing definition to resolve: Which primary missing-data
+architecture applied, and how do MAR and missing-as-smoking map to
+identified analyses or amendments?</p>
+<p><strong>Classification rationale:</strong> Prospective protocol and
+SAP passages are PLAN; article methods/flow are REPORT. Protocol versus
+report yields P_R; protocol versus SAP yields P_P. P_R precedes P_P and
+fixes protocol_report. The flow only corroborates retained denominators;
+it creates no additional relationship. Evidence state reproduced is
+supported by the direct-source recheck.</p>
+<p><strong>Classification ambiguity:</strong> MAR and deterministic
+smoking status can apply to distinct analyses; the source does not map
+their scope. Economic adjacency and possible SAP supersession are
+retained alternatives, rather than inferred chronology.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=28">DOC-002
+p.28</a>, lines759–764, and <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=66">p.66</a>,
+lines2011–2016, separately headed Statistical analysis, both state that
+outcomes will primarily be analyzed in a missing-at-random architecture.
+Both follow economic complete-case/imputation paragraphs but say
+Outcomes without an economic restriction. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=91">SAP p.91</a>,
+lines2890–2892, explicitly identifies primary ITT and regards
+dropout/incomplete data as continuing smokers. <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+p.3</a> treats missing primary outcomes as negative/not abstinent and
+separately discards missing outcomes for complete-case analysis. <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=4">DOC-001
+p.4</a>, Figure1, confirms missing53 and42, including deaths25 and27,
+and primary analysis totals720 and360.</p>
+<p>Necessary inputs available; missing definitions: Printed handling
+statements and retained denominators are available; outcome-specific MAR
+applicability, the imputation model/variables, and an explicit
+replacement/amendment hierarchy are absent.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+missing-data assumptions recorded for the primary ITT effect could
+differ; the effect of another missing-data analysis is
+unestablished.</p>
+<h2
+id="c010--prespecified-gender-specific-primary-analyses-are-not-reported" class="candidate-card">C010
+— Prespecified gender-specific primary analyses are not reported</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Prespecified gender-specific
+primary analyses are not reported.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 SAP
+pp.92,93,99 vs REPORT DOC-001 pp.3,5 and DOC-003 p.12</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route A, category 5: an explicitly planned subgroup analysis of the
+primary treatment effect is not reported in the complete supplied
+subgroup results or matched main narrative. This is distinct from
+omission of ancillary non-key secondary outcomes. The SAP anticipates
+disclosure of unavailable confidence intervals, so sparse enrollment
+does not supply an observed removal or nonestimation explanation.</p>
+<p><strong>Finding IDs:</strong> F-XS-004, F-ST1-006</p>
+<p><strong>Qualifying route:</strong> Route A, category 5</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+— PDF p. 3</a>, prespecified subgroup list; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=5">DOC-001
+— PDF p. 5</a>, subgroup consistency narrative; REPORT.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=92">DOC-002 — PDF
+p. 92</a>, lines2936–2939 subgroup analysis introduction; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=93">DOC-002 — PDF
+p. 93</a>, lines2940–2952, gender and interval disclosure; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=99">DOC-002 — PDF
+p. 99</a>, Gender Male/Female table shell; PLAN.</li>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=12">DOC-003 — PDF
+p. 12</a>, complete eTable8; REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> SAP specifies primary
+treatment-effect sensitivity models by age, education, occupation,
+gender male/female, and smoking duration, each with RR and 95% CI and
+disclosure of missing CIs. eTable 8 and main subgroup narrative contain
+age, education, occupation, smoking duration, reading SMS, without
+gender rows/results or nonestimability explanation. Male baseline counts
+are 698/720 and 345/360.</p>
+<p><strong>Reported-versus-comparator:</strong> Planned male/female
+primary subgroup RR/CI analyses versus their absence from the complete
+supplied subgroup results.</p>
+<p><strong>Reasoning procedure:</strong> Match planned subgroup prose
+and table shells to the complete main narrative and eTable 8;
+distinguish unreported results from evidence that no analysis was
+performed.</p>
+<p><strong>Calculation:</strong> Match each planned subgroup to the
+complete supplied subgroup display and narrative. Gender has no reported
+counterpart; the blank Male/Female SAP shell corroborates the planned
+prose and is not a result.</p>
+<p><strong>Affected result or extracted value:</strong> Planned
+male/female primary RRs/CIs and the robustness scope of the primary
+abstinence analysis.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 5
+applies to an unreported planned primary analysis. Sparse female
+observations may explain nonestimation, but the SAP expressly
+anticipates unavailable-interval disclosure.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+analysis may have been infeasible, performed but omitted, or removed by
+amendment. No explanation or result is supplied.</p>
+<p>Missing definition to resolve: Where are the planned male/female
+primary results or the disclosed reason estimates/CIs were unavailable
+or removed?</p>
+<p><strong>Classification rationale:</strong> PLAN SAP versus REPORT
+methods/results gives P_R and protocol_report. Main/supplement omissions
+agree; there is no S_C discrepancy. The recheck establishes cited plan
+wording and absence at complete report displays, supporting reproduced.
+One issue contains both male/female planned rows and both checker
+findings.</p>
+<p><strong>Classification ambiguity:</strong> Absence is bounded to the
+complete supplied report package; it does not establish that an analysis
+was never performed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=92">SAP p.92</a>,
+lines2936–2939, specifies subgroup sensitivity analyses of primary
+treatment-effect stability. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=93">p.93</a>,
+lines2940–2952, includes gender male/female, separate mixed-effects
+subgroup models, RR/95%CI, and disclosure of missing CIs. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=99">p.99</a>
+contains blank Gender Male/Female table-shell rows. <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+p.3</a> lists prespecified age, education, employment, and
+smoking-duration subgroups; <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=5">p.5</a>
+narrative adds reading SMS but reports no gender effect; its baseline
+table shows male698/720 and345/360, female22 and15. The complete <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=12">DOC-003
+p.12</a>, eTable8, contains All, Age, Education, Occupation, Smoking
+Duration, Reading SMS, and no gender rows.</p>
+<p>Necessary inputs available; missing definitions: Plan models and
+complete reported subgroup categories are available. Male/female RR/CI
+outputs, sex-specific abstinence counts/model estimability, and a reason
+for omission/removal are absent.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence summary could overstate the reported coverage of
+prespecified primary subgroup analyses or omit the absence of
+sex-specific estimates.</p>
+<h2 id="c011--current-primary-data-attrition-assumptions-differ" class="candidate-card">C011 —
+Current primary-data attrition assumptions differ</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Current primary-data attrition
+assumptions differ.</p>
+<p><strong>Review domain:</strong> protocol_report</p>
+<p><strong>Relationship type:</strong> P_R</p>
+<p><strong>All relationships:</strong> P_R, P_P</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 protocol
+pp.48,62 vs PLAN DOC-002 pp.63,64,83 and REPORT DOC-001 p.3; PLAN
+DOC-002 p.77 amendment context</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route B. B1: attrition allowance is focus D and is attached to the
+reported primary sample-size/power rationale. B2: 10% appears in
+combined-plan overview and statistics introduction, while both
+phase-specific calculations and the SAP combined overview use 20%; no
+explicit differing definition or surviving-input hierarchy reconciles
+them. B3: a reader could extract 10% or 20% as the attrition assumption
+supporting the 1080-participant, 90%-power primary design. Amendment
+context changes sample sizes but does not expressly reconcile these
+percentages.</p>
+<p><strong>Finding IDs:</strong> F-XS-010, F-ST1-010</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+— PDF p. 3</a>, sample-size20%attrition; REPORT.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=48">DOC-002 — PDF
+p. 48</a>, lines1344–1347 primary-data10%; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=62">DOC-002 — PDF
+p. 62</a>, lines1861–1863 primary-data10%; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=63">DOC-002 — PDF
+p. 63</a>, lines1894–1898 Phase3 20%calculation; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=64">DOC-002 — PDF
+p. 64</a>, lines1936–1938 Phase4 contextual20%calculation; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=77">DOC-002 — PDF
+p. 77</a>, sample-sizeamendment; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=83">DOC-002 — PDF
+p. 83</a>, lines2624–2638 SAP20%; PLAN.</li>
+</ul>
+<p><strong>Source evidence:</strong> Current protocol
+overview/statistics introduction uses 10% missing primary outcome data.
+Detailed Phase 3 calculation uses 20%, 587+(587×.2)=704, then 1080. SAP
+and report also use 20%; Phase 4 20% is contextual rather than an
+additional reported result.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed 10% primary-data
+missingness inputs versus detailed PLAN/SAP/report 20% attrition
+inputs.</p>
+<p><strong>Reasoning procedure:</strong> Match combined-study and
+phase-specific inputs, SAP and report power rationale, and the explicit
+amendment; compare printed percentage intervals.</p>
+<p><strong>Calculation:</strong> Printed input copies 10±0.5% and
+20±0.5% give gap 9 percentage points and relative gap 9/10=0.90. The
+expressly stated additive inflation formula is not challenged; no
+alternative power result is asserted.</p>
+<p><strong>Affected result or extracted value:</strong> Attrition
+assumption attached to reported 90% power and 1080-participant primary
+design.</p>
+<p><strong>Why context does not resolve it:</strong> Current passages
+refer to the same primary-data assumption without distinguishing phase
+or missingness type; the amendment does not map surviving 10% statements
+to a superseded input.</p>
+<p><strong>Alternative source-grounded interpretations:</strong>
+Overview/introduction may retain a previous assumption while
+detail/SAP/report use 20%. A final hierarchy or dated calculation is
+absent.</p>
+<p>Missing definition to resolve: Which primary-data attrition
+assumption governed Phase 3, and how do the surviving 10% and 20%
+specifications relate?</p>
+<p><strong>Classification rationale:</strong> Protocol versus SAP/detail
+inputs yields P_P; 10% protocol versus 20% report yields P_R. P_R takes
+precedence and fixes protocol_report. The amendment is PLAN context; it
+is not a separate conflicting relationship. The exact-source recheck
+supports reproduced.</p>
+<p><strong>Classification ambiguity:</strong> Combined-study missingness
+could have a separate definition, or 10% could be a retained overview
+input. No final hierarchy is inferred solely from bundle order, labels,
+or surviving prose. Describe these as supplied-plan passages rather than
+claim an undisclosed chronological precedence.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=48">DOC-002
+p.48</a>, lines1344–1347, combined study total2716 assumes10% do not
+provide primary data. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=62">p.62</a>,
+lines1861–1863, repeats2716 and10%. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=63">p.63</a>,
+lines1894–1898, Phase3 assumes20% and prints587+(587×0.2)=704. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=64">p.64</a>,
+lines1936–1938, Phase4 likewise uses20%,864+(864×0.2)=1036. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=83">SAP p.83</a>,
+lines2624–2638, combined overview and Phase3 both use20%; Phase3
+proceeds to1080. <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+p.3</a> also says anticipated20% attrition in the1080-participant
+calculation. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=77">DOC-002
+p.77</a>, lines2416–2424, discloses sample-size revisions from888 to1080
+for Phase3 and1480 to1620 for Phase4, without explicitly reconciling
+attrition percentages.</p>
+<p>Necessary inputs available; missing definitions: Percentages, phase
+labels, additive formula and amendment summary are available. A dated
+applicable-input hierarchy or explanation distinguishing combined-study
+missingness from phase-specific attrition is absent.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+sample-size/power metadata could carry 10% or 20% as the governing
+attrition assumption; achieved power is not recalculated.</p>
+<h2
+id="c012--all-cause-mortality-percentage-is-attributed-to-tb-specific-mortality" class="candidate-card">C012
+— All-cause mortality percentage is attributed to TB-specific
+mortality</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> All-cause mortality percentage
+is attributed to TB-specific mortality.</p>
+<p><strong>Review domain:</strong> report_internal_inconsistency</p>
+<p><strong>Relationship type:</strong> S_C</p>
+<p><strong>All relationships:</strong> S_C, S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 p.8
+discussion vs REPORT DOC-001 pp.1,4,5,6 and DOC-003 p.6</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route B. B1: this is an explicitly in-scope misattributed result;
+cause-specific versus all-cause mortality changes which outcome receives
+a printed risk. B2: the report distinguishes 32 TB deaths and 52 total
+deaths but describes 4.8% of participants as dying of TB; the immediate
+discussion supplies no alternate numerator or cause definition. B3:
+six-month TB-specific mortality could be extracted as 4.8% or
+32/1080≈3.0%. The outcome-attribution domain is appropriate, rather than
+a separate claim that the death totals fail.</p>
+<p><strong>Finding IDs:</strong> F-NUM-001, F-XS-012</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=1">DOC-001
+— PDF p. 1</a>, 1080randomized,corroboratingdenominator; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=4">DOC-001
+— PDF p. 4</a>, Figure1 death25/27 and1080enrolled; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=5">DOC-001
+— PDF p. 5</a>, TBcause32/52; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">DOC-001
+— PDF p. 6</a>, Table2 deaths25/720and27/360; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=8">DOC-001
+— PDF p. 8</a>, discussion4.8%diedofTB; REPORT.</li>
+<li><a href="../joi250093supp2_prod_1768590553.09463.pdf#page=6" target="_blank" rel="noopener">DOC-003
+— PDF p. 6</a>, eTable4 total52 andTB32; REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> Discussion says 4.8% of trial
+participants died of TB within six months. Main results say TB caused
+61.5% [32/52] of deaths. Figure 1/Table 2 show 25+27=52 deaths among
+1080 participants. eTable 4 separately identifies 32 TB and 20
+other-cause deaths.</p>
+<p><strong>Reported-versus-comparator:</strong> Discussion TB-specific
+mortality 4.8% versus 32 TB-attributed deaths/1080; 52 all-cause
+deaths/1080 instead reproduces 4.8%.</p>
+<p><strong>Reasoning procedure:</strong> Match cause labels, total/cause
+counts and enrolled denominator across narrative, flow and tables;
+reconstruct both cause-specific and all-cause risks.</p>
+<p><strong>Calculation:</strong> 32/1080×100=2.962963% versus
+52/1080×100=4.814815%. TB rounded-input range is
+100×[31.5/1080.5,32.5/1079.5]=[2.915317,3.010653]%, disjoint from
+printed 4.8±.05=[4.75,4.85]%; gap 1.739347/4.8=.362364. The all-cause
+ratio overlaps 4.8%.</p>
+<p><strong>Affected result or extracted value:</strong> Six-month
+TB-specific mortality risk, extractable as 4.8% or 32/1080≈3.0%.</p>
+<p><strong>Why context does not resolve it:</strong> The cause label
+changes which outcome receives the number; the report explicitly
+distinguishes TB from other causes and supplies no alternate cause
+population.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+discussion may intend all-cause mortality among participants with TB;
+another cause classification or denominator might underlie 4.8%, but
+none is stated.</p>
+<p>Missing definition to resolve: Does 4.8% mean all-cause mortality
+among participants with TB or TB-attributed deaths, and which
+numerator/denominator defines the latter?</p>
+<p><strong>Classification rationale:</strong> Main discussion versus
+main cause report yields S_W; discussion versus supplementary cause
+report yields S_C. S_C takes precedence; both sources are REPORT by
+result content. The inconsistency concerns outcome attribution and fixes
+report_internal_inconsistency. Denominator/death summaries corroborate
+the arithmetic. No prospective plan relationship is added. Recheck
+supports reproduced.</p>
+<p><strong>Classification ambiguity:</strong> The discussion may mean
+all-cause mortality among trial participants with TB rather than
+TB-attributed deaths; that interpretation explains 52/1080 but is not
+its literal cause label.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=8">DOC-001
+p.8</a> explicitly attributes4.8% within six months to deaths of TB. <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=5">p.5</a>
+specifies TB as61.5% [32/52] of deaths. <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=6">DOC-003
+p.6</a>, eTable4, confirms52 total,25/27 by arm,32 TB deaths,16/16 by
+arm, and20 deaths across other causes. <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=1">DOC-001
+p.1</a> confirms1080 randomized; <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=4">p.4</a>
+Figure1 confirms720/360, deaths25/27; <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">p.6</a>
+Table2 Death confirms25/720 and27/360. Every cited supporting location
+was visually matched.</p>
+<p>Necessary inputs available; missing definitions: Counts, enrollment,
+time horizon and cause table are available. No alternate TB-attributable
+cause definition, denominator, or adjudication mapping yielding4.8% is
+supplied.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could take 4.8% as TB-specific mortality rather than
+distinguish it from all-cause mortality and 32/1080.</p>
+<h2
+id="c013--adverse-event-narrative-reverses-two-any-symptom-arm-directions" class="candidate-card">C013
+— Adverse-event narrative reverses two any-symptom arm directions</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Adverse-event narrative
+reverses two any-symptom arm directions.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 p.5
+prevalence pairs vs same-paragraph direction; REPORT DOC-003 p.15
+corroborates and supplies severity alternative</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Reproduced and qualifying by
+Route A, category 2: the arm-direction statement reverses the adjacent
+any-symptom percentages for two symptoms, with relative precision gaps
+above 0.05. Immediate recoverability of the numeric direction does not
+remove an always-register direction conflict. Preserve the distinct
+moderate/severe interpretation as a source-grounded alternative.</p>
+<p><strong>Finding IDs:</strong> F-NUM-002, F-XS-013</p>
+<p><strong>Qualifying route:</strong> Route A, category 2</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=5">DOC-001
+— PDF p. 5</a>, Adverse Events ordered percentages and summarysentence;
+REPORT.</li>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=15">DOC-003 — PDF
+p. 15</a>, eTable10 irritability/anxiety severity rows; REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> Main Adverse Events fixes arm order
+mHealth versus usual care, prints irritability 40.5% versus 43.4% and
+anxiety 33.3% versus 36.8%, then says both were more common in mHealth.
+eTable 10 None percentages 59.5/56.6 and 66.7/63.2 corroborate those
+prevalences; moderate/severe frequencies are higher in mHealth.</p>
+<p><strong>Reported-versus-comparator:</strong> Any-irritability 40.5%
+versus 43.4% and any-anxiety 33.3% versus 36.8%, in mHealth/usual-care
+order, versus a sentence stating greater frequency in mHealth.</p>
+<p><strong>Reasoning procedure:</strong> Fix the printed arm order,
+compare any-symptom direction to the adjacent sentence, then examine the
+separate moderate/severe quantities as an alternative.</p>
+<p><strong>Calculation:</strong> mHealth-minus-usual-care rounded
+prevalence differences are [−3.00,−2.80] and [−3.60,−3.40] percentage
+points. Gap/control-reference ratios are 2.80/43.4=.064516 and
+3.40/36.8=.092391. Both directions remain lower mHealth. Dry mouth 62.7
+versus 55.7 agrees and is contextual.</p>
+<p><strong>Affected result or extracted value:</strong> Any-irritability
+and any-anxiety frequency directions by randomized arm.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 2
+applies to a printed direction reversing the values, even when the
+intended direction may be reconstructed immediately.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+sentence may refer instead to moderate/severe symptoms; eTable 10
+supports that distinct quantity, but the sentence names no switch.</p>
+<p>Missing definition to resolve: Does more common refer to any
+irritability/anxiety or moderate/severe burden, and which quantity and
+arm direction should be extracted?</p>
+<p><strong>Classification rationale:</strong> Competing percentages and
+direction are within a single REPORT paragraph, giving
+S_W/statistical_results. Supplementary severity/prevalence rows
+corroborate the printed percentages and supply an alternative quantity;
+they are not a conflicting report and add no S_C. Recheck supports
+reproduced. No plan is a comparator.</p>
+<p><strong>Classification ambiguity:</strong> The paragraph might switch
+from any symptom to moderate/severe burden without stating that switch;
+severity and prevalence are separate quantities.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=5">DOC-001
+p.5</a>, Adverse Events, fixes mHealth/usual-care order, prints
+irritability40.5%/43.4% and anxiety33.3%/36.8%, then says dry mouth,
+irritability and anxiety were more common in mHealth. <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=15">DOC-003
+p.15</a>, eTable10, confirms irritability None59.5%/56.6% and anxiety
+None66.7%/63.2%, whose complements match those any-symptom frequencies.
+Moderate/severe percentages are irritability11.2+4.3=15.5%
+versus7.2+1.2=8.4%; anxiety6.9+2.4=9.3% versus3.6+0.3=3.9%. Both
+repeated affected symptoms were confirmed.</p>
+<p>Necessary inputs available; missing definitions: Arm order,
+any-symptom percentages, and severity rows are available. The missing
+definition is whether more common switches from any symptom to
+moderate/severe burden.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an evidence summary could copy the sentence’s symptom-frequency
+direction or the opposite direction from the any-symptom
+percentages.</p>
+<h2
+id="c014--fourteen-interval-rows-do-not-reproduce-a-rule-fitting-other-display-rows" class="candidate-card">C014
+— Fourteen interval rows do not reproduce a rule fitting other display
+rows</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Fourteen interval rows do not
+reproduce a rule fitting other display rows.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-001 p.6 Table2
+within-display rows and REPORT DOC-003 pp.12,13 respective
+within-display rows</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> The exact recheck confirms
+all fourteen triples and the independent calculation reproduces all
+fourteen relative gaps above .05. Route A category 4 applies because the
+same diagnostic reproduces other rows of each display within the
+workflow tolerance. Unreported row-specific construction remains a human
+question, not a reason to suppress the observed pattern.</p>
+<p><strong>Finding IDs:</strong> F-ST1-001</p>
+<p><strong>Qualifying route:</strong> Route A, category 4</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">DOC-001
+— PDF p. 6</a>,
+Table2CO10PPadjusted,CO6PPcrude/adjusted,self-reportadjusted;
+REPORT.</li>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=12">DOC-003 — PDF
+p. 12</a>,
+eTable8All,age≥40,primary,secondary,active,dependent,smoking&lt;24,readingNo;
+REPORT.</li>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=13">DOC-003 — PDF
+p. 13</a>, eTable9CO10crude/adjusted; REPORT.</li>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=14">DOC-003 — PDF
+p. 14</a>, population/adjustmentnotes; REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> All 14 affected RR/lower/upper
+triples and their rounded-input reconstruction ranges are preserved in
+the detailed numeric list below. The Table 2 adjusted self-report upper
+endpoint is literally 42 in the supplied source, without a decimal
+point. Each source row was visually confirmed.</p>
+<p><strong>Reported-versus-comparator:</strong> Fourteen printed RR
+interval triples versus the rounded-input U*=E²/L reconstruction that
+reproduces other rows of each display.</p>
+<p><strong>Reasoning procedure:</strong> Read every affected triple at
+the exact display, preserve its literal precision, construct half-unit
+enclosures, and apply the same diagnostic to comparator rows in that
+display.</p>
+<p><strong>Calculation:</strong> Apply U*=E²/L, with range
+[(E−hE)²/(L+hL),(E+hE)²/(L−hL)] versus [U−hU, U+hU], using exact
+displayed half-units. Every listed gap/U exceeds .05. The rule
+reproduces other rows of each display; it is a reconstruction diagnostic
+rather than a claim about an unstated Wald method. No point is outside
+its printed CI and no CI/P conflict is inferred.</p>
+<p><strong>Affected result or extracted value:</strong> The 14 upper CI
+endpoints and corresponding primary/sensitivity/subgroup
+uncertainty.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 4
+requires inclusion when a rule reproduces other display rows but fails
+these rows beyond precision; unknown row-specific construction is the
+human question.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> Profile
+likelihood, bootstrap, marginal-risk or other nonsymmetric intervals may
+explain rows; procedures may differ by row. Fitted covariance/SE and
+construction definitions are absent.</p>
+<p>Missing definition to resolve: Which estimate/interval construction
+produced every listed row, and are the printed limits, including 42,
+intended for that construction?</p>
+<p><strong>Classification rationale:</strong> Every comparison is within
+its own REPORT display. Combining occurrences of one rule does not
+create S_C. No PLAN location is a conflicting comparator;
+S_W/statistical_results is retained.</p>
+<p><strong>Classification ambiguity:</strong> Row-specific interval
+procedures are unavailable. No universal Wald or log-symmetric interval
+requirement is asserted.</p>
+<h3 id="detailed-interval-reconstruction-for-c014">Detailed interval
+reconstruction for C014</h3>
+<p>Each line gives display/row, printed E; L; U, independently
+recomputed U* interval, gap, and gap/|U|. Every displayed input/output
+receives its own half-unit; a literal42 receives±0.5, not±0.05.</p>
+<ul>
+<li>Table 2 CO10 PP adjusted: 3.1; 2.1; 5.2; reconstructed
+[4.326744,4.840244]; gap 0.309756; relative 0.059568.</li>
+<li>Table 2 CO6 PP crude: 3.6; 2.14; 6.87; reconstructed
+[5.875291,6.240047]; gap 0.624953; relative 0.090968.</li>
+<li>Table 2 CO6 PP adjusted: 3.8; 2.3; 7.7; reconstructed
+[5.984043,6.587778]; gap 1.062222; relative 0.137951.</li>
+<li>Table 2 self-report adjusted: 2.8; 1.9; 42; reconstructed
+[3.878205,4.390541]; gap 37.109459; relative 0.883559.</li>
+<li>eTable 8 All: 2.890; 1.983; 4.709; reconstructed
+[4.209332,4.214371]; gap 0.494129; relative 0.104933.</li>
+<li>eTable 8 Age≥40: 2.953; 2.048; 5.092; reconstructed
+[4.255434,4.260397]; gap 0.831103; relative 0.163217.</li>
+<li>eTable 8 Primary: 2.638; 1.849; 4.07; reconstructed
+[3.761236,3.766125]; gap 0.298875; relative 0.073434.</li>
+<li>eTable 8 Secondary: 2.719; 1.348; 4.83; reconstructed
+[5.480343,5.488445]; gap 0.645343; relative 0.133611.</li>
+<li>eTable 8 Active: 2.989; 1.933; 4.885; reconstructed
+[4.619153,4.624637]; gap 0.259863; relative 0.053196.</li>
+<li>eTable 8 Dependent: 2.587; 1.329; 3.986; reconstructed
+[5.031954,5.039636]; gap 1.045454; relative 0.262281.</li>
+<li>eTable 8 Smoke&lt;24: 3.511; 1.884; 7.127; reconstructed
+[6.539459,6.546659]; gap 0.579841; relative 0.081358.</li>
+<li>eTable 8 Reading No: 2.198; 1.288; 3.299; reconstructed
+[3.747774,3.754099]; gap 0.448274; relative 0.135882.</li>
+<li>eTable 9 CO10 crude: 2.9; 1.8; 6.4; reconstructed
+[4.390541,4.972857]; gap 1.377143; relative 0.215179.</li>
+<li>eTable 9 CO10 adjusted: 3.1; 1.9; 6.5; reconstructed
+[4.770513,5.363514]; gap 1.086486; relative 0.167152.</li>
+</ul>
+<p>Reproducing comparators: Table 2 self-report crude 2.7 [1.8,4.1],
+week 9 crude 2.6 [1.8,3.9]/adjusted 2.7 [1.8,4.3], month 6 crude 2.7
+[2.0,3.8]/adjusted 2.7 [1.9,4.0], and success 1.2 [.9,1.6]/1.2 [.9,1.5]
+have overlapping reconstruction/printed intervals. In eTable 8, age
+&lt;40 gives [4.846799,4.853725] versus [4.8565,4.8575], relative gap
+.000571; smoking ≥24 gives [3.857124,3.862770] versus [3.9105,3.9115],
+relative gap .012204; no formal education and reading Yes also pass the
+.05 rule. In eTable 9, CO&lt;6 3.6 [2.4,5.4]/3.8 [2.4,6.2], week 9 2.5
+[1.7,3.6]/2.6 [1.7,3.8], month 6 2.58 [1.8,3.6]/2.7 [1.8,4.0], and
+success 1.1 [.7,1.6]/1.1 [.7,1.5] have overlapping intervals. These
+source-confirmed comparators establish the observed reproducing rule
+without asserting a universal inferential construction.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Yes for every affected row in <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">DOC-001
+p.6, Table 2</a>, <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=12">DOC-003 p.12,
+eTable 8</a> and <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=13">DOC-003 p.13,
+eTable 9</a>. <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=14">DOC-003 p.14
+notes</a> identify RR, covariate adjustment and mixed-effects
+clustering, but no row-specific interval construction. All are REPORT by
+displayed trial-results content. Table 2 self-report adjusted upper
+endpoint is literally <code>42</code>, and its lower endpoint is
+<code>1.9</code>; no decimal was silently inserted.</p>
+<p>Necessary inputs available: Every printed triple and display
+precision needed for this diagnostic is available. Exact missing
+inputs/definitions: Fitted coefficients/covariance, transformation from
+model to RR, interval-construction algorithm and any row-specific method
+switches are absent. No universal Wald construction,
+confidence-interval/P-value conflict or point-outside-interval issue is
+inferred.</p>
+<p>Determining fact: all 14 printed triples match and all 14 diagnostic
+interval gaps remain &gt;.05 relatively.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+one or more of the 14 printed upper limits could be copied with an
+uncertainty construction that differs from the intended row-specific
+procedure. No pooled-effect or conclusion change is established.</p>
+<h2
+id="c015--latest-protocol-and-sap-prescribe-different-failure-windows" class="candidate-card">C015
+— Latest protocol and SAP prescribe different failure windows</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Latest protocol and SAP
+prescribe different failure windows.</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002 pp.9,47,77,85;
+REPORT DOC-001 pp.1,3,6 identifies affected result</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Route B is reproduced and
+meets B1 through a planned key-secondary endpoint definition, B2 because
+retained protocol/SAP definitions and the report do not specify their
+governing hierarchy, and B3 because the definition attached to the
+reported failure result remains unresolved.</p>
+<p><strong>Finding IDs:</strong> F-XS-009, F-ST1-011</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a href="../joi250093supp1_prod_1768590553.08963.pdf#page=9" target="_blank" rel="noopener">DOC-002
+— PDF p. 9</a>, lines179–180 month-5 definition, explicitly headed V6.0;
+PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=47">DOC-002 — PDF
+p. 47</a>, lines1319–1320month6definition; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=77">DOC-002 — PDF
+p. 77</a>, lines2413–2415 explicit5→6amendment; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=85">DOC-002 — PDF
+p. 85</a>, lines2685–2686SAPmonth5; PLAN.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=1">DOC-001
+— PDF p. 1</a>, key-secondaryfailureproportions; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">DOC-001
+— PDF p. 3</a>, outcomedetailpointer; REPORT.</li>
+<li><a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">DOC-001
+— PDF p. 6</a>, Table2failure1/720versus2/360; REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> Protocol p.9, explicitly headed
+V6.0, and SAP p.85 define failure as remaining smear-positive at month 5
+or later; protocol p.47 uses month 6 or later. The amendment explicitly
+replaces month 5 with month 6 in v6. Report prints failure 1/720 versus
+2/360 without an explicit competing window.</p>
+<p><strong>Reported-versus-comparator:</strong> Current supplied
+protocol/SAP failure definitions of month 5 or later versus month 6 or
+later and an explicit 5→6 amendment.</p>
+<p><strong>Reasoning procedure:</strong> Read current version headers,
+both categorical failure windows and the explicit amendment, then locate
+the abstract proportions and Table 2 counts without adding an unstated
+report window.</p>
+<p><strong>Calculation:</strong> These are exact categorical endpoint
+windows, not rounded month measurements. The amendment reconciles
+historical protocol changes but not the SAP's retained month-5 rule. No
+patient reclassification or event-count discrepancy is inferred.</p>
+<p><strong>Affected result or extracted value:</strong> Definition
+attached to abstract key-secondary failure proportions0.1% and 0.5%,
+Table 2 counts 1/720 and 2/360, and TB programme outcome
+classification.</p>
+<p><strong>Why context does not resolve it:</strong> SAP and amended
+protocol prescribe different windows for a reported key-secondary
+endpoint; the report does not identify which classified its three
+events.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+amended month-6 rule, SAP month-5 rule or programme-register rule may
+govern. A finalized endpoint dictionary is absent.</p>
+<p>Missing definition to resolve: Were failures classified using month 5
+or later or month 6 or later, and which supplied plan rule governed the
+three reported events?</p>
+<p><strong>Classification rationale:</strong> All conflicting thresholds
+are prospective PLAN content in one bundle. The report supplies no
+competing month threshold and therefore adds no P_R. P_P/plan_material
+is retained.</p>
+<p><strong>Classification ambiguity:</strong> Final endpoint dictionary
+and governing amendment/SAP hierarchy are absent. PDF p.9 is explicitly
+headed V6.0; its earlier position does not establish an earlier
+version.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+value/text matched; comparator matched: Yes. <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=9">DOC-002 p.9
+lines179–180</a> says month 5 or later and is headed V6.0 07.03.25; <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=47">p.47
+lines1319–1320</a> says month 6 or later; <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=77">p.77
+lines2413–2415</a> explicitly describes replacing month 5 with month 6
+in v6; <a href="../joi250093supp1_prod_1768590553.08963.pdf#page=85" target="_blank" rel="noopener">SAP
+p.85 lines2685–2686</a> retains month 5 or later. All four are PLAN by
+prospective endpoint/amendment content. REPORT impact locations <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=1">DOC-001
+p.1 abstract</a>, <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=3">p.3
+Trial Outcomes</a> and <a
+href="../jama_zahid_2025_oi_250093_1768590553.08463.pdf#page=6">p.6
+Table 2</a> contain the secondary failure result/pointer; Table 2 prints
+1/720 versus 2/360. Abstract prints failure 0.1% versus0.5%; it does not
+itself print the event counts or define a smear window.</p>
+<p>Inputs available/missing: Competing definitions, explicit amendment
+and three reported events are available. Final endpoint dictionary,
+amendment/SAP hierarchy, event smear dates and programme-register
+classification rules actually used are absent. Alternative
+interpretation: Amended protocol could govern, SAP could govern, or
+programme records could apply a separately defined rule. Direct versus
+inferred: Contradictory printed windows are direct; participant
+reclassification or numerical outcome effects are unestablished.</p>
+<p>Determining fact: exact plan month-5 and month-6 windows remain
+different after reading the amendment.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+endpoint-definition metadata for the three reported treatment failures
+could specify month 5 or month 6; patient reclassification is
+unestablished.</p>
+<h2
+id="c016--current-phase-3-power-statements-retain-different-cluster-allocations" class="candidate-card">C016
+— Current Phase 3 power statements retain different cluster
+allocations</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Current Phase 3 power
+statements retain different cluster allocations.</p>
+<p><strong>Review domain:</strong> plan_material</p>
+<p><strong>Relationship type:</strong> P_P</p>
+<p><strong>All relationships:</strong> P_P</p>
+<p><strong>Compared document roles:</strong> PLAN DOC-002
+pp.48,63,65,77,83; PLAN p.64 peripheral Phase4context</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Route B is reproduced and
+satisfies B1 for primary trial power/allocation inputs, B2 because the
+current repeated paragraph is not explicitly historical or a distinct
+calculation, and B3 for allocation assumptions attached to the
+1080-participant/27-cluster primary design. The qualifying relative gap
+is .0625 for the intervention-arm input.</p>
+<p><strong>Finding IDs:</strong> F-XS-011, F-ST1-009</p>
+<p><strong>Qualifying route:</strong> Route B</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=48">DOC-002 — PDF
+p. 48</a>, lines1348–1353poweroverview; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=63">DOC-002 — PDF
+p. 63</a>, lines1886–1907Phase3power/allocation; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=64">DOC-002 — PDF
+p. 64</a>, Phase4allocationcontext; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=65">DOC-002 — PDF
+p. 65</a>, lines1958–1963repeatedpowerparagraph; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=77">DOC-002 — PDF
+p. 77</a>, lines2416–2424allocationamendment; PLAN.</li>
+<li><a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=83">DOC-002 — PDF
+p. 83</a>, lines2629–2642SAPallocation; PLAN.</li>
+</ul>
+<p><strong>Source evidence:</strong> Current overview/detail/SAP give
+Phase 3 18 intervention and 9 control clusters, total 27, 90% power at
+5%, 18%/8% abstinence. The repeated current protocol paragraph gives 16
+and 8 with the same power/rates. The amendment changes 16/8 to 18/9. Its
+Phase 4 20/20 versus other 18/18 is unreported-phase peripheral
+context.</p>
+<p><strong>Reported-versus-comparator:</strong> Current Phase 3 power
+inputs 18/9 versus 16/8 intervention/control clusters with the same
+rates and power.</p>
+<p><strong>Reasoning procedure:</strong> Match Phase 3 rates, power and
+allocation in each current PLAN paragraph and amendment; calculate
+arm-input precision gaps and retain Phase 4 only as context.</p>
+<p><strong>Calculation:</strong> 18±.5 versus 16±.5 yields gap
+1/16=.0625. Independently rounded arm sums give [26,28] versus [23,25],
+gap 1/24=.041667, which does not independently qualify; 9-versus-8
+intervals touch. The intervention-arm power input supplies the
+reproduced basis.</p>
+<p><strong>Affected result or extracted value:</strong> Phase 3
+allocation and power inputs underlying the 1080-participant,27-cluster
+primary trial.</p>
+<p><strong>Why context does not resolve it:</strong> The repeated
+current paragraph attaches the same power/rates to 16/8 without labeling
+it historical; this changes a primary analysis-population/power input
+rather than an administrative site copy.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> The
+repeated paragraph may carry forward earlier text, or both allocations
+may have been evaluated without being distinguished. The governing final
+power calculation is absent.</p>
+<p>Missing definition to resolve: Which Phase 3 allocation and power
+calculation governs, and should the current 16/8 paragraph be read as
+historical?</p>
+<p><strong>Classification rationale:</strong> Conflicting power inputs
+are solely PLAN content. The observed27-cluster trial corroborates one
+specification without adding P_R. P_P/plan_material is retained.</p>
+<p><strong>Classification ambiguity:</strong> The amendment discloses
+the change; p.65 may retain historical text without naming it. Separate
+unreported Phase4 inputs remain peripheral context.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Yes. PLAN <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=48">DOC-002 p.48
+lines1348–1350</a> gives 18 intervention and 9 control clusters, 90%
+power, 5% level, 18%/8% abstinence; <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=63">p.63
+lines1886–1907</a> gives these rates/power and 27 clusters, 18/9
+allocation, and1080 participants; <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=65">p.65
+lines1958–1961</a> retains 16 intervention and8 control with the same
+rates/power; <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=77">p.77
+lines2416–2424</a> explicitly describes increasing Phase3 v4 16/8,888
+participants to v6 18/9,1080; <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=83">SAP p.83
+lines2629–2638</a> gives27 clusters,2:1,90%/5%,18%/8%,1080. All are PLAN
+by prospective design/power content. Peripheral PLAN <a
+href="../joi250093supp1_prod_1768590553.08963.pdf#page=64">p.64
+Phase4</a> uses18/18, while the repeated p.65 Phase4 paragraph
+uses20/20; p.77 amendment describes40→36 Phase4 clusters. This context
+does not expand the included Phase3 issue.</p>
+<p>Inputs available/missing: Allocations, rates, significance/power and
+disclosed amendment are available. A final governing power calculation
+and an explicit statement that p.65 is historical or a distinct scenario
+are absent. Alternative interpretation: p.65 may retain earlier-version
+text; both allocations might have been evaluated without being
+differentiated. The source itself discloses the change, so no
+undisclosed amendment is asserted. Direct versus inferred: Direct is the
+incompatible repeated current-plan power-input paragraph; its production
+mechanism is inferred and unestablished.</p>
+<p>Determining fact: current supplied plan power paragraphs retain18
+versus 16 intervention clusters beyond the workflow precision
+threshold.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+primary trial power/allocation metadata could carry 16 or 18
+intervention clusters as the governing design input.</p>
+<h2
+id="c017--two-cause-of-death-percentages-do-not-reconcile-within-etable-4" class="candidate-card">C017
+— Two cause-of-death percentages do not reconcile within eTable 4</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Two cause-of-death percentages
+do not reconcile within eTable 4.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-003 p.6 affected
+cells vs same-table death total</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Route A category3 applies to
+each source-confirmed count/denominator/percentage cell. Both half-unit
+reconstructions leave relative gap .228327&gt;.05. Recovering a likely
+percentage does not remove the printed reading; both occurrences belong
+to one pattern.</p>
+<p><strong>Finding IDs:</strong> F-NUM-101</p>
+<p><strong>Qualifying route:</strong> Route A, category 3</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a href="../joi250093supp2_prod_1768590553.09463.pdf#page=6" target="_blank" rel="noopener">DOC-003
+— PDF p. 6</a>, eTable4usual-careDruguser,Severepneumonia,Totaldeaths;
+REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> eTable 4 usual-care Drug user and
+Severe pneumonia each print 1(7.4%), with Total deaths 27. Overall
+affected counts are 1 and mHealth 0. Stroke 2(7.4%) and fall 1(3.7%)
+support the common denominator; all cause counts sum 27.</p>
+<p><strong>Reported-versus-comparator:</strong> Usual-care Drug user and
+Severe pneumonia each 1 (7.4%) versus the same-table total of 27
+deaths.</p>
+<p><strong>Reasoning procedure:</strong> Match each affected
+count/percentage cell to the co-located death total and corroborating
+percentage pattern; apply numerator/denominator/output half-unit
+intervals.</p>
+<p><strong>Calculation:</strong> 100×1/27=3.703704%. Required rounded
+range 100×[.5/27.5,1.5/26.5]=[1.818182,5.660377]% versus [7.35,7.45]%
+gives gap 1.689623/7.4=.228327. Both cells fail the same within-display
+rule and form one issue.</p>
+<p><strong>Affected result or extracted value:</strong> Usual-care
+death-cause percentages associated with drug use and severe
+pneumonia.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 3
+applies to co-located count/denominator/percentage inconsistency;
+recoverable percentage values do not remove the printed 7.4%
+readings.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> 7.4%
+could represent two deaths or another denominator; sums corroborate one
+death but do not assign a correction. No cause-specific denominator is
+given.</p>
+<p>Missing definition to resolve: What counts, denominators and
+percentages should be used for the two affected usual-care cause
+rows?</p>
+<p><strong>Classification rationale:</strong> Counts, percentages and
+death total are REPORT results in one table; S_W/statistical_results is
+retained.</p>
+<p><strong>Classification ambiguity:</strong> None.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Yes: REPORT <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=6">DOC-003 p.6
+eTable4</a> prints usual-care Drug user1(7.4%) and Severe
+pneumonia1(7.4%), usual-care total deaths27, each overall affected
+count1 and mHealth0. Same-display stroke2(7.4%) and fall1(3.7%)
+corroborate the27 denominator. All usual-care cause counts sum27.</p>
+<p>Inputs available/missing: Printed count, common death total,
+percentages and sums are available. No separate cause-specific
+denominator is defined. Alternative interpretation: The7.4% could
+correspond to two deaths or another denominator, but no such switch is
+printed; table sums support the displayed one death in each row. Direct
+versus inferred: Count/percentage/denominator mismatch is observed;
+copying or other production mechanisms are unestablished.</p>
+<p>Determining fact: both 1(7.4%) cells fail the co-located27-death
+denominator rule beyond precision.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+an extractor could copy 7.4% for either affected usual-care cause of
+death despite the count/total reconstruction.</p>
+<h2
+id="c018--site-2008-death-count-and-percentage-do-not-reproduce-the-table-denominator" class="candidate-card">C018
+— Site 2008 death count and percentage do not reproduce the table
+denominator</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Site 2008 death count and
+percentage do not reproduce the table denominator.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-003 p.9 site2008
+vs same-table count/percentage pattern; REPORT DOC-003 p.8 corroborates
+denominator</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Route A category4
+independently supports inclusion: the same-display N40 rule reproduces
+the other death cells and leaves relative gap .474815 for this cell. N40
+is supported inference, not an explicit eTable 6 denominator column.
+Category3 describes the related count/percentage framing, but category4
+is the clearest primary qualifying route.</p>
+<p><strong>Finding IDs:</strong> F-NUM-102</p>
+<p><strong>Qualifying route:</strong> Route A, category 4</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a href="../joi250093supp2_prod_1768590553.09463.pdf#page=9" target="_blank" rel="noopener">DOC-003
+— PDF p. 9</a>, eTable6Controlsite2008cell5(7.5),otherdeathrows;
+REPORT.</li>
+<li><a href="../joi250093supp2_prod_1768590553.09463.pdf#page=8" target="_blank" rel="noopener">DOC-003
+— PDF p. 8</a>, eTable5site2008recruitmentandITT40,observed35;
+REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> eTable 6 Control site 2008 prints
+5(7.5). All other death rows use N=40, including 3(7.5),4(10.0),
+site2012 5(12.5). eTable 5 prints recruitment/ITT population 40 and
+observed contributors 35 for site 2008.</p>
+<p><strong>Reported-versus-comparator:</strong> Site 2008 death cell 5
+(7.5) versus the N=40 percentage rule reproducing every other death
+cell; N=40 is inferred and corroborated on page 8.</p>
+<p><strong>Reasoning procedure:</strong> Identify the percentage rule
+from every other death cell and corroborate the site population
+separately; apply half-unit intervals without presenting the inferred
+denominator as an explicit column.</p>
+<p><strong>Calculation:</strong> 100×5/40=12.5%. Rounded range
+100×[4.5/40.5,5.5/39.5]=[11.111111,13.924051]% versus [7.45,7.55]% gives
+gap 3.561111/7.5=.474815. N40 rule reproduces other death cells.</p>
+<p><strong>Affected result or extracted value:</strong> Site 2008
+cluster mortality count/percentage.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 4
+applies because the same-display denominator rule reproduces the other
+rows and fails this row beyond0.05. The N40 rule is inferred from the
+display and corroborated onp8; eTable 6 has no explicit denominator
+column. Co-located counts also support category3 framing, rather than a
+peripheral copy comparison.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> 7.5%
+represents three of 40, while five of 40 is12.5%; another denominator
+would require definition. Counts sum overall52/usual-care27/mHealth25,
+corroborating counts without assigning a correction.</p>
+<p>Missing definition to resolve: What death count, denominator and
+percentage governs site 2008 in eTable 6?</p>
+<p><strong>Classification rationale:</strong> The affected cell and
+reproducing row pattern are in one REPORT table. The site population
+corroborator is in the same REPORT document; S_W/statistical_results is
+retained.</p>
+<p><strong>Classification ambiguity:</strong> eTable6 has no separate N
+column. N40 is inferred from the complete same-display pattern and
+corroborated by eTable5 recruitment/ITT population; a distinct mortality
+denominator is undefined.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Yes: REPORT <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=9">DOC-003 p.9
+eTable6</a> prints Control2008 5(7.5). All other death cells follow an
+N40 percentage rule, e.g. Control2002 3(7.5), Control2004 4(10.0),
+mHealth2012 5(12.5). REPORT <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=8">p.8
+eTable5</a> prints site2008 recruitment40/484 and ITT12/40, with
+observed12/35; denominator35 belongs to observed abstinence
+contributors, not a defined mortality denominator. eTable6 death counts
+sum52:27 control and25 mHealth.</p>
+<p>Inputs available/missing: Death count, percentage, matching other
+cells and site population are available. A separate mortality
+denominator or row-specific population definition is absent. Alternative
+interpretation: Three of 40 would produce7.5%, whereas five of 40
+produces12.5%; another denominator requires a definition. Counts/sums
+corroborate five without assigning a corrected value. Direct versus
+inferred: Printed5(7.5) and other-cell pattern are direct; N40 is
+supported inference; production mechanism is unestablished.</p>
+<p>Determining fact: the source cell does not reproduce the N40 rule
+fitting all other death cells, with relative gap&gt;.05.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+cluster mortality extraction could pair site 2008 count 5 with 7.5% or
+an alternative defined denominator; no corrected cell is assigned.</p>
+<h2
+id="c019--treatment-failure-absolute-difference-has-the-opposite-signed-contrast" class="candidate-card">C019
+— Treatment-failure absolute difference has the opposite signed
+contrast</h2>
+<p>Pending Human Adjudication.</p>
+<p><strong>Candidate statement:</strong> Treatment-failure absolute
+difference has the opposite signed contrast.</p>
+<p><strong>Review domain:</strong> statistical_results</p>
+<p><strong>Relationship type:</strong> S_W</p>
+<p><strong>All relationships:</strong> S_W</p>
+<p><strong>Compared document roles:</strong> REPORT DOC-003 p.13
+treatment-failure cell vs same-display arm risks and common contrast;
+p.14 defines difference</p>
+<p><strong>Evidence state:</strong> reproduced</p>
+<p><strong>Inclusion audit:</strong> CONFIRMED</p>
+<p><strong>Inclusion audit reason:</strong> Route A category2 applies to
+the source-confirmed sign comparison under the common display contrast,
+whose relative gap is1.367585. The unsigned-magnitude or row-specific
+reference alternative remains explicit; it is not assumed away.</p>
+<p><strong>Finding IDs:</strong> F-NUM-103</p>
+<p><strong>Qualifying route:</strong> Route A, category 2</p>
+<p><strong>Exact source locations:</strong></p>
+<ul>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=13">DOC-003 — PDF
+p. 13</a>, eTable9TreatmentFailuresabsolute-difference0.5andarmrisks;
+REPORT.</li>
+<li><a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=14">DOC-003 — PDF
+p. 14</a>, notebAbsolute difference; REPORT.</li>
+</ul>
+<p><strong>Source evidence:</strong> eTable 9 failure risks are mHealth
+1/695,0.1%[0.01,0.8], versus usual-care 2/333,0.6%[0.1,2.2]. Absolute
+difference prints +0.5[-0.4,1.3]. Other rows use
+mHealth-minus-usual-care:43.2−16.5=26.7; 38.0−11.4=26.6; 50.8−22.5=28.3;
+57.5−24.6=32.9; 3.2−2.1=1.1; success difference0.</p>
+<p><strong>Reported-versus-comparator:</strong> Printed
+treatment-failure difference +0.5 versus the common
+mHealth-minus-usual-care signed contrast from 1/695 and 2/333.</p>
+<p><strong>Reasoning procedure:</strong> Match the signed contrast
+across other rows, reconstruct failure risk difference from printed
+counts and risks, and retain unsigned or row-specific reference
+alternatives.</p>
+<p><strong>Calculation:</strong> 100×(1/695−2/333)=−.456716 percentage
+points. Rounded count/denominator range [−.679989,−.233792] versus
+[.45,.55] gives gap .683792/.5=1.367585. Printed arm risks independently
+allow [−.60,−.40], remaining negative.</p>
+<p><strong>Affected result or extracted value:</strong> Signed failure
+risk difference in the excluding-deaths sensitivity.</p>
+<p><strong>Why context does not resolve it:</strong> Route A category 2
+applies to a sign reversing the common displayed contrast; the word
+Absolute is an alternative interpretation rather than removal of the
+direction mismatch.</p>
+<p><strong>Alternative source-grounded interpretations:</strong> This
+row may use unsigned magnitude, reversed reference group or another
+model-based contrast; no row-specific switch is named. The signed
+interval and other rows remain printed. No CI construction is
+inferred.</p>
+<p>Missing definition to resolve: Does Treatment Failures use
+mHealth-minus-usual-care, and what signed difference and matching
+interval should be extracted?</p>
+<p><strong>Classification rationale:</strong> Arm risks, point
+difference, comparator rows and note are within one REPORT document;
+S_W/statistical_results is retained.</p>
+<p><strong>Classification ambiguity:</strong> “Absolute difference”
+could denote an unsigned magnitude, a row-specific reverse reference or
+another contrast. No explicit signed reference or row-specific switch is
+printed.</p>
+<p><strong>Mechanical evidence recheck:</strong> Location found; source
+and comparator matched: Yes: REPORT <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=13">DOC-003 p.13
+eTable9</a> prints mHealth1/695,0.1%[0.01,0.8] versus
+usual-care2/333,0.6%[0.1,2.2], difference0.5[-0.4,1.3]. REPORT <a
+href="../joi250093supp2_prod_1768590553.09463.pdf#page=14">p.14 note
+b</a> identifies “Absolute difference” without a row-specific reversal.
+Other rows reproduce
+mHealth-minus-usual-care:43.2−16.5=26.7;38.0−11.4=26.6;50.8−22.5=28.3;57.5−24.6=32.9;3.2−2.1=1.1;
+success92.5−92.5=0.</p>
+<p>Inputs available/missing: Counts, populations, risks, point
+difference, interval and other-row contrast are available. An explicit
+signed-reference definition or unsigned/row-specific contrast switch is
+absent. Alternative interpretation: “Absolute” may mean an unsigned
+magnitude, or this row could reverse the reference groups; a different
+model-based contrast could be intended. The common pattern and signed
+interval are retained rather than assuming a universal meaning of
+“absolute.” Direct versus inferred: Positive printed point difference
+versus negative common signed contrast is observed; intended reference
+or mechanism is inferred and unresolved.</p>
+<p>Determining fact: exact printed positive.5 fails the
+mHealth-minus-usual-care rule fitting the other rows, beyond display
+precision.</p>
+<p><strong>Potential downstream evidence impact:</strong> If confirmed,
+extraction of the failure risk difference could carry a positive rather
+than negative mHealth-minus-usual-care direction.</p>
+<h2 id="downstream-evidence-chain-considerations">Downstream
+Evidence-Chain Considerations</h2>
+<p>Evidence extraction can separate endpoint status, time window,
+analysis population, model, adjustment, missingness assumption,
+intervention schedule, event risk and uncertainty interval. If a
+candidate is confirmed, the affected value or metadata may need a
+different reading before reuse in a systematic review, meta-analysis,
+guideline or structured evidence table. The cards specify that potential
+at the result level. The supplied package does not establish that any
+candidate propagated, changed a synthesis, changed the paper’s
+conclusions or caused harm.</p>
+<h2 id="limitations-and-missing-definitions">Limitations and Missing
+Definitions</h2>
+<p>All 134 supplied PDF pages were freshly mapped from source-linked
+evidence. There is no remaining scientific source-coverage gap. Reusable
+extraction reduced preprocessing, while source PDFs and exact page
+confirmations remained authoritative.</p>
+<p>The 109-page PLAN bundle has semantically garbled native/layout
+extraction. Twelve historical OCR files are empty and seven nonempty OCR
+pages are partial aids. Complete visual mapping and targeted
+direct-source confirmation closed coverage. Historical extraction/OCR
+engine versions are not consistently recorded. Source clipping at the
+bottom of PLAN diagram pages 13 and 51 was confirmed; adjacent
+allocation prose remained readable and mapped. No workbook, CSV, or
+Office source was supplied.</p>
+<p>No participant-level data, fitted model code, coefficients/covariance
+matrices, or row-specific interval-construction procedures were
+supplied. The interval reconstruction in C014 is a diagnostic that fits
+other rows within each display, rather than an assertion of a universal
+interval method. Logistic-to-risk-ratio prediction, standardization or
+conversion details, the averaging population, conditional/marginal
+estimand and corresponding interval procedure are absent.</p>
+<p>Actual per-person SMS transmission logs, unique-template versus
+transmission definitions, the implemented pilot revision, and
+enrollment/joining/treatment/quit-date clock crosswalks are absent.
+Eligibility-rule overlap and implementing amendments are unavailable.
+The cotinine cassette concentration criterion and its mapping to the
+planned graded assay are absent; assay equivalence, event
+reclassification and changes in participant counts are
+unestablished.</p>
+<p>The supplied bound PLAN includes protocol components, an amendment,
+SAP and prospective SMS materials. Bundle order and component labels do
+not establish a final governing hierarchy. Outcome-specific
+applicability of missing-at-random handling, the fitted adjustment list
+and tobacco-form mapping, planned male/female primary results or
+nonestimability explanations, the final failure endpoint dictionary and
+smear dates, and the governing allocation/attrition power calculation
+are absent. The report is limited to the supplied printed specification
+comparisons.</p>
+<p>For C008, primary-outcome blocks may group sensitivities of the
+primary construct. The methods and eTable 9 title explicitly describe
+post hoc sensitivity analyses; formal promotion of CO&lt;6 to a
+prespecified primary endpoint is not established. The inclusion audit is
+QUESTIONED, and the stable candidate remains Pending Human Adjudication
+with its full audit reason. The main per-protocol CO&lt;6 usual-care
+count is 39/318 with printed 11.9%; that percentage's relative precision
+gap is 0.011589 and is excluded under the workflow precision rule.</p>
+<p>Mortality cause definitions, symptom prevalence versus
+moderate/severe interpretation, possible cause-specific or site-specific
+denominators, and the signed versus unsigned failure contrast are
+bounded alternative interpretations named in the cards. Site-2008 N=40
+is inferred from the same-display reproducing rule and corroborated by
+eTable 5; eTable 6 does not explicitly print an N column. No corrected
+value or participant reclassification is assigned.</p>
+<p>The review uses only supplied package evidence. It does not assess
+raw data, broad methodology, clinical merit, novelty, misconduct or
+preferred analyses. Candidate evidence states and inclusion audits are
+review records, and every candidate remains Pending Human Adjudication.
+Potential downstream relevance is limited to values or metadata an
+evidence extractor could copy if a candidate is confirmed; no
+propagation, paper-level conclusion change or harm is established.</p>
+<p>Direct PDF information/extraction/rendering and OCR tools were
+unavailable. The pinned package-local fallback covered required PDF
+capabilities after an authorized installation retry. Rendering used the
+CPU; the user explicitly approved RTX 5070 Laptop GPU OCR with
+RapidOCR/ONNX Runtime CUDA. Targeted GPU outputs on PLAN pages 10 and 80
+are locator aids. An initial page-29 OCR trial ran on the CPU and is
+preserved as such.</p>
+<p>Full limitations are retained in <a
+href="review_1_6_2/limitations.md">limitations.md</a>.</p>
+<h2
+id="reproducibility-source-integrity-agent-execution-and-performance-metadata">Reproducibility,
+Source-Integrity, Agent-Execution, and Performance Metadata</h2>
+<p>The <a href="review_1_6_2/routing_preflight.md">routing preflight</a>
+records PASS, run model <code>gpt-6.1-sol</code>, source
+<code>DEFAULT</code>, provider <code>CURRENT_SESSION</code>, execution
+mode <code>INTERACTIVE_CLI</code>, coordinator inference PASS and all
+ten verified presets. The prescribed launch command is recorded as
+<code>codex --approve-for-me</code>; the original process invocation was
+not independently observable. Every mandatory specialist stage used a
+fresh distinct runtime agent at its required model/effort pair. The
+manifest below lists every actual agent exactly once, including optional
+evidence shards and this report generator.</p>
+<p>Source integrity is traceable through the before/after hash
+manifests. The coordinator’s preassembly source and reused-asset checks
+passed. Governing completed cleanup and mechanical check results are
+recorded in <a
+href="review_1_6_2/tooling_record.md">tooling_record.md</a> and <a
+href="review_1_6_2/review_validation.json">review_validation.json</a>.
+The report makes no prospective claim about the validator outcome.</p>
+<p>Direct <code>sha256sum</code> and <code>file</code> were available;
+native PDF info/text/rendering tools and Tesseract/LibreOffice were
+unavailable. Bundled helpers used the package-local pinned PyMuPDF
+1.26.4/pypdf 5.9.0 environment. Rendering was CPU-based. The user
+explicitly approved GPU OCR on the RTX 5070 Laptop with RapidOCR ONNX
+Runtime 1.4.4 and ONNX Runtime GPU 1.28.0; targeted page 10/80 outputs
+are transcription aids. Initial page-29 CPU fallback is preserved
+separately. No source or reusable artifact was changed.</p>
+<h3 id="direct-source-sha-256-baseline">Direct-source SHA-256
+baseline</h3>
+<pre class="text"><code>08d435cbc9ce99ba2e85de0a0edb7ee8e5015f3970a42550420ac3f9ae4cf103  jama_zahid_2025_oi_250093_1768590553.08463.pdf
+0dcbfdf53363088fa65146d05d2f0e58b9c9f2fa001c9d60232207bbdec440a1  joi250093supp1_prod_1768590553.08963.pdf
+a2b6c06f49f22bf3c5557b7943804c7598154d2e7ca40e7fcbad4dc32bed25e6  joi250093supp2_prod_1768590553.09463.pdf</code></pre>
+<h3 id="agent-execution">Agent execution</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Agent ID</th>
+<th>Model</th>
+<th>Reasoning effort</th>
+<th>Start mode</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>coordinator</td>
+<td>01a12c37-1893-74f1-897e-a267d3ec6c91</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>CURRENT_SESSION</td>
+<td>run_state.md</td>
+</tr>
+<tr class="even">
+<td>reuse_asset_curator</td>
+<td>01a12c3a-ad69-7ce3-9b2b-fe66c6bb1a9e</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>source_inventory.md</td>
+</tr>
+<tr class="odd">
+<td>main_quantitative_mapper</td>
+<td>01a12c3e-01ad-7673-9de4-6a93ac228f9a</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/main_quantitative_evidence.md</td>
+</tr>
+<tr class="even">
+<td>support_quantitative_mapper</td>
+<td>01a12c3e-2db0-7c93-be73-02205fb46d25</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/support_quantitative_evidence.md</td>
+</tr>
+<tr class="odd">
+<td>support_quantitative_mapper_shard_002</td>
+<td>01a12c3e-4cf1-7ae0-abe5-92f8e7eeeb7a</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/parts/support_plan_002.md</td>
+</tr>
+<tr class="even">
+<td>support_quantitative_mapper_shard_003</td>
+<td>01a12c3e-6be1-7ae3-bfde-811b576aabdb</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/parts/support_plan_003.md</td>
+</tr>
+<tr class="odd">
+<td>support_quantitative_mapper_shard_004</td>
+<td>01a12c3e-9878-7643-ac34-dc470d601834</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>extraction/parts/support_plan_004_results.md</td>
+</tr>
+<tr class="even">
+<td>numeric_consistency_reviewer</td>
+<td>01a12c43-4b9c-7822-9aac-7a3316381f85</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/numeric_consistency.md</td>
+</tr>
+<tr class="odd">
+<td>numeric_consistency_reviewer_support_shard</td>
+<td>01a12c43-8381-77c0-a329-6a6ab73645eb</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/numeric_support.md</td>
+</tr>
+<tr class="even">
+<td>cross_source_consistency_reviewer</td>
+<td>01a12c43-c216-7643-8a0e-dfb48b6c9195</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/cross_source_consistency.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_1</td>
+<td>01a12c43-fb96-7943-933b-ea7e7d98f89b</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_1.md</td>
+</tr>
+<tr class="even">
+<td>inclusion_screener</td>
+<td>01a12c4f-b7b6-7203-8c95-cfee2debbcc0</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/inclusion_screen.md</td>
+</tr>
+<tr class="odd">
+<td>inclusion_source_confirmation_shard</td>
+<td>01a12c50-f19c-7ce1-aab5-f9cdca5b913f</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>screening/source_confirmation_plan.md</td>
+</tr>
+<tr class="even">
+<td>evidence_rechecker</td>
+<td>01a12c63-86c3-78d0-84d8-ccea451f5769</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/evidence_recheck.md</td>
+</tr>
+<tr class="odd">
+<td>evidence_rechecker_shard_002</td>
+<td>01a12c63-aaf3-7ea2-b202-3ccc33a45f88</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/parts/recheck_002.md</td>
+</tr>
+<tr class="even">
+<td>evidence_rechecker_shard_003</td>
+<td>01a12c63-ca83-7d51-ad07-f4248a018f40</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>verification/parts/recheck_003.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_2</td>
+<td>01a12c69-56be-71f0-b3ab-86730a0e1482</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/statistical_pass_2.md</td>
+</tr>
+<tr class="even">
+<td>statistics_pass_2_shard_b</td>
+<td>01a12c69-7ef5-7931-8e31-fcfee62a592a</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_pass_2b.md</td>
+</tr>
+<tr class="odd">
+<td>statistics_pass_2_shard_c</td>
+<td>01a12c69-a5a4-7881-b225-dcd2aeae5d0f</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>checkers/parts/statistical_pass_2c.md</td>
+</tr>
+<tr class="even">
+<td>quality_control_auditor</td>
+<td>01a12c70-5a35-7fc1-9c30-a421a32d87bf</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/evidence_quality_audit.md</td>
+</tr>
+<tr class="odd">
+<td>quality_control_auditor_candidates_002</td>
+<td>01a12c70-9043-7552-8bc3-bac08204fa08</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/parts/audit_candidates_002.md</td>
+</tr>
+<tr class="even">
+<td>quality_control_auditor_candidates_003</td>
+<td>01a12c70-bd04-7fb0-bfda-088b9ae10bfc</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/parts/audit_candidates_003.md</td>
+</tr>
+<tr class="odd">
+<td>quality_control_auditor_source_coverage</td>
+<td>01a12c70-fcf0-7223-bf50-7ba7d37585a9</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/parts/audit_source_coverage.md</td>
+</tr>
+<tr class="even">
+<td>quality_control_auditor_statistical_coverage</td>
+<td>01a12c71-3159-7be1-afc7-7b767f8097c0</td>
+<td>gpt-6.1-sol</td>
+<td>high</td>
+<td>FRESH_SPAWN</td>
+<td>quality/parts/audit_statistical_coverage.md</td>
+</tr>
+<tr class="odd">
+<td>report_generator</td>
+<td>01a12c78-d931-75e1-90c1-ce1e873a2138</td>
+<td>gpt-6.1-sol</td>
+<td>medium</td>
+<td>FRESH_SPAWN</td>
+<td>limitations.md</td>
+</tr>
+</tbody>
+</table>
+<p>The authoritative execution record is <a
+href="review_1_6_2/agent_execution_manifest.md">agent_execution_manifest.md</a>.</p>
+<h3 id="reproducibility-performance">Reproducibility performance</h3>
+<ul>
+<li><strong>Target basis:</strong> Three PDF sources contain 134 unique
+pages. All pages have reusable evidence, but the 109-page bound PLAN has
+garbled layout text, only seven nonempty partial OCR pages, and readable
+rendered pages requiring complete visual mapping in bounded shards.
+Native article and results-supplement text reduces extraction work;
+protocol versions, SAP, intervention materials, statistical
+relationships, independent screening, direct recheck, two statistical
+passes, and final audit require multiple fresh agent waves. A 40-65
+minute planning interval accounts for visual-only mapping and required
+review waves, independent of candidate count.</li>
+<li><strong>Total source units:</strong> 134</li>
+<li><strong>Fresh-source units:</strong> 0</li>
+<li><strong>Target elapsed minutes:</strong> 40-65</li>
+<li><strong>Started UTC:</strong> 2026-10-11T18:29:03Z</li>
+<li><strong>Finished UTC:</strong> 2026-10-11T19:43:49Z</li>
+<li><strong>Observed elapsed minutes:</strong> 74.77</li>
+<li><strong>Target status:</strong> EXCEEDED_TARGET</li>
+<li><strong>Exceedance causes:</strong> Fallback installation and
+approved GPU tooling preflight; visual-only mapping of the 109-page
+PLAN; bounded source-confirmation and candidate-recheck shards; three
+statistical-pass-2 shards and five independent audit shards; complete
+19-card report assembly</li>
+</ul>
+<p>Performance values are synchronized with <a
+href="review_1_6_2/run_state.md">run_state.md</a> immediately after
+complete Markdown assembly. Local HTML rendering and mechanical
+validation are outside the review-duration window. A later model-based
+repair requires the coordinator to move the finish time forward and
+synchronize the timing record.</p>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Direct-source inventory
+
+Scope: every supplied direct PDF, DOC, DOCX, XLS, XLSX, and CSV in this paper package, excluding locally derived audit artifacts and tooling. Exactly three PDFs are supplied; no Office or CSV direct source is present. Stable unit type is PDF_PAGE and the total is 203. Roles are assigned by content, independently of legacy review selections.
+
+| Source ID | Source path | Document role | Unit type | Total units | Content basis | SHA-256 |
+|---|---|---|---|---:|---|---|
+| DOC-001 | jama_sun_2024_oi_240088_1746815064.14747.pdf | REPORT | PDF_PAGE | 11 | Page 1 identifies an Original Investigation, Balloon Angioplasty vs Medical Management for Intracranial Artery Stenosis, the BASIS randomized clinical trial; pages 1-11 comprise the published main article. | af8f0e97daf2e2dfc4bb52a52e97246655498c1632d1743047fee02bef51a13a |
+| DOC-002 | joi240088supp1_prod_1746815064.21247.pdf | REPORT | PDF_PAGE | 25 | Pages 1-2 identify Supplementary Online Content and a Supplementary Appendix containing operational context, Supplementary Figures, and results Tables S1-S12. This is a non-plan results supplement; operational contextual pages do not convert it into PLAN material. | 4cc1cb72c622145ddb5781a4a579b51747085fe231630b3c6ce58618d1b8a635 |
+| DOC-003 | joi240088supp2_prod_1746815064.36071.pdf | PLAN | PDF_PAGE | 167 | Page 1 identifies Protocol; page 2 lists original protocol pp.3-59, final protocol pp.60-123, original SAP pp.124-139, and final SAP pp.140-158. The complete bound bundle, including front matter and appended pages 159-167, is PLAN material. It contains multiple plan versions, with no REPORT component identified. | bd80ae9cde96500aa9c8b5f8d862e4b3f3e933f1ac1c82835fbf7cfde46ca0bb |
+
+Page counts were confirmed with the supplied helper commands `/home/juliz/venvs/stt/bin/python workflow_1_6_2/scripts/pdf_tools.py info SOURCE`, using the user-specified existing environment resolved to its actual local location. Engine: PyMuPDF 1.28.0. All three PDFs are unencrypted. Source hashes were supplied by the coordinator and remain authoritative in source_hashes_before.sha256.
+
+Reusable locations are inventoried individually in evidence_asset_inventory.md. 201 pages have usable retained text or retained page images; two additional embedded-table pages required fresh rendering during mapping, while sparse text and incomplete OCR are explicitly flagged at artifact level. Every source unit still requires fresh scientific mapping in this workflow. Legacy selection statements and scientific dispositions do not restrict that mapping. Mapped counts are now complete from fresh mapper artifacts in source_coverage.md.

@@ -1,0 +1,38 @@
+# Numeric consistency review
+
+Status: COMPLETE. Scope: all 72 canonical groups N001–N072 in `relationships/numeric_relationship_inventory.md`, covering main M001–M044 and support R001–R028, every constituent main and supporting table row, safety subrow, flow branch, percentage pair, primary/key result match, subgroup partition and effect-measure identity. All 167 source units have complete mapping in the current coverage ledger. Current prospective PLAN sample-size counts were matched; historical PROVIDE results were not treated as current trial evidence. Complete normative scope and review contract were read. No old scientific conclusion or external evidence was used.
+
+All observations were self-screened independently against both inclusion routes and the display-precision rule. One reproduced finding is emitted. Eight excluded observations are recorded below. Reconciled relationships remain in the N inventory. Inferential intervals, tests, power assumptions and interaction models receive independent statistical review; those quantities are preserved and cross-referenced in the inventory.
+
+### F-NUM-001 — Unadjusted day-15 immunoparalysis odds ratio does not reproduce from its displayed counts
+
+- **Relationships:** N057; supporting map R013. Proposed relationship type S_W; all relationships S_W.
+- **Compared exact locations and document roles:** REPORT, [DOC-003 eTable 10, physical PDF p.22](../../../joi250116supp2_prod_1771885794.27755.pdf#page=22), final row for ≥1.4-point decrease of mean SOFA of days 2–15 from baseline day 1, sepsis-induced immunoparalysis. Comparators are the first three unadjusted OR rows in the same display; no PLAN location is in conflict.
+- **Printed inputs:** precision immunotherapy 40/106 (37.7%); placebo 29/122 (23.8%); difference 13.9 (95% CI 1.9–25.6); column explicitly labeled OR unadjusted (95% CI), point 1.194 (1.09–3.45), P=.030. The other three count comparisons are 12/25 versus 4/23, 34/106 versus 22/122, and 12/25 versus 5/23, with printed unadjusted ORs 4.38, 2.15 and 3.32.
+- **Rule and calculation:** for an unadjusted binary odds ratio, OR = n(C−c)/[(N−n)c]. The displayed final-row counts give 40×93/(66×29)=1.9435736677. The first three rows give 4.384615, 2.146465 and 3.323077, respectively, reproducing their printed ORs at displayed precision. Thus the same reproducing point method supports this comparison; it is not an adjusted estimate compared with a crude ratio.
+- **Display precision:** allowing each of 40,106,29,122 its half-unit interval, the recomputed OR interval is [1.8386035922,2.0550607287]. Its lower bound uses 39.5×92/(67×29.5); its upper bound uses 40.5×94/(65×28.5). The printed 1.194 has interval [1.1935,1.1945]. The gap is 1.8386035922−1.1945=0.6441035922; relative discrepancy 0.6441035922/1.194=0.5394502447, above 0.05.
+- **Focus area:** A/C, effect-measure identity and reproduction of a displayed unadjusted effect.
+- **Proposed review domain:** statistical_results.
+- **Qualifying route:** Route A, category 4.
+- **Affected result or extracted value:** the unadjusted OR for day-15 SOFA response among participants with sepsis-induced immunoparalysis, which a data extractor could take as 1.194 rather than the count-supported value near 1.94.
+- **Why context does not resolve it:** route A category 4 applies. A printed result fails the point method that reproduces the other rows; the explicit unadjusted label does not identify an alternative method yielding 1.194. The discrepancy remains even with conservative half-unit count intervals.
+- **Alternatives and missing definition:** a different unreported computation, a different unprinted analysis set, or a printed-value transcription in the publication could explain the reading. These are possible explanations, not asserted mechanisms. The associated interval is retained exactly; this numeric finding does not substitute a different interval or adjudicate the result.
+- **Exact human question:** Which unadjusted odds ratio and analysis inputs apply to the day-15 immunoparalysis response row, and how should its printed point estimate 1.194 be reconciled with 40/106 versus 29/122 and the neighboring rows' count-reproducing method?
+- **Direct-source reproduction:** fresh visual reading of the original PDF render `preprocessing/numeric-page-22.png` confirms 1.194, all four input counts, the unadjusted column label and all three comparator rows. Command recorded in the N inventory; pinned helper PyMuPDF 1.26.4, CPU rendering at 200 dpi. No OCR was needed. Sources and reused assets remain unchanged.
+
+## Excluded observations
+
+| Location | Observation | Reason code |
+|---|---|---|
+| REPORT DOC-001 p.7 day-15 response paragraph versus p.6 Table 2 | Narrative prints 39.7%; 51 of 131 while Table 2 prints 52/131(39.7). For narrative 51/131 the recomputed percentage interval is [38.4030418,39.4636015], printed 39.7 interval [39.65,39.75]; gap 0.1863985, relative 0.0046952. Copies 51 and 52 have touching half-unit intervals. Neither comparison exceeds 0.05. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT DOC-001 p.6 Table 2 day-28 mortality difference | Positive 6.1 is opposite to a signed PI-minus-PL difference; the column does not specify that sign convention. Absolute difference 6.144 matches and counts/OR 0.78 immediately show fewer deaths with therapy. No printed direction statement reverses the result. | CONTEXT_RESOLVES |
+| REPORT DOC-001 pp.5,9 treatment-start timing | Discussion calls timing 36–48 hours an average while Table 1 prints medians 36/47 hours. Context supplies an approximate timing description; no separate mean result is printed. | TERMINOLOGY_OR_WORDING |
+| REPORT DOC-001 p.5 platelet reference and creatinine conversion footnote | Platelet reference repeats 150000–400000 with ×10³/μL, and creatinine conversion names μg/dL where the row names mg/dL. Unit labels are immediately understood from the row and familiar conversion, with no conflicting reported study number. | NOTATION_OR_TYPOGRAPHY |
+| REPORT DOC-001 pp.1,8 safety summary | Abstract parenthetical 88.8% follows 1069 serious TEAEs; body distinguishes 1069 events from 245 patients of 276. The patient denominator immediately resolves the percentage unit. | CONTEXT_RESOLVES |
+| REPORT DOC-001 p.3 Figure 1 versus p.2 and DOC-003 p.13 | Unclassified HLA-DR threshold has >5000 in flow versus ≥5000 in definitions. No printed affected participant/count is supplied; immediate partition context identifies equality. | TERMINOLOGY_OR_WORDING |
+| REPORT DOC-001 Table 1 versus DOC-003 eTables 7/11; DOC-001 sites versus DOC-003 eTable 1 | Different descriptive baseline copies, including subgroup totals for infection and laboratory units/values, do not change the primary/key result or analysis population. The 29 recruiting-site rows sum correctly to 672/281 despite 33 reported sites. Within each baseline display all count/% pairs reconcile. | PERIPHERAL_COMPARISON |
+| REPORT DOC-003 eTable 14 pp.30–43 | Duplicated zero and missing parenthesis in native text are notation/transcription matters; all count/% values and row/grade totals reconcile. | NOTATION_OR_TYPOGRAPHY |
+
+## Scope limits
+
+No scientific coverage gap remains. Exact individual SOFA values and precise forest-plot estimates are unprinted. Counts for eTable 15 ≥2–5 serious-event thresholds are unprinted; numeric point reconstruction is unavailable without assuming a distribution. All 18 printed benefit/risk rows remain mapped, and printed interval/sign logic receives independent statistical review. HRs, ordinal ORs and interaction models are not compared with crude binary effects. No candidate IDs, severity, validity, suggested disposition or correction are assigned here.

@@ -1,0 +1,23 @@
+# Workflow 1.6.2 Limitations and Coverage Closure
+
+Runtime agent ID: 01a12bec-dae3-7471-9311-a31a1b2199b3. Stage: report_generator; model: gpt-6.1-sol; reasoning effort: medium; start mode: FRESH_SPAWN.
+
+All four supplied PDFs are completely mapped: main 10/10 pages; protocol 40/40; SAP 31/31; results supplement 34/34. Total 115/115; 115 reusable-backed units and zero fresh-required derivative units. All 110 numeric groups and all 80 statistical relationships were reviewed, the latter in two distinct fresh passes. Every one of ten checker findings has an independent screening decision; all 36 original excluded observations were reconsidered in pass 2 and audit. C001, C002 and C003 each have reproduced source evidence and a CONFIRMED inclusion audit. All remain Pending Human Adjudication. No scientific source-unit or assigned-relationship gap remains.
+
+| Limitation | Affected scope | Evidence route and bounded consequence |
+|---|---|---|
+| No later ventilation amendment or planned ventilation Cox HR output supplied | C001; SAP ventilation analysis versus supplied reports | Exact SAP/protocol source renders and complete main/results rereading establish the printed replacement. Absence is bounded to supplied reports, rather than whether an analysis was ever run. |
+| Continuous-model mortality/palliative-extubation mapping incomplete | C001 | Report specifies tobit observed-outcome margins; no equivalent planned censoring estimand is inferred. No preferred method is proposed. |
+| Unrounded ICU CI/P and exact interval/test construction unavailable | C002 | Exact Table 2 render confirms the printed pairing. An underlying upper limit below 1 could print as 1.00; no assumed Wald identity or universal incompatibility claim is used. |
+| Original saved power-calculator settings, formula, alpha and covariance mapping unavailable | C003 | Exact original-rationale passages confirm lower inputs .001/.01 and relative gap .35. Upper half-unit intervals overlap. No actual power failure or loss is calculated. |
+| Fitted SE, likelihood, bootstrap/posterior draws, variance components and some model-specific secondary n unavailable where unprinted | Named records in S001–S080 | Both passes complete each relationship with named missing inputs; unreported details alone are not findings and are not filled from convention. |
+| PLAN PDF native glyph encoding unreadable | Protocol and SAP | Reusable readable OCR/text locators and images support every page; decisive candidate locations are freshly rendered directly from exact PDFs. Native extraction failures do not define coverage. |
+| Empty reused OCR at protocol pp.32–33 | Two reference pages | Readable source-linked images were visually inspected and explicitly mapped as reference continuation. No source unit omitted. |
+| Legacy derivative engine versions incompletely recorded | Reused OCR/text/render assets | All 569 reused assets were inventoried and hashed; exact source recheck governs candidate transcription. Versions are not invented. |
+| Unlabelled graph heights do not supply exact cells | Main and supplemental graphical distributions | All displays, axes, contributors, printed estimates and intervals are mapped. Unprinted graph coordinates are not invented. |
+| Missing direct PDF/OCR/Office tools and initial restricted-network bootstrap failure | Tooling | Authorized recovery installed package-local pinned PyMuPDF1.26.4/pypdf5.9.0; supplied fallback supplies missing PDF capabilities. No Office sources or fresh OCR were needed. Temporary environment removal is the coordinator's terminal responsibility. |
+| Explicit GPU OCR request did not require an OCR operation | Compute provenance | PowerShell confirmed RTX5070Laptop8151MiB/driver616.56. All actual fresh native extraction/rendering used CPU; no fresh OCR or GPU computation was performed. User-corrected ~/venvs/stt/bin/python was preserved unchanged. |
+
+Only supplied package evidence was used; no web or raw participant-data audit was performed. Source-linked reused extraction accelerated discovery without importing legacy candidate or disposition conclusions. Current derivative clarifications at SAP p.14 (≥60, rather than OCR260) and supplemental eFigure2's eight tracking days preserve every source and legacy artifact. They do not create supplied-paper candidates.
+
+Report assembly includes every stable ID, all 21 required card labels, all final classification fields and every ledger-listed source location. Screening/domain/state totals reconcile to three candidates. Final timing, after-hashes, HTML rendering, fallback removal and mechanical validation are coordinator terminal tasks and are not claimed completed by this report-generation artifact.

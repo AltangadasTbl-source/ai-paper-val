@@ -1,0 +1,64 @@
+Cudkowicz (PI) HEALEY ALS Platform Trial: RGC Statistical Analysis Plan
+
+Version 3.0, 22 Jul 2022
+
+If the primary analysis indicates a significant slowing in disease progression from the Bayesian
+shared-parameter, repeated-measures model of ALSFRS-R and mortality, then each secondary
+efficacy endpoint in succession would be declared significant in the specified sequence using a
+comparison-wise criterion of two-tailed p < 0.05. After the first failure to declare significance, no
+endpoints lower in the hierarchy can be significant. This sequential closed-testing procedure
+controls the overall type 1 error rate at 5%. Nominal comparison-wise p-values for secondary
+efficacy endpoints will also be reported.
+6.5.2
+
+CAFS
+
+The test consists of calculating a rank-sum score for each individual relative to pair-wise
+comparisons with all other participants. Participants are first ranked according to time to death or
+death equivalent when that is observed for both members of a pair or when one is censored after
+the observed event time for the other. Pairs that cannot be ranked by time to death or death
+equivalent are subsequently ranked by absolute change from baseline in ALSFRS-R total score
+at the maximum follow-up time at which both participants have an observation.
+The primary CAFS analysis is the same as specified in the MPRDR with the clarification that the
+active treatment group pools participants randomized to 30 mg/d CNM-Au8 and 60 mg/d CNMAu8.
+The estimand is the stochastic probability that a randomly selected active participant will rank
+higher than a randomly selected placebo participant based on time to death or death equivalent or
+change from baseline in ALSFRS-R. The estimand is defined by the following attributes:
+x
+
+Treatment: CNM-Au8 administered orally at dosages of 30 mg/d and 60 mg/d vs. placebo.
+
+x
+
+Population: FAS population as defined in Section 6.1.
+
+x
+
+Variables: ranksum for relative time to death or death equivalent up to the Week 24 Visit or
+absolute change from baseline in ALSFRS-R total score.
+
+x
+
+Intercurrent event: treatment discontinuation: handled via treatment policy approach, with
+pair ranked comparisons up at the maximum follow-up time at which both participants have
+an observation.
+
+x
+
+Population-level summary: difference in means of ranks of active treatment relative to
+placebo.
+
+Inference from this analysis is supportive of inference from the Bayesian shared-parameter,
+repeated-measures model for the primary endpoint and is the primary analysis for this secondary
+endpoint.
+The following SAS code specifies the analysis:
+proc mixed data=work.cafs;
+class trtrnd(ref='0');
+model Rank = sx2bl dFRS rlz edv trtrnd / solution clparm;
+estimate "Active vs. Placebo (one-sided)" Treat 1 -1 / cl upper;
+run;
+
+where trtrnd indicates treatment group (active = 1 or placebo = 0), Rank is the sum of the ranks
+(-1, 0, 1) of each participant vs. every other participant in the FAS analysis set, sx2bl is years
+Page 25 of 26
+

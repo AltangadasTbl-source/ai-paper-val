@@ -1,0 +1,37 @@
+# Workflow 1.6.2 Run State
+
+- **Target basis:** Four native-text PDFs contain 72 unique pages: an 11-page main trial report requires fresh extraction because its legacy identity is stale; 26 protocol pages, 29 SAP pages including table shells, and six results-supplement pages have reusable text. Reusable images support all five substantive results-supplement pages. No Office conversion is required. Expected work includes main/support mapping in parallel, report-plan and model/denominator relationships, parallel initial checks, independent screening and recheck, a second statistical pass, quality audit, and report assembly. A 30-45 minute package-specific target allows for these mandatory waves and selective CPU native extraction/visual confirmation; no candidate count is assumed.
+- **Total source units:** 72
+- **Fresh-source units:** 11
+- **Target elapsed minutes:** 30-45
+- **Started UTC:** 2026-10-11T16:08:53Z
+- **Finished UTC:** 2026-10-11T17:11:40Z
+- **Observed elapsed minutes:** 62.78
+- **Target status:** EXCEEDED_TARGET
+- **Exceedance causes:** Complete 156-relationship statistical checks required two disjoint shards in each pass; independent nine-finding screening reread the full stopping qualification and subgroup definitions, followed by exact-page three-ID recheck, fresh second-pass exclusion review, independent quality audit and complete report assembly. These sequential evidence and handoff waves exceeded the 45-minute estimate; no coverage, relationship or candidate was omitted to meet it.
+
+## Chronological stage record
+
+The following paragraphs preserve stage status at the time each handoff occurred. Current coverage and completion are recorded in source_coverage.md and coverage_manifest.md. At inventory initialization, curation was complete and mapping was pending, with zero mapped units. The coordinator finalizes finish time and elapsed fields immediately after complete Markdown report assembly.
+
+Run model: gpt-6.1-sol. Asset curator responded under the named preset. Direct-source hashes were captured before mapping. Reused evidence assets and provenance records are preserved and hashed separately. Rendering and native extraction use CPU; requested GPU OCR is subject to engine approval if required. No OCR was run in curation.
+
+Mapping closed: DOC-001 11/11, DOC-002 26/26, DOC-003 29/29, DOC-004 6/6. Numeric review is split into 100 main and 41 support relationships. Statistical review is split into 115 main/PLAN and 41 support-result relationships to respect the 120-relationship context bound; no relationship or candidate count is capped. Cross-source review covers every applicable matched result and planned-versus-reported element. GPU RapidOCR was approved by the user, but no fresh OCR was needed for complete mapping. Native extraction and the four mapper page renders used PyMuPDF 1.26.4 on CPU.
+
+Numeric checks closed: 141 relationship families, no numeric findings, four excluded observation patterns across main/support shards. Supplemental statistical pass 1 closed: 41 relationships, no findings, four excluded observations. Cross-source review closed: five findings and ten excluded observations; independent inclusion screening remains pending. Counts reflect fresh discovery only.
+
+Initial checking closed: 156 statistical relationships have individual PASS_1_COMPLETE records across two fresh high-effort shards. Main/PLAN statistical checker produced four findings and 23 exclusions; support statistical checker produced no findings and four exclusions. Independent initial inclusion screen covers all nine checker findings. Both numeric parts and both statistical parts were merged losslessly into canonical inventories/checkers, with relative links rebased one directory level; immutable parts remain available.
+
+During independent source rereading, the inclusion screener located a stopping-rule qualification in both plan sources that the initial proposed comparison did not account for. Screening decisions remain independent and source based; preliminary findings are not candidate IDs. The complete source qualification will be retained in the screening artifact and reviewed again in statistical pass 2 and quality audit.
+
+Initial inclusion screen finalized: nine findings, six INCLUDE rows consolidated into C001,C002,C003, three SCREENED_OUT rows (NOT_REPRODUCED2; CONDITIONAL_OR_UNREPORTED1). The prior-cesarean issue retains only that criterion; fetal-anomaly wording was excluded within F-XS-005. C001/C002 qualify by Route A category5; C003 by Route B. Stable IDs assigned in source order and all candidates remain Pending Human Adjudication. Mechanical recheck underway in a fresh high-effort named specialist. A duplicated mapper S060 locator for hysterectomy was normalized to S059 after source-grounded pass1 confirmation; supplied values were unchanged.
+
+Mechanical recheck complete for C001,C002,C003: all evidence states reproduced; P_R/all P_R/protocol_report classifications confirmed. All exact registered locations plus repeated C003 main p.7 and SAP p.4 amendment context are retained. Statistical pass2 began in two different fresh high-effort specialists (115 main/PLAN and41 support relationships). Their exclusion-review scopes partition all original checker Excluded observations tables, with the full ledger, screen and recheck read by both.
+
+Statistical pass2 complete: all156 relationships in fresh high-effort agents,115main/PLAN and41support; no new qualifying findings. Complete support pass2 part merged with relative links rebased; individual completion records retained. Main/PLAN pass2 revisited36 incoming excluded rows and all screened/narrowed findings, consolidating28 patterns; support pass2 revisitedfive incoming excluded rows, consolidatingfour patterns. Mandatory independent quality audit began over allstableIDs, screening decisions, exclusions, coverage and routing provenance.
+
+Independent quality audit complete: allthree candidates CONFIRMED for inclusion; no new findings or screening reversals. Audit checked72sourcepages,141numericfamilies,156statisticalfamilies inbothpasses, allnine screeningdecisions,41original exclusions and32pass2consolidated exclusions. Ledger evidence states reproduced and inclusion audits CONFIRMED were propagated without changingIDs or classifications. All candidates remain Pending Human Adjudication. Report assembly is the remaining mandatory specialist stage.
+
+Report assembly complete: every stableID has all21required evidence-card fields, exact ledger classifications and all15actual runtimeagents in metadata. The nine performance fields were finalized immediately after the report specialist ownership handoff and copied exactly into the Markdown report. No further model call is required for closure. Source integrity, local standalone rendering, temporary-tool removal and mechanical validation follow this scientific-review finish.
+
+Closure bookkeeping repair: the first mechanical validation confirmed source integrity/coverage, all15agent routes, ninefinding decisions, threeclassifications and156relationship identities. Coverage auxiliary rows were renamed to their parent required stages, and the115existing individual main/PLAN first-pass records were mechanically copied from the audited inventory into the checker artifact so eachID is explicit. Scientific facts, screening decisions, IDs and report text were unchanged. HTML was rendered once; prescribed fallback removal succeeded before final validation.

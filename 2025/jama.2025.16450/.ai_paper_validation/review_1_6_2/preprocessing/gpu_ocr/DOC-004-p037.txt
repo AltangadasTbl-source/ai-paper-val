@@ -1,0 +1,49 @@
+Engine: RapidOCR 1.4.4 CLI; ONNX Runtime GPU 1.28.0; requested CUDA on RTX 5070; CUDA requested; no CPU fallback reported.
+Raw log: .ai_paper_validation/review_1_6_2/preprocessing/gpu_ocr/DOC-004-p037.log
+
+Neonatal Research Network
+IND 142279
+Budesonide inBabies (BiB)
+NCT04545866
+Statistical Analysis Plan
+NICHD-NRN-0064
+26 weeks gestational age (vs. ≥ 26 weeks), and β3,1, ., β3,k-1 the parameters for the effects of
+sites 1 through k - 1 (vs. site k). Solutions to the generalized estimating equations, β, are
+consistent estimates of the model parameters β, for which valid standard errors are obtained
+using the robust (empirical) sandwich estimator of Cov(β) (Liang & Zeger, 1986).
+The primary hypothesis will be tested by incorporating the robust variance estimator for the
+treatment effect in the robust Poisson model where the null hypothesis of no treatment effect on
+the probability of BPD or death by 36 weeks PMA (Ho: β1 = 0) is rejected in favor of the
+      s           
+value falling below the significance level consistent with an overall study-wise two-sided type I
+error rate of α = 0.05. The multiplicity-adjusted significance level for each of the interim
+against the two-sided significance level of 0.044 at 100% enrollment.
+The primary analysis will be implemented following the sample SAS code below for the ITT
+population (ITT=1), where study arm assignment RNDARM is 0 if randomized to the surfactant
+alone arm and 1 if randomized to the surfactant + budesonide arm (corresponding to β1). The
+primary outcome is binary BPD_DEATH, for which 0 denotes a favorable outcome (i.e., alive
+without BPD at 36 weeks PMA) and 1 denotes an unfavorable outcome (i.e., diagnosed BPD or
+death by 36 weeks PMA). RANDsTRAT is the dichotomous gestational age randomization strata
+where 1 denotes gestational age < 26 weeks and 2 denotes gestational age ≥ 26 weeks
+(corresponding to β2), SITE represents the categorical variable for NRN study site
+(corresponding to β3,1, ,β3,k-1), and SUBJID is the unique subject ID for each infant. The
+EXP option for the ESTIMATE statement provides the estimate and confidence limits for the
+covariate-adjusted relative risk, E prints the contrast matrix coefficients for verification
+purposes, and ALPHA=S IG defines the two-sided significance level SIG = α for (1 - α)
+confidence intervals for the covariate-adjusted relative risk, adjusted for multiplicity.
+PROCGENMOD;
+WHEREITT= 1;
+CLASS RNDARM(REF="O"） RANDSTRAT(REF="2"） SITE SUBJID/ PARAM=REF;
+MODEL BPD_DEATH = RNDARM SITE RANDSTRAT / DIST=POISSON LINK=LOG;
+REPEATED SUBJECT = SUBJID / TYPE=IND;
+RUN;
+If enrollment at a specific site is low (less than 10 infants in either gestational age stratum), then
+that site will be pooled with the next smallest site belonging to the same NRN center for
+covariate adjustment in the primary analysis model. Similar consideration to pooling sites will be
+given if the model faces convergence issues. Low enrolling centers may also be pooled, as
+described in Section 7.5. Furthermore, it is possible that adjustment for site or center in the
+robust Poisson regression may not be computationally feasible, in which case GLMM with site
+as a random effect or GEE methods with site as a clustering variable and an unstructured or
+exchangeable working correlation structure may be used as the primary analysis model.
+Version1.3,2024-09-10
+Page 30

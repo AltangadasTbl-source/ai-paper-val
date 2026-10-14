@@ -1,0 +1,16 @@
+# Limitations and missing definitions
+
+All five direct sources and all 167 physical PDF pages are mapped. There is no scientific-coverage gap. The following limits constrain what can be inferred from the supplied evidence, rather than which units were reviewed.
+
+- This is quantitative reporting quality control of the supplied paper package. No external literature, patient-level database, broad clinical or methodological assessment, or preferred-analysis comparison was used. The report does not determine study conduct, revision authorization, production mechanisms or the paper's overall validity.
+- Individual SOFA trajectories and home/ward discharge histories are absent. C001/C002 can identify printed endpoint and missing-data specification differences, but cannot quantify any patient reclassification or effect change.
+- The operative original-protocol-to-SAP amendment mapping, revised binary power calculation, endpoint hierarchy convention and revised infection/reversal analysis mapping are not supplied. A later SAP may legitimately revise an earlier protocol; differences are recorded without an authorization judgment.
+- Biomarker trajectories, actual applied ferritin criteria and complete inclusion rules for the 125-person serial-draw subset are absent. C004 does not reconstruct its endpoint under another window or invent a denominator change.
+- C007 establishes bounded nonlocation within the complete supplied article and results supplement. It does not establish that the four analysis families were never performed or that results do not exist elsewhere. Non-key survivor means, 90-day immune analyses and exploratory ROC/omics absences do not enlarge that candidate.
+- Patient incidences at two through five serious adverse events, NNH confidence-construction details, signed/unsigned direction conventions and confidence-set topology are not supplied. Repeated-event totals cannot replace patient incidence. C009/C010 retain their source-confirmed comparisons while preserving alternative conventions.
+- Row-specific tests/populations, coefficient standard errors/covariance, interaction outcome coding and full model definitions are unavailable. Exact forest-plot interval endpoints are not inferred from pixels. Same-display reproducing calculations are distinguished from diagnostic approximations and model-versus-crude comparisons.
+- Identical rounded model outputs can occur across distinct analyses. C013 therefore concerns unresolved result-to-outcome attribution; it does not prove a production mechanism.
+- Linux direct PDF/OCR executables were absent. The pinned package-local PyMuPDF/pypdf fallback, usable retained assets and direct visual inspection closed all affected units. Glyph-corrupted PLAN text was not transcription authority; unreadable retained p.18 and low-resolution pp.55–64 were freshly rendered and mapped. A readable alternative image covers p.71.
+- The user-authorized RTX 5070 Laptop GPU was confirmed through PowerShell. No new OCR was needed; fresh PDF rendering was CPU. Retained GPU OCR was reused only as a source-matched locator/transcription aid.
+- All fourteen candidates remain Pending Human Adjudication. Evidence state and inclusion audit document reproduction and scope-screening facts; neither constitutes an adjudication, disposition or demonstrated downstream consequence.
+

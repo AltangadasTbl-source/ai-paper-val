@@ -1,0 +1,56 @@
+Cudkowicz (PI) HEALEY ALS Platform Trial: RGC Statistical Analysis Plan
+
+Version 3.0, 22 Jul 2022
+
+Listings of all participants in the FAS, ECM, ERO, EPP, STF, and SRO analysis sets will
+document whether each participant had died, had reached a death equivalent endpoint, or was
+alive and free of a death equivalent and the study day of death, death equivalent, or last know
+alive and free of a death equivalent for each analysis timepoint.
+6.5.5
+
+Random-slopes Model
+
+The specification of the random-slopes linear mixed model and the primary linear contrast for
+estimating differences in mean rate of progression in a given continuous efficacy endpoint
+(ALSFRS-R total and domain scores, HHD upper extremity, lower extremity, and global average
+percentages, SVC, FVC by home spirometry, quantitative voice characteristics, serum creatinine,
+serum NfL, urinary p75[ECD], ALSAQ-40 domain scores and SI, and CNS-BFS total score) are
+revised from those specified in the M-SAP to include a main effect of treatment and with the
+modification that treatment group is a three-level variable (i.e., placebo, 30 mg/d CNM-Au8, and
+60 mg/d CNM-Au8).
+The model will include fixed terms for month since the Baseline Visit, treatment group,
+treatment group × month interaction, centered years since ALS symptom onset and centered
+years since ALS symptom onset × month interaction, centered delta-FRS and centered delta-FRS
+× month interaction, centered baseline riluzole use and centered baseline riluzole use × month
+interaction, and centered baseline edaravone use and centered baseline edaravone use × month
+interaction. The following equations describe the model with regimen random effects:
+଴
+ܻ௜௝ = ߛଵ + ܽ௞(௜)
++ ܾ௜଴ + ߛଶ ‫ݐ‬௜ + ࢽᇱ૜ ࢠ࢏
++ ൫ߛସ + ܽଵ௞(௜) + ܾ௜ଵ + ߛହ ‫ݐ‬௜ + ࢽᇱ૟ ࢠ࢏ ൯ ݉௜௝ + ߳௜௝
+{ܽ௞଴ , ܽଵ௞ } ~ ܰ(૙, ઱࢘ ), {ܾ௞଴ , ܾ௞ଵ } ~ ܰ൫૙, ઱࢖ ൯, ߳௜௝ ~ ܰ(0, ߪఢଶ )
+Cov(ࢇ௞ , ࢈௞ ) = ૙, Cov(ࢇ௞ , ࣕ௜ή ) = ૙, and Cov(࢈௞ , ࣕ௜ή ) = ૙
+
+(eqn. 2)
+
+where Yij is a given efficacy endpoint measured in participant i at visit j, a0k(i) and a1k(i) are
+random intercept and slope for regimen k to which participant i was assigned, b0i and b1i are
+random intercept and slope for participant i, zi is the vector of covariates (centered time since
+onset, centered delta-FRS, centered baseline riluzole use, and centered baseline edaravone use)
+for participant i, mij is the time from baseline to observation j for participant i in months
+calculated as days x 12 / 365.25, ti is an indicator variable for treatment t to which participant i
+was assigned, Ȗ1, Ȗ2, Ȗ3, Ȗ4, Ȗ5, and Ȗ6 are estimated parameters and vectors of parameters for the
+fixed effects, and ‫׫‬ij is the residual for observation j for participant i. The regimen-specific
+random effects are normally distributed with mean 0 and unstructured covariance matrix r. The
+participant-specific random effects are normally distributed with mean 0 and unstructured
+covariance matrix p. The residuals for a given participant are normally distributed with mean 0
+and variance ı2‫׫‬. The regimen-specific random effects, participant-specific random effects, and
+residuals are uncorrelated.
+The following SAS code specifies the model:
+proc mixed data=xxx method=reml;
+class regimen id trtrnd;
+model Value = trtrnd|month
+sx2bl|month dFRS|month rlz|month edv|month / solution cl;
+random intercept month / subject=regimen type=un;
+Page 29 of 30
+

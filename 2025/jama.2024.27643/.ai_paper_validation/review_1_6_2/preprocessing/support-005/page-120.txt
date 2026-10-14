@@ -1,0 +1,61 @@
+Cudkowicz (PI) HEALEY ALS Platform Trial: RGC Statistical Analysis Plan
+
+Version 3.0, 22 Jul 2022
+
+use and centered baseline edaravone × visit interaction. The following equations describe the
+model with regimen random effects:
+ܻ௜௝ = ܽ௞(௜) + ߛଵ ‫ݐ‬௜ + ߛଶ,௝ ‫ݒ‬௝ + ࢽᇱ૜ ࢠ࢏ + ߛସ,௝ ‫ݐ‬௜ ‫ݒ‬௝ + ࢽᇱ૞,࢐ ࢠ௜ ‫ݒ‬௝ + ߳௜௝
+ܽ௞ ~ ܰ(0, ߪ௥ଶ ), ࣕ࢏ή ~ ܰ(૙, ࡾ), Cov൫ܾ௞(௜) , ߳௜௝ ൯ = 0
+
+(eqn. 1)
+
+where Yij is a given efficacy endpoint measured in participant i at visit j, ak(i) is a random
+intercept for regimen k to which participant i was assigned, vj is an indicator variable for visit j, zi
+is the vector of covariates (centered time since onset, centered delta-FRS, centered baseline
+riluzole use, and centered baseline edaravone use) for participant i, ti is an indicator variable for
+treatment t to which participant i was assigned, Ȗ1, Ȗ2,j, Ȗ3, Ȗ4,j, and Ȗ5,j are estimated parameters
+and vectors of parameters for the fixed effects, and ‫׫‬ij is the residual for participant i at visit j.
+The regimen-specific random effects are normally distributed with mean 0 and variance ı2r. The
+vector of residuals for a given participant are normally distributed with mean 0 and an
+unstructured covariance matrix R. The regimen-specific random effect for a given participant
+and residuals for that participant are uncorrelated.
+The following SAS code specifies the model:
+proc mixed data=xxx method=reml;
+class regimen id trtrnd visit;
+model Value = trtrnd|visit
+sx2bl|visit dFRS|visit rlz|visit edv|visit / solution cl;
+random intercept / subject=regimen type=vc;
+repeated visit / subject=id type=un;
+
+where id is a participant study identifier, trtrnd is the randomly assigned treatment group,
+visit is the visit identifier, Value is value of the efficacy endpoint being tested for a given
+participant at a given visit, sx2bl is years since ALS symptom onset centered at the sample
+median, dFRS is pre-baseline slope centered at the sample median, rlz is an indicator of riluzole
+use at baseline, and edv is an indicator of edaravone use at baseline. The primary estimate will
+be the treatment-dependent difference in change from baseline to the Week 24 Visit. The
+estimate and its 95% Wald confidence bounds will be obtained by a linear contrast of adjusted
+means.
+The estimand estimated by the primary linear contrast of the shared-baseline, repeated-measures
+linear mixed model is the mean difference in 24-week change from baseline of a given
+continuous efficacy endpoint in the two active treatment groups relative to the placebo group in
+the FAS population. The estimand is defined by the following attributes:
+x
+
+Treatment: CNM-Au8 administered orally at dosages of 30 mg/d and 60 mg/d vs. placebo.
+
+x
+
+Population: FAS population as defined in Section 6.1.
+
+x
+
+Variables: absolute change in endpoint from baseline to the Week 24 Visit.
+
+x
+
+Intercurrent event: treatment discontinuation: handled via treatment policy approach, all data
+will be used including data collected during the placebo-controlled period after treatment
+discontinuation. Missing data post-treatment, including data missing due to death, will not be
+imputed, handled via missing at random assumption.
+Page 27 of 28
+

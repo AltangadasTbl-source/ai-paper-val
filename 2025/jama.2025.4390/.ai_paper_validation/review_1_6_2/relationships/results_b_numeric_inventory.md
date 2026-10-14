@@ -1,0 +1,33 @@
+# Numeric relationships: results shard B
+
+Scope DOC-004 REPORT physical PDF pp25–49. Every grouped relationship includes every printed row of that page in extraction/support_results_025_049.md, not a sample. Source file joi250019supp3_prod_1749674951.30054.pdf. Relative links resolve from this file. All rows require downstream checker threshold assessment; mapper makes no finding or candidate selection.
+
+| ID | Source location | Complete quantitative scope and identity | Matching key / interpretation boundary |
+|---|---|---|---|
+| N300 | [p25](../../../joi250019supp3_prod_1749674951.30054.pdf#page=25) | eFigure3 four retention curves; months0–74; percentages0–22%; caption unavailable follow-up3.4% Bedtime,2.6% Morning | Availability44/1680,57/1677 from eTable5; total withdrawal differs from unavailable-follow-up subset |
+| N301 | [p26](../../../joi250019supp3_prod_1749674951.30054.pdf#page=26) | eFigure4 all42 class/allocation/timing segment counts explicitly mapped | eTable6 same all-current-medication classes; eTable8 restricted baseline persistent once-daily subset |
+| N302 | [p27](../../../joi250019supp3_prod_1749674951.30054.pdf#page=27) | eTable1 all4 recruitment counts/percentages Morning1680,Bedtime1677;436 PCPs429+7;41128 letters;median77.5,IQR77.25;6.2% recruitment | Recruitment descriptive, no inferential test |
+| N303 | [p28](../../../joi250019supp3_prod_1749674951.30054.pdf#page=28) | eTable2 all15 interview columns, online/phone count/percent,total,N/A,month18SBT | Interview occasion denominators;week1 conditional timing change |
+| N304 | [p29](../../../joi250019supp3_prod_1749674951.30054.pdf#page=29) | eTable3 every age/sex/education/ethnicity/province/chronotype/smoking/exercise count,percent,median,IQR;Bedtime1677,Morning1680,Overall3357 | Main baseline keys matched only by exact population/definition |
+| N305 | [p30](../../../joi250019supp3_prod_1749674951.30054.pdf#page=30) | eTable3 every BMI/frailty/QoL/cognition/deprivation/rural/comorbidity count,percent,median,IQR | Dementia uses only administrative-data-available denominator |
+| N306 | [p31](../../../joi250019supp3_prod_1749674951.30054.pdf#page=31) | eTable3 hospitalization plus all BP-drug,total-Rx,nonprescription,vitamin count categories in3 columns | All count/percentage/column-total relationships retained |
+| N307 | [p32](../../../joi250019supp3_prod_1749674951.30054.pdf#page=32) | eTable3 all7 medication classes,all counts/percents,quantitative scale/eligibility definitions | Multiple medication classes not mutually exclusive;frailty≥3,SBT0–28,QoL0–100 |
+| N308 | [p33](../../../joi250019supp3_prod_1749674951.30054.pdf#page=33) | eTable4 demographics counts/percentages/median/IQR and allP;completion2726,withdrawal631 | S300;all displayed category sums and proportions |
+| N309 | [p34](../../../joi250019supp3_prod_1749674951.30054.pdf#page=34) | eTable4 exercise/BMI/frailty/QoL/SBT/deprivation/rural/hospital/comorbidities allrows | S301;dementia available-data subgroup |
+| N310 | [p35](../../../joi250019supp3_prod_1749674951.30054.pdf#page=35) | eTable4 remaining comorbidities,5 medication-number distributions,3 classes allrows | S302;count categories retain printed percentages |
+| N311 | [p36](../../../joi250019supp3_prod_1749674951.30054.pdf#page=36) | eTable4 remaining4 classes,polypharmacy,resistant HTN plus allquantitative footnotes | S303;polypharmacy≥5 dailyRx,resistantHTN≥3 dailyBPdrugs |
+| N312 | [p37](../../../joi250019supp3_prod_1749674951.30054.pdf#page=37) | eTable5 demographics allcount/percentage/median/IQR/P;Morning44,Bedtime57 | S304;current-source image visually read,including every ethnicity row |
+| N313 | [p38](../../../joi250019supp3_prod_1749674951.30054.pdf#page=38) | eTable5 exercise/BMI/frailty/QoL/SBT/deprivation/rural/hospital/comorbidities allrows | S305;dementia excludes participants without administrative data |
+| N314 | [p39](../../../joi250019supp3_prod_1749674951.30054.pdf#page=39) | eTable5 all5 medication-number distributions andall7 medication classes | S306;Morning/Bedtime order opposite eTable3 |
+| N315 | [p40](../../../joi250019supp3_prod_1749674951.30054.pdf#page=40) | eTable5 polypharmacy,resistantHTN count/percentage/P,quantitative definitions | S307;allfootnotes and missingness conditions |
+| N316 | [p41](../../../joi250019supp3_prod_1749674951.30054.pdf#page=41) | eTable6 exclusions2 subcategories,adherence,participant-average dose%,6 drug-number categories,means/SDs,ACEI/ARB/beta/CCB/combination timing | Adherence denominator excludes noBP drugs;drug-number denominator retains noBP interviewed |
+| N317 | [p42](../../../joi250019supp3_prod_1749674951.30054.pdf#page=42) | eTable6 combination continuation,diuretic/other every timing count/percentage,half-dose rule | Current table diureticPM allocated277,off139,twice8;image figure independent278,138,8 |
+| N318 | [p43](../../../joi250019supp3_prod_1749674951.30054.pdf#page=43) | eTable7 all16 allocation/time rows months6–48 eachparticipantN,RxN,≥1 allocated count/%,average-dose%,5 timing count/% | Pooled Rx counts distinct from participant-average dose%;current visual inspected |
+| N319 | [p44](../../../joi250019supp3_prod_1749674951.30054.pdf#page=44) | eTable7 all8 allocation/time rows months54–72 same complete fields plusformula | MorningAM/noon;BedtimePM/dinner;twicehalfAM/halfPM |
+| N320 | [p45](../../../joi250019supp3_prod_1749674951.30054.pdf#page=45) | eTable8 first4 classes8 columns,baseline meds,timingchanges,noattempt/failed,reasons,side effects | Nested denominators and multiple-response reasons;image aligned |
+| N321 | [p46](../../../joi250019supp3_prod_1749674951.30054.pdf#page=46) | eTable8 first4 classes everyremaining sideeffect/otherreason sparse cell | Exact column normalization supplied;blanks retained |
+| N322 | [p47](../../../joi250019supp3_prod_1749674951.30054.pdf#page=47) | eTable8 remaining3 classes6 columns,baseline meds,change success/failure,reasons | Restricted baseline stillinuse6months;image aligned |
+| N323 | [p48](../../../joi250019supp3_prod_1749674951.30054.pdf#page=48) | eTable8 remaining3 classes everyremaining sparse cell,footnotes | Multiple response means sideeffects/reasons neednot sum100 |
+| N324 | [p49](../../../joi250019supp3_prod_1749674951.30054.pdf#page=49) | eTable9 all11 ABPM endpoint mean/SD/count/%/MD/95%CI/P;151perarm | S308–S318;Bedtime minusMorning;mmHg except dip%;dip thresholds |
+
+25 numeric grouped relationships,25mapped pages,0gaps. Every count and percentage row remains eligible for within-display arithmetic checks independent of peripheral cross-document comparison rules. No finding IDs assigned here.

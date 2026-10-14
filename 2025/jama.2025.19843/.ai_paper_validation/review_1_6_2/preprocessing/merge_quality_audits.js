@@ -1,0 +1,7 @@
+const fs=require('fs'),path=require('path'),r='.ai_paper_validation/review_1_6_2/';
+const canonical=r+'quality/evidence_quality_audit.md',base=path.dirname(path.resolve(canonical));
+function rebase(s,from){return s.replace(/\]\((<?)([^)\n]+?)(>?)\)/g,(m,l,u,rr)=>{if(/^(?:https?:|#|mailto:)/.test(u))return m;const i=u.indexOf('#'),file=i<0?u:u.slice(0,i),anchor=i<0?'':u.slice(i);return ']('+l+path.relative(base,path.resolve(from,file)).split(path.sep).join('/')+anchor+rr+')';});}
+const main=fs.readFileSync(canonical,'utf8');fs.writeFileSync(r+'quality/parts/candidate_quality_audit.md',rebase(main,base).replace(/\]\((<?)([^)\n]+?)(>?)\)/g,(m,l,u,rr)=>{if(/^(?:https?:|#|mailto:)/.test(u))return m;const i=u.indexOf('#'),file=i<0?u:u.slice(0,i),anchor=i<0?'':u.slice(i);return ']('+l+path.relative(path.resolve(r+'quality/parts'),path.resolve(base,file)).split(path.sep).join('/')+anchor+rr+')';}));
+let out=main+'\n\n# Complete disjoint scientific audit parts\n\nThe coordinator losslessly merges the four fresh specialist parts below, rebasing local links. Their individual source-unit, numeric, cross-source and statistical closure records supplement the complete candidate/screening audit above.\n\n';
+for(const name of ['coverage_main_protocol','coverage_support','cross_source_audit','statistical_audit']){const f=r+'quality/parts/'+name+'.md';out+=rebase(fs.readFileSync(f,'utf8'),path.dirname(path.resolve(f)))+'\n\n';}
+fs.writeFileSync(canonical,out);process.stdout.write('Losslessly merged4disjointqualityparts andpreservedcandidateauditpart.\n');

@@ -1,0 +1,14 @@
+# Direct Source Inventory
+
+Scope: the current paper package only. All supplied PDF, DOC, DOCX, XLS, XLSX, and CSV files were enumerated outside the audit area and workflow controls. Four PDFs are supplied; no supplied Office or CSV sources exist. Each PDF page is one stable source unit. Roles were confirmed from current-source page 1 content using PyMuPDF 1.26.4 through the recorded fallback helper. No bundle contains both REPORT and PLAN content.
+
+| Source ID | Source path | Document role | Content basis | Unit type | Total units | SHA-256 | Mapper assignment |
+|---|---|---|---|---|---:|---|---|
+| DOC-001 | jama_kumar_2025_oi_250034_1750956984.08518.pdf | REPORT | Main randomized clinical trial article; title and abstract contain trial results on PDF p. 1 | PDF_PAGE | 11 | 10ab2f532b03f65d1d84bc8e8a2a3a14e3b24a76f204123acd7049d67f7b73e3 | main_quantitative_mapper: every PDF page 1-11, fresh direct-source extraction and mapping |
+| DOC-002 | joi250034supp1_prod_1750956984.09018.pdf | PLAN | Prospective iSEARCH protocol V2.1, 31 January 2022; protocol cover on PDF p. 1 | PDF_PAGE | 26 | 4d21c2d519df3a518ed23afdba74b221ae035e19222f7230081bb63d6f28221f | support_quantitative_mapper: every PDF page 1-26, reusable native/layout text and direct source |
+| DOC-003 | joi250034supp2_prod_1750956984.11521.pdf | PLAN | Statistical Analysis Plan cover on PDF p. 1; planned analyses and table shells | PDF_PAGE | 29 | 413d12db69bc43aa875801ea986fb6316a4511874b393ed8a71782ddb000e5b0 | support_quantitative_mapper: every PDF page 1-29, reusable native/layout text and direct source |
+| DOC-004 | joi250034supp3_prod_1750956984.12018.pdf | REPORT | Supplemental Online Content index on PDF p. 1; sensitivity, site-stratified outcomes, and side-effect results on PDF pp. 2-6 | PDF_PAGE | 6 | 16131dae3f154fd78dc8058b1b4203cdeda5a26f2fe4939365651305e80e6e80 | support_quantitative_mapper: every PDF page 1-6, reusable normalized text, tables, and page images |
+
+Total: four direct sources and 72 unique PDF pages. Current source hashes are authoritative. The legacy main-article hash in the document record differs from the current PDF; legacy main assets are STALE and its 11 pages enter fresh-required coverage. Historical exclusions in legacy provenance have no force in this workflow: every protocol and SAP page is assigned.
+
+Info commands: `.ai_paper_validation/review_1_6_2/tooling/venv/bin/python workflow_1_6_2/scripts/pdf_tools.py info SOURCE`. Engine: PyMuPDF 1.26.4, CPU. Four current-source first-page native extracts were produced by the same helper with `text SOURCE --first 1 --last 1 OUTPUT` at `preprocessing/curator/DOC-001-page1.native.txt`, `preprocessing/curator/DOC-002-page1.native.txt`, `preprocessing/curator/DOC-003-page1.native.txt`, and `preprocessing/curator/DOC-004-page1.native.txt`. These current-run derivatives are not reused assets and do not themselves establish scientific mapped coverage.

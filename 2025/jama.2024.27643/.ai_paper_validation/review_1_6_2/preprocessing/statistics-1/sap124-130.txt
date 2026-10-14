@@ -1,0 +1,324 @@
+Cudkowicz (PI) HEALEY ALS Platform Trial: RGC Statistical Analysis Plan       Version 3.0, 22 Jul 2022
+
+
+6.5.7  Composite of ALSFRS-R, SVC, and ALSAQ-40 Slopes
+Participant-specific rates of change in ALSFRS-R total score, SVC percent-predicted, and
+ALSAQ-40 total score will be estimated in separate, endpoint-specific unadjusted random-slopes
+linear mixed models in the FAS, ECM, and ERO analysis sets. Participant-specific random
+slopes for each endpoint will be standardized to a mean of zero (0) and a variance of one (1) and
+then averaged for each participant. The composite average of standardized random slope
+estimates will be compared across treatment groups by one-way analysis of variance with
+adjustment for the following median-centered covariates: years since ALS symptom onset, delta-
+FRS, baseline riluzole use, and baseline edaravone use. A separate analysis will include baseline
+serum NfL level as an additional covariate. Treatment comparison between all active arm
+participants (i.e., the average of both 30 mg/d and 60 mg/d dosage groups) vs. placebo
+participants and between each active treatment group separate vs. placebo will be estimated
+using contrasts of least-square means.
+6.5.8 HHD0 and HHD02
+Analyses of HHD0 are the same as specified in the M-SAP with the modification that treatment
+group is a three-level variable (i.e., placebo, 30 mg/d CNM-Au8, and 60 mg/d CNM-Au8), with
+addition of parallel analyses of HHD02, with a separate analysis that includes baseline serum
+NfL level as an additional covariate, and with the clarification that time to zero strength for both
+analyses is interval censored between HHD assessments.
+Inference from these analyses is supportive of inference from the repeated-measures linear mixed
+model for HHD upper and lower extremity scores.
+6.5.9  Quantitative Voice Measures
+Given the high frequency of voice recordings, a repeated-measures analysis with unstructured
+covariance is overly flexible but the assumption of linear change required by the random-slopes
+model may be overly rigid. To complement estimates from the random-slopes linear mixed
+model, quantitative voice characteristics will be analyzed in a linear mixed model in which the
+temporal profile for both fixed and random terms is modeled using cubic B-splines with knots at
+8 and 16 weeks. The model will include fixed terms for B-splines (4 terms), treatment group (3
+levels), treatment group × B-spline interaction, centered time since symptom onset and centered
+time since symptom onset × B-spline interaction, centered delta-FRS and centered delta-FRS ×
+B-spline interaction, centered baseline riluzole use and centered baseline riluzole × B-spline
+interaction, and centered baseline edaravone use and centered baseline edaravone × B-spline
+interaction. The model will include random regimen-specific intercepts and slopes with
+unstructured covariance, random participant-specific B-splines (5 terms) with unstructured
+covariance, and a first-order autoregressive structure for residuals. A simplified covariance
+structure assuming no regimen-level covariance, heterogeneous compound symmetric covariance
+among the random B-splines, conditional independence of residuals, or a combination of the
+three simplifying assumptions will be used if the full model fails to converge. The primary
+estimand will be the active (i.e., the average of both 30 mg/d and 60 mg/d dosage groups) vs.
+placebo treatment-dependent difference in 24-week change from baseline. The estimate and its
+95% Wald confidence bounds will be obtained by a linear contrast of adjusted means.
+A separate supportive analysis will include centered baseline serum NfL level and the interaction
+of centered baseline serum NfL level and B-splines as additional covariates.
+
+
+                                                                                Page 31 of 32Cudkowicz (PI) HEALEY ALS Platform Trial: RGC Statistical Analysis Plan       Version 3.0, 22 Jul 2022
+
+
+6.5.10 Placebo Multiple Imputation
+Placebo multiple imputation analyses are the same as specified in the M-SAP with the
+modification that treatment group is a three-level variable (i.e., placebo, 30 mg/d CNM-Au8, and
+60 mg/d CNM-Au8). Placebo multiple imputation analyses will be applied to ALSFRS-R total
+score, HHD upper and lower extremity percentages, and SVC.
+The following SAS code specifies the imputation for an endpoint measured every 8 weeks:
+proc mi data=work.outcomes seed=xxx nimpute=50 out=work.out_mi01
+        minimum=. . . . . x x x x maximum=. . . . . y y y y minmaxiter=1000;
+  class rlz edv trtrnd;
+  fcs reg(Wk08 = sx2bl dFRS rlz edv Wk00);
+  fcs reg(Wk16 = sx2bl dFRS rlz edv Wk00 Wk08);
+  fcs reg(Wk24 = sx2bl dFRS rlz edv Wk00 Wk08 Wk16);
+  mnar model( Wk08 Wk16 Wk24 / modelobs=(trtrnd="0"));
+  var sx2bl dFRS rlz edv Wk00 Wk08 Wk16 Wk24;
+run;
+where Wk00, Wk08, Wk16, and Wk24 are the values of a given efficacy endpoint at the Baseline,
+Week 8, Week 16, and Week 24 Visits, respectively, trtrnd has a value of zero (0) for
+participants randomized to placebo, and x and y take appropriate values to specify the range of a
+given outcome measure (i.e., 0 and 48 for ALSFRS-R total score; 0 and . for HHD upper and
+lower extremity percentages and SVC).
+Inference from these analyses is supportive of inference from the Bayesian shared-parameter,
+repeated-measures model for the primary endpoint and assess sensitivity to the missing data
+assumption of the repeated-measures linear mixed model for secondary endpoints in the FAS
+analysis set. A separate analysis will include centered baseline serum NfL level as an additional
+covariate in both imputation stages.
+6.5.11 Additional Sensitivity Analyses of Primary and Key Secondary Outcomes
+Sensitivity analyses of primary and key secondary efficacy outcomes are the same as specified in
+the M-SAP with the modification that treatment group is a three-level variable (i.e., placebo, 30
+mg/d CNM-Au8, and 60 mg/d CNM-Au8).
+6.5.12 Subgroup Analyses
+In addition to the subgroups specified in the M-SAP, the following additional subgroups will be
+analyzed in the random-slope model (see Section 6.5.5) for primary and secondary efficacy
+endpoints in the FAS analysis set:
+x  Baseline use of riluzole and edaravone (neither, riluzole only, edaravone only, both),
+x  Age (less than 65 years vs. 65 years or older),
+x  Sex (female vs. male),
+x  Race (white vs. any minority race with greater than 5% prevalence in the sample),
+x   Ethnicity (Hispanic or Latino vs. non-Hispanic or Latino),
+
+
+
+
+                                                                                Page 32 of 33Cudkowicz (PI) HEALEY ALS Platform Trial: RGC Statistical Analysis Plan       Version 3.0, 22 Jul 2022
+
+
+x  Weight (less than 43 kg, 43 to less than 56 kg, 56 to less than 77 kg, 77 to less than 150 kg,
+   150 kg or more),
+x  BMI (less than 18.5 kg/m2, 18.5 to less than 25 kg/m2, 25 to less than 30 kg/m2, 30 to less
+   than 40 kg/m2, 40 kg/m2 or more),
+x  Chronic kidney disease (CKD) stage (stage 1 or better [eGFR 90 mL/min/1.73m2 or more],
+    stage 2 [eGFR 60 to 89 mL/min/1.73m2], stage 3 [eGFR 30 to 59 mL/min/1.73m2], stage 4
+   [eGFR 15 to 29 mL/min/1.73m2], stage 5 [eGFR less than 15 mL/min/1.73m2]),
+x  Time since onset of weakness (less than 18 months vs. 18 months or longer),
+x  El Escorial and time since onset of weakness (El Escorial definite and less than 18 months
+    vs. not both),
+x  Baseline symptom severity (all ALSFRS-R questions scored 2 or greater vs. any question
+   scored 0 or 1),
+x  Early disease state (all ALSFRS-R questions scored 2 or greater, SVC 80%-predicted or
+    greater, and time since symptom onset less than 24 months vs. not meeting all three criteria),
+x  Baseline serum urate concentration (less than 5.5 mg/dL vs. 5.5 mg/dL or greater),
+x  Baseline serum NfL concentration (by median split),
+x  Baseline delta-FRS score (less than 0.47 points/year, 0.47 to less than 1.11 points/year, 1.11
+    points/year or greater),
+x   Site of onset (any bulbar onset, no bulbar onset),
+x   Site (individual sites with at least 5 participants per treatment group and all participants from
+    sites with fewer than 5 participants per treatment group pooled).
+For each classification, unknown, not reported, and missing will be considered one group. All
+individuals not included in a specified subgroup will be combined into a mixed, "other" group.
+The "other" group will be included in analyses if its prevalence is greater than 5%; otherwise, the
+"other" group will be excluded.
+In cases where a model for a given subgroup and endpoint fails to converge, the covariance
+terms for the regimen-specific random effects will be simplified from unstructured covariance of
+intercepts and slopes to separate, uncorrelated variance components for intercepts and slopes. If
+convergence still fails, regimen-specific intercepts and slopes will be modeled as fixed effects. If
+convergence still fails, the participant-specific random effects will be simplified from
+unstructured covariance of intercepts and slopes to separate, uncorrelated variance components
+for intercepts and slopes.
+6.5.13 Comparison of Controls across Regimens
+Comparisons of placebo participants across regimens are the same as specified in the M-SAP
+with separate analyses that include baseline serum NfL level as an additional covariate plus
+applicable interaction terms as relevant to a given model.
+
+
+
+
+
+                                                                                Page 33 of 34Cudkowicz (PI) HEALEY ALS Platform Trial: RGC Statistical Analysis Plan       Version 3.0, 22 Jul 2022
+
+
+6.5.14 Pharmacokinetic Analyses of CNM-Au8
+Pre-dose concentrations of CNM-Au8 in whole blood and plasma will be summarized by
+treatment group and visit in the ERO sample. Concentrations below the limit of quantitation
+(BLQ) will be replaced with one half of the lower limit of quantitation. Summaries will include
+number of observations, number and percentage with concentrations BLQ, arithmetic mean,
+median, standard deviation, minimum, maximum, geometric mean, geometric coefficient of
+variation (calculated as sqrt(exp(variance of log-transformed concentrations) – 1)), and 95%
+confidence bounds for the geometric mean assuming log-normally distributed data.
+A concentration response relationship based on observed CNM-Au8 Cmax per active participant
+versus ALSFRS-R slope change will also be analyzed as an exploratory endpoint.
+Whole blood and plasma concentration data of CNM-Au8 may be subjected to population
+pharmacokinetic analysis to derive population estimates of pharmacokinetic parameters and test
+the effect of various covariates such as age, weight, and sex. Details of the analysis will be
+described in a separate data analysis plan (DAP). This analysis may be performed by combining
+data from the current study with data from other studies of CNM-Au8, if deemed appropriate.
+The tests of association with ALSFRS-R and the population pharmacokinetic analysis will be
+performed by Clene Nanomedicine or its designee and reported in a separate modelling report.
+6.5.15 Pharmacodynamic Biomarker Analyses
+Pharmacodynamic biomarkers other than serum creatinine, serum and CSF NfL, and urinary
+p75[ECD] will be analyzed by Clene Nanomedicine according to a separate pharmacodynamic
+DAP (Regimen C Pharmacodynamic Analysis Plan) and will be reported in a separate report.
+6.5.16 Pharmacokinetics of Riluzole
+Pharmacokinetic analysis of plasma riluzole concentrations will be analyzed according to a
+separate pharmacokinetic analysis plan authored and conducted by Dr. Charles Venuto, PharmD.
+
+6.6   Safety Analyses
+6.6.1  Treatment-emergent Adverse Events
+Summaries and analyses of treatment-emergent adverse events (TEAE) are the same as specified
+in the M-SAP with the following revisions.
+TEAEs are defined as those adverse events with onset dates in the interval from double-blind
+treatment initiation to either the Final Safety Visit if completed, the date of death if the
+participant dies, 28 days after last dose of study drug if the participant early terminates or is lost
+to follow-up, or the date of first dose of study drug during participation in the OLE, if so
+exposed. Adverse events with onset on the day of double-blind treatment initiation and adverse
+events with incompletely specified onset date where the ambiguous date spans the day of double-
+blind treatment initiation will be assumed to be treatment emergent except for those known to
+precede first exposure to study drug.
+In addition to summaries specified in the M-SAP, serious TEAEs will be summarized by
+MedDRA system organ class, high level term, and preferred term for all TEAEs. In addition,
+TEAEs will be summarized by Medical Dictionary for Regulatory Activities (MedDRA) system
+organ class and preferred term for fatal TEAEs, TEAEs that occurred during a participant's
+COVID-19 infection (defined as 5 days prior to symptom onset to end of COVID-19 symptoms
+
+
+                                                                                Page 34 of 35Cudkowicz (PI) HEALEY ALS Platform Trial: RGC Statistical Analysis Plan       Version 3.0, 22 Jul 2022
+
+
+or the earlier of 91 days after symptom onset or the end of double-blind follow-up, if ongoing),
+and TEAEs and serious TEAEs stratified by the following subgroups: baseline riluzole use,
+baseline edaravone use, age, sex, race, ethnicity, weight, BMI, and CKD stage. Subgroup
+classifications will be the same as described in Section 6.5.12 Subgroup Analyses except that the
+"other" group will be retained regardless of prevalence.
+TEAEs indicating COVID-19 infection are the following: Asymptomatic COVID-19, COVID-
+19, COVID-19 pneumonia, COVID-19 treatment, Post-acute COVID-19 syndrome, SARS-CoV-
+2 antibody test positive, SARS-CoV-2 RNA increased, SARS-CoV-2 sepsis, SARS-CoV-2 test
+false negative, SARS-CoV-2 test positive, SARS-CoV-2 viraemia, Suspected COVID-19.
+Treatment-dependent differences in the proportion of participants experiencing a given type of
+TEAE will not be tested. Treatment-dependent differences in TEAE incidence rates in units of
+number per 100 participant years will be estimated as differences rather than ratios and will
+include comparison-wise 95% confidence intervals with variance estimates obtained by the delta
+method.
+6.6.2  Safety Labs
+Summaries and analyses of clinical safety labs are the same as specified in the M-SAP with the
+revision that abnormal levels will be classified to a toxicity grade based on quantitative grading
+using National Cancer Institute (NCI) Common Terminology Criteria for Adverse Events
+(CTCAE) version 5.0 and with the addition that maximum toxicity over all post-baseline visits
+will be included in shift tables along with visit-specific shifts.
+The proportion of participants with ALT >3x ULN, AST >3x ULN, creatinine >1.5x level at the
+Baseline Visit, and platelet count <75,000/mm3, or with any of the four will be presented as shift
+tables vs. the status of each participant at baseline for each visit by treatment group in all safety
+samples. The absolute level and the absolute change from baseline for ALT, AST, creatinine, and
+platelet count will be summarized as means, standard deviations, medians, and ranges at each
+visit by treatment group in all safety samples.
+6.6.3 ECG Results
+Summaries of ECG parameters and findings are the same as specified in the M-SAP.
+6.6.4  Vital Signs and Weight
+Summaries and analyses of vital signs and weight are the same as specified in the M-SAP.
+6.6.5  Suicidality
+Summaries of suicidality are the same as specified in the M-SAP.
+
+6.7  Other Analyses
+6.7.1  Participant Disposition
+All participants consented to the Master Protocol between the time of the first and last consent of
+a participant assigned to a regimen included in the FAS analysis set will be summarized as a
+single set for the following events: consented to the Master Protocol, failed screening for the
+Master Protocol, other reasons not assigned to a regimen (including timing out of the screening
+window, death, withdrawal of consent, early termination, and administrative termination), and
+assigned to a regimen. Reasons for Master Protocol screen failure will be summarized.
+
+
+                                                                                Page 35 of 36Cudkowicz (PI) HEALEY ALS Platform Trial: RGC Statistical Analysis Plan       Version 3.0, 22 Jul 2022
+
+
+All participants in the above sample assigned to a regimen will be summarized as two sets (final
+screening for RGC vs. final screening for a non-RGC regimen) for the following events:
+consented to a regimen, failed screening for a regimen, other reasons not randomized within a
+regimen (including timing out of the screening window, death, withdrawal of consent, early
+termination, and administrative termination), and randomized within a regimen. If a given
+individual is screened multiple times prior to randomization within a regimen, then the final
+screening experience of that individual will be summarized. Reasons for RGC screen failure will
+be summarized separately for all participants screened for RGC whether that was their final
+screening experience or not.
+All participants in the FAS analysis set will be summarized as two sets (randomization to active
+study drug vs. randomization to placebo) for the following events: initiated regimen-specific
+study drug, prematurely terminated study participation due to death, withdrawal of consent, early
+termination, loss to follow-up, or administrative termination, completed 24-week follow up, and
+completed a safety follow-up visit vs. continued into the OLE. Reasons for withdrawal of
+consent or early termination after randomization will be summarized.
+Any randomized participants excluded from the FAS and EPP analysis sets or included in the
+FAS analysis set but not contributing to the primary analysis will be identified in a listing
+together with the reason for their exclusion.
+6.7.2  Study Drug Compliance and Tolerance
+Summaries of study drug compliance and tolerance are the same as specified in the M-SAP with
+the clarification that summaries will be reported for the ERO and SRO analysis sets and that date
+of permanent discontinuation of study drug is the date of last use of double-blind study drug
+among all participants in a given analysis set.
+The number of days of exposure to study drug will be calculated in three ways:
+x  as the number of days from dose initiation to the final safety assessment during the placebo-
+    controlled period, inclusive,
+x  as the number of days from dose initiation to drug withdrawal, inclusive, less any interval
+   during which use of study drug was interrupted (individual missed doses will not be
+    subtracted unless noted in the dosage management log), and
+x  as the number of days from dose initiation to the earlier of final contact during the placebo-
+    controlled period or 28 days after last dose of study drug, inclusive.
+The proportion of participants who interrupted study drug or reduced study drug dosage and the
+time to first study drug interruption or dosage reduction will be summarized. The number of days
+of exposure to a reduced dosage of study drug will be summarized.
+6.7.3  Concomitant Medication Use
+Summaries of concomitant medication use are the same as specified in the M-SAP with the
+clarification that medications taken at baseline and those initiated after first dose of study drug
+will be separately summarized and will be classified by ATC Therapeutic class and WHODrug
+Preferred base name.
+
+
+
+
+
+                                                                                Page 36 of 37Cudkowicz (PI) HEALEY ALS Platform Trial: RGC Statistical Analysis Plan       Version 3.0, 22 Jul 2022
+
+
+6.7.4  Medical History
+Medical histories will be summarized by MedDRA system organ class, high level term, and
+preferred term in the STF and SRO analysis sets.
+6.7.5  Blindedness
+The proportions of participants and site investigators who report on the Exit Questionnaire a
+guess of active vs. placebo treatment assignment, each level of surety of that guess, and each of
+five pre-specified reasons for making a treatment assignment will be summarized by treatment
+group in the FAS and ERO analysis sets. Treatment-dependent differences in the proportion
+guessing active treatment assignment will be tested among all respondents and among those
+stating they are at least somewhat sure of their guess by Fisher's exact test and the difference in
+proportion guessing active treatment assignment will be estimated with confidence bounds.
+6.7.6  Protocol Deviations
+The number of major and minor protocol deviations will be summarized by type of deviation and
+treatment group in all analysis sets. Listings of all protocol deviations will be produced.
+6.7.7  Impact of COVID-19 Pandemic
+The proportions of planned assessments missed due to COVID-19 restrictions or disruptions will
+be summarized by treatment group, visit, and type of assessment in the FAS and ERO analysis
+sets. Protocol deviations that resulted from COVID-19 restrictions or disruptions will be
+summarized by treatment group and type of deviation in the FAS and ERO analysis sets and
+listed.
+
+7.  Validation
+
+7.1  Primary Efficacy Analysis
+Validation of the primary efficacy analysis is the same as specified in the M-SAP.
+
+7.2  Secondary, Exploratory, and Safety Analyses
+Validation of secondary, exploratory, and safety analyses are the same as specified in the M-
+SAP.
+
+8.  References
+The following references are cited in addition to those specified in the M-SAP:
+Balendra R, Jones A, Jivraj N, Knights C, Ellis CM, Burman R, Turner MR, Leigh PN, Shaw
+   CE, Al-Chalabi A. Estimating clinical stage of amyotrophic lateral sclerosis from the ALS
+    Functional Rating Scale. Amyotroph Lateral Scler Frontotemporal Degener. 2014 Jun;15(3-
+    4):279-84.
+Roche JC, Rojas-Garcia R, Scott KM, Scotton W, Ellis CE, Burman R, Wijesekera L, Turner
+  MR, Leigh PN, Shaw CE, Al-Chalabi A. A proposed staging system for amyotrophic lateral
+    sclerosis. Brain. 2012 Mar;135(Pt 3):847-52.
+
+
+
+
+                                                                                Page 37 of 37

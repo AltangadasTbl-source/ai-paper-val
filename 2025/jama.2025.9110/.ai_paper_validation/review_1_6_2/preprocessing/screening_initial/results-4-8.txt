@@ -1,0 +1,187 @@
+Trial enteral nutrition delivery audits
+A total of eight trial enteral nutrition audits were conducted during the trial. These audits occurred at the following
+timepoints: 1) mid cluster, i.e. 6 weeks after each cluster period commencement (four timepoints); 2) at cluster change
+over, i.e. in the week following cluster change over (three timepoints) 3) at study completion, i.e., at one timepoint
+within one week of study completion. Audit dates were randomly assigned during the audit week to sites, excluding
+weekends, using an online randomizer - https://www.random.org/calendar-dates/. The time of the day in which the audit
+took place was selected by sites for convenience, but the entire audit was instructed to be completed at once. For the
+audit, sites visualized and recorded in the electronic case report form the trial formula hanging at the bedside. During
+data analysis, the recorded formula hanging at the bedside was compared to the trial enteral nutrition the patient was
+initially assigned to receive. These were done to identify patients who may be receiving the alternate trial enteral
+nutrition or a non-trial formula. We also identified and counted patients who were in the ICU but were not receiving
+enteral nutrition at time of the audit i.e. fasting or ceased clinical need for enteral nutrition.
+
+Duration of invasive ventilation
+Duration of invasive ventilation was considered as a lower bounded continuous response, rather than as a time-to-event
+outcome as stated in the published statistical analysis plan. A tobit mixed effects model3 was used to compare the mean
+duration of invasive ventilation between treatment groups and included covariate adjustment for period and delayed
+start. ICU was included as a random effect and assumed to be normally distributed with mean zero and variance
+component 𝜎𝜎𝐶𝐶2. The treatment effect estimate from the tobit mixed effects model is presented as a difference in means
+(95% CI).
+
+Adverse events and serious adverse events
+It is recognized that the patient population in the ICU experience aberrations in laboratory values, signs and symptoms
+due to the severity of the underlying disease and the impact of standard treatments in the ICU. These do not necessarily
+constitute adverse events or serious adverse events unless they are considered related to study treatment or, in the
+principal investigator’s clinical judgement, are not recognized events consistent with the patient’s underlying critical
+illness and/or chronic diseases and expected clinical course. Accordingly, the reporting of adverse events (AEs) was
+restricted to events that were considered related to study treatment (possibly, probably or definitely). AEs were defined
+as any untoward medical occurrence in a patient or clinical investigation subject administered an investigational
+intervention and were collected from commencement of trial enteral formula until 48 hours post cessation of trial enteral
+formula. The patient was followed until the event was resolved or explained. Frequency of follow-up was left to the
+discretion of the site principal investigator.
+
+
+The baseline mortality of intensive care patients is high due to the illness that has necessitated admission. ICU patients
+will  frequently develop  life-threatening organ  failure(s)  unrelated  to study  interventions and  despite optimal
+management. Therefore, consistent with ICU international best practice and, as outlined above, deaths that were part of
+the natural history of the primary disease process or expected complications of critical illness were not reported as
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining, AI training, and
+similar technologies.serious adverse events (SAEs) in this study4. Events already defined and reported as study outcomes (e.g., mortality)
+were not reported separately as AEs and SAEs unless they were considered to be causally related to the study
+intervention or were otherwise of concern in the site principal investigator’s judgement. SAEs were reported up to day
+90 post-study enrolment, including SAEs that were considered related to trial enteral nutrition, namely mesenteric
+ischemia and abdominal compartment syndrome, were at the discretion of each site’s principal investigator5, 6.
+
+Tertiary outcomes
+Biochemical data were collected on study days 1, 5 and 10 only whilst in ICU.
+
+Secondary analyses
+Secondary analyses for the primary outcome were conducted by fitting 1) a linear mixed model to align with the sample
+size calculation, and 2) a Bayesian quantile mixed model to “augment” interpretation of the trial by producing a
+distribution of effect sizes that are compatible with the observed trial data (posterior distribution) and the probability of
+any treatment benefit. To summarize the posterior distribution, the posterior mean of the regression coefficient for
+treatment from the Bayesian quantile mixed effects model (difference in medians) and 95% credible interval (2.5th and
+97.5th percentiles of the posterior distribution) are presented.
+
+Sensitivity analyses
+Planned sensitivity analyses for the primary outcome were conducted excluding patients known to have received non-
+trial enteral nutrition and patients admitted for palliative care or organ donation. A sensitivity analysis was planned using
+imputation for missing primary outcome data but was not required because there were no missing data.
+
+R packages and Stata commands
+Primary analysis
+Quantile mixed effects modelling was performed using the lqmm function in R’s lqmm package 7, 8. The derivative free
+(Nelder-Mead) estimation method was specified, and default initial values were used (least squares estimate for the
+fixed effects and a value of one for the variance component). 95% CIs were generated from 1000 bootstrap
+samples/replications.
+A model-based residual variance can be derived as described in7 (page 9), and used, along with the estimate of 𝜎𝜎𝐶𝐶2, to
+estimate the intracluster correlation (ICC).
+
+Secondary analyses
+Linear mixed modelling was performed using the lmer function in R’s lme4 package9. The ICC was derived from the
+estimate of σ𝐶𝐶2 and the residual error variance.
+Bayesian quantile mixed modelling was performed using the brm function in R’s brms package10, 11. The default initial
+values (randomly generated by the brm function) and the default prior distributions were specified:
+
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining, AI training, and
+similar technologies.    •   intercept: student-t distribution with 3 degrees of freedom, location parameter set to the median of the outcome
+       and scale parameter determined from the standard deviation of the outcome
+    •   fixed effects/regression coefficients: flat (non-informative) priors
+    •   variance component 𝜎𝜎𝐶𝐶2 and residual standard deviation: half student-t distribution with 3 degrees of freedom,
+        location parameter set to 0 and scale parameter determined from the standard deviation of the outcome
+Four chains were implemented, and 1000 posterior samples were retained from each chain after a burn-in of 1000
+iterations, resulting in 4000 samples per parameter for the calculation of posterior summaries (mean and 95% credible
+interval, which is calculated from the 2.5th and 97.5th percentiles of the posterior samples). Trace plots and standard
+Markov chain Monte Carlo (MCMC) diagnostic criteria, including the potential scale reduction (𝑅𝑅෠) statistic and the
+effective sample sizes (ESS), were used to check convergence.
+For each iteration post burn-in, a model-based residual variance was derived as described in7 (page 9), and then 𝜎𝜎𝐶𝐶2 was
+divided by the sum of the model-based residual variance and 𝜎𝜎𝐶𝐶2. The mean of the resulting values was used to estimate
+the intracluster correlation (ICC).
+
+Alive at day 90, incidence of tracheostomy insertion and incidence of kidney replacement therapy that
+commenced after trial enteral nutrition
+Fay and Graubard’s small sample bias correction of the sandwich variance estimator can be implemented using Stata’s
+xtgeebcv command 12, 13. ICC estimates were obtained using the postestimation command estat wcorrelation after xtgee
+fit (i.e., from the model without the small sample bias correction applied), as the xtgeebcv command does not appear to
+be compatible with the postestimation estat wcorrelation command.
+
+Duration of admission to ICU and admission to hospital
+The cumulative incidence function was estimated using the cuminc function in R’s cmprsk package14, 15. Cause-specific
+Cox regression analyses were performed using the stcox command in Stata.
+
+Duration of invasive ventilation
+Tobit mixed effects modelling was performed using the metobit function in Stata, which by default, reports effect
+estimates for the latent variable assumed by the tobit model. Stata’s margins function, with dydx(treatment variable) and
+predict(ystar(0,.)) was used to derive an estimate of the treatment effect on the observed outcome. An estimate of the
+ICC was obtained using the postestimation command estat icc.
+
+Subgroup analyses
+P-values for the test of interaction between treatment and each subgroup was derived from a likelihood ratio test
+comparing the quantile mixed models excluding and including the interaction term using the lrtest function from R’s
+lmtest package13.
+A subgroup specific treatment effect estimate for the primary outcome was obtained from the relevant coefficient
+estimates from the interaction model (treatment (main) effect estimate for reference subgroup and treatment (main)
+effect estimate plus interaction term estimate for the non-reference subgroup) and corresponding 95% CIs were
+calculated using the block-bootstrap method.
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining, AI training, and
+similar technologies.eTables
+eTable 1: Patient inclusion and exclusion criteria
+
+ Inclusion criteria
+      1.  ≥16 years of age
+      2.  Receiving/about to commence enteral nutrition during the index admission to ICU or receiving/about
+           to commence enteral nutrition for the first time in ICU during subsequent admissions
+
+ Exclusion criteria
+      1.  At the commencement of enteral nutrition, the treating clinician considers the trial enteral formula to
+         be contraindicated
+      2.  The patient has received greater than 12 hours of non-trial enteral formula
+      3.  The patient has previously participated in the TARGET Protein trial
+ICU = Intensive Care Unit
+
+
+
+
+
+eTable 2: Outcome definitions
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining, AI training, and
+similar technologies. Primary outcome
+     •  Number of days free of the index hospital and alive at day 90.
+          Calculated as 90 days minus all days admitted to the index hospital after commencement of trial
+           enteral formula minus any days readmitted to the index hospital within 90 days. As patients may be
+          readmitted for part of a day (e.g. for dialysis) a readmission was only be counted when the patient
+         remained in hospital at midnight. Patients were considered alive if they survive the index-hospital
+          episode, and there is no evidence of death before day 90. In Australia, death after hospital discharge
+        was ascertained from the local health record by site investigators and using data linkage with the
+          Australian National Death Index. At the New Zealand site, the Australian New Zealand Intensive
+         Care Society Adult Patient Database (ANZICS APD) is linked to the New Zealand national death
+           registry to record death after hospital discharge. Patients who die during the 90-day post-trial
+          recruitment period, were assigned a days free of the index hospital value of zero.
+ Secondary outcomes
+     •   Days free of the index hospital and alive at day 90 in survivors.
+          Calculated only for those that survived to day 90. Calculated the same as the primary outcome, i.e.,
+        90 days minus all days admitted to the index hospital after commencement of trial enteral formula
+         minus any days readmitted to the index hospital within 90 days. As patients may be readmitted for
+           part of a day (e.g., for dialysis) a readmission was only be counted when the patient remained in
+           hospital at midnight. Patients who remained in hospital until day 90 were assigned a value of zero.
+     •   Alive at day 90.
+          Patients were considered alive if they were alive at discharge from the index hospital, and there was
+        no evidence of death before day 90. Local health service records were used to provide evidence of
+           patient status, including if the patient was discharged alive from hospital but known to have a post
+          discharge health event. Health events include rehabilitation facility admission, outpatient appointment
+          attended, pathology test completed, other medical investigation, or day admission e.g. dialysis,
+         chemotherapy. Binary outcome (yes/no).
+     •   Duration of invasive ventilation (hours). Total hours of invasive ventilation for patients receiving
+          invasive ventilation in ICU. A continuous outcome restricted to be non-negative.
+     •   Duration of admission to ICU (days). Time-to-ICU discharge with death in ICU considered as a
+         competing risk.
+     •   Duration of admission to hospital (days). Time-to-hospital discharge with death in hospital considered
+          as a competing risk.
+     •   Incidence of tracheostomy insertion
+     •   Incidence of new kidney replacement therapy commenced during index ICU admission, subsequent
+           to commencement of trial enteral nutrition
+     •   Hospital discharge destination – Home, other hospital ICU, other acute hospital, rehabilitation, long
+         term care, and other
+ICU = Intensive Care Unit
+
+
+
+
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining, AI training, and
+similar technologies.

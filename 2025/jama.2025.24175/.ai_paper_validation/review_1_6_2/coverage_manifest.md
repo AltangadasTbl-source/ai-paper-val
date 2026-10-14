@@ -1,0 +1,30 @@
+# Coverage manifest
+
+Coverage planned before scientific mapping. Reusable assets are locators; fresh mapping covers protocol PDF pages 55-64, whose old derivatives are low resolution. All source pages enter the disjoint mapping assignments below. Agent IDs in the execution manifest encode the tool-returned canonical runtime identity with its leading slash omitted.
+
+During mapping, the retained DOC-002 p.18 image could not be decoded and its assigned mapper freshly rendered and mapped that page. The final partition is 156 reusable-backed pages and eleven fresh-required pages (DOC-002 p.18 and pp.55-64), all mapped. New source-confirmation derivatives do not change this initial usable-coverage partition.
+
+| Stage | Shard ID | Exact scope | Artifact | Status |
+|---|---|---|---|---|
+| source_inventory | inventory | DOC-001 pp. 1-12; DOC-002 pp. 1-72; DOC-003 pp. 1-54; DOC-004 pp. 1-28; DOC-005 p. 1 | source_inventory.md | COMPLETE |
+| evidence_assets | assets | All source-matched reusable assets and all fresh-required gaps | evidence_asset_inventory.md | COMPLETE |
+| main_evidence_mapping | main | DOC-001 pp. 1-12 | extraction/main_quantitative_evidence.md | COMPLETE |
+| support_evidence_mapping | report-support | DOC-003 pp. 1-54; DOC-004 pp. 1-28; DOC-005 p. 1 | extraction/support_quantitative_evidence.md | COMPLETE |
+| support_evidence_mapping | plan-001 | DOC-002 pp. 1-32 | extraction/plan_pages_001_032.md | COMPLETE |
+| support_evidence_mapping | plan-002 | DOC-002 pp. 33-64; pp. 55-64 freshly rendered and mapped | extraction/plan_pages_033_064.md | COMPLETE |
+| support_evidence_mapping | plan-003 | DOC-002 pp. 65-72 | extraction/plan_pages_065_072.md | COMPLETE |
+| numeric_checks | numeric-all | All current-report numeric relationships, all constituent main/support table rows and flow | relationships/numeric_relationship_inventory.md | COMPLETE |
+| numeric_checks | numeric-findings | All current-report numeric relationships, all constituent main/support table rows and flow | checkers/numeric_consistency.md | COMPLETE |
+| cross_source_checks | cross-all | Every matched primary/key result and current prospective PLAN/REPORT design element; historical PROVIDE excluded as current-trial comparator | checkers/cross_source_consistency.md | COMPLETE |
+| statistics_pass_1 | statistical-all | S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050, S051, S052, S053, S054, S055, S056, S057, S058, S059, S060, S061, S062, S063, S064, S065, S066, S067, S068, S069, S070, S071, S072, S073, S074, S075, S076, S077, S078, S079, S080, S081, S082, S083, S084, S085, S086, S087, S088, S089, S090, S091, S092, S093, S094, S095, S096, S097, S098, S099, S100, S101, S102, S103, S104, S105, S106, S107, S108, S109, S110, S111 | checkers/statistical_pass_1.md | COMPLETE |
+| statistics_pass_1 | statistical-inventory | S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050, S051, S052, S053, S054, S055, S056, S057, S058, S059, S060, S061, S062, S063, S064, S065, S066, S067, S068, S069, S070, S071, S072, S073, S074, S075, S076, S077, S078, S079, S080, S081, S082, S083, S084, S085, S086, S087, S088, S089, S090, S091, S092, S093, S094, S095, S096, S097, S098, S099, S100, S101, S102, S103, S104, S105, S106, S107, S108, S109, S110, S111 | statistics/relationship_inventory.md | COMPLETE |
+| inclusion_screening | screen-initial | F-NUM-001; F-XS-001, F-XS-002, F-XS-003, F-XS-004, F-XS-005, F-XS-006, F-XS-007; F-ST1-001, F-ST1-002, F-ST1-003, F-ST1-004, F-ST1-005, F-ST1-006, F-ST1-007, F-ST1-008, F-ST1-009, F-ST1-010, F-ST1-011, F-ST1-012, F-ST1-013, F-ST1-014, F-ST1-015 | screening/inclusion_screen.md | COMPLETE |
+| candidate_registration | register-initial | C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011, C012, C013, C014 | candidate_ledger.md | COMPLETE |
+| evidence_recheck | recheck-initial | C001, C002, C003, C004, C005, C006, C007 | verification/evidence_recheck.md | COMPLETE |
+| evidence_recheck | recheck-results | C008, C009, C010, C011, C012, C013, C014 | verification/results_candidates_recheck.md | COMPLETE |
+| statistics_pass_2 | statistical-second-all | S001, S002, S003, S004, S005, S006, S007, S008, S009, S010, S011, S012, S013, S014, S015, S016, S017, S018, S019, S020, S021, S022, S023, S024, S025, S026, S027, S028, S029, S030, S031, S032, S033, S034, S035, S036, S037, S038, S039, S040, S041, S042, S043, S044, S045, S046, S047, S048, S049, S050, S051, S052, S053, S054, S055, S056, S057, S058, S059, S060, S061, S062, S063, S064, S065, S066, S067, S068, S069, S070, S071, S072, S073, S074, S075, S076, S077, S078, S079, S080, S081, S082, S083, S084, S085, S086, S087, S088, S089, S090, S091, S092, S093, S094, S095, S096, S097, S098, S099, S100, S101, S102, S103, S104, S105, S106, S107, S108, S109, S110, S111 | checkers/statistical_pass_2.md | COMPLETE |
+| evidence_quality | quality-all | C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011, C012, C013, C014 | quality/evidence_quality_audit.md | COMPLETE |
+| report_generation | report-main-plan-cards | C001, C002, C003, C004, C005, C006, C007 | report_parts/candidate_cards_001_007.md | COMPLETE |
+| report_generation | report-results-cards | C008, C009, C010, C011, C012, C013, C014 | report_parts/candidate_cards_008_014.md | COMPLETE |
+| report_generation | report-complete | C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011, C012, C013, C014 | ../final_report_1_6_2.md | COMPLETE |
+| report_generation | report-limitations | C001, C002, C003, C004, C005, C006, C007, C008, C009, C010, C011, C012, C013, C014 | limitations.md | COMPLETE |

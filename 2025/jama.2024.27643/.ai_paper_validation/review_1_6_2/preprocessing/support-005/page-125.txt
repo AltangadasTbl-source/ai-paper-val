@@ -1,0 +1,60 @@
+Cudkowicz (PI) HEALEY ALS Platform Trial: RGC Statistical Analysis Plan
+
+Version 3.0, 22 Jul 2022
+
+6.5.10 Placebo Multiple Imputation
+Placebo multiple imputation analyses are the same as specified in the M-SAP with the
+modification that treatment group is a three-level variable (i.e., placebo, 30 mg/d CNM-Au8, and
+60 mg/d CNM-Au8). Placebo multiple imputation analyses will be applied to ALSFRS-R total
+score, HHD upper and lower extremity percentages, and SVC.
+The following SAS code specifies the imputation for an endpoint measured every 8 weeks:
+proc mi data=work.outcomes seed=xxx nimpute=50 out=work.out_mi01
+minimum=. . . . . x x x x maximum=. . . . . y y y y minmaxiter=1000;
+class rlz edv trtrnd;
+fcs reg(Wk08 = sx2bl dFRS rlz edv Wk00);
+fcs reg(Wk16 = sx2bl dFRS rlz edv Wk00 Wk08);
+fcs reg(Wk24 = sx2bl dFRS rlz edv Wk00 Wk08 Wk16);
+mnar model( Wk08 Wk16 Wk24 / modelobs=(trtrnd="0"));
+var sx2bl dFRS rlz edv Wk00 Wk08 Wk16 Wk24;
+run;
+
+where Wk00, Wk08, Wk16, and Wk24 are the values of a given efficacy endpoint at the Baseline,
+Week 8, Week 16, and Week 24 Visits, respectively, trtrnd has a value of zero (0) for
+participants randomized to placebo, and x and y take appropriate values to specify the range of a
+given outcome measure (i.e., 0 and 48 for ALSFRS-R total score; 0 and . for HHD upper and
+lower extremity percentages and SVC).
+Inference from these analyses is supportive of inference from the Bayesian shared-parameter,
+repeated-measures model for the primary endpoint and assess sensitivity to the missing data
+assumption of the repeated-measures linear mixed model for secondary endpoints in the FAS
+analysis set. A separate analysis will include centered baseline serum NfL level as an additional
+covariate in both imputation stages.
+6.5.11 Additional Sensitivity Analyses of Primary and Key Secondary Outcomes
+Sensitivity analyses of primary and key secondary efficacy outcomes are the same as specified in
+the M-SAP with the modification that treatment group is a three-level variable (i.e., placebo, 30
+mg/d CNM-Au8, and 60 mg/d CNM-Au8).
+6.5.12 Subgroup Analyses
+In addition to the subgroups specified in the M-SAP, the following additional subgroups will be
+analyzed in the random-slope model (see Section 6.5.5) for primary and secondary efficacy
+endpoints in the FAS analysis set:
+x
+
+Baseline use of riluzole and edaravone (neither, riluzole only, edaravone only, both),
+
+x
+
+Age (less than 65 years vs. 65 years or older),
+
+x
+
+Sex (female vs. male),
+
+x
+
+Race (white vs. any minority race with greater than 5% prevalence in the sample),
+
+x
+
+Ethnicity (Hispanic or Latino vs. non-Hispanic or Latino),
+
+Page 32 of 33
+
