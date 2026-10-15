@@ -1,246 +1,220 @@
 # Cross-source consistency review
 
-Runtime task: /root/cross_source_checker. Fresh mandatory cross-source stage; gpt-6.1-sol, medium. Assigned scope: all matched REPORT–REPORT, REPORT–PLAN and relevant PLAN–PLAN statistical design relationships across DOC-001 through DOC-006. Five findings; ten excluded observations. No stable candidate IDs or adjudications are assigned.
+Scope: all supplied REPORT content in DOC-001 (14 PDF pages), DOC-004 (7 PDF pages), DOC-005 (19 PDF pages), and DOC-006 (worksheet eTable 3, A1:J115), matched against PLAN content in DOC-002 (77 PDF pages) and DOC-003 (29 PDF pages), and qualifying within-report and within-plan relationships. All 147 source units have current fresh maps. This checker used those current maps, supplied sources, source-derived text and source-page images; no earlier scientific conclusions or external sources were used. The complete scope and review contract were read before comparison. No candidate IDs or adjudications are assigned here.
 
-## Evidence basis and boundaries
+The comparison matched outcome, population, baseline/time point, contrast, model, effect measure, analysis set and precision. Primary binary response is a ≥30% baseline reduction in the modified 11-item BPI-SF at 3 months; later severity responses and the pain/functioning outcomes named in the abstract were retained as key secondary results. Crude/unadjusted, adjusted, complete-case, weighted-imputed, worst/best-case and date-restricted estimates were matched separately. Every listed finding was checked against its exact supplied source page or workbook XML. Findings: 8. Excluded observations: 11.
 
-QUALITY_CONTROL_SCOPE.md and workflow_1_6_2/review_contract.md were read completely. Source inventory and tooling record were read. DOC-001, DOC-004, DOC-005 and DOC-006 are REPORT; DOC-002 protocol version5.0 (10 November2022) and DOC-003 SAP version6.0 (18 July2024) are PLAN, by content. The complete fresh main map and disjoint support maps (support_reports, protocol_001_032, protocol_033_064, protocol_065_077 and sap_001_029) supply the coverage index. Exact page-keyed text/OCR and targeted source-linked images supply the comparisons below. No prior checker, candidate, screening, verification or report conclusions were read. No web or external literature was used. Sources and reusable assets were preserved.
+## Completed comparison coverage
 
-Engines: existing source-linked Poppler native/layout text and page images, fresh Tesseract CPU protocol/SAP page locators, and curator-confirmed exact workbook cells. Targeted new text: Poppler pdftotext26.01.0 CPU, main physical pp3–4 and results supplement p4, outputs preprocessing/cross_source/main-p003-p004.layout.txt and results-p004.layout.txt. Source images visually inspected include main p10, results p4, SAP pp20–22 and protocol p43. Existing mapper visual confirmations anchor other matched quantitative cells. OCR remains a locator; source images govern numbers and symbols. No new rendering or OCR was required in this stage.
-
-All comparisons first match population, time, contrast, measure, model, analysis set, direction and displayed precision. Adjusted versus unadjusted and sensitivity versus main results remain separate. Count labels allocated, eligible, ITT target, any-follow-up and observed-at-time are distinguished. SAP p10 expressly gives analytical SAP modifications precedence over the protocol; dated amendments are not silently treated as simultaneous competing instructions.
-
-## Complete grouped relationship coverage
-
-This is one bounded processing shard of 95 grouped relationships (below120). Every result table row/time/contrast member is included in the compound records; no group represents selected or sampled rows. Within each result row, all three group summaries, all three contrasts, intervals, omnibus tests and labels are accounted for. PT=painTRAINER; HC=health coach; UC=usual care plus. All source page numbers are physical PDF pages. Map keys are locators, not findings. Matching source families: main M001–M124; report-support R001–R025; protocol P-A01–P-A15, P-B001–P-B022, P-C001–P-C007; SAP-N001–N023 and SAP-S001–S037.
-
-| Relationship | Actual matched unit and members | Exact source locations / map locators | Completion record |
-|---|---|---|---|
-| XS001 | Eligible randomized total2331 and arms776/778/777 | Main pp1,2,4,5,6; results p7; workbook A1:J115; M001,002,009,023,030–032; R013,R025 | COMPLETE; allocated2333 distinguished from eligible2331, two UC exclusions disclosed |
-| XS002 | Completed trial2210 and follow-up versus retained enrollment | Main pp1,4,5; M004,M023,M033–036; protocol p41 | COMPLETE; trial completion distinct from providing any assessment |
-| XS003 | Overall/arm mean age, sex, rurality and abstract percentages | Main pp1,4,6; workbook overall column; M004,M025,M037–040,M052; R025 | COMPLETE; matching abstract values reconcile within precision |
-| XS004 | Baseline categorical/descriptive copies, all45 main baseline row groups | Main pp6–7; workbook eTable3 A1:J115, all demographic, social, clinical and scale blocks; M037–083,R025 | COMPLETE; matching labels and denominators distinguished; peripheral-copy differences screened separately |
-| XS005 | Recruitment, screening, baseline completion and allocated versus eligible steps | Main p5 all Figure1 boxes/footnotes; main pp1,4; M027–036 | COMPLETE; screening and enrollment are distinct stages |
-| XS006 | Any follow-up and individual3/6/12-month counts, all arms | Main pp4,5,8; results p7 eTable1; M023,M033–034,M086,R013 | COMPLETE; exact counts542/547/583 PT,635/621/639 HC,621/622/639 UC reconcile |
-| XS007 | Zero/1–5/6–8 sessions and ≥1/≥6 adherence, both arms | Main pp4–5; results p3 eFigure1; R007; M024,M030–031,M035 | COMPLETE; flow counts371+156+249=776 and548+112+118=778; numerical percentage arithmetic belongs to numeric lane; histogram has no exact printed bin counts |
-| XS008 | Hospitalized persons/events by arm and total | Main pp7–8; M084,M087 | COMPLETE;55/65/63 persons and81/84/82 events match183 persons/247 events |
-| XS009 | Deaths by arm and total versus flow | Main pp5,7–8; M033–034,M084,M087 | COMPLETE;3+7+7=17 |
-| XS010 | Primary3-month severity adjusted rates and RRs, every arm/contrast | Main pp1,4,7–9; results p9 eTable4; M005–006,M026,M085,M090,R015 | COMPLETE;26.6/32.0/20.8%;RR1.28/1.54/1.20 and respective intervals agree; omnibus versus pairwise tests distinguished |
-| XS011 | Secondary6-month severity rates and RRs, every arm/contrast | Main pp1,2,7–9; results p9; M007,M009,M026,M091,R015 | COMPLETE;RR1.44/1.62/1.13 agree;HC/PT interval0.98–1.30 agrees with nonsignificant narrative |
-| XS012 | Secondary12-month severity rates and RRs, every arm/contrast | Main pp1,2,7–9; results p9; M007,M009,M026,M092,R015 | COMPLETE;RR1.32/1.41/1.07 agree;HC/PT interval0.96–1.19 agrees with nonsignificant narrative |
-| XS013 | Intensity response3months, every arm/contrast | Main pp1,3,7,9; results p15 unadjusted comparator; M093,R022 | COMPLETE; primary-time secondary endpoint; model-based and raw counterparts distinct |
-| XS014 | Intensity response6months, every arm/contrast | Main pp1,7,9; results p15; M094,R022 | COMPLETE; model/time/contrast aligned; unadjusted counterparts distinct |
-| XS015 | Intensity response12months, every arm/contrast | Main pp1,7,9; results p15; M095,R022 | COMPLETE; model/time/contrast aligned; unadjusted counterparts distinct |
-| XS016 | Interference response3months, every arm/contrast | Main pp1,3,7,9; results p15; M096,R022 | COMPLETE;7-item endpoint distinguished from intensity |
-| XS017 | Interference response6months, every arm/contrast | Main pp1,7,9; results p15; M097,R022 | COMPLETE; model/time/contrast aligned |
-| XS018 | Interference response12months, every arm/contrast | Main pp1,7,9; results p15; M098,R022 | COMPLETE; model/time/contrast aligned |
-| XS019 | Continuous severity3months, all means/differences/SMDs/intervals | Main pp4,7,10; results pp16–17; M101,R023–024 | COMPLETE; narrative-table SMD gaps within display-precision threshold |
-| XS020 | Continuous severity6months, all means/differences/SMDs/intervals | Main pp1,7,10; results pp16–17; M102,R023–024 | COMPLETE; group/time/measure match; adjusted and raw analyses distinct |
-| XS021 | Continuous severity12months, all means/differences/SMDs/intervals | Main pp1,7,10; results pp16–17; M103,R023–024 | COMPLETE; group/time/measure match; internal interval logic reserved for statistical lane |
-| XS022 | Continuous intensity3months, all means/differences/SMDs/intervals | Main pp3–4,7,10; results pp16–17; M104,R023–024 | COMPLETE; all three contrasts matched |
-| XS023 | Continuous intensity6months, all means/differences/SMDs/intervals | Main pp1,7,10; results pp16–17; M105,R023–024 | COMPLETE; all three contrasts matched |
-| XS024 | Continuous intensity12months, all means/differences/SMDs/intervals | Main pp1,7,10; results pp16–17; M106,R023–024 | COMPLETE; all three contrasts matched |
-| XS025 | Continuous interference3months, all means/differences/SMDs/intervals | Main pp3–4,7,10; results pp16–17; M107,R023–024 | COMPLETE; all three contrasts matched |
-| XS026 | Continuous interference6months, all means/differences/SMDs/intervals | Main pp1,7,10; results pp16–17; M108,R023–024 | COMPLETE; all three contrasts matched |
-| XS027 | Continuous interference12months, all means/differences/SMDs/intervals | Main pp1,7,10; results pp16–17; M109,R023–024 | COMPLETE; all three contrasts matched |
-| XS028 | Social-function3months, all means/differences/SMDs/intervals | Main pp1,4,7,10; results pp16–17; M110,R023–024 | COMPLETE; higher-better scale; omnibus distinct from specific contrast |
-| XS029 | Social-function6months, all means/differences/SMDs/intervals | Main pp1,7,10; results pp16–17; M111,R023–024 | COMPLETE; all three contrasts matched |
-| XS030 | Social-function12months, all means/differences/SMDs/intervals | Main pp1,7,10; results pp16–17; M112,R023–024 | COMPLETE; all three contrasts matched |
-| XS031 | Physical-function3months, all means/differences/SMDs/intervals | Main pp1,4,7,10; results pp16–17; M113,R023–024 | COMPLETE; F-XS-004 for narrative versus null-containing PT/UC interval |
-| XS032 | Physical-function6months, all means/differences/SMDs/intervals | Main pp1,7,10; results pp16–17; M114,R023–024 | COMPLETE; F-XS-004 for sustained-benefit narrative versus HC/UC interval |
-| XS033 | Physical-function12months, all means/differences/SMDs/intervals | Main pp1,7,10; results pp16–17; M115,R023–024 | COMPLETE; both versus UC intervals positive |
-| XS034 | Global pain3months, all means/differences/SMDs/intervals | Main pp4,7,11; results p17; M116,R024 | COMPLETE; perceived-change score distinguished from numerical baseline subtraction |
-| XS035 | Global pain6months, all means/differences/SMDs/intervals | Main pp1,7,11; results p17; M117,R024 | COMPLETE; all three contrasts matched |
-| XS036 | Global pain12months, all means/differences/SMDs/intervals | Main pp1,7,11; results p17; M118,R024 | COMPLETE; all three contrasts matched |
-| XS037 | Global overall3months, all means/differences/SMDs/intervals | Main pp4,7,11; results p17; M119,R024 | COMPLETE; one-item overall-status outcome distinguished from pain |
-| XS038 | Global overall6months, all means/differences/SMDs/intervals | Main pp1,7,11; results p17; M120,R024 | COMPLETE; all three contrasts matched |
-| XS039 | Global overall12months, all means/differences/SMDs/intervals | Main pp1,7,11; results p17; M121,R024 | COMPLETE; all three contrasts matched |
-| XS040 | Primary binary missing-data complete-case sensitivity3/6/12months | Results p11 eTable7 six total sensitivity rows; SAP p19; R019,SAP-S025 | COMPLETE; three complete-case rows each contain3 rates,3 RRs,omnibus and3 NNTs; distinct from main estimand |
-| XS041 | Primary binary worst/best sensitivity3/6/12months | Results p11; SAP p19; R019,SAP-S025 | COMPLETE; three extreme-case rows; active missing0,UC missing1 agrees |
-| XS042 | Before8/9/2021 primary subset3/6/12months | Results pp13–14; protocol p43; SAP p21; R005,R021 | COMPLETE; all three rows/contrasts; companion subgroup to post-change restriction |
-| XS043 | After8/9/2021 primary subset3/6/12months | Results pp13–14; SAP p21; R021,SAP-S030 | COMPLETE; exact randomized-date criterion matches planned sensitivity |
-| XS044 | After3/31/2022 primary subset3/6/12months | Results pp13–14; R021 | COMPLETE; explicitly post-hoc, not claimed prespecified |
-| XS045 | Binary unadjusted eTable9 full9 outcome×time rows | Main p9/Table2; results p15; R022 | COMPLETE; severity,intensity,interference each3/6/12 and all3 contrasts; adjustment label considered separately |
-| XS046 | Continuous-change unadjusted eTable10 full15 outcome×time rows | Main p10/Table3; results p16; R023 | COMPLETE; severity,intensity,interference,social,physical each3/6/12; medians/IQR distinct from modeled means |
-| XS047 | Raw-score unadjusted eTable11 full21 outcome×time rows | Main pp10–11; results pp17–18; R024 | COMPLETE; preceding5 plus pain/overallPGIC each3/6/12; raw scores distinct from change |
-| XS048 | Imputation model28 coefficient rows, labels/test identities | Results p8 eTable3; results pp4–5; R010,R014 | COMPLETE; report-to-equation labels matched; standalone interval/test logic statistical lane |
-| XS049 | Estimation model23 rows,9 arm/time contrasts plus duplicated HC/PT3M | Results p9; main p9; R011,R015 | COMPLETE; nine primary/later RRs agree exactly; duplicate row is repeated copy |
-| XS050 | Weight model16 OR rows, references/covariates | Results pp5–6,10; R012,R016 | COMPLETE; UC/PT andHC/PT ORs describe observation, not treatment MCID effects |
-| XS051 | Weight/probability summary and both diagnostic panels | Results p10; R017–018 | COMPLETE; probability versus normalized inverse weight distinguished; unlabelled plot bins not digitized |
-| XS052 | Workbook missingness-pattern columns, all525 nonempty cells | DOC-006 eTable3 A1:J115; results pp4,7; R009,R013,R025 | COMPLETE;2331/295/468/1568 and corresponding endpoint/nonresponse selection columns matched |
-| XS053 | Trial model/phase, individual allocation,1:1:1 | Main pp1–3; protocol pp13,29; SAP pp8–9,18 | COMPLETE; three-arm parallel superiority design agrees |
-| XS054 | Stratification factors individually:sex,severity,site,residence | Main p3; protocol p29; SAP p18 | COMPLETE; four factors agree; source-of-sex differences recorded separately |
-| XS055 | Baseline-severity strata<7/≥7 and blocks3/6/9 | Main pp3,5; protocol p29; SAP p18 | COMPLETE; thresholds and variable blocks agree |
-| XS056 | Primary outcome status,11-item4+7 components,≥30% decrease | Main pp1,3,9; protocol pp19,22; SAP pp8,11,20 | COMPLETE; components,threshold,direction and3-month status agree |
-| XS057 | Primary baseline-to3months and later6/12 timing | Same plus protocol p16; main pp1,3,8–9 | COMPLETE; secondary later-time classification agrees |
-| XS058 | Planned secondary criterion list:severity6/12,intensityMCID,interferenceMCID | Protocol p22; SAP p11; main pp3,9 | COMPLETE; every listed binary endpoint and time has reported counterpart |
-| XS059 | Planned secondary criterion list:continuous severity,intensity,interference | Protocol pp22–23; SAP p11; main pp4,10 | COMPLETE; all nine outcome/time rows reported |
-| XS060 | Planned secondary criterion list:social,physical,PGICpain,PGICoverall | Protocol p23; SAP p12; main pp4,10–11 | COMPLETE; all twelve outcome/time rows reported; SAP July2024 PGIC clarification disclosed |
-| XS061 | Exploratory-status criterion list:opioid,PHQ8,GAD7,sleep,high-impact/graded pain | Protocol p25; SAP pp12–13; main pp3–4,6–7 | COMPLETE; no promotion to reported secondary detected; absence of exploratory follow-up outside mandatory primary/key-secondary nonreporting rule |
-| XS062 | Economic analysis status,12month responder,QALY and costs | Protocol pp24,58–59; SAP pp13,23–25 | COMPLETE; separate economic aim; no clinical primary-status change |
-| XS063 | Eligibility criterion:adult≥18 and English/no interpreter | Main p2/flow; protocol pp32,66; SAP p17 | COMPLETE; population boundary agrees |
-| XS064 | Eligibility criterion:health-system enrollment/encounters and360day window | Main p2; protocol p32; SAP p17 | COMPLETE; operative≥1 Essentia/≥2 KP,>60days apart agree |
-| XS065 | Eligibility criterion:high-impact pain frequency and life/work restrictions | Main p2; protocol pp32,37; SAP p17 | COMPLETE; both required components agree |
-| XS066 | Eligibility criterion:PEG≥12 and technology access | Main pp2,5; protocol pp32,37; SAP p17 | COMPLETE; threshold agrees |
-| XS067 | Eligibility criterion:musculoskeletal surgery/cancer preceding60days | Main p2; protocol p32; SAP p17 | COMPLETE; omissions of detailed coding criteria in summary do not change explicit report threshold |
-| XS068 | Eligibility criterion:hospice/palliative preceding360days,cognition,site-specificOUD | Main p2/flow; protocol p32; SAP p17 | COMPLETE; all plan items retained; condensed report exclusion descriptions not numerical conflict |
-| XS069 | Eligibility criterion:prior6month,current/nextmonthCBT | Main p2; protocol p33; SAP pp17–18 | COMPLETE; all three temporal criteria agree |
-| XS070 | Eligibility criterion:current/nextmonthintensiveSUD and next12month surgery | Main p2; protocol p33; SAP p18 | COMPLETE; temporal criteria agree |
-| XS071 | Analysis-set criteria:eligible/randomized,assigned arm,no engagement restriction | Main pp4–5; protocol p56; SAP pp18,21 | COMPLETE;eligible qualification and two disclosed UC exclusions explain2333 versus2331; all-follow-up IPW target distinguished |
-| XS072 | Safety-set/as-treated rule and crossover>10% | SAP p18; main pp7–8; protocol pp49–51 | COMPLETE; no claimed as-treated primary reported; safety has its own definitions |
-| XS073 | Primary model:modifiedPoisson,loglink,independentGEE,robustperson/coach clustering | Main p4; results pp4–5; protocol p56; SAP pp20–21 | COMPLETE; structural mean model and reference groups agree |
-| XS074 | Primary planned covariate criterion list versus reported base/selected covariates | Main p4; results pp4,7–9; protocol p56; SAP p20 | COMPLETE; F-XS-002 for claimed prespecified age; data-driven extra selection separately described |
-| XS075 | Secondary model/covariate criterion list and own-baseline adjustment | Main p4; protocol p57; SAP p21 | COMPLETE; F-XS-003 for expanded reported adjustment |
-| XS076 | Missing-data decision criteria:>15%3month missing OR differential missingness | Results p4; SAP p19 | COMPLETE; observed22.9% missing satisfies trigger; MNAR/IPW scope matches disclosed SAP update |
-| XS077 | Missing-data populations:any-follow-up patternmixture;none-follow-upIPW | Main p4; results pp4–6; SAP pp4,19 | COMPLETE; July2024 all-randomized interpretation amendment acknowledged |
-| XS078 | Missing-covariate mean imputation and prediction/selection details | Main p4; results pp4–6; SAP pp19–20 | COMPLETE; absent unconflicted SAP detail alone not finding |
-| XS079 | Primary sensitivity:completecase and worst/best missing response assignments | Main p4; results p11; SAP p19 | COMPLETE; follow-up-only and extreme-case definitions align |
-| XS080 | Primary margin/hypothesis direction/two-sidedalpha=.05 | Main pp2,4,9; protocol pp55–56; SAP pp16,19–20 | COMPLETE; superiority higher response; noNI/equivalence margin applies |
-| XS081 | Multiplicity:omnibusWald .05 then pairwise .05 | Main pp4,9,11; results pp11,14; protocol p55; SAP p19 | COMPLETE; all relevant declarations agree; omnibus is not pairwiseP |
-| XS082 | Primary sample/power inputs:2331,777,90%,15%,22.5%,7.5points,80%retention | Main p4; protocol p55; SAP p16 | COMPLETE; assumptions and targets agree; simulation versus independent-proportion description retained |
-| XS083 | Subgroup-power rows372/558/744 and31.0/27.7/25.8% | Protocol pp55–56; SAP p16 | COMPLETE; all three rows/input columns agree; not reported main effect estimates |
-| XS084 | Interim/stopping:no planned efficacy/futility;DSMB safety-request exception | Protocol pp53,60; SAP p27; report methods | COMPLETE; no reported conflicting interim/stopping decision |
-| XS085 | Primary-outcome moderator analysis criterion list:sex,age,race,residence,multisite,mood,SDOH | Protocol pp25–26,57–58; SAP pp14,21–22; reports all results units | COMPLETE; F-XS-005 nonreporting of planned primary-outcome analyses; all seven separate modifiers accounted for |
-| XS086 | Primary-outcome mediation criterion list:catastrophizing,selfefficacy,support;6monthMCID | Protocol pp27,58; SAP pp15,22–23; reports all results units | COMPLETE; F-XS-005; both active-versusUC6month significance gates satisfied; three mediators/two arms accounted for |
-| XS087 | Intervention session-dose:list eight common content sessions/weekly delivery | Protocol pp42–45; SAP pp8–9; main p3; TIDieRpp2–4 | COMPLETE;8 topics/sessions agree; F-XS-001 online minutes |
-| XS088 | Active intervention12week duration;full dose≥6/8;yearonline access | Protocol pp16,45; SAP p18; main pp3–5; TIDieRpp4–5 | COMPLETE; dose criterion/window/access align; approved coach extensions disclosed |
-| XS089 | Intervention onboarding modification8/9/2021 and outreach four triggers | Protocol p43; SAP p21; main p3; TIDieRpp4–5; results p13 | COMPLETE; exact date and>7/>7/>10/≥3in9 triggers align; enrollment-count copies peripheral |
-| XS090 | Concomitant-care permissions and coach modality/staff | Protocol pp30,44–46; SAP p9; main p3; TIDieRpp2–4 | COMPLETE; phone/video choice and unrestricted usualcare align |
-| XS091 | Safety outcome definitions/ascertainment/noformaltests | Protocol pp49–51; SAP pp25–27; main pp7–8 | COMPLETE;death/inpatienthospitalization distinct from nonuniformly solicitedAEs; chartreview amendment disclosed |
-| XS092 | PLAN–PLAN primary endpoint/models/covariates/multiplicity/sample/nointerim | Protocol pp19,22–23,55–60; SAP pp11–12,16,19–22,27 | COMPLETE; principal operative specifications agree |
-| XS093 | PLAN–PLAN amendments:11versus10items,4versus3items,ruralstrata,IPW,PGIC | Protocol pp3–7; SAP pp2–4,10 | COMPLETE; chronology and SAP precedence distinguish prospective updates from simultaneous conflict |
-| XS094 | PLAN–PLAN moderator time,secondary-table wording/occasion cells | Protocol pp22,25,58; SAP pp11,14,22 | COMPLETE; contextual/peripheral observations excluded below, no changed reported primarydecision |
-| XS095 | Administrative/reference/process/data-release units | Main pp12–14; TIDieRp7; results pp1,12,19; protocol pp1–12,35–40,47–48,52,54,61–77; SAP pp1–10,28–29 | COMPLETE; no additional in-focus matched clinical result; complete maps preserve source-unit coverage |
+| Comparison scope | Completed comparison |
+|---|---|
+| Abstract, Key Points, narrative, main Tables 2–3 and Figure 2 | All three primary adjusted percentages and RR contrasts agree with their matching body/table copies; Figure 2 uses the same primary/later severity outcome and direction. Narrative continuous-severity SMD copies were compared by exact time and contrast. Every binary and continuous key-secondary row, direction and omnibus-versus-pairwise qualifier was considered. General narrative pattern statements were distinguished from an explicit test of each individual contrast. |
+| Main results versus DOC-005 | All nine severity RR contrasts at 3/6/12 months in eTable 4 match main Table 2, including precision differences. eTables 7–8 are different missing-data or population analyses; eTable 9 is unadjusted; eTables 10–11 are unadjusted continuous results. Their estimates were not treated as copies of the weighted adjusted main analysis. Scoring ranges, scale direction, ≥30% response definitions, source populations and analysis labels were compared. |
+| Participant flow, treatment, safety and workbook | Randomized eligibility and analysis sets, any-follow-up versus time-specific follow-up, session thresholds, intervention dose/duration, safety event versus participant counts, and missingness-pattern group definitions were matched. DOC-006 B3:E3 and source eTable 1 represent the same randomized/missingness-pattern population definitions, with a small contributor-count difference screened below. All workbook labels, prespecified flags and H/I/J test purposes were considered; baseline copies are peripheral. |
+| Plan endpoint/status/component lists | Primary severity MCID, severity at 6/12 months, intensity and interference MCID, continuous severity/intensity/interference, social and physical functioning, both PGIC items, exploratory opioid/depression/anxiety/sleep/high-impact/graded pain, economic and safety outcomes were compared individually. The amended 11-item composite, four intensity items, seven interference items, two PGIC items and outcome hierarchy reconcile. No supplied report changes a prespecified outcome status. Ancillary moderator/mediator/economic/exploratory outputs absent from this primary trial report were not recast as absent primary/key-secondary outcomes. |
+| Plan eligibility lists, item by item | Active health-system enrollment/care in prior year; age ≥18; English/no interpreter; Essentia ≥1 versus KP ≥2 pain encounters >60 days apart in 360 days; surgery in prior 60 days; malignancy threshold; hospice/palliative care in prior 360 days; severe cognitive impairment; KPWA opioid-use-disorder exclusion; high-impact pain frequency and interference in prior 3 months; PEG ≥12; phone/internet access; prior-six-month/current/next-month behavioral pain treatment; current/next-month intensive substance-use services; next-12-month pain surgery were each matched. The malignancy threshold is finding F-XS-001; absent operational details alone are screened below. |
+| Primary model and analysis population | Individual equal allocation, four strata, variable blocks 3/6/9; modified Poisson log-link GEE; working independence; robust person/coach clustering; arm-by-time interactions; UC/3-month references; six named baseline adjustment factors; eligible-randomized ITT regardless of engagement; retained pre-withdrawal data; imputation among any-follow-up participants and nonresponse weighting were compared. Covariate and primary-versus-sensitivity specifications are findings below. Exclusion of two UC participants who did not meet EHR eligibility agrees with the SAP eligible-subject effectiveness set. |
+| Secondary, sensitivity, subgroup and plan-internal statistical design | Secondary linear versus Poisson GEE, baseline adjustment, seven moderator definitions and three-way interactions, 3-month moderator comparison, 6-month mediator endpoint, mediator measurement times/selection P<.10, conditional crossover >10%, enhanced-onboarding restriction after 8/9/2021, missingness >15% or group differential, extreme active=0/UC=1 sensitivity, mean covariate imputation, and disclosed SAP amendments were compared individually. Plan-internal ancillary details not affecting a reported primary/key-secondary analysis are screened below. |
+| Hypothesis, power and decisions | Superiority direction, 3-month primary endpoint, 90% power, UC15% versus active22.5%, 7.5 percentage-point difference/RR1.5, 1863 analyzed/621 per arm, 80% retention, 2331 randomized/777 per arm, subgroup80% assumptions, two-sided .05, omnibus Fisher LSD gate, no formal efficacy/futility interim, safety suspension logic and no SAE between-group tests were checked against report statements. No noninferiority/equivalence margin, prior, alpha-spending boundary or reported efficacy stopping decision applies. The report adds a simulation implementation without contradicting these printed assumptions. |
 
 ## Findings
 
 ### F-XS-001
 
-**Title:** Reported online-session duration differs from the supplied protocol regimen description.
+**Observation:** The malignant-cancer eligibility criterion uses a different encounter threshold in the report and plans.
 
-**Compared locations and roles:** PLAN [protocol p43, section10.1.1](../../../joi250046supp1_prod_1755300121.14087.pdf#page=43); REPORT [main p3, Online Program](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=3); REPORT [TIDieR pp3–4, intervention dose](../../../joi250046supp3_prod_1755300121.15087.pdf#page=3). Protocol p43 was visually reread.
+**Exact locations and document roles:** REPORT [main article p.2, Methods, clinical eligibility criterion 5](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=2); PLAN [protocol p.32, section 5.1, EHR criterion 6](../../../joi250046supp1_prod_1755300121.14087.pdf#page=32); PLAN [SAP p.17, section 6.1, EHR criterion 6](../../../joi250046supp2_prod_1755300121.15087.pdf#page=17).
 
-**Printed values:** Protocol: each painTRAINER session takes45–60minutes. Main: each requires approximately30–45minutes; TIDieR also describes30–45minutes. Both specify eight sequential sessions, approximately weekly; all intended within12weeks. The comparison concerns online-session minutes, not weekly completion frequency or year-long access.
+**Printed statements:** The report requires no malignant-cancer diagnosis other than nonmelanoma skin cancer within 60 days. Both plans require that the participant does not have two or more separate encounters carrying such a diagnosis within 60 days.
 
-**Comparison logic/calculation:** The lower and upper bounds both differ by15minutes. Treating integer endpoints with half-minute display intervals: lower-bound intervals[44.5,45.5] versus[29.5,30.5] have gap14minutes,14/45=0.3111; upper-bound intervals[59.5,60.5] versus[44.5,45.5] have gap14minutes,14/60=0.2333. These endpoint discrepancies exceed0.05. The ranges overlap at45minutes; that overlap does not establish that the stated expected session-duration ranges are the same. Eight-session descriptive totals are360–480 versus240–360minutes; these totals illustrate the described regimen, not actual exposure.
+**Comparison logic and reproduction:** These statements differ for a person with one qualifying cancer-coded encounter. The plans do not exclude that person by criterion 6; the report's literal criterion excludes any diagnosis in that window. The same 60-day window and cancer exception were matched. This is a criterion comparison, not a rounded count; recomputed interval and relative discrepancy are not applicable.
 
-**Focus area:** D. **Proposed review domain:** protocol_report. **Proposed relationship:** P_R. **All relationships:** P_R. TIDieR corroborates the report side, rather than creating a report-versus-report conflict.
+**Focus area:** D. **Proposed review domain:** protocol_report. **Relationship type:** P_R. **All relationships:** P_R.
 
 **Qualifying route:** Route B.
 
-**Affected result or extracted value:** Duration/dose of the randomized online intervention associated with the reported primary severity-response RRs1.28 at3months and sustained later outcomes; intervention-description extraction would select different expected session-minute ranges.
+**Affected result or extracted value:** Eligibility/target population for the 2331-participant primary pain-severity response analysis.
 
-**Why context does not resolve it:** Both descriptions concern the same eight-session program. The supplied amendments do not identify a duration reduction or distinguish planned session length from measured actual length; a reader cannot determine which range describes the delivered intervention.
+**Why context does not resolve it:** The report does not identify whether its diagnosis language summarizes a two-encounter confirmation algorithm or represents a more restrictive rule. This quantitative criterion can change which population the primary effects represent.
 
-**Supported alternatives:** Actual completion time may have proved shorter than the protocol estimate without content modification; the report may intentionally summarize a different typical duration. Neither explanation is explicitly supplied as the reason for the differing range. Coach60minutes versus approximately45–60minutes is separately excluded as compatible approximate wording.
+**Supported alternatives:** The two-encounter EHR rule may operationalize a confirmed diagnosis and the report may summarize that rule; alternatively, the implemented malignancy exclusion may have differed from the supplied plans. No number of affected participants is supplied.
 
-**Human question:** Which expected per-session duration applies to the randomized painTRAINER intervention, and was the30–45minute description a documented amendment or an empirical refinement of the protocol's45–60minute estimate?
+**Human question:** Was malignant-cancer exclusion implemented for any diagnosis or for at least two separate coded encounters within 60 days, and which rule defines the reported effectiveness population?
 
 ### F-XS-002
 
-**Title:** Age is described as a prespecified base adjustment variable although it is absent from the supplied primary-model adjustment list.
+**Observation:** Expected session lengths differ between the protocol and the reported intervention descriptions.
 
-**Compared locations and roles:** PLAN [SAP p20, section14 primary model](../../../joi250046supp2_prod_1755300121.15087.pdf#page=20), corroborated by PLAN [protocol p56](../../../joi250046supp1_prod_1755300121.14087.pdf#page=56); REPORT [results supplement p4, Adjustment](../../../joi250046supp4_prod_1755300121.15587.pdf#page=4), [p9 eTable4 age row](../../../joi250046supp4_prod_1755300121.15587.pdf#page=9) and [p11 sensitivity methods](../../../joi250046supp4_prod_1755300121.15587.pdf#page=11); REPORT [main p4 primary adjustment statement](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4). SAP p20 and results p4 source images were reread.
+**Exact locations and document roles:** PLAN [protocol p.43, section 10.1.1 painTRAINER overview](../../../joi250046supp1_prod_1755300121.14087.pdf#page=43); PLAN [protocol p.44, section 10.1.2 coach overview](../../../joi250046supp1_prod_1755300121.14087.pdf#page=44); REPORT [main article p.3, Health Coach Program and Online Program](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=3); REPORT [TIDieR p.3, Procedures row](../../../joi250046supp3_prod_1755300121.15087.pdf#page=3); REPORT [TIDieR p.4, When and How Much row](../../../joi250046supp3_prod_1755300121.15087.pdf#page=4).
 
-**Printed statements:** SAP primary adjustment lists baseline severity,sex,site,residence,multisite pain and mental-health condition. Main repeats that list. Results p4 first repeats the same list, then names the base set of “pre-specified adjustment variables” as baseline severity,**age**,sex,site,residence,multisite pain and mental-health conditions. eTable4 explicitly includes age≥65 withRR1.15(1.00–1.33),P=.046; sensitivity descriptions also include age. SAP section13 lists age among possible baseline/predictive/subgroup variables; section16 prespecifies age moderation. Neither passage states that age is a mandatory base primary-model covariate. No amendment adds it to the section14 list.
+**Printed values:** Protocol painTRAINER sessions take 45–60 minutes and coach sessions take 60 minutes. Main and TIDieR reports give painTRAINER 30–45 minutes and coach 45–60 minutes. All locations describe eight sessions, approximately weekly, with a 12-week intended completion period.
 
-**Comparison logic:** Set comparison after matching the primary binary MCID model: the report's claimed prespecified base set has the additional member age; the supplied section14 fixed list does not. This is a claim of prespecification versus the plan contents, not a complaint that an unreported detail is missing. Numeric rounding/relative discrepancy is not applicable to covariate membership.
+**Comparison logic and reproduction:** For painTRAINER, the corresponding stated lower and upper durations each differ by 15 minutes. Half-minute precision intervals are [44.5,45.5] versus [29.5,30.5] for the lower endpoint and [59.5,60.5] versus [44.5,45.5] for the upper endpoint. The gaps are 14 minutes, or 14/45=0.311 and 14/60=0.233 relative to the protocol endpoints, both above .05. Coach 60-minute expectation lies at the reported range's upper endpoint and is corroborating context, not a separately reproduced numeric-copy discrepancy. This single finding concerns the changed session-duration description, primarily the painTRAINER range.
 
-**Focus area:** D. **Proposed review domain:** protocol_report. **Proposed relationship:** P_R. **All relationships:** P_R, S_C. S_C also records main primary-adjustment list versus supplementary expanded prespecified base list; highest precedence is P_R.
-
-**Qualifying route:** Route A, category5.
-
-**Affected result or extracted value:** Prespecified versus added adjustment specification underlying the primary weighted/imputed severity-responseRRs and complete-case/extreme-case sensitivity estimates.
-
-**Why context does not resolve it:** Category5 applies to an analysis element claimed prespecified but not contained as such in the supplied primary-model plan. Age being a candidate baseline predictor or moderator is distinct from being a mandatory base adjustment variable.
-
-**Supported alternatives:** Age may have been selected under an additional documented adjustment decision; the broad baseline-variable catalogue may have been intended as authorization for its inclusion. The supplement distinguishes selected additional predictors from the stated fixed base set, leaving the prespecification claim unresolved. This finding does not dispute the disclosed data-driven addition of education/employment.
-
-**Human question:** Where in the supplied plan or an identified amendment was age prespecified as a base primary-analysis adjustment variable, and which primary/sensitivity models include it?
-
-### F-XS-003
-
-**Title:** Secondary-outcome adjustment described in the report extends the supplied secondary-analysis covariate specification.
-
-**Compared locations and roles:** PLAN [SAP p21, section15](../../../joi250046supp2_prod_1755300121.15087.pdf#page=21) and PLAN [protocol p57, Aim1a](../../../joi250046supp1_prod_1755300121.14087.pdf#page=57); REPORT [main p4 Statistical Analysis](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4), with result displays [main pp9–11](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10). SAP p21 source image was reread.
-
-**Printed statements:** SAP and protocol secondary paragraphs specify baseline pain severity and all stratification variables as covariates. Main states that “the same modeling structures” were applied to secondary outcomes “but with added adjustment for the given baseline secondary outcome”; the preceding primary paragraph specifies baseline severity,sex,site,residence,multisite pain and mental-health condition. Thus the reported secondary structure explicitly adds the corresponding baseline endpoint and carries the primary-model predictor structure. SAP's preceding “same proposed approach as Aim1” provides a possible basis for carrying some primary predictors, but the explicit secondary list does not state the additional outcome-specific baseline adjustment.
-
-**Comparison logic:** Compare the specifically stated secondary covariate sets at identical3/6/12-month Aim1a endpoints. Baseline intensity/interference/social/physical scores are distinct quantities from baseline composite severity and strata. The report explicitly adds them; the plan's secondary paragraph specifies baseline severity and strata. The finding is about this affirmative analysis-description difference, not absent coefficients or a preferred model. Numeric rounding/relative discrepancy is not applicable.
-
-**Focus area:** D. **Proposed review domain:** protocol_report. **Proposed relationship:** P_R. **All relationships:** P_R.
+**Focus area:** D. **Proposed review domain:** protocol_report. **Relationship type:** P_R. **All relationships:** P_R.
 
 **Qualifying route:** Route B.
 
-**Affected result or extracted value:** Adjustment specification for Table2 intensity/interference responder contrasts and Table3 intensity,interference,social-role and physical-function adjusted differences, across all3/6/12-month rows.
+**Affected result or extracted value:** The duration/dose of the online intervention associated with the primary RR1.28 versus UC and HC-versus-PT RR1.20.
 
-**Why context does not resolve it:** An own-baseline intensity/function measure is not the same variable as composite pain severity. The report explicitly describes the addition, whereas the supplied secondary specification lists a different set; no supplied amendment explains whether this was planned or introduced for the reported analysis.
+**Why context does not resolve it:** The supplied report does not explain whether the shorter online durations reflect a program revision, delivered duration, or a revised expectation. The range changes the intervention dose extracted for replication or synthesis.
 
-**Supported alternatives:** “Same proposed approach” could have been intended to authorize outcome-specific baseline adjustment and all primary predictors without enumerating them again. Alternatively, the report documents an additional adjustment choice. The precise sets cannot be established solely from those two formulations; no claim is made about whether the estimates would change.
+**Supported alternatives:** The protocol may provide a conservative completion estimate whereas the reports describe experience during the trial; a revised duration estimate or session-content change is another possibility. The source confirms self-pacing and pause/resume features but does not select between these readings.
 
-**Human question:** What exact baseline covariate set was used for each reported secondary endpoint, and does an identified plan provision or amendment specify the added baseline-secondary-outcome adjustment?
+**Human question:** Does 30–45 versus 45–60 minutes describe a revised online session dose, actual completion time, or different duration conventions, and which planned and delivered duration should be extracted?
+
+### F-XS-003
+
+**Observation:** Age is described as a prespecified base adjustment factor in report material, although the supplied primary analysis specifications do not include it in that set.
+
+**Exact locations and document roles:** PLAN [protocol p.56, section 15.5 adjustment list](../../../joi250046supp1_prod_1755300121.14087.pdf#page=56); PLAN [SAP p.20, section 14 adjustment list](../../../joi250046supp2_prod_1755300121.15087.pdf#page=20); REPORT [main article p.4, Statistical Analysis adjustment sentence](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4); REPORT [results supplement p.4, Adjustment, base-set sentence](../../../joi250046supp4_prod_1755300121.15587.pdf#page=4); REPORT [results supplement p.7, eTable 2 variables included in all models](../../../joi250046supp4_prod_1755300121.15587.pdf#page=7); REPORT [p.8 eTable 3 age coefficient](../../../joi250046supp4_prod_1755300121.15587.pdf#page=8); REPORT [p.9 eTable 4 age coefficient](../../../joi250046supp4_prod_1755300121.15587.pdf#page=9); REPORT [p.10 eTable 5 age coefficient](../../../joi250046supp4_prod_1755300121.15587.pdf#page=10); REPORT [supplied workbook, worksheet eTable 3, G2 and A10/G10](../../../joi250046supp5_prod_1755300121.16087.xlsx).
+
+**Printed statements and values:** Both plans and main p.4 name baseline severity, sex, site, residence, multisite pain and mental-health condition for the primary model. Supplement p.4 first repeats that list, then calls the base set prespecified and inserts age. eTable 2 includes age≥65 versus <65 in all models. Age coefficients are 0.19 (0.12–0.27) in imputation, RR1.15 (1–1.33) in primary estimation, and OR0.97 (0.70–1.35) in weighting. Workbook G2 is “Pre-specified Adjustment Variables”; G10 flags age with X.
+
+**Comparison logic and reproduction:** The six named plan factors were compared item by item; age is an additional seventh baseline factor in the reported base set and fitted models. SAP section 13 mentions age among potential baseline variables, but neither the section 14 primary specification nor the documented amendments states that it is a fixed primary adjustment factor. No numeric-copy arithmetic is required; recomputed interval and relative discrepancy are not applicable.
+
+**Focus area:** D. **Proposed review domain:** protocol_report. **Relationship type:** P_R. **All relationships:** P_R, S_C, S_W.
+
+**Qualifying route:** Route A, category 5.
+
+**Affected result or extracted value:** Prespecified versus added covariate specification for the primary severity MCID adjusted RRs1.28,1.54,1.20 and their intervals.
+
+**Why context does not resolve it:** Category 5 applies to an analysis element described as prespecified that is not contained in the supplied primary specification. A generic potential-variable list does not identify the final fixed base model or the timing of age's addition.
+
+**Supported alternatives:** An additional supplied-plan section or amendment may have been intended to authorize age; it may have been selected after baseline/missingness examination; or the report's prespecified wording may refer only to the six original factors. The fitted tables establish age's use, but not its prespecification.
+
+**Human question:** Which prospective specification made age a fixed primary adjustment covariate, and was age included in the model producing the main primary results as a prespecified or subsequently added factor?
 
 ### F-XS-004
 
-**Title:** General significant-benefit statements do not reconcile with physical-function pairwise intervals.
+**Observation:** The secondary outcome adjustment set is expanded in the report relative to the explicit plan lists.
 
-**Compared locations and roles:** REPORT [main p7 Secondary Outcomes](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=7); REPORT [main p1 abstract Results](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=1); REPORT [main p10 Table3 physical-function rows](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10). Table3 source image was reread; p4 specifies two-sidedα=.05 and95%CIs.
+**Exact locations and document roles:** PLAN [protocol p.57, section 15.6 final analysis sentence](../../../joi250046supp1_prod_1755300121.14087.pdf#page=57); PLAN [SAP p.21, section 15 secondary analysis paragraph](../../../joi250046supp2_prod_1755300121.15087.pdf#page=21); REPORT [main article p.4, secondary modeling paragraph](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4); REPORT [main Table 3 pp.10–11](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10).
 
-**Printed statements/values:** p7 describes “significantly better scores for both” intervention groups versusUC at3months, persisting over12months, for secondary outcomes. The abstract describes significant benefits for both groups at6/12months for severity and “other secondary pain and functioning outcomes.” Table3 physical function at3months: PT−UC0.4,95%CI−0.1to0.9; at6months: HC−UC0.4,95%CI−0.1to0.9. Both intervals include the zero mean-difference null. Physical-function omnibusP is.02 at3months and.05 at6months; those tests concern any difference among three groups, not the two named intervention-versusUC contrasts.
+**Printed statements:** Both plans explicitly state baseline pain severity and all stratification variables as secondary-analysis covariates. The report says the same modeling structures as the primary analysis were applied, with added adjustment for the given baseline secondary outcome. The primary structure in the preceding paragraph additionally includes multisite pain and mental-health condition.
 
-**Comparison logic:** A statement of statistically significant benefit for the named pairwise contrast atα=.05 does not reconcile with its95% interval including0. The intervals unambiguously span0; rounding does not account for the comparison. The routeA1 display-precision exception applies; no relative-gap threshold is used. The pattern concerns categorical inference in the narrative, not small numerical copy differences.
+**Comparison logic and reproduction:** Baseline severity, sex, site and residence match. The report additionally specifies outcome-specific baseline adjustment and imports the primary structure's multisite-pain and mental-health factors. The plan's general “same proposed approach” phrase and its explicit final covariate list are retained separately; neither explicitly names the given baseline secondary outcome. This is an analysis specification comparison; recomputed interval and relative discrepancy are not applicable.
 
-**Focus area:** B. **Proposed review domain:** statistical_results. **Proposed relationship:** S_W. **All relationships:** S_W.
+**Focus area:** D. **Proposed review domain:** protocol_report. **Relationship type:** P_R. **All relationships:** P_R.
 
-**Qualifying route:** Route A, category1.
+**Qualifying route:** Route B.
 
-**Affected result or extracted value:** Whether PT improves physical function significantly versusUC at3months, and whether HC does so at6months; readers extracting the narrative may assign significant benefit to these contrasts that their printed intervals do not support.
+**Affected result or extracted value:** Adjusted intensity, interference, social-role, physical-functioning and global-impression secondary estimates and mean differences in Tables 2–3.
 
-**Why context does not resolve it:** Category1 includes interval versus stated test/inference conflicts. An omnibus significant result can coexist with a nonsignificant pairwise contrast, but cannot establish that both named active-versusUC physical-function contrasts are significant.
+**Why context does not resolve it:** The specific covariate lists differ and the report does not identify an amendment or distinguish which baseline terms apply to each outcome. This determines the adjusted estimand extracted for the abstract's secondary pain/functioning results.
 
-**Supported alternatives:** The prose may summarize overall patterns rather than every endpoint/contrast, or use the omnibus test as the basis for the general description. Those interpretations narrow the intended claim but do not supply a pairwise analysis producing significance for the printed null-containing intervals. The physical-function3-monthHC/UC and12-monthactive/UC intervals support their own positive comparisons and are not implicated.
+**Supported alternatives:** “Same proposed approach” may have been intended to inherit the entire primary covariate set, while the final plan sentence gives only minimum covariates; outcome-specific baseline adjustment may have been an additional specification. A later amendment may explain the expansion.
 
-**Human question:** Do the significant-benefit statements intend to include these physical-function contrasts, and if so which test or analysis supports significance despite their95% intervals spanning0?
+**Human question:** What exact covariate set was planned and used for each secondary outcome, including its baseline value, multisite pain and mental-health condition, and where is any expansion documented?
 
 ### F-XS-005
 
-**Title:** Planned primary-outcome moderator and primary mediation analyses have no results in the supplied report package.
+**Observation:** The role of the follow-up/MAR and weighted pattern-mixture analyses differs between the SAP primary-analysis paragraph and the report.
 
-**Compared locations and roles:** PLAN [SAP pp21–22, Additional Effectiveness Analyses for Primary Outcome](../../../joi250046supp2_prod_1755300121.15087.pdf#page=22), [p23 mediation continuation](../../../joi250046supp2_prod_1755300121.15087.pdf#page=23), corroborated by PLAN [protocol pp57–58](../../../joi250046supp1_prod_1755300121.14087.pdf#page=57). REPORT search/inspection scope is complete [main pp1–14](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=1), [TIDieR pp1–7](../../../joi250046supp3_prod_1755300121.15087.pdf#page=1), [results supplement pp1–19](../../../joi250046supp4_prod_1755300121.15587.pdf#page=1), and workbook eTable3 A1:J115. Main outcome results are pp7–11; supplementary contents/results tables are p1 andpp7–18. SAP p22 source image was reread. No nonexistent page is offered as an absence citation.
+**Exact locations and document roles:** PLAN [SAP p.19, section 11](../../../joi250046supp2_prod_1755300121.15087.pdf#page=19); PLAN [SAP p.4, July 17, 2024 IPW amendment](../../../joi250046supp2_prod_1755300121.15087.pdf#page=4); REPORT [main article p.4, missing-data paragraph](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4); REPORT [results supplement p.4, Missing Data opening paragraph](../../../joi250046supp4_prod_1755300121.15587.pdf#page=4); REPORT [p.9 eTable 4 primary estimation model](../../../joi250046supp4_prod_1755300121.15587.pdf#page=9); REPORT [p.11 eTable 7 sensitivity introduction and complete-case block](../../../joi250046supp4_prod_1755300121.15587.pdf#page=11).
 
-**Printed plan/observed report content:** SAP prespecifies separate primary-outcome moderator analyses by sex,age,race/ethnicity,rural/underserved residency,multiplepain,mood,andnegativeSDOH; the primary comparison forAim1b is moderator×arm interactions at3months. It also prespecifies “Primary mediation analyses” of6-month severityMCID via catastrophizing,self-efficacy andsupport, separately for each active arm versusUC, conditional on significant6-month outcome effects. Both reported6-monthseverity effects satisfy that gate: PT/UC1.44(1.21–1.70),HC/UC1.62(1.39–1.90). The reports provide main effects, adjustment coefficients, imputation/nonresponse model coefficients and missingness/procedure-change sensitivities, but no moderator interaction estimates/tests or mediation/direct/indirect estimates for those planned primary-outcome analyses. Main-effect covariate coefficients in eTable4 are not moderator×treatment interactions. Baseline measures in the workbook are not mediation estimates.
+**Printed statements and values:** SAP section 11 says the primary analyses analyze patients with follow-up and assume MAR given baseline covariates, then describes sensitivity analyses when >15% missing at 3 months or group differential, including pattern-mixture/IPW and worst/best case. Its amendment says the current approach already imputes by pattern mixture and adds IPW to permit interpretation among all randomized. The report says the threshold caused the primary analysis to use MNAR imputation, nonresponse weighting and adjustment. The report's complete-case analysis is labeled sensitivity: 3-month PT/UC RR1.34 (1.12–1.61), HC/UC1.48 (1.24–1.75), HC/PT1.10 (0.94–1.29). Its primary weighted-imputed RRs are1.28,1.54,1.20.
 
-**Comparison logic:** Item-by-item analysis inventory matching found no report counterpart for the seven separate modifier analyses, the twoactive-versusUC primary mediation families or any of the three named mediators. These are explicitly planned primary-outcome effectiveness analyses, including analyses explicitly designated primary withinAim1b/Aim1c. This consolidates the repeated nonreporting pattern rather than producing a finding per modifier/mediator. There is no arithmetic rounding question; relative discrepancy is not applicable to missing analysis families.
+**Comparison logic and reproduction:** These are explicitly distinct analyses and are not numeric copies. The observable difference is the assigned primary-versus-sensitivity role and associated MAR versus MNAR assumption. The >15% or differential rule is present in both sources; SAP section 11 does not explicitly state that meeting it replaces the primary MAR analysis. Recomputed numeric interval and relative discrepancy are not applicable to this specification comparison.
 
-**Focus area:** D. **Proposed review domain:** protocol_report. **Proposed relationship:** P_R. **All relationships:** P_R.
+**Focus area:** D. **Proposed review domain:** protocol_report. **Relationship type:** P_R. **All relationships:** P_R, P_P.
 
-**Qualifying route:** Route A, category5.
+**Qualifying route:** Route A, category 5.
 
-**Affected result or extracted value:** Planned heterogeneity and mediation characterization of the primary severity-response result; it is not possible to extract these prespecified primary-outcome analyses from the supplied package.
+**Affected result or extracted value:** Which three-month severity analysis is designated primary and which missing-data assumption accompanies RRs1.28,1.54,1.20.
 
-**Why context does not resolve it:** Category5 covers a planned primary or key-secondary analysis not reported. The primary-outcome modifier/primary-mediation plans are affirmative and the mediation significance gate is met. The package contains no statement relocating, deferring or withdrawing these analyses.
+**Why context does not resolve it:** Category 5 applies to replacement of a planned primary analysis. The amendment corroborates that weighted pattern-mixture estimation was intended, but section 11 retains the contrasting primary MAR statement and sensitivity wording; the supplied plan does not explicitly reconcile their roles.
 
-**Supported alternatives / classification ambiguity:** This publication may intentionally report the main clinical-effectiveness comparison while these additional aims are reserved for separate manuscripts. The SAP labels these as additional effectiveness analyses for the primary outcome and describes some subgroup work as secondary analyses in its power section. Human screening should confirm how the scope's planned-primary-analysis rule applies to that hierarchy; this uncertainty is retained rather than suppressing the source-grounded nonreporting observation. No inference is made about whether the analyses were conducted elsewhere. Economic and exploratory follow-up analyses are not included in this finding.
+**Supported alternatives:** The July 2024 amendment may authorize weighted MNAR as primary and section 11 may retain an earlier description; the threshold branch may have been intended to switch the primary analysis; or the report may use “primary” for an analysis that was prospectively sensitivity. The complete-case result is reported, so this finding does not assert its numerical absence.
 
-**Human question:** Where are the prespecified primary-outcome moderator interaction and primary mediation analyses reported, or was their reporting deferred or their status amended relative to the supplied plan?
+**Human question:** Under the final approved SAP, was the primary analysis the follow-up/MAR model or the weighted MNAR pattern-mixture model, and what statement or amendment assigned the final primary-versus-sensitivity roles?
+
+### F-XS-006
+
+**Observation:** Education is described as binary in the final selected-variable list but represented by multiple distinct parameters in the fitted primary models.
+
+**Exact locations and document roles:** REPORT [results supplement p.7, eTable 2 final imputation/estimation variable list](../../../joi250046supp4_prod_1755300121.15587.pdf#page=7); REPORT [p.8 eTable 3 education rows](../../../joi250046supp4_prod_1755300121.15587.pdf#page=8); REPORT [p.9 eTable 4 education rows](../../../joi250046supp4_prod_1755300121.15587.pdf#page=9); REPORT [workbook worksheet eTable 3, A12:A16](../../../joi250046supp5_prod_1755300121.16087.xlsx).
+
+**Printed values:** eTable 2 selects education “any college vs. HS degree or less.” The imputation table has two separate AA-degree rows with estimates −0.02 (−0.11–0.08) and0.16 (0.07–0.25), and a graduate-degree row0.39 (0.29–0.49), each relative to high school or less. The estimation table similarly has education RRs0.97 (0.82–1.16),1.16 (1–1.33),1.35 (1.13–1.61). Workbook categories distinguish high school or less, associate/technical, college, doctoral/postgraduate.
+
+**Comparison logic and reproduction:** A single binary college indicator has one coefficient relative to HS or less; three separate level coefficients describe a different design matrix. The issue is not merely the repeated AA name; the number and grouping of coefficients disagree with the binary final list. No arithmetic on rounded estimates is needed; recomputed interval and relative discrepancy are not applicable.
+
+**Focus area:** C. **Proposed review domain:** statistical_results. **Relationship type:** S_W. **All relationships:** S_W.
+
+**Qualifying route:** Route B.
+
+**Affected result or extracted value:** Education coding in the imputation and primary estimation models producing adjusted severity MCID results.
+
+**Why context does not resolve it:** The reader cannot identify whether the fitted primary models used a pooled college indicator or three education levels. The workbook establishes available categories but does not identify the final model matrix.
+
+**Supported alternatives:** The selected-variable summary may describe an initial screen rather than final coding; the fitted models may use four-category education; or some displayed parameter labels may not describe the final fit. No replacement coefficient is inferred.
+
+**Human question:** Was education binary or represented by three nonreference levels in each final imputation and estimation model, and what educational level does each printed coefficient represent?
+
+### F-XS-007
+
+**Observation:** The listed selected predictors for nonresponse weights differ from those displayed in the fitted weight model.
+
+**Exact locations and document roles:** REPORT [results supplement p.7, eTable 2 final nonresponse variable list](../../../joi250046supp4_prod_1755300121.15587.pdf#page=7); REPORT [p.10, eTable 5 full coefficient display](../../../joi250046supp4_prod_1755300121.15587.pdf#page=10); REPORT [p.5, Non-Response Weighting specification](../../../joi250046supp4_prod_1755300121.15587.pdf#page=5); REPORT [workbook worksheet eTable 3, A18 and H18:J18](../../../joi250046supp5_prod_1755300121.16087.xlsx).
+
+**Printed values:** eTable 2 lists additional weighting predictors PEG, PHQ-8, GAD-7, any negative social determinant and education (any college versus HS or less). eTable 5 displays PEG, PHQ-8, GAD-7, negative SDOH and “Not employed” OR1.49 (1.11–2.00), P=.008, but no education term. Employment is listed for imputation/estimation, not weighting, in eTable 2. The workbook gives employment selection tests H18<.001, I18=.0228 and J18=.0591; these are separate outcome/nonresponse/3-month-missingness tests.
+
+**Comparison logic and reproduction:** The base factors match. Four of the five additional weighting factors match; the final list specifies education where the coefficient display has employment. The source excludes health-care-site identification, not education coefficients. This is a model-membership comparison; recomputed interval and relative discrepancy are not applicable.
+
+**Focus area:** C. **Proposed review domain:** statistical_results. **Relationship type:** S_W. **All relationships:** S_W.
+
+**Qualifying route:** Route B.
+
+**Affected result or extracted value:** The response-weight model used for primary population-average adjusted severity RRs and percentages.
+
+**Why context does not resolve it:** Neither the full fitted table nor the final list explains whether education, employment, or both contributed to the weights. The selection tests support possible employment inclusion but do not resolve education's absence from the displayed final fit.
+
+**Supported alternatives:** The final list may retain an earlier selected model; the coefficient table may omit education; the weights may have used employment instead. The supplied materials do not identify the implemented predictor vector.
+
+**Human question:** Did the final nonresponse model include education, employment, or both, and which specification generated the weights used for the primary results?
+
+### F-XS-008
+
+**Observation:** The raw-score summary label in eTable 11 conflicts with the narrative's mean description and with the possible medians of the reported PGIC scale.
+
+**Exact locations and document roles:** REPORT [results supplement p.15, Additional Unadjusted Data and Analyses introduction](../../../joi250046supp4_prod_1755300121.15587.pdf#page=15); REPORT [p.17, eTable 11 title and raw-score header, every outcome block at 3/6/12 months](../../../joi250046supp4_prod_1755300121.15587.pdf#page=17); REPORT [main p.11, Table 3 PGIC scale footnotes h–i](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11).
+
+**Printed values and labels:** The introduction says eTable 11 provides unadjusted mean secondary outcomes. The title says median/interquartile ranges, and the group header says “Raw Score Median (25%-tile,75%tile).” All 21 rows are affected by this summary label: severity, intensity, interference, social-role functioning, physical functioning, PGIC pain and PGIC general, each at3/6/12 months. PGIC is one item with integer response categories1–7. Printed PT PGIC-pain summaries are2.9 (2.8,2.9),2.8 (2.7,2.9),2.8 (2.7,2.9); PT general summaries are2.7 (2.6,2.7),2.5 (2.4,2.6),2.6 (2.4,2.7). HC3-month PGIC entries instead have2.0 (1.0,3.0) and2.0 (1.0,2.0).
+
+**Comparison logic and reproduction:** A conventional sample median of a one-item integer score is integer or half-integer. The half-unit rounding intervals for2.9,2.8,2.7 and2.6 are respectively [2.85,2.95], [2.75,2.85], [2.65,2.75] and [2.55,2.65], each containing no possible such median. This is a quantity/summary-type comparison; a relative numeric-copy discrepancy is not applicable. No arithmetic comparison of medians with mean differences is asserted.
+
+**Focus area:** C. **Proposed review domain:** statistical_results. **Relationship type:** S_W. **All relationships:** S_W.
+
+**Qualifying route:** Route B.
+
+**Affected result or extracted value:** Whether the unadjusted secondary group summaries are means with confidence intervals, medians with quartiles, or mixed summary types, for extraction of all21 eTable11 rows.
+
+**Why context does not resolve it:** The conflicting mean/median descriptions and the different PGIC interval shapes do not establish a single intended quantity. The label changes both the central statistic and meaning of the parentheses.
+
+**Supported alternatives:** Most entries may be means with95% intervals while the HC3-month PGIC entries are medians/quartiles; all entries may have been intended as a different model-based summary; or a mixture of summaries may be intentional. No numerical relabeling or replacement is proposed.
+
+**Human question:** What central statistic and interval type is reported for each group in eTable11, particularly the HC3-month PGIC cells, and which entries should be extracted as means versus medians?
 
 ## Excluded observations
 
-Each row is an apparent issue self-screened once; reconciled checks remain in the coverage table. No routeA conflict is excluded on wording grounds.
+Only apparent issues considered and not emitted appear here. Reconciled comparisons are recorded in the scope table above.
 
 | Location | Observation | Reason code |
 |---|---|---|
-| Main p7 versus p10 severity3-month SMDs | Narrative−0.26/−0.36 versus table−0.25/−0.34. PT half-unit intervals touch;HC gap0.01 divided by0.36=0.0278≤0.05. | ROUNDING_OR_DISPLAY_PRECISION |
-| SAP p21/TIDieRp5 versus results pp13–14 enrollment at8/9/2021 | Approximately140 in earlier description versus454 in reported before-date subset. Date restriction itself remains8/9/2021; enrollment-stage copy does not change main population or prespecified date decision. | PERIPHERAL_COMPARISON |
-| Protocol p5 amendment versus p32 operative encounter rule | Historical≥30days separation versus operative>60days; SAP/current report match operative60day rule. Administrative plan-history comparison does not identify a changed primary decision rule. | PERIPHERAL_COMPARISON |
-| Protocol p25 moderator table versus pp57–58/SAPp22 analysis | Earlier moderator summary mentions6-month severity; operative analysis specifies primary3-month interaction and later-time qualitative assessment. No reported moderator analysis relies on the earlier summary. | PERIPHERAL_COMPARISON |
-| Protocol p22/SAPp11 intensity/interference measured-by cells | Baseline,6,12 listing omits3 although adjacent primary timeframe expressly includes3 and full continuous measures collect3. Immediate table/analysis context supplies3-month assessment. | CONTEXT_RESOLVES |
-| Protocol p22/SAPp11 interference definition | “MCID in pain intensity” within row expressly labeled7-item interference subscale. Intended7-item endpoint is immediately identified and reported as interference. | TERMINOLOGY_OR_WORDING |
-| Protocol p44 versus mainp3/TIDieRpp3–4 coach-session duration |60minutes versus about45–60minutes; approximate delivered duration includes the planned60minutes and does not identify a different coaching-session regimen. | TERMINOLOGY_OR_WORDING |
-| Mainp4 sample-size simulation versus protocolp55/SAPp16 independent-proportion description | Same independent-arm response-rate assumptions and target can be evaluated with modified-Poisson simulations; these method descriptions do not establish opposing sample-size inputs. | CONTEXT_RESOLVES |
-| Mainp11 global-score rows versus results p17 PGIC raw scores | Table-wide mean-change heading accompanies explicitly defined1–7perceived-change scales without baselinePGIC. Field reader identifies status-rated perceived change rather than subtraction of a nonexistent baselinePGIC. | TERMINOLOGY_OR_WORDING |
-| Mainp7 sex-source footnote versus PLAN EHR randomizationsex | Self-report withEHR fallback describes baseline summarysex; EHR source describes randomizationstratum. Report does not explicitly claim identical source variables for those operations. | CONDITIONAL_OR_UNREPORTED |
+| REPORT main p.7 Secondary Outcomes versus Table3 p.10 severity3-month SMDs | Narrative PT/UC−0.26 and HC/UC−0.36 versus table−0.25 and−0.34. Their rounding intervals overlap for PT; HC gap=.01/.34=.0294≤.05. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT main pp.4/9 and Supplement4 eTables7–11 | Primary adjusted versus complete-case, date-restricted or unadjusted estimates differ. They are explicitly different models/populations and not matching result copies. | NOT_REPRODUCED |
+| REPORT Supplement4 p.15/eTable9 title and footnote | Title says adjusted RR, but immediately accompanying introduction says no adjustment/weighting/imputation and footnote explicitly says without adjustment; counts and RRs support that reading. | CONTEXT_RESOLVES |
+| REPORT Supplement4 p.16/eTable10 versus p.15 introduction | Introduction calls the changes means while the table explicitly labels medians/quartiles. The displayed change distributions and the separately labeled mean-difference columns make the descriptive median reading identifiable. | CONTEXT_RESOLVES |
+| PLAN protocol pp.22–23 and SAP p.11, pain-interference row and measurement column | Description says intensity but names the seven-item interference subscale; baseline/6/12 measurement list omits3 months while neighboring time-frame column explicitly states baseline-to3-month primary time. Subscale and intended three-month timing are evident. | TERMINOLOGY_OR_WORDING |
+| PLAN SAP p.21 and REPORT TIDieR p.5 versus REPORT results supplement pp.13–14 | Enhanced-onboarding change is associated with approximately140 versus454 enrolled, but every source uses8/9/2021; eTable8 explicitly defines pre/post randomized populations454/1877. The calendar-count discrepancy does not change the stated subset boundary or analysis size. | PERIPHERAL_COMPARISON |
+| REPORT workbook eTable3 D3 versus REPORT Supplement4 p.7/eTable1 one/two follow-up counts | Workbook missing1-or2 count468 versus188+283=471. With printed count intervals, recomputation [470,472] versus[467.5,468.5] leaves gap1.5/471=.00318≤.05. | ROUNDING_OR_DISPLAY_PRECISION |
+| PLAN eligibility lists protocol pp.32–33/SAP pp.17–18 versus REPORT main p.2 | Severe-cognitive-impairment and KPWA-only OUD operational criteria are not repeated in the main list; no report statement affirmatively includes these patients or supplies conflicting analysis counts. | CONDITIONAL_OR_UNREPORTED |
+| PLAN moderator tables protocol pp.25–26/SAP pp.14–15 versus analytic text protocol pp.57–58/SAP pp.21–23 | Moderator table names6-month MCID while interaction comparison is3 months; support mediator table starts at randomization notification while analytic text says baseline; mediation weight equation omits the narrative's baseline-confounder term. No such ancillary fitted result is reported here and these details do not alter a reported primary/key-secondary analysis or decision rule. | PERIPHERAL_COMPARISON |
+| REPORT main Table3 pp.10–11 PGIC heading versus scale footnotes; PLAN names and REPORT names throughout | PGIC “mean change” refers to a change-impression item whose scale is explicitly given; virtual coach/health coach, usual care/usual care plus, and ability-to-participate/social-role-functioning descriptions identify the same outcomes or arms. No numerical assignment changes. | TERMINOLOGY_OR_WORDING |
+| PLAN ancillary analyses versus supplied REPORT outcome displays | Moderator, mediation, economic and exploratory outcome analyses are not presented in this primary results package. The plans do not designate these absent outputs as primary or key secondary outcomes of this report, and no report claims to present them. | CONDITIONAL_OR_UNREPORTED |
 
-## Completion and limitations
+## Evidence provenance and limitations
 
-All95 grouped cross-source relationships are complete. Every supplied report-result row/time/contrast member and every requested primary/key-secondary design dimension was covered: outcome/status/components/timing, model/covariates, population criteria, missingness, hypothesis/margins, sample/power, multiplicity/interim/stopping, dose/duration, amendments and declared prespecification. Every plan eligibility/secondary/moderator/mediator criterion list was compared item by item. Administrative and bibliography units retain documented no-applicable-result coverage; they were not used as external scientific evidence. Five findings have source-linked alternative interpretations and exact human questions. No scientific coverage gap remains in this assigned scope. Source text provides no raw participant data, no additional plan version beyond supplied amendments, and no actual per-session measured-time dataset; findings do not infer these. The nonreporting finding has an explicit primary-analysis hierarchy/reporting-scope ambiguity for independent screening. Some plots have no exact printed bin counts and were not converted into invented precise measurements.
+Fresh source confirmation for this checker: preprocessing/cross_source_review/main-2.png, main-3.png, main-4.png, tidier-3.png, tidier-4.png and results-4.png, generated from exact supplied sources with allowed pdf_tools.py render, PyMuPDF1.26.4,150dpi, CPU. Current fresh SAP/protocol renders and current report-source renders confirm the additional cited plan and fitted-model locations. Workbook quoted flags, categories and selection tests were confirmed by direct unzip/Perl inspection of supplied worksheet XML and shared strings; no workbook recalculation occurred. No new OCR was required.
+
+Native plan text is glyph encoded; source renders and fresh visual maps supply coverage. Unlabeled histogram bars are not exact numerical copies. No participant-level data, fitted code or additional amendments are supplied, so this checker does not infer the number of people affected by a criterion, reproduce an unreported design matrix, or select a preferred model. These are evidence limits, not scientific coverage gaps. Source and reused assets remain unchanged.

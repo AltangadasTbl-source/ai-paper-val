@@ -1,10 +1,10 @@
 # v.2.4.1 independent primary review, 2025 cohort: reviewer R_A
 
-Reviewer R_A reviewed all 109 candidates in the 13 papers with workflow 1.6.2 output (jama.2025.11178 and jama.2025.15185 are empty placeholder sheets). Each candidate was judged from the original PDFs at the cited locations before the candidate's card in `final_report_1_6_2.md` was read. I did not open the R_Bulun folder or any other reviewer folder under `reviewer_runs/`, any other working folder, anything under `human_adjudication_v_2_3_1/` or `human_adjudication/previous/`, `meta_report/`, the paper packages under the repository's `2025/` folder, any `.ai_paper_validation/` folder, or git history. All source material came from the read-only mirror of the PDFs, cards and `QUALITY_CONTROL_SCOPE.md`.
+Reviewer R_A reviewed all 109 candidates in the 13 papers with workflow 1.6.2 output. The remaining two papers, jama.2025.11178 and jama.2025.15185, were reviewed on 2026-10-14 after their reports were completed, and are reported in the addendum at the end. Each candidate was judged from the original PDFs at the cited locations before the candidate's card in `final_report_1_6_2.md` was read. I did not open the R_Bulun folder or any other reviewer folder under `reviewer_runs/`, any other working folder, anything under `human_adjudication_v_2_3_1/` or `human_adjudication/previous/`, `meta_report/`, the paper packages under the repository's `2025/` folder, any `.ai_paper_validation/` folder, or git history. All source material came from the read-only mirror of the PDFs, cards and `QUALITY_CONTROL_SCOPE.md`.
 
 ## Files
 
-- `human_adjudication_v_2_4_1_2025_R_A_completed.xlsx`: completed workbook built with `fill_review.py`. `recalc_check.py` reports 109/109 rows `PRIMARY READY` and Checks workflow status `PRIMARY READY`.
+- `human_adjudication_v_2_4_1_2025_R_A_completed.xlsx`: completed workbook built with `fill_review.py`. `recalc_check.py` reports 109/109 rows `PRIMARY READY` and Checks workflow status `PRIMARY READY` (133/133 after the 2026-10-14 rebuild; see the addendum).
 - `judgments.json`: one row per candidate with D, E, H to L, the column R note, the evidence inspected and the full rationale with recalculations.
 - `REVIEW_SUMMARY.md`: this file.
 - Recalculation scripts (R, Python), OCR output and page renders are in the private working folder `scratchpad/work/2025/R_A/` (`r/`, `scripts/`, `ocr/`, `img/`).
@@ -109,3 +109,104 @@ The published final protocols for 4390 (BMJ Open 2022) and the governing master 
 - OCR of tables may misalign cells. I re-read every value used in a conclusion against a page render, but OCR omitted a few lines in prose passages; where this happened I relied on the surrounding text and on corroborating plan documents.
 - The prior annotations in the 4390 and 7710 PDFs (see Template or source issues) were visible during part of the review, which compromises full independence for 4390 C001, C011 and C012. All three were also identifiable from the candidate titles and were confirmed by recalculation.
 - Classifying L and I involves judgment. I applied a consistent rule to plan versions (see Counts) and to point-value typos with recoverable correct values (minor_presentation), but another reviewer could reasonably draw these lines differently.
+
+## Addendum (2026-10-14): jama.2025.11178 and jama.2025.15185
+
+### Independence statement
+
+The 24 candidates of the two papers (11178 C001-C018; 15185 C001-C006) were judged in the same way as the other 109: from the original PDFs and the 11178 xlsx supplement at the cited locations first, and from the candidate's card in `final_report_1_6_2.md` afterwards. I did not open the R_Bulun folder, any other year or role folder under `reviewer_runs/`, `reviewer_runs/README.md`, any `compare_<year>.txt`, any other folder under `scratchpad/work/`, anything under `human_adjudication_v_2_3_1/` (other than running its Python interpreter for the validator) or `human_adjudication/previous/`, `meta_report/`, the paper packages under the repository's `2025/` folder, any `.ai_paper_validation/` folder, or git history. I re-read this summary and my earlier `judgments.json` to apply the same coding rules, in particular the plan-version rule (a plan finalized after follow-up ended does not supersede the earlier plan, so the difference is retained) and the rule that numerical reporting errors belong to statistical_results. The highlight annotations formerly on 11178 supplement 4 p. 7 had been removed from the copy I used; I saw no annotations in either paper's files.
+
+### Files
+
+- `judgments_11178_15185.json`: one row per candidate (24 rows) with D, E, H to L, the column R note, the evidence inspected and the full rationale with recalculations. `fill_review.py --check` reports no errors (the 109 earlier keys are listed as missing from this file, as expected).
+- I did not modify `judgments.json` or the completed workbook. On 2026-10-14 the coordinator merged the 24 rows unchanged into `judgments.json` (now 133 rows) and rebuilt `human_adjudication_v_2_4_1_2025_R_A_completed.xlsx` from the rebuilt blank workbook; `recalc_check.py` reports 133/133 rows and Checks `PRIMARY READY`.
+- Recalculation scripts (R and Python), OCR output and renders for these papers are in the private working folder `scratchpad/work/2025/R_A/` (`r/`, `scripts/`, `ocr/`, `img/`, `txt/`).
+
+### Counts
+
+Dispositions for the 24 candidates: 23 retain, 1 exclude, 0 discuss.
+
+| Review domain (final E) | Retain | Exclude | Discuss | Total |
+|---|---:|---:|---:|---:|
+| statistical_results | 15 | 1 | 0 | 16 |
+| report_internal_inconsistency | 0 | 0 | 0 | 0 |
+| plan_material | 0 | 0 | 0 | 0 |
+| protocol_report | 8 | 0 | 0 | 8 |
+| Total | 23 | 1 | 0 | 24 |
+
+All 133 candidates of the 2025 cohort (earlier 109 plus these 24): 124 retain, 9 exclude, 0 discuss.
+
+| Review domain (final E) | Retain | Exclude | Discuss | Total |
+|---|---:|---:|---:|---:|
+| statistical_results | 50 | 2 | 0 | 52 |
+| report_internal_inconsistency | 0 | 0 | 0 | 0 |
+| plan_material | 8 | 3 | 0 | 11 |
+| protocol_report | 66 | 4 | 0 | 70 |
+| Total | 124 | 9 | 0 | 133 |
+
+E changed from the AI suggestion: none of the 24. Each suggested domain matched the materials compared and the nature of the problem.
+
+Exclusion (1):
+
+- `2025::jama.2025.11178::C004`: the three NNT points that do not reproduce under conventional rounding (8, 7 and 8) are the round-up (ceiling) values of 1/RD. Across all 81 NNT points in Table 2 and eTables 7-8, every printed value equals the ceiling of 1/RD within display precision, and 24 are compatible only with rounding up. The tables apply the standard round-up convention consistently.
+
+### Outcome codes (retained rows)
+
+statistical_results (15 retained):
+
+- H: confirmed_issue 12; probable_issue 3 (11178 C011, C018; 15185 C006); indeterminate 0; not_issue 0.
+- I: substantive 6; minor_presentation 9; indeterminate 0.
+- J (all assessed): direct 3; possible 5; unlikely 7.
+
+Confirmed or probable and substantive (6): `2025::jama.2025.11178::C003`, `C008`, `C009`, `C010`, `C016`, and `2025::jama.2025.15185::C001`.
+
+K: no plan_material or report_internal_inconsistency rows among the 24.
+
+L (protocol_report, 8 retained): substantive_difference 7; indeterminate 1 (`2025::jama.2025.11178::C007`); none left blank. Disclosed changes were retained and marked in column R (11178 C007, IPW added to the SAP after follow-up ended; 15185 C004, deviations listed in supplement 3 p. 7; 15185 C002, partly disclosed as differences in "statistical terminology"). Under the plan-version rule, the 15185 SAP (signed 27 September 2024, one month after the last participant's last visit) does not supersede protocol v1.4 (28 February 2023), so the population and model changes in 15185 C002 and C003 are retained.
+
+### Discuss list
+
+None. Candidates I considered for discuss and why I did not use it:
+
+- `jama.2025.11178::C007`: the SAP states that primary analyses use participants with follow-up data under MAR, then makes a pattern-mixture plus weighting approach conditional on more than 15% missingness, without saying whether that approach becomes primary. Retained with L indeterminate.
+- `jama.2025.11178::C018`: the printed omnibus P values for physical function at 6 and 12 months cannot be reached from the contrast intervals within display rounding, but this assumes that the omnibus test used the same covariance as the contrasts. Retained as probable_issue.
+- `jama.2025.15185::C006`: the serious adverse event categories could reconcile if one event can carry several categories, which the table does not state. Retained as probable_issue.
+- `jama.2025.11178::C001`: a non-overlapping description of session length could be a revised estimate of completion time rather than a change in delivery. Retained as substantive_difference with that caveat in column R.
+
+### Where I disagreed with or went beyond the AI card
+
+- `jama.2025.11178::C004`: the card kept upward rounding as an unresolved alternative. Checking all 81 NNT points shows the convention is applied throughout, so I excluded the candidate.
+- `jama.2025.11178::C008` and `C009`: the card could not identify a mechanism. In the text layer, exactly the six HC-vs-painTRAINER NNT intervals whose RR interval includes 1 use an en dash; all 21 others use a hyphen. Reading the en dash as a lost minus sign (for example 24 (12 to -186)) gives RD lower limits of -0.54 to -2.63 percentage points, matching those implied by the RR intervals and the table's own footnote e. The printed intervals therefore misstate null coverage, and C009 (63 outside 18-38) is one instance of the same error.
+- `jama.2025.11178::C014`: the card treated ten rows as a null-significance pattern. For eTable 3, the z implied by each CI is about 1.94 times the z implied by its P value across all 20 rows with exact P values, and treating each interval as estimate plus or minus 1 SE reproduces the printed P values. The three rows the card took from eTables 4 and 5 (age, the second education row and PEG) reproduce once the limit printed as 1 or 1.00 is allowed its rounding range.
+- `jama.2025.11178::C016`: beyond the summary-statistic label conflict, the three raw-score columns of eTable 11 reproduce all printed mean differences in 21 of 21 rows only when ordered usual care, painTRAINER, health coach. The printed column labels are permuted. The card explicitly did not infer this.
+- `jama.2025.11178::C012`: the xlsx selection P values resolve the conflict: employment meets the stated selection rule for the weight model and education does not, so eTable 5 is consistent with the rule and eTable 2 names the wrong variable.
+- `jama.2025.11178::C003`: the Results text quotes 3-month SMDs of -0.26 and -0.36, which are the 6-month values in Table 3 (3-month values -0.25 and -0.34).
+- `jama.2025.11178::C018`: the covariance of the two contrasts with usual care is identified from the three contrast intervals, so the omnibus reconstruction does not need an independence assumption. My values (P = .025 and .010; minimum over the rounding box about .009 and .003) agree with the card's bounds.
+- `jama.2025.15185::C006`: the card counted only two failing sums because it allowed plus or minus 0.5 per integer count. Without that allowance all four comparisons fail (levodopa 143 vs 126 and placebo 139 vs 129 at the top level; infection subtypes 59 vs 55 and 52 vs 44).
+- `jama.2025.15185::C001`: the card set aside the text-table difference as within tolerance. The text's levodopa PROMIS-29 mean of 66 does not round from eTable 4's 64.74.
+- `jama.2025.15185::C005`: the article labels the center plot and the FMA 35-point subgroup as post hoc, although the protocol and SAP prespecified a center display and a median split of baseline FMA (median 34).
+
+### Possible errors outside the candidate set (observed, not adjudicated)
+
+- jama.2025.11178: health coach adverse events 16/778 are printed as 2.0% (2.06%). The xlsx counts 1713 women; Table 1 sums to 1712. Table 2 column headers give n = 643, 690 and 703 (participants with any follow-up), while the analysis is described as covering all randomized participants with weighting. The SAP (p. 21) says the painTRAINER enhancement began after about 140 enrollments; supplement 4 (p. 13) and eTable 8 give 454. eTable 4 prints the "Health Coach vs painTRAINER 3M" row twice. The eTable 8 footnotes call the RR column note "c", which is the omnibus P note.
+- jama.2025.15185: the text and eTable 4 disagree on PROMIS-10 means (28 (6) in both groups vs 29.87 and 30.04), the placebo FMA SD at 5 weeks (26 vs 25.20) and the placebo PRAI numerator (52 vs 51 of 270). In eTable 1, the row labelled median NIHSS shows mean (SD)-type values (8.2 (3.9)), and the row labelled time from onset shows values matching the NIHSS medians in main Table 1 (7 [5-11], 8 [5-10]); the main table gives time from onset as 3.0 (2.0-5.0). eTable 6 gives n = 145 prespecified AEs overall vs 67 + 79 = 146. eFigure 7's color legend ("moderate - severe" vs "very severe impairment") does not match the subgroup definition in its own legend and in the text (35 or less severe; more than 35 mild to moderate). eFigure 5 is titled FMA at 3 months but its axis shows change from visit 1 to visit 3. Table 1 labels the age row "Median age 80 y or older".
+
+### Template or source issues
+
+- The protocol and SAP of jama.2025.11178 and the SAP, much of the protocol and the analysis code of jama.2025.15185 have encoded or missing text layers; all cited locations had to be read by OCR or from renders.
+- Supplement 1 of jama.2025.15185 contains two protocol versions (v1.1, 30 November 2018, pp. 1-46; v1.4, 28 February 2023, pp. 47-94) without a separating label; the candidate locations cite both.
+- 11178 Table 2 is printed rotated, so its column alignment had to be checked on a render.
+- No annotations were visible in the copies supplied for these two papers.
+
+### OCR and rendering use
+
+- OCR (RapidOCR, 300 dpi unless stated): 11178 protocol pp. 1, 43-44, 55-57 and SAP pp. 1-5, 19-21; 15185 SAP pp. 1-18, protocol pp. 1-2, 10, 39, 55-56, 70, 85-88, and protocol pp. 46-52 at 200 dpi to locate the v1.4 cover page.
+- OCR dropped lines on several pages, so I read the rendered pages for every value or sentence used in a conclusion: 11178 protocol pp. 43-44, 56-57 and SAP pp. 19-21 (110 dpi); 11178 main p. 9 (Table 2, 170 dpi); 15185 protocol pp. 86-87, SAP pp. 4 and 11 (top), main p. 6 (Table 2 at 200 dpi, for indentation), the analysis code (150 dpi) and supplement 3 pp. 18, 25 and 27 (eTables 7-8, eFigures 5 and 7).
+- The 11178 xlsx was read directly with openpyxl; character codes of the Table 2 interval separators were read from the PDF text layer.
+
+### Limitations
+
+- Several 11178 judgments rest on reconstructions: NNT rounding (C004), the lost-minus interpretation (C008, C009), the 1.96-factor pattern in eTable 3 (C014), the omnibus Wald reconstruction (C018) and the eTable 11 column order (C016). Each reproduces across many rows, but none can be confirmed without the authors' output.
+- The SMD columns of 11178 Table 3 are wrong in several distinct ways, and no single column shift reproduces them, so the intended values cannot be recovered.
+- For 15185 C006, multiple coding of a single event would explain part of the excess; the event-level coding is not supplied.
+- OCR of the encoded plan documents omitted some lines; I relied on the rendered pages for those passages. As before, classifying I and L involves judgment, particularly for 11178 C001 (session length) and C007 (missing-data hierarchy).

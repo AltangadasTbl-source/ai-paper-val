@@ -1,0 +1,10 @@
+# Complete fresh support quantitative evidence
+
+This is a lossless merge of six disjoint fresh page mappings and the stable relationship index. Scope: DOC-002 protocol94pages PLAN; DOC-003 SAP18pages PLAN; DOC-004 results27pages REPORT; DOC-005 collaborators8pages REPORT; DOC-006 analysiscode1page REPORT; DOC-007 sharing1page REPORT. All149support pages mapped. Reusable-backed149;fresh-required0;no scientific coverage gap. Older images/layouts and current-run OCR/renderings only; no excluded pre-existing1.6.2 scientific output used.
+
+Stable support inventory:233 numeric/reporting IDs N114–N346;64 inferential/statistical IDs S031–S094. Main-paper N001–N113/S001–S030 remain separately mapped; combined inventory346N/94S. Source-local PA/PB/PC/SA/RE/AD keys preserve all clauses and provide the main-paper semantic joins. Index roles follow content. No candidate diagnosis or screening is performed in this map.
+
+Protocol parts: A32pages,58keys,27applicable/5no-additional;B31pages,61keys,21applicable/10no-additional;C31pages,80keys,24applicable/7no-applicable numerical. SAP18pages,18pagekeys;results27pages,27pagekeys;administration10pages,10pagekeys(including code implementation). Administrative/index pages explicitly recorded. Historical data are labeled background and are not ESTREL outcomes. All table cells,figure values,footnotes,definitions and substantive clauses are retained below; graphical approximate values explicitly labeled.
+
+Each input part is independently bounded below32rendered pages and200000normalized characters. The canonical merge preserves the full detail without making a new rendered-page shard. Exact derivative paths and engines appear in each part; sources/reused assets untouched. No Office/CSV/workbook sources, formulas or cached workbook values exist in this package. Code formulas are printed implementation and have no executed numeric output. Remaining evidence limitations: legacy rendering engine unrecorded; native protocol/SAP/code text corrupted or empty, resolved by complete visual reading; figures without printed exact point coordinates cannot supply exact numeric coordinates.
+

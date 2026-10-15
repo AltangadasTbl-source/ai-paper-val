@@ -1,11 +1,11 @@
 # v.2.4.1 independent primary review, 2025: reviewer R_Bulun
 
-Reviewer R_Bulun. All 109 candidates in the 2025 workbook (13 papers; jama.2025.11178 and jama.2025.15185 are empty placeholders) were judged from the original PDFs before the corresponding final-report card was read. I did not open or list the other reviewer's folder or any other year or role folder under `reviewer_runs/`, anything under `human_adjudication_v_2_3_1/` or `human_adjudication/previous/`, `meta_report/`, the repository paper packages or any `.ai_paper_validation/` folder, or the excluded jama.2024.2302 document, and I did not use git history. Sources were limited to the read-only mirror of PDFs, final reports and `QUALITY_CONTROL_SCOPE.md` files.
+Reviewer R_Bulun. All 109 candidates in the 2025 workbook (13 papers) were judged from the original PDFs before the corresponding final-report card was read. jama.2025.11178 and jama.2025.15185 were reviewed on 2026-10-14, after their reports were completed, and are reported in the addendum at the end. I did not open or list the other reviewer's folder or any other year or role folder under `reviewer_runs/`, anything under `human_adjudication_v_2_3_1/` or `human_adjudication/previous/`, `meta_report/`, the repository paper packages or any `.ai_paper_validation/` folder, or the excluded jama.2024.2302 document, and I did not use git history. Sources were limited to the read-only mirror of PDFs, final reports and `QUALITY_CONTROL_SCOPE.md` files.
 
 ## Files
 
 - `judgments.json`: one record per candidate (D, E, H-L, column R note, evidence, rationale with recomputations).
-- `human_adjudication_v_2_4_1_2025_R_Bulun_completed.xlsx`: built from the R_B blank with `fill_review.py`; `recalc_check.py` reports 109/109 rows PRIMARY READY and Workflow status PRIMARY READY.
+- `human_adjudication_v_2_4_1_2025_R_Bulun_completed.xlsx`: built from the R_B blank with `fill_review.py`; `recalc_check.py` reports 109/109 rows PRIMARY READY and Workflow status PRIMARY READY (133/133 after the 2026-10-14 rebuild; see the addendum).
 - `REVIEW_SUMMARY.md`: this file.
 - Working material (text extractions, OCR output, renders, R and Python scripts) is in my private working folder, not in the output folder.
 
@@ -113,3 +113,102 @@ None. Candidates I considered for discuss: 2025::jama.2025.19563::C009 (whether 
 - The arctools R package was not available locally, so for 2025::jama.2025.19563::C009 I could not check whether its summary function re-imputes internally.
 - Recomputations use Wald or exact formulas from printed counts; where a report used model-based or bootstrap estimates, such checks indicate consistency rather than reproduce the authors' analysis.
 - L is optional and reflects my description of each difference only; it does not judge whether a change was justified.
+
+## Addendum (2026-10-14): jama.2025.11178 and jama.2025.15185
+
+### Independence statement
+
+Reviewer R_Bulun judged the 24 new candidates (jama.2025.11178 C001-C018; jama.2025.15185 C001-C006) from the original PDFs and the 11178 xlsx supplement before reading each final-report card. I did not open or list the other reviewer's folder, any other year or role folder under `reviewer_runs/`, `reviewer_runs/README.md`, any `compare_<year>.txt`, any other folder under the scratchpad `work/` directory, anything under `human_adjudication_v_2_3_1/` (other than running its Python interpreter for the check) or `human_adjudication/previous/`, `meta_report/`, the repository paper packages or any `.ai_paper_validation/` folder, and I did not use git. Sources were the read-only mirror of the two papers (PDFs, xlsx, `final_report_1_6_2.md` and `QUALITY_CONTROL_SCOPE.md`). For consistency I re-read this summary and my earlier `judgments.json` and applied the same rules: disclosed plan-report changes retained with "disclosed" noted; count/percentage slips with correct counts coded minor_presentation; the domain chosen by the materials actually compared.
+
+### Files
+
+- `judgments_11178_15185.json`: 24 records (D, E, H-L, column R note, evidence, rationale with recomputations), in key order. `fill_review.py --check` reports no ERROR lines (the 109 earlier keys are listed as MISSING because they are in `judgments.json`).
+- I did not modify `judgments.json` or the completed workbook. On 2026-10-14 the coordinator merged the 24 rows unchanged into `judgments.json` (now 133 rows) and rebuilt `human_adjudication_v_2_4_1_2025_R_Bulun_completed.xlsx` from the rebuilt R_B blank workbook; `recalc_check.py` reports 133/133 rows and Checks `PRIMARY READY`.
+
+### Counts
+
+New candidates (24): retain 23, exclude 1, discuss 0.
+
+| E (final) | retain | exclude | discuss | total |
+|---|---:|---:|---:|---:|
+| statistical_results | 15 | 1 | 0 | 16 |
+| report_internal_inconsistency | 0 | 0 | 0 | 0 |
+| plan_material | 0 | 0 | 0 | 0 |
+| protocol_report | 8 | 0 | 0 | 8 |
+| total | 23 | 1 | 0 | 24 |
+
+All 133 candidates of 2025 (earlier 109 plus these 24): retain 123, exclude 10, discuss 0.
+
+| E (final) | retain | exclude | discuss | total |
+|---|---:|---:|---:|---:|
+| statistical_results | 45 | 4 | 0 | 49 |
+| report_internal_inconsistency | 3 | 0 | 0 | 3 |
+| plan_material | 7 | 5 | 0 | 12 |
+| protocol_report | 68 | 1 | 0 | 69 |
+| total | 123 | 10 | 0 | 133 |
+
+E changed from the suggested domain: none among the 24 (one change in the year overall, 2025::jama.2025.20765::C011, reported above).
+
+Exclusions (1):
+
+- 2025::jama.2025.11178::C004: the three "non-reproducing" NNT points follow the standard round-up convention. Ceiling of 100/(difference in printed adjusted percentages) reproduces all 57 positive NNT points in Table 2 and eTables 7-8 within display rounding, whereas round-to-nearest fails 22 of them.
+
+### Outcome codes (retained rows)
+
+statistical_results (15 retained):
+
+- H: confirmed_issue 13, probable_issue 1 (2025::jama.2025.11178::C018), indeterminate 1 (2025::jama.2025.15185::C006), not_issue 0.
+- I: substantive 4, minor_presentation 11, indeterminate 0.
+- J: direct 3, possible 3, unlikely 9, unknown 0.
+
+Confirmed or probable and substantive (4, all confirmed):
+
+- 2025::jama.2025.11178::C003 (Table 3 SMDs incompatible with the stated common usual-care SD in 19-20 of 21 rows, including sign reversals; the Results text quotes the 6-month SMDs as 3-month values)
+- 2025::jama.2025.11178::C010 (14 SMD points outside their printed CIs, 18 intervals with descending limits, 20 SMD intervals disagreeing with the MD intervals on null coverage)
+- 2025::jama.2025.11178::C016 (eTable 11 labeled median/IQR but showing mean-type values with CI-like bounds, and the group columns in the order usual care, painTRAINER, health coach rather than as labeled)
+- 2025::jama.2025.15185::C001 (single PROMIS-29 score and effect reported without aggregation rule or favorable direction)
+
+K: no retained report_internal_inconsistency or plan_material rows among the 24.
+
+L (8 retained protocol_report rows): substantive_difference 7, indeterminate 1 (2025::jama.2025.11178::C001, session durations), left blank 0. Rows where the report discloses the change: 2025::jama.2025.11178::C007 (IPW added by the 17 July 2024 SAP amendment, disclosed in Supplement 4); 2025::jama.2025.15185::C004 (deviations listed in Supplement 3); 2025::jama.2025.15185::C002 and C003 are only partly disclosed (main p.5 describes the protocol-SAP differences as terminology).
+
+### Discuss list
+
+None. Candidates considered for discuss: 2025::jama.2025.15185::C006 (whether Table 2 SAE categories may overlap is not stated; retained with H indeterminate because the record is worth keeping and the documents cannot settle it); 2025::jama.2025.11178::C018 (the eTable 11 omnibus test is undefined; retained as probable_issue); 2025::jama.2025.11178::C007 (the SAP's conditional missing-data clause partly supports the reported hierarchy; retained as a difference because the SAP never designates the pattern-mixture/IPW analysis as primary or the complete-case analysis as sensitivity).
+
+### Where I disagreed with or went beyond the AI card
+
+- 2025::jama.2025.11178::C004: the card registers three NNT points and lists rounding up only as an alternative; my full-table check shows round-up is the operative convention, so I excluded the candidate.
+- 2025::jama.2025.11178::C008 and C009: the card attributes the finite NNT intervals to possibly different RR/RD interval constructions. The six affected cells are the only ones printed with an en dash, eTables 7-8 print the same construction with a negative NNH limit (eg "31 (13, -60)"), and RR-based approximations give NNH limits close to the printed second numbers (152, 70, 59, 39, 68, 84 vs 186, 76, 57, 38, 67, 79). The minus sign was lost, and the "point outside interval" in C009 (63 (18-38)) is the same display defect.
+- 2025::jama.2025.11178::C014: the printed P values in eTable 3 reproduce almost exactly when each "95% CI" is read as estimate ± 1 SE (correlation 0.999), so the intervals are mislabeled. The three ratio rows the card adds from eTables 4-5 are compatible with display rounding.
+- 2025::jama.2025.11178::C012: the workbook's selection P values resolve the direction (employment, not education, met the weight-model rule), so eTable 2's list is the error.
+- 2025::jama.2025.11178::C015: subtraction from eTable 1 gives the implied 3-month counts for the first subset (109, 94, 108; total 311).
+- 2025::jama.2025.11178::C016: added the column misassignment (mean absolute error 0.03 under usual care/painTRAINER/health coach vs 1.02 as labeled).
+- 2025::jama.2025.11178::C003: added the Results-text SMDs (-0.26, -0.36 called 3-month values; Table 3 prints them at 6 months).
+- 2025::jama.2025.11178::C001: noted that the coach session duration also differs (60 vs 45-60 minutes).
+- 2025::jama.2025.15185::C005: added two planned analyses reported as post hoc, the protocol per-protocol analysis (estimand 11) and the center-stratified display (eFigure 5).
+- 2025::jama.2025.15185::C006: my render shows that only the stroke subtypes are indented, and the trauma/fall/fracture rows suggest overlapping classification; I therefore coded H indeterminate rather than an established count error.
+- 2025::jama.2025.15185::C001 and C004: added the main-text vs eTable 4 copy discrepancies (PROMIS-29 levodopa 66 vs 64.74; PRAI placebo 52/270 vs 51/270).
+
+### Possible errors outside the candidate set (observed, not adjudicated)
+
+- jama.2025.11178: SAP §14 says the painTRAINER enhancement started after about 140 enrollees, whereas Supplement 4 p.13 and eTable 8 give 454. The xlsx gives 1713 women, whereas Table 1 and the abstract give 1712. eTable 5 notes that site information "has been excluded" but prints three unlabeled site rows. eTable 4 lists the 3-month HC vs PT contrast twice. Table 3 labels PGIC values "mean change from baseline", although PGIC has no baseline measurement.
+- jama.2025.15185: main p.6 PROMIS-10 is 28 (6) in both groups vs eTable 4 29.87/30.04, and the 5-week placebo SD is 26 vs 25.20. The win-ratio estimate is called an odds ratio with upper limit 1.25 in the eTable 2 text vs 1.26 in the eTable 2 table. eTable 6 gives an overall n of 145 vs 146. The deviation section says "two deviations" but lists three. The color legend of eFigure 7 ("moderate-severe" / "very severe impairment") does not match its text legend (≤35 severe vs >35 mild to moderate).
+
+### Template or source issues
+
+- Text layers unusable (font-encoding garbage): jama.2025.11178 Supplement 1 (protocol) and Supplement 2 (SAP); jama.2025.15185 Supplement 1 (protocol; most analysis pages) and Supplement 5 (analysis code). jama.2025.15185 Supplement 2 (SAP) has no text layer.
+- jama.2025.15185 Supplement 1 contains more than one protocol version (eg synopses at pp.10 and 56, §11.4.2 at pp.39 and 86); the candidate locations use the later version, which I confirmed.
+- The workbook titles and locations matched the cards; cited pages existed at the stated physical PDF page numbers. No reader highlights were present on 11178 Supplement 4 p.7.
+
+### OCR and rendering use
+
+- OCR (RapidOCR, 300 dpi): jama.2025.11178 Supplement 1 all 77 pages and Supplement 2 all 29 pages; jama.2025.15185 Supplement 2 all 18 pages, Supplement 1 pp.10, 39, 56, 70, 86, 87, and Supplement 5 p.1. Reason in every case: garbled or missing text layer.
+- Renders viewed (annots=False): jama.2025.11178 main pp.9-11 (rotated Tables 2-3, 200 dpi), Supplement 1 pp.42-44 and 56-57, Supplement 2 pp.19-21 (OCR dropped lines); jama.2025.15185 main p.6 (Table 2 indentation, 170 dpi), Supplement 1 pp.86-87 (OCR dropped lines), Supplement 2 p.11, Supplement 3 pp.25, 27 (eFigures 5 and 7 are images).
+
+### Limitations
+
+- Several 11178 judgments rest on reconstructions from rounded displays: the NNH approximation from RR limits ignores the covariance between the painTRAINER percentage and the RR; the omnibus reconstruction assumes all three contrasts come from one fit; and the ±1 SE reading of eTable 3 is inferred from the P values rather than stated. I graded certainty accordingly (C018 probable).
+- jama.2025.15185 Supplement 3 eTables 7-8 (image-only, p.18) were identified from the index but not inspected; they concern post hoc baseline-FMA models and did not bear on a candidate decision.
+- OCR drops light-gray lines; where wording was decisive I read the rendered page, but minor omissions elsewhere in the protocol and SAP OCR cannot be excluded.
+- L remains optional and descriptive; it does not judge whether a change was justified.

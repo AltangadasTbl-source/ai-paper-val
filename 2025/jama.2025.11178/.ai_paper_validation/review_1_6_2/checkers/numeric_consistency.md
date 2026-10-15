@@ -1,250 +1,132 @@
-# Numeric consistency review — count and denominator scope
+# Fresh Numeric Consistency Review
 
-Runtime task: /root/numeric_checker. Fresh numeric consistency specialist; gpt-6.1-sol, medium reasoning. Assigned scope: main mapping M001–M089 and support REPORT mappings R001–R013, R025. Estimate checker separately owns M090–M124 and R014–R024. Full scope and review contract read; all 117 assigned compound numeric relationships reviewed without a finding target. Every displayed count, denominator, percentage, category total and repeated flow count is retained in [numeric relationship inventory](../relationships/numeric_relationship_inventory.md). All source locations in this artifact are REPORT by content.
+Scope: all 14 main article pages and all 27 supporting REPORT units: intervention-description PDF pages 1–7, results-supplement PDF pages 1–19, and workbook worksheet eTable 3 A1:J115, all 525 populated cells. Numeric relationship inventory: 84 stable families N001–N084, including every applicable displayed count, denominator, percentage, total, flow quantity and effect-measure identity. Counts within families were checked exhaustively; this is not row sampling. Current fresh maps supplied the locators. No previous conclusions or web evidence were used.
 
-Count arithmetic used exact printed integers, followed by conservative half-unit input intervals and each printed target's half-unit interval. An interval gap divided by the printed percentage must exceed 0.05 to qualify. Approximate graphical bar heights and model-based percentages are not treated as crude counts. No old candidate, report or checker conclusions, external sources or raw participant data were used.
+Findings: 5, including two count/percentage discrepancies, one subgroup count-label discrepancy, one consolidated SMD identity pattern and one consolidated NNT point-reproduction pattern. Excluded apparent-observation patterns: 7. No candidate IDs, adjudications or suggested corrections are assigned.
 
-## Findings
+Numeric rules: separately propagate every input's half-unit interval, then compare with the printed output's half-unit interval; remaining relative gap must exceed 0.05. Exact source confirmation used current CPU PyMuPDF 1.26.4 renders of main pages 4,10,11 and supplement 4 page 14, plus direct workbook ZIP XML/shared strings. All compared documents below are REPORT by content. Links are relative to this checker artifact. The four rendered derivatives reside in preprocessing/numeric_review; their engine is pdf_tools.py render, PyMuPDF 1.26.4, 200 dpi, CPU. No source or reused asset was modified.
 
 ### F-NUM-001
 
-**Title:** painTRAINER therapeutic-dose count and percentage do not reconcile.
+PainTRAINER therapeutic-dose count and percentage do not reconcile.
 
-**Relationships:** N024, N030. **Focus area:** A. **Proposed review domain:** statistical_results. **Proposed relationship type:** S_W. **Compared document roles:** REPORT main article Results paragraph versus REPORT main article allocation/flow. **Qualifying route:** Route A, category 3.
-
-**Exact source locations:** [Main article physical PDF p4, Results, session completion paragraph](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4); corroborating [physical PDF p5, Figure 1, painTRAINER randomized and session categories](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=5). The p4 paragraph states: “371 (43%) completed at least 6 sessions”; its immediate referent is those randomized to painTRAINER. Figure 1 prints painTRAINER randomized n776 and 371 completing 6–8 sessions, 156 completing 1–5 sessions, 249 completing 0 sessions. Their sum is 776.
-
-**Printed inputs:** numerator371; randomized denominator776; displayed43%. The same paragraph prints527(68%) completing at least1 session. The health-coach counterparts are660(85%) and548(70%) with randomized n778.
-
-**Rule and calculation:** percentage=100×count/randomized denominator. 100×371/776=47.809278%. With numerator [370.5,371.5] and denominator [775.5,776.5], the recomputed interval is [47.714102%,47.904578%]. Printed43% permits [42.5%,43.5%]. The interval gap is4.214102 percentage points; relative discrepancy=4.214102/43=0.0980024, exceeding0.05. The other three session-completion percentages reproduce under their stated randomized denominators. Figure 1's categories independently reproduce371 and776.
-
-**Affected result or extracted value:** the fraction of randomized painTRAINER participants receiving the stated therapeutic dose of at least6 sessions; a data extractor could take43% or a value near47.8% from the accompanying count and randomized population.
-
-**Why context does not resolve it:** this is a reproduced count/denominator/percentage discrepancy within one paragraph, an always-register category. The ability to calculate a percentage from the count does not remove the conflicting printed percentage.
-
-**Alternatives and missing definition:**43% could refer to a different denominator or session-completion definition, but none is supplied in this paragraph. A denominator near863 would be needed for371/denominator to be43%; that exceeds the randomized painTRAINER population. The eight-session categories on p5 support the printed371 count without defining an alternative denominator.
-
-**Exact human question:** Which numerator, denominator and percentage should be used for painTRAINER participants completing at least6 sessions, and what population or definition produced the printed43%?
-
-**Direct-source confirmation:** fresh Poppler pdftotext26.01.0 layout extraction from supplied p4, CPU, confirms371(43%). Locator artifact: preprocessing/numeric_checker/main-p004.txt. No OCR normalization applied.
+- **Exact source locations and roles:** REPORT [main article PDF p.4, Results adherence paragraph, printed p.595](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4), REPORT [p.5 Figure 1, painTRAINER allocation and session categories, printed p.596](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=5).
+- **Printed inputs:** Of those randomized to painTRAINER, 371 (43%) completed at least 6 sessions. Figure 1 gives 776 randomized, 371 completing 6–8 sessions,156 completing 1–5 and 249 none. At least one session is separately 527 (68%).
+- **Rule and calculation:** Percentage is 100×371/776=47.809278%. Half-unit inputs give [100×370.5/776.5,100×371.5/775.5]=[47.714102%,47.904578%]. Printed 43% interval=[42.5%,43.5%]. Remaining gap=4.214102 percentage points; relative gap=4.214102/43=0.098002>0.05.
+- **Focus area:** A, counts and denominators.
+- **Proposed review domain:** statistical_results.
+- **Proposed relationship type:** S_W.
+- **Qualifying route:** Route A, category 3.
+- **Affected result or extracted value:** The proportion of randomized painTRAINER participants receiving the stated therapeutic dose of at least six sessions.
+- **Why context does not resolve it:** Route A category 3 applies to the count/denominator/percentage relationship in the adherence display. The readable neighboring 68% value does not remove the conflicting 43% reading.
+- **Alternatives and missing definition:** An alternative denominator would be required to yield 43%; neither 776 randomized nor 527 initiating sessions yields it. The count may describe a different dose category, but Figure 1 repeats 371 for 6–8 sessions. No alternative denominator or category is stated.
+- **Exact human question:** Which numerator, denominator and percentage should represent painTRAINER participants completing at least six sessions?
 
 ### F-NUM-002
 
-**Title:** depression count and percentage in the all-observed workbook column do not reconcile.
+The workbook's All Observed depression count and percentage do not reconcile with its stated missing-value denominator rule.
 
-**Relationships:** N112. **Focus area:** A. **Proposed review domain:** statistical_results. **Proposed relationship type:** S_W. **Compared document roles:** REPORT results workbook current-depression cell, column header and missing-count footnote within the same worksheet. **Qualifying route:** Route A, category 3.
+- **Exact source locations and roles:** REPORT [supplied workbook](../../../joi250046supp5_prod_1755300121.16087.xlsx), worksheet eTable 3, E3 subgroup N, A82/E82 current-depression row, A83/E83 missing count, and A110 denominator footnote. Direct sheet 1.xml E82 references shared-string 290, confirmed as 711 (73.2); E3 references 144, confirmed as(N=1568); E83 is numeric 2.
+- **Printed inputs:** All Observed N=1568; current depression PHQ-8≥10,711 (73.2); missing 2. FootnoteA110 excludes missing from percentage denominators.
+- **Rule and calculation:** Denominator 1568−2=1566. Percentage 100×711/1566=45.402299%. N and missing each receive half-unit intervals, yielding denominator[1565,1567]; numerator[710.5,711.5]. Recomputed percentage interval=[45.341417%,45.463259%]. Printed 73.2% interval=[73.15%,73.25%]. Gap=27.686741 points; relative=27.686741/73.2=0.378234>0.05. Count partition 162+243+711=1116 matches the overall row, independently corroborating count alignment.
+- **Focus area:** A.
+- **Proposed review domain:** statistical_results.
+- **Proposed relationship type:** S_W.
+- **Qualifying route:** Route A, category 3.
+- **Affected result or extracted value:** Depression prevalence among participants with all primary follow-up outcomes observed.
+- **Why context does not resolve it:** Route A category 3 applies even though the printed count and footnote allow a reader to compute another percentage.73.2 remains an extractable printed reading.
+- **Alternatives and missing definition:**73.2% would require a denominator near 971 rather than the stated 1566. A restricted assessment denominator is not stated. Another percentage or count may have been supplied to the cell; production mechanism is unknown.
+- **Exact human question:** What numerator and nonmissing denominator support the 73.2% printed in eTable 3 cell E82?
 
-**Exact source locations:** [Results workbook](../../../joi250046supp5_prod_1755300121.16087.xlsx), worksheet **eTable 3**, E82, with row labelA82 “Current depression (PHQ-8 ≥10),c No. (%)”; E3 “(N=1568)”; E83 missing2; A110 states missing counts are excluded from the denominator of reported percentages. All-observed column labelE2; corresponding overall/other-pattern cellsB82:D82 and missingB83:D83 provide same-display comparators.
+### F-NUM-003
 
-**Printed inputs:** E82=711(73.2); E3 N1568; E83 missing2. Thus the documented percentage denominator is1566. Overall B82=1116(47.9), missing B83=2 and N2331. Other-pattern C82=162(54.9), N295, missing0; D82=243(51.9), N468, missing0. Counts162+243+711=1116.
+The first eTable 8 subgroup header labels randomized-size arm counts as three-month counts that exceed its any-follow-up total.
 
-**Rule and calculation:** A110 requires100×711/(1568−2)=45.402299%. Allowing half-unit input intervals: count [710.5,711.5], N [1567.5,1568.5], missing [1.5,2.5], denominator [1565,1567]. Recomputed percentage interval [45.341417%,45.463259%]. Printed73.2% permits [73.15%,73.25%]. Interval gap=73.15−45.463259=27.686741 percentage points; relative discrepancy=27.686741/73.2=0.3782342, exceeding0.05. The three same-row comparator percentages reproduce from their stated denominators. Even using1568 without excluding missingness gives45.3444%, leaving the discrepancy.
+- **Exact source locations and roles:** REPORT [results supplement PDF p.14, eTable 8 first population header](../../../joi250046supp4_prod_1755300121.15587.pdf#page=14). Corroborating REPORT [same supplement p.7 eTable 1](../../../joi250046supp4_prod_1755300121.15587.pdf#page=7), p.14 next subgroup header and [p.13 population description](../../../joi250046supp4_prod_1755300121.15587.pdf#page=13).
+- **Printed inputs:** Randomized prior to 8/9/2021,N=454;366 with at least 1 follow-up;PT=149,HC=153,UC=152 at 3-months. After enhancement at 3-months:UC512/PT448/HC527. Full 3-month observed counts areUC621/PT542/HC635.
+- **Rule and calculation:** Observed-at-three-month contributors must be a subset of participants with at least one follow-up.149+153+152=454>366. Sum half-unit interval=[452.5,455.5], any-follow-up interval=[365.5,366.5]; minimum excess 86; relative excess 86/366=0.234973>0.05. Conditional corroborating subtraction from full versus post-enhancement counts gives prior 3-month UC109/PT94/HC108, total 311. This subtraction is not needed for the reproduced within-header nesting discrepancy.
+- **Focus area:** A.
+- **Proposed review domain:** statistical_results.
+- **Proposed relationship type:** S_W.
+- **Qualifying route:** Route A, category 3.
+- **Affected result or extracted value:** Three-month arm-specific analysis/contributor counts for the primary pain-severity sensitivity analysis before engagement enhancement.
+- **Why context does not resolve it:** Route A category 3 applies to the printed count relationship. The matching randomized total makes randomized arm sizes a plausible alternative, but does not change the explicit at 3-months label; neighboring subset headers use observed 3-month counts.
+- **Alternatives and missing definition:**149/153/152 may be randomized target-population counts rather than observed contributors, potentially including those represented through weighting. The header does not define this departure from the other blocks. If so, the human question concerns the labeled denominator rather than the randomization total.
+- **Exact human question:** Do PT149,HC153 andUC152 denote randomized arm sizes or observed three-month contributors, and which three-month counts apply to this first sensitivity-analysis subgroup?
 
-**Affected result or extracted value:** baseline prevalence of current depression among participants with all primary-outcome follow-ups observed; a reader could extract73.2% or about45.4% from the accompanying count and denominator.
+### F-NUM-004
 
-**Why context does not resolve it:** the count/denominator/percentage relationship within one worksheet qualifies under the always-register category, including descriptive baseline displays. Neighboring rows and the row count total support711 but do not identify which printed field should be used for extraction.
+The stated common-denominator definition of SMD does not reproduce the three displayed pairwise SMD point estimates in 17 Table 3 rows.
 
-**Alternatives and missing definition:**73.2% could use an unprinted denominator near971, or711 could describe another population. Neither alternative is documented; the supplied E3/E83/A110 definition specifies1566. No provenance explanation or replacement value is inferred.
+- **Exact source locations and roles:** REPORT [main PDF p.4 Statistical Analysis SMD definition](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4), REPORT [p.10 Table 3](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10), REPORT [p.11 Table 3 continuation and footnote d](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11). Every affected outcome/timepoint is listed below.
+- **Printed inputs and rule:** SMD is adjusted mean difference divided by the standard deviation of change in the usual care plus group at the given time. For three common adjusted group means and one common positive denominator, SMD(HC−UC)=SMD(PT−UC)+SMD(HC−PT). Each printed SMD has precision 0.01; the sum has ±0.010 input interval and HC−UC output has ±0.005. Remaining gap=max(0,|b−a−c|−0.015), relative to|b|. This comparison is between model-based contrasts from the same display, not between a model and a crude ratio.
 
-**Exact human question:** What count and denominator underlie the printed73.2% for current depression in the all-observed column, and which values should a reader use for this baseline result?
+| Outcome/time | PT−UC | HC−UC printed | HC−PT | Recomputed HC−UC interval | Printed interval | Gap | Relative gap |
+|---|---:|---:|---:|---|---|---:|---:|
+| Severity 3 mo | -0.25 | -0.34 | -0.13 | -0.390 to -0.370 | -0.345 to -0.335 | 0.025 | 0.073529 |
+| Intensity 6 mo | -0.17 | -0.27 | -0.04 | -0.220 to -0.200 | -0.275 to -0.265 | 0.045 | 0.166667 |
+| Intensity 12 mo | -0.16 | -0.27 | -0.03 | -0.200 to -0.180 | -0.275 to -0.265 | 0.065 | 0.240741 |
+| Interference 3 mo | -0.25 | -0.34 | -0.13 | -0.390 to -0.370 | -0.345 to -0.335 | 0.025 | 0.073529 |
+| Interference 6 mo | -0.27 | -0.37 | -0.14 | -0.420 to -0.400 | -0.375 to -0.365 | 0.025 | 0.067568 |
+| Social 3 mo | 0.12 | 0.01 | 0.20 | 0.310 to 0.330 | 0.005 to 0.015 | 0.295 | 29.500000 |
+| Social 6 mo | 0.18 | 0.06 | 0.26 | 0.430 to 0.450 | 0.055 to 0.065 | 0.365 | 6.083333 |
+| Social 12 mo | 0.19 | 0.07 | 0.27 | 0.450 to 0.470 | 0.065 to 0.075 | 0.375 | 5.357143 |
+| Physical 3 mo | 0.09 | -0.02 | 0.16 | 0.240 to 0.260 | -0.025 to -0.015 | 0.255 | 12.750000 |
+| Physical 6 mo | 0.15 | 0.02 | 0.22 | 0.360 to 0.380 | 0.015 to 0.025 | 0.335 | 16.750000 |
+| Physical 12 mo | 0.20 | 0.07 | 0.27 | 0.460 to 0.480 | 0.065 to 0.075 | 0.385 | 5.500000 |
+| PGIC pain 3 mo | -0.62 | -0.62 | -0.37 | -1.000 to -0.980 | -0.625 to -0.615 | 0.355 | 0.572581 |
+| PGIC pain 6 mo | -0.54 | -0.55 | -0.29 | -0.840 to -0.820 | -0.555 to -0.545 | 0.265 | 0.481818 |
+| PGIC pain 12 mo | -0.55 | -0.57 | -0.29 | -0.850 to -0.830 | -0.575 to -0.565 | 0.255 | 0.447368 |
+| PGIC general 3 mo | -0.66 | -0.66 | -0.40 | -1.070 to -1.050 | -0.665 to -0.655 | 0.385 | 0.583333 |
+| PGIC general 6 mo | -0.46 | -0.50 | -0.24 | -0.710 to -0.690 | -0.505 to -0.495 | 0.185 | 0.370000 |
+| PGIC general 12 mo | -0.53 | -0.58 | -0.28 | -0.820 to -0.800 | -0.585 to -0.575 | 0.215 | 0.370690 |
 
-**Direct-source confirmation:** direct unzip of supplied workbook xl/worksheets/sheet1.xml and xl/sharedStrings.xml confirms E82 string711(73.2), E3 N1568, E83 numeric2 and A110 footnote; zero formulas. CPU ZIP/XML inspection is the authority, with the retained exact-cell extraction used only as a locator. Direct extracts are preserved in preprocessing/numeric_checker/sheet1.xml and sharedStrings.xml.
+- **Focus area:** C, statistical method logic and effect-measure identity.
+- **Proposed review domain:** statistical_results.
+- **Proposed relationship type:** S_W.
+- **Qualifying route:** Route B.
+- **Affected result or extracted value:** All 17 listed standardized treatment contrasts, including direction and magnitude of standardized physical/social/global outcomes.
+- **Why context does not resolve it:** The common UC denominator is explicit in both methods and footnote; the displayed contrast headings give no alternative contrast order, denominator or model definition that makes these point identities hold. Extracting the printed SMDs versus reconstructing the stated standardized contrasts produces materially different values.
+- **Alternatives and missing definition:** Different contrast-specific standardizers, separate models, or a different column alignment could explain some values but none is stated. The UC change SD is not printed, so its absolute value cannot be reconstructed independently. Four rows satisfy the additive identity within precision; they are not affected locations.
+- **Exact human question:** Which contrast ordering and standardizing denominator produced the 17 listed SMD triples, and how do those values follow the stated common usual-care change SD definition?
 
-## Excluded observations
+### F-NUM-005
 
-| Location | Observation | Reason code |
-|---|---|---|
-| Main p1/Table1 p6; workbook eTable 3 B11 and A113 | Main female count1712 versus workbook1713, with a self-reported/EHR fallback definition. Half-unit count intervals [1711.5,1712.5] and [1712.5,1713.5] meet; gap0. | ROUNDING_OR_DISPLAY_PRECISION |
-| Main p7 secondary-outcomes narrative; Table3 p10 severity3-month SMD cells | Narrative−0.26/−0.36 versus table−0.25/−0.34. Half-unit gaps0 and.01 respectively; relative to narrative reference.36, .02778, below.05. | ROUNDING_OR_DISPLAY_PRECISION |
-| DOC-005 p7 eTable1 observed-pattern rows; workbook eTable 3 D3 | Pattern188+283+1568=2039 versus any2036; interval gap1 relative1/2036=.000491. UC703/PT644/HC692 versus703/643/690 gives zero half-unit gaps. Weighted pattern5458 versus sum timepoint5449 gives interval gap4.5, relative.000826. Missing1-or2 workbook468 versus188+283=471 leaves gap1.5, relative1.5/468=.003205. All below.05. | ROUNDING_OR_DISPLAY_PRECISION |
-| DOC-004 p6 fidelity review |1791+2350 completed sessions excludes training-period completed total, which is unprinted;193 is training sessions reviewed. Substituting193 as all training sessions would compare nonmatching totals. | CONDITIONAL_OR_UNREPORTED |
-| DOC-004 p5; DOC-005 p13 modification narrative | Approximately140 versus454 enrolled at intervention change date is a peripheral administrative/enrollment comparison. Quantitative subset analysis populations and any planned decision-rule implications are separately assigned to cross-source and estimate checkers. | PERIPHERAL_COMPARISON |
-| Workbook eTable 3 A103, A106 with B103:E103/B106:E106 | Threshold rows use mean(SD) wording while values visibly have counts and percentages; intended count/percentage reading is immediate and arithmetic reconciles. | TERMINOLOGY_OR_WORDING |
+Three printed NNT point estimates do not reproduce under the stated reciprocal adjusted-risk-difference method after display precision.
 
-## Scope closure and limitations
+- **Exact source locations and roles:** REPORT [main p.9 Table 2 severity 6 months HCvsUC and interference 6 months HCvsUC, footnote d](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=9), REPORT [main p.4 NNT definition](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4), REPORT [results supplement p.14 eTable 8 reminder-letter subset 6 months PTvsUC, footnote d](../../../joi250046supp4_prod_1755300121.15587.pdf#page=14).
+- **Printed inputs, rule and calculations:** NNT=1/(adjusted response proportion difference)=100/(difference in displayed percentage points). Each rate has half-unit 0.05 percentage points, so each difference has ±0.10; each integer NNT has ±0.5. The same rule reproduces the other point rows within the required relative-gap threshold.
 
-117 complete compound relationships:89 main records,13 support families and15 workbook blocks, the latter preserving all525 nonempty cells. Two findings and six excluded-observation patterns. All count percentages within Table1 reconcile; flow recruitment, exclusions, allocation, sessions, terminal statuses, hospitalization/death group totals and all eTable1 displayed percentages were checked. The workbook category partitions, characteristic-missing denominators, category row sums and all count percentages were checked; only E82 exceeds the display-precision threshold. Mean(SD) cells are never tested as count percentages. Apparent graph shapes are not exact printed values.
+| Exact row/contrast | Printed response percentages | Printed NNT | Recomputed NNT interval | Printed interval | Gap | Relative gap |
+|---|---|---:|---|---|---:|---:|
+| Main Table 2 severity 6 mo HC−UC |37.1 versus 22.9|8|6.993007 to 7.092199|7.5 to 8.5|0.407801|0.050975|
+| Main Table 2 interference 6 mo HC−UC |40.9 versus 24.3|7|5.988024 to 6.060606|6.5 to 7.5|0.439394|0.062771|
+| eTable 8 reminder subset 6 mo PT−UC |35.6 versus 21.3|8|6.944444 to 7.042254|7.5 to 8.5|0.457746|0.057218|
 
-No assigned scientific coverage gap. Raw-data reconstruction of continuous means/SDs and exact unnumbered histogram heights is unavailable from supplied displays; those absent inputs were not invented. Inferential conflicts, plan comparisons and adjusted-estimate transformations remain fully assigned to the other specialist lanes. Auxiliary arithmetic files contain calculations only; classification and inclusion reasoning above are agent-authored.
-# Numeric consistency checker — estimate displays shard
-
-Exact scope: main M090–M124 (Table2,Table3,all footnotes and closing narrative) and REPORT support R014–R024 (eTables3–11,eFigure2 and associated definitions). All locations are REPORT by results content. Stable relationship inventory: relationships/parts/numeric_estimates_inventory.md, N121–N166. Four independently reproduced findings; six excluded-observation patterns. There is no finding-count target.
-
-Scientific controls read completely: QUALITY_CONTROL_SCOPE.md and workflow_1_6_2/review_contract.md. Tooling: tooling_record.md; direct Poppler26.01.0, CPU. Source visual derivatives generated by pdftoppm -f N -l N -r140 -singlefile -png from the exact supplied PDFs: preprocessing/numeric_estimates/main-9.png,main-10.png,main-11.png,supp-8.png,supp-17.png. Complete direct-source/native locator transcripts from the new maps supplied all other assigned rows. No old candidate/report material used.
-
-## Findings
-
-### F-NUM-101
-
-**Issue:** Main Table3 standardized mean difference intervals have reversed numeric endpoints, points outside their intervals, and null inclusion inconsistent with the corresponding unstandardized intervals.
-
-**Compared locations and roles:** REPORT [DOC-001 Table3 physicalp10](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10), REPORT [continuation and footnote d physicalp11](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11). Source columns are PTvsUC;HCvsUC;HCvsPT. The direct source visually confirms the following values.
-
-**Printed inputs and rule:** A95% interval is presented lower to upper and must contain its point. Footnote d defines SMD as the adjusted difference divided by the positive UC change SD at that outcome/time. A positive rescaling preserves zero inclusion. All18 social/physical SMD intervals are printed in descending order:
-
-| Outcome,time | PTvsUC SMD(CI) | HCvsUC SMD(CI) | HCvsPT SMD(CI) |
-|---|---|---|---|
-| Social3m | .12(.23 to .11) | .01(.12 to−.00) | .20(.29 to .19) |
-| Social6m | .18(.23 to .05) | .06(.11 to−.06) | .26(.30 to .15) |
-| Social12m | .19(.21 to .01) | .07(.09 to−.10) | .27(.28 to .12) |
-| Physical3m | .09(.16 to .07) |−.02(.05 to−.04) | .16(.22 to .15) |
-| Physical6m | .15(.09 to−.06) | .02(−.03 to−.18) | .22(.16 to .05) |
-| Physical12m | .20(.18 to−.03) | .07(.04 to−.16) | .27(.25 to .09) |
-
-Even after sorting endpoints for a diagnostic containment check, all six physical6/12m point estimates are outside the resulting intervals. Additional points outside ordered intervals are:
-
-| Outcome,time,contrast | Printed point | Printed95%CI |
-|---|---:|---|
-| Severity12m PTvsUC |−.25 |−.24 to .01 |
-| Severity12m HCvsUC |−.36 |−.35 to−.12 |
-| Intensity12m HCvsUC |−.27 |−.26 to−.12 |
-| Interference12m PTvsUC |−.26 |−.25 to .01 |
-| Interference12m HCvsUC |−.37 |−.36 to−.11 |
-| GlobalPain12m PTvsUC |−.55 |−.50 to .05 |
-| GlobalPain12m HCvsUC |−.57 |−.54 to−.08 |
-| GlobalPain12m HCvsPT |−.29 |−.25 to .14 |
-
-Thus14 points fail containment, including the six physical6/12m points above. At least the following pairs additionally disagree on zero inclusion under the stated rescaling:
-
-| Outcome,time,contrast | Adjusted mean-differenceCI | SMD CI, preserving printed endpoints |
-|---|---|---|
-| Severity12m PTvsUC |−.6 to−.2 |−.24 to .01 |
-| Intensity12m PTvsUC |−.4 to−.1 |−.16 to .00 |
-| Interference12m PTvsUC |−.7 to−.3 |−.25 to .01 |
-| Social3m HCvsUC | .8 to2.2 | .12 to−.00 |
-| Social6m HCvsUC | .8 to2.2 | .11 to−.06 |
-| Social12m HCvsUC | .6 to2.1 | .09 to−.10 |
-| Physical3m HCvsUC | .2 to1.2 | .05 to−.04 |
-| Physical6m PTvsUC | .1 to1.2 | .09 to−.06 |
-| Physical6m HCvsUC |−.1 to .9 |−.03 to−.18 |
-| Physical6m HCvsPT |−.8 to .3 | .16 to .05 |
-| Physical12m PTvsUC | .3 to1.5 | .18 to−.03 |
-| Physical12m HCvsUC | .2 to1.4 | .04 to−.16 |
-| Physical12m HCvsPT |−.7 to .5 | .25 to .09 |
-| GlobalPain12m PTvsUC |−.8 to−.5 |−.50 to .05 |
-
-**Calculation and precision:** Category1 point/interval and transformed-null conflicts do not use the rounding exclusion. Endpoint reversals are numeric values, not glyphs. For example social3m PTvsUC first endpoint .23 has interval[.225,.235], second .11 has[.105,.115]; minimum reversal gap .110, relative to .11=1.000, above .05. Every listed descending pair has a positive gap greater than5% after ±.005 endpoint rounding. For physical6m PTvsUC the point interval[.145,.155] lies above sorted upper-endpoint interval[.085,.095] by .050; the printed point .15 also visibly lies outside .09 to−.06. The source's definition supplies the positive-scale invariant without needing the unprinted SD.
-
-**Focus area:** B,C. **Proposed review domain:** statistical_results. **Proposed relationship type:** S_W.
-**Qualifying route:** Route A, category1 for containment and interval/test-null coherence; Route A, category2 for reversed numeric endpoint pattern.
-**Affected result or extracted value:** SMD point estimates and95%CIs for continuous pain/function/global outcomes in Table3; the extracted direction and interval-significance reading may change.
-**Why context does not resolve it:** These are printed numerical interval/estimate conflicts in always-register categories. Sorting the social/physical endpoint pairs still leaves physical6/12m points outside and does not supply the intervals to extract. Footnote d states the normalization but does not explain the distinct intervals.
-**Alternatives and missing definition:** The endpoints or SMD column associations may have been transposed; the SMDs may use a separate calculation not identified by footnote d. Different interval procedures are an alternative for null comparisons and do not remove the printed point-containment conflicts. This card does not prescribe an interval.
-**Exact human question:** Which SMD point estimates, column associations and95% confidence limits apply to each affected outcome/time/contrast, and how were those limits obtained under Table3 footnote d?
-
-### F-NUM-102
-
-**Issue:** Table3 SMD points do not reconcile with the printed common-UC-SD normalization across contrasts.
-
-**Compared locations and roles:** REPORT [DOC-001 p10 Table3](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10), REPORT [p11 Table3 continuation and footnote d](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11). All comparisons are within Table3. All20 affected outcome/time rows are named below; severity6m alone does not qualify after display precision.
-
-**Printed inputs and rule:** Footnote d states: adjusted between-group mean difference divided by SD in change in outcome at the given time point among the UC group. Therefore, for a common positive SD, SMD_HC/PT=SMD_HC/UC−SMD_PT/UC. This is a source-defined identity, not an assumed crude estimator. Each SMD input permits ±.005, so the recomputed interval is central difference±.010; the compared printed HC/PT value permits±.005.
-
-| Outcome,time | Printed SMD PT/UC;HC/UC;HC/PT | Recomputed HC/PT interval | Printed HC/PT interval | Relative gap |
-|---|---|---|---|---:|
-| Severity3m |−.25;−.34;−.13 |[−.100,−.080]|[−.135,−.125]|.19231|
-| Intensity6m |−.17;−.27;−.04 |[−.110,−.090]|[−.045,−.035]|1.12500|
-| Intensity12m |−.16;−.27;−.03 |[−.120,−.100]|[−.035,−.025]|2.16667|
-| Interference3m |−.25;−.34;−.13 |[−.100,−.080]|[−.135,−.125]|.19231|
-| Interference6m |−.27;−.37;−.14 |[−.110,−.090]|[−.145,−.135]|.17857|
-| Social3m | .12;.01;.20 |[−.120,−.100]|[.195,.205]|1.47500|
-| Social6m | .18;.06;.26 |[−.130,−.110]|[.255,.265]|1.40385|
-| Social12m | .19;.07;.27 |[−.130,−.110]|[.265,.275]|1.38889|
-| Physical3m | .09;−.02;.16 |[−.120,−.100]|[.155,.165]|1.59375|
-| Physical6m | .15;.02;.22 |[−.140,−.120]|[.215,.225]|1.52273|
-| Physical12m | .20;.07;.27 |[−.140,−.120]|[.265,.275]|1.42593|
-| GlobalPain3m |−.62;−.62;−.37 |[−.010,.010]|[−.375,−.365]|.95946|
-| GlobalPain6m |−.54;−.55;−.29 |[−.020,.000]|[−.295,−.285]|.91379|
-| GlobalPain12m |−.55;−.57;−.29 |[−.030,−.010]|[−.295,−.285]|.87931|
-| GlobalGeneral3m |−.66;−.66;−.40 |[−.010,.010]|[−.405,−.395]|.96250|
-| GlobalGeneral6m |−.46;−.50;−.24 |[−.050,−.030]|[−.245,−.235]|.77083|
-| GlobalGeneral12m |−.53;−.58;−.28 |[−.060,−.040]|[−.285,−.275]|.76786|
-
-Three further rows have overlapping SMD-additivity intervals, but their SMDs fail direct shared-SD normalization. For each, compute the allowable SD from PTvsUC difference/SMD, then propagate the printed HCvsPT difference through that positive SD range:
-
-| Outcome,time | PTvsUC adjusted difference;SMD | Implied UC SD interval | HCvsPT adjusted difference;SMD | Recomputed HC/PT SMD interval | Printed SMD interval | Relative gap |
-|---|---|---|---|---|---|---:|
-| Severity12m |−.4;−.25 |[1.37255,1.83673]| .0;−.11 |[−.03643,.03643]|[−.115,−.105]|.62340|
-| Intensity3m |−.3;−.21 |[1.16279,1.70732]|−.0;−.08 |[−.04300,.04300]|[−.085,−.075]|.40000|
-| Interference12m |−.5;−.26 |[1.69811,2.15686]| .0;−.12 |[−.02944,.02944]|[−.125,−.115]|.71296|
-
-Differences printed to one decimal permit±.05; SMDs to two decimals permit±.005. These propagated intervals use all half-unit combinations, not central values alone. Each listed interval gap divided by absolute printed HC/PT SMD exceeds .05. The sign discordance in physical3m HCvsUC (.7 difference,−.02 SMD), physical6/12m HCvsPT (−.3/−.1 difference,.22/.27 SMD), and globalPain12m HCvsPT (.1 difference,−.29 SMD) further illustrates the same normalization pattern.
-
-**Focus area:** B,C. **Proposed review domain:** statistical_results. **Proposed relationship type:** S_W.
-**Qualifying route:** Route B.
-**Affected result or extracted value:** Table3 SMD point estimates for all listed20 outcome/time rows and three comparisons; these are values a data extractor can take as standardized effects.
-**Why context does not resolve it:** The stated UC denominator is common to the three contrasts. The algebra and full display-precision intervals leave no interpretation of the listed SMDs consistent with that definition. A reader cannot identify intended points or group labels from the table alone.
-**Alternatives and missing definition:** Different standardization populations or SMD contrast associations could explain different numbers, but footnote d does not specify them. The source does not print UC SD values. No preferred method or replacement value is proposed.
-**Exact human question:** Which denominator and contrast association produced each listed SMD, and how do those points relate to the adjusted contrasts and the UC SD definition in footnote d?
-
-### F-NUM-103
-
-**Issue:** Main Table2 HCvsPT NNT intervals do not reconcile with the displayed point and transformed-null interpretation.
-
-**Compared locations and roles:** REPORT [DOC-001 p9 Table2 HCvsPT RR and NNT columns, footnotes d/e](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=9).
-
-| Outcome,time | Printed HCvsPT RR95%CI | Printed HCvsPT NNT95%CI |
-|---|---|---|
-| Severity6m |1.13(.98–1.30)|24(12–186)|
-| Severity12m |1.07(.96–1.19)|41(17–76)|
-| Intensity3m |1.11(.93–1.33)|37(14–57)|
-| Intensity12m |1.05(.92–1.20)|63(18–38)|
-| Interference6m |1.10(.96–1.27)|26(11–67)|
-| Interference12m |1.07(.97–1.18)|39(16–79)|
-
-**Rule and calculation:** The intensity12m point63 lies above its upper95% bound38. Even ±.5 integer display intervals leave point[62.5,63.5] and upperlimit[37.5,38.5] separated by24; gap/63=.38095. It is a category1 containment conflict independent of the interval estimator.
-
-For the six rows, RR95%CIs include no-effect1 while every NNT CI is finite and strictly positive. Footnote d defines NNT=1/(adjusted response-probability difference), and footnote e states how an absolute-risk-differenceCI spanning0 produces disconnected NNT-to-infinity and NNH-to-negative-infinity bounds. A no-effect risk comparison has RD0 and reciprocal infinity rather than a finite exclusively beneficial NNT interval. These printed interval readings disagree about whether no-effect is included. No numerical sampling covariance is assumed; the comparison is the reported contrast's no-effect reading. Category1 interval/test-null conflict does not use a rounding exemption. The RR lowerlimits .92–.98 are below1 even after±.005, and all printed NNT bounds remain finitepositive after±.5.
-
-**Focus area:** B,C. **Proposed review domain:** statistical_results. **Proposed relationship type:** S_W.
-**Qualifying route:** Route A, category1.
-**Affected result or extracted value:** HCvsPT NNT confidence bounds for severity6/12m,intensity3/12m,interference6/12m; especially the intensity12m point63 and its95%CI18–38.
-**Why context does not resolve it:** A point outside its interval is always-register. The footnote explains disconnected bounds but the affected rows do not print negative endpoints or infinities, so it does not identify which bounds to extract.
-**Alternatives and missing definition:** RR andRD CIs might use different interval procedures. A negative NNH endpoint or a different numeric endpoint may have been intended. Different procedures are an alternative interpretation, not a resolution of the source's numerical containment conflict. The exact RD interval construction is not supplied in this display.
-**Exact human question:** What HCvsPT absolute-risk-difference intervals and reciprocal NNT/NNH confidence sets underlie these rows, and which printed confidence limits belong to the intensity12m NNT63?
-
-### F-NUM-104
-
-**Issue:** Report model tables display95%CI null inclusion that differs from their printed P-value significance reading.
-
-**Compared locations and roles:** REPORT [DOC-005 p8 eTable3](../../../joi250046supp4_prod_1755300121.15587.pdf#page=8), REPORT [p9 eTable4](../../../joi250046supp4_prod_1755300121.15587.pdf#page=9), REPORT [p10 eTable5](../../../joi250046supp4_prod_1755300121.15587.pdf#page=10). Each comparison is within one model-table row; roles assigned by results content.
-
-| Exact row | Estimate | Printed95%CI | P |
-|---|---:|---|---:|
-| eTable3 Pattern:2observed follow-ups |−.28 |−.47 to−.08 |.150|
-| eTable3 Pattern:1observed follow-up |−.20 |−.36 to−.03 |.226|
-| eTable3 Pattern2\|painTRAINER |−.30 |−.58 to−.02 |.280|
-| eTable3 Pattern2\|HealthCoach |−.47 |−.74 to−.19 |.090|
-| eTable3 Site3 | .19 | .08 to .29 |.069|
-| eTable3 Site4 | .15 | .05 to .24 |.124|
-| eTable3 second Education:AA degree row | .16 | .07 to .25 |.077|
-| eTable4 Age≥65vs<65 |1.15 |1.00 to1.33 |.046|
-| eTable4 second Education:AA degree row |1.16 |1.00 to1.33 |.046|
-| eTable5 PEGscore | .96 | .92 to1.00 |.037|
-
-**Rule and calculation:** Use stated95%CIs and conventional .05 significance threshold. The first seven coefficient intervals exclude0 whileP>.05. Their nearest-to-null limits are respectively−.08,−.03,−.02,−.19,.08,.05,.07. The last three ratio intervals include1 at the displayed boundary whileP<.05. No Wald-normal reconstruction or unknown degrees of freedom is required for this printed interval/significance conflict. Category1 explicitly does not apply the rounding exclusion; possible underlying unrounded boundary limits for the last three rows are recorded as an alternative.
-
-**Focus area:** B. **Proposed review domain:** statistical_results. **Proposed relationship type:** S_W.
-**Qualifying route:** Route A, category1.
-**Affected result or extracted value:** Model coefficient/ratio confidence intervals and P values for the named imputation,estimation and nonresponse-model rows.
-**Why context does not resolve it:** These are interval-versus-P conflicts in an always-register category. Both are printed in the same model rows and the tables give no separate inferential attribution that determines which reading applies.
-**Alternatives and missing definition:** Different analyses or inferential procedures could underlie CIs andP values; eTables4/5 boundary1.00 could reflect an underlying value on one side of1. The exact unrounded bounds and any different test attribution are not printed. These alternatives do not remove category1 registration.
-**Exact human question:** For each named row, which95%CI andP value apply to the same model contrast, and were any CIs andtests obtained from distinct inferential procedures?
+- **Focus area:** C, reproduced method arithmetic.
+- **Proposed review domain:** statistical_results.
+- **Proposed relationship type:** S_W for each document's internal rate/NNT comparison; all relationships S_W.
+- **Qualifying route:** Route A, category 4.
+- **Affected result or extracted value:** Adjusted NNT for the three six-month treatment contrasts listed.
+- **Why context does not resolve it:** Route A category 4 applies. A convention of always rounding NNT upward might explain integer presentation, but the mandated half-unit/relative-gap rule leaves discrepancies greater than 0.05 in these rows and no alternative computation is stated.
+- **Alternatives and missing definition:** Upward integer rounding, an undisplayed risk difference, or another method may have been used. The half-unit bounds of the displayed adjusted percentages cannot support these printed integer readings under ordinary rounding. No raw counts are used in this comparison.
+- **Exact human question:** Which unrounded adjusted risk differences and integer-reporting rule produced these three NNT point estimates?
 
 ## Excluded observations
 
-Only apparent observations not emitted are listed. Checks that reconcile are retained in the complete N inventory.
+Only apparent issues not emitted are listed. Reconciled arithmetic checks remain in the N inventory.
 
 | Location | Observation | Reason code |
 |---|---|---|
-| DOC-001 p10 Table3severity6m SMD triplet |−.36−(−.26) gives recomputed HC/PT[−.110,−.090]; printed−.12 interval[−.125,−.115];gap.005/.12=.04167≤.05. Direct common-SD check also has only a small remaining gap (relative .0119). | ROUNDING_OR_DISPLAY_PRECISION |
-| DOC-001 p9 Table2 and DOC-005 pp11,14 NNT point columns, especially reminder-letter6m PTvsUC8 | Reciprocal NNT points often are rounded upward: Table2severity3PT17.24→18,intensity3PT15.15→16,intensity6PT17.24→18. For eTable8 reminder6m proportions35.6−21.3 give reciprocal[6.94444,7.04225]; source-supported integer ceiling can yield7or8. Printed8 therefore reconciles; merely comparing to unrounded6.993 would omit the supported integer convention. | ROUNDING_OR_DISPLAY_PRECISION |
-| DOC-005 pp16–17 eTables10–11 group medians and GEE mean-difference columns | Differences of displayed medians need not reproduce model mean differences; apparent column associations or direction conflicts obtained by treating medians as means depend on an unsupported equality. Captions explicitly identify medians/IQRs, while separate columns/footnotes define model mean differences. No raw means or a median-difference method is supplied. | CONDITIONAL_OR_UNREPORTED |
-| DOC-005 pp8–9 duplicated EducationAA labels | Labels alone do not change the printed estimates or identify a conflicting numerical rule; named coefficient rows remain distinct values. | TERMINOLOGY_OR_WORDING |
-| DOC-005 p15 eTable9 caption adjusted versus repeated unadjusted definitions | Narrative says no adjustment/weighting/imputation; column and footnote specify unadjustedGEE, and all27RRs reproduce unadjusted proportions within precision. Intended analysis is resolved by immediate context. | TERMINOLOGY_OR_WORDING |
-| DOC-001 p11 Table3 global-change rows under overall mean-change-from-baseline heading | Footnotes explicitly define global scores as perceived change since study start on1–7scale. Their positive points are coherent change-perception scores and their group contrasts have the stated directions; heading wording does not independently conflict with a numeric value. | TERMINOLOGY_OR_WORDING |
+| Results supplement p.7 eTable 1; p.8 eTable 3; workbook D3 | Pattern counts 188+283+1568=2039 versus 2036 any follow-up; PT644 vs 643,HC692 vs 690; weighted pattern visits 5458 versus observed 5449; corresponding 650 versus 659 missing. Even nonoverlapping input/output precision leaves relative gaps below 0.05. Example 5458 sum interval[5455,5461] versus observed[5447.5,5450.5], gap 4.5/5449=.000826. Workbook D3=468 also differs from 188+283=471 by a relative gap below 0.05. | ROUNDING_OR_DISPLAY_PRECISION |
+| Main baseline/narrative versus workbook baseline copies | Female 1712 versus 1713; current-depression 47.8%versus 47.9%; numerous differences in copied descriptives remain below 0.05 after precision and/or refer to subgroup-qualified summaries. These are distinct from the within-cell E82 finding. | ROUNDING_OR_DISPLAY_PRECISION |
+| Main Table 2/eTables 7–8 other reciprocal NNT point rows | Small integer NNT deviations remaining after half-units have relative gaps at most 0.05. Example main intensity 3 mo PT−UC rates 24.3−17.7 gives[14.925373,15.384615], printed 16 interval[15.5,16.5], gap.115385/16=.007212. Four SMD additive rows also meet the precision rule and are retained in the inventory. | ROUNDING_OR_DISPLAY_PRECISION |
+| Results supplement pp.16–18 eTables 10/11 | Subtracting printed group medians/IQR to reproduce model-based mean differences assumes medians are model means; no such equality is stated. Statistical questions about source headings are reviewed separately. | CONDITIONAL_OR_UNREPORTED |
+| Intervention supplement p.6 fidelity denominators |1791+2350=4141 versus total 4626. Training reviewed count 193 is supplied, but total training-session denominator is not supplied; an unreported 485-session component could explain the partition. Reviewed counts 193+89+17 do sum 299. | CONDITIONAL_OR_UNREPORTED |
+| Main methods/Table 2/Table 3 and results supplement pp.5/7–10 |2331 randomized target population versus 2036 any-follow-up contributors, weight sum 2036 persons/6108 visits, and observed-at-time counts are explicitly different quantities under the reported nonresponse weighting/imputation. | CONTEXT_RESOLVES |
+| Main p.8/p.12 Discussion residence description |Roughly 40% rural/underserved versus 44% elsewhere is an explicitly approximate narrative description, not a replacement numeric extraction for the baseline 44% result. | CONTEXT_RESOLVES |
 
-## Coverage closure and limitations
+## Limitations and closure
 
-46compound numeric relationships complete:35main-map records M090–M124 and11support-map records R014–R024. Every adjusted or unadjusted numeric cell, interval containment/order/direction, within-display numerator/percentage, source-defined transformation and model label in this assigned scope was checked. No source-unit gap. No numerical UC SDs, participant-level data or GEE covariance matrices are supplied for independent full interval reconstruction; those unavailable quantities are named rather than invented. eFigure2 has no exact bin-count labels. Independent statistical reviewers cover all inferential relationships and may emit duplicate provenance for screening consolidation.
+All 84 numeric relationship families are complete. Exact histogram bin numerators are not printed; no fabricated bar counts were used. UC change SD and individual raw data are unavailable; effect identity used the supplied common-denominator definition, not external methodology. PLAN statistical design comparisons and detailed interval/test compatibility are assigned to separate fresh specialist lanes. Findings use supplied source evidence only; no unreviewed source unit or incomplete assigned numeric family remains.
 

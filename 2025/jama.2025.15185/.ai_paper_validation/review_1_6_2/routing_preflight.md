@@ -20,11 +20,11 @@
 - Coordinator inference: PASS
 - Execution mode: INTERACTIVE_CLI
 - Launch command: codex --approve-for-me
-- Checked UTC: 2026-10-11T08:35:32Z
+- Checked UTC: 2026-10-14T16:23:07Z
 
-The current interactive response confirms coordinator inference. Project configuration and all ten bundled presets were read and matched to the required matrix. Provider and authentication remain those of the current session.
+The current session's turn metadata confirms model gpt-6.1-sol and high effort. Project configuration and all ten preset files were read and their fixed model/effort pairs confirmed. No provider configuration was changed. First specialist response must succeed to retain PASS.
 
-| Named preset | Model | Reasoning effort | Verification |
+| Preset | Model | Reasoning effort | Verification |
 |---|---|---|---|
 | qc162_reuse_asset_curator | gpt-6.1-sol | medium | PASS |
 | qc162_main_quantitative_mapper | gpt-6.1-sol | medium | PASS |

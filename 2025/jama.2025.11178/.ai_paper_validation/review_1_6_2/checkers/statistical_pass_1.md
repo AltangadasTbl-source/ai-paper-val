@@ -1,528 +1,743 @@
-# Statistical pass 1 — main article
+# Statistical consistency pass1 — complete disjoint review
 
-Runtime agent ID: root/statistics_pass_1. Model/effort: gpt-6.1-sol/high. Start mode: FRESH_SPAWN. Exact assigned inferential scope: DOC-001 REPORT, all14 physical PDF pages, every main-article model/test/estimate/interval/P/direction relationship. Output:43 compound relationships S001–S043,5 findings,5 excluded-observation rows. Other fresh pass1 agents cover the disjoint support REPORT and PLAN relationship ranges; the coordinator merges their parts after this handoff.
+The union of four fresh gpt-6.1-sol/high agent scopes covers all263statistical relationships. Prior Workflow1.6.2 contents are excluded.
 
-The complete QUALITY_CONTROL_SCOPE.md and workflow_1_6_2/review_contract.md were read. Source-linked fresh maps and source renders were used; no earlier checker/report/candidate conclusions or external material were read. Complete values and checks are in statistics/relationship_inventory.md. Every one of the9 binary rows and21 continuous rows includes all three group estimates, all three contrasts, every95%CI, each omnibus P and every NNT/SMD. No individual contrast is inferred from an omnibus P. The stated all-test rule is two-sidedα=.05; every non-null statement below uses that level. All ordinary group/adjusted-difference/RR point-containment and endpoint-order checks reconcile. Missing numerical SDs, covariances and test statistics are not inferred.
 
-Direct confirmation engine: Poppler pdftoppm26.01.0 CPU, main-09.png, main-10.png, main-11.png in preprocessing/stat1_main. Source physical pages9–11 were freshly rendered and visually compared with all table headings/cells/footnotes; main prose is retained in the fresh source-linked map. These derivatives are aids; the exact supplied PDF remains authority.
+<!-- Complete checker part: main -->
 
-## Findings
+# Statistical Pass 1 — Main-Paper Shard
 
-Fresh direct prose confirmation: Poppler pdftotext26.01.0 CPU, command `pdftotext -layout -f 4 -l 8 jama_debar_2025_oi_250046_1755300121.13587.pdf .ai_paper_validation/review_1_6_2/preprocessing/stat1_main/prose-p4-8.layout.txt`. This new derivative confirms the exact p4 reciprocal/SMD/test definitions, p7 secondary-significance and primary later-nonsignificance statements, and p8 modalities claim against the supplied source.
+Runtime agent: /root/stat1_main; fresh gpt-6.1-sol/high. Exact scope: DOC-001 main REPORT, physical PDF pages 1–14; MAIN001–MAIN116; S001–S110. All 270 estimate–95% interval tuples and 30 omnibus tests reviewed; all 27 NNT and 63 SMD tuples included. Findings: 6 consolidated patterns. Excluded observations: 7. Each relationship is PASS_1_COMPLETE. This part does not adjudicate candidates.
+
+Read completely: QUALITY_CONTROL_SCOPE.md and workflow_1_6_2/review_contract.md. Used current fresh main map, supplied main PDF native text and exact original rendered source pages; all tables and cited signs/order on pages 9–11 visually confirmed. No web or old review conclusions used. Supplement statistical rows and plan-internal relationships are disjoint peer assignments. Links below target the supplied main PDF. All compared locations have role REPORT; proposed primary relationship S_W and all relationships S_W.
 
 ### F-ST1-001
 
-**Finding:** The Table2 health-coach versus painTRAINER NNT interval pattern does not reconcile with null-containing relative-risk intervals and the stated nonsignificant later primary comparisons; the intensity12-month NNT also lies outside its own interval.
+A Table 2 NNT point lies beyond its printed confidence interval.
 
-**Relationships:** S009, S010, S011, S012, S013, S015, S016; method/definition S004,S007; primary narrative S038.
+- Exact locations and roles: REPORT [main PDF p. 9](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=9), Table 2, pain intensity at 12 months, health coach vs painTRAINER NNT column; see MAIN085 derived-family record S038.
+- Focus area: B.
+- Proposed review domain: statistical_results.
+- Proposed relationship type: S_W; all relationships: S_W.
+- **Qualifying route:** Route A, category 1.
+- Printed values, rule and calculation: The tuple is 63 (95% CI, 18–38). A confidence interval must contain its point estimate. Here 63 > 38. Even half-unit intervals leave the point at least 62.5 and the upper endpoint at most 38.5, a gap of 24 (24/63 = 0.381). Category 1 is not screened by display precision.
 
-**Locations and document roles:** REPORT [main Table2, physical p9](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=9), HC versus PT RR/NNT columns and footnotes d/e; REPORT [primary narrative, physical p7](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=7), final sentence of Primary Outcomes. Both locations are within the same REPORT; proposed relationship S_W.
-
-| Outcome/time | Printed HC/PT RR95%CI | Printed HC−PT NNT95%CI | Direct comparison |
-|---|---|---|---|
-| Severity6months |1.13(0.98–1.30)|24(12–186)|RR interval includes1; narrative says the later HC/PT differences are no longer significant, while NNT endpoints are finite and positive. |
-| Severity12months |1.07(0.96–1.19)|41(17–76)|Same conflict with printed nonsignificant comparison. |
-| Intensity3months |1.11(0.93–1.33)|37(14–57)|RR null-containing vs finite positive NNT interval under the same reported response contrast. |
-| Intensity6months |1.18(1.00–1.40)|21(11–5524)|Printed RR endpoint equals the null; positive finite NNT bounds. This row may reflect a rounded RR endpoint; preserve that alternative rather than infer the unprinted endpoint. |
-| Intensity12months |1.05(0.92–1.20)|63(18–38)|The NNT point63 exceeds its upper95%limit38; RR interval includes1. |
-| Interference6months |1.10(0.96–1.27)|26(11–67)|RR null-containing vs finite positive NNT interval. |
-| Interference12months |1.07(0.97–1.18)|39(16–79)|RR null-containing vs finite positive NNT interval. |
-
-**Printed rule and calculation:** Table2d defines NNT as1 divided by the difference in adjusted response proportions. Footnote e states that an absolute-risk-difference interval containing zero leads to a positive lower NNT limit extending to infinity and a negative upper limit extending to negative infinity. The printed HC/PT NNT pairs above instead show only two finite positive endpoints. In particular,63 is not in[18,38], requiring no inference about a model or covariance. Primary narrative explicitly says the HC/PT differences at6/12months are no longer significant, whereas the positive-only printed NNT intervals do not display that null-spanning inference. For the other outcomes the RR-versus-NNT contrast supplies the parallel pattern; alternative interval procedures are named below. All other NNT point recomputations are separately addressed in F-ST1-005 or the excluded precision observation, so this finding concerns the intervals, not those point differences.
-
-**Display precision:** RouteA category1 does not use the rounding exclusion. For the containment example even allowing integer half-units gives estimate[62.5,63.5] and upper limit[37.5,38.5], a gap24 (24/63=.3810). Infinity, negative-branch interpretation and endpoint signs cannot be supplied by choosing decimals inside those intervals. The intensity6 RR endpoint1.00 may hide an unprinted positive lower limit; that possibility cannot reconcile the independent intensity12 containment or explicit later-severity nonsignificance conflicts.
-
-**Focus area:** B, with C for the reciprocal-interval definition. **Proposed review domain:** statistical_results.
-
-**Qualifying route:** Route A, category1.
-
-**Affected result or extracted value:** The health-coach versus painTRAINER adjusted NNT95%CI for primary severity at6/12months and the five secondary outcome-time rows above, including the intensity12month point/interval combination.
-
-**Why context does not resolve it:** The point-outside-interval observation and printed interval-versus-nonsignificant test claim belong to the always-register category. Footnote e explains a disconnected interval interpretation but names a negative branch absent from the printed endpoint pairs. A data extractor cannot know whether to retain the positive signs, read one endpoint as negative, or use another interval construction.
-
-**Source-grounded alternatives and missing definitions:** The two endpoints might be intended as disconnected branches with an omitted sign; alternatively RR and risk-difference intervals might have used different procedures, or one displayed endpoint may represent a different contrast. The source names the same response comparison and confidence level, but does not print the absolute-risk-difference intervals or the numerical covariance calculation. These alternatives do not remove the printed containment/test conflict. The intensity6 endpoint may be due to output rounding, as explicitly noted.
-
-**Exact human question:** What signed/disconnected95%NNT limits and underlying adjusted risk-difference intervals apply to each of these HC/PT rows, and how should63(18–38) and the finite-positive later-severity intervals be read alongside the nonsignificant HC/PT comparisons?
+- **Affected result or extracted value:** Health coach vs painTRAINER NNT for ≥30% pain-intensity improvement at 12 months.
+- **Why context does not resolve it:** The printed point and interval fail the category-1 containment rule; reconstructing a possible intended endpoint does not resolve which interval to extract.
+- Alternatives and missing definitions: A substituted interval endpoint, a point attached to another row or a differently derived interval could explain the display; no replacement value is inferred.
+- Exact human question: What point estimate and 95% interval should a reader use for the 12-month pain-intensity health-coach vs painTRAINER NNT?
 
 ### F-ST1-002
 
-**Finding:** The printed Table3 SMD block does not reconcile with its own intervals and the source-defined common-SD standardization of the adjusted contrasts.
+Repeated Table 3 SMD points lie outside their printed intervals.
 
-**Relationships:** S005,S017,S019,S021–S037; S018 and S020 were also checked and their standalone identity comparisons reconcile within precision. This is one consolidated block pattern, retaining all affected locations rather than issuing a finding for each cell.
-
-**Locations and document roles:** REPORT [main Table3 p10](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10), all three SMD columns for every outcome/time row; REPORT [Table3 p11](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11), both global-impression blocks and footnote d; REPORT [Statistical Analysis p4](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4), definition of adjusted SMD. Proposed relationship S_W.
-
-**Printed rule:** Footnote d defines the adjusted between-group mean difference divided by the SD of change in the UC group at the same time. The same positive denominator for a row means HC−PT SMD equals HC−UC SMD minus PT−UC SMD; signs and interval null membership should agree with the same unstandardized contrast under the stated simple rescaling. The footnote supplies no separate model/estimand mapping for SMDs.
-
-**Direct interval observations, all cells retained:**
-
-| Source block/time | Printed SMD PT−UC; HC−UC; HC−PT | Direct interval observation |
+- Exact locations and roles: REPORT [main PDF p. 10](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10), Table 3, severity 12 months, intensity 12 months, interference 12 months, physical functioning 6 and 12 months; REPORT [main PDF p. 11](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11), Table 3 continuation, PGIC–pain at 12 months. Derived-family records: S056, S065, S074, S089, S092, S101.
+- Focus area: B.
+- Proposed review domain: statistical_results.
+- Proposed relationship type: S_W; all relationships: S_W.
+- **Qualifying route:** Route A, category 1.
+- Printed values, rule and calculation: Fourteen printed tuples are listed below. For containment, compare the point with both interval endpoints; it lies beyond both in each tuple. Sorting the physical-function endpoints still does not contain the point. Examples: severity 12-month painTRAINER vs usual care −0.25 < −0.24; physical 6-month painTRAINER vs usual care 0.15 > 0.09; PGIC–pain 12-month painTRAINER vs usual care −0.55 < −0.50. These are direct category-1 observations without inferential-method assumptions; display precision cannot screen them.
+| Outcome/time | Contrast | Printed SMD (95% CI) |
 |---|---|---|
-| Severity12months,p10 |−0.25(−0.24,0.01);−0.36(−0.35,−0.12);−0.11(−0.11,0.12)|First two points below printed lower limits; PT/UC SMDCI contains0 while corresponding adjusted-differenceCI(−0.6,−0.2) excludes0. |
-| Intensity12months,p10 |−0.16(−0.16,0.00);−0.27(−0.26,−0.12);−0.03(−0.03,0.11)|HC/UC point below lower limit; PT/UC SMDCI touches0 while differenceCI(−0.4,−0.1) excludes0. |
-| Interference12months,p10 |−0.26(−0.25,0.01);−0.37(−0.36,−0.11);−0.12(−0.12,0.12)|First two points below lower limits; PT/UC SMDCI contains0 while differenceCI(−0.7,−0.3) excludes0. |
-| Social3months,p10 |0.12(0.23,0.11);0.01(0.12,−0.00);0.20(0.29,0.19)|All three endpoint orders reversed; ordered intervals have opposite null membership from MD for all three contrasts. |
-| Social6months,p10 |0.18(0.23,0.05);0.06(0.11,−0.06);0.26(0.30,0.15)|All three endpoint orders reversed; HC/UC SMD spans0 despite MD(0.8,2.2); HC/PT SMD excludes0 despite MD(−0.4,1.1). |
-| Social12months,p10 |0.19(0.21,0.01);0.07(0.09,−0.10);0.27(0.28,0.12)|All three endpoint orders reversed; HC/UC SMD spans0 despite MD(0.6,2.1); HC/PT SMD excludes0 despite MD(−0.7,0.9). |
-| Physical3months,p10 |0.09(0.16,0.07);−0.02(0.05,−0.04);0.16(0.22,0.15)|All three endpoint orders reversed; ordered SMD intervals have opposite null membership from MD for all three contrasts. |
-| Physical6months,p10 |0.15(0.09,−0.06);0.02(−0.03,−0.18);0.22(0.16,0.05)|All three endpoint orders reversed; all three points outside even ordered intervals. PT/UC SMD spans0 despite MD(0.1,1.2); HC/UC SMD excludes0 despite MD(−0.1,0.9); HC/PT SMD excludes0 despite MD(−0.8,0.3). |
-| Physical12months,p10 |0.20(0.18,−0.03);0.07(0.04,−0.16);0.27(0.25,0.09)|All three endpoint orders reversed; all three points outside even ordered intervals; all three contrasts have opposite null membership from MD. |
-| Global impression pain12months,p11 |−0.55(−0.50,0.05);−0.57(−0.54,−0.08);−0.29(−0.25,0.14)|All three points below lower limits; PT/UC SMDCI contains0 despite MD(−0.8,−0.5); HC/PT positiveMD0.1 contrasts with negativeSMD−0.29 under a positive-SD definition. |
+| Severity 12 mo | painTRAINER vs usual care plus | -0.25(-0.24 to 0.01) |
+| Severity 12 mo | health coach vs usual care plus | -0.36(-0.35 to-0.12) |
+| Intensity 12 mo | health coach vs usual care plus | -0.27(-0.26 to-0.12) |
+| Interference 12 mo | painTRAINER vs usual care plus | -0.26(-0.25 to 0.01) |
+| Interference 12 mo | health coach vs usual care plus | -0.37(-0.36 to-0.11) |
+| Physical 6 mo | painTRAINER vs usual care plus | 0.15(0.09 to-0.06) |
+| Physical 6 mo | health coach vs usual care plus | 0.02(-0.03 to-0.18) |
+| Physical 6 mo | health coach vs painTRAINER | 0.22(0.16 to 0.05) |
+| Physical 12 mo | painTRAINER vs usual care plus | 0.20(0.18 to-0.03) |
+| Physical 12 mo | health coach vs usual care plus | 0.07(0.04 to-0.16) |
+| Physical 12 mo | health coach vs painTRAINER | 0.27(0.25 to 0.09) |
+| PGIC pain 12 mo | painTRAINER vs usual care plus | -0.55(-0.50 to 0.05) |
+| PGIC pain 12 mo | health coach vs usual care plus | -0.57(-0.54 to-0.08) |
+| PGIC pain 12 mo | health coach vs painTRAINER | -0.29(-0.25 to 0.14) |
 
-There are18 reversed SMD endpoint pairs (all social/physical cells) and14 points outside their own intervals even after sorting endpoints (2severity12,1intensity12,2interference12,3physical6,3physical12,3global-pain12). Other SMD interval checks were completed in the inventory, including the rows with contained estimates. Reordering endpoints alone does not reconcile the14 containment observations or the null/sign comparisons.
-
-**Reproduced common-denominator calculation and display precision:** Let A be PT−UC SMD, B HC−UC SMD and C HC−PT SMD. Recomputed B−A interval allows±.010 from two printed two-decimal inputs; printed C allows±.005. The following17 rows retain a relative gap above.05. These are source-defined contrast identities, not a comparison with crude group ratios or an assumed variance estimator. Other rows are retained in the relationship inventory and not selected away.
-
-| Outcome/time | Recomputed B−A interval | Printed C interval | Gap | Relative discrepancy |
-|---|---|---|---:|---:|
-| Severity3months |[−.100,−.080]|[−.135,−.125]|.025|.1923|
-| Intensity6months |[−.110,−.090]|[−.045,−.035]|.045|1.1250|
-| Intensity12months |[−.120,−.100]|[−.035,−.025]|.065|2.1667|
-| Interference3months |[−.100,−.080]|[−.135,−.125]|.025|.1923|
-| Interference6months |[−.110,−.090]|[−.145,−.135]|.025|.1786|
-| Social3months |[−.120,−.100]|[.195,.205]|.295|1.4750|
-| Social6months |[−.130,−.110]|[.255,.265]|.365|1.4038|
-| Social12months |[−.130,−.110]|[.265,.275]|.375|1.3889|
-| Physical3months |[−.120,−.100]|[.155,.165]|.255|1.5938|
-| Physical6months |[−.140,−.120]|[.215,.225]|.335|1.5227|
-| Physical12months |[−.140,−.120]|[.265,.275]|.385|1.4259|
-| Global pain3months |[−.010,.010]|[−.375,−.365]|.355|.9595|
-| Global pain6months |[−.020,.000]|[−.295,−.285]|.265|.9138|
-| Global pain12months |[−.030,−.010]|[−.295,−.285]|.255|.8793|
-| Global general3months |[−.010,.010]|[−.405,−.395]|.385|.9625|
-| Global general6months |[−.050,−.030]|[−.245,−.235]|.185|.7708|
-| Global general12months |[−.060,−.040]|[−.285,−.275]|.215|.7679|
-
-The common-denominator identity reproduces intensity3 exactly(−.29−(−.21)=−.08), severity12 exactly(−.36−(−.25)=−.11), and interference12 within half-unit intervals; severity6 has remaining relative gap.0417 and is separately screened as display precision. Containment/null conflicts qualify independently of this numeric identity; no unknown numerical SD needs to be supplied to reproduce them.
-
-**Focus areas:** B and C. **Proposed review domain:** statistical_results.
-
-**Qualifying route:** Route A, category1 for point containment/null-versus-stated-inference conflicts; the source-defined common-denominator identity also qualifies by Route A, category4 where the identity reproduces other rows of the same display. Endpoint reversals and quantity/direction discrepancies are retained as affected parts of the same SMD-block issue.
-
-**Affected result or extracted value:** Table3 adjusted SMDs and95%CIs for the named outcome-time/contrast cells, including estimates used to describe intervention effect magnitude, direction and statistical support.
-
-**Why context does not resolve it:** Point estimates outside their own CIs are always-register observations. Printed column labels do not show a common permutation or interval reordering that resolves both containment and the stated same-SD contrast identity. A reader extracting an SMD cannot tell whether its point, interval or contrast label applies.
-
-**Source-grounded alternatives and missing definitions:** The SMD columns or limits may represent another contrast/order, the numerical block may have a display/transcription pattern, or another calculation may have been used instead of the printed adjusted-difference/UC-SD definition. The numerical UC SDs and an alternative SMD model are not supplied in the main article. Any different-analysis interpretation must be specified; it does not remove the direct point/interval conflicts. No independent-sample or crude standardization is substituted for the reported method.
-
-**Exact human question:** Which point estimates, ordered95%limits, contrast assignments and UC SD denominators should be extracted for these Table3 SMD cells, and what calculation reconciles them with the defined standardized adjusted contrasts?
+- **Affected result or extracted value:** The fourteen standardized-effect points or intervals listed below, across severity, intensity, interference, physical functioning and PGIC–pain.
+- **Why context does not resolve it:** The category-1 point-containment failure remains under either printed or sorted physical-function endpoint order; the immediate table does not identify an extractable replacement.
+- Alternatives and missing definitions: Endpoints or point estimates might have been attached to different contrasts or time points. The SMD CI construction is not stated sufficiently to reconstruct replacements; no reordering or replacement is performed.
+- Exact human question: Which SMD point and 95% interval belong together for each listed outcome, time point and contrast?
 
 ### F-ST1-003
 
-**Finding:** The statement that the two modalities did not differ at6/12months conflicts with the significant6-month global-impression-of-general-change contrast.
+The social-role and physical-function SMD interval endpoints descend throughout Table 3.
 
-**Relationships:** S036,S042.
+- Exact locations and roles: REPORT [main PDF p. 10](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10), Table 3, social-role functioning and physical functioning, all three time points and all three SMD columns: S077, S080, S083, S086, S089, S092.
+- Focus area: B.
+- Proposed review domain: statistical_results.
+- Proposed relationship type: S_W; all relationships: S_W.
+- **Qualifying route:** Route B.
+- Printed values, rule and calculation: All eighteen intervals in the table below print their first limit above their second. For example, social role 3-month painTRAINER vs usual care is 0.12 (0.23 to 0.11): lower-limit rounding range [0.225,0.235] remains above upper-limit range [0.105,0.115], minimum order gap 0.110; relative to 0.23 this is 0.478. The smallest remaining order gap is physical 3-month health coach vs painTRAINER, 0.22 to 0.15: minimum gap 0.060, relative 0.273. Every row exceeds display tolerance. Reversing endpoint order is numerical interval reading rather than a symbol or wording slip.
+| Outcome/time | painTRAINER vs usual care | Health coach vs usual care | Health coach vs painTRAINER |
+|---|---|---|---|
+| Social 3 mo | 0.12(0.23 to 0.11) | 0.01(0.12 to-0.00) | 0.20(0.29 to 0.19) |
+| Social 6 mo | 0.18(0.23 to 0.05) | 0.06(0.11 to-0.06) | 0.26(0.30 to 0.15) |
+| Social 12 mo | 0.19(0.21 to 0.01) | 0.07(0.09 to-0.10) | 0.27(0.28 to 0.12) |
+| Physical 3 mo | 0.09(0.16 to 0.07) | -0.02(0.05 to-0.04) | 0.16(0.22 to 0.15) |
+| Physical 6 mo | 0.15(0.09 to-0.06) | 0.02(-0.03 to-0.18) | 0.22(0.16 to 0.05) |
+| Physical 12 mo | 0.20(0.18 to-0.03) | 0.07(0.04 to-0.16) | 0.27(0.25 to 0.09) |
 
-**Locations and roles:** REPORT [Discussion p8](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=8): “Outcomes between the2remote CBT-CP programs at6-and12-month follow-up did not differ”; REPORT [Table3 p11](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11), Patient Global Impression of Change–General,6months, HC versus PT adjusted difference and SMD columns. Proposed relationship S_W.
-
-**Printed values:** HC−PT adjusted difference−0.2(95%CI−0.4 to−0.1); SMD−0.24(95%CI−0.41 to−0.07); row omnibusP<.001. Two-sidedα=.05 is stated onp4. Scores are1–7,higher worse, so the negative contrast favors HC. Omnibus significance is not used as the pairwise evidence: the pairwise differenceCI itself excludes0.
-
-**Rule and calculation:** −0.4<−0.2<−0.1<0; likewise−0.41<−0.24<−0.07<0. Both printed95%CIs exclude the no-difference value; a statement that these outcomes did not differ conflicts with that pairwise inference at the stated level. The omnibus gate is open independently(P<.001). No standard error, degrees of freedom or covariance need be assumed for this null-exclusion check.
-
-**Display precision:** RouteA category1 is not screened by rounding; even the0.05-unit upper-limit interval[−.15,−.05] cannot reach0. The SMDCI provides independent corroboration, rather than an assumed transformed test.
-
-**Focus area:** B. **Proposed review domain:** statistical_results. **Qualifying route:** Route A, category1.
-
-**Affected result or extracted value:** The6-month health-coach versus painTRAINER comparison in global perception of overall change, and the conclusion that the two modalities show no later outcome differences.
-
-**Why context does not resolve it:** The printed CI contradicts the stated nonsignificance claim, an always-register category. The sentence uses plural“outcomes” after discussing pain, functioning and patient-global outcomes, and supplies no restriction excluding the general-change measure.
-
-**Alternatives and missing definition:** The narrative might have intended only the binary primary severity outcome, or a different adjusted/multiplicity analysis than Table3. Primary-severity HC/PT6/12CIs do contain1. This explains a possible narrower intended claim but does not remove the printed broader inference conflict; the required narrative outcome scope/test is missing.
-
-**Exact human question:** Does the no-difference statement apply only to primary pain severity, or what analysis reconciles it with the printed significant6-month HC/PT global-general contrast?
+- **Affected result or extracted value:** The ordered lower and upper limits for all eighteen social-role/physical-function standardized-effect intervals.
+- **Why context does not resolve it:** Although descending order is visible, the surrounding table also contains incompatible SMD points and formulas (separate findings), so sorting does not establish which interval belongs to which effect. This bears directly on extraction of confidence limits.
+- Alternatives and missing definitions: The endpoints might be globally reversed, or columns/limits may be misattached; sorting alone cannot address physical-function containment. No preferred CI method is proposed.
+- Exact human question: What are the lower and upper SMD confidence limits, and their contrast assignments, for the listed social-role and physical-function rows?
 
 ### F-ST1-004
 
-**Finding:** The secondary-outcome narrative says both interventions had significantly better3-month scores, while the physical-function PT versus UC interval includes no difference.
+Printed SMDs do not reproduce the stated common usual-care change-SD construction.
 
-**Relationships:** S029,S040; testing rule S007.
+- Exact locations and roles: REPORT [main PDF p. 4](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4), Statistical Analysis, SMD definition; REPORT [main PDF p. 11](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11), Table 3 footnote d repeats it; REPORT [main PDF p. 10](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10) and [main PDF p. 11](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11), Table 3 SMD/MD columns, all outcome-time rows except severity 6 months. Records S010 and twenty derived-family records listed in the inventory.
+- Focus area: B and C.
+- Proposed review domain: statistical_results.
+- Proposed relationship type: S_W; all relationships: S_W.
+- **Qualifying route:** Route A, category 4.
+- Printed values, rule and calculation: The source states SMD = adjusted between-group mean difference / SD of change among usual-care participants for that outcome/time. A positive shared denominator requires SMD(HC–PT) = SMD(HC–UC) − SMD(PT–UC). Each displayed SMD has half-unit ±0.005, so subtracting two allows ±0.010; the third has ±0.005. Seventeen rows fail beyond relative gap 0.05, listed below. Three more rows satisfy this additive identity but do not share a denominator with their printed MDs: severity 12 months, intensity 3 months, interference 12 months. From the PT–UC MD and SMD and the rounded-zero HC–PT MD (±0.05), the recomputed HC–PT SMD ranges are respectively [−0.03643,0.03643], [−0.043,0.043], [−0.02944,0.02944]; printed HC–PT SMDs are −0.11, −0.08, −0.12 (±0.005). Minimum gaps/printed magnitudes = 0.06857/0.11=0.623, 0.032/0.08=0.400, 0.08556/0.12=0.713. Also physical-function 3-month HC–UC MD 0.7 vs SMD −0.02; physical-function 6/12-month HC–PT MD −0.3/−0.1 vs SMD +0.22/+0.27; PGIC–pain 12-month HC–PT MD +0.1 vs SMD −0.29 reverse signs under any positive SD. These are exact algebra from the stated definition, not crude/model comparisons or approximate Wald diagnostics. Severity 6-month discrepancies are excluded once by precision.
+| Outcome/time | Printed SMDs: PT–UC / HC–UC / HC–PT | Recomputed HC–PT interval from first two SMDs | Minimum gap / absolute printed HC–PT |
+|---|---|---|---|
+| Severity 3 mo | -0.25 / -0.34 / -0.13 | [-0.100, -0.080] | 0.025 / 0.13 = 0.192 |
+| Intensity 6 mo | -0.17 / -0.27 / -0.04 | [-0.110, -0.090] | 0.045 / 0.04 = 1.125 |
+| Intensity 12 mo | -0.16 / -0.27 / -0.03 | [-0.120, -0.100] | 0.065 / 0.03 = 2.167 |
+| Interference 3 mo | -0.25 / -0.34 / -0.13 | [-0.100, -0.080] | 0.025 / 0.13 = 0.192 |
+| Interference 6 mo | -0.27 / -0.37 / -0.14 | [-0.110, -0.090] | 0.025 / 0.14 = 0.179 |
+| Social 3 mo | 0.12 / 0.01 / 0.2 | [-0.120, -0.100] | 0.295 / 0.20 = 1.475 |
+| Social 6 mo | 0.18 / 0.06 / 0.26 | [-0.130, -0.110] | 0.365 / 0.26 = 1.404 |
+| Social 12 mo | 0.19 / 0.07 / 0.27 | [-0.130, -0.110] | 0.375 / 0.27 = 1.389 |
+| Physical 3 mo | 0.09 / -0.02 / 0.16 | [-0.120, -0.100] | 0.255 / 0.16 = 1.594 |
+| Physical 6 mo | 0.15 / 0.02 / 0.22 | [-0.140, -0.120] | 0.335 / 0.22 = 1.523 |
+| Physical 12 mo | 0.2 / 0.07 / 0.27 | [-0.140, -0.120] | 0.385 / 0.27 = 1.426 |
+| PGIC pain 3 mo | -0.62 / -0.62 / -0.37 | [-0.010, 0.010] | 0.355 / 0.37 = 0.959 |
+| PGIC pain 6 mo | -0.54 / -0.55 / -0.29 | [-0.020, -0.000] | 0.265 / 0.29 = 0.914 |
+| PGIC pain 12 mo | -0.55 / -0.57 / -0.29 | [-0.030, -0.010] | 0.255 / 0.29 = 0.879 |
+| PGIC general 3 mo | -0.66 / -0.66 / -0.4 | [-0.010, 0.010] | 0.385 / 0.40 = 0.963 |
+| PGIC general 6 mo | -0.46 / -0.5 / -0.24 | [-0.050, -0.030] | 0.185 / 0.24 = 0.771 |
+| PGIC general 12 mo | -0.53 / -0.58 / -0.28 | [-0.060, -0.040] | 0.215 / 0.28 = 0.768 |
 
-**Locations and roles:** REPORT [Secondary Outcomes p7](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=7), first sentence: “with significantly better scores for both the painTRAINER and health coach groups compared with usual care plus at3months, persisting over12-month follow-up”; REPORT [Table3 p10](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10), Physical functioning3months PT versus UC adjusted mean difference. Proposed relationship S_W.
-
-**Printed values:** PT−UC adjusted difference0.4(95%CI−0.1 to0.9); HC−UC0.7(0.2 to1.2); omnibusP=.02. Global two-sidedα=.05 is stated. The PT contrast interval includes0, while the HC contrast excludes0; thus omnibus significance is coherent without making both pairwise comparisons significant. PT/UC SMD0.09(0.16 to0.07) is a different already-consolidated display issue F-ST1-002 and is not used to supersede the unstandardized interval here.
-
-**Rule/calculation:** −0.1<0<0.9 for the pairwise PT contrast. This conflicts with a categorical“significantly better scores for both”statement applied to the displayed3-month secondary outcomes. The omnibusP=.02 only states that some group difference exists and cannot supply significance for this individual contrast.
-
-**Display precision:** RouteA category1 does not receive a rounding exclusion; the displayed endpoints are plainly on opposite sides of0.
-
-**Focus area:** B. **Proposed review domain:** statistical_results. **Qualifying route:** Route A, category1.
-
-**Affected result or extracted value:** The3-month physical-functioning painTRAINER versus usual-care-plus inference and the narrative interpretation that both interventions have significant benefits for the reported secondary scores.
-
-**Why context does not resolve it:** The explicit significance claim and printed pairwiseCI are an always-register test conflict. The introductory“overall patterns”phrase may signal a broad summary, but it does not identify which score or comparison is exempted from“both.”
-
-**Alternatives and missing definition:** The narrative may intend most secondary outcomes rather than each outcome, may refer to omnibus rather than pairwise significance, or may use a separate analysis. The source does not state such a restricted outcome set or test mapping in that sentence. These alternatives are retained for the independent inclusion screen; no preferred analysis is proposed.
-
-**Exact human question:** Which secondary scores and statistical comparisons does the3-month“significantly better ...for both”statement cover, given the PT/UC physical-functionCI−0.1 to0.9?
+- **Affected result or extracted value:** SMD points and their contrast assignments in twenty of the twenty-one continuous outcome/time rows.
+- **Why context does not resolve it:** The supplied definition and table headings establish the denominator and comparisons, but the printed values do not reproduce them. A missing alternative standardization rule is the human question.
+- Alternatives and missing definitions: Different contrast-specific standardizers, an outcome/time-column displacement, or SMDs from another analysis could produce different values; each differs from the printed shared-UC-SD definition and needs explicit mapping. Actual UC-change SD values are absent, but additivity/sign and the stated rounding bounds do not require their magnitude.
+- Exact human question: Which adjusted mean differences, usual-care change SDs and contrast/time assignments produced the printed SMDs, and does the stated common-SD definition apply to every Table 3 row?
 
 ### F-ST1-005
 
-**Finding:** Two6-month HC versus UC NNT point estimates do not reproduce from the same table's adjusted response percentages under the printed reciprocal definition and the workflow display-precision rule.
+Two NNT points exceed the display tolerance for the stated reciprocal formula.
 
-**Relationships:** S004,S009,S015.
+- Exact locations and roles: REPORT [main PDF p. 4](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4), NNT definition; REPORT [main PDF p. 9](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=9), Table 2 footnote d and health coach vs usual care NNT points for severity 6 months and interference 6 months; records S011, S026 and S044.
+- Focus area: B and C.
+- Proposed review domain: statistical_results.
+- Proposed relationship type: S_W; all relationships: S_W.
+- **Qualifying route:** Route A, category 4.
+- Printed values, rule and calculation: Severity at 6 months: adjusted percentages 37.1% and 22.9%, NNT 8. Half-unit percentage intervals give RD [0.141,0.143], reciprocal [6.993007,7.092199]; printed NNT interval [7.5,8.5], gap 0.407801, relative 0.050975. Interference at 6 months: 40.9% and 24.3%, NNT 7; RD [0.165,0.167], reciprocal [5.988024,6.060606]; printed NNT interval [6.5,7.5], gap 0.439394, relative 0.062771. The stated reciprocal method reproduces other rows or leaves them within the precision rule; these two are above 0.05. Full tuple checks preserved in the inventory.
 
-**Locations and roles:** REPORT [main Table2, physical p9](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=9), Pain severity6months HC/UC adjusted responses/NNT and Pain-related interference6months HC/UC adjusted responses/NNT; REPORT same page footnote d and [main Statistical Analysis p4](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4), NNT definition. Proposed relationship S_W.
+- **Affected result or extracted value:** Health coach vs usual care NNT points for six-month severity and interference response.
+- **Why context does not resolve it:** The method/display discrepancy is reproduced above the fixed precision threshold. A possible upward integer-rounding rule is retained as an alternative rather than silently added to the supplied formula.
+- Alternatives and missing definitions: Rounding NNTs upward rather than to nearest integer yields 8 and 7 here and can reconcile the table. The source does not state that convention; no claim is made that the estimated risk difference itself differs.
+- Exact human question: Were these NNTs rounded upward to whole participants, and what unrounded reciprocal values and display rule generated the reported points?
 
-**Printed values and rule:** Severity6months HC37.1%,UC22.9%,HC/UC NNT8; interference6months HC40.9%,UC24.3%,HC/UC NNT7. Footnote d defines NNT as1 divided by the difference in adjusted proportions, consistent with the main Methods definition. This comparison uses adjusted probabilities and an adjusted NNT from the same display; it is not a comparison with crude counts.
+### F-ST1-006
 
-**Calculation including display precision:** Both input percentages have0.05percentage-point half-units; their difference allows0.10percentage points.
+Finite positive NNT intervals accompany null-containing RR intervals for the same contrasts.
 
-| Row | Probability-difference interval | Recomputed NNT interval | Printed NNT half-unit interval | Gap | Relative discrepancy |
-|---|---|---|---|---:|---:|
-| Severity6months HC/UC |[.141,.143]|[1/.143,1/.141]=[6.993007,7.092199]|8±.5=[7.5,8.5]|7.5−7.092199=.407801|.407801/8=.050975|
-| Interference6months HC/UC |[.165,.167]|[1/.167,1/.165]=[5.988024,6.060606]|7±.5=[6.5,7.5]|6.5−6.060606=.439394|.439394/7=.062771|
-
-The same reciprocal method reproduces the other25 NNT points of the display within the specified threshold. For example, severity3months HC32.0% versus UC20.8% implies[8.849558,9.009009], overlapping printed9±.5; severity6months PT32.9% versus UC22.9% implies[9.900990,10.101010], overlapping printed10±.5. The above two residual relative gaps exceed.05 even after both input/output half-unit intervals.
-
-**Focus areas:** B and C. **Proposed review domain:** statistical_results. **Qualifying route:** Route A, category4.
-
-**Affected result or extracted value:** The6-month HC versus UC NNT point estimates8 for severity and7 for interference.
-
-**Why context does not resolve it:** A defined reciprocal method reproduces other rows but leaves above-threshold gaps for these two printed quantities, an always-register category. The source does not state an alternative rounding or NNT point calculation rule.
-
-**Source-grounded alternatives and missing definition:** Upward rounding to the next integer could produce8 from an inverse near7.04 and7 from an inverse near6.02; it is a concrete alternative to ordinary half-unit display rounding and may be the intended NNT presentation. An unprinted alternate risk-difference estimator or rounding policy is also possible. Neither the table footnote nor main Methods specifies upward-integer rounding. This finding asks for that policy, without proposing another analysis.
-
-**Exact human question:** Were these NNT points intentionally rounded upward to the next integer, or which adjusted probability differences and presentation rule generate8 and7 from the same-row percentages?
-
-**Full same-display alternative check:** A policy that rounds an unprinted reciprocal upward to an integer can reproduce every one of the27 printed Table2 NNT points when the printed response percentages retain their0.05percentage-point input intervals. The table below gives all corresponding inverse ranges, in the source contrast order PT−UC;HC−UC;HC−PT, and the printed NNT triplet. Every printed integer is attainable by a ceiling operation on some value in its inverse interval. This is a concrete fully reproducing alternative, not merely a generic mention of rounding; no nearest-integer policy is claimed to be necessary. The finding records the mandated half-unit comparison and asks which presentation policy applies.
-
-| Outcome/time | Inverse ranges for all three contrasts | Printed NNTs |
+- Exact locations and roles: REPORT [main PDF p. 9](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=9), Table 2, health coach vs painTRAINER, severity 6/12 months, intensity 3/12 months, interference 6/12 months; Table 2 footnotes b,d,e; REPORT [main PDF p. 4](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4), shared binary model and NNT definition. Records S026, S029, S032, S038, S044, S047.
+- Focus area: B.
+- Proposed review domain: statistical_results.
+- Proposed relationship type: S_W; all relationships: S_W.
+- **Qualifying route:** Route B.
+- Printed values, rule and calculation: All six RR intervals include 1, while all six printed NNT intervals are finite and positive. RR=1 and risk difference=0 are the same equality-of-response null for these matched adjusted group responses. Footnote e explicitly requires an NNT interval including infinity, with a negative NNH branch, when its RD interval contains zero. Inverting the finite NNT intervals implies strictly positive RD intervals: severity 6 [1/186,1/12], severity 12 [1/76,1/17], intensity 3 [1/57,1/14], intensity 12 [1/38,1/18], interference 6 [1/67,1/11], interference 12 [1/79,1/16]. The observation is exact interval/null reading. Compatibility with a common confidence-set construction cannot be reproduced because the RD/NNT CI construction is not stated; different parameter-specific interval methods are an explicit alternative, not an inferred contradiction in a specific variance formula.
+| Outcome/time | HC–PT RR (95% CI) | HC–PT NNT (95% CI) |
 |---|---|---|
-| Severity3months |[16.9492,17.5439];[8.8496,9.0090];[18.1818,18.8679]|18;9;19|
-| Severity6months |[9.9010,10.1010];[6.9930,7.0922];[23.2558,24.3902]|10;8;24|
-| Severity12months |[11.2360,11.4943];[8.8496,9.0090];[40.0000,43.4783]|12;9;41|
-| Intensity3months |[14.9254,15.3846];[10.6383,10.8696];[35.7143,38.4615]|16;11;37|
-| Intensity6months |[16.9492,17.5439];[9.2593,9.4340];[20.0000,20.8333]|18;10;21|
-| Intensity12months |[17.2414,17.8571];[13.5135,13.8889];[58.8235,66.6667]|18;14;63|
-| Interference3months |[13.6986,14.0845];[8.1301,8.2645];[19.6078,20.4082]|14;9;21|
-| Interference6months |[7.8125,7.9365];[5.9880,6.0606];[25.0000,26.3158]|8;7;26|
-| Interference12months |[10.9890,11.2360];[8.4746,8.6207];[35.7143,38.4615]|12;9;39|
+| Severity 6 mo | 1.13(0.98–1.30) | 24(12–186) |
+| Severity 12 mo | 1.07(0.96–1.19) | 41(17–76) |
+| Intensity 3 mo | 1.11(0.93–1.33) | 37(14–57) |
+| Intensity 12 mo | 1.05(0.92–1.20) | 63(18–38) |
+| Interference 6 mo | 1.10(0.96–1.27) | 26(11–67) |
+| Interference 12 mo | 1.07(0.97–1.18) | 39(16–79) |
 
+- **Affected result or extracted value:** The six HC–PT NNT intervals, whether they support a finite benefit interval and which limits an evidence extractor should record.
+- **Why context does not resolve it:** The same table/source model prints opposite null coverage for the matched response contrasts and gives an infinity rule, but omits the RD confidence-interval method. Readers cannot determine whether different CI methods explain this or whether NNT limits need another assignment.
+- Alternatives and missing definitions: RR and RD intervals may come from different valid interval constructions and have different finite-sample coverage; covariance, transformation and exact RD limits are not inferred. No pairwise P value is printed. The intensity 12-month point-containment issue is separately tracked in F-ST1-001.
+- Exact human question: Which risk-difference confidence intervals and interval construction generated these six NNT intervals, and how should their null coverage be interpreted alongside the same-contrast RR intervals?
 
 ## Excluded observations
-
-Only apparent issues decided not to emit are listed; reconciled routine checks remain in the inventory.
 
 | Location | Observation | Reason code |
 |---|---|---|
-| REPORT mainp4 Sample Size | Exact2331/90% simulation result cannot be regenerated from rates,retention and10000 simulations alone: joint outcome/cluster/covariate generation parameters and simulation precision are not supplied. There is no contradictory printed simulation input/result, so an independent-sample power approximation is not substituted. | CONDITIONAL_OR_UNREPORTED |
-| REPORT main p9 Table2, the25 NNT points other than HC/UC severity6 and interference6 | Half-unit reciprocal calculations overlap the printed NNT interval or leave a relative gap at most.05. The two above-threshold points are F-ST1-005, not excluded. Largest remaining gap is HC/UC interference3: inverse[8.1301,8.2645] vs printed9 half-unit[8.5,9.5], gap.2355/9=.0262. | ROUNDING_OR_DISPLAY_PRECISION |
-| REPORT mainp10 Table3 severity6SMD contrast identity | B−A=−.36−(−.26)=−.10 versusC−.12. Recomputed[−.110,−.090],printed[−.125,−.115],gap.005/.12=.0417≤.05. | ROUNDING_OR_DISPLAY_PRECISION |
-| REPORT mainp7 secondary SMD narrative vsTable3p10 | PT−.26 vs−.25 half-unit intervals touch;HC−.36 vs−.34 leaves gap.010/.36=.0278≤.05. | ROUNDING_OR_DISPLAY_PRECISION |
-| REPORT mainp11 Table3global blocks,heading/footnotes h/i | Heading“mean change from baseline”could be read as subtraction, but the named one-item Patient Global Impression of Change and1–7 footnotes show these2.0–2.9group entries are mean perceived-change ratings. Immediate context resolves the quantity. | CONTEXT_RESOLVES |
+| REPORT main p.10, Table 3 severity 6 months, SMDs −0.26/−0.36/−0.12 | Shared-SD additivity predicts HC–PT [−0.110,−0.090], printed half-unit [−0.125,−0.115]; gap .005/.12=.0417. MD/SMD shared-denominator rounding discrepancy is likewise below .05. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT main p.7 secondary narrative vs p.10 severity 3-month SMD row | Narrative −0.26/−0.36 vs table −0.25/−0.34: half-unit gaps0/.010, relative0/.0294. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT main p.10 physical functioning 6-month omnibus P=.05 and footnote p.11 pairwise gate P<.05 | The printed P rounding interval[.045,.055] includes values that satisfy the stated gate; exact unrounded gate result cannot be determined. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT main p.4 Sample Size | Exact 90% simulated power cannot be rebuilt without the complete simulation specification; 2331=777×3,7.5 percentage points andRR1.5 reconcile, with no contradicted sample size. | CONDITIONAL_OR_UNREPORTED |
+| REPORT main p.11 Table 3 PGIC headings/footnotes | Mean change label versus a since-start-of-study global-impression scale: scale coding and outcome meaning are evident from adjacent footnotes. | TERMINOLOGY_OR_WORDING |
+| REPORT main p.3 primary scoring and p.7 Table1 footnote g | Requirement of all4 intensity and at least4/7 interference items versus mean of11-item instrument wording does not establish a conflicting reported score. | TERMINOLOGY_OR_WORDING |
+| REPORT main pp.1,7 secondary benefit narrative vs physical-function rows p.10 | Overall-pattern statements summarize benefits while individual physical-function contrasts vary in null coverage; whether wording means every contrast is not established. | TERMINOLOGY_OR_WORDING |
 
-## Limitations and complete coverage
+## Scope closure and limitations
 
-No scientific main-page or table-cell gap. Numerical UC SDs, covariance matrices, individual pairwise P values and full simulation-generating inputs are absent; methods are checked only to the supplied precision/definitions. Main sample-size simulation is not reconstructed by replacing its stated method. Main text supplies no numerical standard errors or test statistics and no noninferiority/equivalence/interim/stopping decision. All43S records are PASS_1_COMPLETE and await a fresh PASS 2 agent. Numeric-only counts/means/safety are assigned to the independent numeric reviewer. Support methods were read solely to clarify main-model steps; support/plan scientific ownership remains disjoint.
-# Statistical pass 1 — REPORT supplement shard
+All S001–S110 records have PASS_1_COMPLETE. Every Table 2/Table 3 tuple and row-level omnibus test was checked. Figure 2 matches severity rows at all three time points; the abstract and primary-result narrative agree with primary estimates and intervals. Method checks cover analysis units, population, model, adjustment, missingness, sidedness, confidence, multiplicity, inference direction and power arithmetic. Main pages13–14 contain only references. Numeric-only Table1/flow/adverse-event arithmetic remains the numeric review assignment, while analysis-population implications were reviewed here. No main inferential relationship omitted.
 
-Runtime agent: /root/statistics_pass_1_reports. Fresh fixed gpt-6.1-sol/high role. Exact assigned scope: DOC-004 pp1–7; DOC-005 pp1–16 and19, with methods applicable to eTables3,4,5,7,8,9,10; DOC-006 worksheet eTable 3!A1:J115. Entire eTable11 pp17–18 was reassigned before registration and is excluded from this shard's findings, relationship IDs and exclusions.
+Named limitations: exact sample-size simulation cannot be recreated from printed inputs alone; numeric test statistics, standard errors, robust degrees of freedom, actual UC-change SDs and the RD/NNT interval construction are absent. No missing model detail alone was emitted. Supplement/PLAN inferential rows are peer scopes. Direct PDF tools were absent; pinned PyMuPDF fresh native text and supplied-source page images provided coverage. No new Python helper written. No candidate IDs or adjudications assigned.
 
-Completed scope:120 S records(S101–S220),67 coefficient rows,39 outcome/time rows with117 explicit pairwise contrast cells,14 method/selection/numeric families. All525 workbook cells and every nonempty selection-P cell inspected. Full exact row evidence and checks are in statistics/parts/relationship_inventory_reports.md. Six findings and seven excluded-observation families below. No candidate IDs or adjudications assigned.
 
-Evidence uses supplied sources only. New direct images: Poppler pdftoppm26.01.0 CPU,source-07.png through source-11.png andsource-14.png through source-17.png in preprocessing/stat1_reports; page17 was unused after reassignment. Source values for findings on pp7–10 and14 visually confirmed. Workbook source XML and shared strings directly confirm E3,E82,E83 and the selection-P cells. Models and method statements were read from source-linked complete transcription; copied equations were visually mapped by the current mapper. No old scientific conclusions used.
 
-### F-ST1-101
+<!-- Complete checker part: reports -->
 
-**Title:** Seven imputation coefficients have95% intervals excluding zero alongside P values above.05.
+# Statistical pass 1 — supplementary REPORT shard
 
-**Locations and document roles:** REPORT [DOC-005 p8,eTable3](../../../joi250046supp4_prod_1755300121.15587.pdf#page=8),each coefficient's estimate,95% CI andP cells. Method context is REPORT [DOC-005 pp4–5](../../../joi250046supp4_prod_1755300121.15587.pdf#page=5): linear GEE imputation model,robust standard errors. Relationship IDs:S106,S107,S112,S114,S119,S120,S126.
+Fresh agent: /root/stat1_reports; gpt-6.1-sol; high effort; FRESH_SPAWN. The coordinator records the actual spawn runtime ID in agent_execution_manifest.md.
 
-| Exact coefficient row | Estimate |95% CI|P|
-|---|---:|---|---:|
-|Pattern:2 observed follow-ups|−.28|(−.47,−.08)|.150|
-|Pattern:1 observed follow-up|−.20|(−.36,−.03)|.226|
-|Pattern2 × painTRAINER|−.30|(−.58,−.02)|.280|
-|Pattern2 × Health Coach|−.47|(−.74,−.19)|.090|
-|Site3|.19|(.08,.29)|.069|
-|Site4|.15|(.05,.24)|.124|
-|Education:AA degree,second occurrence|.16|(.07,.25)|.077|
+Exact scope: DOC-005 PDF pages 1–16 and 19, eTables 1–10 and eFigures 1–2; inferential and statistical-method content of DOC-004 PDF pages 1–7 and DOC-006 worksheet eTable 3, A1:J115. DOC-005 eTable 11, PDF pages 17–18, belongs to the separate raw-score shard; MAIN inference rows and PLAN-internal statistical relationships belong to separate peers. All compared locations below are REPORT by content.
 
-**Rule and calculation:** Each printed95% interval lies wholly on one side of zero,while the corresponding P exceeds.05. Each estimate is contained and endpoints are ordered; the discrepancy is the interval-versus-test reading,not containment. Even allowing±.005 to every two-decimal interval limit,the closest-to-null bounds remain−.075,−.025,−.015,−.185,.075,.045,.065 respectively. The P rounding bands do not approach.05. No covariance or reference distribution is needed for this significance comparison. Display-precision screening does not apply to RouteA1; relative discrepancy is not applicable.
+Read completely: QUALITY_CONTROL_SCOPE.md and workflow_1_6_2/review_contract.md. Scientific input was limited to exact supplied sources and current fresh source maps. No prior 1.6.2 conclusions, candidate sets or screening records were read. Fresh source renders confirmed every cited PDF row. Direct permitted Office extraction confirmed workbook cells. Source-unit scientific gaps: none. No web used.
 
-**Focus area:** B. **Proposed review domain:** statistical_results. **Proposed relationship:** S_W;all compared content is REPORT in one source.
-**Qualifying route:** Route A, category 1.
-**Affected result or extracted value:** The inferential reading of seven fitted imputation-model coefficients used to construct the primary outcome analysis.
-**Why context does not resolve it:** RouteA1 requires registration of the printed interval/test conflict. These are individual coefficient rows,not omnibus versus pairwise tests.
-
-**Alternatives and missing definition:** P values might use another variance calculation,test reference distribution or analysis than the intervals. The report does not identify such a separation. Normal-Wald inverse calculations would be diagnostic only and are not needed for this finding.
-**Exact human question:** Which interval and test specifications apply to these seven coefficients,and which printed inferential values should a reader extract?
-
-### F-ST1-102
-
-**Title:** Three printed coefficient intervals touch the null while corresponding P values are below.05.
-
-**Locations and document roles:** REPORT [DOC-005 p9,eTable4](../../../joi250046supp4_prod_1755300121.15587.pdf#page=9),Age≥65 and second Education:AA degree row; REPORT [DOC-005 p10,eTable5](../../../joi250046supp4_prod_1755300121.15587.pdf#page=10),PEG score. S140,S149,S165.
-
-**Printed values:** Age RR1.15,95% CI(1,1.33),P=.046; second AA education RR1.16,95% CI(1,1.33),P=.046; PEG OR.96,95% CI(.92,1.00),P=.037.
-
-**Rule and calculation:** Null is1 for RR/OR. All three printed closed intervals include1 at an endpoint,while P<.05. Bounds are correctly ordered and estimates contained. This is the reverse interval/test significance conflict. Display-precision screening is inapplicable under RouteA1; no relative discrepancy is assigned.
-
-**Focus area:** B. **Proposed review domain:** statistical_results. **Proposed relationship:** S_W.
-**Qualifying route:** Route A, category 1.
-**Affected result or extracted value:** The significance reading of age,education and PEG coefficients in the primary estimation and weighting model summaries.
-**Why context does not resolve it:** RouteA1 is always registered for the printed interval-versus-test reading.
-
-**Alternatives and missing definition:** A more precise unrounded lower limit slightly above1 for age/education,or upper limit slightly below1 for PEG,could reconcile the underlying test. The display does not provide that precision. Different test/interval constructions are another possibility. Neither possibility is asserted as the reported analysis.
-**Exact human question:** What are the unrounded confidence limits,and do the printed confidence intervals and P values refer to the same inferential specification?
-
-### F-ST1-103
-
-**Title:** Binary education adjustment in the selection summary does not match the fitted primary model parameterization.
-
-**Locations and document roles:** REPORT [DOC-005 p7,eTable2](../../../joi250046supp4_prod_1755300121.15587.pdf#page=7),final variables selected for imputation and estimation; REPORT [DOC-005 p8,eTable3](../../../joi250046supp4_prod_1755300121.15587.pdf#page=8),three education coefficient rows; REPORT [DOC-005 p9,eTable4](../../../joi250046supp4_prod_1755300121.15587.pdf#page=9),three education coefficient rows. S125,S126,S127,S148,S149,S150,S218.
-
-**Printed values/statements:** eTable2 specifies education“any college vs.HS degree or less.” eTable3 prints education coefficients−.02,.16,.39,each with HS or less as reference; eTable4 prints educationRR.97,1.16,1.35. The first two coefficient rows carry the same AA label,and the third is Graduate degree.
-
-**Rule and calculation:** A binary contrast against HS or less has one education coefficient. The fitted displays contain three separately estimated education coefficients against the same reference,consistent with a multi-level parameterization. Repeated labels alone are not the basis: the numerical coefficient set conflicts with the reported binary coding. Display rounding is not relevant to this discrete model-definition comparison.
-
-**Focus area:** C. **Proposed review domain:** statistical_results. **Proposed relationship:** S_W.
-**Qualifying route:** Route B.
-**Affected result or extracted value:** The education adjustment specification in the imputation and primary MCID estimation models.
-**Why context does not resolve it:** A reader cannot tell whether the primary model used the reported binary collapse or distinct education categories. This changes which analysis specification accompanies extracted primary effects.
-
-**Alternatives and missing definition:** eTable2 may describe a collapsed selection model and eTables3/4 may describe a separate final parameterization,but that change is not identified. Duplicate AA wording may refer to the college category; that wording observation is separately excluded because it is not the numerical issue.
-**Exact human question:** Was education binary or multi-level in the fitted primary imputation and estimation models,and how does the final parameterization relate to the selection model?
-
-### F-ST1-104
-
-**Title:** Selected weighting covariates and the displayed fitted weight model do not match.
-
-**Locations and document roles:** REPORT [DOC-005 p7,eTable2](../../../joi250046supp4_prod_1755300121.15587.pdf#page=7),final nonresponse-weight model covariates; REPORT [DOC-005 p10,eTable5](../../../joi250046supp4_prod_1755300121.15587.pdf#page=10),all fitted covariate rows; REPORT [DOC-005 pp5–6](../../../joi250046supp4_prod_1755300121.15587.pdf#page=5),nonresponse selection/model description. S163,S214,S218,S219. Supporting REPORT workbook: [DOC-006](../../../joi250046supp5_prod_1755300121.16087.xlsx),eTable 3!H12:J12,H18:J18,H39:I39,H81:I81,H84:I84,H108:I108.
-
-**Printed statements/values:** eTable2 lists PEG,PHQ8,GAD7,any negative social determinant and education as additional weighting covariates. eTable5 displays PEG OR.96,PHQ8 .97,GAD7 .99,no negative social determinant1.34 and not employed1.49(1.11,2.00),P=.008; there is no education row. The printed base covariates in eTable2/pp5–6 do not include employment. Workbook unemployment H18<.001,I18=.0228 andJ18=.0591;education H12=.0156,J12=.05 andI12 blank.
-
-**Rule and calculation:** The named final weighting model changes membership: education is selected in eTable2 but absent in its fitted model summary,while employment appears in the fit without appearing in that selected list or stated base set. This comparison requires no raw data. The blankI12 is not interpreted as a P value or proof of a failed selection test. Display rounding is not relevant.
-
-**Focus area:** C. **Proposed review domain:** statistical_results. **Proposed relationship:** S_W. The workbook corroborates the unemployment selection criteria; it does not add a conflict relationship.
-**Qualifying route:** Route B.
-**Affected result or extracted value:** The nonresponse weights incorporated into the primary weighted MCID analysis,and the covariate list extracted as its model specification.
-**Why context does not resolve it:** The printed selected list and fitted table are both presented as final model information. A reader cannot identify the actual weighting specification from their different membership.
-
-**Alternatives and missing definition:** Education might be omitted from an otherwise incomplete coefficient summary,or eTable2 may describe another model stage. Employment might be carried into the weight model by an unstated additional rule. Neither is disclosed in the named final-list/fitted-model mapping.
-**Exact human question:** Which exact covariates produced the nonresponse weights used in the primary analysis,and how should the eTable2 list be matched to eTable5?
-
-### F-ST1-105
-
-**Title:** One sensitivity NNT does not reproduce under the printed reciprocal definition and half-unit display rule.
-
-**Locations and document roles:** REPORT [DOC-005 p14,eTable8](../../../joi250046supp4_prod_1755300121.15587.pdf#page=14),Reminder Letters Added,6 months,PTvsUC;footnote d. S181,S216.
-
-**Printed values:** PT35.6%,UC21.3%,NNT8(5,14). Footnote d defines NNT as one over the difference in adjusted improvement percentages.
-
-**Rule and calculation:** Point reciprocal100/(35.6−21.3)=6.99300699. Percentage rounding bands[35.55,35.65] and[21.25,21.35] yield RD[14.20,14.40] percentage points and reciprocal[6.94444444,7.04225352]. Printed integer8 gives[7.5,8.5]. Interval gap=.45774648;relative gap=.45774648/8=.05721831>.05. The same reciprocal/display method reconciles the other44 sensitivity NNT cells under the zero-gap or≤.05 rule,as explicitly recorded in eachS row. For example,eTable8 Letters3 PT/UC100/(31.6−20.5)=9.0090 with printed9;Letters6 HC/PT100/(40.6−35.6)=20 with printed20.
-
-**Focus area:** B. **Proposed review domain:** statistical_results. **Proposed relationship:** S_W.
-**Qualifying route:** Route A, category 4.
-**Affected result or extracted value:** PTvsUC6-month sensitivity NNT after reminder letters.
-**Why context does not resolve it:** Under the required half-unit display rule,the displayed reciprocal result differs by more than.05 relative discrepancy. RouteA4 registers a row not reproduced by a method that reproduces the rest of the same display.
-
-**Alternatives and missing definition:** A deliberate upward integer rounding convention could reconcile8 when the unrounded reciprocal lies just above7. This convention is supported by several other NNT cells;for example,eTable7 Complete3 PT/UC reciprocal12.195 is displayed13,and eTable8 Letters3 HC/UC reciprocal7.353 is displayed8. The supplied footnote does not state a ceiling convention. The independent inclusion screener must consider that source-supported alternative under the normative display rule; no correction is proposed.
-**Exact human question:** Which NNT integer-rounding convention was used,and what unrounded adjusted risks and NNT underlie the printed8?
-
-### F-ST1-106
-
-**Title:** The workbook current-depression count and percentage do not reconcile with its stated missingness-adjusted denominator.
-
-**Locations and document roles:** REPORT [DOC-006 workbook](../../../joi250046supp5_prod_1755300121.16087.xlsx),worksheet eTable 3!E82,current depression in All Observed;comparator E3 population,E83 missing,andA110 denominator rule. S220.
-
-**Printed values:** E82“711(73.2)”;E3“N=1568”;E83 missing2. A110 says missing observations are excluded from the percentage denominator.
-
-**Rule and calculation:** Count denominator1568−2=1566.100×711/1566=45.40229885%,not73.2%. Conservative half-unit intervals on all displayed inputs: count[710.5,711.5],population[1567.5,1568.5],missing[1.5,2.5],denominator[1565,1567],recomputed percentage[45.34141672,45.46325879]. Printed percentage interval[73.15,73.25]. Gap27.68674121 percentage points;relative gap27.68674121/73.2=.37823417>.05. Integer counts taken as exact would make the discrepancy stronger.
-
-**Focus area:** A. **Proposed review domain:** statistical_results. **Proposed relationship:** S_W.
-**Qualifying route:** Route A, category 3.
-**Affected result or extracted value:** The prevalence of current depression among participants with all primary-outcome follow-ups observed.
-**Why context does not resolve it:** RouteA3 applies to the count/percentage/denominator discrepancy in a single display.
-
-**Alternatives and missing definition:** An unstated denominator around971 would yield73.2% for711,but the displayed All Observed population and missingness row provide1566. No separate analysis subset is identified.
-**Exact human question:** Which denominator and percentage correspond to the printed711 current-depression participants in the All Observed group?
-
-## Excluded observations
-
-Each row is one apparent issue family; checks that reconcile are recorded only in the S inventory.
-
-|Location|Observation|Reason code|
-|---|---|---|
-|REPORT DOC-005 p7 eTable1 observed-pattern counts|188+283+1568=2039 versus2036; implied observations5458 versus5449. Conservative half-unit gaps1/2036=.00049 and4.5/5449=.00083,within.05 scope rule.|ROUNDING_OR_DISPLAY_PRECISION|
-|REPORT DOC-005 p8 eTable3 Time6M,SexMale,Age≥65,1+musculoskeletal conditions and interaction rows without a null/test conflict|Normal-Wald back-calculated P values can differ from exact printedP—for example Time6M diagnosticSE(.19−.07)/3.92=.03061,Z4.247 versusP.025. Exact test distribution,sidedness and variance mapping are not supplied; an exact-test mismatch is not established. The seven observable null/test conflicts are emitted asF-ST1-101.|CONDITIONAL_OR_UNREPORTED|
-|REPORT DOC-005 pp8–9 eTables3–4 repeated AA education wording|Two education rows carry AA labels. Level ordering and other categories suggest a college label;wording alone is not registered. The conflicting binary versus multi-level model specification is separatelyF-ST1-103.|TERMINOLOGY_OR_WORDING|
-|REPORT DOC-005 p11 eTable7 andp14 eTable8 NNT cells other thanF-ST1-105|Small reciprocal-versus-integer differences all have zero interval gap or relative gap≤.05;each of44 individual computations is retained in itsS record.|ROUNDING_OR_DISPLAY_PRECISION|
-|REPORT DOC-005 p14 eTable8,before8/9/2021,listed3-month arm counts|149+153+152=454 randomized,while only366 have any follow-up. This comparison concerns a per-time-point contributor label and does not change the randomized analysis-population size or decision rule.|PERIPHERAL_COMPARISON|
-|REPORT DOC-005 p15 eTable9 caption“adjusted relative risk” versus prose/footnote|Surrounding heading,paragraph and explicit footnote all identify GEE without adjustment,weighting or imputation. Analysis identity is immediately recoverable.|CONTEXT_RESOLVES|
-|REPORT DOC-005 p16 eTable10 social/physical median differences versus mean contrasts|The group statistics are explicitly medians/IQRs,while the contrasts are GEE mean differences. Subtraction of medians is not a test of the stated mean-analysis identity.|CONDITIONAL_OR_UNREPORTED|
-
-## Limitations and completion
-
-All assigned relationship families are PASS_1_COMPLETE;pass2 is pending for a different fresh agent. No exact coefficient reference distribution,covariance matrix,degrees of freedom or sidedness is inferred. Diagnostic normal approximations cannot replace the reported analysis. Histograms have no exact printed bin heights. eTable11 is outside the amended shard and is assigned separately. No scientific gap remains in this shard. Inclusion screening remains independent;all emitted findings retain their source-grounded alternatives.
-
-# Statistical pass 1 — PLAN specifications and implementation
-
-- Runtime agent ID: root/statistics_pass_1_plans.
-- Model and effort: gpt-6.1-sol / high; FRESH_SPAWN, pass 1 only.
-- Exact scope: DOC-002 protocol physical pages 1–77 and DOC-003 SAP physical pages 1–29. Matching REPORT methods and result labels were used to assess implementation of planned specifications. REPORT estimate/interval/test pairs are assigned to separate statistical shards.
-- Relationship scope: S221–S288, 68 relationships. Every record is PASS_1_COMPLETE; pass 2 is pending.
-- Findings: 3, F-ST1-221, F-ST1-222, F-ST1-223. Excluded apparent observations: 11. No finding count was targeted.
-
-QUALITY_CONTROL_SCOPE.md and the complete review contract were read. The four fresh PLAN map parts, relevant raw source OCR, amendment histories and direct page images were consulted. Direct visual checks include protocol pages 56–57, SAP pages 19–21, results supplement pages 4/9 and main article page 4. Main and supplement method passages were matched to outcome, time, contrast and population before comparison. PLAN font-corrupted native text was not treated as scientific authority. New REPORT page renders used direct Poppler pdftoppm 26.01.0 at 140 dpi, CPU, saved to preprocessing/stat1_plans/report-p04.png, report-p09.png and main-p04.png. Pre-existing page images were preserved. No web, external reference, old checker conclusion or unpermitted Python was used.
+Pass-1 coverage: **63 stable relationships, S201–S263**, each explicitly PASS_1_COMPLETE in statistics/parts/reports_inventory.md. **6 findings; 9 excluded-observation rows.** Repeated instances of each pattern are consolidated. Proposed domains and relationship types pre-fill human review; no adjudication is assigned.
 
 ## Findings
 
-### F-ST1-221
+### F-ST1-201
 
-**Title:** Age is called a prespecified base adjustment variable without being part of the supplied fixed primary model specification.
+**Title:** Linear-imputation 95% intervals exclude zero while the corresponding P values exceed .05.
 
-**Relationships:** S262. Proposed relationship type P_R; all relationships P_R. Focus area D. Proposed review domain protocol_report.
+**Relationships:** S208; related method records S204, S205. Proposed primary relationship type: S_W; all relationships: S_W.
 
-**Exact locations and document roles:**
+**Exact locations and document roles:** REPORT [DOC-005 PDF p.8, eTable 3](../../../joi250046supp4_prod_1755300121.15587.pdf#page=8), seven rows listed below; REPORT [DOC-005 PDF pp.4–5, imputation method](../../../joi250046supp4_prod_1755300121.15587.pdf#page=5). REPORT [DOC-001 PDF p.4, Statistical Analysis](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4) supplies the shared two-sided α=.05 test definition and corroborates, rather than conflicts with, the supplement.
 
-- PLAN [protocol physical page 56, section 15.5](../../../joi250046supp1_prod_1755300121.14087.pdf#page=56): primary-model adjustment paragraph.
-- PLAN [SAP physical page 20, section 14.0](../../../joi250046supp2_prod_1755300121.15087.pdf#page=20): primary-model adjustment paragraph, with section 13.0 on the same page as contextual alternative.
-- PLAN [SAP physical pages 2–4, amendment history](../../../joi250046supp2_prod_1755300121.15087.pdf#page=2): no recorded addition of age as a fixed primary-adjustment variable; age subgroup analysis is expressly added on page 2.
-- REPORT [results supplement physical page 4, Adjustment paragraph](../../../joi250046supp4_prod_1755300121.15587.pdf#page=4): list immediately after “base set of pre-specified adjustment variables.”
-- REPORT [results supplement physical page 5, Non-Response Weighting paragraph](../../../joi250046supp4_prod_1755300121.15587.pdf#page=5): prespecified prediction-variable list also includes age.
-- REPORT [results supplement physical pages 8–10, eTables 3–5](../../../joi250046supp4_prod_1755300121.15587.pdf#page=8): fitted imputation, estimation and weight models print an age term, establishing application to the reported primary analysis.
+**Printed values:**
 
-**Printed statements compared:** Both operative PLAN primary paragraphs specify baseline pain severity, sex, clinical site, rural/medically underserved residency, multisite pain and co-occurring mental health condition. The REPORT's base prespecified list adds “age” to those six covariate concepts. SAP section 13.0 lists age among demographic/descriptive candidate variables and age ≥65 among moderators, but does not specify age as a fixed primary adjustment covariate. Its dated age amendment adds subgroup analyses rather than primary fixed adjustment.
+| eTable 3 row | Estimate | Printed 95% CI | P value |
+|---|---:|---|---:|
+| Pattern: 2 observed follow-ups | −0.28 | −0.47, −0.08 | .150 |
+| Pattern: 1 observed follow-up | −0.20 | −0.36, −0.03 | .226 |
+| Pattern 2, painTRAINER interaction | −0.30 | −0.58, −0.02 | .280 |
+| Pattern 2, Health Coach interaction | −0.47 | −0.74, −0.19 | .090 |
+| Site 3 | 0.19 | 0.08, 0.29 | .069 |
+| Site 4 | 0.15 | 0.05, 0.24 | .124 |
+| Second Education: AA degree (reference High school or less) row | 0.16 | 0.07, 0.25 | .077 |
 
-**Rule and reproduced comparison:** An analysis described as prespecified must appear in the supplied plan at the corresponding analysis role. Set comparison of the enumerated fixed primary covariates leaves REPORT age without a corresponding fixed-primary PLAN term. This is a textual specification comparison; display rounding and numerical recomputation are not applicable. The age term is present in all three fitted primary-analysis model summaries, so the observation concerns an implemented specification rather than an unused variable. Directly inspected eTable 4 prints the indicator “Age >=65 (vs. <65),” RR 1.15, 95% CI 1–1.33, P .046; those inferential values are tracked by the separately assigned REPORT statistical shard, while this finding concerns the adjustment's prespecification status.
+**Rule and calculation:** For each printed 95% interval, 0 is outside its limits, while the corresponding printed P is greater than .05. These are individual coefficient rows of the reported linear GEE imputation model, with working independence and robust standard errors accounting for coach and participant clustering. For example, −.47 < −.28 < −.08 < 0 but P=.150; 0 < .08 < .19 < .29 but P=.069. All seven estimates are contained in their intervals and their endpoints are ordered. The conflict concerns interval-versus-test significance. The display-precision rule is inapplicable to Route A category 1; no relative-discrepancy calculation is used to screen this pattern out.
 
-**Qualifying route:** Route A, category 5.
+**Focus area:** B, estimate and test logic.
+**Proposed review domain:** statistical_results.
+**Qualifying route:** Route A, category 1.
+**Affected result or extracted value:** Significance and uncertainty of the missingness-pattern, pattern-by-arm, site and education coefficients used in the primary-outcome imputation model.
+**Why context does not resolve it:** Each row contains the conflicting interval and P value under a 95% CI column and the common .05 test level. This is an always-register interval-versus-P pattern. The immediate table and accompanying method do not state that the columns represent different analyses.
 
-**Affected result or extracted value:** The reported primary 3-month adjusted pain-severity response, RR and interval, and their imputation/weighting specification; interpretation of age adjustment as prespecified rather than added.
+**Alternatives and missing definitions:** P values and intervals might use different variance estimates, coefficient tests or confidence constructions, or one printed column might summarize a different analysis. The source does not supply the coefficient-test family, degrees of freedom or numeric standard errors needed to reconstruct the exact P values. Such an alternative must be stated by the human reviewer; it does not remove the directly printed null-significance conflict. No normal-Wald approximation is used as the reproduction criterion.
 
-**Why context does not resolve it:** This is the always-register category for an analysis described as prespecified that the supplied plan does not contain in the claimed role. The general candidate-variable paragraph and moderator listing do not specify which demographic candidates must enter the fixed primary model.
+**Exact human question:** Which analysis, variance estimate and confidence-interval construction produced the seven listed eTable 3 intervals and P values, and which interval and P value should be extracted for each coefficient?
 
-**Source-grounded alternatives and missing definition:** The authors may have regarded the broad section 13.0 candidate list as authorization for age adjustment, or a separately documented fixed-model revision may exist outside this supplied package. The REPORT may have added age as a chosen adjustment variable while retaining the label prespecified. No direction or magnitude of its impact is inferred.
+### F-ST1-202
 
-**Exact human question:** Which supplied prospective specification makes age a fixed base adjustment variable for the primary imputation, estimation and nonresponse-weight models, and how should its prespecification status be read alongside the enumerated protocol/SAP primary covariates?
+**Title:** Significant coefficient P values accompany 95% intervals printed with a null-valued endpoint.
 
-### F-ST1-222
+**Relationships:** S209 and S210. Proposed primary relationship type: S_W; all relationships: S_W.
 
-**Title:** The SAP's primary MAR description and the report's primary MNAR analysis have different stated roles.
+**Exact locations and document roles:** REPORT [DOC-005 PDF p.9, eTable 4, Age ≥65 and second AA education rows](../../../joi250046supp4_prod_1755300121.15587.pdf#page=9); REPORT [DOC-005 PDF p.10, eTable 5, PEG score row](../../../joi250046supp4_prod_1755300121.15587.pdf#page=10). Shared significance definition: REPORT DOC-001 PDF p.4, all tests two-sided α=.05; this is corroborating context.
 
-**Relationships:** S264–S266. Proposed relationship type P_R; all relationships P_R. Focus area D. Proposed review domain protocol_report.
+**Printed values:**
 
-**Exact locations and document roles:**
+| Location and row | Effect | Printed 95% CI | P |
+|---|---:|---|---:|
+| eTable 4, Age ≥65 vs <65 | RR 1.15 | 1, 1.33 | .046 |
+| eTable 4, second Education: AA degree vs HS or less | RR 1.16 | 1, 1.33 | .046 |
+| eTable 5, PEG score | OR 0.96 | 0.92, 1.00 | .037 |
 
-- PLAN [SAP physical page 19, section 11.0 Missing Data](../../../joi250046supp2_prod_1755300121.15087.pdf#page=19): first primary-analysis sentences and sensitivity-trigger paragraph.
-- PLAN [SAP physical page 4, 07/17/24 IPW amendment](../../../joi250046supp2_prod_1755300121.15087.pdf#page=4): missing-all weighting amendment, preserving the all-randomized interpretation.
-- REPORT [main article physical page 4, Statistical Analysis](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4): primary missingness addressed by nonignorable pattern-mixture imputation and missing-all IPW.
-- REPORT [results supplement physical page 4, first Missing Data paragraph](../../../joi250046supp4_prod_1755300121.15587.pdf#page=4): claims the SAP prespecified criteria for the primary analysis to use an MNAR imputation approach with weighting and regression adjustment.
-- REPORT [results supplement physical page 11, eTable 7](../../../joi250046supp4_prod_1755300121.15587.pdf#page=11): complete-case approach is reported as a sensitivity analysis rather than the principal result.
+**Rule and calculation:** The ratio null is 1. The printed lower endpoint equals 1 in both eTable 4 rows, and the printed upper endpoint equals 1.00 in the eTable 5 row. Thus each displayed 95% interval includes the null, while its corresponding P is below .05. Point containment and interval ordering hold. The scope explicitly exempts interval-versus-P comparisons from display-precision screening; these boundary cases are therefore registered even though rounding can plausibly explain an exact endpoint close to 1.
 
-**Printed statements compared:** The SAP says that for primary analyses patients with follow-up will be analyzed and missing data assumed MAR given baseline covariate adjustment. It then calls for sensitivity analyses when >15% are missing the 3-month outcome or arm missingness differs, and describes pattern-mixture imputation plus missing-all IPW as its first approach and worst/best case as its second approach. The REPORT says the >15%/differential criteria prespecified an MNAR primary analysis, and implements pattern-mixture/IPW as primary. The REPORT prints 77.1% 3-month completeness overall, 79.9% UC, 69.8% painTRAINER and 81.6% health coach.
+**Focus area:** B, estimate and test logic.
+**Proposed review domain:** statistical_results.
+**Qualifying route:** Route A, category 1.
+**Affected result or extracted value:** The printed 95% intervals and significance of age and education effects in the primary estimation model and PEG in the response-weight model.
+**Why context does not resolve it:** The displayed interval includes its null and the P value is significant at the stated level. Route A category 1 requires registration; presumed unrounded endpoints cannot substitute for supplied printed values.
 
-**Rule and reproduced comparison:** Keep method identity separate from its planned primary/sensitivity role. Pattern-mixture and IPW are indeed in the SAP; this finding concerns the explicitly stated primary MAR role versus the implemented primary MNAR role and the REPORT's claim of a prespecified switch. The supplied SAP does not expressly say that meeting the trigger replaces the primary MAR analysis with the MNAR approach. Arithmetic confirms the trigger was met: 100−77.1=22.9% missing at 3 months, exceeding 15%; arm completeness also differs. There is no rounding-sensitive numeric inconsistency: the logical discrepancy is the analysis role. Recomputed numeric interval for overall missingness is [22.85%,22.95%] from completeness 77.1±0.05%, entirely above the displayed 15±0.5% threshold.
+**Alternatives and missing definitions:** A true lower endpoint slightly above 1, or upper endpoint slightly below 1, may have rounded to the printed null; different interval and test constructions are another possibility. The source does not provide unrounded endpoint values or separate coefficient-test definitions. These are alternatives for human adjudication.
 
-**Qualifying route:** Route A, category 5.
+**Exact human question:** What are the unrounded 95% endpoints and the associated test definitions for these three rows, and how should their printed intervals and P values be represented for extraction?
 
-**Affected result or extracted value:** The principal adjusted 3-month MCID response/RR and intervals, and whether they represent the planned primary MAR analysis or a promoted missing-data sensitivity approach.
+### F-ST1-203
 
-**Why context does not resolve it:** This is the always-register category for a planned primary analysis that is replaced, and for a claimed prespecified analysis role absent from the explicit supplied specification. The SAP's first-approach language supplies a possible interpretation of the switch, but does not explicitly reconcile its earlier primary-MAR sentences.
+**Title:** The stated final weight-model covariates differ from the fitted weight-model display.
 
-**Source-grounded alternatives and missing definition:** The first approach after the trigger may have been intended as the conditional primary analysis, with worst/best case alone designated sensitivity; the prose can support that interpretation. Alternatively, both approaches may have been planned sensitivities while the REPORT selected MNAR as primary. The July2024 amendment authorizes weighting for an all-randomized estimand but does not separately state a replacement of the primary MAR role. No judgment about a preferred missing-data method is made.
+**Relationships:** S203, S207, S210, S256 and S262. Proposed primary relationship type: S_W; all relationships: S_W. DOC-006 only corroborates selection-test context and does not create an S_C conflict.
 
-**Exact human question:** Did the >15%/differential-missingness trigger prospectively replace the SAP's stated MAR primary analysis with the MNAR pattern-mixture/IPW analysis, and where does the supplied plan explicitly define that primary-versus-sensitivity role?
+**Exact locations and document roles:** REPORT [DOC-005 PDF p.7, eTable 2, final additional variables for the nonresponse weight model](../../../joi250046supp4_prod_1755300121.15587.pdf#page=7); REPORT [DOC-005 PDF p.10, eTable 5, complete logistic weight-model coefficient display](../../../joi250046supp4_prod_1755300121.15587.pdf#page=10); REPORT [DOC-005 PDF pp.4–5, selection and weighting methods](../../../joi250046supp4_prod_1755300121.15587.pdf#page=5).
 
-### F-ST1-223
+**Printed values and statements:** eTable 2 lists additional weighting variables as PEG score, PHQ-8, GAD-7, any negative social determinant of health, and education (any college vs HS degree or less). Its base-variable list does not include employment. eTable 5 contains the first four of these variables, has no education coefficient, and instead reports Not employed OR1.49 (95% CI1.11–2.00), P=.008. The narrative describes adding the selected covariates to the final logistic model used to create weights for the primary analysis.
 
-**Title:** Reported baseline adjustment for key secondary outcomes includes the outcome's own baseline, beyond the operative secondary plan paragraph.
+**Rule and calculation:** Compare membership of the explicitly stated final additional-covariate set with the full fitted-model coefficient set. Stated education has no displayed coefficient; displayed employment is absent from the final weighting list and the base list. This is a logical model-attribution comparison, with no rounding calculation applicable. Changing the treatment reference group in a logistic fit does not account for exchanging these covariates.
 
-**Relationships:** S267–S268. Proposed relationship type P_R; all relationships P_R. Focus area D. Proposed review domain protocol_report.
+**Focus area:** C, statistical method logic.
+**Proposed review domain:** statistical_results.
+**Qualifying route:** Route B.
+**Affected result or extracted value:** The nonresponse weights used in the primary weighted MCID analysis and the reported employment OR in the weighting model.
+**Why context does not resolve it:** Both displays identify the final weight model, but they specify different applied adjustment sets. The table does not disclose an omitted education coefficient, substitution or subsequent model revision. A reader cannot identify which covariate set generated the actual weights from these statements.
 
-**Exact locations and document roles:**
+**Alternatives and missing definitions:** Education may have been used but omitted from the displayed model, the final list may refer to an earlier selection stage, or employment may have been added subsequently. The workbook shows employment significant in both selection families (H18<.001, I18=.0228), but that corroboration does not resolve the printed final-model discrepancy. No preference for including either predictor is proposed.
 
-- PLAN [protocol physical page 57, section 15.6](../../../joi250046supp1_prod_1755300121.14087.pdf#page=57): final secondary-model paragraph.
-- PLAN [SAP physical page 21, section 15.0](../../../joi250046supp2_prod_1755300121.15087.pdf#page=21): final secondary-model paragraph.
-- REPORT [main article physical page 4, Statistical Analysis](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4): secondary models use the same modeling structures “with added adjustment for the given baseline secondary outcome.”
-- REPORT [main article physical page 9, Table 2](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=9): adjusted intensity/interference MCID results; [physical pages 10–11, Table 3](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=10): adjusted continuous severity, intensity, interference and functioning results.
+**Exact human question:** Did the logistic model generating the primary nonresponse weights include education, employment, both or another set, and which coefficient display and final-variable list describe that model?
 
-**Printed statements compared:** The operative protocol and SAP secondary paragraphs specify baseline levels of pain severity and all stratification variables as covariates. They prescribe continuous linear and binary/count Poisson GEE with arm×time terms. The main REPORT states that the secondary analysis uses the same primary-model structures with additional adjustment for the given baseline secondary outcome. For intensity, interference, social function and physical function, that own-baseline measure is a distinct covariate from the specified composite baseline pain severity.
+### F-ST1-204
 
-**Rule and reproduced comparison:** Match each secondary measure before comparing model covariates. Composite baseline severity is not identical to baseline intensity, baseline interference or baseline PROMIS function. The reported explicit addition is absent from the operative secondary specification; the supplied amendment histories do not record adding own-baseline secondary adjustment. This is a textual specification comparison with no numerical rounding interval or relative discrepancy applicable. Continuous overall severity is not counted as a distinct discrepancy because its own baseline equals the plan's baseline pain-severity measure. Global impression is not included in the affected list because no baseline PGIC collection is planned.
+**Title:** Education coding and repeated coefficient labels leave the applied education adjustment unclear.
+
+**Relationships:** S203, S208, S209 and S261. Proposed primary relationship type: S_W; all relationships: S_W. Workbook categories are corroboration only.
+
+**Exact locations and document roles:** REPORT [DOC-005 PDF p.7, eTable 2, additional imputation/estimation variables](../../../joi250046supp4_prod_1755300121.15587.pdf#page=7); REPORT [DOC-005 PDF p.8, eTable 3, all education coefficient rows](../../../joi250046supp4_prod_1755300121.15587.pdf#page=8); REPORT [DOC-005 PDF p.9, eTable 4, all education coefficient rows](../../../joi250046supp4_prod_1755300121.15587.pdf#page=9). REPORT DOC-006 eTable 3 A12:A16 provides distinct HS/associate/college/graduate categories as corroboration.
+
+**Printed values and statements:** eTable 2 specifies education as “any college vs. HS degree or less.” eTable 3 prints three education coefficients: AA degree −.02 (−.11,.08), P=.866; a second AA degree .16 (.07,.25), P=.077; Graduate degree .39 (.29,.49), P<.001, all versus high school or less. eTable 4 likewise prints AA degree RR.97 (.82,1.16), P=.770; a second AA degree RR1.16 (1,1.33), P=.046; Graduate degree RR1.35 (1.13,1.61), P<.001.
+
+**Rule and calculation:** A single binary any-college indicator is a different adjustment specification from three category-versus-reference coefficients. Further, two different coefficients have the same AA label and reference within each complete fitted model. The supplied category list makes a college label plausible for one row but does not state that mapping. This is a model-definition and numeric-result-attribution comparison; display precision does not resolve category assignment.
+
+**Focus area:** C, statistical method logic; B, estimate attribution.
+**Proposed review domain:** statistical_results.
+**Qualifying route:** Route B.
+**Affected result or extracted value:** The education adjustment in the primary imputation and estimation models, and the coefficient/RR assigned to associate versus college education.
+**Why context does not resolve it:** The immediate coefficient tables offer two different estimates for the same labeled category, while the selection table specifies a binary contrast. Guessing which row belongs to the college category does not establish the coding actually used or the coefficient a data extractor should assign.
+
+**Alternatives and missing definitions:** The applied education covariate may have been a four-level factor with one repeated label, or the selected binary covariate may have been expanded for the reported fits. The source does not explicitly disclose a recoding or map the duplicate labels. This observation is consolidated across both models because it is one education-definition pattern, rather than a separate finding for each repeated label.
+
+**Exact human question:** Was education coded as any-college versus HS-or-less or as a multilevel factor in each primary model, and which category corresponds to each of the two printed AA rows?
+
+### F-ST1-205
+
+**Title:** Restricted primary subset analyses list a smaller covariate set than the primary estimation model.
+
+**Relationships:** S220 and S263. Proposed primary relationship type: S_W; all relationships: S_W.
+
+**Exact locations and document roles:** REPORT [DOC-005 PDF p.13, Protocol Change Subset Analyses](../../../joi250046supp4_prod_1755300121.15587.pdf#page=13); REPORT [DOC-005 PDF p.14, eTable 8, footnote b](../../../joi250046supp4_prod_1755300121.15587.pdf#page=14); REPORT [DOC-005 PDF p.4, Adjustment](../../../joi250046supp4_prod_1755300121.15587.pdf#page=4); REPORT [DOC-005 PDF p.7, eTable 2, final imputation/estimation list](../../../joi250046supp4_prod_1755300121.15587.pdf#page=7).
+
+**Printed values and statements:** The subset narrative says eTable 8 shows “results of the primary analysis restricting to subsets of the randomized population.” The primary imputation/estimation selection list adds education and unemployment, and the fitted models display both. eTable 8 footnote b instead lists sex, age, site, rural/urban residence, more than one musculoskeletal condition, mental-health diagnosis and baseline pain severity, without education or employment.
+
+**Rule and calculation:** The stated restricted-primary-analysis model attribution and the explicit subset adjustment list do not name the same adjustment set. This is a logical analysis-definition comparison; no numeric rounding test applies. It concerns the explicit covariates, rather than inferring the absence of imputation or weighting from silence.
+
+**Focus area:** C, statistical method logic.
+**Proposed review domain:** statistical_results.
+**Qualifying route:** Route B.
+**Affected result or extracted value:** All eTable 8 adjusted percentages, RR and NNT estimates in the pre-enhancement, post-enhancement and reminder-letter subset analyses, including the 3-month primary-outcome subset estimates.
+**Why context does not resolve it:** The narrative identifies a restricted version of the primary analysis, while the footnote describes a base-only adjustment. No explanation says that additional primary covariates were dropped, reselected or merely omitted from the footnote. The actual analysis producing these estimates is therefore not identifiable from the supplied description.
+
+**Alternatives and missing definitions:** The primary model may have been refitted with only base covariates in subsets, additional predictors may have been reselected, or the footnote may abbreviate a fuller adjustment set. Any of these could be internally coherent if stated; the observation asks which was used and does not propose a preferred subset analysis.
+
+**Exact human question:** Which covariates were included in each eTable 8 subset estimation model, and does “primary analysis restricting to subsets” mean the full primary adjustment set or the base-only set listed in footnote b?
+
+### F-ST1-206
+
+**Title:** Reminder-letter 6-month PT-versus-UC NNT does not reproduce from the printed adjusted percentages under the stated reciprocal method.
+
+**Relationships:** S228; method S220. Proposed primary relationship type: S_W; all relationships: S_W. The numeric checker independently identified related MAIN occurrences; this shard registers its assigned occurrence for the inclusion screener to consolidate as appropriate.
+
+**Exact locations and document roles:** REPORT [DOC-005 PDF p.14, eTable 8, Reminder Letters Added, 6-month row, PT and UC adjusted percentages and PT-versus-UC NNT](../../../joi250046supp4_prod_1755300121.15587.pdf#page=14); REPORT same page, footnote d defining NNT.
+
+**Printed values:** PT35.6% (30.6,41.4); UC21.3% (17.5,26.1); PT-versus-UC NNT8 (5,14). Footnote d defines NNT as one over the difference in adjusted improvement percentages (using probability units).
+
+**Rule and calculation:** NNT=100/(35.6−21.3)=100/14.3=6.99300699. Give each printed percentage its half-unit interval: PT[35.55,35.65], UC[21.25,21.35]. Their difference is[14.20,14.40] percentage points, so the recomputed NNT interval is[100/14.40,100/14.20]=[6.94444444,7.04225352]. The printed integer NNT8 has half-unit interval[7.5,8.5]. The gap is7.5−7.04225352=.45774648; relative discrepancy=.45774648/8=.05721831>.05. The same reciprocal check across all45 contrasts in eTables7–8 leaves the other44 within the display-precision threshold; the method reproduces the other rows under that rule. Ceiling the reciprocal of the printed percentage centers6.99300699 gives7, but the true unrounded reciprocal may lie as high as7.04225352, whose ceiling is8. Thus an unstated upward-integer convention remains an alternative for this row too; no ceiling rule is assumed for the half-unit reproduction comparison. Endpoint uncertainty of the NNT confidence interval is not recomputed because the risk-difference variance is absent.
+
+**Focus area:** B, estimate and test logic; C, statistical method logic.
+**Proposed review domain:** statistical_results.
+**Qualifying route:** Route A, category 4.
+**Affected result or extracted value:** The PT-versus-UC adjusted NNT for pain-severity MCID at6 months among participants randomized after3/31/2022.
+**Why context does not resolve it:** The specified reciprocal method reproduces the other rows within the scope threshold, but this printed8 remains separated by more than5% after input/output display precision. The printed result is an always-register reproducing-method discrepancy.
+
+**Alternatives and missing definitions:** The NNT may have been calculated from another risk-difference estimand or model despite footnote d, or a different percentage pair may have been used. The printed row and footnote do not disclose another calculation. This card does not prescribe a replacement value.
+
+**Exact human question:** What risk difference and calculation produced the printed NNT8 for the reminder-letter 6-month PT-versus-UC comparison, and is it the reciprocal of the same adjusted percentages printed in that row?
+
+## Excluded observations
+
+Only apparent issues decided against emission are listed; checks that reconcile remain in the S records.
+
+| Location | Observation | Reason code |
+|---|---|---|
+| DOC-005 PDF p.7, eTable 1 completeness patterns; DOC-006 eTable 3 B3:E3 | Pattern counts 188+283+1568=2039 versus any-followup 2036; PT 644 vs 643 and HC 692 vs 690; implied visits 5458 vs 5449; workbook missing 1-or-2 is 468 versus 188+283=471. Half-unit pattern-total interval [2037.5,2040.5] versus [2035.5,2036.5] leaves gap 1/2036=.000491; visit totals [5455,5461] versus [5447.5,5450.5] leave gap 4.5/5449=.000826; the workbook comparison [470,472] versus [467.5,468.5] leaves gap 1.5/468=.003205. All are ≤.05; arm-total intervals overlap. The pattern is listed once. | ROUNDING_OR_DISPLAY_PRECISION |
+| DOC-005 PDF pp.11/14, eTables7–8, other NNT point estimates | All44 reciprocal NNT comparisons other than F-ST1-206 either overlap under half-unit input/output intervals or have remaining relative gaps≤.05. Largest excluded gap: reminder-letter6M HC/UC NNT6 versus reciprocal[5.154639,5.208333], printed[5.5,6.5], relative.048611. Other apparent NNT differences are one consolidated display-precision pattern. | ROUNDING_OR_DISPLAY_PRECISION |
+| DOC-005 PDF p.8, eTable3, quantitative CI-width/P diagnostics beyond the seven null conflicts | A normal-Wald diagnostic SE=(upper−lower)/(2×1.96), then two-sided P from estimate/SE, yields differences for additional rows (for example Time6M estimate.13,CI.07–.19 gives diagnostic z4.247 and Pabout.000022 versus.025). Coefficient-test family, degrees of freedom and interval construction are not stated; a specific exact numerical test cannot be established. The seven direct CI-null/P conflicts remain emitted separately as F-ST1-201. | CONDITIONAL_OR_UNREPORTED |
+| DOC-005 PDF p.8, eTable3, arm coefficients versus improvement direction | Positive imputation coefficients cannot alone be interpreted as worse clinical response without a supplied sign convention for the imputation change, the missingness-pattern conditioning and the complete covariate context. No direct printed direction statement for these conditional coefficients conflicts. | CONDITIONAL_OR_UNREPORTED |
+| DOC-005 PDF pp.5/9/10, weight normalization description and sums | “Scaled to the study sample size” could be read as2331 rather than2036, but eTable6 explicitly sums to2036, eTable4 to3×2036=6108, and imputation is among any-followup participants. These immediate displays identify the analysis sample for the scaling statement. | CONTEXT_RESOLVES |
+| DOC-005 PDF p.7, eTable2 all-model list versus pp.4/8/9 | Baseline pain severity is omitted from eTable2's base-variable list, but the adjustment narrative and both complete primary model displays explicitly include it. Its applied inclusion is immediately identifiable and the omission changes no extractable coefficient assignment. | CONTEXT_RESOLVES |
+| DOC-005 PDF p.15, eTable9 title | Title says “adjusted relative risk,” but the page explicitly says no adjustment, weighting or imputation, the coefficient heading says Relative Risk, and footnote b says “without adjustment.” The intended unadjusted analysis is immediately identified; point estimates also agree with the unadjusted proportions. | TERMINOLOGY_OR_WORDING |
+| DOC-005 PDF p.16, eTable10 descriptive median heading versus mean-effect footnote | Group medians/IQRs do not need to reproduce between-group mean differences. The effect columns explicitly name means and95%CIs, while the descriptive columns name medians/IQRs; this distinction identifies the quantities a reader extracts. No direct numeric contradiction is established. | CONTEXT_RESOLVES |
+| DOC-005 PDF p.3, eFigure1 Virtual Coach/VC labels | Virtual Coach names the Health Coach intervention in the surrounding three-arm trial context; no numeric result is attributed to a different intervention. | TERMINOLOGY_OR_WORDING |
+
+## Checks and limitations
+
+All coefficient, treatment, sensitivity and unadjusted-result tuples in the assigned scope were checked for point containment, endpoint order and direction. All individual CI/P null-level conflicts are registered above. Omnibus P values were matched to their three-arm Wald tests; they were not compared as individual pairwise P values. Printed NNT positive/negative limits were interpreted as the explicitly defined infinity-containing branches, not reversed finite intervals.
+
+The source supplies two-sided α=.05 and95% intervals. It does not supply numeric coefficient standard errors, numeric test statistics, coefficient-test degrees of freedom or full covariance matrices. Exact P/SE/statistic compatibility beyond direct null-level conflicts is consequently not asserted; diagnostic approximations are labeled. The assigned supplement has no power/sample-size calculation, noninferiority/equivalence margin or statistical interim/stopping boundary. Fidelity thresholds in DOC-004 concern treatment delivery, not statistical trial stopping.
+
+No scientific source-coverage gap remains in this assigned scope. Unlabeled histogram bins provide visual direction only, not exact counts. Workbook conversion to PDF is unavailable, but direct cell extraction supplies truthful worksheet/cell locations. Primary durable outputs: statistics/parts/reports_inventory.md and checkers/parts/stat1_reports.md. Fresh renders and Office extraction, with CPU PyMuPDF1.26.4 and the permitted Office helper, are under preprocessing/stat1_reports.
+
+
+
+<!-- Complete checker part: plans -->
+
+# Statistical pass 1 — complete PLAN shard
+
+Fresh runtime task `/root/stat1_plans`, gpt-6.1-sol/high; the coordinator records the actual tool-returned runtime agent ID. Exact scope: DOC-002 protocol physical PDF pp.1–77 and DOC-003 SAP physical PDF pp.1–29, all inferential/statistical/method/design relationships. Stable inventory: S401 through S464, 64 records, all explicitly PASS_1_COMPLETE. Findings: 0. Excluded observations: 10. No candidate IDs, dispositions or final corrections are assigned.
+
+QUALITY_CONTROL_SCOPE.md and the complete 1.6.2 review contract were read; the performance profile, settings and report specification were also read. Only current fresh maps, supplied sources and their current fresh renders supplied scientific input. Source roles are PLAN for both documents, determined by their prospective content. Source-confirmed critical pages and calculations are recorded in statistics/parts/plans_inventory.md.
+
+The checked families include all primary/secondary/exploratory endpoint rows; randomization and strata; ITT, safety and conditional as-treated populations; every primary and subgroup sample-size/power tuple; the omnibus/pairwise gate, sidedness and significance; longitudinal mean-model equation, relative-risk estimand, adjustment and robust variance logic; missing-data patterns and sensitivities; seven subgroup definitions/interactions; mediation steps, equations, selection rule and weights; economic estimands, net-benefit equation, cost categories and sensitivities; safety ascertainment, halting and interim rules. All protocol/SAP pages, including histories, covers, administrative material and references, are covered through the complete current maps. Historical inferential quantities were distinguished from trial results.
+
+## Findings
+
+No qualifying finding was emitted within this disjoint PLAN statistical scope. This does not state a package-wide candidate count. REPORT fitted-estimate/test relationships and planned-versus-reported outcome/status/analysis judgments remain in their assigned peer scopes. A new pass-2 agent must revisit every stable S ID and every exclusion after the complete ledger, screen and mechanical recheck exist.
+
+## Excluded observations
+
+| Location | Observation | Reason code |
+|---|---|---|
+| PLAN DOC-002 PDF p.55, section15.1 and subgroup power table; PLAN DOC-003 PDF p.16, section5; REPORT DOC-001 PDF p.4, Sample Size, selectively read as context | A simple independent-proportion normal diagnostic yields567.072/arm rather than621; continuity-correction diagnostic593.439/arm. Subgroup diagnostics also depend on routine. Neither normal algorithm is stated; the REPORT explicitly describes10,000 modified-Poisson simulations. The necessary simulation inputs and success definition are absent, and no chosen diagnostic is established as a method reproducing other rows of this display. This is an approximation-dependent observation rather than reproduced stated-method conflict. | CONDITIONAL_OR_UNREPORTED |
+| PLAN DOC-002 PDF p.55; PLAN DOC-003 PDF p.16, narrative and power table | “Relative change150%” and the subgroup “Relative Change” values206.7/184.7/172.0% are explicitly defined by the table as active/UC ratio. Values and arithmetic reconcile; the label versus percentage-increase terminology does not change the available ratio or response rates. | TERMINOLOGY_OR_WORDING |
+| PLAN DOC-002 PDF p.22 and DOC-003 PDF p.11, binary interference responder row, brief-description cell | The description uses “pain intensity” while the row label and same sentence explicitly specify the7-item interference subscale and30% reduction. The intended scale is evident in that row. No printed number, composite definition or actual outcome status changes. | TERMINOLOGY_OR_WORDING |
+| PLAN DOC-002 PDF p.22 and DOC-003 PDF p.11, both binary subscale rows, measurement and timeframe cells; corroborating PLAN DOC-002 p.57/DOC-003 p.21 | Measurement cells list baseline,6,12-months while the immediately adjacent timeframe cells explicitly include primary baseline-to-3-months. The same displays identify the3-month analysis; subsequent analysis text confirms3-month primary time for secondary outcomes. No outcome is absent from the supplied plan and no numerical result conflicts. | CONTEXT_RESOLVES |
+| PLAN DOC-002 PDF p.25, moderator introduction, versus pp.57–58, section15.7; PLAN DOC-003 pp.14,22 | Protocol table relates moderators to6-month severity MCID; analysis paragraph identifies3-month interaction comparison, and SAP says primary outcome/3-months. This is an ancillary plan-internal moderator-time comparison without a reported subgroup result in the current REPORT map. It does not alter the trial's primary3-month severity definition or sample size; planned-versus-reported omission/status screening is separately assigned to the cross-source checker. | PERIPHERAL_COMPARISON |
+| PLAN DOC-003 PDF p.23, Step3a narrative, equation and inverse-probability weights | Narrative mentions baseline-confounder adjustment while the displayed logistic equation and weights show selected mediators without a Z term. The difference concerns the ancillary mediation method, for which no fitted mediation result is reported in the current REPORT map. It has no supplied numerical effect on primary/key-secondary results, population size or primary decision rule. Planned-versus-reported mediation omission/status screening is separately assigned. | PERIPHERAL_COMPARISON |
+| PLAN DOC-002 PDF pp.27,47,58; PLAN DOC-003 PDF pp.15,22–23 | Mediation prose says baseline-to-3-month changes for all three mediators, but perceived support is explicitly collected at notification of randomization and3-months. Protocol p.47 expressly says the notification survey serves as baseline potential mediator; the intended origin is stated. | CONTEXT_RESOLVES |
+| PLAN DOC-002 PDF p.5 amendment history versus p.32 current eligibility; PLAN DOC-003 PDF pp.3,17 | Protocol history says two pain encounters at least30-days apart; current protocol/SAP eligibility says>60 days and SAP amendment specifies60 days. The history/current comparison does not demonstrate a changed actual effectiveness-population size, primary/key-secondary result or decision rule. Actual reported eligibility/population matching remains assigned cross-source scope. | PERIPHERAL_COMPARISON |
+| PLAN DOC-002 PDF p.61, qualitative frameworks section16 | RE-AIM/TFA component/domain count descriptions differ from the named list lengths. These framework descriptions do not represent trial participant/event counts, power inputs or statistical result/decision quantities. They fall outside the four quantitative focus areas. | OUT_OF_FOCUS |
+| PLAN DOC-002 PDF p.50, systematic SAE review description; PLAN DOC-003 PDF p.3 amendment and p.26 current safety text, with SAP precedence p.10 | Routine hospitalization chart-review differs between protocol and current SAP, but the SAP amendment explicitly removes it and current text preserves death review and conditional hospitalization review. This is a disclosed procedural update; event definitions and the stated descriptive safety analysis remain clear. | CONTEXT_RESOLVES |
+
+Source evidence: [DOC-002 p.55](../../../joi250046supp1_prod_1755300121.14087.pdf#page=55), [DOC-003 p.16](../../../joi250046supp2_prod_1755300121.15087.pdf#page=16), [DOC-001 p.4](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4), [DOC-002 p.22](../../../joi250046supp1_prod_1755300121.14087.pdf#page=22), [DOC-003 p.11](../../../joi250046supp2_prod_1755300121.15087.pdf#page=11), [DOC-002 p.25](../../../joi250046supp1_prod_1755300121.14087.pdf#page=25), [DOC-002 p.58](../../../joi250046supp1_prod_1755300121.14087.pdf#page=58), [DOC-003 p.23](../../../joi250046supp2_prod_1755300121.15087.pdf#page=23), [DOC-002 p.47](../../../joi250046supp1_prod_1755300121.14087.pdf#page=47), [DOC-003 p.15](../../../joi250046supp2_prod_1755300121.15087.pdf#page=15), [DOC-002 p.5](../../../joi250046supp1_prod_1755300121.14087.pdf#page=5), [DOC-002 p.32](../../../joi250046supp1_prod_1755300121.14087.pdf#page=32), [DOC-003 p.3](../../../joi250046supp2_prod_1755300121.15087.pdf#page=3), [DOC-003 p.17](../../../joi250046supp2_prod_1755300121.15087.pdf#page=17), [DOC-002 p.61](../../../joi250046supp1_prod_1755300121.14087.pdf#page=61), [DOC-002 p.50](../../../joi250046supp1_prod_1755300121.14087.pdf#page=50), [DOC-003 p.26](../../../joi250046supp2_prod_1755300121.15087.pdf#page=26), [DOC-003 p.10](../../../joi250046supp2_prod_1755300121.15087.pdf#page=10).
+
+## Limits and coverage
+
+No actual-trial fitted estimate/CI/P/test-statistic or standard error tuple is printed in these prospective PLAN documents. Historical OR intervals contain their point estimates and have ordered endpoints. No trial noninferiority/equivalence margin or formal efficacy/futility interim boundary occurs. Exact sample-size simulation, imputation/IPW coefficients, covariance/df, mediation fitted values and economic links are not supplied; no convention was used to fill them. Native/layout glyph encoding is covered by current complete visual maps and targeted source-page reading, with no assigned scientific unit gap. Diagnostic approximations are labelled and do not replace source analyses. Preserved source files were not changed; no web or external literature was used.
+
+Durable handoff: statistics/parts/plans_inventory.md and checkers/parts/stat1_plans.md. Exact S set: S401,S402,S403,S404,S405,S406,S407,S408,S409,S410,S411,S412,S413,S414,S415,S416,S417,S418,S419,S420,S421,S422,S423,S424,S425,S426,S427,S428,S429,S430,S431,S432,S433,S434,S435,S436,S437,S438,S439,S440,S441,S442,S443,S444,S445,S446,S447,S448,S449,S450,S451,S452,S453,S454,S455,S456,S457,S458,S459,S460,S461,S462,S463,S464.
+
+
+<!-- Complete checker part: raw -->
+
+# Statistical pass 1 — raw-score shard
+
+Fresh runtime task: /root/stat1_raw; model gpt-6.1-sol; reasoning effort high. Pass: 1. Exact assigned scope: REPORT DOC-005 eTable 11, physical PDF pp.17–18, all21 rows and all columns/notes. Context read solely for these relationships: REPORT DOC-005 pp.2,4–5,15 and REPORT DOC-001 pp.4,11. Complete relationship record: statistics/parts/raw_inventory.md, S601–S626, each PASS_1_COMPLETE.
+
+Direct source p17 and p18 were rendered afresh with pinned fallback PyMuPDF1.26.4, CPU,200dpi, and visually read. P15 and main p11 finding contexts were also rendered and visually read. No web, external literature, prior candidates or prior checker conclusions were used. No plan inconsistency is asserted. All21 row tuples,63 mean-difference estimate/CI tuples,63 raw central-summary/percentile tuples and21 omnibus Ps were checked. All model point estimates are inside ordered CIs; raw centers lie in ordered percentile ranges; contrast additivity is compatible with rounding. There is no SMD in this display and no pairwise P, printed test statistic or standard error.
+
+## Findings
+
+### F-ST1-601
+
+**Title:** Several raw PGIC values labeled as medians do not reproduce as medians of the specified single seven-category item.
+
+**Exact locations and roles:** REPORT [DOC-005 p17, eTable11 title and Raw Score Median (25%-tile,75%tile) header, PGIC–Pain 6/12months PT and 12months UC; PGIC–General 3months PT and 6months UC](../../../joi250046supp4_prod_1755300121.15587.pdf#page=17). REPORT [DOC-001 p11, Table3 footnotes h/i](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11) defines both PGIC outcomes as one item, range1–7, with seven response scores enumerated1,2,3,4,5,6,7. REPORT [DOC-005 p15, Additional Unadjusted Data and Analyses](../../../joi250046supp4_prod_1755300121.15587.pdf#page=15) describes eTable11 as providing unadjusted mean secondary outcomes and specifies no adjustment, weighting or imputation. REPORT [DOC-005 p18 note b](../../../joi250046supp4_prod_1755300121.15587.pdf#page=18) identifies the between-group quantities as linear-GEE means/95%CIs; it does not redefine raw-score medians.
+
+**Printed values:** PGIC–Pain PT6months2.8(2.7,2.9), PT12months2.8(2.7,2.9), UC12months2.2(2.1,2.3); PGIC–General PT3months2.7(2.6,2.7), UC6months1.8(1.7,1.9). These treatment assignments follow the printed raw PT/HC/UC headings exactly, without permutation.
+
+**Rule and reproduced calculation:** For an observed sample of responses in the stated score set {1,2,3,4,5,6,7}, an ordinary empirical median is an observed middle category when odd, or the average of the two middle categories when even. Its possible values therefore lie in {1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7}. The seven category scores are exact definitions, not rounded observations. Allow each printed one-decimal raw center its half-unit rounding interval. Distance to the closest eligible median yields:
+
+| Exact eTable11 raw location | Printed center | Printed interval | Closest eligible median | Gap | Relative discrepancy |
+|---|---:|---|---:|---:|---:|
+| PGIC–Pain,6months,PT | 2.8 | [2.75,2.85] | 3.0 | 0.15 | 0.05357 |
+| PGIC–Pain,12months,PT | 2.8 | [2.75,2.85] | 3.0 | 0.15 | 0.05357 |
+| PGIC–Pain,12months,UC | 2.2 | [2.15,2.25] | 2.0 | 0.15 | 0.06818 |
+| PGIC–General,3months,PT | 2.7 | [2.65,2.75] | 2.5 | 0.15 | 0.05556 |
+| PGIC–General,6months,UC | 1.8 | [1.75,1.85] | 2.0 | 0.15 | 0.08333 |
+
+The relative gaps are each greater than0.05. This is a check of the stated score and labeled statistic; it does not calculate or substitute a preferred analysis and does not assume that a median equals a model mean. An interpolation or score transformation that permits these medians has not been supplied for the single-item PGIC raw scores.
+
+**Focus area:** C, statistical method logic and effect-summary identity.
+
+**Proposed review domain:** statistical_results.
+
+**Proposed relationship type:** S_C. **All relationships:** S_C,S_W. The supplied main REPORT defines the PGIC scale; the results supplement REPORT labels and prints the summary. The supplement's own mean description is an additional S_W quantity-definition tension. No PLAN document is a conflicting party.
 
 **Qualifying route:** Route B.
 
-**Affected result or extracted value:** The adjusted secondary intensity/interference MCID RRs and the adjusted between-group continuous intensity, interference, social-function and physical-function differences and intervals in Tables 2–3; these outcomes also appear in the abstract and therefore are key secondary under this workflow.
+**Affected result or extracted value:** Raw PGIC–Pain and PGIC–General outcome summaries at the five listed treatment/timepoint locations, and whether a data extractor should treat each center and pair of bounds as a median/IQR or another summary.
 
-**Why context does not resolve it:** The plan and report identify different covariate sets for the same outcome/time contrasts. The phrase “same proposed approach as Aim 1” establishes shared modeling structure, but does not specify the additional own-baseline covariate later described in the REPORT. Which planned covariate set produced the tabulated results matters for analysis extraction.
+**Why context does not resolve it:** B1: the discrepancy concerns the statistical identity of specific reported outcome values. B2: the table explicitly labels median/percentiles, while its introductory paragraph refers to means; the linear-GEE note describes only between-group differences. No supplied score transformation or median construction explains the five values on the defined single-item scale. B3: median/IQR versus mean/interval is a different extracted quantity and determines which summary can be used in evidence synthesis. The source does not identify the intended statistic at once.
 
-**Source-grounded alternatives and missing definition:** The plan's listed covariates may have been intended as a minimum rather than an exhaustive list, or own-baseline secondary adjustment may have been understood as part of that shared approach. A separate prespecified expansion is not supplied. The REPORT explicitly discloses its adjustment, so this finding does not assert that the fitted result is unidentified or that a different analysis should have been used.
+**Alternatives and missing definitions:** The raw columns could be means with uncertainty intervals, consistent with the supplement p15 description; they could instead summarize a transformed PGIC score or a defined interpolated/aggregate quantity. The supplied text does not identify such a raw-score transformation, the median rule, or an interval construction for those raw columns. In the set-valued mathematical definition of a median, any point between two middle observations can be a median; the calculation above uses the ordinary empirical rule of their average. A disclosed alternative interpolation could therefore resolve the numerical restriction. No raw data identify those middle observations. This is a limitation for the independent inclusion screen, rather than an assertion that all possible median definitions exclude the printed centers. The between-group GEE contrasts remain distinct quantities and are not themselves challenged by this finding. A diagnostic column-permutation pattern is recorded separately in S624; it is not assumed in the calculation above.
 
-**Exact human question:** Were the distinct baseline intensity, interference and PROMIS function covariates prospectively included in the secondary models, and how should the explicit REPORT addition be reconciled with the protocol/SAP secondary covariate paragraph?
+**Exact human question:** For the five PGIC raw-score entries listed above, what score and summary statistic produced the centers and bounds: empirical medians/interquartile ranges of the defined1–7 item, means with intervals, or a transformed/aggregate score? Please identify the applicable definition and confirm which statistic a data extractor should take from the raw-score columns.
 
-## Excluded observations
-
-| Location | Observation | Reason code |
-|---|---|---|
-| PLAN protocol pp22–23; SAP p11; explicit secondary analysis protocol p57/SAP p21 | Intensity/interference MCID measured-by cells omit 3 months while time-frame cells and explicit analysis specify 3 months; immediate analysis text supplies intended collection/analysis time. | CONTEXT_RESOLVES |
-| PLAN protocol p22; SAP p11 | Interference MCID description repeats the word intensity, but the row names interference and the 7-item interference subscale; the intended endpoint is immediate. | TERMINOLOGY_OR_WORDING |
-| PLAN protocol p25 versus pp57–58; SAP pp14,22 | Moderator overview says 6 months while operative interaction paragraph says primary comparison 3 months; no reported moderator result depends on either in this efficacy package. | PERIPHERAL_COMPARISON |
-| PLAN protocol p27/SAP p15 versus protocol p58/SAP pp22–23 | Perceived support is measured at notification rather than baseline while mediation prose describes baseline-to3-month change; mediation results are absent and this is outside primary analysis used by this report. | PERIPHERAL_COMPARISON |
-| PLAN SAP p23 | Mediation Step3a prose adjusts baseline confounders but printed assignment formula omits them; no reported mediation result uses this model. | PERIPHERAL_COMPARISON |
-| PLAN protocol p5 versus p32; SAP pp3,17; REPORT main p2 | Historical KP encounter-separation amendment30 days versus operative>60 days; report follows operative>60 days and supplied evidence does not establish a changed analysis-population size or primary decision rule. | PERIPHERAL_COMPARISON |
-| PLAN SAP p4; REPORT results supplement pp4,6 | Amendment rationale missing-all12.1% versus reported12.7%; the rationale is a historical missingness summary, not a conflicting primary result or analyzed population count. | PERIPHERAL_COMPARISON |
-| PLAN protocol/SAP power tables pp55/16 | “Relative change” might be read as percentage increase, but table explicitly defines it as %Intervention/%UC;150%,206.7%,184.7%,172% reconcile as ratios. | TERMINOLOGY_OR_WORDING |
-| PLAN primary sample-size passages; REPORT main p4 | Simple two-arm independent-proportion normal approximation need not give exactly621/arm, but reported power uses10000modified-Poisson simulations with LSD gate. Exact simulated power event/third-arm configuration are absent; no source-supported reproducing calculation is available. | CONDITIONAL_OR_UNREPORTED |
-| PLAN SAP pp18,21; REPORT main p5 | Broad all-randomized wording versus exclusion of two UC EHR-ineligible participants: SAP separately qualifies eligible subjects, and the report flow explicitly locates the exclusions. This reading is immediately resolved by population qualification. | CONTEXT_RESOLVES |
-| PLAN SAP pp19–20; REPORT results supplement pp4–7 | Additional predictor-selection thresholdP<.10 and exact imputation/weight covariates are detailed in REPORT but not fully in SAP. These additional variables are expressly described as selected rather than all prespecified; absent detail alone is not a finding. This does not subsume the age-prespecification issue. | CONDITIONAL_OR_UNREPORTED |
-
-## Coverage, reconciled checks and limitations
-
-Every assigned inferential relationship is recorded in statistics/parts/relationship_inventory_plans.md. Reconciled checks include primary endpoint status, 11-item composite, 30% threshold and 3-month time; 6/12-month secondary times; all abstract secondary outcomes and their planned status; allocation and strata; modified-Poisson RR family/link and GEE variance rationale; power input arithmetic and retention; hierarchy and LSD omnibus gate; explicit missing-data trigger and IPW amendment; worst/best-case sensitivity; after 8/9/2021 onboarding sensitivity; as-treated conditional rule; adherence 75%=6/8; planned safety descriptives/no formal testing; and no formal efficacy/futility interim analysis. No numerical interval/test conflict is printed in this PLAN scope. The planned mediation/economic specifications were completely inventoried, but absent result implementations were not invented. No broad study-design, clinical or preferred-analysis review was performed.
-
-All106 assigned PLAN physical pages are covered by fresh source maps and this complete planned relationship inventory. Bibliography and administrative units do not add original inferential results. Exact power simulation details are absent, so no unsupported sample-size contradiction is claimed. No scientific coverage gap. Findings concern supplied textual analysis specifications, with source-grounded alternatives for independent screening and human adjudication.
-# Statistical pass 1 — raw-score REPORT shard
-
-Agent runtime task: /root/statistics_pass_1_raw. Fixed model: gpt-6.1-sol; reasoning effort: high; FRESH_SPAWN. Exact assigned scope: DOC-005 eTable11 physical pp17–18, all21 outcome/time rows, all63 raw group summaries, all63 mean-difference/95%CI pairs, all21 omnibus P values and source headers/footnote. DOC-001 p11 Table3 h/i was inspected solely to establish the global-impression measurement definition. Complete relationship records: statistics/parts/relationship_inventory_raw.md, S401–S422, every relationship PASS_1_COMPLETE; pass2 pending. Finding count1; excluded-observation count3.
-
-The complete QUALITY_CONTROL_SCOPE.md and workflow_1_6_2/review_contract.md were read. The current routing preflight is PASS and tooling record establishes direct Poppler tools with CPU processing. Sources and reusable evidence were preserved; no old scientific selection record or web source was used. New direct layout text and CPU page renders at preprocessing/stat1_raw/ were visually inspected. The source images confirm the source's explicit distinction between median/quartile group columns and GEE mean-difference/CI columns.
-
-## Checked results
-
-Every one of the63 contrast estimates lies within its ordered interval. Every group median lies within its ordered printed quartiles. All21 linear-contrast transitivity comparisons reconcile after half-unit rounding (interval gap0). Every significant omnibus P is accompanied by at least one null-excluding contrast CI; physical3mo P=.212 and all three contrast intervals include0. An omnibus P and an individual contrast CI have different hypotheses, so they were not mechanically equated. Unreported test statistics, covariance, sidedness and degrees of freedom were not inferred. Rounded−0.0/0.0 interval endpoints do not establish an unprinted individual-contrast P value. There are no noninferiority/equivalence margins or interim/stopping conclusions in this table. Individual contrasts were not obtained by subtracting medians. No exact Wald-P diagnostic is presented as reproduction of a reported analysis.
-
-### F-ST1-401
-
-**Title:** Global-impression raw-score summaries do not consistently match the printed median quantity.
-
-**Relationships:** S417, S418, S419, S420, S422. **Compared locations and document roles:** REPORT DOC-005 [eTable11, physical p17](../../../joi250046supp4_prod_1755300121.15587.pdf#page=17), title and “Raw Score Median (25%-tile, 75%tile)” header versus five cells listed below; REPORT DOC-001 [Table3 footnotes h/i, physical p11](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=11), which defines both global-impression outcomes as one item with response categories1–7. REPORT DOC-005 [physical p18 footnote b](../../../joi250046supp4_prod_1755300121.15587.pdf#page=18) describes linear-GEE mean differences and CIs but does not redefine the group-summary columns.
-
-**Printed values/statements:** The median header applies to every group summary, including Global Impression–Pain PT6mo2.8(2.7,2.9), PT12mo2.8(2.7,2.9), UC12mo2.2(2.1,2.3); Global Impression–General PT3mo2.7(2.6,2.7), UC6mo1.8(1.7,1.9). The main footnotes state one item, range1–7, with seven integer response categories from “much better” through “much worse.” Other cells include3mo HC2.0(1.0,3.0) for pain and2.0(1.0,2.0) for general, which are compatible with genuine medians/quartiles and prevent simply assuming a uniform mean/CI summary without clarification.
-
-**Rule and calculation:** For raw single-item integer responses, an ordinary sample median is an integer (odd sample size) or the average of two integers (even size), hence belongs to {1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7}. The printed one-decimal median is allowed its ±0.05 interval. The permissible median values are exact values implied by the categorical source definition, rather than rounded input estimates. The nearest permissible value is used, making the test conservative.
-
-| Exact eTable11 cell, REPORT p17 | Printed median | Allowed printed interval | Closest permissible median / exact interval | Remaining gap | Relative discrepancy |
-|---|---:|---|---|---:|---:|
-| Global pain6mo, PT column | 2.8 | [2.75,2.85] | 3.0 / [3.0,3.0] | 0.15 | 0.15/2.8=0.05357 |
-| Global pain12mo, PT column | 2.8 | [2.75,2.85] | 3.0 / [3.0,3.0] | 0.15 | 0.05357 |
-| Global pain12mo, UC column | 2.2 | [2.15,2.25] | 2.0 / [2.0,2.0] | 0.15 | 0.15/2.2=0.06818 |
-| Global general3mo, PT column | 2.7 | [2.65,2.75] | 2.5 / [2.5,2.5] | 0.15 | 0.15/2.7=0.05556 |
-| Global general6mo, UC column | 1.8 | [1.75,1.85] | 2.0 / [2.0,2.0] | 0.15 | 0.15/1.8=0.08333 |
-
-The five remaining gaps exceed0.05 relative discrepancy. This is a reproduced incompatibility of numeric group-summary values with their declared quantity, consolidated as one summary-definition pattern. No conclusion is drawn about the actual unprinted medians or about a mean-minus-median equality.
-
-**Focus area:** C (effect/summary-measure identity and analysis-to-number mapping), with B numeric interpretation. **Proposed review domain:** statistical_results. **Proposed relationship type:** S_C (all relationships S_C): the scale definition and reported median quantity occur in different REPORT documents. If the rechecker treats the main definition solely as corroboration of the meaning of the scale, S_W is a source-grounded alternative classification for the internal eTable11 header/cell conflict.
-
-**Qualifying route:** Route B. B1: the conflict concerns a reported statistical summary quantity. B2: the source does not explain whether fractional single-item values are raw medians, fitted/averaged scores, or a mixture of summaries. B3: the distinction affects extracting a median/IQR versus a mean/CI and using the printed global-impression group values in evidence synthesis.
-
-**Affected result or extracted value:** The five named global-impression group summaries, their summary statistic, and whether the parentheses denote quartiles as printed. This finding does not itself establish a change in any omnibus or pairwise inferential conclusion.
-
-**Why context does not resolve it:** Some3mo HC cells have integer medians with broad quartiles, while other cells have fractional centers incompatible with ordinary raw medians beyond the scope's display tolerance. The GEE footnote explicitly describes the between-group means and their CIs; it does not label the raw group cells as means or explain a mixed summary. A reader cannot choose the intended extraction quantity from the stated table definition alone.
-
-**Source-grounded alternatives and missing definition:** The linear-GEE analysis makes fitted means a possible interpretation of some fractional centers, but the source labels those group cells medians and the footnote only defines between-group estimates. The table could use different group summaries in different cells, or a transformed/interpolated/nonordinary median of another quantity, but such a procedure is not supplied. The required definition is the exact statistic producing each raw-score group center and its two accompanying limits, and whether any noninteger preprocessed responses entered this single-item summary. No replacement values or preferred method are proposed.
-
-**Exact human question:** What summary statistic and accompanying limits were used for the five named global-impression group cells in eTable11, and how do those definitions reconcile the fractional printed values with the stated raw-score median of a single1–7 response item?
+**Linked relationships:** S617,S618,S619,S620,S623.
 
 ## Excluded observations
 
+Only apparent issues decided not to emit are listed here. Reconciled checks are recorded in the S inventory.
+
 | Location | Observation | Reason code |
 |---|---|---|
-| DOC-005 REPORT eTable11 p17, all21 rows and p18 method | The displayed group-median differences often have a different direction/magnitude from GEE mean contrasts, suggesting a possible group-column pattern. Raw medians need not equal fitted means; no source establishes their equality, so a column permutation cannot be reproduced from subtracting these medians. | CONDITIONAL_OR_UNREPORTED |
-| DOC-005 REPORT eTable11 pp17–18 | Exact omnibus-P and CI-width reproduction would require covariance/variance/test implementation not supplied for this table. Missing inputs alone provide no conflicting printed numerical statement. | CONDITIONAL_OR_UNREPORTED |
-| DOC-005 REPORT eTable11 p17, remaining fractional global-impression medians2.9,2.1,1.9,1.6,2.6 | Distances to the nearest permissible ordinary median after ±0.05 display allowance are at most0.05 relative discrepancy; these individual cells do not independently reproduce the numeric threshold used for F-ST1-401. Integer2.0 and half-integer2.5 centers reconcile and are not excluded observations. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT DOC-005p17 PGIC remaining fractional raw centers: Pain PT3=2.9,UC3=1.9,HC6=2.1,UC6=2.1,HC12=2.1; General UC3=1.6,PT12=2.6,HC12=1.9,UC12=1.9 | These centers also fall between eligible ordinary single-item medians, but their half-unit interval gaps to the nearest eligible median are0.05 and relative discrepancies range0.0172–0.0313, at most0.05. These occurrences are outside the five-location finding under the display-precision rule. | ROUNDING_OR_DISPLAY_PRECISION |
+| REPORT DOC-005p17 all21 raw-summary/contrast rows, p15 intro, p18 note b | Subtracting raw centers under printed PT/HC/UC headings differs from many GEE mean contrasts. A diagnostic UC/PT/HC permutation of raw columns makes all21 contrast triples feasible within one-decimal rounding. However the raw centers explicitly represent medians and the contrasts model means; no supplied method establishes equality between the two. This numerical permutation alone does not reproduce an arm-label or mean-difference inconsistency. | CONDITIONAL_OR_UNREPORTED |
+| REPORT DOC-005p17 physical functioning6/12months omnibusP=.005/.001; contextual DOC-001p11 footnote c and DOC-005p15 intro | A diagnostic same-covariance normal-CI, joint two-contrast Wald reconstruction matches social3 and physical3 Ps within rounding but yields physical6 approximateP=.015–.040 and physical12 approximateP=.0036–.020. eTable11 does not specify its exact omnibus reference distribution/degrees of freedom, normal-versus-t CI rule, or whether omnibus and CIs use the same fitted covariance. An exact conflict cannot be asserted by importing these choices from convention or another display; no null/significance contradiction exists at .05. | CONDITIONAL_OR_UNREPORTED |
 
-## Limitations
+## Diagnostic details and limitations
 
-All assigned source cells and footnotes were inspected. The source does not supply individual records, group arithmetic means for this table, a fitted covariance matrix, per-row analysis counts or test statistics; no convention was substituted for these missing inputs. The finding concerns the printed summary quantity and named numeric cells, not a raw-data audit. Independent inclusion screening and exact-source mechanical recheck remain the coordinator's next stages.
+The omnibus diagnostic uses h=(upper−lower)/2, SE=h/1.959964, Var(c)=Var(a)+Var(b)−2Cov(a,b) for a=PT−UC,b=HC−UC,c=HC−PT, then a quadratic Wald statistic and a chi-square2 survival probability. This is expressly an approximation and is not the supplied eTable11 test definition. Numerical exploration allowed every printed estimate and CI endpoint its0.05 half-unit interval and constrained c=b−a and symmetric intervals around each estimate. A finite grid gave social3 P approximately0.00017–0.00182 and physical3 approximately0.1529–0.3124, both containing their printed three-decimal ranges; physical6 approximately0.01520–0.04009 and physical12 approximately0.00361–0.02028. These are diagnostic grid ranges, not certified global bounds, and no precise covariance, reference distribution or degrees of freedom are inferred as the source method. The diagnostic is preserved for fresh pass2 review rather than promoted as an exact calculation.
+
+The individual repeated measures and HC clustering are described in the main methods; eTable11 specifies linear GEE and no adjustment/weighting/imputation. This combination is internally coherent. Missing per-outcome sample counts, covariance, variance estimator and raw summary definition limit full mechanical reconstruction; the last is a source-grounded conflict for the PGIC finding, while other absent details alone are not findings. No noninferiority/equivalence/interim/stopping rule or conclusion occurs in the assigned scope. All21 source rows were covered and no scientific source-unit gap remains.
+
+Counts: pass1; exact display scope DOC-005pp17–18;26 stable S records;21 complete row tuples;1 consolidated finding;3 excluded-observation rows. Paths: statistics/parts/raw_inventory.md;checkers/parts/stat1_raw.md; fresh derivatives preprocessing/stat1_raw/.
+
+
+
+## Complete per-relationship pass1 completion index
+
+This mechanical index expands the exact active shard assignments. Every listed relationship has its complete source-linked facts, check result and missing definitions in its assigned inventory part; no new scientific conclusion is assigned by this index.
+
+| S ID | Fresh runtime | Status | Complete relationship record |
+|---|---|---|---|
+| S001 | root/stat1_main | PASS_1_COMPLETE | [S001 record](../statistics/parts/main_inventory.md) |
+| S002 | root/stat1_main | PASS_1_COMPLETE | [S002 record](../statistics/parts/main_inventory.md) |
+| S003 | root/stat1_main | PASS_1_COMPLETE | [S003 record](../statistics/parts/main_inventory.md) |
+| S004 | root/stat1_main | PASS_1_COMPLETE | [S004 record](../statistics/parts/main_inventory.md) |
+| S005 | root/stat1_main | PASS_1_COMPLETE | [S005 record](../statistics/parts/main_inventory.md) |
+| S006 | root/stat1_main | PASS_1_COMPLETE | [S006 record](../statistics/parts/main_inventory.md) |
+| S007 | root/stat1_main | PASS_1_COMPLETE | [S007 record](../statistics/parts/main_inventory.md) |
+| S008 | root/stat1_main | PASS_1_COMPLETE | [S008 record](../statistics/parts/main_inventory.md) |
+| S009 | root/stat1_main | PASS_1_COMPLETE | [S009 record](../statistics/parts/main_inventory.md) |
+| S010 | root/stat1_main | PASS_1_COMPLETE | [S010 record](../statistics/parts/main_inventory.md) |
+| S011 | root/stat1_main | PASS_1_COMPLETE | [S011 record](../statistics/parts/main_inventory.md) |
+| S012 | root/stat1_main | PASS_1_COMPLETE | [S012 record](../statistics/parts/main_inventory.md) |
+| S013 | root/stat1_main | PASS_1_COMPLETE | [S013 record](../statistics/parts/main_inventory.md) |
+| S014 | root/stat1_main | PASS_1_COMPLETE | [S014 record](../statistics/parts/main_inventory.md) |
+| S015 | root/stat1_main | PASS_1_COMPLETE | [S015 record](../statistics/parts/main_inventory.md) |
+| S016 | root/stat1_main | PASS_1_COMPLETE | [S016 record](../statistics/parts/main_inventory.md) |
+| S017 | root/stat1_main | PASS_1_COMPLETE | [S017 record](../statistics/parts/main_inventory.md) |
+| S018 | root/stat1_main | PASS_1_COMPLETE | [S018 record](../statistics/parts/main_inventory.md) |
+| S019 | root/stat1_main | PASS_1_COMPLETE | [S019 record](../statistics/parts/main_inventory.md) |
+| S020 | root/stat1_main | PASS_1_COMPLETE | [S020 record](../statistics/parts/main_inventory.md) |
+| S021 | root/stat1_main | PASS_1_COMPLETE | [S021 record](../statistics/parts/main_inventory.md) |
+| S022 | root/stat1_main | PASS_1_COMPLETE | [S022 record](../statistics/parts/main_inventory.md) |
+| S023 | root/stat1_main | PASS_1_COMPLETE | [S023 record](../statistics/parts/main_inventory.md) |
+| S024 | root/stat1_main | PASS_1_COMPLETE | [S024 record](../statistics/parts/main_inventory.md) |
+| S025 | root/stat1_main | PASS_1_COMPLETE | [S025 record](../statistics/parts/main_inventory.md) |
+| S026 | root/stat1_main | PASS_1_COMPLETE | [S026 record](../statistics/parts/main_inventory.md) |
+| S027 | root/stat1_main | PASS_1_COMPLETE | [S027 record](../statistics/parts/main_inventory.md) |
+| S028 | root/stat1_main | PASS_1_COMPLETE | [S028 record](../statistics/parts/main_inventory.md) |
+| S029 | root/stat1_main | PASS_1_COMPLETE | [S029 record](../statistics/parts/main_inventory.md) |
+| S030 | root/stat1_main | PASS_1_COMPLETE | [S030 record](../statistics/parts/main_inventory.md) |
+| S031 | root/stat1_main | PASS_1_COMPLETE | [S031 record](../statistics/parts/main_inventory.md) |
+| S032 | root/stat1_main | PASS_1_COMPLETE | [S032 record](../statistics/parts/main_inventory.md) |
+| S033 | root/stat1_main | PASS_1_COMPLETE | [S033 record](../statistics/parts/main_inventory.md) |
+| S034 | root/stat1_main | PASS_1_COMPLETE | [S034 record](../statistics/parts/main_inventory.md) |
+| S035 | root/stat1_main | PASS_1_COMPLETE | [S035 record](../statistics/parts/main_inventory.md) |
+| S036 | root/stat1_main | PASS_1_COMPLETE | [S036 record](../statistics/parts/main_inventory.md) |
+| S037 | root/stat1_main | PASS_1_COMPLETE | [S037 record](../statistics/parts/main_inventory.md) |
+| S038 | root/stat1_main | PASS_1_COMPLETE | [S038 record](../statistics/parts/main_inventory.md) |
+| S039 | root/stat1_main | PASS_1_COMPLETE | [S039 record](../statistics/parts/main_inventory.md) |
+| S040 | root/stat1_main | PASS_1_COMPLETE | [S040 record](../statistics/parts/main_inventory.md) |
+| S041 | root/stat1_main | PASS_1_COMPLETE | [S041 record](../statistics/parts/main_inventory.md) |
+| S042 | root/stat1_main | PASS_1_COMPLETE | [S042 record](../statistics/parts/main_inventory.md) |
+| S043 | root/stat1_main | PASS_1_COMPLETE | [S043 record](../statistics/parts/main_inventory.md) |
+| S044 | root/stat1_main | PASS_1_COMPLETE | [S044 record](../statistics/parts/main_inventory.md) |
+| S045 | root/stat1_main | PASS_1_COMPLETE | [S045 record](../statistics/parts/main_inventory.md) |
+| S046 | root/stat1_main | PASS_1_COMPLETE | [S046 record](../statistics/parts/main_inventory.md) |
+| S047 | root/stat1_main | PASS_1_COMPLETE | [S047 record](../statistics/parts/main_inventory.md) |
+| S048 | root/stat1_main | PASS_1_COMPLETE | [S048 record](../statistics/parts/main_inventory.md) |
+| S049 | root/stat1_main | PASS_1_COMPLETE | [S049 record](../statistics/parts/main_inventory.md) |
+| S050 | root/stat1_main | PASS_1_COMPLETE | [S050 record](../statistics/parts/main_inventory.md) |
+| S051 | root/stat1_main | PASS_1_COMPLETE | [S051 record](../statistics/parts/main_inventory.md) |
+| S052 | root/stat1_main | PASS_1_COMPLETE | [S052 record](../statistics/parts/main_inventory.md) |
+| S053 | root/stat1_main | PASS_1_COMPLETE | [S053 record](../statistics/parts/main_inventory.md) |
+| S054 | root/stat1_main | PASS_1_COMPLETE | [S054 record](../statistics/parts/main_inventory.md) |
+| S055 | root/stat1_main | PASS_1_COMPLETE | [S055 record](../statistics/parts/main_inventory.md) |
+| S056 | root/stat1_main | PASS_1_COMPLETE | [S056 record](../statistics/parts/main_inventory.md) |
+| S057 | root/stat1_main | PASS_1_COMPLETE | [S057 record](../statistics/parts/main_inventory.md) |
+| S058 | root/stat1_main | PASS_1_COMPLETE | [S058 record](../statistics/parts/main_inventory.md) |
+| S059 | root/stat1_main | PASS_1_COMPLETE | [S059 record](../statistics/parts/main_inventory.md) |
+| S060 | root/stat1_main | PASS_1_COMPLETE | [S060 record](../statistics/parts/main_inventory.md) |
+| S061 | root/stat1_main | PASS_1_COMPLETE | [S061 record](../statistics/parts/main_inventory.md) |
+| S062 | root/stat1_main | PASS_1_COMPLETE | [S062 record](../statistics/parts/main_inventory.md) |
+| S063 | root/stat1_main | PASS_1_COMPLETE | [S063 record](../statistics/parts/main_inventory.md) |
+| S064 | root/stat1_main | PASS_1_COMPLETE | [S064 record](../statistics/parts/main_inventory.md) |
+| S065 | root/stat1_main | PASS_1_COMPLETE | [S065 record](../statistics/parts/main_inventory.md) |
+| S066 | root/stat1_main | PASS_1_COMPLETE | [S066 record](../statistics/parts/main_inventory.md) |
+| S067 | root/stat1_main | PASS_1_COMPLETE | [S067 record](../statistics/parts/main_inventory.md) |
+| S068 | root/stat1_main | PASS_1_COMPLETE | [S068 record](../statistics/parts/main_inventory.md) |
+| S069 | root/stat1_main | PASS_1_COMPLETE | [S069 record](../statistics/parts/main_inventory.md) |
+| S070 | root/stat1_main | PASS_1_COMPLETE | [S070 record](../statistics/parts/main_inventory.md) |
+| S071 | root/stat1_main | PASS_1_COMPLETE | [S071 record](../statistics/parts/main_inventory.md) |
+| S072 | root/stat1_main | PASS_1_COMPLETE | [S072 record](../statistics/parts/main_inventory.md) |
+| S073 | root/stat1_main | PASS_1_COMPLETE | [S073 record](../statistics/parts/main_inventory.md) |
+| S074 | root/stat1_main | PASS_1_COMPLETE | [S074 record](../statistics/parts/main_inventory.md) |
+| S075 | root/stat1_main | PASS_1_COMPLETE | [S075 record](../statistics/parts/main_inventory.md) |
+| S076 | root/stat1_main | PASS_1_COMPLETE | [S076 record](../statistics/parts/main_inventory.md) |
+| S077 | root/stat1_main | PASS_1_COMPLETE | [S077 record](../statistics/parts/main_inventory.md) |
+| S078 | root/stat1_main | PASS_1_COMPLETE | [S078 record](../statistics/parts/main_inventory.md) |
+| S079 | root/stat1_main | PASS_1_COMPLETE | [S079 record](../statistics/parts/main_inventory.md) |
+| S080 | root/stat1_main | PASS_1_COMPLETE | [S080 record](../statistics/parts/main_inventory.md) |
+| S081 | root/stat1_main | PASS_1_COMPLETE | [S081 record](../statistics/parts/main_inventory.md) |
+| S082 | root/stat1_main | PASS_1_COMPLETE | [S082 record](../statistics/parts/main_inventory.md) |
+| S083 | root/stat1_main | PASS_1_COMPLETE | [S083 record](../statistics/parts/main_inventory.md) |
+| S084 | root/stat1_main | PASS_1_COMPLETE | [S084 record](../statistics/parts/main_inventory.md) |
+| S085 | root/stat1_main | PASS_1_COMPLETE | [S085 record](../statistics/parts/main_inventory.md) |
+| S086 | root/stat1_main | PASS_1_COMPLETE | [S086 record](../statistics/parts/main_inventory.md) |
+| S087 | root/stat1_main | PASS_1_COMPLETE | [S087 record](../statistics/parts/main_inventory.md) |
+| S088 | root/stat1_main | PASS_1_COMPLETE | [S088 record](../statistics/parts/main_inventory.md) |
+| S089 | root/stat1_main | PASS_1_COMPLETE | [S089 record](../statistics/parts/main_inventory.md) |
+| S090 | root/stat1_main | PASS_1_COMPLETE | [S090 record](../statistics/parts/main_inventory.md) |
+| S091 | root/stat1_main | PASS_1_COMPLETE | [S091 record](../statistics/parts/main_inventory.md) |
+| S092 | root/stat1_main | PASS_1_COMPLETE | [S092 record](../statistics/parts/main_inventory.md) |
+| S093 | root/stat1_main | PASS_1_COMPLETE | [S093 record](../statistics/parts/main_inventory.md) |
+| S094 | root/stat1_main | PASS_1_COMPLETE | [S094 record](../statistics/parts/main_inventory.md) |
+| S095 | root/stat1_main | PASS_1_COMPLETE | [S095 record](../statistics/parts/main_inventory.md) |
+| S096 | root/stat1_main | PASS_1_COMPLETE | [S096 record](../statistics/parts/main_inventory.md) |
+| S097 | root/stat1_main | PASS_1_COMPLETE | [S097 record](../statistics/parts/main_inventory.md) |
+| S098 | root/stat1_main | PASS_1_COMPLETE | [S098 record](../statistics/parts/main_inventory.md) |
+| S099 | root/stat1_main | PASS_1_COMPLETE | [S099 record](../statistics/parts/main_inventory.md) |
+| S100 | root/stat1_main | PASS_1_COMPLETE | [S100 record](../statistics/parts/main_inventory.md) |
+| S101 | root/stat1_main | PASS_1_COMPLETE | [S101 record](../statistics/parts/main_inventory.md) |
+| S102 | root/stat1_main | PASS_1_COMPLETE | [S102 record](../statistics/parts/main_inventory.md) |
+| S103 | root/stat1_main | PASS_1_COMPLETE | [S103 record](../statistics/parts/main_inventory.md) |
+| S104 | root/stat1_main | PASS_1_COMPLETE | [S104 record](../statistics/parts/main_inventory.md) |
+| S105 | root/stat1_main | PASS_1_COMPLETE | [S105 record](../statistics/parts/main_inventory.md) |
+| S106 | root/stat1_main | PASS_1_COMPLETE | [S106 record](../statistics/parts/main_inventory.md) |
+| S107 | root/stat1_main | PASS_1_COMPLETE | [S107 record](../statistics/parts/main_inventory.md) |
+| S108 | root/stat1_main | PASS_1_COMPLETE | [S108 record](../statistics/parts/main_inventory.md) |
+| S109 | root/stat1_main | PASS_1_COMPLETE | [S109 record](../statistics/parts/main_inventory.md) |
+| S110 | root/stat1_main | PASS_1_COMPLETE | [S110 record](../statistics/parts/main_inventory.md) |
+| S201 | root/stat1_reports | PASS_1_COMPLETE | [S201 record](../statistics/parts/reports_inventory.md) |
+| S202 | root/stat1_reports | PASS_1_COMPLETE | [S202 record](../statistics/parts/reports_inventory.md) |
+| S203 | root/stat1_reports | PASS_1_COMPLETE | [S203 record](../statistics/parts/reports_inventory.md) |
+| S204 | root/stat1_reports | PASS_1_COMPLETE | [S204 record](../statistics/parts/reports_inventory.md) |
+| S205 | root/stat1_reports | PASS_1_COMPLETE | [S205 record](../statistics/parts/reports_inventory.md) |
+| S206 | root/stat1_reports | PASS_1_COMPLETE | [S206 record](../statistics/parts/reports_inventory.md) |
+| S207 | root/stat1_reports | PASS_1_COMPLETE | [S207 record](../statistics/parts/reports_inventory.md) |
+| S208 | root/stat1_reports | PASS_1_COMPLETE | [S208 record](../statistics/parts/reports_inventory.md) |
+| S209 | root/stat1_reports | PASS_1_COMPLETE | [S209 record](../statistics/parts/reports_inventory.md) |
+| S210 | root/stat1_reports | PASS_1_COMPLETE | [S210 record](../statistics/parts/reports_inventory.md) |
+| S211 | root/stat1_reports | PASS_1_COMPLETE | [S211 record](../statistics/parts/reports_inventory.md) |
+| S212 | root/stat1_reports | PASS_1_COMPLETE | [S212 record](../statistics/parts/reports_inventory.md) |
+| S213 | root/stat1_reports | PASS_1_COMPLETE | [S213 record](../statistics/parts/reports_inventory.md) |
+| S214 | root/stat1_reports | PASS_1_COMPLETE | [S214 record](../statistics/parts/reports_inventory.md) |
+| S215 | root/stat1_reports | PASS_1_COMPLETE | [S215 record](../statistics/parts/reports_inventory.md) |
+| S216 | root/stat1_reports | PASS_1_COMPLETE | [S216 record](../statistics/parts/reports_inventory.md) |
+| S217 | root/stat1_reports | PASS_1_COMPLETE | [S217 record](../statistics/parts/reports_inventory.md) |
+| S218 | root/stat1_reports | PASS_1_COMPLETE | [S218 record](../statistics/parts/reports_inventory.md) |
+| S219 | root/stat1_reports | PASS_1_COMPLETE | [S219 record](../statistics/parts/reports_inventory.md) |
+| S220 | root/stat1_reports | PASS_1_COMPLETE | [S220 record](../statistics/parts/reports_inventory.md) |
+| S221 | root/stat1_reports | PASS_1_COMPLETE | [S221 record](../statistics/parts/reports_inventory.md) |
+| S222 | root/stat1_reports | PASS_1_COMPLETE | [S222 record](../statistics/parts/reports_inventory.md) |
+| S223 | root/stat1_reports | PASS_1_COMPLETE | [S223 record](../statistics/parts/reports_inventory.md) |
+| S224 | root/stat1_reports | PASS_1_COMPLETE | [S224 record](../statistics/parts/reports_inventory.md) |
+| S225 | root/stat1_reports | PASS_1_COMPLETE | [S225 record](../statistics/parts/reports_inventory.md) |
+| S226 | root/stat1_reports | PASS_1_COMPLETE | [S226 record](../statistics/parts/reports_inventory.md) |
+| S227 | root/stat1_reports | PASS_1_COMPLETE | [S227 record](../statistics/parts/reports_inventory.md) |
+| S228 | root/stat1_reports | PASS_1_COMPLETE | [S228 record](../statistics/parts/reports_inventory.md) |
+| S229 | root/stat1_reports | PASS_1_COMPLETE | [S229 record](../statistics/parts/reports_inventory.md) |
+| S230 | root/stat1_reports | PASS_1_COMPLETE | [S230 record](../statistics/parts/reports_inventory.md) |
+| S231 | root/stat1_reports | PASS_1_COMPLETE | [S231 record](../statistics/parts/reports_inventory.md) |
+| S232 | root/stat1_reports | PASS_1_COMPLETE | [S232 record](../statistics/parts/reports_inventory.md) |
+| S233 | root/stat1_reports | PASS_1_COMPLETE | [S233 record](../statistics/parts/reports_inventory.md) |
+| S234 | root/stat1_reports | PASS_1_COMPLETE | [S234 record](../statistics/parts/reports_inventory.md) |
+| S235 | root/stat1_reports | PASS_1_COMPLETE | [S235 record](../statistics/parts/reports_inventory.md) |
+| S236 | root/stat1_reports | PASS_1_COMPLETE | [S236 record](../statistics/parts/reports_inventory.md) |
+| S237 | root/stat1_reports | PASS_1_COMPLETE | [S237 record](../statistics/parts/reports_inventory.md) |
+| S238 | root/stat1_reports | PASS_1_COMPLETE | [S238 record](../statistics/parts/reports_inventory.md) |
+| S239 | root/stat1_reports | PASS_1_COMPLETE | [S239 record](../statistics/parts/reports_inventory.md) |
+| S240 | root/stat1_reports | PASS_1_COMPLETE | [S240 record](../statistics/parts/reports_inventory.md) |
+| S241 | root/stat1_reports | PASS_1_COMPLETE | [S241 record](../statistics/parts/reports_inventory.md) |
+| S242 | root/stat1_reports | PASS_1_COMPLETE | [S242 record](../statistics/parts/reports_inventory.md) |
+| S243 | root/stat1_reports | PASS_1_COMPLETE | [S243 record](../statistics/parts/reports_inventory.md) |
+| S244 | root/stat1_reports | PASS_1_COMPLETE | [S244 record](../statistics/parts/reports_inventory.md) |
+| S245 | root/stat1_reports | PASS_1_COMPLETE | [S245 record](../statistics/parts/reports_inventory.md) |
+| S246 | root/stat1_reports | PASS_1_COMPLETE | [S246 record](../statistics/parts/reports_inventory.md) |
+| S247 | root/stat1_reports | PASS_1_COMPLETE | [S247 record](../statistics/parts/reports_inventory.md) |
+| S248 | root/stat1_reports | PASS_1_COMPLETE | [S248 record](../statistics/parts/reports_inventory.md) |
+| S249 | root/stat1_reports | PASS_1_COMPLETE | [S249 record](../statistics/parts/reports_inventory.md) |
+| S250 | root/stat1_reports | PASS_1_COMPLETE | [S250 record](../statistics/parts/reports_inventory.md) |
+| S251 | root/stat1_reports | PASS_1_COMPLETE | [S251 record](../statistics/parts/reports_inventory.md) |
+| S252 | root/stat1_reports | PASS_1_COMPLETE | [S252 record](../statistics/parts/reports_inventory.md) |
+| S253 | root/stat1_reports | PASS_1_COMPLETE | [S253 record](../statistics/parts/reports_inventory.md) |
+| S254 | root/stat1_reports | PASS_1_COMPLETE | [S254 record](../statistics/parts/reports_inventory.md) |
+| S255 | root/stat1_reports | PASS_1_COMPLETE | [S255 record](../statistics/parts/reports_inventory.md) |
+| S256 | root/stat1_reports | PASS_1_COMPLETE | [S256 record](../statistics/parts/reports_inventory.md) |
+| S257 | root/stat1_reports | PASS_1_COMPLETE | [S257 record](../statistics/parts/reports_inventory.md) |
+| S258 | root/stat1_reports | PASS_1_COMPLETE | [S258 record](../statistics/parts/reports_inventory.md) |
+| S259 | root/stat1_reports | PASS_1_COMPLETE | [S259 record](../statistics/parts/reports_inventory.md) |
+| S260 | root/stat1_reports | PASS_1_COMPLETE | [S260 record](../statistics/parts/reports_inventory.md) |
+| S261 | root/stat1_reports | PASS_1_COMPLETE | [S261 record](../statistics/parts/reports_inventory.md) |
+| S262 | root/stat1_reports | PASS_1_COMPLETE | [S262 record](../statistics/parts/reports_inventory.md) |
+| S263 | root/stat1_reports | PASS_1_COMPLETE | [S263 record](../statistics/parts/reports_inventory.md) |
+| S401 | root/stat1_plans | PASS_1_COMPLETE | [S401 record](../statistics/parts/plans_inventory.md) |
+| S402 | root/stat1_plans | PASS_1_COMPLETE | [S402 record](../statistics/parts/plans_inventory.md) |
+| S403 | root/stat1_plans | PASS_1_COMPLETE | [S403 record](../statistics/parts/plans_inventory.md) |
+| S404 | root/stat1_plans | PASS_1_COMPLETE | [S404 record](../statistics/parts/plans_inventory.md) |
+| S405 | root/stat1_plans | PASS_1_COMPLETE | [S405 record](../statistics/parts/plans_inventory.md) |
+| S406 | root/stat1_plans | PASS_1_COMPLETE | [S406 record](../statistics/parts/plans_inventory.md) |
+| S407 | root/stat1_plans | PASS_1_COMPLETE | [S407 record](../statistics/parts/plans_inventory.md) |
+| S408 | root/stat1_plans | PASS_1_COMPLETE | [S408 record](../statistics/parts/plans_inventory.md) |
+| S409 | root/stat1_plans | PASS_1_COMPLETE | [S409 record](../statistics/parts/plans_inventory.md) |
+| S410 | root/stat1_plans | PASS_1_COMPLETE | [S410 record](../statistics/parts/plans_inventory.md) |
+| S411 | root/stat1_plans | PASS_1_COMPLETE | [S411 record](../statistics/parts/plans_inventory.md) |
+| S412 | root/stat1_plans | PASS_1_COMPLETE | [S412 record](../statistics/parts/plans_inventory.md) |
+| S413 | root/stat1_plans | PASS_1_COMPLETE | [S413 record](../statistics/parts/plans_inventory.md) |
+| S414 | root/stat1_plans | PASS_1_COMPLETE | [S414 record](../statistics/parts/plans_inventory.md) |
+| S415 | root/stat1_plans | PASS_1_COMPLETE | [S415 record](../statistics/parts/plans_inventory.md) |
+| S416 | root/stat1_plans | PASS_1_COMPLETE | [S416 record](../statistics/parts/plans_inventory.md) |
+| S417 | root/stat1_plans | PASS_1_COMPLETE | [S417 record](../statistics/parts/plans_inventory.md) |
+| S418 | root/stat1_plans | PASS_1_COMPLETE | [S418 record](../statistics/parts/plans_inventory.md) |
+| S419 | root/stat1_plans | PASS_1_COMPLETE | [S419 record](../statistics/parts/plans_inventory.md) |
+| S420 | root/stat1_plans | PASS_1_COMPLETE | [S420 record](../statistics/parts/plans_inventory.md) |
+| S421 | root/stat1_plans | PASS_1_COMPLETE | [S421 record](../statistics/parts/plans_inventory.md) |
+| S422 | root/stat1_plans | PASS_1_COMPLETE | [S422 record](../statistics/parts/plans_inventory.md) |
+| S423 | root/stat1_plans | PASS_1_COMPLETE | [S423 record](../statistics/parts/plans_inventory.md) |
+| S424 | root/stat1_plans | PASS_1_COMPLETE | [S424 record](../statistics/parts/plans_inventory.md) |
+| S425 | root/stat1_plans | PASS_1_COMPLETE | [S425 record](../statistics/parts/plans_inventory.md) |
+| S426 | root/stat1_plans | PASS_1_COMPLETE | [S426 record](../statistics/parts/plans_inventory.md) |
+| S427 | root/stat1_plans | PASS_1_COMPLETE | [S427 record](../statistics/parts/plans_inventory.md) |
+| S428 | root/stat1_plans | PASS_1_COMPLETE | [S428 record](../statistics/parts/plans_inventory.md) |
+| S429 | root/stat1_plans | PASS_1_COMPLETE | [S429 record](../statistics/parts/plans_inventory.md) |
+| S430 | root/stat1_plans | PASS_1_COMPLETE | [S430 record](../statistics/parts/plans_inventory.md) |
+| S431 | root/stat1_plans | PASS_1_COMPLETE | [S431 record](../statistics/parts/plans_inventory.md) |
+| S432 | root/stat1_plans | PASS_1_COMPLETE | [S432 record](../statistics/parts/plans_inventory.md) |
+| S433 | root/stat1_plans | PASS_1_COMPLETE | [S433 record](../statistics/parts/plans_inventory.md) |
+| S434 | root/stat1_plans | PASS_1_COMPLETE | [S434 record](../statistics/parts/plans_inventory.md) |
+| S435 | root/stat1_plans | PASS_1_COMPLETE | [S435 record](../statistics/parts/plans_inventory.md) |
+| S436 | root/stat1_plans | PASS_1_COMPLETE | [S436 record](../statistics/parts/plans_inventory.md) |
+| S437 | root/stat1_plans | PASS_1_COMPLETE | [S437 record](../statistics/parts/plans_inventory.md) |
+| S438 | root/stat1_plans | PASS_1_COMPLETE | [S438 record](../statistics/parts/plans_inventory.md) |
+| S439 | root/stat1_plans | PASS_1_COMPLETE | [S439 record](../statistics/parts/plans_inventory.md) |
+| S440 | root/stat1_plans | PASS_1_COMPLETE | [S440 record](../statistics/parts/plans_inventory.md) |
+| S441 | root/stat1_plans | PASS_1_COMPLETE | [S441 record](../statistics/parts/plans_inventory.md) |
+| S442 | root/stat1_plans | PASS_1_COMPLETE | [S442 record](../statistics/parts/plans_inventory.md) |
+| S443 | root/stat1_plans | PASS_1_COMPLETE | [S443 record](../statistics/parts/plans_inventory.md) |
+| S444 | root/stat1_plans | PASS_1_COMPLETE | [S444 record](../statistics/parts/plans_inventory.md) |
+| S445 | root/stat1_plans | PASS_1_COMPLETE | [S445 record](../statistics/parts/plans_inventory.md) |
+| S446 | root/stat1_plans | PASS_1_COMPLETE | [S446 record](../statistics/parts/plans_inventory.md) |
+| S447 | root/stat1_plans | PASS_1_COMPLETE | [S447 record](../statistics/parts/plans_inventory.md) |
+| S448 | root/stat1_plans | PASS_1_COMPLETE | [S448 record](../statistics/parts/plans_inventory.md) |
+| S449 | root/stat1_plans | PASS_1_COMPLETE | [S449 record](../statistics/parts/plans_inventory.md) |
+| S450 | root/stat1_plans | PASS_1_COMPLETE | [S450 record](../statistics/parts/plans_inventory.md) |
+| S451 | root/stat1_plans | PASS_1_COMPLETE | [S451 record](../statistics/parts/plans_inventory.md) |
+| S452 | root/stat1_plans | PASS_1_COMPLETE | [S452 record](../statistics/parts/plans_inventory.md) |
+| S453 | root/stat1_plans | PASS_1_COMPLETE | [S453 record](../statistics/parts/plans_inventory.md) |
+| S454 | root/stat1_plans | PASS_1_COMPLETE | [S454 record](../statistics/parts/plans_inventory.md) |
+| S455 | root/stat1_plans | PASS_1_COMPLETE | [S455 record](../statistics/parts/plans_inventory.md) |
+| S456 | root/stat1_plans | PASS_1_COMPLETE | [S456 record](../statistics/parts/plans_inventory.md) |
+| S457 | root/stat1_plans | PASS_1_COMPLETE | [S457 record](../statistics/parts/plans_inventory.md) |
+| S458 | root/stat1_plans | PASS_1_COMPLETE | [S458 record](../statistics/parts/plans_inventory.md) |
+| S459 | root/stat1_plans | PASS_1_COMPLETE | [S459 record](../statistics/parts/plans_inventory.md) |
+| S460 | root/stat1_plans | PASS_1_COMPLETE | [S460 record](../statistics/parts/plans_inventory.md) |
+| S461 | root/stat1_plans | PASS_1_COMPLETE | [S461 record](../statistics/parts/plans_inventory.md) |
+| S462 | root/stat1_plans | PASS_1_COMPLETE | [S462 record](../statistics/parts/plans_inventory.md) |
+| S463 | root/stat1_plans | PASS_1_COMPLETE | [S463 record](../statistics/parts/plans_inventory.md) |
+| S464 | root/stat1_plans | PASS_1_COMPLETE | [S464 record](../statistics/parts/plans_inventory.md) |
+| S601 | root/stat1_raw | PASS_1_COMPLETE | [S601 record](../statistics/parts/raw_inventory.md) |
+| S602 | root/stat1_raw | PASS_1_COMPLETE | [S602 record](../statistics/parts/raw_inventory.md) |
+| S603 | root/stat1_raw | PASS_1_COMPLETE | [S603 record](../statistics/parts/raw_inventory.md) |
+| S604 | root/stat1_raw | PASS_1_COMPLETE | [S604 record](../statistics/parts/raw_inventory.md) |
+| S605 | root/stat1_raw | PASS_1_COMPLETE | [S605 record](../statistics/parts/raw_inventory.md) |
+| S606 | root/stat1_raw | PASS_1_COMPLETE | [S606 record](../statistics/parts/raw_inventory.md) |
+| S607 | root/stat1_raw | PASS_1_COMPLETE | [S607 record](../statistics/parts/raw_inventory.md) |
+| S608 | root/stat1_raw | PASS_1_COMPLETE | [S608 record](../statistics/parts/raw_inventory.md) |
+| S609 | root/stat1_raw | PASS_1_COMPLETE | [S609 record](../statistics/parts/raw_inventory.md) |
+| S610 | root/stat1_raw | PASS_1_COMPLETE | [S610 record](../statistics/parts/raw_inventory.md) |
+| S611 | root/stat1_raw | PASS_1_COMPLETE | [S611 record](../statistics/parts/raw_inventory.md) |
+| S612 | root/stat1_raw | PASS_1_COMPLETE | [S612 record](../statistics/parts/raw_inventory.md) |
+| S613 | root/stat1_raw | PASS_1_COMPLETE | [S613 record](../statistics/parts/raw_inventory.md) |
+| S614 | root/stat1_raw | PASS_1_COMPLETE | [S614 record](../statistics/parts/raw_inventory.md) |
+| S615 | root/stat1_raw | PASS_1_COMPLETE | [S615 record](../statistics/parts/raw_inventory.md) |
+| S616 | root/stat1_raw | PASS_1_COMPLETE | [S616 record](../statistics/parts/raw_inventory.md) |
+| S617 | root/stat1_raw | PASS_1_COMPLETE | [S617 record](../statistics/parts/raw_inventory.md) |
+| S618 | root/stat1_raw | PASS_1_COMPLETE | [S618 record](../statistics/parts/raw_inventory.md) |
+| S619 | root/stat1_raw | PASS_1_COMPLETE | [S619 record](../statistics/parts/raw_inventory.md) |
+| S620 | root/stat1_raw | PASS_1_COMPLETE | [S620 record](../statistics/parts/raw_inventory.md) |
+| S621 | root/stat1_raw | PASS_1_COMPLETE | [S621 record](../statistics/parts/raw_inventory.md) |
+| S622 | root/stat1_raw | PASS_1_COMPLETE | [S622 record](../statistics/parts/raw_inventory.md) |
+| S623 | root/stat1_raw | PASS_1_COMPLETE | [S623 record](../statistics/parts/raw_inventory.md) |
+| S624 | root/stat1_raw | PASS_1_COMPLETE | [S624 record](../statistics/parts/raw_inventory.md) |
+| S625 | root/stat1_raw | PASS_1_COMPLETE | [S625 record](../statistics/parts/raw_inventory.md) |
+| S626 | root/stat1_raw | PASS_1_COMPLETE | [S626 record](../statistics/parts/raw_inventory.md) |

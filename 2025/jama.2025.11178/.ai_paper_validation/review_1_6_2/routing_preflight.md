@@ -20,7 +20,7 @@
 - Coordinator inference: PASS
 - Execution mode: INTERACTIVE_CLI
 - Launch command: codex --approve-for-me
-- Checked UTC: 2026-10-11T08:19:01Z
+- Checked UTC: 2026-10-14T16:23:10Z
 
 | Named preset | Model | Reasoning effort | Verification |
 |---|---|---|---|
@@ -35,8 +35,10 @@
 | qc162_quality_control_auditor | gpt-6.1-sol | high | PASS |
 | qc162_report_generator | gpt-6.1-sol | medium | PASS |
 
-The project coordinator configuration and all ten local preset files were read and their fixed model/effort pairs checked. The coordinator produced a current-session inference response. Specialist runtime response is checked at the first mandatory spawn; any model rejection stops scientific work. No provider configuration was changed.
+Verification basis: current coordinator response, project configuration, and all ten supplied named-role presets and their exposed fixed role routing. The first mandatory specialist must return a configured-model response before scientific mapping. No provider configuration changed.
 
-Startup filename: START_REPORT.md is absent; the supplied START_PROMPT.md was read completely and supplies the requested workflow startup instructions.
+User steering: all prior Workflow 1.6.2 generated artifacts and their snapshot were deleted. They are excluded from all review inputs. Validator remains unchanged.
 
-First mandatory specialist inference: PASS. The fresh qc162_reuse_asset_curator agent, runtime task root/asset_curator, returned a successful configured-role response and completed its inventory artifacts. No fixed-model rejection occurred.
+First mandatory specialist inference: PASS. Fresh runtime /root/curator_20261014 confirmed successful gpt-6.1-sol/medium inference before scientific mapping.
+
+Restart routing confirmation: PASS. Fresh mandatory curator runtime /root/curator_restart returned a successful configured gpt-6.1-sol/medium response after the user-directed deletion and exclusion of prior Workflow1.6.2 outputs. All active mandatory and shard agents use the verified named-role presets. The bundled validator remains unchanged.

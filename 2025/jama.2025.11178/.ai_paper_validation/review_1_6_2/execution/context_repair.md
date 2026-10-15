@@ -1,0 +1,5 @@
+# Context-bound repair
+
+The original PLAN pass-2 checker records43 distinct visual rereads, exceeding the configured32 rendered-page bound. Three fresh high-effort agents replace its active64-relationship scope with disjoint bounded tasks S401–S422, S423–S449 and S450–S464. Each reads the complete current ledger, screen, recheck and47 exclusions with its small relationship packet, and may inspect at most32 distinct rendered pages. Prior PLAN artifacts and runtime remain preserved as provenance. This additional wave repairs a concrete context-bound deviation; it is not a redundant scientific wave.
+
+Coverage/evidence-audit material exceeds one million normalized characters. Seven bounded coverage/checker audit packets partition all147 source units and all263 statistical families (source map context repeated only where needed); the separate mandatory stable-candidate auditor integrates these artifact handoffs, allscreen decisions and all18 IDs. Sharding is imposed by200000-character bounds, never finding counts.

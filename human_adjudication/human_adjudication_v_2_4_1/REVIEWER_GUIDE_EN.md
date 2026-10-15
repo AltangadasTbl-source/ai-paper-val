@@ -24,9 +24,9 @@ Each year has two reviewers (`R_A` and `R_B`) who review the same candidates ind
 | Year | Papers | Candidates per reviewer | statistical_results | report_internal_inconsistency | plan_material | protocol_report |
 |---|---:|---:|---:|---:|---:|---:|
 | 2018 | 10 | 115 | 49 | 4 | 7 | 55 |
-| 2019 | 10 | 87 | 30 | 0 | 4 | 53 |
+| 2019 | 9 | 79 | 26 | 0 | 4 | 49 |
 | 2024 | 10 | 113 | 51 | 2 | 15 | 45 |
-| 2025 | 15 (13 with 1.6.2 output) | 109 | 33 | 3 | 11 | 62 |
+| 2025 | 15 | 133 | 49 | 3 | 11 | 70 |
 
 The domain counts are AI suggestions, not human judgments. About half of the candidates are `protocol_report`; Section 6.4 explains why.
 
@@ -77,7 +77,7 @@ The domain counts are AI suggestions, not human judgments. About half of the can
 
 The workbook has no evidence sheet and no results summary. The evidence is in the original PDFs and the final report cards; the coordinator compiles the results.
 
-**2025 note:** `jama.2025.11178` and `jama.2025.15185` do not yet have workflow 1.6.2 results. Their `C_` sheets contain only the header and a one-line note, `Papers` shows 0 for them, and `Checks` leaves them out; nothing needs to be done there. The 2025 cohort also includes two papers with `jama.2024.*` IDs (`jama.2024.24764` and `jama.2024.27643`), stored under the repository's `2025/` folder. The workbook, not the ID, determines the year.
+**2025 note:** The 2025 cohort also includes two papers with `jama.2024.*` IDs (`jama.2024.24764` and `jama.2024.27643`), stored under the repository's `2025/` folder. The workbook, not the ID, determines the year.
 
 ### 3.2 Columns of a `C_` sheet
 

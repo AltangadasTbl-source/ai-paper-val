@@ -24,9 +24,9 @@ AI pipeline（workflow 1.6.2）对每篇 JAMA 论文的 paper package 做了数�
 | 年度 | 论文 | 每位 reviewer 的 candidate | statistical_results | report_internal_inconsistency | plan_material | protocol_report |
 |---|---:|---:|---:|---:|---:|---:|
 | 2018 | 10 | 115 | 49 | 4 | 7 | 55 |
-| 2019 | 10 | 87 | 30 | 0 | 4 | 53 |
+| 2019 | 9 | 79 | 26 | 0 | 4 | 49 |
 | 2024 | 10 | 113 | 51 | 2 | 15 | 45 |
-| 2025 | 15（其中 13 篇有 1.6.2 结果） | 109 | 33 | 3 | 11 | 62 |
+| 2025 | 15 | 133 | 49 | 3 | 11 | 70 |
 
 domain 计数为 AI 建议，不是人工判断。约一半 candidate 属于 `protocol_report`，原因见第 6.4 节。
 
@@ -77,7 +77,7 @@ domain 计数为 AI 建议，不是人工判断。约一半 candidate 属于 `pr
 
 workbook 不含证据 sheet 和结果汇总表：证据在原始 PDF 和 final report 卡片中，结果汇总由协调人完成。
 
-**2025 年度特别说明：** `jama.2025.11178` 和 `jama.2025.15185` 尚无 workflow 1.6.2 结果，其 `C_` sheet 只有表头和一行说明，`Papers` 中计数为 0，不计入 `Checks`，无需处理。2025 年度还包含两篇 ID 为 `jama.2024.*` 的论文（`jama.2024.24764`、`jama.2024.27643`），它们位于仓库的 `2025/` 目录下；年度归属以 workbook 为准，不以 ID 推断。
+**2025 年度特别说明：** 2025 年度还包含两篇 ID 为 `jama.2024.*` 的论文（`jama.2024.24764`、`jama.2024.27643`），它们位于仓库的 `2025/` 目录下；年度归属以 workbook 为准，不以 ID 推断。
 
 ### 3.2 `C_` sheet 的列
 

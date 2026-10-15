@@ -5,9 +5,9 @@ v.2.4.1 uses the final, trimmed v.2.3.1 workbook layout: Setup, Checks, Papers, 
 | Year | Papers | Candidates per reviewer | statistical_results | report_internal_inconsistency | plan_material | protocol_report | Files |
 |---|---:|---:|---:|---:|---:|---:|---|
 | 2018 | 10 | 115 | 49 | 4 | 7 | 55 | [2018/](2018/) |
-| 2019 | 10 | 87 | 30 | 0 | 4 | 53 | [2019/](2019/) |
+| 2019 | 9 | 79 | 26 | 0 | 4 | 49 | [2019/](2019/) |
 | 2024 | 10 | 113 | 51 | 2 | 15 | 45 | [2024/](2024/) |
-| 2025 | 15 (13 with 1.6.2 output) | 109 | 33 | 3 | 11 | 62 | [2025/](2025/) |
+| 2025 | 15 | 133 | 49 | 3 | 11 | 70 | [2025/](2025/) |
 
 Review domains are the AI suggestions shown in column E, which the reviewer can edit. Disposition (column D) is blank.
 
@@ -18,8 +18,9 @@ Reviewer instructions: English [REVIEWER_GUIDE_EN.md](REVIEWER_GUIDE_EN.md); Chi
 ## Changes from v.2.3.1
 
 - Candidates come from workflow 1.6.2. jama.2019.0556 is new.
+- jama.2019.14231 was removed on 2026-10-14. It is an observational study, and its paper package was moved to `archived/jama.2019.14231/`. The 2019 workbooks were rebuilt without it (79 candidates in 9 papers, all unchanged; validator 41/41 PASS), and the 2019 reviewer runs were revised to match (`reviewer_runs/README.md`).
 - The H header and the Codebook field name are spelled `Statistical_or_numerical issue`, and the Codebook's section numbering no longer skips 5. The layout, dropdowns, formulas, formatting and Codebook text are otherwise unchanged.
-- 2025 was built on 2026-10-11 from the 13 finished 1.6.2 reports. jama.2025.11178 and jama.2025.15185 are empty placeholder sheets: their 1.6.2 runs stopped before screening, and no final report exists. They are excluded from Checks; rebuild 2025 when their reports exist (see `2025/VALIDATION.md`). The 2025 cohort also includes jama.2024.24764 and jama.2024.27643.
+- 2025 was first built on 2026-10-11 from the 13 finished 1.6.2 reports (109 candidates), with empty placeholder sheets for jama.2025.11178 and jama.2025.15185, whose 1.6.2 runs had stopped before screening. Their reports were completed on 2026-10-14 (18 and 6 candidates), and the 2025 workbooks were rebuilt with them (133 candidates; validator 451/451 PASS; the other 109 candidates are unchanged). See `2025/VALIDATION.md`. The 2025 cohort also includes jama.2024.24764 and jama.2024.27643.
 - jama.2024.12829 first shipped as an empty placeholder sheet because its 1.6.2 report was not finished. The report was completed on 2026-10-11 and has 7 candidates, so the 2024 workbooks were rebuilt with them (113 candidates; validator 311/311 PASS).
 
 ## Review decisions fixed before distribution (2026-10-11)

@@ -1,1291 +1,1536 @@
-# DOC-002 protocol map, shard PR1
+# Complete fresh support quantitative evidence
 
-## Scope, identity, and extraction provenance
+This is a lossless merge of six disjoint fresh page mappings and the stable relationship index. Scope: DOC-002 protocol94pages PLAN; DOC-003 SAP18pages PLAN; DOC-004 results27pages REPORT; DOC-005 collaborators8pages REPORT; DOC-006 analysiscode1page REPORT; DOC-007 sharing1page REPORT. All149support pages mapped. Reusable-backed149;fresh-required0;no scientific coverage gap. Older images/layouts and current-run OCR/renderings only; no excluded pre-existing1.6.2 scientific output used.
 
-Exact scope: physical PDF pages 1–24 of `joi250066supp1_prod_1761597796.4601.pdf` (DOC-002). Document role throughout: PLAN, determined from prospective clinical-study protocol content. All 24 pages were inspected, including administrative and background content; this artifact makes no candidate or inclusion decisions. No other source pages or old scientific conclusions were used.
+Stable support inventory:233 numeric/reporting IDs N114–N346;64 inferential/statistical IDs S031–S094. Main-paper N001–N113/S001–S030 remain separately mapped; combined inventory346N/94S. Source-local PA/PB/PC/SA/RE/AD keys preserve all clauses and provide the main-paper semantic joins. Index roles follow content. No candidate diagnosis or screening is performed in this map.
 
-Cover p1 and signature p2 identify protocol version 1.1 dated 30 November 2018. The synopsis p7 labels itself version 1.0 dated 2 November 2018. These are location-specific printed version labels; no amendment history is inferred. Links below are physical PDF pages, relative from this extraction artifact to the supplied source.
+Protocol parts: A32pages,58keys,27applicable/5no-additional;B31pages,61keys,21applicable/10no-additional;C31pages,80keys,24applicable/7no-applicable numerical. SAP18pages,18pagekeys;results27pages,27pagekeys;administration10pages,10pagekeys(including code implementation). Administrative/index pages explicitly recorded. Historical data are labeled background and are not ESTREL outcomes. All table cells,figure values,footnotes,definitions and substantive clauses are retained below; graphical approximate values explicitly labeled.
 
-Reusable locator assets: `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc002/page-01.png` through `page-24.png`, unchanged. Current CPU engine Tesseract 5.5.0, English, `--psm 3`; per-page text and OCR log are in `.ai_paper_validation/review_1_6_2/preprocessing/protocol_001/`. Command pattern: `tesseract REUSED_PAGE_IMAGE OWNED/page-NN -l eng --psm 3`. Reusable rendering engine/version not independently established. Native protocol text is unusable, so readable images and their new OCR are used. Source image p9 explicitly governs the symbols ≤7 days and ≥3 points: OCR transcription initially returned `<7` and `>3`. Page13's rotated schedule is mapped visually because its OCR is unusable. One fresh Poppler 26.01.0 CPU render was made for p20's small historical forest plot: `pdftoppm -f 20 -l 20 -r 200 -singlefile -png joi250066supp1_prod_1761597796.4601.pdf .ai_paper_validation/review_1_6_2/preprocessing/protocol_001/page-20-detail`.
+Each input part is independently bounded below32rendered pages and200000normalized characters. The canonical merge preserves the full detail without making a new rendered-page shard. Exact derivative paths and engines appear in each part; sources/reused assets untouched. No Office/CSV/workbook sources, formulas or cached workbook values exist in this package. Code formulas are printed implementation and have no executed numeric output. Remaining evidence limitations: legacy rendering engine unrecorded; native protocol/SAP/code text corrupted or empty, resolved by complete visual reading; figures without printed exact point coordinates cannot supply exact numeric coordinates.
 
-No workbook, formula/cached-value source, CSV, or Office unit is in this shard. Values below are printed plan values, not reported ESTREL trial results. Local keys use PR1 prefixes; coordinator may map them into the unified N/S inventory. Main-paper matching keys name outcomes/design concepts without importing main-paper evidence.
+# Stable support relationship inventory
 
-## Complete page coverage
+All source-specific keys retain the complete statements and numeric cells in the corresponding fresh mapping parts. These rows are review scopes, not findings. Main-paper matching concepts identify where report comparisons apply. Direct PDF paths are package-relative; append the stated `#page=N` to select the exact page. N001–N113 and S001–S030 belong to the separately reconstructed main-paper map.
 
-| Physical page | Content inspected | Mapping keys / explicit no-applicable record |
-|---:|---|---|
-| 1 | Protocol cover | PR1-N001: intervention identity, version/date |
-| 2 | Signatures | PR1-N001: version/date confirmation; no result or analysis specification |
-| 3 | Table of contents | No result-relevant numeric relationship; administrative pointers only |
-| 4 | Contents continued | No result-relevant numeric relationship; administrative pointers only |
-| 5 | Contents continued | Visit windows listed; PR1-N007; analysis chapter pointers only |
-| 6 | Contents continued | No result-relevant numeric relationship; administrative pointers only |
-| 7 | Study synopsis identity/background/objective | PR1-N001, PR1-N002; 6 prior RCTs contextual |
-| 8 | Synopsis outcomes and design | PR1-N002 through N005; PR1-S001 |
-| 9 | Synopsis eligibility, allocation, visits | PR1-N006, N007; PR1-S001 |
-| 10 | Synopsis doses, sample size, analyses | PR1-N008, N009; PR1-S002 through S004 |
-| 11 | Abbreviations | PR1-N010: analysis-set/scale abbreviations; no operational population definition |
-| 12 | Abbreviations continued | PR1-N010; no independent quantitative relationship |
-| 13 | Study schedule matrix | PR1-N007, N011; full visual schedule inspection |
-| 14 | Study flow chart | PR1-N007, N008; all visit/dosing phases |
-| 15 | Administrative structure | No result-relevant numeric relationship; personnel and contact details only |
-| 16 | DSMC, TSC, ethics/registration | PR1-S005; drug identity corroboration |
-| 17 | Ethics, consent | PR1-N006 consent/aphasia criteria; administrative 15-day/90-day/1-year reporting deadlines do not define trial analyses |
-| 18 | Confidentiality, termination, amendments; background start | PR1-S005: permitted early termination, amendment disclosure; no numeric stopping boundary here |
-| 19 | Background prior trials and ESTREL rationale | PR1-N012: supplied historical quantitative context; ESTREL early inclusion and tid administration rationale |
-| 20 | Background/product and historical meta-analysis figure | PR1-N013, PR1-S006; historical context, not ESTREL outcomes |
-| 21 | Dose rationale, placebo, risks/benefits | PR1-N008, N014; adverse-event risk window |
-| 22 | Population rationale and objectives | PR1-N002, N006, N015 |
-| 23 | Further/safety objectives and primary outcome | PR1-N002, N003, N016, N017 |
-| 24 | All-patient secondary outcome definitions | PR1-N018 through N022 |
+## Numeric and reporting inventory
 
-Mapped units: 24/24. Fresh-required units assigned to this shard: zero (all have reusable images). Scientific gaps: none within assigned pages. Detailed statistical chapter and subsequent outcome pages are outside this shard and must be mapped by other assignments. The RMI paragraph continues on p25, outside this shard; no continuation is invented here.
-
-## Planned trial relationships
-
-### PR1-N001 — Identity, version, drug
-
-[pp1–2](../../../joi250066supp1_prod_1761597796.4601.pdf#page=1), [p7](../../../joi250066supp1_prod_1761597796.4601.pdf#page=7). ESTREL = Enhancement of Stroke Rehabilitation with Levodopa, randomized placebo-controlled clinical study protocol; phase III, risk category C. Cover/signature: 1.1, 30.11.2018; synopsis: 1.0, 02.11.2018. Product levodopa/carbidopa 100/25 mg; placebo comparator. Registration identifiers remain prospective placeholders on these pages. Matching key: ESTREL intervention/protocol identity.
-
-### PR1-N002 — Primary objective and outcome/time origin
-
-[p7](../../../joi250066supp1_prod_1761597796.4601.pdf#page=7), [p8](../../../joi250066supp1_prod_1761597796.4601.pdf#page=8), [p22](../../../joi250066supp1_prod_1761597796.4601.pdf#page=22), [p23](../../../joi250066supp1_prod_1761597796.4601.pdf#page=23). Patient-relevant enhancement of functional recovery after acute ischemic stroke, comparing levodopa with placebo added to standardized rehabilitation based on motor-learning principles. Primary outcome is between-group difference of final FMMA total scores measured 3 months after randomization. It is a score difference, with no composite components. Primary objective p22 says difference of final scores; p23 calls it the primary efficacy outcome. Background p20 describes the primary time point as 3 months post-stroke; this is separately preserved as background wording, without resolving or diagnosing the comparison. Matching key: primary 3-month FMMA total.
-
-### PR1-N003 — FMMA measurement scale and clinically relevant target
-
-[p23](../../../joi250066supp1_prod_1761597796.4601.pdf#page=23). Each scale item: ordinal 0 cannot perform, 1 partially performs, 2 fully performs. Total range 0–100, where 0 denotes no movements and 100 normal movements; upper limb component 66 points, lower limb 34 points. Trained outcome assessor performs all assessments. Cited minimum clinically important differences: 5.25 upper-extremity points and 6 lower-extremity points. ESTREL treats 6 total FMMA points between groups as patient-relevant for the primary endpoint. Matching keys: total/upper/lower FMMA; patient-relevant 6-point difference.
-
-### PR1-N004 — Secondary outcomes in all patients (synopsis)
-
-[p8](../../../joi250066supp1_prod_1761597796.4601.pdf#page=8). Status is explicitly secondary for each item below:
-
-| Outcome | Contrast/measure | Scheduled times after randomization |
+| ID | Source key/location | Complete relationship scope |
 |---|---|---|
-| FMMA total | Between-group score difference | 5 weeks (end of treatment), 6 months, 12 months |
-| FMMA upper extremity | Between-group score difference | 5 weeks, 3, 6, 12 months |
-| FMMA lower extremity | Between-group score difference | 5 weeks, 3, 6, 12 months |
-| NIH Stroke Scale | Between-group score difference | 5 weeks, 3, 6, 12 months |
-| Modified Rankin Scale | Between-group difference | 5 weeks, 3, 6, 12 months |
-| PROMIS-10 | Between-group difference in patient-reported outcome | 5 weeks, 3, 6, 12 months |
-| PROMIS-29 | Between-group difference in patient-reported outcome | 5 weeks, 3, 6, 12 months |
-| Patient-reported relevance of motor improvement | Between-group difference | 5 weeks, 3, 6, 12 months |
-| Rivermead Mobility Index | Between-group score difference | 5 weeks, 3, 6, 12 months |
-| Mortality | Relative risk | No specific window in this synopsis row |
-| Recurrent stroke | Relative risk | No specific window in this synopsis row |
-| Rehospitalization | Relative risk | No specific window in this synopsis row |
-| Serious adverse events | Relative risk | No specific window in this synopsis row |
-| Selected other adverse events possibly related to IMP | Relative risk | No specific window in this synopsis row |
+| N114 | RE10, DOC004#page=10 | eTable1 all overall/placebo/levodopa counts, denominators, percentages, median/IQR and units; exact cells in results appendix. |
+| N115 | RE11, DOC004#page=11 | eTable1 continuation all counts/percentages and score/time summaries; exact cells in results appendix. |
+| N116 | RE13, DOC004#page=13 | Estimand1 primary mean difference, CI and n582. |
+| N117 | RE12/13, DOC004#page=12 and #page=13 | Estimand2 complete-case effect/CI and n551. |
+| N118 | RE12/13, DOC004#page=12 and #page=13 | Estimand3 deceased-imputed effect/CI and n610. |
+| N119 | RE12/13, DOC004#page=12 and #page=13 | Estimand4 death/FMA composite, odds-ratio narrative versus win-ratio table, both CIs and n610. |
+| N120 | RE12/13, DOC004#page=12 and #page=13 | Estimand5 motor-impairing SAE exclusion effect/CI and n545. |
+| N121 | RE12/13, DOC004#page=12 and #page=13 | Estimand6 medication adherence effect/CI and n496. |
+| N122 | RE12/13, DOC004#page=12 and #page=13 | Estimand7 rehabilitation adherence effect/CI and n450. |
+| N123 | RE12/13, DOC004#page=12 and #page=13 | Estimand8 assessment window effect/CI and n524. |
+| N124 | RE14, DOC004#page=14 | Estimand9 baseline-to-three-month change effect/CI and n582. |
+| N125 | RE14, DOC004#page=14 | Estimand10 deceased assigned FMA0 effect/CI and n610. |
+| N126 | RE14, DOC004#page=14 | Estimand11 combined adherence exclusions effect/CI and n395. |
+| N127 | RE15, DOC004#page=15 | Unaffected-side FMA total three-month means/SD/SMD/adjusted effect/CI/n582. |
+| N128 | RE15, DOC004#page=15 | Affected upper FMA three-month means/SD/SMD/adjusted effect/CI/n582. |
+| N129 | RE15, DOC004#page=15 | Affected lower FMA three-month means/SD/SMD/adjusted effect/CI/n582. |
+| N130 | RE15, DOC004#page=15 | Affected total FMA five-week means/SD/SMD/adjusted effect/CI/n582. |
+| N131 | RE15, DOC004#page=15 | NIHSS three-month means/SD/SMD/adjusted effect/CI/n582. |
+| N132 | RE15, DOC004#page=15 | PROMIS29 three-month means/SD/SMD/adjusted effect/CI/n582. |
+| N133 | RE15, DOC004#page=15 | PROMIS10 three-month means/SD/SMD/adjusted effect/CI/n582. |
+| N134 | RE15, DOC004#page=15 | mRS three-month medians/IQR/SMD/effect/CI/n596. |
+| N135 | RE15, DOC004#page=15 | Rivermead Mobility three-month means/SD/SMD/adjusted effect/CI/n582. |
+| N136 | RE15, DOC004#page=15 | PRAI no relevant improvement counts51/51, percentages18.89/18.48, denominators270/276,total546. |
+| N137 | RE16, DOC004#page=16 | All SAE total/subtype/severity/outcome counts, participant deaths and event outcomes; exact cells in appendix. |
+| N138 | RE17, DOC004#page=17 | All prespecified-interest AE total/intensity/outcome/drug-relation counts; exact cells in appendix. |
+| N139 | RE18, DOC004#page=18 | eTable7 all four coefficients/CIs/P values, baseline×treatment interaction. |
+| N140 | RE18, DOC004#page=18 | eTable8 all five coefficients/CIs/P values, three spline terms and treatment. |
+| N141 | RE21, DOC004#page=21 | Complete intervention/visit windows and outcome schedule with optionality footnotes. |
+| N142 | RE22, DOC004#page=22 | All610 and every named center enrollment count, graph axes. |
+| N143 | RE23/24, DOC004#page=23 and #page=24 | Estimand forest labels, adjusted mean-difference units, reference0 and direction arrows; matches N116–N123 excluding composite. |
+| N144 | RE25, DOC004#page=25 | Center boxplot title/axis/change definition, displayed groups and pooling<50 rule; no exact numeric quantiles printed. |
+| N145 | RE26, DOC004#page=26 | Spline prediction graph axes and centered baseline/Visit3 response definition, curve direction. |
+| N146 | RE27, DOC004#page=27 | PH1/PH2/PH3 forest axes, legends, baseline severity threshold≤35/>35 and approximate graphical effects. |
+| N147 | SA03–SA06, DOC003#page=3 through #page=6 | Intervention schedule, FMA range/item/upper/lower scoring, eligibility thresholds, walking≥7 and intercurrent-event thresholds. |
 
-Matching keys: named outcomes and follow-up times; preserve outcome status independently of any later SAP/report status.
+## Inferential and statistical inventory
 
-### PR1-N005 — Secondary outcomes in selected-center subsets (synopsis)
+| ID | Source key/location | Relationship and main-paper matching concept |
+|---|---|---|
+| S031 | SA02/03, DOC003#page=2 and #page=3 | Randomized1:1 multicenter superiority, levodopa/carbidopa100/25mg three times daily with standardized rehabilitation versus placebo. |
+| S032 | SA04, DOC003#page=4 | FAS all randomized, survivor imputation, deceased participation restricted to policyIII/composite; mITT complete Visit3FMMA. |
+| S033 | SA05, DOC003#page=5 | Primary final Visit3FMMA and secondary hierarchy atVisits2–5; affected-side secondary wording and outcome components. |
+| S034 | SA06, DOC003#page=6 | RMI continuous and binary≥7, harm outcome definitions and follow-up horizons. |
+| S035 | SA06/07, DOC003#page=6 and #page=7 | Primary treatment-policy estimand attributes and randomized assignment despite intercurrent events. |
+| S036 | SA07, DOC003#page=7 | PolicyII complete-case estimand and main-model application. |
+| S037 | SA07, DOC003#page=7 | PolicyIII deceased-imputed estimand and main-model application. |
+| S038 | SA08/11, DOC003#page=8 and #page=11 | Composite death/FMA unmatched win ratio: survivor beats death, longer survival when both die, higherFMA when both survive; treatment wins/placebo wins. |
+| S039 | SA11, DOC003#page=11 | Win-ratio95%CI,1000bootstrap samples per imputed dataset, null1 and interpretation akinP<.05. |
+| S040 | SA08/12, DOC003#page=8 and #page=12 | Hypothetical SAE motor-impairment exclusion, primary model. |
+| S041 | SA08/09/12, DOC003#page=8 and #page=9 and #page=12 | On-treatment<80%medication exclusion, primary model. |
+| S042 | SA09/12, DOC003#page=9 and #page=12 | On-treatmentII low rehabilitation exclusion, primary model. |
+| S043 | SA09/12, DOC003#page=9 and #page=12 | Out-of-window exclusion, primary model. |
+| S044 | SA10, DOC003#page=10 | Primary linearVisit3FMMA~baselineFMMA+treatment; adjusted mean difference,95%CI,P,two-sidedα.05; equivalence to adjusted change effect. |
+| S045 | SA10, DOC003#page=10 | Primary assumptions/residual/leverage checks, possible transformation. |
+| S046 | SA10, DOC003#page=10 | Secondary baseline-adjusted binary logistic,continuous linear,ordinal logistic; possible transformation/nonparametric/robust alternatives; harm summaries. |
+| S047 | SA10, DOC003#page=10 | All secondary use primary estimand; affected-side FMA excludes bilateral pathology; secondary summaries possibly separate publications. |
+| S048 | SA11, DOC003#page=11 | Missing counts,100MICE datasets,estimate/variance Rubin pooling,secondary imputation and harm not imputed. |
+| S049 | SA11, DOC003#page=11 | Exploratory center and treatment×center terms,center-stratified graphs. |
+| S050 | SA11, DOC003#page=11 | Sensitivity analyses no multiplicity adjustment; considered with primary and not standalone evidence. |
+| S051 | SA12/15, DOC003#page=12 and #page=15 | Seven prespecified subgroups and cutoffs;primary model plus subgroup and interaction fixed effects;forestplot;age and baselineFMA median split. |
+| S052 | SA16/17, DOC003#page=16 and #page=17 | Planned biomarker/genetic subgroup definitions,expected effect-modification directions,exploratory genetic analyses. |
+| S053 | SA18, DOC003#page=18 | Additional predefined registry,rehabilitation interaction,fatigue/depression analyses and positive-result dependencies. |
+| S054 | RE07, DOC004#page=7 | Reported100MICE,Rubin pooling,FMA item-level/secondary score imputation,harm not imputed. |
+| S055 | RE07/15, DOC004#page=7 and #page=15 | Reported mRS death6,PRAI not imputed,and unaffected-side calculation disclosures,with result populations. |
+| S056 | RE12/13, DOC004#page=12 and #page=13 | Eight estimand effect/CI/population/endpoint identity rows N116–N123; main primary n582 and multiple sensitivity populations. |
+| S057 | RE14, DOC004#page=14 | Posthoc change-from-baseline estimand9,death0estimand10,andcombined adherenceestimand11,all effects/CIs and n. |
+| S058 | RE15, DOC004#page=15 | Every secondary modeled mean-difference/ordinal effect/CI and group summaries N127–N136; shared column header and scale identity. |
+| S059 | RE16/17/19, DOC004#page=16 and #page=17 and #page=19 | Safety event/participant units,prespecified AE categories and classification totals. |
+| S060 | RE18, DOC004#page=18 | eTable7 centered baseline×treatment model,all printed estimates/CIs/P and linear interaction test. |
+| S061 | RE18, DOC004#page=18 | eTable8 three-degree spline baseline model,all estimates/CIs/P and F-test spline versus linearP<.01 per imputation. |
+| S062 | RE18, DOC004#page=18 | Spline×treatment interaction comparison,F-testP>.75 all imputations. |
+| S063 | RE23/24, DOC004#page=23 and #page=24 | Estimand forest effect directions/reference0 against tables and definitions. |
+| S064 | RE25, DOC004#page=25 | Center-level outcome/change display and poolingrule<50. |
+| S065 | RE26, DOC004#page=26 | Nonlinear baseline and Visit3FMA association under spline model. |
+| S066 | RE27, DOC004#page=27 | Posthoc PH1death0,PH2adherence exclusions,PH3baseline≤35/>35 subgroup contrasts and legends. |
+| S067 | AD09, DOC006#page=1 | Printed implementation linearVisit3~centeredbaseline+randomizedmedication perimputation,summary(pool(model)),diagnostic loop and N.imp formula. |
 
-[p8](../../../joi250066supp1_prod_1761597796.4601.pdf#page=8). Each is explicitly a between-group difference in a subset of patients in selected centers, at 5 weeks, 3, 6, and 12 months: Action Research Arm Test; Box-and-Block Test; Jamar dynamometer; Motricity Index; Trunk Control Test; Functional Ambulation Categories; 10-meter walk test; Montreal Cognitive Assessment; daily-life activities measured with movement sensors. Matching keys: each named test; subset versus all-patient analysis.
+## Protocol numeric/design source-key assignment
 
-### PR1-N006 — Eligibility criteria, item-by-item
+Each ID below refers to the entire corresponding source-key record, including its exact source link, all printed values, footnotes and main-paper matching concept. Historical/background and administrative keys are explicitly marked as such in the source record and carry no implied current-trial result. IDs are allocated mechanically in source-key order without altering or diagnosing evidence.
 
-[p9](../../../joi250066supp1_prod_1761597796.4601.pdf#page=9), with consent/aphasia elaboration [p17](../../../joi250066supp1_prod_1761597796.4601.pdf#page=17) and population rationale [p22](../../../joi250066supp1_prod_1761597796.4601.pdf#page=22).
+| ID | Source key | Evidence part |
+|---|---|---|
+| N148 | PA001 | fresh_support_protocol_a.md |
+| N149 | PA002 | fresh_support_protocol_a.md |
+| N150 | PA003 | fresh_support_protocol_a.md |
+| N151 | PA004 | fresh_support_protocol_a.md |
+| N152 | PA005 | fresh_support_protocol_a.md |
+| N153 | PA006 | fresh_support_protocol_a.md |
+| N154 | PA007 | fresh_support_protocol_a.md |
+| N155 | PA008 | fresh_support_protocol_a.md |
+| N156 | PA009 | fresh_support_protocol_a.md |
+| N157 | PA010 | fresh_support_protocol_a.md |
+| N158 | PA011 | fresh_support_protocol_a.md |
+| N159 | PA012 | fresh_support_protocol_a.md |
+| N160 | PA013 | fresh_support_protocol_a.md |
+| N161 | PA014 | fresh_support_protocol_a.md |
+| N162 | PA015 | fresh_support_protocol_a.md |
+| N163 | PA016 | fresh_support_protocol_a.md |
+| N164 | PA017 | fresh_support_protocol_a.md |
+| N165 | PA018 | fresh_support_protocol_a.md |
+| N166 | PA019 | fresh_support_protocol_a.md |
+| N167 | PA020 | fresh_support_protocol_a.md |
+| N168 | PA021 | fresh_support_protocol_a.md |
+| N169 | PA022 | fresh_support_protocol_a.md |
+| N170 | PA023 | fresh_support_protocol_a.md |
+| N171 | PA024 | fresh_support_protocol_a.md |
+| N172 | PA025 | fresh_support_protocol_a.md |
+| N173 | PA026 | fresh_support_protocol_a.md |
+| N174 | PA027 | fresh_support_protocol_a.md |
+| N175 | PA028 | fresh_support_protocol_a.md |
+| N176 | PA029 | fresh_support_protocol_a.md |
+| N177 | PA030 | fresh_support_protocol_a.md |
+| N178 | PA031 | fresh_support_protocol_a.md |
+| N179 | PA032 | fresh_support_protocol_a.md |
+| N180 | PA033 | fresh_support_protocol_a.md |
+| N181 | PA034 | fresh_support_protocol_a.md |
+| N182 | PA035 | fresh_support_protocol_a.md |
+| N183 | PA036 | fresh_support_protocol_a.md |
+| N184 | PA037 | fresh_support_protocol_a.md |
+| N185 | PA038 | fresh_support_protocol_a.md |
+| N186 | PA039 | fresh_support_protocol_a.md |
+| N187 | PA040 | fresh_support_protocol_a.md |
+| N188 | PA041 | fresh_support_protocol_a.md |
+| N189 | PA042 | fresh_support_protocol_a.md |
+| N190 | PA043 | fresh_support_protocol_a.md |
+| N191 | PA044 | fresh_support_protocol_a.md |
+| N192 | PA045 | fresh_support_protocol_a.md |
+| N193 | PA046 | fresh_support_protocol_a.md |
+| N194 | PA047 | fresh_support_protocol_a.md |
+| N195 | PA048 | fresh_support_protocol_a.md |
+| N196 | PA049 | fresh_support_protocol_a.md |
+| N197 | PA050 | fresh_support_protocol_a.md |
+| N198 | PA051 | fresh_support_protocol_a.md |
+| N199 | PA052 | fresh_support_protocol_a.md |
+| N200 | PA053 | fresh_support_protocol_a.md |
+| N201 | PA054 | fresh_support_protocol_a.md |
+| N202 | PA055 | fresh_support_protocol_a.md |
+| N203 | PA056 | fresh_support_protocol_a.md |
+| N204 | PA057 | fresh_support_protocol_a.md |
+| N205 | PA058 | fresh_support_protocol_a.md |
+| N206 | PB001 | fresh_support_protocol_b.md |
+| N207 | PB002 | fresh_support_protocol_b.md |
+| N208 | PB003 | fresh_support_protocol_b.md |
+| N209 | PB004 | fresh_support_protocol_b.md |
+| N210 | PB005 | fresh_support_protocol_b.md |
+| N211 | PB006 | fresh_support_protocol_b.md |
+| N212 | PB007 | fresh_support_protocol_b.md |
+| N213 | PB008 | fresh_support_protocol_b.md |
+| N214 | PB009 | fresh_support_protocol_b.md |
+| N215 | PB010 | fresh_support_protocol_b.md |
+| N216 | PB011 | fresh_support_protocol_b.md |
+| N217 | PB012 | fresh_support_protocol_b.md |
+| N218 | PB013 | fresh_support_protocol_b.md |
+| N219 | PB014 | fresh_support_protocol_b.md |
+| N220 | PB015 | fresh_support_protocol_b.md |
+| N221 | PB016 | fresh_support_protocol_b.md |
+| N222 | PB017 | fresh_support_protocol_b.md |
+| N223 | PB018 | fresh_support_protocol_b.md |
+| N224 | PB019 | fresh_support_protocol_b.md |
+| N225 | PB020 | fresh_support_protocol_b.md |
+| N226 | PB021 | fresh_support_protocol_b.md |
+| N227 | PB022 | fresh_support_protocol_b.md |
+| N228 | PB023 | fresh_support_protocol_b.md |
+| N229 | PB024 | fresh_support_protocol_b.md |
+| N230 | PB025 | fresh_support_protocol_b.md |
+| N231 | PB026 | fresh_support_protocol_b.md |
+| N232 | PB027 | fresh_support_protocol_b.md |
+| N233 | PB028 | fresh_support_protocol_b.md |
+| N234 | PB029 | fresh_support_protocol_b.md |
+| N235 | PB030 | fresh_support_protocol_b.md |
+| N236 | PB031 | fresh_support_protocol_b.md |
+| N237 | PB032 | fresh_support_protocol_b.md |
+| N238 | PB033 | fresh_support_protocol_b.md |
+| N239 | PB034 | fresh_support_protocol_b.md |
+| N240 | PB035 | fresh_support_protocol_b.md |
+| N241 | PB036 | fresh_support_protocol_b.md |
+| N242 | PB037 | fresh_support_protocol_b.md |
+| N243 | PB038 | fresh_support_protocol_b.md |
+| N244 | PB039 | fresh_support_protocol_b.md |
+| N245 | PB040 | fresh_support_protocol_b.md |
+| N246 | PB041 | fresh_support_protocol_b.md |
+| N247 | PB042 | fresh_support_protocol_b.md |
+| N248 | PB043 | fresh_support_protocol_b.md |
+| N249 | PB044 | fresh_support_protocol_b.md |
+| N250 | PB045 | fresh_support_protocol_b.md |
+| N251 | PB046 | fresh_support_protocol_b.md |
+| N252 | PB047 | fresh_support_protocol_b.md |
+| N253 | PB048 | fresh_support_protocol_b.md |
+| N254 | PB049 | fresh_support_protocol_b.md |
+| N255 | PB050 | fresh_support_protocol_b.md |
+| N256 | PB051 | fresh_support_protocol_b.md |
+| N257 | PB052 | fresh_support_protocol_b.md |
+| N258 | PB053 | fresh_support_protocol_b.md |
+| N259 | PB054 | fresh_support_protocol_b.md |
+| N260 | PB055 | fresh_support_protocol_b.md |
+| N261 | PB056 | fresh_support_protocol_b.md |
+| N262 | PB057 | fresh_support_protocol_b.md |
+| N263 | PB058 | fresh_support_protocol_b.md |
+| N264 | PB059 | fresh_support_protocol_b.md |
+| N265 | PB060 | fresh_support_protocol_b.md |
+| N266 | PB061 | fresh_support_protocol_b.md |
+| N267 | PC001 | fresh_support_protocol_c.md |
+| N268 | PC002 | fresh_support_protocol_c.md |
+| N269 | PC003 | fresh_support_protocol_c.md |
+| N270 | PC004 | fresh_support_protocol_c.md |
+| N271 | PC005 | fresh_support_protocol_c.md |
+| N272 | PC006 | fresh_support_protocol_c.md |
+| N273 | PC007 | fresh_support_protocol_c.md |
+| N274 | PC008 | fresh_support_protocol_c.md |
+| N275 | PC009 | fresh_support_protocol_c.md |
+| N276 | PC010 | fresh_support_protocol_c.md |
+| N277 | PC011 | fresh_support_protocol_c.md |
+| N278 | PC012 | fresh_support_protocol_c.md |
+| N279 | PC013 | fresh_support_protocol_c.md |
+| N280 | PC014 | fresh_support_protocol_c.md |
+| N281 | PC015 | fresh_support_protocol_c.md |
+| N282 | PC016 | fresh_support_protocol_c.md |
+| N283 | PC017 | fresh_support_protocol_c.md |
+| N284 | PC018 | fresh_support_protocol_c.md |
+| N285 | PC019 | fresh_support_protocol_c.md |
+| N286 | PC020 | fresh_support_protocol_c.md |
+| N287 | PC021 | fresh_support_protocol_c.md |
+| N288 | PC022 | fresh_support_protocol_c.md |
+| N289 | PC023 | fresh_support_protocol_c.md |
+| N290 | PC024 | fresh_support_protocol_c.md |
+| N291 | PC025 | fresh_support_protocol_c.md |
+| N292 | PC026 | fresh_support_protocol_c.md |
+| N293 | PC027 | fresh_support_protocol_c.md |
+| N294 | PC028 | fresh_support_protocol_c.md |
+| N295 | PC029 | fresh_support_protocol_c.md |
+| N296 | PC030 | fresh_support_protocol_c.md |
+| N297 | PC031 | fresh_support_protocol_c.md |
+| N298 | PC032 | fresh_support_protocol_c.md |
+| N299 | PC033 | fresh_support_protocol_c.md |
+| N300 | PC034 | fresh_support_protocol_c.md |
+| N301 | PC035 | fresh_support_protocol_c.md |
+| N302 | PC036 | fresh_support_protocol_c.md |
+| N303 | PC037 | fresh_support_protocol_c.md |
+| N304 | PC038 | fresh_support_protocol_c.md |
+| N305 | PC039 | fresh_support_protocol_c.md |
+| N306 | PC040 | fresh_support_protocol_c.md |
+| N307 | PC041 | fresh_support_protocol_c.md |
+| N308 | PC042 | fresh_support_protocol_c.md |
+| N309 | PC043 | fresh_support_protocol_c.md |
+| N310 | PC044 | fresh_support_protocol_c.md |
+| N311 | PC045 | fresh_support_protocol_c.md |
+| N312 | PC046 | fresh_support_protocol_c.md |
+| N313 | PC047 | fresh_support_protocol_c.md |
+| N314 | PC048 | fresh_support_protocol_c.md |
+| N315 | PC049 | fresh_support_protocol_c.md |
+| N316 | PC050 | fresh_support_protocol_c.md |
+| N317 | PC051 | fresh_support_protocol_c.md |
+| N318 | PC052 | fresh_support_protocol_c.md |
+| N319 | PC053 | fresh_support_protocol_c.md |
+| N320 | PC054 | fresh_support_protocol_c.md |
+| N321 | PC055 | fresh_support_protocol_c.md |
+| N322 | PC056 | fresh_support_protocol_c.md |
+| N323 | PC057 | fresh_support_protocol_c.md |
+| N324 | PC058 | fresh_support_protocol_c.md |
+| N325 | PC059 | fresh_support_protocol_c.md |
+| N326 | PC060 | fresh_support_protocol_c.md |
+| N327 | PC061 | fresh_support_protocol_c.md |
+| N328 | PC062 | fresh_support_protocol_c.md |
+| N329 | PC063 | fresh_support_protocol_c.md |
+| N330 | PC064 | fresh_support_protocol_c.md |
+| N331 | PC065 | fresh_support_protocol_c.md |
+| N332 | PC066 | fresh_support_protocol_c.md |
+| N333 | PC067 | fresh_support_protocol_c.md |
+| N334 | PC068 | fresh_support_protocol_c.md |
+| N335 | PC069 | fresh_support_protocol_c.md |
+| N336 | PC070 | fresh_support_protocol_c.md |
+| N337 | PC071 | fresh_support_protocol_c.md |
+| N338 | PC072 | fresh_support_protocol_c.md |
+| N339 | PC073 | fresh_support_protocol_c.md |
+| N340 | PC074 | fresh_support_protocol_c.md |
+| N341 | PC075 | fresh_support_protocol_c.md |
+| N342 | PC076 | fresh_support_protocol_c.md |
+| N343 | PC077 | fresh_support_protocol_c.md |
+| N344 | PC078 | fresh_support_protocol_c.md |
+| N345 | PC079 | fresh_support_protocol_c.md |
+| N346 | PC080 | fresh_support_protocol_c.md |
 
-Inclusion: (1) acute ischemic stroke ≤7 days before randomization; (2) clinically meaningful hemiparesis, defined as ≥3 points on arm plus leg motor NIHSS items; (3) 24-hour latency after thrombolysis or thrombectomy; (4) inpatient rehabilitation required; (5) capability to participate in standardized rehabilitation; (6) informed consent from patient or next of kin.
+## Protocol inferential/statistical source-key assignment
 
-Exclusion: (1) age <18 years; (2) Parkinson disease; (3) levodopa mandatory in treating physician's judgment; (4) inability/unwillingness to comply with procedures or drug intake orally, through nasogastric tube, or through percutaneous endoscopic gastrostomy; (5) severe aphasia, unable to follow two-stage commands; (6) prior dependence in basic daily activities, prestroke mRS >3; (7) pre-existing hemiparesis; (8) known levodopa/carbidopa hypersensitivity or other contraindications according to the supplied protocol's Swiss product-information pointer; (9) pregnancy, breast-feeding, intent to become pregnant; childbearing-age women require pregnancy testing; (10) lack of safe contraception throughout study duration. Acceptable methods include oral/injectable/implantable contraception, intrauterine devices, or another method individually judged sufficiently reliable. Surgical sterilization/hysterectomy or menopause >2 years removes childbearing-potential classification.
+Each row covers all named source-key clauses, including repeated specifications within a version. Numeric cell identity remains under the associated N ID; these S IDs track design, estimand, method and decision logic. All protocol locations are PLAN. The source-key records provide exact PDF-page links and main-paper matching concepts.
 
-P17: no emergency inclusion; next-of-kin consent for impaired understanding requires additional independent-physician consent, with deferred participant consent as soon as possible at follow-up. P22 excludes hemorrhagic stroke, repeats ≥3 motor NIHSS points and inpatient rehabilitation, and sets maximum stroke-to-Visit1 window to 7 days. It distinguishes inability to follow commands from inability to understand consent despite capability to undertake procedures. Matching keys: recruited/analysis-population eligibility, ischemic-stroke-only population, severity threshold, prestroke independence.
+| ID | Protocol source keys | Complete statistical relationship scope |
+|---|---|---|
+| S068 | PA003,PA004,PA005,PA006,PA007,PA008,PA040,PA041,PA042 | Earlier-version primary/secondary/further/safety outcome hierarchy, populations, time anchors, composite members and effect measures. |
+| S069 | PA009,PA010,PA011,PA012,PA054,PA055,PA056 | Earlier-version superiority,randomization,minimization,center stratification,eligibility and hypothesis. |
+| S070 | PA013,PA014,PA022,PA023,PA024,PA025,PA033,PA034,PA037,PA057,PA058 | Earlier-version randomized treatment dose/duration,assessment windows,selected-center measures,rehabilitation and withdrawal-data rules. |
+| S071 | PA015,PA044 | Earlier-version sample-size/power inputs,n610,attrition10%,evaluable549,target548,delta6,SD25,power80%,two-sided5%;clinical-relevance threshold. |
+| S072 | PA017,PA018,PA019 | Earlier-version primary mixed model baseline+treatment+random center,secondary models,MICE. |
+| S073 | PA026,PA029,PA039,PA049 | Earlier-version safety monitoring/stopping,absence ofDSMCefficacy review,safety collection windows. |
+| S074 | PA043,PA045,PA046,PA047,PA048,PA050,PA051,PA052,PA053 | Earlier-version outcome scale scoring/units/components and selected-center/exploratory definitions supporting reported analyses. |
+| S075 | PB015,PB016,PB017,PB018,PB019,PB020,PB021 | Earlier-version detailed superiority hypothesis,power forFMA/PROMIS/walking,assumptions andpower sensitivity figure. |
+| S076 | PB022,PB031,PB032 | Earlier-version no efficacy stopping orplanned interim,DSMCsafety composite and≥1AE per-patient risk. |
+| S077 | PB023,PB024,PB027,PB034 | Earlier-version FAS/ITT/complete-case/PP,80%drug/≥5rehabilitation adherence,complete-case/PP/MICE sensitivity andpossible marginal structural models. |
+| S078 | PB025,PB026,PB028 | Earlier-version primary random-intercept mixed model,baseline adjustment,alpha,center heterogeneity,exploratory covariates andsecondary regression models/CIs/tests. |
+| S079 | PB029,PB030,PB036 | Earlier-version exploratory genetics/biomarkers,selected-center consent subset,futureIPDmeta-analysis. |
+| S080 | PB001,PB002,PB003,PB004,PB005,PB006,PB007,PB008,PB009,PB010,PB012,PB013,PB014 | Earlier-version treatment/assessment/safety definitions,classification andcollection windows affecting result identity. |
+| S081 | PB038,PB039,PB040,PB041,PB042,PB043,PB044,PB045 | Version1.4 primary/secondary hierarchy,inclusion ofischemic/hemorrhagicstroke,randomization,deleted rehospitalization text,selected-center/follow-up outcomes. |
+| S082 | PB046,PB047,PB053,PB054,PB055,PB056,PB057,PB058,PB059 | Version1.4 intervention/visit/safety schedule,footnotes andDSMCscope. |
+| S083 | PB048,PB050,PB051 | Version1.4 synopsis sample-size/power,primary mixed model baseline+treatment+stroke type+random center,secondary models andMICE. |
+| S084 | PC001,PC008,PC019,PC052,PC053,PC054,PC055,PC056,PC057,PC058,PC059,PC060 | Version1.4 detailed safety definitions,composites,classification,ascertainment andstopping framework. |
+| S085 | PC003,PC009,PC010,PC011,PC012,PC013,PC014,PC015,PC016,PC017,PC018,PC020,PC021,PC022 | Version1.4 detailed primary/secondary/further/safety hierarchy,time origins,scoring,subsets,scale units andcomponents. |
+| S086 | PC004,PC006,PC007,PC023,PC024,PC025,PC026,PC027,PC028,PC029,PC030 | Version1.4 superiority,randomization,minimization,blinding,eligibility andrandomized intervention dose/duration. |
+| S087 | PC031,PC032,PC033,PC034,PC035,PC036,PC037,PC038,PC039,PC040,PC041,PC042 | Version1.4 doseadaptation/discontinuation,withdrawal-data andrehabilitation prescription,endpoint ascertainment andsafety windows. |
+| S088 | PC043,PC044,PC045,PC046,PC047,PC048,PC049,PC050,PC051 | Version1.4 visit schedule,long-term extension,assessmentwindows/outcomes andparticipant populations. |
+| S089 | PC061,PC062,PC063,PC064,PC065 | Version1.4 detailed superiority hypothesis,sample-size/power,FMA/PROMIS/walking assumptions andpower sensitivity figure. |
+| S090 | PC066,PC074 | Version1.4 no efficacy stopping andno planned interim analysis,safetycomposite alert rule. |
+| S091 | PC067,PC068 | Version1.4 FAS/ITT,complete-case/PPmembership,adherence thresholds. |
+| S092 | PC069,PC070,PC071 | Version1.4 primary model/covariates/center adjustment,heterogeneity,exploratory adjustments,complete-case/PPsensitivity andpredefined subgroup analyses. |
+| S093 | PC072,PC073 | Version1.4 secondary models,confidence/significance levels,exploratory biomarker/genetic analyses. |
+| S094 | PC075,PC076,PC077 | Version1.4 safety risk summaries,deviation disclosure,MICE missingness andcomplete-case sensitivity. |
 
-### PR1-S001 — Design, allocation, blinding
+Inventory totals: N114–N346 =233 support numeric/reporting relationships; S031–S094 =64 support inferential/statistical relationships. Combined with main-paper N001–N113/S001–S030: N001–N346 and S001–S094. Every ID is explicitly enumerated in the tables above or the separate main-paper map. No scientific coverage gaps.
 
-[pp8–9](../../../joi250066supp1_prod_1761597796.4601.pdf#page=8). Multicenter randomized parallel-group placebo-controlled superiority trial; allocation ratio 1:1; center stratification using a standard minimization algorithm. Randomization/enrollment takes place in acute care. Patients, care providers, investigators, outcome assessors, and all study personnel blinded. Participants transition to rehabilitation centers during treatment. No operational randomization algorithm probabilities or analysis-set eligibility are specified here. Matching key: randomization design and allocation strata.
+## Exact main-paper joins
 
-### PR1-N007 — Visit windows, timing, study flow
+The following joins use the separately valid current-run main map; they identify matching concepts without evaluating consistency.
 
-[p5](../../../joi250066supp1_prod_1761597796.4601.pdf#page=5), [pp9–10](../../../joi250066supp1_prod_1761597796.4601.pdf#page=9), [p13](../../../joi250066supp1_prod_1761597796.4601.pdf#page=13), [p14](../../../joi250066supp1_prod_1761597796.4601.pdf#page=14). Prescreening day −7 to 0; Visit1 screening/consent/enrollment/randomization day0. Medication starts day after randomization. Dose escalation day1–6, full dosage day7–34, taper day35–39. Visit2 5 weeks ±7 days, end of treatment. Visit3 primary outcome 3 months ±14 days. Visit4 long-term follow-up 6 months ±20 days. Visit5 long-term follow-up 12 months ±30 days. Interventional/main-study phase extends through Visit3; observational phase contains Visits4/5. Transition from acute to rehabilitation center is day x during treatment. Unscheduled end-of-study visit allowed at discontinuation/consent withdrawal; outcome assessment performed with participant approval. Matching key: all outcome assessment windows and time origin.
+| Support keys | Main-paper IDs |
+|---|---|
+| SA02–SA04; PA009–PA014; PB042–PB047; PC023–PC030 | N001,N002,N011,N012,N013,N014; S003,S005 |
+| SA03,SA05,SA06; RE09,RE19–RE21; PA004–PA008,PA043–PA052; PB039–PB041; PC010–PC022 | N015,N016,N017,N018,N019; S006,S007 |
+| SA10; AD09; PA017; PB025,PB050; PC069 | S009,S017 |
+| SA04,SA06–SA09,SA11; RE12,RE13 | N004; S009,S010,S018 |
+| SA10–SA12; RE07 | S009,S014,S015,S016,S017 |
+| RE10,RE11 | N003,N022–N059 |
+| RE13 primary | N005,N008; S001,S018 |
+| RE14;RE27 | S011,S012,S013 |
+| RE15 | S019,S020,S021,S022,S023,S024,S025,S026,S027 |
+| RE16,RE17 | N006,N019 |
+| RE18,RE25,RE26,RE27 | S015,S016,S028 |
+| PA015,PA044;PB015–PB021,PB048;PC061–PC065 | N020,N021; S008 |
+| PA026,PA029;PB022,PB031,PB059;PC001,PC066,PC074 | N009; S004 |
+| SA01,SA13,SA14;PA001,PA002;PB037 | N010; S004,S017 |
+# Fresh support extraction: protocol A
 
-### PR1-N008 — Randomized intervention dose/duration and taper
+## Scope and provenance
 
-[p10](../../../joi250066supp1_prod_1761597796.4601.pdf#page=10), [p14](../../../joi250066supp1_prod_1761597796.4601.pdf#page=14), [p20](../../../joi250066supp1_prod_1761597796.4601.pdf#page=20), [p21](../../../joi250066supp1_prod_1761597796.4601.pdf#page=21). White capsules contain levodopa100 mg/carbidopa25 mg, or matching placebo; all receive standardized rehabilitative therapy. Total planned administration 39 days. Day1–3 morning only; day4–6 morning and lunchtime; day7–34 three times daily; day35–37 morning and lunchtime; day38–39 morning only. Full dosage therefore supplies 300/75 mg per day (arithmetic description, not an additional printed prescription). P21 says fixed escalation because immediate treatment response is not expected, monitor tolerability, dose adaptations allowed if required, and taper carefully over 5 days for safety. Placebo is identical in appearance, texture, and taste. Matching key: randomized treatment dose, 39-day course, dose escalation/taper.
+Assigned source: DOC-002, `joi250066supp1_prod_1761597796.4601.pdf`, PDF pages 1–32 only. Role: PLAN throughout, including the synopsis, administrative material, background evidence, outcome definitions, intervention procedures and assessment schedule. This is fresh scientific mapping; no earlier conclusions, candidates or diagnostic records were used. Keys PA001–PA058 are shard-local source relationship keys for merger into the complete inventory. Main-paper matching keys below are semantic concepts, not claims that a main-paper match was inspected by this shard.
 
-### PR1-N009 / PR1-S002 — Planned sample size and power inputs
+All 32 assigned pages were read as fresh OCR locators and inspected visually through the 32 hashed older source-page PNGs. Reused files are exactly `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc002/page-01.png` through `page-32.png`, inclusive. Fresh locator files are exactly `.ai_paper_validation/review_1_6_2/preprocessing/fresh_ocr/doc002/page-01.txt` through `page-32.txt`, inclusive. Legacy rendering engine is unrecorded. Fresh OCR engine, as recorded in tooling_record.md and engine_log.jsonl: supplied pdf_tools.py with RapidOCR-onnxruntime 1.4.4 / onnxruntime 1.28.0, CPU. No new extraction, rendering or OCR was performed by this shard. No source or reused asset was changed. No Office/workbook/CSV source occurs in this assignment; formulas versus cached or displayed workbook values are therefore not applicable.
 
-[p10](../../../joi250066supp1_prod_1761597796.4601.pdf#page=10). Planned enrollment 610 over 37 months; assumed dropout10%, leaving549 evaluable. FMMA normally distributed, SD25 points;548 patients permit detection of a6-point mean levodopa–control difference at3 months,80% power, two-sided significance5%. Preserve both printed549 evaluable and548 power-analysis patients without silently merging them. Overall study duration50 months; planned first participant02-2019 and last participant out12-2022. Anticipated12 acute and7 rehabilitation centers are administrative context. Matching key: sample-size assumptions, target effect, type-I level, power.
+Source links are relative to this extraction file. The PDF page, not a protocol section's printed page reference, identifies each location. OCR omitted substantial lines on many pages; values below follow the page images, including the FMMA definition, baseline covariate, schedule and central rating procedure.
 
-### PR1-S003 — Synopsis primary and secondary analyses
+## Page-level coverage
 
-[p10](../../../joi250066supp1_prod_1761597796.4601.pdf#page=10). Primary dependent variable FMMA at3 months. Mixed-effects model: baseline FMMA covariate and two-level treatment factor (levodopa versus placebo) as fixed effects; center as random factor. Secondary outcomes use regression models appropriate to data type. No further covariates, interaction terms, subgroup specifications, estimand, confidence level, or multiplicity hierarchy appear in this synopsis. Matching key: adjusted primary model and center handling.
+| PDF page | Coverage | Material opened and mapped |
+|---|---|---|
+| 1 | COMPLETE, applicable | Cover; version 1.1, date 30 November 2018; 100/25 mg product. PA001. |
+| 2 | COMPLETE, no additional quantitative relationship | Signed approval of version 1.1 dated 30 November 2018; signatures and registration placeholders. PA001 provenance. |
+| 3 | COMPLETE, no applicable relationship | Local investigator agreement, site/contact details and blank signature fields. |
+| 4 | COMPLETE, no applicable relationship | Contents: synopsis, governance, ethics, background, objectives and outcomes. Section-page pointers are administrative locators. |
+| 5 | COMPLETE, applicable pointers only | Contents includes treatment days 1–39 and visit windows. Repeated substantive timing mapped at PA020. |
+| 6 | COMPLETE, no applicable substantive relationship | Contents points to statistical methods on pages 37–40 and appendices; those actual pages belong to another shard. |
+| 7 | COMPLETE, applicable | Synopsis version 1.0 dated 2 November 2018, phase III, primary objective and six-trial background. PA002–PA003. |
+| 8 | COMPLETE, applicable | Synopsis primary and secondary outcomes, relative-risk labels, subset outcomes and design. PA004–PA009. |
+| 9 | COMPLETE, applicable | Eligibility, 1:1 center-stratified minimization, intervention and assessment phases. PA010–PA013. |
+| 10 | COMPLETE, applicable | Dosing schedule, sample/power assumptions, model and imputation synopsis. PA014–PA020. |
+| 11 | COMPLETE, applicable definitions | Abbreviations identify FMMA UE/LE, FAS, ITT, PP, H0/H1 and outcome acronyms. PA021. |
+| 12 | COMPLETE, applicable definitions | RMI, SAE, SD, TCT, 10MWT abbreviations. PA021. |
+| 13 | COMPLETE, applicable | Full study schedule, every row, timing column and footnote. PA022–PA024. |
+| 14 | COMPLETE, applicable | Full trial flowchart, randomization, dosing phases and visits. PA025. |
+| 15 | COMPLETE, no applicable relationship | Sponsor, investigator, statistician, supplier and monitor names, addresses and contacts. |
+| 16 | COMPLETE, applicable | Independent DSMC, unblinded safety review, no efficacy review, amendment approval and registration. PA026. |
+| 17 | COMPLETE, applicable population context; otherwise administration | Severe aphasia exclusion and consent procedures; regulatory reporting deadlines. PA027–PA028. |
+| 18 | COMPLETE, applicable | Early termination circumstances and safety-monitoring rule; amendment procedure; background begins. PA029–PA030. |
+| 19 | COMPLETE, background quantitative context | Historical trial effects, dose, size and DARS results; ESTREL inclusion timing rationale. PA031–PA033. |
+| 20 | COMPLETE, applicable product/time context and background figure | Primary measurement rationale, product; Figure 1 historical meta-analysis, all rows/caption/heterogeneity. PA034–PA036. |
+| 21 | COMPLETE, applicable | Dose/taper rationale, tolerability, prespecified AEs and safety window; historical dosing/SAE context. PA037–PA039. |
+| 22 | COMPLETE, applicable | Population, seven-day window, primary objective, secondary objectives. PA040–PA041. |
+| 23 | COMPLETE, applicable | Further/safety objectives, primary definition, scoring range/meaning, patient-relevant difference. PA042–PA044. |
+| 24 | COMPLETE, applicable | NIHSS, mRS, PROMIS-29/10, patient-reported improvement and RMI definitions. PA045–PA048. |
+| 25 | COMPLETE, applicable | Safety windows, selected-center outcome definitions and units. PA049–PA052. |
+| 26 | COMPLETE, applicable | Exploratory biomarkers, primary design/hypothesis/sample; PRECIS figure. PA053–PA054. |
+| 27 | COMPLETE, applicable | Dosing/phases, follow-up, minimization probability, blinding. PA055. |
+| 28 | COMPLETE, applicable | Population, 610 target, eligibility, randomization and allowable dose reduction. PA056. |
+| 29 | COMPLETE, applicable | Withdrawal/discontinuation and taper rules, oral/NG/PEG administration, matching placebo. PA057. |
+| 30 | COMPLETE, applicable | Compliance/withdrawal data, pregnancy period, prohibited concomitant enhancement treatment. PA058. |
+| 31 | COMPLETE, applicable | Rehabilitation session prescription, off-study-medication follow-up, drug counts, blood collection. PA058. |
+| 32 | COMPLETE, applicable | Primary assessment window, filmed central blinded rating, safety windows, withdrawal data and baseline assessments. PA058. |
 
-### PR1-S004 — Missing-data plan
+32/32 pages mapped; 27 applicable pages including definitions and pointers; 5 pages with no additional applicable quantitative relationship (pages 2, 3, 4, 6, 15). Page 5 is a timing-pointer page and page 17 contains an applicable eligibility definition, with its administrative deadlines separately retained. No scientific unit is omitted.
 
-[p10](../../../joi250066supp1_prod_1761597796.4601.pdf#page=10). Missing data addressed using multiple imputation by chained equations. No imputation count, predictor set, pooling formula, death handling, or missingness assumption is supplied in these assigned pages. Their absence is a mapping fact, not an issue diagnosis. Matching key: primary missing-data handling.
+## Extracted relationships
 
-### PR1-N010 — Analysis/scale abbreviations without definitions
+| Key | Exact PLAN source location | Extracted quantities, labels and definitions | Matching main-paper concept |
+|---|---|---|---|
+| PA001 | [pp. 1–2](../../../joi250066supp1_prod_1761597796.4601.pdf#page=1), cover and signature | ESTREL randomized placebo-controlled trial; investigational product levodopa/carbidopa 100/25 mg. Cover version 1.1, 30 November 2018; approval page explicitly repeats version 1.1 dated 30 November 2018. Risk category C; registry entry pending approval. | Trial identity; intervention product; protocol version. |
+| PA002 | [p. 7](../../../joi250066supp1_prod_1761597796.4601.pdf#page=7), synopsis | Synopsis prints protocol version/date 1.0, 2 November 2018. Phase III. Background cites meta-analysis across 6 RCTs and considerable heterogeneity. | Protocol version; trial design. |
+| PA003 | [p. 7](../../../joi250066supp1_prod_1761597796.4601.pdf#page=7), primary objective | Levodopa versus placebo in addition to standardized motor-learning-based rehabilitation; patient-relevant functional recovery in acute ischemic stroke. | Primary objective and randomized contrast. |
+| PA004 | [p. 8](../../../joi250066supp1_prod_1761597796.4601.pdf#page=8), outcomes | Primary: between-group difference of FMMA scores measured 3 months after randomization. Label is score difference, not explicitly change from baseline. | Primary FMMA at 3 months; estimand/time anchor. |
+| PA005 | [p. 8](../../../joi250066supp1_prod_1761597796.4601.pdf#page=8), secondary a(i–ii) | FMMA total score at end of treatment (5 weeks), 6 and 12 months; FMMA upper- and lower-extremity scores at 5 weeks, 3, 6 and 12 months; each a between-group difference. | Secondary FMMA hierarchy, components and follow-up. |
+| PA006 | [p. 8](../../../joi250066supp1_prod_1761597796.4601.pdf#page=8), secondary a(iii) | Between-group differences in NIHSS, mRS, PROMIS 10 and 29, patient-reported relevance of motor improvement, and RMI at 5 weeks, 3, 6 and 12 months. | Secondary outcomes, status and time points. |
+| PA007 | [p. 8](../../../joi250066supp1_prod_1761597796.4601.pdf#page=8), secondary b | Relative risks of mortality, recurrent stroke, re-hospitalization, serious AEs and selected other AEs possibly related to IMP. This synopsis specifically includes re-hospitalization and the relative-risk label. | Safety outcome membership and effect measure. |
+| PA008 | [p. 8](../../../joi250066supp1_prod_1761597796.4601.pdf#page=8), secondary c | Subset in selected centers: between-group differences in ARAT, BBT, Jamar dynamometer, Motricity Index, trunk control, FAC, 10-meter walk, MoCA, sensor-measured daily activities; 5 weeks, 3, 6, 12 months. | Selected-center secondary outcomes and populations. |
+| PA009 | [p. 8](../../../joi250066supp1_prod_1761597796.4601.pdf#page=8), design | Multicenter randomized parallel-group placebo-controlled superiority trial, ratio 1:1; patients, care providers, investigators and assessors blinded. | Design, allocation, superiority and blinding. |
+| PA010 | [p. 9](../../../joi250066supp1_prod_1761597796.4601.pdf#page=9), inclusion | Acute ischemic stroke ≤7 days before randomization; clinically meaningful hemiparesis ≥3 points on arm plus leg motor NIHSS items; 24-hour latency after thrombolysis or thrombectomy; inpatient rehabilitation required; capable of standardized therapy; consent by patient or next of kin. | Eligibility; NIHSS threshold; stroke-to-randomization timing. |
+| PA011 | [p. 9](../../../joi250066supp1_prod_1761597796.4601.pdf#page=9), exclusions | Age <18; Parkinson disease; mandatory levodopa; inability/unwillingness to comply including oral/NG/PEG administration; severe aphasia unable to follow two-stage commands; prestroke basal-ADL dependence defined mRS >3; pre-existing hemiparesis; levodopa/carbidopa hypersensitivity or contraindication; pregnancy/breastfeeding/intended pregnancy; lack of reliable contraception. Surgically sterilized/hysterectomized or postmenopausal >2 years are not childbearing potential. | Analysis-eligible population and baseline disability. |
+| PA012 | [p. 9](../../../joi250066supp1_prod_1761597796.4601.pdf#page=9), procedures | Randomized 1:1, stratified by center using standard minimization. Levodopa 100 mg/carbidopa 25 mg three times daily versus matching placebo three times daily, both with standardized motor-learning rehabilitation. Treatment starts day after randomization in acute care; transition to rehabilitation during treatment. | Allocation factors; intervention start/dose and comparator. |
+| PA013 | [p. 9](../../../joi250066supp1_prod_1761597796.4601.pdf#page=9), procedures | In-person examinations 5 weeks and 3 months in interventional phase; long-term follow-up 6 and 12 months in observational phase, all after randomization. | Follow-up schedule and intervention/observation phases. |
+| PA014 | [p. 10](../../../joi250066supp1_prod_1761597796.4601.pdf#page=10), intervention | 39 days total. Days 1–3 morning only; 4–6 morning and lunch; 7–34 three times daily; 35–37 morning and lunch; 38–39 morning only. Each active administration is 100 mg levodopa/25 mg carbidopa; matching placebo follows same schedule. | Randomized dose, frequency, escalation and taper duration. |
+| PA015 | [p. 10](../../../joi250066supp1_prod_1761597796.4601.pdf#page=10), participant rationale | Enroll 610 over 37 months; 10% dropout assumed, leaving 549 evaluable. Normally distributed FMMA, SD 25 points; 548 patients permit detection of mean difference 6 points at 3 months with 80% power, two-sided significance 5%. These are printed planning values; no reconstruction is performed here. | Sample size/power assumptions and patient-relevant difference. |
+| PA016 | [p. 10](../../../joi250066supp1_prod_1761597796.4601.pdf#page=10), schedule | Study duration 50 months, screening first patient to finishing. Planned first patient February 2019; last participant out December 2022. Anticipated 12 acute and 7 rehabilitation centers. Administrative context retained without a comparison conclusion. | Recruitment/schedule context. |
+| PA017 | [p. 10](../../../joi250066supp1_prod_1761597796.4601.pdf#page=10), statistical considerations | FMMA at 3 months: mixed-effects model; baseline FMMA covariate and two-level treatment (levodopa/placebo) fixed effects; center random factor. | Primary model, baseline adjustment and center effect. |
+| PA018 | [p. 10](../../../joi250066supp1_prod_1761597796.4601.pdf#page=10), statistical considerations | Secondary outcomes: regression models appropriate to data type. No specific link or distribution is given on this page. | Secondary model specification. |
+| PA019 | [p. 10](../../../joi250066supp1_prod_1761597796.4601.pdf#page=10), statistical considerations | Missing data addressed with multiple imputation by chained equations. Number of imputations, imputation covariates and pooling are not specified in this synopsis. | Missingness and imputation. |
+| PA020 | [pp. 5–6](../../../joi250066supp1_prod_1761597796.4601.pdf#page=5), contents | Visit 2 at 5 weeks ±7 days; visit 3 at 3 months ±14 days; visit 4 at 6 months ±20 days; visit 5 at 12 months ±30 days. Contents locates hypothesis/sample-size section 37, stopping 38, populations/primary/sensitivity/secondary 39 and interim/missingness 40, outside this shard. | Visit windows; later statistical-design locator. |
+| PA021 | [pp. 11–12](../../../joi250066supp1_prod_1761597796.4601.pdf#page=11), abbreviations | FMMA UE/LE = upper/lower extremity; FAS full analysis set; ITT intention to treat; PP per protocol; H0 null and H1 alternative hypothesis; SD standard deviation; RMI Rivermead Mobility Index; SAE serious adverse event; ARAT Action Research Arm Test; BBT Box-and Block-Test; JDT Jamar Dynamometer Test; MI Motricity Index; MoCA Montreal Cognitive Assessment; mRS modified Rankin Scale; NIHSS National Institutes of Health Stroke Scale; TCT Trunk Control Test; 10MWT 10-meter walk test. Abbreviations alone do not define FAS/ITT/PP membership. | Outcome names, analysis-population labels and statistical notation. |
+| PA022 | [p. 13](../../../joi250066supp1_prod_1761597796.4601.pdf#page=13), schedule timing columns | Prescreen day −7 to 0; visit 1 day 0 screening/consent/enrollment/randomization; dose escalation days 1–6; transition to rehabilitation day X; full dose days 7–34; taper days 35–39; visit 2 5 weeks ±7 days end of treatment; visit 3 3 months ±14 days primary assessment; visit 4 6 months ±20 days; visit 5 12 months ±30 days; unscheduled end-of-study visit. | All assessment time anchors/windows and phase boundaries. |
+| PA023 | [p. 13](../../../joi250066supp1_prod_1761597796.4601.pdf#page=13), full schedule rows | Schedule names consent, randomization, dispensing group A levodopa/group B placebo, therapy booklet, eligibility, demographics, medical history, pregnancy test, physical exam, concomitant medication, concomitant rehabilitation, drug accountability and blood sampling; outcomes are FMMA, NIHSS, mRS, PROMIS10/29, patient relevance, RMI, ARAT, BBT, JDT, MI, TCT, FAC, 10MWT, MoCA, sensors, all-cause mortality, any recurrent stroke and AEs/SAEs. Core FMMA/NIHSS/mRS/RMI and selected-center motor/cognitive/sensor outcomes have baseline and visit 2–5/unscheduled marks. PROMIS and patient relevance have visit 2–5/unscheduled marks. No individual result values occur. | Outcome status and assessment availability; baseline versus follow-up collection. |
+| PA024 | [p. 13](../../../joi250066supp1_prod_1761597796.4601.pdf#page=13), schedule footnotes | Asterisk: transition visit, in-person data collection only, at acute-to-rehabilitation transfer any day during treatment. Double asterisk: selected centers only; blood sampling may occur at baseline or any follow-up. Triple asterisk: unscheduled end-of-study visit for discontinuation/withdrawal; bracketed X assessments only if before end of treatment for accountability or before visit 3 for AEs/SAEs; outcome assessments at this visit require participant approval. | Selected subsets; blood-sampling timing; discontinuation assessment and safety windows. |
+| PA025 | [p. 14](../../../joi250066supp1_prod_1761597796.4601.pdf#page=14), flowchart | Consent → screening → baseline assessments → randomization → 1:1 levodopa/carbidopa or matching placebo. Escalation days 1–6, full dose 7–34, taper 35–39; transition during treatment. Visit 2 5 weeks ±7 days; visit 3 3 months ±14 days in interventional phase; visits 4/5 at 6 months ±20 days and 12 months ±30 days in observational phase. | Study flow and endpoint hierarchy. |
+| PA026 | [p. 16](../../../joi250066supp1_prod_1761597796.4601.pdf#page=16), DSMC | Independent DSMC monitors mortality, recurrent stroke and SAEs; independent statistician supplies safety data unblinded to individual assignment. Investigators, CTU conduct staff and trial statistician remain blinded. Efficacy review/evaluation is explicitly outside DSMC scope. Stopping/continuing/amending advice refers to section 11.3. | Safety interim review, blinding and stopping governance. |
+| PA027 | [p. 17](../../../joi250066supp1_prod_1761597796.4601.pdf#page=17), ethics/consent | Severe, particularly sensory, aphasia excludes those unable to follow two-stage commands. Next-of-kin consent may be needed for mild aphasia or neglect; independent physician consent also sought. No emergency enrollment. | Eligibility and consent-derived population. |
+| PA028 | [p. 17](../../../joi250066supp1_prod_1761597796.4601.pdf#page=17), administrative deadlines | Premature end/interruption notification within 15 days; regular end within 90 days; final study report within one year. Annual safety and interim reports to authorities. These are administrative reporting intervals, not efficacy interim decision thresholds. | No direct outcome match; governance context. |
+| PA029 | [p. 18](../../../joi250066supp1_prod_1761597796.4601.pdf#page=18), early termination | Sponsor may stop for ethical concerns, insufficient recruitment, doubtful participant safety, clinical-practice alterations making continuation unwise, or early evidence of harm. DSMC monitors mortality/recurrent stroke/SAEs and recommends stopping, continuing or amending per section 11.3. | Planned stopping reasons. |
+| PA030 | [p. 18](../../../joi250066supp1_prod_1761597796.4601.pdf#page=18), amendments | Substantial amendments only after CEC/CA approval; emergency deviations to protect participants may precede approval and must be documented/reported. Non-substantial amendments communicated to CA as applicable and CEC annual safety report. No numeric analysis amendment stated here. | Version/amendment context for design comparisons. |
+| PA031 | [p. 19](../../../joi250066supp1_prod_1761597796.4601.pdf#page=19), historical RCT context | Earlier trial included 3 weeks–6 months after stroke; levodopa 100 mg/day for 3 weeks; Rivermead motor difference 3.9 points, 95% CI 0.55–7.2; effect sustained 3 weeks after stopping; 47 analyzed. Two later factorial RCTs had overall 29 levodopa patients. Aphasia study gave 100 mg/day at 8 weeks after stroke. Historical context, not ESTREL outcomes. | Background only; no matched ESTREL result. |
+| PA032 | [p. 19](../../../joi250066supp1_prod_1761597796.4601.pdf#page=19), DARS context | Single levodopa 100 mg before therapy; independent walking at 8 weeks OR 0.78, 95% CI 0.53–1.15. Rehabilitation mean 22 sessions, SD 10, over 8 weeks; fewer than 3/week; guideline context 3 hours/weekday. Dose 45–60 min before sessions, 0–15 min accepted. Assumed effect 50% higher independent-walking rate at 8 weeks. Historical values, not ESTREL planning inputs unless explicitly referenced elsewhere. | Background only. |
+| PA033 | [p. 19](../../../joi250066supp1_prod_1761597796.4601.pdf#page=19), ESTREL rationale | Three-times-daily dosing to avoid decoupling medication/therapy; standardized motor-learning therapy; inclusion as soon as possible and no later than 7 days post-onset. | Randomized frequency, concomitant therapy, enrollment window. |
+| PA034 | [p. 20](../../../joi250066supp1_prod_1761597796.4601.pdf#page=20), rationale/product | Rationale calls primary measurement 3 months post-stroke and names FMMA. Product white capsules 100 mg levodopa plus 25 mg carbidopa, or placebo. | Outcome time anchor and capsule strength. |
+| PA035 | [p. 20](../../../joi250066supp1_prod_1761597796.4601.pdf#page=20), Figure 1 | Historical meta-analysis from 6 RCTs, 8 rows due to factorial contrasts; inverse-variance random-effects standardized mean difference, 95% CI; direction left favors control, right favors levodopa; axis −2, −1, 0, 1, 2. Complete displayed data transcribed in table below. | Background figure; no ESTREL result match. |
+| PA036 | [p. 20](../../../joi250066supp1_prod_1761597796.4601.pdf#page=20), Figure 1 caption | Celik RMA change from baseline at 6 weeks; Acler and Scheidtmann RMA after 5 and 6 weeks; Sonde FM leg/arm at 3 months with leg used here; Lokk FM at 3 months; DARS ABILHAND at 8 weeks (conference 2015). Sensitivity excluding Celik or using Sonde FM arm did not change findings/explain heterogeneity. AMPH amphetamine; MPH methylphenidate. | Background measure/time-point distinction. |
+| PA037 | [p. 21](../../../joi250066supp1_prod_1761597796.4601.pdf#page=21), dose rationale | ESTREL 100/25 mg three times daily; escalation days 1–6, taper 35–39, careful 5-day taper for safety. Fixed escalation not guided by immediate motor response; tolerability monitored and dose adaptation allowed. | Dose, timing and permitted adaptation. |
+| PA038 | [p. 21](../../../joi250066supp1_prod_1761597796.4601.pdf#page=21), historical pharmacology | Prior studies single dose ≥30 min or 45–60 min before rehabilitation, with 0–15 accepted; peak 0.5–2 h after oral dose. Prior human studies tested 3 doses: 100 mg prolonged plasticity, 25 and 200 mg abolished it. DARS mean SAEs per patient 1.2 (SD 0.6) within 8 weeks, with no group difference stated. Historical context only. | Dose rationale background. |
+| PA039 | [pp. 21–22](../../../joi250066supp1_prod_1761597796.4601.pdf#page=21), safety | Dyskinesia, nausea, dizziness, headache listed as prespecified AEs. Potential treatment effects expected during 5-week treatment or 7 weeks thereafter, within 3-month interventional phase. No treatment AEs expected in observation months 3–12 because washout reached by month 3. | Prespecified AE membership and time window. |
+| PA040 | [p. 22](../../../joi250066supp1_prod_1761597796.4601.pdf#page=22), population/objective | Acute ischemic stroke with clinically meaningful hemiparesis, NIHSS ≥3 motor arm/leg; hemorrhagic stroke excluded; maximum onset-to-visit-1 window 7 days. Primary: difference in final FMMA scores 3 months after randomization. | Population, baseline eligibility, final-score endpoint and time. |
+| PA041 | [pp. 22–23](../../../joi250066supp1_prod_1761597796.4601.pdf#page=22), secondary objectives | Patient self-assessed physical function; general health/pain/mood/anxiety/fatigue/social participation; sustainable motor improvement; selective hand/wrist movement; independent walking; less impairment; ADLs; quality of life; cognition; no signal of increased mortality, recurrent stroke or SAEs. | Secondary outcome domains and safety objective. |
+| PA042 | [p. 23](../../../joi250066supp1_prod_1761597796.4601.pdf#page=23), further/safety objectives | Compare 3-month functional outcome of ESTREL participants with nonparticipants using Swiss Stroke Registry; explanatory treatment-response analyses using genetic/blood/imaging markers. Safety: mortality, recurrent stroke, SAEs, prespecified nonserious AEs possibly IMP-related. | External comparison; exploratory biomarker analyses; safety status. |
+| PA043 | [p. 23](../../../joi250066supp1_prod_1761597796.4601.pdf#page=23), primary definition | FMMA items use 3 ordinal categories: 0 cannot perform, 1 performs partially, 2 performs fully. Total 0 (no movement) to 100 (normal movement), UE 66 and LE 34. Trained assessor. Primary efficacy outcome is between-group FMMA score difference at 3 months after randomization. | Score range, direction, components and primary scale. |
+| PA044 | [p. 23](../../../joi250066supp1_prod_1761597796.4601.pdf#page=23), patient relevance | Cited minimal clinically important differences UE 5.25 and LE 6 points; ESTREL considers 6-point between-group primary difference patient-relevant. Illustrative recovery shoulder/hip with 6-point increase. | Clinical relevance threshold and power effect size. |
+| PA045 | [p. 24](../../../joi250066supp1_prod_1761597796.4601.pdf#page=24), NIHSS/mRS | NIHSS quantifies overall neurological deficit acute and follow-up. mRS measures activity-level 3-month outcome and may be obtained using simplified validated questionnaire; registry mRS at 3 months allows nonparticipant comparison. | Secondary neurological/disability outcomes. |
+| PA046 | [p. 24](../../../joi250066supp1_prod_1761597796.4601.pdf#page=24), PROMIS | PROMIS mean each scale 50, population SD 10; minimally clinically important difference deemed half an SD. PROMIS-29 domains: physical function, anxiety, depression, fatigue, sleep disturbance, social roles/activities, pain interference, pain intensity. First 7 domains each 4 questions, items 1 of 5 levels; pain intensity visual analogue 0–10. PROMIS-10 covers general health, quality of life, pain, mood, anxiety, fatigue and social participation. | PROMIS score definition, domains and patient-reported outcomes. |
+| PA047 | [p. 24](../../../joi250066supp1_prod_1761597796.4601.pdf#page=24), patient relevance | Ask whether motor function improved since last study visit and whether personally relevant; compare FMMA improvement with patient-reported relevance. | Patient-reported motor improvement and clinical relevance. |
+| PA048 | [pp. 24–25](../../../joi250066supp1_prod_1761597796.4601.pdf#page=24), RMI | 15 items; score 0–15; activity/mobility including posture, transfers, walking, stairs; clinician and patient perspective. Minimal detectable change 2.2 points cited; clinically meaningful difference not established. RMI ≥7 means walking independently of another person's assistance. | RMI scale and independent-walking threshold. |
+| PA049 | [p. 25](../../../joi250066supp1_prod_1761597796.4601.pdf#page=25), safety outcomes | Interventional phase: all-cause mortality, any recurrent stroke, SAEs and prespecified nonserious possibly IMP-related AEs. Observation 3–12 months: all-cause mortality and any recurrent stroke. | Safety endpoint definitions and surveillance windows. |
+| PA050 | [p. 25](../../../joi250066supp1_prod_1761597796.4601.pdf#page=25), selected-center strength/trunk/ARAT | Center contract determines assessments. MI UE and LE subscales each 0–100, isometric strength. TCT 4 items, item scores 0–25; sitting balance requires 30 seconds without trunk/feet support. ARAT 4 subtests: grasp 6 items, grip 4, pinch 6, gross movement 3. | Selected-center motor outcome definitions/ranges. |
+| PA051 | [p. 25](../../../joi250066supp1_prod_1761597796.4601.pdf#page=25), selected-center dexterity/walking | BBT number of wooden cubes transferred between compartments in 60 seconds. FAC score 0–5, independent walking with/without aid and surface type. 10MWT speed/cadence over 10 meters at comfortable and maximum speed. JDT quantitative grip strength assessed affected and unaffected UE. | Dexterity, ambulation, gait and grip units/conditions. |
+| PA052 | [p. 25](../../../joi250066supp1_prod_1761597796.4601.pdf#page=25), cognition/sensors | MoCA score 0–30. Sensors measure daily-life activity and upper-limb use; raw gyroscope, acceleration, magnetometer and pressure; activity counts/arm use; lying, sitting, standing and walking states. | Cognitive and activity secondary outcomes. |
+| PA053 | [p. 26](../../../joi250066supp1_prod_1761597796.4601.pdf#page=26), further assessments | Blood sampling baseline or any follow-up; exploratory hypotheses about treatment-response differences by genetic/blood biomarkers. No new ESTREL imaging; CT/(f)MRI from routine care or observational studies analyzed for lesion type/location/volume and treatment response. | Exploratory biomarker/subgroup concepts. |
+| PA054 | [p. 26](../../../joi250066supp1_prod_1761597796.4601.pdf#page=26), design/Figure 2 | Multicenter parallel 1:1 blinded superiority design; 610 patients. Main hypothesis: 5 weeks levodopa plus standardized therapy yields at least 6-point higher FMMA at 3 months versus placebo plus therapy. PRECIS graphical design profile uses 1–5 scale across eligibility, recruitment, setting, organization, delivery flexibility, adherence flexibility, follow-up, primary outcome and primary analysis; entered by investigator/advisor consensus. Vertices are graphical design ratings, not trial outcomes; no separate printed vertex numerals. | Primary hypothesis, benefit direction and effect threshold; design context. |
+| PA055 | [p. 27](../../../joi250066supp1_prod_1761597796.4601.pdf#page=27), design/randomization | Repeats exact PA014 dose schedule. Total individual follow-up 12 months: interventional 3 months (randomization through visit 3), observational 9 months (after visit 3 to visit 5). Main intervention ends 5 weeks. Three interventional in-person visits, two observational visits at 6/12 months. Center-stratified secuTrial minimization allocates with 80% probability to treatment minimizing within-stratum group difference. Investigators, patients, care providers, outcome assessors and study statistician blinded; independent pharmacy labels/dispenses; DSMC unblinded. | Allocation probability/stratum; visit counts; treatment duration and masking. |
+| PA056 | [p. 28](../../../joi250066supp1_prod_1761597796.4601.pdf#page=28), population/withdrawal | 610 acute ischemic-stroke patients; hemorrhage excluded; transfer during treatment days 1–39. All inclusion and no exclusion criteria, no exceptions. Computer-generated randomization immediately at enrollment. Dose reduction to 1-1-0 daily (morning/noon, none evening) allowed for nighttime adverse reactions. Early discharge described as earlier than 5 weeks minus 7 days after randomization. Administrative travel refund CHF20 per patient per visit outside routine follow-up. | Population, adherence/dose adaptation and discharge rules. |
+| PA057 | [p. 29](../../../joi250066supp1_prod_1761597796.4601.pdf#page=29), discontinuation/intervention | Early discharge: encourage study medication through scheduled 5-week end-of-treatment visit; if patient declines, stop full treatment then taper over following 5 days. Unscheduled end-of-study visit discontinuation/withdrawal day ±3 days. At least probable IMP-related AE/SAE/SUSAR can trigger reduction or temporary/permanent stop. Stop for contraindication, mandatory open levodopa or significant health risk. Prefer nondopaminergic alternatives before visit 3 when possible. 100/25 mg orally days 1–39; NG/PEG allowed for inability to swallow, minimum duration documented. Placebo identical regimen/route/duration and appearance/texture/taste. Shelf life expected 12 months; storage 15–25°C. | Intercurrent events; intervention adherence and handling; randomized regimen. |
+| PA058 | [pp. 30–32](../../../joi250066supp1_prod_1761597796.4601.pdf#page=30), compliance/rehabilitation/assessments | Drug numbered for complete 39 days; returned capsule counts documented at visit 2. Data before withdrawal analyzed (p.30); p.32 states such data may be used for further analyses. Pregnancy contraception days 1–39 plus 1 month. Other off-label rehabilitation-enhancing products prohibited to 3 months. Same motor-learning therapy both arms; 3 rehabilitation sessions/workday, at least 2 standardized motor therapy sessions by trained physical/occupational therapists; amount in minutes/hours and therapy type recorded. Active task-specific exercise, tailored progressive challenge, performance feedback, repetitions/rest and motivation. Mandatory open levodopa stops study drug but patients remain as off-study-medication participants. Blood approximately 10 mL EDTA at selected centers, stored −20°C. Primary FMMA at 3 months ±14 days, certified trained local assessors; 3-month FMMA also filmed for central blinded rating at Basel; all primary assessment staff blinded. Mortality/any stroke/SAEs/prespecified nonserious AEs visit1–3, then mortality/any stroke months3–12. Prescreen day−7 to0 with 24-hour latency after thrombolysis/thrombectomy. Baseline before allocation mandatory FMMA, NIHSS, mRS, RMI; selected centers ARAT, BBT, JDT, MI, TCT, FAC, 10MWT, MoCA, sensors. | Primary rating source and window; follow-up after discontinuation; concomitant therapy dose; baseline outcomes; safety population/window. |
 
-[pp11–12](../../../joi250066supp1_prod_1761597796.4601.pdf#page=11). FAS = full analysis set; ITT = intention to treat; PP = per protocol; FMMA(UE/LE) = Fugl-Meyer Motor Assessment upper/lower extremity; NIHSS; mRS; PROMIS; RMI; ARAT; BBT; JDT; MI; MoCA; FAC; TCT;10MWT. No operational FAS/ITT/PP success/exclusion criteria in assigned pages; detailed population definitions must come from later source units. Matching key: analysis-set identity.
+## Historical Figure 1 complete transcription
 
-### PR1-N011 — Schedule matrix and footnotes
+Location: [DOC-002 PDF p.20, Figure 1](../../../joi250066supp1_prod_1761597796.4601.pdf#page=20). All values are historical evidence in PLAN background, not ESTREL randomized results. Columns are levodopa mean/SD/total, control mean/SD/total, inverse-variance random-effects weight and standardized mean difference with 95% CI.
 
-[p13](../../../joi250066supp1_prod_1761597796.4601.pdf#page=13). Schedule groups: prescreening; enrollment Visit1; interventional/main-study escalation, transition, full-dose, taper, Visits2/3; observational Visits4/5; unscheduled end-of-study. Assessments include eligibility, demographics, medical history, female pregnancy test, baseline concomitant rehabilitation, subsequent rehabilitation information, concomitant treatment, drug accountability, and optional blood sampling. Outcome rows explicitly list FMMA primary, NIHSS, mRS, PROMIS10, PROMIS29, patient relevance of motor improvement, RMI, ARAT, BBT, Jamar dynamometer, Motricity Index, trunk control, FAC,10-meter walk, MoCA, daily-life movement sensors, clinical stroke recurrence, all-cause mortality, and AE/SAE. Follow-up outcome columns show assessment at5 weeks,3,6,12 months and at the unscheduled visit. Footnotes: transition data collected only on the acute-to-rehabilitation transfer day; double-asterisk tests/sensors and blood sampling only in selected centers; blood sampling may occur at baseline or any follow-up; unscheduled visit for discontinuation/withdrawal; bracketed drug-accountability assessment applies only before end of treatment or before Visit3 for AE/SAE; outcome assessments at unscheduled visit require participant approval. No numerical result is printed in the matrix. Matching key: all-patient versus selected-center tests, follow-up timing, safety collection.
+| Study or contrast | Levodopa mean | SD | n | Control mean | SD | n | Weight | SMD (95% CI) | Year |
+|---|---:|---:|---:|---:|---:|---:|---:|---|---:|
+| Celik | 9.1 | 4.5 | 14 | 7.3 | 4.5 | 12 | 12.1% | 0.39 (−0.39, 1.17) | 2004 |
+| Acler | 23 | 6 | 10 | 22 | 6 | 10 | 10.7% | 0.16 (−0.72, 1.04) | 2005 |
+| Scheidtmann | 15.4 | 3.48 | 22 | 11.3 | 3.48 | 25 | 14.5% | 1.16 (0.54, 1.78) | 2005 |
+| Sonde with AMPH | 22.6 | 7.8 | 3 | 37.9 | 23.7 | 5 | 5.3% | −0.67 (−2.17, 0.83) | 2007 |
+| Sonde without AMPH | 25.9 | 10.6 | 6 | 39.4 | 9.1 | 7 | 7.1% | −1.28 (−2.52, −0.04) | 2007 |
+| Lokk without MPH | 66.3 | 31.7 | 20 | 53.4 | 34.4 | 20 | 14.4% | 0.38 (−0.24, 1.01) | 2011 |
+| Lokk with MPH | 57.7 | 37.1 | 19 | 57 | 35.3 | 19 | 14.3% | 0.02 (−0.62, 0.65) | 2011 |
+| DARS trial | 3.1 | 3.1 | 308 | 3.3 | 3.3 | 295 | 21.7% | −0.07 (−0.23, 0.09) | 2015 |
+| Total | — | — | 402 | — | — | 393 | 100.0% | 0.15 (−0.25, 0.55) | — |
 
-### PR1-S005 — Monitoring and early stopping
+Printed heterogeneity: tau-squared 0.18; chi-squared 21.20, df7, P=.003; I-squared 67%. Overall effect Z=.73, P=.46. No diagnostic recalculation or comparison conclusion is made.
 
-[p16](../../../joi250066supp1_prod_1761597796.4601.pdf#page=16), [p18](../../../joi250066supp1_prod_1761597796.4601.pdf#page=18). Independent DSMC monitors mortality, recurrent stroke, SAEs; an independent statistician supplies individual-treatment-unblinded safety data. Investigators, CTU study-conduct staff and trial statistician remain blinded to safety-monitoring data/analyses. DSMC does not review/evaluate efficacy data. It recommends stopping/continuing/amending according to section11.3 (outside assigned scope). P18 permits early termination for ethical concerns, insufficient recruitment, safety risk, changes in accepted practice, or early evidence of harm; no numeric threshold on these pages. Substantial amendments require CEC/competent-authority approval, with documented emergency deviations to protect participants and reporting afterward; non-substantial amendments communicated through annual safety reporting. Matching key: safety interim analyses and early-stopping decision rule.
+## Statistical scope boundaries and gaps
 
-### PR1-N014 — Dose/risk-window rationale
+Primary model, power and imputation are extracted in full at their synopsis location. This assigned section does not provide detailed sensitivity models, subgroup cut points, multiplicity adjustment, analysis-population membership, imputation count/pooling, or numeric safety stopping boundaries. The contents explicitly locates those detailed statistical sections on later protocol pages, owned by another shard; this is a cross-shard scope boundary, not an omitted assigned unit. No ESTREL outcome results, event counts, fitted estimates, P values or CIs occur on pages1–32; the historical evidence is separated above. No composite outcome is defined in this assigned section.
 
-[p21](../../../joi250066supp1_prod_1761597796.4601.pdf#page=21), [p22](../../../joi250066supp1_prod_1761597796.4601.pdf#page=22). Expected peak levodopa effect0.5–2 hours after oral dose; prior studies administered single dose at least30 or45–60 minutes before therapy, with0–15 minutes acceptable in one protocol. Historical100 mg single dose chosen against25/200 mg alternatives, with3 dose levels discussed. Potential treatment AEs expected during5-week treatment or maximum7 weeks thereafter, within3 months after randomization; no IMP treatment effects expected in observational3–12-month phase after washout. These are rationale statements, not observed ESTREL safety outcomes. Matching key: planned safety observation window.
+Coverage gaps: none across the assigned 32 source units. Derivative limitations: native extraction is font-corrupted/sparse, fresh OCR omitted lines, and legacy rendering engine/version is unrecorded. All 32 source-linked page images were inspected, closing content gaps for this mapping. Further candidate-level direct-PDF confirmation belongs to the evidence-recheck stage. This artifact makes no candidate, discrepancy, arithmetic or inclusion diagnosis.
+# Fresh support evidence: protocol B
 
-### PR1-N015 — Secondary objectives
+Scope: DOC-002, PDF pages 33–63 inclusive; document role PLAN throughout. Pages 33–46 continue the preceding protocol version; pages 47–63 belong to version 1.4 dated 28 February 2023. The preceding version identifier is outside this shard and is deliberately not inferred. All 31 pages were opened visually at full-page resolution. No source or reusable asset was changed. This is an extraction map, without candidate diagnosis or numerical reconciliation.
 
-[pp22–23](../../../joi250066supp1_prod_1761597796.4601.pdf#page=22). Secondary objectives: improved self-assessed physical function; improved general health, pain, mood, anxiety, fatigue, social participation; sustained motor-function improvement; selective hand/wrist movement; higher proportion walking without another person's assistance; less severe impairment; greater daily-living activity; quality-of-life improvement; cognitive performance; no increased all-cause mortality, recurrent stroke, or SAEs. Each is prospectively secondary; no subgroup hypothesis or multiplicity ranking here. Matching keys: outcome hierarchy/status.
+Method: direct-source identity from current source inventory; complete visual reading of the 31 hashed older factual images `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc002/page-33.png` through `page-63.png` (each integer page included). Legacy rendering engine is unrecorded. Newly produced CPU RapidOCR text at `.ai_paper_validation/review_1_6_2/preprocessing/fresh_ocr/doc002/page-33.txt` through `page-39.txt` was read as a locator; all mapped statements were read from images. No OCR beyond page 39 was needed because the images were readable. No fresh-required units occur in this shard according to source coverage. Source authority remains the supplied PDF. There are no Office sheets, workbook formulas, cached workbook values, or CSV fields in this scope.
 
-### PR1-N016 — Further objectives
-
-[p23](../../../joi250066supp1_prod_1761597796.4601.pdf#page=23). Further objective(a): compare3-month functional outcome of ESTREL participants with nonparticipants using Swiss Stroke Registry routine data. Further objective(b): collect genetic/other biomarkers and routine/observational brain imaging (CT,MRI,fMRI) to explain treatment response. No numerical model specified. Matching keys: external registry comparison and exploratory biomarker analysis, preserving further-objective status.
-
-### PR1-N017 — Safety objectives
-
-[p23](../../../joi250066supp1_prod_1761597796.4601.pdf#page=23). Compare occurrence of mortality, recurrent stroke, SAEs, and prespecified non-serious possibly IMP-related AEs between groups (definition points to10.1.1 outside this shard). No safety composite is stated here. Matching keys: individual safety outcomes and prespecified non-serious AEs.
-
-### PR1-N018 — NIHSS and mRS definitions/status
-
-[p24](../../../joi250066supp1_prod_1761597796.4601.pdf#page=24). All-patient secondary NIHSS measures overall clinical deficit in acute phase/follow-up. All-patient secondary mRS measures activity-level outcome at3 months; simplified mRS questionnaire permitted.3-month mRS in Swiss Stroke Registry supports external nonparticipant comparison. No mRS dichotomization threshold or score distribution model specified here. Matching keys: NIHSS/mRS analysis, independent walking/activity outcomes.
-
-### PR1-N019 — PROMIS scoring/statistical definition
-
-[p24](../../../joi250066supp1_prod_1761597796.4601.pdf#page=24). PROMIS based on item-response theory; each scale general-population mean50, SD10; minimal clinically important difference deemed one-half SD (5 points by arithmetic). These are scale reference values, not trial summaries. Matching keys: PROMIS T-score scale and clinically important threshold.
-
-### PR1-N020 — PROMIS-29 domains and item scales
-
-[p24](../../../joi250066supp1_prod_1761597796.4601.pdf#page=24). All-patient secondary PROMIS29 covers(1) physical function,(2) anxiety,(3) depression,(4) fatigue,(5) sleep disturbance,(6) ability to participate in social roles/activities,(7) pain interference,(8) pain intensity. Domains1–7 each4 questions, scored at1 of5 levels. Pain-intensity visual analogue scale0–10. Matching keys: seven PROMIS29 scales and pain-intensity outcome; scale direction not supplied here.
-
-### PR1-N021 — PROMIS-10 and patient relevance of improvement
-
-[p24](../../../joi250066supp1_prod_1761597796.4601.pdf#page=24). PROMIS10 addresses general health, quality of life, pain, mood, anxiety, fatigue, social participation. Patient relevance asks whether motor function improved since preceding study visit and, if yes, whether improvement matters in personal perception. Compare improvement in FMMA with patient-reported relevance. No respondent threshold or binary-event estimator specified here. Matching keys: PROMIS10 outcomes; patient-reported motor improvement and relevance.
-
-### PR1-N022 — Rivermead Mobility Index definition
-
-[p24](../../../joi250066supp1_prod_1761597796.4601.pdf#page=24). RMI all-patient secondary activity measure,15 items (bed movement, transfer, walking, stairs),0–15 points. Both clinician and patient perspectives described. Historical minimal detectable change2.2 points; clinically meaningful difference not established. RMI≥7 denotes ability to walk inside with an aid without assistance. This paragraph introduces DARS primary independent-walking outcome and continues on p25, requiring the next shard. Matching keys: RMI score and walking-independence threshold.
-
-## Supplied historical context (not ESTREL trial results)
-
-### PR1-N012 — Earlier studies and design rationale
-
-[p19](../../../joi250066supp1_prod_1761597796.4601.pdf#page=19). Initial trial: stroke3 weeks–6 months earlier,100 mg levodopa/day for3 weeks,47 analyzed; Rivermead motor assessment difference3.9,95%CI0.55–7.2; sustained3 weeks after stopping. Two subsequent factorial RCTs included29 levodopa-treated total. Aphasia study:100 mg/day eight weeks after stroke. DARS:100 mg before therapy, independent walking at8 weeks,OR0.78,95%CI0.53–1.1;22(SD10) sessions during6 weeks (<3/week); comparator guideline3h/weekday; drug45–60 minutes before therapy,0–15 acceptable; expected50% relative increase in walking independently8 weeks after randomization. ESTREL rationale: tid administration, motor-learning-based standardized therapy, include as early as possible but≤7 days after stroke. These historical numbers have no ESTREL trial numerator/denominator role.
-
-### PR1-N013 / PR1-S006 — Figure1 historical meta-analysis
-
-[p20](../../../joi250066supp1_prod_1761597796.4601.pdf#page=20). Supplied figure titled meta-analysis of levodopa and motor recovery;6 RCTs,8 study/subgroup rows. Contrast levodopa versus control, standardized mean difference, inverse variance random effects,95%CI. Forest axis −2,−1,0,1,2; negative favors control, positive levodopa. Printed row values below were read from source render:
-
-| Study/subgroup | Levodopa mean, SD, n | Control mean, SD, n | Weight | SMD [95% CI] | Year |
-|---|---|---|---:|---|---:|
-| Celik2004 | 9.1,4.5,14 | 7.3,4.5,12 |12.1%|0.39[−0.39,1.17]|2004|
-| Acler2005 |23,6,10|22,6,10|10.7%|0.16[−0.72,1.04]|2005|
-| Scheidtmann2005 |15.4,3.48,22|11.3,3.48,25|14.5%|1.16[0.54,1.78]|2005|
-| Sonde2007 with AMPH |22.6,7.8,3|37.9,23.7,5|5.3%|−0.67[−2.17,0.83]|2007|
-| Sonde2007 without AMPH |25.9,10.6,6|39.4,9.1,7|7.1%|−1.28[−2.52,−0.04]|2007|
-| Lokk2011 without MPH |66.3,31.7,20|53.4,34.4,20|14.4%|0.38[−0.24,1.01]|2011|
-| Lokk2011 with MPH |57.7,37.1,19|57,35.3,19|14.3%|0.02[−0.62,0.65]|2011|
-| DARS2015 |3.1,3.1,308|3.3,3,295|21.7%|−0.07[−0.23,0.09]|2015|
-| Total |n402|n393|100.0%|0.15[−0.25,0.55]|—|
-
-Heterogeneity tau²0.18,chi²21.20,df7,P=.003,I²67%; overall effect Z0.73,P=.46. Caption: Celik Rivermead change from baseline at6 weeks; Acler/Scheidtmann Rivermead at5/6 weeks; Sonde FM leg+arm at3 months, leg used in figure; Lokk FM3 months; DARS ABILHAND8 weeks. Sensitivity exclusion of Celik or Sonde arm-score substitution described as consistent and not explaining heterogeneity; no numerical sensitivity result printed. AMPH=amphetamine; MPH=methylphenidate. Search date17 August2017. These remain supplied background plan context; do not treat them as reported ESTREL endpoints or population totals.
-
-### PR1-N023 — Historical safety context
-
-[p21](../../../joi250066supp1_prod_1761597796.4601.pdf#page=21). DARS mean SAEs per patient1.2(SD0.6) within8 weeks; no between-group difference stated. Associated levodopa/carbidopa AEs named dyskinesia,nausea,dizziness,headache. This informs predefined ESTREL AE monitoring but is not an ESTREL safety result.
-
-## Handoff and limitations
-
-Complete disjoint coverage24/24 pages. Numeric/design keys PR1-N001 through PR1-N023 (23); statistical keys PR1-S001 through PR1-S006 (6), with N009/S002 and N013/S006 intentionally cross-referenced rather than duplicated. No observed ESTREL results, workbook formulas, cached values, or computed result outputs occur in this shard. Explicitly preserved primary/secondary/further/safety statuses, every listed outcome, timing, scale, dose phase, eligibility item, and available sample-size/model/missing-data/monitoring statements. Detailed analysis populations, sensitivity/subgroup analysis methods, multiplicity, exact stopping boundaries and later outcome definitions occur outside assigned scope; no unsupported specification is inferred.
-
-Derivative completion note: OCR texts exist for all24 pages, total62039 bytes, below the200000-character shard bound. The initial sequential `--psm 3` batch ended with exit143 after completing p20 and starting p21; p21–24 were subsequently produced successfully using `OMP_THREAD_LIMIT=1 timeout 45s tesseract REUSED_PAGE_IMAGE OWNED/page-NN -l eng --psm 6`. They had already been mapped visually before the successful rerun. P13 OCR remains unreadable because of page rotation, and p20 OCR's small forest-plot cells are garbled; their image-based mappings above govern. Fresh renders1 (p20), reusable page-image scope24, no fresh OCR engine or GPU. No scientific unit remains unmapped.
-# Support quantitative evidence: protocol shard 002
-
-## Scope, identity, provenance
-
-Exact disjoint scope: DOC-002, `joi250066supp1_prod_1761597796.4601.pdf`, physical PDF pages 25–48 inclusive (24 pages). Document role: PLAN throughout. Pages25–46 continue protocol version 1.1 dated 30 November 2018, as identified by the source inventory/preceding protocol cover; no new version cover occurs within those pages. Physical p47 begins Clinical Study Protocol version **1.4, 28.02.2023**; p48 repeats that version/date in its approval text. Preserve these version boundaries when matching later results. No conclusions or candidates are generated here.
-
-All24 reusable source-linked PNG pages were opened and visually read, individually, at `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc002/page-N.png`, N=25…48. Text was supplemented by fresh CPU Tesseract5.5.0 OCR, English, PSM3; derivative commands/status are recorded in `../preprocessing/protocol_002/derivative_record.md`. Historical protocol native/layout text is not usable scientific text and was not used. No new PDF renders; no sources or historical assets modified. Physical source pages, rather than OCR, determine the readings below. OCR glyph normalization is limited to visually confirmed transcription (e.g. ≤ and ≥); it does not change source numbers. No workbook/CSV is present in assigned scope, so formula-versus-cache distinction is not applicable.
-
-Source link base from this extraction directory: [DOC-002](../../../joi250066supp1_prod_1761597796.4601.pdf#page=25). Matching main-paper keys below are semantic join keys, not assertions about the report; main-paper pages are outside this shard.
+Matching keys below are semantic main-paper join concepts, for coordinator assignment to the independently extracted main-paper N/S identifiers. Main-paper extraction files were outside this disjoint assignment and were not opened. No main-paper numeric result is inferred here.
 
 ## Complete page coverage
 
-| Physical page | Sections/content | Mapping status |
+| PDF page | Content opened | Applicability and keys |
+|---|---|---|
+| 33 | Treatment, visits, transition | Applicable: PB001–PB005 |
+| 34 | Transition; safety definitions; causality table | Applicable: PB006–PB008 |
+| 35 | Causality continuation; severity table; reporting | Applicable: PB009–PB011 |
+| 36 | Pregnancy, safety reporting/follow-up, observational safety | Applicable: PB012–PB014 |
+| 37 | Serious-event rule; hypothesis and sample size | Applicable: PB015–PB018 |
+| 38 | Figure 3, PROMIS/walking power, stopping | Applicable: PB019–PB022 |
+| 39 | Analysis populations, primary and sensitivity analyses | Applicable: PB023–PB027 |
+| 40 | Secondary, exploratory, interim, safety and missing-data analyses | Applicable: PB028–PB035 |
+| 41 | Source records, management, archive, monitoring | Opened; no applicable result/analysis relationship. Data lock follows completed entry, monitoring and resolved queries; independent CTU statistician performs analysis; source and exported data archived at least 10 years. Administrative numerals do not define an analysis denominator. |
+| 42 | Audit, confidentiality, biological samples, publication, funding, insurance | Applicable limited biomarker ascertainment: PB036. Otherwise administrative; no applicable numerical result. |
+| 43 | References 1–24 (last continued) | Opened; no applicable trial result/analysis relationship; citation years/volume/pages are bibliographic. |
+| 44 | Reference 24 continuation and references 25–43 | Opened; no applicable trial result/analysis relationship; bibliographic numbers and drug-link text only. |
+| 45 | References 44–67 (last continued) | Opened; no applicable trial result/analysis relationship. |
+| 46 | Reference 67 continuation through 78 and appendices list | Opened; no applicable trial result/analysis relationship. Appendices name investigator/TSC lists, product characteristics, existing studies, genetic/biomarker analyses; no embedded table of results on this page. |
+| 47 | Version 1.4 title | Applicable dose/version locator: PB037 |
+| 48 | Version 1.4 signature page | Opened; no additional applicable relationship; protocol version/date and NCT03735901 repeated. |
+| 49 | Local-investigator signature page | Opened; no applicable result/analysis relationship. |
+| 50 | Contents: synopsis through outcomes | Opened; no numerical result. Outcome hierarchy headings are locators to substantive sections; PB038–PB040 capture substantive synopsis. |
+| 51 | Contents: design, interventions, assessments, extended follow-up | Applicable follow-up locator PB041; no independent result. |
+| 52 | Contents: safety, statistical methods, quality, references | Opened; no additional applicable quantitative relationship; section/page numbers are navigation. |
+| 53 | Version 1.4 synopsis identity, rationale, primary objective | Applicable: PB038; six-RCT background statement is contextual rather than this trial's result. |
+| 54 | Version 1.4 outcomes and design synopsis | Applicable: PB039–PB042 |
+| 55 | Version 1.4 eligibility and allocation/procedures | Applicable: PB043–PB046 |
+| 56 | Version 1.4 dose, sample/power, schedule, sites, model | Applicable: PB047–PB051 |
+| 57 | Abbreviations A–R | Applicable definition key PB052; no trial results. |
+| 58 | Abbreviations R–10MWT | Applicable definition key PB052; no trial results. |
+| 59 | Full study schedule matrix and footnotes | Applicable: PB053–PB057 |
+| 60 | Study flow chart | Applicable: PB058 |
+| 61 | Administrative structure/contact details | Opened; no applicable result/analysis relationship. |
+| 62 | DSMC, steering committee, regulatory, registration | Applicable: PB059; remaining contact/regulatory material has no applicable result. |
+| 63 | Regulatory duties, ethical conduct, consent | Applicable eligibility/consent clarification PB060; administrative reporting timing recorded under PB061. |
+
+## Extracted relationships and definitions
+
+All links target exact physical PDF pages. All statements below have document role PLAN.
+
+| Source key | Exact source | Extracted statement, labels, units and qualifications | Matching main-paper concept |
+|---|---|---|---|
+| PB001 | [DOC-002 p33](../../../joi250066supp1_prod_1761597796.4601.pdf#page=33), section 9.2.3 | Individual participants assigned 1:1 to levodopa 100 mg/carbidopa 25 mg or matching placebo. Treatment starts the day after randomization (day 1), ends day 39. Escalation: days 1–3 morning only; days 4–6 morning and lunch; full dose days 7–34 three times daily; taper days 35–37 morning and lunch, days 38–39 morning only. Both groups receive standardized rehabilitation. Enrollment/randomization/allocation/treatment onset in acute stroke unit, subsequent transfer to rehabilitation. | Randomized allocation; intervention dose/duration; rehabilitation |
+| PB002 | [p33](../../../joi250066supp1_prod_1761597796.4601.pdf#page=33), section 9.2.4 | Visit 2 end-of-treatment in person, 5 weeks ±7 days after randomization. Record number, length and type of concomitant therapies during treatment; nonserious prespecified AEs possibly related to IMP, SAEs, any recurrent stroke, all-cause mortality. Returned capsules counted and recorded. | Week-5 endpoints; safety ascertainment; adherence |
+| PB003 | [p33](../../../joi250066supp1_prod_1761597796.4601.pdf#page=33), section 9.2.5 | Visit 3 primary assessment in person, 3 months ±14 days after randomization. Physical exam, current medication and post-treatment concomitant therapies; same listed harms as Visit 2. | Primary endpoint time; safety window |
+| PB004 | [p33](../../../joi250066supp1_prod_1761597796.4601.pdf#page=33), sections 9.3.1–9.3.2 | Visit 4: 6 months ±20 days; Visit 5: 12 months ±30 days after randomization. In-person long-term visits, current medications/therapies and outcome measures; all-cause mortality and recurrent stroke as harms. Visit 5 procedures identical to Visit 4. | Long-term endpoints; mortality/recurrent stroke |
+| PB005 | [p33](../../../joi250066supp1_prod_1761597796.4601.pdf#page=33)–[p34](../../../joi250066supp1_prod_1761597796.4601.pdf#page=34), section 9.4 | Non-in-person transition assessment on transfer day: number/length/type of acute-center therapies; drug transferred with participant; harms since randomization including AE/SAE, all-cause death and any recurrent stroke; rehabilitation center recorded. Unscheduled end-of-study visit follows schedule and section 7.4. | Treatment continuity; safety ascertainment; withdrawal |
+| PB006 | [p34](../../../joi250066supp1_prod_1761597796.4601.pdf#page=34), section 10.1 | All-cause mortality, any recurrent stroke, all SAEs and nonserious prespecified AEs collected/investigated/documented up to 3 months after enrollment. The parenthetical is printed “i.e. Visit 2”; both the duration and visit label are retained as printed. | Safety endpoint collection window |
+| PB007 | [p34](../../../joi250066supp1_prod_1761597796.4601.pdf#page=34), section 10.1.2 | AE: untoward medical occurrence with pharmaceutical product, without necessary causal relationship. Prespecified list: nausea, vomiting, taste disturbances, dry mouth, anorexia, arrhythmias, postural hypotension, syncope, drowsiness including sudden sleep, fatigue, dementia, psychoses, hallucinations, confusion, euphoria, abnormal dreams, insomnia, depression, anxiety, dizziness, dystonia, dyskinesia, chorea. | AE categories and safety outcomes |
+| PB008 | [p34](../../../joi250066supp1_prod_1761597796.4601.pdf#page=34) | SAE: death; life-threatening; inpatient hospitalization or its prolongation; persistent/significant disability/incapacity; congenital anomaly/birth defect; important events jeopardizing health or requiring intervention to prevent these outcomes also usually serious. Follow until resolution/stabilization, including beyond interventional phase if ongoing. | SAE definition and follow-up |
+| PB009 | [p34](../../../joi250066supp1_prod_1761597796.4601.pdf#page=34)–[p35](../../../joi250066supp1_prod_1761597796.4601.pdf#page=35), causality table | Definitely: temporal relationship, improvement after dechallenge, recurrence after rechallenge or other proof. Probably: temporal relationship, dechallenge improvement, no other cause. Possibly: temporal relationship and other possible cause. Unlikely: assessable reaction meeting none of these. Not related: causal relationship ruled out. Dechallenge qualification only if applicable. Sponsor and local investigator assess causality. Unexpected reaction inconsistent in nature/severity with product information; related+serious+unexpected is SUSAR. | Relatedness classification |
+| PB010 | [p35](../../../joi250066supp1_prod_1761597796.4601.pdf#page=35), severity table | CTCAE version 5 (27 November 2017): grade 1 mild/asymptomatic, observations only/no intervention; grade 2 moderate, minimal/local/noninvasive intervention, limits instrumental ADL; grade 3 severe/medically significant, not immediately life-threatening, hospitalization or prolongation, disabling/limits self-care ADL; grade 4 life-threatening/urgent intervention; grade 5 death related to AE. Semicolon means “or”; ADL = activities of daily living. | Severity grading |
+| PB011 | [p35](../../../joi250066supp1_prod_1761597796.4601.pdf#page=35) | SAE reporting immediately and no later than 24 hours to sponsor; fatal SAE to ethics within 7 days. SUSAR within 7 days if fatal, 15 days otherwise. Safety signals to sponsor within 24 hours and authorities within 7 days. These are reporting deadlines, not analysis follow-up windows. | Safety administration context |
+| PB012 | [p36](../../../joi250066supp1_prod_1761597796.4601.pdf#page=36) | Pregnancy/breastfeeding/lack of safe contraception excluded; pregnancy requires immediate withdrawal. Pregnancies during treatment and within 30 days after stopping drug reported within 24 hours. Annual safety report once yearly across all sites. | Exclusions and treatment discontinuation |
+| PB013 | [p36](../../../joi250066supp1_prod_1761597796.4601.pdf#page=36), section 10.1.4 | Unresolved SAE or prespecified possibly related nonserious AE at Visit 3 followed medically as needed, without further EDCS recording. For nonserious AEs of interest and AEs leading to drug discontinuation: verbatim event, start/stop dates, maximum intensity, seriousness, causal rating yes/no, frequency single/intermittent/continuous, drug action, outcome. SAEs additionally record severity/outcome/expectedness, seriousness date and criteria, awareness, hospitalization/discharge, death/cause/autopsy, relation to procedures/other drugs, concomitant drug/history. | Safety event counting/ascertainment |
+| PB014 | [p36](../../../joi250066supp1_prod_1761597796.4601.pdf#page=36)–[p37](../../../joi250066supp1_prod_1761597796.4601.pdf#page=37), section 10.2 | Observational phase 3–12 months: all-cause mortality, any recurrent stroke, serious events under HRO Art.20. HRO serious event includes unplanned/prolonged admission, permanent/significant incapacity/disability, life-threatening event/death when study procedure/data collection cannot be excluded as attributable. Serious event interrupts project, ethics notified within 7 days. | Long-term safety definition; stopping context |
+| PB015 | [p37](../../../joi250066supp1_prod_1761597796.4601.pdf#page=37), section 11.1 | Superiority hypothesis: levodopa plus standardized rehabilitation over 5 weeks soon after acute stroke produces at least 6 points higher FMMA at 3 months than placebo plus rehabilitation. | Superiority hypothesis; clinically relevant difference |
+| PB016 | [p37](../../../joi250066supp1_prod_1761597796.4601.pdf#page=37), section 11.2 | Normally distributed FMMA assumed, SD 25 points; between-patient groups allocated 1:1; 548 patients for mean difference 6 points at 3 months, power 80%, two-sided significance 5%. Baseline/follow-up correlation assumed high but unknown, so power calculation assumes t test without baseline adjustment; adjustment expected to increase power. | Sample-size/power inputs; baseline adjustment |
+| PB017 | [p37](../../../joi250066supp1_prod_1761597796.4601.pdf#page=37) | Attrition allowance 10%; 305 recruited per arm, 610 total. FLAME placebo context mean 35.1, SD 22, day 90; expected ESTREL means 41.1 levodopa vs 35.1 placebo. FLAME data from nine French stroke units. These are power assumptions/context, not ESTREL observations. | Target sample; expected treatment effect |
+| PB018 | [p37](../../../joi250066supp1_prod_1761597796.4601.pdf#page=37) | No DARS FMMA information; FLAME selected for comparable pharmacological recovery setting and target population; 25-point SD stated more conservative than placebo SD 22. | Sample-size rationale |
+| PB019 | [p38](../../../joi250066supp1_prod_1761597796.4601.pdf#page=38), Figure 3 | Sensitivity of sample size to assumed FMMA mean difference: SD 25 points; x-axis assumed difference in points, labeled ticks 5,6,7,8,9; y-axis sample size ticks 200,400,600; curves power 0.7,0.8,0.9; annotated δ=6 and N=548 on power 0.8 curve. Caption: curves smoothed for illustration only. No additional exact curve values printed. | Power sensitivity figure |
+| PB020 | [p38](../../../joi250066supp1_prod_1761597796.4601.pdf#page=38) | Designed for 80% power to detect patient-reported improvement measured by PROMIS at 3 months; less empirical target-population data because novel measure; calculation based primarily on traditional measures. No numeric PROMIS effect/variance input supplied here. | PROMIS outcome/power |
+| PB021 | [p38](../../../joi250066supp1_prod_1761597796.4601.pdf#page=38) | N=610 also intended for ability to walk (RMI ≥7). Assumed independent walking at 5 weeks: placebo 45%, active 57%; power 80%, significance 5%; stated minimum improvement 12% more, absolute 12%, relative 27%. Assumptions contextualized by DARS. | Walking endpoint threshold/time and power |
+| PB022 | [p38](../../../joi250066supp1_prod_1761597796.4601.pdf#page=38), section 11.3 | No efficacy stopping rules; possible safety termination on DSMC recommendation. Primary composite safety events: death any cause, recurrent stroke, SAEs. Composite safety-risk thresholds for DSMC alert to sponsor defined in DSMC charter taking DARS into account; numeric thresholds absent on page. | Interim/stopping; safety composite |
+| PB023 | [p39](../../../joi250066supp1_prod_1761597796.4601.pdf#page=39), sections 11.4–11.4.1 | SAP finalized before database closure, version controlled at CTU Basel. FAS all randomized patients; ITT randomized assignment. Complete-case set all FAS without missing baseline or 3-month FMMA. Withdrawal reasons reported by group and qualitatively compared. | Analysis populations; SAP timing |
+| PB024 | [p39](../../../joi250066supp1_prod_1761597796.4601.pdf#page=39), section 11.4.1 | PP subset of FAS with ≥80% prescribed study drug or justified reduced dosage per section 7.4 (1-1-0 daily), and ≥5 rehabilitation sessions per week. Analyze according to randomized group. | Per-protocol adherence/rehabilitation rule |
+| PB025 | [p39](../../../joi250066supp1_prod_1761597796.4601.pdf#page=39), section 11.4.2 | Primary endpoint FMMA at 3 months after onset of treatment. Mixed-effects model: baseline FMMA covariate, two-level treatment fixed effect levodopa/placebo, random intercept for each center. Two-sided 5% significance. Analyses after termination and database closure under SAP. | Primary endpoint/model/covariates; alpha |
+| PB026 | [p39](../../../joi250066supp1_prod_1761597796.4601.pdf#page=39), section 11.4.3 a,b | Exploratory treatment heterogeneity across centers graphically displayed stratified by center. Exploratory covariates: age, sex, dementia, baseline selective hand/wrist movement, cortical dysfunction (aphasia/neglect/hemianopia), patient-reported fatigue, SSRI treatment, physician-rated mild extrapyramidal motor symptoms, physician-rated reduced impetus. Compare with main analysis. | Subgroup/adjusted sensitivity analyses |
+| PB027 | [p39](../../../joi250066supp1_prod_1761597796.4601.pdf#page=39), section 11.4.3 c,d | Repeat primary on complete cases excluding imputed primary/baseline FMMA; compare main. Repeat on PP to examine protocol deviations; consider marginal structural models for major deviations. All except complete-case/PP analyses use FAS. | Missing-data and PP sensitivity analyses |
+| PB028 | [p39](../../../joi250066supp1_prod_1761597796.4601.pdf#page=39)–[p40](../../../joi250066supp1_prod_1761597796.4601.pdf#page=40), section 11.4.4 | Secondary models appropriate to data type, adjustment as main model, baseline measure where available. Binary logistic regression (GLM logit link/binomial distribution); continuous linear model; ordinal ordinal-logistic regression. Inspect assumptions as main; severe assumption violations/high-leverage outliers may trigger transformations/nonparametric tests/robust regression. Each model treatment difference, P value, 95% CI; two-sided 5%; descriptive tables/graphs; FAS/ITT. | Secondary endpoint models; CIs/tests/populations |
+| PB029 | [p40](../../../joi250066supp1_prod_1761597796.4601.pdf#page=40) | Exploratory treatment-response genetics/biomarkers, including routine imaging/fMRI in observational studies; examples COMT rs4633 exon 5 and rs4680 exon 6. Genetic adjustment may reduce variation/increase power. Genome-wide imbalance investigation with high-density SNP arrays and Copy Number Variation analysis. | Exploratory biomarker analyses |
+| PB030 | [p40](../../../joi250066supp1_prod_1761597796.4601.pdf#page=40) | Intended future individual-patient-data meta-analysis with similar studies such as DARS; additional exploratory analyses may follow scientifically relevant outcome findings. | Prespecification/exploratory status |
+| PB031 | [p40](../../../joi250066supp1_prod_1761597796.4601.pdf#page=40), section 11.4.5 | Interim analysis not planned. | Interim analysis |
+| PB032 | [p40](../../../joi250066supp1_prod_1761597796.4601.pdf#page=40), section 11.4.6 | Detailed examination prespecified events/AEs/SAEs; proportion with at least one prespecified AE estimated per treatment group; close DSMC monitoring. | Safety analysis numerator/denominator definition |
+| PB033 | [p40](../../../joi250066supp1_prod_1761597796.4601.pdf#page=40), section 11.4.7 | Deviations reported to CEC/CA; substantial analysis deviations require amendment; all protocol/SAP deviations listed and justified separately in final statistical report. | Plan version/deviation disclosure |
+| PB034 | [p40](../../../joi250066supp1_prod_1761597796.4601.pdf#page=40), section 11.5 | Up to 10% dropout considered for sample size. Missing data addressed by multiple imputation by chained equations (Van Buuren et al.2011); predictive models produce clinically reasonable imputations; assess impact using complete-case sensitivity. No imputation count/model specification printed here. | Missing-data primary and sensitivity analyses |
+| PB035 | [p40](../../../joi250066supp1_prod_1761597796.4601.pdf#page=40), section 12.1.1 | One CRF per enrolled participant; unique patient identifier. | Participant-level analysis linkage |
+| PB036 | [p42](../../../joi250066supp1_prod_1761597796.4601.pdf#page=42), section 12.6 | Genetic/biomarker secondary outcome blood samples only at selected centers with consent independent of primary trial consent; coded samples stored locally/centrally. | Biomarker subset population |
+| PB037 | [p47](../../../joi250066supp1_prod_1761597796.4601.pdf#page=47)–[p48](../../../joi250066supp1_prod_1761597796.4601.pdf#page=48) | Version 1.4, 28 February 2023; NCT03735901; investigational levodopa/carbidopa 100/25 mg; IMP trial risk category C. Signature page repeats version/date. | Protocol version; intervention identity |
+| PB038 | [p53](../../../joi250066supp1_prod_1761597796.4601.pdf#page=53) | Phase III; primary objective compare levodopa vs placebo added to standardized motor-learning rehabilitation for patient-relevant functional recovery after acute stroke. | Trial design/objective |
+| PB039 | [p54](../../../joi250066supp1_prod_1761597796.4601.pdf#page=54), Outcomes synopsis | Primary: between-group FMMA score difference 3 months after randomization. Secondary: total FMMA at treatment end 5 weeks, 6 and 12 months; upper/lower-extremity FMMA at 5 weeks,3,6,12 months. | Outcome hierarchy; FMMA time points |
+| PB040 | [p54](../../../joi250066supp1_prod_1761597796.4601.pdf#page=54) | Secondary differences: NIHSS, mRS, PROMIS10/29, patient-rated relevance of motor improvement, RMI at 5 weeks,3,6,12 months. Secondary relative risks: mortality, recurrent stroke, serious AEs and selected possibly IMP-related other AEs. “re-hospitalization” is visibly struck through in the relative-risk list; retain as deleted text, not active endpoint. | Secondary/safety hierarchy and measure |
+| PB041 | [p51](../../../joi250066supp1_prod_1761597796.4601.pdf#page=51), contents; [p54](../../../joi250066supp1_prod_1761597796.4601.pdf#page=54)–[p55](../../../joi250066supp1_prod_1761597796.4601.pdf#page=55) | Selected-center subset outcomes at 5 weeks,3,6,12 months: ARAT, Box-and-Block, Jamar dynamometer, Motricity Index, Trunk Control, FAC,10-meter walk, MoCA, daily activity movement sensors. Optional extended observational phase annual telephone visits four additional years; contents specify visits6–9 at24,36,48,60 months ±30 days. | Secondary subset outcomes; long-term extension |
+| PB042 | [p54](../../../joi250066supp1_prod_1761597796.4601.pdf#page=54) | Multicenter randomized 1:1 parallel-group placebo-controlled superiority trial; blinded patients, care providers, investigators and outcome assessors. | Randomization/design/blinding |
+| PB043 | [p55](../../../joi250066supp1_prod_1761597796.4601.pdf#page=55), eligibility | Acute ischemic or intracerebral hemorrhagic stroke ≤7 days before randomization; excludes subarachnoid hemorrhage/cerebral venous sinus thrombosis. Hemiparesis total ≥3 NIHSS points on motor arm, motor leg, limb ataxia; distal arm paresis equivalent to one of these. Randomization ≥24 hours after thrombolysis/thrombectomy; inpatient rehabilitation needed and able to participate; consent patient/next of kin. | Trial population; timing |
+| PB044 | [p55](../../../joi250066supp1_prod_1761597796.4601.pdf#page=55) | Exclusions: age<18; Parkinson disease; mandatory levodopa; unable/unwilling to follow procedures/drug oral/NG/PEG; severe aphasia unable to follow two-stage commands; prestroke mRS>3; pre-existing hemiparesis; levodopa/carbidopa hypersensitivity/contraindication; pregnant/breastfeeding/planned pregnancy; lack safe contraception. Pregnancy test for childbearing age. Surgically sterilized/hysterectomized or postmenopausal >2 years not considered childbearing potential. | Eligibility/population exclusions |
+| PB045 | [p55](../../../joi250066supp1_prod_1761597796.4601.pdf#page=55), Measurements | 1:1 randomization stratified by center with standard minimization algorithm. Treatment levodopa100/carbidopa25 mg three times daily or matching placebo three times daily plus standardized motor-learning rehabilitation. Participants and all study personnel blinded. | Allocation algorithm/strata; intervention |
+| PB046 | [p55](../../../joi250066supp1_prod_1761597796.4601.pdf#page=55) | Next-day treatment onset, escalation/full dose/taper; onset at acute center with subsequent transfer during treatment. In-person interventional assessments 5 weeks/3 months, observational6/12 months; optional annual telephone extension four years. | Treatment and outcome timing |
+| PB047 | [p56](../../../joi250066supp1_prod_1761597796.4601.pdf#page=56) | Dose100/25 mg or placebo administered39 days plus rehabilitation. Schedule: days1–3 morning;4–6 morning/lunch;7–34 three times daily;35–37 morning/lunch;38–39 morning. | Intervention dose/duration |
+| PB048 | [p56](../../../joi250066supp1_prod_1761597796.4601.pdf#page=56), Number rationale | Planned610 over37 months;10% dropout leaves549 evaluable. Normal FMMA SD25;548 permits6-point between-group difference at3 months,80% power,two-sided5%. | Sample size/power assumptions |
+| PB049 | [p56](../../../joi250066supp1_prod_1761597796.4601.pdf#page=56), duration/schedule/sites | Duration75 months to last clinical observational visit. Planned first-in03/2019; last interventional08/2024; last clinical observational05/2025; extended telephone05/2029.11 acute centers and10 rehabilitation centers. Calendar/site counts are administrative context. | Recruitment setting/calendar |
+| PB050 | [p56](../../../joi250066supp1_prod_1761597796.4601.pdf#page=56), statistical considerations | Primary3-month FMMA mixed-effects model: baseline FMMA, two-level treatment, event type acute ischemic versus hemorrhagic as fixed effects; center random factor. | Primary model and covariates |
+| PB051 | [p56](../../../joi250066supp1_prod_1761597796.4601.pdf#page=56) | Secondary regression appropriate to data; missing data multiple imputation by chained equations. | Secondary/missing-data analysis |
+| PB052 | [p57](../../../joi250066supp1_prod_1761597796.4601.pdf#page=57)–[p58](../../../joi250066supp1_prod_1761597796.4601.pdf#page=58), abbreviations | FMMA(UE/LE)=Fugl-Meyer Motor Assessment (Upper/Lower Extremity); FAS=full analysis set; ITT=intention to treat; PP=per protocol; Ho=null,H1=alternative hypothesis; SD=standard deviation; NIHSS=National Institutes of Health Stroke Scale; mRS=modified Rankin Scale; PROMIS printed here as Patient Reported Outcome Measures in Stroke; RMI=Rivermead Mobility Index; AE/SAE/SUSAR and CTCAE definitions; ARAT=Action Research Arm Test; BBT=Box-and-Block; JDT=Jamar Dynamometer; MI=Motricity Index; MoCA=Montreal Cognitive Assessment; FAC=Functional Ambulation Categories; TCT=Trunk Control Test;10MWT=10-meter-walk-test. | Outcome/population labels |
+| PB053 | [p59](../../../joi250066supp1_prod_1761597796.4601.pdf#page=59), study schedule headers | Prescreen day−7 to0; enrollment Visit1 day0; dose escalation days1–6; transition day X; full dose days7–34; taper35–39; Visit2 end treatment5weeks ±7days; Visit3 primary3months ±14days; Visit4 clinical6months ±20days; Visit5 clinical12months ±30days; extended telephone Visits6–9 at24/36/48/60months each ±30days; unscheduled visit timing unscheduled. | Endpoint windows and assessment modes |
+| PB054 | [p59](../../../joi250066supp1_prod_1761597796.4601.pdf#page=59), schedule intervention/assessment rows | Consent and randomization at Visit1. Dispensing groupA levodopa/groupB placebo at Visit1, administration marks in escalation/transition/full/taper, end-of-treatment at Visit2. Therapy booklet at Visit1. Eligibility/history at prescreen and baseline; demographics baseline; pregnancy test baseline. Physical exam baseline and Visits2–5 and unscheduled. Concomitant rehabilitation therapy at baseline, during dose escalation/full/taper, transition, Visits2–5 and unscheduled; concomitant medication baseline, transition, Visits2–9 and unscheduled. Drug accountability at Visit2 and bracketed at unscheduled. Optional blood sampling row cross-refers to footnote rather than fixed visit marks. | Drug adherence; treatment exposure; follow-up ascertainment |
+| PB055 | [p59](../../../joi250066supp1_prod_1761597796.4601.pdf#page=59), schedule outcome rows | FMMA and NIHSS marked baseline, Visits2–5 and unscheduled. mRS marked prescreen, baseline, Visits2–9 and unscheduled. PROMIS10, PROMIS29, RMI marked baseline, Visits2–9 and unscheduled. Patient-rated improvement marked Visits2–9 and unscheduled (baseline not marked). Selected-center optional ARAT, dynamometer, Box-and-Block, Motricity Index, Trunk Control, FAC,10-meter walk, movement-sensor daily activity marked baseline, Visits2–5 and unscheduled. MoCA marked baseline, Visits2–9 and unscheduled. | Assessment matrix; outcome availability over time |
+| PB056 | [p59](../../../joi250066supp1_prod_1761597796.4601.pdf#page=59), schedule safety rows | All-cause mortality and any recurrent stroke marked baseline, treatment-phase columns, Visits2–9 and unscheduled. AE/SAE marked baseline, treatment-phase columns, Visits2–3 and bracketed unscheduled; not marked Visits4–9. These are matrix marks, not observed event counts. | Safety window and event reporting |
+| PB057 | [p59](../../../joi250066supp1_prod_1761597796.4601.pdf#page=59), footnotes | Transition visit data collection only on acute-to-rehabilitation transfer day (any treatment day). Double asterisk: optional and selected centers only; blood sampling may be baseline or any follow-up. Triple asterisk: unscheduled end-of-study visit for discontinuation or withdrawal; [x] assessment only if unscheduled visit before treatment end (drug accountability) or before Visit3 (AE/SAEs); outcome assessments at that visit subject to participant approval. | Subset/missingness/withdrawal assessment definitions |
+| PB058 | [p60](../../../joi250066supp1_prod_1761597796.4601.pdf#page=60), flow chart | Baseline sequence consent→screen→clinical assessments→randomization,1:1 levodopa/carbidopa versus placebo. Escalation days1–6; full dose7–34; taper35–39; transition on dayX during treatment. Interventional bracket baseline through Visit3; end treatment5weeks ±7days; primary3months ±14days. Clinical observational bracket6months ±20days and12months ±30days. Optional telephone bracket24/36/48/60months ±30days. No observed participant counts in chart. | Trial design and endpoint timing |
+| PB059 | [p62](../../../joi250066supp1_prod_1761597796.4601.pdf#page=62), section1.6 | Independent DSMC monitors mortality, recurrent stroke, SAEs; independent statistician supplies safety data unblinded to individual assignment. Investigators/study personnel including trial statistician remain blinded to these safety data/analyses. Efficacy review outside DSMC scope. DSMC recommendations stopping/continuing/amending follow section11.3 criteria. | Monitoring; blinding; stopping decision |
+| PB060 | [p63](../../../joi250066supp1_prod_1761597796.4601.pdf#page=63), section2.7 | No emergency inclusion; informed consent prior enrollment/screening, voluntary withdrawal any time. Severe particularly sensory aphasia unable to follow two-stage commands excluded. Mild aphasia/neglect may require next-of-kin written consent if understanding cannot be established. | Population exclusions/consent and withdrawal |
+| PB061 | [p63](../../../joi250066supp1_prod_1761597796.4601.pdf#page=63), regulatory duties | Study premature end/interruption reported within15days; regular end within90days; final report within1year; annual safety/interim reports to ethics/regulators. These are administrative report deadlines, not an efficacy interim-analysis specification. | Administrative plan context |
+
+## Exhaustiveness and limitations
+
+Mapped units: 31/31, including administrative, signature, contents, abbreviations and reference pages. Applicable pages: 21; no-additional-applicable pages: 10 (41,43,44,45,46,48,49,50,52,61; page 42 has PB036 and is applicable). For avoidance of ambiguity, the definitive applicability classification is the page table above; complete reading applies to all 31 pages. Extraction keys PB001–PB061: 61. Figure inventory: Figure3 sample-size sensitivity p38, study flow chart p60, and study schedule matrix p59; table inventory also includes causality p34–35, severity p35, and version1.4 synopsis p53–56. All visible inferential inputs and statistical rules on these pages are retained; no tests/calculations were performed to diagnose any discrepancy. No results tables or numerical ESTREL estimates occur in this assigned PLAN scope.
+
+Version-specific primary model covariates are transcribed independently (p39 and p56); no judgment is made about amendment disclosure or consistency. Statistical details beyond the assigned page boundaries must be joined to other support shards rather than inferred. Main-paper exact N/S IDs remain a coordinator join operation; semantic concepts are supplied for every record. No scientific coverage gap remains within pages33–63. Reusable engine provenance is the sole derivative limitation. Direct native text for this PDF was classified unreadable/sparse in the inventory; no new native-text extraction was needed for these reusable-backed pages.
+# Fresh support extraction: protocol pages 64–94
+
+Scope: DOC-002, `joi250066supp1_prod_1761597796.4601.pdf`, PDF pages 64–94 inclusive, 31 disjoint assigned units. Document role: PLAN throughout. This is a fresh scientific map, based on visual reading of all 31 permitted, source-linked page images. No previous scientific conclusions were read. No diagnosis, arithmetic reconciliation, or candidate selection is performed here.
+
+Evidence engines: reused PNG renders, legacy rendering engine unrecorded, from `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc002/page-64.png` through `page-94.png`, each page individually opened with `view_image`. The inventory lists these as USABLE. All 31 images were inspected; no new rendering or OCR was needed. The current fresh OCR files were absent when checked and were not used. Source PDF remains authority. Source coverage records all these pages as reusable-backed, with zero fresh-required units. Native text limitations do not limit scientific coverage because every image was read. No workbook, formula, cached value, CSV, DOC, or DOCX occurs in this assignment. Main-paper matching keys below are semantic concepts for downstream matching; main-paper pages are outside this assignment.
+
+## Complete page coverage
+
+| PDF page | Content opened | Applicability and relationship keys |
 |---:|---|---|
-|25|5.2.1 harm continuation;5.2.2 selected-center secondary assessments|COMPLETE; PR2-001…011|
-|26|5.2.3 further selected-center assessments;5.3 safety;6.1 design;Figure2|COMPLETE; PR2-012…015|
-|27|6.1 intervention/visits;6.2 minimization and masking;6.3 unblinding start|COMPLETE; PR2-016…020|
-|28|6.3 unblinding;7 population/eligibility/recruitment/allocation;7.4 withdrawal start|COMPLETE; PR2-021…024|
-|29|7.4 discontinuation;8.1 intervention/control/package/storage|COMPLETE; PR2-024…027|
-|30|8.2 dose modifications;8.3 adherence;8.4 withdrawal;8.5 preventive measures;8.6 concomitant interventions|COMPLETE; PR2-028…032|
-|31|8.6 rehabilitation;8.7 accountability;8.8 returned capsules;9 assessments|COMPLETE; PR2-033…035|
-|32|9.1 primary/secondary/harm/withdrawal outcomes;9.2 screening/baseline|COMPLETE; PR2-036…040|
-|33|9.2 treatment and visits2/3;9.3 visits4/5;9.4 transition|COMPLETE; PR2-041…046|
-|34|9.4 transition/unscheduled;10.1 safety and definitions, causality table start|COMPLETE; PR2-047…050|
-|35|Causality table continuation; unexpected/SUSAR;CTCAE grades;reporting|COMPLETE; PR2-050…053|
-|36|Pregnancy/reporting;10.1.4 follow-up/data variables;10.2 observational safety|COMPLETE; PR2-054…057|
-|37|10.2 serious-event rule;11.1 hypothesis;11.2 sample size|COMPLETE; PR2-058…061|
-|38|Figure3 sample size;PROMIS/walking power;11.3 termination/composite safety|COMPLETE; PR2-062…065|
-|39|11.4 SAP/populations/primary/sensitivity/secondary analysis|COMPLETE; PR2-066…073|
-|40|11.4 secondary/exploratory/interim/safety/deviations;11.5 missing data;12.1 eCRF start|COMPLETE; PR2-074…080|
-|41|12.1–12.3 data archiving/management/monitoring|COMPLETE; administrative only, PR2-081|
-|42|12.4–12.6 audits/confidentiality/specimen storage;13 publication;14 funding;15 insurance|COMPLETE; no additional result-relevant quantitative/statistical relationship; selected-center consent corroborates PR2-012|
-|43|16 references1–24(part)|COMPLETE; no applicable trial quantitative relationship, bibliographic numbers only|
-|44|References24–43|COMPLETE; no applicable trial quantitative relationship, bibliographic numbers only|
-|45|References44–67(part)|COMPLETE; no applicable trial quantitative relationship, bibliographic numbers only|
-|46|References67–78;17 appendix list|COMPLETE; no additional trial relationship; source reference78 names MICE, linked to PR2-080|
-|47|Version1.4 protocol cover|COMPLETE; PR2-082|
-|48|Version1.4 signature/approval page|COMPLETE; PR2-083|
-
-## Quantitative, outcome and intervention relationships
-
-| Local key | Physical source page/section | Printed definition/value/design statement | Matching report key |
-|---|---|---|---|
-|PR2-001|[p25](../../../joi250066supp1_prod_1761597796.4601.pdf#page=25),5.2.1|Harm in interventional phase: mortality(all cause), recurrent stroke(any), SAEs, prespecified nonserious AEs possibly related to IMP; observational phase3–12months: mortality(all cause), recurrent stroke(any).|Safety outcomes/collection windows|
-|PR2-002|p25,5.2.2|Selected-center secondary assessments determined by each site contract, not universally required.|Optional outcomes/analysis denominator|
-|PR2-003|p25,5.2.2|Motricity Index: UE and LE subscales each0–100; isometric strength.|MI upper/lower|
-|PR2-004|p25,5.2.2|Trunk Control Test:4items, item scores0–25; sitting balance tests30seconds without trunk/feet support.|TCT|
-|PR2-005|p25,5.2.2|ARAT four subtests: grasp6items, grip4, pinch6, gross movement3; upper-extremity activity/object handling.|ARAT|
-|PR2-006|p25,5.2.2|BBT: number of wooden cubes moved between compartments in60seconds, unilateral gross manual dexterity/affected upper limb.|BBT|
-|PR2-007|p25,5.2.2|FAC score0–5, independent walking with/without aid, type of walking surface.|FAC|
-|PR2-008|p25,5.2.2|10MWT walking speed and cadence over10m at comfortable and maximum speeds.|10MWT|
-|PR2-009|p25,5.2.2|Jamar dynamometer grip/forearm strength, affected and unaffected upper extremities.|Grip strength|
-|PR2-010|p25,5.2.2|MoCA score0–30, mild cognitive impairment screening.|MoCA|
-|PR2-011|p25,5.2.2|Movement sensors: daily-life physical activity/upper limb use; gyroscope, acceleration, magnetometer, pressure data; activity counts(arm usage); physical states lay/sit/stand/walk.|Sensor outcomes|
-|PR2-012|p26,5.2.3; p31,9; p42,12.6|Genetic/blood biomarkers are further selected-center exploratory assessments; sampling baseline or any follow-up visit to generate response-heterogeneity hypotheses. Approx10ml EDTA blood, storage−20°C; optional consent independent of main-study consent, centrally collected.|Exploratory biomarkers|
-|PR2-013|p26,5.2.3|Imaging biomarkers: source prints “Now imaging will be performed within the ESTREL study, however” followed by use of routine/observational CT,(functional)MRI to identify response markers including ischemic lesion type/location/volume. This is retained literally; no interpretation of the word “Now” is imposed.|Exploratory imaging|
-|PR2-014|p26,6.1|Multicenter parallel placebo-controlled superiority trial,1:1 allocation; patients/care providers/investigators/outcome assessors blinded. Levodopa plus standardized rehabilitation over5weeks soon after acute stroke expected to yield at least6points higher FMMA at3months; planned610patients.|Design, primary hypothesis, enrollment target|
-|PR2-015|p26 Figure2; p27 caption|PRECIS design radar radial labels1–5; domains eligibility/recruitment/setting/organization/flexibility delivery/flexibility adherence/follow-up/primary outcome/primary analysis. Visual radial scores respectively4,5,5,5,4,4,2,2,5. Scores entered by consensus; design description, not treatment outcomes.|Design context only|
-|PR2-016|[p27](../../../joi250066supp1_prod_1761597796.4601.pdf#page=27),6.1|Dose escalation days1–3 morning only;4–6 morning/noon; full dose days7–34 TID; taper35–37 morning/noon;38–39 morning only. Both groups standardized rehabilitation; enrollment/allocation/treatment onset acute stroke unit before rehabilitation transfer.|Randomized dose/duration|
-|PR2-017|p27,6.1|Participation12months: interventional3months randomization→Visit3; observational9months afterVisit3→Visit5. Main intervention ends5weeks; in-person baseline/end-treatment/primary outcome then6- and12-month visits.|Time origin/phase/follow-up|
-|PR2-018|p27,6.2|Center stratification, standard minimization within stratum;80% allocation probability to group minimizing imbalance, avoiding predictable alternation; implemented by CTU Basel in secuTrial.|Randomization/stratification|
-|PR2-019|p27,6.2.1|Investigators, participants, therapists/physicians/nurses, outcome assessors and statistician blinded throughout; independent distributor; identical aspect/texture/taste. Safety DSMC not blinded.|Masking/analysis|
-|PR2-020|p27,6.2.2|All primary/secondary assessments by personnel trained in specific assessment instruments.|Measurement procedure|
-|PR2-021|p27–28,6.3|Safety-required unblinding by authorized investigators through secuTrial, documented in integrated audit trail.|Masking exceptions|
-|PR2-022|p28,7/7.1|Acute ischemic stroke printed “≤7 since stroke symptom onset”, clinically meaningful hemiparesis requiring inpatient rehabilitation; hemorrhagic stroke excluded.610planned; treatment day1–39; all synopsis inclusion criteria and no exclusions, no exceptions. Full itemwise synopsis criteria are outside this shard.|Eligibility/population|
-|PR2-023|p28,7.2/7.3|Prescreen day0–7 since symptoms, written participant/next-of-kin consent before study-specific procedures, after ward admission; no emergency inclusion. Instant computer-generated allocation at enrollmentVisit1. Administrative travel refund20CHF/patient/visit.|Eligibility/randomization origin|
-|PR2-024|p28–29,7.4|Night adverse reactions permit dosage1-1-0 per day. Early discharge earlier than5weeks minus7days: encourage continuation toVisit2; if declined stop full treatment and taper5days. Unscheduled end visit withdrawal/discontinuation day±3days.|Dose modification/adherence/end visit|
-|PR2-025|p29,7.4|AE/SAE/SUSAR with at least probable study-drug relation may reduce, temporarily or permanently discontinue dose; also contraindication, medically mandatory open levodopa, or physician-assessed significant health risk. Prefer nondopaminergic treatment for new levodopa-treatable conditions beforeVisit3.|Intercurrent events|
-|PR2-026|p29,8.1.1–8.1.2|Levodopa100mg/carbidopa25mg orally days1–39 afterVisit1; NG/PEG allowed for inability to swallow, minimum possible period/documented. Matching placebo identical route/duration/phases.|Randomized drug and control|
-|PR2-027|p29–30,8.1.3–8.1.4|Capsules identical; expected shelf life12months; storage15–25°C away from light.|Drug handling, no outcome relationship|
-|PR2-028|p30,8.3|Study-site nurses administer during expected inpatient acute/rehabilitation period. Discharge beforeVisit2: encourage protocol continuation with medication plan. Drugs numbered for complete39days; returned capsule number recorded atVisit2.|Compliance measure|
-|PR2-029|p30,8.4|All study data collected up to withdrawal will be analyzed.|Analysis population/missingness|
-|PR2-030|p30,8.5|Pregnancy test before enrollment; contraception during day1–39 and one month thereafter.|Eligibility/safety window|
-|PR2-031|p30,8.6|Off-label product intended to enhance stroke rehabilitation/recovery prohibited until3-month primary-outcome visit.|Concomitant intervention restriction|
-|PR2-032|p30,8.6|Concomitant drugs recorded each visit: antiplatelets, anticoagulants, antihypertensives, statins, serotonin-reuptake inhibitors, serotonin-noradrenaline reuptake inhibitors, benzodiazepines, neuroleptics, antiepileptics, antidiabetics, analgesics, immunosuppressive/immunomodulating drugs, antibiotics.|Concomitant treatment definition|
-|PR2-033|p30–31,8.6|Both groups same standardized motor-learning rehabilitation: active patient-initiated task-specific exercise; individually progressive/challenging exercise; performance feedback; repetitions/rest; goals/coaching/positive feedback.3rehabilitative sessions per workday; at least2sessions standardized motor rehabilitation from trained physical/occupational therapists. Record amount(minutes/hours)/type; early phase shorter more frequent sessions preferred.|Rehabilitation randomized cointervention/dose|
-|PR2-034|p31,8.6|If physician considers levodopa mandatory, study medication discontinued but patients remain as “off-study-medication-patients”.|Intercurrent-event population retention|
-|PR2-035|p31,8.7/8.8|Drug receipt and batch accounting; returned capsules counted atVisit2 and entered eCRF.|Adherence/capsule count|
-|PR2-036|[p32](../../../joi250066supp1_prod_1761597796.4601.pdf#page=32),9.1.1|Primary outcome between-group FMMA score difference measured3months±14days after randomization(Visit3). Certified/trained personnel; eCRF score;3-month assessment also filmed and supplied to Basel for central blinded rating. All primary assessors blinded.|Primary endpoint/time/central rating|
-|PR2-037|p32,9.1.2/9.1.2.1|Secondary outcomes by trained certified assessors; full definitions/timepoints cross-referenced to5.2/schedule. InterventionalVisit1–3: all-cause mortality, any recurrent stroke, SAEs and prespecified nonserious possibly related AEs;3–12months mortality/recurrent stroke.|Secondary/safety outcome windows|
-|PR2-038|p32,9.1.3|Data through premature withdrawal “may be used for further analyses”; procedures refer7.4.|Withdrawal analysis rule|
-|PR2-039|p32,9.2.1|Prescreen day−7 to0 before randomization;24h latency after thrombolysis/thrombectomy before screening/enrollment; meaningful hemiparesis NIHSS≥3 for arm plus leg motor functions.|Enrollment criteria/timing|
-|PR2-040|p32,9.2.2|Visit1 day0, final eligibility/consent/baseline before allocation. Mandatory baseline FMMA,NIHSS,mRS,RMI; selected centers ARAT,BBT,JDT,MI,TCT,FAC,10MWT,MoCA,sensors.|Baseline covariates/outcome availability|
-|PR2-041|p33,9.2.3|Treatment starts day after randomization(day1),100/25mg vs placebo1:1 through39; schedule repeats PR2-016 exactly.|Intervention time origin/schedule|
-|PR2-042|p33,9.2.4|Visit2 at5weeks±7days; end-treatment in-person; record cointervention number/length/type; outcomes per schedule; harm any prespecified possibly related nonserious AE or SAE, any recurrent stroke, all-cause mortality; returned capsules counted.|End treatment visit/safety/adherence|
-|PR2-043|p33,9.2.5|Visit3 at3months±14days; primary in-person; concomitant medication/therapy post-treatment; same harms asVisit2.|Primary visit window|
-|PR2-044|p33,9.3.1|Visit4 at6months±20days, first observational in-person; concomitant drug/therapy; any recurrent stroke and all-cause mortality.|6-month endpoint window|
-|PR2-045|p33,9.3.2|Visit5 at12months±30days, second observational in-person, same procedures asVisit4.|12-month endpoint window|
-|PR2-046|p33–34,9.4|Acute→rehabilitation transition non-in-person data: concomitant therapies number/length/type; transfer drug; harms since randomization AE/SAE,all-cause mortality,any recurrent stroke; rehabilitation center identity. Unscheduled end follows schedule/7.4.|Transition/intercurrent safety data|
-|PR2-047|p34,10.1|Printed safety text: all-cause mortality, any recurrent stroke, SAEs and prespecified nonserious AEs documented “up to3months(i.e.Visit2) after study enrolment”. Both time and visit label retained as printed, without diagnosis.|Safety collection limit/visit label|
-|PR2-048|p34,10.1.2|AE any untoward occurrence associated temporally with medicinal product whether causally related or not, including abnormal laboratory findings.|AE outcome definition|
-|PR2-049|p34,10.1.2|Prespecified AEs: nausea,vomiting,taste disturbance,dry mouth,anorexia,arrhythmias,postural hypotension,syncope,drowsiness(including sudden sleep),fatigue,dementia,psychoses,hallucinations,confusion,euphoria,abnormal dreams,insomnia,depression,anxiety,dizziness,dystonia,dyskinesia,chorea.|Prespecified AE list|
-|PR2-050|p34–35,10.1.2/table|SAE death,life-threatening,inpatient admission/prolongation,persistent/significant disability/incapacity,congenital anomaly/birth defect; important medical events jeopardizing health or needing intervention also serious. Causality: definitely temporal/dechallenge/rechallenge(or other proof); probably temporal/dechallenge/no other cause; possibly temporal/other cause possible; unlikely any assessable reaction not meeting foregoing; not related causal relationship ruled out. Dechallenge considered only where applicable.|SAE/causality definitions|
-|PR2-051|p35,10.1.2|Unexpected drug reaction nature/severity inconsistent with product info; SUSAR related to product and both serious/unexpected. CTCAE version5,27Nov2017 severity grades1mild,2moderate limiting instrumentalADL,3severe/medically significant hospitalization/disability limiting self-careADL,4life-threatening urgent intervention,5death related toAE.|Safety grading/classification|
-|PR2-052|p35,10.1.3|SAE report immediately/max24h to sponsor; fatal SAE ethics within7days; SUSAR within7days if fatal or15days other; signals sponsor24h, ethics/regulator7days.|Safety operational decision timelines|
-|PR2-053|p35–36,10.1.3|Pregnancy/breastfeeding/lack contraception excluded; pregnancy immediately withdrawn; pregnancy during treatment or30days after discontinuation reported within24h; annual safety report once/year.|Eligibility/intercurrent event/safety follow-up|
-|PR2-054|p36,10.1.4|Unresolved SAEs and possibly related prespecified nonseriousAEs atVisit3 followed medically as long indicated, without further EDCS recording.|Safety ascertainment after main phase|
-|PR2-055|p36,10.1.4|NonseriousAEs of interest/discontinuation AEs collect verbatim description,start/stop dates,max intensity,seriousness,causality yes/no,frequency(single/intermittent/continuous),study-medication action,outcome.|AE quantities/data structure|
-|PR2-056|p36,10.1.4|AdditionalSAE data: event severity/outcome/expectedness,serious criteria date,investigator awareness date,criteria,hospitalization/discharge dates,probable cause/date death,autopsy report/results,causality study procedure/other medication,concomitant drug/history.|SAE quantities/data structure|
-|PR2-057|p36,10.2|Observational phase3–12months records all-cause mortality,any recurrent stroke,SeriousEvents underHRO20; immediate protective action sponsor24h/ethics7days.|Observational safety definition|
-|PR2-058|p36–37,10.2.2|HRO21 serious event cannot exclude attribution to sample collection/health-data collection, and requires unplanned inpatient treatment/prolongation,life-threatening ordeath; if occurs research interrupted and ethics informed within7days.|Observational stopping rule|
-
-## Statistical relationships, populations and decision rules
-
-All locations below are physical pages in DOC-002 (PLAN). Each row is a semantic key for matching the corresponding report analysis; it does not diagnose a candidate.
-
-| Local key | Page and section | Planned relationship, definition and inputs | Matching report key |
-|---|---|---|---|
-| PR2-059 | [p37](../../../joi250066supp1_prod_1761597796.4601.pdf#page=37),11.1 | Primary superiority hypothesis: levodopa plus standardized rehabilitation over 5 weeks, starting soon after stroke, yields at least 6 points higher FMMA at 3 months than placebo plus rehabilitation. | Primary hypothesis |
-| PR2-060 | p37,11.2 | Power based on 6-point FMMA difference at 3 months; normally distributed FMMA, SD25. Historical FLAME placebo mean35.1, SD22, day90 used as background, yielding illustrative active mean41.1. Baseline/follow-up within-patient correlation assumed high but no reliable estimate; power calculation assumes t-test without quantifying baseline-adjustment gain. | Sample-size assumptions |
-| PR2-061 | p37,11.2 | 548 patients,1:1 allocation,80% power,two-sided 5% significance,normal SD25,mean difference6. Allow 10% dropout→305 per arm,total610. No sample-size formula printed. | Sample size/power/dropout |
-| PR2-062 | [p38](../../../joi250066supp1_prod_1761597796.4601.pdf#page=38),Figure3 | Assumed SD25 points; sample-size sensitivity to treatment difference(points). Curves power0.7,0.8,0.9,smoothed for illustration; annotated θ=6,N=548 on power0.8 curve. X ticks5,6,7,8,9; y sample-size ticks200,400,600; no tabulated curve values. | Power sensitivity figure |
-| PR2-063 | p38,paragraph below Figure3 | Trial also designed for 80% power to detect patient-reported PROMIS improvements at 3 months, but less empirical support for novel measure in this population; sample-size calculation based primarily on traditional scores. No quantitative PROMIS difference/SD here. | PROMIS power rationale |
-| PR2-064 | p38,second paragraph | Total610 evaluates walking ability,RMI≥7(as DARS). Assume45% placebo independently walking at5weeks;80% power,5% significance to detect12 percentage-point increase to57% active. Printed interpretation absolute12% or relative27% increase. | RMI walking/time/power |
-| PR2-065 | p38,11.3 | No efficacy stopping rules. Safety termination possible on DSMC recommendation. DSMB monitors primary composite safety: death(any cause),recurrent stroke,SAEs. Composite risk alert thresholds to be defined in DSMC charter taking DARS findings into account; no numeric threshold here. | Safety composite/stopping |
-| PR2-066 | [p39](../../../joi250066supp1_prod_1761597796.4601.pdf#page=39),11.4 | Detailed summaries/statistical analyses in SAP; finalized before database closure,version controlled at CTU Basel. | SAP timing |
-| PR2-067 | p39,11.4.1 | FAS all randomized patients; ITT according to randomly allocated treatment. Complete cases all FAS patients without missing FMMA at baseline or3months. All patients analyzed by allocation; withdrawal reasons by group and qualitatively compared. | FAS/ITT/complete cases |
-| PR2-068 | p39,11.4.1 | PP: FAS patients receiving at least80% prescribed levodopa/carbidopa or placebo,or justified reduced dose1-1-0/day under7.4; also at least5 rehabilitation sessions/week. | PP adherence criteria |
-| PR2-069 | p39,11.4.2 | Primary endpoint FMMA3months “after onset of treatment”. Mixed-effects model: baseline FMMA covariate and two-level treatment factor(levodopa vs placebo) fixed effects; random intercept for each center. Analysis after termination/database closure;two-sided5% significance. | Primary model/time origin |
-| PR2-070 | p39,11.4.3a | Primary FMMA3months sensitivity: exploratory treatment heterogeneity across centers through graphical display stratified by center. | Center heterogeneity |
-| PR2-071 | p39,11.4.3b | Exploratory covariates itemwise: age;sex;dementia;selective hand/wrist movement at baseline;cortical dysfunction(aphasia/neglect/hemianopia);fatigue(patient self-report);SSRI treatment;mild extrapyramidal motoric symptoms(physician judgment);reduced impetus(physician judgment). Compare results with main analysis. | Prespecified exploratory covariates |
-| PR2-072 | p39,11.4.3c–d | Repeat main analysis in complete cases(exclude imputation of primary endpoint or baseline FMMA) and PP set to examine protocol deviations. Consider marginal structural models for major deviations. All analyses except complete-case/PP on FAS. | Complete-case/PP sensitivity |
-| PR2-073 | p39–40,11.4.4 | Secondary regression appropriate to data type,adjusted as main analysis,baseline measures where available. Binary: logistic(GLM logit link/binomial distribution);continuous: linear;ordinal: ordinal logistic. Inspect models as main analysis;severe assumption violations/high-leverage outliers→consider transformations,nonparametric tests,or robust regression. | Secondary models |
-| PR2-074 | [p40](../../../joi250066supp1_prod_1761597796.4601.pdf#page=40),11.4.4 | Each model presents estimated treatment difference,P value,95% CI;two-sided5% significance. Endpoints also descriptive tables/graphs;FAS/all randomized/allocated-group ITT. No multiplicity adjustment or outcome hierarchy specified on assigned statistical pages. | Effect measure/CI/P/multiplicity |
-| PR2-075 | p40,11.4.4 | Exploratory genetic/other biomarker(routine imaging/fMRI included) response analyses;examples COMT rs4633 exon5,rs4680 exon6;genomic imbalance using high-density SNP microarrays/copy number variation. Future individual-patient-data meta-analysis intended;additional exploratory analyses possibly triggered by relevant findings. | Exploratory prespecification |
-| PR2-076 | p40,11.4.5 | Interim analysis not planned. | Interim rule |
-| PR2-077 | p40,11.4.6 | Detailed examination of prespecified events,AEs,SAEs;estimate by treatment group proportion of patients with at least one prespecified AE;DSMC close monitoring. | Safety estimand |
-| PR2-078 | p40,11.4.7 | Analysis deviations reported to CEC/CA;substantial needed deviations→protocol amendment. All protocol/detailed SAP analysis deviations listed and justified in separate final statistical report section. | Disclosed deviations |
-| PR2-079 | p40,11.5 | Up to10% dropout considered in sample-size calculation;careful study conduct to minimize missing data. | Missing-data assumption |
-| PR2-080 | p40,11.5;p46 reference78 | Missing data addressed by multiple imputation by chained equations(Van Buuren2011);predictive models create clinically reasonable imputations;impact assessed by complete-case sensitivity. Number of imputations,predictor list,and pooling details not printed on assigned pages. Reference78 identifies MICE publication;no external source consulted. | Primary missing data |
-| PR2-081 | p40–41,12.1–12.3 | Unique eCRF identifier per patient;withdrawal reason recorded;database blocked after completion/monitoring/query resolution;complete dataset exported to statistician/PI;independent CTU Basel statistical analysis;minimum10-year archive. Administrative procedure,no further inferential relationship. | Database closure |
-| PR2-082 | [p47](../../../joi250066supp1_prod_1761597796.4601.pdf#page=47),cover | New protocol version1.4 dated28.02.2023;ESTREL,NCT03735901;risk categoryC;investigational levodopa/carbidopa100/25mg. | Latest protocol identity/dose |
-| PR2-083 | [p48](../../../joi250066supp1_prod_1761597796.4601.pdf#page=48),approval | Sponsor/trial statistician approval text explicitly version1.4 dated28.02.2023;blank place/date/signature fields. Statistician Sabine Schädelin,CTU Basel. | Version boundary |
-
-## Coverage and handoff
-
-Complete:24/24 assigned physical pages;83 local relationship/context keys PR2-001…083. PR2-015 is a visually read design-context figure, not an inferential result. Pages42–46 have no additional trial quantitative relationship (p42 selected-center consent and p46 MICE reference only corroborate existing keys);p41 administrative content explicitly mapped as PR2-081. Two figures inspected: Figure2 PRECIS(p26),Figure3 sample-size sensitivity(p38). Tables inspected: causality(p34–35),CTCAE(p35). No scientific coverage gaps. Synopsis itemwise eligibility and full outcome schedule are in other disjoint shards and are cross-referenced rather than assumed missing. No treatment result estimate/CI/P value,workbook formula/cache,or CSV cell occurs on assigned pages.
-# Support protocol mapping shard PR3
-
-Scope: DOC-002, `joi250066supp1_prod_1761597796.4601.pdf`, physical PDF pages 49–72, exactly 24 units. Document role: PLAN throughout. Protocol version 1.4, 28 February 2023, explicitly printed on physical page 53 (synopsis). Protocol internal page numbers are physical PDF page minus 46 in this version (for example, physical page 69 corresponds to protocol page 23). Physical PDF locations govern links. No previous conclusions were read; no candidates are diagnosed here.
-
-All 24 reusable page images were opened and read visually. Their paths are `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc002/page-N.png`, N = 49 through 72. They are source-linked rendered-page aids; exact supplied PDF is the final evidence authority. No additional rendering was needed. CPU OCR: Tesseract 5.5.0, English. Initial command per page: `tesseract REUSED_IMAGE preprocessing/protocol_003/page-N -l eng --psm 3`; rerun with `OMP_THREAD_LIMIT=1 tesseract REUSED_IMAGE preprocessing/protocol_003/page-N-fast -l eng --psm 6`. All output paths in those commands are under `.ai_paper_validation/review_1_6_2/`. Logs have corresponding `.log` suffixes. PSM 6 OCR is a locator/transcription aid, especially limited for the sideways schedule on p59; the visual table is mapped below. No source or reused artifact was changed. No fresh-required units in this scope; readable reusable images cover all 24 pages. Native text was designated unusable by the curator. No workbook formulas, cached values, or structured cells exist in the assigned PDF units.
-
-## Page-complete evidence inventory
-
-Each PR3 key below is a local mapping key, not a candidate ID. Matching main-paper keys are semantic labels for coordinator reconciliation, without reading main-paper units outside this disjoint assignment.
-
-| Key | Exact source location | Content and quantitative/design relationship | Matching result or design key |
-|---|---|---|---|
-| PR3-001 | [PDF p49](../../../joi250066supp1_prod_1761597796.4601.pdf#page=49) | Local investigator protocol-agreement signature page; Prof. Philippe Lyrer, University Hospital Basel. No applicable quantitative result, statistical specification, endpoint definition, or population count. | Administrative, no applicable result |
-| PR3-002 | [PDF p50](../../../joi250066supp1_prod_1761597796.4601.pdf#page=50) | Table of contents: synopsis internal p7; abbreviations p11; administration p15; ethics p16; background p18; objectives p22; outcomes p23; selected-center secondary assessments p25; further assessments p26. Locator content only, no independent quantitative analysis. | Version 1.4 locator |
-| PR3-003 | [PDF p51](../../../joi250066supp1_prod_1761597796.4601.pdf#page=51) | Continued contents: treatment day1–39; Visit2 5 weeks ±7 days; Visit3 3 months ±14 days; Visit4 6 months ±20 days; Visit5 12 months ±30 days; optional Visits6–9 at 24,36,48,60 months each ±30 days. These point to full specifications. | Visit windows/intervention duration |
-| PR3-004 | [PDF p52](../../../joi250066supp1_prod_1761597796.4601.pdf#page=52) | Contents: statistical methods internal p38; sample size p38; statistical termination criteria p39; analysis populations, primary analysis and sensitivity analysis p40; secondary/interim/safety analyses and missing data p41. These sections are outside this shard; contents do not establish their detailed specification. | Statistical-section locators |
-| PR3-005 | [PDF p53](../../../joi250066supp1_prod_1761597796.4601.pdf#page=53) | Synopsis establishes version1.4, 28.02.2023; ESTREL; NCT03735901; Phase III; category C. Primary objective is patient-relevant functional recovery with levodopa versus placebo added to standardized rehabilitation based on motor-learning principles. Background mentions a meta-analysis of 6 RCTs; historical context only. | Protocol version; treatment objective |
-| PR3-006 | [PDF p54](../../../joi250066supp1_prod_1761597796.4601.pdf#page=54) | Primary outcome: between-group FMMA score difference measured 3 months after randomization. Secondary endpoint list and trial design are transcribed item by item below. Multicenter randomized 1:1 parallel-group placebo-controlled superiority trial; patients, care-providers, investigators, assessors blinded. | Primary FMMA; secondary outcome status; design |
-| PR3-007 | [PDF p55](../../../joi250066supp1_prod_1761597796.4601.pdf#page=55) | Six inclusion and ten exclusion criteria, detailed below. Randomization 1:1, stratified by center, standard minimization algorithm. Levodopa100mg/carbidopa25mg three times daily versus matching placebo, both with standardized rehabilitation. All participants/personnel blinded; treatment starts the day after randomization, escalation/full-dose/tapering phases. In-person assessments at5 weeks and3 months; observational follow-up6/12 months; optional annual telephone visits for4 additional years. | Eligibility; minimization; intervention; follow-up |
-| PR3-008 | [PDF p56](../../../joi250066supp1_prod_1761597796.4601.pdf#page=56) | Treatment39 days; dose schedule, sample-size/power assumptions, planned calendars, center numbers, primary model and missing-data specification, transcribed below. | Dosing; sample size; mixed model; imputation |
-| PR3-009 | [PDF p57](../../../joi250066supp1_prod_1761597796.4601.pdf#page=57) | Definitions: FAS=full analysis set; ITT=intention to treat; PP=per protocol; FMMA(UE/LE)=Fugl-Meyer Motor Assessment upper/lower extremity; NIHSS, mRS, PROMIS, ARAT, BBT, FAC, JDT, MI, MoCA. Abbreviations provide no inclusion/exclusion rule for the analysis sets. | Scale/analysis-set labels |
-| PR3-010 | [PDF p58](../../../joi250066supp1_prod_1761597796.4601.pdf#page=58) | Remaining abbreviations: RMI=Rivermead Mobility Index; SAE=serious adverse event; SD=standard deviation; TCT=Trunk Control Test; 10MWT=10-meter-walk-test; other administrative abbreviations. No independent quantitative relationship. | Secondary-scale labels |
-| PR3-011 | [PDF p59](../../../joi250066supp1_prod_1761597796.4601.pdf#page=59) | Complete sideways study schedule, visually read, with rows, timepoints, optional assessments and discontinuation footnotes mapped below. No observed participant counts. | Outcome timing; extended observation; safety windows |
-| PR3-012 | [PDF p60](../../../joi250066supp1_prod_1761597796.4601.pdf#page=60) | Flow chart: prescreening day−7 to0; consent/screening/baseline/randomization; levodopa/carbidopa versus matching placebo1:1; escalation day1–6, full-dose day7–34, taper day35–39; transfer to rehabilitation center any treatment-phase day x; Visits2–9 timing as below. Primary assessment explicitly Visit3. | Design/primary timepoint/duration |
-| PR3-013 | [PDF p61](../../../joi250066supp1_prod_1761597796.4601.pdf#page=61) | Sponsor, investigator, statistician, supplier and monitoring contacts. No applicable quantitative result or statistical decision specification. | Administrative, no applicable result |
-| PR3-014 | [PDF p62](../../../joi250066supp1_prod_1761597796.4601.pdf#page=62) | Independent DSMC monitors mortality, recurrent stroke, SAEs; independent statistician supplies data unblinded to individual treatment; investigators and CTU trial statistician remain blinded to safety data/analyses. Efficacy evaluation outside DSMC scope. Stopping/continuing/amending recommendations refer to11.3; no numeric boundary on this page. Registration and category C repeat. | Safety monitoring; efficacy-interim scope |
-| PR3-015 | [PDF p63](../../../joi250066supp1_prod_1761597796.4601.pdf#page=63) | Administrative reporting: premature end/interruption reported within15 days; regular end within90 days; final report within1 year. Consent requires no emergency inclusion; severe sensory aphasia unable to follow two-stage commands excluded; next-of-kin consent possible where participant cannot understand contents; consent precedes any procedure. No applicable result count or statistical decision boundary. | Eligibility/consent; administrative deadlines |
-| PR3-016 | [PDF p64](../../../joi250066supp1_prod_1761597796.4601.pdf#page=64) | Early termination circumstances: ethical concerns; insufficient recruitment; participant safety doubtful/at risk; changed accepted clinical practice; early evidence of experimental-treatment harm. Safety stopping refers to mortality/recurrent stroke/SAE monitoring and11.3. Amendment approval and emergency exceptions; no numeric decision threshold printed. Background begins. | Safety stopping/amendment context |
-| PR3-017 | [PDF p65](../../../joi250066supp1_prod_1761597796.4601.pdf#page=65) | Background prior-trial quantities, listed below, plus ESTREL rationale: three daily doses; standardized motor-learning rehabilitation; inclusion≤7 days poststroke; primary FMMA measurement described here as3 months poststroke. This preserves the time origin as printed without converting to randomization time. | Intervention; timing wording |
-| PR3-018 | [PDF p66](../../../joi250066supp1_prod_1761597796.4601.pdf#page=66) | White capsules levodopa100mg/carbidopa25mg or placebo; historical 6-RCT meta-analysis with8 subgroup rows, detailed below; sensitivity analyses in its caption are historical meta-analysis methods, not ESTREL prespecified analyses. | Dose; background meta-analysis |
-| PR3-019 | [PDF p67](../../../joi250066supp1_prod_1761597796.4601.pdf#page=67) | Dose rationale:100/25mg TID; escalation days1–6; taper days35–39 over5 days; dose adaptation allowed under7.4. Prior-dose/timing rationale recorded below. Prespecified intervention-related AE examples dyskinesia,nausea,dizziness,headache; expected harm within5-week treatment or≤7 subsequent weeks, within3 months after randomization; no IMP AE expected in3–12-month observational phase. | Dose modification; safety assessment timeframe |
-| PR3-020 | [PDF p68](../../../joi250066supp1_prod_1761597796.4601.pdf#page=68) | Population: acute ischemic/intracerebral hemorrhagic stroke, NIH motor arm/leg/ataxia total≥3, in-hospital rehabilitation; severe aphasia unable to follow2-stage commands excluded; proxy consent for those capable of procedures but unable to comprehend full information; maximum stroke-onset-to-Visit1 window7 days. Primary objective: between-group final FMMA scores3 months after randomization. Secondary objectives a–g continue next page. | Population; primary final-score contrast; secondary aims |
-| PR3-021 | [PDF p69](../../../joi250066supp1_prod_1761597796.4601.pdf#page=69) | Secondary aims h–j; further objectives and safety objectives; FMMA definition and patient-relevant threshold below. Primary efficacy endpoint is between-group score difference3 months after randomization. Secondary assessments may be limited to selected centers to reduce burden. | Outcome status; FMMA scale/threshold |
-| PR3-022 | [PDF p70](../../../joi250066supp1_prod_1761597796.4601.pdf#page=70) | All-patient secondary assessments NIHSS,mRS,PROMIS29/PROMIS10,patient relevance of motor improvement,RMI; PROMIS and RMI scale definitions below. No effect estimates from ESTREL. | Secondary outcomes/scoring/independent walking |
-| PR3-023 | [PDF p71](../../../joi250066supp1_prod_1761597796.4601.pdf#page=71) | Interventional safety outcomes and observational mortality/stroke; selected-center secondary scales MI,TCT,ARAT,BBT,FAC,10MWT,JDT,MoCA,sensor activity, with definitions below. | Safety outcomes; selected-center secondary outcomes |
-| PR3-024 | [PDF p72](../../../joi250066supp1_prod_1761597796.4601.pdf#page=72) | Sensor measures continued; further selected-center genetic/blood/imaging biomarker assessment explicitly exploratory; no within-trial imaging. Safety outcome section refers to5.2.1. Design: randomized1:1 superiority with blinded groups; hypothesis levodopa plus standardized rehabilitation gives≥6 points higher FMMA at3 months; planned enrollment610. PRECIS design assessment refers toFigure2 on subsequent page outside assigned scope. | Exploratory outcome status; superiority hypothesis; planned enrollment |
-
-## Primary/statistical specifications (PR3-006, PR3-008, PR3-020, PR3-021, PR3-024)
-
-- Primary outcome is the between-group difference of final FMMA scores at3 months after randomization. Scale total0–100; upper extremity0–66 and lower extremity0–34. Items use0=cannot perform,1=partially,2=fully. Trained outcome assessor performs assessments. Literature thresholds on p69:5.25 upper-extremity points and6 lower-extremity points; trial adopts6 total points as patient-relevant. Hypothesis p72: at least6 points higher with levodopa.
-- Synopsis primary model p56: mixed effects; baseline FMMA covariate; treatment two-level factor levodopa versus placebo and event type acute ischemic versus hemorrhagic stroke as fixed effects; center random factor. Secondary outcomes: regressions appropriate to data type. Missing data: multiple imputation by chained equations.
-- Sample-size synopsis p56:610 planned randomized participants over37 months;10% dropout;549 evaluable; normal FMMA SD25 points;548 patients enable6-point mean between-group difference at3 months with80% power, two-sided5% significance. Printed549 evaluable and548 required are retained separately. No formula or software specified on this page.
-- Definitions p57 name FAS, ITT, PP, but this shard does not contain full analysis-set membership criteria. The detailed population/primary/sensitivity/secondary/interim/missing-data sections are located at internal40–41, physical86–87, beyond this shard. No subgroup covariate list, detailed sensitivity-analysis procedure, multiplicity hierarchy, alpha-spending rule, or numeric DSMC stopping boundary is specified within assigned pages. This is a disjoint-scope boundary, not an uncovered-unit gap.
-
-## Intervention, population and operational windows (PR3-007, PR3-008, PR3-011, PR3-012)
-
-Intervention: levodopa100mg/carbidopa25mg per dose or matching placebo, with standardized motor-learning rehabilitative therapy. Total39 treatment days beginning day after randomization. Days1–3 morning only; days4–6 morning+lunch; days7–34 three daily doses; days35–37 morning+lunch; days38–39 morning only. Placebo follows the identical scheme. Dose adaptation permitted for tolerability, pointer7.4; no adaptation algorithm in this shard.
-
-Inclusion criteria p55, individually: (1) acute ischemic or hemorrhagic stroke≤7 days before randomization; hemorrhagic means intracerebral hemorrhage excluding subarachnoid hemorrhage and cerebral venous sinus thrombosis; (2) meaningful hemiparesis, total≥3 points on NIHSS motor arm,motor leg,limb ataxia; distal arm paresis equivalent to one of these; (3) randomization≥24 hours after thrombolysis/thrombectomy; (4) in-hospital rehabilitation required; (5) capable of standardized rehabilitation; (6) patient or next-of-kin informed consent.
-
-Exclusion criteria p55, individually: (1) age<18; (2) Parkinson disease; (3) levodopa mandatory by treating physician judgment; (4) unable/unwilling to comply including drug intake oral/nasogastric/PEG; (5) severe aphasia unable to follow two-stage commands; (6) prestroke basic-ADL dependence, prestroke mRS>3; (7) pre-existing hemiparesis; (8) levodopa/carbidopa hypersensitivity or other contraindications per appended product characteristics; (9) pregnancy/breastfeeding/planned pregnancy during study, with pregnancy test required for childbearing-age women; (10) lack of safe contraception: childbearing potential and unwilling/not using medically reliable method throughout study; oral/injected/implanted/intrauterine or other investigator-accepted methods; surgically sterilized/hysterectomized or postmenopausal>2 years not considered childbearing potential.
-
-Visit1 day0; prescreening day−7 to0. Visit2 5 weeks±7 days=end treatment; Visit3 3 months±14 days=primary endpoint; Visit4 6 months±20 days; Visit5 12 months±30 days. Optional long-term telephone Visits6–9:24,36,48,60 months±30 days. Treatment-phase rehabilitation transfer occurs day x; inpatient visit data collection on transfer day only. Planned enrollment610; synopsis administrative duration75 months; first-in03/2019; interventional last-out08/2024; clinical observation last-out05/2025; extended phone observation last-out05/2029;11 acute and10 rehabilitation centers. These calendars/center counts are prospective administrative descriptors.
-
-## Outcome status and definitions (PR3-006, PR3-020–024)
-
-Synopsis p54 secondary outcomes:
-1. FMMA total at5 weeks,6 months,12 months; FMMA UE and LE at5 weeks,3,6,12 months.
-2. NIHSS,mRS,PROMIS10/29,patient relevance of motor improvement,RMI at5 weeks,3,6,12 months.
-3. Relative risks of mortality,recurrent stroke,serious AEs,selected other IMP-related AEs. The text `re-hospitalization` is visibly struck through in this synopsis; it is not silently retained as active wording.
-4. Selected-center secondary assessments at5 weeks,3,6,12 months: ARAT,BBT,Jamar dynamometer,MI,trunk control,FAC,10MWT,MoCA,daily-life movement sensors.
-
-Secondary objective items p68–69: (a) patient-self-assessed physical function; (b) self-assessed general health,pain,mood,anxiety,fatigue,social participation; (c) long-term sustainability of relevant motor improvement; (d) selective hand/wrist movement; (e) independent walking without another person; (f) less severe impairment; (g) higher ADL activity; (h) quality of life; (i) cognition; (j) no harm signals of increased all-cause mortality,recurrent stroke,SAEs.
-
-Further objectives p69: compare3-month functional outcome with nonparticipants using Swiss Stroke Registry routine data; collect genetic/other biomarkers and routine/observational CT,MRI,fMRI for explanatory treatment-response analysis. Further assessments p72 explicitly call genetic/blood-marker analyses exploratory; blood collected at baseline or any follow-up. No study imaging performed; routine/observational imaging used for ischemic/hemorrhagic lesion type,location,volume.
-
-Safety p69,p71: compare mortality,recurrent stroke,SAEs and prespecified nonserious IMP-related AEs. Interventional phase captures all-cause mortality,any recurrent stroke,SAEs,prespecified nonserious related AEs; observational3–12-month phase captures all-cause mortality and any recurrent stroke. Safety status coexists with secondary status in the synopsis; no composite is defined here.
-
-Scale details:
-- PROMIS scales mean50, SD10 in general population; minimum clinically important difference half SD. PROMIS29 domains:physical function,anxiety,depression,fatigue,sleep disturbance,social roles/activities,pain interference,pain intensity. First7 domains each4 questions,5 response levels; pain intensity visual analogue0–10. PROMIS10 general health/QoL/pain/mood/anxiety/fatigue/social participation.
-- Patient relevance: improved motor function since last study visit? If yes, personally relevant? FMMA improvement compared with this report.
-- RMI15 items,0–15; postural adjustment,transfer,walking,stairs. Minimum detectable change2.2 points; no established clinically meaningful difference stated. RMI≥7 corresponds to independent walking without another person.
-- MI UE and LE subscales each0–100, isometric strength.
-- TCT4 items each0–25; sitting-balance task30 seconds without trunk/feet support.
-- ARAT4 subtests:grasp6 items,grip4,pinch6,gross movement3.
-- BBT unilateral gross dexterity,number of wooden cubes transferred between2 compartments in60 seconds.
-- FAC0–5, independent walking with/without aid and walking-surface type.
-- 10MWT speed/cadence on10-meter track at comfortable and maximum speed.
-- JDT grip strength affected and unaffected upper limb.
-- MoCA0–30.
-- Sensors:gyroscope,acceleration,magnetometer,pressure; activity counts/arm use and physical activity lying,sitting,standing,walking.
+| 64 | Consent continuation; privacy; early termination; amendments; background start | Applicable stopping framework PC001; administrative material also read |
+| 65 | Rationale; prior levodopa trials; DARS; ESTREL design lessons | Applicable intervention/outcome rationale PC002–PC003; historical quantities retained separately |
+| 66 | Product; preclinical/clinical evidence; meta-analysis Figure 1 | Applicable dose PC004; historical figure PC005 |
+| 67 | Dose rationale; comparator; risks/benefits | Applicable dosing and safety windows PC006–PC008 |
+| 68 | Population justification; study objectives | Applicable eligibility and primary/secondary objective PC009–PC011 |
+| 69 | Further/safety objectives; primary/secondary outcome definitions | Applicable outcome definitions/status PC012–PC014 |
+| 70 | All-patient secondary measures | Applicable NIHSS, mRS, PROMIS, RMI PC015–PC018 |
+| 71 | Safety outcomes; selected-center measures | Applicable outcome definitions/status PC019–PC021 |
+| 72 | Further selected-center assessments; general design | Applicable biomarkers and superiority design PC022–PC023 |
+| 73 | PRECIS Figure 2; treatment phases; visit phases | Applicable design/timing PC024–PC026 |
+| 74 | Bias minimization; blinding; population; eligibility; recruitment | Applicable randomization/blinding/population PC027–PC029 |
+| 75 | Recruitment continuation; allocation; dose reduction/discontinuation | Applicable allocation/discontinuation PC030–PC032; administrative CHF amount recorded |
+| 76 | Intervention route; product handling; adherence; withdrawal data | Applicable route/adherence/withdrawal PC033–PC035; handling quantities recorded |
+| 77 | Contraception; concomitant treatment; rehabilitation | Applicable concomitant care and intervention PC036–PC038 |
+| 78 | Drug accountability; samples; primary/secondary assessment | Applicable primary ascertainment and safety PC039–PC041 |
+| 79 | Early withdrawal; visits 1–3; treatment schedule | Applicable schedule/population ascertainment PC042–PC046 |
+| 80 | Visits 3–5; transition; optional long-term extension; visit 6 | Applicable outcome windows/extension PC047–PC050 |
+| 81 | Visits 7–9; interventional safety and AE/SAE definitions | Applicable extension/safety definitions PC051–PC053 |
+| 82 | SAE continuation; causality table; CTCAE table; reporting | Applicable safety classification PC054–PC056; reporting windows read |
+| 83 | Safety reporting; pregnancy; follow-up; collected safety variables | Applicable safety follow-up/variables PC057–PC059; administrative reporting read |
+| 84 | Observational safety; hypothesis; sample size | Applicable stopping/safety, hypothesis and power PC060–PC063 |
+| 85 | Sample-size Figure 3; power for other outcomes; stopping | Applicable power and stopping PC064–PC066 |
+| 86 | Populations; primary model; sensitivity analyses | Applicable statistical specification PC067–PC071 |
+| 87 | Secondary analysis; interim; safety analysis; deviations; missingness | Applicable statistical specification PC072–PC077 |
+| 88 | Record keeping; database management/security; validation | Opened in full; no applicable result-relevant quantitative relationship. Administrative PC078 records 10-year retention and database locking |
+| 89 | Monitoring; audit; confidentiality; biological material; dissemination; funding | Opened in full; no applicable result-relevant numerical relationship. PC079 records optional biomarker consent and administrative context |
+| 90 | Insurance | Opened in full; no applicable quantitative/statistical/design relationship |
+| 91 | References 1–24 start | Opened in full; no applicable trial-result relationship; bibliographic numbers only |
+| 92 | References 24 continuation–43 start | Opened in full; no applicable trial-result relationship; bibliographic numbers only |
+| 93 | References 43 continuation–66 | Opened in full; no applicable trial-result relationship; bibliographic numbers only |
+| 94 | References 67–79; appendix list I–V | Opened in full; no applicable trial-result numerical relationship; appendix topics indexed in PC080 |
 
-## Complete study-schedule map (PR3-011)
+## Relationship inventory
 
-Columns: prescreen day−7 to0; Visit1 day0; dose escalation day1–6; rehabilitation transfer day x; full dose day7–34; taper day35–39; Visit2 5 weeks±7d; Visit3 3mo±14d; Visit4 6mo±20d; Visit5 12mo±30d; optional phone Visits6–9 24/36/48/60mo±30d; unscheduled visit.
+Every page link below is an exact PDF page. Headings and section numbers are truthful printed locations. Quantities labeled historical are background evidence, not ESTREL results.
 
-Operational rows: consent/randomization/study-drug dispensing and protocol distribution atVisit1; inclusion/exclusion,demographics,medical history,pregnancy test at prescreen/Visit1; drug administration during escalation,transfer,full dose,taper; physical examination Visit1,transfer,Visits2–5,and unscheduled; concomitant rehabilitative therapies Visit1,treatment phases,transfer,Visit2,and unscheduled; concomitant medication Visit1,transfer,taper,Visits2–5,and unscheduled; drug accountability Visit1,transfer,Visit2,conditional unscheduled; blood sampling optional atbaseline/any follow-up.
+### PC001 — Stopping and amendment framework
 
-Outcome rows: FMMA,NIHSS atVisit1,Visits2–5,unscheduled; mRS atVisit1,Visits2–9,unscheduled; PROMIS10,patient relevance,RMI atVisits2–9,unscheduled; PROMIS29 atVisits2–5,unscheduled. Selected-center ARAT,BBT,JDT,MI,TCT,FAC,10MWT,MoCA,sensor activity atVisit1,Visits2–5,unscheduled; optional blood sampling as above. Mortality and recurrent stroke collected atVisit1,treatment phases/transfer,Visits2–9,unscheduled. AE/SAE atVisit1,treatment phases/transfer,Visits2–3,conditional unscheduled; no AE/SAE checkmarks in clinical/telephone observational columns.
+[PDF page 64](../../../joi250066supp1_prod_1761597796.4601.pdf#page=64), §§2.9–2.10. Sponsor-investigator may terminate for ethical concerns, insufficient recruitment, participant safety at risk, changed accepted clinical practice, or early evidence of intervention harm. DSMC monitors clinically apparent mortality, recurrent stroke, and SAEs, advising principal investigator and TSC on stopping/continuing/amending according to §11.3. Substantial amendments require CEC/CA approval except protective emergency deviations, which are documented/reported; non-substantial amendments communicated to authorities and CEC in annual safety report. Main matching key: trial stopping rules/protocol amendments. Consent/privacy/reimbursement continuation also inspected; no endpoint number there.
 
-Schedule footnotes: transition in-person visit only on day of transfer, any treatment-phase day; starred selected-center assessments optional; blood sampling atbaseline or any follow-up. Unscheduled end-of-study visit on discontinuation/consent withdrawal; bracketed drug-accountability assessment only before treatment end, bracketed AE/SAE assessment only beforeVisit3. Other unscheduled outcome assessments require participant approval.
+### PC002 — Historical trial quantities
 
-## Historical context quantities, retained separately (PR3-017–019)
+[PDF page 65](../../../joi250066supp1_prod_1761597796.4601.pdf#page=65), §3.1. Prior randomized trial enrolled stroke patients 3 weeks–6 months poststroke; levodopa 100 mg/day for 3 weeks added to physical therapy; Rivermead motor difference 3.9 points, 95% CI 0.55–7.2; benefit sustained 3 weeks after cessation; 47 analyzed. Two subsequent small factorial RCTs included overall 29 levodopa patients. Aphasia study administered 100 mg/day at 8 weeks after stroke. DARS used a single 100-mg dose before therapy; walking independently at 8 weeks OR 0.78, 95% CI 0.53–1.15. DARS rehabilitation averaged 22 sessions (SD 10) over 8 weeks, described as <3/week; guideline comparator 3 hours/weekday. DARS administration specified 45–60 minutes pretherapy, accepting 0–15 minutes. Expected effect described as 50% increase in walking rate at 8 weeks. These are historical rationale only. Main matching key: trial rationale, prior DARS comparison.
 
-These belong to prior studies cited in the plan, not ESTREL observations or ESTREL analysis specifications.
+### PC003 — ESTREL design lessons in rationale
 
-p65: first trial stroke3 weeks–6 months; levodopa100mg/day for3 weeks; Rivermead motor difference3.9 points,95%CI0.55–7.2; effect persisted3 weeks after cessation;47 analyzed; two factorial trials29 total levodopa recipients. Aphasia study100mg/day8 weeks after onset. DARS independent walking8 weeks OR0.78,95%CI0.53–1.15; average22(SD10) rehabilitation sessions during8 weeks, <3/week; cited recommendation3h/week; dosing45–60min before therapy,0–15min accepted; expected50% walking-rate increase. p67 prior timing≥30min or45–60min, accepted0–15min; oral peak0.5–2h; experimental single doses25,100,200mg; DARS SAE mean1.2(SD0.6) within8 weeks.
+[PDF page 65](../../../joi250066supp1_prod_1761597796.4601.pdf#page=65), §3.1 closing list. Levodopa three times a day (tid); concomitant standardized rehabilitation adapted to motor-learning principles; inclusion as early as possible and ≤7 days after stroke onset; primary FMMA at 3 months poststroke. Main matching keys: intervention frequency, enrollment window, primary outcome/time origin.
 
-p66 historical Figure1, random-effects inverse-variance standardized mean difference,95%CI:
+### PC004 — Investigational product
 
-| Study/row | Levodopa mean,SD,n | Control mean,SD,n | Weight | SMD [95%CI] |
-|---|---|---|---|---|
-| Celik2004 |9.1,4.5,14 |7.3,4.5,12 |12.1% |0.39[−0.39,1.17] |
-| Acler2005 |23,6,10 |22,6,10 |10.7% |0.16[−0.72,1.04] |
-| Scheidtmann2001 |15.4,3.48,22 |11.3,3.48,25 |14.5% |1.16[0.54,1.78] |
-| Sonde2007 with AMPH |22.6,7.8,3 |37.9,23.7,5 |5.3% |−0.67[−2.17,0.83] |
-| Sonde2007 without AMPH |25.9,10.6,6 |39.4,9.1,7 |7.1% |−1.28[−2.52,−0.04] |
-| Lokk2011 without MPH |66.3,31.7,20 |53.4,34.4,20 |14.4% |0.38[−0.24,1.01] |
-| Lokk2011 with MPH |57.7,37.1,19 |57,35.3,19 |14.3% |0.02[−0.62,0.65] |
-| Ford2019 DARS |3.1,3.1,308 |3.3,3,295 |21.7% |−0.07[−0.23,0.09] |
-| Total |n402 |n393 |100.0% |0.15[−0.25,0.55] |
+[PDF page 66](../../../joi250066supp1_prod_1761597796.4601.pdf#page=66), §3.2. White capsules combine levodopa 100 mg and carbidopa 25 mg or placebo, produced by Laboratorium Dr. G. Bichsel AG. Main matching key: intervention dose/comparator.
 
-Heterogeneity tau²0.18; chi²21.20,df7,P.003; I²67%; overall Z0.73,P.46. Figure axis favors control left of0 and levodopa right. Caption: Celik RMA change6 weeks; Acler/Scheidtmann RMA5/6 weeks; Sonde FM leg at3 months used here; Lokk FM3 months; DARS ABILHAND8 weeks. Historical sensitivity excluding Celik or using Sonde arm FM did not explain heterogeneity. AMPH=amphetamine; MPH=methylphenidate.
+### PC005 — Historical meta-analysis Figure 1
 
-## Completion and limitations
+[PDF page 66](../../../joi250066supp1_prod_1761597796.4601.pdf#page=66), §3.4/Figure 1. Search performed August 17, 2017; six RCTs including DARS, eight displayed study/subgroup rows. Measure: standardized mean difference, inverse-variance random effects, 95% CI. Below, intervention/control entries are mean, SD, total; weight is printed percentage; year is displayed year.
 
-Mapped24/24 pages; missing scientific units0; unreadable scientific content0. Administrative/no independent quantitative-result pages49,50,52,58,61,63 remain explicitly documented. Page59 OCR is limited by orientation, closed by full visual table inspection. No new rendering; CPU OCR only. Detailed statistical-section contents beyond page72 are assigned elsewhere and were not read by this mapper. All extracted statements retain version/date, population/time/scale/status and source-page keys. The shard has24 page keys plus itemized endpoint/eligibility/statistical/schedule relationships; coordinator should assign global N/S identifiers when merging.
+| Study/subgroup | Levodopa mean, SD, N | Control mean, SD, N | Weight | SMD [95% CI] | Year |
+|---|---|---|---:|---|---:|
+| Celik 2004 | 9.1, 4.5, 14 | 7.3, 4.5, 12 | 12.1% | 0.39 [−0.39, 1.17] | 2004 |
+| Acler 2005 | 23, 6, 10 | 22, 6, 10 | 10.7% | 0.16 [−0.72, 1.04] | 2005 |
+| Scheidtmann 2001 | 15.4, 3.48, 22 | 11.3, 3.48, 25 | 14.5% | 1.16 [0.54, 1.78] | 2005 |
+| Sonde 2007 (with AMPH co-treatment) | 22.6, 7.8, 3 | 37.9, 23.7, 5 | 5.3% | −0.67 [−2.17, 0.83] | 2007 |
+| Sonde 2007 (without AMPH co-treatment) | 25.9, 10.6, 6 | 39.4, 9.1, 7 | 7.1% | −1.28 [−2.52, −0.04] | 2007 |
+| Lokk 2011 (without MPH co-treatment) | 66.3, 31.7, 20 | 53.4, 34.4, 20 | 14.4% | 0.38 [−0.24, 1.01] | 2011 |
+| Lokk 2011 (with MPH co-treatment) | 57.7, 37.1, 19 | 57, 35.3, 19 | 14.3% | 0.02 [−0.62, 0.65] | 2011 |
+| Ford 2019 (DARS-trial) | 3.1, 3.1, 308 | 3.3, 3, 295 | 21.7% | −0.07 [−0.23, 0.09] | 2015 |
+| Total (95% CI) | N=402 | N=393 | 100.0% | 0.15 [−0.25, 0.55] | — |
 
-OCR completion record: all24 PSM6 outputs finished successfully, total74,352 bytes. The slower initial PSM3 pass was interrupted after the completed PSM6 pass, exit130; partial initial outputs are retained only as tooling derivatives. No unfinished OCR/render process remains. Total retained OCR content is below200,000 characters; all visual scientific mapping is complete.
-# Support protocol mapping shard PR4
+Heterogeneity: Tau²=0.18; Chi²=21.20, df=7, P=0.003; I²=67%. Overall-effect Z=0.73, P=0.46. Plot axis ticks −2, −1, 0, 1, 2; negative favors control, positive favors levodopa. Caption: Celik uses Rivermead Motor Assessment change from baseline after 6 weeks only; Acler and Scheidtmann RMA at 5 and 6 weeks; Sonde Fugl-Meyer leg/arm at 3 months, leg results used; Lokk FM at 3 months; DARS ABILHAND at 8 weeks. Sensitivity excluding Celik or using Sonde FM arm results had consistent findings and did not explain heterogeneity. AMPH=amphetamine, MPH=methylphenidate. Main matching key: historical evidence only; do not treat as current-trial efficacy.
 
-## Scope, authority, and derivative record
+### PC006 — Planned dose and phases
 
-- Exact complete scope: DOC-002, `joi250066supp1_prod_1761597796.4601.pdf`, physical PDF pages 73–94 inclusive, 22 distinct pages. Document role: PLAN throughout.
-- Source-relative evidence links below resolve from this extraction directory via `../../../joi250066supp1_prod_1761597796.4601.pdf#page=N`.
-- Every page was opened and visually read from its supplied source-linked reusable image `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc002/page-N.png`, N=73,…,94. No old scientific conclusions were read. Existing protocol text was unusable; images were readable at 1275×1650. No higher-resolution rendering was necessary. No Office/workbook/CSV source is in this shard; formulas and cached workbook values are not applicable.
-- Bundle identity: continuation of protocol version 1.4, dated 28.02.2023, whose title starts at physical p47 and approval page at p48, as directly confirmed by the disjoint protocol-2 mapper and communicated by the coordinator. No version/date header appears within physical pp73–94; identity is joined from that title-page map. These pages continue sections 6–17 without another protocol title/version boundary.
-- Fresh derivative engine: Tesseract 5.5.0, English, CPU, `--psm 6`, `OMP_THREAD_LIMIT=1`. Exact bounded command: `for n in $(seq 73 94); do OMP_THREAD_LIMIT=1 tesseract ".ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc002/page-$n.png" ".ai_paper_validation/review_1_6_2/preprocessing/protocol_004/page-$n" -l eng --psm 6 2>>.ai_paper_validation/review_1_6_2/preprocessing/protocol_004/ocr-engine.log; done`. Outputs are one `page-N.txt` per assigned page. An initial default-thread attempt was interrupted while page73 remained empty; the bounded one-thread retry replaced that new derivative. Sources and reusable images were preserved. Visual page reading is authoritative for this map; OCR is a transcription aid.
-- Local relationship keys PR4-N### and PR4-S### are unique to this shard. The coordinator can assign global N/S IDs when merging. Matching main-paper keys describe the outcome/design relationship for subsequent matching, without reading unassigned main-paper material or diagnosing candidates.
+[PDF page 67](../../../joi250066supp1_prod_1761597796.4601.pdf#page=67), §3.5. Experimental levodopa 100 mg/carbidopa 25 mg tid. Escalation days 1–6; taper days 35–39; taper duration 5 days. Fixed escalation anticipates no immediate response guiding dosing; tolerability monitored, adaptations allowed §7.4. Historical rationale: oral peak 0.5–2 hours; prior timing at least 30 minutes or 45–60 minutes before therapy, accepting 0–15 minutes; human plasticity studies compared 25, 100, 200 mg, with 100 mg selected. Main matching key: intervention dose/duration/taper.
 
-## Exhaustive page coverage
+### PC007 — Comparator
 
-| Physical page | Inspected content | Applicable record keys | Mapping status |
-|---|---|---|---|
-| 73 | PRECIS design figure; allocation, treatment phases, follow-up phases | PR4-N001, PR4-N002, PR4-S001 | COMPLETE |
-| 74 | Bias minimization; allocation and masking; population and eligibility pointer | PR4-N003, PR4-S002 | COMPLETE |
-| 75 | Assignment; withdrawal and dose modification | PR4-N004, PR4-N005 | COMPLETE |
-| 76 | Intervention identity/dose/route; compliance; withdrawn data | PR4-N006, PR4-S003 | COMPLETE |
-| 77 | Concomitant treatments and standardized rehabilitation | PR4-N007, PR4-N008 | COMPLETE |
-| 78 | Drug accountability; primary assessment; secondary safety windows | PR4-N009, PR4-N010, PR4-S004 | COMPLETE |
-| 79 | Pre-screening; baseline tests; dosing; visits2/3 | PR4-N011, PR4-N012 | COMPLETE |
-| 80 | Visits3–6; transition; optional long-term extension | PR4-N013, PR4-N014 | COMPLETE |
-| 81 | Visits7–9; AE/SAE definitions | PR4-N015, PR4-N016 | COMPLETE |
-| 82 | Safety causality and grading tables; SAE reporting | PR4-N017, PR4-N018 | COMPLETE |
-| 83 | Safety reporting/follow-up and recorded AE/SAE variables | PR4-N019, PR4-N020 | COMPLETE |
-| 84 | Observational safety; primary hypothesis; sample-size inputs | PR4-N021, PR4-S005, PR4-S006 | COMPLETE |
-| 85 | Power sensitivity figure; walking/PROMIS power; safety stopping | PR4-N022, PR4-S007, PR4-S008 | COMPLETE |
-| 86 | Populations; primary model; every sensitivity specification | PR4-S009, PR4-S010, PR4-S011 | COMPLETE |
-| 87 | Secondary models; exploratory analyses; interim/safety/missingness | PR4-S012, PR4-S013, PR4-S014, PR4-S015 | COMPLETE |
-| 88 | Data collection, dropout record, database closure, archival procedures | PR4-N023 | COMPLETE |
-| 89 | Monitoring, privacy, biological secondary outcomes; publication/funding | PR4-N024 | COMPLETE |
-| 90 | Insurance section only | No applicable quantitative/design relationship | COMPLETE |
-| 91 | References1–24; p24 continues on next page | No applicable quantitative/design relationship; citations only | COMPLETE |
-| 92 | Reference24 continuation and references25–43 start | No applicable quantitative/design relationship; citations only | COMPLETE |
-| 93 | Reference43 continuation and references44–66 | No applicable quantitative/design relationship; citations only | COMPLETE |
-| 94 | References67–79; appendix titles I–V | PR4-N025; citations supply no new planned analysis | COMPLETE |
+[PDF page 67](../../../joi250066supp1_prod_1761597796.4601.pdf#page=67), §3.6. Matching placebo identical in appearance, texture, taste; no established active comparator. Main matching key: placebo control/blinding.
 
-## Intervention, population, assessments, and safety map
+### PC008 — Harm windows and historical SAE burden
 
-### PR4-N001 — Design and intervention phases
+[PDF page 67](../../../joi250066supp1_prod_1761597796.4601.pdf#page=67), §3.7. DARS historical mean number of SAEs 1.2 (SD 0.6) within 8 weeks. ESTREL adverse effects anticipated in 5-week treatment or at most following 7 weeks, within 3 months of randomization (interventional phase); observational phase 3–12 months, no IMP adverse effects expected based on washout. Main matching key: safety collection period.
 
-[Physical p73](../../../joi250066supp1_prod_1761597796.4601.pdf#page=73), section6.1 continuation. Eligible consenting patients are randomized 1:1 to levodopa/carbidopa versus matching placebo. Three phases: days1–3 one morning dose daily; days4–6 morning plus lunchtime; days7–34 three times daily; taper days35–37 morning plus lunchtime; days38–39 morning only. Both comparison groups receive standardized rehabilitative therapies. Enrollment, randomization, allocation, and onset occur in acute stroke unit before transfer to rehabilitation. Main-paper matching key: randomized intervention dose/duration and allocation contrast.
+### PC009 — Target population
 
-### PR4-N002 — Follow-up phases and PRECIS figure
+[PDF page 68](../../../joi250066supp1_prod_1761597796.4601.pdf#page=68), §3.8. Acute ischemic or intracerebral hemorrhagic stroke; excludes subarachnoid hemorrhage/cerebral venous sinus thrombosis. Clinically meaningful hemiparesis defined total ≥3 points on NIHSS motor arm, motor leg, limb ataxia items; distal arm paresis treated as equivalent to one listed item; requires inpatient rehabilitation. Severe aphasia unable to follow two-stage commands excluded; moderate aphasia may use next-of-kin consent. Maximum onset-to-visit-1 window 7 days. Main matching key: eligibility/analysis population.
 
-[Physical p73](../../../joi250066supp1_prod_1761597796.4601.pdf#page=73). Total participation12 months: interventional phase randomization through Visit3 at3 months; observational phase thereafter through Visit5 at12 months, duration9 months. Main intervention said to end5 weeks post-randomization; pharmacokinetic wash-out rationale places the interventional endpoint at3 months. In-person visits1 baseline,2 end treatment,3 primary assessment; long-term visits4 at6 months,5 at12 months. Therapy number/duration and transfer information collected at acute-to-rehabilitation transition. Figure2 PRECIS radial scale runs1–5: eligibility4; recruitment4; setting5; organization5; delivery flexibility4; adherence flexibility4; follow-up2; primary-outcome relevance2; primary-analysis inclusion5. These are graphical design scores, not trial efficacy results. Matching key: visit windows and primary outcome timing.
+### PC010 — Overall and primary objective
 
-### PR4-S001 — Screening and consent chronology
+[PDF page 68](../../../joi250066supp1_prod_1761597796.4601.pdf#page=68), §§4.1–4.2. Benefits/harms of levodopa/carbidopa 100/25 mg tid plus standardized rehabilitation versus placebo. Primary objective: between-group difference in final FMMA score at 3 months after randomization, patient-relevant functional recovery. Main matching key: primary estimand, time origin, intervention contrast.
 
-[Physical p73](../../../joi250066supp1_prod_1761597796.4601.pdf#page=73). Eligibility refers to study synopsis. Screening in acute care center; consent/inclusion after entry to ward, e.g. IMC/stroke unit or neurology ward; no emergency inclusion. All participants described as eligible and signed informed consent before randomization. Matching key: randomization population and timing; actual criterion list resides outside this shard and is not inferred.
+### PC011 — Secondary objective list
 
-### PR4-N003 / PR4-S002 — Allocation, masking, and target population
+[PDF pages 68–69](../../../joi250066supp1_prod_1761597796.4601.pdf#page=68), §4.3; continuation on [page 69](../../../joi250066supp1_prod_1761597796.4601.pdf#page=69). Patient self-assessed physical function; self-assessed general health, pain, mood, anxiety, fatigue, social participation; long-term motor sustainability; selective hand/wrist improvement; independent walking without another person's help; less severe impairment; higher daily activity; quality of life; cognitive performance; no signals of all-cause mortality, recurrent stroke or SAEs. Status explicitly secondary objectives. Main matching key: secondary outcome hierarchy/status.
 
-[Physical p74](../../../joi250066supp1_prod_1761597796.4601.pdf#page=74), §§6.2–7.2. Visit1 random allocation, center stratification; CTU Basel implements in CDMA secuTrial a standard minimization algorithm balancing within each stratum. Allocation probability80% to the group that minimizes the difference within patient's stratum, avoiding predictable alternation. Investigators, participants, therapists/physicians/nurses, outcome assessors, and statistician blinded throughout; independent Bichsel pharmacy labels/packages/dispenses; matching placebo and active product identical aspect/texture/taste except blinded randomization number. DSMC safety monitoring unblinded. Trained specific-instrument personnel perform all primary/secondary outcome assessments. Population: acute stroke ≤7 days after symptom onset, clinically meaningful hemiparesis requiring inpatient rehabilitation. Planned610 patients; treatment days1–39; transition to rehabilitation during treatment. All inclusion and none of exclusion criteria required with no exceptions; complete list refers to synopsis outside shard. Prescreening days0–7 since onset. Matching keys: center adjustment/minimization, masking, recruited population,610 target.
+### PC012 — Further and safety objectives
 
-### PR4-N004 — Assignment/consent
+[PDF page 69](../../../joi250066supp1_prod_1761597796.4601.pdf#page=69), §§4.4–4.5. Further objectives: compare 3-month function with nonparticipants using Swiss Stroke Registry; collect genetic/other biomarkers and routine/observational CT/MRI/fMRI for treatment-response explanatory analyses. Safety objective: compare mortality, recurrent stroke, SAEs, non-serious prespecified AEs possibly related to IMP. Main matching key: exploratory versus safety outcome status.
 
-[Physical p75](../../../joi250066supp1_prod_1761597796.4601.pdf#page=75), §7.3. Consent participant or next-of-kin precedes study-specific procedures and Visit1 inclusion. Randomization instant at inclusion, computer-generated in CDMA; allocation via secuTrial. No emergency inclusion. Travel refund20 CHF/patient/visit for visits outside routine follow-up is administrative, without analysis relevance. Matching key: enrolled/randomized population.
+### PC013 — Primary outcome definition and scale
 
-### PR4-N005 — Withdrawal and dosing modification rules
+[PDF page 69](../../../joi250066supp1_prod_1761597796.4601.pdf#page=69), §5.1. Primary efficacy outcome between-group FMMA score difference 3 months after randomization. Items three-point ordinal: 0 cannot perform, 1 partially, 2 fully. Total 0=no movement to 100=normal movement; upper limb 66 points, lower limb 34. Trained assessor. Historical clinically important differences 5.25 upper-extremity and 6 lower-extremity points. ESTREL patient-relevant between-group difference 6 points; illustration shoulder or hip recovery. Main matching key: FMMA total, subscales, direction, clinically relevant difference.
 
-[Physical p75](../../../joi250066supp1_prod_1761597796.4601.pdf#page=75), §7.4. Nighttime adverse reactions allow1-1-0 dose regimen: morning/noon/evening0. Early discharge defined earlier than5 weeks minus7 days after randomization; encourage medication continuation until scheduled5-week Visit2. If participant declines continuation, stop full treatment and taper over following5 days, provide last5-day study drugs. Unscheduled end-study visit at discontinuation/withdrawal ±3 days. If AE/SAE/SUSAR relationship to drug at least probable, reduce dose or discontinue temporarily/permanently as medically appropriate and agreed by patient. Stop study drug if (i) levodopa contraindication develops per appendixIII, (ii) treating physician requires open levodopa, or (iii) treating physician judges significant health risk from continuation. Prefer non-dopaminergic drugs for treatable conditions such as restless legs syndrome before Visit3. Follow-up after treatment or consent withdrawal refers to §9.1.3. Matching keys: adherence/per-protocol criteria, intervention reduction, discontinuation and continued observation.
+### PC014 — Secondary measure availability
 
-### PR4-N006 / PR4-S003 — Active and control product, compliance, withdrawn data
+[PDF page 69](../../../joi250066supp1_prod_1761597796.4601.pdf#page=69), §5.2. Some secondary outcomes measured in a subset at selected centers where routine practice supports them, to reduce burden; timepoints referred to Study Schedule. Main matching key: secondary outcome missing-by-design/subset populations.
 
-[Physical p76](../../../joi250066supp1_prod_1761597796.4601.pdf#page=76), §§8.1–8.5. Active IMP levodopa100mg/carbidopa25mg, oral day1 through39 after Visit1. NG or PEG delivery allowed if unable to swallow capsules, minimize duration and document in medical record/CDMA. Control matching placebo, same administration/duration/phases. Product capsules identical appearance/texture/taste, shelf life expected12 months; room storage15–25°C. Study-site nurses administer during hospitalization; encourage continued medication after early discharge with plan. Capsules numbered for total39 days; returned capsule count at Visit2 documents compliance. Withdrawal-of-consent data collected up to withdrawal will be analyzed. Pregnancy urine/blood test before enrollment for childbearing potential; contraception rule continues next page. Matching keys:100/25mg dose;39-day treatment; adherence and inclusion of pre-withdrawal data.
+### PC015 — NIHSS and mRS as all-patient secondary outcomes
 
-### PR4-N007 — Concomitant medication categories and restrictions
+[PDF page 70](../../../joi250066supp1_prod_1761597796.4601.pdf#page=70), §5.2.1. NIHSS overall acute/follow-up clinical deficit; mRS 3-month activity-level outcome. Simplified mRS questionnaire permitted, multiple languages and diverse rater backgrounds. Registry nonparticipant 3-month mRS supports external comparison. Main matching key: secondary NIHSS/mRS.
 
-[Physical p77](../../../joi250066supp1_prod_1761597796.4601.pdf#page=77), §8.6 plus §8.5 continuation. Contraception during days1–39 and one month after, using oral/injectable/implantable or intrauterine contraception. Off-label medical products intended to enhance stroke rehabilitation/recovery prohibited until3-month primary assessment. At each visit eCRF categories: antiplatelets; anticoagulants; antihypertensives; statins; serotonin-reuptake inhibitors; serotonin-noradrenalin reuptake inhibitors; benzodiazepines; neuroleptic drugs; antiepileptic drugs; antidiabetic drugs; analgesics; immunosuppressive/immunomodulating drugs; antibiotics. Mandatory levodopa requires trial-medication discontinuation but participant stays as off-study-medication patient. Interactions refer to appendixIII. Matching key: concomitant treatment policy and retained follow-up after discontinuation.
+### PC016 — PROMIS scale definitions
 
-### PR4-N008 — Rehabilitation intensity and elements
+[PDF page 70](../../../joi250066supp1_prod_1761597796.4601.pdf#page=70), §5.2.1. PROMIS uses item response theory, population mean 50 and SD 10; minimal clinically important difference deemed half SD. PROMIS-29 domains: physical function, anxiety, depression, fatigue, sleep disturbance, ability to participate in social roles/activities, pain interference (4 questions each, five levels per item), plus pain intensity VAS 0–10. PROMIS-10 general health, quality of life, pain, mood, anxiety, fatigue/social participation. Main matching key: PROMIS-29/PROMIS-10 secondary outcomes/scaling.
 
-[Physical p77](../../../joi250066supp1_prod_1761597796.4601.pdf#page=77). Same standardized motor-learning rehabilitation across randomized arms. Five elements: (i) active voluntary specific task-related movements rather than passive therapy; (ii) exercises individually adapted and increasingly challenging with improvement; (iii) feedback/knowledge of performance; (iv) repetition with rests; (v) motivation through goal setting, coaching, positive feedback. Three rehabilitative care sessions per workday: physical, occupational, speech/swallowing, neuropsychological if needed. At least two sessions standardized motor rehabilitation by trained physical/occupational therapists. Record each participant's treatment type and minutes/hours. Prefer shorter more frequent sessions in early monitored stroke unit. Matching keys: standardized rehabilitation comparator, therapy dose and adherence.
+### PC017 — Patient-reported relevance
 
-### PR4-N009 / PR4-S004 — Primary endpoint assessment
+[PDF page 70](../../../joi250066supp1_prod_1761597796.4601.pdf#page=70), §5.2.1. Ask whether motor function improved since last visit and whether improvement personally relevant; compare FMMA improvement with reported relevance. Main matching key: patient-reported improvement secondary measure.
 
-[Physical p78](../../../joi250066supp1_prod_1761597796.4601.pdf#page=78), §9.1.1. Primary outcome between-group difference in FMMA scores measured3 months ±14 days after randomization, Visit3. Trained assessors require FMMA training certification; scores entered into CRF. Three-month assessment filmed; video centrally assessed at Basel by blinded assessor. All primary-assessment personnel blinded. Matching key: primary FMMA between-arm difference,3-month timepoint, assessor method.
+### PC018 — RMI and independent walking
 
-### PR4-N010 — Secondary and safety assessment windows
+[PDF page 70](../../../joi250066supp1_prod_1761597796.4601.pdf#page=70), §5.2.1, continues [page 71](../../../joi250066supp1_prod_1761597796.4601.pdf#page=71). RMI 15 activity items, scored 0–15; minimal detectable change 2.2 points; clinically meaningful difference not established. RMI ≥7 translates independent walking without another person's assistance. Comparison rationale with DARS at 8 weeks. Main matching key: RMI continuous and walking threshold secondary outcomes.
 
-[Physical p78](../../../joi250066supp1_prod_1761597796.4601.pdf#page=78), §§9–9.1.2. Blood samples in predefined centers approximately10mL whole blood in EDTA, stored−20°C, for secondary outcomes. Complete secondary outcome/time definitions refer to §5.2 and schedule outside shard. Secondary outcome personnel trained and certified as in9.1.1. During interventional Visits1–3, record all-cause mortality, any recurrent stroke, all SAEs and pre-specified nonserious AEs possibly IMP-related. During observational3–12 months record all-cause mortality and any recurrent stroke. At Visit2 return/count all capsules and enter eCRF. Matching keys: safety denominator/window, mortality/stroke/AE definitions; biomarker secondary status.
+### PC019 — Safety outcomes by phase
 
-### PR4-N011 — Screening and baseline instruments
+[PDF page 71](../../../joi250066supp1_prod_1761597796.4601.pdf#page=71), §5.2.1. Interventional phase: all-cause mortality, any recurrent stroke, SAEs, non-serious prespecified AEs possibly related to IMP. Observational phase 3–12 months postrandomization: all-cause mortality and any recurrent stroke. Main matching key: safety outcome types and windows.
 
-[Physical p79](../../../joi250066supp1_prod_1761597796.4601.pdf#page=79), §§9.1.3–9.2.2. Data before withdrawal may be used in analyses. Prescreening labelled day−7 to0 before randomization; allow24h latency following thrombolysis/thrombectomy before prescreening/enrollment due to potential early recovery. Meaningful hemiparesis NIHSS≥3 for arm plus leg motor functions. Visit1 day0: written consent, eligibility, demographics/medical history/physical exam/concomitant medication. Mandatory pre-allocation baseline FMMA, NIHSS, mRS, RMI. Selected-center only ARAT, BBT, JDT, MI, TCT, FAC,10MWT, MoCA, daily activity movement sensors. Randomization via eCRF day0; start drug following day1. Matching keys: baseline FMMA adjustment; motor eligibility threshold; selected-center exploratory instruments.
+### PC020 — Selected-center motor and cognitive outcomes
 
-### PR4-N012 — Repeated dosing and short-term windows
+[PDF page 71](../../../joi250066supp1_prod_1761597796.4601.pdf#page=71), §5.2.2. Site contracts specify included tests. Motricity Index upper/lower limb each 0–100. Trunk Control Test has 4 items, each 0–25; sitting balance assesses unsupported sitting 30 seconds. ARAT grasp 6 items, grip 4, pinch 6, gross movement 3. Box and Block counts cubes transferred in 60 seconds. FAC score 0–5, independence with/without aid and surface considered. Ten-meter walk comfortable and maximum speed, speed/cadence. Jamar dynamometer both affected/unaffected upper extremities. MoCA 0–30. Main matching key: optional secondary measures and analysis populations.
 
-[Physical p79](../../../joi250066supp1_prod_1761597796.4601.pdf#page=79), §§9.2.3–9.2.5. Explicit levodopa100mg/carbidopa25mg versus placebo1:1 day1–39; dose schedule same as PR4-N001. Visit2 end-treatment in person5 weeks±7 days after randomization; record concomitant treatment number/length/type and physical examination. Harm: any pre-specified nonserious possible IMP AE or SAE, any recurrent stroke, all-cause death. Count remaining/returned drug capsules in log/eCRF. Visit3 in person3 months±14 days after randomization. Matching keys: randomized intervention,5-week assessment and3-month primary window.
+### PC021 — Selected-center sensor outcomes
 
-### PR4-N013 — Main follow-up and transition
+[PDF pages 71–72](../../../joi250066supp1_prod_1761597796.4601.pdf#page=71), §5.2.2 continuation on [page 72](../../../joi250066supp1_prod_1761597796.4601.pdf#page=72). Movement sensors assess daily activity/upper-limb use: gyroscope, acceleration, magnetometer, pressure; activity counts/arm use, lying/sitting/standing/walking. Main matching key: optional activity outcomes.
 
-[Physical p80](../../../joi250066supp1_prod_1761597796.4601.pdf#page=80), §§9.2.5–9.4. Visit3 examination/concomitant medication and post-treatment therapies; nonserious pre-specified possible IMP AE or SAE, stroke and mortality. Visit4 in person6 months±20 days; physical exam, medication/post-treatment therapies, outcomes per schedule, recurrent stroke/all-cause mortality. Visit5 in person12 months±30 days, procedures identical to4. Transition non-in-person assessment documents acute-center therapy number/length/type, drug transfer, harm since randomization including AE/SAE/death/stroke, destination rehabilitation center. Unscheduled end-study visit refers schedule/§7.4. Matching keys: FMMA and secondary outcome follow-up times;3–12-month safety window.
+### PC022 — Selected-center exploratory assessments
 
-### PR4-N014 / PR4-N015 — Optional ESTREL-LONGTERM
+[PDF page 72](../../../joi250066supp1_prod_1761597796.4601.pdf#page=72), §5.2.3. Genetic/blood marker sampling baseline or any follow-up; exploratory hypothesis-generating response heterogeneity. No trial imaging; routine or observational CT/(f)MRI used for ischemic/hemorrhagic lesion type, location, volume response markers. §5.3 safety refers §5.2.1. Main matching key: exploratory biomarker/imaging status.
 
-[Physical p80](../../../joi250066supp1_prod_1761597796.4601.pdf#page=80) and [physical p81](../../../joi250066supp1_prod_1761597796.4601.pdf#page=81), §§9.5–9.5.4. Optional extension: annual structured telephone visits for next4 years, new written informed consent after postal contact (short phone contact if no postal response). Visit6 24months±30days; Visit7 36months±30days; Visit8 48months±30days; Visit9 60months±30days post-randomization. Later consent may omit Visit6 in favor of next scheduled Visit7–9. Document medication, recurrent stroke, all-cause mortality. Assess mRS, RMI, FAC, patient-rated improvement, PROMIS-10; no clinical exam. Patient can provide written information or through next-of-kin. Subsequent visits identical to6. Nonanonymized centrally transferred telephone data destroyed at study end. Matching keys: long-term exploratory assessments versus core12-month follow-up.
+### PC023 — Trial design and superiority hypothesis
 
-### PR4-N016 — Interventional safety definitions and complete AE list
+[PDF page 72](../../../joi250066supp1_prod_1761597796.4601.pdf#page=72), §6.1. Multicenter randomized 1:1 parallel-group placebo-controlled superiority trial, blinded patients, care providers, investigators/outcome assessors. Levodopa plus standardized rehabilitation over 5 weeks soon after stroke hypothesized to yield at least 6 points higher FMMA at 3 months versus placebo plus rehabilitation. Planned enrollment 610. Main matching key: design/sample size/superiority threshold.
 
-[Physical p81](../../../joi250066supp1_prod_1761597796.4601.pdf#page=81), §§10.1–10.1.2. Collect/investigate/document all-cause death, any recurrent stroke, all SAEs and pre-specified nonserious AEs up to3 months Visit3. AE any untoward medical occurrence, not necessarily causal; includes unfavorable/unintended sign or abnormal laboratory result, symptom or disease temporally associated with product. Pre-specified AEs: nausea; vomiting; taste disturbances; dry mouth; anorexia; arrhythmias; postural hypotension; syncope; drowsiness including sudden sleep; fatigue; dementia; psychoses; hallucinations; confusion; euphoria; abnormal dreams; insomnia; depression; anxiety; dizziness; dystonia; dyskinesia; chorea. Syncope description transient unconsciousness from reduced cerebral blood flow; psychoses distorted reality; dystonia involuntary contractions; dyskinesia inability to control voluntary movements; chorea sudden face/shoulder twitching. SAE criteria (each sufficient): death; life-threatening; inpatient hospitalization/prolongation; persistent/significant disability/incapacity; congenital anomaly/birth defect. Further serious medical events continue next page. Matching keys: safety event definitions and pre-specified adverse-event set.
+### PC024 — PRECIS Figure 2
 
-### PR4-N017 — Causality and severity tables
+[PDF page 73](../../../joi250066supp1_prod_1761597796.4601.pdf#page=73), Figure 2. Radial scale 1–5. Graphically shown scores: eligibility 4; recruitment 5; setting 5; organization 5; flexibility delivery 4; flexibility adherence 4; follow-up 2; primary outcome 2; primary analysis 5. Caption ESTREL scoring according to PRECIS, consensus of principal investigator/medical network advisor per prior page. Scores are read from plotted vertices, not printed data labels. Main matching key: design characterization only.
 
-[Physical p82](../../../joi250066supp1_prod_1761597796.4601.pdf#page=82). Important events jeopardizing health or requiring intervention to prevent listed serious outcomes also considered serious. SAEs followed until resolution/stabilization including after trial end for ongoing events. Causality assessed by local investigator and sponsor: Definitely=temporal relation, improvement after dechallenge, recurrence after rechallenge or other proof; Probably=temporal relation, improvement after dechallenge, no other evident cause; Possibly=temporal relation, other possible cause; Unlikely=assessable reaction not fulfilling above; Not related=causality ruled out. Dechallenge improvement considered only if applicable. Unexpected reaction nature/severity inconsistent with product information. SUSAR=related SAE both serious and unexpected. CTCAE Version5,27November2017 grades:1 mild/asymptomatic or mild symptoms, observation only/no intervention;2 moderate/minimal local/noninvasive intervention, limits instrumental ADL;3 severe/medically significant but not immediately life-threatening, hospitalization/prolongation indicated, disabling/limits self-care ADL;4 life-threatening/urgent intervention;5 AE-related death. Semicolon in grade definitions means “or.” Matching keys: safety attribution, severity category and SUSAR.
+### PC025 — Dosing phase schedule
 
-### PR4-N018 / PR4-N019 — Safety reporting and follow-up
+[PDF page 73](../../../joi250066supp1_prod_1761597796.4601.pdf#page=73), §6.1 continuation. Randomization 1:1. Days 1–3 morning only; days 4–6 morning/lunch; days 7–34 tid; days 35–37 morning/lunch; days 38–39 morning only. Both groups standardized rehabilitation. Enrollment, randomization, allocation, treatment onset in acute stroke unit, then transfer. Main matching key: treatment duration/escalation/taper.
 
-[Physical p82](../../../joi250066supp1_prod_1761597796.4601.pdf#page=82) and [physical p83](../../../joi250066supp1_prod_1761597796.4601.pdf#page=83). SAE sponsor notification immediate/max24h; deaths to CEC/other Swiss committees within7days. SUSAR fatal7days, other15days; report via BASEC and Swissmedic for B/C categories; notify all investigators same timeline. Safety signals sponsor24h; sponsor to CEC/Swissmedic7days and immediate investigator notification. Pregnancy/breastfeeding/lack contraception excluded; pregnant participants immediately withdraw. Pregnancy during treatment or within30days after drug discontinuation reported within24h, follow maternal/child outcome. Annual safety report once yearly. At Visit3 unresolved SAE/nonserious pre-specified possibly related AE followed locally as medically indicated without further EDCS recording; sponsor may request ongoing-event information. Matching key: safety capture window versus post-Visit3 follow-up.
+### PC026 — Study phases and visits
 
-### PR4-N020 — Complete recorded safety variable lists
+[PDF page 73](../../../joi250066supp1_prod_1761597796.4601.pdf#page=73), §6.1 continuation. Total 12 months: interventional 3 months randomization–visit 3; observational 9 months visit 3–visit 5. Main intervention ends 5 weeks postrandomization. Three in-person interventional visits: 1 baseline, 2 end treatment, 3 primary outcome; in-person long-term visits 4 at 6 months, 5 at 12 months. Number/duration of therapy sessions and transfer information collected at transition. Main matching key: outcome schedule and time origin.
 
-[Physical p83](../../../joi250066supp1_prod_1761597796.4601.pdf#page=83), §10.1.4. For each nonserious AE of interest and AE leading to drug discontinuation: verbatim description; start/stop date; maximum intensity grade; serious yes/no; investigator study-drug causality yes/no; frequency single/intermittent/continuous; action concerning medication; outcome. Additional SAE variables: verbatim description and evaluation severity/outcome/expectedness; date met serious criteria; date investigator aware; criteria present; hospitalization date; discharge date; probable death cause; death date; autopsy report if performed; autopsy result; study-procedure causality; other-medication causality; concomitant medication/medical history at SAE. Matching key: safety data definitions and drug discontinuation events.
+### PC027 — Randomization
 
-### PR4-N021 — Observational safety and serious event rule
+[PDF page 74](../../../joi250066supp1_prod_1761597796.4601.pdf#page=74), §6.2. At visit 1 active/control allocation; stratification by center. CTU Basel implements standard minimization in secuTrial, ensuring balance within stratum. Probability 80% of allocation to treatment minimizing within-patient-stratum group difference to avoid predictable alternation. Main matching key: allocation algorithm/stratification/primary center adjustment.
 
-[Physical p84](../../../joi250066supp1_prod_1761597796.4601.pdf#page=84), §10.2. Observational3–12months: all-cause mortality, any recurrent stroke, Serious Events under HRO Art20. Immediate protective-measure notification sponsor24h/ethics7days. HRO Art21 serious event: adverse event not excludable as attributable to biological-material sampling or health-data collection AND (a) unexpected inpatient treatment/prolongation OR (b) permanent/significant incapacity/disability OR (c) life-threatening/death. If occurs, research project interrupted, ethics notified7days. Matching key: safety endpoint definition after3months and interruption rule.
+### PC028 — Blinding and unblinding
 
-## Statistical design and complete analysis map
+[PDF page 74](../../../joi250066supp1_prod_1761597796.4601.pdf#page=74), §§6.2.1–6.3. Investigators, participants, providers, assessors, statistician blinded; independent distributor handles labeled packets; IMP/placebo indistinguishable except blinded number. DSMC unblinded. Medical necessity permits authorized electronic unblinding, audit-trailed. All primary/secondary assessments by instrument-trained personnel. Main matching key: blinded design/assessment.
 
-### PR4-S005 — Primary hypothesis
+### PC029 — Population and recruitment window
 
-[Physical p84](../../../joi250066supp1_prod_1761597796.4601.pdf#page=84), §11.1. Levodopa plus standardized rehabilitation for5 weeks starting soon after acute stroke is superior to placebo plus standardized rehabilitation, yielding at least6-point higher FMMA at3months. No noninferiority/equivalence margin in this shard. Matching key: superiority primary FMMA contrast/timepoint/clinically relevant difference.
+[PDF page 74](../../../joi250066supp1_prod_1761597796.4601.pdf#page=74), §§7–7.2. Acute stroke ≤7 days since onset, meaningful hemiparesis requiring inpatient rehabilitation; target 610. Study treatment day 1–39; additional centers possible if recruitment goals unmet. Prescreen day 0–7 since onset; all inclusion and no exclusion criteria mandatory. Main matching key: eligibility/sample target.
 
-### PR4-S006 — All sample-size and power assumptions
+### PC030 — Allocation and administrative reimbursement
 
-[Physical p84](../../../joi250066supp1_prod_1761597796.4601.pdf#page=84), §11.2. Target6-point between-group FMMA difference at3months; two-sample t-test power calculation because uncertain baseline–follow-up correlation prevented estimating baseline-adjustment power gain. Normal FMMA distribution, SD25points; source describes this slightly more conservative than FLAME placebo FMMA35.1,SD22 atday90. Baseline correlation assumed high without reliable numeric input; adjustment expected to increase rather than decrease power. Evaluable sample548 total;1:1 allocation; power80%; two-sided significance5%. Allow10% dropout, recruit305/arm,610 total. Applying placebo mean35.1 gives active expected41.1. DARS has no FMMA information; historical FLAME trial ischemic moderate/severe motor deficit context supplies assumption. These are planning/historical inputs, not ESTREL observed results. Matching key:610 randomized target,6-point difference,SD25,80% power,5% alpha,10% dropout,primary baseline adjustment.
+[PDF page 75](../../../joi250066supp1_prod_1761597796.4601.pdf#page=75), §§7.2–7.3. No emergency inclusion; signed participant/next-of-kin consent before study procedures; no compensation, travel refund outside routine visits flat CHF 20 per patient/visit. Allocation instantly computer-generated in CDMA at visit 1. Main matching key: randomized timing; reimbursement administrative only.
 
-### PR4-N022 / PR4-S007 — Sample-size sensitivity figure and additional power
+### PC031 — Dose reduction and early discharge
 
-[Physical p85](../../../joi250066supp1_prod_1761597796.4601.pdf#page=85), Figure3 and §11.2 continuation. Figure title assumedSD25points; x axis assumed treatment difference(points), labelled5,6,7,8,9; y axis sample size ticks200,400,600; three curves power0.7,0.8,0.9. Highlighted power0.8 curve at differenceθ=6 andN=548. Caption curves smoothed for illustration. Novel PROMIS tool intended patient-reported improvement at3months with80% power; less empirical evidence, so primary sample-size calculation uses traditional scores. Walking independent defined RMI≥7, at5weeks. Assume placebo45% walking independently;610 recruitment said sufficient at80% power,5% significance for active57%, absolute12% increase, relative27%. Matching keys: PROMIS secondary assessment/power; RMI independence threshold/time; planning57%vs45%.
+[PDF page 75](../../../joi250066supp1_prod_1761597796.4601.pdf#page=75), §7.4. Night adverse reactions permit 1–1–0 daily dosing. Early discharge earlier than 5 weeks minus 7 days: encourage medication to scheduled 5-week visit; if participant declines, stop full treatment then taper over following 5 days; last 5 days' drugs handed to participant. Unscheduled end-study visit discontinuation/withdrawal day ±3 days. Main matching key: treatment adherence/per-protocol adaptations/intercurrent events.
 
-### PR4-S008 — Efficacy and safety stopping, composite
+### PC032 — Other discontinuation rules
 
-[Physical p85](../../../joi250066supp1_prod_1761597796.4601.pdf#page=85), §11.3. No efficacy stopping rule. Safety may terminate per DSMC recommendation. DSMB monitors “primary composite safety events”: (i) death of any cause, (ii) recurrent stroke, (iii) occurrence of SAEs. Composite safety risk alert thresholds to be defined in DSMC charter considering DARS. No numeric threshold printed in shard. Matching keys: safety composite components/status, efficacy/safety stopping/interim decision.
+[PDF page 75](../../../joi250066supp1_prod_1761597796.4601.pdf#page=75), §7.4. For AE/SAE/SUSAR at least probably drug-related, reduce/temporarily/permanently stop as medically appropriate and participant wishes. Stop for contraindication, necessary open levodopa, or significant health risk. Prefer non-dopaminergic treatment for emerging indications before visit 3. Main matching key: intervention discontinuation/analysis population.
 
-### PR4-S009 — Every analysis population
+### PC033 — Route, identical control and handling
 
-[Physical p86](../../../joi250066supp1_prod_1761597796.4601.pdf#page=86), §§11.4–11.4.1. Detailed SAP finalized before database closure, version controlled at CTU Basel. Full analysis set(FAS)=all randomized; intention-to-treat, treatment as randomized. Complete-case set=FAS patients without missing baseline or3-month FMMA. Per-protocol(PP)=FAS with ≥80% prescribed levodopa/carbidopa/placebo OR justified reduced dosage per§7.4 (1-1-0/day), plus ≥5rehabilitation sessions/week. All analyzed as randomized. Report withdrawals for each arm and compare qualitatively. Matching keys:all-randomized ITT population; PP medication/rehabilitation thresholds; complete-case FMMA.
+[PDF page 76](../../../joi250066supp1_prod_1761597796.4601.pdf#page=76), §§8.1–8.2. Levodopa 100 mg/carbidopa 25 mg orally day 1–39 after visit 1; NG/PEG permitted if unable to swallow, minimum necessary timeframe and documented. Control route/duration/phases identical. Capsules in brown pulvis box; expected shelf life 12 months; storage 15–25°C protected from light. Main matching key: randomized intervention route/duration; handling quantities administrative.
 
-### PR4-S010 — Primary model, effects, significance, and timing
+### PC034 — Adherence measurement
 
-[Physical p86](../../../joi250066supp1_prod_1761597796.4601.pdf#page=86), §11.4.2. Primary endpoint FMMA3months after treatment onset. Mixed effects model: baseline FMMA covariate; treatment two-level factor “levodopa” versus “placebo”; index event type acute ischemic versus hemorrhagic stroke, all fixed effects. Random intercept for each center. Analysis after study termination/database closure at CTU Basel according to SAP. Two-sided5% significance. Planned contrast: treatment difference in baseline-adjusted3-month FMMA with center random intercept and stroke type. Matching keys:primary FMMA adjusted between-group effect; model baseline/center/stroke type; two-sidedalpha. The time origin here is recorded as printed (“after onset of treatment”); assessment section9.1.1 separately says after randomization. Mapping records both locations without diagnosis.
+[PDF page 76](../../../joi250066supp1_prod_1761597796.4601.pdf#page=76), §8.3. Nurses administer during expected hospitalization; early discharge patients receive medication/plan through end-treatment visit. Drugs numbered for total 39 days; visit 2 count returned capsules. Main matching key: exposure/adherence.
 
-### PR4-S011 — Every primary sensitivity/exploratory analysis, covariate, and population
+### PC035 — Withdrawal data and prevention
 
-[Physical p86](../../../joi250066supp1_prod_1761597796.4601.pdf#page=86) and [physical p87](../../../joi250066supp1_prod_1761597796.4601.pdf#page=87), §11.4.3. Endpoint FMMA3months.
+[PDF page 76](../../../joi250066supp1_prod_1761597796.4601.pdf#page=76), §§8.4–8.5, continues [page 77](../../../joi250066supp1_prod_1761597796.4601.pdf#page=77). Any data up to consent withdrawal analyzed. Pregnancy test before enrollment; contraception treatment days 1–39 plus 1 month thereafter. Main matching key: withdrawal analysis availability; reproductive precaution administrative/safety.
 
-(a) Explore treatment-effect heterogeneity across centers graphically using center-stratified results.
+### PC036 — Concomitant medication
 
-(b) Repeat main model adding treatment×index-event-type interaction (ischemic versus hemorrhagic).
+[PDF page 77](../../../joi250066supp1_prod_1761597796.4601.pdf#page=77), §8.6. Off-label medication to enhance recovery prohibited until 3-month primary-outcome visit. Categories at each visit: antiplatelets, anticoagulants, antihypertensives, statins, serotonin-reuptake inhibitors, serotonin-noradrenalin reuptake inhibitors, benzodiazepines, neuroleptics, antiepileptics, antidiabetics, analgesics, immunosuppressive/immunomodulating drugs, antibiotics. Main matching key: concomitant treatment/covariates.
 
-(c) Exploratory analyses including each listed variable: age; sex; dementia; baseline selective hand/wrist movement; cortical dysfunction (aphasia/neglect/hemianopia); patient-self-reported fatigue; SSRI treatment; mild extrapyramidal motor symptoms by treating physician; reduced mimics by treating physician. Compare results with main analysis.
+### PC037 — Standardized rehabilitation dose
 
-(d) Repeat main analysis in complete-case set excluding imputed primary outcome or baseline FMMA; compare with main analysis.
+[PDF page 77](../../../joi250066supp1_prod_1761597796.4601.pdf#page=77), §8.6. Same standardized motor-learning rehabilitation regardless group: active voluntary task-related exercise; tailored progressive challenge; performance feedback; repetition/rest; goal-based motivation/coaching/positive feedback. Each patient should receive 3 rehabilitative sessions per workday; at least 2 standardized motor therapy by trained physical/occupational therapists. Duration minutes/hours and type recorded; shorter frequent sessions early phase preferred. Main matching key: randomized cointervention/therapy exposure.
 
-(e) Repeat on PP set and compare with main; investigate protocol-deviation influence. For major protocol deviations consider marginal structural models.
+### PC038 — Necessary levodopa and continued participation
 
-Last sentence printed: all analyses except(c) and(d) performed on FAS. This sentence is preserved along with PP specification(e), without harmonization. Matching keys:prespecified subgroup/sensitivity list, interaction model; complete-case and PP comparisons; extra covariate list; protocol-deviation method.
+[PDF page 77](../../../joi250066supp1_prod_1761597796.4601.pdf#page=77), §8.6. Medically necessary interventions allowed. Prefer non-dopaminergic options if suitable; if open levodopa mandatory stop study medication, retain as off-study-medication patient. Main matching key: intercurrent events/ITT follow-up.
 
-### PR4-S012 — Secondary outcomes and model-specific rules
+### PC039 — Drug accountability and biosamples
 
-[Physical p87](../../../joi250066supp1_prod_1761597796.4601.pdf#page=87), §11.4.4. Secondary outcomes use regression appropriate to data type, adjustment as main analysis, including baseline measures where available. Binary: logistic generalized linear model with logit link, binomial distribution. Continuous: linear model. Ordinal: ordinal logistic regression. Inspect models as primary; severe assumption violations/high-leverage outliers allow transformation or other methods including nonparametric tests or robust regression. Each model presents treatment difference, P value,95%CI; two-sided5% significance for all analyses. Summary tables/graphs describe all endpoints. FAS includes all randomized, ITT as assigned. No additional multiplicity adjustment is specified on this page. Matching keys:secondary model types, adjustment,confidence95%,alpha5%,treatment contrasts,reported model implementation.
+[PDF page 78](../../../joi250066supp1_prod_1761597796.4601.pdf#page=78), §§8.7–9. At visit 2 return medication/packaging, count remaining capsules/log eCRF, separate used/unused packages. Selected-center blood about 10 ml whole blood EDTA, frozen −20°C, centrally collected at final analyses. Main matching key: adherence/optional biomarkers.
 
-### PR4-S013 — Exploratory markers/genomics and further analysis
+### PC040 — Primary outcome ascertainment
 
-[Physical p87](../../../joi250066supp1_prod_1761597796.4601.pdf#page=87), §11.4.4 continuation. Exploratory genetic/other biomarkers, including routine-care MRI or observational imaging, may influence response. Examples COMT rs4633 exon5,rs4680 exon6; adjustment may reduce variation/increase power. High-density SNP microarrays examine copy-number variation and genomic imbalance relation to stroke outcome. Future individual-participant meta-analysis with similar trials such as DARS intended. Further exploratory analyses may follow clinically relevant study findings. Matching keys:exploratory status of biomarkers/genetic interaction/adjustments; no numeric model coefficient or genetic subgroup threshold prescribed here.
+[PDF page 78](../../../joi250066supp1_prod_1761597796.4601.pdf#page=78), §9.1.1. Between-group FMMA score difference at 3 months ±14 days after randomization, visit 3. Certified trained assessors only; FMMA entered CRF. Three-month assessment filmed and provided centrally for treatment-blinded rating. All primary outcome personnel blinded. Main matching key: primary time window, local/central ascertainment.
 
-### PR4-S014 — Interim, safety analysis, deviations, reporting
+### PC041 — Secondary and safety ascertainment
 
-[Physical p87](../../../joi250066supp1_prod_1761597796.4601.pdf#page=87), §§11.4.5–11.4.7. No interim analysis planned. Safety detailed examination of pre-specified events,AEs,SAEs. Estimate proportion with≥1pre-specified adverse event by treatment group. DSMC monitoring refers§1.6. Deviations from statistical plan reported CEC/CA; substantial required deviations lead protocol amendment. All protocol/detailed-SAP analysis deviations listed and justified separately in final statistical report. Matching keys:safety patient proportion numerator,interim plan,disclosed statistical amendments.
+[PDF page 78](../../../joi250066supp1_prod_1761597796.4601.pdf#page=78), §§9.1.2–9.1.2.1. Trained/certified secondary assessors; timepoints in §5.2/schedule. Mortality, recurrent stroke, SAEs/non-serious prespecified possibly related AEs recorded locally visits 1–3. Mortality/recurrent stroke during 3–12 months recorded at study visits. Main matching key: outcome windows/safety populations.
 
-### PR4-S015 — Missingness and dropout
+### PC042 — Withdrawal data
 
-[Physical p87](../../../joi250066supp1_prod_1761597796.4601.pdf#page=87), §11.5. Up to10%dropout considered in sample size. Missing data handled using multiple imputation by chained equations (VanBuuren2011), predictive models generate clinically reasonable imputations. Sensitivity complete-case approach assesses impact. No imputation number,model-variable list,or missingness distribution assumption specified on this page; absence is a map limitation of specification, not a finding. Matching keys:MICE primary handling;complete-case sensitivity;dropout allowance.
+[PDF page 79](../../../joi250066supp1_prod_1761597796.4601.pdf#page=79), §9.1.3. Data collected to withdrawal may be used for further analyses; criteria cross-reference §7.4. Main matching key: withdrawal/missing-data availability.
 
-## Administrative and nonapplicable units
+### PC043 — Prescreening
 
-### PR4-N023 — Data integrity procedures
+[PDF page 79](../../../joi250066supp1_prod_1761597796.4601.pdf#page=79), §9.2.1. Prescreen day −7 to 0 before randomization. Following thrombolysis and/or thrombectomy, respect 24-hour latency before prescreen/enrollment because of rapid recovery; meaningful hemiparesis NIHSS ≥3 for arm plus leg motor functions still required. Main matching key: eligibility timing/hemiparesis definition.
 
-[Physical p88](../../../joi250066supp1_prod_1761597796.4601.pdf#page=88), §12. Records one eCRF/unique identifier per enrolled participant; electronic audit trail. Participant withdrawal reason on eCRF dropout form. Database locked when entry complete, monitoring complete, queries resolved; entire dataset exported/transferred securely to statistician and principal investigator; analysis by independent CTU Basel statistician. All study/source/export data archived≥10years. No efficacy estimate,additional endpoint,model,power,or decision rule here. Matching key:database lock relative to final SAP,withdrawal record.
+### PC044 — Visit 1 baseline before treatment allocation
 
-### PR4-N024 — Secondary biosample status and no additional quantitative rule
+[PDF page 79](../../../joi250066supp1_prod_1761597796.4601.pdf#page=79), §9.2.2. Day 0 consent, eligibility, demographics/history/exam/concomitant drugs. Mandatory prerandomization FMMA, NIHSS, mRS, RMI. Selected-center ARAT, BBT, JDT, MI, TCT, FAC, 10MWT, MoCA, sensor activity. eCRF randomization day 0; treatment starts day after, day 1. Main matching key: baseline covariates/outcome measures/time origin.
 
-[Physical p89](../../../joi250066supp1_prod_1761597796.4601.pdf#page=89), §§12.3–14.1. Secondary genetic/biomarker blood collection at selected centers requires separate consent independent of primary participation. Coded stored locally then centrally Basel. Monitoring frequency/extent in separate monitoring plan. Privacy/publication and Swiss grant33IC30_179667 administrative. No new endpoint contrast,analysis threshold,or result-relevant count. Matching key:selected-center biomarker secondary/exploratory collection.
+### PC045 — Treatment run-in/full dose/taper repeated schedule
 
-### PR4-N025 — References and appendix boundaries
+[PDF page 79](../../../joi250066supp1_prod_1761597796.4601.pdf#page=79), §9.2.3. 1:1 levodopa 100 mg/carbidopa 25 mg versus placebo day 1–39. Days 1–3 once morning; days 4–6 morning/lunch; days 7–34 tid; days 35–37 morning/lunch; days 38–39 morning. Both groups standardized rehabilitation. Main matching key: dose phases; matching occurrence PC025.
 
-[Physical p90](../../../joi250066supp1_prod_1761597796.4601.pdf#page=90): insurance only; no applicable quantitative/statistical relationship.
+### PC046 — Visits 2 and 3 windows
 
-[Physical p91](../../../joi250066supp1_prod_1761597796.4601.pdf#page=91): references1–24 only; no new trial quantity or prospective design specification.
+[PDF page 79](../../../joi250066supp1_prod_1761597796.4601.pdf#page=79), §§9.2.4–9.2.5. Visit 2 5 weeks ±7 days after randomization, in person, end treatment; count returned drugs; record number, length, type concomitant therapies, examine/medications; non-serious prespecified possibly related AEs, SAEs, recurrent stroke, mortality assessed. Visit 3 3 months ±14 days after randomization, in person, primary outcome. Main matching key: treatment/outcome windows, safety collection.
 
-[Physical p92](../../../joi250066supp1_prod_1761597796.4601.pdf#page=92): reference24 continuation,25–43; no new trial quantity or prospective design specification.
+### PC047 — Visit 3 continuation and visits 4–5
 
-[Physical p93](../../../joi250066supp1_prod_1761597796.4601.pdf#page=93): reference43 continuation,44–66; no new trial quantity or prospective design specification. Product information link and cited measurement studies are references only, not imported evidence.
+[PDF page 80](../../../joi250066supp1_prod_1761597796.4601.pdf#page=80), §§9.2.5–9.3.2. Visit 3 exam/current drugs and post-treatment therapies; same harm list as visit 2. Visit 4 6 months ±20 days; visit 5 12 months ±30 days, both in-person, exams/medications/therapies, scheduled outcomes; mortality/recurrent stroke assessed. Main matching key: secondary time windows/safety horizon.
 
-[Physical p94](../../../joi250066supp1_prod_1761597796.4601.pdf#page=94): references67–79 including MICE citation79; no additional method prescription beyond§11.5. Appendix titles I local principal investigators;II TSC members;III levodopa/carbidopa product characteristics;IV existing levodopa-versus-control stroke studies;V genetic/biomarker analyses. Appendix contents not supplied within these final pages and not inferred. No new secondary definition or model beyond mapped reference/pointer.
+### PC048 — Transition and unscheduled collection
 
-## Final shard accounting
+[PDF page 80](../../../joi250066supp1_prod_1761597796.4601.pdf#page=80), §9.4. Acute-to-rehabilitation transfer data not in-person: therapy number/length/type, transfer medication, harm since randomization (AE/SAE/all-cause mortality/any recurrent stroke), rehabilitation center. Unscheduled end study per schedule/§7.4. Main matching key: concomitant care/harm ascertainment.
 
-22/22 assigned pages visually inspected and mapped. Local relationship records:25 numeric/definition keys(PR4-N001–PR4-N025) and15 statistical/design keys(PR4-S001–PR4-S015); many records preserve multiple related printed statements and lists. Five pages90–94 contain no additional prospective quantitative relationship beyond appendix titles/pointers, explicitly accounted above. Zero fresh source renders;22 bounded fresh CPU OCR text derivatives on reusable images. No scientific coverage gap. Reusable machine-text gap closed by direct page-image inspection. Protocol version/date title is outside assigned scope; coordinator cross-shard confirmation identifies version1.4 dated28.02.2023 at physicalp47 and approval pagep48. This cross-shard identity is not a claim that this mapper opened unassignedp47.
-# DOC-003 complete SAP and addendum quantitative/design map
+### PC049 — Optional ESTREL-LONGTERM extension
 
-Scope: DOC-003, `joi250066supp2_prod_1761597796.4701.pdf`, physical PDF pages 1–18, all inspected visually. Local relationship keys use prefix SAP; coordinator can assign global N/S IDs. No candidate discovery or diagnosis is performed here. All content is PLAN by prospective objectives, definitions, and planned analyses. The cover and repeated watermark say Final Report; no realized trial estimates, event counts, confidence intervals or P values occur in this document. Classification is by content rather than watermark.
+[PDF page 80](../../../joi250066supp1_prod_1761597796.4601.pdf#page=80), §9.5. Optional additional observational phase: yearly structured telephone visits for next 4 years after written consent; invitation by post, telephone contact for nonresponse. Non-anonymized sensitive transferred data destroyed at study end. Main matching key: prospective long-term outcome status versus main trial.
 
-## Evidence and tooling provenance
+### PC050 — Visit 6 at 24 months
 
-Read QUALITY_CONTROL_SCOPE.md, workflow_1_6_2/review_contract.md, current source coverage, source inventory, DOC-003 evidence asset inventory, and tooling record. Reused source-linked renders: `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc003/page-01.png` through `page-18.png`, each opened visually. Reusable native layout is blank and does not supply scientific evidence. Each page is readable; no fresh higher-resolution rendering needed. Fresh OCR is an auxiliary locator/transcription aid and was generated on CPU with Tesseract 5.5.0, English, PSM 3:
+[PDF page 80](../../../joi250066supp1_prod_1761597796.4601.pdf#page=80), §9.5.1, continuation [page 81](../../../joi250066supp1_prod_1761597796.4601.pdf#page=81). 24 months ±30 days, trained structured telephone assessment: concomitant medications, recurrent stroke/all-cause mortality, mRS, RMI, FAC, patient improvement assessment, PROMIS-10. No clinical assessment; written or next-of-kin information permitted. Late entry may omit visit 6 in favor of later visits 7–9. Main matching key: optional long-term measures/population.
 
-```bash
-for n in $(seq -w 1 18); do
-  tesseract .ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc003/page-$n.png .ai_paper_validation/review_1_6_2/preprocessing/sap_mapper/page-$n -l eng --psm 3
-done
+### PC051 — Visits 7–9
+
+[PDF page 81](../../../joi250066supp1_prod_1761597796.4601.pdf#page=81), §§9.5.2–9.5.4. Structured telephone visits at 36, 48, 60 months each ±30 days, procedures identical to visit 6. Main matching key: prospective extension outcome times.
+
+### PC052 — AE set and window
+
+[PDF page 81](../../../joi250066supp1_prod_1761597796.4601.pdf#page=81), §§10.1–10.1.2. Up to 3 months/visit 3 collect all-cause mortality, any recurrent stroke, all SAEs and non-serious prespecified AEs. AE any untoward medical occurrence, regardless causal relation. Prespecified: nausea, vomiting, taste disturbances, dry mouth, anorexia, arrhythmias, postural hypotension, syncope, drowsiness including sudden sleep, fatigue, dementia, psychoses, hallucinations, confusion, euphoria, abnormal dreams, insomnia, depression, anxiety, dizziness, dystonia, dyskinesia, chorea. Main matching key: safety outcome definition/composite components.
+
+### PC053 — SAE definition
+
+[PDF page 81](../../../joi250066supp1_prod_1761597796.4601.pdf#page=81), §10.1.2 continuing [page 82](../../../joi250066supp1_prod_1761597796.4601.pdf#page=82). Death, life-threatening occurrence, inpatient hospitalization/prolongation, persistent/significant disability/incapacity, congenital anomaly/birth defect; also important medical events jeopardizing health or requiring intervention to prevent these. Follow to resolution/stabilization, including beyond interventional termination. Main matching key: serious adverse event endpoint.
+
+### PC054 — Causality categories table
+
+[PDF page 82](../../../joi250066supp1_prod_1761597796.4601.pdf#page=82), Assessment of Causality. Definitely: temporal relation, improvement after dechallenge, recurrence after rechallenge or other proof. Probably: temporal relation, dechallenge improvement, no other cause. Possibly: temporal relation, other cause possible. Unlikely: assessable reaction not satisfying above. Not related: causal relation ruled out. Dechallenge improvement considered only if applicable. Local/sponsor investigators both assess. Main matching key: treatment-related adverse event classification.
+
+### PC055 — Unexpected reactions/SUSAR and CTCAE table
+
+[PDF page 82](../../../joi250066supp1_prod_1761597796.4601.pdf#page=82). Unexpected reaction nature/severity inconsistent with product information; SUSAR requires related, serious, unexpected. AE severity CTCAE version 5 (November 27, 2017): grade 1 mild/asymptomatic observations, intervention not indicated; grade 2 moderate, minimal/local/noninvasive intervention, limits age-appropriate instrumental ADL; grade 3 severe/medically significant but not immediately life-threatening, hospitalization/prolongation, disabling, limits self-care ADL; grade 4 life-threatening, urgent intervention; grade 5 AE-related death. Semicolon denotes “or.” Main matching key: AE grade versus seriousness.
+
+### PC056 — Safety administrative reporting windows
+
+[PDF page 82](../../../joi250066supp1_prod_1761597796.4601.pdf#page=82), §10.1.3, and [page 83](../../../joi250066supp1_prod_1761597796.4601.pdf#page=83). SAEs to sponsor immediately/max 24 hours; fatal SAEs CEC within 7 days. SUSAR fatal within 7 days, other within 15 days. Safety signal sponsor within 24 hours, authorities within 7 days, investigators immediately informed. Annual safety report once/year. Main matching key: safety process only, not an efficacy decision rule.
+
+### PC057 — Pregnancy reporting and safety follow-up
+
+[PDF page 83](../../../joi250066supp1_prod_1761597796.4601.pdf#page=83), §§10.1.3–10.1.4. Pregnancy during treatment or 30 days after cessation reported within 24 hours; immediate study withdrawal. Unresolved SAEs and non-serious prespecified possibly related AEs at visit 3 followed as medically indicated, without further EDCS recording; sponsor may request additional information. Main matching key: post-window safety ascertainment/intercurrent withdrawal.
+
+### PC058 — Non-serious AE variables
+
+[PDF page 83](../../../joi250066supp1_prod_1761597796.4601.pdf#page=83), §10.1.4. For each non-serious AE of interest or AE causing medication discontinuation: verbatim description, start/stop date, maximum grade, serious yes/no, causality yes/no, frequency single/intermittent/continuous, drug action, outcome. Main matching key: adverse event count/grade/event timing definitions.
+
+### PC059 — SAE additional variables
+
+[PDF page 83](../../../joi250066supp1_prod_1761597796.4601.pdf#page=83), §10.1.4. SAE description and severity/outcome/expectedness; date serious criteria met and investigator awareness; seriousness criteria; hospitalization/discharge; probable cause/date of death; autopsy/report/results; causality to study procedures/other medication; concomitant drugs/history at SAE. Main matching key: serious safety event classification/counts.
+
+### PC060 — Observational safety/stopping
+
+[PDF page 84](../../../joi250066supp1_prod_1761597796.4601.pdf#page=84), §§10.2–10.2.2. Months 3–12 collect mortality, recurrent stroke and serious events under HRO Art.20. Immediate protective measures sponsor within 24 hours, ethics within 7 days. HRO Art.21 serious event: attributable-to-sampling/data-collection cannot be excluded plus unexpected inpatient/prolonged admission, permanent/significant disability/incapacity, life threat/death. Such event interrupts research project, ethics informed within 7 days. Main matching key: observational safety definition/stopping.
+
+### PC061 — Primary hypothesis
+
+[PDF page 84](../../../joi250066supp1_prod_1761597796.4601.pdf#page=84), §11.1. Levodopa plus rehabilitation over 5 weeks shortly after acute stroke superior to placebo plus rehabilitation, at least 6 points higher FMMA at 3 months. Main matching key: hypothesis/clinically relevant difference; matching PC023.
+
+### PC062 — Power assumptions and calculation specification
+
+[PDF page 84](../../../joi250066supp1_prod_1761597796.4601.pdf#page=84), §11.2. Detect FMMA difference 6 points at 3 months. FLAME trial distribution used, similar ischemic stroke/moderate-severe deficits; assumed normal FMMA SD 25, compared historical placebo day-90 mean 35.1, SD 22. High baseline/follow-up intra-patient correlation assumed, but no reliable correlation estimate, so power calculation uses t-test without baseline-adjustment gain; baseline adjustment expected to increase power. Total 548 patients, 1:1, two-sided 5% significance, 80% power for 6-point difference with SD 25. Main matching key: sample-size inputs/calculation family.
+
+### PC063 — Dropout inflation and illustrative means
+
+[PDF page 84](../../../joi250066supp1_prod_1761597796.4601.pdf#page=84), §11.2. Allow 10% dropout; recruit 305 per arm, 610 total. Applying FLAME placebo data, expected levodopa mean 41.1 versus placebo 35.1. No recomputation performed here. Main matching key: planned enrollment/dropout/effect size.
+
+### PC064 — Sample-size sensitivity Figure 3
+
+[PDF page 85](../../../joi250066supp1_prod_1761597796.4601.pdf#page=85), Figure 3. Assumed SD 25 points; x assumed treatment difference in points, labeled 5–9; y sample size, labeled 200, 400, 600. Curves power 0.7, 0.8, 0.9; highlighted δ=6, N=548 at power 0.8. Caption says curves smoothed and illustrative. Main matching key: sample-size sensitivity/power assumptions.
+
+### PC065 — Other-outcome power statements
+
+[PDF page 85](../../../joi250066supp1_prod_1761597796.4601.pdf#page=85), §11.2 continuation. Trial also designed 80% power for patient-reported PROMIS improvement at 3 months; less empirical evidence, calculation primarily traditional measures. N=610 intended sufficient walking evaluation RMI ≥7; assume placebo 45% walking independently at 5 weeks. 80% power, 5% significance to detect 12% absolute improvement (57% vs 45%), described 27% relative increase. Main matching key: secondary walking/PROMIS power and timepoint.
+
+### PC066 — Statistical termination rule
+
+[PDF page 85](../../../joi250066supp1_prod_1761597796.4601.pdf#page=85), §11.3. No efficacy stopping rule. Safety termination possible on DSMC recommendation. DSMB monitors frequency of “primary composite safety events”: death any cause, recurrent stroke, SAEs. Composite safety risk alert thresholds to be defined in DSMC charter considering DARS. Main matching key: safety composite/status/stopping/interim.
+
+### PC067 — SAP timing and analysis populations
+
+[PDF page 86](../../../joi250066supp1_prod_1761597796.4601.pdf#page=86), §§11.4–11.4.1. SAP finalized before database closure, version-controlled. FAS all randomized, analyzed as randomized under ITT. Complete cases FAS with no missing baseline or 3-month FMMA. Main matching key: ITT/FAS/complete-case population.
+
+### PC068 — Per-protocol set
+
+[PDF page 86](../../../joi250066supp1_prod_1761597796.4601.pdf#page=86), §11.4.1. PP is FAS with at least 80% prescribed levodopa/placebo or justified reduced §7.4 dose (1–1–0), plus at least 5 rehabilitation sessions/week. All analyzed as allocated; withdrawal reasons by group qualitatively compared. Main matching key: per-protocol adherence population.
+
+### PC069 — Primary analysis model
+
+[PDF page 86](../../../joi250066supp1_prod_1761597796.4601.pdf#page=86), §11.4.2. Primary endpoint FMMA at 3 months after treatment onset. Mixed-effects model: baseline FMMA covariate; treatment two-level levodopa/placebo and index event acute ischemic/hemorrhagic stroke fixed effects; random intercept for center. Analyses after termination/database closure CTU Basel; two-sided significance 5%. Main matching key: primary model/covariates/random effect/time origin.
+
+### PC070 — Prespecified sensitivity analyses a–c
+
+[PDF page 86](../../../joi250066supp1_prod_1761597796.4601.pdf#page=86), §11.4.3. For primary 3-month FMMA: (a) exploratory graphical center-stratified treatment heterogeneity; (b) primary model plus treatment-by-index-event-type interaction; (c) exploratory inclusion of age, sex, dementia, baseline selective hand/wrist movement, cortical dysfunction (aphasia/neglect/hemianopia), self-reported fatigue, SSRI treatment, mild extrapyramidal symptoms (physician), reduced impetus (physician); compare to main results. Main matching key: prespecified sensitivity/subgroup analyses/covariates.
+
+### PC071 — Prespecified sensitivity analyses d–e
+
+[PDF page 86](../../../joi250066supp1_prod_1761597796.4601.pdf#page=86), §11.4.3. (d) Repeat main analysis complete cases excluding imputed primary/baseline FMMA, compare main; (e) repeat PP, compare main to evaluate protocol deviations; consider marginal structural model if major deviations. Text says all analyses except (c) and (d) performed FAS. Main matching key: complete-case/PP sensitivity sets and deviation handling; preserve printed allocation statement without reconciliation.
+
+### PC072 — Secondary analysis models
+
+[PDF page 87](../../../joi250066supp1_prod_1761597796.4601.pdf#page=87), §11.4.4. Regression appropriate to data, adjusted as main analysis, baseline measures if available. Binary logistic GLM logit link/binomial distribution; continuous linear models; ordinal ordinal logistic regression. Model inspection as primary; severe assumption violations/high-leverage outliers may lead transformation, nonparametric tests or robust regression. Each model reports estimated treatment difference, P value, 95% CI, two-sided 5%. Descriptive tables/graphs all endpoints; FAS/ITT all randomized. Main matching key: secondary model/covariates/inference/multiplicity specification.
+
+### PC073 — Exploratory genetics and further analyses
+
+[PDF page 87](../../../joi250066supp1_prod_1761597796.4601.pdf#page=87), §11.4.4. Genetic/other/routine imaging/fMRI markers of response. Examples COMT rs4633 exon 5 or rs4680 exon 6; adjustment may reduce variation/increase power. SNP microarrays/copy-number variation for genomic imbalance. Intends individual-patient meta-analyses such as DARS; further scientifically triggered exploratory analyses possible. Main matching key: exploratory outcome/analysis status.
+
+### PC074 — Interim analyses
+
+[PDF page 87](../../../joi250066supp1_prod_1761597796.4601.pdf#page=87), §11.4.5. “An interim analysis is not planned.” Main matching key: interim decision rule; matching stopping PC066.
+
+### PC075 — Safety analysis
+
+[PDF page 87](../../../joi250066supp1_prod_1761597796.4601.pdf#page=87), §11.4.6. Examine prespecified events, AEs, SAEs; estimate by group proportion with at least one prespecified AE; DSMC monitoring §1.6. Main matching key: patient-based safety denominator/event definition.
+
+### PC076 — Analysis deviations
+
+[PDF page 87](../../../joi250066supp1_prod_1761597796.4601.pdf#page=87), §11.4.7. Deviations reported CEC/CA, substantial deviations lead amendment; all deviations protocol/detailed analysis plan listed/justified in separate final statistical-report section. Main matching key: disclosed changes from plan.
+
+### PC077 — Missing data and dropout
+
+[PDF page 87](../../../joi250066supp1_prod_1761597796.4601.pdf#page=87), §11.5. Up to 10% dropout allowed sample-size calculation. Missing data addressed multiple imputation by chained equations citing Van Buuren et al. 2011, predictive models creating clinically reasonable imputations; sensitivity complete-case approach. No imputation count or pooling formula printed here. Main matching key: primary missing-data method and sensitivity.
+
+### PC078 — Administrative data management, no applicable outcome relationship
+
+[PDF page 88](../../../joi250066supp1_prod_1761597796.4601.pdf#page=88), §12. eCRF unique participant identifier; audit trail; reasons for dropout documented. Archive minimum 10 years after study/premature termination; source data minimum 10 years; exported data 10 years. Database locked after data entry, monitoring and query resolution; exported securely to statistician/PI; independent CTU statistician analysis. Automatic completeness/discrepancy validation and investigator/monitor queries. No new quantitative endpoint/model/result on page; administrative numeric retention retained for completeness.
+
+### PC079 — Administrative monitoring/consent/dissemination, no applicable numeric relationship
+
+[PDF page 89](../../../joi250066supp1_prod_1761597796.4601.pdf#page=89), §§12.3–14.1. Regular monitoring plan separately specified; audit/confidentiality/coded ID, age/sex retained; database locked after monitoring. Secondary genetic/biomarker samples selected-center optional consent independent of main study consent; coded samples centralized. Open-access publication/protocol/main-result dissemination and funding grant 33IC30_179667. No efficacy/safety numerical result or new statistical decision rule. Main matching key: optional biomarker population only.
+
+### PC080 — References and appendix index, no applicable numerical relationship
+
+[PDF pages 90–94](../../../joi250066supp1_prod_1761597796.4601.pdf#page=90). Page 90 insurance only. Pages 91–94 references inspected, including source citations for FMMA, mRS, PROMIS, motor tests, ICH safety and chained-equations imputation. Reference 79 Van Buuren/Groothuis-Oudshoorn “mice: Multivariate Imputation by Chained Equations in R.” Page 94 appendix index: I local investigators; II TSC members; III product characteristics; IV prior levodopa/control stroke studies; V genetic/biomarker analyses. Bibliographic years/volume/pages are identifiers, not current-trial results; no trial-result numerical relationship on these pages.
+
+## Completion and limits
+
+31/31 assigned pages visually mapped; 24/31 contain applicable quantitative/statistical/design content (64–87), and 7/31 have explicit no-applicable result-relevant numerical content records (88–94), with their administrative/optional-consent material still recorded. Inventory contains 80 unique source keys, PC001–PC080, including historical and administrative context. Three figures, two safety classification tables, all outcome lists, treatment schedules, analysis populations, models, power assumptions, stopping/interim rules, sensitivity/exploratory specifications and missingness rules in assigned scope were read. No scientific coverage gap. No extraction tool installation, additional rendering, OCR, source edit, or reused-asset edit performed. Precision limit: PRECIS scores are graphical readings, explicitly marked as such; all other extracted numeric values transcribed from print. Downstream source confirmation remains necessary for any registered issue, as required by the contract.
+
+Reused asset paths: exactly `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc002/page-64.png`, `page-65.png`, `page-66.png`, `page-67.png`, `page-68.png`, `page-69.png`, `page-70.png`, `page-71.png`, `page-72.png`, `page-73.png`, `page-74.png`, `page-75.png`, `page-76.png`, `page-77.png`, `page-78.png`, `page-79.png`, `page-80.png`, `page-81.png`, `page-82.png`, `page-83.png`, `page-84.png`, `page-85.png`, `page-86.png`, `page-87.png`, `page-88.png`, `page-89.png`, `page-90.png`, `page-91.png`, `page-92.png`, `page-93.png`, `page-94.png`, all under that same directory. No old text or scientific map used.
+# Fresh SAP evidence map
+
+Scope DOC-003 all18PDF pages, PLAN by prospective content despite Final Report heading. Direct source joi250066supp2_prod_1761597796.4701.pdf. All18 older hashed images `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc003/page-01.png` through `page-18.png` opened visually in this mapping. Native layout is empty and was not treated as absence of content. No OCR was needed for legible visual reading. Legacy rendering engine unrecorded; source PDF authority. No workbook formulas/caches exist. Keys SA01-SA18 identify source relationships, with main-paper matching concepts supplied below. No candidate diagnosis.
+
+| Page/key | Applicability and complete result-relevant content | Main-paper matching key |
+|---|---|---|
+| [1](../../../joi250066supp2_prod_1761597796.4701.pdf#page=1) SA01 |Administrative: Methods & Statistics, Enhancement of Stroke Rehabilitation with Levodopa, internal ID me16Engelter, September27,2024, Final Report. Background mentions6prior RCTs; historical evidence not trial result. No numerical trial result.|SAP date/version|
+| [2](../../../joi250066supp2_prod_1761597796.4701.pdf#page=2) SA02 |Levodopa/carbidopa100/25mg three times daily versus placebo, both added to standardized rehabilitation. Primary objective functional recovery after3months quantified by Fugl-Meyer Motor Assessment(FMMA), acute ischemic or hemorrhagic stroke. Secondary objective survival/general health.|Intervention,primary endpoint,secondary hierarchy|
+| [3](../../../joi250066supp2_prod_1761597796.4701.pdf#page=3) SA03 |Randomized multicenter superiority,1:1. Prescreen day−7to0, baseline/randomization Visit1; escalation days1–6,full dose7–34,taper35–39; transition to rehabilitation any treatment day. Visit2 end treatment5weeks±7days; Visit3 primary3months±14days; Visit4 6months±20days; Visit5 12months±30days; telephone Visits6/7/8/9 at24/36/48/60months±30days.|Design,intervention duration,outcome windows|
+| [4](../../../joi250066supp2_prod_1761597796.4701.pdf#page=4) SA04 |FAS all randomized; chained-equation multiple imputation of missing FMMA among survivors toVisit3; deaths not imputed except treatment policyIII. Footnote: deceased remain FAS but contribute only treatment policyIII and composite. mITT FAS with complete Visit3FMMA. Inclusion acute stroke≤7days; NIHSS motor arm+leg+ataxia≥3(distal paresis equivalent); randomization≥24h after thrombolysis/thrombectomy; inpatient rehabilitation/ability/consent. Exclusions age<18,Parkinson disease,mandatory levodopa,nonadherence,severe aphasia unable two-stage commands,prestroke mRS>3,preexisting hemiparesis,drug contraindications.|Analysis population,death handling,eligibility|
+| [5](../../../joi250066supp2_prod_1761597796.4701.pdf#page=5) SA05 |Pregnancy/lactation/intent and lack reliable contraception exclusions; postmenopause>2years exempt. Primary final FMMA atVisit3; items0/1/2 cannot/partial/full performance; total0–100,upper66/lower34,trained assessor. Secondary atVisits2,3,4,5: total FMMA additionally2/4/5(Visit3 primary),upper/lower separately,FMMA affected side;NIHSS,mRS,PROMIS29,PROMIS10,PRAI.|Outcome hierarchy,scale,secondary definitions|
+| [6](../../../joi250066supp2_prod_1761597796.4701.pdf#page=6) SA06 |RMI continuous plus binary independent walking score≥7. Harm: SAE/nonserious events toVisit3;all-cause mortality/recurrent stroke toVisit5; nonserious events possibly related IMP. Five estimand attributes treatment,population,endpoint,population summary,intercurrent events. Events death beforeVisit3;SAE motor impairment beforeVisit3(re-stroke/fracture/comparable);<80%drug;≥1week with<5rehabilitation sessions/week over4weeks;Visit3 out of window. Primary treatment policy;others supplementary only.|Harm definitions,estimand hierarchy|
+| [7](../../../joi250066supp2_prod_1761597796.4701.pdf#page=7) SA07 |Primary treatment policy:FAS,Visit3FMMA,mean difference between arms,randomized groups irrespective intercurrent events. PolicyII complete-case:mITT,same endpoint/summary/randomization. PolicyIII:FAS including deaths,FMMA deceased imputed,same endpoint/summary.|Primary,complete-case,death-imputed sensitivity|
+| [8](../../../joi250066supp2_prod_1761597796.4701.pdf#page=8) SA08 |Composite win-ratio:FAS including deaths,death+Visit3FMMA,difference in win-ratio atVisit3;death worst possible outcome and noFMMA needed for deceased. Hypothetical:FAS,Visit3FMMA,mean difference,exclude motor-impairing SAE. On-treatment strategy:FAS,Visit3FMMA,mean difference,low documented drug-intake event exclusion continuesp9.|Composite and sensitivity|
+| [9](../../../joi250066supp2_prod_1761597796.4701.pdf#page=9) SA09 |On-treatment excludes<80%medication;on-treatmentII excludes rehabilitation event definedp6;measured-according-protocol excludesVisit3out-of-window. All retain randomized assignment,Visit3FMMA andmean difference. Safety independent DSMB;no additional numeric decision rule here.|Adherence/rehabilitation/window sensitivity|
+| [10](../../../joi250066supp2_prod_1761597796.4701.pdf#page=10) SA10 |FAS/mITTbaseline summaries by arm: categorical frequency/percent,continuous mean/SD ormedian/IQR if nonnormal. Primary linear modelVisit3FMMA with baselineFMMA covariate and two-level randomized treatment factor;effect interpreted adjusted Levodopa−placebo mean difference,withP and95%CI;two-sidedα=.05. Residual/leverage checks;transformation considered if assumptions fail. Secondary baseline-adjusted where available: binary logistic(logit,binomial),continuous linear,ordinal ordinal-logistic;model checks and transformation/nonparametric/robust models considered if severe assumption violation/high-leverage outliers. Harm descriptive byarm. Secondary summaries/graphs possibly separate publications. Primary estimand for all secondary;FMMA affected-side analysis excludes bilateral pathology. Footnote baseline-adjusted endpoint difference equals baseline-adjusted change difference.|Primary model,covariates,tests,secondary models|
+| [11](../../../joi250066supp2_prod_1761597796.4701.pdf#page=11) SA11 |Each variable missing count presented;100chained-equation imputations;plot imputed values,fit each dataset,pool estimates/variances byRubin rules. Secondary missing imputed asprimary;harm not imputed. Center heterogeneity exploratory: includecenter+treatment×center main-model terms;graph bycenter/group. PoliciesII/III sameprimary model. Unmatched win ratio: every levodopa versus everyplacebo patient;survivor beatsdeath;bothdeath longer survival wins;bothsurvive higherFMMAwins. Ratio treatment wins/placebo wins;95%CI estimated1000bootstraps,repeated perimputed dataset. CI excluding1 evidence analogousP<.05. Footnote allsection analyses sensitivity,no multiple-testing adjustment,context ofprimary,notstandalone.|MI,pooling,center interaction,win-ratio,multiplicity|
+| [12](../../../joi250066supp2_prod_1761597796.4701.pdf#page=12) SA12 |Hypothetical,on-treatmentI/II,window models sameprimary. Seven subgroups:age<median/≥median;male/female;distal motorNIHSS0/>0;cortical NIHSS BestLanguage+Extinction/Inattention+Visual0/>0;baselineSSRIyes/no;ischemic/intracerebralhemorrhage;baselineFMMAseverity. Primary estimand;main model plus subgroup andtreatment×subgroup fixed effects,forestplot;hypotheses ICEMAN prespecified inaddendum. R4.3.1orhigher.|Prespecified subgroup analyses|
+| [13](../../../joi250066supp2_prod_1761597796.4701.pdf#page=13) SA13 |Signatures sponsor/statistician September27,2024;Pocock2012reference33(2):176–182. No additional applicable quantitative relationship.|Plan approval|
+| [14](../../../joi250066supp2_prod_1761597796.4701.pdf#page=14) SA14 |Addendum Methods&Statistics Final Report04.10.2024;contents subgroup,biomarker,genetic andpredefined analyses. No additional numeric result.|Addendum version|
+| [15](../../../joi250066supp2_prod_1761597796.4701.pdf#page=15) SA15 |Age<median/≥median,youngergreater motor learning benefit hypothesized. Sexmale/female:noeffect modification expected. Distal motor0/>0:noneexpected. Corticalsum0/>0:noneexpected inlevodopa effect butpossible worserecovery. SSRIyes/no:noneexpected. Ischemic/hemorrhagic:noneexpected. BaselineFMMA<median/≥median:noneexpected.|Seven planned subgroups andcutoffs|
+| [16](../../../joi250066supp2_prod_1761597796.4701.pdf#page=16) SA16 |Biomarkers NfL,Tau,hs-troponinT,NT-pro-BNP,GDF15,senescence-associatedsecretoryphenotype panel(IL1b,IL6,IL10,MCP1,TNFa,MMP1,osteopontin):high/low concentrations mayaffectrecovery butno treatment-effect modification anticipated;tablehasno numeric cutoff.|Planned biomarker subgroups|
+| [17](../../../joi250066supp2_prod_1761597796.4701.pdf#page=17) SA17 |Panel hypothesis continuation same. Geneticrs1842681homozygous/heterozygousrisk allele unfavorable recovery;ApoEhomozygous/heterozygousrisk allele unfavorable recovery inhemorrhagicstroke. Othergenetic(levodopascore,copy-numbervariation,SNPs)exploratory.|Genetic exploratory analyses|
+| [18](../../../joi250066supp2_prod_1761597796.4701.pdf#page=18) SA18 |Predefined analyses:ESTRELversusSwissStrokeRegistry comparison independent ofpositive result,participants hypothesized better recovery;rehabilitationtype/amountandinteractionwithlevodopa(positive-resultdependencyYES/NO),moremotorlearningrehabilitationbetter recoveryandmodifiesdrug effect;levodopapoststroke fatigue/depression associations hypothesized reduced. Signed Basel4.10.2024.|Additional planned analyses|
+
+All18pages mapped;2administrative pages(13,14) have no additional trial-result relationship, while dates/version remain recorded. No sample-size or interim rule appears in this SAP scope; protocol shard supplies those definitions. No scientific coverage gap.
+
+Version provenance detail: main SAP footer on pages2–13 identifies `me16EngelterSAP (September20,2024,rev.264857)`; cover and approval September27,2024. Addendum October4,2024. These printed version/date distinctions are retained without an interpretation.
+# Fresh results supplement evidence map
+
+Scope: DOC-004, all 27 PDF pages, REPORT. Source: joi250066supp3_prod_1761597796.4701.pdf. Source PDF page N is the exact locator for every page row below. Older hashed asset `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/DOC-004-layout.txt` read completely; every table cell from pages 10–17 is preserved in the English transcription appendix. Graphical pages 18,21,22 inspected using current-run PyMuPDF1.26.4 renderings `preprocessing/current_support/results-18.png`, `results-21.png`, `results-22.png`; older hashed images `.ai_paper_validation/review_1_5_1/preprocessing/statistical_pass_1/doc004-23.png`, `doc004-25.png`, `doc004-26.png`, `doc004-27.png` inspected visually. Legacy rendering engine unrecorded. No candidate analysis. Unique source keys RE01–RE27; main-paper match is the named endpoint/design/result. No workbook or cached values.
+
+| Page/key | Applicable relationship or explicit no-applicable unit | Main-paper matching concept |
+|---|---|---|
+| [1](../../../joi250066supp3_prod_1761597796.4701.pdf#page=1) RE01 | Contents of nine eTables and seven eFigures; no independent quantitative result. | Support index |
+| [2](../../../joi250066supp3_prod_1761597796.4701.pdf#page=2) RE02 | Contents with page locators; no independent quantitative result. | Support index |
+| [3](../../../joi250066supp3_prod_1761597796.4701.pdf#page=3) RE03 | Trial organization, committees, production, affiliations; administrative, no result-relevant quantitative relationship. | Trial organization |
+| [4](../../../joi250066supp3_prod_1761597796.4701.pdf#page=4) RE04 | Acute centers n=13, rehabilitation centers n=11; named centers. Administrative counts, no statistical comparison. | Multicenter design |
+| [5](../../../joi250066supp3_prod_1761597796.4701.pdf#page=5) RE05 | Rehabilitation centers continued; no new numeric relationship. | Trial organization |
+| [6](../../../joi250066supp3_prod_1761597796.4701.pdf#page=6) RE06 | R4.3.1; packages and versions for processing/modeling/MI/graphics listed. Code independently checked, key data elements and tables/figures checked. | Statistical software |
+| [7](../../../joi250066supp3_prod_1761597796.4701.pdf#page=7) RE07 | 100 chained-equation imputations, plotted imputations, fit each dataset, Rubin estimate/variance pooling. FMA missing/incomplete items imputed at item level; secondary summary scores imputed; harm not imputed. Declared SAP deviations: death before three-month assessment assigned mRS6 rather than imputed; missing PRAI not imputed; supplementary side outcome calculated for unaffected side rather than the SAP's affected-side wording. | Missing data, secondary outcomes |
+| [8](../../../joi250066supp3_prod_1761597796.4701.pdf#page=8) RE08 | PRAI asks whether stroke deficits improved since previous visit, and, if yes, whether improvement meaningful in daily life. | Patient-reported relevance definition |
+| [9](../../../joi250066supp3_prod_1761597796.4701.pdf#page=9) RE09 | Distal motor item: hand supported by examiner, first finger-extension attempt, no repeat instructions/testing; observe5seconds;0 normal/no flexion after5sec;1 partial extension after5sec;2 no voluntary extension after5sec. Non-command or other-time movements not scored. | Distal motor subgroup definition |
+| [10](../../../joi250066supp3_prod_1761597796.4701.pdf#page=10) RE10 | eTable1 baseline overall/placebo/levodopa N610/303/307, age, sex, BMI, history, prior stroke, mRS, home status, stroke type and territories; all printed cells in appendix. | Baseline counts/denominators |
+| [11](../../../joi250066supp3_prod_1761597796.4701.pdf#page=11) RE11 | eTable1 continuation: territories, affected FMA total/upper/lower, NIHSS, mRS, onset-to-randomization, acute treatments; all printed cells in appendix. | Baseline denominators and scales |
+| [12](../../../joi250066supp3_prod_1761597796.4701.pdf#page=12) RE12 | FAS definition: randomized survivors, missing FMA chained-equation imputation, deaths excluded; mITT complete three-month FMA. Eight estimands narrative: complete case−0.39[−3.33,2.56]; deaths imputed−0.98[−3.77,1.81]; composite odds ratio1.06[0.86,1.25]; SAE motor impairment excluded−1.41[−4.31,1.49];<80%drug excluded−0.57[−3.73,2.58]; low rehabilitation excluded0.19[−3.11,3.49]; out-of-window excluded−0.33[−3.31,2.65], all95%CI. | Primary and sensitivity results |
+| [13](../../../joi250066supp3_prod_1761597796.4701.pdf#page=13) RE13 | eTable2: primary FAS three-month FMA−0.90[−3.78,1.98],n582; complete case−0.39[−3.33,2.56],551; deaths imputed−0.98[−3.77,1.81],610; death/FMA win-ratio1.06[0.86,1.26],610; SAE exclusion−1.41[−4.31,1.49],545; medication exclusion−0.57[−3.73,2.58],496; rehabilitation exclusion0.19[−3.11,3.49],450; window exclusion−0.33[−3.31,2.65],524. SAE examples recurrent stroke/fracture/comparable. Medication threshold80%; rehabilitation at least one week<5sessions/week over4weeks. | Eight estimands, analysis sizes |
+| [14](../../../joi250066supp3_prod_1761597796.4701.pdf#page=14) RE14 | eTable3 post hoc: change from baseline to three months−0.90[−3.78,1.98],582; all randomized with death FMA0−0.03[−3.27,3.21],610; both rehabilitation and medication exclusions0.32[−3.25,3.89],395. | Post hoc estimands |
+| [15](../../../joi250066supp3_prod_1761597796.4701.pdf#page=15) RE15 | eTable4 secondary outcome groups, SD/IQR, SMD, effect/CI and denominators fully preserved below. n582 for FMA/NIHSS/PROMIS/RMI; mRS596; PRAI546 with placebo270 and levodopa276 denominators. | Secondary results, group counts |
+| [16](../../../joi250066supp3_prod_1761597796.4701.pdf#page=16) RE16 | eTable5 SAE detailed counts fully preserved below: total255/placebo129/levodopa126; participant deaths28/17/11; hospitalizations212/102/110; classifications and outcome counts. | Safety events versus participant outcomes |
+| [17](../../../joi250066supp3_prod_1761597796.4701.pdf#page=17) RE17 | eTable6 prespecified-interest AE counts fully preserved below: total145/placebo67/levodopa79; intensity, outcome and drug-relation rows. | Safety events and denominators |
+| [18](../../../joi250066supp3_prod_1761597796.4701.pdf#page=18) RE18 | eTable7 interaction model coefficient/CI/P: intercept62.51[60.45,64.57],P<.001; centered baseline FMA0.78[0.69,0.87],P<.001; levodopa−0.90[−3.78,1.99],P=.542; baseline×levodopa0.00[−0.12,0.12],P=.971. Caption compares spline(3df) versus no spline: F-testP<.01 for all imputations. eTable8 spline/no interaction: intercept20.09[14.28,25.90],P<.001; three spline coefficients64.73[46.34,83.13],57.52[43.48,71.56],77.49[61.68,93.31],eachP<.001; levodopa−0.87[−3.65,1.92],P=.541. Baseline spline×medication no evidence interaction,F-testP>.75 all imputations. | Primary-model sensitivity and test logic |
+| [19](../../../joi250066supp3_prod_1761597796.4701.pdf#page=19) RE19 | eTable9 prespecified-interest AEs: nausea,vomiting,taste disturbance,dry mouth,anorexia,arrhythmia,postural hypotension,syncope,drowsiness including sudden sleep,fatigue,dementia,psychoses,hallucinations,confusion,euphoria,abnormal dreams,insomnia,depression,anxiety,dizziness,dystonia,dyskinesia,chorea. | Safety endpoint definition |
+| [20](../../../joi250066supp3_prod_1761597796.4701.pdf#page=20) RE20 | Eligibility: stroke≤7days before randomization; NIHSS motor arm+leg+ataxia≥3 or equivalent distal paresis; randomization≥24h after thrombolysis/thrombectomy; inpatient rehabilitation,participation,consent. Exclusions age<18,Parkinson,mandatory levodopa,nonadherence,severe aphasia unable two-stage commands,prestroke mRS>3,preexisting hemiparesis,drug contraindication,pregnancy/lactation or unreliable contraception; postmenopausal>2years exempt. | Eligibility |
+| [21](../../../joi250066supp3_prod_1761597796.4701.pdf#page=21) RE21 | eFigure2 schedule: day−7to0 prescreen; day0 consent/randomization; escalation1–6; transition any treatment day; full dose7–34;taper35–39; Visit2 5weeks±7days,Visit3 3months±14days,Visit4 6months±20days,Visit5 12months±30days; telephone24/36/48/60months±30days. FMA baseline/Visits2–5;NIHSS prescreen/baseline/2–5;mRS baseline/2–9;PROMIS10 Visits2–9;PROMIS29 Visits2–5;PRAI Visits2–9;RMI baseline/2–9. Optional selected-center tests baseline/2–5:ARAT,Box-and-Block,Jamar,motricity,trunk control,10mwalk,MoCA,sensors;functional ambulation baseline/2–9. Death/recurrent stroke treatment throughVisit9;AE/SAE treatment throughVisit3. Transition no in-person visit; optional blood baseline/follow-up; unscheduled withdrawal assessment with consent; drug accountability only if before treatment end and AE/SAE only if beforeVisit3. | Windows,intervention,outcome schedule |
+| [22](../../../joi250066supp3_prod_1761597796.4701.pdf#page=22) RE22 | Cumulative enrollment graph: All610;Basel318,Zurich70,Fribourg57,Bern52,Lausanne25,HirslandenZurich24,StGallen19,Münsterlingen15,Winterthur13,Baden8,Graubünden8,Aarau1. X date of randomization annual2020–2024 ticks;Y patients0/200/400/600. Curves cumulative; exact intermediate counts not printed. | Enrollment and site counts |
+| [23](../../../joi250066supp3_prod_1761597796.4701.pdf#page=23) RE23 | eFigure4 forest means/intervals estimands1,2,3,5,6,7,8; adjusted mean difference(FMMApoints),zero reference; negative favorsplacebo,positive favorslevodopa. Point/CI positions correspond eTable2; no extra printed numeric values. Primary/deaths/complete-case definitions in legend. | Estimand effects and direction |
+| [24](../../../joi250066supp3_prod_1761597796.4701.pdf#page=24) RE24 | Forest legend continued for SAE,medication,rehabilitation,window exclusions; no independent numeric estimate. | Sensitivity definitions |
+| [25](../../../joi250066supp3_prod_1761597796.4701.pdf#page=25) RE25 | eFigure5 titled FMA at three months; Ylabel FMMAaffected-side(changeVisit1toVisit3),ticks−50/0/50; placebo/levodopa boxplots and patient dots in HFR,INS,USB,USZ,other. Centers<50recruitments pooledother. No exact numeric medians/quantiles/group sizes printed; do not convert positions into exact values. | Center heterogeneity,change scale |
+| [26](../../../joi250066supp3_prod_1761597796.4701.pdf#page=26) RE26 | eFigure6 baseline spline association;X centered Visit1FMA ticks−40,−20,0,20,40,60;Y Visit3FMA ticks30/60/90;red prediction curve increasing withshaded interval. Caption main estimate includingbaseline as spline,estimated marginal effects; no exact coefficients beyondp18. | Nonlinear baseline model |
+| [27](../../../joi250066supp3_prod_1761597796.4701.pdf#page=27) RE27 | eFigure7 PH1death0,PH2excludes low intake/minimalrehabilitation,PH3baseline≤35versus>35;legend colored categories moderate–severe(green),verysevere(purple),black generic. Xestimate ticks−6/−3/0/3. PH1black near0[about−3.3,3.2],PH2near0.3[about−3.3,3.9];PH3green near0.6[about−4.0,5.3],purple near−1.7[about−6.3,2.9]. These are graphical approximations only; no exact subgroup numeric coefficients/CI/P/N printed. | Posthoc and severity subgroup |
+
+All27pages mapped; administrative/index pages explicitly opened via complete layout. No scientific gap; exact patient-level positions in graphs are not published numeric tables.
+
+## English table transcription appendix
+
+Printed columns and footnotes below are factual source transcription, not calculations. Overall/placebo/levodopa ordering and all numeric values retained.
+
+### PDF page 10
+
+```text
+Supplemental Tables and Figures
+
+eTable 1. Detailed Baseline Demographic and Clinical Characteristics Stratified by
+Levodopa and Placebo Groups
+
+
+                                                      Overall            Placebo           Levodopa
+N                                                      610                 303                307
+Median age [IQR] - yr                               73 [64-82]          74 [64-84]         72 [62-81]
+Female Sex– No. (%)                                 252 (41.3)          133 (43.9)         119 (38.8)
+                                                       25.7                25.3               26.0
+Median Body Mass Index [IQR]                        [23.4 28.7]        [23.1, 28.1]       [23.5, 29.1]
+Medical history – No. (%)
+         Hypertension                               435 (71.3)         213 (70.3)          222 (72.3)
+         Diabetes                                   144 (23.6)         64 (21.1)           80 (26.1)
+         Hyperlipidemia                             291 (47.7)         152 (50.2)          139 (45.3)
+         Smoking                                    127 (20.8)         59 (19.5)           68 (22.1)
+         Atrial fibrillation                        95 (15.6)          61 (20.1)           34 (11.1)
+         Coronary heart disease                     99 (16.2)          47 (15.5)           52 (16.9)
+         Dementia                                    20 (3.3)           9 (3.0)             11 (3.6)
+         Movement disorder                           11 (1.8)           5 (1.7)              6 (2.0)
+         Depression                                  41 (6.7)           18 (5.9)            23 (7.5)
+Prior stroke – No. (%)
+         Ischemic stroke                             82 (13.4)          43 (14.2)          39 (12.7)
+         Hemorrhagic stroke                           11 (1.8)           6 (2.0)            5 (1.6)
+Prior median mRS [IQR]                             0.0 [0.0, 1.0]     0.0 [0.0, 1.0]     0.0 [0.0, 0.0]
+Prestroke living situation – No. (%)
+         Home                                       596 (97.7)         294 (97.0)         302 (98.4)
+         Nursing home                                 9 (1.5)            5 (1.7)            4 (1.3)
+         Other                                        5 (0.8)            4 (1.3)            1 (0.3)
+Stroke ischemic – No. (%)                           519 (85.1)         259 (85.5)         263 (85.7)
+Stroke hemorrhagic – No. (%)                         91 (14.9)         44 (14.5)          44 (14.3)
+MCA affected – No. (%)                              460 (75.4)         230 (75.9)         230 (74.9)
+         Bilateral                                    16 (2.6)             6 (2.0)          10 (3.3)
+         Right                                      278 (45.6)         136 (44.9)          142 (46.3)
+         Left                                       166 (27.2)           88 (29.0)          78 (25.4)
+ACA affected – No. (%)                              68 (11.1)           31 (10.2)         37 (12.1)
+         Bilateral                                     4 (0.7)             2 (0.7)           2 (0.7)
+         Right                                        23 (3.8)            11 (3.6)          12 (3.9)
+         Left                                         41 (6.7)            18 (5.9)          23 (7.5)
+PCA affected – No. (%)                               60 (9.8)           33 (10.9)           27 (8.8)
+         Bilateral                                     8 (1.3)             5 (1.7)           3 (1.0)
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining,
+AI training, and similar technologies.
+
 ```
 
-Completed outputs: `preprocessing/sap_mapper/page-01.txt` through `page-05.txt`, relative to review_1_6_2. The OCR loop terminated with exit 143 before completion; pages 6–18 were mapped visually and do not require OCR to close scientific coverage. Source images, not OCR, determine all entries below. No supplied or preexisting artifacts were changed. No workbook, cached values, formulas or CSV records are within this shard.
+### PDF page 11
 
-Every source link below is relative from this extraction artifact to package root, using `../../../joi250066supp2_prod_1761597796.4701.pdf#page=N`.
+```text
+       Right                                            35 (5.7)            20 (6.6)            15 (4.9)
+       Left                                             17 (2.8)             8 (2.6)             9 (2.9)
+Vertebrobasilar affected – No. (%)                    108 (17.7)           45 (14.9)           63 (20.5)
+       Bilateral                                         4 (0.7)             1 (0.3)             3 (1.0)
+       Right                                            59 (9.7)            28 (9.2)            31 (10.1)
+       Left                                             45 (7.4)            16 (5.3)            29 (9.4)
+Median FMA Total, affected side, at                      34.0                33.0                35.0
+randomization [IQR]                                  [14.0, 54.0]        [13.0, 52.8]        [14.8, 55.3]
+Median FMA Upper, affected side, at                      18.0                17.5                20.0
+randomization [IQR]                                   [6.0, 34.0]         [6.0, 34.0]         [6.0, 35.0]
+Median FMA Lower, affected side, at                      14.0                14.0                15.0
+randomization [IQR]                                   [6.5, 21.0]         [7.0, 21.0]         [6.0, 21.0]
+Median NIHSS at randomization [IQR]                    8.2 (3.9)           8.3 (3.8)           8.2 (3.9)
+Median mRS at randomization [IQR]                       4 [4, 5]           4 [4, 5]            4 [4, 5]
+Median time from stroke onset to                       7 [5, 10]          8 [5, 10]            7 [5-11]
+randomization [IQR]
+Acute Stroke Treatment – No. (%)
+       Intravenous thrombolysis                       120 (19.7)           66 (21.8)           54 (17.6)
+       Bridging therapy                                 33 (5.4)            13 (4.3)           20 (6.5)
+       Endovascular therapy                            81 (13.3)           44 (14.5)           37 (12.1)
 
-## Complete page coverage
 
-| Physical page | Content role | Complete mapped content | Keys | Status |
-|---|---|---|---|---|
-| 1 | PLAN | Cover, September 27, 2024; study title Enhancement of Stroke Rehabilitation with Levodopa; internal DKF ID me16Engelter; background reference to meta-analysis of 6 RCTs, historical rather than current-trial result | SAP-001 | COMPLETE |
-| 2 | PLAN | Primary and secondary objectives; 100/25 mg three times daily; FMMA at 3 months | SAP-002 | COMPLETE |
-| 3 | PLAN | Randomized multicenter superiority design and entire Figure 1 visit/treatment flow | SAP-003 | COMPLETE |
-| 4 | PLAN | FAS/mITT and mortality footnote; all 6 inclusion criteria and first 8 exclusion criteria | SAP-004, SAP-005 | COMPLETE |
-| 5 | PLAN | Remaining 2 exclusion criteria; primary outcome scale, scoring and components; secondary outcome list and footnote | SAP-005, SAP-006, SAP-007 | COMPLETE |
-| 6 | PLAN | Mobility threshold; harm outcomes and horizons; 5 intercurrent events; estimand framework and primary treatment attribute | SAP-007, SAP-008, SAP-009 | COMPLETE |
-| 7 | PLAN | Primary estimand continuation, complete-case estimand II, FAS/death-imputation estimand III | SAP-009 | COMPLETE |
-| 8 | PLAN | Composite/death win-ratio estimand and mortality footnote, hypothetical estimand, on-treatment I start | SAP-009, SAP-013 | COMPLETE |
-| 9 | PLAN | On-treatment I continuation, on-treatment II, measurement-window estimand, independent DSMB safety assessment | SAP-009, SAP-015 | COMPLETE |
-| 10 | PLAN | Baseline summaries, primary model/inference/diagnostics/footnote, all secondary-model rules | SAP-010, SAP-011 | COMPLETE |
-| 11 | PLAN | Missing data, imputation/pooling, center interaction, secondary-estimand analysis and full win-ratio algorithm/decision/multiplicity footnote | SAP-012, SAP-013, SAP-014 | COMPLETE |
-| 12 | PLAN | Remaining estimand models; all 7 subgroup definitions and interaction analysis; R version | SAP-014, SAP-016 | COMPLETE |
-| 13 | PLAN | Signatures dated September 27, 2024 and Pocock 2012 reference; no additional applicable quantitative relationship | SAP-001 | COMPLETE; quantitative content not applicable beyond metadata |
-| 14 | PLAN | Addendum Final Report from 04.10.2024; contents and page pointers; no numeric results | SAP-017 | COMPLETE; quantitative content not applicable beyond metadata |
-| 15 | PLAN | Complete 7-row clinical subgroup table: dichotomies and prior direction hypotheses | SAP-016 | COMPLETE |
-| 16 | PLAN | Biomarker subgroup table, all 6 biomarkers/panels, hypothesis directions and panel analytes | SAP-018 | COMPLETE |
-| 17 | PLAN | Biomarker-table continuation; 2 genetic subgroup rows and other exploratory genetic analyses | SAP-018, SAP-019 | COMPLETE |
-| 18 | PLAN | All 4 predefined analysis rows, positivity-dependence labels, direction hypotheses, dated signature | SAP-020 | COMPLETE |
+Legend: This table summarizes the baseline characteristics of the study participants. IQR = Interquartile
+Range, MCA = Middle Cerebral Artery, ACA =Anterior Cerebral Artery, PCA = Posterior Cerebral Artery,
+mRS = modified Rankin Scale, NIHSS = National Health Institutes Stroke Scale, FMA = Fugl-Meyer Motor
+Assessment.
 
-18/18 unique pages mapped. Reusable-backed units 18; fresh-required units 0; OCR locator derivatives completed for pages 1–5; all 18 pages independently opened visually. No uninspected source unit or scientific coverage gap.
 
-## Design, populations, eligibility and intervention
 
-### SAP-001 — identity and historical material
 
-[Page 1](../../../joi250066supp2_prod_1761597796.4701.pdf#page=1): cover dated September 27, 2024; Methods & Statistics, study title Enhancement of Stroke Rehabilitation with Levodopa, internal DKF ID me16Engelter, Document Status Final Report. Background refers to 6 historical RCTs and their differing populations, stroke types, dose/duration, follow-up and outcome measures; these are background statements, not ESTREL trial results or sample-size inputs. Footer on substantive SAP pages identifies September 20, 2024, revision 264857, numbered 1–13. [Page 13](../../../joi250066supp2_prod_1761597796.4701.pdf#page=13) sponsor-investigator and trial-statistician signatures dated 27.9.2024; reference is Pocock, Ariti, Collier & Wang 2012, win ratio, European Heart Journal 33(2):176–182. Reference is only mapped as supplied; no external source accessed.
+© 2025 American Medical Association. All rights reserved, including those for text and data mining,
+AI training, and similar technologies.
 
-### SAP-002 — objectives and contrast
+```
 
-[Page 2](../../../joi250066supp2_prod_1761597796.4701.pdf#page=2): levodopa/carbidopa 100/25 mg three times daily versus placebo, each added to standardized rehabilitation. Primary: improved functional recovery after 3 months in acute ischemic or hemorrhagic stroke, quantified using FMMA. Secondary objective: effects on survival and general health. Main-paper matching keys: randomized contrast, dose/frequency, primary FMMA and 3-month horizon.
+### PDF page 12
 
-### SAP-003 — study design and Figure 1
+```text
+eTable 2. Estimand Definitions and Results
 
-[Page 3](../../../joi250066supp2_prod_1761597796.4701.pdf#page=3): randomized multicenter superiority trial, 1:1 levodopa/carbidopa versus matching placebo. Figure 1 is a schedule, not participant-flow counts:
+Population Definitions for the Estimands
+Populations                     Definition
+                                All randomized participants were included. Multiple
+                                imputation using chained equations was applied to
+                                impute missing FMA values among participants who
+Full analysis set
+                                survived up to the three-month assessment. Participants
+                                who died before the three-month assessment were
+                                excluded from the analysis.
+                                All participants in the full analysis set with a complete
+Modified intention to treat set
+                                FMA at the three-month assessment.
+                                 Levodopa in combination with standardized rehabilitation
+Treatment                        vs placebo in combination with standardized
+                                 rehabilitation.
 
-| Stage/visit | Printed time/window | Content |
+
+
+
+Results
+Similar differences in FMA total scores at 3 months between both treatment groups were
+
+present for the eight estimands: (estimand 2) including participants with a complete 3-month
+
+FMA assessment (-0.39, 95% CI, -3.33 to 2.56), (estimand 3) including and imputing
+
+participants who died before the 3-month assessment (-0.98, 95% CI, -3.77 to 1.81), (estimand
+
+4) applying composite strategy using win-ratios resulting in an odds ratio of 1.06 (95% CI, 0.86
+
+to 1.25), (estimand 5) excluding participants with serious adverse events causing motor
+
+impairment (-1.41, 95% CI, -4.31 to 1.49), (estimand 6) excluding participants with intake of
+
+less than 80% of the study medication (-0.57, 95% CI, -3.73 to 2.58), (estimand 7) excluding
+
+participants with fewer rehabilitation therapies than foreseen (0.19, 95% CI, -3.11 to 3.49),
+
+and (estimand 8) excluding participants with 3-month assessments outside the predefined
+
+time range (-0.33, 95% CI -3.31 to 2.65).
+
+
+
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining,
+AI training, and similar technologies.
+
+```
+
+### PDF page 13
+
+```text
+                                                             Population-level                                                                           Estimated Effect of Levodopa:   Number of
+     Name            Population          Endpoint                                                          Intercurrent Events                                                          participants
+                                                                summary                                                                                 Mean Difference on FMA, [CI]
+Estimand 1: Primary Endpoint, intention-to-treat principle
+                                                                                      According to the intention-to-treat principle, all participants                                       582
+   Treatment         Full analysis   FMA at the three-   Mean difference between
+                                                                                       were analyzed according to randomization, irrespective of             -0.90 [-3.78 – 1.98]
+ policy strategy          set          month visit       the two treatment arms
+                                                                                           the presence or absence of intercurrent events.
+Estimand 2
+                       Modified                                                       According to the intention-to-treat principle, all participants                                       551
+   Treatment                         FMA at the three-   Mean difference between
+                     intention to                                                      were analyzed according to randomization irrespective of              -0.39 [-3.33 - 2.56]
+policy strategy II                     month visit       the two treatment arms
+                       treat set                                                           the presence or absence of intercurrent events.
+Estimand 3
+   Treatment                                                                                                                                                                                610
+                     Full analysis   FMA at the three-   Mean difference between
+ policy strategy                                                                             FMAs of participants who died were imputed.                     -0.98 [-3.77 - 1.81]
+                          set          month visit       the two treatment arms
+        III
+Estimand 4
+   Composite                          Death and FMA      Difference in win-ratio at   According to the intention-to-treat principle, all participants                                       610
+                     Full analysis
+ strategy using                       measured at the     the three-month visit,       were analyzed according to randomization irrespective of               1.06 [0.86 - 1.26]
+                          set
+    win-ratios                       three-month visit       win ratio [95% CI]            the presence or absence of intercurrent events.
+Estimand 5
+                                                                                    Excluding participants who had a serious adverse event                                                  545
+ Hypothetical        Full analysis   FMA at the three-   Mean difference between leading to a motor impairing event prior to the three-month
+                                                                                                                                                             -1.41 [-4.31 - 1.49]
+   strategy               set          month visit       the two treatment arms       visit (e.g., recurrent strokes, fractures, comparable
+                                                                                                          complications)
+Estimand 6
+ On treatment        Full analysis   FMA at the three-   Mean difference between      Excluding participants who took less than 80% of the study                                            496
+                                                                                                                                                             -0.57 [-3.73 - 2.58]
+    strategy              set          month visit       the two treatment arms                               medication
+Estimand 7
+                                                                                 Excluding participants who had at least one week with fewer                                                450
+ On treatment        Full analysis   FMA at the three-   Mean difference between
+                                                                                 than five rehabilitation sessions per week during a period of                0.19 [-3.11 – 3.49]
+  strategy II             set          month visit       the two treatment arms
+                                                                                                            4 weeks
+Estimand 8
+ On treatment        Full analysis   FMA at the three-   Mean difference between      Excluding participants for whom the three-month visit was                                             524
+                                                                                                                                                             -0.33 [-3.31 – 2.65]
+   strategy III           set          month visit       the two treatment arms                           out of the window
+
+
+
+
+        © 2025 American Medical Association. All rights reserved, including those for text and data mining, AI training, and similar technologies.
+
+```
+
+### PDF page 14
+
+```text
+       eTable 3. Post Hoc Estimand Analyses
+
+
+                                                          Population-level                                                                      Estimated Effect of Levodopa:   Number of
+    Name          Population         Endpoint                                                        Intercurrent Events                                                        participants
+                                                             summary                                                                            Mean Difference on FMA, [CI]
+Estimand 9: Primary Endpoint calculated with the change in FMA from baseline to the three-month visit, intention-to-treat principle
+                                  Change in FMA                                                                                                                                     582
+                                                                              According to the intention-to-treat principle, all participants
+  Treatment      Full analysis   from baseline to Mean difference between
+                                                                                were analyzed according to randomization, irrespective of            -0.90 [-3.78 – 1.98]
+policy strategy       set       the three-months the two treatment arms
+                                                                                     the presence or absence of intercurrent events.
+                                       visit
+Estimand 10
+                                                                              According to the intention-to-treat principle, all participants                                       610
+                                                                                were analyzed according to randomization irrespective of
+  Treatment            All
+                                FMA at the three- Mean difference between the presence or absence of intercurrent events. Participants
+policy strategy randomized                                                                                                                           -0.03 [-3.27 – 3.21]
+                                    month visit      the two treatment arms who died before the three-month assessment were assigned
+       IV        participants
+                                                                               the worst possible FMA outcome, corresponding to an FMA
+                                                                                                        score of 0.
+Estimand 11
+                                                                              Excluding participants who had at least one week with fewer                                           395
+On treatment     Full analysis  FMA at the three- Mean difference between than five rehabilitation sessions per week during a period of
+                                                                                                                                                      0.32 [-3.25 – 3.89]
+  strategy IV         set           month visit      the two treatment arms         4 weeks and who took less than 80% of the study
+                                                                                                      medication.
+
+
+
+
+       © 2025 American Medical Association. All rights reserved, including those for text and data mining, AI training, and similar technologies.
+
+```
+
+### PDF page 15
+
+```text
+eTable 4. Secondary Outcome Results Stratified by Levodopa and Placebo Groups
+
+                                                                 Estimated Effect of     Number of
+                                                                   Levodopa: Mean        participants
+                        Placebo        Levodopa       SMD      Difference on FMA, [CI]
+FMA total score,
+unaffected side, 3  89.14 (10.32)     89.67 (9.87)    0.052      0.63 [-0.72 – 1.99]        582
+months, mean (SD)
+FMA upper,
+affected side, 3    39.12 (19.19)    39.20 (19.30)    0.004      -0.73 [-2.97 – 1.50]       582
+months, mean (SD)
+FMA lower, affected                                                                         582
+side, 3 months,     22.88 (6.90)      22.91 (7.28)    0.003      -0.13 [-1.02 – 0.77]
+mean (SD)
+FMA total score,
+affected side, 5    56.27 (25.20)    57.37 (26.70)    0.042      0.02 [-2.81 - 2.84]        582
+weeks, mean (SD)
+NIHSS, 3 months,
+mean (SD)            4.20 (3.37)       4.02 (3.39)    0.054      -0.14 [-0.61 – 0.33]       582
+PROMIS 29, 3
+months, mean (SD) 65.11 (13.79)      64.74 (14.33)    0.026      -0.37 [-3.34 – 2.61]       582
+PROMIS 10, 3
+months, mean (SD) 29.87 (5.74)        30.04 (5.73)    0.031      0.18 [-0.98 – 1.33]        582
+mRS, 3 months,       3.00 [2.00,       3.00 [2.00,
+median [IQR]            4.00]             4.00]       0.034      0.93 [0.69 – 1.23]         596
+Rivermead Mobility
+Index, 3 months,     9.89 (4.73)       9.70 (4.85)    0.041      -0.33 [-1.04 – 0.37]       582
+mean (SD)
+PRAI; no (relevant)
+improvement, 3       51 (18.89)        51 (18.48)       -                 -                 546
+months, N. (%)        (n = 270)         (n = 276)
+
+
+Legend: FMA = Fugl-Meyer Motor Assessment, PROMIS 10 and 29 = Patient-Reported Outcomes
+Measurement Information System, NIHSS = National Institutes Stroke Score, mRS = modified Rankin
+Scale, PRAI = Patient-reported assessment of relevance of motor improvement, SMD = Standardized
+Mean Difference, CI = Confidence interval, IQR = Interquartile range.
+
+
+
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining,
+AI training, and similar technologies.
+
+```
+
+### PDF page 16
+
+```text
+eTable 5. Details of Serious Adverse Events Stratified by Levodopa and Placebo Groups
+
+
+                                                     Overall          Placebo          Levodopa
+
+n                                                      255               129              126
+
+Participants died                                       28               17               11
+
+Hospitalization                                        212               102              110
+
+Permanent or significant incapacity or disability       23               13               10
+
+Life-threatening                                        16               10                6
+
+SAE Severity – No. (%)
+
+        severe (daily activities impossible)           103               54               49
+
+        moderate (interferes with daily
+        activities)                                    106               54               52
+
+        mild (tolerable)                                46               21               25
+
+SAE Outcome – No. (%)
+
+        continuing                                      6                 4                2
+
+        recovered/resolved with sequelae                76               40               36
+
+        study participant died                          29               18               11
+
+        unknown                                         0                 0                0
+
+        recovered/resolved                             142               65               77
+
+        other                                           2                 2                0
+
+
+
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining,
+AI training, and similar technologies.
+
+```
+
+### PDF page 17
+
+```text
+eTable 6. Details of Prespecified Adverse Events of Interest Stratified by Levodopa and
+Placebo Groups
+
+                                                               Overall           Placebo            Levodopa
+
+n                                                                145                67                    79
+
+AE intensity – No. (%)
+
+          mild                                                   58                 29                    29
+
+          moderate                                               86                 37                    49
+
+          severe                                                  2                  1                    1
+
+AE outcome – No. (%)
+
+          ongoing                                                 1                  0                    1
+
+          resolved with sequel                                   29                 13                    16
+
+          resolved without sequel                                116                54                    62
+
+Drug relation – No. (%)
+
+          certain                                                 2                  1                    1
+
+          possible                                               66                 32                    34
+
+          Probably                                               23                  7                    16
+
+          Unassessable                                            2                  2                    0
+
+          unlikely                                               39                 15                    24
+
+          unrelated                                              14                 10                    4
+
+
+Legend: AE = Adverse event. Intensities: mild = tolerable, moderate = interferes with daily activities,
+severe = daily activities impossible. Drug relation: probably = likely, unassessable = unclassifiable.
+
+
+
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining,
+AI training, and similar technologies.
+
+```
+
+## RE06 complete printed software-version record
+
+```text
+Additional Details About Statistical Analyses
+
+Statistical Software Used and Quality Control
+
+
+All statistical analyses were conducted using R (version 4.3.1, released on June 16, 2023). The
+
+following R packages were utilized for data processing, statistical modeling, and visualization:
+
+
+Core Packages:
+
+
+    -   Data Manipulation & Wrangling: dplyr (1.1.4), data.table (1.14.8), tidyr (1.3.0), forcats
+
+        (1.0.0), plyr (1.8.9), purrr (1.0.2), tibble (3.2.1), tidyselect (1.2.0)
+
+    -   Statistical Modeling & Inference: lme4 (1.1-35.1), MASS (7.3-60), Matrix (1.6-3), mice
+
+        (3.16.0), mitml (0.4-5), glmnet (4.1-8), survey (4.2-1), survival (3.5-7)
+
+    -   Machine Learning & Classification: e1071 (1.7-13), nnet (7.3-19), rpart (4.1.19), class
+
+        (7.3-22)
+
+    -   Graphics & Visualization: ggplot2 (3.4.4), scales (1.2.1), grid (4.3.1), gtable (0.3.4),
+
+        colorspace (2.1-0), munsell (0.5.0)
+
+    -   Quality Control & Utilities: assertthat (0.2.1), boot (1.3-28), DBI (1.1.3), digest
+
+        (0.6.36), stringr (1.5.1), stringi (1.8.4), tools (4.3.1)
+
+
+
+
+Quality control measures involved independently verifying the statistician’s code, cross-
+
+checking key dataset elements for accuracy, and validating the consistency of tables and
+
+figures with the underlying data.
+
+
+
+
+© 2025 American Medical Association. All rights reserved, including those for text and data mining,
+AI training, and similar technologies.
+
+```
+# Fresh administrative and analysis-code support map
+
+Scope DOC-005 pages 1–8; DOC-006 page 1; DOC-007 page 1, all REPORT by published package content. All ten pages opened via allowed complete older factual layouts, with code visually inspected in `.ai_paper_validation/review_1_5_1/preprocessing/support_mapper/doc006/page-1.png`. Reused layouts: same directory `DOC-005-layout.txt`, `DOC-006-layout.txt`, `DOC-007-layout.txt`. Legacy engine unrecorded. No new derivative engine used, no Office/workbook source, formula caches not applicable.
+
+| Key | Direct source location | Applicable relationship / no-applicable reason |
 |---|---|---|
-| Prescreening | day −7 to 0 | Prior to baseline |
-| Visit 1 | Baseline | Informed consent, screening, baseline clinical assessments, randomization |
-| Dose escalation | day 1–day 6 | Treatment phase |
-| Full dose | day 7–day 34 | Study treatment |
-| Taper | day 35–day 39 | Tapering phase |
-| Transition | day x during treatment | Transition to rehabilitation center |
-| Visit 2 | 5 weeks ±7 days | End of treatment |
-| Visit 3 | 3 months ±14 days | Primary outcome assessment; end of interventional phase |
-| Visit 4 | 6 months ±20 days | Long-term clinical follow-up |
-| Visit 5 | 12 months ±30 days | Long-term clinical follow-up |
-| Visit 6 | 24 months ±30 days | Telephone follow-up, optional extension |
-| Visit 7 | 36 months ±30 days | Telephone follow-up, optional extension |
-| Visit 8 | 48 months ±30 days | Telephone follow-up, optional extension |
-| Visit 9 | 60 months ±30 days | Telephone follow-up, optional extension |
-
-Interventional phase bracket covers baseline to primary assessment; observational clinical phase covers visits 4–5; optional extended telephone phase covers visits 6–9. Main matching keys: allocation, study superiority status, intervention duration, 5-week treatment visit, 3/6/12-month outcome visits and outcome window.
-
-### SAP-004 — analysis sets and death handling
-
-[Page 4](../../../joi250066supp2_prod_1761597796.4701.pdf#page=4), section 3.2:
-
-- Full analysis set FAS: all randomized patients.
-- Missing FMMA in patients surviving to Visit 3: multiple imputation by chained equations, section 6.
-- Patients who died before Visit 3: not imputed except Treatment policy strategy III.
-- Footnote 1: deceased before Visit 3 remain in FAS but contribute only to Treatment policy III and composite strategy.
-- Modified intention-to-treat mITT: all FAS patients with complete FMMA at Visit 3.
-
-These set definitions must be carried together with estimand-specific inclusion rather than using FAS alone as a denominator definition. Main matching keys: randomized set, primary analysis population, survivor imputation, complete case, death sensitivity/composite analyses.
-
-### SAP-005 — every eligibility criterion
-
-[Pages 4–5](../../../joi250066supp2_prod_1761597796.4701.pdf#page=4), sections 3.3–3.4. Inclusion, item by item:
-
-1. Acute ischemic or hemorrhagic stroke ≤7 days before randomization; hemorrhagic means intracerebral hemorrhage excluding subarachnoid hemorrhage and cerebral venous sinus thrombosis.
-2. Clinically meaningful hemiparesis: total ≥3 points from NIH stroke scale motor arm, motor leg, limb ataxia; distal arm paresis equivalent to one of those items.
-3. Randomization ≥24 hours after thrombolysis or thrombectomy.
-4. In-hospital rehabilitation required.
-5. Capable of standardized rehabilitation participation.
-6. Informed consent from patient or next of kin.
-
-Exclusion, item by item:
-
-1. Age <18 years.
-2. Parkinson disease.
-3. Levodopa mandatory under treating physician judgment.
-4. Inability/unwillingness to follow procedures including drug intake orally, nasogastric or percutaneous endoscopic gastrostomy tube.
-5. Severe aphasia, unable to follow two-stage commands.
-6. Previously dependent in basal activities of daily living, prestroke mRS >3.
-7. Preexisting hemiparesis.
-8. Hypersensitivity to levodopa/carbidopa or other contraindications under appended product-characteristic summary.
-9. Pregnancy, breastfeeding or intended pregnancy; women of childbearing age must have pregnancy test for eligibility (p5).
-10. Lack of safe contraception: unwilling/not using medically reliable method for whole study, with oral/injectable/implantable contraception, intrauterine device or other investigator-approved reliable method described. Surgical sterilization/hysterectomy or postmenopause >2 years means not childbearing potential (p5).
-
-Eligibility definitions map target population and NIH/mRS thresholds; not realized analysis counts.
-
-## Outcome hierarchy, scales, time points and harm
-
-### SAP-006 — primary endpoint scale
-
-[Page 5](../../../joi250066supp2_prod_1761597796.4701.pdf#page=5), section 4.1: final FMMA score at Visit 3, rather than an unadjusted change-score outcome. Stroke-specific motor impairment index. Item scale: 0 cannot perform, 1 performs partially, 2 performs fully, a 3-point ordinal scale. Total 0 (no movements) to 100 (normal movements): upper extremity 66, lower extremity 34. All assessment by trained outcome assessor. Section 5.2 footnote on p10 states baseline-adjusted final-score difference is equivalent to baseline-adjusted between-arm difference in change from baseline to Visit 3. Main matching keys: FMMA total, 3 months, 0–100, upper/lower components and adjusted final/change contrast.
-
-### SAP-007 — every secondary outcome and horizon
-
-[Pages 5–6](../../../joi250066supp2_prod_1761597796.4701.pdf#page=5), section 4.2: secondary outcomes assessed at Visit 2 end treatment, Visit 3 end interventional phase, Visits 4–5 long-term follow-up, except explicit harm horizons. No separate designation as key secondary occurs in this SAP.
-
-| Outcome | Definition/status and horizon |
-|---|---|
-| FMMA total | Secondary at Visits 2, 4, 5; Visit 3 total is primary per footnote 2. Printed list ends with “Visit 5 months”; visit schedule establishes Visit 5 at 12 months. |
-| FMMA upper extremity | Separate secondary score, 66-point component |
-| FMMA lower extremity | Separate secondary score, 34-point component |
-| FMMA affected side | Secondary; bilateral pathology excluded from this analysis per p10 |
-| Stroke severity | NIH Stroke Scale Score |
-| Disability/dependence | Modified Rankin Scale mRS |
-| Patient-reported outcome | PROMIS-29 |
-| Patient-reported outcome | PROMIS 10, 10-question short form |
-| Patient assessment | Relevance of motor improvement; no numeric scale specified here |
-| Mobility | Rivermead Mobility Index; continuous plus binary ability to walk independently, score ≥7, for comparison with DARS |
-| Potential harm | All-cause mortality through Visit 5 |
-| Potential harm | Recurrent stroke through Visit 5 |
-| Potential harm | Serious adverse events through Visit 3 |
-| Potential harm | Nonserious adverse events possibly related to IMP through Visit 3 |
-
-Main matching keys: each endpoint status, score/component, horizon, independent-walking ≥7 threshold, harm definitions and mortality/recurrent-stroke horizons.
-
-## Estimands and intercurrent events
-
-### SAP-008 — full intercurrent-event catalogue
-
-[Page 6](../../../joi250066supp2_prod_1761597796.4701.pdf#page=6), section 4.3: estimand has five attributes: treatment, population, endpoint, population-level summary, handling of intercurrent events. Five listed events:
-
-(a) Death before Visit 3.
-
-(b) SAE causing motor-impairing event before Visit 3, e.g., recurrent stroke, fracture, comparable complication.
-
-(c) Intake <80% of study medication.
-
-(d) At least one week with <5 rehabilitation sessions/week in a 4-week period.
-
-(e) Visit 3 outside its window.
-
-Primary analysis treatment policy; other estimands supportive only. Main matching keys: death, SAE, medication adherence 80%, rehabilitation 5/week over 4 weeks, primary visit window.
-
-### SAP-009 — all eight estimands and each attribute
-
-[Pages 6–9](../../../joi250066supp2_prod_1761597796.4701.pdf#page=6). Each estimand uses levodopa plus standardized rehabilitation versus placebo plus standardized rehabilitation. Endpoint ordinarily FMMA at Visit 3; summary ordinarily between-treatment-arm mean difference; randomized assignment is retained. The table spells out all departures.
-
-| Section/name | Population | Endpoint | Population summary | Intercurrent-event handling |
-|---|---|---|---|---|
-| 4.3.1 Primary treatment policy | FAS as 3.2; survivor primary FMMA analysis as mortality footnote states | Visit 3 FMMA | Mean difference between arms | Analyze by randomization irrespective of events; survivor missing FMMA imputed under 3.2/6 |
-| 4.3.2 Treatment policy II, complete case | mITT, complete Visit 3 FMMA | Visit 3 FMMA | Mean difference | Randomized assignment irrespective of events; complete observed endpoint |
-| 4.3.3 Treatment policy III, FAS including deaths | FAS including deaths before Visit 3 | Visit 3 FMMA | Mean difference | Randomized assignment irrespective of events; FMMA for deceased also imputed |
-| 4.3.4 Composite using win-ratios | FAS including deaths; footnote 3 says no FMMA needed for deceased | Death and Visit 3 FMMA | Printed “difference in win-ratio” at Visit 3 | Randomized assignment irrespective of events; death worst possible outcome; unmatched win-ratio algorithm on p11 |
-| 4.3.5 Hypothetical | FAS minus participants with event (b) | Visit 3 FMMA | Mean difference | Exclude motor-impairing SAE before Visit 3; retain randomized assignment |
-| 4.3.6 On treatment / While on treatment | FAS minus participants with event (c) | Visit 3 FMMA | Mean difference | Exclude intake <80%; retain randomized assignment |
-| 4.3.7 On treatment II / While on treatment II | FAS minus participants with event (d) | Visit 3 FMMA | Mean difference | Exclude inadequate documented rehabilitation; retain randomized assignment |
-| 4.3.8 Measured according to protocol / While measured according to protocol | FAS minus participants with event (e) | Visit 3 FMMA | Mean difference | Exclude assessments outside predefined Visit 3 window; retain randomized assignment |
-
-Populations retain 3.2 death-handling context except death-inclusive III and composite. Blue text in source marks departures from primary estimand. Section 7.1 p11 prints “Treatment policy strategy III, complete case analysis” as the model heading; section 4.3.3 definition above explicitly specifies imputation of deceased patients. Both labels are transcribed without reconciliation or diagnosis. Main matching keys: complete case, death-imputation, composite, SAE exclusion, ≥80% medication adherence, rehabilitation adherence, outcome-window exclusion and sensitivity status.
-
-## Models, inference and missing data
-
-### SAP-010 — descriptive and primary analysis
-
-[Page 10](../../../joi250066supp2_prod_1761597796.4701.pdf#page=10), sections 5.1–5.2:
-
-- Demographic/baseline summaries in FAS and mITT, stratified by treatment arm.
-- Categorical data frequencies/percentages; continuous mean/SD; nonnormal continuous median/IQR.
-- Footnote 4 considers extra baseline tables restricted to the model-used patients for an estimand if its result deviates from main estimand.
-- Primary FMMA Visit 3 modeled using linear model with baseline FMMA covariate and two-level treatment factor levodopa versus placebo as variable of interest.
-- Treatment effect presented with P value and 95% CI; interpreted as FMMA mean difference levodopa versus placebo at Visit 3, adjusted for baseline.
-- Footnote 5: adjusted final-score difference equivalent to adjusted difference in change from baseline to Visit 3.
-- Model assumptions checked including residuals and leverage; data transformation considered if assumptions violated.
-- Alpha 0.05, two-sided.
-- Primary model specifies baseline FMMA and treatment; center and treatment×center are assigned separately to exploratory heterogeneity analysis p11.
-
-Main matching keys: baseline-adjusted linear model, factor/reference contrast, mean difference, 95% CI, two-sided .05 and transformation/diagnostic provisions.
-
-### SAP-011 — all secondary analysis rules
-
-[Page 10](../../../joi250066supp2_prod_1761597796.4701.pdf#page=10), section 5.3:
-
-- All secondary outcomes except potential harm use data-type appropriate regression, adjusted for baseline when available.
-- Binary: logistic regression, GLM logit link with binomial distribution.
-- Continuous: linear model.
-- Ordinal: ordinal logistic regression.
-- Diagnostics as primary; severe assumption violations/high-leverage outliers may prompt transformations, nonparametric tests or robust regression.
-- Potential harm summarized by treatment arm.
-- All secondary outcomes also descriptive tables/graphs, possibly separate publications if useful.
-- Primary estimand applies to every secondary analysis; FMMA affected side excludes bilateral pathology.
-
-Main matching keys: binary/ordinal/continuous model identities, baseline adjustment, harm descriptive analyses and affected-side exclusions.
-
-### SAP-012 — missing-data and pooling specification
-
-[Page 11](../../../joi250066supp2_prod_1761597796.4701.pdf#page=11), section 6:
-
-- Number missing reported for every variable.
-- 100 multiple imputations using chained equations.
-- Imputation-generated values displayed in plots.
-- Fit analysis model to each imputed data set.
-- Combine estimates and variances using Rubin's rules for single parameter estimate/variance across imputations.
-- Missing secondary outcomes imputed like primary analysis.
-- Potential-harm outcomes not imputed.
-- Mortality rules from 3.2/4.3 govern which primary/sensitivity values are imputed.
-
-No list of imputation predictors, seed or imputation-specific distributions is supplied on these pages. This is an extraction statement only. Main matching keys: 100 MICE imputations, Rubin pooling, survivor versus deceased imputation, harm not imputed.
-
-### SAP-013 — win-ratio calculation, hierarchy and decision
-
-[Page 11](../../../joi250066supp2_prod_1761597796.4701.pdf#page=11), section 7.1 and footnote 6:
-
-- Composite variable strategy uses unmatched Pocock et al 2012 approach.
-- Every levodopa patient compared with every placebo patient.
-- Rule 1: survivor to Visit 3 wins over death before Visit 3.
-- Rule 2: if both die before Visit 3, longer survival wins.
-- Rule 3: printed “If both patients survive up to end of study,” higher FMMA wins. Endpoint definition in 4.3.4 is FMMA Visit 3; both printed timing statements retained.
-- Win ratio = number of comparisons won by treatment divided by number won by placebo.
-- 95% CI estimated using 1000 bootstrap samples following cited statistical appendix.
-- Repeat analysis on each imputed data set.
-- CI excluding 1 taken as evidence of between-arm difference and discussed similarly to conventional sensitivity result P<0.05.
-- Footnote 6: all analyses in section sensitivity analyses, no correction for multiple testing; discuss in context of primary analysis, not standalone evidence.
-
-No separate tie algorithm or explicit cross-imputation bootstrap-CI pooling formula printed. Main matching keys: death/FMMA composite, pairwise hierarchy, unmatched win ratio, 1000 bootstrap, CI null 1, multiplicity/supportive status.
-
-### SAP-014 — secondary-estimand, center and subgroup analysis
-
-[Pages 11–12](../../../joi250066supp2_prod_1761597796.4701.pdf#page=11), section 7:
-
-- Exploratory treatment heterogeneity across centers: add center and treatment×center to main model; plot stratified by center or groups of centers.
-- Same primary-estimand model for policy II and policy III under section 7.1 headings, hypothetical, while on treatment I/II, and while measured according to protocol.
-- Composite strategy method separately specified SAP-013.
-- Each subgroup uses primary estimand, same main model plus subgroup variable and subgroup×treatment additional fixed effect.
-- Subgroups displayed as forest plot.
-- Underlying subgroup hypotheses prespecified with ICEMAN before subgroup analysis and recorded in addendum.
-- Analyses performed in R 4.3.1 or higher.
-
-Main matching keys: exploratory center interactions, same-model sensitivity analyses, subgroup interaction terms/forest plot, subgroup hypothesis/addendum, software.
-
-### SAP-015 — safety oversight and absent design inputs
-
-[Page 9](../../../joi250066supp2_prod_1761597796.4701.pdf#page=9), section 4.4: endpoints for potential harm considered important; DSMB investigates safety independently of results presented in this document. Main result considered potentially high impact for stroke management. Across all 18 pages no numerical power, sample-size calculation, anticipated effect/SD, loss inflation, noninferiority/equivalence margin, interim efficacy boundary, quantitative stopping rule or randomized stratum definition appears. Therefore those inputs cannot be extracted from this SAP shard; protocol shard may supply them. This is a complete-scope absence record rather than candidate reasoning.
-
-## Addendum: complete subgroup and predefined-analysis tables
-
-### SAP-016 — all seven clinical subgroup rows
-
-[Page 12](../../../joi250066supp2_prod_1761597796.4701.pdf#page=12) lists groups; [page 15](../../../joi250066supp2_prod_1761597796.4701.pdf#page=15) provides table of dichotomization and prior hypothesized effect modification:
-
-| Subgroup | Dichotomy | Prior direction/magnitude hypothesis |
-|---|---|---|
-| Age | <median vs ≥median | Younger may obtain more pronounced levodopa motor-learning enhancement than older, attributed to neuroplasticity/learning capacity |
-| Sex | Male vs female | No expected difference in direction or magnitude of levodopa effect |
-| Selective hand/wrist movement at baseline | NIHSS Distal Motor Function subscore 0 vs >0 | No expected levodopa effect difference with/without selective movement |
-| Cortical dysfunction | Sum of NIHSS Best Language, Extinction and Inattention, Visual subscores 0 vs >0 | No expected treatment effect difference; dysfunction may affect learning and lead to poorer recovery |
-| Baseline SSRI use | Yes vs no | No expected levodopa effect difference |
-| Stroke type | Acute ischemic vs intracerebral hemorrhage | No expected levodopa effect difference |
-| Baseline FMMA severity | <median vs ≥median | No expected levodopa effect difference across severity levels |
-
-Page 12 baseline FMMA subgroup has no printed cutoff; page 15 supplies median split. Median numeric values not supplied in this document. Main matching keys: all seven subgroup definitions and predicted younger direction; separate 0/>0 selective-movement/cortical cutoffs; baseline-treatment and stroke-type labels.
-
-### SAP-017 — addendum identity
-
-[Page 14](../../../joi250066supp2_prod_1761597796.4701.pdf#page=14): Addendum to Methods & Statistics, Version Final Report from 04.10.2024. Contents references clinical ICEMAN subgroup hypotheses p2, biomarker hypotheses p4, genetic subgroup p5, predefined analyses p6. Physical addendum pages are 14–18; contents numbering is retained as supplied, not used to reassign PDF page locators. [Page 18](../../../joi250066supp2_prod_1761597796.4701.pdf#page=18) signature dated Basel 4.10.2024. All addendum entries are hypotheses and analyses to be performed, hence PLAN.
-
-### SAP-018 — every biomarker table entry
-
-[Pages 16–17](../../../joi250066supp2_prod_1761597796.4701.pdf#page=16), heading Prespecified Hypotheses of Biomarker Subgroups with ICEMAN. Column named Dichotomization lists biomarker names rather than numerical cutpoints. Each hypothesis anticipates concentration-associated differences in direction or magnitude of stroke recovery, while not anticipating levodopa treatment-effect difference between high and low concentrations.
-
-| Category | Biomarker/panel | Printed concentration hypothesis |
-|---|---|---|
-| Neuroaxonal injury | Neurofilament light chain NfL | Recovery varies with NfL concentration; no levodopa effect modification high vs low |
-| Neuroaxonal injury | Tau | Recovery varies with Tau concentration; no levodopa effect modification high vs low |
-| Myocardial injury/dysfunction | Hs-troponinT | Recovery varies with Hs-troponinT; no levodopa effect modification high vs low |
-| Myocardial injury/dysfunction | NT-pro-BNP | Recovery varies with NT-pro-BNP; no levodopa effect modification high vs low |
-| Aging processes of immune system | GDF-15 | Recovery varies with GDF-15; no levodopa effect modification high vs low |
-| Aging processes of immune system | Senescence-associated secretory phenotype panel | Recovery varies with panel; no levodopa effect modification high vs low; statement continues on p17 |
-
-Panel contains exactly the listed analytes: IL-1b, IL-6, IL-10, MCP-1, TNFa, MMP-1, osteopontin. Numeric concentration thresholds, units, standardized panel score and separate fitted-model specification are not printed here. Main matching keys: biomarker exploratory/prespecified subgroup status and all names/threshold availability.
-
-### SAP-019 — every genetic table entry
-
-[Page 17](../../../joi250066supp2_prod_1761597796.4701.pdf#page=17), Prespecified Hypotheses of Genetic Subgroup Analyses with ICEMAN:
-
-| SNP/label | Dichotomy | Hypothesis |
-|---|---|---|
-| Rs1842681 | Homozygous/heterozygous | Risk allele of SNP rs1842681 might contribute to unfavorable stroke recovery |
-| ApoE | Homozygous/heterozygous | ApoE risk allele might contribute to unfavorable recovery among hemorrhagic stroke patients |
-
-All other planned genetic analyses, including levodopa score, copy number variation and SNPs, exploratory because evidence on genetics in stroke recovery is limited. Specific risk-allele identity, numeric score definition, genetic model or multiplicity rule for this table not printed. Main matching keys: listed hypotheses, hemorrhagic-only ApoE hypothesis, exploratory status of other genetic analyses.
-
-### SAP-020 — all four predefined analysis rows
-
-[Page 18](../../../joi250066supp2_prod_1761597796.4701.pdf#page=18), Predefined Analyses. Table columns: Planned Analyses; Dependent on a positive result; A priori hypothesized direction of effect modification.
-
-| Planned analysis | Printed dependence | Full analysis/hypothesis content |
-|---|---|---|
-| ESTREL participants versus Swiss Stroke Registry patients | NO | Compare participant outcomes to similarly affected national/Swiss registry nonparticipants; hypothesize better recovery among ESTREL participants |
-| Type/amount of rehabilitation with and without levodopa | YES/NO | Investigate type/amount impact on motor recovery and whether levodopa effect depends on type/amount; greater motor rehabilitation built on motor-learning principles expected to improve recovery; levodopa effect hypothesized influenced by extent incorporating these principles |
-| Levodopa association with poststroke fatigue | Blank | Motivational properties may be associated with reduced poststroke fatigue |
-| Levodopa association with poststroke depression | Blank | Motivational properties may be associated with reduced poststroke depression |
-
-No realized effects or numeric outcomes in this table. Blank dependence cells are retained rather than assigned an inferred status. Main matching keys: predefined registry/rehabilitation/fatigue/depression analyses and their dependence/status statements.
-
-## Mapping summary and limits
-
-Twenty local keyed relationship groups SAP-001–SAP-020 cover every assigned page and every table/figure item. Scientific analysis relationships are SAP-002–SAP-004, SAP-006–SAP-016, SAP-018–SAP-020; metadata/eligibility are separately retained where they define matching context. No realized inferential results occur. All pages reviewed, including signatures/contents and administrative material. No candidate IDs, findings, screening or dispositions supplied. No old AI conclusions read. Limits: image-only source requires visual reading/OCR locator; no unreadable source content; no scientific coverage gaps. Inputs not present within these 18 pages are explicitly named above and must not be imported from outside this assigned shard.
-# Support quantitative evidence: results, implemented code, administrative material
-
-Mandatory support_quantitative_mapper stage. Complete disjoint assignment: DOC-004 physical PDF pages 1–27, DOC-005 pages 1–8, DOC-006 page 1, DOC-007 page 1. Total 37 unique units, all 37 mapped. Document role REPORT throughout, assigned by content. This is extraction and relationship mapping only; no finding selection or candidate diagnosis is performed. Local keys N-Rxxx and S-Rxxx identify numeric and statistical relationships for coordinator numbering. They do not reuse historical review IDs.
-
-Scope, review contract, source inventory, source coverage and assigned evidence inventory were read. Sources remain authority. Reused DOC-004/DOC-005/DOC-007 native layouts and DOC-004 page images 10–27, and DOC-006 page image 1 were used as transcription aids. All 19 distinct assigned images were visually inspected, below the 32-image context bound. Fresh direct-source layout corroboration for readable text used Poppler pdftotext 26.01.0, CPU: `pdftotext -layout SOURCE OUTPUT`, with outputs `preprocessing/support_results/DOC-004-direct-layout.txt`, `DOC-005-direct-layout.txt`, `DOC-007-direct-layout.txt`. Existing image-render engine version is historical/unrecorded. No OCR, fallback environment, Office extractor, source modification, or external evidence was used. Formula/cached workbook distinctions are not applicable: no workbook exists in this assignment.
-
-## Complete page coverage
-
-| Source/unit | Content and mapping | Status |
-|---|---|---|
-| DOC-004 p1 | Cover, eTable/eFigure index; no independent result | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-004 p2 | Contents and page locators; no independent result | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-004 p3 | Trial committees, medication production and affiliations; no statistical result/design rule | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-004 p4 | Centers: 13 acute and 11 rehabilitation; administrative counts N-R001 | COMPLETE |
-| DOC-004 p5 | Continuation of rehabilitation-center list; no independent result | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-004 p6 | Analysis software and quality-control description S-R001 | COMPLETE |
-| DOC-004 p7 | Imputation, pooling, disclosed SAP deviations S-R002/S-R003 | COMPLETE |
-| DOC-004 p8 | PRAI questions/definition S-R004 | COMPLETE |
-| DOC-004 p9 | Distal motor item scoring S-R005 | COMPLETE |
-| DOC-004 p10 | eTable 1 baseline counts and continuous summaries N-R002 | COMPLETE |
-| DOC-004 p11 | eTable 1 continuation N-R002 | COMPLETE |
-| DOC-004 p12 | FAS/mITT definitions and narrative estimand results S-R006/S-R007 | COMPLETE |
-| DOC-004 p13 | eTable 2 estimands 1–8 S-R007 | COMPLETE |
-| DOC-004 p14 | eTable 3 post hoc estimands 9–11 S-R008 | COMPLETE |
-| DOC-004 p15 | eTable 4 all ten secondary-outcome rows N-R003/S-R009 | COMPLETE |
-| DOC-004 p16 | eTable 5 all SAE rows N-R004 | COMPLETE |
-| DOC-004 p17 | eTable 6 all AE rows N-R005 | COMPLETE |
-| DOC-004 p18 | eTables 7 and 8: all coefficients/CIs/P values and F-tests S-R010/S-R011 | COMPLETE |
-| DOC-004 p19 | eTable 9: prespecified AE list S-R012 | COMPLETE |
-| DOC-004 p20 | eFigure 1 inclusion/exclusion thresholds S-R013 | COMPLETE |
-| DOC-004 p21 | eFigure 2 schedule, every assessment group and footnote S-R014 | COMPLETE |
-| DOC-004 p22 | eFigure 3 all printed site totals, axis/time labels N-R006 | COMPLETE |
-| DOC-004 p23 | eFigure 4 estimand forest plot and legends 1–3 S-R015 | COMPLETE |
-| DOC-004 p24 | eFigure 4 legend continuation 5–8 S-R015 | COMPLETE |
-| DOC-004 p25 | eFigure 5 all center/arm/scale labels, grouping rule N-R007 | COMPLETE |
-| DOC-004 p26 | eFigure 6 spline predictions and axis labels S-R016 | COMPLETE |
-| DOC-004 p27 | eFigure 7 PH1–PH3, subgroup cutoff and labels S-R017 | COMPLETE |
-| DOC-005 p1 | Collaborator roster: Aarau, Baden, Lausanne; no quantitative result/design rule | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-005 p2 | Collaborator roster: Lausanne, Fribourg, Hirslanden; no quantitative result/design rule | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-005 p3 | Collaborator roster: Bern, Basel; no quantitative result/design rule | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-005 p4 | Collaborator roster: Basel; no quantitative result/design rule | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-005 p5 | Collaborator roster: Basel, Zurich; no quantitative result/design rule | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-005 p6 | Collaborator roster: Graubünden, Münsterlingen, St. Gallen, Felix Platter; no quantitative result/design rule | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-005 p7 | Collaborator roster: Felix Platter, Rheinfelden; no quantitative result/design rule | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-005 p8 | Collaborator roster: Rheinfelden, Valens; no quantitative result/design rule | COMPLETE, NO_APPLICABLE_RESULT |
-| DOC-006 p1 | Implemented R main analysis code, lines 1–35 S-R018 | COMPLETE |
-| DOC-007 p1 | Data availability and request conditions S-R019; no quantitative result | COMPLETE, NO_APPLICABLE_RESULT |
-
-## Administrative and statistical definitions
-
-### N-R001 — Centers
-
-Source [DOC-004 p4](../../../joi250066supp3_prod_1761597796.4701.pdf#page=4), continuation p5. Acute centers n=13: Basel, Zurich, Fribourg, Bern, Lausanne, St. Gallen, Münsterlingen, Winterthur, Baden, Graubünden, Aarau, Hirslanden Zurich, Sion. Rehabilitation centers n=11: Felix Platter Basel, Rheinfelden, HFR Meyriez-Murten, Zihlschlacht, Zurich Lengg, Cereneo Vitznau, Bad Zurzach, Valens, Zurich Wald, Rheinburg Walzenhausen, Sion. Administrative site keys can match enrollment figure; no outcome estimates on these pages.
-
-### S-R001 — Software and quality control
-
-[DOC-004 p6](../../../joi250066supp3_prod_1761597796.4701.pdf#page=6). R 4.3.1 released June 16, 2023. Packages: dplyr 1.1.4; data.table 1.14.8; tidyr 1.3.0; forcats 1.0.0; plyr 1.8.9; purrr 1.0.2; tibble 3.2.1; tidyselect 1.2.0; lme4 1.1-35.1; MASS 7.3-60; Matrix 1.6-3; mice 3.16.0; mitml 0.4-5; glmnet 4.1-8; survey 4.2-1; survival 3.5-7; e1071 1.7-13; nnet 7.3-19; rpart 4.1.19; class 7.3-22; ggplot2 3.4.4; scales 1.2.1; grid 4.3.1; gtable 0.3.4; colorspace 2.1-0; munsell 0.5.0; assertthat 0.2.1; boot 1.3-28; DBI 1.1.3; digest 0.6.36; stringr 1.5.1; stringi 1.8.4; tools 4.3.1. Independently verified statistician code, cross-checked key dataset elements, and validated tables/figures against underlying data. Package listing does not identify which model produced each result; actual code is S-R018.
-
-### S-R002 — Imputation and pooling
-
-[DOC-004 p7](../../../joi250066supp3_prod_1761597796.4701.pdf#page=7). 100 multiple imputations using chained equations. Generated imputed values displayed in plots; model fit in each imputed dataset; estimates and variances combined using Rubin's rules into one estimate and variance per parameter. Missing/incomplete FMA imputed at item level; secondary outcomes at summary-score level. Potential-harm outcomes not imputed. Match main-paper missing-data/statistical-analysis keys and supplied SAP estimand/MI specification; no external imputation model assumed.
-
-### S-R003 — Disclosed SAP deviations
-
-Same p7: introductory text states two deviations, followed by three numbered items. Record each item rather than selecting by count: (1) mRS for participants who died before three months was set to 6 rather than imputed; (2) missing subjective PRAI not imputed; (3) secondary-outcome adjusted mean difference initially stated for affected side in SAP, calculation performed for unaffected side. The third item describes a wording change and authors' supplied rationale; no mapper judgment. Match main-paper mRS/PRAI/secondary FMA and supplied SAP endpoint/imputation keys.
-
-### S-R004 — PRAI
-
-[DOC-004 p8](../../../joi250066supp3_prod_1761597796.4701.pdf#page=8). Two questions: whether participant noticed improvement in deficits caused by stroke since last study visit; if yes, whether improvement is meaningful in daily life. English meanings recorded from bilingual printed questions. Match eTable 4 PRAI no relevant improvement, main-paper PRAI and SAP relevance definition. No additional numeric outcome on p8.
-
-### S-R005 — Distal motor scoring
-
-[DOC-004 p9](../../../joi250066supp3_prod_1761597796.4701.pdf#page=9). Examiner holds forearm, requests maximum finger extension; if no extension places fingers fully extended and observes flexion for 5 seconds. Only first attempt graded, no repetition of instructions/testing. Score 0 normal/no flexion after 5 seconds; 1 some extension after 5 seconds but not fully extended, uncommanded movement unscored; 2 no voluntary extension after 5 seconds, movement at other times unscored. Match eligibility NIHSS/distal-paresis key. Supplied references are locators only; no external sources consulted.
-
-## N-R002 — Complete eTable 1 baseline map
-
-[DOC-004 p10](../../../joi250066supp3_prod_1761597796.4701.pdf#page=10) and [p11](../../../joi250066supp3_prod_1761597796.4701.pdf#page=11). Values in columns Overall / Placebo / Levodopa. Population N 610 / 303 / 307. Counts are printed No. (%) unless otherwise stated. Every continuous row retains printed label and dispersion type. Match main baseline Table 1 by row, population and time; descriptive copies remain descriptive rather than model effects.
-
-| Printed row | Overall | Placebo | Levodopa |
-|---|---|---|---|
-| N | 610 | 303 | 307 |
-| Median age [IQR], years | 73 [64–82] | 74 [64–84] | 72 [62–81] |
-| Female sex | 252 (41.3) | 133 (43.9) | 119 (38.8) |
-| Median BMI [IQR] | 25.7 [23.4 28.7] | 25.3 [23.1,28.1] | 26.0 [23.5,29.1] |
-| Hypertension | 435 (71.3) | 213 (70.3) | 222 (72.3) |
-| Diabetes | 144 (23.6) | 64 (21.1) | 80 (26.1) |
-| Hyperlipidemia | 291 (47.7) | 152 (50.2) | 139 (45.3) |
-| Smoking | 127 (20.8) | 59 (19.5) | 68 (22.1) |
-| Atrial fibrillation | 95 (15.6) | 61 (20.1) | 34 (11.1) |
-| Coronary heart disease | 99 (16.2) | 47 (15.5) | 52 (16.9) |
-| Dementia | 20 (3.3) | 9 (3.0) | 11 (3.6) |
-| Movement disorder | 11 (1.8) | 5 (1.7) | 6 (2.0) |
-| Depression | 41 (6.7) | 18 (5.9) | 23 (7.5) |
-| Prior ischemic stroke | 82 (13.4) | 43 (14.2) | 39 (12.7) |
-| Prior hemorrhagic stroke | 11 (1.8) | 6 (2.0) | 5 (1.6) |
-| Prior median mRS [IQR] | 0.0 [0.0,1.0] | 0.0 [0.0,1.0] | 0.0 [0.0,0.0] |
-| Prestroke home | 596 (97.7) | 294 (97.0) | 302 (98.4) |
-| Prestroke nursing home | 9 (1.5) | 5 (1.7) | 4 (1.3) |
-| Prestroke other | 5 (0.8) | 4 (1.3) | 1 (0.3) |
-| Stroke ischemic | 519 (85.1) | 259 (85.5) | 263 (85.7) |
-| Stroke hemorrhagic | 91 (14.9) | 44 (14.5) | 44 (14.3) |
-| MCA affected | 460 (75.4) | 230 (75.9) | 230 (74.9) |
-| MCA bilateral | 16 (2.6) | 6 (2.0) | 10 (3.3) |
-| MCA right | 278 (45.6) | 136 (44.9) | 142 (46.3) |
-| MCA left | 166 (27.2) | 88 (29.0) | 78 (25.4) |
-| ACA affected | 68 (11.1) | 31 (10.2) | 37 (12.1) |
-| ACA bilateral | 4 (0.7) | 2 (0.7) | 2 (0.7) |
-| ACA right | 23 (3.8) | 11 (3.6) | 12 (3.9) |
-| ACA left | 41 (6.7) | 18 (5.9) | 23 (7.5) |
-| PCA affected | 60 (9.8) | 33 (10.9) | 27 (8.8) |
-| PCA bilateral | 8 (1.3) | 5 (1.7) | 3 (1.0) |
-| PCA right (p11) | 35 (5.7) | 20 (6.6) | 15 (4.9) |
-| PCA left | 17 (2.8) | 8 (2.6) | 9 (2.9) |
-| Vertebrobasilar affected | 108 (17.7) | 45 (14.9) | 63 (20.5) |
-| Vertebrobasilar bilateral | 4 (0.7) | 1 (0.3) | 3 (1.0) |
-| Vertebrobasilar right | 59 (9.7) | 28 (9.2) | 31 (10.1) |
-| Vertebrobasilar left | 45 (7.4) | 16 (5.3) | 29 (9.4) |
-| Median FMA total, affected, randomization [IQR] | 34.0 [14.0,54.0] | 33.0 [13.0,52.8] | 35.0 [14.8,55.3] |
-| Median FMA upper, affected, randomization [IQR] | 18.0 [6.0,34.0] | 17.5 [6.0,34.0] | 20.0 [6.0,35.0] |
-| Median FMA lower, affected, randomization [IQR] | 14.0 [6.5,21.0] | 14.0 [7.0,21.0] | 15.0 [6.0,21.0] |
-| Median NIHSS at randomization [IQR] | 8.2 (3.9) | 8.3 (3.8) | 8.2 (3.9) |
-| Median mRS randomization [IQR] | 4 [4,5] | 4 [4,5] | 4 [4,5] |
-| Median stroke-onset to randomization time [IQR] | 7 [5,10] | 8 [5,10] | 7 [5–11] |
-| IV thrombolysis | 120 (19.7) | 66 (21.8) | 54 (17.6) |
-| Bridging therapy | 33 (5.4) | 13 (4.3) | 20 (6.5) |
-| Endovascular therapy | 81 (13.3) | 44 (14.5) | 37 (12.1) |
-
-Footnotes: IQR interquartile range; MCA middle cerebral artery; ACA anterior cerebral artery; PCA posterior cerebral artery; mRS modified Rankin Scale; NIHSS printed National Health Institutes Stroke Scale; FMA Fugl-Meyer Motor Assessment. NIHSS row's printed label and parenthesized values retained without reinterpreting the dispersion. Stroke-onset time units are not expressly printed in this row; preserve source label, seek matching main/SAP unit.
-
-## Estimands and populations
-
-### S-R006 — Population and intervention definitions
-
-[DOC-004 p12](../../../joi250066supp3_prod_1761597796.4701.pdf#page=12). FAS paragraph begins all randomized included, then states MICE imputes missing FMA among survivors to three months and those dying before three-month assessment excluded. Modified ITT = FAS with complete three-month FMA. Intervention = levodopa plus standardized rehabilitation versus placebo plus standardized rehabilitation. Match main primary population, complete-case sensitivity and SAP estimand populations. The row-specific death inclusions below are retained separately from the generic population definition.
-
-### S-R007 — eTable 2 and matching narrative
-
-[DOC-004 p13](../../../joi250066supp3_prod_1761597796.4701.pdf#page=13), narrative p12. Printed table effect-column title: Estimated Effect of Levodopa: Mean Difference on FMA, [CI]. Contrast levodopa versus placebo, three-month visit, intention-to-treat/randomized assignment unless indicated. Numeric CIs as printed; narrative specifies 95%. Match main primary FMA total score/estimand sensitivity results and SAP estimands by number, not generic treatment-policy name alone.
-
-| Estimand | Population, endpoint and intercurrent-event rule | Summary | Printed effect [CI] | N |
-|---|---|---|---|---:|
-| 1, primary endpoint, treatment policy | FAS; FMA at three months; analyzed by randomization irrespective of intercurrent events | Mean difference between treatment arms | −0.90 [−3.78,1.98] | 582 |
-| 2, treatment policy II | Modified ITT; complete FMA at three months; randomized assignment | Mean difference | −0.39 [−3.33,2.56] | 551 |
-| 3, treatment policy III | FAS label; three-month FMA; FMA of deaths imputed | Mean difference | −0.98 [−3.77,1.81] | 610 |
-| 4, composite using win-ratios | FAS label; death and FMA at three months; randomized assignment | Printed difference in win-ratio at three months, win ratio [95% CI] | 1.06 [0.86,1.26] | 610 |
-| 5, hypothetical | FAS; three-month FMA; exclude SAE causing motor impairment before visit (recurrent stroke, fractures, comparable complications) | Mean difference | −1.41 [−4.31,1.49] | 545 |
-| 6, on treatment | FAS; three-month FMA; exclude intake <80% of study medication | Mean difference | −0.57 [−3.73,2.58] | 496 |
-| 7, on treatment II | FAS; three-month FMA; exclude at least one week with fewer than five rehabilitation sessions/week in a four-week period | Mean difference | 0.19 [−3.11,3.49] | 450 |
-| 8, on treatment III | FAS; three-month FMA; exclude visit outside window | Mean difference | −0.33 [−3.31,2.65] | 524 |
-
-Narrative p12 repeats estimands 2,3,5,6,7,8 with same values. Narrative estimand 4 calls the composite win-ratio result an odds ratio and prints 1.06 (95% CI 0.86 to 1.25); preserve both narrative and table effect labels and upper limits. No P values printed for estimand table rows. No excluded-count arithmetic assumed beyond printed N and stated rules.
-
-### S-R008 — eTable 3 post hoc estimands
-
-[DOC-004 p14](../../../joi250066supp3_prod_1761597796.4701.pdf#page=14). Same effect-column title and contrast as eTable 2. All described as post hoc.
-
-| Estimand | Population, endpoint and rule | Effect [CI] | N |
-|---|---|---|---:|
-| 9, treatment policy | FAS; change in FMA baseline to three months; randomized assignment irrespective of intercurrent events | −0.90 [−3.78,1.98] | 582 |
-| 10, treatment policy IV | All randomized; three-month FMA; death before visit assigned worst possible FMA=0 | −0.03 [−3.27,3.21] | 610 |
-| 11, on treatment IV | FAS; three-month FMA; exclude those with at least one week <5 sessions/week over four weeks and intake <80% | 0.32 [−3.25,3.89] | 395 |
-
-Population-level summary mean difference between arms for all three. Matching keys: main post hoc change-score, death-as-zero, combined adherence/rehabilitation sensitivity, eFigure 7 PH1/PH2. Do not silently reinterpret printed conjunction in estimand 11.
-
-## N-R003 / S-R009 — eTable 4 complete secondary outcomes
-
-[DOC-004 p15](../../../joi250066supp3_prod_1761597796.4701.pdf#page=15). Time three months except FMA total affected five weeks. Printed effect-column title for the whole table is Estimated Effect of Levodopa: Mean Difference on FMA, [CI]. Table does not give model formula or P values; match main outcome-specific method and scale instead of treating all rows as FMA mean differences. Placebo/levodopa continuous summaries mean (SD), mRS median [IQR], PRAI count (%). SMD means standardized mean difference. N printed total participants. Each row is an independent numeric/inferential relationship with suffix .01–.10.
-
-| Row | Placebo | Levodopa | SMD | Effect [CI] | N |
-|---|---|---|---:|---|---:|
-| .01 FMA total unaffected, 3 months | 89.14 (10.32) | 89.67 (9.87) | 0.052 | 0.63 [−0.72,1.99] | 582 |
-| .02 FMA upper affected, 3 months | 39.12 (19.19) | 39.20 (19.30) | 0.004 | −0.73 [−2.97,1.50] | 582 |
-| .03 FMA lower affected, 3 months | 22.88 (6.90) | 22.91 (7.28) | 0.003 | −0.13 [−1.02,0.77] | 582 |
-| .04 FMA total affected, 5 weeks | 56.27 (25.20) | 57.37 (26.70) | 0.042 | 0.02 [−2.81,2.84] | 582 |
-| .05 NIHSS, 3 months | 4.20 (3.37) | 4.02 (3.39) | 0.054 | −0.14 [−0.61,0.33] | 582 |
-| .06 PROMIS 29, 3 months | 65.11 (13.79) | 64.74 (14.33) | 0.026 | −0.37 [−3.34,2.61] | 582 |
-| .07 PROMIS 10, 3 months | 29.87 (5.74) | 30.04 (5.73) | 0.031 | 0.18 [−0.98,1.33] | 582 |
-| .08 mRS, 3 months | 3.00 [2.00,4.00] | 3.00 [2.00,4.00] | 0.034 | 0.93 [0.69,1.23] | 596 |
-| .09 Rivermead Mobility Index, 3 months | 9.89 (4.73) | 9.70 (4.85) | 0.041 | −0.33 [−1.04,0.37] | 582 |
-| .10 PRAI no relevant improvement, 3 months | 51 (18.89), n=270 | 51 (18.48), n=276 | dash | dash | 546 |
-
-Footnote expansions: FMA Fugl-Meyer Motor Assessment; PROMIS 10/29 Patient-Reported Outcomes Measurement Information System; NIHSS National Institutes Stroke Score; mRS modified Rankin Scale; PRAI patient-reported assessment of relevance of motor improvement; CI confidence interval; IQR interquartile range. Link outcome keys to main Table 2/secondary narrative and SAP corresponding endpoints, imputation and outcome model. No effect reconstructed from raw group mean differences; printed modeled effect remains distinct.
-
-## N-R004 — eTable 5 complete SAE counts
-
-[DOC-004 p16](../../../joi250066supp3_prod_1761597796.4701.pdf#page=16). Columns Overall / Placebo / Levodopa. Title serious adverse events; raw n printed, no explicit unique-participant denominator for event categories. Header No. (%) under severity/outcome, but cells print counts only. Match main safety counts and distinguish event versus participant quantities using main context.
-
-| Row | Overall | Placebo | Levodopa |
-|---|---:|---:|---:|
-| n | 255 | 129 | 126 |
-| Participants died | 28 | 17 | 11 |
-| Hospitalization | 212 | 102 | 110 |
-| Permanent/significant incapacity or disability | 23 | 13 | 10 |
-| Life-threatening | 16 | 10 | 6 |
-| Severity severe, daily activities impossible | 103 | 54 | 49 |
-| Severity moderate, interferes with daily activities | 106 | 54 | 52 |
-| Severity mild, tolerable | 46 | 21 | 25 |
-| Outcome continuing | 6 | 4 | 2 |
-| Outcome recovered/resolved with sequelae | 76 | 40 | 36 |
-| Outcome study participant died | 29 | 18 | 11 |
-| Outcome unknown | 0 | 0 | 0 |
-| Outcome recovered/resolved | 142 | 65 | 77 |
-| Outcome other | 2 | 2 | 0 |
-
-No test, effect, interval, or P value supplied here. Both differently named death rows are retained independently; their measurement units are not collapsed.
-
-## N-R005 — eTable 6 complete AE counts
-
-[DOC-004 p17](../../../joi250066supp3_prod_1761597796.4701.pdf#page=17). Prespecified adverse events of interest, Overall / Placebo / Levodopa. Header No. (%) but counts alone printed. No participant denominator or test printed. Match main harm outcome and AE category definition S-R012.
-
-| Row | Overall | Placebo | Levodopa |
-|---|---:|---:|---:|
-| n | 145 | 67 | 79 |
-| Intensity mild | 58 | 29 | 29 |
-| Intensity moderate | 86 | 37 | 49 |
-| Intensity severe | 2 | 1 | 1 |
-| Outcome ongoing | 1 | 0 | 1 |
-| Outcome resolved with sequel | 29 | 13 | 16 |
-| Outcome resolved without sequel | 116 | 54 | 62 |
-| Drug relation certain | 2 | 1 | 1 |
-| Drug relation possible | 66 | 32 | 34 |
-| Drug relation Probably | 23 | 7 | 16 |
-| Drug relation Unassessable | 2 | 2 | 0 |
-| Drug relation unlikely | 39 | 15 | 24 |
-| Drug relation unrelated | 14 | 10 | 4 |
-
-Definitions: mild tolerable; moderate interferes with daily activities; severe daily activities impossible; probably likely; unassessable unclassifiable. Retain printed Overall n=145; no normalization to summed categories.
-
-## S-R010 — eTable 7 interaction model
-
-[DOC-004 p18](../../../joi250066supp3_prod_1761597796.4701.pdf#page=18). Visually transcribed embedded table. Title model including interaction between baseline FMA and treatment group, with baseline FMA. Visit 3/main analysis. Term names identify centered baseline affected-side FMA and levodopa contrast.
-
-| Term | Estimate | CI | p |
-|---|---:|---|---|
-| (Intercept) | 62.51 | [60.45,64.57] | <0.001 |
-| fma_affected.Visit_1.cent | 0.78 | [0.69,0.87] | <0.001 |
-| medicationLevodopa | −0.90 | [−3.78,1.99] | 0.542 |
-| fma_affected.Visit_1.cent:medicationLevodopa | 0.00 | [−0.12,0.12] | 0.971 |
-
-Printed caption: main analysis Visit 3, including interaction between baseline and follow-up, estimated levodopa treatment effect. Spline model with basic spline 3 degrees of freedom significantly better than no-spline model: F-test p<0.01 for all imputations. Preserve title's baseline/treatment interaction and caption's baseline/follow-up phrase as distinct printed model descriptions. Match main post hoc baseline interaction and primary effect, SAP model checks; no main-effect formula substituted for this interaction model.
-
-## S-R011 — eTable 8 spline model
-
-Same source p18, visually transcribed. Title model without interaction between baseline FMA and treatment group, baseline FMA modeled using splines (3 df).
-
-| Term | Estimate | CI | p |
-|---|---:|---|---|
-| (Intercept) | 20.09 | [14.28,25.90] | <0.001 |
-| bs(fma_affected.Visit_1.cent, 3)1 | 64.73 | [46.34,83.13] | <0.001 |
-| bs(fma_affected.Visit_1.cent, 3)2 | 57.52 | [43.48,71.56] | <0.001 |
-| bs(fma_affected.Visit_1.cent, 3)3 | 77.49 | [61.68,93.31] | <0.001 |
-| medicationLevodopa | −0.87 | [−3.65,1.92] | 0.541 |
-
-Caption main analysis Visit 3, FMA total score, baseline FMAA spline, estimated levodopa effect; no evidence for interaction between spline-baseline FMAA and medication, F-test p>0.75 for all imputations. Separate overall interaction test from medication main-effect P. Match main post hoc nonlinear baseline analysis and eFigure 6.
-
-## S-R012 — Prespecified harm endpoint content
-
-[DOC-004 p19](../../../joi250066supp3_prod_1761597796.4701.pdf#page=19). Complete eTable 9 list: nausea; vomiting; taste disturbances; dry mouth; anorexia; arrhythmias; postural hypotension; syncope (brief unconsciousness due to reduced brain blood flow); drowsiness including sudden sleep; fatigue; dementia; psychoses (distorted perception of reality); hallucinations; confusion; euphoria; abnormal dreams; insomnia; depression; anxiety; dizziness; dystonia (involuntary contractions); dyskinesia (inability to control voluntary movements); chorea (sudden face/shoulder twitching). No counts per named AE, test or estimate on this page. Match main prespecified AE reporting and prospective list by content.
-
-## S-R013 — Eligibility and exclusion
-
-[DOC-004 p20](../../../joi250066supp3_prod_1761597796.4701.pdf#page=20). All eFigure 1 criteria mapped. Inclusion: acute ischemic or intracerebral hemorrhagic stroke ≤7 days before randomization, excludes subarachnoid hemorrhage/cerebral venous sinus thrombosis; meaningful hemiparesis NIHSS motor arm+motor leg+limb ataxia sum ≥3, distal arm paresis equivalent to one item; randomization ≥24 hours after thrombolysis/thrombectomy; in-hospital rehabilitation needed; capable of standardized rehabilitation; consent participant/next of kin. Exclusion: age<18; Parkinson's; levodopa mandatory per physician; inability/unwillingness to comply with drug intake/procedures (oral, nasogastric, PEG); severe aphasia unable two-stage commands; prestroke mRS>3; prior hemiparesis; hypersensitivity or contraindication to levodopa/carbidopa; pregnancy/breastfeeding/intended pregnancy, childbearing-age pregnancy test; lack of reliable contraception throughout trial (oral/injected/implanted, intrauterine, or investigator accepted), surgical sterilization/hysterectomy or postmenopause>2 years considered outside childbearing potential. Match main eligibility/randomization and protocol criteria; no numeric result on page.
-
-## S-R014 — Complete schedule and assessment groups
-
-[DOC-004 p21](../../../joi250066supp3_prod_1761597796.4701.pdf#page=21), visually inspected schedule. Prescreen day −7 to 0; enrollment/randomization day 0 Visit 1; intervention dose escalation days 1–6, transition day X, full-dose days 7–34, taper days 35–39; Visit 2 end treatment 5 weeks ±7 days; Visit 3 primary outcome 3 months ±14 days; Visit 4 six months ±20 days; Visit 5 twelve months ±30 days; Visits 6–9 telephone follow-up 24,36,48,60 months each ±30 days; unscheduled end-of-study visit on withdrawal/discontinuation.
-
-Consent/randomization/drug and therapy booklet at enrollment; medication group A levodopa/group B placebo assigned enrollment and intervention phases through taper, marked end treatment at Visit 2. Inclusion/exclusion prescreen and enrollment; demographics prescreen; history and pregnancy at enrollment; physical examination enrollment, Visits 2–5 and unscheduled; rehabilitation concomitant therapies enrollment, intervention/transition/full dose/taper, Visits 2–5, unscheduled; concomitant medication those points plus telephone Visits 6–9; accountability enrollment and Visit 2, unscheduled conditional; optional blood sampling enrollment.
-
-Outcome rows: FMA (primary) enrollment, Visits 2–5, unscheduled; NIH Stroke Scale prescreen, enrollment, Visits 2–5, unscheduled; mRS enrollment, Visits 2–9, unscheduled; PROMIS-10 Visits 2–9, unscheduled; PROMIS-29 Visits 2–5, unscheduled; patient-reported improvement Visits 2–9, unscheduled; Rivermead Mobility Index enrollment, Visits 2–9, unscheduled. Optional selected-center rows Action Research Arm Test, Box and Block Test, Jamar dynamometer Test, Motricity index, Trunk control, 10-meter walk and Montreal Cognitive Assessment: enrollment, Visits 2–5, unscheduled; functional ambulation categories additionally Visits 6–9. Optional daily activity movement sensors enrollment and Visits 2–5, unscheduled. Mortality/all cause and any recurrent stroke monitored intervention/transition/full dose/taper, Visits 2–9, unscheduled; AE/SAE intervention through Visit 3 and conditional unscheduled, no scheduled marks after Visit 3.
-
-Footnotes: transition has no in-person visit, data collection on transfer acute-to-rehabilitation any intervention day; double asterisk optional/selected centers, blood may be sampled baseline or any follow-up; unscheduled visit upon discontinuation/consent withdrawal, [x] accountability only before treatment end and AE/SAE only before Visit 3; unscheduled outcomes subject to participant approval. Main matching keys primary three-month window, intervention 39-day regimen, secondary outcome times/status, extended observation; role remains REPORT schedule, not separate PLAN.
-
-## N-R006 — Enrollment figure printed totals
-
-[DOC-004 p22](../../../joi250066supp3_prod_1761597796.4701.pdf#page=22), eFigure 3. All n=610; University Hospital Basel n=318; University Hospital Zurich n=70; Hôpital de Fribourg n=57; Inselspital Bern n=52; CHUV Lausanne n=25; Klinik Hirslanden Zürich n=24; Kantonsspital St. Gallen n=19; Kantonsspital Münsterlingen n=15; Kantonsspital Winterthur n=13; Kantonsspital Baden n=8; Kantonsspital Graubünden n=8; Kantonsspital Aarau n=1. Y-axis Patients included, ticks 0,200,400,600. X-axis Date of randomization, ticks 2020,2021,2022,2023,2024. Curves show cumulative recruitment; exact recruitment dates and intermediate counts not printed, so not digitized. Match main total randomized and administrative centers only.
-
-## S-R015 — eFigure 4 forest plot
-
-[DOC-004 p23](../../../joi250066supp3_prod_1761597796.4701.pdf#page=23), continued [p24](../../../joi250066supp3_prod_1761597796.4701.pdf#page=24). Title total FMA estimands at three months, levodopa vs placebo. X-axis Adjusted Mean Difference (FMMA points), ticks −4,−2,0,2; null line 0, left favoring placebo, right favoring levodopa. Rows 1,2,3,5,6,7,8; estimand 4 not plotted because displayed ratio elsewhere. Every plotted interval crosses 0; point 7 is to right, other points to left. No numeric estimate/CI annotation; numeric counterparts are S-R007, not digitized from pixels. Caption 1 excludes deaths (primary treatment policy), 2 missing/incomplete complete case, 3 deaths imputed. Continuation 5 excludes motor-impairing SAE hypothetical/on treatment phrase; 6 intake<80%; 7 fewer rehabilitation therapies; 8 out-of-range three-month visits. Caption-based contrast and units captured; matching main sensitivity results use S-R007.
-
-## N-R007 — eFigure 5 by-center display
-
-[DOC-004 p25](../../../joi250066supp3_prod_1761597796.4701.pdf#page=25). Title FMA at three months by treatment arm and center. Five facets HFR, INS, USB, USZ, other; each Placebo/Levodopa. Y-axis FMMA affected side (change Visit 1 to Visit 3), ticks −50,0,50; x-axis medication. Points, boxes/medians/whiskers without numeric summaries or sample-size annotations. Centers with <50 recruitments pooled Other. All facet labels, arms, axis quantity and threshold captured; no exact medians/quantiles inferred from graphics. Matching key baseline-to-three-month change, eTable 3 estimand 9, main center/subgroup display; title and actual axis quantities retained separately.
-
-## S-R016 — eFigure 6 spline graphic
-
-[DOC-004 p26](../../../joi250066supp3_prod_1761597796.4701.pdf#page=26). Title nonlinear association between baseline and three-month FMA (spline model); plot title Predicted values of fma affected Visit 3. Y-axis fma affected Visit 3, ticks 30,60,90. X-axis fma affected Visit 1.cent, ticks −40,−20,0,20,40,60. Increasing nonlinear red prediction curve with shaded band; no numeric prediction limits, treatment contrast, sample sizes or band confidence-level label printed. Caption says Figure 4: main estimate including FMAA at baseline as spline, estimated marginal effects. Capture figure label as printed without changing source. Matches spline terms/test S-R011 and baseline predictor center in code.
-
-## S-R017 — eFigure 7 post hoc/subgroups
-
-[DOC-004 p27](../../../joi250066supp3_prod_1761597796.4701.pdf#page=27). Rows PH1,PH2,PH3; x-axis estimate ticks −6,−3,0,3; y-axis model; null vertical 0. Top legend black comment, green moderate–severe impairment, purple very severe impairment. PH1 black near 0, PH2 black right of 0, PH3 green right and purple left; all four horizontal intervals cross 0. No exact numeric effect/CI/P/N annotations, so no digitization or invented precision. Caption PH1 primary analysis model with death missing outcomes imputed as 0; PH2 primary model excluding low baseline intake and minimal documented rehabilitation; PH3 baseline FMA severe ≤35 vs mild-to-moderate >35. Preserve caption and top-legend severity names separately. PH1 matches eTable 3 estimand 10, PH2 estimand 11; PH3 matches main baseline severity subgroup/post hoc analysis, with printed cutoff 35. Label alone does not identify quantitative subgroup effects to finer precision than their graphical sign/null crossing.
-
-## S-R018 — Implemented main analysis code
-
-[DOC-006 p1](../../../joi250066supp5_prod_1761597796.4751.pdf#page=1), printed lines 1–35; visually read usable image, no usable historical code text relied upon. Title ESTREL Main Analysis Code. Packages ggplot2 and mice lines 4–5. Lines 8–10 load raw dat/dat.rda and dat/mice0.rds (comment imputations on FAS), define N.imp as length(mice0$imp[[1]]); number of imputations is data-driven in code, no literal 100 here. Lines 13–16 raw boxplot/jitter by medication with y my.data[, ep], white outlier color, theme_bw and ylab(ep.name). Lines 19–21 comments identify fma_affected.Visit_3 primary endpoint, fma_affected.Visit_1.cent centered baseline, medication randomized group.
-
-Exact analysis formula lines 22–23: `model <- with(mice0, lm(fma_affected.Visit_3 ~ fma_affected.Visit_1.cent + medication))`. Pool/return lines 25–26: `summary(pool(model))`. Diagnostic lines 29–35 set par(mfrow=c(2,2)), loop i over 1:N.imp, fit same formula using `data = complete(my.data = mice0, i)`, plot with main paste0("Imputation: ", i), then par(mfrow=c(1,1)). This is implemented ordinary linear model of follow-up affected-side FMA on centered baseline and treatment, pooled over imputed FAS data. No treatment/baseline interaction, spline, center covariate/random term, additional covariate or outcome change expression appears in the main formula. Diagnostic formula identical. Missing-data generation and raw data not supplied in this PDF; no raw-data execution attempted. Match main primary analysis, S-R002 pooling, S-R007 estimand 1, S-R008 change-score analysis and SAP main model. Code's plotted variables ep/ep.name are referenced but not defined in this page; preserve that boundary without assumptions.
-
-## S-R019 — Data-sharing scope and availability
-
-[DOC-007 p1](../../../joi250066supp6_prod_1761597796.4801.pdf#page=1). Publication September 22, 2025; trial registry identifier NCT03735901 and BASEC-ID 2018-02021. Printed Data available: No. Subsequent explanation trial data can be made available on reasonable request to corresponding author, with detailed proposal, objectives and SAP; additional material may be requested; approvals sponsor-investigator/corresponding author, steering committee and center principal investigators; compatibility ethics/regulatory and consent checked. Administrative evidence, no numeric result, planned decision rule, or supplied participant dataset. Neither online registry nor request pathway accessed.
-
-## Matching and completeness handoff
-
-Exact source-page links above are package-relative from this extraction file. All source matching uses result identity, endpoint/time, population, contrast, adjustment/model and statistical scale; figures with no printed numeric values are recorded as graphical-only evidence. N-R002 row keys span all baseline rows; N-R003/S-R009 .01–.10 span all secondary outcomes; N-R004/N-R005 span all harm counts; S-R007 estimands 1–8 and S-R008 9–11 are complete; S-R010/S-R011 cover all coefficient/test rows. Administrative units were opened individually through usable page-preserving layouts; no unit omitted by assuming absence of extraction means absence of content.
-
-Coverage: DOC-004 27/27, DOC-005 8/8, DOC-006 1/1, DOC-007 1/1. Reusable-backed units 37, fresh-required 0, scientific gaps 0. Limitations: native extraction lacks embedded graphic/table values on DOC-004 p18 and graphic pages21–23,25–27 and code DOC-006 p1, all closed by visual mapping. Exact graphical-only values in center boxplots, spline curve/band and subgroup forest plot are not printed and are not assigned artificial precision. No additional workbook/CSV/DOC/DOCX support within assignment. No old conclusions used.
+| AD01 | joi250066supp4_prod_1761597796.4751.pdf#page=1 | Nonauthor collaborators: Aarau, Baden, Lausanne names and roles; footer version02-22,1of8; no trial count, endpoint, test or analysis definition. |
+| AD02 | joi250066supp4_prod_1761597796.4751.pdf#page=2 | Collaborators Lausanne, Fribourg, Hirslanden; footer2of8; no applicable quantitative relationship. |
+| AD03 | joi250066supp4_prod_1761597796.4751.pdf#page=3 | Collaborators Bern and Basel; footer3of8; no applicable quantitative relationship. |
+| AD04 | joi250066supp4_prod_1761597796.4751.pdf#page=4 | Basel collaborators; footer4of8; no applicable quantitative relationship. |
+| AD05 | joi250066supp4_prod_1761597796.4751.pdf#page=5 | Basel and Zurich collaborators; footer5of8; no applicable quantitative relationship. |
+| AD06 | joi250066supp4_prod_1761597796.4751.pdf#page=6 | Graubünden, Münsterlingen, StGallen, FelixPlatter collaborators; footer6of8; no applicable quantitative relationship. |
+| AD07 | joi250066supp4_prod_1761597796.4751.pdf#page=7 | FelixPlatter and Rheinfelden collaborators; footer7of8; no applicable quantitative relationship. |
+| AD08 | joi250066supp4_prod_1761597796.4751.pdf#page=8 | Rheinfelden and Valens collaborators; footer8of8; no applicable quantitative relationship. |
+| AD09 | joi250066supp5_prod_1761597796.4751.pdf#page=1 | ESTREL Main Analysis Code,35numbered lines. See full implementation transcription below; matches main primary baseline-adjusted linear model, randomized treatment, MI pooling and diagnostics. |
+| AD10 | joi250066supp6_prod_1761597796.4801.pdf#page=1 | Data sharing statement: ClinicalTrials.govNCT03735901,BASEC2018-02021;data available field No;trial data may be available on reasonable request with detailed study proposal, objectives andSAP, approval by corresponding author/sponsor,steering committee andeachcenter PI subject to ethics/consent. No result-relevant numerical relationship; identifiers administrative. |
+
+## AD09 implementation relationships
+
+These are printed R formulas, not executed results or workbook caches. No raw data or imputation object is supplied in this source.
+
+- Lines4–5 load `ggplot2` and `mice`.
+- Lines8–10: `load("dat/dat.rda")` raw data; `load("dat/mice0.rds")` imputations on FAS; `N.imp <- length(mice0$imp[[1]])` number of imputations used. This source does not print an evaluated N.imp.
+- Lines13–16 graph raw data with medication as x, `my.data[, ep]` as y, boxplot plus jitter, white outliers, `theme_bw()` and `ylab(ep.name)`.
+- Lines19–23 define `fma_affected.Visit_3` primary endpoint, `fma_affected.Visit_1.cent` centered baseline, medication according to randomization. Formula: `model <- with(mice0, lm(fma_affected.Visit_3 ~ fma_affected.Visit_1.cent + medication))`.
+- Line26 `summary(pool(model))` pools and returns model. No coefficients, confidence intervals or P values printed in code PDF.
+- Lines29–35 diagnostics: `par(mfrow = c(2,2))`; loop `for(i in c(1:N.imp))`; fit `lm(fma_affected.Visit_3 ~ fma_affected.Visit_1.cent + medication, data = complete(my.data = mice0, i))`; `plot(m, main = paste0("Imputation: ", i))`; reset `par(mfrow = c(1,1))`.
+
+All ten assigned units mapped. Eight collaborator pages and sharing page have no applicable trial quantitative relationships; code page supplies five implementation relationships. No scientific coverage gap.

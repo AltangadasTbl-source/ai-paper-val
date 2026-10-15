@@ -1,4 +1,6 @@
-# Source coverage
+# Complete Source Coverage
+
+Unique source-page counts, independent of overlapping derivatives. Usable rendered pages count as reusable assets even when native text is sparse or unreadable. Fresh-required is the count without any usable reusable representation; all pages still require fresh scientific mapping.
 
 | Source ID | Source path | Unit type | Total units | Reusable units | Fresh-required units | Mapped units | Status |
 |---|---|---|---:|---:|---:|---:|---|
@@ -10,4 +12,6 @@
 | DOC-006 | joi250066supp5_prod_1761597796.4751.pdf | PDF_PAGE | 1 | 1 | 0 | 1 | COMPLETE |
 | DOC-007 | joi250066supp6_prod_1761597796.4801.pdf | PDF_PAGE | 1 | 1 | 0 | 1 | COMPLETE |
 
-All 159 source units have usable reusable text or readable page images. Every source unit remains assigned for fresh quantitative mapping; reusable assets do not imply completed scientific mapping. No unit lacks both usable text and a readable image. Protocol/SAP/code machine-text gaps are derivative limitations, covered by source-linked images. Images are locator/transcription aids; source-page confirmation remains required. All mapped counts are finalized from completed page-by-page mapper artifacts.
+Totals: 159 source units; 159 reusable-backed; 0 fresh-required; 159 mapped after fresh main and support completion. Every supplied source unit is complete.
+
+Coverage assignment: main mapper DOC-001 pages 1-10; fresh support mapping DOC-002 pages 1-94, DOC-003 pages 1-18, DOC-004 pages 1-27, DOC-005 pages 1-8, DOC-006 page 1, DOC-007 page 1. No uncovered scientific unit may remain at completion. Protocol and SAP text limitations are closed by complete visual mapping of existing page images or newly produced targeted OCR, with source PDF as authority.

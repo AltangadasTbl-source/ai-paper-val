@@ -1,0 +1,20 @@
+# Numeric consistency review: support shard B
+
+Scope:116 assigned relationships N231–N346, PB026–PB061 and PC001–PC080, all PLAN content in DOC-002. Complete relationship-by-relationship checks and transcribed exact source-page links are in ../relationships/numeric_support_b_inventory.md. Findings:0. No qualifying discrepancy was reproduced in the assigned numeric scope.
+
+Applied focus: A counts and denominators, with C effect-measure identity where a displayed quantity permits comparison. All arithmetic-bearing relationships were checked, including dose phase partitions, sample target/inflation, historical table arm totals, weights, scale components, repeated quantities, and walking absolute/relative improvement. Administrative and bibliographic quantities were explicitly checked for applicability rather than treated as participant totals. No current-trial result is equated with historical background, no model-based effect is equated with a crude ratio, and no observed participant number is inferred from visit marks.
+
+## Excluded observations
+
+| Location | Observation | Reason code |
+|---|---|---|
+| PLAN [DOC-002 p56](../../../joi250066supp1_prod_1761597796.4601.pdf#page=56), sample-size synopsis; [p84](../../../joi250066supp1_prod_1761597796.4601.pdf#page=84), §11.2; N253/N329 | 610 planned with10% attrition gives549 available while548 are required. Treating610 as[609.5,610.5] and10% as[9.5%,10.5%] gives[545.5025,552.5025]; the549 output interval[548.5,549.5] overlaps, gap0. Comparing548 and549 half-unit intervals[547.5,548.5]/[548.5,549.5] also gives gap0. With exact planned discrete610 and10%,549 exceeds the required548 by one rather than changing the power target. Consolidated repeated occurrence. | ROUNDING_OR_DISPLAY_PRECISION |
+| PLAN [DOC-002 p66](../../../joi250066supp1_prod_1761597796.4601.pdf#page=66), historical Figure1 weights; N271 | Eight printed weights12.1,10.7,14.5,5.3,7.1,14.4,14.3,21.7 sum100.1%. Their half-unit intervals sum[99.7,100.5], overlapping100.0% interval[99.95,100.05]; gap0, relative discrepancy0. | ROUNDING_OR_DISPLAY_PRECISION |
+| PLAN [DOC-002 p86](../../../joi250066supp1_prod_1761597796.4601.pdf#page=86), §11.4.3 final sentence; N337 | Printed exception pointer(c and d) follows explicit(d)complete-case and(e)per-protocol analysis paragraphs. The immediate paragraphs identify both intended subset analyses directly; no printed participant count or result changes. The letter reference alone is screened out. | NOTATION_OR_TYPOGRAPHY |
+| PLAN [DOC-002 pp57–58](../../../joi250066supp1_prod_1761597796.4601.pdf#page=57), abbreviations; [p70](../../../joi250066supp1_prod_1761597796.4601.pdf#page=70), PROMIS definition; N257/N282 | PROMIS expanded wording in abbreviations differs from the instrument definition, while PROMIS10/29 and their scoring identify the same instruments at once. No score, count, denominator or printed numerical result changes. | TERMINOLOGY_OR_WORDING |
+
+## Evidence and limitations
+
+The complete current-run maps fresh_support_protocol_b.md/fresh_support_protocol_c.md and stable fresh_support_relationships.md supplied source-linked transcription. Exact source identity is DOC-002, joi250066supp1_prod_1761597796.4601.pdf. The source-linked p86 image was directly inspected for the exception-pointer observation; mapped historical table cells and all other source clauses were reviewed. These factual maps were produced by complete page-image inspection. CPU tooling follows tooling_record.md; no new rendering/OCR or installation was needed. Legacy render-engine provenance remains unrecorded, and illustrative plot coordinates are not exact printed values. No finding needs unobserved raw data or an assumed statistical method. Full source-to-report planned-analysis comparisons and inferential reproduction remain assigned to the separate cross-source/statistical stages.
+
+Counts:116 relationships;116 documented completions;0 findings;4 excluded observations;0 unreviewed assigned relationships.

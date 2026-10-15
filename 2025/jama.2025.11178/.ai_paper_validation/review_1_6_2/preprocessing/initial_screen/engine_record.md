@@ -1,0 +1,7 @@
+# Initial inclusion-screen source confirmation
+
+New derivatives: main_p5.png and main_p9.png, generated directly from DOC-001 with workflow_1_6_2/scripts/pdf_tools.py render, pinned PyMuPDF 1.26.4, 200 dpi, CPU; no OCR. workbook_sheet1.xml and workbook_sharedStrings.xml are exact unzip -p copies of the supplied DOC-006 ZIP entries, examined with Perl only. No source or reused asset changed.
+
+Current-run exact-source renders independently visually reread: DOC-001 pp.2,3,4,5,9,10,11; DOC-002 pp.32,43,44,56,57; DOC-003 pp.4,17,19,20,21; DOC-004 pp.3,4; DOC-005 pp.4,5,7,8,9,10,11,13,14,15,17,18. Total 31 distinct PDF pages, covered in six bounded visual batches of 5,5,5,5,4,5 pages and a final batch of 2 pages. Current render directories: cross_source_review, numeric_review, protocol_a_restart, protocol_b_restart, sap_restart, stat1_reports, stat1_raw, initial_screen. Exact source files remain final authority; checker transcriptions did not supply decisions.
+
+Workbook XML confirmation: eTable 3 E3=shared string144=(N=1568), E82=string290=711 (73.2), E83=2; A82=string96=current-depression label, A83=string109=Missing, A110=string355=missing excluded from percentage denominator; G2=string138=Pre-specified Adjustment Variables, A10=string4=Age in years, G10=string146=X; A12:A16=education heading/high school/associate or technical/college/doctoral or postgraduate; A18=employment label, H18=string356=<0.001, I18=.0228, J18=.0591.

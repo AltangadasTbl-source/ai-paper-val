@@ -32,13 +32,13 @@ TPL_PATTERN_SHEET = "C_jama.2017.21906"
 TPL_PREFIX = "2018::jama.2017.21906::"
 TPL_LAST = 7
 
-# Papers without a workflow 1.6.2 report get an empty placeholder sheet. As of 2026-10-11 the
-# 1.6.2 runs for these two papers stopped before screening and produced no final report.
+# Papers without a workflow 1.6.2 report get an empty placeholder sheet. jama.2025.11178 and
+# jama.2025.15185 were placeholders until their 1.6.2 reports were completed (rebuilt 2026-10-14).
 _PENDING = {
     "papers_note": "Placeholder: workflow 1.6.2 output pending; no candidates in this version",
     "sheet_note": "Placeholder: no workflow 1.6.2 output for this paper yet; nothing to review in v.2.4.1.",
 }
-PLACEHOLDERS = {"jama.2025.11178": _PENDING, "jama.2025.15185": _PENDING}
+PLACEHOLDERS = {}
 
 DOMAINS = ["statistical_results", "report_internal_inconsistency", "plan_material", "protocol_report"]
 REQUIRED_FIELDS = ["Candidate statement", "Review domain", "Relationship type", "Exact source locations"]
@@ -166,6 +166,22 @@ def field_value(lines, i, rest, where, label):
             items.append(l[2:].strip())
         elif l.startswith("  ") and items and "bullet" in kinds:
             items[-1] += " " + l.strip()
+        elif l.startswith("|") and "table" not in kinds and lines[j + 1:j + 2] and re.fullmatch(r"\|[-: |]+\|?", lines[j + 1].strip()):
+            # jama.2025.11178 C018 gives its locations as a table; one item per data row, from the
+            # location column plus the content-role column when there is one.
+            kinds.add("table")
+            hdr = [c.strip() for c in l.strip().strip("|").split("|")]
+            role_col = hdr.index("Content role") if "Content role" in hdr else None
+            raw += [l, lines[j + 1]]
+            j += 2
+            while j < len(lines) and lines[j].startswith("|"):
+                cells = [c.strip() for c in lines[j].strip().strip("|").split("|")]
+                if len(cells) != len(hdr):
+                    fail(f"{where}: field {label!r} table row {j + 1} has {len(cells)} cells, header {len(hdr)}")
+                items.append(cells[0] + (f" ({cells[role_col]})" if role_col is not None else ""))
+                raw.append(lines[j])
+                j += 1
+            continue
         elif l.startswith(("|", "#", ">", "```")):
             fail(f"{where}: field {label!r} has unexpected block line {j + 1}: {l[:80]!r}")
         else:
