@@ -1,0 +1,217 @@
+\documentclass[UTF8,fontset=none,11pt,a4paper]{ctexart}
+\usepackage[margin=24mm]{geometry}
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans Mono CJK SC}
+\usepackage{amsmath,amssymb,booktabs,tabularx,longtable}
+\usepackage{xcolor}
+\usepackage[unicode,colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\usepackage{enumitem}
+\setlist{itemsep=4pt,topsep=5pt}
+\setlength{\emergencystretch}{3em}
+\setlength{\parskip}{5pt}
+\newcommand{\recordlink}[2]{\href{#1}{#2}}
+\title{C001 Review Dialogue\\\large Status, Reasoning, and Detailed Power Calculation}
+\author{Conversation record}
+\date{19 October 2026}
+\begin{document}
+\maketitle
+\noindent This record preserves the two substantive user questions and assistant answers about C001, followed by the request to export the discussion. Mathematical notation and links have been typeset for PDF. Source and review files are linked relative to this PDF's location in \texttt{review\_records/}.
+\tableofcontents
+
+\section{C001 status and reasoning}
+\subsection*{User}
+\begin{quote}
+tell me, what happened to C001 in CN, include the reasonging and key sentences.
+\end{quote}
+
+\subsection*{Assistant}
+\textbf{C001 最终被保留在报告中：独立筛选决定纳入，证据复核重现了差异，第二轮统计检查和质量审计均支持保留；当前状态仍为“等待人工裁定”（Pending Human Adjudication）。}
+
+\subsubsection*{它涉及什么？}
+\recordlink{../joi250068supp1_prod_1760999665.28862.pdf\#page=22}{研究方案第 22 页，Table 4} 将“年龄 $<75$ 岁、全试验总样本量 5000、双侧 $\alpha=.01$”的亚组统计功效列为 \textbf{34\%}。审查使用表内参数重建计算，得到约 \textbf{28.59\%}。
+
+\subsubsection*{为什么最终纳入？}
+\begin{enumerate}
+\item \textbf{计算方法有同表支持。} 带连续性校正的两比例近似计算，在工作流的显示精度容许范围内，可以解释另外 \textbf{23 个功效单元格}；12 个样本量计算的中心差异也都小于 1\%。
+\item \textbf{舍入不足以解释差距。} 将显示参数可能的舍入范围全部纳入，并增加数值计算保护边界后，重建功效范围为 \textbf{27.225013\%--29.972805\%}。打印值 34\% 对应的舍入范围是 \textbf{33.5\%--34.5\%}，两者仍不重叠。最小差距为 \textbf{3.527195 个百分点}；按工作流定义，相对差距约 \textbf{10.37\%}，超过 5\% 阈值。
+\item \textbf{替代解释尚未得到证实。} 去掉连续性校正可得到约 \textbf{35.70\%}，接近 34\%；但同样方法在该行“4000、$\alpha=.01$”条件下得到约 \textbf{27.42\%}，无法同时解释表中的 \textbf{20\%}。因此，仍需作者说明具体算法、校正规则及未舍入输入。\recordlink{../.ai_paper_validation/final_report_1_6_2.md}{完整推理与计算}
+\end{enumerate}
+
+\subsubsection*{处理过程与关键原句}
+\begin{itemize}
+\item 初次统计发现编号为 \textbf{F-ST1-001}；独立筛选记录为：\\
+\textbf{INCLUDE / MEETS\_THRESHOLD}，随后登记为 \textbf{C001}。\recordlink{../.ai_paper_validation/review_1_6_2/screening/inclusion_screen.md}{筛选记录}
+\item 证据复核确认：
+\begin{quote}
+``The registered inconsistency is reproduced.''
+\end{quote}
+即：登记的差异可以重现。\recordlink{../.ai_paper_validation/review_1_6_2/verification/evidence_recheck.md}{复核记录}
+\item 对未知计算实现，最终报告解释：
+\begin{quote}
+``The unknown exact implementation becomes the human question, rather than an exclusion.''
+\end{quote}
+即：具体实现未披露，成为需要人工追问的问题，不能据此直接排除候选。\recordlink{../.ai_paper_validation/final_report_1_6_2.md}{最终报告}
+\item 最终状态：
+\begin{quote}
+``C001 remains \textbf{Pending Human Adjudication}.''
+\end{quote}
+它归类为 \textbf{plan\_material / P\_P}，表示研究方案内部的计划材料比较；\textbf{CONFIRMED} 指审计确认其符合纳入门槛，并非人工最终裁定。报告没有指定替换功效值，也没有据此认定实际治疗效果或研究结论发生变化。\recordlink{../.ai_paper_validation/final_report_1_6_2.md}{状态与影响范围}
+\end{itemize}
+
+\clearpage
+\section{Detailed calculation of 28.59\% power}
+\subsection*{User}
+\begin{quote}
+give me the detailed calculation of the power and how you arrived at 28.59\% ?
+\end{quote}
+
+\subsection*{Assistant}
+The \textbf{28.59\%} comes from a \textbf{continuity-corrected normal approximation for comparing two independent proportions}, using the displayed inputs in protocol Table 4. It is a diagnostic reconstruction; the protocol does not identify its exact power-calculation software or function.
+
+\subsection{Inputs}
+For the age-under-75 subgroup, the \recordlink{../joi250068supp1_prod_1760999665.28862.pdf\#page=22}{protocol's Table 4} gives:
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Total trial sample size, $T$ & $5000$ \\
+Subgroup proportion, $f$ & $25\%$ \\
+Control event probability, $p_0$ & $0.0118$ \\
+Active event probability, $p_1$ & $0.0296$ \\
+Two-sided significance level, $\alpha$ & $0.01$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+With equal allocation, the subgroup contains $5000(0.25)=1250$ participants, giving \textbf{625 per arm}:
+\[
+m=\frac{Tf}{2}=\frac{5000(0.25)}{2}=625.
+\]
+The assumed difference and average probability are:
+\[
+d=p_1-p_0=0.0296-0.0118=0.0178,
+\]
+\[
+\bar p=\frac{p_0+p_1}{2}=0.0207.
+\]
+
+\subsection{Calculate the two standard deviations}
+The approximation uses a pooled standard deviation to set the rejection threshold:
+\[
+\begin{aligned}
+s_0&=\sqrt{\frac{2\bar p(1-\bar p)}{m}}\\
+&=\sqrt{\frac{2(0.0207)(0.9793)}{625}}\\
+&=\boxed{0.008054118946}.
+\end{aligned}
+\]
+Under the assumed alternative, the difference in sample proportions has approximate standard deviation:
+\[
+\begin{aligned}
+s_1
+&=\sqrt{\frac{p_0(1-p_0)+p_1(1-p_1)}{m}}\\
+&=\sqrt{\frac{(0.0118)(0.9882)+(0.0296)(0.9704)}{625}}\\
+&=\boxed{0.008038367994}.
+\end{aligned}
+\]
+Thus, writing $D=\widehat p_1-\widehat p_0$, the power calculation approximates:
+\[
+D\sim N(d,s_1^2).
+\]
+
+\subsection{Calculate the rejection threshold, including continuity correction}
+For a two-sided test with $\alpha=.01$:
+\[
+z_{1-\alpha/2}=\Phi^{-1}(0.995)=2.575829304,
+\]
+where $\Phi$ is the standard normal cumulative distribution function.
+
+The continuity correction for the difference in proportions is:
+\[
+c_{\mathrm{CC}}
+=\frac12\left(\frac1m+\frac1m\right)
+=\frac1m
+=\frac1{625}
+=0.0016.
+\]
+The reconstructed rejection threshold is therefore:
+\[
+\begin{aligned}
+C
+&=z_{1-\alpha/2}s_0+c_{\mathrm{CC}}\\
+&=(2.575829304)(0.008054118946)+0.0016\\
+&=0.020746035596+0.0016\\
+&=\boxed{0.022346035596}.
+\end{aligned}
+\]
+In this approximation, rejection occurs when $D>C$ or $D<-C$.
+
+\subsection{Calculate the probability of rejection under the alternative}
+Power is the sum of the two rejection-tail probabilities:
+\[
+\begin{aligned}
+\text{Power}
+&=P(D>C)+P(D<-C)\\
+&=\Phi\left(\frac{d-C}{s_1}\right)
++\Phi\left(\frac{-d-C}{s_1}\right).
+\end{aligned}
+\]
+For the positive-effect tail:
+\[
+\frac{d-C}{s_1}
+=\frac{0.0178-0.022346035596}{0.008038367994}
+=-0.565542110,
+\]
+so:
+\[
+P(D>C)=\Phi(-0.565542110)\approx0.285852506.
+\]
+For the opposite tail:
+\[
+\frac{-d-C}{s_1}
+=\frac{-0.0178-0.022346035596}{0.008038367994}
+=-4.994301782,
+\]
+so:
+\[
+P(D<-C)=\Phi(-4.994301782)\approx0.000000296.
+\]
+Adding them:
+\[
+\boxed{
+\begin{aligned}
+\text{Power}
+&\approx0.285852506+0.000000296\\
+&=0.285852802\\
+&=28.5852802\%\approx\mathbf{28.59\%}.
+\end{aligned}
+}
+\]
+
+\subsection{Why use this particular reconstruction?}
+It satisfies the review's display-precision tolerance for the other \textbf{23 power cells} in Table 4. For the same age-under-75 row, it gives:
+
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+Total trial size & Two-sided $\alpha$ & Reconstructed power & Printed power \\
+\midrule
+4000 & .05 & 41.85\% & 41\% \\
+4000 & .01 & 20.53\% & 20\% \\
+5000 & .05 & 52.06\% & 52\% \\
+5000 & .01 & \textbf{28.59\%} & \textbf{34\%} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Removing the continuity correction gives approximately \textbf{35.70\%} for the last cell, but then gives \textbf{27.42\%} for the 4000/.01 cell, compared with its printed 20\%. The precise method and underlying inputs that produced 34\% remain the question for human review. \recordlink{../.ai_paper_validation/review_1_6_2/verification/evidence_recheck.md}{Recorded calculation and method limitations}
+
+\section{PDF export request}
+\subsection*{User}
+\begin{quote}
+save this dialog into a pdf file under ./review\_records/*. use ctex and xelatex if you need.
+\end{quote}
+
+\end{document}

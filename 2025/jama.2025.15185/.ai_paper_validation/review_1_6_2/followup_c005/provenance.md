@@ -1,0 +1,11 @@
+# C005 focused follow-up
+
+Date: 2026-10-18. This focused explanation does not rerun Workflow 1.6.2 or alter existing candidate records. All seven supplied PDFs passed the existing source SHA-256 manifest check.
+
+Engine: supplied workflow_1_6_2/scripts/pdf_tools.py with available python3 and PyMuPDF. Compute device: CPU. No OCR, installation, or external sources were used.
+
+Fresh derivatives: protocol-p86.png from supplied supplement 1 page 86; sap-p11.png, sap-p12.png, sap-p15.png from supplied supplement 2 pages 11, 12, 15; results-p18.png, results-p25.png, results-p27.png from supplied supplement 3 pages 18, 25, 27. All were visually inspected. Renders use 130 dpi except results-p25.png at 110 dpi. results-native.txt covers all 27 supplied supplement 3 pages using PyMuPDF sorted reading order. Existing main-article source-linked text for pages 5-7 and the earlier focused main-native.txt extraction were consulted along with the current ledger, screening, recheck, checker, final report and quality audit records. Existing OCR was used as a locator for the directly viewed plan pages.
+
+C005 concerns three consolidated planned-primary-endpoint output groups not identified in the supplied report: the seven-factor subgroup interaction/forest package, center-by-treatment model outputs, and additional-covariate sensitivities. Related reported estimand sensitivities, continuous baseline interaction/spline models, center boxplots and a post hoc fixed-35 severity forest do not identify those specific outputs. A graph satisfies the planned graphical center component; that component is not absent. Median versus fixed-cutoff rules differ; actual participant membership is not reconstructed.
+
+Current recorded state: protocol_report; P_R; reproduced; inclusion audit CONFIRMED; Pending Human Adjudication. Included findings F-XS-103, F-ST1-003 and F-ST1-004 map to this one stable ID. Nonidentification is bounded to the supplied package and does not establish that analyses were never performed, that missing results have any particular direction or significance, or that the primary effect changes. Output locations and any operative amendments remain human questions. Per the user's conditional scope, downstream meta-analysis discussion is omitted because this candidate is protocol_report rather than statistical_results.

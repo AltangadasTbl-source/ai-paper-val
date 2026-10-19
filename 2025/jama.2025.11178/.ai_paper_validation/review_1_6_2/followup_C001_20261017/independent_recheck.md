@@ -1,0 +1,51 @@
+# C001 focused independent source recheck
+
+Date: 2026-10-17. Scope: C001 only, including all five affected/corroborating source locations in its existing registration and the main statistical-method/adherence context. Existing audit records and sources remain unchanged. No new candidate discovery or adjudication was performed. Status: Pending Human Adjudication.
+
+## Direct source observations
+
+The following supplied-source page renderings were visually read, rather than treating extracted text or an earlier finding as authority: `preprocessing/cross_source_review/main-3.png`, `main-4.png`, `tidier-3.png`, `tidier-4.png`, and `preprocessing/protocol_b_restart/page-43.png`, `page-44.png`. These are previously produced CPU derivatives; no fresh extraction or rendering was needed. Physical PDF page numbers below include supplement cover pages.
+
+| Source and truthful location | Role by content | Source sentence or table cell | Recheck fact |
+|---|---|---|---|
+| [Main article physical PDF p.3, journal p.594, Online Program](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=3) | REPORT | “Each session requires approximately 30 to 45 minutes to complete and provides interactive training in 1 or more evidence-based pain-coping skills.” | Reported online session duration is approximately 30–45 minutes. Same paragraph: 8 sessions, approximately one per week, all intended within 12 weeks. |
+| [Supplement 1 physical PDF p.43, protocol printed p.31, §10.1.1 painTRAINER](../../../joi250046supp1_prod_1755300121.14087.pdf#page=43) | PLAN | “Each session takes 45-60 minutes to complete and provides interactive training in one or more evidence-based pain-coping skills.” | Planned description is 45–60 minutes for the same online eight-session painTRAINER intervention. Header identifies Version 5.0, 10 Nov 2022. |
+| [Supplement 3 physical PDF p.3, TIDieR table, Procedures × painTRAINER](../../../joi250046supp3_prod_1755300121.15087.pdf#page=3) | REPORT | “Eight participant self-completed online sessions, 30-45 minutes each” | Independently corroborates the main article's reported duration; it does not conflict with the main report. |
+| [Supplement 3 physical PDF p.4, When and How Much × painTRAINER](../../../joi250046supp3_prod_1755300121.15087.pdf#page=4) | REPORT | “Access 8 weekly online modules (30-45 min) to be completed during 12-week treatment period” | Second occurrence of reported 30–45 minutes. Separately lists one onboarding/registration call of approximately 15 minutes and between-session skills practice. |
+| [Supplement 1 physical PDF p.44, protocol printed p.32, coach overview](../../../joi250046supp1_prod_1755300121.14087.pdf#page=44) | PLAN | “Each session takes 60 minutes” for the coach-led intervention. | Context only: main p.3 and TIDieR p.3 report coach sessions of approximately 45–60 minutes, a range containing 60. This is not another retained numeric discrepancy. It must not be substituted for the online-arm comparison. |
+
+## Mechanical recheck and classification
+
+- **Location found:** Yes, all registered locations above.
+- **Source value/text matched:** Yes, main and both TIDieR cells read 30–45 minutes for online painTRAINER; protocol §10.1.1 reads 45–60 minutes.
+- **Comparator matched:** Yes, same named online intervention, eight sessions. The main article and TIDieR corroborate the reported side; no S_C relationship is added merely because two REPORT documents agree.
+- **Consistency rule applicable:** A planned-versus-reported randomized-intervention duration is explicitly an eligible cross-document comparison in `QUALITY_CONTROL_SCOPE.md`. This is a Route B extraction question, not an interval/P-value conflict or a claim that any individual participant received a specified number of minutes.
+- **Logical comparison reproduced:** The stated ranges differ in both endpoints by 15 minutes, although they overlap at 45 minutes. They are approximate expected completion ranges, not mutually exclusive observations about actual participant durations.
+- **Display-precision interval check:** Treating each integer endpoint as displayed to the nearest minute, planned lower 45 gives [44.5,45.5], reported lower 30 gives [29.5,30.5]; gap 14 minutes, relative to planned copy 14/45 = 0.3111. Planned upper 60 gives [59.5,60.5], reported upper 45 gives [44.5,45.5]; gap 14, relative 14/60 = 0.2333. Both exceed 0.05. This endpoint-copy check establishes that the changed written range is not minute-level rounding; it does not establish two disjoint distributions of actual session length.
+- **Necessary inputs available:** All inputs needed to reproduce the printed description comparison and nominal time arithmetic are available.
+- **Exact missing inputs or definitions:** Actual session timing/logs; distribution of participant completion time; definition of time counted, including whether pauses/review/exercises are counted; whether the protocol description and report describe the identical software/content version; whether duration was revised prospectively or merely re-estimated; and an explanation connecting the two descriptions.
+- **Roles confirmed:** Main and TIDieR are REPORT by their descriptions of the reported interventions. Protocol §10.1.1 is prospective PLAN content. Protocol p.44 is contextual PLAN content.
+- **Primary relationship:** P_R. **All relationships:** P_R. **Review domain:** protocol_report. No classification change is indicated by the inspected content.
+- **Evidence state:** reproduced. Determining fact: the exact source pages print 45–60 versus 30–45 for the same named online session. This records the description discrepancy, not a demonstrated intervention-content reduction.
+
+## Source-grounded alternatives and exact remaining question
+
+Protocol p.43 expressly says session completion is flexible, participants may close and resume a session, and they may review completed material. The main calls its duration approximate and describes self-completion. These facts support an alternative that both documents estimate completion time for a self-paced intervention differently. Another possibility is a revised program version or duration estimate; neither is established by the inspected text. Supplement 3 lists the approximately 15-minute onboarding call separately and once, so it cannot by itself explain a 15-minute difference in each of eight session descriptions. Daily practice is also listed separately and cannot be silently assigned to either session-time range.
+
+**Direct observation:** different printed expected session-time ranges. **Inference requiring confirmation:** actual treatment dose, content, software version or delivery changed. The sources inspected do not establish that inference.
+
+**Exact remaining human question:** Do 45–60 and 30–45 minutes refer to the same painTRAINER content/version and the same definition of session time, and if so why were the expected completion ranges described differently? Which duration should a downstream reviewer use for intervention-time extraction, and are measured completion-time data available?
+
+## Bounded downstream impact
+
+1. **Conventional efficacy meta-analysis:** C001 alone does not justify changing any reported effect estimate, interval, participant count or weight. [Main physical PDF p.4, journal p.595, Statistical Analysis](../../../jama_debar_2025_oi_250046_1755300121.13587.pdf#page=4) states “The intention-to-treat principle was used for all analyses” and describes outcome/group/time models and covariates without listing session minutes as an input. The primary effect is assignment to the program as implemented, not an effect per minute of treatment. A conventional synthesis extracting the reported randomized-arm effect would not numerically change solely because of this description discrepancy. This is a bounded reading of the specified models, not a proof that every possible downstream analysis is unaffected.
+
+2. **Time-dose, intensity subgroup or meta-regression analyses:** The discrepancy can change the extracted intervention-time variable or a threshold-based intensity category. Illustratively, multiplying the written expected duration by eight yields planned 360–480 minutes (6–8 hours) versus reported 240–360 minutes (4–6 hours). Both ranges include 360 minutes. Corresponding endpoints differ by 120 minutes (2 hours). Midpoints would be 7 versus 5 hours, but midpoint selection is an analyst's assumption and not a measured average. These calculations do not demonstrate that any participant received two fewer hours, nor that efficacy changed by a given amount.
+
+3. **Adherence:** Main p.4 describes a therapeutic dose as at least six sessions, not a minute-based cutoff. This C001 discrepancy therefore does not itself change that printed session-count rule. Translating six completed sessions into exposure hours would remain sensitive to the chosen time description and would still omit actual duration and between-session practice.
+
+4. **Cost/resource or implementation analysis:** Participant time burden may differ materially depending on the description chosen. For this self-completed online arm, module minutes are not equivalent to clinician contact time. The separately listed onboarding, outreach and practice also matter. A dollar estimate or cost-effectiveness change cannot be quantified from C001 without a time definition, measured exposure, perspective and unit costs.
+
+**Assessment:** The inspected sources do not show that C001 materially changes the paper's reported efficacy conclusions or an ordinary effect-size synthesis. It can meaningfully affect intervention-duration extraction and analyses that explicitly depend on treatment minutes, but the magnitude of any resulting dose-response, subgroup or economic conclusion remains undetermined. Preserve both planned and reported descriptions and the remaining question rather than infer a measured dose reduction.
+
+Limitations: Focused recheck, not a new complete-package audit. No raw timing data or author explanation is available in the inspected source locations. Other assigned C IDs were outside this delegated scope and were not rechecked here. No source or pre-existing audit artifact was modified.
