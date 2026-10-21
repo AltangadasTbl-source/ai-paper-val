@@ -1,0 +1,50 @@
+C007 targeted follow-up: independent source confirmation
+Check UTC: 2026-10-20T23:16:56Z
+Scope: Answer the user's question about existing C007; this is not a new Workflow 1.6.2 run or a change to the ledger, classifications, or final reports.
+Language: English artifact; Chinese requested for the user-facing explanation.
+
+Tooling and integrity
+Direct tools: pdfinfo, pdftotext, pdftoppm; Poppler 25.03.0.
+Compute device: CPU. No OCR, GPU, fallback environment, external literature, or network source was used.
+Tool probe: tool_probe.json in this directory, generated with the supplied pdf_tools.py probe helper.
+All six source SHA-256 values matched the existing source_hashes_before.sha256 using sha256sum -c.
+All prior artifacts and sources were preserved unchanged.
+
+Fresh derivatives
+main_layout.txt: pdftotext -layout, complete 10-page main PDF.
+protocol_layout.txt: pdftotext -layout, complete protocol PDF.
+sap_layout.txt: pdftotext -layout, complete SAP PDF; scanned body is not usable native text and was therefore directly rendered and visually read.
+results_layout.txt: pdftotext -layout, complete 18-page results supplement.
+supp4_layout.txt and supp5_layout.txt: pdftotext -layout, complete collaborator roster and data-sharing statement.
+sap-7.png through sap-9.png: direct pdftoppm CPU renders, 120 dpi, SAP PDF pp.7-9.
+main-06.png and main-07.png: direct pdftoppm CPU renders, 120 dpi, main PDF pp.6-7.
+results-16.png and results-17.png: direct pdftoppm CPU renders, 120 dpi, results PDF pp.16-17.
+results-03.png, results-04.png, results-11.png, results-13.png, results-18.png: direct pdftoppm CPU renders, 110 dpi.
+results-10.png, results-12.png, results-14.png, results-15.png: direct pdftoppm CPU renders, 85 dpi.
+The SAP pp.7-9, main pp.6-7, results p.4 and all nine results-supplement figures were visually inspected in this follow-up. Native source text was freshly extracted and used for the other relevant paragraphs and tables. Final protocol pp.127-130 were freshly extracted and read directly, including paragraphs continuing across pages.
+
+Direct-source observations
+1. Protocol version 3.0, PDF pp.127-128 (printed pp.34-35), specifies systematic unadjusted and adjusted comparisons. PDF pp.129-130 (printed pp.36-37), section 12.1.8, specifies linear regression adjustment for quantitative outcomes and Cox adjustment for mortality. Changes to the analysis plan must precede database unblinding and receive scientific-committee validation.
+2. SAP PDF p.7, section 3.6: mortality requires Kaplan-Meier descriptions, log-rank comparison, and a Cox model adjusting for primary cardiogenic-shock etiology. ECMO duration/free days and organ-failure/free days require Wilcoxon comparisons and etiology-adjusted general linear models. ICU/hospital stays require RMST descriptions up to day 60, log-rank comparisons, and etiology-adjusted Cox models. These descriptive/unadjusted analyses are themselves planned; their presence does not supply the additional adjusted outputs.
+3. SAP PDF p.8, mechanical ventilation paragraph: Wilcoxon comparison and etiology-adjusted general linear model are specified for ventilation duration/free days at D30/D60.
+4. SAP PDF p.9, safety item 2: describes numbers/percentages of affected patients separately from numbers of events and serious events; event counts are to be compared using Poisson regression adjusted for primary etiology.
+5. SAP PDF p.9, section 3.9: changes must precede database unblinding and receive scientific-committee validation. No amendment explaining removal of these adjusted secondary outputs was identified in the supplied materials checked.
+6. Main PDF p.1 names mortality, ECMO/ventilation/organ-failure-free days, ICU/hospital stays, and serious adverse events in the abstract. Under the supplied review scope these are the key-secondary boundary used for C007.
+7. Main PDF pp.3-4 identifies primary-outcome regression and a cause-specific sensitivity analysis; categorical comparisons use chi-square/Fisher, continuous comparisons Wilcoxon, and censored outcomes Kaplan-Meier/RMST/log-rank. No identified adjusted secondary coefficient was found.
+8. Main PDF p.6, Table 2: D30 mortality RR 1.16 (0.71-1.90); D60 RR 1.11 (0.70-1.75); D30 ECMO-free median difference 1 (-1 to 4); ECMO-duration median difference -1 (-2 to 1); ICU RMST difference -1 (-5 to 3); hospital RMST difference -7 (-12 to -2). Footnotes distinguish median, RMST, and relative-risk summaries. Footnote d explains secondary P-value omission by multiple-testing concerns, without explaining adjusted-estimate omission.
+9. Results PDF pp.5-6, eTable 3: organ-failure-free median difference -2 (-10 to 4), ventilation-free median difference -0 (-3 to 2); footnotes specify median differences and nonparametric bootstrap intervals. These are not identified as adjusted general linear model outputs.
+10. Results PDF p.4, eTable 2: etiology-adjusted cause-specific HRs concern the primary endpoint and competing events. Death before ECMO weaning, csHR 1.57 (0.72-3.44), does not represent all-cause mortality through D60. Results PDF p.11 supplies mortality curves and log-rank tests, without an adjusted all-cause mortality HR. Results PDF p.16 supplies RMST annotations, without adjusted stay Cox coefficients.
+11. Main PDF p.7, Table 3: any serious adverse event affects 59/101 versus 61/104 patients. Results PDF p.17, eFigure 8: repeated-event frequency distributions are supplied, without an adjusted Poisson treatment output.
+
+Independent descriptive arithmetic
+D60 mortality (28/101)/(26/104) = 1.108910891089109, rounding to printed RR 1.11. This supports the printed fixed-time risk-ratio interpretation; it does not reconstruct a Cox HR or establish a model implementation from numerical agreement alone.
+SAE histogram, levosimendan: frequency for 0,1,2,3,4,5,6,8 events = 42,22,19,8,2,4,2,2; affected patients = 59, total patients = 101; total events = 22 + 2*19 + 3*8 + 4*2 + 5*4 + 6*2 + 8*2 = 140.
+SAE histogram, placebo: frequency for 0,1,2,3,4,5,6,8,9 events = 43,31,13,4,6,3,1,2,1; affected patients = 61, total patients = 104; total events = 31 + 2*13 + 3*4 + 4*6 + 5*3 + 6 + 8*2 + 9 = 139.
+These totals are descriptive checks of the displayed histogram, not estimates from the planned adjusted Poisson model.
+
+Existing review history confirmed from records
+F-XS-006 and F-ST1-006 were independently included and consolidated into C007. Classification: P_R, review domain protocol_report. Existing evidence state reproduced; inclusion audit CONFIRMED; status remains Pending Human Adjudication. The audit retained abstract-named serious events in the same pattern and bounded non-key endpoint prescriptions as context. C003 separately concerns missing D60 free-day windows.
+
+Current conclusion and limits
+The direct-source comparison supports C007 as a supplied-report absence of identified prespecified etiology-adjusted key-secondary treatment outputs. It does not establish that the models were never fitted, that any unreported estimate differs, that outcome selection depended on results, or that the primary conclusion would change. Adjusted results could have been fitted but omitted, or an unsupplied revision could exist. Model coefficients, confidence intervals, exact model implementation and any relevant approved amendment remain unavailable.
+Downstream implications: distinguish RR from HR, marginal median difference from adjusted linear contrast, RMST difference from Cox HR, and patient-any-event risk from repeated-event count effects. Missing adjusted outputs prevent extracting or comparing those planned estimates. Existing aggregate summaries do not identify their direction, magnitude, precision, or effect on conclusions. No new adjudication or preferred analysis is assigned.

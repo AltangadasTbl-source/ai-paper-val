@@ -1,0 +1,24 @@
+Targeted C002 source confirmation requested by the user; 2026-10-20.
+This follow-up explains an existing candidate; it does not rerun Workflow 1.6.2 or change existing audit artifacts, status, classifications, or reports.
+
+Compute device: CPU. No OCR, GPU, network research, fallback environment, or participant-level reanalysis.
+Probe: bundled pdf_tools.py probe confirms direct PDF information, text, render, and hash capabilities. OCR unavailable and unnecessary for visually readable SAP images.
+Derivative engines: Poppler pdftoppm 25.03.0 and pdftotext 25.03.0.
+sap-4.png and sap-7.png: CPU pdftoppm, 145 dpi, joi250087supp2_prod_1766516490.96511.pdf, physical PDF pages 4 and 7; both visually inspected.
+results-05.png and results-06.png: CPU pdftoppm, 135 dpi, joi250087supp3_prod_1766516490.97011.pdf, physical PDF pages 5 and 6; both visually inspected.
+results-12.png: CPU pdftoppm, 130 dpi, same results source, physical PDF page 12; visually inspected.
+main-3.png: CPU pdftoppm, 130 dpi, jama_combes_2025_oi_250087_1766516490.94011.pdf, physical PDF page 3 / printed journal page 62; visually inspected.
+main-3-layout.txt and results-5-6-layout.txt: direct pdftotext -layout for the correspondingly named source pages.
+Integrity: sha256sum -c against the preserved source_hashes_before.sha256 returns OK for all six supplied source PDFs.
+
+Direct observations:
+SAP p.4 section 2.2 Organ Failure defines failure as SOFA score >2 in at least one of six organ systems and lists organ-failure-free days through D30.
+SAP p.7 section 3.6 Organ Failure repeats >2, specifies Wilcoxon rank sum comparison, zero failure-free days for deaths, and an etiology-adjusted general linear model.
+Main p.3 Outcomes continuation in right column defines days alive without organ failure at day30 as SOFA score 0-1 for each component.
+Results p.5 eTable3 first two rows: organ-failure-free medians 12(0,21) versus14(0,23), median difference -2(-10,4); days with organ failure9(6,17) versus12(6,18), median difference -3(-5,2).
+Results p.6 footnote b states median differences for continuous variables and nonparametric bootstrap confidence intervals. The p-value note attributes omitted secondary P values to multiple testing concerns.
+Results p.12 eFigure3 displays six component distributions at D1,7,14,21,28 with categories0,1,2,3-4. Category2 is visibly present; these marginal distributions do not identify joint component scores for individual participant-days.
+
+Bounded interpretation:
+A living observed day with one component2 and others0/1 does not meet SAP-defined failure>2 but fails the report's all-components0/1 free-day criterion. This is a logical boundary example, not a claim about its observed frequency. The SAP links failure and free-day outcomes but does not separately spell out a complementary free-day threshold; an explicitly distinct intermediate-state definition could explain implementation, but the inspected definition paragraphs, footnotes and figure provide no such reconciliation.
+The candidate remains protocol_report/P_R, reproduced, Pending Human Adjudication. Printed medians reconcile arithmetically; no revised median, interval, affected-day count, actual coding choice, or primary-treatment conclusion is inferred. Death-zero assignment does not resolve the living-day comparison; death handling and missing daily components remain necessary to any numerical recalculation. Separate group medians of failure and free days need not sum to30.

@@ -1,0 +1,39 @@
+Targeted C003 explanation and independent source confirmation, 2026-10-20.
+Existing reports, audit artifacts, candidate classification and adjudication status were preserved. This follow-up is not a Workflow 1.6.2 rerun.
+
+Compute device: CPU. No OCR, GPU processing, network research, fallback environment, or participant-level reanalysis was used.
+Tool probe: bundled pdf_tools.py probe confirmed direct PDF information, text, render and hash capabilities. OCR was unavailable and unnecessary for readable scanned SAP images.
+Derivative engines: Poppler pdftotext 25.03.0 and pdftoppm 25.03.0.
+
+New derivatives:
+main-layout.txt: direct pdftotext -layout, main article, all10 PDF pages.
+protocol-layout.txt: direct pdftotext -layout, supplied protocol bundle, all162 PDF pages.
+protocol-8.txt, protocol-14.txt, protocol-15.txt, protocol-53.txt, protocol-59.txt, protocol-60.txt, protocol-99.txt, protocol-105.txt, protocol-106.txt: direct pdftotext -layout, corresponding physical PDF pages; repeated D30/D60 free-day prescriptions checked.
+results-layout.txt: direct pdftotext -layout, results supplement, all18 PDF pages.
+roster-layout.txt: direct pdftotext -layout, collaborators supplement, all3 PDF pages.
+sharing-layout.txt: direct pdftotext -layout, data-sharing statement, its1 PDF page.
+protocol-106.png: CPU pdftoppm135dpi; protocol physical PDF p106, internal version3.0 p13/46; visually inspected.
+sap-8.png: CPU pdftoppm140dpi; SAP physical PDF p8; visually inspected.
+main-1.png: CPU pdftoppm125dpi; main physical PDF p1; visually inspected.
+main-7.png: CPU pdftoppm125dpi; main physical PDF p7 / journal p66; visually inspected, including the Discussion opening split across the two columns.
+results-figures-10.png through results-figures-18.png: CPU pdftoppm95dpi; results physical PDF pp10-18, all nine scientific eFigures individually visually inspected for alternative D60 free-day outputs.
+
+Additional current source-matched derivatives visually reread:
+followup_C002_20261020/sap-4.png and sap-7.png: SAP definitions and ECMO analysis; CPU Poppler145dpi.
+followup_C002_20261020/main-3.png: main Outcomes including both free-day windows; CPU Poppler130dpi.
+followup_C001_20261020/main-6.png: Table2 ECMO-free days byD30; CPU Poppler150dpi.
+followup_C002_20261020/results-05.png: eTable3 ventilator-free days byD30; CPU Poppler135dpi.
+
+Source integrity: sha256sum -c against the preserved source_hashes_before.sha256 returned OK for all six supplied source PDFs.
+
+Independent source observations:
+Protocol endpoint lists on all nine targeted pages specify D30/D60 ECMO-free days and days alive without mechanical ventilation.
+SAP p4 lists both free-day windows. SAP p7 ECMO Support Duration and p8 Mechanical Ventilation prescribe D30/D60 comparisons using Wilcoxon rank sum tests, deaths assigned0free days, and etiology adjustment using a general linear model.
+Main abstract names ECMO-free and mechanical-ventilation-free secondary outcomes; key-secondary status here follows the workflow's operational inclusion definition, not an author-assigned ranking.
+Main p3 Outcomes explicitly retains D30/D60 ECMO- and ventilation-free days.
+Main p6 Table2 gives ECMO-free days byD30: medians24(0-26) versus23(12-26), median difference1(-1to4).
+Results p5 eTable3 gives days alive and free from MV byD30: medians6(3-11) versus6(3-13), median difference-0(-3to2).
+Directly searched supplied REPORT scope is32pages: main10, results18, roster3, sharing1. Scientific eFigures1-9 were also individually visually inspected because their plot interiors are images. No corresponding D60 free-day distribution or treatment contrast was identified. D60 mortality, MACE, stay distributions, and follow-up to confirm the D30 successful-weaning endpoint are distinct quantities.
+Main p7 Discussion contains a general statement that ECMO-, organ-failure-, and mechanical-ventilation-free days were not different between groups. It does not separately identify D60 free-day results or give the corresponding summaries, effect estimates, confidence intervals or tests. Thus the bounded observation is lack of identifiable D60-specific outputs, not absence of all free-day narrative statements.
+
+Bounded conclusion: missing corresponding D60 outputs from the supplied REPORT package, not proof that data were never collected, an analysis was never performed, or absence was result-dependent. D30 summaries cannot reconstruct D60 free-day outcomes without participant-level support and survival histories and the implemented coding rules. No missing value, effect estimate, CI, P value or changed primary conclusion was inferred. C003 remains protocol_report/P_R, reproduced, Pending Human Adjudication.
