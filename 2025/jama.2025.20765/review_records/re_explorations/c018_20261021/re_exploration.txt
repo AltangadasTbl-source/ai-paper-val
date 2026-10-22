@@ -1,0 +1,50 @@
+C018 targeted independent re-exploration, 2026-10-21
+
+Scope and preservation
+Target: Control site 2008 mortality cell in Supplement 2 eTable 6. This is a targeted independent source reread and comparison with existing records, not a full Workflow 1.6.2 rerun or human adjudication. Existing sources and review records were not modified. All new files are within review_records/re_explorations/c018_20261021/. No external evidence was used. SHA-256 verification of all three source PDFs against the existing source_hashes_before.sha256 returned OK.
+
+Provenance
+Local tools: Poppler pdftotext (-layout/-raw) and pdftoppm (-png); CPU; no OCR.
+supp_p8_p9.txt and supp-08.png/supp-09.png: joi250093supp2_prod_1768590553.09463.pdf, PDF pages 8-9. Both freshly rendered images were visually inspected.
+main_p3_p6.txt: jama_zahid_2025_oi_250093_1768590553.08463.pdf, PDF pages 3-6.
+Supplement PDF page 6 was also directly read through native extraction for overall death totals.
+site_death_checks.tsv: a direct-source transcription and arithmetic check of all 27 eTable 6 site rows, using awk with explicit numeric conversion. The ending summary lines are explanatory, not additional source rows.
+
+Direct source evidence
+Supplement PDF p.9 title: "eTable 6. Cluster-wise death rates and unsuccessful TB treatment outcomes".
+Column heading: "Deaths n(%)". Control site 2008 prints "5(7.5)". The source has no separate denominator column.
+Comparator cells: Control 2002 3(7.5); Control 2004 4(10.0); Control 2011 6(15.0); m-Health 2012 5(12.5).
+Supplement PDF p.8 title: "eTable 5. Cluster specific recruitment and abstinence rates".
+Control site 2008: Recruitment Rate 40/484(8.2%); Self-reported Quitter at 6-mo FU 15/35(42.9); Verified Quitter at 6-mo FU 12/35(34.3); Quitter at 6-mo FU (ITT) 12/40(30).
+Main PDF p.4 Figure 1: 18 clusters/720 participants in mHealth and 9 clusters/360 participants in usual care, both with printed cluster size 40; 25 and 27 deaths respectively.
+Supplement PDF p.6 eTable 4: Total deaths 52, mHealth 25, Usual Care 27.
+Main PDF p.5: "There were fewer deaths in the mHealth group than in the usual care group (3.5% vs 7.5%; hazard ratio, 0.4 [95% CI, 0.2-0.9]) (Table 2)."
+Main PDF p.3: "For comparing death rates between the 2 groups over 6 months, we used the Cox proportional hazards frailty model, adjusting for site-level clustering."
+
+Independent reconstruction
+All 27 site rows were checked. The rule 100*death_count/40 reproduces 26 rows; only site 2008 differs. Nonzero comparator rows identify N=40; zero-death rows are compatible with that rule but do not independently identify a denominator.
+The site 2008 count gives 100*5/40=12.5%, compared with printed 7.5%, a difference of 5 percentage points.
+Using the project's deliberately generous half-unit rule: 100*[4.5/40.5,5.5/39.5]=[11.111111,13.924051]%; printed 7.5 permits [7.45,7.55]%. Gap=3.561111 percentage points; relative discrepancy=3.561111/7.5=0.474815, exceeding 0.05. These rounding enclosures are arithmetic tolerance ranges, not statistical confidence intervals.
+At N=40, 7.5% corresponds to three deaths. This observation does not establish which source field should change.
+N=35 from the observed abstinence columns cannot reconcile five deaths with 7.5%: 100*5/35=14.285714%. The 35 belongs to observed abstinence contributors, not an explicitly defined mortality denominator.
+Exact 5/0.075 implies N=66.666667. With exact integer count five and percentage rounded to one decimal, N=67 would display 7.5%. Such a denominator exceeds the site's printed recruited population of 40. Any subset of those 40 has N<=40 and therefore a five-event percentage >=12.5%; a different population would need an explicit source definition. No such definition was found in the cited display or population corroborators.
+
+Counts and aggregates
+mHealth: 18 sites, 25 deaths; Control: 9 sites, 27 deaths; total: 52. These source-derived sums agree with Figure 1, Table 2 and eTable 4.
+The agreement corroborates the printed count of five at site 2008 but does not replace participant-level records or establish a final correction. Shared report totals are internal corroboration, not independent raw-data confirmation.
+
+Comparison with existing records
+Initial numeric_support.md F-NUM-102 identified the discrepancy under Route A category 3.
+screening/inclusion_screen.md included F-NUM-102 as C018 and cited categories 3 and 4.
+verification/parts/recheck_003.md distinguished the printed cell from the inferred denominator and recognized category 4 as independent support.
+quality/parts/audit_candidates_003.md C018 and repair QA3-R02 selected Route A category 4 as the primary basis, because eTable 6 has no explicit denominator column. The final ledger and final report carry that category-4 basis.
+Recorded classification: statistical_results; relationship S_W; all relationships S_W; evidence state reproduced; inclusion audit CONFIRMED; Pending Human Adjudication.
+The target and same-table reproducing rule are within one REPORT document; eTable 5 is corroboration in that document. Main-article agreement does not by itself add a cross-document conflict.
+Independent assessment: the source-linked discrepancy and the final category-4 framing are reproducible. The remaining question is the mortality count, denominator and percentage intended for this cell. No cause of the discrepancy, final corrected value, severity or disposition is assigned.
+
+Potential downstream effects
+Site-level percentage extraction: 7.5% versus count-derived 12.5% at N=40 changes the extracted site mortality proportion by 5 percentage points. Site rankings and summaries based on printed percentages can consequently differ.
+Reverse conversion of 7.5% at N=40 yields three events, two fewer than the printed five. If an extractor replaced only that event count while retaining every other site, Control total would become 25 rather than printed 27, and overall deaths 50 rather than 52. This is an extraction scenario, not a proposed source revision.
+Because every site's recruited population is 40, averaging site count-derived mortality proportions equals the aggregate count-derived arm proportion. The nine printed Control percentages sum to 62.5 and average 6.944444%; count-derived Control mortality is 27/360=7.5%. The discrepancy is 0.555556 percentage points. mHealth printed percentages sum to 62.5 across 18 sites and average 3.472222%, matching 25/720. This establishes a descriptive reuse consequence, not a report of an analysis actually performed by the authors.
+No change to the paper's reported aggregate mortality count or modeled HR is established. The printed HR 0.4 (95% CI 0.2-0.9) came from a Cox proportional hazards frailty model with site-level clustering; aggregate counts and site percentages cannot reconstruct it without event times, risk sets, censoring and model inputs. No HR, CI, P value or significance change is inferred.
+No effect on the primary abstinence result or any actual meta-analysis is demonstrated by this cell. No actual downstream propagation is shown in the supplied package.
