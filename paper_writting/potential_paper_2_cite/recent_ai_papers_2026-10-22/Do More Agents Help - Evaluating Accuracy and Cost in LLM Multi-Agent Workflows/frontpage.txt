@@ -1,0 +1,112 @@
+arXiv:2606.05670v2 [cs.AI] 9 Oct 2026
+
+Do More Agents Help? Evaluating Accuracy and Cost
+in LLM Multi-Agent Workflows
+Yuhang Fu♠ ‡*
+
+Ruishan Fang♣ ▲ ‡
+
+Jiaqi Shao⋆ ♦
+
+Huiyu Zheng■
+
+Zhengtao Zhu■
+
+Bing Luo⋆ †
+
+Zhenyu Wen■ †
+
+Tao Lin▲ †
+
+♠ Beijing University of Posts and Telecommunications
+
+▲ Westlake University
+
+♣ Zhejiang University
+
+⋆ Duke Kunshan University
+
+♦ Hong Kong University of Science and Technology
+
+■ Zhejiang University of Technology
+
+‡ Equal contribution.
+
+† Corresponding authors:
+
+bing.luo@dukekunshan.edu.cn
+
+wenluke427@gmail.com
+
+lintao@westlake.edu.cn
+
+Abstract
+
+Recent studies examine how workflow structure affects performance and computational cost. Xu et al. [34] compare homogeneous
+workflows with single-LLM executions that retain their workflow
+logic. Kim et al. [18] compare canonical coordination architectures across interactive tasks and model families. We complement
+these studies by comparing workflow designs normalized to a common execution substrate: Jarvis, LLM-Debate, EvoAgent, AutoGen,
+CAMEL, and ChatEval, each compared with a common controller,
+BenchAgent Core. Across ten fixed task sets, we report gains, regressions, and token expenditure, then use retained responses to
+identify concrete directions for improving these configurations.
+BenchAgent provides common benchmark inputs, model settings, tool interfaces, answer contracts, scoring rules, and token
+accounting across workflows. We evaluate BenchAgent Core, a
+single task-level controller, and six MAS configurations on ten
+benchmarks spanning mathematical and general reasoning, reading comprehension, coding, instruction following, and retrieval.
+The primary study uses GPT-4.1 and three runs on fixed task sets,
+with 3,302 instances per configuration per run. We also report
+single-run GAIA results and auxiliary backend checks, along with
+a separate case study of an external runtime.
+Figure 1 summarizes the comparison protocol. We report accuracy and token use for individual benchmarks and the pooled suite,
+using BenchAgent Core as the single-agent reference throughout.
+The study makes three contributions:
+A shared framework for workflow comparison. BenchAgent
+places normalized multi-agent implementations and a single-agent
+controller under common task, tool, answer, scoring, and accounting interfaces. This supports consistent measurement of complete
+configurations and provides a common basis for evaluating subsequent workflow changes.
+Broad evidence across seven workflows and ten benchmarks.
+We compare six MAS configurations against BenchAgent Core over
+three runs, quantifying benchmark-specific gains, regressions, and
+pooled accuracy–token trade-offs. The resulting profiles show how
+each workflow’s task strengths relate to its aggregate performance
+and cost, providing evidence for workflow selection and further
+optimization.
+Targeted evidence for workflow optimization. Analyses of 371
+parseable ChatEval GSM8K tasks and 163 matched Jarvis–ChatEval
+
+Choosing whether to replace a single-agent controller requires evidence on both task performance and inference expenditure. We
+present BenchAgent, a shared evaluation framework, and compare
+six multi-agent workflow configurations against its single-agent
+reference, BenchAgent Core, across ten reasoning, coding, and tooluse benchmarks. All configurations use GPT-4.1 and common tool
+and scoring interfaces; Core executions share the same step limits. We measure accuracy and recorded token use over three runs
+on fixed task sets, with 3,302 instances per configuration per run.
+EvoAgent reaches 79.70% mean pooled accuracy versus 76.65% for
+Core and exceeds Core in all three runs; the other five MAS trail
+by 1.71–8.76 percentage points. LLM-Debate gains 9.67 points on
+HumanEval but loses 1.96 points in pooled accuracy while consuming 1.39 times the tokens of Core. ChatEval gains 22.25 points
+on IFEval but trails Core in pooled accuracy with 4.34 times its
+token consumption. The broad comparison and targeted analyses
+of retained responses provide evidence for workflow selection and
+identify answer preservation and resource allocation as directions
+for subsequent multi-agent optimization.
+
+Keywords
+LLM agents, multi-agent systems, workflow evaluation, accuracycost trade-offs
+
+1
+
+Introduction
+
+Multi-agent workflows offer several ways to organize the capabilities of a language model: debate candidate answers, exchange
+role-specific messages, delegate tool use, or evolve agent instructions [11, 20, 31, 33, 37]. A workflow may improve accuracy on one
+benchmark yet perform worse across a broader task suite. Even
+a higher aggregate score can hide regressions on particular tasks.
+Workflows with similar accuracy may also differ in token consumption. We examine benchmark-level results alongside pooled
+accuracy and recorded token use to identify where replacing a
+single-agent controller brings gains, where it incurs costs, and
+which behaviors merit further optimization.
+∗ Work was done during Yuhang’s internship at Westlake University.
+
+1
+
+
