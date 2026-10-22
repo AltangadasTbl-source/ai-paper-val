@@ -36,7 +36,7 @@ To evaluate the reliability of 3 chatbots in generating accurate references from
   - Data source:
   - Inclusion and exclusion criteria: RCTs were considered for inclusion if they were mentioned in a previous article that primarily evaluated RCTs published by the top medical and obstetrics and gynecology journals with the highest impact factors in 2020 as well as RCTs published in a new journal focused on publishing obstetric RCTs.
   
-  - AI Properties (None):
+  - AI Properties :
     - Skill based : No, prompt based
     - Agent based : No
     - Open sourced : 
@@ -52,18 +52,19 @@ To evaluate the reliability of 3 chatbots in generating accurate references from
   - the outputs of the AI models varied significantly based on the wording of the prompt and the time at which the prompt was given
 
 
-# Title:  
+# Title: 2025 - Ruta et al - ChatGPT for Univariate Statistics: Validation of AI-Assisted Data Analysis in Healthcare Research
 
 
-## Problem: 
+## Problem:
+This study aimed to assess ChatGPT as a data analysis tool and provide researchers with a framework for applying ChatGPT to data management tasks, descriptive statistics, and inferential statistics. 
 
 
 ## Experiment design: 
-  - Data source:
+  - Data source: The 2019 National Inpatient Sample data from the National Healthcare Cost and Utilization Project was selected to assess ChatGPT’s capabilities
   - Inclusion and exclusion criteria:
   
-  - AI Properties (None):
-    - Skill based :
+  - AI Properties : GPT-4
+    - Skill based : no, prompt based
     - Agent based :
     - Open sourced : 
     - Reproducibility :
@@ -72,8 +73,6 @@ To evaluate the reliability of 3 chatbots in generating accurate references from
 
 
 ## Limitation: 
-
-
 
 
 
