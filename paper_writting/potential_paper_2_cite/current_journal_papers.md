@@ -25,6 +25,33 @@ The most common types of data extraction errors were numerical errors (49.2%, 86
   - only focused on systematic reviews of randomised controlled trials and did not consider observational studies.
 
 
+# Title:  2024 - Emily et al - Exploring the Limits of Artificial Intelligence for Refering Scientific Articles
+
+
+## Problem: 
+To evaluate the reliability of 3 chatbots in generating accurate references from exisiting obstetric literature.
+
+
+## Experiment design: 
+  - Data source:
+  - Inclusion and exclusion criteria: RCTs were considered for inclusion if they were mentioned in a previous article that primarily evaluated RCTs published by the top medical and obstetrics and gynecology journals with the highest impact factors in 2020 as well as RCTs published in a new journal focused on publishing obstetric RCTs.
+  
+  - AI Properties (None):
+    - Skill based : No, prompt based
+    - Agent based : No
+    - Open sourced : 
+    - Reproducibility :
+
+## Results: 
+   - Among the 44 RCTs analyzed, Google Bard demonstrated the highest accuracy, correctly citing 13.6% of the requested RCTs, whereas ChatGPT and Chatsonic exhibited lower accuracy rates of 2.4 and 0%, respectively. Google Bard often substantially outperformed Chatsonic and ChatGPT in correctly citing the studied reference components. The majority of references from all AI models studied were noted to provide DOIs for unrelated studies or DOIs that do not exist. **`(The need for a multi-agentic framework for division of jobs and reproducing the extractions.)`**
+   - To ensure the reliability of scientific information being disseminated, authors must exercise caution when utilizing AI for scientific writing and literature search
+
+## Limitation: 
+  - the study only evaluated three AI models,whichmay not represent the full capabilities of all AI chatbots available.
+  - the findings and conclusions drawn fromthe study may have limited generalizability beyond the specific dataset utilized.
+  - the outputs of the AI models varied significantly based on the wording of the prompt and the time at which the prompt was given
+
+
 # Title:  
 
 
@@ -45,8 +72,6 @@ The most common types of data extraction errors were numerical errors (49.2%, 86
 
 
 ## Limitation: 
-
-
 
 
 
