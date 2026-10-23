@@ -1,0 +1,123 @@
+% !TeX program = xelatex
+% A single continuous flowchart drawn from nodes and arrows, with no imported pages or images.
+% Compile this standalone source using XeLaTeX.
+\RequirePackage{fix-cm}
+\documentclass[10pt]{article}
+\usepackage[paperwidth=348mm,paperheight=1080mm,margin=10mm]{geometry}
+\usepackage{fontspec}
+\setsansfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold]
+\setmonofont{lmmono10-regular.otf}[BoldFont=lmmonolt10-bold.otf]
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xeCJK}
+\setCJKmainfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKsansfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\definecolor{Navy}{HTML}{17324D}
+\definecolor{Teal}{HTML}{007F82}
+\definecolor{Amber}{HTML}{936219}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\tikzset{
+ agent/.style={rounded corners=2mm,draw=Teal!70,fill=Teal!5,line width=.8pt,align=left,text=Navy,inner sep=3.5mm},
+ coord/.style={agent,draw=Navy!55,fill=Navy!4},
+ note/.style={agent,draw=Amber!50,fill=Amber!5},
+ human/.style={agent,draw=Teal,line width=1.2pt,fill=Teal!13,align=center},
+ decision/.style={draw=Amber,fill=Amber!7,line width=.9pt},
+ flow/.style={-{Stealth[length=2.6mm,width=1.7mm]},draw=Navy!80,line width=1pt,rounded corners=1mm},
+ tag/.style={fill=white,text=Navy,font=\fontsize{9.3}{11.5}\selectfont,align=center,inner sep=1mm}
+}
+\begin{document}
+\noindent\begin{tikzpicture}[x=1mm,y=-1mm]
+\path[use as bounding box] (0,0) rectangle (328,1058);
+\node[anchor=north west,align=left,text=Navy,inner sep=0,text width=328mm,font=\fontsize{22}{24.5}\selectfont] at (0,0) {{\fontsize{22}{26}\selectfont\bfseries Workflow 1.6.2｜从原始材料到人工审查}};
+\node[anchor=north west,align=left,text=Navy,inner sep=0,text width=328mm,font=\fontsize{10.5}{13.0}\selectfont] at (0,13) {所有“新建”agent 均由协调者启动；每个必需阶段使用不同的新 agent。即使没有纳入项，也完成全部必需阶段。};
+\node[coord,text width=129mm,minimum width=136mm,minimum height=27mm,font=\fontsize{11.2}{13.5}\selectfont] (setup) at (157,47) {\textbf{协调者 · 准备审查}\\[3pt]确认模型和工具，清点全部材料；\\记录分工、用时和 agent 编号。};
+\node[agent,text width=129mm,minimum width=136mm,minimum height=29mm,font=\fontsize{11.2}{13.5}\selectfont] (curator) at (157,84) {\textbf{新建 · 资料整理者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_reuse\_asset\_curator}\\[3pt]列出文件和可复用的提取文本；\\按内容区分报告和计划。};
+\node[coord,text width=129mm,minimum width=136mm,minimum height=26mm,font=\fontsize{11.2}{13.5}\selectfont] (assign) at (157,122) {\textbf{协调者 · 分配全部材料}\\[3pt]按页或工作表划分阅读任务，避免重叠；\\同时覆盖已有文本和未读材料。};
+\node[agent,text width=91mm,minimum width=98mm,minimum height=34mm,font=\fontsize{11.2}{13.5}\selectfont] (main) at (105,164) {\textbf{新建 · 正文阅读者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_main\_quantitative\_mapper}\\[3pt]阅读正文每一页；记录数值、\\比较关系和准确的原文位置。};
+\node[agent,text width=91mm,minimum width=98mm,minimum height=34mm,font=\fontsize{11.2}{13.5}\selectfont] (support) at (209,164) {\textbf{新建 · 附件阅读者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_support\_quantitative\_mapper}\\[3pt]阅读附件、计划和工作表；\\记录结果、公式和原文位置。};
+\draw[decision] (101.0,203) -- (157,190.0) -- (213.0,203) -- (157,216.0) -- cycle;
+\node[align=center,text=Navy,inner sep=0,text width=92mm,minimum width=112mm,minimum height=26mm,font=\fontsize{10.6}{12.6}\selectfont] (coverage) at (157,203) {\textbf{协调者判断}\\全部材料均已阅读？};
+\node[coord,text width=69mm,minimum width=76mm,minimum height=29mm,font=\fontsize{10.5}{12.8}\selectfont] (gap) at (273,203) {\textbf{协调者分配补读任务}\\[3pt]将遗漏的页或工作表\\交给对应阅读者。};
+\node[agent,text width=89mm,minimum width=96mm,minimum height=38mm,font=\fontsize{11.2}{13.5}\selectfont] (num) at (51,258) {\textbf{新建 · 数值核对者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_numeric\_consistency\_reviewer}\\[3pt]核对人数、分母、\\百分比和总数。};
+\node[agent,text width=89mm,minimum width=96mm,minimum height=38mm,font=\fontsize{11.2}{13.5}\selectfont] (cross) at (157,258) {\textbf{新建 · 跨文件核对者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_cross\_source\_consistency\_reviewer}\\[3pt]比较不同文件中的同一结果；\\核对计划与报告中的分析。};
+\node[agent,text width=89mm,minimum width=96mm,minimum height=38mm,font=\fontsize{11.2}{13.5}\selectfont] (statsone) at (263,258) {\textbf{新建 · 第一名统计审查者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_statistical\_consistency\_reviewer}\\[3pt]核对估计值、区间、P 值、\\统计方法和判断规则。};
+\node[agent,text width=129mm,minimum width=136mm,minimum height=36mm,font=\fontsize{11.2}{13.5}\selectfont] (screen) at (157,315) {\textbf{新建 · 独立筛选者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_inclusion\_screener}\\[3pt]重读引用原文，决定纳入或排除；\\合并重复项，记录每项决定及理由。};
+\node[coord,text width=129mm,minimum width=136mm,minimum height=30mm,font=\fontsize{11.2}{13.5}\selectfont] (register) at (157,360) {\textbf{协调者 · 为纳入项登记编号}\\[3pt]按原文顺序分配 C001、C002……；\\保留发现编号、全部原文位置及类别。};
+\node[agent,text width=129mm,minimum width=136mm,minimum height=37mm,font=\fontsize{11.2}{13.5}\selectfont] (recheck) at (157,407) {\textbf{新建 · 原文复核者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_evidence\_rechecker}\\[3pt]逐项重读原文、重新计算并确认类别；\\记录“能重现”“更正抄录后能重现”\\或“无法重现”。};
+\node[agent,text width=129mm,minimum width=136mm,minimum height=37mm,font=\fontsize{11.2}{13.5}\selectfont] (statstwo) at (157,457) {\textbf{新建 · 第二名统计审查者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_statistical\_consistency\_reviewer}\\[3pt]使用不同的新 agent；复查全部统计比较、已登记项、\\筛选决定、核对者排除项及原文复核结果。};
+\draw[decision] (101.0,500) -- (157,487.0) -- (213.0,500) -- (157,513.0) -- cycle;
+\node[align=center,text=Navy,inner sep=0,text width=92mm,minimum width=112mm,minimum height=26mm,font=\fontsize{10.6}{12.6}\selectfont] (newfind) at (157,500) {\textbf{第二名统计审查者判断}\\有新发现？};
+\node[agent,text width=69mm,minimum width=76mm,minimum height=37mm,font=\fontsize{10.5}{12.8}\selectfont] (secondscreen) at (273,539) {\textbf{新建 · 另一名筛选者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_inclusion\_screener}\\[3pt]重读原文，筛选新发现；\\记录决定及理由。};
+\draw[decision] (233.0,582) -- (273,570.0) -- (313.0,582) -- (273,594.0) -- cycle;
+\node[align=center,text=Navy,inner sep=0,text width=60mm,minimum width=80mm,minimum height=24mm,font=\fontsize{10}{12}\selectfont] (included) at (273,582) {\textbf{新筛选者判断}\\有纳入项？};
+\node[coord,text width=69mm,minimum width=76mm,minimum height=28mm,font=\fontsize{10.5}{12.8}\selectfont] (append) at (273,620) {\textbf{协调者 · 追加编号}\\[3pt]登记纳入项及类别；\\已有编号保持不变。};
+\node[agent,text width=69mm,minimum width=76mm,minimum height=28mm,font=\fontsize{10.5}{12.8}\selectfont] (extra) at (273,660) {\textbf{原文复核者}\\[3pt]逐项复核新增编号的原文、\\计算和类别。};
+\node[agent,text width=129mm,minimum width=136mm,minimum height=40mm,font=\fontsize{11.2}{13.5}\selectfont] (audit) at (157,707) {\textbf{新建 · 质量审查者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_quality\_control\_auditor}\\[3pt]审查全部编号、排除项、类别及复核结果；\\检查材料是否读全、agent 记录是否齐全；\\记录是否支持纳入及理由。};
+\draw[decision] (101.0,750) -- (157,736.0) -- (213.0,750) -- (157,764.0) -- cycle;
+\node[align=center,text=Navy,inner sep=0,text width=92mm,minimum width=112mm,minimum height=28mm,font=\fontsize{10.6}{12.6}\selectfont] (followup) at (157,750) {\textbf{质量审查者判断}\\哪些内容需要补查？};
+\node[coord,text width=69mm,minimum width=76mm,minimum height=45mm,font=\fontsize{10.5}{12.8}\selectfont] (rescue) at (44,797) {\textbf{补上符合标准的遗漏项}\\[3pt]质量审查者：记录纳入及理由。\\协调者：追加编号和类别。\\原文复核者：核对新增项。};
+\node[coord,text width=69mm,minimum width=76mm,minimum height=53mm,font=\fontsize{10.5}{12.8}\selectfont] (auditfix) at (273,797) {\textbf{协调者分派补查任务}\\[3pt]阅读者：补读遗漏材料。\\原文复核者：核对数值和计算。\\协调者：补齐编号记录。\\新增材料须重做相关核对、\\筛选及原文复核。};
+\node[agent,text width=129mm,minimum width=136mm,minimum height=39mm,font=\fontsize{11.2}{13.5}\selectfont] (report) at (157,864) {\textbf{新建 · 报告撰写者}\\[2pt]{\normalfont\ttfamily\fontsize{8.2}{10}\selectfont qc162\_report\_generator}\\[3pt]撰写完整 Markdown 报告，保留全部编号、\\筛选和类别汇总、审查范围及局限；\\各项均标为待人工判断。};
+\node[coord,text width=129mm,minimum width=136mm,minimum height=36mm,font=\fontsize{11.2}{13.5}\selectfont] (render) at (157,912) {\textbf{协调者 · 生成报告并运行检查}\\[3pt]完善用时和记录，确认源文件完整；\\生成 HTML，清理临时工具，运行检查程序。};
+\draw[decision] (101.0,955) -- (157,941.0) -- (213.0,955) -- (157,969.0) -- cycle;
+\node[align=center,text=Navy,inner sep=0,text width=92mm,minimum width=112mm,minimum height=28mm,font=\fontsize{10.6}{12.6}\selectfont] (valid) at (157,955) {\textbf{协调者运行检查程序}\\程序返回通过？};
+\node[coord,text width=69mm,minimum width=76mm,minimum height=53mm,font=\fontsize{10.5}{12.8}\selectfont] (filefix) at (273,957) {\textbf{协调者分派修正任务}\\[3pt]报告撰写者：修改报告文字。\\协调者：修正记录和链接。\\涉及证据或纳入决定的变化，\\须再次质量审查。};
+\node[human,text width=129mm,minimum width=136mm,minimum height=26mm,font=\fontsize{11.2}{13.5}\selectfont] (human) at (157,1006) {\textbf{人工审查与最终判断}\\[3pt]AI 报告保留全部发现，最终结论由人工作出。};
+\node[note,text width=69mm,minimum width=76mm,minimum height=94mm,font=\fontsize{9}{11.3}\selectfont] (rules) at (44,365) {\textbf{纳入标准}\\[3pt]能重现，且满足 A 或全部 B。\\[4pt]\textbf{A：}区间与检验或 P 值冲突；印刷数值差异改变理解；人数矛盾；方法能重现同类行却无法重现本项；规定范围内的结局或分析计划变化、遗漏。\\[4pt]\textbf{B：}属于审查范围、上下文无法解释、可能影响理解或提取数值，三项同时满足。};
+\draw[draw=Amber!60,dashed,line width=.6pt] (rules.north east) -- (85,318) -- (screen.west);
+\draw[flow] (setup.south) -- (curator.north);
+\draw[flow] (curator.south) -- (assign.north);
+\draw[flow] (assign.south) -- (157,140) -- (105,140) -- (main.north);
+\draw[flow] (157,140) -- (209,140) -- (support.north);
+\draw[flow] (main.south) -- (105,187) -- (157,187) -- (coverage.north);
+\draw[flow] (support.south) -- (209,187) -- (157,187);
+\draw[flow] (coverage.east) -- (gap.west);
+\node[tag,text width=14mm] at (224,199) {否};
+\draw[flow] (gap.east) -- (317,203) -- (317,122) -- (assign.east);
+\draw[flow] (coverage.south) -- (157,229) -- (51,229) -- (num.north);
+\draw[flow] (157,229) -- (cross.north);
+\draw[flow] (157,229) -- (263,229) -- (statsone.north);
+\node[tag,text width=52mm] at (157,222) {是 · 并行核对};
+\draw[flow] (num.south) -- (51,286) -- (157,286) -- (screen.north);
+\draw[flow] (cross.south) -- (157,286);
+\draw[flow] (statsone.south) -- (263,286) -- (157,286);
+\node[tag,text width=100mm] at (157,292) {先自行筛选，保留全部排除项};
+\draw[flow] (screen.south) -- (register.north);
+\draw[flow] (register.south) -- (recheck.north);
+\draw[flow] (recheck.south) -- (statstwo.north);
+\draw[flow] (statstwo.south) -- (newfind.north);
+\draw[flow] (newfind.east) -- (273,500) -- (secondscreen.north);
+\node[tag,text width=18mm] at (248,496) {是};
+\draw[flow] (newfind.south) -- (audit.north);
+\node[tag,text width=56mm] at (157,525) {无新发现};
+\draw[flow] (secondscreen.south) -- (included.north);
+\draw[flow] (included.south) -- (append.north);
+\node[tag,text width=18mm] at (273,600) {是};
+\draw[flow] (append.south) -- (extra.north);
+\draw[flow] (included.west) -- (225,582) -- (225,680) -- (157,680);
+\node[tag,text width=16mm] at (213,590) {否};
+\draw[flow] (extra.south) -- (273,680) -- (157,680);
+\draw[flow] (audit.south) -- (followup.north);
+\draw[flow] (followup.west) -- (44,750) -- (rescue.north);
+\node[tag,text width=55mm] at (66,741) {遗漏纳入项};
+\draw[flow] (followup.east) -- (273,750) -- (auditfix.north);
+\node[tag,text width=49mm] at (248,741) {需修正或补查};
+\draw[flow] (rescue.south) -- (44,832) -- (1,832) -- (1,707) -- (audit.west);
+\draw[flow] (auditfix.south) -- (273,833) -- (317,833) -- (317,707) -- (audit.east);
+\node[tag,text width=62mm] at (44,836) {再次质量审查};
+\node[tag,text width=64mm] at (273,837) {再次质量审查};
+\draw[flow] (followup.south) -- (report.north);
+\node[tag,text width=56mm] at (157,784) {审查完成};
+\draw[flow] (report.south) -- (render.north);
+\draw[flow] (render.south) -- (valid.north);
+\draw[flow] (valid.east) -- (filefix.west);
+\node[tag,text width=18mm] at (224,949) {未通过};
+\draw[flow] (filefix.east) -- (317,957) -- (317,912) -- (render.east);
+\draw[flow] (filefix.south) -- (273,990) -- (326,990) -- (326,707) -- (317,707);
+\node[tag,text width=75mm] at (276,990) {证据或纳入决定有变化};
+\draw[flow] (valid.south) -- (human.north);
+\node[tag,text width=30mm] at (157,981) {通过};
+\node[anchor=north west,align=left,text=Navy,inner sep=0,text width=328mm,font=\fontsize{9.8}{12.3}\selectfont] at (0,1030) {\textbf{始终遵守：}保留全部 C 编号，新增项只追加、不重排；不设发现数量目标。\\\textbf{模型：}gpt-6.1-sol。高推理强度：协调、统计、筛选、复核和质量审查；其余为中。\\\textbf{Agent：}10 个角色设置，11 个必需阶段；最多同时运行 6 个专家。复用文本仍须从头检查结果。};
+\end{tikzpicture}\end{document}

@@ -1,0 +1,169 @@
+INDEPENDENT COMPLETENESS AUDIT — SHORTENED TASK 3 REPORT
+22 October 2026
+
+Core scientific analysis is retained, but two corrections and several compact additions are warranted. No need to restore the 49-page appendix. A 5–6-page report can be scientifically complete; the hard limit is 10 pages including tables and figures.
+
+Compared concise JSON and generated TeX/PDF against archived full narrative, taxonomy and analysis artifacts. Independently recomputed CSV counts, joins, labels, lexical claims and exact permutation P values. Did not independently review trial PDFs or rerun the bootstrap.
+
+PRIORITIZED CORRECTIONS AND INSERTION-READY TEXT
+
+C1 — REQUIRED CORRECTION
+Location: Data sources and eligibility
+The original shortened draft attached 38 and 20 papers to 37 substantive and 102 minor-presentation candidates through an ambiguous respectively. Parent reports this has now been corrected.
+Suggested text: The 139 confirmed candidates occurred in 38 papers; the 37 substantive candidates occurred in 20 papers.
+Evidence: semantic_coding_final.csv; independently counted. Minor-presentation candidates actually occur in 35 papers.
+
+C2 — REQUIRED CORRECTION
+Location: Comparison across publication periods
+The substantive bootstrap lower confidence limit is rounded incorrectly.
+Suggested text: The mean differences were 0.373 (95% bootstrap interval, −1.316 to 2.036; exact permutation P = 0.683) and −0.002 (−0.768 to 0.737; P = 1.000), respectively.
+Evidence: slides/data/period_comparisons.csv: substantive lower = −0.768473684210526; nearest three-decimal value is −0.768, not −0.769.
+
+A1 — REQUIRED FOR STANDALONE STATISTICAL INTERPRETATION
+Location: Audit and descriptive analysis; before inferential results
+Newly quoted CIs/P values lack supporting Methods. Results currently refer readers to a presentation, which is not self-contained.
+Suggested text: For the overall confirmed and substantive counts, differences were defined as later minus earlier in candidates per paper. We used 95% percentile bootstrap intervals from 20,000 resamples of whole papers within each publication period (seed 20261022). Exact two-sided permutation tests compared the absolute mean differences across all allocations of 19 of the 44 papers to the earlier group, including ties. These exploratory P values were unadjusted; no category-level hypothesis tests were conducted.
+Evidence: slides/calculate_results.R; slides/data/period_comparisons.csv. Independent Python integer dynamic program reproduced P = 0.682894948647625 and 1.0.
+
+A2 — IMPORTANT
+Location: Data sources and eligibility
+Opaque relationship codes and missing-data checks leave avoidable ambiguity about the corpus.
+Suggested text: The original relationship codes restricted eligibility to comparisons between report documents (S_C) or within one report document (S_W); report documents included non-plan results supplements. All 139 eligible Notes were nonempty and had unique year/paper/candidate keys, so no case required a title-only assignment. Validation confirmed that every retained evidence excerpt was an exact substring of its source Note and that the final human labels remained unchanged.
+Evidence: workflow1.6.2/QUALITY_CONTROL_SCOPE.md, Relationship types; extraction_audit.json; semantic_aggregation_validation.json; independent row checks.
+
+A3 — IMPORTANT
+Location: Text processing and mechanism classification
+Alphabetic words and adjacent pairs alone do not fully specify the lexical representation; the nested substantive lexical corpus is not stated.
+Suggested text: Lexical summaries were produced for the 139 confirmed Notes and separately for the nested 37 substantive Notes. Numbers were preserved in the analytical text but excluded from word frequencies. Bigrams required adjacent words within segments bounded by punctuation or numbers; removing stopwords did not join the remaining words across a gap. Singular and plural forms remained separate. These choices were confined to the lexical representation and did not alter the verbatim text used for coding.
+Evidence: text_mining_specification.json; extract_review_notes.py; text_note_statistics.csv.
+
+A4 — IMPORTANT
+Location: Mechanism classification and Overall distribution
+Taxonomy is operational and category frequency is not severity. The concise table correctly limits counts to primary categories, but an explicit category/status distinction and within-category fractions improve interpretation.
+Suggested text: The taxonomy was designed for this corpus. Each primary category represented the central retained mechanism; overlapping secondary categories and tags preserved additional concerns without contributing further counts. Local transcription or formatting tags did not determine substantive status. In this sample, 4 of 39 count/denominator candidates (10.3%) were substantive, compared with 8 of 14 effect-estimate candidates (57.1%) and 6 of 12 attribution candidates (50.0%). These fractions describe the inherited human labels within each category; they do not establish that a mechanism is inherently minor or substantive.
+Evidence: taxonomy_final.json primary_selection_rules and secondary_categories; category_summary.csv; independent counts.
+
+A5 — USEFUL COMPACT RESTORATION
+Location: Comparison across publication periods
+The report discusses composition but Table 2 reports counts and paper means rather than shares. A short share paragraph recovers the main compositional pattern without a third table.
+Suggested text: Among all confirmed candidates, count/denominator problems accounted for 23.2% in the earlier period and 31.3% in the later period, while analysis-definition problems accounted for 5.4% and 20.5%. Interval problems accounted for 25.0% and 12.0%, and attribution problems for 12.5% and 6.0%. These shares used 56 and 83 as their denominators; corresponding substantive shares used the nested totals of 16 and 21.
+Evidence: category_period_summary.csv; independently verified all 28 count cells. Retain the existing zero-inclusive mean table.
+
+A6 — IMPORTANT
+Location: Discussion limitations
+Candidate dependence, sampling/detection limits and conditional bootstrap uncertainty are partly compressed away. Selected sample and no causal pandemic inference are already present, but they do not fully explain the uncertainty estimates.
+Suggested text: Candidates clustered within papers, which was why the paper was the resampling and permutation unit. The intervals describe uncertainty conditional on the available papers, detected candidates and final review decisions; they do not account for missed findings or adjudication uncertainty. The selected corpus therefore cannot estimate error prevalence among all trials, establish changes in research quality, or identify an effect of the publication period or pandemic. Similar observed substantive means also do not establish equivalence between periods.
+Evidence: Archived full narrative sections 7 and 10; slides/calculate_results.R; scope of the availability sample. The last sentence is a statistical interpretation safeguard, not a new analysis.
+
+A7 — USEFUL COMPACT RESTORATION
+Location: Data-source validation / Supplementary materials
+Independent extraction is retained, but deterministic and semantic reproduction evidence has been reduced to an output list. Restore one sentence each without adding shell commands to the article.
+Suggested text: A deterministic rerun reproduced 19 extraction and lexical artifacts identically, and hash checks confirmed that 11 input files were unchanged. The accompanying scripts reproduce the saved full-note coding decisions and reconciliation; rerunning them does not constitute a new independent semantic review.
+Evidence: extraction_validation.json; archived full narrative sections 3 and 10; README.txt.
+
+A8 — OPTIONAL STRENGTHENING
+Location: Illustrative examples
+The three current examples are well chosen and adequate; a count/denominator example adds coverage of the largest category and shows that count errors can be substantive.
+Suggested text: A substantive count discrepancy was illustrated by 2024/jama.2024.0572/C001. The Note contrasted eight MRI follow-ups in one passage with 204 in another and concluded: “The count of the post hoc infarct-growth population is irreconcilable within the report.” It was assigned to counts and population accounting, with its final substantive status preserved.
+Evidence: semantic_coding_final.csv corresponding key; archived full narrative section 9. This is the Note’s interpretation, not independent verification of the trial.
+
+A9 — OPTIONAL CLARIFICATION
+Location: Audit and sensitivity analysis
+Sensitivity is correctly described but could explicitly state its limited scope.
+Suggested text: This exclusion analysis assessed the influence of contested primary priorities; it did not enumerate every possible reassignment of the three cases. All three retained their final human-confirmed, substantive labels in the main analysis.
+Evidence: coding_audit_metadata.json; taxonomy_final.json; category_primary_assignment_sensitivity.csv.
+
+COVERAGE COMPARED WITH ARCHIVED FULL NARRATIVE
+
+Eligibility and analytical scope — retained
+139 confirmed statistical candidates, 37 nested substantive, 301 excluded, final human labels versus earlier AI Notes, 413 cleared retained Notes all stated.
+
+Extraction and provenance — mostly retained
+Requested structure, paths/cells/hashes, four raw workbooks, independent readxl check stated. Add nonempty/unique-key result and define relationship codes. Null/empty/XML details can stay in supplements.
+
+Lexical meaning and negation — mostly retained
+Normalization, no stemming, DF versus TF, stopword views, no/not, OR and P limitations all retained. Add punctuation/numeric adjacency scope and nested substantive lexical corpus.
+
+Seven categories and boundaries — retained with small clarifications
+All seven definitions in Table 1, primary-only counting footnote, interval versus definition/inference, point sign versus endpoint sign, identified transfer priority retained. Detailed taxonomy belongs in companion JSON.
+
+Audit and ambiguity — retained
+All 139 reviewed; shared taxonomy; no blinded human reliability claim; four disagreements/three changes; all three ambiguous keys and competing mechanisms; 136/34 sensitivity retained.
+
+Overall and period results — retained with interpretive omissions
+Category counts and all/substantive separation, zero-inclusive 44/19/25 denominators and period counts/means correct. Restore within-category fractions and compositional shares; fix CI rounding.
+
+Interpretation limits — partly compressed
+Candidate-versus-defect distinction, selected sample, earlier AI wording, taxonomy not human-validated, no new trial verification, publication versus recruitment/pandemic distinction retained. Add paper clustering and conditional uncertainty.
+
+Reproducibility and exact cases — retained through companions
+139-case XLSX/CSV/JSON with raw text, exact excerpts, reasons, secondary labels, ambiguity and cells retained. Three examples adequately teach semantic coding; no need for inline full appendix.
+
+Scientific language and reference style — largely suitable
+Compared first three pages of supplied Al Amer et al. 2021 PDF: report follows objectives, Methods, results, worked examples and qualified Discussion. Replace presentation-dependent wording and define internal codes; keep commands/file implementation details in supplements.
+
+NUMERICAL CHECKS
+
+PASS: Unique scoped records and nested substantive count
+{"all": 139, "substantive": 37, "minor": 102}
+
+PASS: Eligibility exactly equals scoped corpus
+{"source_index": 440, "eligible": 139, "out_of_scope": 301}
+
+PASS: All Notes nonempty
+{"nonempty_scoped": 139, "nonempty_index": 440}
+
+PASS: Source Notes and final human labels unchanged
+{"rows_checked": 139, "label_fields": ["disposition", "domain", "issue", "substantiveness", "impact"]}
+
+PASS: Exact-substring evidence
+{"rows_checked": 139}
+
+PASS: Category counts
+{"order": ["COUNT_DENOM", "EFFECT_ESTIMAND", "INTERVAL_DISPERSION", "TEST_INFERENCE", "DIRECTION", "ATTRIBUTION", "ANALYSIS_DEFINITION"], "all": [39, 14, 24, 15, 15, 12, 20], "substantive": [4, 8, 7, 4, 5, 6, 3]}
+
+PASS: Papers carrying candidates
+{"all": 38, "substantive": 20, "minor_presentation": 35, "all_sampled": 44}
+
+PASS: Overall percentages and selected fractions
+{"counts_share": 28.057553956834532, "interval_share": 17.26618705035971, "effects_intervals_attribution_substantive_share": 56.75675675675676, "within_count_substantive": 10.256410256410257, "within_effect_substantive": 57.142857142857146, "within_attribution_substantive": 50.0}
+
+PASS: earlier counts and denominators
+{"all": 56, "substantive": 16, "papers": 19, "mean_all": 2.9473684210526314, "mean_substantive": 0.8421052631578947, "all_categories": {"DIRECTION": 7, "TEST_INFERENCE": 8, "INTERVAL_DISPERSION": 14, "COUNT_DENOM": 13, "EFFECT_ESTIMAND": 4, "ANALYSIS_DEFINITION": 3, "ATTRIBUTION": 7}, "substantive_categories": {"INTERVAL_DISPERSION": 4, "EFFECT_ESTIMAND": 3, "DIRECTION": 2, "ATTRIBUTION": 3, "COUNT_DENOM": 1, "TEST_INFERENCE": 3}}
+
+PASS: later counts and denominators
+{"all": 83, "substantive": 21, "papers": 25, "mean_all": 3.32, "mean_substantive": 0.84, "all_categories": {"DIRECTION": 8, "TEST_INFERENCE": 7, "COUNT_DENOM": 26, "EFFECT_ESTIMAND": 10, "ATTRIBUTION": 5, "ANALYSIS_DEFINITION": 17, "INTERVAL_DISPERSION": 10}, "substantive_categories": {"COUNT_DENOM": 3, "EFFECT_ESTIMAND": 5, "ATTRIBUTION": 3, "DIRECTION": 3, "INTERVAL_DISPERSION": 3, "ANALYSIS_DEFINITION": 3, "TEST_INFERENCE": 1}}
+
+PASS: Every period category count
+{"category_rows": 7, "count_cells": 28}
+
+PASS: All quoted lexical document frequencies
+{"printed": {"df": 38, "tf": 53}, "rendered": {"df": 29, "tf": 29}, "ci": {"df": 23, "tf": 32}, "counts": {"df": 20, "tf": 23}, "upper limit": {"df": 6, "tf": 6}, "primary analysis": {"df": 5, "tf": 6}, "minus sign": {"df": 5, "tf": 5}}
+
+PASS: Audit and ambiguity
+{"audit_status": {"agree": 134, "revise": 2, "ambiguous": 3}, "changed_labels": 3, "ambiguous_keys": ["2018::jama.2018.18020::C010", "2018::jama.2018.8802::C004", "2025::jama.2025.11178::C016"]}
+
+PASS: Sensitivity totals
+{"all": {"DIRECTION": 15, "TEST_INFERENCE": 14, "INTERVAL_DISPERSION": 23, "COUNT_DENOM": 39, "EFFECT_ESTIMAND": 14, "ANALYSIS_DEFINITION": 19, "ATTRIBUTION": 12}, "substantive": {"INTERVAL_DISPERSION": 6, "EFFECT_ESTIMAND": 8, "DIRECTION": 5, "ATTRIBUTION": 6, "COUNT_DENOM": 4, "TEST_INFERENCE": 3, "ANALYSIS_DEFINITION": 2}}
+
+PASS: Independent permutation confirmed_all
+{"exact_p": 0.6828949486476252, "csv": {"metric": "confirmed_all", "scale": "count", "early_total": "56", "late_total": "83", "early_mean": "2.94736842105263", "late_mean": "3.32", "difference": "0.372631578947368", "lower": "-1.31578947368421", "upper": "2.03584210526315", "p": "0.682894948647625"}, "round_3dp": {"difference": "0.373", "lower": "-1.316", "upper": "2.036", "p": "0.683"}, "bootstrap_validation": "Read saved CSV and implementation; bootstrap was not rerun in this audit."}
+
+PASS: Independent permutation confirmed_substantive
+{"exact_p": 1.0, "csv": {"metric": "confirmed_substantive", "scale": "count", "early_total": "16", "late_total": "21", "early_mean": "0.842105263157895", "late_mean": "0.84", "difference": "-0.00210526315789472", "lower": "-0.768473684210526", "upper": "0.736842105263158", "p": "1"}, "round_3dp": {"difference": "-0.002", "lower": "-0.768", "upper": "0.737", "p": "1.000"}, "bootstrap_validation": "Read saved CSV and implementation; bootstrap was not rerun in this audit."}
+
+CONTENT THAT CAN REMAIN IN COMPANION FILES
+
+- 139 candidate Notes and evidence appendix
+- Complete seven-category boundary catalogue
+- Raw XML/null-presence specifications
+- Full stopword lists and all frequency rows
+- Audit status tally 134/2/3 when four disagreements/three revisions/three ambiguities already explained
+- Individual-year breakdowns beyond requested earlier/later comparison
+- Seven separate worked examples or a duplicate figure/table
+
+Apply C1/C2 and A1/A2/A3/A6 first. Use A4/A5/A7 to restore substantive interpretation and reproducibility. A8/A9 are optional. Avoid repeating methods across paragraphs; expected net increase approximately 500–650 words after integration, readily within the page limit.
+
+Reference style reviewed: template/2021-Fahad et al-Bayesian Methods for Meta-Analyses of Binary Outcomes Implementations, Examples, and Impact of Priors.pdf (first three pages, for exposition style)
+
+This audit reviews completeness and consistency, not the truth of allegations in the original trial reports.

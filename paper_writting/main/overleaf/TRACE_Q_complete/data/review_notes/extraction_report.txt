@@ -1,0 +1,30 @@
+R_Bulun raw review-notes extraction and provenance audit
+
+Reproduce: python3 analysis/review_notes/extract_review_notes.py
+
+All candidates: 440 across 44 papers.
+Confirmed statistical subset: 139; confirmed substantive subset: 37.
+Missing or whitespace-only raw notes: 0.
+
+Subset definitions:
+FINAL COPIED HUMAN-REVIEWED LABELS: disposition=retain AND domain=statistical_results AND issue=confirmed_issue AND frozen relationship IN (S_C,S_W)
+confirmed_statistical_filter AND substantiveness=substantive
+
+Source provenance:
+Raw-run notes and raw-run labels were authored by Claude Opus 5.5 high AI sessions, with no person reviewing candidates at that stage, per reviewer_runs_raw/README.md. User subsequently confirmed that copied workbooks underwent later human review; final copied human-reviewed labels are authoritative for eligibility.
+Raw Notes are earlier AI-run rationales, not human-authored explanations. Later human review is established by the user's explicit confirmation, not inferred from label equality. Its independent extent is not established by workbook comparison.
+
+Value comparisons:
+Raw vs copied workbooks: 413 cell-value differences; fields = {'notes': 413}; formula differences = 0.
+Raw vs candidate_results.csv: 413 field differences; fields = {'notes': 413}.
+Copied workbooks vs candidate_results.csv: 0 field differences.
+All 440 keys match both frozen CSV tables exactly; metadata, original relationship/domain, and derived endpoint flags checked.
+All worksheets/all XML cell addresses; None and empty string treated as equal logical blanks. Formatting, ZIP metadata, and empty-cell presence do not count as cell-value changes. Formulas compared separately; no recalculation.
+
+Raw preservation:
+all_notes.json preserves JSON null versus empty strings and exact logical Notes text. CSV empty fields can represent either; notes_cell_type and notes_cell_present retain cell metadata, and the full XML-value archive retains exact value/type/formula representations.
+Each candidate carries year, paper, candidate key, source workbook and SHA-256, sheet, row, note-cell address, original label values, frozen relationship/domain and report hash. Original_domain means the frozen candidate catalog. The base label fields and final_* fields come from copied human-reviewed workbooks; raw_* fields retain earlier AI-run labels. Notes always come from raw workbooks.
+
+Descriptive text mining:
+Normalization and lexical analysis are restricted to the 139 final-human-confirmed statistical_results notes and their overlapping 37 confirmed-substantive notes. Other candidates remain only in the verbatim source extraction; protocol_report, report_internal_inconsistency, and plan_material are excluded from text mining. The specification exports all stopwords, tokenization rules, denominators and sorting. Word and adjacent-bigram document frequencies and term frequencies are given for these two subsets and each year in two transparent stopword views.
+These frequencies describe vocabulary, not validated issue categories. Candidate notes cluster within papers and share an AI authoring process; no inferential tests are performed.

@@ -1,0 +1,92 @@
+{
+  "title": "Statistical Reporting Problems: A Notes-Based Classification and Comparison across Publication Periods",
+  "abstract": "Review decisions identify confirmed statistical problems but do not necessarily describe the mechanisms underlying them. We classified the earlier review Notes for 139 confirmed statistical candidates from 44 trial reports, including 37 candidates judged substantive. Final human-reviewed labels determined eligibility and substantive status; the source Notes were written during earlier AI review runs. Each Note was assigned one of seven primary mechanism categories and examined in a complete second-agent audit. Counts and denominators formed the largest category overall (39/139), whereas effect estimates, intervals and result attribution accounted for 21 of 37 substantive candidates. The mean confirmed count was 2.947 per paper in 2018–2019 and 3.320 in 2024–2025; the substantive means were 0.842 and 0.840. These similar substantive means concealed differences in category composition. The classification provides a reproducible description of the retained explanations, while preserving the original human decisions and uncertainty about competing mechanisms.",
+  "sections": [
+    {
+      "title": "Introduction",
+      "paragraphs": [
+        "A confirmed reporting problem may involve a denominator, an effect estimate, a statistical interval, or the interpretation of a result. Counting these problems together is useful for summarizing review outcomes, but may obscure differences in their mechanisms and substantive importance. Explanatory review Notes provide additional information that can support a more detailed classification.",
+        "This analysis has three objectives: to recover the source Notes with their candidate identifiers, to classify confirmed statistical problems according to the mechanisms described in those Notes, and to compare their profiles across two publication periods. We focus on statistical_results candidates. The other three review domains are considered in separate comparisons and are outside the present text analysis."
+      ]
+    },
+    {
+      "title": "Materials and Methods",
+      "subsections": [
+        {
+          "title": "Data sources and eligibility",
+          "paragraphs": [
+            "The sample comprised 44 trial-report packages: 19 published in 2018–2019 and 25 in 2024–2025. We extracted the Notes(optional) column from the four raw R_Bulun workbooks, retaining the structure year/paper/candidate/Notes. Workbook paths, worksheet names, cell addresses and SHA-256 hashes were also recorded. The 440 extracted records formed a source index. An independent extraction using R readxl reproduced all keys and Notes exactly. A deterministic rerun reproduced 19 extraction and lexical artifacts identically, and hash checks confirmed that 11 input files were unchanged.",
+            "Final decisions were obtained from the copied workbooks, which underwent later human review as confirmed by the user. Eligible candidates had disposition retain, final domain statistical_results, issue status confirmed_issue, and an original S_C or S_W relationship. This yielded 139 candidates, including 37 substantive and 102 minor-presentation candidates. The 139 confirmed candidates occurred in 38 papers; the 37 substantive candidates occurred in 20. The remaining 301 source records were excluded from both lexical analysis and mechanism coding.",
+            "The original relationship codes restricted eligibility to comparisons between report documents (S_C) or within one report document (S_W); report documents included non-plan results supplements. All 139 eligible Notes were nonempty and had unique year/paper/candidate keys, so no case required a title-only assignment. Validation confirmed that every retained evidence excerpt was an exact substring of its source Note and that the final human labels remained unchanged.",
+            "The raw Notes were written by earlier Claude Opus 5.5 review runs. They therefore supplied explanatory text, while the subsequently human-reviewed labels supplied eligibility and substantive status. Raw and copied decision codes agreed, but the copied workbooks had cleared the Notes for all 413 retained candidates. Recovering the raw text did not change any final decision."
+          ]
+        },
+        {
+          "title": "Text processing and mechanism classification",
+          "paragraphs": [
+            "For lexical summaries, we normalized a separate text copy using Unicode NFKC normalization, case folding and whitespace collapse. We counted alphabetic words and adjacent word pairs, with English and location/reporting stopword views. Document frequency counted each term once per candidate; term frequency counted every occurrence. No stemming was applied. These summaries described the vocabulary rather than determining the categories.",
+            "Lexical summaries were produced for the 139 confirmed Notes and separately for the nested 37 substantive Notes. Numbers were preserved in the analytical text but excluded from word frequencies. Bigrams required adjacent words within segments bounded by punctuation or numbers; removing stopwords did not join the remaining words across a gap. Singular and plural forms remained separate. These choices were confined to the lexical representation and did not alter the verbatim text used for coding.",
+            "We read each complete Note and used a taxonomy designed for this corpus. Each primary category represented the central retained mechanism; overlapping secondary categories and tags preserved additional concerns without contributing further counts. Local transcription or formatting tags did not determine substantive status. The seven categories are defined in Table 1. Full-note meaning took precedence over the candidate title. For example, an explicitly diagnosed confidence-level mismatch was classified as an analysis-definition problem, whereas an unexplained interval/P-value conflict was classified as an inferential problem. A local interval-bound typo remained an interval problem; a point-sign or benefit-direction error belonged to direction. A specifically identified transfer between outcomes took attribution over a generic numerical discrepancy.",
+            "This distinction was necessary because a Note could mention a result to establish that it was correct or to reject a broader allegation. Moreover, the lexical stopword lists removed no and not; case folding conflated OR with or, and single-letter P was excluded. Semantic coding therefore used the unmodified text, including numbers, negation and qualifications. Category labels were added separately from the existing human judgments of confirmation and substantiveness."
+          ]
+        },
+        {
+          "title": "Audit and descriptive analysis",
+          "paragraphs": [
+            "A second Astra agent examined all 139 Notes and recorded categories, exact excerpts and reasons before comparing them with the provisional coding. The agents shared the taxonomy and reconciled boundary disagreements. This constituted a complete LLM-assisted content audit; it was not a blinded human reliability study or a new verification of the trial calculations. Cases with competing primary mechanisms retained an explicit ambiguity flag.",
+            "We summarized category counts, proportions and means per paper for all confirmed candidates and the nested substantive subset. Proportions used candidate denominators; means included all sampled papers, including those with zero eligible candidates. Earlier and later denominators were 19 and 25 papers. We also repeated the category summaries after excluding primary-ambiguous cases.",
+            "For the overall confirmed and substantive counts, differences were defined as later minus earlier in candidates per paper. We used 95% percentile bootstrap intervals from 20,000 resamples of whole papers within each publication period (seed 20261022). Exact two-sided permutation tests compared the absolute mean differences across all allocations of 19 of the 44 papers to the earlier group, including ties. These exploratory P values were unadjusted; no category-level hypothesis tests were conducted."
+          ]
+        }
+      ],
+      "table_after": "taxonomy"
+    },
+    {
+      "title": "Results",
+      "subsections": [
+        {
+          "title": "Overall distribution",
+          "paragraphs": [
+            "Counts and denominators formed the largest category, with 39 candidates (28.1% of 139), followed by intervals and distribution summaries, with 24 (17.3%). Their substantive counts were 4 and 7, respectively. Effect estimates accounted for 14 candidates overall, including 8 substantive candidates, the largest substantive category. Effects, intervals and attribution together accounted for 21 of the 37 substantive candidates (56.8%). Thus, the most frequent mechanism overall was not the most frequent mechanism among substantive problems.",
+            "In this sample, 4 of 39 count/denominator candidates (10.3%) were substantive, compared with 8 of 14 effect-estimate candidates (57.1%) and 6 of 12 attribution candidates (50.0%). These fractions describe the inherited human labels within each category; they do not establish that a mechanism is inherently minor or substantive.",
+            "The lexical summaries reflected common reporting language. After English and location stopwords were removed, printed appeared in 38 Notes, rendered in 29, ci in 23 and counts in 20. Upper limit appeared in 6 Notes; primary analysis and minus sign each appeared in 5. These frequencies should not be interpreted as category counts, because the same term can describe an alleged problem, a successful comparison or a rejected explanation."
+          ]
+        },
+        {
+          "title": "Comparison across publication periods",
+          "paragraphs": [
+            "The earlier period contained 56 confirmed candidates, including 16 substantive candidates; the later period contained 83 and 21, respectively. Mean confirmed counts increased from 2.947 to 3.320 per paper, whereas substantive means were nearly identical, at 0.842 and 0.840. The paper-level comparisons did not establish a clear period difference: the mean differences were 0.373 (95% bootstrap interval, -1.316 to 2.036; exact permutation P = 0.683) and -0.002 (-0.768 to 0.737; P = 1.000).",
+            "Category profiles nevertheless differed (Table 2). Counts/denominators increased from 0.684 to 1.040 candidates per paper, and analysis definitions from 0.158 to 0.680. Interval candidates decreased from 0.737 to 0.400. Among substantive candidates, later increases in definition and effect-estimate categories were accompanied by decreases in interval and inference categories. These descriptive changes explain how similar overall substantive means can coexist with different compositions.",
+            "Among all confirmed candidates, count/denominator problems accounted for 23.2% in the earlier period and 31.3% in the later period, while analysis-definition problems accounted for 5.4% and 20.5%. Interval problems accounted for 25.0% and 12.0%, and attribution problems for 12.5% and 6.0%. These shares used 56 and 83 as their denominators; corresponding substantive shares used the nested totals of 16 and 21."
+          ],
+          "table_after": "period"
+        },
+        {
+          "title": "Illustrative classification examples",
+          "paragraphs": [
+            "Four examples illustrate why complete explanations were needed. In 2018/jama.2018.14280/C001, the Note stated that the printed risk ratios and intervals reproduced from a transposed two-by-two table, while the P values were correct. The candidate was therefore classified as an effect-estimate problem and retained its final substantive status. A frequency count of P-value mentions would not recover this distinction.",
+            "In 2025/jama.2025.20765/C014, the Note explicitly rejected interval asymmetry as sufficient evidence and localized the retained problem to an upper limit printed as 42 instead of 4.2. The primary category was interval coherence, with the final minor-presentation status unchanged. In 2024/jama.2024.6063/C012, the Note identified a fasting-glucose interval that repeated the hsCRP interval, while rejecting a separate concern about WOMAC interval width. The identified outcome mapping supported attribution rather than a general interval-width category.",
+            "A substantive count discrepancy was illustrated by 2024/jama.2024.0572/C001. The Note contrasted eight MRI follow-ups in one passage with 204 in another and concluded: “The count of the post hoc infarct-growth population is irreconcilable within the report.” It was assigned to counts and population accounting, with its final substantive status preserved."
+          ]
+        },
+        {
+          "title": "Audit and sensitivity analysis",
+          "paragraphs": [
+            "The audit identified four initial boundary disagreements and changed three provisional primary labels. Noninferiority-bound wording moved from direction to inference; a candidate combining interval/P-value conflict with implausible precision moved to interval coherence; and the identified repeated glucose/hsCRP interval moved to attribution. A log-scale effect mislabeled as percentage change remained in the effect-estimate category after boundary clarification.",
+            "Three substantive candidates retained ambiguous primary priority: 2018/jama.2018.18020/C010, 2018/jama.2018.8802/C004 and 2025/jama.2025.11178/C016. Their competing mechanisms concerned inference versus direction, interval coherence versus inference, and summary-statistic definition versus attribution. Excluding them left 136 candidates, including 34 substantive candidates. Interval, inference and definition totals each decreased by one; other categories were unchanged. This sensitivity concerns category priority, not the validity of the inherited human decisions. This exclusion analysis assessed the influence of contested primary priorities; it did not enumerate every possible reassignment of the three cases. All three retained their final human-confirmed, substantive labels in the main analysis."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Discussion",
+      "paragraphs": [
+        "This analysis extends the confirmed-issue counts by describing the statistical mechanisms contained in their review explanations. Counts and denominator problems were common overall, whereas effects, intervals and attribution contributed a larger part of the substantive subset. The comparison also showed that a stable substantive mean can conceal changes in the mixture of mechanisms. Reporting both dimensions is therefore useful when interpreting aggregate review results.",
+        "Several limitations require consideration. The unit was a candidate, which could contain multiple concerns or share an underlying cause with another candidate. The categories consequently partition records rather than unique defects. The sample was selected, the Notes reflected an earlier AI author's explanations, and the new taxonomy has not undergone separate human validation. The second-agent audit assessed consistency of interpretation without independently repeating the underlying calculations.",
+        "Candidates clustered within papers, which was why the paper was the resampling and permutation unit. The intervals describe uncertainty conditional on the available papers, detected candidates and final review decisions; they do not account for missed findings or adjudication uncertainty. The selected corpus therefore cannot estimate error prevalence among all trials, establish changes in research quality, or identify an effect of the publication period or pandemic. Similar observed substantive means also do not establish equivalence between periods. Publication windows also do not identify trial recruitment periods. Category differences should therefore remain descriptive.",
+        "The extracted text, operational rules, exact evidence and reconciliation records are retained in the accompanying files. These materials allow subsequent reviewers to examine the classification while keeping eligibility, substantive status and mechanism assignment as distinct judgments."
+      ]
+    }
+  ],
+  "supplementary_materials": "The accompanying workbook, statistical_issue_recategorization.xlsx, contains all 139 Notes and coding decisions, the 37-case substantive subset, category definitions and summaries. The four-column confirmed_statistical_notes_year_paper_candidate.csv preserves the requested year/paper/candidate/Notes structure. semantic_coding_final.csv/json records exact excerpts, reasons, secondary tags, ambiguity and source-cell provenance; taxonomy_final.json provides complete category boundaries. Full extraction, lexical, audit and reproducibility files are listed in README.txt. The complete 440-Note export is a source index only. The accompanying scripts reproduce the saved full-note coding decisions and reconciliation; rerunning them does not constitute a new independent semantic review."
+}

@@ -1,0 +1,74 @@
+\begin{frame}[t]{Workflow 1.6.2: from source documents to human review}
+\vspace{1mm}
+\centering
+\begin{tikzpicture}[x=1mm,y=-1mm,
+  box/.style={rectangle,rounded corners=1.2mm,draw=Blue!55,fill=Blue!5,
+    line width=.55pt,text=Navy,text width=34mm,minimum width=38mm,
+    minimum height=17mm,inner sep=1.5mm,align=left,
+    font=\fontsize{7.1}{8.4}\selectfont},
+  review/.style={box,draw=Teal!65,fill=Teal!5},
+  gate/.style={diamond,aspect=1.8,draw=Amber,fill=Amber!7,
+    line width=.65pt,text width=18mm,inner sep=.5mm,align=center,
+    font=\fontsize{7.2}{8.4}\selectfont},
+  flow/.style={-{Stealth[length=1.5mm]},draw=Navy!75,line width=.75pt},
+  return/.style={-{Stealth[length=1.4mm]},draw=Amber,dashed,line width=.65pt},
+  label/.style={font=\fontsize{6.4}{7.5}\selectfont,text=Amber,fill=white,inner sep=.6mm}]
+\path[use as bounding box] (0,0) rectangle (166,68);
+
+\node[box] (sources) at (20,9) {\textbf{1\quad Collect source package}\\[.5mm]
+  Paper, supplements, plans\\
+  and structured files};
+\node[box] (prepare) at (62,9) {\textbf{2\quad Prepare the evidence}\\[.5mm]
+  Reuse usable text / OCR;\\
+  fresh-read uncovered units};
+\node[box] (mapping) at (104,9) {\textbf{3\quad Map all source units}\\[.5mm]
+  Paper + support in parallel;\\
+  link values to exact sources};
+\node[gate] (coverage) at (146,9) {\textbf{All units}\\\textbf{mapped?}};
+\draw[flow] (sources) -- (prepare);
+\draw[flow] (prepare) -- (mapping);
+\draw[flow] (mapping) -- (coverage);
+\draw[return] (coverage.south) -- (146,20) --
+  node[label,midway]{No: inspect gaps and remap} (104,20) -- (mapping.south);
+
+\node[review] (checks) at (146,33) {\textbf{4\quad Run parallel checks}\\[.5mm]
+  Numeric / cross-source / stats\\
+  Reproduce + apply A/B rule};
+\node[review] (screen) at (104,33) {\textbf{5\quad Screen every finding}\\[.5mm]
+  Reread; include or exclude\\
+  Merge duplicates; log reasons};
+\node[review] (register) at (62,33) {\textbf{6\quad Register included issues}\\[.5mm]
+  Assign stable C IDs, domains\\
+  and source relationships};
+\node[review] (recheck) at (20,33) {\textbf{7\quad Recheck exact sources}\\[.5mm]
+  Verify sources + calculations\\
+  Keep ID if not reproduced};
+\draw[flow] (coverage.east) -- (165,9) -- (165,22) --
+  node[above,font=\fontsize{6.4}{7.5}\selectfont,text=Slate]{Yes} (146,22) -- (checks.north);
+\draw[flow] (checks) -- (screen);
+\draw[flow] (screen) -- (register);
+\draw[flow] (register) -- (recheck);
+
+\node[review,minimum height=20mm] (pass2) at (20,57) {\textbf{8\quad Second statistical pass}\\[.5mm]
+  New reviewer checks all\\
+  statistical links and exclusions};
+\node[review,minimum height=20mm] (audit) at (62,57) {\textbf{9\quad Audit the full record}\\[.5mm]
+  Audit decisions and coverage\\
+  Rescues: register + recheck};
+\node[box,minimum height=20mm] (report) at (104,57) {\textbf{10\quad Report and validate}\\[.5mm]
+  Report all IDs; check records\\
+  Fail $\to$ repair and revalidate\\
+  Pass $\to$ human review};
+\node[box,draw=Teal,line width=.9pt,fill=Teal!9,minimum height=20mm] (human) at (146,57) {\textbf{11\quad Later human review}\\[.5mm]
+  Decide disposition, certainty\\
+  and substantiveness\\
+  Record workbook decisions};
+\draw[flow] (recheck) -- (pass2);
+\draw[flow] (pass2) -- (audit);
+\draw[flow] (audit) -- (report);
+\draw[flow] (report) -- (human);
+\draw[return] ([xshift=12mm]pass2.north) -- (32,44) --
+  node[label,midway]{New findings: fresh screen $\to$ append $\to$ recheck} (104,44) -- (screen.south);
+\end{tikzpicture}
+\src{Sources: Workflow 1.6.2 AGENTS.md, steps 1--13; review contract. A/B inclusion rules: slide 4. Mechanical PASS does not establish scientific correctness.}
+\end{frame}
