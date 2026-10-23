@@ -1,0 +1,338 @@
+% !TeX program = xelatex
+% Paste this entire file into Overleaf main.tex; no external manuscript files or BibTeX run are needed.
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=24mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros}
+\setmonofont[Scale=0.86]{Latin Modern Mono}
+\usepackage{amsmath,amssymb,graphicx,booktabs,longtable,tabularx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{xcolor,hyperref,fancyhdr}
+\hypersetup{colorlinks=true,linkcolor=blue!40!black,citecolor=blue!40!black,urlcolor=blue!40!black,
+ pdftitle={TRACE-Q: An Exploratory Multi-Agent Toolkit for Evidence-Grounded Review of Quantitative Research Reporting}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small TRACE-Q}\fancyhead[R]{\small Draft for author review}\fancyfoot[C]{\thepage}
+\setlength{\headheight}{15pt}
+\setlength{\parskip}{3pt}\setlength{\parindent}{1.2em}
+\linespread{1.12}\setlength{\emergencystretch}{2em}
+\setlength{\bibsep}{4pt}
+\renewcommand{\bibfont}{\small}
+\begin{document}
+\begin{center}
+{\Large\bfseries TRACE-Q: An Exploratory Multi-Agent Toolkit for Evidence-Grounded Review of Quantitative Research Reporting\par}
+\vspace{7pt}{\small Draft manuscript --- October 22, 2026}
+\end{center}
+\begin{abstract}
+Quantitative reporting issues can be difficult to assess when evidence is spread across an article, supplements, protocols, and statistical analysis plans. We describe TRACE-Q, an exploratory multi-agent toolkit that links source mapping, quantitative checks, inclusion screening, rechecking, and audit to human review. We examined workflow TRACE-Q in an availability sample of 44 randomized trial packages published in \textit{JAMA} in 2018--2019 and 2024--2025, using final human-reviewed workbooks. Of 440 candidates, 413 were retained and 27 excluded. Retention included descriptive protocol--report differences and did not imply confirmation. The principal endpoint comprised 41 confirmed or probable substantive statistical issues in report materials, occurring in 22 papers. Mean counts were 1.05 per paper in 2018--2019 and 0.84 in 2024--2025 (difference, $-0.21$; 95\% bootstrap confidence interval, $-1.02$ to 0.56; exact paper-level permutation $P=0.654$). TRACE-Q provides a structured record of concerns for human assessment. This development application did not assess missed issues, diagnostic accuracy, or efficiency. Availability sampling and a single recorded reviewer limit generalization, and the period comparison does not establish a change in reporting quality.
+\end{abstract}
+\noindent\textbf{Keywords:} quantitative reporting; large language models; human review; randomized trials; permutation test
+
+
+% Begin embedded sections/introduction
+\section{Introduction}
+Quantitative research reports distribute information across articles, tables, figures, supplements, protocols, and statistical analysis plans. Readers must reconcile these sources to identify the population, outcome, analysis, and uncertainty represented by a result. This task also precedes evidence synthesis: reliable extraction depends on interpretable source reports. Xu et al. found that extraction errors in systematic reviews of adverse events sometimes changed the direction or statistical significance of pooled effects.\cite{xu2022extraction} Checking source reporting therefore complements efforts to improve extraction and synthesis.
+
+Our project arose from peer-review experience with inconsistent statistical results across manuscript components. An earlier feasibility exercise applied a large language model (LLM) to one JAMA randomized trial and its supplements, producing candidate concerns in the supplements for further inspection. This experience motivated a broader question: can a structured workflow identify specific reporting concerns in published clinical studies while preserving the evidence needed for human assessment?
+
+LLMs have been applied to statistical analysis, reference generation, and clinical triage. Evaluations by Ruta et al., Graf et al., and Paris et al. illustrate their potential uses alongside dependence on instructions, inaccurate references, and limited agreement with specialists.\cite{ruta2025statistics,graf2024referencing,paris2026triage} Document-checking studies address a more specific problem. The FIND, FLAWS, and SPOT preprints evaluate recovery of inserted inconsistencies, inserted scientific errors, and documented errors associated with corrections or retractions, respectively.\cite{lovering2025find,xi2025flaws,son2025spot} Bianchi et al. instead obtained human assessments of newly proposed findings in artificial intelligence papers.\cite{bianchi2025errors}
+
+In ophthalmology, La, Paris, and colleagues assessed detection, localization, explanation, and correction of planted inconsistencies and reviewed additional findings.\cite{la2026consistency} Dong et al. evaluated structured checking of categorical analyses, identifying useful capabilities alongside extraction failures and omitted analyses.\cite{dong2026statistical} These studies motivate supplementary review and distinguish recovery of known errors from assessment of newly generated concerns. Their different targets and reference standards limit direct performance comparisons.
+
+A practical workflow must also record what was examined and how each concern arose. Persistent source maps, numerical relationships, and screening decisions can preserve context across files and review stages. Document tools, reusable extraction assets, and delegated tasks provide a way to organize this work, provided that derived evidence remains linked to original sources. Human responsibility and transparent reporting of AI use remain necessary.\cite{flanagin2026guidance}
+
+We present TRACE-Q, an exploratory multi-agent toolkit for evidence-grounded review of quantitative research reporting. We describe Workflow TRACE-Q and examine human reviews in an availability sample of 44 randomized clinical trial packages published in JAMA in 2018--2019 or 2024--2025. The objectives are to make the review process explicit, characterize retained findings, and explore publication-period differences. This application evaluates generated candidates without an exhaustive reference set of reporting problems.
+
+% End embedded sections/introduction
+
+
+% Begin embedded sections/framework
+\section{The TRACE-Q Framework}
+\label{sec:framework}
+
+TRACE-Q version TRACE-Q organizes evidence-grounded review of articles and supplied supplements, protocols, statistical analysis plans (SAPs), and structured files (Figure~\ref{fig:workflow}). Its multi-agent workflow identifies candidate reporting issues affecting interpretation or data extraction and prepares evidence for human review.
+
+\subsection{Source Coverage and Review Domains}
+\label{sec:framework-evidence}
+\label{sec:framework-domains}
+
+A coordinator inventories sources and assigns parallel mapping tasks. Usable text, optical character recognition, and table extractions may be reused after coverage checks; uncovered units require fresh mapping. Every page, worksheet, or corresponding document unit must be accounted for. Reuse concerns extraction assets; candidate discovery starts afresh. Findings cite direct-source locations, and source hashes are checked at completion. Numeric and inferential relationships receive stable \texttt{N} and \texttt{S} identifiers, with population, outcome, time point, comparison, and model recorded to support matched checks. Complete mapping does not guarantee complete recognition of issues.
+
+Each candidate receives one domain (Table~\ref{tab:review-domains}). Document roles follow content: results materials are reports; protocols, SAPs, and amendments are plans. Relationship codes identify locations in conflict. All applicable codes are retained; the primary code follows \(\texttt{P\_R}>\texttt{P\_P}>\texttt{S\_C}>\texttt{S\_W}\). Plan-related codes determine the domain; report-only candidates are classified by content.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Review domains and document relationships.}
+\label{tab:review-domains}
+\begin{tabularx}{\linewidth}{@{}p{0.24\linewidth}p{0.14\linewidth}X@{}}
+\toprule
+Domain & Relationship & Scope \\
+\midrule
+Statistical results & \texttt{S\_C}, \texttt{S\_W} & Counts, estimates, intervals, tests, and statistical method logic. \\
+Report internal inconsistency & \texttt{S\_C}, \texttt{S\_W} & Conflicting outcome, time point, population, or comparison attributed to a result. \\
+Protocol--report & \texttt{P\_R} & Differences between reported and planned statistical design or analysis. \\
+Plan material & \texttt{P\_P} & Inconsistencies within or between plans relevant to reported analyses. \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\footnotesize
+\texttt{S\_C}: between report documents; \texttt{S\_W}: within a report; \texttt{P\_R}: report versus plan; \texttt{P\_P}: within or between plans.
+\end{table}
+
+\subsection{Checks and Inclusion Rules}
+\label{sec:framework-inclusion}
+
+Numeric, cross-source, and first-pass statistical checkers work concurrently after mapping. They examine arithmetic, inferential compatibility, method logic, and planned versus reported analyses. Comparisons must match analysis context; model-based estimates are not checked against crude arithmetic unless described as unadjusted.
+
+Registration requires reproduction and fulfillment of either inclusion route. Route A requires registration of interval--test or interval--\(P\)-value incompatibility (including estimates outside intervals); printed slips that change interpretation; irreconcilable within-display counts, denominators, or percentages; a result not reproduced by a method that reproduces other display rows; and specified planned-analysis changes or omissions. The last group includes changed outcome status or composite definitions, unsupported prespecification claims, and unreported planned primary or key secondary analyses. Route B requires an in-scope observation whose meaning a statistically literate reader cannot immediately resolve and that could affect interpretation or extraction of a named result. Peripheral differences and methodological preferences alone do not qualify.
+
+For numeric reproduction, half-unit rounding intervals around displayed inputs are propagated through the calculation and compared with the printed comparator's interval. The residual gap is zero for overlapping intervals; otherwise it is their minimum separation. A gap exceeding 5\% of the absolute comparator, or any positive gap for a zero comparator, passes this numerical screen. This operational heuristic can suppress differences exceeding rounding alone; it is neither a significance threshold nor an accuracy claim. Interval--\(P\)-value/test incompatibility is exempt, using source-specified confidence and significance levels (95\% and 0.05 if unspecified). Differences attributed by the source to distinct analyses remain alternative interpretations for review.
+
+\subsection{Rechecking, Audit, and Human Review}
+\label{sec:framework-audit}
+\label{sec:framework-report}
+
+A fresh screener independently applies inclusion rules and consolidates duplicate manifestations, retaining source links. Registered issues receive stable \texttt{C} identifiers. A separate rechecker examines direct evidence, calculations, classification, and alternative explanations; unreproduced candidates remain visible. A second fresh statistical agent revisits all inferential relationships and exclusions, including checks yielding no candidate. New findings undergo fresh screening and rechecking without renumbering existing issues. This pass reads earlier outputs and is not blinded replication.
+
+An auditor checks coverage, inclusion decisions, classifications, and execution records. Mechanical validation reconciles identifiers and evidence links across durable records and reports. The implementation uses \texttt{gpt-6.1-sol} across roles, with role-specific reasoning effort. Separate agent contexts do not ensure independent judgments. Reports retain questioned candidates and uncertainty, assign no recommended disposition, and explicitly require human review; automated reproduction and audit confirmation do not establish scientific correctness.
+
+% End embedded sections/framework
+
+
+% Begin embedded figures/workflow
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[
+ font=\small,node distance=3.5mm and 5mm,
+ box/.style={draw=blue!45!black,rounded corners=2pt,fill=blue!3,align=center,inner sep=4pt,text width=13.3cm},
+ branch/.style={box,text width=3.95cm,minimum height=9mm},
+ arr/.style={-{Stealth[length=2mm]},thick,draw=blue!45!black}]
+\node[box] (source) {\textbf{Inventory and map sources}\\
+Check reusable evidence; map every source unit; preserve exact locations.};
+\node[branch,below=of source] (cross) {\textbf{Cross-source checks}\\Matched sources};
+\node[branch,left=of cross] (numeric) {\textbf{Numeric checks}\\Counts and estimates};
+\node[branch,right=of cross] (stat) {\textbf{Statistical pass 1}\\Methods and inference};
+\node[box,below=of cross] (screen) {\textbf{Independent inclusion screen and registration}\\
+Apply Route A or B; log exclusions; consolidate duplicates; assign stable IDs.};
+\node[box,below=of screen] (recheck) {\textbf{Direct-source recheck and statistical pass 2}\\
+Record evidence and alternatives; screen and recheck any additional findings.};
+\node[box,below=of recheck] (audit) {\textbf{Audit and linked report}\\
+Check coverage, decisions, and record integrity; retain uncertainty.};
+\node[box,below=of audit,draw=green!35!black,fill=green!4] (human) {\textbf{Human review}\\
+Assign disposition, evidential status, substantiveness, and descriptive interpretations.};
+\foreach \a/\b in {source/cross,cross/screen,screen/recheck,recheck/audit,audit/human}
+ \draw[arr] (\a) -- (\b);
+\draw[arr] (source.south) -- ++(0,-1.7mm) -| (numeric.north);
+\draw[arr] (source.south) -- ++(0,-1.7mm) -| (stat.north);
+\draw[arr] (numeric.south) -- ++(0,-1.7mm) -| (screen.north);
+\draw[arr] (stat.south) -- ++(0,-1.7mm) -| (screen.north);
+\end{tikzpicture}
+\caption{TRACE-Q workflow TRACE-Q. Parallel checks are followed by screening, source rechecking, a second statistical pass, and audit. Each stage retains records for subsequent review; final judgments remain with the human reviewer.}
+\label{fig:workflow}
+\end{figure}
+
+% End embedded figures/workflow
+
+
+% Begin embedded sections/example
+\section{Application to Selected JAMA Trial Reports}
+\label{sec:application}
+
+\subsection{Paper Selection and Review Provenance}
+
+We examined an availability sample of 44 original randomized clinical trial reports published in \textit{JAMA}: 10 from 2018, 9 from 2019, 10 from 2024, and 15 from 2025. Eligibility required a primary randomized trial report from these years and locally available article and accompanying documents. We used the project's online-first year assignments. A nonrandomized report, \texttt{jama.2019.14231}, was excluded from the earlier working collection. Without a complete journal screening log, we could not estimate an inclusion fraction.
+
+The packages contained 188 PDFs comprising 5,559 physical pages and one supplementary Excel file with one worksheet (Table~\ref{tab:cohort}). Planning information could be embedded in supplements; absence of a separate SAP did not imply absence of a plan. File and page counts describe available material rather than independent checks.
+
+We matched all 440 adjudicated rows to workflow TRACE-Q catalogues using year, paper, and candidate identifiers and verified report hashes. Recorded runs began October 11--14, 2026, using Codex and \texttt{gpt-6.1-sol}; the historical client version was unavailable. Workbook version 2.4.1 identifies the review form and codebook. The four completed Excel workbooks were authoritative for human judgments. They recorded one reviewer, \texttt{R\_Bulun}, with no independent second ratings for agreement analysis.
+
+\subsection{Human Review and Outcome Definitions}
+\label{sec:codebook}
+
+The reviewer assigned each candidate a disposition of retain, exclude, or discuss and recorded completion. Retention preserves a candidate for applicable summaries; exclusion removes it from retained findings; discussion defers judgment. Blanks mean unanswered. All 440 rows were marked \texttt{primary\_done}, with no blank or deferred dispositions. Completion and retention alone do not imply confirmation.
+
+Retained statistical candidates required separate judgments of evidential status (confirmed, probable, absent, or indeterminate) and substantiveness (substantive, presentation only, or indeterminate). A confirmed issue could therefore be a minor presentation problem. An optional impact field described direct, possible, unlikely, or unknown implications for later extraction or analysis; it did not measure actual downstream harm.
+
+Retained report-internal and plan-material candidates were assessed as substantive inconsistency, minor presentation inconsistency, no inconsistency, or indeterminate. Optional protocol--report interpretations distinguished substantive differences, minor presentation differences, version or timing ambiguity, no inconsistency, and indeterminate comparisons. These differences were retained descriptively and did not establish unjustified protocol changes.
+
+The principal temporal endpoint counted retained statistical candidates that were confirmed or probable and substantive. The secondary endpoint counted retained substantive report-internal inconsistencies. Both required an original report-only relationship (\texttt{S\_C} or \texttt{S\_W}). Human domain edits were preserved descriptively, but original \texttt{P\_R}/\texttt{P\_P} relationships remained excluded from temporal endpoints even after editing. We also examined papers with at least one eligible issue. Sensitivity analyses restricted statistical issues to confirmed cases and combined principal and secondary endpoints. These analyses were exploratory and were not treated as prospectively registered.
+
+\subsection{Statistical Analysis}
+\label{sec:statistics}
+
+We summarized candidates by year, disposition, and human-assigned domain. Paper-level analyses included all 44 papers, including zeros, comparing 19 earlier reports (2018--2019) with 25 later reports (2024--2025). The paper was the unit of analysis because its candidates share documents and review context. For count outcome \(Y_i\), the statistic was the later-minus-earlier mean difference,
+\[
+T=\frac{1}{25}\sum_{i\in L}Y_i-\frac{1}{19}\sum_{i\in E}Y_i.
+\]
+The exact two-sided permutation test considered all \(\binom{44}{19}\) paper allocations. Dynamic programming counted subsets by size and integer outcome sum; the \(P\) value summed allocation probabilities for \(|T|\geq|T_{\mathrm{observed}}|\), including ties. For proportions, the same procedure used \(\mathbb{1}(Y_i>0)\). Candidates were never permuted independently of papers.
+
+Separately, 95\% percentile bootstrap confidence intervals used 20,000 paper resamples within each period (seed 20261022), keeping each paper's outcomes together. A Clopper--Pearson interval summarized the overall proportion of selected papers with at least one principal-endpoint issue. These intervals do not account for availability sampling. Exact permutation calibration assumes exchangeability under the null, which differences in trial mix, package content, or review history could violate. All \(P\) values were unadjusted, with no confirmatory threshold; large values were not evidence of equivalence. Analyses used R 4.5.0 and \texttt{readxl} 1.5.0; scripts, derived tables, input hashes, and session information accompany the draft.
+
+% End embedded sections/example
+
+
+% Begin embedded sections/results
+\section{Results}
+\label{sec:results}
+
+\subsection{Candidate Disposition and Human Judgments}
+
+The 44 packages contributed 440 candidates: 115 from 2018, 79 from 2019, 113 from 2024, and 133 from 2025 (Table~\ref{tab:cohort}). Human review retained 413 (93.9\%) and excluded 27 (6.1\%), with no deferred or incomplete entries. These totals begin at candidate registration; observations screened out earlier are outside this denominator. Final human domains comprised 173 statistical, 12 report-internal, 216 protocol--report, and 39 planning-material candidates. Exclusions comprised 18 statistical, 2 protocol--report, and 7 planning-material candidates. Five domain assignments changed during review.
+
+Of 155 retained statistical candidates, 139 were confirmed, 15 probable, and 1 indeterminate. The confirmed group contained 37 substantive and 102 presentation-only issues. The probable group contained 4 substantive and 9 presentation-only issues, with substantiveness indeterminate for 2. The remaining indeterminate issue was classified as presentation only. Optional downstream-impact judgments were direct in 29 cases, possible in 40, unlikely in 85, and unknown in 1; these were assessments of potential use rather than observed consequences.
+
+All 12 report-internal candidates were retained: 5 substantive, 6 minor, and 1 indeterminate. One substantive candidate had an original protocol--report relationship and was excluded from the temporal endpoint. Of 32 retained planning-material findings, 4 were substantive, 25 minor, and 3 indeterminate. The 214 retained protocol--report findings comprised 179 substantive differences, 14 minor differences, 6 version or timing ambiguities, and 10 indeterminate comparisons; 5 had no optional interpretation.
+
+For illustration, a candidate concerning a binary risk-ratio identity was retained as a confirmed substantive statistical issue. A difference between planned and reported medication composites was retained descriptively even though the report disclosed that statin data had not been collected. A candidate concerning secondary-outcome and safety-analysis labels was excluded because those descriptions could coexist in the supplied plans. The supplement provides identifiers and further review details.
+
+
+% Begin embedded tables/cohort_compact
+\begin{table}[tbp]
+\centering\small
+\caption{Availability sample and final human dispositions.}
+\label{tab:cohort}
+\begin{tabular}{lrrrrr}
+\toprule
+Year & Papers & PDF pages & Candidates & Retained & Excluded \\
+\midrule
+2018 & 10 & 1070 & 115 & 107 & 8 \\
+2019 & 9 & 994 & 79 & 76 & 3 \\
+2024 & 10 & 1097 & 113 & 107 & 6 \\
+2025 & 15 & 2398 & 133 & 123 & 10 \\
+\midrule
+Total & 44 & 5559 & 440 & 413 & 27 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\begin{minipage}{0.97\linewidth}\footnotesize The packages contained 188 PDFs and one supplementary Excel worksheet. Retention includes descriptive and uncertain findings; it does not imply confirmation.\end{minipage}
+\end{table}
+
+% End embedded tables/cohort_compact
+
+
+\subsection{Paper-Level Outcomes and Period Comparison}
+
+The principal endpoint comprised 41 substantive statistical issues (37 confirmed and 4 probable) in 22 of 44 papers: 50.0\% (exact binomial 95\% confidence interval, 34.6\% to 65.4\%). By year, the eligible counts were 14, 6, 11, and 10. These are findings in the selected packages, not an estimate of journal-wide prevalence.
+
+The earlier period had 20 eligible issues in 19 papers (mean, 1.05), compared with 21 in 25 later papers (mean, 0.84). The later-minus-earlier difference was $-0.21$ issues per paper (95\% bootstrap confidence interval, $-1.02$ to 0.56; exact permutation $P=0.654$). Papers with at least one eligible issue numbered 10/19 (52.6\%) and 12/25 (48.0\%), respectively ($P=1.000$). The intervals were compatible with differences in either direction.
+
+Restricting the endpoint to confirmed substantive statistical issues gave 16 earlier and 21 later issues, or 0.84 per paper in both periods ($P=1.000$). All four probable substantive issues were from the earlier period. The secondary endpoint contained one earlier and three later report-internal inconsistencies ($P=0.622$); combining the two endpoints gave mean counts of 1.11 and 0.96 ($P=0.754$). Table~\ref{tab:temporal} presents the comparisons. Supplementary Table S1 gives all paper-level counts, and Supplementary Figure S1 displays the statistical counts by period.
+
+
+% Begin embedded tables/temporal_compact
+\begin{table}[tbp]
+\centering\small
+\caption{Exploratory comparisons using exact paper-level permutation tests.}
+\label{tab:temporal}
+\begin{tabular}{>{\raggedright\arraybackslash}p{4.7cm}rrrr}
+\toprule
+Outcome & 2018--2019 & 2024--2025 & Difference (95\% CI) & $P$ \\
+\midrule
+Substantive statistical: count & 1.05 & 0.84 & -0.21 (-1.02, 0.56) & 0.654 \\
+Substantive statistical: any & 10/19 & 12/25 & -4.6 (-33.7, 25.7) & 1.000 \\
+Substantive report inconsistency & 0.05 & 0.12 & 0.07 (-0.09, 0.24) & 0.622 \\
+Confirmed statistical only & 0.84 & 0.84 & 0.00 (-0.77, 0.74) & 1.000 \\
+Combined substantive report & 1.11 & 0.96 & -0.15 (-1.02, 0.68) & 0.754 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\begin{minipage}{0.97\linewidth}\footnotesize Count rows show mean issues per paper; the binary row shows papers with at least one issue. Differences are later minus earlier, in counts or percentage points. Intervals use 20,000 within-period paper bootstrap resamples. Permutation $P$ values are two-sided, exact, and unadjusted. The last two rows are sensitivity analyses.\end{minipage}
+\end{table}
+
+% End embedded tables/temporal_compact
+
+
+% End embedded sections/results
+
+
+% Begin embedded sections/discussion
+\section{Discussion}
+In this availability sample of 44 trials, human review retained 413 of 440 candidates (93.9\%), including uncertain findings and protocol--report differences. The principal endpoint comprised 41 retained, confirmed or probable substantive statistical issues in report materials across 22 papers. Mean counts were 1.05 per paper in 2018--2019 and 0.84 in 2024--2025 (difference, $-0.21$; 95\% bootstrap confidence interval, $-1.02$ to $0.56$; exact permutation $P=0.654$). These data did not establish a period difference or equivalence.
+
+TRACE-Q connects source locations, checking records, screening decisions, and candidate reports. These records allow reviewers to revisit a concern after the immediate working context has changed. This organization addresses the project's original practical motivation: checking source reports before their numbers enter subsequent research. It does not establish that the observed findings changed trial conclusions or downstream syntheses. Extraction artifacts must also be resolved against original documents before they become reporting concerns.
+
+Candidate retention is not a measure of accuracy or sensitivity. Our reviews concern findings already generated by the workflow, whereas planted-error studies such as that of La et al. assess recovery of specified targets.\cite{la2026consistency} Without an exhaustive reference set, a paper with no retained finding cannot be classified as free of problems. This application also formed part of workflow development, and exposure to earlier outputs may have influenced review rules. One reviewer supplied final reviews; agreement between independent reviewers was not estimated. Judgments about context and substantive importance remain open to reassessment.
+
+The period comparison describes the assembled article packages. Availability sampling and differences in clinical topics, trial designs, reporting complexity, and supplementary material may affect the opportunities for checking and the findings generated. Using papers as the units for permutation and bootstrap analyses preserves clustering of findings within papers, but does not remove selection effects or support causal claims about publication period, the pandemic, or AI use.
+
+Statistical checks require contextual interpretation. Confidence intervals and $P$ values may differ because they use different procedures or adjustment sets. Crude ratios do not generally verify adjusted estimates, and documented amendments may explain departures from planned analyses. Display-precision thresholds and clinical rules of thumb identify questions for review; they do not define universal error boundaries. Dong et al.'s findings reinforce the importance of examining extraction and omitted analyses.\cite{dong2026statistical} Without participant-level data or analysis code, some concerns may remain unresolved.
+
+We did not compare TRACE-Q with unaided human review, a single agent, or alternative agent environments, and did not establish time or cost savings. Agents using the same model may share mistaken assumptions. In a preprint, Kim et al. found that the effects of additional agents depended on task structure and coordination.\cite{kim2026scaling} Controlled comparisons with matched sources, models, tools, and computational budgets are needed, together with repeated runs to assess stability.
+
+Workflow and analysis code can support reuse, but articles, supplements, and derived evidence may have redistribution restrictions. A reproducible release should identify source versions, workflow and model settings, the review codebook, and source locators while distinguishing shareable materials from documents readers must obtain separately. Future evaluation should combine independently adjudicated natural findings with known inserted errors, report failed and incomplete reviews, and measure human verification time. TRACE-Q provides an exploratory framework for organizing quantitative review; its value in routine use requires prospective evaluation.
+
+% End embedded sections/discussion
+
+
+\section*{Data, Code, and AI Use}
+Analysis scripts, derived tables, input hashes, and completed review workbooks are retained with the project; journal source PDFs are not redistributed. Supplementary material provides per-paper results and extended review details. A public repository and author declarations will be finalized before submission. Screening used the model and workflow described above. Drafting used GPT-6-Astra agents and a GPT-6.1-sol language reviewer; numerical results were calculated in R from the final human decisions. Authors remain responsible for the manuscript and final disclosure.
+
+
+% Begin embedded bibliography
+% Generated from references.bib; embedded in the standalone manuscript.
+\begin{thebibliography}{12}
+\bibitem[Xu et~al.(2022)]{xu2022extraction}
+Xu C, Yu T, Furuya-Kanamori L, Lin L, Zorzela L, Zhou X, et~al. Validity of data extraction in evidence synthesis practice of adverse events: reproducibility study.
+\emph{BMJ}. 2022;377:e069155.
+\href{https://doi.org/10.1136/bmj-2021-069155}{doi:10.1136/bmj-2021-069155}.
+
+\bibitem[Ruta et~al.(2025)]{ruta2025statistics}
+Ruta MR, Gaidici T, Irwin C, Lifshitz J. {ChatGPT} for Univariate Statistics: Validation of {AI}-Assisted Data Analysis in Healthcare Research.
+\emph{Journal of Medical Internet Research}. 2025;27:e63550.
+\href{https://doi.org/10.2196/63550}{doi:10.2196/63550}.
+
+\bibitem[Graf et~al.(2024)]{graf2024referencing}
+Graf EM, McKinney JA, Dye AB, Lin L, Sanchez-Ramos L. Exploring the Limits of Artificial Intelligence for Referencing Scientific Articles.
+\emph{American Journal of Perinatology}. 2024;41(15):2072--2081.
+\href{https://doi.org/10.1055/s-0044-1786033}{doi:10.1055/s-0044-1786033}.
+
+\bibitem[Paris et~al.(2026)]{paris2026triage}
+Paris J, Agarwal A, Chan WO, Selva D. Can large language models accurately triage oculoplastic referrals?
+\emph{Eye}. 2026;40(15):2480--2481.
+\href{https://doi.org/10.1038/s41433-026-04766-w}{doi:10.1038/s41433-026-04766-w}.
+
+\bibitem[Lovering et~al.(2025)]{lovering2025find}
+Lovering CJ, Ebner S, Smock B, Krumdick M, Rabbani S, Muhammad A, et~al. On Finding Inconsistencies in Documents.
+arXiv preprint arXiv:2512.18601v1. 2025.
+\url{https://arxiv.org/abs/2512.18601v1}.
+
+\bibitem[Xi et~al.(2025)]{xi2025flaws}
+Xi S, Rao V, Payan J, Shah NB. {FLAWS}: A Benchmark for Error Identification and Localization in Scientific Papers.
+arXiv preprint arXiv:2511.21843v1. 2025.
+\url{https://arxiv.org/abs/2511.21843v1}.
+
+\bibitem[Son et~al.(2025)]{son2025spot}
+Son G, Hong J, Fan H, Nam H, Ko H, Lim S, et~al. When {AI} Co-Scientists Fail: {SPOT}---a Benchmark for Automated Verification of Scientific Research.
+arXiv preprint arXiv:2505.11855v1. 2025.
+\url{https://arxiv.org/abs/2505.11855v1}.
+
+\bibitem[Bianchi et~al.(2025)]{bianchi2025errors}
+Bianchi F, Kwon Y, Izzo Z, Zhang L, Zou J. To Err Is Human: Systematic Quantification of Errors in Published {AI} Papers via {LLM} Analysis.
+arXiv preprint arXiv:2512.05925v1. 2025.
+\url{https://arxiv.org/abs/2512.05925v1}.
+
+\bibitem[La et~al.(2026)]{la2026consistency}
+La E, Paris J, Agarwal A, Chan WO, Selva D. Large language models as internal consistency checkers for ophthalmic manuscripts.
+\emph{Eye}. 2026. Published online 9 October 2026.
+\href{https://doi.org/10.1038/s41433-026-04965-5}{doi:10.1038/s41433-026-04965-5}.
+
+\bibitem[Dong et~al.(2026)]{dong2026statistical}
+Dong M, Liu X, Luo Y, Zeng Y, Fei F, Du L. Potential and limitations of a large language model in the statistical review of comparative categorical data: an exploratory study of structured prompt-guided approach.
+\emph{Research Integrity and Peer Review}. 2026;11:39.
+\href{https://doi.org/10.1186/s41073-026-00231-0}{doi:10.1186/s41073-026-00231-0}.
+
+\bibitem[Flanagin et~al.(2026)]{flanagin2026guidance}
+Flanagin A, Perlis RH, Bibbins-Domingo K. Updated Guidance for Author Use of {AI} in Medical Publication.
+\emph{JAMA}. 2026;336(11):926--928.
+\href{https://doi.org/10.1001/jama.2026.16613}{doi:10.1001/jama.2026.16613}.
+
+\bibitem[Kim et~al.(2026)]{kim2026scaling}
+Kim Y, Gu K, Park C, Park C, Schmidgall S, Heydari AA, et~al. Towards a Science of Scaling Agent Systems.
+arXiv preprint arXiv:2512.08296v3. 2026.
+\url{https://arxiv.org/abs/2512.08296v3}.
+
+\end{thebibliography}
+
+% End embedded bibliography
+
+\end{document}

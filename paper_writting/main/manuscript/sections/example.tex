@@ -1,0 +1,32 @@
+\section{Application to Selected JAMA Trial Reports}
+\label{sec:application}
+
+\subsection{Paper Selection and Review Provenance}
+
+We examined an availability sample of 44 original randomized clinical trial reports published in \textit{JAMA}: 10 from 2018, 9 from 2019, 10 from 2024, and 15 from 2025. Eligibility required a primary randomized trial report from these years and locally available article and accompanying documents. We used the project's online-first year assignments. A nonrandomized report, \texttt{jama.2019.14231}, was excluded from the earlier working collection. Without a complete journal screening log, we could not estimate an inclusion fraction.
+
+The packages contained 188 PDFs comprising 5,559 physical pages and one supplementary Excel file with one worksheet (Table~\ref{tab:cohort}). Planning information could be embedded in supplements; absence of a separate SAP did not imply absence of a plan. File and page counts describe available material rather than independent checks.
+
+We matched all 440 adjudicated rows to workflow 1.6.2 catalogues using year, paper, and candidate identifiers and verified report hashes. Recorded runs began October 11--14, 2026, using Codex and \texttt{gpt-6.1-sol}; the historical client version was unavailable. Workbook version 2.4.1 identifies the review form and codebook. The four completed Excel workbooks were authoritative for human judgments. They recorded one reviewer, \texttt{R\_Bulun}, with no independent second ratings for agreement analysis.
+
+\subsection{Human Review and Outcome Definitions}
+\label{sec:codebook}
+
+The reviewer assigned each candidate a disposition of retain, exclude, or discuss and recorded completion. Retention preserves a candidate for applicable summaries; exclusion removes it from retained findings; discussion defers judgment. Blanks mean unanswered. All 440 rows were marked \texttt{primary\_done}, with no blank or deferred dispositions. Completion and retention alone do not imply confirmation.
+
+Retained statistical candidates required separate judgments of evidential status (confirmed, probable, absent, or indeterminate) and substantiveness (substantive, presentation only, or indeterminate). A confirmed issue could therefore be a minor presentation problem. An optional impact field described direct, possible, unlikely, or unknown implications for later extraction or analysis; it did not measure actual downstream harm.
+
+Retained report-internal and plan-material candidates were assessed as substantive inconsistency, minor presentation inconsistency, no inconsistency, or indeterminate. Optional protocol--report interpretations distinguished substantive differences, minor presentation differences, version or timing ambiguity, no inconsistency, and indeterminate comparisons. These differences were retained descriptively and did not establish unjustified protocol changes.
+
+The principal temporal endpoint counted retained statistical candidates that were confirmed or probable and substantive. The secondary endpoint counted retained substantive report-internal inconsistencies. Both required an original report-only relationship (\texttt{S\_C} or \texttt{S\_W}). Human domain edits were preserved descriptively, but original \texttt{P\_R}/\texttt{P\_P} relationships remained excluded from temporal endpoints even after editing. We also examined papers with at least one eligible issue. Sensitivity analyses restricted statistical issues to confirmed cases and combined principal and secondary endpoints. These analyses were exploratory and were not treated as prospectively registered.
+
+\subsection{Statistical Analysis}
+\label{sec:statistics}
+
+We summarized candidates by year, disposition, and human-assigned domain. Paper-level analyses included all 44 papers, including zeros, comparing 19 earlier reports (2018--2019) with 25 later reports (2024--2025). The paper was the unit of analysis because its candidates share documents and review context. For count outcome \(Y_i\), the statistic was the later-minus-earlier mean difference,
+\[
+T=\frac{1}{25}\sum_{i\in L}Y_i-\frac{1}{19}\sum_{i\in E}Y_i.
+\]
+The exact two-sided permutation test considered all \(\binom{44}{19}\) paper allocations. Dynamic programming counted subsets by size and integer outcome sum; the \(P\) value summed allocation probabilities for \(|T|\geq|T_{\mathrm{observed}}|\), including ties. For proportions, the same procedure used \(\mathbb{1}(Y_i>0)\). Candidates were never permuted independently of papers.
+
+Separately, 95\% percentile bootstrap confidence intervals used 20,000 paper resamples within each period (seed 20261022), keeping each paper's outcomes together. A Clopper--Pearson interval summarized the overall proportion of selected papers with at least one principal-endpoint issue. These intervals do not account for availability sampling. Exact permutation calibration assumes exchangeability under the null, which differences in trial mix, package content, or review history could violate. All \(P\) values were unadjusted, with no confirmatory threshold; large values were not evidence of equivalence. Analyses used R 4.5.0 and \texttt{readxl} 1.5.0; scripts, derived tables, input hashes, and session information accompany the draft.

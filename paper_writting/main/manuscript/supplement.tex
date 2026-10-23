@@ -1,0 +1,68 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=24mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}
+\setmonofont[Scale=0.86]{Latin Modern Mono}
+\usepackage{amsmath,amssymb,graphicx,booktabs,longtable,tabularx}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{xcolor,hyperref,fancyhdr}
+\hypersetup{colorlinks=true,linkcolor=blue!40!black,urlcolor=blue!40!black,
+pdftitle={TRACE-Q: Supplementary Material}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small TRACE-Q: Supplementary material}\fancyfoot[C]{S\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parskip}{3pt}\setlength{\emergencystretch}{2em}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\begin{document}
+\begin{center}{\Large\bfseries TRACE-Q: Supplementary Material}\end{center}
+
+\section{Paper-Level Results}
+\input{tables/perpaper}
+
+\section{Adjudication and Analysis Details}
+The analysis reads the four completed Excel workbooks directly, using stable candidate keys to join original relationship codes. It checks unique keys, row totals, completion, and required domain-specific judgments. All 440 supplied human decisions are preserved. Final human domains determine descriptive summaries; original document relationships additionally constrain temporal eligibility. Candidate \texttt{2024::jama.2024.11057::C003}, for example, was retained as a substantive report-internal inconsistency after domain editing, but its original \texttt{P\_R} relationship excludes it from the secondary temporal endpoint. It remains in the descriptive human-domain total.
+
+The 149 confirmed report-material issues of any substantiveness occurred in 38 of 44 papers. This broader count includes minor presentation issues and differs from the principal endpoint of 41 confirmed or probable substantive statistical issues. The broad count is descriptive and is not a detection-accuracy measure.
+
+\subsection{Illustrative Human Decisions}
+For \texttt{jama.2018.14280}, C001 concerned the identity of a reported binary risk ratio and was retained as a confirmed substantive statistical issue with direct potential impact on extraction. For \texttt{jama.2017.21906}, C001 compared a planned medication composite containing statin use with the reported composite; the report disclosed that statin data were not collected. This was retained as a substantive protocol--report difference without an inference of unjustified change. For \texttt{jama.2018.0156}, C002 was excluded because secondary-outcome and safety-analysis descriptions could coexist within the supplied plans. These examples summarize final adjudications, rather than proposing corrected results.
+
+\input{tables/dispositions}
+
+\subsection{Full Period Comparisons}
+Table~\ref{tab:temporal} gives the complete set of exploratory comparisons, including binary sensitivity endpoints omitted from the main table for space. All tests reallocate papers between groups of 19 and 25; candidates remain grouped within their papers. Exact probabilities count all allocations with a statistic at least as extreme in absolute value, including ties. Bootstrap intervals resample papers within periods and are not permutation intervals.
+\input{tables/temporal}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{figures/period_counts.pdf}
+\caption{Substantive statistical issues by publication period. Each point represents a paper, including zero counts. Panel A includes confirmed and probable issues; Panel B includes confirmed issues only. Boxes show medians and interquartile ranges; whiskers extend to observations within 1.5 interquartile ranges.}
+\label{fig:period}
+\end{figure}
+
+\subsection{Interpretation of Review Fields}
+\begin{table}[htbp]
+\centering\small
+\caption{Operational interpretation of final human review fields.}
+\label{tab:codebook}
+\begin{tabularx}{\linewidth}{p{3.5cm}X}
+\toprule
+Field & Interpretation used in the analysis \\
+\midrule
+Disposition & Retain, exclude, or discuss; blank means unanswered. Retention alone is not confirmation. \\
+Statistical issue & Confirmed, probable, not an issue, or indeterminate; required for retained statistical candidates. \\
+Substantiveness & Substantive, minor presentation, or indeterminate; separate from evidential certainty. \\
+Downstream impact & Optional direct, possible, unlikely, or unknown impact; not an eligibility criterion or evidence of actual harm. \\
+Internal inconsistency & Substantive, minor presentation, no inconsistency, or indeterminate; used for report-internal and planning-material candidates. \\
+Protocol interpretation & Optional description of a difference or ambiguity; excluded from temporal endpoints regardless of apparent importance. \\
+Completion & \texttt{primary\_done} indicates a completed review entry, not scientific confirmation. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Reproducible Computation}
+The files \path{candidate_results.csv} and \path{paper_results.csv} preserve analysis variables. The file \path{period_comparisons.csv} contains unrounded estimates, intervals, and exact permutation probabilities. Original candidate domain and relationship codes are stored separately from final human labels. The R script cross-checks its dynamic-programming calculation against direct enumeration of a small example with tied and zero counts; an independent implementation reproduced all eight reported permutation probabilities. All 44 papers enter the analysis, including those with no eligible finding. The manuscript tables use final workbooks rather than historical preliminary counts in project correspondence.
+
+The source archive contains 188 PDFs (5,559 pages) and one Excel worksheet. Thus, 5,560 is the number of mixed source units, not the number of PDF pages. Source-file and report hashes are retained with the analysis. The project notes document the initial feasibility exercise and the rationale for separating broad descriptive review from narrower temporal outcomes; the main paper does not treat these notes as published evidence or the pilot as independent validation.
+\end{document}

@@ -1,0 +1,47 @@
+\section{The TRACE-Q Framework}
+\label{sec:framework}
+
+TRACE-Q version 1.6.2 organizes evidence-grounded review of articles and supplied supplements, protocols, statistical analysis plans (SAPs), and structured files (Figure~\ref{fig:workflow}). Its multi-agent workflow identifies candidate reporting issues affecting interpretation or data extraction and prepares evidence for human adjudication.
+
+\subsection{Source Coverage and Review Domains}
+\label{sec:framework-evidence}
+\label{sec:framework-domains}
+
+A coordinator inventories sources and assigns parallel mapping tasks. Usable text, optical character recognition, and table extractions may be reused after coverage checks; uncovered units require fresh mapping. Every page, worksheet, or corresponding document unit must be accounted for. Reuse concerns extraction assets; candidate discovery starts afresh. Findings cite direct-source locations, and source hashes are checked at completion. Numeric and inferential relationships receive stable \texttt{N} and \texttt{S} identifiers, with population, outcome, time point, comparison, and model recorded to support matched checks. Complete mapping does not guarantee complete recognition of issues.
+
+Each candidate receives one domain (Table~\ref{tab:review-domains}). Document roles follow content: results materials are reports; protocols, SAPs, and amendments are plans. Relationship codes identify locations in conflict. All applicable codes are retained; the primary code follows \(\texttt{P\_R}>\texttt{P\_P}>\texttt{S\_C}>\texttt{S\_W}\). Plan-related codes determine the domain; report-only candidates are classified by content.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Review domains and document relationships.}
+\label{tab:review-domains}
+\begin{tabularx}{\linewidth}{@{}p{0.24\linewidth}p{0.14\linewidth}X@{}}
+\toprule
+Domain & Relationship & Scope \\
+\midrule
+Statistical results & \texttt{S\_C}, \texttt{S\_W} & Counts, estimates, intervals, tests, and statistical method logic. \\
+Report internal inconsistency & \texttt{S\_C}, \texttt{S\_W} & Conflicting outcome, time point, population, or comparison attributed to a result. \\
+Protocol--report & \texttt{P\_R} & Differences between reported and planned statistical design or analysis. \\
+Plan material & \texttt{P\_P} & Inconsistencies within or between plans relevant to reported analyses. \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\footnotesize
+\texttt{S\_C}: between report documents; \texttt{S\_W}: within a report; \texttt{P\_R}: report versus plan; \texttt{P\_P}: within or between plans.
+\end{table}
+
+\subsection{Checks and Inclusion Rules}
+\label{sec:framework-inclusion}
+
+Numeric, cross-source, and first-pass statistical checkers work concurrently after mapping. They examine arithmetic, inferential compatibility, method logic, and planned versus reported analyses. Comparisons must match analysis context; model-based estimates are not checked against crude arithmetic unless described as unadjusted.
+
+Registration requires reproduction and fulfillment of either inclusion route. Route A requires registration of interval--test or interval--\(P\)-value incompatibility (including estimates outside intervals); printed slips that change interpretation; irreconcilable within-display counts, denominators, or percentages; a result not reproduced by a method that reproduces other display rows; and specified planned-analysis changes or omissions. The last group includes changed outcome status or composite definitions, unsupported prespecification claims, and unreported planned primary or key secondary analyses. Route B requires an in-scope observation whose meaning a statistically literate reader cannot immediately resolve and that could affect interpretation or extraction of a named result. Peripheral differences and methodological preferences alone do not qualify.
+
+For numeric reproduction, half-unit rounding intervals around displayed inputs are propagated through the calculation and compared with the printed comparator's interval. The residual gap is zero for overlapping intervals; otherwise it is their minimum separation. A gap exceeding 5\% of the absolute comparator, or any positive gap for a zero comparator, passes this numerical screen. This operational heuristic can suppress differences exceeding rounding alone; it is neither a significance threshold nor an accuracy claim. Interval--\(P\)-value/test incompatibility is exempt, using source-specified confidence and significance levels (95\% and 0.05 if unspecified). Differences attributed by the source to distinct analyses remain alternative interpretations for adjudication.
+
+\subsection{Rechecking, Audit, and Human Review}
+\label{sec:framework-audit}
+\label{sec:framework-report}
+
+A fresh screener independently applies inclusion rules and consolidates duplicate manifestations, retaining source links. Registered issues receive stable \texttt{C} identifiers. A separate rechecker examines direct evidence, calculations, classification, and alternative explanations; unreproduced candidates remain visible. A second fresh statistical agent revisits all inferential relationships and exclusions, including checks yielding no candidate. New findings undergo fresh screening and rechecking without renumbering existing issues. This pass reads earlier outputs and is not blinded replication.
+
+An auditor checks coverage, inclusion decisions, classifications, and execution records. Mechanical validation reconciles identifiers and evidence links across durable records and reports. The implementation uses \texttt{gpt-6.1-sol} across roles, with role-specific reasoning effort. Separate agent contexts do not ensure independent judgments. Reports retain questioned candidates and uncertainty, assign no recommended disposition, and explicitly require human adjudication; automated reproduction and audit confirmation do not establish scientific correctness.

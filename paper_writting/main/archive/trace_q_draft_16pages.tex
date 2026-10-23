@@ -1,0 +1,85 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=24mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros}
+\setmonofont[Scale=0.86]{Latin Modern Mono}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,booktabs,longtable,tabularx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!40!black,citecolor=blue!40!black,urlcolor=blue!40!black,
+ pdftitle={TRACE-Q: An Exploratory Multi-Agent Toolkit for Evidence-Grounded Review of Quantitative Research Reporting}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small TRACE-Q}
+\fancyhead[R]{\small Draft for author review}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{1.2em}
+\linespread{1.10}
+\setlength{\emergencystretch}{2em}
+\title{\textbf{TRACE-Q: An Exploratory Multi-Agent Toolkit for Evidence-Grounded Review of Quantitative Research Reporting}}
+\author{}
+\date{Draft manuscript --- October 22, 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Quantitative reporting issues can be difficult to assess when relevant evidence is distributed across an article, supplements, protocols, and statistical analysis plans. We describe TRACE-Q, an exploratory multi-agent toolkit that organizes source mapping, quantitative checks, inclusion screening, evidence rechecking, and audit into a documented workflow. Version 1.6.2 preserves source locations, intermediate records, and candidate histories while reserving final judgments for human review. We examined its application to an availability sample of 44 randomized trial packages published in \textit{JAMA} in 2018, 2019, 2024, and 2025, using completed human adjudication workbooks as the final results. Of 440 candidates, 413 were retained and 27 excluded. Retention included descriptive protocol--report differences and did not imply confirmation of a reporting issue. The principal temporal endpoint comprised 41 confirmed or probable substantive statistical issues in report materials, occurring in 22 of 44 papers. Mean counts were 1.05 per paper in 2018--2019 and 0.84 in 2024--2025; the later-minus-earlier difference was $-0.21$ (95\% bootstrap confidence interval, $-1.02$ to 0.56; exact paper-level permutation $P=0.654$). The findings illustrate how evidence-linked candidates can be organized for human assessment. They do not establish diagnostic accuracy, improved efficiency, or a temporal change in reporting quality. Missed issues were not assessed, and the availability sample and single recorded human reviewer limit generalization. TRACE-Q should be regarded as an exploratory aid for locating and examining reporting issues.
+\end{abstract}
+\noindent\textbf{Keywords:} quantitative reporting; large language models; multi-agent workflow; human adjudication; randomized trials; evidence synthesis
+
+\input{sections/introduction}
+\input{sections/framework}
+\input{figures/workflow}
+\input{sections/example}
+\input{sections/results}
+\clearpage
+\input{sections/discussion}
+
+\section*{Data and Code Availability}
+The accompanying analysis files contain the R script, derived candidate- and paper-level tables, source metadata, and input hashes used for this draft. The workflow specification and completed adjudication workbooks are retained with the project. Journal PDFs are not redistributed with the manuscript; access to articles and supplementary documents remains subject to the applicable publisher and institutional terms. A public repository location and the scope of any public release will be specified by the authors before submission.
+
+\section*{Use of Artificial Intelligence}
+The screening application used the model and workflow described in the Methods. Draft preparation additionally used GPT-6-Astra agents for writing and a GPT-6.1-sol agent for language review, with the supplied methods paper as a style reference. Computational results were generated from the final human-review workbooks using R. The authors should verify the manuscript, citations, and final disclosure before submission.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\clearpage
+\appendix
+\section{Paper-Level Results}
+\input{tables/perpaper}
+
+\section{Reproducible Analysis and Interpretation of Review Fields}
+The analysis script reads the four completed Excel workbooks directly and uses stable candidate keys to join the original relationship codes. Blank rows in workbook indices are ignored. It checks candidate uniqueness, paper-level row totals, completion status, and required domain-specific judgments. No human label is inferred from an automated report or overwritten during analysis. A candidate's final human domain determines descriptive tabulation, while its original document relationship additionally constrains temporal eligibility. In particular, candidate \texttt{2024::jama.2024.11057::C003} was retained as a substantive report-internal inconsistency after human domain editing, but its original \texttt{P\_R} relationship keeps it outside the secondary temporal endpoint. The main results include its human judgment in the descriptive domain total.
+
+The candidate and paper analysis variables are saved in \path{candidate_results.csv} and \path{paper_results.csv}. The file \path{period_comparisons.csv} gives the unrounded estimates, confidence limits, and exact permutation probabilities. The source catalogue retains original domain and relationship assignments. The script also compares its permutation calculation against direct enumeration on a small example containing tied and zero counts. Its use of all 44 papers ensures that lack of an eligible issue contributes a zero count rather than causing exclusion of the paper.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Operational interpretation of the final human review fields.}
+\label{tab:codebook}
+\begin{tabularx}{\linewidth}{p{3.5cm}X}
+\toprule
+Field & Interpretation used in the analysis \\
+\midrule
+Disposition & Retain, exclude, or discuss; blank means unanswered. Retention alone is not confirmation. \\
+Statistical issue & Confirmed, probable, not an issue, or indeterminate; required for retained statistical candidates. \\
+Substantiveness & Substantive, minor presentation, or indeterminate; separate from evidential certainty. \\
+Downstream impact & Optional direct, possible, unlikely, or unknown impact; not an eligibility criterion or evidence of actual harm. \\
+Internal inconsistency & Substantive, minor presentation, no inconsistency, or indeterminate; applies to report-internal and planning-material candidates. \\
+Protocol interpretation & Optional description of a difference or ambiguity; excluded from temporal endpoints regardless of apparent importance. \\
+Completion & \texttt{primary\_done} indicates completed entry and review; it does not imply scientific confirmation. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\end{document}
